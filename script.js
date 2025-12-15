@@ -1621,29 +1621,58 @@ document.addEventListener('DOMContentLoaded', () => {
             const avg1 = calcAvg(d1.current);
             const avg2 = calcAvg(d2.current);
 
-            const getBestPoints = (hist) => {
-                if (!hist || hist.length === 0) return 0;
-                return Math.max(...hist.map(e => e.points || 0));
+            const getBestStats = (hist) => {
+                if (!hist || hist.length === 0) return { points: 0, season: '' };
+                const best = hist.reduce((prev, current) => ((current.points || 0) > (prev.points || 0)) ? current : prev, { points: 0, season: '' });
+                return { points: best.points || 0, season: best.season || '' };
             };
 
-            const best1 = getBestPoints(h1);
-            const best2 = getBestPoints(h2);
+            const getSeasonList = (hist) => {
+                if (!hist || hist.length === 0) return "";
+                // Sort seasons if needed? They usually come in order or reverse order.
+                // dedupe just in case
+                const seasons = [...new Set(hist.map(e => e.season))].sort().join(", ");
+                return seasons;
+            };
 
-            const card = (val1, val2, label, subLabel, isFloat = false) => {
+            const best1Stats = getBestStats(h1);
+            const best2Stats = getBestStats(h2);
+
+            const seasons1 = getSeasonList(h1);
+            const seasons2 = getSeasonList(h2);
+
+            const card = (val1, val2, label, subLabel, detail1 = "", detail2 = "", isFloat = false) => {
                 const v1 = isFloat ? val1.toFixed(2) : val1;
                 const v2 = isFloat ? val2.toFixed(2) : val2;
-                const win1 = val1 > val2;
-                const c1 = win1 ? '#4ade80' : '#94a3b8';
-                const c2 = val2 > val1 ? '#4ade80' : '#94a3b8';
+
+                // Winner color logic
+                let c1 = '#94a3b8';
+                let c2 = '#94a3b8';
+
+                if (val1 !== val2) {
+                    if (val1 > val2) c1 = '#4ade80';
+                    else c2 = '#4ade80';
+                }
+
+                // Small detail line style
+                const detailStyle = "font-size: 0.7em; color: #64748b; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80px;";
 
                 return `
-                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #334155;">
-                    <div style="font-size: 1.2em; font-weight: bold; color: ${c1}; width: 80px; text-align: center;">${v1}</div>
-                    <div style="flex: 1; text-align: center;">
+                 <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
+                    <div style="display: flex; flex-direction: column; align-items: center; width: 90px;">
+                        <div style="font-size: 1.2em; font-weight: bold; color: ${c1};">${v1}</div>
+                        ${detail1 ? `<div style="${detailStyle}" title="${detail1}">${detail1}</div>` : ''}
+                    </div>
+                    
+                    <div style="flex: 1; text-align: center; padding: 0 10px;">
                         <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${label}</div>
                         <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">${subLabel}</div>
                     </div>
-                    <div style="font-size: 1.2em; font-weight: bold; color: ${c2}; width: 80px; text-align: center;">${v2}</div>
+
+                    <div style="display: flex; flex-direction: column; align-items: center; width: 90px;">
+                         <div style="font-size: 1.2em; font-weight: bold; color: ${c2};">${v2}</div>
+                         ${detail2 ? `<div style="${detailStyle}" title="${detail2}">${detail2}</div>` : ''}
+                    </div>
                  </div>`;
             };
 
@@ -1656,9 +1685,9 @@ document.addEventListener('DOMContentLoaded', () => {
                      <div style="width: 20%; text-align: center; color: #64748b; font-size: 0.8em;">vs</div>
                      <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d2.name}</div>
                 </div>
-                ${card(avg1, avg2, "Ø Aktuell", "Durchschnitt dieser Saison", true)}
-                ${card(h1.length, h2.length, "Erfahrung", "Anzahl gespielter Saisons im Archiv")}
-                ${card(best1, best2, "Bestleistung", "Meiste Punkte in einer Saison (Archiv)")}
+                ${card(avg1, avg2, "Ø Aktuell", "Durchschnitt dieser Saison", "", "", true)}
+                ${card(h1.length, h2.length, "Erfahrung", "Anzahl gespielter Saisons im Archiv", seasons1, seasons2)}
+                ${card(best1Stats.points, best2Stats.points, "Bestleistung", "Meiste Punkte in einer Saison (Archiv)", best1Stats.season, best2Stats.season)}
              </div>
              <div style="margin-top: 20px; text-align: center; padding: 10px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 6px; color: #60a5fa; font-size: 0.9em;">
                 ℹ️ <strong>Erklärung:</strong><br>
