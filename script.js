@@ -2838,3 +2838,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init called via logic at top
     // init();
 });
+
+// Global check to hide update button on production environments
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        const style = document.createElement('style');
+        style.innerHTML = '#update-btn { display: none !important; } #last-updated { margin-bottom: 20px !important; }';
+        document.head.appendChild(style);
+    }
+});
