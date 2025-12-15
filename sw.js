@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bwedl-dashboard-v1';
+const CACHE_NAME = 'bwedl-dashboard-v2';
 const urlsToCache = [
     './',
     './index.html',
@@ -14,6 +14,8 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
+    // Force new service worker to take over immediately
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
@@ -58,14 +60,18 @@ self.addEventListener('fetch', event => {
 self.addEventListener('activate', event => {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
+        Promise.all([
+            // Claim clients immediately so the new SW controls the page
+            self.clients.claim(),
+            caches.keys().then(cacheNames => {
+                return Promise.all(
+                    cacheNames.map(cacheName => {
+                        if (cacheWhitelist.indexOf(cacheName) === -1) {
+                            return caches.delete(cacheName);
+                        }
+                    })
+                );
+            })
+        ])
     );
 });
