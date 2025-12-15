@@ -231,31 +231,46 @@ async def scrape_archive():
                                      # Don't break yet, prefer standard (Name | ID) if found later?
                                      # Actually Name|ID is most common.
                         
+
+                        # Helper to check if a string is a likely name (contains letters)
+                        def is_valid_name(s):
+                            s = s.strip()
+                            if not s: return False
+                            if s.isdigit(): return False
+                            # Must contain at least one letter?
+                            if not re.search(r'[a-zA-Z]', s): return False
+                            return True
+
                         if id_idx != -1:
                             p_id = row[id_idx].strip()
                             
                             # Deduce Name Position relative to ID
                             
                             # Case 1: Name | ID (Standard)
-                            # Check if left neighbor is text
-                            if id_idx > 0 and not row[id_idx-1].strip().isdigit():
+                            if id_idx > 0 and is_valid_name(row[id_idx-1]):
                                 p_name = row[id_idx-1].strip()
                             
                             # Case 2: ID | Name (Rare)
-                            # Check if right neighbor is text
-                            elif id_idx < len(row)-1 and not row[id_idx+1].strip().isdigit():
+                            elif id_idx < len(row)-1 and is_valid_name(row[id_idx+1]):
                                 p_name = row[id_idx+1].strip()
                                 
-                            # Case 3: Club (Digits) | Match? 
-                            # If id_idx-1 was digits (e.g. Club ID "030"), and we didn't match Case 1.
-                            # We might be in Rank | Club | ID | Name ?
-                            elif id_idx < len(row)-1 and not row[id_idx+1].strip().isdigit():
+                            # Case 3: Club | ID | Name ?
+                            elif id_idx < len(row)-1 and is_valid_name(row[id_idx+1]):
                                 p_name = row[id_idx+1].strip()
 
                         # Fallback for very short rows or weird formats
-                        if p_name == "Unbekannt" or p_name.isdigit():
-                             if len(row) > 2 and not row[1].isdigit(): p_name = row[1]
-                             elif len(row) > 2 and not row[2].isdigit(): p_name = row[2]
+                        if p_name == "Unbekannt" or not is_valid_name(p_name):
+                             # Try to look for ANY column with letters that isn't the League column?
+                             # Or just naive fallback
+                             if len(row) > 1 and is_valid_name(row[1]): p_name = row[1]
+                             elif len(row) > 2 and is_valid_name(row[2]): p_name = row[2]
+                             elif len(row) > 0 and is_valid_name(row[0]): p_name = row[0] # Rank column usually digits, but maybe?
+
+                        # Clean Name (Flip "Last, First")
+                        if "," in p_name: 
+                            parts = p_name.split(",")
+                            if len(parts) >= 2:
+                                p_name = f"{parts[1].strip()} {parts[0].strip()}"
 
                         # Clean Name (Flip "Last, First")
                         if "," in p_name: 
