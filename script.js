@@ -347,6 +347,47 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(container);
         }
 
+        // 4. Comparison (New)
+        const compareLink = document.createElement('div');
+        compareLink.className = 'nav-section-header';
+        compareLink.innerHTML = '🆚 VERGLEICH';
+        compareLink.style.padding = "15px 15px 5px";
+        compareLink.style.color = "#888";
+        compareLink.style.fontSize = "0.8em";
+        compareLink.style.fontWeight = "bold";
+        compareLink.style.cursor = "pointer";
+        compareLink.onclick = () => navigateTo('comparison');
+        nav.appendChild(compareLink);
+
+        nav.appendChild(compareLink);
+
+        // 5. All-Time Table (New)
+        const allTimeLink = document.createElement('div');
+        allTimeLink.className = 'nav-section-header';
+        allTimeLink.innerHTML = '🏆 EWIGE TABELLE';
+        allTimeLink.style.padding = "10px 15px 5px";
+        allTimeLink.style.color = "#888";
+        allTimeLink.style.fontSize = "0.8em";
+        allTimeLink.style.fontWeight = "bold";
+        allTimeLink.style.cursor = "pointer";
+        allTimeLink.onclick = () => navigateTo('alltime');
+        nav.appendChild(allTimeLink);
+
+        allTimeLink.onclick = () => navigateTo('alltime');
+        nav.appendChild(allTimeLink);
+
+        // 6. Tools (New)
+        const toolsLink = document.createElement('div');
+        toolsLink.className = 'nav-section-header';
+        toolsLink.innerHTML = '🧮 TOOLS';
+        toolsLink.style.padding = "10px 15px 5px";
+        toolsLink.style.color = "#888";
+        toolsLink.style.fontSize = "0.8em";
+        toolsLink.style.fontWeight = "bold";
+        toolsLink.style.cursor = "pointer";
+        toolsLink.onclick = () => navigateTo('tools');
+        nav.appendChild(toolsLink);
+
         // Show Favorites
         renderFavoritesSidebar();
 
@@ -1391,7 +1432,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (type === 'club') renderClub(id);
         else if (type === 'clubList') renderClubList();
         else if (type === 'dashboard') renderDashboard();
+        else if (type === 'dashboard') renderDashboard();
         else if (type === 'matchPreview') renderMatchPreview();
+        else if (type === 'comparison') renderComparisonView();
+        else if (type === 'alltime') renderAllTimeView();
+        else if (type === 'tools') renderToolsView();
         else if (type === 'profile') renderProfileSelection();
 
         // 4. Update Back Button Visibility
@@ -1420,7 +1465,396 @@ document.addEventListener('DOMContentLoaded', () => {
     // Expose to window for inline onclick handlers
     window.navigateTo = navigateTo;
 
+    function renderComparisonView() {
+        topBarTitle.textContent = "H2H Vergleich";
+        contentArea.innerHTML = '';
 
+        const container = document.createElement('div');
+        container.className = "fade-in";
+        container.style.padding = "20px";
+        container.style.maxWidth = "800px";
+        container.style.margin = "0 auto";
+
+        // --- State ---
+        let p1 = null;
+        let p2 = null;
+
+        // --- UI ---
+        const grid = document.createElement('div');
+        grid.style.display = 'grid';
+        grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+        grid.style.gap = '20px';
+        grid.style.marginBottom = '30px';
+
+        const createSide = (label, id) => {
+            const wrapper = document.createElement('div');
+            wrapper.style.background = "#1e293b";
+            wrapper.style.padding = "20px";
+            wrapper.style.borderRadius = "8px";
+            wrapper.style.border = "1px solid #334155";
+
+            wrapper.innerHTML = `
+                <h3 style="color: #94a3b8; margin-bottom: 15px;">${label}</h3>
+                <input type="text" id="search-${id}" placeholder="Name suchen..." 
+                    style="width: 100%; padding: 10px; background: #0f172a; border: 1px solid #475569; color: white; border-radius: 4px; margin-bottom: 10px;">
+                <div id="results-${id}" style="max-height: 200px; overflow-y: auto;"></div>
+                <div id="selected-${id}" style="margin-top: 10px; display: none;"></div>
+            `;
+            return wrapper;
+        };
+
+        const side1 = createSide("Spieler 1", "p1");
+        const side2 = createSide("Spieler 2", "p2");
+
+        grid.appendChild(side1);
+        grid.appendChild(side2);
+        container.appendChild(grid);
+
+        const comparisonArea = document.createElement('div');
+        comparisonArea.id = "comparison-area";
+        comparisonArea.style.display = "none";
+        container.appendChild(comparisonArea);
+
+        contentArea.appendChild(container);
+
+        // --- Logic ---
+        const handleSearch = (query, resultsId, onSelect) => {
+            const resEl = document.getElementById(resultsId);
+            resEl.innerHTML = "";
+            if (query.length < 2) return;
+
+            // Search in SearchIndex
+            const matches = (window.searchIndex || []).filter(item =>
+                item.type === 'Spieler' && item.label.toLowerCase().includes(query.toLowerCase())
+            ).slice(0, 10);
+
+            matches.forEach(m => {
+                const div = document.createElement('div');
+                div.style.padding = "8px";
+                div.style.borderBottom = "1px solid #334155";
+                div.style.cursor = "pointer";
+                div.innerHTML = `<span style="color: #f8fafc; font-weight: bold;">${m.label}</span><br><span style="font-size:0.8em; color:#64748b;">${m.context || ''}</span>`;
+                div.onmouseover = () => div.style.backgroundColor = "#334155";
+                div.onmouseout = () => div.style.backgroundColor = "transparent";
+                div.onclick = () => {
+                    resEl.innerHTML = "";
+                    document.getElementById(resultsId.replace("results-", "search-")).value = "";
+                    onSelect(m);
+                };
+                resEl.appendChild(div);
+            });
+        };
+
+        const updateSelected = (sideId, player) => {
+            const selEl = document.getElementById(`selected-${sideId}`);
+            if (player) {
+                selEl.style.display = "block";
+                selEl.innerHTML = `
+                    <div style="background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; padding: 10px; border-radius: 4px; align-items: center; display: flex; justify-content: space-between;">
+                        <span style="font-weight: bold; color: #60a5fa">${player.label}</span>
+                        <button onclick="this.parentElement.parentElement.style.display='none';" style="background:none; border:none; color: #94a3b8; cursor: pointer;">✕</button>
+                    </div>`;
+            } else {
+                selEl.style.display = "none";
+            }
+        };
+
+        const renderComparison = () => {
+            if (!p1 || !p2) {
+                comparisonArea.style.display = "none";
+                return;
+            }
+
+            const getFullData = (searchItem) => {
+                let current = null;
+                if (rankingData && rankingData.players) {
+                    current = rankingData.players.find(p => p.name === searchItem.label);
+                }
+                return { name: searchItem.label, current, searchItem };
+            };
+
+            const d1 = getFullData(p1);
+            const d2 = getFullData(p2);
+
+            const getHistory = (d) => {
+                let hist = [];
+                if (d.current && d.current.v_nr && archiveData && archiveData[d.current.v_nr]) {
+                    hist = archiveData[d.current.v_nr];
+                }
+                return hist;
+            };
+
+            const h1 = getHistory(d1);
+            const h2 = getHistory(d2);
+
+            const calcAvg = (p) => {
+                if (!p) return 0;
+                const stats = calculatePlayerStats(p);
+                return stats.avg;
+            };
+
+            const avg1 = calcAvg(d1.current);
+            const avg2 = calcAvg(d2.current);
+
+            const getBestPoints = (hist) => {
+                if (!hist || hist.length === 0) return 0;
+                return Math.max(...hist.map(e => e.points || 0));
+            };
+
+            const best1 = getBestPoints(h1);
+            const best2 = getBestPoints(h2);
+
+            const card = (val1, val2, label, isFloat = false) => {
+                const v1 = isFloat ? val1.toFixed(2) : val1;
+                const v2 = isFloat ? val2.toFixed(2) : val2;
+                const win1 = val1 > val2;
+                const c1 = win1 ? '#4ade80' : '#94a3b8';
+                const c2 = val2 > val1 ? '#4ade80' : '#94a3b8';
+
+                return `
+                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #334155;">
+                    <div style="font-size: 1.2em; font-weight: bold; color: ${c1}; width: 80px; text-align: center;">${v1}</div>
+                    <div style="flex: 1; text-align: center; color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${label}</div>
+                    <div style="font-size: 1.2em; font-weight: bold; color: ${c2}; width: 80px; text-align: center;">${v2}</div>
+                 </div>`;
+            };
+
+            let html = `<div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden; margin-top: 20px;">
+                <div style="padding: 15px; background: #0f172a; text-align: center; color: #94a3b8; font-weight: bold; border-bottom: 1px solid #334155;">
+                    DIREKTER VERGLEICH
+                </div>
+                ${card(avg1, avg2, "Ø Aktuell", true)}
+                ${card(h1.length, h2.length, "Saisons (Archiv)")}
+                ${card(best1, best2, "Punkte Rekord (Archiv)")}
+             </div>
+             <div style="margin-top: 20px; text-align: center; padding: 10px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 6px; color: #60a5fa; font-size: 0.9em;">
+                ℹ️ Daten basieren auf aktueller Saison + verknüpfter Historie.
+             </div>`;
+
+            comparisonArea.innerHTML = html;
+            comparisonArea.style.display = "block";
+        };
+
+        // Listeners
+        document.getElementById('search-p1').addEventListener('input', (e) => handleSearch(e.target.value, 'results-p1', (p) => {
+            p1 = p;
+            updateSelected('p1', p);
+            renderComparison();
+        }));
+        document.getElementById('search-p2').addEventListener('input', (e) => handleSearch(e.target.value, 'results-p2', (p) => {
+            p2 = p;
+        }));
+    }
+
+    function renderAllTimeView() {
+        topBarTitle.textContent = "Ewige Tabelle";
+        contentArea.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.className = "fade-in";
+        container.style.padding = "20px";
+
+        // Aggregation Logic
+        // We need archiveData.
+
+        if (!archiveData || Object.keys(archiveData).length === 0) {
+            container.innerHTML = `<div style="text-align:center; padding: 40px; color: #94a3b8;">
+                <h2>📭 Keine Archiv-Daten</h2>
+                <p>Es wurden noch keine historischen Daten geladen.</p>
+            </div>`;
+            contentArea.appendChild(container);
+            return;
+        }
+
+        // Aggregate
+        const allPlayers = [];
+
+        Object.entries(archiveData).forEach(([id, seasons]) => {
+            let totalPoints = 0;
+            let totalSeasons = seasons.length;
+            let bestSeason = 0;
+            let bestSeasonYear = "";
+            // Use name from latest season entry if available, or any entry
+            let name = null;
+
+            seasons.forEach(s => {
+                totalPoints += (s.points || 0);
+                if ((s.points || 0) > bestSeason) {
+                    bestSeason = s.points;
+                    bestSeasonYear = s.season;
+                }
+                if (s.name && s.name !== "Unbekannt") {
+                    name = s.name;
+                }
+            });
+
+            if (!name) {
+                // Fallback to current ranking
+                if (rankingData && rankingData.players) {
+                    const match = rankingData.players.find(p => String(p.v_nr) === String(id));
+                    if (match) name = match.name;
+                }
+            }
+
+            if (!name) name = "Unbekannt (" + id + ")";
+
+            allPlayers.push({
+                id, name, totalPoints, totalSeasons, bestSeason, bestSeasonYear
+            });
+        });
+
+
+        // Sort by Points
+        allPlayers.sort((a, b) => b.totalPoints - a.totalPoints);
+
+        // Render Top 50
+        let html = `<div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+                <tr style="border-bottom: 2px solid #334155; color: #94a3b8; text-transform: uppercase;">
+                    <th style="padding: 10px; text-align: left;">#</th>
+                    <th style="padding: 10px; text-align: left;">Name</th>
+                    <th style="padding: 10px; text-align: center;">Saisons</th>
+                    <th style="padding: 10px; text-align: right;">Punkte (Gesamt)</th>
+                </tr>
+            </thead>
+            <tbody>`;
+
+        allPlayers.slice(0, 50).forEach((p, idx) => {
+            const rowColor = idx < 3 ? 'rgba(234, 179, 8, 0.1)' : 'transparent';
+            const rankEmoji = idx === 0 ? '🥇' : (idx === 1 ? '🥈' : (idx === 2 ? '🥉' : (idx + 1) + '.'));
+
+            html += `<tr style="border-bottom: 1px solid #1e293b; background: ${rowColor};">
+                <td style="padding: 12px; font-weight: bold; color: #f8fafc;">${rankEmoji}</td>
+                <td style="padding: 12px; color: #e2e8f0;">
+                    <div style="font-weight: bold;">${p.name}</div>
+                    <div style="font-size: 0.8em; color: #64748b;">Best: ${p.bestSeason} (${p.bestSeasonYear})</div>
+                </td>
+                <td style="padding: 12px; text-align: center; color: #94a3b8;">${p.totalSeasons}</td>
+                <td style="padding: 12px; text-align: right; color: #4ade80; font-weight: bold; font-size: 1.1em;">${p.totalPoints}</td>
+            </tr>`;
+        });
+
+        html += `</tbody></table></div>`;
+        container.innerHTML = html;
+        contentArea.appendChild(container);
+    }
+
+
+
+    function renderToolsView() {
+        topBarTitle.textContent = "Match Tools";
+        contentArea.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.className = "fade-in";
+        container.style.padding = "20px";
+        container.style.maxWidth = "600px";
+        container.style.margin = "0 auto";
+
+        // Tabs
+        const tabs = document.createElement('div');
+        tabs.style.display = 'flex';
+        tabs.style.gap = '10px';
+        tabs.style.marginBottom = '20px';
+
+        const btnCheckout = document.createElement('button');
+        btnCheckout.innerText = "Checkout Table";
+        btnCheckout.className = 'tab-btn active';
+
+        const btnCounter = document.createElement('button');
+        btnCounter.innerText = "Score Counter";
+        btnCounter.className = 'tab-btn';
+
+        // CSS for tabs
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .tab-btn { flex: 1; padding: 12px; border: none; background: #1e293b; color: #94a3b8; cursor: pointer; border-radius: 6px; font-weight: bold; }
+            .tab-btn.active { background: #3b82f6; color: white; }
+        `;
+        container.appendChild(style);
+        tabs.appendChild(btnCheckout);
+        tabs.appendChild(btnCounter);
+        container.appendChild(tabs);
+
+        const contentDiv = document.createElement('div');
+        container.appendChild(contentDiv);
+        contentArea.appendChild(container);
+
+        // Checkout Logic
+        const renderCheckout = () => {
+            let html = `<input type="number" id="checkout-input" placeholder="Rest eingeben (z.B. 120)" 
+                style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 20px;">
+                <div id="checkout-result" style="text-align: center; font-size: 1.5em; color: #4ade80; font-weight: bold; min-height: 50px;"></div>`;
+
+            contentDiv.innerHTML = html;
+
+            const input = document.getElementById('checkout-input');
+            input.focus();
+
+            input.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                const res = document.getElementById('checkout-result');
+                if (!val || val > 170 || val < 2) {
+                    res.textContent = "";
+                    return;
+                }
+                if ([169, 168, 166, 165, 163, 162, 159].includes(val)) {
+                    res.textContent = "Kein Finish möglich";
+                    res.style.color = "#ef4444";
+                    return;
+                }
+
+                // Simple Bogey Numbers
+                const finishes = {
+                    170: "T20 - T20 - Bull", 167: "T20 - T19 - Bull", 164: "T20 - T18 - Bull", 161: "T20 - T17 - Bull", 160: "T20 - T20 - D20",
+                    158: "T20 - T20 - D19", 157: "T20 - T19 - D20", 156: "T20 - T20 - D18", 155: "T20 - T19 - D19", 154: "T20 - T18 - D20",
+                    153: "T20 - T19 - D18", 152: "T20 - T20 - D16", 151: "T20 - T17 - D20", 150: "T20 - T18 - D18", 149: "T20 - T19 - D16",
+                    148: "T20 - T16 - D20", 147: "T20 - T17 - D18", 146: "T20 - T18 - D16", 145: "T20 - T15 - D20", 144: "T20 - T20 - D12",
+                    143: "T20 - T17 - D16", 142: "T20 - T14 - D20", 141: "T20 - T19 - D12", 140: "T20 - T16 - D16", 139: "T19 - T14 - D20",
+                    138: "T20 - T18 - D12", 137: "T19 - T16 - D16", 136: "T20 - T20 - D8", 135: "25 - T20 - Bull", 134: "T20 - T14 - D16",
+                    133: "T20 - T19 - D8", 132: "25 - T19 - Bull", 131: "T20 - T13 - D16", 130: "T20 - T18 - D8", 129: "T19 - T20 - D6",
+                    128: "T18 - T14 - D16", 127: "T20 - T17 - D8", 126: "T19 - T19 - D6", 125: "Bull - 25 - Bull", 124: "T20 - D16 - D16",
+                    123: "T19 - T16 - D9", 122: "T18 - 18 - Bull", 121: "T20 - 11 - Bull", 120: "T20 - 20 - D20", 119: "T19 - 12 - Bull",
+                    118: "T20 - 18 - D20", 117: "T20 - 17 - D20", 116: "T20 - 16 - D20", 115: "T20 - 15 - D20", 114: "T20 - 14 - D20",
+                    113: "T20 - 13 - D20", 112: "T20 - 20 - D16", 111: "T20 - 19 - D16", 110: "T20 - 18 - D16"
+                };
+
+                res.style.color = "#4ade80";
+                if (finishes[val]) {
+                    res.textContent = finishes[val];
+                } else if (val <= 100) {
+                    res.textContent = "Checkbar (Standard)";
+                } else {
+                    res.textContent = "Checkbar";
+                }
+            });
+        };
+
+        const renderCounter = () => {
+            contentDiv.innerHTML = `
+                <div style="text-align: center; font-size: 4em; font-weight: bold; color: white; margin: 20px 0;">501</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button style="padding: 20px; font-size: 1.5em; background: #334155; color: white; border: none; border-radius: 8px;">M</button>
+                    <button style="padding: 20px; font-size: 1.5em; background: #334155; color: white; border: none; border-radius: 8px;">P</button>
+                </div>
+                <div style="margin-top: 20px; text-align: center; color: #64748b;">(Counter Demo Version)</div>
+             `;
+        };
+
+        // Init
+        renderCheckout();
+
+        btnCheckout.onclick = () => {
+            btnCheckout.className = 'tab-btn active';
+            btnCounter.className = 'tab-btn';
+            renderCheckout();
+        };
+        btnCounter.onclick = () => {
+            btnCheckout.className = 'tab-btn';
+            btnCounter.className = 'tab-btn active';
+            renderCounter();
+        };
+    }
 
     function renderClubList() {
         topBarTitle.textContent = "Vereinsübersicht";

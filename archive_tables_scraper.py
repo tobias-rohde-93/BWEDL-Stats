@@ -227,10 +227,53 @@ async def scrape_archive_tables():
 
         await browser.close()
         
-        js_content = f"window.ARCHIVE_TABLES = {json.dumps(all_tables, indent=2)};"
+        # MERGE LOGIC START
+        existing_tables = []
+        try:
+            with open("archive_tables.js", "r", encoding="utf-8") as f:
+                content = f.read().strip()
+                if content.startswith("window.ARCHIVE_TABLES =") and content.endswith(";"):
+                    json_str = content[len("window.ARCHIVE_TABLES ="): -1]
+                    existing_tables = json.loads(json_str)
+                    print(f"Loaded existing archive tables: {len(existing_tables)} entries.")
+        except Exception as e:
+            print(f"No existing archive tables found or error reading: {e}")
+
+        # Merge Logic
+        # Uniquely identify a table by: Season + League
+        # If Season+League matches, overwrite with NEW (fresh scrape).
+        # If Old has Season+League that New doesn't, KEEP Old.
+        
+        print("Merging new tables into existing archive...")
+        
+        # Create a map key -> table for existing
+        table_map = {}
+        for t in existing_tables:
+            # Create a unique key. Warning: League names must be consistent.
+            # Using tuple (Season, League)
+            key = (t.get('season'), t.get('league'))
+            table_map[key] = t
+            
+        # Update with new
+        for t in all_tables:
+            key = (t.get('season'), t.get('league'))
+            table_map[key] = t # Overwrite or Add
+            
+        # Reconstruct list
+        final_tables = list(table_map.values())
+        
+        # Sort by Season (descending) then League
+        try:
+            final_tables.sort(key=lambda x: (x.get('season', ''), x.get('league', '')), reverse=True)
+        except:
+            pass # sorting not critical if strictly key-based access used later
+
+        print(f"Merge complete. Total tables: {len(final_tables)}")
+        
+        js_content = f"window.ARCHIVE_TABLES = {json.dumps(final_tables, indent=2)};"
         with open("archive_tables.js", "w", encoding="utf-8") as f:
             f.write(js_content)
-        print(f"Archive tables saved to archive_tables.js. Total Tables: {len(all_tables)}")
+        print(f"Archive tables saved to archive_tables.js.")
 
 if __name__ == "__main__":
     asyncio.run(scrape_archive_tables())
