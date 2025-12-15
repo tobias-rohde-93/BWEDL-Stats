@@ -188,10 +188,9 @@ async def scrape_archive():
                     for row in table['rows']:
                         if len(row) < 3: continue
                         
-                        # DEBUG: Print row structure once
-                        if "DEBUG_ROW_PRINTED" not in locals():
-                            print(f"DEBUG ROW STRUCTURE: {row}")
-                            locals()["DEBUG_ROW_PRINTED"] = True
+                        # DEBUG: Log to file
+                        with open("debug_dump.txt", "a", encoding="utf-8") as dump_file:
+                            dump_file.write(f"FULL ROW DUMP: {row}\n")
                         
                         # Parsing logic
                         # Dynamic Column Detection
@@ -245,26 +244,43 @@ async def scrape_archive():
                             p_id = row[id_idx].strip()
                             
                             # Deduce Name Position relative to ID
+
+                        if id_idx != -1:
+                            p_id = row[id_idx].strip()
                             
-                            # Case 1: Name | ID (Standard)
-                            if id_idx > 0 and is_valid_name(row[id_idx-1]):
+                            # Deduce Name Position relative to ID
+                            
+                            # Pattern A: ID | First Name | Last Name (Common in 2022+ archives)
+                            # e.g. ['1', '030', '1560', 'Thomas', 'Köhnlein', ...]
+                            # ID is at id_idx. Name is id_idx+1 and id_idx+2
+                            if id_idx < len(row)-2 and is_valid_name(row[id_idx+1]):
+                                first = row[id_idx+1].strip()
+                                last = ""
+                                if is_valid_name(row[id_idx+2]):
+                                    last = row[id_idx+2].strip()
+                                
+                                if last:
+                                    p_name = f"{first} {last}"
+                                else:
+                                    p_name = first
+                            
+                            # Pattern B: Name | ID (Legacy?)
+                            # Check if left neighbor is text
+                            elif id_idx > 0 and is_valid_name(row[id_idx-1]):
                                 p_name = row[id_idx-1].strip()
                             
-                            # Case 2: ID | Name (Rare)
-                            elif id_idx < len(row)-1 and is_valid_name(row[id_idx+1]):
-                                p_name = row[id_idx+1].strip()
-                                
-                            # Case 3: Club | ID | Name ?
+                            # Pattern C: ID | Name (Single column)
                             elif id_idx < len(row)-1 and is_valid_name(row[id_idx+1]):
                                 p_name = row[id_idx+1].strip()
 
                         # Fallback for very short rows or weird formats
                         if p_name == "Unbekannt" or not is_valid_name(p_name):
-                             # Try to look for ANY column with letters that isn't the League column?
-                             # Or just naive fallback
-                             if len(row) > 1 and is_valid_name(row[1]): p_name = row[1]
-                             elif len(row) > 2 and is_valid_name(row[2]): p_name = row[2]
-                             elif len(row) > 0 and is_valid_name(row[0]): p_name = row[0] # Rank column usually digits, but maybe?
+                             # Try to look for any valid name column
+                             # row[3] and row[4] seem likely candidates based on debug dump
+                             if len(row) > 4 and is_valid_name(row[3]) and is_valid_name(row[4]):
+                                 p_name = f"{row[3]} {row[4]}"
+                             elif len(row) > 3 and is_valid_name(row[3]):
+                                 p_name = row[3]
 
                         # Clean Name (Flip "Last, First")
                         if "," in p_name: 

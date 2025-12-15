@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bwedl-dashboard-v8';
+const CACHE_NAME = 'bwedl-dashboard-v9';
 const urlsToCache = [
     './',
     './index.html',

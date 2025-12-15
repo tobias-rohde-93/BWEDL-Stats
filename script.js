@@ -1709,21 +1709,27 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.entries(archiveData).forEach(([id, seasons]) => {
             let totalPoints = 0;
             let totalSeasons = seasons.length;
-            let bestSeason = 0;
+            let bestSeasonRank = 999;
             let bestSeasonYear = "";
+
             // Use name from latest season entry if available, or any entry
             let name = null;
 
             seasons.forEach(s => {
                 totalPoints += (s.points || 0);
-                if ((s.points || 0) > bestSeason) {
-                    bestSeason = s.points;
+
+                // Track Best Rank (Lower is better)
+                if ((s.rank || 999) < bestSeasonRank) {
+                    bestSeasonRank = s.rank;
                     bestSeasonYear = s.season;
                 }
+
                 if (s.name && s.name !== "Unbekannt") {
                     name = s.name;
                 }
             });
+
+            if (bestSeasonRank === 999) bestSeasonRank = "-";
 
             if (!name) {
                 // Fallback to current ranking
@@ -1736,7 +1742,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!name) name = "Unbekannt (" + id + ")";
 
             allPlayers.push({
-                id, name, totalPoints, totalSeasons, bestSeason, bestSeasonYear
+                id, name, totalPoints, totalSeasons, bestSeasonRank, bestSeasonYear
             });
         });
 
@@ -1764,7 +1770,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td style="padding: 12px; font-weight: bold; color: #f8fafc;">${rankEmoji}</td>
                 <td style="padding: 12px; color: #e2e8f0;">
                     <div style="font-weight: bold;">${p.name}</div>
-                    <div style="font-size: 0.8em; color: #64748b;">Best: ${p.bestSeason} (${p.bestSeasonYear})</div>
+                    <div style="font-size: 0.8em; color: #64748b;">Beste: ${p.bestSeasonRank}. Platz (${p.bestSeasonYear})</div>
                 </td>
                 <td style="padding: 12px; text-align: center; color: #94a3b8;">${p.totalSeasons}</td>
                 <td style="padding: 12px; text-align: right; color: #4ade80; font-weight: bold; font-size: 1.1em;">${p.totalPoints}</td>
