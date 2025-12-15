@@ -1,0 +1,21 @@
+{
+    "name": "BWEDL Stats",
+    "short_name": "BWEDL Stats",
+    "background_color": "#1e293b",
+    "theme_color": "#1e293b",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "./index.html",
+    "icons": [
+        {
+            "src": "pwa-icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "pwa-icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

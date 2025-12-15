@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BWEDL Liga Dashboard</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e293b">
+    <link rel="apple-touch-icon" href="pwa-icon-192.png">
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ... existing styles ... */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0 0 4px 4px;
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .search-container {
+            position: relative;
+        }
+    </style>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>BWEDL Stats</h1>
+            </div>
+
+            <div class="sidebar-controls">
+                <div class="status-text" id="last-updated">Stand: --</div>
+
+                <button id="update-btn" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;"
+                    onclick="triggerUpdate()">
+                    ↻ Aktualisieren
+                </button>
+                <div id="update-status" class="hidden text-xs mt-2 text-center text-gray-400">Update läuft...</div>
+
+                <div class="search-container">
+                    <input type="text" id="global-search" class="search-input" placeholder="Suche Club, Spieler...">
+                    <div id="search-results" class="search-results hidden"></div>
+                </div>
+            </div>
+
+            <nav id="league-nav">
+                <!-- League links will be injected here -->
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar" style="display: flex; align-items: center; gap: 15px;">
+                <button id="menu-toggle" class="btn btn-secondary mobile-only" style="display: none;">☰</button>
+                <button id="back-btn" class="btn btn-secondary" style="display: none;">&larr;
+                    Zurück</button>
+                <h2 id="current-league-title">Wähle eine Liga</h2>
+            </header>
+
+            <div class="content-area" id="content-area">
+                <div class="placeholder-message">
+                    <p>Bitte wähle eine Liga aus dem Menü links.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <template id="league-view-template">
+        <div class="league-view">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="table">Tabelle</button>
+                <button class="tab-btn" data-tab="results">Spielergebnisse</button>
+            </div>
+
+            <div class="tab-content active" id="tab-table">
+                <div class="table-container" id="league-table-container"></div>
+            </div>
+
+            <div class="tab-content" id="tab-results">
+                <div class="results-container" id="league-results-container"></div>
+            </div>
+        </div>
+    </template>
+
+    <script src="league_data.js?v=2"></script>
+    <script src="ranking_data.js"></script>
+    <script src="club_data.js"></script>
+    <script src="archive_data.js"></script>
+    <script src="archive_tables.js?v=2"></script>
+    <script src="script.js?v=8"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
