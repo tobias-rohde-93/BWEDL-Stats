@@ -1,0 +1,42 @@
+name: Update Data
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Run every 6 hours
+  workflow_dispatch:      # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run update scripts
+        run: python update_data.py
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add .
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Automated Data Update"
+            git push
+          fi
