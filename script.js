@@ -1627,21 +1627,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 return { points: best.points || 0, season: best.season || '' };
             };
 
-            const getSeasonList = (hist) => {
-                if (!hist || hist.length === 0) return "";
-                // Sort seasons if needed? They usually come in order or reverse order.
-                // dedupe just in case
-                const seasons = [...new Set(hist.map(e => e.season))].sort().join(", ");
-                return seasons;
+            const getBestRank = (hist) => {
+                if (!hist || hist.length === 0) return { rank: 999, season: '' };
+                const best = hist.reduce((prev, current) => ((current.rank || 999) < (prev.rank || 999)) ? current : prev, { rank: 999, season: '' });
+                return { rank: best.rank || 999, season: best.season || '' };
             };
 
-            const best1Stats = getBestStats(h1);
+            const best1Stats = getBestStats(h1); // Max Points
             const best2Stats = getBestStats(h2);
+
+            const bestRank1 = getBestRank(h1); // Best Rank
+            const bestRank2 = getBestRank(h2);
 
             const seasons1 = getSeasonList(h1);
             const seasons2 = getSeasonList(h2);
 
-            const card = (val1, val2, label, subLabel, detail1 = "", detail2 = "", isFloat = false) => {
+            const card = (val1, val2, label, subLabel, detail1 = "", detail2 = "", isFloat = false, invertWin = false) => {
                 const v1 = isFloat ? val1.toFixed(2) : val1;
                 const v2 = isFloat ? val2.toFixed(2) : val2;
 
@@ -1650,7 +1651,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 let c2 = '#94a3b8';
 
                 if (val1 !== val2) {
-                    if (val1 > val2) c1 = '#4ade80';
+                    let win1 = val1 > val2;
+                    if (invertWin) win1 = val1 < val2; // Lower is better for Rank
+
+                    if (win1) c1 = '#4ade80';
                     else c2 = '#4ade80';
                 }
 
@@ -1687,7 +1691,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 ${card(avg1, avg2, "Ø Aktuell", "Durchschnitt dieser Saison", "", "", true)}
                 ${card(h1.length, h2.length, "Erfahrung", "Anzahl gespielter Saisons im Archiv", seasons1, seasons2)}
-                ${card(best1Stats.points, best2Stats.points, "Bestleistung", "Meiste Punkte in einer Saison (Archiv)", best1Stats.season, best2Stats.season)}
+                ${card(best1Stats.points, best2Stats.points, "Meiste Punkte", "Rekord in einer Saison (Archiv)", best1Stats.season, best2Stats.season)}
+                ${card(bestRank1.rank === 999 ? '-' : bestRank1.rank + '.', bestRank2.rank === 999 ? '-' : bestRank2.rank + '.', "Beste Platzierung", "Bester Liga-Rang (Archiv)", bestRank1.season, bestRank2.season, false, true)}
              </div>
              <div style="margin-top: 20px; text-align: center; padding: 10px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 6px; color: #60a5fa; font-size: 0.9em;">
                 ℹ️ <strong>Erklärung:</strong><br>
@@ -1727,86 +1732,92 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = `<div style="text-align:center; padding: 40px; color: #94a3b8;">
                 <h2>📭 Keine Archiv-Daten</h2>
                 <p>Es wurden noch keine historischen Daten geladen.</p>
-            </div>`;
+                </div>`;
             contentArea.appendChild(container);
             return;
         }
 
-        // Aggregate
         const allPlayers = [];
 
-        Object.entries(archiveData).forEach(([id, seasons]) => {
+        Object.entries(archiveData).forEach(([playerKey, seasons]) => {
+            // Player Key might be ID or Name, but seasons array has 'name' property usually
+            // We want the most recent name if possible
+            const name = seasons[0].name || "Unbekannt";
+            // or merge logic? 
+            const id = playerKey;
+
             let totalPoints = 0;
             let totalSeasons = seasons.length;
-            let bestSeasonRank = 999;
-            let bestSeasonYear = "";
 
-            // Use name from latest season entry if available, or any entry
-            let name = null;
+            // Metrics
+            let bestSeasonRank = 999;
+            let bestSeasonYearRank = "";
+
+            let maxPoints = 0;
+            let maxPointsYear = "";
 
             seasons.forEach(s => {
-                totalPoints += (s.points || 0);
+                totalPoints += (parseInt(s.points) || 0);
 
-                // Track Best Rank (Lower is better)
-                if ((s.rank || 999) < bestSeasonRank) {
-                    bestSeasonRank = s.rank;
-                    bestSeasonYear = s.season;
+                // Best Rank
+                const r = parseInt(s.rank) || 999;
+                if (r < bestSeasonRank) {
+                    bestSeasonRank = r;
+                    bestSeasonYearRank = s.season;
                 }
 
-                if (s.name && s.name !== "Unbekannt") {
-                    name = s.name;
+                // Max Points
+                const p = parseInt(s.points) || 0;
+                if (p > maxPoints) {
+                    maxPoints = p;
+                    maxPointsYear = s.season;
                 }
             });
-
-            if (bestSeasonRank === 999) bestSeasonRank = "-";
-
-            if (!name) {
-                // Fallback to current ranking
-                if (rankingData && rankingData.players) {
-                    const match = rankingData.players.find(p => String(p.v_nr) === String(id));
-                    if (match) name = match.name;
-                }
-            }
-
-            if (!name) name = "Unbekannt (" + id + ")";
 
             allPlayers.push({
-                id, name, totalPoints, totalSeasons, bestSeasonRank, bestSeasonYear
+                id, name, totalPoints, totalSeasons,
+                bestSeasonRank: (bestSeasonRank === 999 ? '-' : bestSeasonRank + '.'),
+                bestSeasonYearRank,
+                maxPoints,
+                maxPointsYear
             });
         });
 
-
-        // Sort by Points
+        // Sort by Total Points (All-Time) descending
         allPlayers.sort((a, b) => b.totalPoints - a.totalPoints);
 
-        // Render Top 50
-        let html = `<div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
-            <thead>
-                <tr style="border-bottom: 2px solid #334155; color: #94a3b8; text-transform: uppercase;">
-                    <th style="padding: 10px; text-align: left;">#</th>
-                    <th style="padding: 10px; text-align: left;">Name</th>
-                    <th style="padding: 10px; text-align: center;">Saisons</th>
-                    <th style="padding: 10px; text-align: right;">Punkte (Gesamt)</th>
-                </tr>
-            </thead>
-            <tbody>`;
+        let html = `<div style="background: #1e293b; border-radius: 8px; overflow: hidden;">
+            <div style="display: flex; padding: 10px; background: #0f172a; color: #94a3b8; font-size: 0.8em; font-weight: bold; border-bottom: 1px solid #334155;">
+                <div style="width: 30px; text-align: center;">#</div>
+                <div style="flex: 1; padding-left: 10px;">NAME</div>
+                <div style="width: 60px; text-align: center;">SAISONS</div>
+                <div style="width: 100px; text-align: right; padding-right: 10px;">PUNKTE (GESAMT)</div>
+            </div>`;
 
-        allPlayers.slice(0, 50).forEach((p, idx) => {
-            const rowColor = idx < 3 ? 'rgba(234, 179, 8, 0.1)' : 'transparent';
-            const rankEmoji = idx === 0 ? '🥇' : (idx === 1 ? '🥈' : (idx === 2 ? '🥉' : (idx + 1) + '.'));
+        allPlayers.forEach((p, idx) => {
+            const rank = idx + 1;
+            let medal = "";
+            if (rank === 1) medal = "🥇";
+            if (rank === 2) medal = "🥈";
+            if (rank === 3) medal = "🥉";
+            if (rank > 3) medal = `${rank}.`;
 
-            html += `<tr style="border-bottom: 1px solid #1e293b; background: ${rowColor};">
-                <td style="padding: 12px; font-weight: bold; color: #f8fafc;">${rankEmoji}</td>
-                <td style="padding: 12px; color: #e2e8f0;">
-                    <div style="font-weight: bold;">${p.name}</div>
-                    <div style="font-size: 0.8em; color: #64748b;">Beste: ${p.bestSeasonRank}. Platz (${p.bestSeasonYear})</div>
-                </td>
-                <td style="padding: 12px; text-align: center; color: #94a3b8;">${p.totalSeasons}</td>
-                <td style="padding: 12px; text-align: right; color: #4ade80; font-weight: bold; font-size: 1.1em;">${p.totalPoints}</td>
-            </tr>`;
+            html += `
+            <div style="display: flex; padding: 15px 10px; border-bottom: 1px solid #334155; align-items: center;">
+                <div style="width: 30px; text-align: center; font-weight: bold; color: ${rank <= 3 ? '#fbbf24' : '#cbd5e1'}">${medal}</div>
+                <div style="flex: 1; padding-left: 10px;">
+                    <div style="font-weight: bold; color: #f8fafc;">${p.name}</div>
+                    <div style="font-size: 0.75em; color: #94a3b8; margin-top: 2px;">
+                        Rang: <span style="color: #cbd5e1">${p.bestSeasonRank}</span> (${p.bestSeasonYearRank}) • 
+                        Pkt: <span style="color: #cbd5e1">${p.maxPoints}</span> (${p.maxPointsYear})
+                    </div>
+                </div>
+                <div style="width: 60px; text-align: center; color: #cbd5e1;">${p.totalSeasons}</div>
+                <div style="width: 100px; text-align: right; padding-right: 10px; font-weight: bold; color: #4ade80;">${p.totalPoints}</div>
+            </div>`;
         });
 
-        html += `</tbody></table></div>`;
+        html += `</div>`;
         container.innerHTML = html;
         contentArea.appendChild(container);
     }
