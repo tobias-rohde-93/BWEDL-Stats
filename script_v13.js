@@ -391,6 +391,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show Favorites
         renderFavoritesSidebar();
 
+        // VERSION FOOTER
+        const verDiv = document.createElement('div');
+        verDiv.style.marginTop = "auto";
+        verDiv.style.padding = "10px 15px";
+        verDiv.style.color = "#475569";
+        verDiv.style.fontSize = "0.7em";
+        verDiv.style.textAlign = "center";
+        verDiv.innerHTML = "App Version: v2.13 (New)";
+        nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
         history.replaceState(currentState, "", "#dashboard");
