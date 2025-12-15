@@ -1643,6 +1643,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
         document.getElementById('search-p2').addEventListener('input', (e) => handleSearch(e.target.value, 'results-p2', (p) => {
             p2 = p;
+            updateSelected('p2', p);
+            renderComparison();
         }));
     }
 
