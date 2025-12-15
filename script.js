@@ -1623,6 +1623,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="padding: 15px; background: #0f172a; text-align: center; color: #94a3b8; font-weight: bold; border-bottom: 1px solid #334155;">
                     DIREKTER VERGLEICH
                 </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #334155; background: rgba(15, 23, 42, 0.5); font-size: 0.9em; color: #f8fafc;">
+                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d1.name}</div>
+                     <div style="width: 20%; text-align: center; color: #64748b; font-size: 0.8em;">vs</div>
+                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d2.name}</div>
+                </div>
                 ${card(avg1, avg2, "Ø Aktuell", true)}
                 ${card(h1.length, h2.length, "Saisons (Archiv)")}
                 ${card(best1, best2, "Punkte Rekord (Archiv)")}
