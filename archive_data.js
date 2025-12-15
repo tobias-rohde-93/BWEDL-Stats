@@ -5,28 +5,28 @@ window.ARCHIVE_DATA = {
       "rank": 1,
       "points": 181,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 1,
       "points": 161,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 79,
       "points": 44,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 39,
       "points": 30,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Thomas"
     }
   ],
   "397": [
@@ -35,28 +35,28 @@ window.ARCHIVE_DATA = {
       "rank": 2,
       "points": 176,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 5,
       "points": 143,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 4,
       "points": 174,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 2,
       "points": 165,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Michael"
     }
   ],
   "196": [
@@ -65,28 +65,28 @@ window.ARCHIVE_DATA = {
       "rank": 3,
       "points": 159,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Maik"
     },
     {
       "season": "23/24",
       "rank": 6,
       "points": 143,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Maik"
     },
     {
       "season": "22/23",
       "rank": 2,
       "points": 175,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Maik"
     },
     {
       "season": "20/22",
       "rank": 1,
       "points": 184,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Maik"
     }
   ],
   "775": [
@@ -95,28 +95,28 @@ window.ARCHIVE_DATA = {
       "rank": 4,
       "points": 159,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Rolf"
     },
     {
       "season": "23/24",
       "rank": 2,
       "points": 157,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Rolf"
     },
     {
       "season": "22/23",
       "rank": 1,
       "points": 178,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Rolf"
     },
     {
       "season": "20/22",
       "rank": 3,
       "points": 165,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Rolf"
     }
   ],
   "582": [
@@ -125,28 +125,28 @@ window.ARCHIVE_DATA = {
       "rank": 5,
       "points": 159,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Eike"
     },
     {
       "season": "23/24",
       "rank": 3,
       "points": 151,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Eike"
     },
     {
       "season": "22/23",
       "rank": 3,
       "points": 174,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Eike"
     },
     {
       "season": "20/22",
       "rank": 55,
       "points": 10,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Eike"
     }
   ],
   "746": [
@@ -155,21 +155,21 @@ window.ARCHIVE_DATA = {
       "rank": 6,
       "points": 149,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Tarkan"
     },
     {
       "season": "23/24",
       "rank": 15,
       "points": 107,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Tarkan"
     },
     {
       "season": "22/23",
       "rank": 88,
       "points": 24,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Tarkan"
     },
     {
       "season": "20/22",
@@ -185,28 +185,28 @@ window.ARCHIVE_DATA = {
       "rank": 7,
       "points": 145,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Robin"
     },
     {
       "season": "23/24",
       "rank": 4,
       "points": 151,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Robin"
     },
     {
       "season": "22/23",
       "rank": 2,
       "points": 181,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Robin"
     },
     {
       "season": "20/22",
       "rank": 2,
       "points": 173,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Robin"
     }
   ],
   "1587": [
@@ -215,28 +215,28 @@ window.ARCHIVE_DATA = {
       "rank": 8,
       "points": 143,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 1,
       "points": 193,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 10,
       "points": 152,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 2,
       "points": 199,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Andreas"
     }
   ],
   "425": [
@@ -245,28 +245,28 @@ window.ARCHIVE_DATA = {
       "rank": 9,
       "points": 139,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Marco"
     },
     {
       "season": "23/24",
       "rank": 8,
       "points": 129,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 27,
       "points": 103,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 108,
       "points": 13,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Marco"
     }
   ],
   "780": [
@@ -275,28 +275,28 @@ window.ARCHIVE_DATA = {
       "rank": 10,
       "points": 133,
       "league": "Bezirksliga",
-      "name": "027"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 2,
       "points": 178,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 4,
       "points": 170,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 1,
       "points": 185,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Sascha"
     }
   ],
   "104": [
@@ -305,28 +305,28 @@ window.ARCHIVE_DATA = {
       "rank": 11,
       "points": 131,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 7,
       "points": 133,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 5,
       "points": 156,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 4,
       "points": 160,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Sven"
     }
   ],
   "1282": [
@@ -335,28 +335,28 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 124,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Fabian"
     },
     {
       "season": "23/24",
       "rank": 19,
       "points": 100,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Fabian"
     },
     {
       "season": "22/23",
       "rank": 10,
       "points": 117,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Fabian"
     },
     {
       "season": "20/22",
       "rank": 7,
       "points": 141,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Fabian"
     }
   ],
   "573": [
@@ -365,28 +365,28 @@ window.ARCHIVE_DATA = {
       "rank": 13,
       "points": 122,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Gregor"
     },
     {
       "season": "23/24",
       "rank": 10,
       "points": 119,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Gregor"
     },
     {
       "season": "22/23",
       "rank": 6,
       "points": 145,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Gregor"
     },
     {
       "season": "20/22",
       "rank": 7,
       "points": 131,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Gregor"
     }
   ],
   "901": [
@@ -395,14 +395,14 @@ window.ARCHIVE_DATA = {
       "rank": 14,
       "points": 109,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Tino"
     },
     {
       "season": "23/24",
       "rank": 14,
       "points": 108,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Tino"
     }
   ],
   "473": [
@@ -411,28 +411,28 @@ window.ARCHIVE_DATA = {
       "rank": 15,
       "points": 108,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thorsten"
     },
     {
       "season": "23/24",
       "rank": 18,
       "points": 102,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thorsten"
     },
     {
       "season": "22/23",
       "rank": 7,
       "points": 127,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thorsten"
     },
     {
       "season": "20/22",
       "rank": 6,
       "points": 134,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thorsten"
     }
   ],
   "494": [
@@ -441,28 +441,28 @@ window.ARCHIVE_DATA = {
       "rank": 16,
       "points": 105,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "R\u00fcstem"
     },
     {
       "season": "23/24",
       "rank": 26,
       "points": 85,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "R\u00fcstem"
     },
     {
       "season": "22/23",
       "rank": 62,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "R\u00fcstem"
     },
     {
       "season": "20/22",
       "rank": 9,
       "points": 119,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "R\u00fcstem"
     }
   ],
   "1290": [
@@ -471,28 +471,28 @@ window.ARCHIVE_DATA = {
       "rank": 17,
       "points": 100,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 21,
       "points": 108,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 32,
       "points": 94,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Dennis"
     },
     {
       "season": "20/22",
       "rank": 27,
       "points": 102,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Dennis"
     }
   ],
   "1309": [
@@ -501,28 +501,28 @@ window.ARCHIVE_DATA = {
       "rank": 18,
       "points": 94,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Bernd"
     },
     {
       "season": "23/24",
       "rank": 29,
       "points": 74,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Bernd"
     },
     {
       "season": "22/23",
       "rank": 19,
       "points": 93,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Bernd"
     },
     {
       "season": "20/22",
       "rank": 20,
       "points": 114,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Bernd"
     }
   ],
   "1470": [
@@ -531,28 +531,28 @@ window.ARCHIVE_DATA = {
       "rank": 19,
       "points": 93,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Martin"
     },
     {
       "season": "23/24",
       "rank": 34,
       "points": 61,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Martin"
     },
     {
       "season": "22/23",
       "rank": 17,
       "points": 97,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 30,
       "points": 101,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Martin"
     }
   ],
   "742": [
@@ -561,28 +561,28 @@ window.ARCHIVE_DATA = {
       "rank": 20,
       "points": 93,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 13,
       "points": 112,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 20,
       "points": 91,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 29,
       "points": 54,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Thomas"
     }
   ],
   "1049": [
@@ -591,28 +591,28 @@ window.ARCHIVE_DATA = {
       "rank": 21,
       "points": 92,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Chris"
     },
     {
       "season": "23/24",
       "rank": 17,
       "points": 103,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Chris"
     },
     {
       "season": "22/23",
       "rank": 9,
       "points": 120,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Chris"
     },
     {
       "season": "20/22",
       "rank": 4,
       "points": 160,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Chris"
     }
   ],
   "989": [
@@ -621,28 +621,28 @@ window.ARCHIVE_DATA = {
       "rank": 22,
       "points": 91,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Fabian"
     },
     {
       "season": "23/24",
       "rank": 8,
       "points": 137,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Fabian"
     },
     {
       "season": "22/23",
       "rank": 8,
       "points": 148,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Fabian"
     },
     {
       "season": "20/22",
       "rank": 18,
       "points": 96,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Fabian"
     }
   ],
   "420": [
@@ -651,28 +651,28 @@ window.ARCHIVE_DATA = {
       "rank": 23,
       "points": 87,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Jamal"
     },
     {
       "season": "23/24",
       "rank": 11,
       "points": 117,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Jamal"
     },
     {
       "season": "22/23",
       "rank": 28,
       "points": 75,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Jamal"
     },
     {
       "season": "20/22",
       "rank": 23,
       "points": 83,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Jamal"
     }
   ],
   "595": [
@@ -681,14 +681,14 @@ window.ARCHIVE_DATA = {
       "rank": 24,
       "points": 75,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 25,
       "points": 85,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Alexander"
     }
   ],
   "1337": [
@@ -697,28 +697,28 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 73,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Murat"
     },
     {
       "season": "23/24",
       "rank": 16,
       "points": 107,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Murat"
     },
     {
       "season": "22/23",
       "rank": 24,
       "points": 83,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Murat"
     },
     {
       "season": "20/22",
       "rank": 6,
       "points": 143,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Murat"
     }
   ],
   "1150": [
@@ -727,14 +727,14 @@ window.ARCHIVE_DATA = {
       "rank": 26,
       "points": 68,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Karlheinz"
     },
     {
       "season": "23/24",
       "rank": 100,
       "points": 10,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Karlheinz"
     }
   ],
   "1228": [
@@ -743,21 +743,21 @@ window.ARCHIVE_DATA = {
       "rank": 27,
       "points": 67,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 61,
       "points": 68,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 6,
       "points": 155,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Marco"
     }
   ],
   "459": [
@@ -766,28 +766,28 @@ window.ARCHIVE_DATA = {
       "rank": 28,
       "points": 65,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Kai"
     },
     {
       "season": "23/24",
       "rank": 41,
       "points": 45,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Kai"
     },
     {
       "season": "22/23",
       "rank": 13,
       "points": 110,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Kai"
     },
     {
       "season": "20/22",
       "rank": 17,
       "points": 96,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Kai"
     }
   ],
   "1892": [
@@ -796,14 +796,14 @@ window.ARCHIVE_DATA = {
       "rank": 29,
       "points": 65,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 9,
       "points": 128,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Sven"
     }
   ],
   "714": [
@@ -812,14 +812,14 @@ window.ARCHIVE_DATA = {
       "rank": 30,
       "points": 64,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Marc"
     },
     {
       "season": "23/24",
       "rank": 31,
       "points": 65,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Marc"
     }
   ],
   "879": [
@@ -828,28 +828,28 @@ window.ARCHIVE_DATA = {
       "rank": 31,
       "points": 64,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Holger"
     },
     {
       "season": "23/24",
       "rank": 62,
       "points": 5,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Holger"
     },
     {
       "season": "22/23",
       "rank": 50,
       "points": 15,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Holger"
     },
     {
       "season": "20/22",
       "rank": 51,
       "points": 22,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Holger"
     }
   ],
   "1617": [
@@ -858,28 +858,28 @@ window.ARCHIVE_DATA = {
       "rank": 32,
       "points": 63,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Marc"
     },
     {
       "season": "23/24",
       "rank": 27,
       "points": 85,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Marc"
     },
     {
       "season": "22/23",
       "rank": 23,
       "points": 83,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Marc"
     },
     {
       "season": "20/22",
       "rank": 13,
       "points": 133,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Marc"
     }
   ],
   "727": [
@@ -888,28 +888,28 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 57,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Felix"
     },
     {
       "season": "23/24",
       "rank": 66,
       "points": 1,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Felix"
     },
     {
       "season": "22/23",
       "rank": 36,
       "points": 93,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Felix"
     },
     {
       "season": "20/22",
       "rank": 14,
       "points": 131,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Felix"
     }
   ],
   "343": [
@@ -918,28 +918,28 @@ window.ARCHIVE_DATA = {
       "rank": 34,
       "points": 56,
       "league": "Bezirksliga",
-      "name": "027"
+      "name": "Corinna"
     },
     {
       "season": "23/24",
       "rank": 48,
       "points": 78,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Corinna"
     },
     {
       "season": "22/23",
       "rank": 29,
       "points": 95,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Corinna"
     },
     {
       "season": "20/22",
       "rank": 9,
       "points": 137,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Corinna"
     }
   ],
   "1578": [
@@ -948,14 +948,14 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 56,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Vincenzo"
     },
     {
       "season": "23/24",
       "rank": 215,
       "points": 19,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Vincenzo"
     }
   ],
   "840": [
@@ -964,21 +964,21 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 53,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     },
     {
       "season": "23/24",
       "rank": 33,
       "points": 62,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     },
     {
       "season": "22/23",
       "rank": 48,
       "points": 19,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     }
   ],
   "1859": [
@@ -987,28 +987,28 @@ window.ARCHIVE_DATA = {
       "rank": 37,
       "points": 47,
       "league": "Bezirksliga",
-      "name": "027"
+      "name": "Mike"
     },
     {
       "season": "23/24",
       "rank": 12,
       "points": 130,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Mike"
     },
     {
       "season": "22/23",
       "rank": 11,
       "points": 140,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Mike"
     },
     {
       "season": "20/22",
       "rank": 16,
       "points": 122,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Mike"
     }
   ],
   "617": [
@@ -1017,28 +1017,28 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 46,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 55,
       "points": 66,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 28,
       "points": 108,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 53,
       "points": 90,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Michael"
     }
   ],
   "723": [
@@ -1047,21 +1047,21 @@ window.ARCHIVE_DATA = {
       "rank": 39,
       "points": 46,
       "league": "Bezirksliga",
-      "name": "027"
+      "name": "Marc-Andr\u00e9"
     },
     {
       "season": "23/24",
       "rank": 17,
       "points": 121,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Marc-Andr\u00e9"
     },
     {
       "season": "22/23",
       "rank": 111,
       "points": 8,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Marc-Andre"
     }
   ],
   "1454": [
@@ -1070,28 +1070,28 @@ window.ARCHIVE_DATA = {
       "rank": 40,
       "points": 41,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     },
     {
       "season": "23/24",
       "rank": 12,
       "points": 116,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     },
     {
       "season": "22/23",
       "rank": 14,
       "points": 109,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     },
     {
       "season": "20/22",
       "rank": 19,
       "points": 94,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Tobias"
     }
   ],
   "428": [
@@ -1100,7 +1100,7 @@ window.ARCHIVE_DATA = {
       "rank": 41,
       "points": 41,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Norbert"
     }
   ],
   "870": [
@@ -1109,28 +1109,28 @@ window.ARCHIVE_DATA = {
       "rank": 42,
       "points": 39,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 30,
       "points": 66,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 18,
       "points": 95,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 47,
       "points": 23,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Michael"
     }
   ],
   "1357": [
@@ -1139,14 +1139,14 @@ window.ARCHIVE_DATA = {
       "rank": 43,
       "points": 37,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Malik"
     },
     {
       "season": "23/24",
       "rank": 69,
       "points": 54,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Malik"
     }
   ],
   "748": [
@@ -1155,28 +1155,28 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 37,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 40,
       "points": 50,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 46,
       "points": 22,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 93,
       "points": 48,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Benjamin"
     }
   ],
   "143": [
@@ -1185,28 +1185,28 @@ window.ARCHIVE_DATA = {
       "rank": 45,
       "points": 32,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Danny"
     },
     {
       "season": "23/24",
       "rank": 108,
       "points": 6,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Danny"
     },
     {
       "season": "22/23",
       "rank": 62,
       "points": 67,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Danny"
     },
     {
       "season": "20/22",
       "rank": 40,
       "points": 87,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Danny"
     }
   ],
   "1111": [
@@ -1215,14 +1215,14 @@ window.ARCHIVE_DATA = {
       "rank": 46,
       "points": 24,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Axel"
     },
     {
       "season": "23/24",
       "rank": 23,
       "points": 88,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Axel"
     }
   ],
   "662": [
@@ -1231,7 +1231,7 @@ window.ARCHIVE_DATA = {
       "rank": 47,
       "points": 23,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Patrick"
     }
   ],
   "1581": [
@@ -1240,7 +1240,7 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 23,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Christian"
     }
   ],
   "215": [
@@ -1249,28 +1249,28 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 22,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Luca"
     },
     {
       "season": "23/24",
       "rank": 29,
       "points": 100,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Luca"
     },
     {
       "season": "22/23",
       "rank": 7,
       "points": 160,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Luca"
     },
     {
       "season": "20/22",
       "rank": 191,
       "points": 6,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Luca"
     }
   ],
   "808": [
@@ -1279,28 +1279,28 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 20,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Ralf"
     },
     {
       "season": "23/24",
       "rank": 11,
       "points": 133,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Ralf"
     },
     {
       "season": "22/23",
       "rank": 28,
       "points": 100,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Ralf"
     },
     {
       "season": "20/22",
       "rank": 28,
       "points": 61,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Ralf"
     }
   ],
   "798": [
@@ -1309,28 +1309,28 @@ window.ARCHIVE_DATA = {
       "rank": 51,
       "points": 19,
       "league": "Bezirksliga",
-      "name": "027"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 92,
       "points": 17,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 82,
       "points": 41,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 83,
       "points": 30,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Andreas"
     }
   ],
   "541": [
@@ -1339,7 +1339,7 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 13,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Kevin"
     }
   ],
   "1652": [
@@ -1348,28 +1348,28 @@ window.ARCHIVE_DATA = {
       "rank": 53,
       "points": 13,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 95,
       "points": 51,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 16,
       "points": 134,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Christian"
     },
     {
       "season": "20/22",
       "rank": 68,
       "points": 70,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Christian"
     }
   ],
   "1529": [
@@ -1378,28 +1378,28 @@ window.ARCHIVE_DATA = {
       "rank": 54,
       "points": 12,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Vanessa"
     },
     {
       "season": "23/24",
       "rank": 95,
       "points": 14,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Vanessa"
     },
     {
       "season": "22/23",
       "rank": 123,
       "points": 33,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Vanessa"
     },
     {
       "season": "20/22",
       "rank": 94,
       "points": 56,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Vanessa"
     }
   ],
   "122": [
@@ -1408,28 +1408,28 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 12,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Klaus"
     },
     {
       "season": "23/24",
       "rank": 23,
       "points": 105,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Klaus"
     },
     {
       "season": "22/23",
       "rank": 13,
       "points": 139,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Klaus"
     },
     {
       "season": "20/22",
       "rank": 50,
       "points": 22,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Klaus"
     }
   ],
   "972": [
@@ -1438,28 +1438,28 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 9,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Jacqueline"
     },
     {
       "season": "23/24",
       "rank": 38,
       "points": 52,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Jacqueline"
     },
     {
       "season": "22/23",
       "rank": 10,
       "points": 143,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Jacqueline"
     },
     {
       "season": "20/22",
       "rank": 15,
       "points": 123,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Jacqueline"
     }
   ],
   "145": [
@@ -1468,14 +1468,14 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 9,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "R\u00fcdiger"
     },
     {
       "season": "23/24",
       "rank": 60,
       "points": 61,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "R\u00fcdiger"
     }
   ],
   "1416": [
@@ -1484,14 +1484,14 @@ window.ARCHIVE_DATA = {
       "rank": 58,
       "points": 7,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Ingo"
     },
     {
       "season": "23/24",
       "rank": 54,
       "points": 14,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Ingo"
     }
   ],
   "930": [
@@ -1500,28 +1500,28 @@ window.ARCHIVE_DATA = {
       "rank": 59,
       "points": 6,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Lucas"
     },
     {
       "season": "23/24",
       "rank": 78,
       "points": 69,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Lukas"
     },
     {
       "season": "22/23",
       "rank": 128,
       "points": 29,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Lukas"
     },
     {
       "season": "20/22",
       "rank": 114,
       "points": 12,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Lukas"
     }
   ],
   "1645": [
@@ -1530,14 +1530,14 @@ window.ARCHIVE_DATA = {
       "rank": 60,
       "points": 4,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 97,
       "points": 12,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Benjamin"
     }
   ],
   "1247": [
@@ -1546,14 +1546,14 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 4,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Rene"
     },
     {
       "season": "23/24",
       "rank": 55,
       "points": 13,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Rene"
     }
   ],
   "721": [
@@ -1562,28 +1562,28 @@ window.ARCHIVE_DATA = {
       "rank": 62,
       "points": 3,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Assunta"
     },
     {
       "season": "23/24",
       "rank": 118,
       "points": 0,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Assunta"
     },
     {
       "season": "22/23",
       "rank": 178,
       "points": 4,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Assunta"
     },
     {
       "season": "20/22",
       "rank": 249,
       "points": 5,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Assunta"
     }
   ],
   "1565": [
@@ -1592,21 +1592,21 @@ window.ARCHIVE_DATA = {
       "rank": 63,
       "points": 3,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Murat"
     },
     {
       "season": "23/24",
       "rank": 41,
       "points": 87,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Murat"
     },
     {
       "season": "22/23",
       "rank": 18,
       "points": 120,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Murat"
     }
   ],
   "713": [
@@ -1615,7 +1615,7 @@ window.ARCHIVE_DATA = {
       "rank": 64,
       "points": 3,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Antonio"
     }
   ],
   "1798": [
@@ -1624,14 +1624,14 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "032"
+      "name": "Yasar"
     },
     {
       "season": "23/24",
       "rank": 89,
       "points": 18,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Yasar"
     }
   ],
   "1861": [
@@ -1640,7 +1640,7 @@ window.ARCHIVE_DATA = {
       "rank": 66,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Robin"
     }
   ],
   "201": [
@@ -1649,7 +1649,7 @@ window.ARCHIVE_DATA = {
       "rank": 67,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Pavo"
     }
   ],
   "1845": [
@@ -1658,21 +1658,21 @@ window.ARCHIVE_DATA = {
       "rank": 68,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Herward"
     },
     {
       "season": "23/24",
       "rank": 208,
       "points": 19,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Herward"
     },
     {
       "season": "22/23",
       "rank": 158,
       "points": 10,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Herward"
     }
   ],
   "182": [
@@ -1681,28 +1681,28 @@ window.ARCHIVE_DATA = {
       "rank": 69,
       "points": 1,
       "league": "Bezirksliga",
-      "name": "027"
+      "name": "Florian"
     },
     {
       "season": "23/24",
       "rank": 106,
       "points": 6,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Florian"
     },
     {
       "season": "22/23",
       "rank": 108,
       "points": 10,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Florian"
     },
     {
       "season": "20/22",
       "rank": 99,
       "points": 16,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Florian"
     }
   ],
   "105": [
@@ -1711,21 +1711,21 @@ window.ARCHIVE_DATA = {
       "rank": 70,
       "points": 0,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Sandra"
     },
     {
       "season": "23/24",
       "rank": 287,
       "points": 4,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Sandra"
     },
     {
       "season": "22/23",
       "rank": 242,
       "points": 6,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Sandra"
     }
   ],
   "1456": [
@@ -1734,21 +1734,21 @@ window.ARCHIVE_DATA = {
       "rank": 1,
       "points": 187,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Jason"
     },
     {
       "season": "23/24",
       "rank": 34,
       "points": 109,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Jason"
     },
     {
       "season": "22/23",
       "rank": 36,
       "points": 113,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Jason"
     }
   ],
   "918": [
@@ -1757,28 +1757,28 @@ window.ARCHIVE_DATA = {
       "rank": 2,
       "points": 166,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Dominik"
     },
     {
       "season": "23/24",
       "rank": 5,
       "points": 158,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Dominik"
     },
     {
       "season": "22/23",
       "rank": 1,
       "points": 182,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Dominik"
     },
     {
       "season": "20/22",
       "rank": 121,
       "points": 40,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Dominik"
     }
   ],
   "1276": [
@@ -1787,28 +1787,28 @@ window.ARCHIVE_DATA = {
       "rank": 3,
       "points": 162,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Robin"
     },
     {
       "season": "23/24",
       "rank": 24,
       "points": 86,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Robin"
     },
     {
       "season": "22/23",
       "rank": 67,
       "points": 57,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Robin"
     },
     {
       "season": "20/22",
       "rank": 22,
       "points": 107,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Robin"
     }
   ],
   "1896": [
@@ -1817,21 +1817,21 @@ window.ARCHIVE_DATA = {
       "rank": 4,
       "points": 162,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 2,
       "points": 170,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 5,
       "points": 163,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Sascha"
     }
   ],
   "208": [
@@ -1840,14 +1840,14 @@ window.ARCHIVE_DATA = {
       "rank": 5,
       "points": 162,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Mark"
     },
     {
       "season": "23/24",
       "rank": 3,
       "points": 161,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Mark"
     }
   ],
   "073": [
@@ -1886,28 +1886,28 @@ window.ARCHIVE_DATA = {
       "rank": 7,
       "points": 148,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Max"
     },
     {
       "season": "23/24",
       "rank": 22,
       "points": 93,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Max"
     },
     {
       "season": "22/23",
       "rank": 6,
       "points": 160,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Max"
     },
     {
       "season": "20/22",
       "rank": 72,
       "points": 66,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Max"
     }
   ],
   "682": [
@@ -1916,28 +1916,28 @@ window.ARCHIVE_DATA = {
       "rank": 8,
       "points": 143,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Manuel"
     },
     {
       "season": "23/24",
       "rank": 68,
       "points": 54,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Manuel"
     },
     {
       "season": "22/23",
       "rank": 94,
       "points": 56,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Manuel"
     },
     {
       "season": "20/22",
       "rank": 139,
       "points": 6,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Manuel"
     }
   ],
   "1410": [
@@ -1946,28 +1946,28 @@ window.ARCHIVE_DATA = {
       "rank": 9,
       "points": 141,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Charalambos"
     },
     {
       "season": "23/24",
       "rank": 46,
       "points": 20,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Charalamb"
     },
     {
       "season": "22/23",
       "rank": 42,
       "points": 86,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Charalambos"
     },
     {
       "season": "20/22",
       "rank": 41,
       "points": 93,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Charalambos"
     }
   ],
   "1307": [
@@ -1976,21 +1976,21 @@ window.ARCHIVE_DATA = {
       "rank": 10,
       "points": 140,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Hanno"
     },
     {
       "season": "23/24",
       "rank": 13,
       "points": 140,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Hanno"
     },
     {
       "season": "22/23",
       "rank": 63,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Hanno"
     }
   ],
   "1130": [
@@ -1999,28 +1999,28 @@ window.ARCHIVE_DATA = {
       "rank": 11,
       "points": 139,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Marco"
     },
     {
       "season": "23/24",
       "rank": 10,
       "points": 133,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 71,
       "points": 51,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 187,
       "points": 6,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Marco"
     }
   ],
   "701": [
@@ -2029,28 +2029,28 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 136,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 9,
       "points": 136,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 13,
       "points": 138,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 12,
       "points": 129,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Michael"
     }
   ],
   "004": [
@@ -2119,28 +2119,28 @@ window.ARCHIVE_DATA = {
       "rank": 15,
       "points": 132,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Marcel"
     },
     {
       "season": "23/24",
       "rank": 31,
       "points": 97,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Marcel"
     },
     {
       "season": "22/23",
       "rank": 18,
       "points": 127,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Marcel"
     },
     {
       "season": "20/22",
       "rank": 1,
       "points": 183,
       "league": "B-Klasse",
-      "name": "068"
+      "name": "Marcel"
     }
   ],
   "492": [
@@ -2149,28 +2149,28 @@ window.ARCHIVE_DATA = {
       "rank": 16,
       "points": 131,
       "league": "A-Klasse",
-      "name": "069"
+      "name": "Lucas"
     },
     {
       "season": "23/24",
       "rank": 24,
       "points": 122,
       "league": "B-Klasse",
-      "name": "069"
+      "name": "Lucas"
     },
     {
       "season": "22/23",
       "rank": 75,
       "points": 66,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Lucas"
     },
     {
       "season": "20/22",
       "rank": 124,
       "points": 40,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Lucas"
     }
   ],
   "1135": [
@@ -2179,28 +2179,28 @@ window.ARCHIVE_DATA = {
       "rank": 17,
       "points": 131,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Marcel"
     },
     {
       "season": "23/24",
       "rank": 30,
       "points": 99,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Marcel"
     },
     {
       "season": "22/23",
       "rank": 17,
       "points": 130,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Marcel"
     },
     {
       "season": "20/22",
       "rank": 7,
       "points": 151,
       "league": "B-Klasse",
-      "name": "068"
+      "name": "Marcel"
     }
   ],
   "1126": [
@@ -2209,28 +2209,28 @@ window.ARCHIVE_DATA = {
       "rank": 18,
       "points": 130,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Dominik"
     },
     {
       "season": "23/24",
       "rank": 6,
       "points": 146,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Dominik"
     },
     {
       "season": "22/23",
       "rank": 4,
       "points": 173,
       "league": "B-Klasse",
-      "name": "051"
+      "name": "Dominik"
     },
     {
       "season": "20/22",
       "rank": 3,
       "points": 187,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Dominik"
     }
   ],
   "1612": [
@@ -2239,28 +2239,28 @@ window.ARCHIVE_DATA = {
       "rank": 19,
       "points": 130,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 21,
       "points": 97,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 9,
       "points": 143,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Daniel"
     },
     {
       "season": "20/22",
       "rank": 23,
       "points": 106,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Daniel"
     }
   ],
   "324": [
@@ -2269,21 +2269,21 @@ window.ARCHIVE_DATA = {
       "rank": 20,
       "points": 130,
       "league": "A-Klasse",
-      "name": "069"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 8,
       "points": 152,
       "league": "B-Klasse",
-      "name": "069"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 55,
       "points": 83,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Sven"
     }
   ],
   "152": [
@@ -2292,28 +2292,28 @@ window.ARCHIVE_DATA = {
       "rank": 21,
       "points": 129,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Stipo"
     },
     {
       "season": "23/24",
       "rank": 28,
       "points": 100,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Stipo"
     },
     {
       "season": "22/23",
       "rank": 37,
       "points": 92,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Stipo"
     },
     {
       "season": "20/22",
       "rank": 56,
       "points": 65,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Stipo"
     }
   ],
   "570": [
@@ -2322,14 +2322,14 @@ window.ARCHIVE_DATA = {
       "rank": 22,
       "points": 125,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Roberto"
     },
     {
       "season": "23/24",
       "rank": 156,
       "points": 10,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Roberto"
     }
   ],
   "1668": [
@@ -2338,28 +2338,28 @@ window.ARCHIVE_DATA = {
       "rank": 23,
       "points": 123,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Oliver"
     },
     {
       "season": "23/24",
       "rank": 14,
       "points": 138,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Oliver"
     },
     {
       "season": "22/23",
       "rank": 17,
       "points": 141,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Oliver"
     },
     {
       "season": "20/22",
       "rank": 144,
       "points": 5,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Oliver"
     }
   ],
   "991": [
@@ -2368,28 +2368,28 @@ window.ARCHIVE_DATA = {
       "rank": 24,
       "points": 122,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 9,
       "points": 152,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 27,
       "points": 75,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 15,
       "points": 102,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Michael"
     }
   ],
   "612": [
@@ -2398,28 +2398,28 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 120,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Tihomir"
     },
     {
       "season": "23/24",
       "rank": 73,
       "points": 48,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Tihomir"
     },
     {
       "season": "22/23",
       "rank": 92,
       "points": 21,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Tihomir"
     },
     {
       "season": "20/22",
       "rank": 25,
       "points": 104,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Tihomir"
     }
   ],
   "917": [
@@ -2428,28 +2428,28 @@ window.ARCHIVE_DATA = {
       "rank": 26,
       "points": 116,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 35,
       "points": 91,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 20,
       "points": 119,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 32,
       "points": 97,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Benjamin"
     }
   ],
   "1271": [
@@ -2458,28 +2458,28 @@ window.ARCHIVE_DATA = {
       "rank": 27,
       "points": 115,
       "league": "A-Klasse",
-      "name": "049"
+      "name": "Harald"
     },
     {
       "season": "23/24",
       "rank": 36,
       "points": 59,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Harald"
     },
     {
       "season": "22/23",
       "rank": 21,
       "points": 90,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Harald"
     },
     {
       "season": "20/22",
       "rank": 22,
       "points": 83,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Harald"
     }
   ],
   "760": [
@@ -2488,28 +2488,28 @@ window.ARCHIVE_DATA = {
       "rank": 28,
       "points": 114,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Thorsten"
     },
     {
       "season": "23/24",
       "rank": 29,
       "points": 115,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Thorsten"
     },
     {
       "season": "22/23",
       "rank": 19,
       "points": 139,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Thorsten"
     },
     {
       "season": "20/22",
       "rank": 11,
       "points": 155,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Thorsten"
     }
   ],
   "1530": [
@@ -2518,21 +2518,21 @@ window.ARCHIVE_DATA = {
       "rank": 29,
       "points": 112,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 39,
       "points": 103,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Kevin"
     },
     {
       "season": "22/23",
       "rank": 22,
       "points": 135,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Kevin"
     }
   ],
   "566": [
@@ -2541,14 +2541,14 @@ window.ARCHIVE_DATA = {
       "rank": 30,
       "points": 107,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Danyal"
     },
     {
       "season": "23/24",
       "rank": 140,
       "points": 18,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Danyal"
     }
   ],
   "688": [
@@ -2557,28 +2557,28 @@ window.ARCHIVE_DATA = {
       "rank": 31,
       "points": 107,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Steffen"
     },
     {
       "season": "23/24",
       "rank": 47,
       "points": 79,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Steffen"
     },
     {
       "season": "22/23",
       "rank": 41,
       "points": 87,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Steffen"
     },
     {
       "season": "20/22",
       "rank": 11,
       "points": 132,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Steffen"
     }
   ],
   "1481": [
@@ -2587,28 +2587,28 @@ window.ARCHIVE_DATA = {
       "rank": 32,
       "points": 106,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Oktay"
     },
     {
       "season": "23/24",
       "rank": 43,
       "points": 102,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Oktay"
     },
     {
       "season": "22/23",
       "rank": 37,
       "points": 112,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Oktay"
     },
     {
       "season": "20/22",
       "rank": 34,
       "points": 110,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Oktay"
     }
   ],
   "579": [
@@ -2617,7 +2617,7 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 102,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Matija"
     }
   ],
   "083": [
@@ -2656,28 +2656,28 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 93,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Martin"
     },
     {
       "season": "23/24",
       "rank": 56,
       "points": 66,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Martin"
     },
     {
       "season": "22/23",
       "rank": 43,
       "points": 86,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 32,
       "points": 50,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Martin"
     }
   ],
   "1865": [
@@ -2686,28 +2686,28 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 93,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Artur"
     },
     {
       "season": "23/24",
       "rank": 18,
       "points": 130,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Artur"
     },
     {
       "season": "22/23",
       "rank": 20,
       "points": 139,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Artur"
     },
     {
       "season": "20/22",
       "rank": 24,
       "points": 126,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Artur"
     }
   ],
   "1079": [
@@ -2716,28 +2716,28 @@ window.ARCHIVE_DATA = {
       "rank": 37,
       "points": 92,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Jannik"
     },
     {
       "season": "23/24",
       "rank": 64,
       "points": 58,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Jannik"
     },
     {
       "season": "22/23",
       "rank": 102,
       "points": 13,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Jannik"
     },
     {
       "season": "20/22",
       "rank": 136,
       "points": 21,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Jannik"
     }
   ],
   "1883": [
@@ -2746,21 +2746,21 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 91,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 32,
       "points": 95,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 21,
       "points": 118,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Daniel"
     }
   ],
   "970": [
@@ -2769,28 +2769,28 @@ window.ARCHIVE_DATA = {
       "rank": 39,
       "points": 88,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Gennadij"
     },
     {
       "season": "23/24",
       "rank": 3,
       "points": 163,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Gennadij"
     },
     {
       "season": "22/23",
       "rank": 3,
       "points": 166,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Gennadij"
     },
     {
       "season": "20/22",
       "rank": 59,
       "points": 84,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Gennadij"
     }
   ],
   "1055": [
@@ -2799,28 +2799,28 @@ window.ARCHIVE_DATA = {
       "rank": 40,
       "points": 85,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Saskia"
     },
     {
       "season": "23/24",
       "rank": 53,
       "points": 68,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Saskia"
     },
     {
       "season": "22/23",
       "rank": 47,
       "points": 92,
       "league": "B-Klasse",
-      "name": "051"
+      "name": "Saskia"
     },
     {
       "season": "20/22",
       "rank": 217,
       "points": 1,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Saskia"
     }
   ],
   "350": [
@@ -2829,28 +2829,28 @@ window.ARCHIVE_DATA = {
       "rank": 41,
       "points": 85,
       "league": "A-Klasse",
-      "name": "069"
+      "name": "J rgen"
     },
     {
       "season": "23/24",
       "rank": 44,
       "points": 101,
       "league": "B-Klasse",
-      "name": "069"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "22/23",
       "rank": 32,
       "points": 47,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "20/22",
       "rank": 27,
       "points": 61,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "J\u00fcrgen"
     }
   ],
   "1523": [
@@ -2859,28 +2859,28 @@ window.ARCHIVE_DATA = {
       "rank": 42,
       "points": 82,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Vitali"
     },
     {
       "season": "23/24",
       "rank": 26,
       "points": 105,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Vitali"
     },
     {
       "season": "22/23",
       "rank": 17,
       "points": 121,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Vitali"
     },
     {
       "season": "20/22",
       "rank": 20,
       "points": 121,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Vitali"
     }
   ],
   "553": [
@@ -2889,28 +2889,28 @@ window.ARCHIVE_DATA = {
       "rank": 43,
       "points": 81,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 36,
       "points": 90,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 14,
       "points": 134,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Christian"
     },
     {
       "season": "20/22",
       "rank": 12,
       "points": 136,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Christian"
     }
   ],
   "114": [
@@ -2919,28 +2919,28 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 81,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 40,
       "points": 89,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 50,
       "points": 77,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 18,
       "points": 117,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Thomas"
     }
   ],
   "1411": [
@@ -2949,28 +2949,28 @@ window.ARCHIVE_DATA = {
       "rank": 45,
       "points": 77,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 52,
       "points": 15,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 59,
       "points": 69,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 30,
       "points": 116,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Benjamin"
     }
   ],
   "1455": [
@@ -2979,28 +2979,28 @@ window.ARCHIVE_DATA = {
       "rank": 47,
       "points": 76,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Gianni"
     },
     {
       "season": "23/24",
       "rank": 17,
       "points": 132,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Gianni"
     },
     {
       "season": "22/23",
       "rank": 131,
       "points": 2,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Gianni"
     },
     {
       "season": "20/22",
       "rank": 110,
       "points": 35,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Gianni"
     }
   ],
   "1279": [
@@ -3009,28 +3009,28 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 76,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Urban"
     },
     {
       "season": "23/24",
       "rank": 37,
       "points": 90,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Urban"
     },
     {
       "season": "22/23",
       "rank": 25,
       "points": 105,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Urban"
     },
     {
       "season": "20/22",
       "rank": 15,
       "points": 128,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Urban"
     }
   ],
   "944": [
@@ -3039,28 +3039,28 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 74,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Nico"
     },
     {
       "season": "23/24",
       "rank": 75,
       "points": 74,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Nico"
     },
     {
       "season": "22/23",
       "rank": 15,
       "points": 142,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Nico"
     },
     {
       "season": "20/22",
       "rank": 35,
       "points": 108,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Nico"
     }
   ],
   "1210": [
@@ -3069,28 +3069,28 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 74,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Uwe"
     },
     {
       "season": "23/24",
       "rank": 41,
       "points": 103,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Uwe"
     },
     {
       "season": "22/23",
       "rank": 30,
       "points": 106,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Uwe"
     },
     {
       "season": "20/22",
       "rank": 87,
       "points": 55,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Uwe"
     }
   ],
   "1172": [
@@ -3099,28 +3099,28 @@ window.ARCHIVE_DATA = {
       "rank": 51,
       "points": 74,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Christopher"
     },
     {
       "season": "23/24",
       "rank": 43,
       "points": 28,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Christopher"
     },
     {
       "season": "22/23",
       "rank": 76,
       "points": 47,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Christopher"
     },
     {
       "season": "20/22",
       "rank": 87,
       "points": 26,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Christophe"
     }
   ],
   "1064": [
@@ -3129,28 +3129,28 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 73,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Bernd"
     },
     {
       "season": "23/24",
       "rank": 25,
       "points": 105,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Bernd"
     },
     {
       "season": "22/23",
       "rank": 40,
       "points": 87,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Bernd"
     },
     {
       "season": "20/22",
       "rank": 5,
       "points": 157,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Bernd"
     }
   ],
   "048": [
@@ -3189,28 +3189,28 @@ window.ARCHIVE_DATA = {
       "rank": 54,
       "points": 69,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 43,
       "points": 86,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Alexander"
     },
     {
       "season": "22/23",
       "rank": 77,
       "points": 45,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 74,
       "points": 75,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Alexander"
     }
   ],
   "635": [
@@ -3219,28 +3219,28 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 67,
       "league": "A-Klasse",
-      "name": "069"
+      "name": "Graziella"
     },
     {
       "season": "23/24",
       "rank": 42,
       "points": 102,
       "league": "B-Klasse",
-      "name": "069"
+      "name": "Graziella"
     },
     {
       "season": "22/23",
       "rank": 108,
       "points": 44,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Graziella"
     },
     {
       "season": "20/22",
       "rank": 145,
       "points": 17,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Graziella"
     }
   ],
   "873": [
@@ -3249,28 +3249,28 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 64,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "J rgen"
     },
     {
       "season": "23/24",
       "rank": 27,
       "points": 104,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "22/23",
       "rank": 75,
       "points": 47,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "20/22",
       "rank": 51,
       "points": 75,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "J\u00fcrgen"
     }
   ],
   "685": [
@@ -3279,28 +3279,28 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 62,
       "league": "A-Klasse",
-      "name": "069"
+      "name": "Guido"
     },
     {
       "season": "23/24",
       "rank": 127,
       "points": 26,
       "league": "B-Klasse",
-      "name": "069"
+      "name": "Guido"
     },
     {
       "season": "22/23",
       "rank": 36,
       "points": 35,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Guido"
     },
     {
       "season": "20/22",
       "rank": 43,
       "points": 27,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Guido"
     }
   ],
   "893": [
@@ -3309,28 +3309,28 @@ window.ARCHIVE_DATA = {
       "rank": 58,
       "points": 59,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 32,
       "points": 112,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 42,
       "points": 30,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 40,
       "points": 29,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Sven"
     }
   ],
   "309": [
@@ -3339,28 +3339,28 @@ window.ARCHIVE_DATA = {
       "rank": 59,
       "points": 59,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "23/24",
       "rank": 77,
       "points": 41,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "22/23",
       "rank": 83,
       "points": 39,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 62,
       "points": 1,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Peter"
     }
   ],
   "1204": [
@@ -3369,28 +3369,28 @@ window.ARCHIVE_DATA = {
       "rank": 60,
       "points": 56,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "23/24",
       "rank": 44,
       "points": 85,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "22/23",
       "rank": 39,
       "points": 88,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 21,
       "points": 119,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Peter"
     }
   ],
   "187": [
@@ -3399,28 +3399,28 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 55,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Jan"
     },
     {
       "season": "23/24",
       "rank": 19,
       "points": 109,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Jan"
     },
     {
       "season": "22/23",
       "rank": 3,
       "points": 179,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Jan"
     },
     {
       "season": "20/22",
       "rank": 5,
       "points": 178,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Jan"
     }
   ],
   "005": [
@@ -3459,21 +3459,21 @@ window.ARCHIVE_DATA = {
       "rank": 63,
       "points": 53,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Jochen"
     },
     {
       "season": "23/24",
       "rank": 46,
       "points": 79,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Jochen"
     },
     {
       "season": "22/23",
       "rank": 35,
       "points": 93,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Jochen"
     }
   ],
   "066": [
@@ -3505,28 +3505,28 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 52,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 83,
       "points": 33,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 146,
       "points": 17,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 240,
       "points": 6,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Thomas"
     }
   ],
   "298": [
@@ -3535,28 +3535,28 @@ window.ARCHIVE_DATA = {
       "rank": 66,
       "points": 51,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Reiner"
     },
     {
       "season": "23/24",
       "rank": 75,
       "points": 43,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Reiner"
     },
     {
       "season": "22/23",
       "rank": 63,
       "points": 65,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Reiner"
     },
     {
       "season": "20/22",
       "rank": 28,
       "points": 102,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Reiner"
     }
   ],
   "270": [
@@ -3565,28 +3565,28 @@ window.ARCHIVE_DATA = {
       "rank": 67,
       "points": 49,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Marek"
     },
     {
       "season": "23/24",
       "rank": 74,
       "points": 46,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Marek"
     },
     {
       "season": "22/23",
       "rank": 91,
       "points": 21,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Marek"
     },
     {
       "season": "20/22",
       "rank": 97,
       "points": 17,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Marek"
     }
   ],
   "897": [
@@ -3595,28 +3595,28 @@ window.ARCHIVE_DATA = {
       "rank": 68,
       "points": 49,
       "league": "A-Klasse",
-      "name": "049"
+      "name": "Falk"
     },
     {
       "season": "23/24",
       "rank": 53,
       "points": 15,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Falk"
     },
     {
       "season": "22/23",
       "rank": 45,
       "points": 24,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Falk"
     },
     {
       "season": "20/22",
       "rank": 52,
       "points": 15,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Falk"
     }
   ],
   "1802": [
@@ -3625,28 +3625,28 @@ window.ARCHIVE_DATA = {
       "rank": 69,
       "points": 47,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Steve"
     },
     {
       "season": "23/24",
       "rank": 66,
       "points": 56,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Steve"
     },
     {
       "season": "22/23",
       "rank": 50,
       "points": 88,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Steve"
     },
     {
       "season": "20/22",
       "rank": 6,
       "points": 174,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Steve"
     }
   ],
   "311": [
@@ -3655,14 +3655,14 @@ window.ARCHIVE_DATA = {
       "rank": 70,
       "points": 47,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Jochen"
     },
     {
       "season": "23/24",
       "rank": 96,
       "points": 13,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Jochen"
     }
   ],
   "1515": [
@@ -3671,28 +3671,28 @@ window.ARCHIVE_DATA = {
       "rank": 71,
       "points": 46,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Matthias"
     },
     {
       "season": "23/24",
       "rank": 73,
       "points": 75,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Matthias"
     },
     {
       "season": "22/23",
       "rank": 67,
       "points": 73,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Matthias"
     },
     {
       "season": "20/22",
       "rank": 39,
       "points": 102,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Matthias"
     }
   ],
   "1901": [
@@ -3701,21 +3701,21 @@ window.ARCHIVE_DATA = {
       "rank": 72,
       "points": 45,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Nico"
     },
     {
       "season": "23/24",
       "rank": 51,
       "points": 16,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Nico"
     },
     {
       "season": "22/23",
       "rank": 35,
       "points": 35,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Nico"
     }
   ],
   "315": [
@@ -3724,28 +3724,28 @@ window.ARCHIVE_DATA = {
       "rank": 73,
       "points": 40,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Bastian"
     },
     {
       "season": "23/24",
       "rank": 91,
       "points": 18,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Bastian"
     },
     {
       "season": "22/23",
       "rank": 59,
       "points": 80,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Bastian"
     },
     {
       "season": "20/22",
       "rank": 82,
       "points": 70,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Bastian"
     }
   ],
   "1685": [
@@ -3754,28 +3754,28 @@ window.ARCHIVE_DATA = {
       "rank": 74,
       "points": 37,
       "league": "A-Klasse",
-      "name": "049"
+      "name": "Bernd"
     },
     {
       "season": "23/24",
       "rank": 58,
       "points": 9,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Bernd"
     },
     {
       "season": "22/23",
       "rank": 68,
       "points": 0,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Bernd"
     },
     {
       "season": "20/22",
       "rank": 58,
       "points": 81,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Bernd"
     }
   ],
   "1136": [
@@ -3784,28 +3784,28 @@ window.ARCHIVE_DATA = {
       "rank": 75,
       "points": 36,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Stefan"
     },
     {
       "season": "23/24",
       "rank": 67,
       "points": 55,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Stefan"
     },
     {
       "season": "22/23",
       "rank": 72,
       "points": 50,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Stefan"
     },
     {
       "season": "20/22",
       "rank": 25,
       "points": 113,
       "league": "B-Klasse",
-      "name": "068"
+      "name": "Stefan"
     }
   ],
   "1125": [
@@ -3814,28 +3814,28 @@ window.ARCHIVE_DATA = {
       "rank": 76,
       "points": 33,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Ralf"
     },
     {
       "season": "23/24",
       "rank": 20,
       "points": 108,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Ralf"
     },
     {
       "season": "22/23",
       "rank": 16,
       "points": 128,
       "league": "B-Klasse",
-      "name": "051"
+      "name": "Ralf"
     },
     {
       "season": "20/22",
       "rank": 7,
       "points": 170,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Ralf"
     }
   ],
   "591": [
@@ -3844,21 +3844,21 @@ window.ARCHIVE_DATA = {
       "rank": 77,
       "points": 33,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 92,
       "points": 58,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 147,
       "points": 17,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Dennis"
     }
   ],
   "385": [
@@ -3867,7 +3867,7 @@ window.ARCHIVE_DATA = {
       "rank": 78,
       "points": 30,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Patrick"
     }
   ],
   "982": [
@@ -3876,28 +3876,28 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 30,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Senay"
     },
     {
       "season": "23/24",
       "rank": 31,
       "points": 112,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Senay"
     },
     {
       "season": "22/23",
       "rank": 110,
       "points": 9,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Senay"
     },
     {
       "season": "20/22",
       "rank": 16,
       "points": 138,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Senay"
     }
   ],
   "1351": [
@@ -3906,28 +3906,28 @@ window.ARCHIVE_DATA = {
       "rank": 81,
       "points": 29,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Ivo"
     },
     {
       "season": "23/24",
       "rank": 94,
       "points": 15,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Ivo"
     },
     {
       "season": "22/23",
       "rank": 26,
       "points": 112,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Ivo"
     },
     {
       "season": "20/22",
       "rank": 73,
       "points": 66,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Ivo"
     }
   ],
   "460": [
@@ -3936,28 +3936,28 @@ window.ARCHIVE_DATA = {
       "rank": 82,
       "points": 29,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Carsten"
     },
     {
       "season": "23/24",
       "rank": 63,
       "points": 4,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Carsten"
     },
     {
       "season": "22/23",
       "rank": 59,
       "points": 4,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Carsten"
     },
     {
       "season": "20/22",
       "rank": 49,
       "points": 22,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Carsten"
     }
   ],
   "1412": [
@@ -3966,28 +3966,28 @@ window.ARCHIVE_DATA = {
       "rank": 83,
       "points": 29,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Yves"
     },
     {
       "season": "23/24",
       "rank": 99,
       "points": 50,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Yves"
     },
     {
       "season": "22/23",
       "rank": 102,
       "points": 48,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Yves"
     },
     {
       "season": "20/22",
       "rank": 105,
       "points": 38,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Yves"
     }
   ],
   "1706": [
@@ -3996,28 +3996,28 @@ window.ARCHIVE_DATA = {
       "rank": 84,
       "points": 26,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 57,
       "points": 64,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 1,
       "points": 183,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 1,
       "points": 212,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Benjamin"
     }
   ],
   "1784": [
@@ -4026,21 +4026,21 @@ window.ARCHIVE_DATA = {
       "rank": 85,
       "points": 26,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 6,
       "points": 155,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 30,
       "points": 117,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Markus"
     }
   ],
   "454": [
@@ -4049,7 +4049,7 @@ window.ARCHIVE_DATA = {
       "rank": 86,
       "points": 25,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Christian"
     }
   ],
   "014": [
@@ -4088,28 +4088,28 @@ window.ARCHIVE_DATA = {
       "rank": 88,
       "points": 24,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Felicitas"
     },
     {
       "season": "23/24",
       "rank": 101,
       "points": 10,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Felicitas"
     },
     {
       "season": "22/23",
       "rank": 114,
       "points": 40,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Felicitas"
     },
     {
       "season": "20/22",
       "rank": 135,
       "points": 35,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Felicitas"
     }
   ],
   "1637": [
@@ -4118,14 +4118,14 @@ window.ARCHIVE_DATA = {
       "rank": 89,
       "points": 20,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Ufuk"
     },
     {
       "season": "23/24",
       "rank": 57,
       "points": 11,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Ufuk"
     }
   ],
   "085": [
@@ -4164,28 +4164,28 @@ window.ARCHIVE_DATA = {
       "rank": 91,
       "points": 12,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Martin"
     },
     {
       "season": "23/24",
       "rank": 99,
       "points": 12,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Martin"
     },
     {
       "season": "22/23",
       "rank": 94,
       "points": 19,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 22,
       "points": 117,
       "league": "B-Klasse",
-      "name": "068"
+      "name": "Martin"
     }
   ],
   "943": [
@@ -4194,7 +4194,7 @@ window.ARCHIVE_DATA = {
       "rank": 92,
       "points": 12,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Dennis"
     }
   ],
   "1474": [
@@ -4203,28 +4203,28 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 12,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Jochen"
     },
     {
       "season": "23/24",
       "rank": 105,
       "points": 44,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Jochen"
     },
     {
       "season": "22/23",
       "rank": 61,
       "points": 78,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Jochen"
     },
     {
       "season": "20/22",
       "rank": 45,
       "points": 91,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Jochen"
     }
   ],
   "639": [
@@ -4233,21 +4233,21 @@ window.ARCHIVE_DATA = {
       "rank": 94,
       "points": 9,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 70,
       "points": 53,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 90,
       "points": 22,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Benjamin"
     }
   ],
   "1434": [
@@ -4256,28 +4256,28 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 9,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Max"
     },
     {
       "season": "23/24",
       "rank": 96,
       "points": 51,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Max"
     },
     {
       "season": "22/23",
       "rank": 42,
       "points": 97,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Max"
     },
     {
       "season": "20/22",
       "rank": 111,
       "points": 34,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Max"
     }
   ],
   "1539": [
@@ -4286,28 +4286,28 @@ window.ARCHIVE_DATA = {
       "rank": 96,
       "points": 8,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 47,
       "points": 19,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Frank"
     },
     {
       "season": "22/23",
       "rank": 119,
       "points": 6,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 59,
       "points": 61,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Frank"
     }
   ],
   "1214": [
@@ -4316,28 +4316,28 @@ window.ARCHIVE_DATA = {
       "rank": 97,
       "points": 8,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Klaus"
     },
     {
       "season": "23/24",
       "rank": 135,
       "points": 19,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Klaus"
     },
     {
       "season": "22/23",
       "rank": 191,
       "points": 21,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Klaus"
     },
     {
       "season": "20/22",
       "rank": 110,
       "points": 48,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Klaus"
     }
   ],
   "1748": [
@@ -4346,7 +4346,7 @@ window.ARCHIVE_DATA = {
       "rank": 98,
       "points": 7,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Bekim"
     }
   ],
   "1872": [
@@ -4355,21 +4355,21 @@ window.ARCHIVE_DATA = {
       "rank": 99,
       "points": 6,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 82,
       "points": 34,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 69,
       "points": 55,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Christian"
     }
   ],
   "1566": [
@@ -4378,28 +4378,28 @@ window.ARCHIVE_DATA = {
       "rank": 100,
       "points": 5,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Kerstin"
     },
     {
       "season": "23/24",
       "rank": 88,
       "points": 20,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Kerstin"
     },
     {
       "season": "22/23",
       "rank": 107,
       "points": 11,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Kerstin"
     },
     {
       "season": "20/22",
       "rank": 81,
       "points": 30,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Kerstin"
     }
   ],
   "826": [
@@ -4408,28 +4408,28 @@ window.ARCHIVE_DATA = {
       "rank": 101,
       "points": 5,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Sabrina"
     },
     {
       "season": "23/24",
       "rank": 148,
       "points": 15,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Sabrina"
     },
     {
       "season": "22/23",
       "rank": 204,
       "points": 17,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Sabrina"
     },
     {
       "season": "20/22",
       "rank": 107,
       "points": 49,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Sabrina"
     }
   ],
   "979": [
@@ -4438,28 +4438,28 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 4,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Niklas"
     },
     {
       "season": "23/24",
       "rank": 47,
       "points": 97,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Niklas"
     },
     {
       "season": "22/23",
       "rank": 122,
       "points": 5,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Niklas"
     },
     {
       "season": "20/22",
       "rank": 86,
       "points": 55,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Niklas"
     }
   ],
   "1818": [
@@ -4468,7 +4468,7 @@ window.ARCHIVE_DATA = {
       "rank": 103,
       "points": 4,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Louis"
     }
   ],
   "923": [
@@ -4477,28 +4477,28 @@ window.ARCHIVE_DATA = {
       "rank": 104,
       "points": 4,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Uwe"
     },
     {
       "season": "23/24",
       "rank": 117,
       "points": 0,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Uwe"
     },
     {
       "season": "22/23",
       "rank": 140,
       "points": 0,
       "league": "A-Klasse",
-      "name": "068"
+      "name": "Uwe"
     },
     {
       "season": "20/22",
       "rank": 168,
       "points": 10,
       "league": "B-Klasse",
-      "name": "068"
+      "name": "Uwe"
     }
   ],
   "1601": [
@@ -4507,14 +4507,14 @@ window.ARCHIVE_DATA = {
       "rank": 105,
       "points": 3,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Francisco"
     },
     {
       "season": "23/24",
       "rank": 144,
       "points": 16,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Francisco"
     }
   ],
   "161": [
@@ -4523,7 +4523,7 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 2,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Klara"
     }
   ],
   "1325": [
@@ -4532,28 +4532,28 @@ window.ARCHIVE_DATA = {
       "rank": 107,
       "points": 2,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Robin"
     },
     {
       "season": "23/24",
       "rank": 166,
       "points": 6,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Robin"
     },
     {
       "season": "22/23",
       "rank": 81,
       "points": 42,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Robin"
     },
     {
       "season": "20/22",
       "rank": 23,
       "points": 115,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Robin"
     }
   ],
   "1406": [
@@ -4562,21 +4562,21 @@ window.ARCHIVE_DATA = {
       "rank": 108,
       "points": 2,
       "league": "A-Klasse",
-      "name": "053"
+      "name": "Franziska"
     },
     {
       "season": "23/24",
       "rank": 124,
       "points": 31,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Franziska"
     },
     {
       "season": "22/23",
       "rank": 157,
       "points": 34,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Franziska"
     }
   ],
   "1203": [
@@ -4585,28 +4585,28 @@ window.ARCHIVE_DATA = {
       "rank": 109,
       "points": 1,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Jose"
     },
     {
       "season": "23/24",
       "rank": 154,
       "points": 11,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Jose"
     },
     {
       "season": "22/23",
       "rank": 150,
       "points": 15,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Jose"
     },
     {
       "season": "20/22",
       "rank": 234,
       "points": 0,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Jose"
     }
   ],
   "1272": [
@@ -4615,28 +4615,28 @@ window.ARCHIVE_DATA = {
       "rank": 110,
       "points": 1,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 105,
       "points": 8,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 174,
       "points": 5,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 153,
       "points": 14,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Markus"
     }
   ],
   "1573": [
@@ -4645,21 +4645,21 @@ window.ARCHIVE_DATA = {
       "rank": 111,
       "points": 1,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Judith"
     },
     {
       "season": "22/23",
       "rank": 192,
       "points": 0,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Judith"
     },
     {
       "season": "20/22",
       "rank": 131,
       "points": 7,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Judith"
     }
   ],
   "465": [
@@ -4668,28 +4668,28 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 1,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Willi"
     },
     {
       "season": "23/24",
       "rank": 65,
       "points": 57,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Willi"
     },
     {
       "season": "22/23",
       "rank": 78,
       "points": 44,
       "league": "A-Klasse",
-      "name": "003"
+      "name": "Willi"
     },
     {
       "season": "20/22",
       "rank": 34,
       "points": 43,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Willi"
     }
   ],
   "1746": [
@@ -4698,21 +4698,21 @@ window.ARCHIVE_DATA = {
       "rank": 113,
       "points": 0,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Nadine"
     },
     {
       "season": "23/24",
       "rank": 121,
       "points": 0,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Nadine"
     },
     {
       "season": "22/23",
       "rank": 144,
       "points": 0,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Nadine"
     }
   ],
   "096": [
@@ -4751,28 +4751,28 @@ window.ARCHIVE_DATA = {
       "rank": 2,
       "points": 164,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Sammy"
     },
     {
       "season": "23/24",
       "rank": 15,
       "points": 122,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Sammy"
     },
     {
       "season": "22/23",
       "rank": 40,
       "points": 31,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Sammy"
     },
     {
       "season": "20/22",
       "rank": 10,
       "points": 136,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Sammy"
     }
   ],
   "726": [
@@ -4781,28 +4781,28 @@ window.ARCHIVE_DATA = {
       "rank": 3,
       "points": 159,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Marco"
     },
     {
       "season": "23/24",
       "rank": 3,
       "points": 183,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 38,
       "points": 111,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 84,
       "points": 69,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Marco"
     }
   ],
   "325": [
@@ -4811,14 +4811,14 @@ window.ARCHIVE_DATA = {
       "rank": 4,
       "points": 156,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Patrick"
     },
     {
       "season": "23/24",
       "rank": 23,
       "points": 132,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Patrick"
     }
   ],
   "1528": [
@@ -4827,21 +4827,21 @@ window.ARCHIVE_DATA = {
       "rank": 5,
       "points": 153,
       "league": "B-Klasse",
-      "name": "038"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 5,
       "points": 175,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 185,
       "points": 15,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Andreas"
     }
   ],
   "1274": [
@@ -4850,28 +4850,28 @@ window.ARCHIVE_DATA = {
       "rank": 6,
       "points": 148,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Oliver"
     },
     {
       "season": "23/24",
       "rank": 22,
       "points": 128,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Oliver"
     },
     {
       "season": "22/23",
       "rank": 20,
       "points": 119,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Oliver"
     },
     {
       "season": "20/22",
       "rank": 18,
       "points": 124,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Oliver"
     }
   ],
   "913": [
@@ -4880,21 +4880,21 @@ window.ARCHIVE_DATA = {
       "rank": 7,
       "points": 146,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 87,
       "points": 21,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 85,
       "points": 72,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Dennis"
     }
   ],
   "1544": [
@@ -4903,21 +4903,21 @@ window.ARCHIVE_DATA = {
       "rank": 8,
       "points": 145,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Tobias"
     },
     {
       "season": "23/24",
       "rank": 12,
       "points": 154,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Tobias"
     },
     {
       "season": "22/23",
       "rank": 62,
       "points": 90,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Tobias"
     }
   ],
   "763": [
@@ -4926,28 +4926,28 @@ window.ARCHIVE_DATA = {
       "rank": 9,
       "points": 145,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Peter"
     },
     {
       "season": "23/24",
       "rank": 39,
       "points": 89,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Peter"
     },
     {
       "season": "22/23",
       "rank": 25,
       "points": 78,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 5,
       "points": 154,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Peter"
     }
   ],
   "1531": [
@@ -4956,21 +4956,21 @@ window.ARCHIVE_DATA = {
       "rank": 10,
       "points": 143,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 18,
       "points": 138,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 169,
       "points": 9,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Sascha"
     }
   ],
   "022": [
@@ -5009,7 +5009,7 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 137,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Gianluca"
     }
   ],
   "318": [
@@ -5018,14 +5018,14 @@ window.ARCHIVE_DATA = {
       "rank": 13,
       "points": 137,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 17,
       "points": 146,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Alexander"
     }
   ],
   "1422": [
@@ -5034,21 +5034,21 @@ window.ARCHIVE_DATA = {
       "rank": 14,
       "points": 132,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Uli"
     },
     {
       "season": "23/24",
       "rank": 21,
       "points": 135,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Uli"
     },
     {
       "season": "20/22",
       "rank": 102,
       "points": 41,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Uli"
     }
   ],
   "1776": [
@@ -5057,28 +5057,28 @@ window.ARCHIVE_DATA = {
       "rank": 15,
       "points": 132,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 12,
       "points": 140,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 27,
       "points": 110,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Daniel"
     },
     {
       "season": "20/22",
       "rank": 10,
       "points": 157,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Daniel"
     }
   ],
   "1692": [
@@ -5087,28 +5087,28 @@ window.ARCHIVE_DATA = {
       "rank": 16,
       "points": 132,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Timo"
     },
     {
       "season": "23/24",
       "rank": 53,
       "points": 94,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Timo"
     },
     {
       "season": "22/23",
       "rank": 48,
       "points": 91,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Timo"
     },
     {
       "season": "20/22",
       "rank": 44,
       "points": 91,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Timo"
     }
   ],
   "1175": [
@@ -5117,28 +5117,28 @@ window.ARCHIVE_DATA = {
       "rank": 17,
       "points": 130,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Bernd"
     },
     {
       "season": "23/24",
       "rank": 33,
       "points": 92,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Bernd"
     },
     {
       "season": "22/23",
       "rank": 87,
       "points": 24,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Bernd"
     },
     {
       "season": "20/22",
       "rank": 46,
       "points": 79,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Bernd"
     }
   ],
   "1059": [
@@ -5147,28 +5147,28 @@ window.ARCHIVE_DATA = {
       "rank": 18,
       "points": 124,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Marvin"
     },
     {
       "season": "23/24",
       "rank": 4,
       "points": 158,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Marvin"
     },
     {
       "season": "22/23",
       "rank": 15,
       "points": 134,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Marvin"
     },
     {
       "season": "20/22",
       "rank": 4,
       "points": 166,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Marvin"
     }
   ],
   "1909": [
@@ -5177,28 +5177,28 @@ window.ARCHIVE_DATA = {
       "rank": 19,
       "points": 120,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 49,
       "points": 97,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 64,
       "points": 63,
       "league": "A-Klasse",
-      "name": "037"
+      "name": "Christian"
     },
     {
       "season": "20/22",
       "rank": 37,
       "points": 96,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Christian"
     }
   ],
   "1752": [
@@ -5207,28 +5207,28 @@ window.ARCHIVE_DATA = {
       "rank": 20,
       "points": 119,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "G\u00f6kmen"
     },
     {
       "season": "23/24",
       "rank": 97,
       "points": 50,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "G\u00f6kmen"
     },
     {
       "season": "22/23",
       "rank": 53,
       "points": 85,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "G\u00f6kmen"
     },
     {
       "season": "20/22",
       "rank": 51,
       "points": 92,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "G\u00f6kmen"
     }
   ],
   "1768": [
@@ -5237,28 +5237,28 @@ window.ARCHIVE_DATA = {
       "rank": 21,
       "points": 119,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Gianni"
     },
     {
       "season": "23/24",
       "rank": 35,
       "points": 107,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Gianni"
     },
     {
       "season": "22/23",
       "rank": 21,
       "points": 119,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Gianni"
     },
     {
       "season": "20/22",
       "rank": 57,
       "points": 89,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Gianni"
     }
   ],
   "1063": [
@@ -5267,28 +5267,28 @@ window.ARCHIVE_DATA = {
       "rank": 22,
       "points": 117,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Oliver"
     },
     {
       "season": "23/24",
       "rank": 8,
       "points": 167,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Oliver"
     },
     {
       "season": "22/23",
       "rank": 10,
       "points": 148,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Oliver"
     },
     {
       "season": "20/22",
       "rank": 52,
       "points": 73,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Oliver"
     }
   ],
   "1414": [
@@ -5297,21 +5297,21 @@ window.ARCHIVE_DATA = {
       "rank": 23,
       "points": 116,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Chris"
     },
     {
       "season": "23/24",
       "rank": 134,
       "points": 51,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Chris"
     },
     {
       "season": "20/22",
       "rank": 35,
       "points": 100,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Chris"
     }
   ],
   "1835": [
@@ -5320,28 +5320,28 @@ window.ARCHIVE_DATA = {
       "rank": 24,
       "points": 114,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Reinhard"
     },
     {
       "season": "23/24",
       "rank": 15,
       "points": 136,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Reinhard"
     },
     {
       "season": "22/23",
       "rank": 97,
       "points": 17,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Reinhard"
     },
     {
       "season": "20/22",
       "rank": 61,
       "points": 57,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Reinhard"
     }
   ],
   "410": [
@@ -5350,28 +5350,28 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 111,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tarek"
     },
     {
       "season": "23/24",
       "rank": 19,
       "points": 130,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tarek"
     },
     {
       "season": "22/23",
       "rank": 2,
       "points": 181,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tarek"
     },
     {
       "season": "20/22",
       "rank": 16,
       "points": 128,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tarek"
     }
   ],
   "634": [
@@ -5380,28 +5380,28 @@ window.ARCHIVE_DATA = {
       "rank": 26,
       "points": 110,
       "league": "B-Klasse",
-      "name": "025"
+      "name": "Kai"
     },
     {
       "season": "23/24",
       "rank": 54,
       "points": 67,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Kai"
     },
     {
       "season": "22/23",
       "rank": 22,
       "points": 112,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Kai"
     },
     {
       "season": "20/22",
       "rank": 44,
       "points": 84,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Kai"
     }
   ],
   "368": [
@@ -5410,14 +5410,14 @@ window.ARCHIVE_DATA = {
       "rank": 27,
       "points": 110,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 102,
       "points": 45,
       "league": "B-Klasse",
-      "name": "069"
+      "name": "Michael"
     }
   ],
   "1332": [
@@ -5426,28 +5426,28 @@ window.ARCHIVE_DATA = {
       "rank": 28,
       "points": 109,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 85,
       "points": 61,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Kevin"
     },
     {
       "season": "22/23",
       "rank": 74,
       "points": 48,
       "league": "A-Klasse",
-      "name": "037"
+      "name": "Kevin"
     },
     {
       "season": "20/22",
       "rank": 21,
       "points": 130,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Kevin"
     }
   ],
   "1842": [
@@ -5456,21 +5456,21 @@ window.ARCHIVE_DATA = {
       "rank": 29,
       "points": 108,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Andr\u00e9"
     },
     {
       "season": "23/24",
       "rank": 20,
       "points": 135,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Andr\u00e9"
     },
     {
       "season": "22/23",
       "rank": 66,
       "points": 88,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Andre"
     }
   ],
   "1273": [
@@ -5479,28 +5479,28 @@ window.ARCHIVE_DATA = {
       "rank": 30,
       "points": 106,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 14,
       "points": 153,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 37,
       "points": 100,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 89,
       "points": 23,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Thomas"
     }
   ],
   "1174": [
@@ -5509,28 +5509,28 @@ window.ARCHIVE_DATA = {
       "rank": 31,
       "points": 106,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Jennifer"
     },
     {
       "season": "23/24",
       "rank": 70,
       "points": 77,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Jennifer"
     },
     {
       "season": "22/23",
       "rank": 90,
       "points": 58,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Jennifer"
     },
     {
       "season": "20/22",
       "rank": 76,
       "points": 64,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Jennifer"
     }
   ],
   "1656": [
@@ -5539,21 +5539,21 @@ window.ARCHIVE_DATA = {
       "rank": 32,
       "points": 106,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Luca"
     },
     {
       "season": "23/24",
       "rank": 52,
       "points": 104,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Luca"
     },
     {
       "season": "22/23",
       "rank": 83,
       "points": 74,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Luca"
     }
   ],
   "1726": [
@@ -5562,28 +5562,28 @@ window.ARCHIVE_DATA = {
       "rank": 34,
       "points": 105,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 60,
       "points": 87,
       "league": "B-Klasse",
-      "name": "012"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 9,
       "points": 152,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 32,
       "points": 113,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Markus"
     }
   ],
   "987": [
@@ -5592,7 +5592,7 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 104,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Dirk"
     }
   ],
   "1893": [
@@ -5601,21 +5601,21 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 103,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Marco"
     },
     {
       "season": "23/24",
       "rank": 64,
       "points": 93,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 8,
       "points": 154,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Marco"
     }
   ],
   "1186": [
@@ -5624,28 +5624,28 @@ window.ARCHIVE_DATA = {
       "rank": 37,
       "points": 103,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 34,
       "points": 92,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 26,
       "points": 105,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 33,
       "points": 97,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Thomas"
     }
   ],
   "239": [
@@ -5654,28 +5654,28 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 102,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 54,
       "points": 94,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 117,
       "points": 55,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 77,
       "points": 33,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Andreas"
     }
   ],
   "948": [
@@ -5684,28 +5684,28 @@ window.ARCHIVE_DATA = {
       "rank": 39,
       "points": 100,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 40,
       "points": 103,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 32,
       "points": 104,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 8,
       "points": 150,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Sven"
     }
   ],
   "1230": [
@@ -5714,28 +5714,28 @@ window.ARCHIVE_DATA = {
       "rank": 40,
       "points": 100,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 24,
       "points": 105,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 47,
       "points": 78,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Dennis"
     },
     {
       "season": "20/22",
       "rank": 27,
       "points": 111,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Dennis"
     }
   ],
   "1750": [
@@ -5744,28 +5744,28 @@ window.ARCHIVE_DATA = {
       "rank": 41,
       "points": 99,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Davide"
     },
     {
       "season": "23/24",
       "rank": 67,
       "points": 80,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Davide"
     },
     {
       "season": "22/23",
       "rank": 31,
       "points": 106,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Davide"
     },
     {
       "season": "20/22",
       "rank": 66,
       "points": 72,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Davide"
     }
   ],
   "1169": [
@@ -5774,28 +5774,28 @@ window.ARCHIVE_DATA = {
       "rank": 42,
       "points": 99,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Marcel"
     },
     {
       "season": "23/24",
       "rank": 68,
       "points": 79,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Marcel"
     },
     {
       "season": "22/23",
       "rank": 24,
       "points": 132,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Marcel"
     },
     {
       "season": "20/22",
       "rank": 151,
       "points": 3,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Marcel"
     }
   ],
   "1823": [
@@ -5804,28 +5804,28 @@ window.ARCHIVE_DATA = {
       "rank": 43,
       "points": 98,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 65,
       "points": 82,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Alexander"
     },
     {
       "season": "22/23",
       "rank": 23,
       "points": 114,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 40,
       "points": 95,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Alexander"
     }
   ],
   "876": [
@@ -5834,28 +5834,28 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 98,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Robin"
     },
     {
       "season": "23/24",
       "rank": 45,
       "points": 100,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Robin"
     },
     {
       "season": "22/23",
       "rank": 53,
       "points": 73,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Robin"
     },
     {
       "season": "20/22",
       "rank": 48,
       "points": 77,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Robin"
     }
   ],
   "1721": [
@@ -5864,28 +5864,28 @@ window.ARCHIVE_DATA = {
       "rank": 45,
       "points": 98,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 130,
       "points": 24,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Kevin"
     },
     {
       "season": "22/23",
       "rank": 139,
       "points": 23,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Kevin"
     },
     {
       "season": "20/22",
       "rank": 98,
       "points": 53,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Kevin"
     }
   ],
   "1177": [
@@ -5894,28 +5894,28 @@ window.ARCHIVE_DATA = {
       "rank": 46,
       "points": 97,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Alexander Benjamin"
     },
     {
       "season": "23/24",
       "rank": 1,
       "points": 171,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Alexander Benjamin"
     },
     {
       "season": "22/23",
       "rank": 11,
       "points": 144,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Alexander Benjamin"
     },
     {
       "season": "20/22",
       "rank": 17,
       "points": 125,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Alexander Benjamin"
     }
   ],
   "076": [
@@ -5954,14 +5954,14 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 96,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Emmanuel"
     },
     {
       "season": "23/24",
       "rank": 2,
       "points": 186,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Emmanuel"
     }
   ],
   "546": [
@@ -5970,21 +5970,21 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 95,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Johannes"
     },
     {
       "season": "23/24",
       "rank": 49,
       "points": 107,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Johannes"
     },
     {
       "season": "22/23",
       "rank": 136,
       "points": 24,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Johannes"
     }
   ],
   "660": [
@@ -5993,28 +5993,28 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 95,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Alessandro"
     },
     {
       "season": "23/24",
       "rank": 28,
       "points": 117,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Alessandro"
     },
     {
       "season": "22/23",
       "rank": 38,
       "points": 100,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Alessandro"
     },
     {
       "season": "20/22",
       "rank": 14,
       "points": 146,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Alessandro"
     }
   ],
   "283": [
@@ -6023,14 +6023,14 @@ window.ARCHIVE_DATA = {
       "rank": 51,
       "points": 95,
       "league": "B-Klasse",
-      "name": "038"
+      "name": "Tobias"
     },
     {
       "season": "23/24",
       "rank": 140,
       "points": 47,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Tobias"
     }
   ],
   "1647": [
@@ -6039,28 +6039,28 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 94,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Rene"
     },
     {
       "season": "23/24",
       "rank": 46,
       "points": 98,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Rene\u00b4"
     },
     {
       "season": "22/23",
       "rank": 54,
       "points": 84,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Rene\u00b4"
     },
     {
       "season": "20/22",
       "rank": 71,
       "points": 37,
       "league": "A-Klasse",
-      "name": "002"
+      "name": "Rene\u00b4"
     }
   ],
   "412": [
@@ -6069,28 +6069,28 @@ window.ARCHIVE_DATA = {
       "rank": 53,
       "points": 94,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 77,
       "points": 72,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 91,
       "points": 58,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 85,
       "points": 26,
       "league": "A-Klasse",
-      "name": "002"
+      "name": "Thomas"
     }
   ],
   "1281": [
@@ -6099,28 +6099,28 @@ window.ARCHIVE_DATA = {
       "rank": 54,
       "points": 92,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 42,
       "points": 86,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 68,
       "points": 56,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 37,
       "points": 34,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Markus"
     }
   ],
   "1689": [
@@ -6129,28 +6129,28 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 91,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Jasmin"
     },
     {
       "season": "23/24",
       "rank": 16,
       "points": 121,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Jasmin"
     },
     {
       "season": "22/23",
       "rank": 34,
       "points": 94,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Jasmin"
     },
     {
       "season": "20/22",
       "rank": 13,
       "points": 127,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Jasmin"
     }
   ],
   "226": [
@@ -6159,14 +6159,14 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 88,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Bodo"
     },
     {
       "season": "20/22",
       "rank": 140,
       "points": 6,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Bodo"
     }
   ],
   "1409": [
@@ -6175,21 +6175,21 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 86,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 35,
       "points": 118,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 61,
       "points": 90,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Christian"
     }
   ],
   "1602": [
@@ -6198,28 +6198,28 @@ window.ARCHIVE_DATA = {
       "rank": 58,
       "points": 86,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Ralf"
     },
     {
       "season": "23/24",
       "rank": 66,
       "points": 81,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Ralf"
     },
     {
       "season": "22/23",
       "rank": 33,
       "points": 104,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Ralf"
     },
     {
       "season": "20/22",
       "rank": 55,
       "points": 66,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Ralf"
     }
   ],
   "1047": [
@@ -6228,28 +6228,28 @@ window.ARCHIVE_DATA = {
       "rank": 59,
       "points": 86,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Harald"
     },
     {
       "season": "23/24",
       "rank": 36,
       "points": 116,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Harald"
     },
     {
       "season": "22/23",
       "rank": 53,
       "points": 9,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Harald"
     },
     {
       "season": "20/22",
       "rank": 54,
       "points": 10,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Harald"
     }
   ],
   "064": [
@@ -6281,28 +6281,28 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 82,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Erkan"
     },
     {
       "season": "23/24",
       "rank": 57,
       "points": 90,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Erkan"
     },
     {
       "season": "22/23",
       "rank": 76,
       "points": 66,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Erkan"
     },
     {
       "season": "20/22",
       "rank": 197,
       "points": 14,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Erkan"
     }
   ],
   "399": [
@@ -6311,28 +6311,28 @@ window.ARCHIVE_DATA = {
       "rank": 62,
       "points": 82,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Edgar"
     },
     {
       "season": "23/24",
       "rank": 16,
       "points": 133,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Edgar"
     },
     {
       "season": "22/23",
       "rank": 35,
       "points": 102,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Edgar"
     },
     {
       "season": "20/22",
       "rank": 150,
       "points": 15,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Edgar"
     }
   ],
   "1366": [
@@ -6341,28 +6341,28 @@ window.ARCHIVE_DATA = {
       "rank": 63,
       "points": 81,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 150,
       "points": 14,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Frank"
     },
     {
       "season": "22/23",
       "rank": 101,
       "points": 49,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 142,
       "points": 19,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Frank"
     }
   ],
   "1545": [
@@ -6371,7 +6371,7 @@ window.ARCHIVE_DATA = {
       "rank": 64,
       "points": 76,
       "league": "B-Klasse",
-      "name": "038"
+      "name": "Filip"
     }
   ],
   "1508": [
@@ -6380,14 +6380,14 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 76,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 147,
       "points": 42,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Frank"
     }
   ],
   "264": [
@@ -6396,14 +6396,14 @@ window.ARCHIVE_DATA = {
       "rank": 66,
       "points": 76,
       "league": "B-Klasse",
-      "name": "038"
+      "name": "Karl"
     },
     {
       "season": "23/24",
       "rank": 90,
       "points": 79,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Karl"
     }
   ],
   "1181": [
@@ -6412,28 +6412,28 @@ window.ARCHIVE_DATA = {
       "rank": 67,
       "points": 75,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 36,
       "points": 106,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 34,
       "points": 104,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 39,
       "points": 95,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Sascha"
     }
   ],
   "1866": [
@@ -6442,28 +6442,28 @@ window.ARCHIVE_DATA = {
       "rank": 69,
       "points": 74,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Bastian"
     },
     {
       "season": "23/24",
       "rank": 69,
       "points": 78,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Bastian"
     },
     {
       "season": "22/23",
       "rank": 74,
       "points": 68,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Bastian"
     },
     {
       "season": "20/22",
       "rank": 106,
       "points": 50,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Bastian"
     }
   ],
   "221": [
@@ -6472,14 +6472,14 @@ window.ARCHIVE_DATA = {
       "rank": 70,
       "points": 74,
       "league": "B-Klasse",
-      "name": "038"
+      "name": "Erich"
     },
     {
       "season": "23/24",
       "rank": 116,
       "points": 61,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Erich"
     }
   ],
   "1563": [
@@ -6488,21 +6488,21 @@ window.ARCHIVE_DATA = {
       "rank": 71,
       "points": 73,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Alex"
     },
     {
       "season": "23/24",
       "rank": 63,
       "points": 84,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Alex"
     },
     {
       "season": "22/23",
       "rank": 123,
       "points": 5,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Alex"
     }
   ],
   "1176": [
@@ -6511,28 +6511,28 @@ window.ARCHIVE_DATA = {
       "rank": 72,
       "points": 73,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 83,
       "points": 64,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 86,
       "points": 71,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 101,
       "points": 52,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andreas"
     }
   ],
   "1086": [
@@ -6541,28 +6541,28 @@ window.ARCHIVE_DATA = {
       "rank": 73,
       "points": 73,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Mario"
     },
     {
       "season": "23/24",
       "rank": 20,
       "points": 129,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Mario"
     },
     {
       "season": "22/23",
       "rank": 4,
       "points": 165,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Mario"
     },
     {
       "season": "20/22",
       "rank": 183,
       "points": 6,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Mario"
     }
   ],
   "432": [
@@ -6571,28 +6571,28 @@ window.ARCHIVE_DATA = {
       "rank": 74,
       "points": 72,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Dominik"
     },
     {
       "season": "23/24",
       "rank": 6,
       "points": 174,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Dominik"
     },
     {
       "season": "22/23",
       "rank": 12,
       "points": 140,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Dominik"
     },
     {
       "season": "20/22",
       "rank": 70,
       "points": 77,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Dominik"
     }
   ],
   "1532": [
@@ -6601,28 +6601,28 @@ window.ARCHIVE_DATA = {
       "rank": 75,
       "points": 72,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Simon"
     },
     {
       "season": "23/24",
       "rank": 93,
       "points": 58,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Simon"
     },
     {
       "season": "22/23",
       "rank": 56,
       "points": 71,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Simon"
     },
     {
       "season": "20/22",
       "rank": 135,
       "points": 6,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Simon"
     }
   ],
   "274": [
@@ -6631,28 +6631,28 @@ window.ARCHIVE_DATA = {
       "rank": 76,
       "points": 71,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Bastian"
     },
     {
       "season": "23/24",
       "rank": 59,
       "points": 61,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Bastian"
     },
     {
       "season": "22/23",
       "rank": 55,
       "points": 72,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Bastian"
     },
     {
       "season": "20/22",
       "rank": 50,
       "points": 75,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Bastian"
     }
   ],
   "931": [
@@ -6661,28 +6661,28 @@ window.ARCHIVE_DATA = {
       "rank": 77,
       "points": 69,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Maximilian"
     },
     {
       "season": "23/24",
       "rank": 89,
       "points": 59,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Maximilian"
     },
     {
       "season": "22/23",
       "rank": 73,
       "points": 68,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Maximilian"
     },
     {
       "season": "20/22",
       "rank": 113,
       "points": 12,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Maximilian"
     }
   ],
   "093": [
@@ -6714,21 +6714,21 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 66,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Johannes"
     },
     {
       "season": "23/24",
       "rank": 26,
       "points": 121,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Johannes"
     },
     {
       "season": "22/23",
       "rank": 11,
       "points": 144,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Johannes"
     }
   ],
   "1705": [
@@ -6737,7 +6737,7 @@ window.ARCHIVE_DATA = {
       "rank": 80,
       "points": 66,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Rene"
     }
   ],
   "1821": [
@@ -6746,28 +6746,28 @@ window.ARCHIVE_DATA = {
       "rank": 81,
       "points": 65,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tamara"
     },
     {
       "season": "23/24",
       "rank": 118,
       "points": 37,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tamara"
     },
     {
       "season": "22/23",
       "rank": 140,
       "points": 22,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tamara"
     },
     {
       "season": "20/22",
       "rank": 106,
       "points": 38,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Tamara"
     }
   ],
   "415": [
@@ -6776,21 +6776,21 @@ window.ARCHIVE_DATA = {
       "rank": 82,
       "points": 64,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 34,
       "points": 121,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 26,
       "points": 126,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Daniel"
     }
   ],
   "1594": [
@@ -6799,28 +6799,28 @@ window.ARCHIVE_DATA = {
       "rank": 83,
       "points": 64,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 53,
       "points": 104,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Alexander"
     },
     {
       "season": "22/23",
       "rank": 129,
       "points": 3,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 60,
       "points": 3,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Alexander"
     }
   ],
   "1643": [
@@ -6829,14 +6829,14 @@ window.ARCHIVE_DATA = {
       "rank": 84,
       "points": 64,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Quentin"
     },
     {
       "season": "23/24",
       "rank": 133,
       "points": 22,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Quentin"
     }
   ],
   "1205": [
@@ -6845,28 +6845,28 @@ window.ARCHIVE_DATA = {
       "rank": 85,
       "points": 63,
       "league": "B-Klasse",
-      "name": "025"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 48,
       "points": 97,
       "league": "B-Klasse",
-      "name": "025"
+      "name": "Kevin"
     },
     {
       "season": "22/23",
       "rank": 49,
       "points": 77,
       "league": "A-Klasse",
-      "name": "025"
+      "name": "Kevin"
     },
     {
       "season": "20/22",
       "rank": 86,
       "points": 26,
       "league": "A-Klasse",
-      "name": "025"
+      "name": "Kevin"
     }
   ],
   "101": [
@@ -6875,28 +6875,28 @@ window.ARCHIVE_DATA = {
       "rank": 86,
       "points": 62,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Roland"
     },
     {
       "season": "23/24",
       "rank": 137,
       "points": 18,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Roland"
     },
     {
       "season": "22/23",
       "rank": 103,
       "points": 48,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Roland"
     },
     {
       "season": "20/22",
       "rank": 57,
       "points": 83,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Roland"
     }
   ],
   "1822": [
@@ -6905,28 +6905,28 @@ window.ARCHIVE_DATA = {
       "rank": 87,
       "points": 61,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 50,
       "points": 96,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 115,
       "points": 39,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 52,
       "points": 86,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Michael"
     }
   ],
   "1427": [
@@ -6935,28 +6935,28 @@ window.ARCHIVE_DATA = {
       "rank": 88,
       "points": 58,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Florian"
     },
     {
       "season": "23/24",
       "rank": 72,
       "points": 49,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Florian"
     },
     {
       "season": "22/23",
       "rank": 136,
       "points": 2,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Florian"
     },
     {
       "season": "20/22",
       "rank": 61,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Florian"
     }
   ],
   "815": [
@@ -6965,28 +6965,28 @@ window.ARCHIVE_DATA = {
       "rank": 89,
       "points": 58,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 46,
       "points": 110,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 25,
       "points": 112,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 103,
       "points": 15,
       "league": "A-Klasse",
-      "name": "002"
+      "name": "Andreas"
     }
   ],
   "1415": [
@@ -6995,28 +6995,28 @@ window.ARCHIVE_DATA = {
       "rank": 90,
       "points": 58,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Dario"
     },
     {
       "season": "23/24",
       "rank": 81,
       "points": 66,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Dario"
     },
     {
       "season": "22/23",
       "rank": 87,
       "points": 59,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Dario"
     },
     {
       "season": "20/22",
       "rank": 63,
       "points": 76,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Dario"
     }
   ],
   "927": [
@@ -7025,14 +7025,14 @@ window.ARCHIVE_DATA = {
       "rank": 91,
       "points": 57,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Nicky"
     },
     {
       "season": "23/24",
       "rank": 50,
       "points": 77,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Nicky"
     }
   ],
   "1816": [
@@ -7041,28 +7041,28 @@ window.ARCHIVE_DATA = {
       "rank": 92,
       "points": 56,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Jessica"
     },
     {
       "season": "23/24",
       "rank": 101,
       "points": 49,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Jessica"
     },
     {
       "season": "22/23",
       "rank": 68,
       "points": 72,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Jessica"
     },
     {
       "season": "20/22",
       "rank": 94,
       "points": 48,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Jessica"
     }
   ],
   "847": [
@@ -7071,28 +7071,28 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 54,
       "league": "B-Klasse",
-      "name": "025"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 33,
       "points": 111,
       "league": "B-Klasse",
-      "name": "025"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 52,
       "points": 73,
       "league": "A-Klasse",
-      "name": "025"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 26,
       "points": 102,
       "league": "A-Klasse",
-      "name": "025"
+      "name": "Michael"
     }
   ],
   "1335": [
@@ -7101,21 +7101,21 @@ window.ARCHIVE_DATA = {
       "rank": 94,
       "points": 54,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Remo"
     },
     {
       "season": "23/24",
       "rank": 88,
       "points": 79,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Remo"
     },
     {
       "season": "22/23",
       "rank": 102,
       "points": 62,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Remo"
     }
   ],
   "1850": [
@@ -7124,14 +7124,14 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 52,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 65,
       "points": 75,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Michael"
     }
   ],
   "1667": [
@@ -7140,28 +7140,28 @@ window.ARCHIVE_DATA = {
       "rank": 96,
       "points": 51,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Klaus"
     },
     {
       "season": "23/24",
       "rank": 11,
       "points": 154,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Klaus"
     },
     {
       "season": "22/23",
       "rank": 47,
       "points": 101,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Klaus"
     },
     {
       "season": "20/22",
       "rank": 33,
       "points": 112,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Klaus"
     }
   ],
   "1296": [
@@ -7170,28 +7170,28 @@ window.ARCHIVE_DATA = {
       "rank": 97,
       "points": 51,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Marc"
     },
     {
       "season": "23/24",
       "rank": 30,
       "points": 125,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Marc"
     },
     {
       "season": "22/23",
       "rank": 184,
       "points": 2,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Marc"
     },
     {
       "season": "20/22",
       "rank": 168,
       "points": 20,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Marc"
     }
   ],
   "426": [
@@ -7200,28 +7200,28 @@ window.ARCHIVE_DATA = {
       "rank": 98,
       "points": 50,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Bernd"
     },
     {
       "season": "23/24",
       "rank": 70,
       "points": 88,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Bernd"
     },
     {
       "season": "22/23",
       "rank": 99,
       "points": 51,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Bernd"
     },
     {
       "season": "20/22",
       "rank": 67,
       "points": 44,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Bernd"
     }
   ],
   "1518": [
@@ -7230,28 +7230,28 @@ window.ARCHIVE_DATA = {
       "rank": 99,
       "points": 48,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Robin"
     },
     {
       "season": "23/24",
       "rank": 120,
       "points": 35,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Robin"
     },
     {
       "season": "22/23",
       "rank": 29,
       "points": 107,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Robin"
     },
     {
       "season": "20/22",
       "rank": 109,
       "points": 36,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Robin"
     }
   ],
   "262": [
@@ -7260,14 +7260,14 @@ window.ARCHIVE_DATA = {
       "rank": 100,
       "points": 47,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Pascal"
     },
     {
       "season": "23/24",
       "rank": 185,
       "points": 2,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Pascal"
     }
   ],
   "1200": [
@@ -7276,28 +7276,28 @@ window.ARCHIVE_DATA = {
       "rank": 101,
       "points": 47,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Danielle"
     },
     {
       "season": "23/24",
       "rank": 39,
       "points": 112,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Danielle"
     },
     {
       "season": "22/23",
       "rank": 45,
       "points": 105,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Danielle"
     },
     {
       "season": "20/22",
       "rank": 77,
       "points": 74,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Danielle"
     }
   ],
   "1717": [
@@ -7306,14 +7306,14 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 47,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 67,
       "points": 90,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Andreas"
     }
   ],
   "648": [
@@ -7322,21 +7322,21 @@ window.ARCHIVE_DATA = {
       "rank": 103,
       "points": 45,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 52,
       "points": 95,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Kevin"
     },
     {
       "season": "20/22",
       "rank": 165,
       "points": 11,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Kevin"
     }
   ],
   "1771": [
@@ -7345,7 +7345,7 @@ window.ARCHIVE_DATA = {
       "rank": 104,
       "points": 44,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Michael"
     }
   ],
   "1538": [
@@ -7354,28 +7354,28 @@ window.ARCHIVE_DATA = {
       "rank": 105,
       "points": 44,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Alfred"
     },
     {
       "season": "23/24",
       "rank": 19,
       "points": 135,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Alfred"
     },
     {
       "season": "22/23",
       "rank": 138,
       "points": 23,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Alfred"
     },
     {
       "season": "20/22",
       "rank": 11,
       "points": 138,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Alfred"
     }
   ],
   "1715": [
@@ -7384,28 +7384,28 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 43,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Tayfun"
     },
     {
       "season": "23/24",
       "rank": 132,
       "points": 22,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Tayfun"
     },
     {
       "season": "22/23",
       "rank": 105,
       "points": 45,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Tayfun"
     },
     {
       "season": "20/22",
       "rank": 79,
       "points": 71,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Tayfun"
     }
   ],
   "561": [
@@ -7414,14 +7414,14 @@ window.ARCHIVE_DATA = {
       "rank": 107,
       "points": 43,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 134,
       "points": 2,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Michael"
     }
   ],
   "1248": [
@@ -7430,21 +7430,21 @@ window.ARCHIVE_DATA = {
       "rank": 108,
       "points": 42,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Tomislav"
     },
     {
       "season": "23/24",
       "rank": 143,
       "points": 16,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Tomislav"
     },
     {
       "season": "22/23",
       "rank": 79,
       "points": 64,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Tomislav"
     }
   ],
   "1233": [
@@ -7453,28 +7453,28 @@ window.ARCHIVE_DATA = {
       "rank": 109,
       "points": 41,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Denis"
     },
     {
       "season": "23/24",
       "rank": 184,
       "points": 2,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Denis"
     },
     {
       "season": "22/23",
       "rank": 24,
       "points": 106,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Denis"
     },
     {
       "season": "20/22",
       "rank": 14,
       "points": 123,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Denis"
     }
   ],
   "361": [
@@ -7483,14 +7483,14 @@ window.ARCHIVE_DATA = {
       "rank": 110,
       "points": 41,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Abinsan"
     },
     {
       "season": "23/24",
       "rank": 68,
       "points": 90,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Abinsan"
     }
   ],
   "468": [
@@ -7499,14 +7499,14 @@ window.ARCHIVE_DATA = {
       "rank": 111,
       "points": 40,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Susanne"
     },
     {
       "season": "23/24",
       "rank": 59,
       "points": 99,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Susanne"
     }
   ],
   "803": [
@@ -7515,28 +7515,28 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 40,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 76,
       "points": 73,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 68,
       "points": 84,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 139,
       "points": 34,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Markus"
     }
   ],
   "963": [
@@ -7545,28 +7545,28 @@ window.ARCHIVE_DATA = {
       "rank": 113,
       "points": 39,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Mile"
     },
     {
       "season": "23/24",
       "rank": 63,
       "points": 59,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Mile"
     },
     {
       "season": "22/23",
       "rank": 30,
       "points": 60,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Mile"
     },
     {
       "season": "20/22",
       "rank": 60,
       "points": 61,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Mile"
     }
   ],
   "550": [
@@ -7575,28 +7575,28 @@ window.ARCHIVE_DATA = {
       "rank": 114,
       "points": 38,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Martin"
     },
     {
       "season": "23/24",
       "rank": 113,
       "points": 62,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Martin"
     },
     {
       "season": "22/23",
       "rank": 131,
       "points": 48,
       "league": "C-Klasse",
-      "name": "045"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 198,
       "points": 5,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Martin"
     }
   ],
   "993": [
@@ -7605,28 +7605,28 @@ window.ARCHIVE_DATA = {
       "rank": 115,
       "points": 36,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 111,
       "points": 41,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 101,
       "points": 64,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 175,
       "points": 8,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Michael"
     }
   ],
   "317": [
@@ -7635,28 +7635,28 @@ window.ARCHIVE_DATA = {
       "rank": 116,
       "points": 33,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Gabriele"
     },
     {
       "season": "23/24",
       "rank": 92,
       "points": 78,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Gabriele"
     },
     {
       "season": "22/23",
       "rank": 87,
       "points": 71,
       "league": "C-Klasse",
-      "name": "045"
+      "name": "Gabriele"
     },
     {
       "season": "20/22",
       "rank": 78,
       "points": 63,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Gabriele"
     }
   ],
   "1732": [
@@ -7665,14 +7665,14 @@ window.ARCHIVE_DATA = {
       "rank": 117,
       "points": 32,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Robert"
     },
     {
       "season": "23/24",
       "rank": 101,
       "points": 71,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Robert"
     }
   ],
   "479": [
@@ -7681,7 +7681,7 @@ window.ARCHIVE_DATA = {
       "rank": 118,
       "points": 31,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Peter"
     }
   ],
   "1719": [
@@ -7690,28 +7690,28 @@ window.ARCHIVE_DATA = {
       "rank": 119,
       "points": 30,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "B\u00fcnyamin"
     },
     {
       "season": "23/24",
       "rank": 103,
       "points": 45,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "B\u00fcnyamin"
     },
     {
       "season": "22/23",
       "rank": 111,
       "points": 42,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "B\u00fcnyamin"
     },
     {
       "season": "20/22",
       "rank": 132,
       "points": 35,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "B\u00fcnyamin"
     }
   ],
   "1590": [
@@ -7720,28 +7720,28 @@ window.ARCHIVE_DATA = {
       "rank": 120,
       "points": 30,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 90,
       "points": 18,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 58,
       "points": 4,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 127,
       "points": 8,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Andreas"
     }
   ],
   "1862": [
@@ -7750,21 +7750,21 @@ window.ARCHIVE_DATA = {
       "rank": 121,
       "points": 30,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 141,
       "points": 17,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 136,
       "points": 46,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Thomas"
     }
   ],
   "1766": [
@@ -7773,28 +7773,28 @@ window.ARCHIVE_DATA = {
       "rank": 122,
       "points": 29,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Sangkharat"
     },
     {
       "season": "23/24",
       "rank": 104,
       "points": 44,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Sangkharat"
     },
     {
       "season": "22/23",
       "rank": 96,
       "points": 53,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Sangkharat"
     },
     {
       "season": "20/22",
       "rank": 203,
       "points": 13,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Sangkharat"
     }
   ],
   "607": [
@@ -7803,7 +7803,7 @@ window.ARCHIVE_DATA = {
       "rank": 123,
       "points": 29,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Andreas"
     }
   ],
   "268": [
@@ -7812,28 +7812,28 @@ window.ARCHIVE_DATA = {
       "rank": 125,
       "points": 27,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     },
     {
       "season": "23/24",
       "rank": 191,
       "points": 2,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     },
     {
       "season": "22/23",
       "rank": 165,
       "points": 8,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 147,
       "points": 17,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     }
   ],
   "644": [
@@ -7842,7 +7842,7 @@ window.ARCHIVE_DATA = {
       "rank": 126,
       "points": 26,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Florian"
     }
   ],
   "1393": [
@@ -7851,14 +7851,14 @@ window.ARCHIVE_DATA = {
       "rank": 127,
       "points": 26,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 214,
       "points": 10,
       "league": "C-Klasse",
-      "name": "036"
+      "name": "Andreas"
     }
   ],
   "1004": [
@@ -7867,21 +7867,21 @@ window.ARCHIVE_DATA = {
       "rank": 128,
       "points": 26,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Ulrike"
     },
     {
       "season": "23/24",
       "rank": 119,
       "points": 57,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Ulrike"
     },
     {
       "season": "22/23",
       "rank": 144,
       "points": 41,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Ulrike"
     }
   ],
   "1164": [
@@ -7890,28 +7890,28 @@ window.ARCHIVE_DATA = {
       "rank": 129,
       "points": 26,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 107,
       "points": 43,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 120,
       "points": 35,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 136,
       "points": 6,
       "league": "A-Klasse",
-      "name": "056"
+      "name": "Michael"
     }
   ],
   "934": [
@@ -7920,28 +7920,28 @@ window.ARCHIVE_DATA = {
       "rank": 131,
       "points": 24,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Sebastian"
     },
     {
       "season": "23/24",
       "rank": 135,
       "points": 51,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Sebastian"
     },
     {
       "season": "22/23",
       "rank": 7,
       "points": 154,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Sebastian"
     },
     {
       "season": "20/22",
       "rank": 28,
       "points": 110,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Sebastian"
     }
   ],
   "1722": [
@@ -7950,28 +7950,28 @@ window.ARCHIVE_DATA = {
       "rank": 132,
       "points": 23,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 22,
       "points": 107,
       "league": "A-Klasse",
-      "name": "034"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 9,
       "points": 155,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Christian"
     },
     {
       "season": "20/22",
       "rank": 10,
       "points": 140,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Christian"
     }
   ],
   "1190": [
@@ -7980,28 +7980,28 @@ window.ARCHIVE_DATA = {
       "rank": 133,
       "points": 22,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 86,
       "points": 61,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 88,
       "points": 59,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 146,
       "points": 4,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Sven"
     }
   ],
   "1520": [
@@ -8010,28 +8010,28 @@ window.ARCHIVE_DATA = {
       "rank": 134,
       "points": 21,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Thorsten"
     },
     {
       "season": "23/24",
       "rank": 174,
       "points": 5,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Thorsten"
     },
     {
       "season": "22/23",
       "rank": 85,
       "points": 60,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Thorsten"
     },
     {
       "season": "20/22",
       "rank": 115,
       "points": 33,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Thorsten"
     }
   ],
   "1017": [
@@ -8040,28 +8040,28 @@ window.ARCHIVE_DATA = {
       "rank": 135,
       "points": 21,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Timo"
     },
     {
       "season": "23/24",
       "rank": 210,
       "points": 19,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Timo"
     },
     {
       "season": "22/23",
       "rank": 174,
       "points": 28,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Timo"
     },
     {
       "season": "20/22",
       "rank": 255,
       "points": 4,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Timo"
     }
   ],
   "537": [
@@ -8070,7 +8070,7 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 21,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Timo"
     }
   ],
   "627": [
@@ -8079,21 +8079,21 @@ window.ARCHIVE_DATA = {
       "rank": 137,
       "points": 20,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Andrei"
     },
     {
       "season": "23/24",
       "rank": 78,
       "points": 39,
       "league": "A-Klasse",
-      "name": "034"
+      "name": "Andrei"
     },
     {
       "season": "20/22",
       "rank": 128,
       "points": 25,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Andrei Gheorghe"
     }
   ],
   "1191": [
@@ -8102,28 +8102,28 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 20,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Josef"
     },
     {
       "season": "23/24",
       "rank": 138,
       "points": 18,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Josef"
     },
     {
       "season": "22/23",
       "rank": 156,
       "points": 11,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Josef"
     },
     {
       "season": "20/22",
       "rank": 111,
       "points": 47,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Josef"
     }
   ],
   "1677": [
@@ -8132,28 +8132,28 @@ window.ARCHIVE_DATA = {
       "rank": 139,
       "points": 20,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 37,
       "points": 105,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 143,
       "points": 41,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 45,
       "points": 100,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Sascha"
     }
   ],
   "1145": [
@@ -8162,28 +8162,28 @@ window.ARCHIVE_DATA = {
       "rank": 141,
       "points": 18,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 56,
       "points": 100,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 70,
       "points": 84,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 137,
       "points": 34,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Thomas"
     }
   ],
   "1249": [
@@ -8192,28 +8192,28 @@ window.ARCHIVE_DATA = {
       "rank": 142,
       "points": 18,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 109,
       "points": 42,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Alexander"
     },
     {
       "season": "22/23",
       "rank": 13,
       "points": 143,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 155,
       "points": 13,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Alexander"
     }
   ],
   "1591": [
@@ -8222,28 +8222,28 @@ window.ARCHIVE_DATA = {
       "rank": 143,
       "points": 17,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Giovanni"
     },
     {
       "season": "23/24",
       "rank": 164,
       "points": 35,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Giovanni"
     },
     {
       "season": "22/23",
       "rank": 133,
       "points": 47,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Giovanni"
     },
     {
       "season": "20/22",
       "rank": 138,
       "points": 34,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Giovanni"
     }
   ],
   "1360": [
@@ -8252,14 +8252,14 @@ window.ARCHIVE_DATA = {
       "rank": 144,
       "points": 17,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 181,
       "points": 28,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Alexander"
     }
   ],
   "654": [
@@ -8268,28 +8268,28 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 16,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Heiko"
     },
     {
       "season": "23/24",
       "rank": 115,
       "points": 39,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Heiko"
     },
     {
       "season": "22/23",
       "rank": 95,
       "points": 19,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Heiko"
     },
     {
       "season": "20/22",
       "rank": 40,
       "points": 102,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Heiko"
     }
   ],
   "1894": [
@@ -8298,21 +8298,21 @@ window.ARCHIVE_DATA = {
       "rank": 146,
       "points": 16,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Romina Diana"
     },
     {
       "season": "23/24",
       "rank": 183,
       "points": 3,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Romina Diana"
     },
     {
       "season": "22/23",
       "rank": 247,
       "points": 5,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Romina Diana"
     }
   ],
   "817": [
@@ -8321,28 +8321,28 @@ window.ARCHIVE_DATA = {
       "rank": 147,
       "points": 16,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Vanessa"
     },
     {
       "season": "23/24",
       "rank": 95,
       "points": 74,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Vanessa"
     },
     {
       "season": "22/23",
       "rank": 94,
       "points": 67,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Vanessa"
     },
     {
       "season": "20/22",
       "rank": 87,
       "points": 65,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Vanessa"
     }
   ],
   "1707": [
@@ -8351,7 +8351,7 @@ window.ARCHIVE_DATA = {
       "rank": 148,
       "points": 16,
       "league": "B-Klasse",
-      "name": "035"
+      "name": "Justin"
     }
   ],
   "1155": [
@@ -8360,7 +8360,7 @@ window.ARCHIVE_DATA = {
       "rank": 149,
       "points": 15,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Florian"
     }
   ],
   "1254": [
@@ -8369,28 +8369,28 @@ window.ARCHIVE_DATA = {
       "rank": 150,
       "points": 14,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Ahmed"
     },
     {
       "season": "23/24",
       "rank": 51,
       "points": 76,
       "league": "A-Klasse",
-      "name": "034"
+      "name": "Ahmed"
     },
     {
       "season": "22/23",
       "rank": 58,
       "points": 80,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Ahmed"
     },
     {
       "season": "20/22",
       "rank": 91,
       "points": 49,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Ahmed"
     }
   ],
   "1275": [
@@ -8399,21 +8399,21 @@ window.ARCHIVE_DATA = {
       "rank": 151,
       "points": 14,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Uwe"
     },
     {
       "season": "23/24",
       "rank": 156,
       "points": 37,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Uwe"
     },
     {
       "season": "22/23",
       "rank": 92,
       "points": 69,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Uwe"
     }
   ],
   "845": [
@@ -8422,28 +8422,28 @@ window.ARCHIVE_DATA = {
       "rank": 152,
       "points": 14,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Manuela"
     },
     {
       "season": "23/24",
       "rank": 122,
       "points": 34,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Manuela"
     },
     {
       "season": "22/23",
       "rank": 176,
       "points": 5,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Manuela"
     },
     {
       "season": "20/22",
       "rank": 208,
       "points": 12,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Manuela"
     }
   ],
   "1101": [
@@ -8452,28 +8452,28 @@ window.ARCHIVE_DATA = {
       "rank": 153,
       "points": 14,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Volker"
     },
     {
       "season": "23/24",
       "rank": 175,
       "points": 31,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Volker"
     },
     {
       "season": "22/23",
       "rank": 191,
       "points": 0,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Volker"
     },
     {
       "season": "20/22",
       "rank": 69,
       "points": 43,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Volker"
     }
   ],
   "601": [
@@ -8482,28 +8482,28 @@ window.ARCHIVE_DATA = {
       "rank": 154,
       "points": 13,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 192,
       "points": 24,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Frank"
     },
     {
       "season": "22/23",
       "rank": 143,
       "points": 19,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 160,
       "points": 0,
       "league": "A-Klasse",
-      "name": "056"
+      "name": "Frank"
     }
   ],
   "1649": [
@@ -8512,28 +8512,28 @@ window.ARCHIVE_DATA = {
       "rank": 155,
       "points": 13,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Jacqueline"
     },
     {
       "season": "23/24",
       "rank": 128,
       "points": 54,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Jacqueline"
     },
     {
       "season": "22/23",
       "rank": 46,
       "points": 104,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Jacqueline"
     },
     {
       "season": "20/22",
       "rank": 104,
       "points": 51,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Jacqueline"
     }
   ],
   "1324": [
@@ -8542,28 +8542,28 @@ window.ARCHIVE_DATA = {
       "rank": 156,
       "points": 12,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Erdogan"
     },
     {
       "season": "23/24",
       "rank": 80,
       "points": 66,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Erdogan"
     },
     {
       "season": "22/23",
       "rank": 77,
       "points": 66,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Erdogan"
     },
     {
       "season": "20/22",
       "rank": 127,
       "points": 25,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Erdogan"
     }
   ],
   "670": [
@@ -8572,28 +8572,28 @@ window.ARCHIVE_DATA = {
       "rank": 157,
       "points": 11,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Maria"
     },
     {
       "season": "23/24",
       "rank": 111,
       "points": 3,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Maria"
     },
     {
       "season": "22/23",
       "rank": 114,
       "points": 6,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Maria"
     },
     {
       "season": "20/22",
       "rank": 96,
       "points": 19,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Maria"
     }
   ],
   "1527": [
@@ -8602,28 +8602,28 @@ window.ARCHIVE_DATA = {
       "rank": 158,
       "points": 11,
       "league": "B-Klasse",
-      "name": "057"
+      "name": "Ralf"
     },
     {
       "season": "23/24",
       "rank": 81,
       "points": 35,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Ralf"
     },
     {
       "season": "22/23",
       "rank": 41,
       "points": 30,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Ralf"
     },
     {
       "season": "20/22",
       "rank": 43,
       "points": 84,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Ralf"
     }
   ],
   "548": [
@@ -8632,14 +8632,14 @@ window.ARCHIVE_DATA = {
       "rank": 159,
       "points": 10,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Angela"
     },
     {
       "season": "23/24",
       "rank": 158,
       "points": 10,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Angela"
     }
   ],
   "597": [
@@ -8648,14 +8648,14 @@ window.ARCHIVE_DATA = {
       "rank": 160,
       "points": 10,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Ralf"
     },
     {
       "season": "23/24",
       "rank": 171,
       "points": 32,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Ralf"
     }
   ],
   "557": [
@@ -8664,7 +8664,7 @@ window.ARCHIVE_DATA = {
       "rank": 161,
       "points": 9,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Tobias"
     }
   ],
   "1153": [
@@ -8673,28 +8673,28 @@ window.ARCHIVE_DATA = {
       "rank": 163,
       "points": 9,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Peter"
     },
     {
       "season": "23/24",
       "rank": 66,
       "points": 92,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Peter"
     },
     {
       "season": "22/23",
       "rank": 71,
       "points": 71,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 85,
       "points": 57,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Peter"
     }
   ],
   "406": [
@@ -8703,28 +8703,28 @@ window.ARCHIVE_DATA = {
       "rank": 164,
       "points": 8,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 58,
       "points": 90,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 54,
       "points": 72,
       "league": "A-Klasse",
-      "name": "037"
+      "name": "Dennis"
     },
     {
       "season": "20/22",
       "rank": 31,
       "points": 108,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Dennis"
     }
   ],
   "1740": [
@@ -8733,21 +8733,21 @@ window.ARCHIVE_DATA = {
       "rank": 165,
       "points": 8,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 152,
       "points": 12,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 110,
       "points": 59,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Daniel"
     }
   ],
   "416": [
@@ -8756,28 +8756,28 @@ window.ARCHIVE_DATA = {
       "rank": 166,
       "points": 8,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Tina"
     },
     {
       "season": "23/24",
       "rank": 186,
       "points": 2,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Tina"
     },
     {
       "season": "22/23",
       "rank": 212,
       "points": 13,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Tina"
     },
     {
       "season": "20/22",
       "rank": 154,
       "points": 25,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Tina"
     }
   ],
   "1833": [
@@ -8786,21 +8786,21 @@ window.ARCHIVE_DATA = {
       "rank": 167,
       "points": 8,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 75,
       "points": 86,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 73,
       "points": 80,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sven"
     }
   ],
   "272": [
@@ -8809,14 +8809,14 @@ window.ARCHIVE_DATA = {
       "rank": 168,
       "points": 8,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Neven"
     },
     {
       "season": "23/24",
       "rank": 55,
       "points": 100,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Neven"
     }
   ],
   "593": [
@@ -8825,28 +8825,28 @@ window.ARCHIVE_DATA = {
       "rank": 169,
       "points": 7,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Ivan"
     },
     {
       "season": "23/24",
       "rank": 79,
       "points": 39,
       "league": "A-Klasse",
-      "name": "034"
+      "name": "Ivan"
     },
     {
       "season": "22/23",
       "rank": 51,
       "points": 87,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Ivan"
     },
     {
       "season": "20/22",
       "rank": 18,
       "points": 133,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Ivan"
     }
   ],
   "407": [
@@ -8855,28 +8855,28 @@ window.ARCHIVE_DATA = {
       "rank": 171,
       "points": 7,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Tim"
     },
     {
       "season": "23/24",
       "rank": 59,
       "points": 89,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Tim"
     },
     {
       "season": "22/23",
       "rank": 30,
       "points": 95,
       "league": "A-Klasse",
-      "name": "037"
+      "name": "Tim"
     },
     {
       "season": "20/22",
       "rank": 9,
       "points": 141,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Tim"
     }
   ],
   "860": [
@@ -8885,28 +8885,28 @@ window.ARCHIVE_DATA = {
       "rank": 172,
       "points": 7,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Philipp"
     },
     {
       "season": "23/24",
       "rank": 74,
       "points": 74,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Philipp"
     },
     {
       "season": "22/23",
       "rank": 38,
       "points": 88,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Philipp"
     },
     {
       "season": "20/22",
       "rank": 17,
       "points": 122,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Philipp"
     }
   ],
   "749": [
@@ -8915,21 +8915,21 @@ window.ARCHIVE_DATA = {
       "rank": 174,
       "points": 7,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 103,
       "points": 62,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 56,
       "points": 89,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Marco"
     }
   ],
   "925": [
@@ -8938,28 +8938,28 @@ window.ARCHIVE_DATA = {
       "rank": 175,
       "points": 6,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 37,
       "points": 115,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 127,
       "points": 49,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 96,
       "points": 45,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Benjamin"
     }
   ],
   "121": [
@@ -8968,28 +8968,28 @@ window.ARCHIVE_DATA = {
       "rank": 176,
       "points": 6,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Wilfried"
     },
     {
       "season": "23/24",
       "rank": 222,
       "points": 17,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Wilfried"
     },
     {
       "season": "22/23",
       "rank": 133,
       "points": 25,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Wilfried"
     },
     {
       "season": "20/22",
       "rank": 75,
       "points": 35,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Wilfried"
     }
   ],
   "1399": [
@@ -8998,14 +8998,14 @@ window.ARCHIVE_DATA = {
       "rank": 177,
       "points": 5,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 163,
       "points": 8,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Kevin"
     }
   ],
   "527": [
@@ -9014,28 +9014,28 @@ window.ARCHIVE_DATA = {
       "rank": 178,
       "points": 5,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "J\u00f6rg"
     },
     {
       "season": "23/24",
       "rank": 119,
       "points": 0,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "J\u00f6rg"
     },
     {
       "season": "22/23",
       "rank": 173,
       "points": 5,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "J\u00f6rg"
     },
     {
       "season": "20/22",
       "rank": 154,
       "points": 2,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "J\u00f6rg"
     }
   ],
   "781": [
@@ -9044,28 +9044,28 @@ window.ARCHIVE_DATA = {
       "rank": 179,
       "points": 5,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 176,
       "points": 4,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 79,
       "points": 76,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 98,
       "points": 44,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Thomas"
     }
   ],
   "437": [
@@ -9074,7 +9074,7 @@ window.ARCHIVE_DATA = {
       "rank": 181,
       "points": 5,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Carina"
     }
   ],
   "818": [
@@ -9083,28 +9083,28 @@ window.ARCHIVE_DATA = {
       "rank": 182,
       "points": 4,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Gabi"
     },
     {
       "season": "23/24",
       "rank": 147,
       "points": 15,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Gabi"
     },
     {
       "season": "22/23",
       "rank": 111,
       "points": 59,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Gabi"
     },
     {
       "season": "20/22",
       "rank": 159,
       "points": 0,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Gabi"
     }
   ],
   "1062": [
@@ -9113,28 +9113,28 @@ window.ARCHIVE_DATA = {
       "rank": 183,
       "points": 3,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Jacek"
     },
     {
       "season": "23/24",
       "rank": 113,
       "points": 39,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Jacek"
     },
     {
       "season": "22/23",
       "rank": 67,
       "points": 86,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Jacek"
     },
     {
       "season": "20/22",
       "rank": 213,
       "points": 10,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Jacek"
     }
   ],
   "1075": [
@@ -9143,28 +9143,28 @@ window.ARCHIVE_DATA = {
       "rank": 184,
       "points": 3,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 194,
       "points": 1,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 148,
       "points": 39,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Daniel"
     },
     {
       "season": "20/22",
       "rank": 199,
       "points": 5,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Daniel"
     }
   ],
   "501": [
@@ -9173,14 +9173,14 @@ window.ARCHIVE_DATA = {
       "rank": 185,
       "points": 3,
       "league": "B-Klasse",
-      "name": "009"
+      "name": "Tom"
     },
     {
       "season": "23/24",
       "rank": 139,
       "points": 47,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Tom"
     }
   ],
   "1158": [
@@ -9189,14 +9189,14 @@ window.ARCHIVE_DATA = {
       "rank": 186,
       "points": 2,
       "league": "B-Klasse",
-      "name": "005"
+      "name": "Mathias"
     },
     {
       "season": "20/22",
       "rank": 210,
       "points": 11,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Mathias"
     }
   ],
   "650": [
@@ -9205,7 +9205,7 @@ window.ARCHIVE_DATA = {
       "rank": 188,
       "points": 2,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "J\u00fcrgen"
     }
   ],
   "1622": [
@@ -9214,28 +9214,28 @@ window.ARCHIVE_DATA = {
       "rank": 189,
       "points": 2,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Dirk Walter"
     },
     {
       "season": "23/24",
       "rank": 181,
       "points": 3,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Dirk Walter"
     },
     {
       "season": "22/23",
       "rank": 55,
       "points": 95,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Dirk Walter"
     },
     {
       "season": "20/22",
       "rank": 244,
       "points": 6,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Dirk"
     }
   ],
   "300": [
@@ -9244,14 +9244,14 @@ window.ARCHIVE_DATA = {
       "rank": 190,
       "points": 2,
       "league": "B-Klasse",
-      "name": "065"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 97,
       "points": 73,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Christian"
     }
   ],
   "1620": [
@@ -9260,28 +9260,28 @@ window.ARCHIVE_DATA = {
       "rank": 191,
       "points": 1,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Savvas"
     },
     {
       "season": "23/24",
       "rank": 187,
       "points": 2,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Savvas"
     },
     {
       "season": "22/23",
       "rank": 209,
       "points": 14,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Savvas"
     },
     {
       "season": "20/22",
       "rank": 254,
       "points": 4,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Savvas"
     }
   ],
   "505": [
@@ -9290,7 +9290,7 @@ window.ARCHIVE_DATA = {
       "rank": 192,
       "points": 1,
       "league": "B-Klasse",
-      "name": "025"
+      "name": "Sven"
     }
   ],
   "308": [
@@ -9299,28 +9299,28 @@ window.ARCHIVE_DATA = {
       "rank": 193,
       "points": 0,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Damir"
     },
     {
       "season": "23/24",
       "rank": 52,
       "points": 75,
       "league": "A-Klasse",
-      "name": "034"
+      "name": "Damir"
     },
     {
       "season": "22/23",
       "rank": 43,
       "points": 97,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Damir"
     },
     {
       "season": "20/22",
       "rank": 38,
       "points": 103,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Damir"
     }
   ],
   "547": [
@@ -9329,21 +9329,21 @@ window.ARCHIVE_DATA = {
       "rank": 194,
       "points": 0,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Dagmar"
     },
     {
       "season": "23/24",
       "rank": 160,
       "points": 9,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Dagmar"
     },
     {
       "season": "22/23",
       "rank": 175,
       "points": 5,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Dagmar"
     }
   ],
   "1207": [
@@ -9352,28 +9352,28 @@ window.ARCHIVE_DATA = {
       "rank": 195,
       "points": 0,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Maximilian"
     },
     {
       "season": "23/24",
       "rank": 110,
       "points": 4,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Maximilian"
     },
     {
       "season": "22/23",
       "rank": 115,
       "points": 6,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Maximilian"
     },
     {
       "season": "20/22",
       "rank": 111,
       "points": 13,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Maximilian"
     }
   ],
   "848": [
@@ -9382,7 +9382,7 @@ window.ARCHIVE_DATA = {
       "rank": 196,
       "points": 0,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Dennis"
     }
   ],
   "1837": [
@@ -9391,21 +9391,21 @@ window.ARCHIVE_DATA = {
       "rank": 197,
       "points": 0,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Sandra"
     },
     {
       "season": "23/24",
       "rank": 239,
       "points": 13,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Sandra"
     },
     {
       "season": "22/23",
       "rank": 190,
       "points": 21,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Sandra"
     }
   ],
   "488": [
@@ -9414,14 +9414,14 @@ window.ARCHIVE_DATA = {
       "rank": 198,
       "points": 0,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Jonas"
     },
     {
       "season": "23/24",
       "rank": 122,
       "points": 0,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Jonas"
     }
   ],
   "1838": [
@@ -9430,21 +9430,21 @@ window.ARCHIVE_DATA = {
       "rank": 199,
       "points": 0,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Andreas Hermann"
     },
     {
       "season": "23/24",
       "rank": 189,
       "points": 2,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Andreas Hermann"
     },
     {
       "season": "22/23",
       "rank": 183,
       "points": 23,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Andreas Hermann"
     }
   ],
   "373": [
@@ -9453,14 +9453,14 @@ window.ARCHIVE_DATA = {
       "rank": 1,
       "points": 205,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 1,
       "points": 186,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Daniel"
     }
   ],
   "1651": [
@@ -9469,21 +9469,21 @@ window.ARCHIVE_DATA = {
       "rank": 2,
       "points": 194,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Simon"
     },
     {
       "season": "23/24",
       "rank": 10,
       "points": 151,
       "league": "B-Klasse",
-      "name": "012"
+      "name": "Simon"
     },
     {
       "season": "22/23",
       "rank": 220,
       "points": 11,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Simon"
     }
   ],
   "132": [
@@ -9492,28 +9492,28 @@ window.ARCHIVE_DATA = {
       "rank": 3,
       "points": 190,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 7,
       "points": 169,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 6,
       "points": 162,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 39,
       "points": 89,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Thomas"
     }
   ],
   "1895": [
@@ -9522,21 +9522,21 @@ window.ARCHIVE_DATA = {
       "rank": 4,
       "points": 189,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Julien"
     },
     {
       "season": "23/24",
       "rank": 25,
       "points": 131,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Julien"
     },
     {
       "season": "22/23",
       "rank": 116,
       "points": 39,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Julien"
     }
   ],
   "1513": [
@@ -9545,28 +9545,28 @@ window.ARCHIVE_DATA = {
       "rank": 5,
       "points": 181,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Manuel"
     },
     {
       "season": "23/24",
       "rank": 64,
       "points": 84,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Manuel"
     },
     {
       "season": "22/23",
       "rank": 78,
       "points": 65,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Manuel"
     },
     {
       "season": "20/22",
       "rank": 108,
       "points": 48,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Manuel"
     }
   ],
   "1468": [
@@ -9575,7 +9575,7 @@ window.ARCHIVE_DATA = {
       "rank": 6,
       "points": 178,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Sebastian"
     }
   ],
   "525": [
@@ -9584,28 +9584,28 @@ window.ARCHIVE_DATA = {
       "rank": 7,
       "points": 175,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Mirko"
     },
     {
       "season": "23/24",
       "rank": 11,
       "points": 143,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Mirko"
     },
     {
       "season": "22/23",
       "rank": 15,
       "points": 131,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Mirko"
     },
     {
       "season": "20/22",
       "rank": 103,
       "points": 41,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Mirko"
     }
   ],
   "1882": [
@@ -9614,14 +9614,14 @@ window.ARCHIVE_DATA = {
       "rank": 8,
       "points": 171,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "R\u00fcdiger"
     },
     {
       "season": "23/24",
       "rank": 79,
       "points": 84,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "R\u00fcdiger"
     }
   ],
   "1642": [
@@ -9630,7 +9630,7 @@ window.ARCHIVE_DATA = {
       "rank": 9,
       "points": 168,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "David"
     }
   ],
   "1339": [
@@ -9639,28 +9639,28 @@ window.ARCHIVE_DATA = {
       "rank": 10,
       "points": 167,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Oliver"
     },
     {
       "season": "23/24",
       "rank": 45,
       "points": 26,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Oliver"
     },
     {
       "season": "22/23",
       "rank": 14,
       "points": 136,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Oliver"
     },
     {
       "season": "20/22",
       "rank": 4,
       "points": 180,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Oliver"
     }
   ],
   "469": [
@@ -9669,28 +9669,28 @@ window.ARCHIVE_DATA = {
       "rank": 11,
       "points": 161,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Juan"
     },
     {
       "season": "23/24",
       "rank": 4,
       "points": 183,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Juan"
     },
     {
       "season": "22/23",
       "rank": 58,
       "points": 92,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Juan"
     },
     {
       "season": "20/22",
       "rank": 93,
       "points": 56,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Juan"
     }
   ],
   "1369": [
@@ -9699,21 +9699,21 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 159,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 47,
       "points": 110,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 40,
       "points": 98,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Markus"
     }
   ],
   "1577": [
@@ -9722,28 +9722,28 @@ window.ARCHIVE_DATA = {
       "rank": 13,
       "points": 158,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Lee"
     },
     {
       "season": "23/24",
       "rank": 28,
       "points": 126,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Lee"
     },
     {
       "season": "22/23",
       "rank": 39,
       "points": 110,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Lee"
     },
     {
       "season": "20/22",
       "rank": 86,
       "points": 65,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Lee"
     }
   ],
   "1446": [
@@ -9752,21 +9752,21 @@ window.ARCHIVE_DATA = {
       "rank": 14,
       "points": 154,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 10,
       "points": 158,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 105,
       "points": 61,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Thomas"
     }
   ],
   "1855": [
@@ -9775,14 +9775,14 @@ window.ARCHIVE_DATA = {
       "rank": 15,
       "points": 152,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Dorian"
     },
     {
       "season": "23/24",
       "rank": 21,
       "points": 128,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Dorian"
     }
   ],
   "369": [
@@ -9791,14 +9791,14 @@ window.ARCHIVE_DATA = {
       "rank": 16,
       "points": 152,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Brian"
     },
     {
       "season": "23/24",
       "rank": 9,
       "points": 164,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Brian"
     }
   ],
   "323": [
@@ -9807,7 +9807,7 @@ window.ARCHIVE_DATA = {
       "rank": 17,
       "points": 150,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Ivo"
     }
   ],
   "569": [
@@ -9816,7 +9816,7 @@ window.ARCHIVE_DATA = {
       "rank": 18,
       "points": 143,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Claus"
     }
   ],
   "312": [
@@ -9825,14 +9825,14 @@ window.ARCHIVE_DATA = {
       "rank": 19,
       "points": 142,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 13,
       "points": 153,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Andreas"
     }
   ],
   "1871": [
@@ -9841,28 +9841,28 @@ window.ARCHIVE_DATA = {
       "rank": 20,
       "points": 141,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Patrick"
     },
     {
       "season": "23/24",
       "rank": 38,
       "points": 113,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Patrick"
     },
     {
       "season": "22/23",
       "rank": 57,
       "points": 82,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Patrick"
     },
     {
       "season": "20/22",
       "rank": 63,
       "points": 49,
       "league": "A-Klasse",
-      "name": "002"
+      "name": "Patrick"
     }
   ],
   "1238": [
@@ -9871,28 +9871,28 @@ window.ARCHIVE_DATA = {
       "rank": 21,
       "points": 138,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Jenny"
     },
     {
       "season": "23/24",
       "rank": 51,
       "points": 95,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Jenny"
     },
     {
       "season": "22/23",
       "rank": 66,
       "points": 74,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Jenny"
     },
     {
       "season": "20/22",
       "rank": 50,
       "points": 86,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Jenny"
     }
   ],
   "754": [
@@ -9901,7 +9901,7 @@ window.ARCHIVE_DATA = {
       "rank": 22,
       "points": 138,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Orhan"
     }
   ],
   "1753": [
@@ -9910,14 +9910,14 @@ window.ARCHIVE_DATA = {
       "rank": 23,
       "points": 137,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Gerd"
     },
     {
       "season": "23/24",
       "rank": 178,
       "points": 4,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Gerd"
     }
   ],
   "1373": [
@@ -9926,28 +9926,28 @@ window.ARCHIVE_DATA = {
       "rank": 24,
       "points": 135,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Tugay"
     },
     {
       "season": "23/24",
       "rank": 15,
       "points": 152,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Tugay"
     },
     {
       "season": "22/23",
       "rank": 28,
       "points": 119,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Tugay"
     },
     {
       "season": "20/22",
       "rank": 20,
       "points": 131,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Tugay"
     }
   ],
   "1395": [
@@ -9956,14 +9956,14 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 135,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 180,
       "points": 4,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Dennis"
     }
   ],
   "482": [
@@ -9972,7 +9972,7 @@ window.ARCHIVE_DATA = {
       "rank": 26,
       "points": 133,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Marc"
     }
   ],
   "1556": [
@@ -9981,28 +9981,28 @@ window.ARCHIVE_DATA = {
       "rank": 27,
       "points": 133,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 42,
       "points": 111,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 23,
       "points": 134,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 103,
       "points": 51,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sascha"
     }
   ],
   "277": [
@@ -10011,14 +10011,14 @@ window.ARCHIVE_DATA = {
       "rank": 28,
       "points": 130,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Tobias"
     },
     {
       "season": "23/24",
       "rank": 133,
       "points": 51,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Tobias"
     }
   ],
   "967": [
@@ -10027,21 +10027,21 @@ window.ARCHIVE_DATA = {
       "rank": 29,
       "points": 128,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Wolfgang"
     },
     {
       "season": "23/24",
       "rank": 107,
       "points": 66,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Wolfgang"
     },
     {
       "season": "22/23",
       "rank": 235,
       "points": 8,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Wolfgang"
     }
   ],
   "1066": [
@@ -10050,14 +10050,14 @@ window.ARCHIVE_DATA = {
       "rank": 30,
       "points": 127,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 202,
       "points": 13,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Sascha"
     }
   ],
   "429": [
@@ -10066,14 +10066,14 @@ window.ARCHIVE_DATA = {
       "rank": 32,
       "points": 126,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Yanni"
     },
     {
       "season": "23/24",
       "rank": 40,
       "points": 112,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Yanni"
     }
   ],
   "1263": [
@@ -10082,28 +10082,28 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 125,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "23/24",
       "rank": 63,
       "points": 95,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "22/23",
       "rank": 69,
       "points": 84,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 82,
       "points": 60,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Peter"
     }
   ],
   "1087": [
@@ -10112,28 +10112,28 @@ window.ARCHIVE_DATA = {
       "rank": 34,
       "points": 124,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Nadine"
     },
     {
       "season": "23/24",
       "rank": 78,
       "points": 84,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Nadine"
     },
     {
       "season": "22/23",
       "rank": 100,
       "points": 64,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Nadine"
     },
     {
       "season": "20/22",
       "rank": 232,
       "points": 7,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Nadine"
     }
   ],
   "819": [
@@ -10142,28 +10142,28 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 123,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Axel"
     },
     {
       "season": "23/24",
       "rank": 62,
       "points": 98,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Axel"
     },
     {
       "season": "22/23",
       "rank": 25,
       "points": 132,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Axel"
     },
     {
       "season": "20/22",
       "rank": 37,
       "points": 104,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Axel"
     }
   ],
   "1024": [
@@ -10172,28 +10172,28 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 122,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 84,
       "points": 80,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 107,
       "points": 44,
       "league": "B-Klasse",
-      "name": "010"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 31,
       "points": 115,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Benjamin"
     }
   ],
   "338": [
@@ -10202,28 +10202,28 @@ window.ARCHIVE_DATA = {
       "rank": 37,
       "points": 122,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ali"
     },
     {
       "season": "23/24",
       "rank": 31,
       "points": 124,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ali"
     },
     {
       "season": "22/23",
       "rank": 41,
       "points": 108,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ali"
     },
     {
       "season": "20/22",
       "rank": 33,
       "points": 102,
       "league": "B-Klasse",
-      "name": "031"
+      "name": "Ali"
     }
   ],
   "783": [
@@ -10232,14 +10232,14 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 122,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Nico"
     },
     {
       "season": "23/24",
       "rank": 199,
       "points": 21,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Nico"
     }
   ],
   "885": [
@@ -10248,28 +10248,28 @@ window.ARCHIVE_DATA = {
       "rank": 39,
       "points": 121,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Marisa"
     },
     {
       "season": "23/24",
       "rank": 33,
       "points": 121,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Marisa"
     },
     {
       "season": "22/23",
       "rank": 98,
       "points": 51,
       "league": "B-Klasse",
-      "name": "010"
+      "name": "Marisa"
     },
     {
       "season": "20/22",
       "rank": 12,
       "points": 152,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Marisa"
     }
   ],
   "1703": [
@@ -10278,21 +10278,21 @@ window.ARCHIVE_DATA = {
       "rank": 40,
       "points": 121,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Leon"
     },
     {
       "season": "23/24",
       "rank": 127,
       "points": 54,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Leon"
     },
     {
       "season": "22/23",
       "rank": 152,
       "points": 36,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Leon"
     }
   ],
   "603": [
@@ -10301,7 +10301,7 @@ window.ARCHIVE_DATA = {
       "rank": 41,
       "points": 120,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Emanuelle"
     }
   ],
   "443": [
@@ -10310,14 +10310,14 @@ window.ARCHIVE_DATA = {
       "rank": 42,
       "points": 119,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Roman"
     },
     {
       "season": "23/24",
       "rank": 109,
       "points": 65,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Roman"
     }
   ],
   "1669": [
@@ -10326,28 +10326,28 @@ window.ARCHIVE_DATA = {
       "rank": 43,
       "points": 119,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Denis"
     },
     {
       "season": "23/24",
       "rank": 43,
       "points": 111,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Denis"
     },
     {
       "season": "22/23",
       "rank": 82,
       "points": 62,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Denis"
     },
     {
       "season": "20/22",
       "rank": 118,
       "points": 32,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Denis"
     }
   ],
   "451": [
@@ -10356,7 +10356,7 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 119,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Nikolaj"
     }
   ],
   "376": [
@@ -10365,14 +10365,14 @@ window.ARCHIVE_DATA = {
       "rank": 45,
       "points": 118,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Klaus"
     },
     {
       "season": "23/24",
       "rank": 22,
       "points": 134,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Klaus"
     }
   ],
   "1163": [
@@ -10381,28 +10381,28 @@ window.ARCHIVE_DATA = {
       "rank": 46,
       "points": 118,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Dominik"
     },
     {
       "season": "23/24",
       "rank": 118,
       "points": 58,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Dominik"
     },
     {
       "season": "22/23",
       "rank": 6,
       "points": 155,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Dominik"
     },
     {
       "season": "20/22",
       "rank": 130,
       "points": 7,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Dominik"
     }
   ],
   "869": [
@@ -10411,28 +10411,28 @@ window.ARCHIVE_DATA = {
       "rank": 47,
       "points": 117,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Mathias"
     },
     {
       "season": "23/24",
       "rank": 45,
       "points": 110,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Mathias"
     },
     {
       "season": "22/23",
       "rank": 51,
       "points": 99,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Mathias"
     },
     {
       "season": "20/22",
       "rank": 50,
       "points": 94,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Mathias"
     }
   ],
   "322": [
@@ -10441,7 +10441,7 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 116,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Philip"
     }
   ],
   "286": [
@@ -10450,14 +10450,14 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 115,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 112,
       "points": 62,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Michael"
     }
   ],
   "1713": [
@@ -10466,14 +10466,14 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 115,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Nico"
     },
     {
       "season": "23/24",
       "rank": 72,
       "points": 87,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Nico"
     }
   ],
   "1760": [
@@ -10482,21 +10482,21 @@ window.ARCHIVE_DATA = {
       "rank": 51,
       "points": 114,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Melanie"
     },
     {
       "season": "23/24",
       "rank": 155,
       "points": 38,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Melanie"
     },
     {
       "season": "22/23",
       "rank": 82,
       "points": 74,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Melanie"
     }
   ],
   "1256": [
@@ -10505,28 +10505,28 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 113,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Dennis"
     },
     {
       "season": "23/24",
       "rank": 24,
       "points": 131,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 181,
       "points": 24,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Dennis"
     },
     {
       "season": "20/22",
       "rank": 142,
       "points": 32,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Dennis"
     }
   ],
   "1212": [
@@ -10535,28 +10535,28 @@ window.ARCHIVE_DATA = {
       "rank": 53,
       "points": 111,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Uwe"
     },
     {
       "season": "23/24",
       "rank": 71,
       "points": 76,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Uwe"
     },
     {
       "season": "22/23",
       "rank": 73,
       "points": 49,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Uwe"
     },
     {
       "season": "20/22",
       "rank": 47,
       "points": 90,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Uwe"
     }
   ],
   "534": [
@@ -10565,28 +10565,28 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 109,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Stefan"
     },
     {
       "season": "23/24",
       "rank": 51,
       "points": 104,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Stefan"
     },
     {
       "season": "22/23",
       "rank": 48,
       "points": 101,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Stefan"
     },
     {
       "season": "20/22",
       "rank": 47,
       "points": 99,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Stefan"
     }
   ],
   "1148": [
@@ -10595,28 +10595,28 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 109,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 26,
       "points": 127,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 44,
       "points": 105,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 60,
       "points": 84,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     }
   ],
   "719": [
@@ -10625,28 +10625,28 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 107,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 107,
       "points": 6,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 98,
       "points": 16,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 132,
       "points": 7,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Michael"
     }
   ],
   "1194": [
@@ -10655,28 +10655,28 @@ window.ARCHIVE_DATA = {
       "rank": 58,
       "points": 105,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ilhami"
     },
     {
       "season": "23/24",
       "rank": 57,
       "points": 99,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ilhami"
     },
     {
       "season": "22/23",
       "rank": 43,
       "points": 106,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ilhami"
     },
     {
       "season": "20/22",
       "rank": 36,
       "points": 98,
       "league": "B-Klasse",
-      "name": "031"
+      "name": "Ilhami"
     }
   ],
   "1881": [
@@ -10685,28 +10685,28 @@ window.ARCHIVE_DATA = {
       "rank": 59,
       "points": 105,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Patrik"
     },
     {
       "season": "23/24",
       "rank": 91,
       "points": 79,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Patrik"
     },
     {
       "season": "22/23",
       "rank": 61,
       "points": 2,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Patrik"
     },
     {
       "season": "20/22",
       "rank": 53,
       "points": 86,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Patrik"
     }
   ],
   "874": [
@@ -10715,28 +10715,28 @@ window.ARCHIVE_DATA = {
       "rank": 60,
       "points": 101,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Holger"
     },
     {
       "season": "23/24",
       "rank": 27,
       "points": 126,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Holger"
     },
     {
       "season": "22/23",
       "rank": 70,
       "points": 72,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Holger"
     },
     {
       "season": "20/22",
       "rank": 44,
       "points": 101,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Holger"
     }
   ],
   "1109": [
@@ -10745,28 +10745,28 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 100,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 103,
       "points": 70,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 12,
       "points": 143,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 72,
       "points": 75,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Markus"
     }
   ],
   "1664": [
@@ -10775,7 +10775,7 @@ window.ARCHIVE_DATA = {
       "rank": 62,
       "points": 99,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Christian"
     }
   ],
   "656": [
@@ -10784,28 +10784,28 @@ window.ARCHIVE_DATA = {
       "rank": 63,
       "points": 98,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Matthias"
     },
     {
       "season": "23/24",
       "rank": 60,
       "points": 98,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Matthias"
     },
     {
       "season": "22/23",
       "rank": 24,
       "points": 114,
       "league": "B-Klasse",
-      "name": "010"
+      "name": "Matthias"
     },
     {
       "season": "20/22",
       "rank": 22,
       "points": 130,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Matthias"
     }
   ],
   "1388": [
@@ -10814,28 +10814,28 @@ window.ARCHIVE_DATA = {
       "rank": 64,
       "points": 98,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 94,
       "points": 75,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 151,
       "points": 36,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 271,
       "points": 2,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Markus"
     }
   ],
   "632": [
@@ -10844,21 +10844,21 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 98,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 106,
       "points": 44,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 19,
       "points": 131,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Michael"
     }
   ],
   "276": [
@@ -10867,28 +10867,28 @@ window.ARCHIVE_DATA = {
       "rank": 66,
       "points": 98,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 61,
       "points": 84,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 60,
       "points": 79,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 30,
       "points": 109,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Thomas"
     }
   ],
   "1686": [
@@ -10897,14 +10897,14 @@ window.ARCHIVE_DATA = {
       "rank": 67,
       "points": 97,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Celina"
     },
     {
       "season": "23/24",
       "rank": 167,
       "points": 34,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Celina"
     }
   ],
   "1342": [
@@ -10913,28 +10913,28 @@ window.ARCHIVE_DATA = {
       "rank": 68,
       "points": 97,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Valerij"
     },
     {
       "season": "23/24",
       "rank": 48,
       "points": 108,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Valerij"
     },
     {
       "season": "22/23",
       "rank": 46,
       "points": 93,
       "league": "B-Klasse",
-      "name": "010"
+      "name": "Valerij"
     },
     {
       "season": "20/22",
       "rank": 46,
       "points": 99,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Valerij"
     }
   ],
   "1754": [
@@ -10943,28 +10943,28 @@ window.ARCHIVE_DATA = {
       "rank": 69,
       "points": 96,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Sabine"
     },
     {
       "season": "23/24",
       "rank": 110,
       "points": 41,
       "league": "B-Klasse",
-      "name": "012"
+      "name": "Sabine"
     },
     {
       "season": "22/23",
       "rank": 50,
       "points": 99,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Sabine"
     },
     {
       "season": "20/22",
       "rank": 62,
       "points": 84,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Sabine"
     }
   ],
   "296": [
@@ -10973,14 +10973,14 @@ window.ARCHIVE_DATA = {
       "rank": 70,
       "points": 96,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Christoph"
     },
     {
       "season": "23/24",
       "rank": 44,
       "points": 111,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Christoph"
     }
   ],
   "578": [
@@ -10989,21 +10989,21 @@ window.ARCHIVE_DATA = {
       "rank": 71,
       "points": 96,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Marvin"
     },
     {
       "season": "23/24",
       "rank": 88,
       "points": 60,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Marvin"
     },
     {
       "season": "22/23",
       "rank": 181,
       "points": 3,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Marvin"
     }
   ],
   "836": [
@@ -11012,21 +11012,21 @@ window.ARCHIVE_DATA = {
       "rank": 72,
       "points": 96,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Stefan"
     },
     {
       "season": "22/23",
       "rank": 99,
       "points": 15,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Stefan"
     },
     {
       "season": "20/22",
       "rank": 72,
       "points": 37,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Stefan"
     }
   ],
   "1295": [
@@ -11035,14 +11035,14 @@ window.ARCHIVE_DATA = {
       "rank": 73,
       "points": 95,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Samantha"
     },
     {
       "season": "23/24",
       "rank": 271,
       "points": 6,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Samantha"
     }
   ],
   "422": [
@@ -11051,7 +11051,7 @@ window.ARCHIVE_DATA = {
       "rank": 74,
       "points": 95,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Sabrina"
     }
   ],
   "910": [
@@ -11060,28 +11060,28 @@ window.ARCHIVE_DATA = {
       "rank": 75,
       "points": 95,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 96,
       "points": 74,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 98,
       "points": 64,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 140,
       "points": 19,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Andreas"
     }
   ],
   "907": [
@@ -11090,28 +11090,28 @@ window.ARCHIVE_DATA = {
       "rank": 76,
       "points": 94,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Klaus"
     },
     {
       "season": "23/24",
       "rank": 141,
       "points": 46,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Klaus"
     },
     {
       "season": "22/23",
       "rank": 112,
       "points": 59,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Klaus"
     },
     {
       "season": "20/22",
       "rank": 107,
       "points": 37,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Klaus"
     }
   ],
   "1711": [
@@ -11120,21 +11120,21 @@ window.ARCHIVE_DATA = {
       "rank": 77,
       "points": 94,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Gino"
     },
     {
       "season": "23/24",
       "rank": 71,
       "points": 88,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Gino"
     },
     {
       "season": "22/23",
       "rank": 197,
       "points": 19,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Gino"
     }
   ],
   "1368": [
@@ -11143,28 +11143,28 @@ window.ARCHIVE_DATA = {
       "rank": 78,
       "points": 94,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Marcel"
     },
     {
       "season": "23/24",
       "rank": 108,
       "points": 42,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Marcel"
     },
     {
       "season": "22/23",
       "rank": 74,
       "points": 78,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Marcel"
     },
     {
       "season": "20/22",
       "rank": 61,
       "points": 84,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Marcel"
     }
   ],
   "1716": [
@@ -11173,21 +11173,21 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 93,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Heiko"
     },
     {
       "season": "23/24",
       "rank": 172,
       "points": 32,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Heiko"
     },
     {
       "season": "22/23",
       "rank": 169,
       "points": 31,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Heiko"
     }
   ],
   "446": [
@@ -11196,14 +11196,14 @@ window.ARCHIVE_DATA = {
       "rank": 80,
       "points": 93,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 102,
       "points": 70,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Andreas"
     }
   ],
   "785": [
@@ -11212,21 +11212,21 @@ window.ARCHIVE_DATA = {
       "rank": 82,
       "points": 91,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Elke"
     },
     {
       "season": "23/24",
       "rank": 232,
       "points": 15,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Elke"
     },
     {
       "season": "22/23",
       "rank": 52,
       "points": 98,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Elke"
     }
   ],
   "1886": [
@@ -11235,14 +11235,14 @@ window.ARCHIVE_DATA = {
       "rank": 83,
       "points": 91,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Ralph"
     },
     {
       "season": "23/24",
       "rank": 158,
       "points": 37,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Ralph"
     }
   ],
   "1516": [
@@ -11251,28 +11251,28 @@ window.ARCHIVE_DATA = {
       "rank": 84,
       "points": 89,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Wolfgang"
     },
     {
       "season": "23/24",
       "rank": 74,
       "points": 86,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Wolfgang"
     },
     {
       "season": "22/23",
       "rank": 53,
       "points": 97,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Wolfgang"
     },
     {
       "season": "20/22",
       "rank": 71,
       "points": 77,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Wolfgang"
     }
   ],
   "651": [
@@ -11281,7 +11281,7 @@ window.ARCHIVE_DATA = {
       "rank": 85,
       "points": 89,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Dirk Horst"
     }
   ],
   "997": [
@@ -11290,14 +11290,14 @@ window.ARCHIVE_DATA = {
       "rank": 86,
       "points": 87,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Domenik"
     },
     {
       "season": "20/22",
       "rank": 215,
       "points": 10,
       "league": "C-Klasse",
-      "name": "036"
+      "name": "Domenik"
     }
   ],
   "1791": [
@@ -11306,21 +11306,21 @@ window.ARCHIVE_DATA = {
       "rank": 87,
       "points": 86,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Bojan"
     },
     {
       "season": "23/24",
       "rank": 209,
       "points": 19,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Bojan"
     },
     {
       "season": "22/23",
       "rank": 97,
       "points": 64,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Bojan"
     }
   ],
   "328": [
@@ -11329,7 +11329,7 @@ window.ARCHIVE_DATA = {
       "rank": 88,
       "points": 85,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Markus"
     }
   ],
   "1209": [
@@ -11338,14 +11338,14 @@ window.ARCHIVE_DATA = {
       "rank": 89,
       "points": 83,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "G\u00f6khan"
     },
     {
       "season": "23/24",
       "rank": 212,
       "points": 19,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "G\u00f6khan"
     }
   ],
   "1322": [
@@ -11354,28 +11354,28 @@ window.ARCHIVE_DATA = {
       "rank": 90,
       "points": 83,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Kai"
     },
     {
       "season": "23/24",
       "rank": 62,
       "points": 84,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Kai"
     },
     {
       "season": "22/23",
       "rank": 81,
       "points": 63,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Kai"
     },
     {
       "season": "20/22",
       "rank": 84,
       "points": 58,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Kai"
     }
   ],
   "828": [
@@ -11384,28 +11384,28 @@ window.ARCHIVE_DATA = {
       "rank": 91,
       "points": 82,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Melanie"
     },
     {
       "season": "23/24",
       "rank": 89,
       "points": 79,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Melanie"
     },
     {
       "season": "22/23",
       "rank": 90,
       "points": 69,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Melanie"
     },
     {
       "season": "20/22",
       "rank": 126,
       "points": 26,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Melanie"
     }
   ],
   "1123": [
@@ -11414,28 +11414,28 @@ window.ARCHIVE_DATA = {
       "rank": 92,
       "points": 82,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Leo"
     },
     {
       "season": "23/24",
       "rank": 50,
       "points": 105,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Leo"
     },
     {
       "season": "22/23",
       "rank": 64,
       "points": 90,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Leo"
     },
     {
       "season": "20/22",
       "rank": 54,
       "points": 90,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Leo"
     }
   ],
   "856": [
@@ -11444,28 +11444,28 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 80,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Oliver"
     },
     {
       "season": "23/24",
       "rank": 41,
       "points": 111,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Oliver"
     },
     {
       "season": "22/23",
       "rank": 31,
       "points": 117,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Oliver"
     },
     {
       "season": "20/22",
       "rank": 29,
       "points": 116,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Oliver"
     }
   ],
   "1131": [
@@ -11474,7 +11474,7 @@ window.ARCHIVE_DATA = {
       "rank": 94,
       "points": 80,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Jennifer"
     }
   ],
   "1354": [
@@ -11483,14 +11483,14 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 80,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Klaus"
     },
     {
       "season": "23/24",
       "rank": 249,
       "points": 10,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Klaus"
     }
   ],
   "1682": [
@@ -11499,14 +11499,14 @@ window.ARCHIVE_DATA = {
       "rank": 96,
       "points": 79,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 151,
       "points": 40,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Michael"
     }
   ],
   "520": [
@@ -11515,7 +11515,7 @@ window.ARCHIVE_DATA = {
       "rank": 97,
       "points": 79,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Tina"
     }
   ],
   "655": [
@@ -11524,28 +11524,28 @@ window.ARCHIVE_DATA = {
       "rank": 98,
       "points": 79,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Elfi"
     },
     {
       "season": "23/24",
       "rank": 177,
       "points": 30,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Elfi"
     },
     {
       "season": "22/23",
       "rank": 63,
       "points": 90,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Elfi"
     },
     {
       "season": "20/22",
       "rank": 65,
       "points": 78,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Elfi"
     }
   ],
   "1458": [
@@ -11554,28 +11554,28 @@ window.ARCHIVE_DATA = {
       "rank": 99,
       "points": 78,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Wolfgang"
     },
     {
       "season": "23/24",
       "rank": 132,
       "points": 51,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Wolfgang"
     },
     {
       "season": "22/23",
       "rank": 42,
       "points": 108,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Wolfgang"
     },
     {
       "season": "20/22",
       "rank": 224,
       "points": 9,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Wolfgang"
     }
   ],
   "387": [
@@ -11584,14 +11584,14 @@ window.ARCHIVE_DATA = {
       "rank": 100,
       "points": 78,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Dean"
     },
     {
       "season": "23/24",
       "rank": 207,
       "points": 19,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Dean"
     }
   ],
   "615": [
@@ -11600,7 +11600,7 @@ window.ARCHIVE_DATA = {
       "rank": 101,
       "points": 77,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Giann Luca"
     }
   ],
   "1512": [
@@ -11609,28 +11609,28 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 75,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Dirk"
     },
     {
       "season": "23/24",
       "rank": 87,
       "points": 61,
       "league": "B-Klasse",
-      "name": "012"
+      "name": "Dirk"
     },
     {
       "season": "22/23",
       "rank": 14,
       "points": 143,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Dirk"
     },
     {
       "season": "20/22",
       "rank": 69,
       "points": 78,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Dirk"
     }
   ],
   "1854": [
@@ -11639,14 +11639,14 @@ window.ARCHIVE_DATA = {
       "rank": 103,
       "points": 73,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Jessica"
     },
     {
       "season": "23/24",
       "rank": 193,
       "points": 24,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Jessica"
     }
   ],
   "1330": [
@@ -11655,7 +11655,7 @@ window.ARCHIVE_DATA = {
       "rank": 104,
       "points": 72,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Sandy"
     }
   ],
   "1419": [
@@ -11664,7 +11664,7 @@ window.ARCHIVE_DATA = {
       "rank": 105,
       "points": 72,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Johannes"
     }
   ],
   "1255": [
@@ -11673,28 +11673,28 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 71,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Pascal"
     },
     {
       "season": "23/24",
       "rank": 182,
       "points": 3,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Pascal"
     },
     {
       "season": "22/23",
       "rank": 104,
       "points": 62,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Pascal"
     },
     {
       "season": "20/22",
       "rank": 220,
       "points": 1,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Pascal"
     }
   ],
   "1195": [
@@ -11703,28 +11703,28 @@ window.ARCHIVE_DATA = {
       "rank": 107,
       "points": 71,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Anatole"
     },
     {
       "season": "23/24",
       "rank": 99,
       "points": 72,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Anatole"
     },
     {
       "season": "22/23",
       "rank": 91,
       "points": 69,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Anatole"
     },
     {
       "season": "20/22",
       "rank": 67,
       "points": 78,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Anatole"
     }
   ],
   "1775": [
@@ -11733,21 +11733,21 @@ window.ARCHIVE_DATA = {
       "rank": 108,
       "points": 71,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Sebastian"
     },
     {
       "season": "23/24",
       "rank": 157,
       "points": 37,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Sebastian"
     },
     {
       "season": "22/23",
       "rank": 167,
       "points": 31,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Sebastian"
     }
   ],
   "1660": [
@@ -11756,28 +11756,28 @@ window.ARCHIVE_DATA = {
       "rank": 109,
       "points": 70,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Florian"
     },
     {
       "season": "23/24",
       "rank": 58,
       "points": 99,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Florian"
     },
     {
       "season": "22/23",
       "rank": 152,
       "points": 15,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Florian"
     },
     {
       "season": "20/22",
       "rank": 173,
       "points": 18,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Florian"
     }
   ],
   "1691": [
@@ -11786,28 +11786,28 @@ window.ARCHIVE_DATA = {
       "rank": 110,
       "points": 68,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Jennifer"
     },
     {
       "season": "23/24",
       "rank": 139,
       "points": 18,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Jennifer"
     },
     {
       "season": "22/23",
       "rank": 89,
       "points": 58,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Jennifer"
     },
     {
       "season": "20/22",
       "rank": 146,
       "points": 17,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Jennifer"
     }
   ],
   "1867": [
@@ -11816,21 +11816,21 @@ window.ARCHIVE_DATA = {
       "rank": 111,
       "points": 68,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 86,
       "points": 80,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 90,
       "points": 51,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Andreas"
     }
   ],
   "1737": [
@@ -11839,7 +11839,7 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 68,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Ferdinand"
     }
   ],
   "1525": [
@@ -11848,7 +11848,7 @@ window.ARCHIVE_DATA = {
       "rank": 113,
       "points": 67,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Hasan"
     }
   ],
   "1497": [
@@ -11857,21 +11857,21 @@ window.ARCHIVE_DATA = {
       "rank": 114,
       "points": 67,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 130,
       "points": 3,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 125,
       "points": 8,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Benjamin"
     }
   ],
   "1013": [
@@ -11880,28 +11880,28 @@ window.ARCHIVE_DATA = {
       "rank": 115,
       "points": 66,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Eric"
     },
     {
       "season": "23/24",
       "rank": 123,
       "points": 31,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Eric"
     },
     {
       "season": "22/23",
       "rank": 109,
       "points": 43,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Eric"
     },
     {
       "season": "20/22",
       "rank": 104,
       "points": 39,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Eric"
     }
   ],
   "1749": [
@@ -11910,14 +11910,14 @@ window.ARCHIVE_DATA = {
       "rank": 116,
       "points": 65,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Madeleine"
     },
     {
       "season": "23/24",
       "rank": 146,
       "points": 16,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Madeleine"
     }
   ],
   "1403": [
@@ -11926,7 +11926,7 @@ window.ARCHIVE_DATA = {
       "rank": 117,
       "points": 65,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Daniel"
     }
   ],
   "1846": [
@@ -11935,21 +11935,21 @@ window.ARCHIVE_DATA = {
       "rank": 119,
       "points": 63,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Timo"
     },
     {
       "season": "23/24",
       "rank": 173,
       "points": 5,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Timo"
     },
     {
       "season": "22/23",
       "rank": 137,
       "points": 2,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Timo"
     }
   ],
   "1694": [
@@ -11958,28 +11958,28 @@ window.ARCHIVE_DATA = {
       "rank": 120,
       "points": 62,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Monika"
     },
     {
       "season": "23/24",
       "rank": 130,
       "points": 52,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Monika"
     },
     {
       "season": "22/23",
       "rank": 64,
       "points": 1,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Monika"
     },
     {
       "season": "20/22",
       "rank": 97,
       "points": 54,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Monika"
     }
   ],
   "487": [
@@ -11988,7 +11988,7 @@ window.ARCHIVE_DATA = {
       "rank": 121,
       "points": 62,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Harri"
     }
   ],
   "611": [
@@ -11997,28 +11997,28 @@ window.ARCHIVE_DATA = {
       "rank": 122,
       "points": 61,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 69,
       "points": 89,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 92,
       "points": 57,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Sascha"
     },
     {
       "season": "20/22",
       "rank": 167,
       "points": 21,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Sascha"
     }
   ],
   "867": [
@@ -12027,28 +12027,28 @@ window.ARCHIVE_DATA = {
       "rank": 123,
       "points": 61,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Oliver"
     },
     {
       "season": "23/24",
       "rank": 114,
       "points": 62,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Oliver"
     },
     {
       "season": "22/23",
       "rank": 107,
       "points": 60,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Oliver"
     },
     {
       "season": "20/22",
       "rank": 149,
       "points": 29,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Oliver"
     }
   ],
   "210": [
@@ -12057,14 +12057,14 @@ window.ARCHIVE_DATA = {
       "rank": 124,
       "points": 61,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Kevin"
     },
     {
       "season": "23/24",
       "rank": 91,
       "points": 58,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Kevin"
     }
   ],
   "339": [
@@ -12073,28 +12073,28 @@ window.ARCHIVE_DATA = {
       "rank": 125,
       "points": 61,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Imdat"
     },
     {
       "season": "23/24",
       "rank": 61,
       "points": 98,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Imdat"
     },
     {
       "season": "22/23",
       "rank": 35,
       "points": 114,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Imdat"
     },
     {
       "season": "20/22",
       "rank": 29,
       "points": 110,
       "league": "B-Klasse",
-      "name": "031"
+      "name": "Imdat"
     }
   ],
   "1623": [
@@ -12103,14 +12103,14 @@ window.ARCHIVE_DATA = {
       "rank": 127,
       "points": 60,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Ben"
     },
     {
       "season": "23/24",
       "rank": 142,
       "points": 46,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Ben"
     }
   ],
   "827": [
@@ -12119,28 +12119,28 @@ window.ARCHIVE_DATA = {
       "rank": 128,
       "points": 59,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Patricia"
     },
     {
       "season": "23/24",
       "rank": 117,
       "points": 58,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Patricia"
     },
     {
       "season": "22/23",
       "rank": 104,
       "points": 45,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Patricia"
     },
     {
       "season": "20/22",
       "rank": 128,
       "points": 7,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Patricia"
     }
   ],
   "1065": [
@@ -12149,14 +12149,14 @@ window.ARCHIVE_DATA = {
       "rank": 129,
       "points": 59,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Nick"
     },
     {
       "season": "23/24",
       "rank": 242,
       "points": 12,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Nick"
     }
   ],
   "747": [
@@ -12165,28 +12165,28 @@ window.ARCHIVE_DATA = {
       "rank": 130,
       "points": 58,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "23/24",
       "rank": 126,
       "points": 54,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "22/23",
       "rank": 130,
       "points": 48,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "20/22",
       "rank": 100,
       "points": 53,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "J\u00fcrgen"
     }
   ],
   "636": [
@@ -12195,21 +12195,21 @@ window.ARCHIVE_DATA = {
       "rank": 131,
       "points": 58,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Stephanie"
     },
     {
       "season": "22/23",
       "rank": 149,
       "points": 15,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Stephanie"
     },
     {
       "season": "20/22",
       "rank": 95,
       "points": 46,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Stephanie"
     }
   ],
   "1666": [
@@ -12218,28 +12218,28 @@ window.ARCHIVE_DATA = {
       "rank": 132,
       "points": 58,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Karsten"
     },
     {
       "season": "23/24",
       "rank": 112,
       "points": 40,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Karsten"
     },
     {
       "season": "22/23",
       "rank": 144,
       "points": 18,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Karsten"
     },
     {
       "season": "20/22",
       "rank": 124,
       "points": 8,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Karsten"
     }
   ],
   "741": [
@@ -12248,7 +12248,7 @@ window.ARCHIVE_DATA = {
       "rank": 133,
       "points": 58,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Daniel"
     }
   ],
   "1873": [
@@ -12257,21 +12257,21 @@ window.ARCHIVE_DATA = {
       "rank": 135,
       "points": 58,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Marco"
     },
     {
       "season": "23/24",
       "rank": 104,
       "points": 68,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 95,
       "points": 66,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Marco"
     }
   ],
   "1841": [
@@ -12280,21 +12280,21 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 57,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Janette"
     },
     {
       "season": "23/24",
       "rank": 87,
       "points": 80,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Janette"
     },
     {
       "season": "22/23",
       "rank": 119,
       "points": 54,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Janette"
     }
   ],
   "1392": [
@@ -12303,14 +12303,14 @@ window.ARCHIVE_DATA = {
       "rank": 137,
       "points": 57,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 229,
       "points": 16,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Michael"
     }
   ],
   "178": [
@@ -12319,28 +12319,28 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 57,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Jana"
     },
     {
       "season": "23/24",
       "rank": 111,
       "points": 63,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Jana"
     },
     {
       "season": "22/23",
       "rank": 56,
       "points": 93,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Jana"
     },
     {
       "season": "20/22",
       "rank": 203,
       "points": 4,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Jana"
     }
   ],
   "843": [
@@ -12349,28 +12349,28 @@ window.ARCHIVE_DATA = {
       "rank": 139,
       "points": 56,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Ronny"
     },
     {
       "season": "23/24",
       "rank": 144,
       "points": 44,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Ronny"
     },
     {
       "season": "22/23",
       "rank": 65,
       "points": 89,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Ronny"
     },
     {
       "season": "20/22",
       "rank": 126,
       "points": 39,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Ronny"
     }
   ],
   "1898": [
@@ -12379,7 +12379,7 @@ window.ARCHIVE_DATA = {
       "rank": 140,
       "points": 56,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andreas"
     }
   ],
   "1758": [
@@ -12388,28 +12388,28 @@ window.ARCHIVE_DATA = {
       "rank": 141,
       "points": 56,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Larissa"
     },
     {
       "season": "23/24",
       "rank": 117,
       "points": 38,
       "league": "B-Klasse",
-      "name": "012"
+      "name": "Larissa"
     },
     {
       "season": "22/23",
       "rank": 54,
       "points": 96,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Larissa"
     },
     {
       "season": "20/22",
       "rank": 165,
       "points": 22,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Larissa"
     }
   ],
   "908": [
@@ -12418,14 +12418,14 @@ window.ARCHIVE_DATA = {
       "rank": 142,
       "points": 56,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Patrycja"
     },
     {
       "season": "22/23",
       "rank": 246,
       "points": 5,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Patrycja"
     }
   ],
   "1863": [
@@ -12434,14 +12434,14 @@ window.ARCHIVE_DATA = {
       "rank": 143,
       "points": 56,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 116,
       "points": 39,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Alexander"
     }
   ],
   "1572": [
@@ -12450,14 +12450,14 @@ window.ARCHIVE_DATA = {
       "rank": 144,
       "points": 55,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Ulla"
     },
     {
       "season": "23/24",
       "rank": 202,
       "points": 20,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Ulla"
     }
   ],
   "1744": [
@@ -12466,7 +12466,7 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 55,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "J\u00fcrgen"
     }
   ],
   "1552": [
@@ -12475,14 +12475,14 @@ window.ARCHIVE_DATA = {
       "rank": 146,
       "points": 54,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Cornelia"
     },
     {
       "season": "23/24",
       "rank": 245,
       "points": 11,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Cornelia"
     }
   ],
   "1496": [
@@ -12491,7 +12491,7 @@ window.ARCHIVE_DATA = {
       "rank": 147,
       "points": 54,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Eckart"
     }
   ],
   "1144": [
@@ -12500,28 +12500,28 @@ window.ARCHIVE_DATA = {
       "rank": 148,
       "points": 54,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Ina"
     },
     {
       "season": "23/24",
       "rank": 201,
       "points": 20,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Ina"
     },
     {
       "season": "22/23",
       "rank": 175,
       "points": 27,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Ina"
     },
     {
       "season": "20/22",
       "rank": 96,
       "points": 54,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Ina"
     }
   ],
   "280": [
@@ -12530,28 +12530,28 @@ window.ARCHIVE_DATA = {
       "rank": 149,
       "points": 53,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Christian"
     },
     {
       "season": "23/24",
       "rank": 98,
       "points": 72,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 157,
       "points": 11,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Christian"
     },
     {
       "season": "20/22",
       "rank": 101,
       "points": 42,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Christian"
     }
   ],
   "1460": [
@@ -12560,21 +12560,21 @@ window.ARCHIVE_DATA = {
       "rank": 150,
       "points": 53,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 76,
       "points": 86,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 163,
       "points": 32,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Andreas"
     }
   ],
   "518": [
@@ -12583,28 +12583,28 @@ window.ARCHIVE_DATA = {
       "rank": 151,
       "points": 52,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Melanie"
     },
     {
       "season": "23/24",
       "rank": 204,
       "points": 19,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Melanie"
     },
     {
       "season": "22/23",
       "rank": 150,
       "points": 37,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Melanie"
     },
     {
       "season": "20/22",
       "rank": 95,
       "points": 55,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Melanie"
     }
   ],
   "1391": [
@@ -12613,28 +12613,28 @@ window.ARCHIVE_DATA = {
       "rank": 152,
       "points": 51,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Mareike"
     },
     {
       "season": "23/24",
       "rank": 230,
       "points": 15,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Mareike"
     },
     {
       "season": "22/23",
       "rank": 211,
       "points": 14,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Mareike"
     },
     {
       "season": "20/22",
       "rank": 109,
       "points": 48,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Mareike"
     }
   ],
   "359": [
@@ -12643,14 +12643,14 @@ window.ARCHIVE_DATA = {
       "rank": 153,
       "points": 51,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Robert"
     },
     {
       "season": "23/24",
       "rank": 165,
       "points": 34,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Robert"
     }
   ],
   "439": [
@@ -12659,14 +12659,14 @@ window.ARCHIVE_DATA = {
       "rank": 154,
       "points": 51,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Tobias"
     },
     {
       "season": "23/24",
       "rank": 225,
       "points": 16,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Tobias"
     }
   ],
   "1834": [
@@ -12675,21 +12675,21 @@ window.ARCHIVE_DATA = {
       "rank": 155,
       "points": 51,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Florian"
     },
     {
       "season": "23/24",
       "rank": 83,
       "points": 81,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Florian"
     },
     {
       "season": "22/23",
       "rank": 27,
       "points": 121,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Florian"
     }
   ],
   "1250": [
@@ -12698,28 +12698,28 @@ window.ARCHIVE_DATA = {
       "rank": 156,
       "points": 49,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 121,
       "points": 35,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 116,
       "points": 56,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 117,
       "points": 41,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Markus"
     }
   ],
   "1448": [
@@ -12728,7 +12728,7 @@ window.ARCHIVE_DATA = {
       "rank": 157,
       "points": 49,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Marcus"
     }
   ],
   "621": [
@@ -12737,7 +12737,7 @@ window.ARCHIVE_DATA = {
       "rank": 158,
       "points": 48,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "J\u00fcrgen"
     }
   ],
   "360": [
@@ -12746,28 +12746,28 @@ window.ARCHIVE_DATA = {
       "rank": 159,
       "points": 47,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Heide"
     },
     {
       "season": "23/24",
       "rank": 216,
       "points": 18,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Heide"
     },
     {
       "season": "22/23",
       "rank": 200,
       "points": 19,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Heide"
     },
     {
       "season": "20/22",
       "rank": 175,
       "points": 18,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Heide"
     }
   ],
   "1729": [
@@ -12776,7 +12776,7 @@ window.ARCHIVE_DATA = {
       "rank": 160,
       "points": 47,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Eric"
     }
   ],
   "1226": [
@@ -12785,7 +12785,7 @@ window.ARCHIVE_DATA = {
       "rank": 161,
       "points": 46,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Vanessa"
     }
   ],
   "250": [
@@ -12794,14 +12794,14 @@ window.ARCHIVE_DATA = {
       "rank": 162,
       "points": 46,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Seravina"
     },
     {
       "season": "23/24",
       "rank": 238,
       "points": 13,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Seravina"
     }
   ],
   "433": [
@@ -12810,14 +12810,14 @@ window.ARCHIVE_DATA = {
       "rank": 163,
       "points": 46,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Alexander"
     },
     {
       "season": "23/24",
       "rank": 129,
       "points": 54,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Alexander"
     }
   ],
   "222": [
@@ -12826,28 +12826,28 @@ window.ARCHIVE_DATA = {
       "rank": 164,
       "points": 45,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 263,
       "points": 7,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Frank"
     },
     {
       "season": "22/23",
       "rank": 222,
       "points": 11,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 170,
       "points": 19,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Frank"
     }
   ],
   "1683": [
@@ -12856,7 +12856,7 @@ window.ARCHIVE_DATA = {
       "rank": 165,
       "points": 45,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Raphael"
     }
   ],
   "467": [
@@ -12865,7 +12865,7 @@ window.ARCHIVE_DATA = {
       "rank": 166,
       "points": 45,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Tobias"
     }
   ],
   "1265": [
@@ -12874,28 +12874,28 @@ window.ARCHIVE_DATA = {
       "rank": 167,
       "points": 45,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ferkan"
     },
     {
       "season": "23/24",
       "rank": 122,
       "points": 56,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ferkan"
     },
     {
       "season": "22/23",
       "rank": 96,
       "points": 65,
       "league": "C-Klasse",
-      "name": "031"
+      "name": "Ferkan"
     },
     {
       "season": "20/22",
       "rank": 67,
       "points": 70,
       "league": "B-Klasse",
-      "name": "031"
+      "name": "Ferkan"
     }
   ],
   "560": [
@@ -12904,7 +12904,7 @@ window.ARCHIVE_DATA = {
       "rank": 168,
       "points": 44,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Markus"
     }
   ],
   "334": [
@@ -12913,28 +12913,28 @@ window.ARCHIVE_DATA = {
       "rank": 169,
       "points": 43,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Steffi"
     },
     {
       "season": "23/24",
       "rank": 200,
       "points": 20,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Steffi"
     },
     {
       "season": "22/23",
       "rank": 190,
       "points": 1,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Steffi"
     },
     {
       "season": "20/22",
       "rank": 173,
       "points": 9,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Steffi"
     }
   ],
   "708": [
@@ -12943,28 +12943,28 @@ window.ARCHIVE_DATA = {
       "rank": 170,
       "points": 43,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Johanna"
     },
     {
       "season": "23/24",
       "rank": 175,
       "points": 5,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Johanna"
     },
     {
       "season": "22/23",
       "rank": 151,
       "points": 15,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Johanna"
     },
     {
       "season": "20/22",
       "rank": 119,
       "points": 30,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Johanna"
     }
   ],
   "1586": [
@@ -12973,28 +12973,28 @@ window.ARCHIVE_DATA = {
       "rank": 171,
       "points": 43,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Meik"
     },
     {
       "season": "23/24",
       "rank": 250,
       "points": 10,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Meik"
     },
     {
       "season": "22/23",
       "rank": 93,
       "points": 68,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Meik"
     },
     {
       "season": "20/22",
       "rank": 125,
       "points": 26,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Meik"
     }
   ],
   "320": [
@@ -13003,7 +13003,7 @@ window.ARCHIVE_DATA = {
       "rank": 172,
       "points": 43,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Daniel"
     }
   ],
   "574": [
@@ -13012,7 +13012,7 @@ window.ARCHIVE_DATA = {
       "rank": 173,
       "points": 43,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Marcel"
     }
   ],
   "1605": [
@@ -13021,14 +13021,14 @@ window.ARCHIVE_DATA = {
       "rank": 174,
       "points": 43,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Andre'"
     },
     {
       "season": "20/22",
       "rank": 89,
       "points": 52,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Andre'"
     }
   ],
   "371": [
@@ -13037,14 +13037,14 @@ window.ARCHIVE_DATA = {
       "rank": 176,
       "points": 42,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Jennifer"
     },
     {
       "season": "23/24",
       "rank": 149,
       "points": 41,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Jennifer"
     }
   ],
   "680": [
@@ -13053,28 +13053,28 @@ window.ARCHIVE_DATA = {
       "rank": 177,
       "points": 42,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 82,
       "points": 81,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 80,
       "points": 76,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 88,
       "points": 62,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Michael"
     }
   ],
   "441": [
@@ -13083,7 +13083,7 @@ window.ARCHIVE_DATA = {
       "rank": 178,
       "points": 42,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Martin"
     }
   ],
   "1198": [
@@ -13092,7 +13092,7 @@ window.ARCHIVE_DATA = {
       "rank": 179,
       "points": 42,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Marcel"
     }
   ],
   "435": [
@@ -13101,28 +13101,28 @@ window.ARCHIVE_DATA = {
       "rank": 180,
       "points": 41,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andrea"
     },
     {
       "season": "23/24",
       "rank": 176,
       "points": 30,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andrea"
     },
     {
       "season": "22/23",
       "rank": 59,
       "points": 92,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andrea"
     },
     {
       "season": "20/22",
       "rank": 78,
       "points": 72,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andrea"
     }
   ],
   "592": [
@@ -13131,28 +13131,28 @@ window.ARCHIVE_DATA = {
       "rank": 181,
       "points": 41,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Manfred"
     },
     {
       "season": "23/24",
       "rank": 173,
       "points": 31,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Manfred"
     },
     {
       "season": "22/23",
       "rank": 153,
       "points": 35,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Manfred"
     },
     {
       "season": "20/22",
       "rank": 125,
       "points": 40,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Manfred"
     }
   ],
   "729": [
@@ -13161,14 +13161,14 @@ window.ARCHIVE_DATA = {
       "rank": 182,
       "points": 41,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Luis"
     },
     {
       "season": "20/22",
       "rank": 195,
       "points": 5,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Luis"
     }
   ],
   "1782": [
@@ -13177,7 +13177,7 @@ window.ARCHIVE_DATA = {
       "rank": 183,
       "points": 40,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Christian"
     }
   ],
   "1441": [
@@ -13186,7 +13186,7 @@ window.ARCHIVE_DATA = {
       "rank": 184,
       "points": 40,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Jan"
     }
   ],
   "558": [
@@ -13195,28 +13195,28 @@ window.ARCHIVE_DATA = {
       "rank": 185,
       "points": 39,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 188,
       "points": 26,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Frank"
     },
     {
       "season": "22/23",
       "rank": 154,
       "points": 35,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 143,
       "points": 32,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Frank"
     }
   ],
   "736": [
@@ -13225,7 +13225,7 @@ window.ARCHIVE_DATA = {
       "rank": 186,
       "points": 39,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Leonardo Pio"
     }
   ],
   "1876": [
@@ -13234,21 +13234,21 @@ window.ARCHIVE_DATA = {
       "rank": 187,
       "points": 38,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Marko"
     },
     {
       "season": "23/24",
       "rank": 148,
       "points": 41,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Marko"
     },
     {
       "season": "22/23",
       "rank": 148,
       "points": 16,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Marko"
     }
   ],
   "1451": [
@@ -13257,28 +13257,28 @@ window.ARCHIVE_DATA = {
       "rank": 188,
       "points": 38,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Eduard"
     },
     {
       "season": "23/24",
       "rank": 108,
       "points": 66,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Eduard"
     },
     {
       "season": "22/23",
       "rank": 77,
       "points": 77,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Eduard"
     },
     {
       "season": "20/22",
       "rank": 123,
       "points": 40,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Eduard"
     }
   ],
   "1786": [
@@ -13287,7 +13287,7 @@ window.ARCHIVE_DATA = {
       "rank": 189,
       "points": 38,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Maik"
     }
   ],
   "1491": [
@@ -13296,7 +13296,7 @@ window.ARCHIVE_DATA = {
       "rank": 190,
       "points": 38,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Johann"
     }
   ],
   "391": [
@@ -13305,14 +13305,14 @@ window.ARCHIVE_DATA = {
       "rank": 191,
       "points": 37,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 125,
       "points": 30,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Daniel"
     }
   ],
   "965": [
@@ -13321,7 +13321,7 @@ window.ARCHIVE_DATA = {
       "rank": 192,
       "points": 37,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "J\u00f6rg"
     }
   ],
   "1797": [
@@ -13330,21 +13330,21 @@ window.ARCHIVE_DATA = {
       "rank": 193,
       "points": 36,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 198,
       "points": 22,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 76,
       "points": 77,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Markus"
     }
   ],
   "641": [
@@ -13353,7 +13353,7 @@ window.ARCHIVE_DATA = {
       "rank": 194,
       "points": 35,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Petra"
     }
   ],
   "1146": [
@@ -13362,7 +13362,7 @@ window.ARCHIVE_DATA = {
       "rank": 195,
       "points": 35,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Daniel"
     }
   ],
   "1003": [
@@ -13371,7 +13371,7 @@ window.ARCHIVE_DATA = {
       "rank": 196,
       "points": 35,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Sven"
     }
   ],
   "700": [
@@ -13380,28 +13380,28 @@ window.ARCHIVE_DATA = {
       "rank": 197,
       "points": 34,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Daniela"
     },
     {
       "season": "23/24",
       "rank": 120,
       "points": 57,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Daniela"
     },
     {
       "season": "22/23",
       "rank": 192,
       "points": 21,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Daniela"
     },
     {
       "season": "20/22",
       "rank": 145,
       "points": 31,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Daniela"
     }
   ],
   "618": [
@@ -13410,7 +13410,7 @@ window.ARCHIVE_DATA = {
       "rank": 198,
       "points": 34,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Dorothee"
     }
   ],
   "490": [
@@ -13419,28 +13419,28 @@ window.ARCHIVE_DATA = {
       "rank": 199,
       "points": 34,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 131,
       "points": 52,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 170,
       "points": 29,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 80,
       "points": 71,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Michael"
     }
   ],
   "1268": [
@@ -13449,7 +13449,7 @@ window.ARCHIVE_DATA = {
       "rank": 200,
       "points": 34,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Benjamin"
     }
   ],
   "825": [
@@ -13458,28 +13458,28 @@ window.ARCHIVE_DATA = {
       "rank": 201,
       "points": 34,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Mirjam"
     },
     {
       "season": "23/24",
       "rank": 29,
       "points": 125,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Mirjam"
     },
     {
       "season": "22/23",
       "rank": 49,
       "points": 88,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Mirjam"
     },
     {
       "season": "20/22",
       "rank": 43,
       "points": 92,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Mirjam"
     }
   ],
   "381": [
@@ -13488,7 +13488,7 @@ window.ARCHIVE_DATA = {
       "rank": 202,
       "points": 34,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Thomas"
     }
   ],
   "1444": [
@@ -13497,21 +13497,21 @@ window.ARCHIVE_DATA = {
       "rank": 203,
       "points": 33,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Thomas"
     },
     {
       "season": "23/24",
       "rank": 206,
       "points": 19,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 283,
       "points": 0,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Thomas"
     }
   ],
   "759": [
@@ -13520,28 +13520,28 @@ window.ARCHIVE_DATA = {
       "rank": 204,
       "points": 33,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Corinna"
     },
     {
       "season": "23/24",
       "rank": 119,
       "points": 36,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Corinna"
     },
     {
       "season": "22/23",
       "rank": 130,
       "points": 27,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Corinna"
     },
     {
       "season": "20/22",
       "rank": 141,
       "points": 5,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Corinna"
     }
   ],
   "1550": [
@@ -13550,7 +13550,7 @@ window.ARCHIVE_DATA = {
       "rank": 205,
       "points": 33,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Sergej"
     }
   ],
   "743": [
@@ -13559,28 +13559,28 @@ window.ARCHIVE_DATA = {
       "rank": 206,
       "points": 33,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Heiko"
     },
     {
       "season": "23/24",
       "rank": 32,
       "points": 124,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Heiko"
     },
     {
       "season": "22/23",
       "rank": 129,
       "points": 48,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Heiko"
     },
     {
       "season": "20/22",
       "rank": 63,
       "points": 82,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Heiko"
     }
   ],
   "199": [
@@ -13589,28 +13589,28 @@ window.ARCHIVE_DATA = {
       "rank": 207,
       "points": 30,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Heiko"
     },
     {
       "season": "23/24",
       "rank": 237,
       "points": 13,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Heiko"
     },
     {
       "season": "22/23",
       "rank": 172,
       "points": 29,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Heiko"
     },
     {
       "season": "20/22",
       "rank": 140,
       "points": 34,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Heiko"
     }
   ],
   "598": [
@@ -13619,7 +13619,7 @@ window.ARCHIVE_DATA = {
       "rank": 209,
       "points": 29,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Sarah"
     }
   ],
   "484": [
@@ -13628,28 +13628,28 @@ window.ARCHIVE_DATA = {
       "rank": 210,
       "points": 29,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Torsten"
     },
     {
       "season": "23/24",
       "rank": 199,
       "points": 0,
       "league": "B-Klasse",
-      "name": "043"
+      "name": "Torsten"
     },
     {
       "season": "22/23",
       "rank": 140,
       "points": 42,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Torsten"
     },
     {
       "season": "20/22",
       "rank": 147,
       "points": 29,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Torsten"
     }
   ],
   "575": [
@@ -13658,21 +13658,21 @@ window.ARCHIVE_DATA = {
       "rank": 211,
       "points": 29,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Marcell"
     },
     {
       "season": "23/24",
       "rank": 196,
       "points": 23,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Marcell"
     },
     {
       "season": "22/23",
       "rank": 180,
       "points": 3,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Marcell"
     }
   ],
   "966": [
@@ -13681,21 +13681,21 @@ window.ARCHIVE_DATA = {
       "rank": 212,
       "points": 29,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Sanel"
     },
     {
       "season": "22/23",
       "rank": 116,
       "points": 6,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Sanel"
     },
     {
       "season": "20/22",
       "rank": 129,
       "points": 7,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Sanel"
     }
   ],
   "1868": [
@@ -13704,7 +13704,7 @@ window.ARCHIVE_DATA = {
       "rank": 213,
       "points": 28,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Sarah"
     }
   ],
   "1425": [
@@ -13713,28 +13713,28 @@ window.ARCHIVE_DATA = {
       "rank": 214,
       "points": 27,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Silvio"
     },
     {
       "season": "23/24",
       "rank": 150,
       "points": 40,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Silvio"
     },
     {
       "season": "22/23",
       "rank": 225,
       "points": 10,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Silvio"
     },
     {
       "season": "20/22",
       "rank": 158,
       "points": 24,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Silvio"
     }
   ],
   "1429": [
@@ -13743,7 +13743,7 @@ window.ARCHIVE_DATA = {
       "rank": 215,
       "points": 27,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Leonie-Maria"
     }
   ],
   "012": [
@@ -13768,28 +13768,28 @@ window.ARCHIVE_DATA = {
       "rank": 217,
       "points": 26,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Rita"
     },
     {
       "season": "23/24",
       "rank": 220,
       "points": 17,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Rita"
     },
     {
       "season": "22/23",
       "rank": 176,
       "points": 27,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Rita"
     },
     {
       "season": "20/22",
       "rank": 223,
       "points": 1,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Rita"
     }
   ],
   "472": [
@@ -13798,7 +13798,7 @@ window.ARCHIVE_DATA = {
       "rank": 218,
       "points": 26,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Vivian"
     }
   ],
   "1675": [
@@ -13807,28 +13807,28 @@ window.ARCHIVE_DATA = {
       "rank": 219,
       "points": 26,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Filippo"
     },
     {
       "season": "23/24",
       "rank": 145,
       "points": 44,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Filippo"
     },
     {
       "season": "22/23",
       "rank": 198,
       "points": 19,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Filippo"
     },
     {
       "season": "20/22",
       "rank": 242,
       "points": 6,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Filippo"
     }
   ],
   "846": [
@@ -13837,7 +13837,7 @@ window.ARCHIVE_DATA = {
       "rank": 220,
       "points": 26,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Marvin"
     }
   ],
   "1118": [
@@ -13846,28 +13846,28 @@ window.ARCHIVE_DATA = {
       "rank": 221,
       "points": 26,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Steffen"
     },
     {
       "season": "23/24",
       "rank": 187,
       "points": 27,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Steffen"
     },
     {
       "season": "22/23",
       "rank": 141,
       "points": 0,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Steffen"
     },
     {
       "season": "20/22",
       "rank": 191,
       "points": 15,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Steffen"
     }
   ],
   "882": [
@@ -13876,7 +13876,7 @@ window.ARCHIVE_DATA = {
       "rank": 222,
       "points": 26,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Daniel"
     }
   ],
   "718": [
@@ -13885,21 +13885,21 @@ window.ARCHIVE_DATA = {
       "rank": 223,
       "points": 25,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 161,
       "points": 36,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 123,
       "points": 51,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Andreas"
     }
   ],
   "275": [
@@ -13908,28 +13908,28 @@ window.ARCHIVE_DATA = {
       "rank": 224,
       "points": 25,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Martin"
     },
     {
       "season": "23/24",
       "rank": 94,
       "points": 55,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     },
     {
       "season": "22/23",
       "rank": 56,
       "points": 82,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 60,
       "points": 80,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Martin"
     }
   ],
   "888": [
@@ -13938,7 +13938,7 @@ window.ARCHIVE_DATA = {
       "rank": 225,
       "points": 25,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Nico"
     }
   ],
   "106": [
@@ -13947,14 +13947,14 @@ window.ARCHIVE_DATA = {
       "rank": 226,
       "points": 25,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Heiko"
     },
     {
       "season": "20/22",
       "rank": 107,
       "points": 14,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Heiko"
     }
   ],
   "977": [
@@ -13963,14 +13963,14 @@ window.ARCHIVE_DATA = {
       "rank": 227,
       "points": 23,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Marius"
     },
     {
       "season": "23/24",
       "rank": 190,
       "points": 2,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Marius"
     }
   ],
   "1595": [
@@ -13979,28 +13979,28 @@ window.ARCHIVE_DATA = {
       "rank": 228,
       "points": 23,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Marcus"
     },
     {
       "season": "23/24",
       "rank": 143,
       "points": 45,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Marcus"
     },
     {
       "season": "22/23",
       "rank": 145,
       "points": 40,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Marcus"
     },
     {
       "season": "20/22",
       "rank": 105,
       "points": 50,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Marcus"
     }
   ],
   "735": [
@@ -14009,7 +14009,7 @@ window.ARCHIVE_DATA = {
       "rank": 229,
       "points": 23,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Dominik"
     }
   ],
   "1510": [
@@ -14018,14 +14018,14 @@ window.ARCHIVE_DATA = {
       "rank": 230,
       "points": 22,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Ali"
     },
     {
       "season": "20/22",
       "rank": 192,
       "points": 15,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Ali"
     }
   ],
   "555": [
@@ -14034,7 +14034,7 @@ window.ARCHIVE_DATA = {
       "rank": 232,
       "points": 22,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Patrick"
     }
   ],
   "1840": [
@@ -14043,21 +14043,21 @@ window.ARCHIVE_DATA = {
       "rank": 233,
       "points": 22,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Timo"
     },
     {
       "season": "23/24",
       "rank": 183,
       "points": 28,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Timo"
     },
     {
       "season": "22/23",
       "rank": 230,
       "points": 9,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Timo"
     }
   ],
   "1443": [
@@ -14066,7 +14066,7 @@ window.ARCHIVE_DATA = {
       "rank": 234,
       "points": 21,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Nadine"
     }
   ],
   "176": [
@@ -14075,21 +14075,21 @@ window.ARCHIVE_DATA = {
       "rank": 235,
       "points": 21,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Marcel"
     },
     {
       "season": "23/24",
       "rank": 105,
       "points": 67,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Marcel"
     },
     {
       "season": "22/23",
       "rank": 126,
       "points": 50,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Marcel"
     }
   ],
   "922": [
@@ -14098,28 +14098,28 @@ window.ARCHIVE_DATA = {
       "rank": 236,
       "points": 21,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Christopher"
     },
     {
       "season": "23/24",
       "rank": 100,
       "points": 72,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Christopher"
     },
     {
       "season": "22/23",
       "rank": 146,
       "points": 40,
       "league": "C-Klasse",
-      "name": "045"
+      "name": "Christopher"
     },
     {
       "season": "20/22",
       "rank": 77,
       "points": 63,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Christopher"
     }
   ],
   "1235": [
@@ -14128,7 +14128,7 @@ window.ARCHIVE_DATA = {
       "rank": 237,
       "points": 21,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Bj\u00f6rn"
     }
   ],
   "1792": [
@@ -14137,7 +14137,7 @@ window.ARCHIVE_DATA = {
       "rank": 238,
       "points": 20,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Leon"
     }
   ],
   "809": [
@@ -14146,28 +14146,28 @@ window.ARCHIVE_DATA = {
       "rank": 239,
       "points": 20,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Pascal"
     },
     {
       "season": "23/24",
       "rank": 123,
       "points": 56,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Pascal"
     },
     {
       "season": "22/23",
       "rank": 84,
       "points": 74,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Pascal"
     },
     {
       "season": "20/22",
       "rank": 41,
       "points": 102,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Pascal"
     }
   ],
   "626": [
@@ -14176,21 +14176,21 @@ window.ARCHIVE_DATA = {
       "rank": 240,
       "points": 20,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Beata Erika"
     },
     {
       "season": "23/24",
       "rank": 254,
       "points": 9,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Beata Erika"
     },
     {
       "season": "20/22",
       "rank": 229,
       "points": 0,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Beti"
     }
   ],
   "289": [
@@ -14199,14 +14199,14 @@ window.ARCHIVE_DATA = {
       "rank": 241,
       "points": 19,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Ingo"
     },
     {
       "season": "23/24",
       "rank": 243,
       "points": 11,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Ingo"
     }
   ],
   "1875": [
@@ -14215,21 +14215,21 @@ window.ARCHIVE_DATA = {
       "rank": 242,
       "points": 19,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Tanja"
     },
     {
       "season": "23/24",
       "rank": 282,
       "points": 4,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Tanja"
     },
     {
       "season": "20/22",
       "rank": 157,
       "points": 1,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Tanja"
     }
   ],
   "302": [
@@ -14238,14 +14238,14 @@ window.ARCHIVE_DATA = {
       "rank": 243,
       "points": 18,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Isabelle"
     },
     {
       "season": "23/24",
       "rank": 227,
       "points": 16,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Isabelle"
     }
   ],
   "872": [
@@ -14254,7 +14254,7 @@ window.ARCHIVE_DATA = {
       "rank": 244,
       "points": 18,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Lukas"
     }
   ],
   "1042": [
@@ -14263,7 +14263,7 @@ window.ARCHIVE_DATA = {
       "rank": 245,
       "points": 18,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Fabienne"
     }
   ],
   "629": [
@@ -14272,7 +14272,7 @@ window.ARCHIVE_DATA = {
       "rank": 246,
       "points": 17,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Felix"
     }
   ],
   "481": [
@@ -14281,7 +14281,7 @@ window.ARCHIVE_DATA = {
       "rank": 247,
       "points": 17,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Andrej"
     }
   ],
   "1759": [
@@ -14290,7 +14290,7 @@ window.ARCHIVE_DATA = {
       "rank": 248,
       "points": 17,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Mirjam"
     }
   ],
   "532": [
@@ -14299,21 +14299,21 @@ window.ARCHIVE_DATA = {
       "rank": 249,
       "points": 17,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Markus"
     },
     {
       "season": "23/24",
       "rank": 179,
       "points": 28,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 215,
       "points": 12,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Markus"
     }
   ],
   "1104": [
@@ -14322,28 +14322,28 @@ window.ARCHIVE_DATA = {
       "rank": 250,
       "points": 17,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Melanie"
     },
     {
       "season": "23/24",
       "rank": 305,
       "points": 1,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Melanie"
     },
     {
       "season": "22/23",
       "rank": 259,
       "points": 0,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Melanie"
     },
     {
       "season": "20/22",
       "rank": 287,
       "points": 0,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Melanie"
     }
   ],
   "832": [
@@ -14352,21 +14352,21 @@ window.ARCHIVE_DATA = {
       "rank": 251,
       "points": 17,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Paul"
     },
     {
       "season": "23/24",
       "rank": 134,
       "points": 21,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Paul"
     },
     {
       "season": "22/23",
       "rank": 96,
       "points": 19,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Paul"
     }
   ],
   "657": [
@@ -14375,14 +14375,14 @@ window.ARCHIVE_DATA = {
       "rank": 252,
       "points": 16,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Silvia"
     },
     {
       "season": "20/22",
       "rank": 134,
       "points": 35,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Silvia"
     }
   ],
   "866": [
@@ -14391,21 +14391,21 @@ window.ARCHIVE_DATA = {
       "rank": 253,
       "points": 16,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Sascha"
     },
     {
       "season": "23/24",
       "rank": 179,
       "points": 4,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Sascha"
     },
     {
       "season": "22/23",
       "rank": 161,
       "points": 9,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Sascha"
     }
   ],
   "929": [
@@ -14414,7 +14414,7 @@ window.ARCHIVE_DATA = {
       "rank": 254,
       "points": 16,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Andreas"
     }
   ],
   "506": [
@@ -14423,7 +14423,7 @@ window.ARCHIVE_DATA = {
       "rank": 255,
       "points": 16,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Dimitrios"
     }
   ],
   "1648": [
@@ -14432,21 +14432,21 @@ window.ARCHIVE_DATA = {
       "rank": 257,
       "points": 15,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Marios"
     },
     {
       "season": "23/24",
       "rank": 256,
       "points": 9,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Marios"
     },
     {
       "season": "22/23",
       "rank": 141,
       "points": 42,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Marios"
     }
   ],
   "1724": [
@@ -14455,7 +14455,7 @@ window.ARCHIVE_DATA = {
       "rank": 258,
       "points": 15,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Gerhard"
     }
   ],
   "386": [
@@ -14464,7 +14464,7 @@ window.ARCHIVE_DATA = {
       "rank": 259,
       "points": 15,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Sabrina"
     }
   ],
   "355": [
@@ -14473,28 +14473,28 @@ window.ARCHIVE_DATA = {
       "rank": 261,
       "points": 14,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Yves"
     },
     {
       "season": "23/24",
       "rank": 221,
       "points": 17,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Yves"
     },
     {
       "season": "22/23",
       "rank": 118,
       "points": 55,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Yves"
     },
     {
       "season": "20/22",
       "rank": 153,
       "points": 27,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Yves"
     }
   ],
   "540": [
@@ -14503,14 +14503,14 @@ window.ARCHIVE_DATA = {
       "rank": 262,
       "points": 14,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Frank"
     },
     {
       "season": "23/24",
       "rank": 160,
       "points": 36,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Frank"
     }
   ],
   "478": [
@@ -14519,7 +14519,7 @@ window.ARCHIVE_DATA = {
       "rank": 263,
       "points": 14,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Jessica"
     }
   ],
   "471": [
@@ -14528,7 +14528,7 @@ window.ARCHIVE_DATA = {
       "rank": 265,
       "points": 12,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Luca"
     }
   ],
   "1070": [
@@ -14537,28 +14537,28 @@ window.ARCHIVE_DATA = {
       "rank": 266,
       "points": 12,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Natalie"
     },
     {
       "season": "23/24",
       "rank": 219,
       "points": 17,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Natalie"
     },
     {
       "season": "22/23",
       "rank": 185,
       "points": 23,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Natalie"
     },
     {
       "season": "20/22",
       "rank": 174,
       "points": 9,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Natalie"
     }
   ],
   "1162": [
@@ -14567,7 +14567,7 @@ window.ARCHIVE_DATA = {
       "rank": 267,
       "points": 12,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Jan"
     }
   ],
   "1646": [
@@ -14576,28 +14576,28 @@ window.ARCHIVE_DATA = {
       "rank": 268,
       "points": 12,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Axel"
     },
     {
       "season": "23/24",
       "rank": 154,
       "points": 38,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Axel"
     },
     {
       "season": "22/23",
       "rank": 234,
       "points": 9,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Axel"
     },
     {
       "season": "20/22",
       "rank": 263,
       "points": 3,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Axel"
     }
   ],
   "1702": [
@@ -14606,21 +14606,21 @@ window.ARCHIVE_DATA = {
       "rank": 269,
       "points": 12,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 195,
       "points": 23,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 161,
       "points": 33,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Benjamin"
     }
   ],
   "968": [
@@ -14629,7 +14629,7 @@ window.ARCHIVE_DATA = {
       "rank": 270,
       "points": 12,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Torben"
     }
   ],
   "335": [
@@ -14638,28 +14638,28 @@ window.ARCHIVE_DATA = {
       "rank": 271,
       "points": 11,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Hilde"
     },
     {
       "season": "23/24",
       "rank": 162,
       "points": 35,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Hilde"
     },
     {
       "season": "22/23",
       "rank": 155,
       "points": 14,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Hilde"
     },
     {
       "season": "20/22",
       "rank": 128,
       "points": 38,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Hilde"
     }
   ],
   "485": [
@@ -14668,7 +14668,7 @@ window.ARCHIVE_DATA = {
       "rank": 272,
       "points": 11,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Katrin"
     }
   ],
   "823": [
@@ -14677,14 +14677,14 @@ window.ARCHIVE_DATA = {
       "rank": 273,
       "points": 11,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Stephanie"
     },
     {
       "season": "22/23",
       "rank": 45,
       "points": 94,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Stephanie"
     }
   ],
   "921": [
@@ -14693,28 +14693,28 @@ window.ARCHIVE_DATA = {
       "rank": 275,
       "points": 10,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Nicole"
     },
     {
       "season": "23/24",
       "rank": 217,
       "points": 18,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Nicole"
     },
     {
       "season": "22/23",
       "rank": 224,
       "points": 11,
       "league": "C-Klasse",
-      "name": "045"
+      "name": "Nicole"
     },
     {
       "season": "20/22",
       "rank": 162,
       "points": 12,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Nicole"
     }
   ],
   "1034": [
@@ -14723,28 +14723,28 @@ window.ARCHIVE_DATA = {
       "rank": 276,
       "points": 10,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Volker"
     },
     {
       "season": "23/24",
       "rank": 115,
       "points": 61,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Volker"
     },
     {
       "season": "22/23",
       "rank": 71,
       "points": 84,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Volker"
     },
     {
       "season": "20/22",
       "rank": 68,
       "points": 78,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Volker"
     }
   ],
   "1110": [
@@ -14753,28 +14753,28 @@ window.ARCHIVE_DATA = {
       "rank": 277,
       "points": 10,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Eva"
     },
     {
       "season": "23/24",
       "rank": 259,
       "points": 8,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Eva"
     },
     {
       "season": "22/23",
       "rank": 11,
       "points": 116,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Axel"
     },
     {
       "season": "20/22",
       "rank": 12,
       "points": 106,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Axel"
     }
   ],
   "871": [
@@ -14783,28 +14783,28 @@ window.ARCHIVE_DATA = {
       "rank": 279,
       "points": 10,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Adrian"
     },
     {
       "season": "23/24",
       "rank": 171,
       "points": 5,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Adrian"
     },
     {
       "season": "22/23",
       "rank": 80,
       "points": 43,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Adrian"
     },
     {
       "season": "20/22",
       "rank": 38,
       "points": 92,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Adrian"
     }
   ],
   "1773": [
@@ -14813,7 +14813,7 @@ window.ARCHIVE_DATA = {
       "rank": 280,
       "points": 9,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Monika"
     }
   ],
   "395": [
@@ -14822,7 +14822,7 @@ window.ARCHIVE_DATA = {
       "rank": 281,
       "points": 9,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Jerel Brean"
     }
   ],
   "1160": [
@@ -14831,7 +14831,7 @@ window.ARCHIVE_DATA = {
       "rank": 282,
       "points": 9,
       "league": "C-Klasse",
-      "name": "044"
+      "name": "Ralf"
     }
   ],
   "1440": [
@@ -14840,7 +14840,7 @@ window.ARCHIVE_DATA = {
       "rank": 284,
       "points": 8,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Nesrin"
     }
   ],
   "1811": [
@@ -14849,14 +14849,14 @@ window.ARCHIVE_DATA = {
       "rank": 286,
       "points": 7,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Monika"
     },
     {
       "season": "23/24",
       "rank": 294,
       "points": 2,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Monika"
     }
   ],
   "1420": [
@@ -14865,14 +14865,14 @@ window.ARCHIVE_DATA = {
       "rank": 287,
       "points": 7,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Andrea"
     },
     {
       "season": "23/24",
       "rank": 241,
       "points": 12,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Andrea"
     }
   ],
   "624": [
@@ -14881,7 +14881,7 @@ window.ARCHIVE_DATA = {
       "rank": 288,
       "points": 7,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Madeleine"
     }
   ],
   "1644": [
@@ -14890,28 +14890,28 @@ window.ARCHIVE_DATA = {
       "rank": 289,
       "points": 7,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Jacklin"
     },
     {
       "season": "23/24",
       "rank": 218,
       "points": 18,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Jacklin"
     },
     {
       "season": "22/23",
       "rank": 194,
       "points": 20,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Jacklin"
     },
     {
       "season": "20/22",
       "rank": 115,
       "points": 44,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Jacklin"
     }
   ],
   "658": [
@@ -14920,7 +14920,7 @@ window.ARCHIVE_DATA = {
       "rank": 290,
       "points": 7,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Bj\u00f6rn"
     }
   ],
   "868": [
@@ -14929,7 +14929,7 @@ window.ARCHIVE_DATA = {
       "rank": 294,
       "points": 6,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "J\u00fcrgen"
     }
   ],
   "750": [
@@ -14938,21 +14938,21 @@ window.ARCHIVE_DATA = {
       "rank": 295,
       "points": 6,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "23/24",
       "rank": 114,
       "points": 39,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "22/23",
       "rank": 121,
       "points": 5,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "J\u00fcrgen"
     }
   ],
   "604": [
@@ -14961,28 +14961,28 @@ window.ARCHIVE_DATA = {
       "rank": 296,
       "points": 6,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Sabine"
     },
     {
       "season": "23/24",
       "rank": 159,
       "points": 36,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Sabine"
     },
     {
       "season": "22/23",
       "rank": 125,
       "points": 51,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Sabine"
     },
     {
       "season": "20/22",
       "rank": 90,
       "points": 60,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Sabine"
     }
   ],
   "665": [
@@ -14991,7 +14991,7 @@ window.ARCHIVE_DATA = {
       "rank": 297,
       "points": 6,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Dieter"
     }
   ],
   "905": [
@@ -15000,7 +15000,7 @@ window.ARCHIVE_DATA = {
       "rank": 298,
       "points": 6,
       "league": "C-Klasse",
-      "name": "063"
+      "name": "Robin"
     }
   ],
   "1820": [
@@ -15009,14 +15009,14 @@ window.ARCHIVE_DATA = {
       "rank": 299,
       "points": 6,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Boris"
     },
     {
       "season": "23/24",
       "rank": 214,
       "points": 19,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Boris"
     }
   ],
   "765": [
@@ -15025,28 +15025,28 @@ window.ARCHIVE_DATA = {
       "rank": 301,
       "points": 5,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Hans-Peter"
     },
     {
       "season": "23/24",
       "rank": 252,
       "points": 9,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Hans-Peter"
     },
     {
       "season": "22/23",
       "rank": 160,
       "points": 33,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Hans-Peter"
     },
     {
       "season": "20/22",
       "rank": 85,
       "points": 68,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Hans-Peter"
     }
   ],
   "514": [
@@ -15055,28 +15055,28 @@ window.ARCHIVE_DATA = {
       "rank": 302,
       "points": 5,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Siegfried"
     },
     {
       "season": "23/24",
       "rank": 146,
       "points": 42,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Siegfried"
     },
     {
       "season": "22/23",
       "rank": 120,
       "points": 53,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Siegfried"
     },
     {
       "season": "20/22",
       "rank": 151,
       "points": 27,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Siegfried"
     }
   ],
   "961": [
@@ -15085,7 +15085,7 @@ window.ARCHIVE_DATA = {
       "rank": 303,
       "points": 5,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Dirk"
     }
   ],
   "669": [
@@ -15094,7 +15094,7 @@ window.ARCHIVE_DATA = {
       "rank": 304,
       "points": 5,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Bettina Simone"
     }
   ],
   "331": [
@@ -15103,28 +15103,28 @@ window.ARCHIVE_DATA = {
       "rank": 305,
       "points": 5,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Sandra"
     },
     {
       "season": "23/24",
       "rank": 125,
       "points": 54,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Sandra"
     },
     {
       "season": "22/23",
       "rank": 112,
       "points": 41,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Sandra"
     },
     {
       "season": "20/22",
       "rank": 149,
       "points": 4,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Sandra"
     }
   ],
   "664": [
@@ -15133,7 +15133,7 @@ window.ARCHIVE_DATA = {
       "rank": 306,
       "points": 5,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Franz"
     }
   ],
   "1025": [
@@ -15142,28 +15142,28 @@ window.ARCHIVE_DATA = {
       "rank": 307,
       "points": 4,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Beate"
     },
     {
       "season": "23/24",
       "rank": 205,
       "points": 19,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Beate"
     },
     {
       "season": "22/23",
       "rank": 210,
       "points": 14,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Beate"
     },
     {
       "season": "20/22",
       "rank": 66,
       "points": 78,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Beate"
     }
   ],
   "661": [
@@ -15172,7 +15172,7 @@ window.ARCHIVE_DATA = {
       "rank": 308,
       "points": 4,
       "league": "C-Klasse",
-      "name": "056"
+      "name": "Christina"
     }
   ],
   "491": [
@@ -15181,7 +15181,7 @@ window.ARCHIVE_DATA = {
       "rank": 309,
       "points": 4,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Volker"
     }
   ],
   "1050": [
@@ -15190,28 +15190,28 @@ window.ARCHIVE_DATA = {
       "rank": 310,
       "points": 4,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Benjamin"
     },
     {
       "season": "23/24",
       "rank": 203,
       "points": 20,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 162,
       "points": 32,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 199,
       "points": 14,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Benjamin"
     }
   ],
   "316": [
@@ -15220,14 +15220,14 @@ window.ARCHIVE_DATA = {
       "rank": 311,
       "points": 4,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Saskia"
     },
     {
       "season": "23/24",
       "rank": 309,
       "points": 0,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Saskia"
     }
   ],
   "605": [
@@ -15236,7 +15236,7 @@ window.ARCHIVE_DATA = {
       "rank": 312,
       "points": 3,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Giuseppe"
     }
   ],
   "652": [
@@ -15245,28 +15245,28 @@ window.ARCHIVE_DATA = {
       "rank": 313,
       "points": 3,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sabrina"
     },
     {
       "season": "23/24",
       "rank": 253,
       "points": 9,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sabrina"
     },
     {
       "season": "22/23",
       "rank": 135,
       "points": 2,
       "league": "A-Klasse",
-      "name": "037"
+      "name": "Sabrina"
     },
     {
       "season": "20/22",
       "rank": 209,
       "points": 12,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Sabrina"
     }
   ],
   "1374": [
@@ -15275,21 +15275,21 @@ window.ARCHIVE_DATA = {
       "rank": 314,
       "points": 3,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Silvia"
     },
     {
       "season": "23/24",
       "rank": 306,
       "points": 1,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Silvia"
     },
     {
       "season": "22/23",
       "rank": 223,
       "points": 11,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Silvia"
     }
   ],
   "173": [
@@ -15298,28 +15298,28 @@ window.ARCHIVE_DATA = {
       "rank": 315,
       "points": 3,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Sven"
     },
     {
       "season": "23/24",
       "rank": 276,
       "points": 5,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 125,
       "points": 32,
       "league": "B-Klasse",
-      "name": "010"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 152,
       "points": 27,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Sven"
     }
   ],
   "1372": [
@@ -15328,28 +15328,28 @@ window.ARCHIVE_DATA = {
       "rank": 316,
       "points": 3,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Michael"
     },
     {
       "season": "23/24",
       "rank": 286,
       "points": 4,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 171,
       "points": 29,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 150,
       "points": 28,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Michael"
     }
   ],
   "326": [
@@ -15358,7 +15358,7 @@ window.ARCHIVE_DATA = {
       "rank": 317,
       "points": 3,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Cayetano"
     }
   ],
   "1503": [
@@ -15367,28 +15367,28 @@ window.ARCHIVE_DATA = {
       "rank": 318,
       "points": 3,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Patrick"
     },
     {
       "season": "23/24",
       "rank": 157,
       "points": 10,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Patrick"
     },
     {
       "season": "22/23",
       "rank": 52,
       "points": 86,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Patrick"
     },
     {
       "season": "20/22",
       "rank": 8,
       "points": 169,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Patrick"
     }
   ],
   "1170": [
@@ -15397,28 +15397,28 @@ window.ARCHIVE_DATA = {
       "rank": 319,
       "points": 2,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Hannah"
     },
     {
       "season": "23/24",
       "rank": 234,
       "points": 14,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Hannah"
     },
     {
       "season": "22/23",
       "rank": 233,
       "points": 9,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Hannah"
     },
     {
       "season": "20/22",
       "rank": 236,
       "points": 7,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Hannah"
     }
   ],
   "653": [
@@ -15427,7 +15427,7 @@ window.ARCHIVE_DATA = {
       "rank": 320,
       "points": 2,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Zsanett"
     }
   ],
   "776": [
@@ -15436,21 +15436,21 @@ window.ARCHIVE_DATA = {
       "rank": 321,
       "points": 2,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Nicole"
     },
     {
       "season": "23/24",
       "rank": 293,
       "points": 3,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Nicole"
     },
     {
       "season": "22/23",
       "rank": 159,
       "points": 33,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Nicole"
     }
   ],
   "442": [
@@ -15459,7 +15459,7 @@ window.ARCHIVE_DATA = {
       "rank": 322,
       "points": 2,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Saskia"
     }
   ],
   "1486": [
@@ -15468,7 +15468,7 @@ window.ARCHIVE_DATA = {
       "rank": 323,
       "points": 2,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Tina"
     }
   ],
   "1533": [
@@ -15477,28 +15477,28 @@ window.ARCHIVE_DATA = {
       "rank": 324,
       "points": 2,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Natalia"
     },
     {
       "season": "23/24",
       "rank": 278,
       "points": 5,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Natalia"
     },
     {
       "season": "22/23",
       "rank": 137,
       "points": 44,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Natalia"
     },
     {
       "season": "20/22",
       "rank": 264,
       "points": 3,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Natalia"
     }
   ],
   "1878": [
@@ -15507,21 +15507,21 @@ window.ARCHIVE_DATA = {
       "rank": 325,
       "points": 2,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Alexandros"
     },
     {
       "season": "23/24",
       "rank": 180,
       "points": 28,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Alexandros"
     },
     {
       "season": "22/23",
       "rank": 216,
       "points": 12,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Alexandros"
     }
   ],
   "1809": [
@@ -15530,14 +15530,14 @@ window.ARCHIVE_DATA = {
       "rank": 326,
       "points": 2,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Thorsten"
     },
     {
       "season": "23/24",
       "rank": 163,
       "points": 35,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Thorsten"
     }
   ],
   "1803": [
@@ -15546,7 +15546,7 @@ window.ARCHIVE_DATA = {
       "rank": 327,
       "points": 2,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Tony Michael"
     }
   ],
   "034": [
@@ -15578,21 +15578,21 @@ window.ARCHIVE_DATA = {
       "rank": 329,
       "points": 1,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Andreas"
     },
     {
       "season": "23/24",
       "rank": 166,
       "points": 34,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 184,
       "points": 23,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Andreas"
     }
   ],
   "772": [
@@ -15601,7 +15601,7 @@ window.ARCHIVE_DATA = {
       "rank": 331,
       "points": 0,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Gertrud"
     }
   ],
   "1359": [
@@ -15610,21 +15610,21 @@ window.ARCHIVE_DATA = {
       "rank": 332,
       "points": 0,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Daniel"
     },
     {
       "season": "23/24",
       "rank": 255,
       "points": 9,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 249,
       "points": 5,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Daniel"
     }
   ],
   "427": [
@@ -15633,7 +15633,7 @@ window.ARCHIVE_DATA = {
       "rank": 333,
       "points": 0,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Simon"
     }
   ],
   "464": [
@@ -15642,7 +15642,7 @@ window.ARCHIVE_DATA = {
       "rank": 334,
       "points": 0,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Mateo"
     }
   ],
   "10": [
@@ -15660,14 +15660,14 @@ window.ARCHIVE_DATA = {
       "rank": 28,
       "points": 75,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 16,
       "points": 105,
       "league": "Bezirksliga",
-      "name": "003"
+      "name": "Christian"
     }
   ],
   "988": [
@@ -15676,21 +15676,21 @@ window.ARCHIVE_DATA = {
       "rank": 32,
       "points": 64,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Philipp"
     },
     {
       "season": "22/23",
       "rank": 3,
       "points": 174,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Philipp"
     },
     {
       "season": "20/22",
       "rank": 48,
       "points": 89,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Philipp"
     }
   ],
   "1344": [
@@ -15699,21 +15699,21 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 61,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Alexander"
     },
     {
       "season": "22/23",
       "rank": 29,
       "points": 66,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 21,
       "points": 113,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Alexander"
     }
   ],
   "793": [
@@ -15722,21 +15722,21 @@ window.ARCHIVE_DATA = {
       "rank": 37,
       "points": 57,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Joey"
     },
     {
       "season": "22/23",
       "rank": 12,
       "points": 114,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Joey"
     },
     {
       "season": "20/22",
       "rank": 13,
       "points": 104,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Joey"
     }
   ],
   "1880": [
@@ -15745,21 +15745,21 @@ window.ARCHIVE_DATA = {
       "rank": 42,
       "points": 37,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Tino"
     },
     {
       "season": "22/23",
       "rank": 22,
       "points": 114,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Tino"
     },
     {
       "season": "20/22",
       "rank": 97,
       "points": 45,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Tino"
     }
   ],
   "1906": [
@@ -15768,14 +15768,14 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 27,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Paul"
     },
     {
       "season": "22/23",
       "rank": 43,
       "points": 30,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Paul"
     }
   ],
   "1166": [
@@ -15784,21 +15784,21 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 18,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 1,
       "points": 187,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 116,
       "points": 12,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Andreas"
     }
   ],
   "1800": [
@@ -15807,21 +15807,21 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 18,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Mario"
     },
     {
       "season": "22/23",
       "rank": 26,
       "points": 77,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Mario"
     },
     {
       "season": "20/22",
       "rank": 8,
       "points": 128,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Mario"
     }
   ],
   "822": [
@@ -15830,21 +15830,21 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 16,
       "league": "Bezirksliga",
-      "name": "040"
+      "name": "Heiko"
     },
     {
       "season": "22/23",
       "rank": 89,
       "points": 23,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Heiko"
     },
     {
       "season": "20/22",
       "rank": 64,
       "points": 46,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Heiko"
     }
   ],
   "926": [
@@ -15853,7 +15853,7 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 11,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Andre"
     }
   ],
   "1182": [
@@ -15862,7 +15862,7 @@ window.ARCHIVE_DATA = {
       "rank": 59,
       "points": 8,
       "league": "Bezirksliga",
-      "name": "015"
+      "name": "Wolfgang"
     }
   ],
   "1662": [
@@ -15871,14 +15871,14 @@ window.ARCHIVE_DATA = {
       "rank": 60,
       "points": 8,
       "league": "Bezirksliga",
-      "name": "029"
+      "name": "Manuel"
     },
     {
       "season": "20/22",
       "rank": 79,
       "points": 31,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Manuel"
     }
   ],
   "622": [
@@ -15887,21 +15887,21 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 6,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 22,
       "points": 88,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 5,
       "points": 135,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Michael"
     }
   ],
   "1542": [
@@ -15910,21 +15910,21 @@ window.ARCHIVE_DATA = {
       "rank": 64,
       "points": 1,
       "league": "Bezirksliga",
-      "name": "030"
+      "name": "Stefan"
     },
     {
       "season": "22/23",
       "rank": 46,
       "points": 80,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Stefan"
     },
     {
       "season": "20/22",
       "rank": 34,
       "points": 102,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Stefan"
     }
   ],
   "1558": [
@@ -15933,7 +15933,7 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 1,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Denise"
     }
   ],
   "313": [
@@ -15942,21 +15942,21 @@ window.ARCHIVE_DATA = {
       "rank": 7,
       "points": 137,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Norbert"
     },
     {
       "season": "22/23",
       "rank": 15,
       "points": 107,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Norbert"
     },
     {
       "season": "20/22",
       "rank": 14,
       "points": 103,
       "league": "Bezirksliga",
-      "name": "004"
+      "name": "Norbert"
     }
   ],
   "1788": [
@@ -15965,21 +15965,21 @@ window.ARCHIVE_DATA = {
       "rank": 13,
       "points": 129,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Tobias"
     },
     {
       "season": "22/23",
       "rank": 44,
       "points": 84,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Tobias"
     },
     {
       "season": "20/22",
       "rank": 37,
       "points": 92,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Tobias"
     }
   ],
   "1267": [
@@ -15988,21 +15988,21 @@ window.ARCHIVE_DATA = {
       "rank": 14,
       "points": 122,
       "league": "A-Klasse",
-      "name": "051"
+      "name": "Johannes"
     },
     {
       "season": "22/23",
       "rank": 5,
       "points": 162,
       "league": "B-Klasse",
-      "name": "051"
+      "name": "Johannes"
     },
     {
       "season": "20/22",
       "rank": 42,
       "points": 101,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Johannes"
     }
   ],
   "1149": [
@@ -16011,21 +16011,21 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 89,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "John"
     },
     {
       "season": "22/23",
       "rank": 31,
       "points": 95,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "John"
     },
     {
       "season": "20/22",
       "rank": 19,
       "points": 115,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "John"
     }
   ],
   "1201": [
@@ -16034,21 +16034,21 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 77,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Herbert"
     },
     {
       "season": "22/23",
       "rank": 45,
       "points": 83,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Herbert"
     },
     {
       "season": "20/22",
       "rank": 92,
       "points": 22,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Herbert"
     }
   ],
   "1168": [
@@ -16057,21 +16057,21 @@ window.ARCHIVE_DATA = {
       "rank": 62,
       "points": 60,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 23,
       "points": 112,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 34,
       "points": 94,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Marco"
     }
   ],
   "1543": [
@@ -16080,14 +16080,14 @@ window.ARCHIVE_DATA = {
       "rank": 71,
       "points": 49,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Andre"
     },
     {
       "season": "22/23",
       "rank": 131,
       "points": 26,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Andre"
     }
   ],
   "1138": [
@@ -16096,21 +16096,21 @@ window.ARCHIVE_DATA = {
       "rank": 76,
       "points": 41,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Italo"
     },
     {
       "season": "22/23",
       "rank": 86,
       "points": 33,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Italo"
     },
     {
       "season": "20/22",
       "rank": 49,
       "points": 75,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Italo"
     }
   ],
   "1745": [
@@ -16119,21 +16119,21 @@ window.ARCHIVE_DATA = {
       "rank": 80,
       "points": 36,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Bekim"
     },
     {
       "season": "22/23",
       "rank": 97,
       "points": 53,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 188,
       "points": 6,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Michael"
     }
   ],
   "789": [
@@ -16142,21 +16142,21 @@ window.ARCHIVE_DATA = {
       "rank": 85,
       "points": 27,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 65,
       "points": 58,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 104,
       "points": 15,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Thomas"
     }
   ],
   "614": [
@@ -16165,21 +16165,21 @@ window.ARCHIVE_DATA = {
       "rank": 86,
       "points": 22,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 39,
       "points": 31,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 30,
       "points": 51,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Benjamin"
     }
   ],
   "1400": [
@@ -16188,21 +16188,21 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 16,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Andrija"
     },
     {
       "season": "22/23",
       "rank": 135,
       "points": 24,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Andrija"
     },
     {
       "season": "20/22",
       "rank": 112,
       "points": 34,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Andrija"
     }
   ],
   "1887": [
@@ -16211,7 +16211,7 @@ window.ARCHIVE_DATA = {
       "rank": 98,
       "points": 12,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Dominik"
     }
   ],
   "1154": [
@@ -16220,21 +16220,21 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 9,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Roland"
     },
     {
       "season": "22/23",
       "rank": 122,
       "points": 33,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Roland"
     },
     {
       "season": "20/22",
       "rank": 73,
       "points": 36,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Roland"
     }
   ],
   "321": [
@@ -16243,21 +16243,21 @@ window.ARCHIVE_DATA = {
       "rank": 103,
       "points": 9,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Gabriele"
     },
     {
       "season": "22/23",
       "rank": 105,
       "points": 11,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Gabriele"
     },
     {
       "season": "20/22",
       "rank": 94,
       "points": 21,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Gabriele"
     }
   ],
   "135": [
@@ -16266,14 +16266,14 @@ window.ARCHIVE_DATA = {
       "rank": 104,
       "points": 9,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Ivonne"
     },
     {
       "season": "22/23",
       "rank": 84,
       "points": 61,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Ivonne"
     }
   ],
   "1575": [
@@ -16282,7 +16282,7 @@ window.ARCHIVE_DATA = {
       "rank": 109,
       "points": 5,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Slavica"
     }
   ],
   "1058": [
@@ -16291,7 +16291,7 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 1,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Mehmet"
     }
   ],
   "405": [
@@ -16300,7 +16300,7 @@ window.ARCHIVE_DATA = {
       "rank": 113,
       "points": 1,
       "league": "A-Klasse",
-      "name": "032"
+      "name": "Christoph"
     }
   ],
   "027": [
@@ -16332,7 +16332,7 @@ window.ARCHIVE_DATA = {
       "rank": 115,
       "points": 0,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Katarzyna"
     }
   ],
   "600": [
@@ -16341,7 +16341,7 @@ window.ARCHIVE_DATA = {
       "rank": 116,
       "points": 0,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Andreas"
     }
   ],
   "1780": [
@@ -16350,7 +16350,7 @@ window.ARCHIVE_DATA = {
       "rank": 120,
       "points": 0,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Melanie"
     }
   ],
   "1421": [
@@ -16359,21 +16359,21 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 121,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Abdullah"
     },
     {
       "season": "22/23",
       "rank": 49,
       "points": 100,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Abdullah"
     },
     {
       "season": "20/22",
       "rank": 23,
       "points": 129,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Abdullah"
     }
   ],
   "1408": [
@@ -16382,21 +16382,21 @@ window.ARCHIVE_DATA = {
       "rank": 30,
       "points": 115,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Marcus"
     },
     {
       "season": "22/23",
       "rank": 64,
       "points": 75,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Marcus"
     },
     {
       "season": "20/22",
       "rank": 52,
       "points": 92,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Marcus"
     }
   ],
   "1302": [
@@ -16405,21 +16405,21 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 104,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "22/23",
       "rank": 69,
       "points": 72,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "J\u00fcrgen"
     },
     {
       "season": "20/22",
       "rank": 29,
       "points": 101,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "J\u00fcrgen"
     }
   ],
   "1142": [
@@ -16428,21 +16428,21 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 92,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Claus"
     },
     {
       "season": "22/23",
       "rank": 41,
       "points": 98,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Claus"
     },
     {
       "season": "20/22",
       "rank": 36,
       "points": 93,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Claus"
     }
   ],
   "1320": [
@@ -16451,21 +16451,21 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 91,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Eduard"
     },
     {
       "season": "22/23",
       "rank": 114,
       "points": 58,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Eduard"
     },
     {
       "season": "20/22",
       "rank": 148,
       "points": 16,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Eduard"
     }
   ],
   "1504": [
@@ -16474,21 +16474,21 @@ window.ARCHIVE_DATA = {
       "rank": 72,
       "points": 76,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 36,
       "points": 101,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Daniel"
     },
     {
       "season": "20/22",
       "rank": 17,
       "points": 134,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Daniel"
     }
   ],
   "637": [
@@ -16497,14 +16497,14 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 68,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 177,
       "points": 5,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Michael"
     }
   ],
   "1755": [
@@ -16513,21 +16513,21 @@ window.ARCHIVE_DATA = {
       "rank": 82,
       "points": 65,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Nina"
     },
     {
       "season": "22/23",
       "rank": 80,
       "points": 63,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Nina"
     },
     {
       "season": "20/22",
       "rank": 99,
       "points": 53,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Nina"
     }
   ],
   "833": [
@@ -16536,21 +16536,21 @@ window.ARCHIVE_DATA = {
       "rank": 90,
       "points": 58,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Daniel"
     },
     {
       "season": "22/23",
       "rank": 93,
       "points": 56,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Daniel"
     },
     {
       "season": "20/22",
       "rank": 28,
       "points": 121,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Daniel"
     }
   ],
   "212": [
@@ -16559,7 +16559,7 @@ window.ARCHIVE_DATA = {
       "rank": 98,
       "points": 50,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Kevin"
     }
   ],
   "1490": [
@@ -16568,21 +16568,21 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 43,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "\u00d6mer"
     },
     {
       "season": "22/23",
       "rank": 75,
       "points": 78,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "\u00d6mer"
     },
     {
       "season": "20/22",
       "rank": 80,
       "points": 61,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "\u00d6mer"
     }
   ],
   "1736": [
@@ -16591,14 +16591,14 @@ window.ARCHIVE_DATA = {
       "rank": 126,
       "points": 28,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Sven"
     },
     {
       "season": "22/23",
       "rank": 83,
       "points": 61,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Sven"
     }
   ],
   "1781": [
@@ -16607,7 +16607,7 @@ window.ARCHIVE_DATA = {
       "rank": 128,
       "points": 24,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Michael"
     }
   ],
   "1790": [
@@ -16616,14 +16616,14 @@ window.ARCHIVE_DATA = {
       "rank": 129,
       "points": 24,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 165,
       "points": 31,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Benjamin"
     }
   ],
   "374": [
@@ -16632,21 +16632,21 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 18,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Michael"
     },
     {
       "season": "22/23",
       "rank": 110,
       "points": 42,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 68,
       "points": 43,
       "league": "A-Klasse",
-      "name": "002"
+      "name": "Michael"
     }
   ],
   "1741": [
@@ -16655,21 +16655,21 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 16,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Max"
     },
     {
       "season": "22/23",
       "rank": 142,
       "points": 21,
       "league": "B-Klasse",
-      "name": "061"
+      "name": "Max"
     },
     {
       "season": "20/22",
       "rank": 73,
       "points": 75,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Max"
     }
   ],
   "1180": [
@@ -16678,21 +16678,21 @@ window.ARCHIVE_DATA = {
       "rank": 149,
       "points": 14,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 187,
       "points": 1,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 121,
       "points": 9,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Thomas"
     }
   ],
   "1608": [
@@ -16701,21 +16701,21 @@ window.ARCHIVE_DATA = {
       "rank": 151,
       "points": 13,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Thomas"
     },
     {
       "season": "22/23",
       "rank": 162,
       "points": 9,
       "league": "B-Klasse",
-      "name": "052"
+      "name": "Thomas"
     },
     {
       "season": "20/22",
       "rank": 169,
       "points": 19,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Thomas"
     }
   ],
   "572": [
@@ -16724,21 +16724,21 @@ window.ARCHIVE_DATA = {
       "rank": 155,
       "points": 11,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Kevin"
     },
     {
       "season": "22/23",
       "rank": 84,
       "points": 39,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Kevin"
     },
     {
       "season": "20/22",
       "rank": 38,
       "points": 95,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Kevin"
     }
   ],
   "1475": [
@@ -16747,21 +16747,21 @@ window.ARCHIVE_DATA = {
       "rank": 162,
       "points": 8,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "\u00d6zcan"
     },
     {
       "season": "22/23",
       "rank": 142,
       "points": 41,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "\u00d6zcan"
     },
     {
       "season": "20/22",
       "rank": 74,
       "points": 65,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "\u00d6zcan"
     }
   ],
   "1761": [
@@ -16770,21 +16770,21 @@ window.ARCHIVE_DATA = {
       "rank": 164,
       "points": 7,
       "league": "B-Klasse",
-      "name": "012"
+      "name": "Josef"
     },
     {
       "season": "22/23",
       "rank": 252,
       "points": 4,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Josef"
     },
     {
       "season": "20/22",
       "rank": 245,
       "points": 6,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Josef"
     }
   ],
   "327": [
@@ -16793,7 +16793,7 @@ window.ARCHIVE_DATA = {
       "rank": 165,
       "points": 7,
       "league": "B-Klasse",
-      "name": "053"
+      "name": "Udo"
     }
   ],
   "502": [
@@ -16802,14 +16802,14 @@ window.ARCHIVE_DATA = {
       "rank": 167,
       "points": 6,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Cheyenne"
     },
     {
       "season": "22/23",
       "rank": 183,
       "points": 2,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Cheyenne"
     }
   ],
   "1021": [
@@ -16818,21 +16818,21 @@ window.ARCHIVE_DATA = {
       "rank": 168,
       "points": 6,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Thilo"
     },
     {
       "season": "22/23",
       "rank": 118,
       "points": 36,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Thilo"
     },
     {
       "season": "20/22",
       "rank": 160,
       "points": 12,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Thilo"
     }
   ],
   "1795": [
@@ -16841,7 +16841,7 @@ window.ARCHIVE_DATA = {
       "rank": 169,
       "points": 5,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Georg"
     }
   ],
   "1185": [
@@ -16850,14 +16850,14 @@ window.ARCHIVE_DATA = {
       "rank": 177,
       "points": 4,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Antje"
     },
     {
       "season": "20/22",
       "rank": 152,
       "points": 3,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Antje"
     }
   ],
   "796": [
@@ -16866,21 +16866,21 @@ window.ARCHIVE_DATA = {
       "rank": 188,
       "points": 2,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Axel"
     },
     {
       "season": "22/23",
       "rank": 51,
       "points": 77,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Axel"
     },
     {
       "season": "20/22",
       "rank": 54,
       "points": 69,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Axel"
     }
   ],
   "1570": [
@@ -16889,14 +16889,14 @@ window.ARCHIVE_DATA = {
       "rank": 192,
       "points": 1,
       "league": "B-Klasse",
-      "name": "029"
+      "name": "Sandra"
     },
     {
       "season": "22/23",
       "rank": 124,
       "points": 51,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Sandra"
     }
   ],
   "851": [
@@ -16905,21 +16905,21 @@ window.ARCHIVE_DATA = {
       "rank": 193,
       "points": 1,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Roman"
     },
     {
       "season": "22/23",
       "rank": 85,
       "points": 33,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Roman"
     },
     {
       "season": "20/22",
       "rank": 253,
       "points": 4,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Roman"
     }
   ],
   "1384": [
@@ -16928,14 +16928,14 @@ window.ARCHIVE_DATA = {
       "rank": 195,
       "points": 1,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Mathias"
     },
     {
       "season": "22/23",
       "rank": 125,
       "points": 4,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Mathias"
     }
   ],
   "1699": [
@@ -16944,14 +16944,14 @@ window.ARCHIVE_DATA = {
       "rank": 196,
       "points": 0,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Ralph"
     },
     {
       "season": "20/22",
       "rank": 215,
       "points": 2,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Ralph"
     }
   ],
   "628": [
@@ -16960,21 +16960,21 @@ window.ARCHIVE_DATA = {
       "rank": 197,
       "points": 0,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Hartmut"
     },
     {
       "season": "22/23",
       "rank": 127,
       "points": 30,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Hartmut"
     },
     {
       "season": "20/22",
       "rank": 108,
       "points": 37,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Hartmut"
     }
   ],
   "1487": [
@@ -16983,21 +16983,21 @@ window.ARCHIVE_DATA = {
       "rank": 198,
       "points": 0,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Elisa"
     },
     {
       "season": "22/23",
       "rank": 202,
       "points": 18,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Elisa"
     },
     {
       "season": "20/22",
       "rank": 162,
       "points": 23,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Elisa"
     }
   ],
   "1370": [
@@ -17006,14 +17006,14 @@ window.ARCHIVE_DATA = {
       "rank": 16,
       "points": 152,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Christian"
     },
     {
       "season": "22/23",
       "rank": 78,
       "points": 76,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Christian"
     }
   ],
   "267": [
@@ -17022,7 +17022,7 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 93,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Marko"
     }
   ],
   "1588": [
@@ -17031,14 +17031,14 @@ window.ARCHIVE_DATA = {
       "rank": 80,
       "points": 83,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 76,
       "points": 74,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Michael"
     }
   ],
   "1807": [
@@ -17047,7 +17047,7 @@ window.ARCHIVE_DATA = {
       "rank": 81,
       "points": 82,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Sascha"
     }
   ],
   "623": [
@@ -17056,21 +17056,21 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 78,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Frank"
     },
     {
       "season": "22/23",
       "rank": 21,
       "points": 139,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 51,
       "points": 86,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Frank"
     }
   ],
   "941": [
@@ -17079,14 +17079,14 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 67,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Denis"
     },
     {
       "season": "22/23",
       "rank": 219,
       "points": 11,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Dennis"
     }
   ],
   "1671": [
@@ -17095,21 +17095,21 @@ window.ARCHIVE_DATA = {
       "rank": 110,
       "points": 65,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 106,
       "points": 61,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Marco"
     },
     {
       "season": "20/22",
       "rank": 234,
       "points": 7,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Marco"
     }
   ],
   "1695": [
@@ -17118,14 +17118,14 @@ window.ARCHIVE_DATA = {
       "rank": 124,
       "points": 55,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Doris"
     },
     {
       "season": "22/23",
       "rank": 121,
       "points": 52,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Doris"
     }
   ],
   "265": [
@@ -17134,7 +17134,7 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 49,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Luka"
     }
   ],
   "1121": [
@@ -17143,14 +17143,14 @@ window.ARCHIVE_DATA = {
       "rank": 137,
       "points": 48,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 32,
       "points": 117,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Markus"
     }
   ],
   "1828": [
@@ -17159,14 +17159,14 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 47,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Fabian"
     },
     {
       "season": "22/23",
       "rank": 147,
       "points": 40,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Fabian"
     }
   ],
   "1742": [
@@ -17175,7 +17175,7 @@ window.ARCHIVE_DATA = {
       "rank": 152,
       "points": 40,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Sandra"
     }
   ],
   "1376": [
@@ -17184,21 +17184,21 @@ window.ARCHIVE_DATA = {
       "rank": 153,
       "points": 39,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Salvatore"
     },
     {
       "season": "22/23",
       "rank": 168,
       "points": 31,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Salvatore"
     },
     {
       "season": "20/22",
       "rank": 230,
       "points": 0,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Salvatore"
     }
   ],
   "995": [
@@ -17207,21 +17207,21 @@ window.ARCHIVE_DATA = {
       "rank": 168,
       "points": 34,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Cecile"
     },
     {
       "season": "22/23",
       "rank": 155,
       "points": 34,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Cecile"
     },
     {
       "season": "20/22",
       "rank": 251,
       "points": 5,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Cecile"
     }
   ],
   "430": [
@@ -17230,7 +17230,7 @@ window.ARCHIVE_DATA = {
       "rank": 169,
       "points": 33,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Benjamin"
     }
   ],
   "238": [
@@ -17239,14 +17239,14 @@ window.ARCHIVE_DATA = {
       "rank": 170,
       "points": 33,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Silke"
     },
     {
       "season": "20/22",
       "rank": 122,
       "points": 40,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Silke"
     }
   ],
   "1432": [
@@ -17255,21 +17255,21 @@ window.ARCHIVE_DATA = {
       "rank": 185,
       "points": 28,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Selim"
     },
     {
       "season": "22/23",
       "rank": 60,
       "points": 91,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Selim"
     },
     {
       "season": "20/22",
       "rank": 49,
       "points": 95,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Selim"
     }
   ],
   "1697": [
@@ -17278,14 +17278,14 @@ window.ARCHIVE_DATA = {
       "rank": 186,
       "points": 27,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Benjamin"
     },
     {
       "season": "22/23",
       "rank": 182,
       "points": 23,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Benjamin"
     }
   ],
   "209": [
@@ -17294,7 +17294,7 @@ window.ARCHIVE_DATA = {
       "rank": 190,
       "points": 25,
       "league": "C-Klasse",
-      "name": "004"
+      "name": "Jennifer"
     }
   ],
   "792": [
@@ -17303,21 +17303,21 @@ window.ARCHIVE_DATA = {
       "rank": 191,
       "points": 25,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Romeo"
     },
     {
       "season": "22/23",
       "rank": 206,
       "points": 16,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Romeo"
     },
     {
       "season": "20/22",
       "rank": 131,
       "points": 36,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Romeo"
     }
   ],
   "307": [
@@ -17326,21 +17326,21 @@ window.ARCHIVE_DATA = {
       "rank": 194,
       "points": 24,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Maurizio"
     },
     {
       "season": "22/23",
       "rank": 103,
       "points": 13,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Maurizio"
     },
     {
       "season": "20/22",
       "rank": 115,
       "points": 12,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Maurizio"
     }
   ],
   "724": [
@@ -17349,7 +17349,7 @@ window.ARCHIVE_DATA = {
       "rank": 211,
       "points": 19,
       "league": "C-Klasse",
-      "name": "013"
+      "name": "Talha"
     }
   ],
   "1045": [
@@ -17358,7 +17358,7 @@ window.ARCHIVE_DATA = {
       "rank": 213,
       "points": 19,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Waldemar"
     }
   ],
   "1514": [
@@ -17367,7 +17367,7 @@ window.ARCHIVE_DATA = {
       "rank": 223,
       "points": 17,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Edgard"
     }
   ],
   "820": [
@@ -17376,21 +17376,21 @@ window.ARCHIVE_DATA = {
       "rank": 226,
       "points": 16,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Dieter"
     },
     {
       "season": "22/23",
       "rank": 203,
       "points": 17,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Dieter"
     },
     {
       "season": "20/22",
       "rank": 179,
       "points": 7,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Dieter"
     }
   ],
   "257": [
@@ -17399,7 +17399,7 @@ window.ARCHIVE_DATA = {
       "rank": 228,
       "points": 16,
       "league": "C-Klasse",
-      "name": "064"
+      "name": "Klaus-J\u00fcrgen"
     }
   ],
   "304": [
@@ -17408,7 +17408,7 @@ window.ARCHIVE_DATA = {
       "rank": 231,
       "points": 15,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Tobias"
     }
   ],
   "1559": [
@@ -17417,7 +17417,7 @@ window.ARCHIVE_DATA = {
       "rank": 233,
       "points": 14,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Patrick"
     }
   ],
   "1082": [
@@ -17426,7 +17426,7 @@ window.ARCHIVE_DATA = {
       "rank": 240,
       "points": 13,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Ferruccio"
     }
   ],
   "1889": [
@@ -17435,14 +17435,14 @@ window.ARCHIVE_DATA = {
       "rank": 244,
       "points": 11,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Andreas"
     },
     {
       "season": "22/23",
       "rank": 213,
       "points": 13,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Jason"
     }
   ],
   "243": [
@@ -17451,7 +17451,7 @@ window.ARCHIVE_DATA = {
       "rank": 246,
       "points": 11,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Dennis"
     }
   ],
   "1770": [
@@ -17460,14 +17460,14 @@ window.ARCHIVE_DATA = {
       "rank": 247,
       "points": 11,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Paulina"
     },
     {
       "season": "22/23",
       "rank": 180,
       "points": 25,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Paulina"
     }
   ],
   "544": [
@@ -17476,7 +17476,7 @@ window.ARCHIVE_DATA = {
       "rank": 248,
       "points": 11,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "J\u00fcrgen"
     }
   ],
   "1877": [
@@ -17485,7 +17485,7 @@ window.ARCHIVE_DATA = {
       "rank": 257,
       "points": 9,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Michaela"
     }
   ],
   "258": [
@@ -17494,7 +17494,7 @@ window.ARCHIVE_DATA = {
       "rank": 260,
       "points": 8,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Dominick"
     }
   ],
   "684": [
@@ -17503,7 +17503,7 @@ window.ARCHIVE_DATA = {
       "rank": 264,
       "points": 7,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Lars"
     }
   ],
   "884": [
@@ -17512,21 +17512,21 @@ window.ARCHIVE_DATA = {
       "rank": 265,
       "points": 7,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Cornelia"
     },
     {
       "season": "22/23",
       "rank": 57,
       "points": 93,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Cornelia"
     },
     {
       "season": "20/22",
       "rank": 118,
       "points": 41,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Cornelia"
     }
   ],
   "1151": [
@@ -17535,21 +17535,21 @@ window.ARCHIVE_DATA = {
       "rank": 266,
       "points": 7,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Thorsten"
     },
     {
       "season": "22/23",
       "rank": 182,
       "points": 2,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Thorsten"
     },
     {
       "season": "20/22",
       "rank": 48,
       "points": 97,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Thorsten"
     }
   ],
   "319": [
@@ -17558,7 +17558,7 @@ window.ARCHIVE_DATA = {
       "rank": 269,
       "points": 7,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Christopher"
     }
   ],
   "543": [
@@ -17567,21 +17567,21 @@ window.ARCHIVE_DATA = {
       "rank": 272,
       "points": 6,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Schirin"
     },
     {
       "season": "22/23",
       "rank": 232,
       "points": 9,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Schirin"
     },
     {
       "season": "20/22",
       "rank": 225,
       "points": 0,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Schirin"
     }
   ],
   "223": [
@@ -17590,7 +17590,7 @@ window.ARCHIVE_DATA = {
       "rank": 274,
       "points": 6,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Tayfun"
     }
   ],
   "364": [
@@ -17599,14 +17599,14 @@ window.ARCHIVE_DATA = {
       "rank": 275,
       "points": 6,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Marco"
     },
     {
       "season": "22/23",
       "rank": 188,
       "points": 1,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Marco"
     }
   ],
   "365": [
@@ -17615,7 +17615,7 @@ window.ARCHIVE_DATA = {
       "rank": 277,
       "points": 5,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Anette"
     }
   ],
   "1794": [
@@ -17624,7 +17624,7 @@ window.ARCHIVE_DATA = {
       "rank": 279,
       "points": 5,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Chantal"
     }
   ],
   "515": [
@@ -17633,14 +17633,14 @@ window.ARCHIVE_DATA = {
       "rank": 280,
       "points": 5,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Matthias"
     },
     {
       "season": "22/23",
       "rank": 254,
       "points": 3,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Matthias"
     }
   ],
   "253": [
@@ -17649,7 +17649,7 @@ window.ARCHIVE_DATA = {
       "rank": 281,
       "points": 5,
       "league": "C-Klasse",
-      "name": "037"
+      "name": "Daniel"
     }
   ],
   "489": [
@@ -17658,21 +17658,21 @@ window.ARCHIVE_DATA = {
       "rank": 283,
       "points": 4,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 188,
       "points": 21,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 43,
       "points": 101,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Markus"
     }
   ],
   "1461": [
@@ -17681,14 +17681,14 @@ window.ARCHIVE_DATA = {
       "rank": 284,
       "points": 4,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Dennis"
     },
     {
       "season": "22/23",
       "rank": 201,
       "points": 18,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Dennis"
     }
   ],
   "266": [
@@ -17697,7 +17697,7 @@ window.ARCHIVE_DATA = {
       "rank": 285,
       "points": 4,
       "league": "C-Klasse",
-      "name": "038"
+      "name": "Robert"
     }
   ],
   "1869": [
@@ -17706,7 +17706,7 @@ window.ARCHIVE_DATA = {
       "rank": 290,
       "points": 3,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Christian"
     }
   ],
   "354": [
@@ -17715,7 +17715,7 @@ window.ARCHIVE_DATA = {
       "rank": 292,
       "points": 3,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Pilleriin"
     }
   ],
   "1655": [
@@ -17724,21 +17724,21 @@ window.ARCHIVE_DATA = {
       "rank": 295,
       "points": 2,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Petra"
     },
     {
       "season": "22/23",
       "rank": 258,
       "points": 0,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Petra"
     },
     {
       "season": "20/22",
       "rank": 277,
       "points": 2,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Petra"
     }
   ],
   "349": [
@@ -17747,7 +17747,7 @@ window.ARCHIVE_DATA = {
       "rank": 296,
       "points": 2,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Jens"
     }
   ],
   "756": [
@@ -17756,14 +17756,14 @@ window.ARCHIVE_DATA = {
       "rank": 297,
       "points": 2,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Jason"
     },
     {
       "season": "22/23",
       "rank": 260,
       "points": 0,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Jason"
     }
   ],
   "1681": [
@@ -17772,21 +17772,21 @@ window.ARCHIVE_DATA = {
       "rank": 298,
       "points": 2,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Meltem"
     },
     {
       "season": "22/23",
       "rank": 199,
       "points": 19,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Meltem"
     },
     {
       "season": "20/22",
       "rank": 172,
       "points": 19,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Meltem"
     }
   ],
   "1848": [
@@ -17795,7 +17795,7 @@ window.ARCHIVE_DATA = {
       "rank": 299,
       "points": 1,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Simon"
     }
   ],
   "539": [
@@ -17804,7 +17804,7 @@ window.ARCHIVE_DATA = {
       "rank": 300,
       "points": 1,
       "league": "C-Klasse",
-      "name": "009"
+      "name": "Thomas"
     }
   ],
   "1171": [
@@ -17813,14 +17813,14 @@ window.ARCHIVE_DATA = {
       "rank": 302,
       "points": 1,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Ralf"
     },
     {
       "season": "20/22",
       "rank": 178,
       "points": 17,
       "league": "C-Klasse",
-      "name": "024"
+      "name": "Ralf"
     }
   ],
   "1756": [
@@ -17829,14 +17829,14 @@ window.ARCHIVE_DATA = {
       "rank": 303,
       "points": 1,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Markus"
     },
     {
       "season": "22/23",
       "rank": 81,
       "points": 75,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Markus"
     }
   ],
   "521": [
@@ -17845,21 +17845,21 @@ window.ARCHIVE_DATA = {
       "rank": 304,
       "points": 1,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Manuel"
     },
     {
       "season": "22/23",
       "rank": 251,
       "points": 5,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Manuel"
     },
     {
       "season": "20/22",
       "rank": 243,
       "points": 6,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Manuel"
     }
   ],
   "853": [
@@ -17868,7 +17868,7 @@ window.ARCHIVE_DATA = {
       "rank": 307,
       "points": 0,
       "league": "C-Klasse",
-      "name": "026"
+      "name": "Zlatko"
     }
   ],
   "1684": [
@@ -17877,14 +17877,14 @@ window.ARCHIVE_DATA = {
       "rank": 308,
       "points": 0,
       "league": "C-Klasse",
-      "name": "035"
+      "name": "Timo"
     },
     {
       "season": "22/23",
       "rank": 241,
       "points": 7,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Timo"
     }
   ],
   "352": [
@@ -17893,7 +17893,7 @@ window.ARCHIVE_DATA = {
       "rank": 310,
       "points": 0,
       "league": "C-Klasse",
-      "name": "069"
+      "name": "Alexandra"
     }
   ],
   "1077": [
@@ -17902,14 +17902,14 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 40,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Urs"
     },
     {
       "season": "20/22",
       "rank": 8,
       "points": 137,
       "league": "A-Klasse",
-      "name": "057"
+      "name": "Urs"
     }
   ],
   "928": [
@@ -17918,14 +17918,14 @@ window.ARCHIVE_DATA = {
       "rank": 34,
       "points": 39,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Toni"
     },
     {
       "season": "20/22",
       "rank": 11,
       "points": 114,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Toni"
     }
   ],
   "1505": [
@@ -17934,14 +17934,14 @@ window.ARCHIVE_DATA = {
       "rank": 37,
       "points": 34,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Steffen"
     },
     {
       "season": "20/22",
       "rank": 45,
       "points": 26,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Steffen"
     }
   ],
   "933": [
@@ -17950,14 +17950,14 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 33,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Markus"
     },
     {
       "season": "20/22",
       "rank": 25,
       "points": 72,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Markus"
     }
   ],
   "911": [
@@ -17966,14 +17966,14 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 27,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Axel"
     },
     {
       "season": "20/22",
       "rank": 21,
       "points": 88,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Axel"
     }
   ],
   "1035": [
@@ -17982,14 +17982,14 @@ window.ARCHIVE_DATA = {
       "rank": 47,
       "points": 20,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Matthias"
     },
     {
       "season": "20/22",
       "rank": 58,
       "points": 61,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Matthias"
     }
   ],
   "1023": [
@@ -17998,14 +17998,14 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 17,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Musa"
     },
     {
       "season": "20/22",
       "rank": 41,
       "points": 29,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Musa"
     }
   ],
   "1304": [
@@ -18014,14 +18014,14 @@ window.ARCHIVE_DATA = {
       "rank": 51,
       "points": 12,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Marko"
     },
     {
       "season": "20/22",
       "rank": 31,
       "points": 51,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Marko"
     }
   ],
   "1808": [
@@ -18030,7 +18030,7 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 10,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Sven"
     }
   ],
   "1417": [
@@ -18039,7 +18039,7 @@ window.ARCHIVE_DATA = {
       "rank": 54,
       "points": 9,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Matthias"
     }
   ],
   "1326": [
@@ -18048,14 +18048,14 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 7,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Celalettin"
     },
     {
       "season": "20/22",
       "rank": 42,
       "points": 29,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Celalettin"
     }
   ],
   "549": [
@@ -18064,14 +18064,14 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 5,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Steffen"
     },
     {
       "season": "20/22",
       "rank": 46,
       "points": 90,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Steffen"
     }
   ],
   "912": [
@@ -18080,14 +18080,14 @@ window.ARCHIVE_DATA = {
       "rank": 60,
       "points": 3,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Manuel"
     },
     {
       "season": "20/22",
       "rank": 53,
       "points": 13,
       "league": "Bezirksliga",
-      "name": "052"
+      "name": "Manuel"
     }
   ],
   "1812": [
@@ -18096,7 +18096,7 @@ window.ARCHIVE_DATA = {
       "rank": 65,
       "points": 0,
       "league": "Bezirksliga",
-      "name": "045"
+      "name": "Barbara"
     }
   ],
   "450": [
@@ -18105,14 +18105,14 @@ window.ARCHIVE_DATA = {
       "rank": 66,
       "points": 0,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Colin"
     },
     {
       "season": "20/22",
       "rank": 166,
       "points": 21,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Colin"
     }
   ],
   "962": [
@@ -18121,14 +18121,14 @@ window.ARCHIVE_DATA = {
       "rank": 67,
       "points": 0,
       "league": "Bezirksliga",
-      "name": "057"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 274,
       "points": 2,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Frank"
     }
   ],
   "1002": [
@@ -18137,7 +18137,7 @@ window.ARCHIVE_DATA = {
       "rank": 69,
       "points": 0,
       "league": "Bezirksliga",
-      "name": "043"
+      "name": "Moritz"
     }
   ],
   "679": [
@@ -18146,14 +18146,14 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 139,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Kevin"
     },
     {
       "season": "20/22",
       "rank": 41,
       "points": 85,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Kevin"
     }
   ],
   "1251": [
@@ -18162,14 +18162,14 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 78,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 166,
       "points": 11,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Alexander"
     }
   ],
   "583": [
@@ -18178,7 +18178,7 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 71,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Hardy"
     }
   ],
   "1115": [
@@ -18187,14 +18187,14 @@ window.ARCHIVE_DATA = {
       "rank": 70,
       "points": 53,
       "league": "A-Klasse",
-      "name": "024"
+      "name": "Patrick"
     },
     {
       "season": "20/22",
       "rank": 2,
       "points": 179,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Patrick"
     }
   ],
   "256": [
@@ -18203,14 +18203,14 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 20,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Ferry"
     },
     {
       "season": "20/22",
       "rank": 42,
       "points": 84,
       "league": "A-Klasse",
-      "name": "010"
+      "name": "Ferry"
     }
   ],
   "1806": [
@@ -18219,7 +18219,7 @@ window.ARCHIVE_DATA = {
       "rank": 100,
       "points": 15,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Stefan"
     }
   ],
   "1483": [
@@ -18228,14 +18228,14 @@ window.ARCHIVE_DATA = {
       "rank": 101,
       "points": 13,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Steffen"
     },
     {
       "season": "20/22",
       "rank": 98,
       "points": 16,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Steffen"
     }
   ],
   "151": [
@@ -18244,14 +18244,14 @@ window.ARCHIVE_DATA = {
       "rank": 104,
       "points": 12,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Stiven"
     },
     {
       "season": "20/22",
       "rank": 135,
       "points": 22,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Stiven"
     }
   ],
   "1353": [
@@ -18260,14 +18260,14 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 11,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Admir"
     },
     {
       "season": "20/22",
       "rank": 57,
       "points": 62,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Admir"
     }
   ],
   "914": [
@@ -18276,14 +18276,14 @@ window.ARCHIVE_DATA = {
       "rank": 109,
       "points": 9,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Nils"
     },
     {
       "season": "20/22",
       "rank": 93,
       "points": 21,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Nils"
     }
   ],
   "1364": [
@@ -18292,14 +18292,14 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 8,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Klaus"
     },
     {
       "season": "20/22",
       "rank": 35,
       "points": 42,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Klaus"
     }
   ],
   "1725": [
@@ -18308,14 +18308,14 @@ window.ARCHIVE_DATA = {
       "rank": 118,
       "points": 6,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 121,
       "points": 29,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Frank"
     }
   ],
   "1462": [
@@ -18324,14 +18324,14 @@ window.ARCHIVE_DATA = {
       "rank": 120,
       "points": 5,
       "league": "A-Klasse",
-      "name": "030"
+      "name": "Athina"
     },
     {
       "season": "20/22",
       "rank": 116,
       "points": 33,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Athina"
     }
   ],
   "1678": [
@@ -18340,14 +18340,14 @@ window.ARCHIVE_DATA = {
       "rank": 124,
       "points": 4,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Deborah"
     },
     {
       "season": "20/22",
       "rank": 150,
       "points": 3,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Deborah"
     }
   ],
   "1464": [
@@ -18356,7 +18356,7 @@ window.ARCHIVE_DATA = {
       "rank": 127,
       "points": 3,
       "league": "A-Klasse",
-      "name": "063"
+      "name": "Udo"
     }
   ],
   "1639": [
@@ -18365,14 +18365,14 @@ window.ARCHIVE_DATA = {
       "rank": 132,
       "points": 2,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Bojan"
     },
     {
       "season": "20/22",
       "rank": 147,
       "points": 4,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Bojan"
     }
   ],
   "1105": [
@@ -18381,7 +18381,7 @@ window.ARCHIVE_DATA = {
       "rank": 133,
       "points": 2,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Sabine"
     }
   ],
   "1553": [
@@ -18390,14 +18390,14 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 1,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Doreen"
     },
     {
       "season": "20/22",
       "rank": 119,
       "points": 10,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Doreen"
     }
   ],
   "124": [
@@ -18406,14 +18406,14 @@ window.ARCHIVE_DATA = {
       "rank": 139,
       "points": 1,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Wolfgang"
     },
     {
       "season": "20/22",
       "rank": 144,
       "points": 18,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Wolfgang"
     }
   ],
   "1727": [
@@ -18422,14 +18422,14 @@ window.ARCHIVE_DATA = {
       "rank": 142,
       "points": 0,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Gerhard"
     },
     {
       "season": "20/22",
       "rank": 218,
       "points": 1,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Gerhard"
     }
   ],
   "1801": [
@@ -18438,14 +18438,14 @@ window.ARCHIVE_DATA = {
       "rank": 143,
       "points": 0,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Heiko"
     },
     {
       "season": "20/22",
       "rank": 24,
       "points": 114,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Heiko"
     }
   ],
   "1700": [
@@ -18454,7 +18454,7 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 0,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Sabine"
     }
   ],
   "342": [
@@ -18463,14 +18463,14 @@ window.ARCHIVE_DATA = {
       "rank": 19,
       "points": 120,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Michael"
     },
     {
       "season": "20/22",
       "rank": 109,
       "points": 13,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Michael"
     }
   ],
   "1688": [
@@ -18479,14 +18479,14 @@ window.ARCHIVE_DATA = {
       "rank": 39,
       "points": 99,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Sebastian"
     },
     {
       "season": "20/22",
       "rank": 9,
       "points": 158,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Sebastian"
     }
   ],
   "516": [
@@ -18495,14 +18495,14 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 96,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Maruan"
     },
     {
       "season": "20/22",
       "rank": 75,
       "points": 74,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Maruan"
     }
   ],
   "906": [
@@ -18511,14 +18511,14 @@ window.ARCHIVE_DATA = {
       "rank": 86,
       "points": 59,
       "league": "B-Klasse",
-      "name": "022"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 62,
       "points": 51,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Frank"
     }
   ],
   "584": [
@@ -18527,14 +18527,14 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 55,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Nicole"
     },
     {
       "season": "20/22",
       "rank": 156,
       "points": 1,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Nicole"
     }
   ],
   "1260": [
@@ -18543,7 +18543,7 @@ window.ARCHIVE_DATA = {
       "rank": 119,
       "points": 36,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Carsten"
     }
   ],
   "1298": [
@@ -18552,14 +18552,14 @@ window.ARCHIVE_DATA = {
       "rank": 121,
       "points": 34,
       "league": "B-Klasse",
-      "name": "010"
+      "name": "Ulrich"
     },
     {
       "season": "20/22",
       "rank": 188,
       "points": 15,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Ulrich"
     }
   ],
   "1089": [
@@ -18568,14 +18568,14 @@ window.ARCHIVE_DATA = {
       "rank": 124,
       "points": 33,
       "league": "B-Klasse",
-      "name": "015"
+      "name": "Kenan"
     },
     {
       "season": "20/22",
       "rank": 100,
       "points": 43,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Kenan"
     }
   ],
   "945": [
@@ -18584,14 +18584,14 @@ window.ARCHIVE_DATA = {
       "rank": 126,
       "points": 31,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Pascal"
     },
     {
       "season": "20/22",
       "rank": 114,
       "points": 34,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Pascal"
     }
   ],
   "071": [
@@ -18609,14 +18609,14 @@ window.ARCHIVE_DATA = {
       "rank": 141,
       "points": 21,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Manfred"
     },
     {
       "season": "20/22",
       "rank": 65,
       "points": 72,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Manfred"
     }
   ],
   "1607": [
@@ -18625,14 +18625,14 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 17,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "G\u00fcnther"
     },
     {
       "season": "20/22",
       "rank": 53,
       "points": 72,
       "league": "A-Klasse",
-      "name": "002"
+      "name": "G\u00fcnther"
     }
   ],
   "1787": [
@@ -18641,7 +18641,7 @@ window.ARCHIVE_DATA = {
       "rank": 153,
       "points": 14,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Thomas"
     }
   ],
   "947": [
@@ -18650,14 +18650,14 @@ window.ARCHIVE_DATA = {
       "rank": 159,
       "points": 10,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 167,
       "points": 11,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Peter"
     }
   ],
   "1262": [
@@ -18666,7 +18666,7 @@ window.ARCHIVE_DATA = {
       "rank": 164,
       "points": 8,
       "league": "B-Klasse",
-      "name": "020"
+      "name": "Heiko"
     }
   ],
   "1341": [
@@ -18675,7 +18675,7 @@ window.ARCHIVE_DATA = {
       "rank": 167,
       "points": 8,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Matthias"
     }
   ],
   "891": [
@@ -18684,14 +18684,14 @@ window.ARCHIVE_DATA = {
       "rank": 169,
       "points": 6,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Alexander"
     },
     {
       "season": "20/22",
       "rank": 83,
       "points": 58,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Alexander"
     }
   ],
   "1134": [
@@ -18700,14 +18700,14 @@ window.ARCHIVE_DATA = {
       "rank": 170,
       "points": 6,
       "league": "B-Klasse",
-      "name": "051"
+      "name": "Catalin"
     },
     {
       "season": "20/22",
       "rank": 181,
       "points": 16,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Catalin"
     }
   ],
   "586": [
@@ -18716,14 +18716,14 @@ window.ARCHIVE_DATA = {
       "rank": 172,
       "points": 6,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Patrick"
     },
     {
       "season": "20/22",
       "rank": 106,
       "points": 14,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Patrick"
     }
   ],
   "994": [
@@ -18732,14 +18732,14 @@ window.ARCHIVE_DATA = {
       "rank": 179,
       "points": 3,
       "league": "B-Klasse",
-      "name": "051"
+      "name": "Christina"
     },
     {
       "season": "20/22",
       "rank": 155,
       "points": 24,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Christina"
     }
   ],
   "1289": [
@@ -18748,14 +18748,14 @@ window.ARCHIVE_DATA = {
       "rank": 185,
       "points": 2,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Frank"
     },
     {
       "season": "20/22",
       "rank": 219,
       "points": 9,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Frank"
     }
   ],
   "332": [
@@ -18764,14 +18764,14 @@ window.ARCHIVE_DATA = {
       "rank": 186,
       "points": 1,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Rolf"
     },
     {
       "season": "20/22",
       "rank": 204,
       "points": 13,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Rolf"
     }
   ],
   "1764": [
@@ -18780,7 +18780,7 @@ window.ARCHIVE_DATA = {
       "rank": 193,
       "points": 0,
       "league": "B-Klasse",
-      "name": "004"
+      "name": "Paul"
     }
   ],
   "1297": [
@@ -18789,14 +18789,14 @@ window.ARCHIVE_DATA = {
       "rank": 194,
       "points": 0,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Ingo"
     },
     {
       "season": "20/22",
       "rank": 113,
       "points": 34,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Ingo"
     }
   ],
   "1653": [
@@ -18805,7 +18805,7 @@ window.ARCHIVE_DATA = {
       "rank": 201,
       "points": 0,
       "league": "B-Klasse",
-      "name": "032"
+      "name": "Francesco"
     }
   ],
   "1277": [
@@ -18814,14 +18814,14 @@ window.ARCHIVE_DATA = {
       "rank": 202,
       "points": 0,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Leon"
     },
     {
       "season": "20/22",
       "rank": 222,
       "points": 1,
       "league": "B-Klasse",
-      "name": "023"
+      "name": "Leon"
     }
   ],
   "438": [
@@ -18830,14 +18830,14 @@ window.ARCHIVE_DATA = {
       "rank": 16,
       "points": 142,
       "league": "C-Klasse",
-      "name": "045"
+      "name": "Roman"
     },
     {
       "season": "20/22",
       "rank": 56,
       "points": 84,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Roman"
     }
   ],
   "1511": [
@@ -18846,14 +18846,14 @@ window.ARCHIVE_DATA = {
       "rank": 29,
       "points": 119,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Nikolas"
     },
     {
       "season": "20/22",
       "rank": 133,
       "points": 24,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Nikolas"
     }
   ],
   "1096": [
@@ -18862,14 +18862,14 @@ window.ARCHIVE_DATA = {
       "rank": 72,
       "points": 83,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Ionel"
     },
     {
       "season": "20/22",
       "rank": 78,
       "points": 32,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Ionel"
     }
   ],
   "1057": [
@@ -18878,14 +18878,14 @@ window.ARCHIVE_DATA = {
       "rank": 88,
       "points": 69,
       "league": "C-Klasse",
-      "name": "043"
+      "name": "Mario"
     },
     {
       "season": "20/22",
       "rank": 122,
       "points": 9,
       "league": "A-Klasse",
-      "name": "043"
+      "name": "Mario"
     }
   ],
   "1708": [
@@ -18894,14 +18894,14 @@ window.ARCHIVE_DATA = {
       "rank": 89,
       "points": 69,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Dennis"
     },
     {
       "season": "20/22",
       "rank": 134,
       "points": 23,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Dennis"
     }
   ],
   "1498": [
@@ -18910,14 +18910,14 @@ window.ARCHIVE_DATA = {
       "rank": 108,
       "points": 59,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 27,
       "points": 124,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Andreas"
     }
   ],
   "834": [
@@ -18926,14 +18926,14 @@ window.ARCHIVE_DATA = {
       "rank": 109,
       "points": 59,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Ali"
     },
     {
       "season": "20/22",
       "rank": 164,
       "points": 22,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Ali"
     }
   ],
   "1431": [
@@ -18942,14 +18942,14 @@ window.ARCHIVE_DATA = {
       "rank": 113,
       "points": 59,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Ana"
     },
     {
       "season": "20/22",
       "rank": 89,
       "points": 60,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Ana"
     }
   ],
   "1463": [
@@ -18958,14 +18958,14 @@ window.ARCHIVE_DATA = {
       "rank": 115,
       "points": 56,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Martin"
     },
     {
       "season": "20/22",
       "rank": 83,
       "points": 69,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Martin"
     }
   ],
   "1596": [
@@ -18974,14 +18974,14 @@ window.ARCHIVE_DATA = {
       "rank": 122,
       "points": 52,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Alessia"
     },
     {
       "season": "20/22",
       "rank": 221,
       "points": 9,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Alessia"
     }
   ],
   "953": [
@@ -18990,14 +18990,14 @@ window.ARCHIVE_DATA = {
       "rank": 128,
       "points": 49,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Zlatko"
     },
     {
       "season": "20/22",
       "rank": 88,
       "points": 53,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Michael"
     }
   ],
   "1404": [
@@ -19006,14 +19006,14 @@ window.ARCHIVE_DATA = {
       "rank": 132,
       "points": 47,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Peter"
     },
     {
       "season": "20/22",
       "rank": 61,
       "points": 78,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Peter"
     }
   ],
   "915": [
@@ -19022,14 +19022,14 @@ window.ARCHIVE_DATA = {
       "rank": 134,
       "points": 47,
       "league": "C-Klasse",
-      "name": "045"
+      "name": "Andreas"
     },
     {
       "season": "20/22",
       "rank": 194,
       "points": 5,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Andreas"
     }
   ],
   "804": [
@@ -19038,14 +19038,14 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 44,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Pascal"
     },
     {
       "season": "20/22",
       "rank": 69,
       "points": 68,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Pascal"
     }
   ],
   "1534": [
@@ -19054,7 +19054,7 @@ window.ARCHIVE_DATA = {
       "rank": 139,
       "points": 43,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Katharina"
     }
   ],
   "1628": [
@@ -19063,7 +19063,7 @@ window.ARCHIVE_DATA = {
       "rank": 149,
       "points": 39,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Oleg"
     }
   ],
   "981": [
@@ -19072,7 +19072,7 @@ window.ARCHIVE_DATA = {
       "rank": 158,
       "points": 34,
       "league": "C-Klasse",
-      "name": "066"
+      "name": "Anja"
     }
   ],
   "078": [
@@ -19090,7 +19090,7 @@ window.ARCHIVE_DATA = {
       "rank": 186,
       "points": 22,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Lennart"
     }
   ],
   "1844": [
@@ -19099,7 +19099,7 @@ window.ARCHIVE_DATA = {
       "rank": 187,
       "points": 22,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Jeremy"
     }
   ],
   "1382": [
@@ -19108,14 +19108,14 @@ window.ARCHIVE_DATA = {
       "rank": 189,
       "points": 21,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 204,
       "points": 4,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Sven"
     }
   ],
   "1005": [
@@ -19124,7 +19124,7 @@ window.ARCHIVE_DATA = {
       "rank": 195,
       "points": 19,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Michael"
     }
   ],
   "445": [
@@ -19133,7 +19133,7 @@ window.ARCHIVE_DATA = {
       "rank": 207,
       "points": 16,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Stefanie"
     }
   ],
   "924": [
@@ -19142,14 +19142,14 @@ window.ARCHIVE_DATA = {
       "rank": 217,
       "points": 12,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Sandra"
     },
     {
       "season": "20/22",
       "rank": 207,
       "points": 12,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Sandra"
     }
   ],
   "504": [
@@ -19158,7 +19158,7 @@ window.ARCHIVE_DATA = {
       "rank": 218,
       "points": 11,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Gyner"
     }
   ],
   "1179": [
@@ -19167,14 +19167,14 @@ window.ARCHIVE_DATA = {
       "rank": 221,
       "points": 11,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Misel"
     },
     {
       "season": "20/22",
       "rank": 218,
       "points": 10,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Misel"
     }
   ],
   "1347": [
@@ -19183,14 +19183,14 @@ window.ARCHIVE_DATA = {
       "rank": 226,
       "points": 9,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Nuno"
     },
     {
       "season": "20/22",
       "rank": 122,
       "points": 28,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Nuno"
     }
   ],
   "1012": [
@@ -19199,14 +19199,14 @@ window.ARCHIVE_DATA = {
       "rank": 227,
       "points": 9,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Felix"
     },
     {
       "season": "20/22",
       "rank": 179,
       "points": 17,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Felix"
     }
   ],
   "1849": [
@@ -19215,14 +19215,14 @@ window.ARCHIVE_DATA = {
       "rank": 228,
       "points": 9,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Tanja"
     },
     {
       "season": "20/22",
       "rank": 217,
       "points": 10,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Tanja"
     }
   ],
   "1299": [
@@ -19231,14 +19231,14 @@ window.ARCHIVE_DATA = {
       "rank": 229,
       "points": 9,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Sven"
     },
     {
       "season": "20/22",
       "rank": 113,
       "points": 45,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Sven"
     }
   ],
   "1843": [
@@ -19247,7 +19247,7 @@ window.ARCHIVE_DATA = {
       "rank": 231,
       "points": 9,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Christina"
     }
   ],
   "1152": [
@@ -19256,14 +19256,14 @@ window.ARCHIVE_DATA = {
       "rank": 236,
       "points": 8,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "J\u00fcrgen-Martin"
     },
     {
       "season": "20/22",
       "rank": 211,
       "points": 11,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "J\u00fcrgen-Martin"
     }
   ],
   "411": [
@@ -19272,7 +19272,7 @@ window.ARCHIVE_DATA = {
       "rank": 237,
       "points": 8,
       "league": "C-Klasse",
-      "name": "029"
+      "name": "Martin"
     }
   ],
   "1857": [
@@ -19281,7 +19281,7 @@ window.ARCHIVE_DATA = {
       "rank": 239,
       "points": 7,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Alexander"
     }
   ],
   "1336": [
@@ -19290,7 +19290,7 @@ window.ARCHIVE_DATA = {
       "rank": 240,
       "points": 7,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Daniel"
     }
   ],
   "1436": [
@@ -19299,14 +19299,14 @@ window.ARCHIVE_DATA = {
       "rank": 244,
       "points": 6,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Tizian"
     },
     {
       "season": "20/22",
       "rank": 226,
       "points": 8,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Tizian"
     }
   ],
   "1051": [
@@ -19315,14 +19315,14 @@ window.ARCHIVE_DATA = {
       "rank": 248,
       "points": 5,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Waltraud"
     },
     {
       "season": "20/22",
       "rank": 262,
       "points": 3,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Waltraud"
     }
   ],
   "1714": [
@@ -19331,7 +19331,7 @@ window.ARCHIVE_DATA = {
       "rank": 250,
       "points": 5,
       "league": "C-Klasse",
-      "name": "065"
+      "name": "Wiebke"
     }
   ],
   "461": [
@@ -19340,7 +19340,7 @@ window.ARCHIVE_DATA = {
       "rank": 255,
       "points": 3,
       "league": "C-Klasse",
-      "name": "039"
+      "name": "Alexandra"
     }
   ],
   "1465": [
@@ -19349,14 +19349,14 @@ window.ARCHIVE_DATA = {
       "rank": 256,
       "points": 2,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Benjamin"
     },
     {
       "season": "20/22",
       "rank": 171,
       "points": 19,
       "league": "C-Klasse",
-      "name": "016"
+      "name": "Benjamin"
     }
   ],
   "1856": [
@@ -19365,7 +19365,7 @@ window.ARCHIVE_DATA = {
       "rank": 257,
       "points": 1,
       "league": "C-Klasse",
-      "name": "059"
+      "name": "Tobias"
     }
   ],
   "646": [
@@ -19374,7 +19374,7 @@ window.ARCHIVE_DATA = {
       "rank": 261,
       "points": 0,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Cynthia"
     }
   ],
   "1654": [
@@ -19383,14 +19383,14 @@ window.ARCHIVE_DATA = {
       "rank": 262,
       "points": 0,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Katja Nicole"
     },
     {
       "season": "20/22",
       "rank": 275,
       "points": 2,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Katja Nicole"
     }
   ],
   "1701": [
@@ -19399,7 +19399,7 @@ window.ARCHIVE_DATA = {
       "rank": 263,
       "points": 0,
       "league": "C-Klasse",
-      "name": "002"
+      "name": "Tanja"
     }
   ],
   "1804": [
@@ -19408,7 +19408,7 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 49,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Mario"
     }
   ],
   "958": [
@@ -19417,7 +19417,7 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 40,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Matthias"
     }
   ],
   "1084": [
@@ -19426,7 +19426,7 @@ window.ARCHIVE_DATA = {
       "rank": 38,
       "points": 32,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Alexandra"
     }
   ],
   "1060": [
@@ -19435,7 +19435,7 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 27,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Servet"
     }
   ],
   "1778": [
@@ -19444,7 +19444,7 @@ window.ARCHIVE_DATA = {
       "rank": 46,
       "points": 26,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Eduard"
     }
   ],
   "423": [
@@ -19453,7 +19453,7 @@ window.ARCHIVE_DATA = {
       "rank": 48,
       "points": 23,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Alexander"
     }
   ],
   "1704": [
@@ -19462,7 +19462,7 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 8,
       "league": "Bezirksliga",
-      "name": "039"
+      "name": "Peter"
     }
   ],
   "1394": [
@@ -19471,7 +19471,7 @@ window.ARCHIVE_DATA = {
       "rank": 57,
       "points": 5,
       "league": "Bezirksliga",
-      "name": "049"
+      "name": "Hakan"
     }
   ],
   "784": [
@@ -19480,7 +19480,7 @@ window.ARCHIVE_DATA = {
       "rank": 58,
       "points": 4,
       "league": "Bezirksliga",
-      "name": "028"
+      "name": "Jens"
     }
   ],
   "1860": [
@@ -19489,7 +19489,7 @@ window.ARCHIVE_DATA = {
       "rank": 24,
       "points": 105,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "J\u00f6rg"
     }
   ],
   "93": [
@@ -19507,7 +19507,7 @@ window.ARCHIVE_DATA = {
       "rank": 47,
       "points": 78,
       "league": "A-Klasse",
-      "name": "039"
+      "name": "Andreas"
     }
   ],
   "1317": [
@@ -19516,7 +19516,7 @@ window.ARCHIVE_DATA = {
       "rank": 66,
       "points": 45,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Thomas"
     }
   ],
   "108": [
@@ -19525,7 +19525,7 @@ window.ARCHIVE_DATA = {
       "rank": 74,
       "points": 35,
       "league": "A-Klasse",
-      "name": "025"
+      "name": "Rick"
     }
   ],
   "71": [
@@ -19543,7 +19543,7 @@ window.ARCHIVE_DATA = {
       "rank": 84,
       "points": 30,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Rainer"
     }
   ],
   "1479": [
@@ -19552,7 +19552,7 @@ window.ARCHIVE_DATA = {
       "rank": 91,
       "points": 22,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "B\u00fcnyamin"
     }
   ],
   "733": [
@@ -19561,7 +19561,7 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 20,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Manuel"
     }
   ],
   "1033": [
@@ -19570,7 +19570,7 @@ window.ARCHIVE_DATA = {
       "rank": 100,
       "points": 16,
       "league": "A-Klasse",
-      "name": "027"
+      "name": "Marcus"
     }
   ],
   "1618": [
@@ -19579,7 +19579,7 @@ window.ARCHIVE_DATA = {
       "rank": 101,
       "points": 16,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Martina"
     }
   ],
   "051": [
@@ -19597,7 +19597,7 @@ window.ARCHIVE_DATA = {
       "rank": 105,
       "points": 14,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Marc"
     }
   ],
   "49": [
@@ -19615,7 +19615,7 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 12,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Stev"
     }
   ],
   "1413": [
@@ -19624,7 +19624,7 @@ window.ARCHIVE_DATA = {
       "rank": 117,
       "points": 11,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "Erkan"
     }
   ],
   "1350": [
@@ -19633,7 +19633,7 @@ window.ARCHIVE_DATA = {
       "rank": 118,
       "points": 10,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Pascal"
     }
   ],
   "1852": [
@@ -19642,7 +19642,7 @@ window.ARCHIVE_DATA = {
       "rank": 120,
       "points": 9,
       "league": "A-Klasse",
-      "name": "015"
+      "name": "Sven"
     }
   ],
   "1624": [
@@ -19651,7 +19651,7 @@ window.ARCHIVE_DATA = {
       "rank": 123,
       "points": 9,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Daniel"
     }
   ],
   "1313": [
@@ -19660,7 +19660,7 @@ window.ARCHIVE_DATA = {
       "rank": 126,
       "points": 8,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Daniel"
     }
   ],
   "1362": [
@@ -19669,7 +19669,7 @@ window.ARCHIVE_DATA = {
       "rank": 133,
       "points": 6,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Stefano"
     }
   ],
   "1026": [
@@ -19678,7 +19678,7 @@ window.ARCHIVE_DATA = {
       "rank": 134,
       "points": 6,
       "league": "A-Klasse",
-      "name": "052"
+      "name": "Tony"
     }
   ],
   "68": [
@@ -19696,7 +19696,7 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 6,
       "league": "A-Klasse",
-      "name": "021"
+      "name": "Christian"
     }
   ],
   "1734": [
@@ -19705,7 +19705,7 @@ window.ARCHIVE_DATA = {
       "rank": 142,
       "points": 5,
       "league": "A-Klasse",
-      "name": "028"
+      "name": "George"
     }
   ],
   "1698": [
@@ -19714,7 +19714,7 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 5,
       "league": "A-Klasse",
-      "name": "023"
+      "name": "Eve"
     }
   ],
   "241": [
@@ -19723,7 +19723,7 @@ window.ARCHIVE_DATA = {
       "rank": 148,
       "points": 4,
       "league": "A-Klasse",
-      "name": "056"
+      "name": "Franz"
     }
   ],
   "50": [
@@ -19741,7 +19741,7 @@ window.ARCHIVE_DATA = {
       "rank": 155,
       "points": 2,
       "league": "A-Klasse",
-      "name": "029"
+      "name": "Emely"
     }
   ],
   "1348": [
@@ -19750,7 +19750,7 @@ window.ARCHIVE_DATA = {
       "rank": 158,
       "points": 1,
       "league": "A-Klasse",
-      "name": "004"
+      "name": "Seref"
     }
   ],
   "638": [
@@ -19759,7 +19759,7 @@ window.ARCHIVE_DATA = {
       "rank": 161,
       "points": 0,
       "league": "A-Klasse",
-      "name": "040"
+      "name": "Daniel"
     }
   ],
   "1772": [
@@ -19768,7 +19768,7 @@ window.ARCHIVE_DATA = {
       "rank": 163,
       "points": 0,
       "league": "A-Klasse",
-      "name": "022"
+      "name": "Stefan"
     }
   ],
   "1259": [
@@ -19777,7 +19777,7 @@ window.ARCHIVE_DATA = {
       "rank": 3,
       "points": 167,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Tim"
     }
   ],
   "1720": [
@@ -19786,7 +19786,7 @@ window.ARCHIVE_DATA = {
       "rank": 19,
       "points": 123,
       "league": "B-Klasse",
-      "name": "034"
+      "name": "Tomislav"
     }
   ],
   "950": [
@@ -19795,7 +19795,7 @@ window.ARCHIVE_DATA = {
       "rank": 26,
       "points": 111,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Josua"
     }
   ],
   "1484": [
@@ -19804,7 +19804,7 @@ window.ARCHIVE_DATA = {
       "rank": 42,
       "points": 92,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "Kuno"
     }
   ],
   "1287": [
@@ -19813,7 +19813,7 @@ window.ARCHIVE_DATA = {
       "rank": 49,
       "points": 88,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Kevin"
     }
   ],
   "704": [
@@ -19822,7 +19822,7 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 84,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Carmen"
     }
   ],
   "002": [
@@ -19840,7 +19840,7 @@ window.ARCHIVE_DATA = {
       "rank": 70,
       "points": 68,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Claudia"
     }
   ],
   "097": [
@@ -19858,7 +19858,7 @@ window.ARCHIVE_DATA = {
       "rank": 75,
       "points": 64,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Michael"
     }
   ],
   "189": [
@@ -19867,7 +19867,7 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 61,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Alfred"
     }
   ],
   "1106": [
@@ -19876,7 +19876,7 @@ window.ARCHIVE_DATA = {
       "rank": 81,
       "points": 60,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Ahmet"
     }
   ],
   "1495": [
@@ -19885,7 +19885,7 @@ window.ARCHIVE_DATA = {
       "rank": 92,
       "points": 48,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Davide"
     }
   ],
   "1430": [
@@ -19894,7 +19894,7 @@ window.ARCHIVE_DATA = {
       "rank": 117,
       "points": 32,
       "league": "B-Klasse",
-      "name": "039"
+      "name": "Viktor"
     }
   ],
   "813": [
@@ -19903,7 +19903,7 @@ window.ARCHIVE_DATA = {
       "rank": 132,
       "points": 24,
       "league": "B-Klasse",
-      "name": "041"
+      "name": "Kevin"
     }
   ],
   "1056": [
@@ -19912,7 +19912,7 @@ window.ARCHIVE_DATA = {
       "rank": 138,
       "points": 19,
       "league": "B-Klasse",
-      "name": "018"
+      "name": "Mike"
     }
   ],
   "725": [
@@ -19921,7 +19921,7 @@ window.ARCHIVE_DATA = {
       "rank": 139,
       "points": 19,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Holger"
     }
   ],
   "1904": [
@@ -19930,7 +19930,7 @@ window.ARCHIVE_DATA = {
       "rank": 141,
       "points": 19,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Reiner"
     }
   ],
   "123": [
@@ -19939,7 +19939,7 @@ window.ARCHIVE_DATA = {
       "rank": 143,
       "points": 18,
       "league": "B-Klasse",
-      "name": "006"
+      "name": "Frank"
     }
   ],
   "1499": [
@@ -19948,7 +19948,7 @@ window.ARCHIVE_DATA = {
       "rank": 152,
       "points": 14,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Valentino"
     }
   ],
   "136": [
@@ -19957,7 +19957,7 @@ window.ARCHIVE_DATA = {
       "rank": 158,
       "points": 13,
       "league": "B-Klasse",
-      "name": "006"
+      "name": "Hartmut"
     }
   ],
   "1638": [
@@ -19966,7 +19966,7 @@ window.ARCHIVE_DATA = {
       "rank": 159,
       "points": 13,
       "league": "B-Klasse",
-      "name": "044"
+      "name": "Niklas"
     }
   ],
   "1085": [
@@ -19975,7 +19975,7 @@ window.ARCHIVE_DATA = {
       "rank": 163,
       "points": 11,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Kim-Kevin"
     }
   ],
   "1905": [
@@ -19984,7 +19984,7 @@ window.ARCHIVE_DATA = {
       "rank": 164,
       "points": 11,
       "league": "B-Klasse",
-      "name": "045"
+      "name": "Michael"
     }
   ],
   "896": [
@@ -19993,7 +19993,7 @@ window.ARCHIVE_DATA = {
       "rank": 170,
       "points": 9,
       "league": "B-Klasse",
-      "name": "006"
+      "name": "Paul"
     }
   ],
   "1459": [
@@ -20002,7 +20002,7 @@ window.ARCHIVE_DATA = {
       "rank": 171,
       "points": 9,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Philipp"
     }
   ],
   "1397": [
@@ -20011,7 +20011,7 @@ window.ARCHIVE_DATA = {
       "rank": 176,
       "points": 7,
       "league": "B-Klasse",
-      "name": "063"
+      "name": "David"
     }
   ],
   "125": [
@@ -20020,7 +20020,7 @@ window.ARCHIVE_DATA = {
       "rank": 177,
       "points": 7,
       "league": "B-Klasse",
-      "name": "006"
+      "name": "Lothar"
     }
   ],
   "1402": [
@@ -20029,7 +20029,7 @@ window.ARCHIVE_DATA = {
       "rank": 178,
       "points": 7,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Peter"
     }
   ],
   "1375": [
@@ -20038,7 +20038,7 @@ window.ARCHIVE_DATA = {
       "rank": 180,
       "points": 7,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Reiner"
     }
   ],
   "1690": [
@@ -20047,7 +20047,7 @@ window.ARCHIVE_DATA = {
       "rank": 181,
       "points": 7,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Engin"
     }
   ],
   "602": [
@@ -20056,7 +20056,7 @@ window.ARCHIVE_DATA = {
       "rank": 184,
       "points": 6,
       "league": "B-Klasse",
-      "name": "027"
+      "name": "Heike"
     }
   ],
   "1424": [
@@ -20065,7 +20065,7 @@ window.ARCHIVE_DATA = {
       "rank": 189,
       "points": 6,
       "league": "B-Klasse",
-      "name": "030"
+      "name": "Rene"
     }
   ],
   "1385": [
@@ -20074,7 +20074,7 @@ window.ARCHIVE_DATA = {
       "rank": 193,
       "points": 5,
       "league": "B-Klasse",
-      "name": "049"
+      "name": "Thorsten"
     }
   ],
   "477": [
@@ -20083,7 +20083,7 @@ window.ARCHIVE_DATA = {
       "rank": 200,
       "points": 4,
       "league": "B-Klasse",
-      "name": "042"
+      "name": "Peter"
     }
   ],
   "1386": [
@@ -20092,7 +20092,7 @@ window.ARCHIVE_DATA = {
       "rank": 205,
       "points": 3,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Sebastian"
     }
   ],
   "1426": [
@@ -20101,7 +20101,7 @@ window.ARCHIVE_DATA = {
       "rank": 206,
       "points": 3,
       "league": "B-Klasse",
-      "name": "006"
+      "name": "Michael"
     }
   ],
   "1319": [
@@ -20110,7 +20110,7 @@ window.ARCHIVE_DATA = {
       "rank": 207,
       "points": 3,
       "league": "B-Klasse",
-      "name": "027"
+      "name": "Claudia"
     }
   ],
   "1379": [
@@ -20119,7 +20119,7 @@ window.ARCHIVE_DATA = {
       "rank": 208,
       "points": 3,
       "league": "B-Klasse",
-      "name": "019"
+      "name": "Pietro"
     }
   ],
   "1884": [
@@ -20128,7 +20128,7 @@ window.ARCHIVE_DATA = {
       "rank": 209,
       "points": 3,
       "league": "B-Klasse",
-      "name": "040"
+      "name": "Vicktoria"
     }
   ],
   "1206": [
@@ -20137,7 +20137,7 @@ window.ARCHIVE_DATA = {
       "rank": 211,
       "points": 3,
       "league": "B-Klasse",
-      "name": "037"
+      "name": "Robin"
     }
   ],
   "1387": [
@@ -20146,7 +20146,7 @@ window.ARCHIVE_DATA = {
       "rank": 212,
       "points": 2,
       "league": "B-Klasse",
-      "name": "002"
+      "name": "Jennifer"
     }
   ],
   "702": [
@@ -20155,7 +20155,7 @@ window.ARCHIVE_DATA = {
       "rank": 213,
       "points": 2,
       "league": "B-Klasse",
-      "name": "068"
+      "name": "Sandra"
     }
   ],
   "156": [
@@ -20164,7 +20164,7 @@ window.ARCHIVE_DATA = {
       "rank": 216,
       "points": 2,
       "league": "B-Klasse",
-      "name": "067"
+      "name": "Veronika"
     }
   ],
   "1010": [
@@ -20173,7 +20173,7 @@ window.ARCHIVE_DATA = {
       "rank": 221,
       "points": 1,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Luis"
     }
   ],
   "1011": [
@@ -20182,7 +20182,7 @@ window.ARCHIVE_DATA = {
       "rank": 224,
       "points": 1,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Matteo"
     }
   ],
   "971": [
@@ -20191,7 +20191,7 @@ window.ARCHIVE_DATA = {
       "rank": 228,
       "points": 0,
       "league": "B-Klasse",
-      "name": "006"
+      "name": "B\u00e4rbel"
     }
   ],
   "055": [
@@ -20209,7 +20209,7 @@ window.ARCHIVE_DATA = {
       "rank": 232,
       "points": 0,
       "league": "B-Klasse",
-      "name": "024"
+      "name": "Raul"
     }
   ],
   "261": [
@@ -20218,7 +20218,7 @@ window.ARCHIVE_DATA = {
       "rank": 233,
       "points": 0,
       "league": "B-Klasse",
-      "name": "028"
+      "name": "Manfred"
     }
   ],
   "1329": [
@@ -20227,7 +20227,7 @@ window.ARCHIVE_DATA = {
       "rank": 13,
       "points": 150,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Dennis"
     }
   ],
   "1270": [
@@ -20236,7 +20236,7 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 125,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Kai"
     }
   ],
   "1676": [
@@ -20245,7 +20245,7 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 106,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Andreas"
     }
   ],
   "1314": [
@@ -20254,7 +20254,7 @@ window.ARCHIVE_DATA = {
       "rank": 64,
       "points": 81,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Massimo"
     }
   ],
   "996": [
@@ -20263,7 +20263,7 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 52,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Pascal"
     }
   ],
   "649": [
@@ -20272,7 +20272,7 @@ window.ARCHIVE_DATA = {
       "rank": 112,
       "points": 46,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Daniel"
     }
   ],
   "1680": [
@@ -20281,7 +20281,7 @@ window.ARCHIVE_DATA = {
       "rank": 116,
       "points": 42,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Alexander"
     }
   ],
   "1380": [
@@ -20290,7 +20290,7 @@ window.ARCHIVE_DATA = {
       "rank": 119,
       "points": 40,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Marlon"
     }
   ],
   "1789": [
@@ -20299,7 +20299,7 @@ window.ARCHIVE_DATA = {
       "rank": 127,
       "points": 38,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Tanja"
     }
   ],
   "1128": [
@@ -20308,7 +20308,7 @@ window.ARCHIVE_DATA = {
       "rank": 129,
       "points": 36,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Irfan"
     }
   ],
   "1447": [
@@ -20317,7 +20317,7 @@ window.ARCHIVE_DATA = {
       "rank": 130,
       "points": 36,
       "league": "C-Klasse",
-      "name": "057"
+      "name": "Rene\u00b4"
     }
   ],
   "1585": [
@@ -20326,7 +20326,7 @@ window.ARCHIVE_DATA = {
       "rank": 133,
       "points": 35,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Andreas"
     }
   ],
   "1308": [
@@ -20335,7 +20335,7 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 34,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Maurizio"
     }
   ],
   "1472": [
@@ -20344,7 +20344,7 @@ window.ARCHIVE_DATA = {
       "rank": 141,
       "points": 33,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Rico"
     }
   ],
   "1453": [
@@ -20353,7 +20353,7 @@ window.ARCHIVE_DATA = {
       "rank": 148,
       "points": 29,
       "league": "C-Klasse",
-      "name": "030"
+      "name": "Marcel"
     }
   ],
   "1696": [
@@ -20362,7 +20362,7 @@ window.ARCHIVE_DATA = {
       "rank": 156,
       "points": 24,
       "league": "C-Klasse",
-      "name": "055"
+      "name": "Emanuele"
     }
   ],
   "1679": [
@@ -20371,7 +20371,7 @@ window.ARCHIVE_DATA = {
       "rank": 157,
       "points": 24,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Michael"
     }
   ],
   "1641": [
@@ -20380,7 +20380,7 @@ window.ARCHIVE_DATA = {
       "rank": 160,
       "points": 23,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Marc"
     }
   ],
   "1751": [
@@ -20389,7 +20389,7 @@ window.ARCHIVE_DATA = {
       "rank": 163,
       "points": 22,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Ralf"
     }
   ],
   "403": [
@@ -20398,7 +20398,7 @@ window.ARCHIVE_DATA = {
       "rank": 174,
       "points": 18,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Ronny"
     }
   ],
   "801": [
@@ -20407,7 +20407,7 @@ window.ARCHIVE_DATA = {
       "rank": 176,
       "points": 17,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Daniel"
     }
   ],
   "1597": [
@@ -20416,7 +20416,7 @@ window.ARCHIVE_DATA = {
       "rank": 177,
       "points": 17,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Felice"
     }
   ],
   "1670": [
@@ -20425,7 +20425,7 @@ window.ARCHIVE_DATA = {
       "rank": 180,
       "points": 16,
       "league": "C-Klasse",
-      "name": "019"
+      "name": "Carmelo"
     }
   ],
   "1632": [
@@ -20434,7 +20434,7 @@ window.ARCHIVE_DATA = {
       "rank": 182,
       "points": 16,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Florian"
     }
   ],
   "1584": [
@@ -20443,7 +20443,7 @@ window.ARCHIVE_DATA = {
       "rank": 183,
       "points": 16,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Paul"
     }
   ],
   "1663": [
@@ -20452,7 +20452,7 @@ window.ARCHIVE_DATA = {
       "rank": 184,
       "points": 16,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Nils"
     }
   ],
   "1245": [
@@ -20461,7 +20461,7 @@ window.ARCHIVE_DATA = {
       "rank": 187,
       "points": 15,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Daniel"
     }
   ],
   "1457": [
@@ -20470,7 +20470,7 @@ window.ARCHIVE_DATA = {
       "rank": 189,
       "points": 15,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Kevin"
     }
   ],
   "589": [
@@ -20479,7 +20479,7 @@ window.ARCHIVE_DATA = {
       "rank": 190,
       "points": 15,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Dennis"
     }
   ],
   "1489": [
@@ -20488,7 +20488,7 @@ window.ARCHIVE_DATA = {
       "rank": 194,
       "points": 14,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Elisa"
     }
   ],
   "1000": [
@@ -20497,7 +20497,7 @@ window.ARCHIVE_DATA = {
       "rank": 196,
       "points": 14,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Lisa-Franziska"
     }
   ],
   "707": [
@@ -20506,7 +20506,7 @@ window.ARCHIVE_DATA = {
       "rank": 200,
       "points": 13,
       "league": "C-Klasse",
-      "name": "036"
+      "name": "Alexandra"
     }
   ],
   "779": [
@@ -20515,7 +20515,7 @@ window.ARCHIVE_DATA = {
       "rank": 205,
       "points": 12,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Sven"
     }
   ],
   "1537": [
@@ -20524,7 +20524,7 @@ window.ARCHIVE_DATA = {
       "rank": 206,
       "points": 12,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Stefan"
     }
   ],
   "1124": [
@@ -20533,7 +20533,7 @@ window.ARCHIVE_DATA = {
       "rank": 212,
       "points": 10,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Bj\u00f6rn"
     }
   ],
   "1640": [
@@ -20542,7 +20542,7 @@ window.ARCHIVE_DATA = {
       "rank": 216,
       "points": 10,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Nadine"
     }
   ],
   "744": [
@@ -20551,7 +20551,7 @@ window.ARCHIVE_DATA = {
       "rank": 222,
       "points": 9,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Karahan"
     }
   ],
   "715": [
@@ -20560,7 +20560,7 @@ window.ARCHIVE_DATA = {
       "rank": 223,
       "points": 9,
       "league": "C-Klasse",
-      "name": "036"
+      "name": "Norman"
     }
   ],
   "1266": [
@@ -20569,7 +20569,7 @@ window.ARCHIVE_DATA = {
       "rank": 227,
       "points": 8,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Jens"
     }
   ],
   "773": [
@@ -20578,7 +20578,7 @@ window.ARCHIVE_DATA = {
       "rank": 228,
       "points": 8,
       "league": "C-Klasse",
-      "name": "011"
+      "name": "Daniel"
     }
   ],
   "1231": [
@@ -20587,7 +20587,7 @@ window.ARCHIVE_DATA = {
       "rank": 231,
       "points": 7,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Benjamin"
     }
   ],
   "345": [
@@ -20596,7 +20596,7 @@ window.ARCHIVE_DATA = {
       "rank": 233,
       "points": 7,
       "league": "C-Klasse",
-      "name": "018"
+      "name": "Torsten"
     }
   ],
   "936": [
@@ -20605,7 +20605,7 @@ window.ARCHIVE_DATA = {
       "rank": 235,
       "points": 7,
       "league": "C-Klasse",
-      "name": "053"
+      "name": "Andreas"
     }
   ],
   "1208": [
@@ -20614,7 +20614,7 @@ window.ARCHIVE_DATA = {
       "rank": 237,
       "points": 6,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Andre"
     }
   ],
   "1665": [
@@ -20623,7 +20623,7 @@ window.ARCHIVE_DATA = {
       "rank": 238,
       "points": 6,
       "league": "C-Klasse",
-      "name": "046"
+      "name": "Max"
     }
   ],
   "1610": [
@@ -20632,7 +20632,7 @@ window.ARCHIVE_DATA = {
       "rank": 241,
       "points": 6,
       "league": "C-Klasse",
-      "name": "040"
+      "name": "Silvia"
     }
   ],
   "1291": [
@@ -20641,7 +20641,7 @@ window.ARCHIVE_DATA = {
       "rank": 246,
       "points": 6,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Zdravko"
     }
   ],
   "1433": [
@@ -20650,7 +20650,7 @@ window.ARCHIVE_DATA = {
       "rank": 247,
       "points": 6,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Maria"
     }
   ],
   "1592": [
@@ -20659,7 +20659,7 @@ window.ARCHIVE_DATA = {
       "rank": 250,
       "points": 5,
       "league": "C-Klasse",
-      "name": "049"
+      "name": "Elisabeth"
     }
   ],
   "1449": [
@@ -20668,7 +20668,7 @@ window.ARCHIVE_DATA = {
       "rank": 252,
       "points": 5,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Uwe"
     }
   ],
   "1630": [
@@ -20677,7 +20677,7 @@ window.ARCHIVE_DATA = {
       "rank": 256,
       "points": 4,
       "league": "C-Klasse",
-      "name": "010"
+      "name": "Stefan"
     }
   ],
   "1442": [
@@ -20686,7 +20686,7 @@ window.ARCHIVE_DATA = {
       "rank": 257,
       "points": 4,
       "league": "C-Klasse",
-      "name": "060"
+      "name": "Bonita"
     }
   ],
   "1303": [
@@ -20695,7 +20695,7 @@ window.ARCHIVE_DATA = {
       "rank": 258,
       "points": 4,
       "league": "C-Klasse",
-      "name": "054"
+      "name": "Rene"
     }
   ],
   "1493": [
@@ -20704,7 +20704,7 @@ window.ARCHIVE_DATA = {
       "rank": 259,
       "points": 4,
       "league": "C-Klasse",
-      "name": "032"
+      "name": "Vanessa"
     }
   ],
   "1774": [
@@ -20713,7 +20713,7 @@ window.ARCHIVE_DATA = {
       "rank": 261,
       "points": 3,
       "league": "C-Klasse",
-      "name": "017"
+      "name": "Tolga"
     }
   ],
   "103": [
@@ -20722,7 +20722,7 @@ window.ARCHIVE_DATA = {
       "rank": 265,
       "points": 3,
       "league": "C-Klasse",
-      "name": "036"
+      "name": "Karin"
     }
   ],
   "1141": [
@@ -20731,7 +20731,7 @@ window.ARCHIVE_DATA = {
       "rank": 266,
       "points": 3,
       "league": "C-Klasse",
-      "name": "051"
+      "name": "Vanessa"
     }
   ],
   "1450": [
@@ -20740,7 +20740,7 @@ window.ARCHIVE_DATA = {
       "rank": 267,
       "points": 3,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Martina"
     }
   ],
   "1743": [
@@ -20749,7 +20749,7 @@ window.ARCHIVE_DATA = {
       "rank": 269,
       "points": 2,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Lars"
     }
   ],
   "902": [
@@ -20758,7 +20758,7 @@ window.ARCHIVE_DATA = {
       "rank": 270,
       "points": 2,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Michael"
     }
   ],
   "1117": [
@@ -20767,7 +20767,7 @@ window.ARCHIVE_DATA = {
       "rank": 272,
       "points": 2,
       "league": "C-Klasse",
-      "name": "005"
+      "name": "Oliver"
     }
   ],
   "1278": [
@@ -20776,7 +20776,7 @@ window.ARCHIVE_DATA = {
       "rank": 273,
       "points": 2,
       "league": "C-Klasse",
-      "name": "067"
+      "name": "Markus"
     }
   ],
   "1625": [
@@ -20785,7 +20785,7 @@ window.ARCHIVE_DATA = {
       "rank": 276,
       "points": 2,
       "league": "C-Klasse",
-      "name": "058"
+      "name": "Sandra"
     }
   ],
   "1672": [
@@ -20794,7 +20794,7 @@ window.ARCHIVE_DATA = {
       "rank": 278,
       "points": 1,
       "league": "C-Klasse",
-      "name": "052"
+      "name": "Jessica"
     }
   ],
   "1747": [
@@ -20803,7 +20803,7 @@ window.ARCHIVE_DATA = {
       "rank": 279,
       "points": 0,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Jennifer Jamal"
     }
   ],
   "1723": [
@@ -20812,7 +20812,7 @@ window.ARCHIVE_DATA = {
       "rank": 281,
       "points": 0,
       "league": "C-Klasse",
-      "name": "034"
+      "name": "Manuel"
     }
   ],
   "1710": [
@@ -20821,7 +20821,7 @@ window.ARCHIVE_DATA = {
       "rank": 282,
       "points": 0,
       "league": "C-Klasse",
-      "name": "061"
+      "name": "Nico"
     }
   ],
   "1285": [
@@ -20830,7 +20830,7 @@ window.ARCHIVE_DATA = {
       "rank": 284,
       "points": 0,
       "league": "C-Klasse",
-      "name": "042"
+      "name": "Dzemil"
     }
   ],
   "402": [
@@ -20839,7 +20839,7 @@ window.ARCHIVE_DATA = {
       "rank": 285,
       "points": 0,
       "league": "C-Klasse",
-      "name": "062"
+      "name": "Klaus"
     }
   ],
   "1762": [
@@ -20848,7 +20848,7 @@ window.ARCHIVE_DATA = {
       "rank": 286,
       "points": 0,
       "league": "C-Klasse",
-      "name": "012"
+      "name": "Anne"
     }
   ]
 };

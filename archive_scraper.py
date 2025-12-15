@@ -188,55 +188,96 @@ async def scrape_archive():
                     for row in table['rows']:
                         if len(row) < 3: continue
                         
+                        # DEBUG: Print row structure once
+                        if "DEBUG_ROW_PRINTED" not in locals():
+                            print(f"DEBUG ROW STRUCTURE: {row}")
+                            locals()["DEBUG_ROW_PRINTED"] = True
+                        
                         # Parsing logic
-                        # Col 0: Rank, Col 1: V-Nr, Col 2: Nr (Player ID)
+                        # Dynamic Column Detection
+                        # We expect: Rank | (Club) | Name | ID | ...  OR  Rank | Name | ID ...
+                        
                         rank = 0
                         try:
                             rank = int(row[0].replace('.', ''))
                         except:
                             pass
                             
-                        # Try Col 2 for ID
-                        p_id = row[2] if len(row) > 2 else ""
-                        if not p_id.isdigit():
-                            # Fallback to Col 1 if high number
-                            if len(row) > 1 and row[1].isdigit() and int(row[1]) > 500:
-                                p_id = row[1]
+                        p_id = ""
+                        p_name = "Unbekannt"
                         
+                        # Find the Player ID column (digits, usually > 99)
+                        id_idx = -1
+                        
+                        # Scan typical range for ID (indices 1 to 4)
+                        for i in range(1, min(len(row), 5)):
+                            val = row[i].strip()
+                            if val.isdigit() and int(val) > 99:
+                                # Found a candidate ID
+                                
+                                # Verification: Name should be adjacent and NOT a number
+                                # Check Left (i-1)
+                                if i > 0 and not row[i-1].strip().isdigit():
+                                    id_idx = i
+                                    break
+                                
+                                # Check Right (i+1) - e.g. Rank | ID | Name
+                                if i < len(row)-1 and not row[i+1].strip().isdigit():
+                                     # This could be the ID
+                                     # But let's verify if i-1 was maybe the Club ID (digits)
+                                     # If i-1 is digits (Club) and i is ID, then Name is i+1?
+                                     # Or Name is i-2?
+                                     id_idx = i
+                                     # Don't break yet, prefer standard (Name | ID) if found later?
+                                     # Actually Name|ID is most common.
+                        
+                        if id_idx != -1:
+                            p_id = row[id_idx].strip()
+                            
+                            # Deduce Name Position relative to ID
+                            
+                            # Case 1: Name | ID (Standard)
+                            # Check if left neighbor is text
+                            if id_idx > 0 and not row[id_idx-1].strip().isdigit():
+                                p_name = row[id_idx-1].strip()
+                            
+                            # Case 2: ID | Name (Rare)
+                            # Check if right neighbor is text
+                            elif id_idx < len(row)-1 and not row[id_idx+1].strip().isdigit():
+                                p_name = row[id_idx+1].strip()
+                                
+                            # Case 3: Club (Digits) | Match? 
+                            # If id_idx-1 was digits (e.g. Club ID "030"), and we didn't match Case 1.
+                            # We might be in Rank | Club | ID | Name ?
+                            elif id_idx < len(row)-1 and not row[id_idx+1].strip().isdigit():
+                                p_name = row[id_idx+1].strip()
+
+                        # Fallback for very short rows or weird formats
+                        if p_name == "Unbekannt" or p_name.isdigit():
+                             if len(row) > 2 and not row[1].isdigit(): p_name = row[1]
+                             elif len(row) > 2 and not row[2].isdigit(): p_name = row[2]
+
+                        # Clean Name (Flip "Last, First")
+                        if "," in p_name: 
+                            parts = p_name.split(",")
+                            if len(parts) >= 2:
+                                p_name = f"{parts[1].strip()} {parts[0].strip()}"
+                                
+                        # Points usually last column
+                        points = 0
                         try:
-                            points = 0
-                            # Points usually last column
                             if row[-1].isdigit():
                                 points = int(row[-1])
                         except:
                             points = 0
-                            
-                        if p_id and p_id.isdigit():
+
+                        if p_id and p_name != "Unbekannt":
                             clean_season = season_name.replace("Saison ", "").strip()
                             clean_season = clean_season.replace("Ranglisten ", "").strip()
-                            # Normalization
                             if "2020" in clean_season and "2022" in clean_season: clean_season = "20/22"
                             elif "2022" in clean_season and "2023" in clean_season: clean_season = "22/23"
                             elif "2023" in clean_season and "2024" in clean_season: clean_season = "23/24"
                             elif "2024" in clean_season and "2025" in clean_season: clean_season = "24/25"
-
-                            # Extract Name (Col 1 is Name if Col 2 is ID, or Col 0 if Col 1 is ID?)
-                            # Row Structure variants:
-                            # [Rank, Name, ID, ..., Points] (Standard) -> ID is index 2, Name is index 1
-                            # [Rank, ID, ..., Points] (Rare)
-                            
-                            p_name = "Unbekannt"
-                            if len(row) > 2 and row[2].isdigit():
-                                p_name = row[1]
-                            elif len(row) > 1 and row[1].isdigit():
-                                p_name = row[0] # Maybe? Dangerous.
-                                # Actually standard seems to be: Rank | Name | Pass-Nr | ...
-                                
-                            # Clean Name
-                            if "," in p_name: # Format "Smit, John"
-                                parts = p_name.split(",")
-                                if len(parts) >= 2:
-                                    p_name = f"{parts[1].strip()} {parts[0].strip()}"
 
                             entry = {
                                 "season": clean_season,
@@ -249,7 +290,6 @@ async def scrape_archive():
                             if p_id not in all_history:
                                 all_history[p_id] = []
                             
-                            # Deduplicate entry for same season
                             exists = any(e['season'] == clean_season for e in all_history[p_id])
                             if not exists:
                                 all_history[p_id].append(entry)
