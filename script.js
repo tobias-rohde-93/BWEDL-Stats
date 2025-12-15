@@ -2841,9 +2841,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Global check to hide update button on production environments
 document.addEventListener('DOMContentLoaded', () => {
+    // Styling for Last Updated
+    const style = document.createElement('style');
+    style.innerHTML = `
+        #last-updated {
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: #64748b;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Hide update button on production
     if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        const style = document.createElement('style');
-        style.innerHTML = '#update-btn { display: none !important; } #last-updated { margin-bottom: 20px !important; }';
-        document.head.appendChild(style);
+        const prodStyle = document.createElement('style');
+        prodStyle.innerHTML = '#update-btn { display: none !important; } #last-updated { margin-bottom: 20px !important; color: #94a3b8 !important; }';
+        document.head.appendChild(prodStyle);
     }
 });
