@@ -1578,8 +1578,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const getHistory = (d) => {
                 let hist = [];
+                // 1. Try ID Match (Exact)
                 if (d.current && d.current.v_nr && archiveData && archiveData[d.current.v_nr]) {
                     hist = archiveData[d.current.v_nr];
+                }
+
+                // 2. Fallback: Try Name Match (if no ID match found)
+                if (hist.length === 0 && d.name) {
+                    const searchName = d.name.toLowerCase().trim();
+                    // Iterate over all archive entries
+                    Object.values(archiveData).forEach(seasons => {
+                        // Check if any season in this history block has this player's name
+                        const match = seasons.some(s => s.name && s.name.toLowerCase().trim() === searchName);
+                        if (match) {
+                            // potential merge if multiple IDs found? For now just take the first robust match
+                            // or append? Let's just take it if we found nothing yet.
+                            if (hist.length === 0) hist = seasons;
+                        }
+                    });
                 }
                 return hist;
             };
@@ -1604,7 +1620,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const best1 = getBestPoints(h1);
             const best2 = getBestPoints(h2);
 
-            const card = (val1, val2, label, isFloat = false) => {
+            const card = (val1, val2, label, subLabel, isFloat = false) => {
                 const v1 = isFloat ? val1.toFixed(2) : val1;
                 const v2 = isFloat ? val2.toFixed(2) : val2;
                 const win1 = val1 > val2;
@@ -1614,7 +1630,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `
                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #334155;">
                     <div style="font-size: 1.2em; font-weight: bold; color: ${c1}; width: 80px; text-align: center;">${v1}</div>
-                    <div style="flex: 1; text-align: center; color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${label}</div>
+                    <div style="flex: 1; text-align: center;">
+                        <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${label}</div>
+                        <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">${subLabel}</div>
+                    </div>
                     <div style="font-size: 1.2em; font-weight: bold; color: ${c2}; width: 80px; text-align: center;">${v2}</div>
                  </div>`;
             };
@@ -1628,12 +1647,14 @@ document.addEventListener('DOMContentLoaded', () => {
                      <div style="width: 20%; text-align: center; color: #64748b; font-size: 0.8em;">vs</div>
                      <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d2.name}</div>
                 </div>
-                ${card(avg1, avg2, "Ø Aktuell", true)}
-                ${card(h1.length, h2.length, "Saisons (Archiv)")}
-                ${card(best1, best2, "Punkte Rekord (Archiv)")}
+                ${card(avg1, avg2, "Ø Aktuell", "Durchschnitt dieser Saison", true)}
+                ${card(h1.length, h2.length, "Erfahrung", "Anzahl gespielter Saisons im Archiv")}
+                ${card(best1, best2, "Bestleistung", "Meiste Punkte in einer Saison (Archiv)")}
              </div>
              <div style="margin-top: 20px; text-align: center; padding: 10px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 6px; color: #60a5fa; font-size: 0.9em;">
-                ℹ️ Daten basieren auf aktueller Saison + verknüpfter Historie.
+                ℹ️ <strong>Erklärung:</strong><br>
+                Daten basieren auf der aktuellen Saison und der verknüpften Historie (Name oder ID).
+                <br><em>Fehlende Daten können an Namensänderungen liegen.</em>
              </div>`;
 
             comparisonArea.innerHTML = html;
