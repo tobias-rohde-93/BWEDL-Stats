@@ -352,6 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
+        history.replaceState(currentState, "", "#dashboard");
         renderDashboard();
 
         // Check for Update Snapshot (show summary if recently updated)
@@ -1368,15 +1369,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function navigateTo(type, id) {
-        // ... (function body)
-        if (!isNavigatingBack) {
-            if (currentState) {
-                historyStack.push(currentState);
-                if (backBtn) backBtn.style.display = 'block';
-            }
+
+    function navigateTo(type, id, addToHistory = true) {
+        // 1. Handle History
+        if (addToHistory) {
+            history.pushState({ type, id }, "", `#${type}${id ? '/' + id : ''}`);
         }
-        isNavigatingBack = false;
+
+        // 2. Update toggle state if back/menu logic exists
+        // (Existing sidebar logic)
+        const sidebar = document.querySelector('.sidebar');
+        if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+        }
+
+        // 3. Render
         currentState = { type, id };
 
         if (type === 'league') renderLeague(id);
@@ -1387,30 +1394,33 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (type === 'matchPreview') renderMatchPreview();
         else if (type === 'profile') renderProfileSelection();
 
-        const sidebar = document.querySelector('.sidebar');
-        if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
-            sidebar.classList.remove('open');
+        // 4. Update Back Button Visibility
+        // Show back button everywhere except Dashboard
+        if (backBtn) {
+            backBtn.style.display = (type === 'dashboard') ? 'none' : 'block';
         }
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+
+    // History Event Listener
+    window.addEventListener('popstate', (event) => {
+        if (event.state) {
+            navigateTo(event.state.type, event.state.id, false);
+        } else {
+            // Fallback if state is null (e.g. initial load)
+            navigateTo('dashboard', null, false);
+        }
+    });
+
+    function goBack() {
+        history.back();
     }
     // Expose to window for inline onclick handlers
     window.navigateTo = navigateTo;
 
 
-
-    function goBack() {
-        if (historyStack.length === 0) return;
-
-        const prevState = historyStack.pop();
-        console.log("Going back to:", prevState);
-
-        isNavigatingBack = true; // Flag to prevent pushing this back-step to history
-        navigateTo(prevState.type, prevState.id);
-
-        // Check stack again after pop (navigateTo sets display, but based on stack len)
-        if (historyStack.length === 0) {
-            backBtn.style.display = 'none';
-        }
-    }
 
     function renderClubList() {
         topBarTitle.textContent = "Vereinsübersicht";
