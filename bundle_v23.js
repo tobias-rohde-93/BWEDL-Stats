@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verDiv.style.color = "#475569";
         verDiv.style.fontSize = "0.7em";
         verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.15 (Fix Name)";
+        verDiv.innerHTML = "App Version: v2.16 (UI Polish)";
         nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
