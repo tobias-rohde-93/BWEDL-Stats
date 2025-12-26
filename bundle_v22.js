@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verDiv.style.color = "#475569";
         verDiv.style.fontSize = "0.7em";
         verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.14 (Fixed)";
+        verDiv.innerHTML = "App Version: v2.15 (Fix Name)";
         nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
@@ -2549,19 +2549,22 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // We search for the club name in the original HTML to get the display variant (e.g. "Club II")
                                 let buttonText = "Tabelle";
                                 try {
-                                    // Escape regex special chars in club name
-                                    const escapedName = club.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                                    // Robust Regex: splitting by space and allowing &nbsp; or whitespace between parts involving HTML entities
+                                    // Escape special chars first
+                                    const parts = club.name.split(/\s+/).map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+                                    // Join with pattern matching space OR &nbsp;
+                                    const flexibleNamePattern = parts.join('(?:\\s|&nbsp;)+');
+
                                     // Regex to find the cell content containing match, allowing for &nbsp; and whitespaces
                                     // We look for > (content including club name) <
-                                    const regex = new RegExp(`>([^<]*?${escapedName}[^<]*?)<`, 'i');
+                                    const regex = new RegExp(`>([^<]*?${flexibleNamePattern}[^<]*?)<`, 'i');
                                     const match = lTable.match(regex);
                                     if (match && match[1]) {
                                         // Clean up the found text
                                         let foundName = match[1].replace(/&nbsp;/g, ' ').trim();
                                         // Removing leading/trailing punctuation if any (like > or < artifacts, though regex should prevent)
-                                        if (foundName.length > club.name.length + 5) {
-                                            // If significantly longer, it might be a false positive or messy line, stick to safe "Tabelle" or truncate?
-                                            // For now, assume it's correct (e.g. "DC Black Scorpions 2")
+                                        if (foundName.length > club.name.length + 8) {
+                                            // slightly loose validation
                                         }
                                         buttonText = foundName;
                                     }
