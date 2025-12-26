@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verDiv.style.color = "#475569";
         verDiv.style.fontSize = "0.7em";
         verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.13 (New)";
+        verDiv.innerHTML = "App Version: v2.14 (Fixed)";
         nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
@@ -1633,6 +1633,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return { rank: best.rank || 999, season: best.season || '' };
             };
 
+            const getSeasonList = (hist) => {
+                if (!hist || hist.length === 0) return "";
+                // Sort seasons if needed? They usually come in order or reverse order.
+                // dedupe just in case
+                const seasons = [...new Set(hist.map(e => e.season))].sort().join(", ");
+                return seasons;
+            };
+
             const best1Stats = getBestStats(h1); // Max Points
             const best2Stats = getBestStats(h2);
 
@@ -2520,7 +2528,54 @@ document.addEventListener('DOMContentLoaded', () => {
                         return a.name.localeCompare(b.name);
                     });
 
-                    html += `<h3 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 12px; margin-top: 15px; border-bottom: 1px solid #334155; padding-bottom: 5px;">${leagueName} (${leaguePlayers.length})</h3>`;
+                    // logic to find matching league keys
+                    let leagueActionButtons = "";
+                    if (leagueData && leagueData.leagues) {
+                        const potentialKeys = Object.keys(leagueData.leagues).filter(k => k.startsWith(leagueName));
+                        console.log(`[LeagueMatch] Checking ${potentialKeys.length} potential keys for club '${club.name}' in league '${leagueName}'`);
+
+                        potentialKeys.forEach(pk => {
+                            const lTable = leagueData.leagues[pk].table || "";
+                            // Robust normalization: remove &nbsp; and ALL whitespace
+                            const normTable = lTable.replace(/&nbsp;/g, '').replace(/\s+/g, '').toLowerCase();
+                            const normClub = club.name.replace(/\s+/g, '').toLowerCase();
+
+                            const isMatch = normTable.includes(normClub);
+                            console.log(`[LeagueMatch] Key: ${pk}, Match: ${isMatch}`);
+
+                            if (isMatch) {
+                                // Extract specific team name from table
+                                // Table cells look like: <td>Team Name</td> or <td>&nbsp;Team Name&nbsp;</td>
+                                // We search for the club name in the original HTML to get the display variant (e.g. "Club II")
+                                let buttonText = "Tabelle";
+                                try {
+                                    // Escape regex special chars in club name
+                                    const escapedName = club.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                                    // Regex to find the cell content containing match, allowing for &nbsp; and whitespaces
+                                    // We look for > (content including club name) <
+                                    const regex = new RegExp(`>([^<]*?${escapedName}[^<]*?)<`, 'i');
+                                    const match = lTable.match(regex);
+                                    if (match && match[1]) {
+                                        // Clean up the found text
+                                        let foundName = match[1].replace(/&nbsp;/g, ' ').trim();
+                                        // Removing leading/trailing punctuation if any (like > or < artifacts, though regex should prevent)
+                                        if (foundName.length > club.name.length + 5) {
+                                            // If significantly longer, it might be a false positive or messy line, stick to safe "Tabelle" or truncate?
+                                            // For now, assume it's correct (e.g. "DC Black Scorpions 2")
+                                        }
+                                        buttonText = foundName;
+                                    }
+                                } catch (e) { console.error("Name extraction error", e); }
+
+                                leagueActionButtons += `<button onclick="event.stopPropagation(); navigateTo('league', '${pk}')" style="margin-left: 10px; padding: 4px 10px; font-size: 0.75em; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">${buttonText}</button>`;
+                            }
+                        });
+                    }
+
+                    html += `<h3 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 12px; margin-top: 15px; border-bottom: 1px solid #334155; padding-bottom: 5px; display: flex; align-items: center; justify-content: space-between;">
+                        <span>${leagueName} (${leaguePlayers.length})</span>
+                        <div>${leagueActionButtons}</div>
+                    </h3>`;
                     html += `<div style="display: flex; flex-direction: column; gap: 8px;">`;
 
                     leaguePlayers.forEach(p => {

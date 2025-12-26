@@ -97,22 +97,44 @@
         </div>
     </template>
 
-    <script src="league_data.js?v=2"></script>
-    <script src="ranking_data.js"></script>
-    <script src="club_data.js"></script>
-    <script src="archive_data.js?v=5"></script>
-    <script src="archive_tables.js?v=2"></script>
-    <script src="script_v16.js"></script>
+    <div
+        style="background: #22c55e; color: #fff; text-align: center; padding: 5px; font-weight: bold; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+        UPDATE LIVE v2.14 (Fixed)
+    </div>
+    <script src="league_data.js?v=4"></script>
+    <script src="ranking_data.js?v=3"></script>
+    <script src="club_data.js?v=3"></script>
+    <script src="archive_data.js?v=7"></script>
+    <script src="archive_tables.js?v=4"></script>
+    <script src="bundle_v21.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
+            window.addEventListener('load', async () => {
+                // NUCLEAR OPTION: Unregister ALL SWs and Clear ALL Caches first
+                try {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (const registration of registrations) {
+                        console.log('Unregistering SW:', registration.scope);
+                        await registration.unregister();
+                    }
+
+                    const cacheKeys = await caches.keys();
+                    for (const key of cacheKeys) {
+                        console.log('Deleting cache:', key);
+                        await caches.delete(key);
+                    }
+
+                    // Only register new SW if we are sure it's clean, or just let the bundle load first
+                    // For now, let's explicitly register the NEW one after a short delay
+                    setTimeout(() => {
+                        navigator.serviceWorker.register('./sw_v21.js').then(registration => {
+                            console.log('New SW Registered:', registration.scope);
+                        });
+                    }, 1000);
+
+                } catch (err) {
+                    console.error('Cache cleanup failed:', err);
+                }
             });
         }
     </script>
