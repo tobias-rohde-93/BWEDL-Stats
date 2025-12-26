@@ -1,9 +1,9 @@
-const CACHE_NAME = 'bwedl-dashboard-v23-ui';
+const CACHE_NAME = 'bwedl-dashboard-v24-mobile';
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
-    './bundle_v23.js',
+    './bundle_v24.js',
     './league_data.js',
     './ranking_data.js',
     './club_data.js',

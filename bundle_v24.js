@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verDiv.style.color = "#475569";
         verDiv.style.fontSize = "0.7em";
         verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.16 (UI Polish)";
+        verDiv.innerHTML = "App Version: v2.17 (Mobile Fix)";
         nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
@@ -2439,7 +2439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.padding = "30px";
 
         let html = `<h2 style="margin-bottom: 25px; color: #fff; border-bottom: 1px solid #334155; padding-bottom: 15px;">${club.name}</h2>`;
-        html += `<div style="display: grid; grid-template-columns: 200px 1fr; gap: 15px; row-gap: 20px; font-size: 1rem;">`;
+        html += `<div class="club-details-grid">`;
 
         const labels = {
             number: "Vereinsnummer", venue: "Spiellokal", street: "Straße", city: "Ort", phone: "Telefon (Spiellokal)", fax: "Fax",
