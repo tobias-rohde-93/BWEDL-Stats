@@ -1301,96 +1301,75 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- Top Players Section (Keep existing content at bottom for discovery) ---
-        const playersSection = document.createElement('div');
-        playersSection.style.marginTop = "60px";
-
-        let allPlayers = [];
-        if (typeof rankingData !== 'undefined' && rankingData.players) {
-            allPlayers = rankingData.players.map(p => {
-                const stats = calculatePlayerStats(p);
-                return { ...p, ...stats };
-            });
-        }
-
-        // Filter players with at least 3 games
-        const topPlayers = allPlayers.filter(p => p.count >= 3)
-            .sort((a, b) => b.avg - a.avg)
-            .slice(0, 5);
-
-        // Helper to find specific league/group for a team
-        function findLeagueForClub(clubName, leagueData) {
-            if (!leagueData || !leagueData.leagues) return null;
-            for (const [leagueKey, data] of Object.entries(leagueData.leagues)) {
-                // User Request: Ignore "Ligapokal" as only "real" leagues are interesting here
-                if (leagueKey.includes("Ligapokal")) continue;
-
-                // Quick check
-                if (data.table && data.table.includes(clubName)) {
-                    // Rigorous check by parsing HTML
-                    const div = document.createElement('div');
-                    div.innerHTML = data.table;
-                    const cells = Array.from(div.querySelectorAll('td'));
-                    // Check if any cell matches the club name EXACTLY to avoid "Team 2" false positives
-                    if (cells.some(td => td.textContent.trim() === clubName)) {
-                        // Remove year suffix for cleaner display (e.g. "A-Klasse 2025-2026" -> "A-Klasse")
-                        return leagueKey.replace(/\s\d{4}-\d{4}$/, '');
-                    }
-                }
-            }
-            return null;
-        }
-
-        let playersHtml = `<h2 style="color: #60a5fa; border-bottom: 2px solid #334155; padding-bottom: 10px; margin-bottom: 20px;">🔥 Liga Highlights (Top 5)</h2>`;
-        playersHtml += `<div class="results-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">`;
-
-        topPlayers.forEach((p, idx) => {
-            let clubName = p.company || (clubData.clubs && clubData.clubs.find(c => c.number === p.v_nr)?.name) || "";
-
-            let displayLeague = p.league || ""; // Default from ranking scraper
-            if (clubName) {
-                const foundLeague = findLeagueForClub(clubName, leagueData);
-                if (foundLeague) {
-                    displayLeague = foundLeague;
-                }
-            }
-
-            playersHtml += `
-            <div style="background: #1e293b; padding: 15px; border-radius: 8px; border: 1px solid #334155; display: flex; align-items: center; gap: 15px;">
-                <div style="font-size: 1.5em; font-weight: bold; color: #64748b; width: 30px;">#${idx + 1}</div>
-                <div style="flex: 1;">
-                    <div style="color: white; font-weight: bold;">${p.name}</div>
-                    <div style="color: #94a3b8; font-size: 0.85em;">${clubName}</div>
-                    ${displayLeague ? `<div style="color: #60a5fa; font-size: 0.75em; margin-top: 2px;">${displayLeague}</div>` : ''}
-                </div>
-                <div style="text-align: right;">
-                    <div style="color: #60a5fa; font-weight: bold; font-size: 1.2em;">${p.avg.toFixed(2)}</div>
-                    <div style="color: #64748b; font-size: 0.7em;">Ø Pkt</div>
-                </div>
-            </div>`;
-        });
-
-        playersHtml += `</div>`;
-        playersSection.innerHTML = playersHtml;
-        container.appendChild(playersSection);
-
-        // --- League Leaders Section ---
+        // --- League Leaders With Averages ---
         const leaguesSection = document.createElement('div');
+        leaguesSection.style.marginTop = "60px"; // Add margin since we removed the top players section
         let leaguesHtml = `<h2 style="color: #60a5fa; border-bottom: 2px solid #334155; padding-bottom: 10px; margin-bottom: 20px;">🏆 Tabellenführer</h2>`;
         leaguesHtml += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
 
+        const extractLeaderStats = (tableHtml) => {
+            try {
+                const div = document.createElement('div');
+                div.innerHTML = tableHtml;
+                const rows = Array.from(div.querySelectorAll('tr'));
+                // Start from row 1 (skip header row 0)
+                for (let i = 1; i < rows.length; i++) {
+                    const cells = rows[i].querySelectorAll('td');
+                    // Standard B-KL/A-KL Format: 0:Rank, 1:Name, 2:Sp, ..., 8:Pkt
+                    // Check if rank is 1.
+                    if (cells.length > 8 && cells[0].textContent.includes('1.')) {
+                        const name = cells[1].textContent.trim();
+                        const games = parseInt(cells[2].textContent.trim()) || 0;
+                        const points = parseInt(cells[8].textContent.trim()) || 0;
+
+                        if (games > 0) {
+                            return {
+                                name: name,
+                                games: games,
+                                points: points,
+                                avg: points / games
+                            };
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Error parsing leader", e);
+            }
+            return null;
+        };
+
         if (typeof leagueData !== 'undefined' && leagueData.leagues) {
             Object.keys(leagueData.leagues).sort().forEach(leagueName => {
+                // Exclude Ligapokal logic
+                if (leagueName.includes("Ligapokal")) return;
+
                 const data = leagueData.leagues[leagueName];
                 if (data.table) {
-                    const leader = extractLeagueLeader(data.table);
-                    if (leader) {
+                    const stats = extractLeaderStats(data.table);
+                    if (stats) {
                         leaguesHtml += `
-                        <div style="background: #1e293b; padding: 15px 20px; border-radius: 8px; border: 1px solid #334155; cursor: pointer; transition: background 0.2s;" 
+                        <div style="background: #1e293b; padding: 15px 20px; border-radius: 8px; border: 1px solid #334155; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden;" 
                              onclick="navigateTo('league', '${leagueName}')"
                              onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
-                            <div style="font-size: 0.85em; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;">${leagueName}</div>
-                            <div style="font-size: 1.1em; font-weight: 600; color: #f8fafc;">${leader}</div>
+                             
+                            <div style="font-size: 0.85em; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 8px;">
+                                ${leagueName}
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;">
+                                    ${stats.name}
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 1.4em; font-weight: bold; color: #4ade80;">${stats.avg.toFixed(2)}</div>
+                                    <div style="font-size: 0.7em; color: #64748b;">Ø Pkt</div>
+                                </div>
+                            </div>
+
+                            <div style="font-size: 0.8em; color: #64748b; text-align: left; margin-top: 5px;">
+                                ${stats.points} Punkte in ${stats.games} Spielen
+                            </div>
+
                         </div>`;
                     }
                 }
