@@ -75,25 +75,23 @@ def scrape_league(page, league_url, league_name, data):
                 if not val: 
                      val = text.strip()
                 
-                # We want to verify/update data. 
-                # Ideally we only fetch if missing, but to fix duplicates we might want to force update
-                # for this run. However, adhering to original logic:
-                if text not in league_storage["match_days"] or not league_storage["match_days"][text]:
-                    print(f"  Fetching: {text}")
-                    
-                    # Robust / Simple logic:
-                    # 1. Select the option
-                    select_locator.select_option(value=val)
-                    
-                    # 2. Wait for sufficient time for the async update (verified 2-3s is usually enough)
-                    # We use a fixed wait because detecting 'change' is flaky if content happens to be same
-                    # or if the old content capture missed the transition.
-                    page.wait_for_timeout(2000)
-                    
-                    # 3. Read content
-                    if textarea.count() > 0:
-                        content = page.evaluate("document.querySelector('textarea').value")
-                        league_storage["match_days"][text] = content
+                # FORCE UPDATE: Always fetch the latest data for every match day.
+                # Previously, we skipped if data existed, which prevented updating scores for past match days.
+                print(f"  Fetching: {text}")
+                
+                # Robust / Simple logic:
+                # 1. Select the option
+                select_locator.select_option(value=val)
+                
+                # 2. Wait for sufficient time for the async update (verified 2-3s is usually enough)
+                # We use a fixed wait because detecting 'change' is flaky if content happens to be same
+                # or if the old content capture missed the transition.
+                page.wait_for_timeout(2000)
+                
+                # 3. Read content
+                if textarea.count() > 0:
+                    content = page.evaluate("document.querySelector('textarea').value")
+                    league_storage["match_days"][text] = content
                         
         except Exception as e:
             print(f"  [Error] extracting match days for {league_name}: {e}")

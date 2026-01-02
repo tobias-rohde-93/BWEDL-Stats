@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verDiv.style.color = "#475569";
         verDiv.style.fontSize = "0.7em";
         verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.23 (UI & Logic Fixes)";
+        verDiv.innerHTML = "App Version: v2.24 (Data & Time Fixes)";
         nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
@@ -601,15 +601,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function parseGermanDate(dateStr) {
         if (!dateStr) return null;
-        // Format example: "28.11.2025 20:00" or "Di. 26. 8.2025 19:00" or "18.1.26 0:00"
-        // Regex to find DD.MM.YYYY (supports 2 or 4 digit year)
-        const match = dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{2,4})/);
+        // Format example: "28.11.2025 20:00"
+        // Try to match standard date with optional time
+        /* 
+           Regex Analysis:
+           (\d{1,2})\.     -> Day (Group 1)
+           \s*(\d{1,2})\.  -> Month (Group 2)
+           \s*(\d{2,4})    -> Year (Group 3)
+           .*?             -> Match anything in between (like spaces)
+           (\d{1,2}:\d{2})? -> Optional Time (Group 4)
+        */
+        const match = dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{2,4})(?:\s+(\d{1,2}:\d{2}))?/);
         if (match) {
             let year = match[3];
-            if (year.length === 2) {
-                year = "20" + year;
-            }
-            return new Date(`${year}-${match[2].padStart(2, '0')}-${match[1].padStart(2, '0')}`);
+            if (year.length === 2) year = "20" + year; // Handle 2-digit year
+
+            let timeStr = match[4] || "00:00"; // Default to midnight if no time found
+            let [hours, minutes] = timeStr.split(':').map(Number);
+
+            // Construct Date object
+            // Note: Date(y, m, d, h, m) constructor uses local time.
+            // Month is 0-indexed in JS Date constructor (0=Jan, 11=Dec)
+            return new Date(year, parseInt(match[2]) - 1, parseInt(match[1]), hours, minutes);
         }
         return null;
     }
