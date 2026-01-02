@@ -1326,8 +1326,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             return {
                                 name: name,
                                 games: games,
-                                points: points,
-                                avg: points / games
+                                points: points
                             };
                         }
                     }
@@ -1348,22 +1347,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     const stats = extractLeaderStats(data.table);
                     if (stats) {
                         leaguesHtml += `
-                        <div style="background: #1e293b; padding: 15px 20px; border-radius: 8px; border: 1px solid #334155; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden;" 
+                        <div style="background: #1e293b; padding: 15px 20px; border-radius: 8px; border: 1px solid #334155; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden;"
                              onclick="navigateTo('league', '${leagueName}')"
                              onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
-                             
+
                             <div style="font-size: 0.85em; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 8px;">
                                 ${leagueName}
                             </div>
-                            
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                                <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;">
-                                    ${stats.name}
-                                </div>
-                                <div style="text-align: right;">
-                                    <div style="font-size: 1.4em; font-weight: bold; color: #4ade80;">${stats.avg.toFixed(2)}</div>
-                                    <div style="font-size: 0.7em; color: #64748b;">Ø Pkt</div>
-                                </div>
+
+                            <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc; margin-bottom: 5px;">
+                                ${stats.name}
                             </div>
 
                             <div style="font-size: 0.8em; color: #64748b; text-align: left; margin-top: 5px;">
