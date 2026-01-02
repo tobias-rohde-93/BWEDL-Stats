@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bwedl-dashboard-v24-mobile';
+const CACHE_NAME = 'bwedl-dashboard-v24-network-first';
 const urlsToCache = [
     './',
     './index.html',
@@ -25,36 +25,59 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Return cache hit if found
-                if (response) {
+    const url = new URL(event.request.url);
+    const isDataFile = url.pathname.endsWith('_data.js') || url.pathname.endsWith('archive_tables.js');
+
+    if (isDataFile) {
+        // Network-First Strategy for Data Files
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    // Check if valid response
+                    if (!response || response.status !== 200) {
+                        return caches.match(event.request);
+                    }
+
+                    // Clone response stream
+                    const responseToCache = response.clone();
+
+                    caches.open(CACHE_NAME)
+                        .then(cache => {
+                            cache.put(event.request, responseToCache);
+                        });
+
                     return response;
-                }
-                // Clone request stream
-                const fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest).then(
-                    response => {
-                        // Check if valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone response stream
-                        const responseToCache = response.clone();
-
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-
+                })
+                .catch(() => {
+                    // Start offline or network fail
+                    return caches.match(event.request);
+                })
+        );
+    } else {
+        // Cache-First Strategy for Static Assets
+        event.respondWith(
+            caches.match(event.request)
+                .then(response => {
+                    if (response) {
                         return response;
                     }
-                );
-            })
-    );
+                    const fetchRequest = event.request.clone();
+                    return fetch(fetchRequest).then(
+                        response => {
+                            if (!response || response.status !== 200 || response.type !== 'basic') {
+                                return response;
+                            }
+                            const responseToCache = response.clone();
+                            caches.open(CACHE_NAME)
+                                .then(cache => {
+                                    cache.put(event.request, responseToCache);
+                                });
+                            return response;
+                        }
+                    );
+                })
+        );
+    }
 });
 
 self.addEventListener('activate', event => {
