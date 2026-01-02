@@ -46,6 +46,8 @@
 
             <div class="sidebar-controls">
                 <div class="status-text" id="last-updated">Stand: --</div>
+                <div class="status-text" style="font-size: 0.65em; opacity: 0.6; margin-top: 2px; margin-bottom: 5px;">
+                    v2.24 (Data & Time Fixes)</div>
 
                 <button id="update-btn" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;"
                     onclick="triggerUpdate()">
@@ -67,6 +69,8 @@
         <main class="main-content">
             <header class="top-bar" style="display: flex; align-items: center; gap: 15px;">
                 <button id="menu-toggle" class="btn btn-secondary mobile-only" style="display: none;">☰</button>
+                <button id="mobile-refresh" class="btn btn-secondary mobile-only" style="display: none;"
+                    onclick="triggerUpdate()">↻</button>
                 <button id="back-btn" class="btn btn-secondary" style="display: none;">&larr;
                     Zurück</button>
                 <h2 id="current-league-title">Wähle eine Liga</h2>
@@ -97,10 +101,7 @@
         </div>
     </template>
 
-    <div
-        style="background: #22c55e; color: #fff; text-align: center; padding: 5px; font-weight: bold; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
-        UPDATE LIVE v2.24 (Data & Time Fixes)
-    </div>
+
     <script src="league_data.js?v=4"></script>
     <script src="ranking_data.js?v=3"></script>
     <script src="club_data.js?v=3"></script>

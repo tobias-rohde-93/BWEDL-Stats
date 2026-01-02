@@ -392,14 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderFavoritesSidebar();
 
         // VERSION FOOTER
-        const verDiv = document.createElement('div');
-        verDiv.style.marginTop = "auto";
-        verDiv.style.padding = "10px 15px";
-        verDiv.style.color = "#475569";
-        verDiv.style.fontSize = "0.7em";
-        verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.24 (Data & Time Fixes)";
-        nav.appendChild(verDiv);
+
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
         history.replaceState(currentState, "", "#dashboard");
@@ -3631,10 +3624,19 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    // Hide update button on production
-    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        const prodStyle = document.createElement('style');
-        prodStyle.innerHTML = '#update-btn { display: none !important; } #last-updated { margin-bottom: 20px !important; color: #94a3b8 !important; }';
-        document.head.appendChild(prodStyle);
-    }
+    // Global Update Trigger
+    window.triggerUpdate = function () {
+        const btn = document.getElementById('update-btn');
+        const status = document.getElementById('update-status');
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '⌛ Lädt...';
+        }
+        if (status) status.classList.remove('hidden');
+
+        // Force reload with cache busting
+        setTimeout(() => {
+            window.location.href = window.location.pathname + '?t=' + new Date().getTime();
+        }, 500);
+    };
 });
