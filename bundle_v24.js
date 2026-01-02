@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verDiv.style.color = "#475569";
         verDiv.style.fontSize = "0.7em";
         verDiv.style.textAlign = "center";
-        verDiv.innerHTML = "App Version: v2.22 (Network Sync Fix)";
+        verDiv.innerHTML = "App Version: v2.23 (UI & Logic Fixes)";
         nav.appendChild(verDiv);
         // Show Dashboard by default
         currentState = { type: 'dashboard', id: null };
@@ -1155,8 +1155,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionCard.style.flexDirection = "column";
                 actionCard.style.gap = "20px";
 
-                // Find Next Game
-                const nextGame = mySchedule.find(g => g.isPending);
+                // Find Next Game (Future only)
+                const now = new Date();
+                // We want the first pending game that is in the future
+                // If date is missing, treat as future? Or ignore?
+                const nextGame = mySchedule.filter(g => g.isPending && (!g.date || g.date >= now))
+                    .sort((a, b) => (a.date || 0) - (b.date || 0))[0];
 
                 if (nextGame) {
                     const nextCard = document.createElement('div');
@@ -3408,10 +3412,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Expose triggerUpdate globally so the button onclick works
     window.triggerUpdate = function () {
         const btn = document.getElementById('update-btn');
-        const status = document.getElementById('update-status');
+        const updateStatus = document.getElementById('update-status');
+        const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 
-        if (btn) btn.disabled = true;
+        if (!isLocalhost) {
+            // On static hosting (GitHub Pages), we can't trigger the python scraper.
+            // But we CAN reload the page to fetch the latest data files (handled by Network-First SW).
+            if (btn) {
+                btn.innerHTML = "⏳ Lädt...";
+                btn.disabled = true;
+            }
 
+            // Force reload after short delay to show feedback
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+            return;
+        }
+
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = "⏳ läuft...";
+        }
         // Snapshot current stats before update
         try {
             const stats = calculateDataStats();
