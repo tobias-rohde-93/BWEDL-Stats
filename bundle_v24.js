@@ -1329,6 +1329,9 @@ document.addEventListener('DOMContentLoaded', () => {
         function findLeagueForClub(clubName, leagueData) {
             if (!leagueData || !leagueData.leagues) return null;
             for (const [leagueKey, data] of Object.entries(leagueData.leagues)) {
+                // User Request: Ignore "Ligapokal" as only "real" leagues are interesting here
+                if (leagueKey.includes("Ligapokal")) continue;
+
                 // Quick check
                 if (data.table && data.table.includes(clubName)) {
                     // Rigorous check by parsing HTML
