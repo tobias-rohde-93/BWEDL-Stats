@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "26.01.2026 06:39:20",
+    "last_updated": "26.01.2026 12:46:45",
     "clubs": [
         {
             "venue": "Meyerhöfle",
@@ -437,8 +437,8 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/dc-conweiler/"
         },
         {
-            "venue": "KostBar",
-            "street": "Hauptstraße 95",
+            "venue": "Wunderbar",
+            "street": "Kirchstr. 41",
             "city": "Remchingen",
             "phone": "",
             "fax": "",
