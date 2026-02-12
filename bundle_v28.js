@@ -1748,8 +1748,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.createElement('div');
         container.className = "fade-in";
         container.style.padding = "20px";
+        container.style.maxWidth = "900px";
+        container.style.margin = "0 auto";
 
-        // Aggregation Logic
+        // --- Empty State ---
         if (!archiveData || Object.keys(archiveData).length === 0) {
             container.innerHTML = `<div style="text-align:center; padding: 40px; color: #94a3b8;">
                 <h2>📭 Keine Archiv-Daten</h2>
@@ -1759,92 +1761,424 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // --- Liga-Tier Color Helper ---
+        const leagueTierColor = (league) => {
+            if (!league) return '#64748b';
+            const l = league.toLowerCase();
+            if (l.includes('bezirksoberliga')) return '#f59e0b';
+            if (l.includes('bezirksliga')) return '#fbbf24';
+            if (l.includes('a-klasse') || l.includes('a klasse')) return '#94a3b8';
+            if (l.includes('b-klasse') || l.includes('b klasse')) return '#cd7f32';
+            if (l.includes('c-klasse') || l.includes('c klasse')) return '#64748b';
+            return '#64748b';
+        };
+
+        const leagueTierLabel = (league) => {
+            if (!league) return '';
+            const l = league.toLowerCase();
+            if (l.includes('bezirksoberliga')) return 'BOL';
+            if (l.includes('bezirksliga')) return 'BL';
+            if (l.includes('a-klasse') || l.includes('a klasse')) return 'A';
+            if (l.includes('b-klasse') || l.includes('b klasse')) return 'B';
+            if (l.includes('c-klasse') || l.includes('c klasse')) return 'C';
+            return '';
+        };
+
+        // --- Season sort helper (ascending) ---
+        const seasonOrder = (s) => {
+            const m = (s || '').match(/(\d{2})/);
+            return m ? parseInt(m[1]) : 0;
+        };
+
+        // --- Aggregation ---
         const allPlayers = [];
+        const allLeagues = new Set();
+        const allSeasons = new Set();
+
+        // Build a map of archive players by key for later merging
+        const playerMap = new Map();
 
         Object.entries(archiveData).forEach(([playerKey, seasons]) => {
             const name = seasons[0].name || "Unbekannt";
             const id = playerKey;
+            const playerLeagues = new Set();
 
+            // Sort seasons for trend calculation
+            const sorted = [...seasons].sort((a, b) => seasonOrder(a.season) - seasonOrder(b.season));
+
+            sorted.forEach(s => {
+                allSeasons.add(s.season);
+                if (s.league) {
+                    playerLeagues.add(s.league);
+                    allLeagues.add(s.league);
+                }
+            });
+
+            playerMap.set(id, {
+                id, name, leagues: playerLeagues,
+                seasons: sorted
+            });
+        });
+
+        // --- Merge current season from rankingData ---
+        // Determine current season label from ranking last_updated
+        let currentSeasonLabel = 'Aktuell';
+        if (rankingData && rankingData.last_updated) {
+            const m = rankingData.last_updated.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+            if (m) {
+                const month = parseInt(m[2]);
+                const year = parseInt(m[3]);
+                // Season runs Aug-Jul: if month >= 8, season is year/(year+1), else (year-1)/year
+                const startYear = month >= 8 ? year : year - 1;
+                const endYear = startYear + 1;
+                currentSeasonLabel = (startYear % 100).toString().padStart(2, '0') + '/' + (endYear % 100).toString().padStart(2, '0');
+            }
+        }
+
+        if (rankingData && rankingData.players && rankingData.players.length > 0) {
+            allSeasons.add(currentSeasonLabel);
+
+            // Group ranking players by id (Nr.) — pick highest total if player appears in multiple leagues
+            const bestByNr = new Map();
+            rankingData.players.forEach(rp => {
+                const nr = rp.id;
+                const pts = parseInt(rp.points) || 0;
+                if (!nr) return;
+                const existing = bestByNr.get(nr);
+                if (!existing || pts > (parseInt(existing.points) || 0)) {
+                    bestByNr.set(nr, rp);
+                }
+            });
+
+            bestByNr.forEach((rp, nr) => {
+                const pts = parseInt(rp.points) || 0;
+                const rank = parseInt(rp.rank) || 999;
+                const league = rp.league || '';
+                const seasonEntry = {
+                    season: currentSeasonLabel,
+                    rank: rank === 999 ? '-' : rank,
+                    points: pts,
+                    league: league,
+                    name: rp.name,
+                    isCurrent: true
+                };
+
+                if (playerMap.has(nr)) {
+                    // Existing archive player — add current season
+                    const p = playerMap.get(nr);
+                    // Only add if not already present (avoid duplicates on re-render)
+                    if (!p.seasons.some(s => s.season === currentSeasonLabel)) {
+                        p.seasons.push(seasonEntry);
+                    }
+                    if (league) {
+                        p.leagues.add(league);
+                        allLeagues.add(league);
+                    }
+                } else {
+                    // New player not in archive — create entry
+                    const playerLeagues = new Set();
+                    if (league) {
+                        playerLeagues.add(league);
+                        allLeagues.add(league);
+                    }
+                    playerMap.set(nr, {
+                        id: nr,
+                        name: rp.name || 'Unbekannt',
+                        leagues: playerLeagues,
+                        seasons: [seasonEntry]
+                    });
+                }
+            });
+        }
+
+        // --- Finalize player stats ---
+        playerMap.forEach((p) => {
             let totalPoints = 0;
-            let totalSeasons = seasons.length;
-
-            // Metrics
+            let totalSeasons = p.seasons.length;
             let bestSeasonRank = 999;
-            let bestSeasonYearRank = "";
-            let bestSeasonLeague = "";
-
+            let bestSeasonYearRank = '';
+            let bestSeasonLeague = '';
             let maxPoints = 0;
-            let maxPointsYear = "";
-            let maxPointsLeague = "";
+            let maxPointsYear = '';
+            let maxPointsLeague = '';
 
-            seasons.forEach(s => {
-                totalPoints += (parseInt(s.points) || 0);
+            p.seasons.forEach(s => {
+                const pts = parseInt(s.points) || 0;
+                totalPoints += pts;
 
-                // Best Rank
                 const r = parseInt(s.rank) || 999;
                 if (r < bestSeasonRank) {
                     bestSeasonRank = r;
                     bestSeasonYearRank = s.season;
-                    bestSeasonLeague = s.league || "";
+                    bestSeasonLeague = s.league || '';
                 }
-
-                // Max Points
-                const p = parseInt(s.points) || 0;
-                if (p > maxPoints) {
-                    maxPoints = p;
+                if (pts > maxPoints) {
+                    maxPoints = pts;
                     maxPointsYear = s.season;
-                    maxPointsLeague = s.league || "";
+                    maxPointsLeague = s.league || '';
                 }
             });
+
+            // Trend: compare last two seasons' points
+            let trend = 'stable';
+            if (p.seasons.length >= 2) {
+                const last = parseInt(p.seasons[p.seasons.length - 1].points) || 0;
+                const prev = parseInt(p.seasons[p.seasons.length - 2].points) || 0;
+                if (last > prev + 5) trend = 'up';
+                else if (last < prev - 5) trend = 'down';
+            }
+
+            const avgPoints = totalSeasons > 0 ? totalPoints / totalSeasons : 0;
 
             allPlayers.push({
-                id, name, totalPoints, totalSeasons,
-                bestSeasonRank: (bestSeasonRank === 999 ? '-' : bestSeasonRank + '.'),
-                bestSeasonYearRank,
-                bestSeasonLeague,
-                maxPoints,
-                maxPointsYear,
-                maxPointsLeague
+                id: p.id, name: p.name, totalPoints, totalSeasons, avgPoints,
+                bestSeasonRank, bestSeasonRankDisplay: (bestSeasonRank === 999 ? '-' : bestSeasonRank + '.'),
+                bestSeasonYearRank, bestSeasonLeague,
+                maxPoints, maxPointsYear, maxPointsLeague,
+                trend, leagues: p.leagues,
+                seasons: p.seasons
             });
         });
 
-        // Sort by Total Points (All-Time) descending
-        allPlayers.sort((a, b) => b.totalPoints - a.totalPoints);
+        // --- State ---
+        let sortMode = 'totalPoints';
+        let searchQuery = '';
+        let pageSize = 50;
+        let currentPage = 1;
+        let expandedId = null;
 
-        let html = `<div style="background: #1e293b; border-radius: 8px; overflow: hidden;">
-            <div style="display: flex; padding: 10px; background: #0f172a; color: #94a3b8; font-size: 0.8em; font-weight: bold; border-bottom: 1px solid #334155;">
-                <div style="width: 30px; text-align: center;">#</div>
-                <div style="flex: 1; padding-left: 10px;">NAME</div>
-                <div style="width: 60px; text-align: center;">SAISONS</div>
-                <div style="width: 100px; text-align: right; padding-right: 10px;">PUNKTE (GESAMT)</div>
+        // --- Sort & Filter Logic ---
+        const getFiltered = () => {
+            let list = [...allPlayers];
+
+            // Sort first to assign global ranks
+            if (sortMode === 'totalPoints') list.sort((a, b) => b.totalPoints - a.totalPoints);
+            else if (sortMode === 'avgPoints') list.sort((a, b) => b.avgPoints - a.avgPoints);
+            else if (sortMode === 'bestRank') list.sort((a, b) => a.bestSeasonRank - b.bestSeasonRank);
+            else if (sortMode === 'seasons') list.sort((a, b) => b.totalSeasons - a.totalSeasons || b.totalPoints - a.totalPoints);
+
+            // Assign global rank before filtering
+            list.forEach((p, idx) => { p.globalRank = idx + 1; });
+
+            // Then filter by search (ranks stay from full list)
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                list = list.filter(p => p.name.toLowerCase().includes(q));
+            }
+
+            return list;
+        };
+
+        // --- Render Function ---
+        const render = () => {
+            container.innerHTML = '';
+
+            const filtered = getFiltered();
+            const shown = filtered.slice(0, currentPage * pageSize);
+            const hasMore = shown.length < filtered.length;
+
+            // --- Feature 6: Stats Header ---
+            const totalPlayersCount = allPlayers.length;
+            const activeSeasonCount = allSeasons.size;
+            const veteranCount = allPlayers.filter(p => p.totalSeasons >= activeSeasonCount).length;
+
+            let statsHtml = `<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">`;
+            const statCard = (icon, value, label) => `
+                <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
+                    <div style="font-size: 1.6em; margin-bottom: 4px;">${icon}</div>
+                    <div style="font-size: 1.4em; font-weight: bold; color: #f8fafc;">${value}</div>
+                    <div style="font-size: 0.75em; color: #94a3b8; margin-top: 2px;">${label}</div>
+                </div>`;
+            statsHtml += statCard('👥', totalPlayersCount, 'Spieler gesamt');
+            statsHtml += statCard('📅', activeSeasonCount, 'Saisons im Archiv');
+            statsHtml += statCard('🎖️', veteranCount, `Veteranen (${activeSeasonCount}/${activeSeasonCount})`);
+            statsHtml += `</div>`;
+            container.insertAdjacentHTML('beforeend', statsHtml);
+
+            // --- Feature 1: Controls (Sort, Filter, Search) ---
+            const controlsDiv = document.createElement('div');
+            controlsDiv.style.cssText = 'display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center;';
+
+            // Search
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = '🔍 Spieler suchen...';
+            searchInput.value = searchQuery;
+            searchInput.style.cssText = 'flex: 1; min-width: 160px; padding: 10px 14px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #f8fafc; font-size: 0.9em;';
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                currentPage = 1;
+                render();
+            });
+
+            // Sort select
+            const sortSelect = document.createElement('select');
+            sortSelect.style.cssText = 'padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #f8fafc; font-size: 0.85em; cursor: pointer;';
+            const sortOptions = [
+                { value: 'totalPoints', label: '⬇ Gesamtpunkte' },
+                { value: 'avgPoints', label: '⬇ Ø Punkte/Saison' },
+                { value: 'bestRank', label: '⬆ Beste Platzierung' },
+                { value: 'seasons', label: '⬇ Meiste Saisons' }
+            ];
+            sortOptions.forEach(o => {
+                const opt = document.createElement('option');
+                opt.value = o.value;
+                opt.textContent = o.label;
+                if (o.value === sortMode) opt.selected = true;
+                sortSelect.appendChild(opt);
+            });
+            sortSelect.addEventListener('change', (e) => {
+                sortMode = e.target.value;
+                currentPage = 1;
+                render();
+            });
+
+            controlsDiv.appendChild(searchInput);
+            controlsDiv.appendChild(sortSelect);
+            container.appendChild(controlsDiv);
+
+            // --- Result count ---
+            const countDiv = document.createElement('div');
+            countDiv.style.cssText = 'color: #64748b; font-size: 0.8em; margin-bottom: 10px;';
+            countDiv.textContent = `${filtered.length} Spieler${searchQuery ? ` für "${searchQuery}"` : ''}`;
+            container.appendChild(countDiv);
+
+            // --- Table ---
+            const tableDiv = document.createElement('div');
+            tableDiv.style.cssText = 'background: #1e293b; border-radius: 8px; overflow: hidden; border: 1px solid #334155;';
+
+            // Header
+            let headerHtml = `<div style="display: flex; padding: 10px 12px; background: #0f172a; color: #94a3b8; font-size: 0.75em; font-weight: bold; border-bottom: 1px solid #334155; text-transform: uppercase; letter-spacing: 0.5px;">
+                <div style="width: 36px; text-align: center;">#</div>
+                <div style="flex: 1; padding-left: 8px;">Name</div>
+                <div style="width: 40px; text-align: center;" title="Trend">📈</div>
+                <div style="width: 50px; text-align: center;">Saisons</div>
+                <div style="width: 70px; text-align: right;">Ø / Saison</div>
+                <div style="width: 80px; text-align: right; padding-right: 10px;">Gesamt</div>
             </div>`;
+            tableDiv.insertAdjacentHTML('beforeend', headerHtml);
 
-        allPlayers.forEach((p, idx) => {
-            const rank = idx + 1;
-            let medal = "";
-            if (rank === 1) medal = "🥇";
-            if (rank === 2) medal = "🥈";
-            if (rank === 3) medal = "🥉";
-            if (rank > 3) medal = `${rank}.`;
+            // Rows
+            shown.forEach((p, idx) => {
+                const rank = p.globalRank;
+                let medal = '';
+                if (rank === 1) medal = '🥇';
+                else if (rank === 2) medal = '🥈';
+                else if (rank === 3) medal = '🥉';
+                else medal = `${rank}.`;
 
-            html += `
-            <div style="display: flex; padding: 15px 10px; border-bottom: 1px solid #334155; align-items: center;">
-                <div style="width: 30px; text-align: center; font-weight: bold; color: ${rank <= 3 ? '#fbbf24' : '#cbd5e1'}">${medal}</div>
-                <div style="flex: 1; padding-left: 10px;">
-                    <div style="font-weight: bold; color: #f8fafc;">${p.name}</div>
-                    <div style="font-size: 0.75em; color: #94a3b8; margin-top: 2px;">
-                        Rang: <span style="color: #cbd5e1">${p.bestSeasonRank}</span> (${p.bestSeasonYearRank} • ${p.bestSeasonLeague}) • 
-                        Pkt: <span style="color: #cbd5e1">${p.maxPoints}</span> (${p.maxPointsYear} • ${p.maxPointsLeague})
+                const rankColor = rank <= 3 ? '#fbbf24' : '#cbd5e1';
+
+                // Trend icon
+                let trendIcon = '➡️';
+                let trendColor = '#94a3b8';
+                if (p.trend === 'up') { trendIcon = '↗️'; trendColor = '#4ade80'; }
+                else if (p.trend === 'down') { trendIcon = '↘️'; trendColor = '#ef4444'; }
+
+                // Current league tier badge (most recent season)
+                const lastSeason = p.seasons[p.seasons.length - 1];
+                const tierBadge = leagueTierLabel(lastSeason ? lastSeason.league : '');
+                const tierColor = leagueTierColor(lastSeason ? lastSeason.league : '');
+
+                const isExpanded = expandedId === p.id;
+
+                // Row
+                const row = document.createElement('div');
+                row.style.cssText = 'border-bottom: 1px solid #334155; cursor: pointer; transition: background 0.15s;';
+
+                let rowHtml = `<div style="display: flex; padding: 12px; align-items: center;" class="alltime-row">
+                    <div style="width: 36px; text-align: center; font-weight: bold; color: ${rankColor}; font-size: 0.95em;">${medal}</div>
+                    <div style="flex: 1; padding-left: 8px; min-width: 0;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-weight: 600; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</span>
+                            ${tierBadge ? `<span style="font-size: 0.65em; font-weight: bold; color: ${tierColor}; border: 1px solid ${tierColor}; padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">${tierBadge}</span>` : ''}
+                        </div>
+                        <div style="font-size: 0.7em; color: #64748b; margin-top: 2px;">
+                            Bester Rang: ${p.bestSeasonRankDisplay} (${p.bestSeasonYearRank}) • Max: ${p.maxPoints} Pkt (${p.maxPointsYear})
+                        </div>
                     </div>
-                </div>
-                <div style="width: 60px; text-align: center; color: #cbd5e1;">${p.totalSeasons}</div>
-                <div style="width: 100px; text-align: right; padding-right: 10px; font-weight: bold; color: #4ade80;">${p.totalPoints}</div>
-            </div>`;
-        });
+                    <div style="width: 40px; text-align: center; font-size: 0.9em;" title="${p.trend === 'up' ? 'Aufwärtstrend' : p.trend === 'down' ? 'Abwärtstrend' : 'Stabil'}">${trendIcon}</div>
+                    <div style="width: 50px; text-align: center; color: #cbd5e1; font-size: 0.9em;">${p.totalSeasons}</div>
+                    <div style="width: 70px; text-align: right; color: #60a5fa; font-weight: 500; font-size: 0.9em;">${p.avgPoints.toFixed(1)}</div>
+                    <div style="width: 80px; text-align: right; padding-right: 10px; font-weight: bold; color: #4ade80; font-size: 1em;">${p.totalPoints}</div>
+                </div>`;
 
-        html += `</div>`;
-        container.innerHTML = html;
+                // Feature 4: Expandable detail
+                if (isExpanded) {
+                    rowHtml += `<div style="padding: 0 12px 12px 56px; animation: fadeIn 0.2s ease;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.8em;">
+                            <thead>
+                                <tr style="color: #94a3b8; text-align: left;">
+                                    <th style="padding: 6px 8px; border-bottom: 1px solid #334155;">Saison</th>
+                                    <th style="padding: 6px 8px; border-bottom: 1px solid #334155;">Liga</th>
+                                    <th style="padding: 6px 8px; border-bottom: 1px solid #334155; text-align: center;">Rang</th>
+                                    <th style="padding: 6px 8px; border-bottom: 1px solid #334155; text-align: right;">Punkte</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${p.seasons.map(s => {
+                        const sc = leagueTierColor(s.league);
+                        const sl = leagueTierLabel(s.league);
+                        const isCur = s.isCurrent;
+                        const rowBg = isCur ? 'background: rgba(74, 222, 128, 0.07);' : '';
+                        return `<tr style="color: #e2e8f0; ${rowBg}">
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">${s.season}${isCur ? ' ⚡' : ''}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">
+                                            <span style="color: ${sc}; font-weight: 500;">${s.league || '-'}</span>
+                                            ${sl ? `<span style="font-size: 0.75em; color: ${sc}; margin-left: 4px; border: 1px solid ${sc}; padding: 0 3px; border-radius: 2px;">${sl}</span>` : ''}
+                                        </td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: center;">${s.rank || '-'}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: right; font-weight: bold; color: #4ade80;">${s.points || 0}</td>
+                                    </tr>`;
+                    }).join('')}
+                            </tbody>
+                        </table>
+                    </div>`;
+                }
+
+                row.innerHTML = rowHtml;
+
+                // Click handler to toggle expand
+                row.querySelector('.alltime-row').addEventListener('click', () => {
+                    expandedId = expandedId === p.id ? null : p.id;
+                    render();
+                });
+
+                // Hover effect
+                row.addEventListener('mouseenter', () => { row.style.background = 'rgba(51, 65, 85, 0.3)'; });
+                row.addEventListener('mouseleave', () => { row.style.background = 'transparent'; });
+
+                tableDiv.appendChild(row);
+            });
+
+            container.appendChild(tableDiv);
+
+            // --- Feature 7: Pagination ---
+            if (hasMore) {
+                const loadMoreBtn = document.createElement('button');
+                loadMoreBtn.textContent = `Mehr laden (${shown.length} / ${filtered.length})`;
+                loadMoreBtn.style.cssText = 'display: block; width: 100%; margin-top: 16px; padding: 14px; background: #1e293b; border: 1px solid #334155; color: #60a5fa; font-weight: 600; font-size: 0.9em; border-radius: 8px; cursor: pointer; transition: all 0.2s;';
+                loadMoreBtn.addEventListener('mouseenter', () => { loadMoreBtn.style.background = '#334155'; });
+                loadMoreBtn.addEventListener('mouseleave', () => { loadMoreBtn.style.background = '#1e293b'; });
+                loadMoreBtn.addEventListener('click', () => {
+                    currentPage++;
+                    render();
+                });
+                container.appendChild(loadMoreBtn);
+            }
+
+            // Re-focus search input if user was typing
+            if (searchQuery) {
+                const newInput = container.querySelector('input[type="text"]');
+                if (newInput) {
+                    newInput.focus();
+                    newInput.setSelectionRange(searchQuery.length, searchQuery.length);
+                }
+            }
+        };
+
         contentArea.appendChild(container);
+        render();
     }
 
 
@@ -2800,6 +3134,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Filter relevant tables
             const relevantTables = window.ARCHIVE_TABLES.filter(table => {
+                if (!table.league || table.league === 'Unbekannt') return false;
+                if (table.league.includes('Ligapokal')) return false;
+
                 // Determine if any row in this table matches our club
                 return table.rows.some(row => {
                     if (row.length < 2) return false;
@@ -2971,6 +3308,374 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // =============================================
+    // MATCH PREVIEW HELPER FUNCTIONS
+    // =============================================
+
+    /**
+     * Parse all match_days text for a given league into structured objects.
+     * Returns array of { spieltag, date, home, away, scoreHome, scoreAway, played }
+     */
+    function parseAllMatches(leagueName) {
+        const matches = [];
+        const league = leagueData.leagues[leagueName];
+        if (!league || !league.match_days) return matches;
+
+        for (const [spieltag, text] of Object.entries(league.match_days)) {
+            if (!text) continue;
+            // Split by newline (handles both \n and \\n in JSON)
+            const lines = text.split(/\\n|\n/).filter(l => l.trim().length > 0);
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+
+                // Try standard league format first:
+                // "Mo. 25. 8.2025 20:00 Team A          - Team B             9:7  "
+                // Or simpler: "date   home - away   score"
+                // The separator between teams is " - " (space dash space)
+                const dashIdx = trimmed.indexOf(' - ');
+                if (dashIdx === -1) continue;
+
+                const leftPart = trimmed.substring(0, dashIdx).trim();
+                const rightPart = trimmed.substring(dashIdx + 3).trim();
+
+                // Extract home team: everything after the date/time
+                // Date patterns: "Mo. 25. 8.2025 20:00" or "28.11.2025 20:00"
+                let home = leftPart;
+                // Try to strip date: look for time pattern HH:MM or just strip leading date
+                const timeMatch = leftPart.match(/\d{1,2}:\d{2}\s+(.+)/);
+                if (timeMatch) {
+                    home = timeMatch[1].trim();
+                } else {
+                    // Try date without time: "08.03.2026   team"
+                    const dateOnlyMatch = leftPart.match(/\d{1,2}\.\d{1,2}\.\d{4}\s+(.+)/);
+                    if (dateOnlyMatch) {
+                        home = dateOnlyMatch[1].trim();
+                    }
+                }
+
+                // Extract away team and score from right part
+                // "Team B    9:7  " or "Team B    ---  " or "Team B    :  "
+                let away = rightPart;
+                let scoreHome = null;
+                let scoreAway = null;
+                let played = false;
+
+                // Match score at end: digits:digits
+                const scoreMatch = rightPart.match(/^(.+?)\s+(\d+):(\d+)\s*$/);
+                const noScoreMatch = rightPart.match(/^(.+?)\s+(---|\s*:\s*)\s*$/);
+
+                if (scoreMatch) {
+                    away = scoreMatch[1].trim();
+                    scoreHome = parseInt(scoreMatch[2]);
+                    scoreAway = parseInt(scoreMatch[3]);
+                    played = true;
+                } else if (noScoreMatch) {
+                    away = noScoreMatch[1].trim();
+                    played = false;
+                }
+
+                // Extract date string for display
+                let dateStr = '';
+                const dateExtract = leftPart.match(
+                    /(?:[A-Za-z]{2}\.\s+)?(\d{1,2}\.\s*\d{1,2}\.\d{4})(?:\s+\d{1,2}:\d{2})?/
+                );
+                if (dateExtract) {
+                    dateStr = dateExtract[1].replace(/\s/g, '');
+                }
+
+                if (home && away && home !== 'Spielfrei' && away !== 'Spielfrei') {
+                    matches.push({
+                        spieltag, dateStr, home, away,
+                        scoreHome, scoreAway, played
+                    });
+                }
+            }
+        }
+        return matches;
+    }
+
+    /**
+     * Find historical results between two teams in a league.
+     * Returns { matches: [...], wins: n, draws: n, losses: n } (from teamA perspective)
+     */
+    function findHistoricalResults(leagueName, teamAName, teamBName) {
+        const allMatches = parseAllMatches(leagueName);
+        const norm = s => s.toLowerCase().replace(/\u00a0/g, ' ').trim();
+        const nA = norm(teamAName);
+        const nB = norm(teamBName);
+
+        const results = [];
+        let wins = 0, draws = 0, losses = 0;
+
+        for (const m of allMatches) {
+            const nHome = norm(m.home);
+            const nAway = norm(m.away);
+
+            const isMatch = (nHome === nA && nAway === nB) ||
+                (nHome === nB && nAway === nA);
+            if (!isMatch || !m.played) continue;
+
+            // Determine result from teamA perspective
+            let teamAScore, teamBScore;
+            if (nHome === nA) {
+                teamAScore = m.scoreHome;
+                teamBScore = m.scoreAway;
+            } else {
+                teamAScore = m.scoreAway;
+                teamBScore = m.scoreHome;
+            }
+
+            if (teamAScore > teamBScore) wins++;
+            else if (teamAScore < teamBScore) losses++;
+            else draws++;
+
+            results.push({
+                spieltag: m.spieltag,
+                dateStr: m.dateStr,
+                home: m.home,
+                away: m.away,
+                scoreHome: m.scoreHome,
+                scoreAway: m.scoreAway,
+                teamAScore, teamBScore
+            });
+        }
+
+        return { matches: results, wins, draws, losses };
+    }
+
+    /**
+     * Get a player's form trend (last N played rounds).
+     * Returns { values: [5,7,3,...], lastNAvg: x, totalAvg: y, trend: 'up'|'down'|'flat' }
+     */
+    function getPlayerFormTrend(player, n = 5) {
+        const allValues = [];
+        if (!player.rounds) return { values: [], lastNAvg: 0, totalAvg: 0, trend: 'flat' };
+
+        for (let i = 1; i <= 18; i++) {
+            const val = player.rounds[`R${i}`];
+            if (val && val !== '&nbsp;' && val !== 'x' && !isNaN(parseInt(val))) {
+                allValues.push(parseInt(val));
+            }
+        }
+
+        if (allValues.length === 0) {
+            return { values: [], lastNAvg: 0, totalAvg: 0, trend: 'flat' };
+        }
+
+        const totalAvg = allValues.reduce((a, b) => a + b, 0) / allValues.length;
+        const lastN = allValues.slice(-n);
+        const lastNAvg = lastN.reduce((a, b) => a + b, 0) / lastN.length;
+
+        let trend = 'flat';
+        if (lastN.length >= 3) {
+            const firstHalf = lastN.slice(0, Math.floor(lastN.length / 2));
+            const secondHalf = lastN.slice(Math.floor(lastN.length / 2));
+            const avg1 = firstHalf.reduce((a, b) => a + b, 0) / firstHalf.length;
+            const avg2 = secondHalf.reduce((a, b) => a + b, 0) / secondHalf.length;
+            if (avg2 - avg1 > 0.5) trend = 'up';
+            else if (avg1 - avg2 > 0.5) trend = 'down';
+        }
+
+        return { values: lastN, lastNAvg, totalAvg, trend };
+    }
+
+    /**
+     * Calculate the optimal lineup of n players from a roster to maximize avg.
+     * Returns { players: [...], avg: number }
+     */
+    function calculateOptimalLineup(allPlayers, n = 4) {
+        // Filter players with at least 1 game
+        const eligible = allPlayers.filter(p => p._cnt >= 1);
+        if (eligible.length <= n) {
+            const avg = eligible.length > 0
+                ? eligible.reduce((s, p) => s + p._avg, 0) / n
+                : 0;
+            return { players: eligible, avg };
+        }
+
+        // Generate combinations C(eligible, n) - brute force is fine for small n
+        let bestCombo = null;
+        let bestAvg = -1;
+
+        const combine = (start, current) => {
+            if (current.length === n) {
+                const avg = current.reduce((s, p) => s + p._avg, 0) / n;
+                if (avg > bestAvg) {
+                    bestAvg = avg;
+                    bestCombo = [...current];
+                }
+                return;
+            }
+            if (start >= eligible.length) return;
+            if (eligible.length - start < n - current.length) return;
+
+            for (let i = start; i < eligible.length; i++) {
+                current.push(eligible[i]);
+                combine(i + 1, current);
+                current.pop();
+            }
+        };
+
+        combine(0, []);
+        return { players: bestCombo || [], avg: bestAvg };
+    }
+
+    /**
+     * Detect the user's next upcoming match.
+     * Returns { league, home, away, dateStr, spieltag } or null
+     */
+    function detectNextMatch() {
+        // 1. Find the user's team name from the profile
+        console.log('[AutoDetect] myPlayerName:', myPlayerName);
+        const myProfile = rankingData.players.find(p => p.name === myPlayerName);
+        if (!myProfile) {
+            console.log('[AutoDetect] No profile found for', myPlayerName);
+            return null;
+        }
+
+        const myV_nr = myProfile.v_nr;
+        let detectedTeamName = myProfile.company || '';
+
+        console.log('[AutoDetect] Profile found:', {
+            v_nr: myV_nr, company: detectedTeamName, league: myProfile.league
+        });
+
+        // Try to find better team name from clubData
+        if (myV_nr && clubData.clubs) {
+            const club = clubData.clubs.find(c => String(c.number) === String(myV_nr));
+            if (club) detectedTeamName = club.name;
+        }
+
+        if (!detectedTeamName) {
+            console.log('[AutoDetect] No team name found');
+            return null;
+        }
+        console.log('[AutoDetect] Team name:', detectedTeamName);
+
+        // 2. Search ALL leagues for matches involving my team
+        // (league names in rankingData vs leagueData often don't match)
+        const norm = s => s.toLowerCase().replace(/\u00a0/g, ' ').trim();
+        const nTeam = norm(detectedTeamName);
+        const leagueKeys = Object.keys(leagueData.leagues || {});
+        let allUpcoming = [];
+
+        // Strict team name matching: avoid "DC Foo" matching "DC Foo 2"
+        // Only match if names are equal, or if one contains the other
+        // AND the remaining characters are NOT a team number suffix
+        const teamMatch = (matchName, myName) => {
+            if (matchName === myName) return true;
+            // If matchName is longer, check it contains myName as a full name
+            if (matchName.includes(myName)) {
+                const rest = matchName.replace(myName, '').trim();
+                // Reject if remainder is just a number (e.g. "2", "3")
+                if (/^\d+$/.test(rest)) return false;
+                return true;
+            }
+            if (myName.includes(matchName)) {
+                const rest = myName.replace(matchName, '').trim();
+                if (/^\d+$/.test(rest)) return false;
+                return true;
+            }
+            return false;
+        };
+
+        for (const leagueName of leagueKeys) {
+            const allMatches = parseAllMatches(leagueName);
+            if (allMatches.length === 0) continue;
+
+            // Check if this league has any match (played or unplayed)
+            // involving the user's team (strict matching)
+            const teamInLeague = allMatches.some(m => {
+                const nH = norm(m.home);
+                const nA = norm(m.away);
+                return teamMatch(nH, nTeam) || teamMatch(nA, nTeam);
+            });
+
+            if (!teamInLeague) continue;
+            console.log('[AutoDetect] Found team in league:', leagueName,
+                '(', allMatches.length, 'matches)');
+
+            // Collect unplayed matches for my team
+            const upcoming = allMatches.filter(m => {
+                if (m.played) return false;
+                const nH = norm(m.home);
+                const nA = norm(m.away);
+                return teamMatch(nH, nTeam) || teamMatch(nA, nTeam);
+            });
+
+            upcoming.forEach(m => {
+                allUpcoming.push({ ...m, league: leagueName });
+            });
+        }
+
+        console.log('[AutoDetect] Total upcoming across all leagues:',
+            allUpcoming.length);
+
+        // Parse date helper (DD.MM.YYYY → Date)
+        const parseDate = d => {
+            const parts = d.split('.');
+            if (parts.length === 3) {
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+            return new Date(9999, 0, 1);
+        };
+
+        // Filter out past matches (only keep today or future)
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        allUpcoming = allUpcoming.filter(m => {
+            const matchDate = parseDate(m.dateStr);
+            return matchDate >= today;
+        });
+
+        console.log('[AutoDetect] Future upcoming matches:', allUpcoming.length);
+
+        if (allUpcoming.length === 0) return null;
+
+        // Sort by date (soonest first)
+        allUpcoming.sort((a, b) => parseDate(a.dateStr) - parseDate(b.dateStr));
+
+        const next = allUpcoming[0];
+        console.log('[AutoDetect] Next match:', next);
+        return {
+            league: next.league,
+            home: next.home,
+            away: next.away,
+            dateStr: next.dateStr,
+            spieltag: next.spieltag,
+            teamName: detectedTeamName
+        };
+    }
+
+    /**
+     * Render a small SVG sparkline for an array of values.
+     * Returns an HTML string with an inline SVG.
+     */
+    function renderMatchSparkline(values, color = '#4ade80') {
+        if (!values || values.length === 0) return '';
+        const w = 80, h = 24, padding = 2;
+        const max = Math.max(...values, 1);
+        const min = 0;
+        const range = max - min || 1;
+
+        const points = values.map((v, i) => {
+            const x = padding + (i / (values.length - 1 || 1)) * (w - 2 * padding);
+            const y = h - padding - ((v - min) / range) * (h - 2 * padding);
+            return `${x},${y}`;
+        }).join(' ');
+
+        return `<svg width="${w}" height="${h}" style="vertical-align: middle;">
+            <polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linejoin="round"/>
+            ${values.map((v, i) => {
+            const x = padding + (i / (values.length - 1 || 1)) * (w - 2 * padding);
+            const y = h - padding - ((v - min) / range) * (h - 2 * padding);
+            return `<circle cx="${x}" cy="${y}" r="2" fill="${color}"/>`;
+        }).join('')}
+        </svg>`;
+    }
+
     function renderMatchPreview() {
         topBarTitle.textContent = "Match Preview";
         contentArea.innerHTML = '';
@@ -3097,12 +3802,70 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(teamSelection);
         container.appendChild(card);
 
+        // HISTORICAL RESULTS CONTAINER (shown after team selection)
+        const historyDiv = document.createElement('div');
+        historyDiv.id = 'historical-results';
+        container.appendChild(historyDiv);
+
         // RESULT CONTAINER
         const resultDiv = document.createElement('div');
         resultDiv.id = 'preview-results';
         container.appendChild(resultDiv);
 
         contentArea.appendChild(container);
+
+        // AUTO-DETECT NEXT MATCH
+        try {
+            const nextMatch = detectNextMatch();
+            if (nextMatch) {
+                const banner = document.createElement('div');
+                banner.style.cssText = 'background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%); padding: 15px 20px; border-radius: 8px; border: 1px solid #3b82f6; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 12px;';
+                banner.innerHTML = `
+                    <span style="font-size: 1.5em;">🎯</span>
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.75em; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Nächstes Spiel erkannt</div>
+                        <div style="color: #f8fafc; font-weight: bold;">${nextMatch.home} vs ${nextMatch.away}</div>
+                        <div style="color: #94a3b8; font-size: 0.85em;">${nextMatch.spieltag} · ${nextMatch.dateStr || 'Datum unbekannt'}</div>
+                    </div>
+                    <div style="background: #3b82f6; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold;">Laden →</div>
+                `;
+                banner.addEventListener('click', () => {
+                    // Auto-select league
+                    leagueSelect.value = nextMatch.league;
+                    leagueSelect.dispatchEvent(new Event('change'));
+
+                    // Auto-select teams after a short delay to let league change populate teams
+                    setTimeout(() => {
+                        const norm = s => s.toLowerCase().replace(/\u00a0/g, ' ').trim();
+                        const findTeamOption = (select, teamName) => {
+                            const nTeam = norm(teamName);
+                            for (const opt of select.options) {
+                                if (!opt.value) continue;
+                                const nOpt = norm(opt.textContent);
+                                if (nOpt === nTeam || nOpt.includes(nTeam) || nTeam.includes(nOpt)) return opt.value;
+                            }
+                            return null;
+                        };
+
+                        const homeVal = findTeamOption(teamASelect, nextMatch.home);
+                        const awayVal = findTeamOption(teamBSelect, nextMatch.away);
+
+                        if (homeVal) { teamASelect.value = homeVal; }
+                        if (awayVal) { teamBSelect.value = awayVal; }
+
+                        updateExclusions();
+                        loadSelection();
+                        banner.style.border = '1px solid #22c55e';
+                        banner.querySelector('div[style*="background: #3b82f6"]').textContent = '✓ Geladen';
+                        banner.querySelector('div[style*="background: #3b82f6"]').style.background = '#22c55e';
+                    }, 200);
+                });
+
+                container.insertBefore(banner, card);
+            }
+        } catch (e) {
+            console.warn('[Match Preview] Auto-detect error:', e);
+        }
 
         // Logic
         let availableTeams = [];
@@ -3334,8 +4097,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 selectionArea.style.display = "block";
                 resultDiv.innerHTML = "";
+
+                // === FEATURE 3: Historical Results ===
+                try {
+                    const history = findHistoricalResults(league, nameA, nameB);
+                    if (history.matches.length > 0) {
+                        let hHtml = `
+                        <div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
+                            <h4 style="color: #f59e0b; margin-bottom: 15px;">📜 Historische Ergebnisse (${nameA} vs ${nameB})</h4>
+                            <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+                                <div style="background: #22c55e22; color: #4ade80; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.wins} Sieg${history.wins !== 1 ? 'e' : ''}</div>
+                                <div style="background: #64748b22; color: #94a3b8; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.draws} Unentschieden</div>
+                                <div style="background: #ef444422; color: #f87171; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.losses} Niederlage${history.losses !== 1 ? 'n' : ''}</div>
+                            </div>
+                            <div style="font-size: 0.85em;">`;
+                        history.matches.forEach(m => {
+                            const isWin = m.teamAScore > m.teamBScore;
+                            const isDraw = m.teamAScore === m.teamBScore;
+                            const icon = isWin ? '🟢' : isDraw ? '🟡' : '🔴';
+                            hHtml += `<div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1e293b40; color: #cbd5e1;">
+                                <span>${icon} ${m.spieltag} · ${m.dateStr || ''}</span>
+                                <span style="font-weight: bold;">${m.home} ${m.scoreHome}:${m.scoreAway} ${m.away}</span>
+                            </div>`;
+                        });
+                        hHtml += `</div></div>`;
+                        historyDiv.innerHTML = hHtml;
+                    } else {
+                        historyDiv.innerHTML = '';
+                    }
+                } catch (e) {
+                    console.warn('[Match Preview] History error:', e);
+                    historyDiv.innerHTML = '';
+                }
             } else {
                 selectionArea.style.display = "none";
+                historyDiv.innerHTML = '';
             }
         };
 
@@ -3410,11 +4206,125 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 
-                <div style="text-align: center; font-size: 0.9em; color: #64748b;">
-                    Durschnitt der gewählten Spieler (${listA.length} vs ${listB.length})
+                <div style="text-align: center; font-size: 0.9em; color: #64748b; margin-bottom: 20px;">
+                    Durchschnitt der gewählten Spieler (${listA.length} vs ${listB.length})
                 </div>
-             </div>
-             `;
+             </div>`;
+
+            // === FEATURE 4: FORMKURVE / TREND ===
+            if (listA.length > 0 || listB.length > 0) {
+                html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
+                    <h4 style="color: #a78bfa; margin-bottom: 15px;">📈 Formkurve (Letzte 5 Runden)</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
+
+                // Team A form
+                html += `<div><h5 style="color: #4ade80; margin-bottom: 10px;">${nameA}</h5>`;
+                listA.forEach(p => {
+                    const form = getPlayerFormTrend(p);
+                    const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
+                    const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
+                    html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                        ${renderMatchSparkline(form.values, trendColor)}
+                        <span style="font-size: 0.9em;">${trendIcon}</span>
+                        <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
+                    </div>`;
+                });
+                html += '</div>';
+
+                // Team B form
+                html += `<div><h5 style="color: #60a5fa; margin-bottom: 10px;">${nameB}</h5>`;
+                listB.forEach(p => {
+                    const form = getPlayerFormTrend(p);
+                    const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
+                    const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
+                    html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                        ${renderMatchSparkline(form.values, trendColor)}
+                        <span style="font-size: 0.9em;">${trendIcon}</span>
+                        <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
+                    </div>`;
+                });
+                html += '</div></div></div>';
+            }
+
+            // === FEATURE 1: HEAD-TO-HEAD 1v1 MATRIX ===
+            if (listA.length > 0 && listB.length > 0) {
+                html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
+                    <h4 style="color: #fb923c; margin-bottom: 15px;">⚔️ 1v1 Paarungen</h4>
+                    <div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                    <tr><th style="padding: 8px; color: #64748b; text-align: left; border-bottom: 2px solid #334155;"></th>`;
+
+                listB.forEach(pb => {
+                    const parts = pb.name.split(' ');
+                    const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pb.name;
+                    html += `<th style="padding: 8px; color: #60a5fa; text-align: center; border-bottom: 2px solid #334155; white-space: nowrap;">${shortName}</th>`;
+                });
+                html += '</tr>';
+
+                listA.forEach(pa => {
+                    const parts = pa.name.split(' ');
+                    const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pa.name;
+                    html += `<tr><td style="padding: 8px; color: #4ade80; font-weight: bold; border-bottom: 1px solid #33415544; white-space: nowrap;">${shortName}</td>`;
+                    listB.forEach(pb => {
+                        const totalAvg = pa._avg + pb._avg;
+                        const winProb = totalAvg > 0 ? (pa._avg / totalAvg) * 100 : 50;
+                        // Color: green >55%, red <45%, neutral otherwise
+                        let cellBg, cellColor;
+                        if (winProb >= 55) {
+                            cellBg = `rgba(34, 197, 94, ${Math.min((winProb - 50) / 30, 0.4)})`;
+                            cellColor = '#4ade80';
+                        } else if (winProb <= 45) {
+                            cellBg = `rgba(239, 68, 68, ${Math.min((50 - winProb) / 30, 0.4)})`;
+                            cellColor = '#f87171';
+                        } else {
+                            cellBg = 'rgba(148, 163, 184, 0.1)';
+                            cellColor = '#cbd5e1';
+                        }
+                        html += `<td style="padding: 8px; text-align: center; background: ${cellBg}; color: ${cellColor}; font-weight: bold; border-bottom: 1px solid #33415544;">${winProb.toFixed(0)}%</td>`;
+                    });
+                    html += '</tr>';
+                });
+                html += '</table></div></div>';
+            }
+
+            // === FEATURE 2: OPTIMALE AUFSTELLUNG ===
+            if (playersA.length > 4 || playersB.length > 4) {
+                html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
+                    <h4 style="color: #34d399; margin-bottom: 15px;">🏆 Optimale Aufstellung</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
+
+                // Team A optimal
+                if (playersA.length > 4) {
+                    const optA = calculateOptimalLineup(playersA, 4);
+                    html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
+                        <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${nameA} – Empfehlung</div>`;
+                    optA.players.forEach(p => {
+                        html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
+                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span style="color: #4ade80; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
+                        </div>`;
+                    });
+                    html += `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #4ade80; font-weight: bold; text-align: right;">Team-Ø: ${optA.avg.toFixed(2)}</div></div>`;
+                }
+
+                // Team B optimal
+                if (playersB.length > 4) {
+                    const optB = calculateOptimalLineup(playersB, 4);
+                    html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
+                        <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${nameB} – Empfehlung</div>`;
+                    optB.players.forEach(p => {
+                        html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
+                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span style="color: #60a5fa; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
+                        </div>`;
+                    });
+                    html += `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #60a5fa; font-weight: bold; text-align: right;">Team-Ø: ${optB.avg.toFixed(2)}</div></div>`;
+                }
+
+                html += '</div></div>';
+            }
+
             resultDiv.innerHTML = html;
             resultDiv.scrollIntoView({ behavior: 'smooth' });
         });
@@ -3423,11 +4333,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Expose triggerUpdate globally so the button onclick works
     window.triggerUpdate = function () {
+        console.log('[Update] triggerUpdate called');
         const btn = document.getElementById('update-btn');
         const updateStatus = document.getElementById('update-status');
         const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        console.log('[Update] hostname:', window.location.hostname, 'isLocalhost:', isLocalhost);
 
         if (!isLocalhost) {
+            console.log('[Update] Not localhost, reloading page...');
             // On static hosting (GitHub Pages), we can't trigger the python scraper.
             // But we CAN reload the page to fetch the latest data files (handled by Network-First SW).
             if (btn) {
@@ -3442,6 +4355,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        console.log('[Update] Localhost detected, starting update...');
+
         if (btn) {
             btn.disabled = true;
             btn.innerHTML = "⏳ läuft...";
@@ -3454,10 +4369,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let pollInterval;
 
-        if (status) {
-            status.textContent = "Starten...";
-            status.classList.remove('hidden');
-            status.style.color = "#94a3b8"; // reset color
+        if (updateStatus) {
+            updateStatus.textContent = "Starten...";
+            updateStatus.classList.remove('hidden');
+            updateStatus.style.color = "#94a3b8"; // reset color
 
             // Poll for status
             pollInterval = setInterval(() => {
@@ -3466,10 +4381,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     .then(data => {
                         if (data && data.status) {
                             if (data.status === 'running') {
-                                status.textContent = `Update läuft...${data.progress} % `;
+                                updateStatus.innerHTML = `Update läuft... ${data.progress}%<br><span style="font-size:0.8em; color:#64748b">${data.current_script || ''}</span>`;
                             } else if (data.status === 'error') {
-                                status.textContent = `Fehler bei: ${data.current_script}`;
-                                status.style.color = "#f87171"; // red
+                                updateStatus.textContent = `Fehler bei: ${data.current_script}`;
+                                updateStatus.style.color = "#f87171"; // red
                             }
                         }
                     })
@@ -3483,9 +4398,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (pollInterval) clearInterval(pollInterval);
 
                 if (data.status === 'success') {
-                    if (status) {
-                        status.textContent = "Erfolg! 100% - Seite wird neu geladen...";
-                        status.style.color = "#4ade80"; // green
+                    if (updateStatus) {
+                        updateStatus.textContent = "Erfolg! 100% - Seite wird neu geladen...";
+                        updateStatus.style.color = "#4ade80"; // green
                     }
                     setTimeout(() => location.reload(), 1500);
                 } else {
@@ -3494,9 +4409,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(e => {
                 if (pollInterval) clearInterval(pollInterval);
-                if (status) {
-                    status.textContent = "Fehler: " + e.message;
-                    status.style.color = "#f87171"; // red
+                if (updateStatus) {
+                    updateStatus.textContent = "Fehler: " + e.message;
+                    updateStatus.style.color = "#f87171"; // red
                 }
                 if (btn) btn.disabled = false;
             });
@@ -3597,18 +4512,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
 
     // Global Update Trigger
-    window.triggerUpdate = function () {
-        const btn = document.getElementById('update-btn');
-        const status = document.getElementById('update-status');
-        if (btn) {
-            btn.disabled = true;
-            btn.innerHTML = '⌛ Lädt...';
-        }
-        if (status) status.classList.remove('hidden');
-
-        // Force reload with cache busting
-        setTimeout(() => {
-            window.location.href = window.location.pathname + '?t=' + new Date().getTime();
-        }, 500);
-    };
+    // Original duplicate triggerUpdate removed to fix bug
 });

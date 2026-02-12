@@ -1,9 +1,9 @@
-const CACHE_NAME = 'bwedl-dashboard-v24-network-first';
+const CACHE_NAME = 'bwedl-dashboard-v32-network-first';
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
-    './bundle_v24.js',
+    './bundle_v28.js',
     './league_data.js',
     './ranking_data.js',
     './club_data.js',
@@ -25,6 +25,9 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+    // Skip non-GET requests (e.g. POST to /api/update)
+    if (event.request.method !== 'GET') return;
+
     const url = new URL(event.request.url);
     const isDataFile = url.pathname.endsWith('_data.js') || url.pathname.endsWith('archive_tables.js');
 

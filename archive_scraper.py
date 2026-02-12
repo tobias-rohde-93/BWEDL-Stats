@@ -187,11 +187,7 @@ async def scrape_archive():
                     
                     for row in table['rows']:
                         if len(row) < 3: continue
-                        
-                        # DEBUG: Log to file
-                        with open("debug_dump.txt", "a", encoding="utf-8") as dump_file:
-                            dump_file.write(f"FULL ROW DUMP: {row}\n")
-                        
+
                         # Parsing logic
                         # Dynamic Column Detection
                         # We expect: Rank | (Club) | Name | ID | ...  OR  Rank | Name | ID ...
@@ -288,11 +284,7 @@ async def scrape_archive():
                             if len(parts) >= 2:
                                 p_name = f"{parts[1].strip()} {parts[0].strip()}"
 
-                        # Clean Name (Flip "Last, First")
-                        if "," in p_name: 
-                            parts = p_name.split(",")
-                            if len(parts) >= 2:
-                                p_name = f"{parts[1].strip()} {parts[0].strip()}"
+
                                 
                         # Points usually last column
                         points = 0

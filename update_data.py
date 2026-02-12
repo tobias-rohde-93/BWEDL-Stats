@@ -21,21 +21,46 @@ def write_status(progress, current_script, status="running"):
     except Exception as e:
         print(f"Failed to write status: {e}")
 
-def run_script(script_name):
+def run_script(script_name, progress):
     print(f"\n{'='*50}")
     print(f"Starting {script_name}...")
     print(f"{'='*50}")
     start_time = time.time()
     
     try:
-        # Run the script and wait for it to finish
-        result = subprocess.run([sys.executable, script_name], check=True, text=True)
-        duration = time.time() - start_time
-        print(f"\n[SUCCESS] {script_name} finished in {duration:.2f} seconds.")
-        return True
-    except subprocess.CalledProcessError as e:
-        print(f"\n[ERROR] {script_name} failed with exit code {e.returncode}.")
-        return False
+        # Use Popen to capture output in real-time
+        process = subprocess.Popen(
+            [sys.executable, "-u", script_name],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            universal_newlines=True
+        )
+        
+        last_log = ""
+        # Read output line by line
+        for line in process.stdout:
+            line = line.strip()
+            if line:
+                print(line)
+                last_log = line
+                # Update status with the log line
+                # We limit the length of the log message for the UI
+                display_msg = line[:100] + "..." if len(line) > 100 else line
+                write_status(progress, f"{script_name}: {display_msg}", "running")
+                
+        process.wait()
+        
+        if process.returncode == 0:
+            duration = time.time() - start_time
+            print(f"\n[SUCCESS] {script_name} finished in {duration:.2f} seconds.")
+            return True
+        else:
+            print(f"\n[ERROR] {script_name} failed with exit code {process.returncode}.")
+            # If failed, return the last log as error part
+            return False
+            
     except Exception as e:
         print(f"\n[ERROR] An unexpected error occurred while running {script_name}: {e}")
         return False
@@ -59,9 +84,9 @@ def main():
     for i, script in enumerate(scripts):
         # Calculate progress: based on how many scripts we are about to run
         progress = int((i / total_scripts) * 100)
-        write_status(progress, script, "running")
+        write_status(progress, f"Starting {script}...", "running")
         
-        if run_script(script):
+        if run_script(script, progress):
             success_count += 1
         else:
             print(f"\n[WARNING] Stopping update sequence due to failure in {script}.")
