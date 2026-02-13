@@ -2183,240 +2183,611 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    function renderToolsView() {
-        topBarTitle.textContent = "Match Tools";
-        contentArea.innerHTML = '';
+    // =============================================
+    // MATCH SCORER ENGINE
+    // =============================================
+    class MatchScorer {
+        constructor(container) {
+            this.container = container;
+            this.players = []; // { name, score, history: [], legs: 0 }
+            this.activePlayerIndex = 0;
+            this.gameMode = 'DO'; // 'DO' (Double Out) or 'MO' (Master Out)
+            this.startScore = 501;
+            this.recognition = null;
+            this.isListening = false;
 
-        const container = document.createElement('div');
-        container.className = "fade-in";
-        container.style.padding = "20px";
-        container.style.maxWidth = "600px";
-        container.style.margin = "0 auto";
+            this.initSpeech();
+        }
 
-        // --- Game Mode State ---
-        let gameMode = 'DO'; // 'DO' or 'MO'
+        initSpeech() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                this.recognition = new SpeechRecognition();
+                this.recognition.continuous = false;
+                this.recognition.lang = 'de-DE';
+                this.recognition.interimResults = false;
+                this.recognition.maxAlternatives = 1;
 
-        // --- Checkout Database ---
-        const outsDO = {
-            170: "T20 - T20 - Bull", 167: "T20 - T19 - Bull", 164: "T20 - T18 - Bull", 161: "T20 - T17 - Bull", 160: "T20 - T20 - D20",
-            158: "T20 - T20 - D19", 157: "T20 - T19 - D20", 156: "T20 - T20 - D18", 155: "T20 - T19 - D19", 154: "T20 - T18 - D20",
-            153: "T20 - T19 - D18", 152: "T20 - T20 - D16", 151: "T20 - T17 - D20", 150: "T20 - T18 - D18", 149: "T20 - T19 - D16",
-            148: "T20 - T16 - D20", 147: "T20 - T17 - D18", 146: "T20 - T18 - D16", 145: "T20 - T15 - D20", 144: "T20 - T20 - D12",
-            143: "T20 - T17 - D16", 142: "T20 - T14 - D20", 141: "T20 - T19 - D12", 140: "T20 - T16 - D16", 139: "T19 - T14 - D20",
-            138: "T20 - T18 - D12", 137: "T19 - T16 - D16", 136: "T20 - T20 - D8", 135: "25 - T20 - Bull", 134: "T20 - T14 - D16",
-            133: "T20 - T19 - D8", 132: "25 - T19 - Bull", 131: "T20 - T13 - D16", 130: "T20 - T18 - D8", 129: "T19 - T20 - D6",
-            128: "T18 - T14 - D16", 127: "T20 - T17 - D8", 126: "T19 - T19 - D6", 125: "Bull - 25 - Bull", 124: "T20 - D16 - D16",
-            123: "T19 - T16 - D9", 122: "T18 - 18 - Bull", 121: "T20 - 11 - Bull", 120: "T20 - 20 - D20", 119: "T19 - 12 - Bull",
-            118: "T20 - 18 - D20", 117: "T20 - 17 - D20", 116: "T20 - 16 - D20", 115: "T20 - 15 - D20", 114: "T20 - 14 - D20",
-            113: "T20 - 13 - D20", 112: "T20 - 20 - D16", 111: "T20 - 19 - D16", 110: "T20 - 18 - D16", 109: "T20 - 17 - D16",
-            108: "T20 - 16 - D16", 107: "T19 - 10 - D20", 106: "T20 - 14 - D16", 105: "T20 - 13 - D16", 104: "T18 - 10 - D20",
-            103: "T20 - 3 - D20", 102: "T20 - 10 - D16", 101: "T17 - 10 - D20", 100: "T20 - D20",
-            99: "T19 - 10 - D16", 98: "T20 - D19", 97: "T19 - D20", 96: "T20 - D18", 95: "T19 - D19", 94: "T18 - D20", 93: "T19 - D18", 92: "T20 - D16", 91: "T17 - D20",
-            90: "T18 - D18", 89: "T19 - D16", 88: "T16 - D20", 87: "T17 - D18", 86: "T18 - D16", 85: "T15 - D20", 84: "T20 - D12", 83: "T17 - D16", 82: "T14 - D20", 81: "T15 - D18",
-            80: "T20 - D10", 79: "T13 - D20", 78: "T18 - D12", 77: "T19 - D10", 76: "T20 - D8", 75: "T13 - D18", 74: "T14 - D16", 73: "T19 - D8", 72: "T16 - D12", 71: "T13 - D16",
-            70: "T18 - D8", 69: "T15 - D12", 68: "T20 - D4", 67: "T17 - D8", 66: "T10 - D18", 65: "T15 - D10", 64: "D16 - D16", 63: "T13 - D12", 62: "T10 - D16", 61: "T15 - D8",
-            60: "20 - D20", 59: "19 - D20", 58: "18 - D20", 57: "17 - D20", 56: "16 - D20", 55: "15 - D20", 54: "14 - D20", 53: "13 - D20", 52: "12 - D20", 51: "11 - D20",
-            50: "10 - D20", 49: "9 - D20", 48: "16 - D16", 47: "15 - D16", 46: "6 - D20", 45: "13 - D16", 44: "12 - D16", 43: "3 - D20", 42: "10 - D16", 41: "9 - D16",
-            40: "D20", 39: "7 - D16", 38: "D19", 37: "5 - D16", 36: "D18", 35: "3 - D16", 34: "D17", 33: "9 - D12", 32: "D16", 31: "15 - D8",
-            30: "D15", 29: "13 - D8", 28: "D14", 27: "11 - D8", 26: "D13", 25: "9 - D8", 24: "D12", 23: "7 - D8", 22: "D11", 21: "5 - D8",
-            20: "D10", 19: "3 - D8", 18: "D9", 17: "1 - D8", 16: "D8", 15: "7 - D4", 14: "D7", 13: "5 - D4", 12: "D6", 11: "3 - D4",
-            10: "D5", 9: "1 - D4", 8: "D4", 7: "3 - D2", 6: "D3", 5: "1 - D2", 4: "D2", 3: "1 - D1", 2: "D1"
-        };
-        const outsMO = {
-            ...outsDO,
-            180: "T20 - T20 - T20", 179: "T20 - T19 - T20", 178: "T20 - T20 - T18", 177: "T20 - T19 - T18", 176: "T20 - T20 - T16", 175: "T20 - T19 - T16",
-            174: "T20 - T20 - T14", 173: "T20 - T19 - T14", 172: "T20 - T20 - T12", 171: "T20 - T19 - T12",
-            // 61-99 Low number overrides
-            99: "T19 - 10 - D16",
-            // Multiples of 3 can be finished on Triple
-            3: "T1", 6: "T2", 9: "T3", 12: "T4", 15: "T5", 18: "T6", 21: "T7", 24: "T8", 27: "T9", 30: "T10", 33: "T11", 36: "T12",
-            39: "T13", 42: "T14", 45: "T15", 48: "T16", 51: "T17", 54: "T18", 57: "T19", 60: "T20"
-        };
+                this.recognition.onresult = (event) => {
+                    const last = event.results.length - 1;
+                    const text = event.results[last][0].transcript;
+                    console.log('Voice Input:', text);
+                    this.handleVoiceInput(text);
+                };
 
-        // UI Setup
-        const toggleDiv = document.createElement('div');
-        toggleDiv.style.cssText = "display:flex; justify-content:center; margin-bottom:20px; background:#0f172a; padding:5px; border-radius:8px; border:1px solid #334155; width:fit-content; margin:0 auto 20px auto;";
+                this.recognition.onend = () => {
+                    if (this.isListening) this.recognition.start();
+                };
 
-        const btnDO = document.createElement('button');
-        btnDO.textContent = "Double Out";
-        btnDO.style.cssText = "padding:8px 15px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; background:#3b82f6; color:white; margin-right:5px;";
-
-        const btnMO = document.createElement('button');
-        btnMO.textContent = "Master Out";
-        btnMO.style.cssText = "padding:8px 15px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; background:transparent; color:#94a3b8;";
-
-        const updateToggle = () => {
-            if (gameMode === 'DO') {
-                btnDO.style.background = "#3b82f6";
-                btnDO.style.color = "white";
-                btnMO.style.background = "transparent";
-                btnMO.style.color = "#94a3b8";
-            } else {
-                btnDO.style.background = "transparent";
-                btnDO.style.color = "#94a3b8";
-                btnMO.style.background = "#3b82f6";
-                btnMO.style.color = "white";
+                this.recognition.onerror = (e) => {
+                    console.error('Speech Error:', e.error);
+                    this.isListening = false;
+                    this.updateVoiceUI();
+                };
             }
-            if (btnCheckout.classList.contains('active')) renderCheckout();
-            if (btnCounter.classList.contains('active')) renderCounter(true);
-        };
+        }
 
-        btnDO.onclick = () => { gameMode = 'DO'; updateToggle(); };
-        btnMO.onclick = () => { gameMode = 'MO'; updateToggle(); };
+        toggleVoice() {
+            if (!this.recognition) {
+                alert("Spracherkennung wird von diesem Browser nicht unterstützt (probiere Chrome/Edge).");
+                return;
+            }
+            this.isListening = !this.isListening;
+            if (this.isListening) {
+                try {
+                    this.recognition.start();
+                } catch (e) { console.warn("Mic start error", e); }
+            } else {
+                this.recognition.stop();
+            }
+            this.updateVoiceUI();
+        }
 
-        toggleDiv.appendChild(btnDO);
-        toggleDiv.appendChild(btnMO);
-        container.appendChild(toggleDiv);
+        updateVoiceUI() {
+            const btn = document.getElementById('voice-toggle-btn');
+            if (btn) {
+                btn.style.background = this.isListening ? '#ef4444' : '#334155';
+                btn.innerHTML = this.isListening ? '🎤 An' : '🎤 Aus';
+                if (this.isListening) btn.classList.add('pulse-animation');
+                else btn.classList.remove('pulse-animation');
+            }
+        }
 
-        // Tabs
-        const tabs = document.createElement('div');
-        tabs.style.cssText = 'display:flex; gap:10px; margin-bottom:20px;';
+        handleVoiceInput(text) {
+            // Simple parser (German numbers)
+            const map = {
+                'eins': 1, 'zwei': 2, 'drei': 3, 'vier': 4, 'fünf': 5,
+                'sechs': 6, 'sieben': 7, 'acht': 8, 'neun': 9, 'zehn': 10,
+                'elf': 11, 'zwölf': 12, 'hundert': 100, 'hundertachtzig': 180,
+                'bull': 50, 'bullseye': 50, 'doppel': 'D', 'triple': 'T'
+            };
 
-        const btnCheckout = document.createElement('button');
-        btnCheckout.innerText = "Checkout Table";
-        btnCheckout.className = 'tab-btn active';
+            let val = parseInt(text);
+            if (isNaN(val)) {
+                // Try to parse text numbers if parseInt fails
+                const lower = text.toLowerCase().trim();
+                // Check map
+                if (map[lower]) val = map[lower];
+                // Check if it ends with words in map (e.g. "hundert zwanzig")
+                // Keep it simple for now
+            }
 
-        const btnCounter = document.createElement('button');
-        btnCounter.innerText = "Score Counter";
-        btnCounter.className = 'tab-btn';
+            if (!isNaN(val) && val >= 0 && val <= 180) {
+                this.submitScore(val);
 
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .tab-btn { flex: 1; padding: 12px; border: none; background: #1e293b; color: #94a3b8; cursor: pointer; border-radius: 6px; font-weight: bold; }
-            .tab-btn.active { background: #3b82f6; color: white; }
-        `;
-        container.appendChild(style);
-        tabs.appendChild(btnCheckout);
-        tabs.appendChild(btnCounter);
-        container.appendChild(tabs);
+                // Show feedback
+                const feedback = document.createElement('div');
+                feedback.textContent = `🎤 ${val}`;
+                feedback.style.cssText = "position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.8); color:#00e0ff; padding:20px; border-radius:10px; font-size:2em; z-index:9999; pointer-events:none; animation: fadeUp 1s forwards;";
+                document.body.appendChild(feedback);
+                setTimeout(() => feedback.remove(), 1000);
 
-        const contentDiv = document.createElement('div');
-        container.appendChild(contentDiv);
-        contentArea.appendChild(container);
+                // Auto-stop voice to avoid interference with output
+                if (this.isListening) {
+                    this.toggleVoice();
+                }
+            }
+        }
 
-        // Logic Helpers
-        const getCheckout = (val) => {
+        renderSetup() {
+            this.container.innerHTML = '';
+
+            const card = document.createElement('div');
+            card.className = "setup-card";
+            card.style.cssText = "background: #1e293b; padding: 25px; border-radius: 12px; max-width: 500px; margin: 0 auto; border: 1px solid #334155;";
+
+            card.innerHTML = `
+                <h2 style="text-align:center; margin-bottom: 20px; color: #60a5fa;">Match Setup</h2>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display:block; color:#94a3b8; margin-bottom:8px;">Modus</label>
+                    <div style="display:flex; gap:10px;">
+                        <button id="mode-do" class="mode-btn active" style="flex:1; padding:10px; border-radius:6px; border:none; background:#3b82f6; color:white; font-weight:bold; cursor:pointer;">Double Out</button>
+                        <button id="mode-mo" class="mode-btn" style="flex:1; padding:10px; border-radius:6px; border:none; background:#334155; color:#94a3b8; font-weight:bold; cursor:pointer;">Master Out</button>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display:block; color:#94a3b8; margin-bottom:8px;">Start Punkte</label>
+                    <select id="start-points" style="width:100%; padding:10px; background:#0f172a; color:white; border:1px solid #334155; border-radius:6px;">
+                        <option value="301">301</option>
+                        <option value="501" selected>501</option>
+                        <option value="701">701</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label style="display:block; color:#94a3b8; margin-bottom:8px;">Spieler</label>
+                    <div id="player-list" style="margin-bottom:10px; display:flex; flex-direction:column; gap:8px;"></div>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="new-player-name" placeholder="Name (z.B. Tobi)" style="flex:1; padding:10px; background:#0f172a; color:white; border:1px solid #334155; border-radius:6px;">
+                        <button id="add-player-btn" style="padding:10px 15px; background:#10b981; color:white; border:none; border-radius:6px; cursor:pointer;">+</button>
+                    </div>
+                </div>
+
+                <button id="start-match-btn" style="width:100%; padding:15px; background:#3b82f6; color:white; border:none; border-radius:8px; font-size:1.1em; font-weight:bold; cursor:pointer; opacity: 0.5; pointer-events: none;">Match Starten</button>
+            `;
+
+            this.container.appendChild(card);
+
+            // Logic
+            const btnDO = card.querySelector('#mode-do');
+            const btnMO = card.querySelector('#mode-mo');
+            const playerList = card.querySelector('#player-list');
+            const inputName = card.querySelector('#new-player-name');
+            const btnAdd = card.querySelector('#add-player-btn');
+            const btnStart = card.querySelector('#start-match-btn');
+            const startPoints = card.querySelector('#start-points');
+
+            const updateStartBtn = () => {
+                if (this.players.length > 0) {
+                    btnStart.style.opacity = "1";
+                    btnStart.style.pointerEvents = "all";
+                    btnStart.textContent = `Match Starten (${this.players.length} Spieler)`;
+                } else {
+                    btnStart.style.opacity = "0.5";
+                    btnStart.style.pointerEvents = "none";
+                    btnStart.textContent = "Match Starten";
+                }
+            };
+
+            const renderPlayers = () => {
+                playerList.innerHTML = '';
+                this.players.forEach((p, i) => {
+                    const div = document.createElement('div');
+                    div.style.cssText = "display:flex; justify-content:space-between; align-items:center; background:#334155; padding:8px 12px; border-radius:6px;";
+                    div.innerHTML = `<span style="color:white;">${p.name}</span> <button data-idx="${i}" class="remove-p-btn" style="background:transparent; color:#ef4444; border:none; cursor:pointer;">✕</button>`;
+                    playerList.appendChild(div);
+                });
+
+                playerList.querySelectorAll('.remove-p-btn').forEach(b => {
+                    b.onclick = (e) => {
+                        this.players.splice(parseInt(e.target.dataset.idx), 1);
+                        renderPlayers();
+                        updateStartBtn();
+                    };
+                });
+            };
+
+            // Pre-fill with "Ich" if empty
+            if (this.players.length === 0 && myPlayerName) {
+                this.players.push({ name: myPlayerName, score: 501, history: [], legs: 0 });
+                renderPlayers();
+                updateStartBtn();
+            } else {
+                renderPlayers();
+                updateStartBtn();
+            }
+
+            btnAdd.onclick = () => {
+                const name = inputName.value.trim();
+                if (name) {
+                    this.players.push({ name: name, score: parseInt(startPoints.value), history: [], legs: 0 });
+                    inputName.value = '';
+                    renderPlayers();
+                    updateStartBtn();
+                }
+            };
+
+            inputName.onkeypress = (e) => {
+                if (e.key === 'Enter') btnAdd.click();
+            }
+
+            btnDO.onclick = () => { this.gameMode = 'DO'; btnDO.className = 'mode-btn active'; btnMO.className = 'mode-btn'; btnDO.style.background = '#3b82f6'; btnDO.style.color = 'white'; btnMO.style.background = '#334155'; btnMO.style.color = '#94a3b8'; };
+            btnMO.onclick = () => { this.gameMode = 'MO'; btnMO.className = 'mode-btn active'; btnDO.className = 'mode-btn'; btnMO.style.background = '#3b82f6'; btnMO.style.color = 'white'; btnDO.style.background = '#334155'; btnDO.style.color = '#94a3b8'; };
+
+            startPoints.onchange = () => {
+                this.startScore = parseInt(startPoints.value);
+                this.players.forEach(p => p.score = this.startScore); // Reset scores if changed
+            };
+
+            btnStart.onclick = () => {
+                this.startScore = parseInt(startPoints.value); // Confirm start score
+                // Reset scores to start score
+                this.players.forEach(p => {
+                    p.score = this.startScore;
+                    p.history = [];
+                });
+                this.activePlayerIndex = 0;
+                this.renderBoard();
+
+                // Voice Feedback for First Player
+                if (this.players.length > 0 && this.players[0].score > 0) {
+                    this.speakScore(this.players[0].score);
+                }
+            };
+        }
+
+        renderBoard() {
+            this.container.innerHTML = '';
+            this.renderGameUI();
+        }
+
+        getCheckout(val) {
+            const outsDO = {
+                170: "T20 - T20 - Bull", 167: "T20 - T19 - Bull", 164: "T20 - T18 - Bull", 161: "T20 - T17 - Bull", 160: "T20 - T20 - D20",
+                158: "T20 - T20 - D19", 157: "T20 - T19 - D20", 156: "T20 - T20 - D18", 155: "T20 - T19 - D19", 154: "T20 - T18 - D20",
+                153: "T20 - T19 - D18", 152: "T20 - T20 - D16", 151: "T20 - T17 - D20", 150: "T20 - T18 - D18", 149: "T20 - T19 - D16",
+                148: "T20 - T16 - D20", 147: "T20 - T17 - D18", 146: "T20 - T18 - D16", 145: "T20 - T15 - D20", 144: "T20 - T20 - D12",
+                143: "T20 - T17 - D16", 142: "T20 - T14 - D20", 141: "T20 - T19 - D12", 140: "T20 - T16 - D16", 139: "T19 - T14 - D20",
+                138: "T20 - T18 - D12", 137: "T19 - T16 - D16", 136: "T20 - T20 - D8", 135: "25 - T20 - Bull", 134: "T20 - T14 - D16",
+                133: "T20 - T19 - D8", 132: "25 - T19 - Bull", 131: "T20 - T13 - D16", 130: "T20 - T18 - D8", 129: "T19 - T20 - D6",
+                128: "T18 - T14 - D16", 127: "T20 - T17 - D8", 126: "T19 - T19 - D6", 125: "Bull - 25 - Bull", 124: "T20 - D16 - D16",
+                123: "T19 - T16 - D9", 122: "T18 - 18 - Bull", 121: "T20 - 11 - Bull", 120: "T20 - 20 - D20", 119: "T19 - 12 - Bull",
+                118: "T20 - 18 - D20", 117: "T20 - 17 - D20", 116: "T20 - 16 - D20", 115: "T20 - 15 - D20", 114: "T20 - 14 - D20",
+                113: "T20 - 13 - D20", 112: "T20 - 20 - D16", 111: "T20 - 19 - D16", 110: "T20 - 18 - D16", 109: "T20 - 17 - D16",
+                108: "T20 - 16 - D16", 107: "T19 - 10 - D20", 106: "T20 - 14 - D16", 105: "T20 - 13 - D16", 104: "T18 - 10 - D20",
+                103: "T20 - 3 - D20", 102: "T20 - 10 - D16", 101: "T17 - 10 - D20", 100: "T20 - D20",
+                99: "T19 - 10 - D16", 98: "T20 - D19", 97: "T19 - D20", 96: "T20 - D18", 95: "T19 - D19", 94: "T18 - D20", 93: "T19 - D18", 92: "T20 - D16", 91: "T17 - D20",
+                90: "T18 - D18", 89: "T19 - D16", 88: "T16 - D20", 87: "T17 - D18", 86: "T18 - D16", 85: "T15 - D20", 84: "T20 - D12", 83: "T17 - D16", 82: "T14 - D20", 81: "T15 - D18",
+                80: "T20 - D10", 79: "T13 - D20", 78: "T18 - D12", 77: "T19 - D10", 76: "T20 - D8", 75: "T13 - D18", 74: "T14 - D16", 73: "T19 - D8", 72: "T16 - D12", 71: "T13 - D16",
+                70: "T18 - D8", 69: "T15 - D12", 68: "T20 - D4", 67: "T17 - D8", 66: "T10 - D18", 65: "T15 - D10", 64: "D16 - D16", 63: "T13 - D12", 62: "T10 - D16", 61: "T15 - D8",
+                60: "20 - D20", 59: "19 - D20", 58: "18 - D20", 57: "17 - D20", 56: "16 - D20", 55: "15 - D20", 54: "14 - D20", 53: "13 - D20", 52: "12 - D20", 51: "11 - D20",
+                50: "10 - D20", 49: "9 - D20", 48: "16 - D16", 47: "15 - D16", 46: "6 - D20", 45: "13 - D16", 44: "12 - D16", 43: "3 - D20", 42: "10 - D16", 41: "9 - D16",
+                40: "D20", 39: "7 - D16", 38: "D19", 37: "5 - D16", 36: "D18", 35: "3 - D16", 34: "D17", 33: "9 - D12", 32: "D16", 31: "15 - D8",
+                30: "D15", 29: "13 - D8", 28: "D14", 27: "11 - D8", 26: "D13", 25: "9 - D8", 24: "D12", 23: "7 - D8", 22: "D11", 21: "5 - D8",
+                20: "D10", 19: "3 - D8", 18: "D9", 17: "1 - D8", 16: "D8", 15: "7 - D4", 14: "D7", 13: "5 - D4", 12: "D6", 11: "3 - D4",
+                10: "D5", 9: "1 - D4", 8: "D4", 7: "3 - D2", 6: "D3", 5: "1 - D2", 4: "D2", 3: "1 - D1", 2: "D1"
+            };
+            const outsMO = {
+                ...outsDO,
+                180: "T20 - T20 - T20", 179: "T20 - T19 - T20", 178: "T20 - T20 - T18", 177: "T20 - T19 - T18", 176: "T20 - T20 - T16", 175: "T20 - T19 - T16",
+                174: "T20 - T20 - T14", 173: "T20 - T19 - T14", 172: "T20 - T20 - T12", 171: "T20 - T19 - T12",
+                // 61-99 Low number overrides
+                99: "T19 - 10 - D16",
+                // Multiples of 3 can be finished on Triple
+                3: "T1", 6: "T2", 9: "T3", 12: "T4", 15: "T5", 18: "T6", 21: "T7", 24: "T8", 27: "T9", 30: "T10", 33: "T11", 36: "T12",
+                39: "T13", 42: "T14", 45: "T15", 48: "T16", 51: "T17", 54: "T18", 57: "T19", 60: "T20"
+            };
+
             let res = null;
-            if (gameMode === 'MO' && outsMO[val]) res = outsMO[val];
+            if (this.gameMode === 'MO' && outsMO[val]) res = outsMO[val];
             else if (outsDO[val]) res = outsDO[val];
 
             if (res) return res;
             if (val <= 1 && val !== 0) return "Nicht checkbar";
             if (val === 0) return "Check!";
-            if (gameMode === 'DO' && val > 170) return "Nicht checkbar";
+            if (this.gameMode === 'DO' && val > 170) return "Nicht checkbar";
 
             return "Kein Standard-Finish";
-        };
+        }
 
-        // Checkout View
-        const renderCheckout = () => {
-            contentDiv.innerHTML = `<input type="number" id="checkout-input" placeholder="Rest (z.B. 90)" 
-                style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 20px;">
-                <div id="checkout-result" style="text-align: center; font-size: 1.5em; color: #4ade80; font-weight: bold; min-height: 50px;"></div>`;
+        renderGameUI() {
+            const activePlayer = this.players[this.activePlayerIndex];
 
-            const input = document.getElementById('checkout-input');
-            input.focus();
-            input.addEventListener('input', (e) => {
-                const val = parseInt(e.target.value);
-                const res = document.getElementById('checkout-result');
-                if (isNaN(val)) { res.textContent = ""; return; }
+            // Visual Checkout Logic
+            const checkoutStr = this.getCheckout(activePlayer.score);
+            const highlightIds = this.getCheckoutSegments(checkoutStr);
+            const dartboardSVG = this.renderDartboardSVG(highlightIds);
 
-                if (gameMode === 'DO' && [169, 168, 166, 165, 163, 162, 159].includes(val)) {
-                    res.textContent = "Kein Finish möglich";
-                    res.style.color = "#ef4444";
-                    return;
-                }
+            this.container.innerHTML = `
+                <style>
+                    .scorer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 350px; margin: 0 auto; }
+                    .scorer-btn { padding: 15px; font-size: 1.5em; background: #334155; color: white; border: none; border-radius: 8px; cursor: pointer; touch-action: manipulation; }
+                    .scorer-btn:active { background: #475569; transform: scale(0.98); }
+                    .scorer-action { background: #475569; font-size: 1em; font-weight: bold; }
+                    .scorer-enter { background: #22c55e; grid-row: span 2; display: flex; align-items: center; justify-content: center; }
+                    
+                    /* Dartboard specific */
+                    .board-segment { transition: all 0.3s ease; cursor: pointer; }
+                    .board-segment:hover { opacity: 0.8; }
+                    .highlighted { filter: drop-shadow(0 0 10px #00e0ff); stroke: #00e0ff; stroke-width: 3 !important; z-index: 10; opacity: 1 !important; }
+                    .highlighted text { fill: black !important; font-weight: 900; font-size: 14px; }
+                    
+                    .checkout-text-box {
+                        font-family: 'Courier New', monospace;
+                        background: rgba(0,0,0,0.3);
+                        padding: 10px;
+                        border-radius: 8px;
+                        border: 1px solid #334155;
+                        text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+                    }
+                    
+                    .pulse-animation { animation: pulse 1.5s infinite; }
+                    @keyframes pulse {
+                         0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+                         70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+                         100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+                    }
 
-                const txt = getCheckout(val);
-                res.textContent = txt;
-                res.style.color = (txt.includes("Nicht") || txt.includes("Kein")) ? "#ef4444" : "#4ade80";
-            });
-        };
-
-        // Scorer State
-        let scScore = 501;
-        let scHistory = [];
-        let scInput = "";
-
-        const renderCounter = (preserveState = false) => {
-            if (!preserveState) { scScore = 501; scHistory = []; scInput = ""; }
-
-            const styles = `
-                .scorer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 300px; margin: 0 auto; }
-                .scorer-btn { padding: 15px; font-size: 1.5em; background: #334155; color: white; border: none; border-radius: 8px; cursor: pointer; touch-action: manipulation; }
-                .scorer-btn:active { background: #475569; transform: scale(0.98); }
-                .scorer-action { background: #475569; font-size: 1em; font-weight: bold; }
-                .scorer-enter { background: #22c55e; grid-row: span 2; display: flex; align-items: center; justify-content: center; }
-                .scorer-score { font-size: 5em; font-weight: bold; color: white; text-align: center; margin: 10px 0; text-shadow: 0 0 20px rgba(255,255,255,0.1); }
-                .scorer-input { font-size: 1.5em; color: #60a5fa; text-align: center; height: 40px; margin-bottom: 20px; font-family: monospace; }
-                .scorer-hint { color: #94a3b8; text-align: center; height: 20px; font-size: 0.9em; margin-bottom: 5px; }
-            `;
-
-            contentDiv.innerHTML = `
-                <style>${styles}</style>
-                <div id="scorer-hint" class="scorer-hint"></div>
-                <div id="scorer-display" class="scorer-score">${scScore}</div>
-                <div id="input-display" class="scorer-input">${scInput || "_"}</div>
+                    @media (max-width: 700px) {
+                        .match-layout { flex-direction: column; align-items: center; }
+                        .dartboard-container { margin-bottom: 20px; }
+                        .current-score-box { font-size: 2em; }
+                    }
+                </style>
                 
-                <div class="scorer-grid">
-                    <button class="scorer-btn" onclick="scTap('1')">1</button>
-                    <button class="scorer-btn" onclick="scTap('2')">2</button>
-                    <button class="scorer-btn" onclick="scTap('3')">3</button>
-                    <button class="scorer-btn" onclick="scTap('4')">4</button>
-                    <button class="scorer-btn" onclick="scTap('5')">5</button>
-                    <button class="scorer-btn" onclick="scTap('6')">6</button>
-                    <button class="scorer-btn" onclick="scTap('7')">7</button>
-                    <button class="scorer-btn" onclick="scTap('8')">8</button>
-                    <button class="scorer-btn" onclick="scTap('9')">9</button>
-                    <button class="scorer-btn scorer-action" onclick="scUndo()">🔙</button>
-                    <button class="scorer-btn" onclick="scTap('0')">0</button>
-                    <button class="scorer-btn scorer-enter" onclick="scEnter()">⏎</button>
-                </div>
-                 <div style="text-align: center; margin-top: 20px;">
-                    <button onclick="scReset()" style="background: none; border: 1px solid #ef4444; color: #ef4444; padding: 5px 15px; border-radius: 4px; font-size: 0.8em;">Neues Spiel</button>
-                </div>
-            `;
+                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                      <button id="back-setup-btn" style="background:#334155; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">⚙️ Setup</button>
+                      
+                      <div class="checkout-text-box" style="margin: 0 15px; flex: 1; text-align: center;">
+                          <div style="font-size: 0.8em; color: #94a3b8; margin-bottom: 2px;">CHECKOUT WEG</div>
+                          <div style="font-size: 1.8em; font-weight:bold; color: ${checkoutStr && !checkoutStr.includes('Nicht') && !checkoutStr.includes('Kein') ? '#00e0ff' : '#64748b'};">
+                              ${checkoutStr || '-'}
+                          </div>
+                      </div>
 
-            window.updateScorerUI = () => {
-                const disp = document.getElementById('scorer-display');
-                const inp = document.getElementById('input-display');
-                const hint = document.getElementById('scorer-hint');
-                if (disp) disp.textContent = scScore;
-                if (inp) inp.textContent = scInput || "-";
-                if (hint) {
-                    const txt = getCheckout(scScore);
-                    if (txt && !txt.includes("Nicht") && !txt.includes("Kein")) {
-                        hint.textContent = txt; hint.style.color = "#4ade80";
-                    } else { hint.textContent = ""; }
+                      <button id="voice-toggle-btn" style="background:#334155; color:white; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">🎤 Aus</button>
+                 </div>
+                
+                <div class="match-layout" style="display: flex; gap: 20px; align-items: flex-start; justify-content: center;">
+                    
+                    <!-- Left: Dartboard -->
+                    <div class="dartboard-container" style="flex: 0 0 auto; display: flex; justify-content: center;">
+                        ${dartboardSVG}
+                    </div>
+
+                    <!-- Right: Scorer & Players -->
+                    <div style="flex: 1; min-width: 300px; max-width: 400px;">
+                        <!-- Player Scores -->
+                        <div style="display:flex; gap:10px; overflow-x:auto; margin-bottom:20px; padding-bottom:10px;">
+                            ${this.players.map((p, i) => `
+                                <div style="min-width:100px; background:${i === this.activePlayerIndex ? '#3b82f6' : '#1e293b'}; padding:10px; border-radius:10px; text-align:center; transition:all 0.3s ease; transform:${i === this.activePlayerIndex ? 'scale(1.05)' : 'scale(1)'}; border:2px solid ${i === this.activePlayerIndex ? '#60a5fa' : '#334155'};">
+                                    <div style="font-size:0.8em; color:${i === this.activePlayerIndex ? 'white' : '#94a3b8'}">${p.name}</div>
+                                    <div style="font-size:2em; font-weight:bold; color:white;">${p.score}</div>
+                                    <div style="font-size:0.7em; color:#cbd5e1;">Legs: ${p.legs} | Avg: ${this.calculateAvg(p)}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <!-- Active Turn Input -->
+                        <div style="background:#1e293b; padding:15px; border-radius:12px; margin-bottom:15px; text-align:center; position: relative;">
+                            <div style="color:#94a3b8; font-size: 0.9em; margin-bottom:5px;">Aufnahme für <strong>${activePlayer.name}</strong></div>
+                            <div id="current-score-display" class="current-score-box" style="font-size:3em; font-weight:bold; color:#4ade80; min-height:50px;">0</div>
+                        </div>
+
+                        <!-- Numpad -->
+                        <div class="scorer-grid">
+                            ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<button class="scorer-btn" onclick="window.matchScorer.addInput(${n})">${n}</button>`).join('')}
+                            <button class="scorer-btn" onclick="window.matchScorer.addInput(0)">0</button>
+                            <button class="scorer-btn scorer-action" onclick="window.matchScorer.backspace()">⌫</button>
+                            <button class="scorer-btn scorer-enter" onclick="window.matchScorer.submitInput()">Enter</button>
+                        </div>
+                    </div>
+                </div>
+             `;
+
+            // Re-bind listeners
+            this.container.querySelector('#back-setup-btn').onclick = () => this.renderSetup();
+            this.container.querySelector('#voice-toggle-btn').onclick = () => this.toggleVoice();
+            this.updateVoiceUI();
+        }
+
+
+
+
+        getCheckoutSegments(checkoutStr) {
+            if (!checkoutStr || checkoutStr.includes("Nicht") || checkoutStr.includes("Kein")) return [];
+            const segments = [];
+            const parts = checkoutStr.split(' - ');
+            parts.forEach(p => {
+                const norm = p.trim().toUpperCase();
+                if (norm === 'BULL') segments.push('s_50');
+                else if (norm === '25') segments.push('s_25');
+                else if (norm.startsWith('T')) segments.push('s_t' + norm.substring(1));
+                else if (norm.startsWith('D')) segments.push('s_d' + norm.substring(1));
+                else {
+                    segments.push('s_so' + norm);
+                    segments.push('s_si' + norm);
                 }
-            };
-            window.updateScorerUI();
-        };
+            });
+            return segments;
+        }
 
-        window.scTap = (n) => { if (scInput.length < 3) scInput += n; window.updateScorerUI(); };
-        window.scUndo = () => { if (scInput.length > 0) scInput = scInput.slice(0, -1); else if (scHistory.length > 0) scScore = scHistory.pop(); window.updateScorerUI(); };
-        window.scEnter = () => {
-            if (!scInput) return;
-            const val = parseInt(scInput);
-            scInput = "";
-            if (val > 180) { alert("Maximal 180!"); window.updateScorerUI(); return; }
-            const newScore = scScore - val;
-            if (newScore === 0) {
-                scHistory.push(scScore); scScore = 0; window.updateScorerUI();
-                setTimeout(() => { if (confirm("🎉 GAME SHOT! Neues Spiel?")) scReset(); }, 100);
-            } else if (newScore <= 1 && (newScore < 0 || gameMode !== 'MO' || newScore !== 0)) { // 1 is usually bust for MO too
-                alert("BUST!");
-            } else {
-                scHistory.push(scScore); scScore = newScore;
+        renderDartboardSVG(highlightIds = []) {
+            const size = 340, cx = 170, cy = 170;
+            // Radii (approx)
+            const rDoubleOut = 140, rDoubleIn = 130;
+            const rTrebleOut = 85, rTrebleIn = 75;
+            const rOuter = 130, rInner = 15;
+            const rBull = 6;
+
+            // Standard order starting from top (20) clockwise
+            const numbers = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
+            const slice = 360 / 20;
+
+            let paths = '';
+
+            // Generate segments
+            numbers.forEach((val, i) => {
+                const angle = -90 + (i * slice) - (slice / 2); // Start -9 degrees (since 20 is at top center)
+                // Correct logic: 20 is centered at -90deg. So start is -90 - 9 = -99.
+                // Actually, standard board: 20 is top. 
+                // Let's use simple rotation. Each slice is 18deg. 
+                // 20 is at index 0. Center of 20 is -90deg.
+                // So slice 0 starts at -99deg and ends at -81deg.
+
+                const startA = (i * slice) - 9 - 90;
+                const endA = startA + 18;
+
+                const toRad = d => d * Math.PI / 180;
+
+                const arc = (rStart, rEnd, idPrefix, colorEven, colorOdd) => {
+                    const x1 = cx + rStart * Math.cos(toRad(startA));
+                    const y1 = cy + rStart * Math.sin(toRad(startA));
+                    const x2 = cx + rEnd * Math.cos(toRad(startA));
+                    const y2 = cy + rEnd * Math.sin(toRad(startA));
+
+                    const x3 = cx + rEnd * Math.cos(toRad(endA));
+                    const y3 = cy + rEnd * Math.sin(toRad(endA));
+                    const x4 = cx + rStart * Math.cos(toRad(endA));
+                    const y4 = cy + rStart * Math.sin(toRad(endA));
+
+                    const id = `${idPrefix}${val}`;
+                    const isHigh = highlightIds.includes(id);
+                    const fill = isHigh ? '#00e0ff' : (i % 2 === 0 ? colorEven : colorOdd);
+                    const stroke = isHigh ? '#00e0ff' : '#1e293b';
+
+                    return `<path d="M${x1},${y1} L${x2},${y2} A${rEnd},${rEnd} 0 0,1 ${x3},${y3} L${x4},${y4} A${rStart},${rStart} 0 0,0 ${x1},${y1} Z" 
+                        fill="${fill}" stroke="${stroke}" stroke-width="${isHigh ? 3 : 1}" class="board-segment ${isHigh ? 'highlighted' : ''}" data-val="${val}" />`;
+                };
+
+                // Double Ring
+                paths += arc(rDoubleIn, rDoubleOut, 's_d', '#f87171', '#4ade80'); // Red/Green
+                // Outer Single
+                paths += arc(rTrebleOut, rDoubleIn, 's_so', '#1e293b', '#e2e8f0'); // Black/White
+                // Treble Ring
+                paths += arc(rTrebleIn, rTrebleOut, 's_t', '#f87171', '#4ade80');
+                // Inner Single
+                paths += arc(rInner * 2, rTrebleIn, 's_si', '#1e293b', '#e2e8f0'); // Black/White
+
+                // Labels (Numbers)
+                const rText = rDoubleOut + 15;
+                const tx = cx + rText * Math.cos(toRad(startA + 9));
+                const ty = cy + rText * Math.sin(toRad(startA + 9));
+                paths += `<text x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" fill="#94a3b8" font-size="12" font-weight="bold">${val}</text>`;
+            });
+
+            // Bullseye
+            const bullHigh = highlightIds.includes('s_50');
+            const outerHigh = highlightIds.includes('s_25');
+
+            // Outer Bull (25)
+            paths += `<circle cx="${cx}" cy="${cy}" r="${rInner * 2}" fill="${outerHigh ? '#00e0ff' : '#4ade80'}" stroke="#1e293b" class="board-segment ${outerHigh ? 'highlighted' : ''}" />`; // Green -> Cyan if high
+            // Inner Bull (50)
+            paths += `<circle cx="${cx}" cy="${cy}" r="${rInner}" fill="${bullHigh ? '#00e0ff' : '#f87171'}" stroke="#1e293b" class="board-segment ${bullHigh ? 'highlighted' : ''}" />`; // Red -> Cyan if high
+
+            return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="max-width:100%; height:auto;">
+                <circle cx="${cx}" cy="${cy}" r="${cx - 5}" fill="#0f172a" />
+                ${paths}
+            </svg>`;
+        }
+
+        calculateAvg(player) {
+            if (player.history.length === 0) return "0.0";
+            const total = player.history.reduce((a, b) => a + b, 0);
+            return (total / player.history.length).toFixed(1);
+        }
+
+        addInput(num) {
+            const display = document.getElementById('current-score-display');
+            if (display.textContent === '0') display.textContent = '';
+            if (display.textContent.length < 3) {
+                display.textContent += num;
+
+                // Auto-submit logic? No, manual enter is safer for now.
+                // Maybe check if value > 180?
+                if (parseInt(display.textContent) > 180) {
+                    display.style.color = '#ef4444';
+                } else {
+                    display.style.color = '#4ade80';
+                }
             }
-            window.updateScorerUI();
-        };
-        window.scReset = () => { scScore = 501; scHistory = []; scInput = ""; window.updateScorerUI(); };
+        }
 
-        // Init
-        renderCheckout();
-        btnCheckout.onclick = () => { btnCheckout.className = 'tab-btn active'; btnCounter.className = 'tab-btn'; renderCheckout(); };
-        btnCounter.onclick = () => { btnCheckout.className = 'tab-btn'; btnCounter.className = 'tab-btn active'; renderCounter(); };
+        backspace() {
+            const display = document.getElementById('current-score-display');
+            display.textContent = display.textContent.slice(0, -1);
+            if (display.textContent === '') display.textContent = '0';
+            display.style.color = '#4ade80';
+        }
+
+        submitInput() {
+            const display = document.getElementById('current-score-display');
+            const val = parseInt(display.textContent);
+            if (!isNaN(val) && val <= 180) {
+                this.submitScore(val);
+            } else {
+                // Invalid
+                display.style.animation = "shake 0.3s";
+                setTimeout(() => display.style.animation = "", 300);
+            }
+        }
+
+        submitScore(val) {
+            const player = this.players[this.activePlayerIndex];
+
+            // Bust check
+            if (player.score - val < 0 || player.score - val === 1) { // 1 is bust in Double Out
+                // BUST
+                alert("Überworfen!");
+            } else if (player.score - val === 0) {
+                // CHECKOUT!
+                player.score = 0;
+                player.legs++;
+                player.history.push(val);
+
+                alert(`${player.name} gewinnt das Leg!`);
+
+                // Reset for next leg
+                this.players.forEach(p => p.score = this.startScore); // Or whatever start score
+            } else {
+                player.score -= val;
+                player.history.push(val);
+
+                // Switch player
+                this.activePlayerIndex = (this.activePlayerIndex + 1) % this.players.length;
+
+                // Voice Feedback for NEXT player (BEFORE throw)
+                const nextPlayer = this.players[this.activePlayerIndex];
+                if (nextPlayer.score > 0) {
+                    this.speakScore(nextPlayer.score);
+                }
+            }
+
+            this.renderGameUI();
+        }
+
+        speakScore(score) {
+            if ('speechSynthesis' in window) {
+                // Cancel previous speech to avoid queue buildup
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(score.toString());
+                utterance.lang = 'de-DE';
+                utterance.rate = 1.1; // Slightly faster
+                // Try to find a good German voice?
+                const voices = window.speechSynthesis.getVoices();
+                const deVoice = voices.find(v => v.lang.includes('de'));
+                if (deVoice) utterance.voice = deVoice;
+
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    }
+
+    // Global instance holder
+    window.matchScorerInstance = null;
+    window.matchScorer = {
+        addInput: (n) => window.matchScorerInstance?.addInput(n),
+        backspace: () => window.matchScorerInstance?.backspace(),
+        submitInput: () => window.matchScorerInstance?.submitInput()
+    };
+
+    function renderToolsView() {
+        topBarTitle.textContent = "Match Center";
+        contentArea.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.className = "fade-in";
+        container.style.padding = "10px";
+        container.style.maxWidth = "800px";
+        container.style.margin = "0 auto";
+
+        contentArea.appendChild(container);
+
+        window.matchScorerInstance = new MatchScorer(container);
+        window.matchScorerInstance.renderSetup();
     }
 
     function renderClubList() {
