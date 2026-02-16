@@ -1789,11 +1789,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       </div>`;
                 })()}
 
-                ${(() => {
-                    const c2 = getConsistency(h2);
-                    // Lower is better
-                    return card(c1, c2, "Konsistenz", "Ø Platzierung (Alle Saisons)", "", "", true, true);
-                })()}
+
 
                 ${card(best1Stats.points, best2Stats.points, "Meiste Punkte", "Rekord in einer Saison (Archiv)", best1Stats.season, best2Stats.season)}
                 ${card(bestRank1.rank === 999 ? '-' : bestRank1.rank + '.', bestRank2.rank === 999 ? '-' : bestRank2.rank + '.', "Beste Platzierung", "Bester Liga-Rang (Archiv)", bestRank1.season, bestRank2.season, false, true)}
