@@ -1166,8 +1166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
-                    </div>
-                `;
                 grid.appendChild(heroCard);
 
                 // --- Rivalries Card (Lieblings- & Angstgegner) ---
@@ -1182,7 +1180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         rivalries[g.opponent].games++;
                         if (g.myTeamResult === 'Won') rivalries[g.opponent].wins++;
                         // Approx point diff calculation (assuming standard 10-point game or similar structure)
-                         // For simplicity, we stick to Win Rate first, Points Diff as tie breaker if we had sets data
+                        // For simplicity, we stick to Win Rate first, Points Diff as tie breaker if we had sets data
                     });
 
                     // Convert to array and filter for min 2 games for meaningful stats
@@ -1200,7 +1198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Sort for Nemesis (Low Win%, then Most Games)
                         rivalsArr.sort((a, b) => {
-                             const rateA = a.wins / a.games;
+                            const rateA = a.wins / a.games;
                             const rateB = b.wins / b.games;
                             if (rateA !== rateB) return rateA - rateB;
                             return b.games - a.games;
@@ -1215,7 +1213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         rivalryCard.style.display = "flex";
                         rivalryCard.style.flexDirection = "column";
                         rivalryCard.style.justifyContent = "space-between";
-                        
+
                         rivalryCard.innerHTML = `
                             <div>
                                 <div style="color: #60a5fa; font-weight: bold; font-size: 0.9em; margin-bottom: 15px; display:flex; align-items:center; gap:8px;">
