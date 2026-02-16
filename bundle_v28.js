@@ -1168,6 +1168,103 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 grid.appendChild(heroCard);
 
+                // --- 2. STATS & FORM CARD ---
+                const statsCard = document.createElement('div');
+                statsCard.style.background = "#1e293b";
+                statsCard.style.padding = "20px";
+                statsCard.style.borderRadius = "12px";
+                statsCard.style.border = "1px solid #334155";
+                statsCard.style.display = "flex";
+                statsCard.style.flexDirection = "column";
+                statsCard.style.gap = "20px";
+
+                // --- A) League Benchmark ---
+                if (myLeagueKey && rankingData.players) {
+                    // Filter players in same league
+                    const leaguePlayers = rankingData.players.filter(p => p.league === myStats.league);
+                    if (leaguePlayers.length > 0) {
+                        // Calculate Avg
+                        const totalAvg = leaguePlayers.reduce((acc, p) => {
+                            const s = calculatePlayerStats(p);
+                            return acc + s.avg;
+                        }, 0);
+                        const leagueAvg = totalAvg / leaguePlayers.length;
+
+                        // Find Best
+                        const bestPlayer = leaguePlayers.reduce((max, p) => {
+                            const s = calculatePlayerStats(p);
+                            return s.avg > max.avg ? s : max;
+                        }, { avg: 0 });
+
+                        // My position % (max is slightly above best to give space)
+                        const maxScale = Math.max(bestPlayer.avg * 1.1, 10); // Min 10 pts scale
+                        const myPercent = (myStats.avg / maxScale) * 100;
+                        const avgPercent = (leagueAvg / maxScale) * 100;
+
+                        statsCard.innerHTML += `
+                            <div>
+                                <h3 style="color: #94a3b8; font-size: 0.8em; text-transform: uppercase; margin-bottom: 10px;">⚖️ Liga-Vergleich (Ø Punkte)</h3>
+                                <div style="position: relative; height: 30px; background: #0f172a; border-radius: 15px; margin-top: 15px;">
+                                    
+                                    <!-- League Avg Marker -->
+                                    <div style="position: absolute; left: ${avgPercent}%; top: -5px; bottom: -5px; width: 2px; background: #64748b; z-index: 1;"></div>
+                                    <div style="position: absolute; left: ${avgPercent}%; top: -25px; transform: translateX(-50%); color: #64748b; font-size: 0.7em;">Ø ${leagueAvg.toFixed(1)}</div>
+                                    
+                                    <!-- My Bar -->
+                                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: ${myPercent}%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 15px; z-index: 2;"></div>
+                                    <div style="position: absolute; left: ${myPercent}%; top: 5px; transform: translateX(-50%); color: white; font-weight: bold; font-size: 0.8em; text-shadow: 0 1px 2px black; z-index: 3;">${myStats.avg.toFixed(1)}</div>
+
+                                    <!-- Best Info -->
+                                    <div style="position: absolute; right: 0; top: -25px; color: #fbbf24; font-size: 0.7em;">🏆 Top: ${bestPlayer.avg.toFixed(1)}</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                // --- B) Form Curve (Last 6 Rounds) ---
+                if (myStats.rounds) {
+                    const roundsData = [];
+                    for (let i = 1; i <= 18; i++) {
+                        const val = myStats.rounds[`R${i}`];
+                        if (val && val !== "x" && val !== "&nbsp;" && val !== "-" && !isNaN(parseInt(val))) {
+                            roundsData.push({ r: i, p: parseInt(val) });
+                        }
+                    }
+
+                    if (roundsData.length > 0) {
+                        // Take last 8 played rounds for display
+                        const recentRounds = roundsData.slice(-8);
+                        const maxPoints = Math.max(...recentRounds.map(d => d.p), 10);
+
+                        let barsHtml = recentRounds.map(d => {
+                            const h = (d.p / maxPoints) * 100;
+                            const color = d.p >= myStats.avg ? '#4ade80' : '#f87171'; // Green if above annual avg
+                            return `
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1;">
+                                    <div style="flex: 1; width: 100%; display: flex; align-items: flex-end; justify-content: center;">
+                                        <div style="width: 80%; height: ${h}%; background: ${color}; border-radius: 4px 4px 0 0; position: relative; min-height: 4px;">
+                                             <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); color: white; font-size: 0.7em;">${d.p}</div>
+                                        </div>
+                                    </div>
+                                    <div style="color: #64748b; font-size: 0.7em;">R${d.r}</div>
+                                </div>
+                            `;
+                        }).join('');
+
+                        statsCard.innerHTML += `
+                            <div style="border-top: 1px solid #334155; padding-top: 15px;">
+                                <h3 style="color: #94a3b8; font-size: 0.8em; text-transform: uppercase; margin-bottom: 25px;">📈 Formkurve</h3>
+                                <div style="display: flex; height: 80px; align-items: flex-end; gap: 10px;">
+                                    ${barsHtml}
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                grid.appendChild(statsCard);
+
                 // --- 2. Action / Next Game Card ---
                 const actionCard = document.createElement('div');
                 actionCard.style.display = "flex";
