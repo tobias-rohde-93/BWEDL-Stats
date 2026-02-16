@@ -1122,23 +1122,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 grid.style.gap = "25px";
                 grid.style.marginBottom = "40px";
 
-                // --- Helper to get Team Rank ---
+                // --- Helper to get Global Team Rank (Class-wide) ---
                 let teamRank = null;
-                if (myLeagueKey && leagueData.leagues[myLeagueKey] && leagueData.leagues[myLeagueKey].table) {
-                    const temp = document.createElement('div');
-                    temp.innerHTML = leagueData.leagues[myLeagueKey].table;
-                    const rows = temp.querySelectorAll('tr');
+                let totalTeamsInClass = 0;
+
+                if (myLeagueKey && leagueData.leagues && searchTeam) {
+                    // 1. Identify "Class" (e.g., "District League", "B-Klasse")
+                    // Assumption: League Key format is "B-Klasse Gruppe 3 - 2024/25" or similar.
+                    // We split by "Gruppe" or just take the first part.
+                    const leagueNameParts = myLeagueKey.split("Gruppe");
+                    const leagueClass = leagueNameParts[0].trim(); // e.g. "B-Klasse"
+
+                    // 2. Find all leagues matching this class
+                    const matchingLeagues = Object.keys(leagueData.leagues).filter(k => k.startsWith(leagueClass));
+
+                    // 3. Aggregate all teams
+                    let allTeams = [];
                     const normMyTeam = normalizeTeamName(searchTeam);
 
-                    for (let row of rows) {
-                        const cells = row.querySelectorAll('td');
-                        if (cells.length > 2) {
-                            const teamNameCell = cells[1].textContent; // Adjust index if needed based on table structure
-                            if (normalizeTeamName(teamNameCell) === normMyTeam) {
-                                teamRank = cells[0].textContent.trim().replace('.', '');
-                                break;
-                            }
+                    matchingLeagues.forEach(lKey => {
+                        const lData = leagueData.leagues[lKey];
+                        if (lData && lData.table) {
+                            const temp = document.createElement('div');
+                            temp.innerHTML = lData.table;
+                            const rows = temp.querySelectorAll('tr');
+
+                            rows.forEach(row => {
+                                const cells = row.querySelectorAll('td');
+                                if (cells.length > 8) {
+                                    // Extract Data
+                                    // format assumption: Rank | Team | Games | S | U | N | Sets | Diff | Pts
+                                    // But we need to be careful with indices. 
+                                    // Let's assume standard BWEDL formatting based on `extractLeagueLeader` (Rank=0, Team=1)
+                                    // And purely numeric columns at the end.
+                                    // Last column = Points.
+                                    // Second to last = Diff? 
+
+                                    const teamName = cells[1].textContent.trim();
+                                    const pointsText = cells[cells.length - 1].textContent.trim();
+                                    const points = parseInt(pointsText) || 0;
+
+                                    // Diff is usually Points - 1 (index 7 if length 9)
+                                    // Sets is usually Points - 2 (index 6)
+                                    // Let's try to parse Diff from the cell before points.
+                                    const diffText = cells[cells.length - 2].textContent.trim();
+                                    const diff = parseInt(diffText) || 0;
+
+                                    allTeams.push({
+                                        name: teamName,
+                                        normName: normalizeTeamName(teamName),
+                                        points: points,
+                                        diff: diff,
+                                        league: lKey
+                                    });
+                                }
+                            });
                         }
+                    });
+
+                    // 4. Sort Global List
+                    // Points DESC, then Diff DESC
+                    allTeams.sort((a, b) => {
+                        if (b.points !== a.points) return b.points - a.points;
+                        return b.diff - a.diff;
+                    });
+
+                    totalTeamsInClass = allTeams.length;
+
+                    // 5. Find My Rank
+                    const myTeamIdx = allTeams.findIndex(t => t.normName === normMyTeam);
+                    if (myTeamIdx !== -1) {
+                        teamRank = myTeamIdx + 1;
                     }
                 }
 
@@ -1164,7 +1218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <h1 style="margin: 0; font-size: 2.2em; color: white;">${myStats.name}</h1>
                                 <div style="color: #94a3b8; font-size: 1.1em; margin-top: 5px;">
                                     ${myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a")} | ${searchTeam || "Vereinslos"}
-                                    ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold;">(Platz ${teamRank})</span>` : ''}
+                                    ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold;">(Platz ${teamRank} <span style="font-size:0.7em; font-weight:normal; color:#64748b;">von ${totalTeamsInClass}</span>)</span>` : ''}
                                 </div>
                             </div>
                             <div style="text-align: right;">
