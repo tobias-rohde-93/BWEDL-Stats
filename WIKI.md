@@ -50,7 +50,8 @@ Vergleiche zwei Spieler direkt miteinander.
 
 ### 🎯 Match Scorer
 Ein Tool, um deine eigenen Darts-Matches zu tracken und zu scoren.
--   **Multi-Player**: Spiele 1vs1 oder in Teams.
+-   **Verschiedene Modi**: Spiele 1vs1 (Single Out), Double Out, Master Out oder **Liga (2vs2)**.
+-   **Liga-Modus**: Spezieller 2vs2 Modus mit Block-Regel (Partner muss weniger Punkte als Gegner haben zum Checken).
 -   **Spracheingabe**: Sage einfach "Hundertachtzig" oder "Sechsundzwanzig", um zu scoren!
 -   **Dartboard-Input**: Klicke auf das virtuelle Board, um Treffer einzugeben.
 -   **Checkout-Hilfe**: Zeigt dir mögliche Wege zum Finish an (z.B. T20 - T20 - D20).
@@ -66,7 +67,8 @@ Diese Seite ist eine **PWA (Progressive Web App)**.
 ## ❓ Häufige Fragen (FAQ)
 
 **Wie oft werden die Daten aktualisiert?**
-Die Daten werden regelmäßig von der offiziellen BWEDL-Seite abgerufen. Drücke auf den "Aktualisieren" Button (🔄) im Menü, um manuell zu prüfen.
+Die Webseite und App werden automatisch **alle 6 Stunden** aktualisiert. Der "Aktualisieren"-Button im Menü prüft nur, ob neue Daten auf dem Server bereitliegen.
+*Hinweis: Ein komplett manuelles Anstoßen des Updates ist nur möglich, wenn das Programm direkt auf dem PC ausgeführt wird.*
 
 **Stimmen die Daten immer zu 100%?**
 Wir geben unser Bestes! Da Daten aus verschiedenen Quellen (PDFs, HTML) zusammengeführt werden, kann es in seltenen Fällen zu Abweichungen kommen. Melde Fehler gerne!

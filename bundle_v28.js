@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. Comparison (New)
         const compareLink = document.createElement('div');
         compareLink.className = 'nav-section-header';
-        compareLink.innerHTML = '🆚 VERGLEICH';
+        compareLink.innerHTML = '🆚 H2H VERGLEICH';
         compareLink.style.padding = "15px 15px 5px";
         compareLink.style.color = "#888";
         compareLink.style.fontSize = "0.8em";
@@ -2279,6 +2279,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.currentTurnDarts = []; // Track individual darts (max 3)
             this.activePlayerIndex = 0;
             this.gameMode = 'DO'; // 'DO' (Double Out) or 'MO' (Master Out)
+            this.isLeagueMode = false; // New: 2vs2 League Mode
             this.startScore = 501;
             this.recognition = null;
             this.isListening = false;
@@ -2418,6 +2419,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div style="margin-bottom: 20px;">
+                    <label style="display:block; color:#94a3b8; margin-bottom:8px;">Team Modus</label>
+                    <button id="mode-league" class="mode-btn" style="width:100%; padding:10px; border-radius:6px; border:none; background:#334155; color:#94a3b8; font-weight:bold; cursor:pointer;">
+                        Liga (2vs2)
+                    </button>
+                    <div id="league-hint" style="display:none; color:#f59e0b; font-size:0.8em; margin-top:5px;">
+                        ⚠️ Benötigt genau 4 Spieler. (Team A: Sp 1+3, Team B: Sp 2+4)<br>
+                        Regel: Check nur möglich, wenn Partner < Gegner-Summe.
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
                     <label style="display:block; color:#94a3b8; margin-bottom:8px;">Start Punkte</label>
                     <select id="start-points" style="width:100%; padding:10px; background:#0f172a; color:white; border:1px solid #334155; border-radius:6px;">
                         <option value="301">301</option>
@@ -2443,6 +2455,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Logic
             const btnDO = card.querySelector('#mode-do');
             const btnMO = card.querySelector('#mode-mo');
+            const btnLeague = card.querySelector('#mode-league');
+            const leagueHint = card.querySelector('#league-hint');
             const playerList = card.querySelector('#player-list');
             const inputName = card.querySelector('#new-player-name');
             const btnAdd = card.querySelector('#add-player-btn');
@@ -2450,14 +2464,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const startPoints = card.querySelector('#start-points');
 
             const updateStartBtn = () => {
-                if (this.players.length > 0) {
-                    btnStart.style.opacity = "1";
-                    btnStart.style.pointerEvents = "all";
-                    btnStart.textContent = `Match Starten (${this.players.length} Spieler)`;
+                if (this.isLeagueMode) {
+                    if (this.players.length === 4) {
+                        btnStart.style.opacity = "1";
+                        btnStart.style.pointerEvents = "all";
+                        btnStart.textContent = `Liga-Match Starten`;
+                    } else {
+                        btnStart.style.opacity = "0.5";
+                        btnStart.style.pointerEvents = "none";
+                        btnStart.textContent = `Benötigt 4 Spieler (${this.players.length}/4)`;
+                    }
                 } else {
-                    btnStart.style.opacity = "0.5";
-                    btnStart.style.pointerEvents = "none";
-                    btnStart.textContent = "Match Starten";
+                    if (this.players.length > 0) {
+                        btnStart.style.opacity = "1";
+                        btnStart.style.pointerEvents = "all";
+                        btnStart.textContent = `Match Starten (${this.players.length} Spieler)`;
+                    } else {
+                        btnStart.style.opacity = "0.5";
+                        btnStart.style.pointerEvents = "none";
+                        btnStart.textContent = "Match Starten";
+                    }
                 }
             };
 
@@ -2505,6 +2531,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             btnDO.onclick = () => { this.gameMode = 'DO'; btnDO.className = 'mode-btn active'; btnMO.className = 'mode-btn'; btnDO.style.background = '#3b82f6'; btnDO.style.color = 'white'; btnMO.style.background = '#334155'; btnMO.style.color = '#94a3b8'; };
             btnMO.onclick = () => { this.gameMode = 'MO'; btnMO.className = 'mode-btn active'; btnDO.className = 'mode-btn'; btnMO.style.background = '#3b82f6'; btnMO.style.color = 'white'; btnDO.style.background = '#334155'; btnDO.style.color = '#94a3b8'; };
+
+            btnLeague.onclick = () => {
+                this.isLeagueMode = !this.isLeagueMode;
+                if (this.isLeagueMode) {
+                    btnLeague.style.background = '#8b5cf6'; // Purple
+                    btnLeague.style.color = 'white';
+                    leagueHint.style.display = 'block';
+                } else {
+                    btnLeague.style.background = '#334155';
+                    btnLeague.style.color = '#94a3b8';
+                    leagueHint.style.display = 'none';
+                }
+                updateStartBtn();
+            };
 
             startPoints.onchange = () => {
                 this.startScore = parseInt(startPoints.value);
@@ -2679,15 +2719,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="flex: 1; min-width: 300px; max-width: 400px;">
                         <!-- Player Scores -->
                         <div class="player-score-container" style="display:flex; gap:10px; overflow-x:auto; margin-bottom:20px; padding-bottom:10px;">
-                            ${this.players.map((p, i) => `
-                                <div class="player-card" style="min-width:100px; background:${i === this.activePlayerIndex ? '#3b82f6' : '#1e293b'}; padding:10px; border-radius:10px; text-align:center; transition:all 0.3s ease; transform:${i === this.activePlayerIndex ? 'scale(1.05)' : 'scale(1)'}; border:2px solid ${i === this.activePlayerIndex ? '#60a5fa' : '#334155'};">
+                            ${this.players.map((p, i) => {
+                let teamBadge = '';
+                if (this.isLeagueMode && this.players.length === 4) {
+                    const isTeamA = i % 2 === 0;
+                    const teamColor = isTeamA ? '#3b82f6' : '#ef4444';
+                    const teamName = isTeamA ? 'TEAM A' : 'TEAM B';
+                    teamBadge = `<div style="font-size:0.7em; background:${teamColor}; color:white; padding:2px 6px; border-radius:4px; margin-bottom:5px; display:inline-block;">${teamName}</div>`;
+                }
+
+                return `
+                                <div class="player-card" style="min-width:100px; background:${i === this.activePlayerIndex ? '#3b82f6' : '#1e293b'}; padding:10px; border-radius:10px; text-align:center; transition:all 0.3s ease; transform:${i === this.activePlayerIndex ? 'scale(1.05)' : 'scale(1)'}; border:2px solid ${i === this.activePlayerIndex ? '#60a5fa' : '#334155'}; position: relative;">
+                                    ${teamBadge}
                                     <div style="font-size:0.8em; color:${i === this.activePlayerIndex ? 'white' : '#94a3b8'}">${p.name}</div>
                                     <div style="font-size:2em; font-weight:bold; color:white;">
                                         ${i === this.activePlayerIndex ? (p.score - currentTurnTotal) : p.score}
                                     </div>
                                     <div style="font-size:0.7em; color:#cbd5e1;">Legs: ${p.legs} | Avg: ${this.calculateAvg(p)}</div>
                                 </div>
-                            `).join('')}
+                            `;
+            }).join('')}
                         </div>
                         
                         <!-- Active Turn Input -->
@@ -2903,24 +2954,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Validation for Checkout
             let validCheckout = true;
+            let leagueBlockError = false;
+
             if (player.score - total === 0) {
-                // Check if manual entry (no mults) OR valid dart mult
-                if (this.currentTurnMults.length > 0) {
-                    // Last dart determines finish
-                    const lastMult = this.currentTurnMults[this.currentTurnMults.length - 1];
-                    if (this.gameMode === 'DO' && lastMult !== 2) validCheckout = false;
-                    // MO: Double or Triple allowed
-                    if (this.gameMode === 'MO' && lastMult !== 2 && lastMult !== 3) validCheckout = false;
-                    // SO is always valid
+                // 1. League Block Rule (Team A: 0/2, Team B: 1/3)
+                if (this.isLeagueMode && this.players.length === 4) {
+                    const pIdx = this.activePlayerIndex;
+                    const partnerIdx = (pIdx + 2) % 4;
+                    const opp1Idx = (pIdx + 1) % 4;
+                    const opp2Idx = (pIdx + 3) % 4;
+
+                    const partnerScore = this.players[partnerIdx].score;
+                    const oppSum = this.players[opp1Idx].score + this.players[opp2Idx].score;
+
+                    if (partnerScore >= oppSum) {
+                        validCheckout = false;
+                        leagueBlockError = true;
+                    }
                 }
-                // If manual entry (mults empty), we assume valid (as discussed)
+
+                // 2. Standard Checkout Rules (if not already blocked)
+                if (validCheckout) {
+                    // Check if manual entry (no mults) OR valid dart mult
+                    if (this.currentTurnMults.length > 0) {
+                        // Last dart determines finish
+                        const lastMult = this.currentTurnMults[this.currentTurnMults.length - 1];
+                        if (this.gameMode === 'DO' && lastMult !== 2) validCheckout = false;
+                        // MO: Double or Triple allowed
+                        if (this.gameMode === 'MO' && lastMult !== 2 && lastMult !== 3) validCheckout = false;
+                        // SO is always valid
+                    }
+                }
             }
 
             // Bust check (or invalid checkout)
             if (player.score - total < 0 || player.score - total === 1 || (player.score - total === 0 && !validCheckout)) {
                 this.playSound('bust');
 
-                if (!validCheckout && player.score - total === 0) {
+                if (leagueBlockError) {
+                    const pIdx = this.activePlayerIndex;
+                    const partner = this.players[(pIdx + 2) % 4];
+                    const opp1 = this.players[(pIdx + 1) % 4];
+                    const opp2 = this.players[(pIdx + 3) % 4];
+                    const oppSum = opp1.score + opp2.score;
+                    setTimeout(() => alert(`BLOCK! Partner (${partner.score}) muss weniger Punkte haben als Gegner (${opp1.score}+${opp2.score}=${oppSum})!`), 500);
+                } else if (!validCheckout && player.score - total === 0) {
                     setTimeout(() => alert(`Ungültiges Checkout! (${this.gameMode === 'DO' ? 'Muss Double sein' : 'Muss Double oder Triple sein'})`), 500);
                 } else {
                     setTimeout(() => alert("Überworfen!"), 500);
@@ -5238,7 +5316,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <h4 style="color: #94a3b8; margin-top: 20px;">🎯 Match Scorer</h4>
                 <ul style="padding-left: 20px; line-height: 1.6;">
-                    <li><strong>Multi-Player</strong>: Spiele 1vs1 oder im Team.</li>
+                    <li><strong>Verschiedene Modi</strong>: Spiele 1vs1 (Single Out), Double Out, Master Out oder <strong>Liga (2vs2)</strong>.</li>
+                    <li><strong>Liga-Modus</strong>: Spezieller 2vs2 Modus mit Block-Regel.</li>
                     <li><strong>Spracheingabe</strong>: Scorer per Stimme ("Hundertachtzig").</li>
                     <li><strong>Dartboard-Input</strong>: Tippe auf das Board.</li>
                     <li><strong>Checkout-Hilfe</strong>: Wege zum Finish (z.B. T20 - D20).</li>
@@ -5251,7 +5330,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <h3 style="color: #f8fafc;">❓ FAQ</h3>
                 <p><strong>Wie oft werden die Daten aktualisiert?</strong><br>
-                Regelmäßig von der offiziellen BWEDL-Seite. Nutze den 🔄 Button im Menü für manuelle Updates.</p>
+                Die Webseite und App werden automatisch <strong>alle 6 Stunden</strong> aktualisiert. Der "Aktualisieren"-Button im Menü prüft nur, ob neue Daten auf dem Server bereitliegen.</p>
+                <p><em>Hinweis: Ein komplett manuelles Anstoßen des Updates ist nur möglich, wenn das Programm direkt auf dem PC ausgeführt wird.</em></p>
 
                 <p><strong>Kann ich alte Saisons sehen?</strong><br>
                 Ja, im "Archiv" auf den Vereins- und Spielerseiten.</p>
