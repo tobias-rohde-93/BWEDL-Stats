@@ -1166,7 +1166,82 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
+                    </div>
+                `;
                 grid.appendChild(heroCard);
+
+                // --- Rivalries Card (Lieblings- & Angstgegner) ---
+                // Logic: Analyze past games
+                const pastGames = mySchedule.filter(g => !g.isPending && !g.leagueKey.includes("Ligapokal"));
+                if (pastGames.length >= 2) {
+                    const rivalries = {};
+                    pastGames.forEach(g => {
+                        if (!rivalries[g.opponent]) {
+                            rivalries[g.opponent] = { name: g.opponent, wins: 0, games: 0, pointsDiff: 0 };
+                        }
+                        rivalries[g.opponent].games++;
+                        if (g.myTeamResult === 'Won') rivalries[g.opponent].wins++;
+                        // Approx point diff calculation (assuming standard 10-point game or similar structure)
+                         // For simplicity, we stick to Win Rate first, Points Diff as tie breaker if we had sets data
+                    });
+
+                    // Convert to array and filter for min 2 games for meaningful stats
+                    const rivalsArr = Object.values(rivalries).filter(r => r.games >= 1); // Allow 1 game for now to show something, ideally >= 2
+
+                    if (rivalsArr.length > 0) {
+                        // Sort for Favorite (High Win%, then Most Games)
+                        rivalsArr.sort((a, b) => {
+                            const rateA = a.wins / a.games;
+                            const rateB = b.wins / b.games;
+                            if (rateA !== rateB) return rateB - rateA;
+                            return b.games - a.games;
+                        });
+                        const favorite = rivalsArr[0];
+
+                        // Sort for Nemesis (Low Win%, then Most Games)
+                        rivalsArr.sort((a, b) => {
+                             const rateA = a.wins / a.games;
+                            const rateB = b.wins / b.games;
+                            if (rateA !== rateB) return rateA - rateB;
+                            return b.games - a.games;
+                        });
+                        const nemesis = rivalsArr[0];
+
+                        const rivalryCard = document.createElement('div');
+                        rivalryCard.style.background = "#1e293b";
+                        rivalryCard.style.padding = "20px";
+                        rivalryCard.style.borderRadius = "12px";
+                        rivalryCard.style.border = "1px solid #334155";
+                        rivalryCard.style.display = "flex";
+                        rivalryCard.style.flexDirection = "column";
+                        rivalryCard.style.justifyContent = "space-between";
+                        
+                        rivalryCard.innerHTML = `
+                            <div>
+                                <div style="color: #60a5fa; font-weight: bold; font-size: 0.9em; margin-bottom: 15px; display:flex; align-items:center; gap:8px;">
+                                    <span>⚖️ RIVALITÄTEN</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <div style="font-size: 0.8em; color: #94a3b8; margin-bottom: 2px;">🟢 Lieblingsgegner</div>
+                                    <div style="font-weight: bold; color: #f8fafc; font-size: 1.1em;">${favorite.wins > 0 ? favorite.name : '-'}</div>
+                                    <div style="font-size: 0.8em; color: #4ade80;">
+                                        ${favorite.wins > 0 ? `${favorite.wins} Siege / ${favorite.games} Spiele` : ''}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 0.8em; color: #94a3b8; margin-bottom: 2px;">🔴 Angstgegner</div>
+                                    <div style="font-weight: bold; color: #f8fafc; font-size: 1.1em;">${nemesis.wins < nemesis.games ? nemesis.name : '-'}</div>
+                                    <div style="font-size: 0.8em; color: #f87171;">
+                                         ${nemesis.wins < nemesis.games ? `${nemesis.games - nemesis.wins} Niederlagen / ${nemesis.games} Spiele` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        grid.appendChild(rivalryCard);
+                    }
+                }
 
                 // --- 2. Action / Next Game Card ---
                 const actionCard = document.createElement('div');
