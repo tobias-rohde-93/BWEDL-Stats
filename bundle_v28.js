@@ -1122,6 +1122,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 grid.style.gap = "25px";
                 grid.style.marginBottom = "40px";
 
+                // --- Helper to get Team Rank ---
+                let teamRank = null;
+                if (myLeagueKey && leagueData.leagues[myLeagueKey] && leagueData.leagues[myLeagueKey].table) {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = leagueData.leagues[myLeagueKey].table;
+                    const rows = temp.querySelectorAll('tr');
+                    const normMyTeam = normalizeTeamName(searchTeam);
+
+                    for (let row of rows) {
+                        const cells = row.querySelectorAll('td');
+                        if (cells.length > 2) {
+                            const teamNameCell = cells[1].textContent; // Adjust index if needed based on table structure
+                            if (normalizeTeamName(teamNameCell) === normMyTeam) {
+                                teamRank = cells[0].textContent.trim().replace('.', '');
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 // --- 1. Hero Card ---
                 const heroCard = document.createElement('div');
                 heroCard.style.background = "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)";
@@ -1142,10 +1162,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div>
                                 <div style="color: #60a5fa; font-weight: bold; letter-spacing: 1px; font-size: 0.8em; text-transform: uppercase; margin-bottom: 5px;">Dein Profil</div>
                                 <h1 style="margin: 0; font-size: 2.2em; color: white;">${myStats.name}</h1>
-                                <div style="color: #94a3b8; font-size: 1.1em; margin-top: 5px;">${myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a")} | ${searchTeam || "Vereinslos"}</div>
+                                <div style="color: #94a3b8; font-size: 1.1em; margin-top: 5px;">
+                                    ${myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a")} | ${searchTeam || "Vereinslos"}
+                                    ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold;">(Platz ${teamRank})</span>` : ''}
+                                </div>
                             </div>
                             <div style="text-align: right;">
-                                <div style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9em;">
+                                <div style="background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; display: inline-block;">
                                     Rang ${myStats.rank}
                                 </div>
                             </div>
@@ -1203,7 +1226,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         statsCard.innerHTML += `
                             <div>
-                                <h3 style="color: #94a3b8; font-size: 0.8em; text-transform: uppercase; margin-bottom: 10px;">⚖️ Liga-Vergleich (Ø Punkte)</h3>
+                                <div style="display:flex; justify-content:space-between; margin-bottom: 10px;">
+                                    <h3 style="color: #94a3b8; font-size: 0.8em; text-transform: uppercase;">⚖️ Liga-Vergleich (Ø Punkte)</h3>
+                                    <div style="color: #fbbf24; font-size: 0.7em;">🏆 Top: ${bestPlayer.avg.toFixed(1)}</div>
+                                </div>
                                 <div style="position: relative; height: 30px; background: #0f172a; border-radius: 15px; margin-top: 15px;">
                                     
                                     <!-- League Avg Marker -->
@@ -1213,16 +1239,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <!-- My Bar -->
                                     <div style="position: absolute; left: 0; top: 0; bottom: 0; width: ${myPercent}%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 15px; z-index: 2;"></div>
                                     <div style="position: absolute; left: ${myPercent}%; top: 5px; transform: translateX(-50%); color: white; font-weight: bold; font-size: 0.8em; text-shadow: 0 1px 2px black; z-index: 3;">${myStats.avg.toFixed(1)}</div>
-
-                                    <!-- Best Info -->
-                                    <div style="position: absolute; right: 0; top: -25px; color: #fbbf24; font-size: 0.7em;">🏆 Top: ${bestPlayer.avg.toFixed(1)}</div>
                                 </div>
                             </div>
                         `;
                     }
                 }
 
-                // --- B) Form Curve (Last 6 Rounds) ---
+                // --- B) Form Curve (Spikes) ---
                 if (myStats.rounds) {
                     const roundsData = [];
                     for (let i = 1; i <= 18; i++) {
@@ -1239,15 +1262,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         let barsHtml = recentRounds.map(d => {
                             const h = (d.p / maxPoints) * 100;
-                            const color = d.p >= myStats.avg ? '#4ade80' : '#f87171'; // Green if above annual avg
+                            const color = d.p >= myStats.avg ? '#4ade80' : '#f87171';
+
+                            // Spike Visual
                             return `
-                                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1;">
-                                    <div style="flex: 1; width: 100%; display: flex; align-items: flex-end; justify-content: center;">
-                                        <div style="width: 80%; height: ${h}%; background: ${color}; border-radius: 4px 4px 0 0; position: relative; min-height: 4px;">
-                                             <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); color: white; font-size: 0.7em;">${d.p}</div>
-                                        </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end;">
+                                    <div style="position: relative; width: 2px; height: ${h}%; background: ${color}; display: flex; justify-content: center;">
+                                        <!-- Dot -->
+                                        <div style="position: absolute; top: 0; width: 8px; height: 8px; background: ${color}; border-radius: 50%; transform: translateY(-50%);"></div>
+                                        <!-- Label -->
+                                        <div style="position: absolute; top: -20px; color: white; font-size: 0.7em; font-weight: bold;">${d.p}</div>
                                     </div>
-                                    <div style="color: #64748b; font-size: 0.7em;">R${d.r}</div>
+                                    <div style="color: #64748b; font-size: 0.7em; margin-top: 8px;">R${d.r}</div>
                                 </div>
                             `;
                         }).join('');
@@ -1255,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         statsCard.innerHTML += `
                             <div style="border-top: 1px solid #334155; padding-top: 15px;">
                                 <h3 style="color: #94a3b8; font-size: 0.8em; text-transform: uppercase; margin-bottom: 25px;">📈 Formkurve</h3>
-                                <div style="display: flex; height: 80px; align-items: flex-end; gap: 10px;">
+                                <div style="display: flex; height: 100px; align-items: flex-end; gap: 10px; padding-top: 20px;">
                                     ${barsHtml}
                                 </div>
                             </div>
