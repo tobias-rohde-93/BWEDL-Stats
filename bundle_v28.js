@@ -1068,7 +1068,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (p) {
                     const stats = calculatePlayerStats(p);
                     myStats = { ...p, ...stats };
-                    myTrend = calculateTrend(p);
+                    // FIXED: Use myStats (with calculated avg) instead of p (raw) for correct trend diff
+                    myTrend = calculateTrend(myStats);
 
                     // Find League and Schedule
                     searchTeam = myTeamName;
@@ -1204,7 +1205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const trendIcon = myTrend && myTrend.dir === 'up' ? '↗' : (myTrend && myTrend.dir === 'down' ? '↘' : '→');
                 const trendColor = myTrend && myTrend.dir === 'up' ? '#4ade80' : (myTrend && myTrend.dir === 'down' ? '#f87171' : '#94a3b8');
-                const trendText = myTrend ? `${trendIcon} ${myTrend.diff} (L3: ${myTrend.last3Avg})` : '';
+                // const trendText = myTrend ? `${trendIcon} ${myTrend.diff} (L3: ${myTrend.last3Avg})` : '';
 
                 heroCard.innerHTML = `
                     <div style="position: relative; z-index: 2;">
@@ -1227,9 +1228,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
                                 <div style="color: #94a3b8; font-size: 0.8em; margin-bottom: 5px;">Ø PUNKTE</div>
-                                <div style="font-size: 2em; font-weight: bold; color: white; display: flex; align-items: baseline; gap: 10px;">
+                                <div style="font-size: 2em; font-weight: bold; color: white; display: flex; align-items: center; gap: 10px;">
                                     ${myStats.avg.toFixed(2)}
-                                    <span style="font-size: 0.5em; color: ${trendColor}; font-weight: normal;">${trendText}</span>
+                                    ${myTrend ? `
+                                    <div style="display: flex; flex-direction: column; justify-content: center; font-size: 0.4em; color: ${trendColor}; font-weight: normal; line-height: 1.2;">
+                                        <div style="white-space: nowrap;">Trend: ${trendIcon} ${myTrend.diff}</div>
+                                        <div style="white-space: nowrap; opacity: 0.8;">Form: ${myTrend.last3Avg}</div>
+                                    </div>` : ''}
                                 </div>
                             </div>
                             <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
