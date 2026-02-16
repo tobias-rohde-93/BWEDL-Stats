@@ -1255,11 +1255,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     seasonsPlayed: 0
                 };
 
-                if (typeof ARCHIVE_DATA !== 'undefined' && rankingData.players) {
+                if (typeof ARCHIVE_DATA !== 'undefined') {
                     let archiveEntries = [];
-                    // ARCHIVE_DATA keys are IDs. p.id should match.
-                    if (p.id && ARCHIVE_DATA[p.id]) {
-                        archiveEntries = ARCHIVE_DATA[p.id];
+                    // ARCHIVE_DATA keys are IDs. myStats.id should match.
+                    if (myStats.id && ARCHIVE_DATA[myStats.id]) {
+                        archiveEntries = ARCHIVE_DATA[myStats.id];
                     }
 
                     // Add Current Season (Snapshot)
