@@ -1376,28 +1376,43 @@ document.addEventListener('DOMContentLoaded', () => {
                         </tr>
                     </thead>
                     <tbody>
-                        ${list.map((p, idx) => {
-                const isMyPlayer = p.name === myPlayerName;
-                const rowBg = isMyPlayer ? 'rgba(59, 130, 246, 0.1)' : (idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)');
-                const rankColor = idx < 3 ? '#fbbf24' : '#94a3b8';
-                const scoreColor = idx < 3 ? '#4ade80' : '#f8fafc';
+                        ${(() => {
+                    let lastScore = -1;
+                    let lastRank = 0;
 
-                // Find full club name
-                let clubName = p.company || "-";
-                if (typeof clubData !== 'undefined' && clubData.clubs) {
-                    const c = clubData.clubs.find(cl => cl.number == p.v_nr);
-                    if (c) clubName = c.name;
-                }
+                    return list.map((p, idx) => {
+                        const isMyPlayer = p.name === myPlayerName;
+                        const rowBg = isMyPlayer ? 'rgba(59, 130, 246, 0.1)' : (idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)');
 
-                return `
-                            <tr style="background: ${rowBg}; border-bottom: 1px solid #334155;">
-                                <td style="padding: 10px 15px; font-weight: bold; color: ${rankColor};">${idx + 1}.</td>
-                                <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${p.name}</td>
-                                <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${clubName}</td>
-                                <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: ${scoreColor}; font-size: 1.1em;">${p.currentScore}</td>
-                            </tr>
-                            `;
-            }).join('')}
+                        // Rank Logic
+                        let displayRank = idx + 1;
+                        if (p.currentScore === lastScore) {
+                            displayRank = lastRank;
+                        } else {
+                            lastScore = p.currentScore;
+                            lastRank = displayRank;
+                        }
+
+                        const rankColor = displayRank <= 3 ? '#fbbf24' : '#94a3b8';
+                        const scoreColor = displayRank <= 3 ? '#4ade80' : '#f8fafc';
+
+                        // Find full club name
+                        let clubName = p.company || "-";
+                        if (typeof clubData !== 'undefined' && clubData.clubs) {
+                            const c = clubData.clubs.find(cl => cl.number == p.v_nr);
+                            if (c) clubName = c.name;
+                        }
+
+                        return `
+                                <tr style="background: ${rowBg}; border-bottom: 1px solid #334155;">
+                                    <td style="padding: 10px 15px; font-weight: bold; color: ${rankColor};">${displayRank}.</td>
+                                    <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${p.name}</td>
+                                    <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${clubName}</td>
+                                    <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: ${scoreColor}; font-size: 1.1em;">${p.currentScore}</td>
+                                </tr>
+                                `;
+                    }).join('');
+                })()}
                     </tbody>
                 </table>
             </div>`;
