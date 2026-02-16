@@ -1793,6 +1793,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 ${card(best1Stats.points, best2Stats.points, "Meiste Punkte", "Rekord in einer Saison (Archiv)", best1Stats.season, best2Stats.season)}
                 ${card(bestRank1.rank === 999 ? '-' : bestRank1.rank + '.', bestRank2.rank === 999 ? '-' : bestRank2.rank + '.', "Beste Platzierung", "Bester Liga-Rang (Archiv)", bestRank1.season, bestRank2.season, false, true)}
+
+                ${(() => {
+                    // --- PREDICTION ALGORITHM ---
+                    const getRecentForm = (p) => {
+                        if (!p || !p.rounds) return 0;
+                        let sum = 0;
+                        let count = 0;
+                        // Iterate backwards from R18 to R1
+                        for (let i = 18; i >= 1; i--) {
+                            const val = p.rounds[`R${i}`];
+                            if (val && val !== "&nbsp;" && val !== "x" && !isNaN(parseInt(val))) {
+                                sum += parseInt(val);
+                                count++;
+                                if (count >= 5) break; // Last 5 matches
+                            }
+                        }
+                        return count > 0 ? sum / count : 0;
+                    };
+
+                    const form1 = getRecentForm(d1.current); // Avg of last 5 stats
+                    const form2 = getRecentForm(d2.current);
+
+                    // Normalize Inputs
+                    // - Average: 40-70 range
+                    // - Form: 40-70 range
+                    // - Exp: 0-10 range
+
+                    const safeDiv = (a, b) => (a + b === 0) ? 0.5 : (a / (a + b));
+
+                    const pAvg = safeDiv(avg1, avg2) * 0.4; // 40% Weight for Season Avg
+                    const pForm = safeDiv(form1, form2) * 0.5; // 50% Weight for Recent Form (Current Strength)
+                    const pExp = safeDiv(h1.length, h2.length) * 0.1; // 10% Weight for Experience
+
+                    let winProb1 = pAvg + pForm + pExp;
+
+                    // Calibration: If data is missing (e.g. no form), fallback to 50/50
+                    if (avg1 === 0 && avg2 === 0) winProb1 = 0.5;
+                    else if (avg1 === 0) winProb1 = 0.2; // Penalize no data
+                    else if (avg2 === 0) winProb1 = 0.8;
+
+                    let winProb2 = 1 - winProb1;
+
+                    // Clamping (never 100% or 0%)
+                    if (winProb1 > 0.95) winProb1 = 0.95;
+                    if (winProb1 < 0.05) winProb1 = 0.05;
+                    winProb2 = 1 - winProb1;
+
+                    const percent1 = Math.round(winProb1 * 100);
+                    const percent2 = Math.round(winProb2 * 100);
+
+                    // Text Prediction
+                    let predictionText = "Ausgeglichenes Match";
+                    let winnerName = "";
+                    if (winProb1 > 0.6) { winnerName = d1.name; predictionText = `Vorteil für <strong>${d1.name}</strong>`; }
+                    else if (winProb2 > 0.6) { winnerName = d2.name; predictionText = `Vorteil für <strong>${d2.name}</strong>`; }
+                    else {
+                        if (winProb1 >= 0.5) predictionText = "Knappes Ding (Leichter Vorteil Links)";
+                        else predictionText = "Knappes Ding (Leichter Vorteil Rechts)";
+                    }
+
+                    return `
+                     <div style="padding: 15px; margin-top: 20px; border-top: 1px solid #334155; text-align: center;">
+                        <div style="font-size: 0.9em; text-transform: uppercase; color: #94a3b8; margin-bottom: 10px; letter-spacing: 1px;">Match Prediction 🔮</div>
+                        
+                        <div style="font-size: 1.1em; color: white; margin-bottom: 15px;">${predictionText}</div>
+
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px;">
+                            <div style="font-weight: bold; color: ${winProb1 > 0.5 ? '#4ade80' : '#94a3b8'};">${percent1}%</div>
+                            <div style="font-weight: bold; color: ${winProb2 > 0.5 ? '#4ade80' : '#94a3b8'};">${percent2}%</div>
+                        </div>
+
+                        <div style="height: 12px; background: #334155; border-radius: 6px; overflow: hidden; display: flex;">
+                             <div style="width: ${percent1}%; background: ${winProb1 > 0.5 ? '#3b82f6' : '#64748b'}; transition: width 1s ease-out;"></div>
+                             <div style="width: ${percent2}%; background: ${winProb2 > 0.5 ? '#3b82f6' : '#64748b'}; transition: width 1s ease-out;"></div>
+                        </div>
+                        <div style="font-size: 0.7em; color: #64748b; margin-top: 8px;">
+                            Basiert auf: Ø Saison (40%), Form (Last 5) (50%), Erfahrung (10%)
+                        </div>
+                     </div>
+                    `;
+                })()}
              </div>
              <div style="margin-top: 20px; text-align: center; padding: 10px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 6px; color: #60a5fa; font-size: 0.9em;">
                 ℹ️ <strong>Erklärung:</strong><br>
