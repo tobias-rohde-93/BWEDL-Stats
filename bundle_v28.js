@@ -1054,9 +1054,10 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.maxWidth = "1200px";
         container.style.margin = "0 auto";
 
+        let myStats = null;
         // --- My Profile Section ---
         if (myPlayerName) {
-            let myStats = null;
+            // myStats is now outer scope
             let myLeagueKey = null;
             let mySchedule = [];
             let myTrend = null;
