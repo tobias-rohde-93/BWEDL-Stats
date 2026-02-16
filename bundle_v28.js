@@ -388,6 +388,18 @@ document.addEventListener('DOMContentLoaded', () => {
         toolsLink.onclick = () => navigateTo('tools');
         nav.appendChild(toolsLink);
 
+        // 7. Wiki / Help (New)
+        const wikiLink = document.createElement('div');
+        wikiLink.className = 'nav-section-header';
+        wikiLink.innerHTML = '📘 ANLEITUNG / WIKI';
+        wikiLink.style.padding = "10px 15px 5px";
+        wikiLink.style.color = "#888";
+        wikiLink.style.fontSize = "0.8em";
+        wikiLink.style.fontWeight = "bold";
+        wikiLink.style.cursor = "pointer";
+        wikiLink.onclick = () => navigateTo('wiki');
+        nav.appendChild(wikiLink);
+
         // Show Favorites
         renderFavoritesSidebar();
 
@@ -1463,6 +1475,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (type === 'alltime') renderAllTimeView();
         else if (type === 'tools') renderToolsView();
         else if (type === 'profile') renderProfileSelection();
+        else if (type === 'wiki') renderWiki();
 
         // 4. Update Back Button Visibility
         // Show back button everywhere except Dashboard
@@ -5157,6 +5170,101 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     // Init called via logic at top
     // init();
+
+    function renderWiki() {
+        topBarTitle.textContent = "Anleitung / Wiki";
+        contentArea.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.className = "fade-in";
+        container.style.padding = "20px";
+        container.style.maxWidth = "800px";
+        container.style.margin = "0 auto";
+        container.style.color = "#e2e8f0";
+
+        container.innerHTML = `
+            <div style="background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #334155;">
+                <h2 style="color: #60a5fa; border-bottom: 2px solid #334155; padding-bottom: 10px; margin-bottom: 20px;">📘 BWEDL Stats - Benutzerhandbuch</h2>
+                
+                <p>Willkommen bei <strong>BWEDL Stats</strong>, deiner App für Darts-Statistiken, Tabellen und Tools rund um die <em>Baden-Württembergische E-Dart Liga</em>.</p>
+
+                <h3 style="color: #f8fafc; margin-top: 25px;">🚀 Schnelleinstieg</h3>
+                <p>Die App ist in drei Hauptbereiche unterteilt:</p>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Dashboard</strong>: Deine persönliche Übersicht (Favoriten, nächste Spiele).</li>
+                    <li><strong>Ligen</strong>: Alle Tabellen, Ergebnisse und Schedules der aktuellen Saison.</li>
+                    <li><strong>Tools</strong>: Nützliche Helfer wie der Match Scorer oder H2H-Vergleich.</li>
+                </ul>
+
+                <hr style="border-color: #334155; margin: 30px 0;">
+
+                <h3 style="color: #f8fafc;">🧭 Navigation & Bereiche</h3>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">1. Dashboard</h4>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Favoriten</strong>: Markiere Spieler (⭐), um ihre Statistiken sofort zu sehen.</li>
+                    <li><strong>Suche</strong>: Nutze die Suchleiste oben links, um schnell nach <em>Spielern</em> oder <em>Vereinen</em> zu suchen.</li>
+                    <li><strong>Status</strong>: Oben links siehst du, wann die Daten zuletzt aktualisiert wurden.</li>
+                </ul>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">2. Ligen & Tabellen</h4>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Tabelle</strong>: Die aktuelle Rangliste.</li>
+                    <li><strong>Ergebnisse</strong>: Alle Spieltage und Match-Details (klicke auf ein Match für Details).</li>
+                    <li><strong>Einzelkritik</strong>: Klicke auf einen Spieler in der Tabelle, um seine persönlichen Stats zu sehen.</li>
+                </ul>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">3. Vereinsseiten</h4>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Quick Stats</strong>: Überblick über Mitgliederzahl, aktive Ligen und Gesamtpunkte.</li>
+                    <li><strong>Details</strong>: Adresse, Kontaktinfos und Link zum Spielort.</li>
+                    <li><strong>Kader</strong>: Liste aller Spieler mit aktueller Liga und Rang.</li>
+                    <li><strong>Archiv</strong>: Historie des Vereins aus vergangenen Saisons.</li>
+                </ul>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">4. Spieler-Profile</h4>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Formkurve</strong>: Die letzten Spiele und Trend.</li>
+                    <li><strong>Saisonverlauf</strong>: Detaillierte Liste aller gespielten Runden.</li>
+                    <li><strong>Head-to-Head</strong>: Vergleiche diesen Spieler direkt mit einem anderen.</li>
+                </ul>
+
+                <hr style="border-color: #334155; margin: 30px 0;">
+
+                <h3 style="color: #f8fafc;">🛠️ Tools & Features</h3>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">⚔️ H2H Vergleich</h4>
+                <p>Vergleiche zwei Spieler direkt miteinander: Titel, Erfahrung, Form.</p>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">🎯 Match Scorer</h4>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Multi-Player</strong>: Spiele 1vs1 oder im Team.</li>
+                    <li><strong>Spracheingabe</strong>: Scorer per Stimme ("Hundertachtzig").</li>
+                    <li><strong>Dartboard-Input</strong>: Tippe auf das Board.</li>
+                    <li><strong>Checkout-Hilfe</strong>: Wege zum Finish (z.B. T20 - D20).</li>
+                </ul>
+
+                <h4 style="color: #94a3b8; margin-top: 20px;">📱 Installation (App)</h4>
+                <p>Installiere diese Seite als App auf deinem Homescreen (iOS/Android), um sie wie eine normale App zu nutzen.</p>
+
+                <hr style="border-color: #334155; margin: 30px 0;">
+
+                <h3 style="color: #f8fafc;">❓ FAQ</h3>
+                <p><strong>Wie oft werden die Daten aktualisiert?</strong><br>
+                Regelmäßig von der offiziellen BWEDL-Seite. Nutze den 🔄 Button im Menü für manuelle Updates.</p>
+
+                <p><strong>Kann ich alte Saisons sehen?</strong><br>
+                Ja, im "Archiv" auf den Vereins- und Spielerseiten.</p>
+            </div>
+            <div style="text-align: center; margin-top: 20px; color: #64748b; font-size: 0.8em;">
+                <a href="https://github.com/tobias-rohde-93/BWEDL-Stats/wiki" target="_blank" style="color: #64748b; text-decoration: underline;">
+                    Doku auch auf GitHub ansehen
+                </a>
+            </div>
+        `;
+
+        contentArea.appendChild(container);
+    }
 });
 
 // Global check to hide update button on production environments
