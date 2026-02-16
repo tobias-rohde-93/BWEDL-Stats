@@ -207,7 +207,7 @@ async def scrape_archive():
                         # Scan typical range for ID (indices 1 to 4)
                         for i in range(1, min(len(row), 5)):
                             val = row[i].strip()
-                            if val.isdigit() and int(val) > 99:
+                            if val.isdigit() and int(val) > 0:
                                 # Found a candidate ID
                                 
                                 # Verification: Name should be adjacent and NOT a number

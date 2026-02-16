@@ -29,6 +29,36 @@ window.ARCHIVE_DATA = {
       "name": "Thomas K\u00f6hnlein"
     }
   ],
+  "004": [
+    {
+      "season": "22/23",
+      "rank": 19,
+      "points": 124,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "24/25",
+      "rank": 13,
+      "points": 136,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "23/24",
+      "rank": 5,
+      "points": 149,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "20/22",
+      "rank": 20,
+      "points": 93,
+      "league": "Bezirksliga",
+      "name": "Bernd Fritz"
+    }
+  ],
   "397": [
     {
       "season": "24/25",
@@ -20280,6 +20310,554 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Anne Vollmer"
+    }
+  ],
+  "073": [
+    {
+      "season": "24/25",
+      "rank": 6,
+      "points": 155,
+      "league": "A-Klasse",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "23/24",
+      "rank": 4,
+      "points": 158,
+      "league": "A-Klasse",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "22/23",
+      "rank": 5,
+      "points": 161,
+      "league": "A-Klasse",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "20/22",
+      "rank": 10,
+      "points": 115,
+      "league": "Bezirksliga",
+      "name": "Peter Penndorf"
+    }
+  ],
+  "099": [
+    {
+      "season": "24/25",
+      "rank": 14,
+      "points": 133,
+      "league": "A-Klasse",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "23/24",
+      "rank": 20,
+      "points": 99,
+      "league": "Bezirksliga",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "22/23",
+      "rank": 8,
+      "points": 124,
+      "league": "Bezirksliga",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "20/22",
+      "rank": 16,
+      "points": 101,
+      "league": "Bezirksliga",
+      "name": "Frank Polte"
+    }
+  ],
+  "083": [
+    {
+      "season": "24/25",
+      "rank": 34,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "23/24",
+      "rank": 39,
+      "points": 52,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "22/23",
+      "rank": 31,
+      "points": 56,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "20/22",
+      "rank": 24,
+      "points": 74,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    }
+  ],
+  "048": [
+    {
+      "season": "24/25",
+      "rank": 53,
+      "points": 72,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "23/24",
+      "rank": 58,
+      "points": 61,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "22/23",
+      "rank": 33,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "20/22",
+      "rank": 31,
+      "points": 99,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    }
+  ],
+  "005": [
+    {
+      "season": "24/25",
+      "rank": 62,
+      "points": 53,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "23/24",
+      "rank": 84,
+      "points": 32,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "22/23",
+      "rank": 66,
+      "points": 58,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "20/22",
+      "rank": 26,
+      "points": 68,
+      "league": "Bezirksliga",
+      "name": "Frank Valentin"
+    }
+  ],
+  "066": [
+    {
+      "season": "24/25",
+      "rank": 64,
+      "points": 52,
+      "league": "A-Klasse",
+      "name": "Volker Beck"
+    },
+    {
+      "season": "23/24",
+      "rank": 18,
+      "points": 114,
+      "league": "A-Klasse",
+      "name": "Volker Beck"
+    },
+    {
+      "season": "22/23",
+      "rank": 8,
+      "points": 155,
+      "league": "B-Klasse",
+      "name": "Volker Beck"
+    }
+  ],
+  "014": [
+    {
+      "season": "24/25",
+      "rank": 87,
+      "points": 25,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "23/24",
+      "rank": 45,
+      "points": 83,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "22/23",
+      "rank": 60,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "20/22",
+      "rank": 90,
+      "points": 23,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    }
+  ],
+  "085": [
+    {
+      "season": "24/25",
+      "rank": 90,
+      "points": 13,
+      "league": "A-Klasse",
+      "name": "Kay Gottmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 61,
+      "points": 60,
+      "league": "A-Klasse",
+      "name": "Kay Gottmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 55,
+      "points": 8,
+      "league": "Bezirksliga",
+      "name": "Kay Gottmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 82,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Kay Gottmann"
+    }
+  ],
+  "096": [
+    {
+      "season": "24/25",
+      "rank": 1,
+      "points": 165,
+      "league": "B-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "23/24",
+      "rank": 7,
+      "points": 153,
+      "league": "B-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "22/23",
+      "rank": 7,
+      "points": 149,
+      "league": "A-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "20/22",
+      "rank": 3,
+      "points": 164,
+      "league": "A-Klasse",
+      "name": "Alexander Schmidt"
+    }
+  ],
+  "022": [
+    {
+      "season": "24/25",
+      "rank": 11,
+      "points": 139,
+      "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "23/24",
+      "rank": 23,
+      "points": 127,
+      "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "22/23",
+      "rank": 2,
+      "points": 168,
+      "league": "C-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "20/22",
+      "rank": 131,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    }
+  ],
+  "076": [
+    {
+      "season": "24/25",
+      "rank": 47,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "23/24",
+      "rank": 27,
+      "points": 121,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "22/23",
+      "rank": 62,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "20/22",
+      "rank": 88,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Pasquale Rackovic"
+    }
+  ],
+  "064": [
+    {
+      "season": "24/25",
+      "rank": 60,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Annette Beck"
+    },
+    {
+      "season": "23/24",
+      "rank": 54,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Annette Beck"
+    },
+    {
+      "season": "22/23",
+      "rank": 18,
+      "points": 140,
+      "league": "C-Klasse",
+      "name": "Annette Beck"
+    }
+  ],
+  "093": [
+    {
+      "season": "24/25",
+      "rank": 78,
+      "points": 67,
+      "league": "B-Klasse",
+      "name": "Sebastian Kunze"
+    },
+    {
+      "season": "23/24",
+      "rank": 84,
+      "points": 62,
+      "league": "B-Klasse",
+      "name": "Sebastian Kunze"
+    },
+    {
+      "season": "22/23",
+      "rank": 58,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Sebastian Kunze"
+    }
+  ],
+  "012": [
+    {
+      "season": "24/25",
+      "rank": 216,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Thomas Minkus"
+    },
+    {
+      "season": "23/24",
+      "rank": 77,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Thomas Minkus"
+    }
+  ],
+  "034": [
+    {
+      "season": "24/25",
+      "rank": 328,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "H\u00fcseyin Yigit"
+    },
+    {
+      "season": "23/24",
+      "rank": 184,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "H\u00fcseyin Yigit"
+    },
+    {
+      "season": "20/22",
+      "rank": 210,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "H\u00fcseyin Yigit"
+    }
+  ],
+  "10": [
+    {
+      "season": "24/25",
+      "rank": 1,
+      "points": 216,
+      "league": "C-Klasse",
+      "name": "Matteo P."
+    }
+  ],
+  "14": [
+    {
+      "season": "24/25",
+      "rank": 7,
+      "points": 127,
+      "league": "C-Klasse",
+      "name": "x"
+    }
+  ],
+  "027": [
+    {
+      "season": "23/24",
+      "rank": 114,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Asterios Karelas"
+    },
+    {
+      "season": "22/23",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Asterios Karelas"
+    },
+    {
+      "season": "20/22",
+      "rank": 143,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Asterios Karelas"
+    }
+  ],
+  "071": [
+    {
+      "season": "22/23",
+      "rank": 129,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Wolfgang Vogelmann"
+    }
+  ],
+  "078": [
+    {
+      "season": "22/23",
+      "rank": 177,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Stephan Schmich"
+    }
+  ],
+  "93": [
+    {
+      "season": "20/22",
+      "rank": 45,
+      "points": 79,
+      "league": "A-Klasse",
+      "name": "Sebastian Kunze"
+    }
+  ],
+  "71": [
+    {
+      "season": "20/22",
+      "rank": 76,
+      "points": 35,
+      "league": "A-Klasse",
+      "name": "Wolfgang Vogelmann"
+    }
+  ],
+  "051": [
+    {
+      "season": "20/22",
+      "rank": 102,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Claus Ratschmann"
+    }
+  ],
+  "49": [
+    {
+      "season": "20/22",
+      "rank": 110,
+      "points": 13,
+      "league": "A-Klasse",
+      "name": "Ivonne Strahlheim"
+    }
+  ],
+  "68": [
+    {
+      "season": "20/22",
+      "rank": 137,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Michael H\u00f6fle"
+    }
+  ],
+  "50": [
+    {
+      "season": "20/22",
+      "rank": 153,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Bischoff"
+    }
+  ],
+  "002": [
+    {
+      "season": "20/22",
+      "rank": 62,
+      "points": 77,
+      "league": "B-Klasse",
+      "name": "Wolfgang Loss"
+    }
+  ],
+  "097": [
+    {
+      "season": "20/22",
+      "rank": 71,
+      "points": 67,
+      "league": "B-Klasse",
+      "name": "Alfred Loth"
+    }
+  ],
+  "055": [
+    {
+      "season": "20/22",
+      "rank": 231,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "J\u00fcrgen Thillmann"
     }
   ]
 };
