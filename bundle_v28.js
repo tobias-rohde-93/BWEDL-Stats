@@ -1313,76 +1313,146 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- League Leaders With Averages ---
-        const leaguesSection = document.createElement('div');
-        leaguesSection.style.marginTop = "60px"; // Add margin since we removed the top players section
-        let leaguesHtml = `<h2 style="color: #60a5fa; border-bottom: 2px solid #334155; padding-bottom: 10px; margin-bottom: 20px;">🏆 Tabellenführer</h2>`;
-        leaguesHtml += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
+        // --- TOP 20 PLAYERS (Latest Matchday) ---
+        const topPlayersSection = document.createElement('div');
+        topPlayersSection.style.marginTop = "40px";
 
-        const extractLeaderStats = (tableHtml) => {
-            try {
-                const div = document.createElement('div');
-                div.innerHTML = tableHtml;
-                const rows = Array.from(div.querySelectorAll('tr'));
-                // Start from row 1 (skip header row 0)
-                for (let i = 1; i < rows.length; i++) {
-                    const cells = rows[i].querySelectorAll('td');
-                    // Standard B-KL/A-KL Format: 0:Rank, 1:Name, 2:Sp, ..., 8:Pkt
-                    // Check if rank is 1.
-                    if (cells.length > 8 && cells[0].textContent.includes('1.')) {
-                        const name = cells[1].textContent.trim();
-                        const games = parseInt(cells[2].textContent.trim()) || 0;
-                        const points = parseInt(cells[8].textContent.trim()) || 0;
-
-                        if (games > 0) {
-                            return {
-                                name: name,
-                                games: games,
-                                points: points
-                            };
-                        }
-                    }
-                }
-            } catch (e) {
-                console.error("Error parsing leader", e);
+        // 1. Determine Latest Active Round
+        let latestRound = 0;
+        if (rankingData && rankingData.players) {
+            for (let i = 1; i <= 18; i++) {
+                const hasData = rankingData.players.some(p => {
+                    const val = p.rounds[`R${i}`];
+                    return val && val !== "&nbsp;" && val !== "x" && !isNaN(parseInt(val));
+                });
+                if (hasData) latestRound = i;
             }
-            return null;
+        }
+
+        // 2. Helper to get Top 20 for a specific league
+        const getTopPlayers = (leagueName) => {
+            if (!rankingData || !rankingData.players) return [];
+            return rankingData.players
+                .filter(p => p.league && p.league.includes(leagueName))
+                .map(p => {
+                    const val = p.rounds[`R${latestRound}`];
+                    const score = (val && val !== "&nbsp;" && val !== "x" && !isNaN(parseInt(val))) ? parseInt(val) : 0;
+                    return { ...p, currentScore: score };
+                })
+                .filter(p => p.currentScore > 0)
+                .sort((a, b) => b.currentScore - a.currentScore)
+                .slice(0, 20);
         };
 
-        if (typeof leagueData !== 'undefined' && leagueData.leagues) {
-            Object.keys(leagueData.leagues).sort().forEach(leagueName => {
-                // Exclude Ligapokal logic
-                if (leagueName.includes("Ligapokal")) return;
+        // 3. UI Construction
+        const topTitle = `<h2 style="color: #60a5fa; border-bottom: 2px solid #334155; padding-bottom: 10px; margin-bottom: 20px; display:flex; justify-content:space-between; align-items:center;">
+                            <span>🏆 Spieltags-Sieger (Top 20)</span>
+                            <span style="font-size:0.6em; color:#94a3b8; background:#1e293b; padding:2px 8px; border-radius:4px;">Spieltag ${latestRound}</span>
+                          </h2>`;
 
-                const data = leagueData.leagues[leagueName];
-                if (data.table) {
-                    const stats = extractLeaderStats(data.table);
-                    if (stats) {
-                        leaguesHtml += `
-                        <div style="background: #1e293b; padding: 15px 20px; border-radius: 8px; border: 1px solid #334155; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden;"
-                             onclick="navigateTo('league', '${leagueName}')"
-                             onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
-
-                            <div style="font-size: 0.85em; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; border-bottom: 1px solid #334155; padding-bottom: 8px;">
-                                ${leagueName}
-                            </div>
-
-                            <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc; margin-bottom: 5px;">
-                                ${stats.name}
-                            </div>
-
-                            <div style="font-size: 0.8em; color: #64748b; text-align: left; margin-top: 5px;">
-                                ${stats.points} Punkte in ${stats.games} Spielen
-                            </div>
-
-                        </div>`;
-                    }
-                }
-            });
+        // Tabs
+        const leagues = ["Bezirksliga", "A-Klasse", "B-Klasse", "C-Klasse"];
+        // Default to user's league or first one
+        let activeTab = leagues[0];
+        if (myStats && myStats.league) {
+            const match = leagues.find(l => myStats.league.includes(l));
+            if (match) activeTab = match;
         }
-        leaguesHtml += `</div>`;
-        leaguesSection.innerHTML = leaguesHtml;
-        container.appendChild(leaguesSection);
+
+        const renderTopList = (league) => {
+            const list = getTopPlayers(league);
+            if (list.length === 0) return `<div style="text-align:center; padding:20px; color:#94a3b8;">Keine Daten für Spieltag ${latestRound}</div>`;
+
+            return `
+            <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em;">
+                    <thead>
+                        <tr style="background: #0f172a; text-align: left; color: #94a3b8; font-size: 0.8em; text-transform: uppercase;">
+                            <th style="padding: 10px 15px; width: 40px;">#</th>
+                            <th style="padding: 10px 15px;">Name</th>
+                            <th style="padding: 10px 15px;">Verein</th>
+                            <th style="padding: 10px 15px; text-align: right;">Punkte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${list.map((p, idx) => {
+                const isMyPlayer = p.name === myPlayerName;
+                const rowBg = isMyPlayer ? 'rgba(59, 130, 246, 0.1)' : (idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)');
+                const rankColor = idx < 3 ? '#fbbf24' : '#94a3b8';
+                const scoreColor = idx < 3 ? '#4ade80' : '#f8fafc';
+
+                // Find full club name
+                let clubName = p.company || "-";
+                if (typeof clubData !== 'undefined' && clubData.clubs) {
+                    const c = clubData.clubs.find(cl => cl.number == p.v_nr);
+                    if (c) clubName = c.name;
+                }
+
+                return `
+                            <tr style="background: ${rowBg}; border-bottom: 1px solid #334155;">
+                                <td style="padding: 10px 15px; font-weight: bold; color: ${rankColor};">${idx + 1}.</td>
+                                <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${p.name}</td>
+                                <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${clubName}</td>
+                                <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: ${scoreColor}; font-size: 1.1em;">${p.currentScore}</td>
+                            </tr>
+                            `;
+            }).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+        };
+
+        const containerDiv = document.createElement('div');
+        containerDiv.innerHTML = topTitle;
+
+        // Tab Container
+        const tabContainer = document.createElement('div');
+        tabContainer.style.display = "flex";
+        tabContainer.style.gap = "10px";
+        tabContainer.style.marginBottom = "15px";
+        tabContainer.style.overflowX = "auto";
+        tabContainer.style.paddingBottom = "5px";
+
+        const contentDiv = document.createElement('div');
+
+        leagues.forEach(l => {
+            const btn = document.createElement('button');
+            btn.textContent = l;
+            btn.style.padding = "8px 16px";
+            btn.style.borderRadius = "20px";
+            btn.style.border = "1px solid #334155";
+            btn.style.background = (l === activeTab) ? "#3b82f6" : "#1e293b";
+            btn.style.color = (l === activeTab) ? "white" : "#94a3b8";
+            btn.style.cursor = "pointer";
+            btn.style.fontWeight = "bold";
+            btn.style.fontSize = "0.9em";
+            btn.style.whiteSpace = "nowrap";
+
+            btn.onclick = () => {
+                // Reset all
+                Array.from(tabContainer.children).forEach(b => {
+                    b.style.background = "#1e293b";
+                    b.style.color = "#94a3b8";
+                });
+                // Set active
+                btn.style.background = "#3b82f6";
+                btn.style.color = "white";
+                activeTab = l;
+                contentDiv.innerHTML = "Lade...";
+                setTimeout(() => {
+                    contentDiv.innerHTML = renderTopList(l); // Render content
+                }, 10);
+            };
+            tabContainer.appendChild(btn);
+        });
+
+        // Initial Render
+        contentDiv.innerHTML = renderTopList(activeTab);
+
+        topPlayersSection.appendChild(containerDiv);
+        topPlayersSection.appendChild(tabContainer);
+        topPlayersSection.appendChild(contentDiv);
+        container.appendChild(topPlayersSection);
 
         contentArea.appendChild(container);
 
