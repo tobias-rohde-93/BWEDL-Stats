@@ -1246,6 +1246,93 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 grid.appendChild(heroCard);
 
+                // --- 1.1 Career Stats Card (New) ---
+                let careerStats = {
+                    totalPoints: 0,
+                    titles: 0,
+                    bestSeason: { points: 0, season: '' },
+                    highestLeague: '',
+                    seasonsPlayed: 0
+                };
+
+                if (typeof ARCHIVE_DATA !== 'undefined' && rankingData.players) {
+                    let archiveEntries = [];
+                    // ARCHIVE_DATA keys are IDs. p.id should match.
+                    if (p.id && ARCHIVE_DATA[p.id]) {
+                        archiveEntries = ARCHIVE_DATA[p.id];
+                    }
+
+                    // Add Current Season (Snapshot)
+                    const currentPoints = Math.round(myStats.avg * myStats.count);
+                    const currentLeagueClass = myLeagueKey ? myLeagueKey.split('Gruppe')[0].trim() : (myStats.league || "");
+
+                    // 1. Total Points (Archive)
+                    archiveEntries.forEach(entry => {
+                        careerStats.totalPoints += (entry.points || 0);
+                        if (entry.rank === 1) careerStats.titles++;
+
+                        if (entry.points > careerStats.bestSeason.points) {
+                            careerStats.bestSeason = { points: entry.points, season: entry.season };
+                        }
+                    });
+
+                    // Add Current Season
+                    careerStats.totalPoints += currentPoints;
+                    if (currentPoints > careerStats.bestSeason.points) {
+                        careerStats.bestSeason = { points: currentPoints, season: '24/25' };
+                    }
+
+                    // Highest League
+                    // Hierarchy: Bezirksliga (Highest) > A-Klasse > B-Klasse > C-Klasse
+                    const leagueHierarchy = ['Bezirksliga', 'A-Klasse', 'B-Klasse', 'C-Klasse'];
+                    let highestLevelFound = 99;
+
+                    // Check Archive
+                    archiveEntries.forEach(entry => {
+                        const idx = leagueHierarchy.findIndex(l => entry.league.includes(l));
+                        if (idx !== -1 && idx < highestLevelFound) highestLevelFound = idx;
+                    });
+
+                    // Check Current
+                    const currentIdx = leagueHierarchy.findIndex(l => currentLeagueClass.includes(l));
+                    if (currentIdx !== -1 && currentIdx < highestLevelFound) highestLevelFound = currentIdx;
+
+                    if (highestLevelFound !== 99) {
+                        careerStats.highestLeague = leagueHierarchy[highestLevelFound];
+                    }
+
+                    careerStats.seasonsPlayed = archiveEntries.length + 1; // + Current
+                }
+
+                if (careerStats.seasonsPlayed > 0) {
+                    const careerCard = document.createElement('div');
+                    careerCard.style.background = "#1e293b";
+                    careerCard.style.borderRadius = "12px";
+                    careerCard.style.border = "1px solid #334155";
+                    careerCard.style.padding = "20px";
+                    careerCard.style.display = "grid";
+                    careerCard.style.gridTemplateColumns = "repeat(auto-fit, minmax(80px, 1fr))";
+                    careerCard.style.gap = "15px";
+                    careerCard.style.textAlign = "center";
+
+                    // Helper for items
+                    const createItem = (label, val, sub) => `
+                        <div style="display:flex; flex-direction:column; align-items:center;">
+                            <div style="color:#94a3b8; font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px;">${label}</div>
+                            <div style="color:white; font-size:1.4em; font-weight:bold;">${val}</div>
+                            ${sub ? `<div style="color:#64748b; font-size:0.7em;">${sub}</div>` : ''}
+                        </div>
+                     `;
+
+                    careerCard.innerHTML = `
+                         ${createItem("Ewige Punkte", careerStats.totalPoints, `${careerStats.seasonsPlayed} Saisons`)}
+                         ${createItem("Titel", careerStats.titles > 0 ? '🏆 ' + careerStats.titles : '0', "1. Plätze")}
+                         ${createItem("Best-Wert", careerStats.bestSeason.points, `Saison ${careerStats.bestSeason.season}`)}
+                         ${createItem("Höchste Liga", careerStats.highestLeague.replace('Liga', ''), "Karriere")}
+                     `;
+                    grid.appendChild(careerCard);
+                }
+
                 // --- 2. STATS & FORM CARD ---
                 const statsCard = document.createElement('div');
                 statsCard.style.background = "#1e293b";
