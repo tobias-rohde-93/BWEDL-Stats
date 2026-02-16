@@ -1151,21 +1151,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const cells = row.querySelectorAll('td');
                                 if (cells.length > 8) {
                                     // Extract Data
-                                    // format assumption: Rank | Team | Games | S | U | N | Sets | Diff | Pts
-                                    // But we need to be careful with indices. 
-                                    // Let's assume standard BWEDL formatting based on `extractLeagueLeader` (Rank=0, Team=1)
-                                    // And purely numeric columns at the end.
-                                    // Last column = Points.
-                                    // Second to last = Diff? 
+                                    // FIXED: Table usually has 10 columns (0-9).
+                                    // Index 8 = Points. Index 7 = Diff. Index 2 = Games.
+                                    // Last column (Index 9) is for penalties/notes (e.g. "(-1)" or "&nbsp;").
 
                                     const teamName = cells[1].textContent.trim();
-                                    const pointsText = cells[cells.length - 1].textContent.trim();
+
+                                    // Robust parsing
+                                    const pointsText = cells[8].textContent.replace(/&nbsp;/g, '').trim();
                                     const points = parseInt(pointsText) || 0;
 
-                                    // Diff is usually Points - 1 (index 7 if length 9)
-                                    // Sets is usually Points - 2 (index 6)
-                                    // Let's try to parse Diff from the cell before points.
-                                    const diffText = cells[cells.length - 2].textContent.trim();
+                                    const diffText = cells[7].textContent.replace(/&nbsp;/g, '').trim();
                                     const diff = parseInt(diffText) || 0;
 
                                     allTeams.push({
