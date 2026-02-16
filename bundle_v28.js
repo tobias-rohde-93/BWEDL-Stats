@@ -3562,7 +3562,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!targetName) return false;
             const normC = clubName.toLowerCase().replace(/[^a-z0-9]/g, '');
             const normT = targetName.toLowerCase().replace(/[^a-z0-9]/g, '');
-            return normT.includes(normC) || normC.includes(normT);
+
+            if (!normC || !normT) return false;
+
+            // 1. Exact Match
+            if (normC === normT) return true;
+
+            // 2. Target contains Club (e.g. "Club II" matches "Club")
+            // This is usually safe, unless club name is very short (checked implicitly by data)
+            if (normT.includes(normC)) return true;
+
+            // 3. Club contains Target (e.g. "Club Name" matches "Club")
+            // DANGEROUS: Matches "DC", "SV", "1", "Team" in table headers/cells.
+            // Only allow if Target is distinctive enough (long enough).
+            if (normC.includes(normT)) {
+                if (normT.length < 4) return false; // Reject short matches like "DC", "EV", "1."
+                return true;
+            }
+
+            return false;
         };
 
         // --- 1. GATHER DATA ---
