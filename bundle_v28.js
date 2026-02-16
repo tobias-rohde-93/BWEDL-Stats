@@ -1790,12 +1790,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 })()}
 
                 ${(() => {
-                    const getConsistency = (hist) => {
-                        if (!hist || hist.length === 0) return 0;
-                        const sum = hist.reduce((acc, s) => acc + (s.rank || 0), 0);
-                        return sum / hist.length;
-                    };
-                    const c1 = getConsistency(h1);
                     const c2 = getConsistency(h2);
                     // Lower is better
                     return card(c1, c2, "Konsistenz", "Ø Platzierung (Alle Saisons)", "", "", true, true);
