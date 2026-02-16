@@ -1214,11 +1214,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <h1 style="margin: 0; font-size: 2.2em; color: white;">${myStats.name}</h1>
                                 <div style="color: #94a3b8; font-size: 1.1em; margin-top: 5px;">
                                     ${myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a")} | ${searchTeam || "Vereinslos"}
-                                    ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold;">(Platz ${teamRank} <span style="font-size:0.7em; font-weight:normal; color:#64748b;">von ${totalTeamsInClass}</span>)</span>` : ''}
+                                    ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold;">(Team-Platz: ${teamRank} <span style="font-size:0.7em; font-weight:normal; color:#64748b;">/ ${totalTeamsInClass}</span>)</span>` : ''}
                                 </div>
                             </div>
                             <div style="text-align: right;">
-                                <div style="background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; display: inline-block;">
+                                <div style="background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; display: inline-block; white-space: nowrap;">
                                     Rang ${myStats.rank}
                                 </div>
                             </div>
