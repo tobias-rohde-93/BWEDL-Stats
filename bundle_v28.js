@@ -1636,7 +1636,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (list.length === 0) return `<div style="text-align:center; padding:20px; color:#94a3b8;">Keine Daten für Spieltag ${latestRound}</div>`;
 
             return `
-            <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden;">
+            <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow-x: auto;">
                 <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em;">
                     <thead>
                         <tr style="background: #0f172a; text-align: left; color: #94a3b8; font-size: 0.8em; text-transform: uppercase;">
@@ -4077,27 +4077,29 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.margin = "0 auto";
 
         // --- Helper: Fuzzy Match Club Name ---
+        const stripTeamNumber = (name) => {
+            return name.replace(/\s+\d+$/, '').replace(/\s+[IVX]+$/, '').replace(/\s+II$/, '').trim();
+        };
+
         const isClubMatch = (clubName, targetName) => {
             if (!targetName) return false;
-            const normC = clubName.toLowerCase().replace(/[^a-z0-9]/g, '');
-            const normT = targetName.toLowerCase().replace(/[^a-z0-9]/g, '');
+            // Normalize: lowercase, remove non-alphanumeric, BUT stripping numbers first ensures "Team 2" matches "Team"
+            // We want to match the *Club Base Name* against the Target
 
-            if (!normC || !normT) return false;
+            const baseC = stripTeamNumber(clubName).toLowerCase().replace(/[^a-z0-9]/g, '');
+            const baseT = stripTeamNumber(targetName).toLowerCase().replace(/[^a-z0-9]/g, '');
 
-            // 1. Exact Match
-            if (normC === normT) return true;
+            if (!baseC || !baseT) return false;
 
-            // 2. Target contains Club (e.g. "Club II" matches "Club")
-            // This is usually safe, unless club name is very short (checked implicitly by data)
-            if (normT.includes(normC)) return true;
+            // 1. Exact Match of Base Names
+            if (baseC === baseT) return true;
 
-            // 3. Club contains Target (e.g. "Club Name" matches "Club")
-            // DANGEROUS: Matches "DC", "SV", "1", "Team" in table headers/cells.
-            // Only allow if Target is distinctive enough (long enough).
-            if (normC.includes(normT)) {
-                if (normT.length < 4) return false; // Reject short matches like "DC", "EV", "1."
-                return true;
-            }
+            // 2. Target contains Club Base (e.g. "Club II" matches "Club")
+            if (baseT.includes(baseC)) return true;
+
+            // 3. Club Base contains Target (Risky, only if Club Base is distinct)
+            // e.g. "DC Cool Team" matches "Cool Team"
+            if (baseC.length > 4 && baseC.includes(baseT)) return true;
 
             return false;
         };
@@ -4346,7 +4348,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             </span>
                         </div>
                     </div>
-                    ${spark}
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 15px;">
+                        <div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Form</div>
+                        ${spark.replace('margin-left: 10px;', 'margin: 0;')}
+                    </div>
                     <div style="text-align: right; margin-left: 10px;">
                         <div style="font-weight: bold; color: #4ade80; font-size: 1.1em;">${p.points || 0}</div>
                         <div style="font-size: 0.75em; color: #64748b;">Pkt</div>
