@@ -4078,7 +4078,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Helper: Fuzzy Match Club Name ---
         const stripTeamNumber = (name) => {
-            return name.replace(/\s+\d+$/, '').replace(/\s+[IVX]+$/, '').replace(/\s+II$/, '').trim();
+            let clean = name;
+            // 1. Strip "Team X" / "Mannschaft X"
+            clean = clean.replace(/\s+(Team|Mannschaft)\s+\d+$/i, '');
+            // 2. Strip Roman Numerals (I-V) at end
+            clean = clean.replace(/\s+(I|II|III|IV|V)$/, '');
+            // 3. Strip small numbers (1-19) at end (e.g. " 2", " 12")
+            // Avoids stripping "180", "2000", etc.
+            clean = clean.replace(/\s+([1-9]|1[0-9])$/, '');
+            return clean.trim();
         };
 
         const isClubMatch = (clubName, targetName) => {
@@ -4350,7 +4358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0 15px;">
-                        <div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Form</div>
+                        <div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Spielform</div>
                         ${spark.replace('margin-left: 10px;', 'margin: 0;')}
                     </div>
                     <div style="text-align: right; margin-left: 10px;">
