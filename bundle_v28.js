@@ -4076,16 +4076,21 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.maxWidth = "800px";
         container.style.margin = "0 auto";
 
-        // --- Helper: Fuzzy Match Club Name ---
         const stripTeamNumber = (name) => {
-            let clean = name;
+            if (!name) return "";
+            // Replace non-breaking spaces and trim
+            let clean = name.replace(/\u00A0/g, ' ').trim();
+
             // 1. Strip "Team X" / "Mannschaft X"
             clean = clean.replace(/\s+(Team|Mannschaft)\s+\d+$/i, '');
+
             // 2. Strip Roman Numerals (I-V) at end
-            clean = clean.replace(/\s+(I|II|III|IV|V)$/, '');
-            // 3. Strip small numbers (1-19) at end (e.g. " 2", " 12")
+            clean = clean.replace(/\s+(I|II|III|IV|V)\.?$/i, '');
+
+            // 3. Strip small numbers (1-19) at end (e.g. " 2", " 2.")
             // Avoids stripping "180", "2000", etc.
-            clean = clean.replace(/\s+([1-9]|1[0-9])$/, '');
+            clean = clean.replace(/\s+([1-9]|1[0-9])\.?$/, '');
+
             return clean.trim();
         };
 
