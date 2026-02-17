@@ -4163,17 +4163,14 @@ document.addEventListener('DOMContentLoaded', () => {
         recentMatches.sort((a, b) => b.ts - a.ts);   // Descending (last game first)
 
         // limit
-        const nextGames = upcomingMatches.slice(0, 5);
-        const lastGames = recentMatches.slice(0, 5);
+        const nextGames = upcomingMatches.slice(0, 30);
+        const lastGames = recentMatches.slice(0, 30);
 
 
         // --- 2. RENDER UI ---
 
-        // A) Quick Stats Header
-        const totalPoints = clubPlayers.reduce((acc, p) => acc + (parseInt(p.points) || 0), 0);
-        const activeLeagues = [...new Set(clubPlayers.map(p => p.league))].filter(l => l && l !== "Unbekannt").length;
-
-        let statsHtml = `
+        // ... (Stats Header) ...
+        const statsHtml = `
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
                 <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
                     <div style="font-size: 1.5em;">👥</div>
@@ -4265,11 +4262,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // C-1) Upcoming
         const upcomingCard = document.createElement('div');
         upcomingCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📅 Nächste Spiele</h3>`;
+
+        const upcomingList = document.createElement('div');
+        upcomingList.style.maxHeight = "400px";
+        upcomingList.style.overflowY = "auto";
+        upcomingList.style.paddingRight = "5px"; // Scrollbar padding
+
         if (nextGames.length === 0) {
-            upcomingCard.innerHTML += `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele gefunden.</div>`;
+            upcomingList.innerHTML += `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele gefunden.</div>`;
         } else {
             nextGames.forEach(m => {
-                upcomingCard.innerHTML += `
+                upcomingList.innerHTML += `
                     <div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;">
                         <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;">
                             <span>${m.dateStr}</span>
@@ -4284,12 +4287,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             });
         }
+        upcomingCard.appendChild(upcomingList);
 
         // C-2) Recent
         const recentCard = document.createElement('div');
         recentCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📊 Letzte Ergebnisse</h3>`;
+
+        const recentList = document.createElement('div');
+        recentList.style.maxHeight = "400px";
+        recentList.style.overflowY = "auto";
+        recentList.style.paddingRight = "5px";
+
         if (lastGames.length === 0) {
-            recentCard.innerHTML += `<div style="color: #64748b; font-size: 0.9em;">Keine Ergebnisse gefunden.</div>`;
+            recentList.innerHTML += `<div style="color: #64748b; font-size: 0.9em;">Keine Ergebnisse gefunden.</div>`;
         } else {
             lastGames.forEach(m => {
                 // Determine Win/Loss mainly by score if we can identify 'our' team
@@ -4302,7 +4312,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (ourScore > oppScore) resColor = "#4ade80";
                 else if (ourScore < oppScore) resColor = "#f87171";
 
-                recentCard.innerHTML += `
+                recentList.innerHTML += `
                     <div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px; border-left: 3px solid ${resColor};">
                         <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;">
                             <span>${m.dateStr}</span>
@@ -4321,6 +4331,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             });
         }
+        recentCard.appendChild(recentList);
 
         matchesGrid.appendChild(upcomingCard);
         matchesGrid.appendChild(recentCard);
