@@ -1376,7 +1376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     
                                     <!-- League Avg Marker -->
                                     <div style="position: absolute; left: ${avgPercent}%; top: -5px; bottom: -5px; width: 2px; background: #cbd5e1; z-index: 1;"></div>
-                                    <div style="position: absolute; left: ${avgPercent}%; top: -25px; transform: translateX(-50%); color: #94a3b8; font-size: 0.7em;">Ø ${leagueAvg.toFixed(1)}</div>
+                                    <div style="position: absolute; left: ${avgPercent}%; top: 35px; transform: translateX(-50%); color: #94a3b8; font-size: 0.7em;">Ø ${leagueAvg.toFixed(1)}</div>
                                     
                                     <!-- My Bar -->
                                     <div style="position: absolute; left: 0; top: 0; bottom: 0; width: ${myPercent}%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 15px; z-index: 2;"></div>
