@@ -4407,8 +4407,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // D) Players List
         if (clubPlayers.length > 0) {
-            // Sort Players
-            clubPlayers.sort((a, b) => (parseInt(b.points) || 0) - (parseInt(a.points) || 0));
+            // Sort Players - ALREADY SORTED ABOVE BY LEAGUE & RANK
+            // clubPlayers.sort((a, b) => (parseInt(b.points) || 0) - (parseInt(a.points) || 0));
 
             const playerSection = document.createElement('div');
             playerSection.style.marginTop = "30px";
