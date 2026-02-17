@@ -4169,7 +4169,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- 2. RENDER UI ---
 
-        // ... (Stats Header) ...
+        // A) Quick Stats Header
+        const totalPoints = clubPlayers.reduce((acc, p) => acc + (parseInt(p.points) || 0), 0);
+        const activeLeagues = [...new Set(clubPlayers.map(p => p.league))].filter(l => l && l !== "Unbekannt").length;
+
         const statsHtml = `
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
                 <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
