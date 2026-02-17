@@ -1375,8 +1375,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div style="position: relative; height: 30px; background: #0f172a; border-radius: 15px; margin-top: 15px;">
                                     
                                     <!-- League Avg Marker -->
-                                    <div style="position: absolute; left: ${avgPercent}%; top: -5px; bottom: -5px; width: 2px; background: #64748b; z-index: 1;"></div>
-                                    <div style="position: absolute; left: ${avgPercent}%; top: -25px; transform: translateX(-50%); color: #64748b; font-size: 0.7em;">Ø ${leagueAvg.toFixed(1)}</div>
+                                    <div style="position: absolute; left: ${avgPercent}%; top: -5px; bottom: -5px; width: 2px; background: #cbd5e1; z-index: 1;"></div>
+                                    <div style="position: absolute; left: ${avgPercent}%; top: -25px; transform: translateX(-50%); color: #94a3b8; font-size: 0.7em;">Ø ${leagueAvg.toFixed(1)}</div>
                                     
                                     <!-- My Bar -->
                                     <div style="position: absolute; left: 0; top: 0; bottom: 0; width: ${myPercent}%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 15px; z-index: 2;"></div>
@@ -1400,7 +1400,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (roundsData.length > 0) {
                         // Take last 8 played rounds for display
                         const recentRounds = roundsData.slice(-8);
-                        const maxPoints = Math.max(...recentRounds.map(d => d.p), 10);
+                        const maxPoints = Math.max(...recentRounds.map(d => d.p), myStats.avg + 10, 10);
+                        const avgHeight = (myStats.avg / maxPoints) * 100;
 
                         let barsHtml = recentRounds.map(d => {
                             const h = (d.p / maxPoints) * 100;
@@ -1408,8 +1409,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             // Spike Visual
                             return `
-                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end;">
-                                    <div style="position: relative; width: 2px; height: ${h}%; background: ${color}; display: flex; justify-content: center;">
+                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end; position: relative;">
+                                    <div style="position: relative; width: 2px; height: ${h}%; background: ${color}; display: flex; justify-content: center; z-index: 2;">
                                         <!-- Dot -->
                                         <div style="position: absolute; top: 0; width: 8px; height: 8px; background: ${color}; border-radius: 50%; transform: translateY(-50%);"></div>
                                         <!-- Label -->
@@ -1423,8 +1424,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         statsCard.innerHTML += `
                             <div style="border-top: 1px solid #334155; padding-top: 15px;">
                                 <h3 style="color: #94a3b8; font-size: 0.8em; text-transform: uppercase; margin-bottom: 25px;">📈 Formkurve</h3>
-                                <div style="display: flex; height: 100px; align-items: flex-end; gap: 10px; padding-top: 20px;">
-                                    ${barsHtml}
+                                <div style="position: relative; height: 100px; padding-top: 20px;">
+                                    <!-- Dashed Avg Line -->
+                                    <div style="position: absolute; bottom: 20px; left: 0; right: 0; height: ${avgHeight}%; border-top: 1px dashed #475569; pointer-events: none; z-index: 0; opacity: 0.5;"></div>
+                                    
+                                    <div style="display: flex; height: 100%; align-items: flex-end; gap: 10px; position: relative; z-index: 1;">
+                                        ${barsHtml}
+                                    </div>
                                 </div>
                             </div>
                         `;
