@@ -4136,7 +4136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 1. Identify Withdrawn Teams in this League
                 const withdrawnTeams = [];
                 const league = leagueData.leagues[leagueName];
-                if (league && league.table) {
+                if (league && Array.isArray(league.table)) {
                     league.table.forEach(row => {
                         // Check for "zurückgezogen" or similar markers in points/games
                         // The user said: "Punkte zurückgezogen"
