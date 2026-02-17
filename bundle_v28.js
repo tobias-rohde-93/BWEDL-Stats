@@ -4124,6 +4124,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof RANKING_DATA !== 'undefined' && RANKING_DATA.players && club.number) {
             clubPlayers = RANKING_DATA.players.filter(p => p.v_nr === club.number);
 
+            // DEBUG: Check what we are sorting
+            console.log("Club Players before sort:", clubPlayers.map(p => ({ name: p.name, league: p.league, rank: p.rank })));
+
             // SORTING: 1. League Hierarchy, 2. Rank
             const getLeagueWeight = (l) => {
                 if (!l) return 0;
