@@ -4123,6 +4123,27 @@ document.addEventListener('DOMContentLoaded', () => {
         let clubPlayers = [];
         if (typeof RANKING_DATA !== 'undefined' && RANKING_DATA.players && club.number) {
             clubPlayers = RANKING_DATA.players.filter(p => p.v_nr === club.number);
+
+            // SORTING: 1. League Hierarchy, 2. Rank
+            const getLeagueWeight = (l) => {
+                if (!l) return 0;
+                l = l.toLowerCase();
+                if (l.includes("bezirk")) return 4;
+                if (l.includes("a-klasse")) return 3;
+                if (l.includes("b-klasse")) return 2;
+                if (l.includes("c-klasse")) return 1;
+                return 0;
+            };
+
+            clubPlayers.sort((a, b) => {
+                const wA = getLeagueWeight(a.league);
+                const wB = getLeagueWeight(b.league);
+                if (wA !== wB) return wB - wA; // Higher weight first
+
+                const rA = parseInt(a.rank) || 999;
+                const rB = parseInt(b.rank) || 999;
+                return rA - rB; // Lower rank first
+            });
         }
 
         // B) Matches (Upcoming & Recent)
