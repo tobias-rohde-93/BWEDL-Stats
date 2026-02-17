@@ -4131,10 +4131,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (typeof leagueData !== 'undefined' && leagueData.leagues) {
             Object.keys(leagueData.leagues).forEach(leagueName => {
-                if (leagueName.includes("Ligapokal")) return; // Skip Ligapokal for now or handle differently
+                if (leagueName.includes("Ligapokal")) return;
 
-                const matches = parseAllMatches(leagueName); // Reuse existing helper
+                // 1. Identify Withdrawn Teams in this League
+                const withdrawnTeams = [];
+                const league = leagueData.leagues[leagueName];
+                if (league && league.table) {
+                    league.table.forEach(row => {
+                        // Check for "zurückgezogen" or similar markers in points/games
+                        // The user said: "Punkte zurückgezogen"
+                        if (row && (String(row.points).toLowerCase().includes("zurück") || String(row.games).toLowerCase().includes("zurück"))) {
+                            withdrawnTeams.push(row.team);
+                        }
+                    });
+                }
+
+                const matches = parseAllMatches(leagueName);
                 matches.forEach(m => {
+                    // FILTER: Skip if opponent (or self) is withdrawn
+                    // We only care about Upcoming matches being polluted.
+                    // If a match is played, it's fine (history).
+                    // But if it's "upcoming" (no result), and one team is withdrawn -> Skip.
+                    if (!m.played) {
+                        if (withdrawnTeams.includes(m.home) || withdrawnTeams.includes(m.away)) return;
+                    }
+
                     if (isClubMatch(club.name, m.home) || isClubMatch(club.name, m.away)) {
                         // Parse Date for sorting
                         let ts = 0;
