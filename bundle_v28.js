@@ -4136,10 +4136,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 1. Identify Withdrawn Teams in this League
                 const withdrawnTeams = [];
                 const league = leagueData.leagues[leagueName];
-                if (league && Array.isArray(league.table)) {
+
+                // DATA FIX: league.table is an HTML string, not an array!
+                if (league && typeof league.table === 'string') {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = league.table;
+                    const rows = tempDiv.querySelectorAll('tr');
+
+                    rows.forEach(row => {
+                        if (row.textContent.toLowerCase().includes("zurückgezogen")) {
+                            // Extract Team Name (Usually in 2nd cell for this table format)
+                            const cells = row.querySelectorAll('td');
+                            if (cells.length >= 2) {
+                                // Cell 0: Rank, Cell 1: Team Name
+                                let teamName = cells[1].textContent.trim();
+                                // Clean up non-breaking spaces commonly found in these tables
+                                teamName = teamName.replace(/\u00a0/g, ' ').trim();
+                                withdrawnTeams.push(teamName);
+                            }
+                        }
+                    });
+                } else if (league && Array.isArray(league.table)) {
+                    // Fallback if data format changes to array in future
                     league.table.forEach(row => {
-                        // Check for "zurückgezogen" or similar markers in points/games
-                        // The user said: "Punkte zurückgezogen"
                         if (row && (String(row.points).toLowerCase().includes("zurück") || String(row.games).toLowerCase().includes("zurück"))) {
                             withdrawnTeams.push(row.team);
                         }
