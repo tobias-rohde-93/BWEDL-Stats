@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "17.02.2026 18:59:57",
+    "last_updated": "18.02.2026 01:58:06",
     "clubs": [
         {
             "venue": "Meyerhöfle",
