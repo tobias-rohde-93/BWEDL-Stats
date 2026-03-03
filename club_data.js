@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "03.03.2026 06:52:00",
+    "last_updated": "03.03.2026 12:51:43",
     "clubs": [
         {
             "venue": "Meyerhöfle",
@@ -602,8 +602,8 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/the-flying-rocks/"
         },
         {
-            "venue": "Klapsmühle",
-            "street": "Hauptstraße 190",
+            "venue": "Eisenbahner Sportverein 1928 e.V.",
+            "street": "Emil-Keßler-Str. 14",
             "city": "Pforzheim",
             "phone": "",
             "fax": "",
@@ -753,7 +753,7 @@ window.CLUB_DATA = {
         },
         {
             "venue": "ESV Pforzheim 1929 e.V.",
-            "street": "Emil-Kessler-Str. 15",
+            "street": "Emil-Keßler-Str. 15",
             "city": "Pforzheim",
             "phone": "",
             "fax": "",
