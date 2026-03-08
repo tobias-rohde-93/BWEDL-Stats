@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "08.03.2026 12:46:35",
+    "last_updated": "08.03.2026 18:35:51",
     "clubs": [
         {
             "venue": "Meyerhöfle",
@@ -152,8 +152,8 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/dc-texas-team/"
         },
         {
-            "venue": "Klapsmühle",
-            "street": "Hauptstraße 190",
+            "venue": "X Cafe Bistro",
+            "street": "Westliche-Karl-Friedrich- Str. 259",
             "city": "Pforzheim",
             "phone": "",
             "fax": "",
