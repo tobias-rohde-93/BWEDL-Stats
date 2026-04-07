@@ -71,18 +71,30 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDashboard();
     };
 
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
+            if (mobileOverlay) mobileOverlay.classList.toggle('active');
         });
 
-        // Close sidebar when clicking outside on mobile
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                mobileOverlay.classList.remove('active');
+            });
+        }
+
+        // Close sidebar when clicking outside on mobile (fallback)
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 768 &&
                 sidebar.classList.contains('open') &&
                 !sidebar.contains(e.target) &&
-                e.target !== menuToggle) {
+                e.target !== menuToggle && 
+                (!mobileOverlay || !mobileOverlay.contains(e.target))) {
                 sidebar.classList.remove('open');
+                if (mobileOverlay) mobileOverlay.classList.remove('active');
             }
         });
 
@@ -92,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // If clicked element is a link or clickable item (league-item)
                 if (e.target.classList.contains('league-item') || e.target.tagName === 'A') {
                     sidebar.classList.remove('open');
+                    if (mobileOverlay) mobileOverlay.classList.remove('active');
                 }
             }
         });
@@ -124,6 +137,18 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (window.ARCHIVE_DATA) archiveData = window.ARCHIVE_DATA;
 
     if (Object.keys(leagueData).length === 0) {
+        const contentArea = document.getElementById('content-area');
+        if (contentArea) {
+             contentArea.innerHTML = `
+                <div style="padding: 20px;">
+                    <div class="skeleton-row" style="width: 40%; height: 30px; margin-bottom: 30px;"></div>
+                    <div class="skeleton-row" style="width: 100%; height: 50px;"></div>
+                    <div class="skeleton-row" style="width: 100%; height: 40px;"></div>
+                    <div class="skeleton-row" style="width: 100%; height: 40px;"></div>
+                    <div class="skeleton-row" style="width: 80%; height: 40px;"></div>
+                </div>
+            `;
+        }
         fetch('league_data.json')
             .then(res => res.json())
             .then(data => {
@@ -246,16 +271,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const leagues = Object.keys(leagueData.leagues).sort();
+            
+            // Group leagues by prefix
+            const leagueGroups = {};
             leagues.forEach(leagueName => {
-                const el = document.createElement('div');
-                el.className = 'league-item';
-                el.textContent = leagueName;
-                el.addEventListener('click', () => {
-                    navigateTo('league', leagueName);
-                });
-                container.appendChild(el);
+                let parts = leagueName.split(' ');
+                let category = parts[0];
+                if (leagueName.toLowerCase().includes('klasse')) {
+                    category = parts[0]; // e.g. "A-Klasse"
+                } else if (leagueName.toLowerCase().includes('liga')) {
+                     // e.g. "Bezirksliga", "Kreisliga"
+                     category = parts[0]; 
+                } else {
+                    category = "Sonstige";
+                }
+                
+                if (!leagueGroups[category]) leagueGroups[category] = [];
+                leagueGroups[category].push(leagueName);
             });
-            nav.appendChild(container);
+
+            Object.keys(leagueGroups).sort().forEach(category => {
+                // Header
+                const catHeader = document.createElement('div');
+                catHeader.className = 'sidebar-accordion-header';
+                catHeader.innerHTML = `<span>${category}</span> <span class="sidebar-accordion-icon">▶</span>`;
+                
+                // Content
+                const catContent = document.createElement('div');
+                catContent.className = 'sidebar-accordion-content';
+                
+                leagueGroups[category].forEach(leagueName => {
+                    const el = document.createElement('div');
+                    el.className = 'league-item';
+                    el.textContent = leagueName;
+                    el.addEventListener('click', () => {
+                        navigateTo('league', leagueName);
+                    });
+                    catContent.appendChild(el);
+                });
+                
+                catHeader.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent parent toggle
+                    catHeader.classList.toggle('active');
+                    catContent.classList.toggle('open');
+                });
+                
+                container.appendChild(catHeader);
+                container.appendChild(catContent);
+            });
+            nav.appendChild(container); // Add the container to nav
         }
 
         // 2. Rankings

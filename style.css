@@ -13,7 +13,7 @@
     --accent-hover: #2563eb;
     --accent-dim: rgba(59, 130, 246, 0.15);
 
-    --border-subtle: #334155;
+    --border-subtle: rgba(255, 255, 255, 0.08); /* changed from #334155 for glassmorphism */
     --border-focus: #3b82f6;
 
     --success: #10b981;
@@ -226,8 +226,9 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
@@ -282,11 +283,12 @@ a:hover {
 .btn-primary {
     background-color: var(--accent-primary);
     color: white;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
 }
 
 .btn-primary:hover {
     background-color: var(--accent-hover);
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
 }
 
 .btn-secondary {
@@ -433,7 +435,7 @@ tr:hover td {
 
 .tab-content {
     display: none;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.15s ease-out;
 }
 
 .tab-content.active {
@@ -516,6 +518,46 @@ tr:hover td {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* --- Skeleton Loader --- */
+.skeleton-row {
+    height: 20px;
+    background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+    background-size: 200% 100%;
+    animation: pulseLine 1.5s infinite linear;
+    border-radius: var(--radius-sm);
+    margin: 8px 0;
+}
+
+@keyframes pulseLine {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* --- Mobile Overlay --- */
+.mobile-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Utilities */
