@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             // Use global window.searchIndex to check
             if (!window.searchIndex || window.searchIndex.length < 50) {
-                console.log("Retrying Search Index Build...");
+                // Search index fallback: rebuild if initial build yielded too few entries
                 buildSearchIndex();
             }
         }, 2000);
@@ -359,8 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
         compareLink.onclick = () => navigateTo('comparison');
         nav.appendChild(compareLink);
 
-        nav.appendChild(compareLink);
-
         // 5. All-Time Table (New)
         const allTimeLink = document.createElement('div');
         allTimeLink.className = 'nav-section-header';
@@ -370,9 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
         allTimeLink.style.fontSize = "0.8em";
         allTimeLink.style.fontWeight = "bold";
         allTimeLink.style.cursor = "pointer";
-        allTimeLink.onclick = () => navigateTo('alltime');
-        nav.appendChild(allTimeLink);
-
         allTimeLink.onclick = () => navigateTo('alltime');
         nav.appendChild(allTimeLink);
 
@@ -449,6 +444,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Players (from Ranking Data)
         if (rankingData.players) {
+            // Pre-build club lookup maps for O(1) access instead of O(n) per player
+            const clubNameMap = new Map();
+            const clubIdxMap = new Map();
+            if (clubData.clubs) {
+                clubData.clubs.forEach((c, idx) => {
+                    clubNameMap.set(c.number, c.name);
+                    clubIdxMap.set(c.number, idx);
+                });
+            }
+
             // Deduplicate players by ID or Name+Club
             const seenPlayers = new Set();
             rankingData.players.forEach(p => {
@@ -456,23 +461,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!seenPlayers.has(uniqueKey)) {
                     seenPlayers.add(uniqueKey);
 
-                    // Find club context if possible
-                    let clubName = "";
-                    if (clubData.clubs) {
-                        const club = clubData.clubs.find(c => c.number === p.v_nr);
-                        if (club) clubName = club.name;
-                    }
-
-                    let clubIdx = -1;
-                    if (clubData.clubs) {
-                        clubIdx = clubData.clubs.findIndex(c => c.number === p.v_nr);
-                    }
-
-                    if (clubIdx !== -1) {
+                    const clubIdx = clubIdxMap.get(p.v_nr);
+                    if (clubIdx !== undefined) {
                         searchIndex.push({
                             label: p.name,
                             type: "Spieler",
-                            context: clubName,
+                            context: clubNameMap.get(p.v_nr) || "",
                             category: 'club',
                             id: clubIdx
                         });
@@ -1826,7 +1820,6 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (type === 'club') renderClub(id);
         else if (type === 'clubList') renderClubList();
         else if (type === 'dashboard') renderDashboard();
-        else if (type === 'dashboard') renderDashboard();
         else if (type === 'matchPreview') renderMatchPreview();
         else if (type === 'comparison') renderComparisonView();
         else if (type === 'alltime') renderAllTimeView();
@@ -2291,7 +2284,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!league) return '';
             const l = league.toLowerCase();
             if (l.includes('bezirksoberliga')) return 'BOL';
-            if (l.includes('bezirksliga')) return 'BL';
+            if (l.includes('bezirksliga')) return 'BZ';
             if (l.includes('a-klasse') || l.includes('a klasse')) return 'A';
             if (l.includes('b-klasse') || l.includes('b klasse')) return 'B';
             if (l.includes('c-klasse') || l.includes('c klasse')) return 'C';
@@ -3830,13 +3823,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const tabs = contentArea.querySelectorAll('.tab-btn');
         const contents = contentArea.querySelectorAll('.tab-content');
 
-        console.log(`Setting up tabs: found ${tabs.length} buttons and ${contents.length} contents.`);
 
         tabs.forEach(tab => {
             // Remove old listeners by cloning (simple way) or just adding new ones logic is fine if DOM is fresh
             tab.onclick = () => { // Use onclick property to ensure single listener
                 const tabId = tab.dataset.tab;
-                console.log(`Tab clicked: ${tabId}`);
 
                 // Deactivate all
                 tabs.forEach(t => t.classList.remove('active'));
@@ -3849,7 +3840,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const target = contentArea.querySelector(`#${targetId}`);
                 if (target) {
                     target.classList.add('active');
-                    console.log(`Activated content: ${targetId}`);
                 } else {
                     console.error(`Target content not found: ${targetId}`);
                 }
@@ -3857,7 +3847,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (forceFirst && tabs.length > 0) {
-            console.log("Forcing click on first tab");
             tabs[0].click();
         }
     }
@@ -3955,11 +3944,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let clubName = p.company;
 
             if (clubData.clubs) {
-                const club = clubData.clubs.find(c => c.number === p.v_nr);
-                if (club) {
-                    clubIdx = clubData.clubs.indexOf(club);
+                clubIdx = clubData.clubs.findIndex(c => c.number === p.v_nr);
+                if (clubIdx !== -1) {
                     // Use club name from master data if missing on player object
-                    if (!clubName) clubName = club.name;
+                    if (!clubName) clubName = clubData.clubs[clubIdx].name;
                 }
             }
             // Fallback
@@ -4048,7 +4036,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const leagueTierLabel = (league) => {
             if (!league) return '';
-            if (league.includes('Bezirksliga')) return 'BZL';
+            if (league.includes('Bezirksliga')) return 'BZ';
             if (league.includes('A-Klasse')) return 'A';
             if (league.includes('B-Klasse')) return 'B';
             if (league.includes('C-Klasse')) return 'C';
@@ -4124,8 +4112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof RANKING_DATA !== 'undefined' && RANKING_DATA.players && club.number) {
             clubPlayers = RANKING_DATA.players.filter(p => p.v_nr === club.number);
 
-            // DEBUG: Check what we are sorting
-            console.log("Club Players before sort:", clubPlayers.map(p => ({ name: p.name, league: p.league, rank: p.rank })));
 
             // SORTING: 1. League Hierarchy, 2. Rank
             const getLeagueWeight = (l) => {
@@ -4470,9 +4456,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!table.league || table.league === 'Unbekannt') return false;
                 if (table.league.includes('Ligapokal')) return false;
 
-                // Determine if any row in this table matches our club
-                if (!table.rows) return false;
-                return table.rows.some(row => {
+                // Determine if any data row (skip header at index 0) matches our club
+                if (!table.rows || table.rows.length < 2) return false;
+                return table.rows.slice(1).some(row => {
                     if (row.length < 2) return false;
                     // Check ALL columns for the club name
                     return row.some(cell => isClubMatch(club.name, cell));
@@ -4829,10 +4815,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!detectedTeamName) {
-            console.log('[AutoDetect] No team name found');
             return null;
         }
-        console.log('[AutoDetect] Team name:', detectedTeamName);
 
         // 2. Search ALL leagues for matches involving my team
         // (league names in rankingData vs leagueData often don't match)
@@ -4874,8 +4858,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!teamInLeague) continue;
-            console.log('[AutoDetect] Found team in league:', leagueName,
-                '(', allMatches.length, 'matches)');
+
 
             // Collect unplayed matches for my team
             const upcoming = allMatches.filter(m => {
