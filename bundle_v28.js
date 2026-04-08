@@ -4148,23 +4148,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const isClubMatch = (clubName, targetName) => {
             if (!targetName) return false;
-            // Normalize: lowercase, remove non-alphanumeric, BUT stripping numbers first ensures "Team 2" matches "Team"
-            // We want to match the *Club Base Name* against the Target
 
-            const baseC = stripTeamNumber(clubName).toLowerCase().replace(/[^a-z0-9]/g, '');
-            const baseT = stripTeamNumber(targetName).toLowerCase().replace(/[^a-z0-9]/g, '');
+            // Reject pure-numeric or very short targets (scores, points, ranks)
+            const rawTarget = targetName.replace(/\u00A0/g, ' ').trim();
+            if (/^\d+([:.]\d+)?$/.test(rawTarget)) return false;
+            if (rawTarget.length < 3) return false;
+
+            // Normalize: lowercase, remove non-alphanumeric
+            const baseC = stripTeamNumber(clubName).toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
+            const baseT = stripTeamNumber(targetName).toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
 
             if (!baseC || !baseT) return false;
+            if (baseT.length < 3) return false;
 
             // 1. Exact Match of Base Names
             if (baseC === baseT) return true;
 
             // 2. Target contains Club Base (e.g. "Club II" matches "Club")
-            if (baseT.includes(baseC)) return true;
+            //    Only if Club Base is substantial enough to avoid short-substring pollution
+            if (baseC.length >= 6 && baseT.includes(baseC)) return true;
 
-            // 3. Club Base contains Target (Risky, only if Club Base is distinct)
-            // e.g. "DC Cool Team" matches "Cool Team"
-            if (baseC.length > 4 && baseC.includes(baseT)) return true;
+            // 3. Club Base contains Target — ONLY if Target is long enough
+            //    (avoids matching scores like "26" inside "dcirish26ev")
+            if (baseT.length >= 8 && baseC.includes(baseT)) return true;
 
             return false;
         };
