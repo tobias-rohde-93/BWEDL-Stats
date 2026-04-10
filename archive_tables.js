@@ -1,7 +1,7 @@
 window.ARCHIVE_TABLES = [
   {
     "season": "2024/2025",
-    "league": "BWEDL e.V. Ligapokal 2024/2025",
+    "league": "Unbekannt",
     "rows": [
       [
         "Runde/Info",
@@ -2001,7 +2001,7 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2023/2024",
-    "league": "BWEDL e.V. Ligapokal 2023/2024",
+    "league": "Unbekannt",
     "rows": [
       [
         "Runde/Info",
@@ -4016,7 +4016,7 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2022/2023",
-    "league": "BWEDL e.V. Ligapokal 2022/2023",
+    "league": "Unbekannt",
     "rows": [
       [
         "Runde/Info",
