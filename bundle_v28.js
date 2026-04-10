@@ -274,7 +274,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Group leagues by prefix
             const leagueGroups = {};
+            const ligapokalGroup = [];
             leagues.forEach(leagueName => {
+                if (leagueName.toLowerCase().includes('ligapokal')) {
+                    ligapokalGroup.push(leagueName);
+                    return;
+                }
                 let parts = leagueName.split(' ');
                 let category = parts[0];
                 if (leagueName.toLowerCase().includes('klasse')) {
@@ -320,6 +325,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(catContent);
             });
             nav.appendChild(container); // Add the container to nav
+            
+            // 1b. Ligapokal
+            if (ligapokalGroup.length > 0) {
+                const lpHeader = document.createElement('div');
+                lpHeader.className = 'nav-section-header';
+                lpHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> LIGAPOKAL';
+                lpHeader.style.padding = "10px 15px 5px";
+                lpHeader.style.color = "#888";
+                lpHeader.style.fontSize = "0.8em";
+                lpHeader.style.fontWeight = "bold";
+                lpHeader.style.cursor = "pointer";
+                nav.appendChild(lpHeader);
+
+                const lpContainer = document.createElement('div');
+                lpContainer.style.display = "none";
+                lpContainer.style.paddingLeft = "0";
+
+                lpHeader.addEventListener('click', () => {
+                    const isHidden = lpContainer.style.display === "none";
+                    lpContainer.style.display = isHidden ? "block" : "none";
+                    lpHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
+                });
+
+                ligapokalGroup.forEach(lpName => {
+                    const el = document.createElement('div');
+                    el.className = 'league-item';
+                    el.textContent = lpName;
+                    el.addEventListener('click', () => {
+                        navigateTo('league', lpName);
+                    });
+                    lpContainer.appendChild(el);
+                });
+                nav.appendChild(lpContainer);
+            }
         }
 
         // 2. Rankings
@@ -3697,13 +3736,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const clone = template.content.cloneNode(true);
         contentArea.appendChild(clone);
 
-        // Handle Ligapokal specific view (Hide Tabs, show only table)
-        if (leagueName.includes("Ligapokal")) {
-            const tabsContainer = contentArea.querySelector('.tabs');
-            if (tabsContainer) tabsContainer.style.display = 'none';
-        } else {
-            setupTabs(true);
-        }
+        setupTabs(true);
 
         const normalizeClubName = (str) => {
             return str.toLowerCase()
@@ -4211,7 +4244,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (typeof leagueData !== 'undefined' && leagueData.leagues) {
             Object.keys(leagueData.leagues).forEach(leagueName => {
-                if (leagueName.includes("Ligapokal")) return;
 
                 // 1. Identify Withdrawn Teams in this League
                 const withdrawnTeams = [];
@@ -4524,7 +4556,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Filter relevant tables
             const relevantTables = window.ARCHIVE_TABLES.filter(table => {
                 if (!table.league || table.league === 'Unbekannt') return false;
-                if (table.league.includes('Ligapokal')) return false;
 
                 // Determine if any data row (skip header at index 0) matches our club
                 if (!table.rows || table.rows.length < 2) return false;
