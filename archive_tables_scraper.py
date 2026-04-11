@@ -7,6 +7,13 @@ import re
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
 
+# Explicit Ligapokal archive URLs to ensure we capture all cup data
+LIGAPOKAL_URLS = [
+    f"{BASE_URL}/archiv/saison-2022-2023/",
+    f"{BASE_URL}/archiv/2023-2024/",
+    f"{BASE_URL}/archiv/2024-2025/",
+]
+
 async def scrape_archive_tables():
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
@@ -50,6 +57,18 @@ async def scrape_archive_tables():
                          unique_seasons[href] = clean_text
         
         print(f"Found {len(unique_seasons)} seasons to scrape.")
+        
+        # Add explicit Ligapokal URLs to the list
+        for lp_url in LIGAPOKAL_URLS:
+            # Extract season from URL
+            match = re.search(r"(\d{4})[/-](\d{4})", lp_url)
+            if match:
+                season_key = f"{match.group(1)}/{match.group(2)}"
+                if lp_url not in unique_seasons:
+                    unique_seasons[lp_url] = f"Ligapokal {season_key}"
+                    print(f"  Added Ligapokal URL: {lp_url}")
+        
+        print(f"Total URLs to scrape (including Ligapokal): {len(unique_seasons)}")
         
         all_tables = [] 
 
