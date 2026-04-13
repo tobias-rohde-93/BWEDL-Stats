@@ -4292,9 +4292,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const matches = parseAllMatches(leagueName);
                 matches.forEach(m => {
-                    // FILTER: Skip Ligapokal matches entirely
-                    if (isLigapokalMatch(leagueName)) return;
-
                     // FILTER: Skip if opponent (or self) is withdrawn
                     // We only care about Upcoming matches being polluted.
                     // If a match is played, it's fine (history).
