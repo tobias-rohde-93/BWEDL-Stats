@@ -50,7 +50,7 @@
             <div class="sidebar-controls">
                 <div class="status-text" id="last-updated">Stand: --</div>
                 <div class="status-text" style="font-size: 0.65em; opacity: 0.6; margin-top: 2px; margin-bottom: 5px;">
-                    v2.24 (Data & Time Fixes)</div>
+                    v2.24.1 (Ligapokal Display Fix)</div>
 
                 <button id="update-btn" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;"
                     onclick="triggerUpdate()">
@@ -110,7 +110,8 @@
     <script src="club_data.js?v=3"></script>
     <script src="archive_data.js?v=7"></script>
     <script src="archive_tables.js?v=4"></script>
-    <script src="bundle_v28.js?v=2.70"></script>
+    <script src="ligapokal_archive.js?v=1"></script>
+    <script src="bundle_v29.js?v=2.71"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', async () => {
@@ -131,7 +132,7 @@
                     // Only register new SW if we are sure it's clean, or just let the bundle load first
                     // For now, let's explicitly register the NEW one after a short delay
                     setTimeout(() => {
-                        navigator.serviceWorker.register('./sw_v28.js').then(registration => {
+                        navigator.serviceWorker.register('./sw_v29.js').then(registration => {
                             console.log('New SW Registered:', registration.scope);
                         });
                     }, 1000);

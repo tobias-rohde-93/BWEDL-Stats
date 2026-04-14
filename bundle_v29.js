@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let rankingData = {};
     let clubData = {};
     let archiveData = {};
+    let ligapokalArchive = {};
 
     // Search & Navigation Globals
     window.searchIndex = [];
@@ -135,6 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof ARCHIVE_DATA !== 'undefined') archiveData = ARCHIVE_DATA;
     else if (window.ARCHIVE_DATA) archiveData = window.ARCHIVE_DATA;
+
+    // Load Ligapokal Archive Data
+    if (typeof LIGAPOKAL_ARCHIVE !== 'undefined') ligapokalArchive = LIGAPOKAL_ARCHIVE;
+    else if (window.LIGAPOKAL_ARCHIVE) ligapokalArchive = window.LIGAPOKAL_ARCHIVE;
 
     if (Object.keys(leagueData).length === 0) {
         const contentArea = document.getElementById('content-area');
@@ -326,8 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             nav.appendChild(container); // Add the container to nav
 
-            // 1b. Ligapokal
-            if (ligapokalGroup.length > 0) {
+            // 1b. Ligapokal (current + archive seasons)
+            {
                 const lpHeader = document.createElement('div');
                 lpHeader.className = 'nav-section-header';
                 lpHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> LIGAPOKAL';
@@ -348,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     lpHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
                 });
 
+                // Current season Ligapokal entries
                 ligapokalGroup.forEach(lpName => {
                     const el = document.createElement('div');
                     el.className = 'league-item';
@@ -357,6 +363,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     lpContainer.appendChild(el);
                 });
+
+                // Historical Ligapokal seasons from archive
+                if (ligapokalArchive && Object.keys(ligapokalArchive).length > 0) {
+                    // Sort seasons descending (newest first)
+                    const archiveSeasons = Object.keys(ligapokalArchive).sort().reverse();
+                    archiveSeasons.forEach(seasonName => {
+                        const el = document.createElement('div');
+                        el.className = 'league-item';
+                        el.textContent = seasonName;
+                        el.style.color = '#94a3b8';
+                        el.addEventListener('click', () => {
+                            navigateTo('ligapokalArchive', seasonName);
+                        });
+                        lpContainer.appendChild(el);
+                    });
+                }
+
                 nav.appendChild(lpContainer);
             }
         }
@@ -1919,6 +1942,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentState = { type, id };
 
         if (type === 'league') renderLeague(id);
+        else if (type === 'ligapokalArchive') renderLigapokalArchive(id);
         else if (type === 'ranking') renderRanking(id);
         else if (type === 'club') renderClub(id);
         else if (type === 'clubList') renderClubList();
@@ -3710,6 +3734,105 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // --- Ligapokal Archive Renderer ---
+    // Renders historical Ligapokal seasons using the same layout
+    // as the current season (tabs: Tabelle / Spielergebnisse).
+    // Data is read from ligapokalArchive (loaded from ligapokal_archive.js).
+    function renderLigapokalArchive(seasonName) {
+        const data = ligapokalArchive[seasonName];
+        if (!data) {
+            contentArea.innerHTML = '<p class="text-secondary">Keine Daten für diese Saison verfügbar.</p>';
+            topBarTitle.textContent = seasonName;
+            return;
+        }
+
+        topBarTitle.innerHTML = "";
+        const span = document.createElement('span');
+        span.textContent = seasonName;
+        topBarTitle.appendChild(span);
+
+        // Favorite button for archive seasons
+        const favBtn = document.createElement('button');
+        favBtn.id = "fav-btn";
+        favBtn.style.background = "none";
+        favBtn.style.border = "none";
+        favBtn.style.cursor = "pointer";
+        favBtn.style.fontSize = "1.2rem";
+        favBtn.style.marginLeft = "10px";
+        updateFavBtnState(favBtn, 'ligapokalArchive', seasonName);
+        favBtn.onclick = (e) => {
+            e.stopPropagation();
+            toggleFavorite('ligapokalArchive', seasonName, seasonName);
+        };
+        topBarTitle.appendChild(favBtn);
+
+        contentArea.innerHTML = '';
+        const clone = template.content.cloneNode(true);
+        contentArea.appendChild(clone);
+
+        // Ligapokal archive: hide tabs, show only results directly
+        const tabsBar = contentArea.querySelector('.tabs');
+        if (tabsBar) tabsBar.style.display = 'none';
+        const tabTable = document.getElementById('tab-table');
+        if (tabTable) tabTable.style.display = 'none';
+        const tabResults = document.getElementById('tab-results');
+        if (tabResults) {
+            tabResults.classList.add('active');
+            tabResults.style.display = 'block';
+        }
+
+        // Helper: find club index for clickable team links
+        const normalizeClubName = (str) => {
+            return str.toLowerCase()
+                .replace(/[.'`´]/g, '')
+                .replace(/\s+/g, ' ')
+                .replace(/\s+e\s?v/gi, '')
+                .trim();
+        };
+
+        const findClubIndex = (name) => {
+            if (typeof CLUB_DATA === 'undefined' || !CLUB_DATA.clubs) return -1;
+            const normText = normalizeClubName(name);
+            let idx = CLUB_DATA.clubs.findIndex(c => normalizeClubName(c.name) === normText);
+            if (idx === -1) {
+                const match = normText.match(/^(.*?)\s+\d+$/);
+                if (match) {
+                    idx = CLUB_DATA.clubs.findIndex(c => normalizeClubName(c.name) === match[1]);
+                }
+            }
+            return idx;
+        };
+
+        // --- Render results using the pre-formatted HTML table ---
+        const resultsContainer = document.getElementById('league-results-container');
+        if (data.table) {
+            resultsContainer.innerHTML = data.table;
+            cleanTable(resultsContainer);
+            // Make team names clickable
+            if (typeof CLUB_DATA !== 'undefined' && CLUB_DATA.clubs) {
+                const tds = resultsContainer.querySelectorAll('td');
+                tds.forEach(td => {
+                    const rawText = td.textContent.trim().replace(/\u00A0/g, ' ');
+                    const index = findClubIndex(rawText);
+                    if (index !== -1) {
+                        td.textContent = '';
+                        const span = document.createElement('span');
+                        span.textContent = rawText;
+                        span.style.cursor = 'pointer';
+                        span.style.color = '#60a5fa';
+                        span.style.fontWeight = '500';
+                        span.onclick = () => navigateTo('club', index);
+                        span.onmouseenter = () => span.style.textDecoration = 'underline';
+                        span.onmouseleave = () => span.style.textDecoration = 'none';
+                        td.appendChild(span);
+                    }
+                });
+            }
+        } else {
+            resultsContainer.innerHTML = '<p class="text-secondary">Keine Ergebnisse verfügbar.</p>';
+        }
+    }
+
 
     function renderLeague(leagueName) {
         const data = leagueData.leagues[leagueName];
@@ -3736,7 +3859,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const clone = template.content.cloneNode(true);
         contentArea.appendChild(clone);
 
-        setupTabs(true);
+        // Detect Ligapokal league
+        const isLigapokal = leagueName.toLowerCase().includes('ligapokal');
+
+        if (isLigapokal) {
+            // Ligapokal: hide tabs, show only results directly
+            const tabsBar = contentArea.querySelector('.tabs');
+            if (tabsBar) tabsBar.style.display = 'none';
+            const tabTable = document.getElementById('tab-table');
+            if (tabTable) tabTable.style.display = 'none';
+            const tabResults = document.getElementById('tab-results');
+            if (tabResults) {
+                tabResults.classList.add('active');
+                tabResults.style.display = 'block';
+            }
+        } else {
+            // Normal leagues: use standard two-tab layout
+            setupTabs(true);
+        }
 
         const normalizeClubName = (str) => {
             return str.toLowerCase()
@@ -3759,12 +3899,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return idx;
         };
 
-        const tableContainer = document.getElementById('league-table-container');
-        if (data.table) {
-            tableContainer.innerHTML = data.table;
-            cleanTable(tableContainer);
+        // Helper to make team names clickable in table cells
+        const makeTeamsClickable = (container) => {
             if (typeof CLUB_DATA !== 'undefined' && CLUB_DATA.clubs) {
-                const tds = tableContainer.querySelectorAll('td');
+                const tds = container.querySelectorAll('td');
                 tds.forEach(td => {
                     const rawText = td.textContent.trim().replace(/\u00A0/g, ' ');
                     const index = findClubIndex(rawText);
@@ -3782,137 +3920,155 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             }
+        };
+
+        if (isLigapokal) {
+            // Ligapokal: render table HTML directly into results container
+            const resultsContainer = document.getElementById('league-results-container');
+            if (data.table) {
+                resultsContainer.innerHTML = data.table;
+                cleanTable(resultsContainer);
+                makeTeamsClickable(resultsContainer);
+            } else {
+                resultsContainer.innerHTML = '<p class="text-secondary">Keine Ergebnisse verfügbar.</p>';
+            }
         } else {
-            tableContainer.innerHTML = '<p class="text-secondary">Keine Tabelle verfügbar.</p>';
-        }
+            // Standard leagues: render table tab
+            const tableContainer = document.getElementById('league-table-container');
+            if (data.table) {
+                tableContainer.innerHTML = data.table;
+                cleanTable(tableContainer);
+                makeTeamsClickable(tableContainer);
+            } else {
+                tableContainer.innerHTML = '<p class="text-secondary">Keine Tabelle verfügbar.</p>';
+            }
 
-        const resultsContainer = document.getElementById('league-results-container');
-        const matchDays = Object.keys(data.match_days).sort((a, b) => {
-            const numA = parseInt(a);
-            const numB = parseInt(b);
-            if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-            return a.localeCompare(b);
-        });
-
-        if (matchDays.length > 0) {
-            matchDays.forEach(day => {
-                const group = document.createElement('div');
-                group.className = 'results-group';
-
-                const title = document.createElement('h3');
-                title.textContent = day;
-                title.style.borderBottom = "1px solid #334155";
-                title.style.paddingBottom = "8px";
-                title.style.marginBottom = "12px";
-                group.appendChild(title);
-
-                const rawText = data.match_days[day] || "";
-                if (rawText && rawText !== "Keine Ergebnisse.") {
-                    const lines = rawText.split('\n');
-                    lines.forEach(line => {
-                        line = line.trim();
-                        if (!line) return;
-
-                        let result = "---";
-                        let mainPart = line;
-                        const resMatch = line.match(/\s+(\d+:\d+|---|:)\s*$/);
-                        if (resMatch) {
-                            result = resMatch[1];
-                            mainPart = line.substring(0, resMatch.index).trim();
-                        }
-
-                        const dateMatch = mainPart.match(/^.*?\d{4}(\s+\d{2}:\d{2})?/);
-                        let dateStr = "";
-                        let teamsPart = mainPart;
-                        if (dateMatch) {
-                            dateStr = dateMatch[0];
-                            teamsPart = mainPart.substring(dateStr.length).trim();
-                        }
-
-                        const separatorMatch = teamsPart.match(/\s+-\s+/);
-                        let homeName = teamsPart;
-                        let guestName = "";
-
-                        if (separatorMatch) {
-                            homeName = teamsPart.substring(0, separatorMatch.index).trim();
-                            guestName = teamsPart.substring(separatorMatch.index + separatorMatch[0].length).trim();
-                        }
-
-                        const createClubSpan = (name) => {
-                            const idx = findClubIndex(name);
-                            const span = document.createElement('span');
-                            span.textContent = name;
-                            if (idx !== -1) {
-                                span.style.cursor = 'pointer';
-                                span.style.color = '#60a5fa';
-                                span.style.fontWeight = '500';
-                                span.onclick = () => navigateTo('club', idx);
-                                span.onmouseenter = () => span.style.textDecoration = 'underline';
-                                span.onmouseleave = () => span.style.textDecoration = 'none';
-                            } else {
-                                span.style.color = '#e2e8f0';
-                            }
-                            return span;
-                        };
-
-                        const matchCard = document.createElement('div');
-                        matchCard.className = 'match-card';
-                        matchCard.style.background = "#1e293b";
-                        matchCard.style.marginBottom = "8px";
-                        matchCard.style.padding = "10px";
-                        matchCard.style.borderRadius = "6px";
-                        matchCard.style.border = "1px solid #334155";
-                        matchCard.style.display = "flex";
-                        matchCard.style.justifyContent = "space-between";
-                        matchCard.style.alignItems = "center";
-                        matchCard.style.flexWrap = "wrap";
-                        matchCard.style.gap = "10px";
-
-                        const dateDiv = document.createElement('div');
-                        dateDiv.textContent = dateStr;
-                        dateDiv.style.color = "#94a3b8";
-                        dateDiv.style.fontSize = "0.85em";
-                        dateDiv.style.width = "140px";
-
-                        const teamsDiv = document.createElement('div');
-                        teamsDiv.style.flex = "1";
-                        teamsDiv.style.display = "flex";
-                        teamsDiv.style.justifyContent = "center";
-                        teamsDiv.style.gap = "8px";
-                        teamsDiv.style.color = "#e2e8f0";
-                        teamsDiv.appendChild(createClubSpan(homeName));
-
-                        const vsSpan = document.createElement('span');
-                        vsSpan.textContent = "-";
-                        vsSpan.style.color = "#64748b";
-                        teamsDiv.appendChild(vsSpan);
-                        teamsDiv.appendChild(createClubSpan(guestName));
-
-                        const resDiv = document.createElement('div');
-                        resDiv.textContent = result;
-                        resDiv.style.fontWeight = "bold";
-                        resDiv.style.color = "#f8fafc";
-                        resDiv.style.minWidth = "40px";
-                        resDiv.style.textAlign = "right";
-
-                        matchCard.appendChild(dateDiv);
-                        matchCard.appendChild(teamsDiv);
-                        matchCard.appendChild(resDiv);
-                        group.appendChild(matchCard);
-                    });
-                } else {
-                    const empty = document.createElement('div');
-                    empty.textContent = rawText || "Keine Ergebnisse.";
-                    empty.className = 'results-card';
-                }
-                resultsContainer.appendChild(group);
+            // Standard leagues: render results tab (match-card layout)
+            const resultsContainer = document.getElementById('league-results-container');
+            const matchDays = Object.keys(data.match_days).sort((a, b) => {
+                const numA = parseInt(a);
+                const numB = parseInt(b);
+                if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+                return a.localeCompare(b);
             });
-        } else {
-            resultsContainer.innerHTML = '<p class="text-secondary">Keine Ergebnisse verfügbar.</p>';
-        }
 
-        // Initialize Tabs explicitly for League View - ensure first is active
-        setupTabs(true);
+            if (matchDays.length > 0) {
+                matchDays.forEach(day => {
+                    const group = document.createElement('div');
+                    group.className = 'results-group';
+
+                    const title = document.createElement('h3');
+                    title.textContent = day;
+                    title.style.borderBottom = "1px solid #334155";
+                    title.style.paddingBottom = "8px";
+                    title.style.marginBottom = "12px";
+                    group.appendChild(title);
+
+                    const rawText = data.match_days[day] || "";
+                    if (rawText && rawText !== "Keine Ergebnisse.") {
+                        const lines = rawText.split('\n');
+                        lines.forEach(line => {
+                            line = line.trim();
+                            if (!line) return;
+
+                            let result = "---";
+                            let mainPart = line;
+                            const resMatch = line.match(/\s+(\d+:\d+|---|:)\s*$/);
+                            if (resMatch) {
+                                result = resMatch[1];
+                                mainPart = line.substring(0, resMatch.index).trim();
+                            }
+
+                            const dateMatch = mainPart.match(/^.*?\d{4}(\s+\d{2}:\d{2})?/);
+                            let dateStr = "";
+                            let teamsPart = mainPart;
+                            if (dateMatch) {
+                                dateStr = dateMatch[0];
+                                teamsPart = mainPart.substring(dateStr.length).trim();
+                            }
+
+                            const separatorMatch = teamsPart.match(/\s+-\s+/);
+                            let homeName = teamsPart;
+                            let guestName = "";
+
+                            if (separatorMatch) {
+                                homeName = teamsPart.substring(0, separatorMatch.index).trim();
+                                guestName = teamsPart.substring(separatorMatch.index + separatorMatch[0].length).trim();
+                            }
+
+                            const createClubSpan = (name) => {
+                                const idx = findClubIndex(name);
+                                const span = document.createElement('span');
+                                span.textContent = name;
+                                if (idx !== -1) {
+                                    span.style.cursor = 'pointer';
+                                    span.style.color = '#60a5fa';
+                                    span.style.fontWeight = '500';
+                                    span.onclick = () => navigateTo('club', idx);
+                                    span.onmouseenter = () => span.style.textDecoration = 'underline';
+                                    span.onmouseleave = () => span.style.textDecoration = 'none';
+                                } else {
+                                    span.style.color = '#e2e8f0';
+                                }
+                                return span;
+                            };
+
+                            const matchCard = document.createElement('div');
+                            matchCard.className = 'match-card';
+                            matchCard.style.background = "#1e293b";
+                            matchCard.style.marginBottom = "8px";
+                            matchCard.style.padding = "10px";
+                            matchCard.style.borderRadius = "6px";
+                            matchCard.style.border = "1px solid #334155";
+                            matchCard.style.display = "flex";
+                            matchCard.style.justifyContent = "space-between";
+                            matchCard.style.alignItems = "center";
+                            matchCard.style.flexWrap = "wrap";
+                            matchCard.style.gap = "10px";
+
+                            const dateDiv = document.createElement('div');
+                            dateDiv.textContent = dateStr;
+                            dateDiv.style.color = "#94a3b8";
+                            dateDiv.style.fontSize = "0.85em";
+                            dateDiv.style.width = "140px";
+
+                            const teamsDiv = document.createElement('div');
+                            teamsDiv.style.flex = "1";
+                            teamsDiv.style.display = "flex";
+                            teamsDiv.style.justifyContent = "center";
+                            teamsDiv.style.gap = "8px";
+                            teamsDiv.style.color = "#e2e8f0";
+                            teamsDiv.appendChild(createClubSpan(homeName));
+
+                            const vsSpan = document.createElement('span');
+                            vsSpan.textContent = "-";
+                            vsSpan.style.color = "#64748b";
+                            teamsDiv.appendChild(vsSpan);
+                            teamsDiv.appendChild(createClubSpan(guestName));
+
+                            const resDiv = document.createElement('div');
+                            resDiv.textContent = result;
+                            resDiv.style.fontWeight = "bold";
+                            resDiv.style.color = "#f8fafc";
+                            resDiv.style.minWidth = "40px";
+                            resDiv.style.textAlign = "right";
+
+                            matchCard.appendChild(dateDiv);
+                            matchCard.appendChild(teamsDiv);
+                            matchCard.appendChild(resDiv);
+                            group.appendChild(matchCard);
+                        });
+                    } else {
+                        const empty = document.createElement('div');
+                        empty.textContent = rawText || "Keine Ergebnisse.";
+                        empty.className = 'results-card';
+                    }
+                    resultsContainer.appendChild(group);
+                });
+            } else {
+                resultsContainer.innerHTML = '<p class="text-secondary">Keine Ergebnisse verfügbar.</p>';
+            }
+        }
     }
 
     function setupTabs(forceFirst = false) {
