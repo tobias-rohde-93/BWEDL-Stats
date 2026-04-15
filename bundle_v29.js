@@ -4319,48 +4319,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const stripTeamNumber = (name) => {
             if (!name) return "";
-            // Replace non-breaking spaces and trim
             let clean = name.replace(/\u00A0/g, ' ').trim();
-
-            // 1. Strip "Team X" / "Mannschaft X"
             clean = clean.replace(/\s+(Team|Mannschaft)\s+\d+$/i, '');
-
-            // 2. Strip Roman Numerals (I-V) at end
             clean = clean.replace(/\s+(I|II|III|IV|V)\.?$/i, '');
-
-            // 3. Strip small numbers (1-19) at end (e.g. " 2", " 2.")
-            // Avoids stripping "180", "2000", etc.
             clean = clean.replace(/\s+([1-9]|1[0-9])\.?$/, '');
-
             return clean.trim();
         };
 
         const isClubMatch = (clubName, targetName) => {
             if (!targetName) return false;
-
-            // Reject pure-numeric or very short targets (scores, points, ranks)
             const rawTarget = targetName.replace(/\u00A0/g, ' ').trim();
             if (/^\d+([:.]\d+)?$/.test(rawTarget)) return false;
             if (rawTarget.length < 3) return false;
-
-            // Normalize: lowercase, remove non-alphanumeric
             const baseC = stripTeamNumber(clubName).toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
             const baseT = stripTeamNumber(targetName).toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
-
             if (!baseC || !baseT) return false;
             if (baseT.length < 3) return false;
-
-            // 1. Exact Match of Base Names
             if (baseC === baseT) return true;
-
-            // 2. Target contains Club Base (e.g. "Club II" matches "Club")
-            //    Only if Club Base is substantial enough to avoid short-substring pollution
             if (baseC.length >= 6 && baseT.includes(baseC)) return true;
-
-            // 3. Club Base contains Target — ONLY if Target is long enough
-            //    (avoids matching scores like "26" inside "dcirish26ev")
             if (baseT.length >= 8 && baseC.includes(baseT)) return true;
-
             return false;
         };
 
@@ -4370,11 +4347,38 @@ document.addEventListener('DOMContentLoaded', () => {
             return normalized.includes('ligapokal');
         };
 
-        const isCurrentLigapokalSeason = (season) => {
-            // Only filter Ligapokal for the CURRENT season (2024/2025)
-            // Historical Ligapokal data should be shown
-            if (!season) return false;
-            return season === "2024/2025" || season === "24/25";
+        const parseLigapokalArchive = (seasonName, matchDaysObj, clubName, resultsList, isCup = false) => {
+            if (!matchDaysObj) return;
+            for (const [roundName, content] of Object.entries(matchDaysObj)) {
+                if (!content) continue;
+                const lines = content.split(/\\n|\n/);
+                lines.forEach(line => {
+                    // Reverted back to .+? for teams to avoid missing German/complex names, keep lenient scores
+                    const match = line.match(/(\d{2}\.\d{2}\.\d{4}(?:\s+\d{2}:\d{2})?)\s+(.+?)\s+-\s+(.+?)\s+(\d+\s*[:]\s*\d+)/);
+                    if (match) {
+                        const [_, dateStr, home, away, score] = match;
+                        if (isClubMatch(clubName, home) || isClubMatch(clubName, away)) {
+                            const scoreParts = score.split(':').map(s => s.trim());
+                            resultsList.push({
+                                season: seasonName,
+                                league: roundName,
+                                home: home.trim(),
+                                away: away.trim(),
+                                scoreHome: scoreParts[0],
+                                scoreAway: scoreParts[1],
+                                dateStr: dateStr.trim(),
+                                played: true,
+                                isCup: isCup,
+                                ts: (function() {
+                                    const d = dateStr.trim().split('.');
+                                    if (d.length >= 3) return new Date(d[2].substring(0,4), d[1]-1, d[0]).getTime();
+                                    return 0;
+                                })()
+                            });
+                        }
+                    }
+                });
+            }
         };
 
         // --- 1. GATHER DATA ---
@@ -4383,9 +4387,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let clubPlayers = [];
         if (typeof RANKING_DATA !== 'undefined' && RANKING_DATA.players && club.number) {
             clubPlayers = RANKING_DATA.players.filter(p => p.v_nr === club.number);
-
-
-            // SORTING: 1. League Hierarchy, 2. Rank
             const getLeagueWeight = (l) => {
                 if (!l) return 0;
                 l = l.toLowerCase();
@@ -4395,135 +4396,117 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (l.includes("c-klasse")) return 1;
                 return 0;
             };
-
             clubPlayers.sort((a, b) => {
                 const wA = getLeagueWeight(a.league);
                 const wB = getLeagueWeight(b.league);
-                if (wA !== wB) return wB - wA; // Higher weight first
-
+                if (wA !== wB) return wB - wA;
                 const rA = parseInt(a.rank) || 999;
                 const rB = parseInt(b.rank) || 999;
-                return rA - rB; // Lower rank first
+                return rA - rB;
             });
         }
 
-        // B) Matches (Upcoming & Recent)
-        let upcomingMatches = [];
-        let recentMatches = [];
+        // B) Matches (Current Season)
+        let upcomingLeagueMatches = [];
+        let recentLeagueMatches = [];
+        let upcomingLigapokalMatches = [];
+        let recentLigapokalMatches = [];
 
         if (typeof leagueData !== 'undefined' && leagueData.leagues) {
             Object.keys(leagueData.leagues).forEach(leagueName => {
-
-                // 1. Identify Withdrawn Teams in this League
+                const isLP = isLigapokalMatch(leagueName);
                 const withdrawnTeams = [];
                 const league = leagueData.leagues[leagueName];
-
-                // DATA FIX: league.table is an HTML string, not an array!
                 if (league && typeof league.table === 'string') {
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = league.table;
                     const rows = tempDiv.querySelectorAll('tr');
-
                     rows.forEach(row => {
                         if (row.textContent.toLowerCase().includes("zurückgezogen")) {
-                            // Extract Team Name (Usually in 2nd cell for this table format)
                             const cells = row.querySelectorAll('td');
                             if (cells.length >= 2) {
-                                // Cell 0: Rank, Cell 1: Team Name
                                 let teamName = cells[1].textContent.trim();
-                                // Clean up non-breaking spaces commonly found in these tables
                                 teamName = teamName.replace(/\u00a0/g, ' ').trim();
                                 withdrawnTeams.push(teamName);
                             }
                         }
                     });
-                } else if (league && Array.isArray(league.table)) {
-                    // Fallback if data format changes to array in future
-                    league.table.forEach(row => {
-                        if (row && (String(row.points).toLowerCase().includes("zurück") || String(row.games).toLowerCase().includes("zurück"))) {
-                            withdrawnTeams.push(row.team);
-                        }
-                    });
                 }
-
                 const matches = parseAllMatches(leagueName);
                 matches.forEach(m => {
-                    // FILTER: Skip if opponent (or self) is withdrawn
-                    // We only care about Upcoming matches being polluted.
-                    // If a match is played, it's fine (history).
-                    // But if it's "upcoming" (no result), and one team is withdrawn -> Skip.
-                    if (!m.played) {
-                        if (withdrawnTeams.includes(m.home) || withdrawnTeams.includes(m.away)) return;
-                    }
-
+                    if (!m.played && (withdrawnTeams.includes(m.home) || withdrawnTeams.includes(m.away))) return;
                     if (isClubMatch(club.name, m.home) || isClubMatch(club.name, m.away)) {
-                        // Parse Date for sorting
                         let ts = 0;
                         if (m.dateStr) {
                             const parts = m.dateStr.split('.');
                             if (parts.length === 3) ts = new Date(parts[2], parts[1] - 1, parts[0]).getTime();
                         }
-
                         const matchObj = { ...m, leagueName, ts };
-
                         if (m.played) {
-                            recentMatches.push(matchObj);
+                            if (isLP) recentLigapokalMatches.push(matchObj);
+                            else recentLeagueMatches.push(matchObj);
                         } else {
-                            // Only future or today
-                            // If no date, assume future? Or ignore?
-                            // Let's assume matches without results are upcoming
-                            upcomingMatches.push(matchObj);
+                            if (isLP) upcomingLigapokalMatches.push(matchObj);
+                            else upcomingLeagueMatches.push(matchObj);
                         }
                     }
                 });
             });
         }
 
-        // Sort Matches
-        upcomingMatches.sort((a, b) => a.ts - b.ts); // Ascending (next game first)
-        recentMatches.sort((a, b) => b.ts - a.ts);   // Descending (last game first)
+        upcomingLeagueMatches.sort((a, b) => a.ts - b.ts);
+        recentLeagueMatches.sort((a, b) => b.ts - a.ts);
+        upcomingLigapokalMatches.sort((a, b) => a.ts - b.ts);
+        recentLigapokalMatches.sort((a, b) => b.ts - a.ts);
 
-        // limit
-        const nextGames = upcomingMatches.slice(0, 30);
-        const lastGames = recentMatches.slice(0, 30);
+        const nextGames = upcomingLeagueMatches.slice(0, 30);
+        const lastGames = recentLeagueMatches.slice(0, 30);
+        const nextLigapokalGames = upcomingLigapokalMatches.slice(0, 30);
+        const lastLigapokalGames = recentLigapokalMatches.slice(0, 30);
 
+        // C) Current League Tables
+        const currentTables = [];
+        if (typeof leagueData !== 'undefined' && leagueData.leagues) {
+            Object.keys(leagueData.leagues).forEach(leagueName => {
+                const league = leagueData.leagues[leagueName];
+                if (league && league.table && !isLigapokalMatch(leagueName)) {
+                    if (league.table.toLowerCase().includes(club.name.toLowerCase()) || 
+                        league.table.toLowerCase().includes(stripTeamNumber(club.name).toLowerCase())) {
+                        currentTables.push({ leagueName, tableHtml: league.table });
+                    }
+                }
+            });
+        }
 
         // --- 2. RENDER UI ---
 
-        // A) Quick Stats Header
         const totalPoints = clubPlayers.reduce((acc, p) => acc + (parseInt(p.points) || 0), 0);
         const activeLeagues = [...new Set(clubPlayers.map(p => p.league))].filter(l => l && l !== "Unbekannt").length;
 
-        const statsHtml = `
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
-                <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                    <div style="font-size: 1.5em;">👥</div>
-                    <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${clubPlayers.length}</div>
-                    <div style="font-size: 0.75em; color: #94a3b8;">Spieler</div>
-                </div>
-                <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                    <div style="font-size: 1.5em;">🏆</div>
-                    <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${activeLeagues}</div>
-                    <div style="font-size: 0.75em; color: #94a3b8;">Ligen</div>
-                </div>
-                <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                    <div style="font-size: 1.5em;">🎯</div>
-                    <div style="font-weight: bold; color: #4ade80; font-size: 1.2em;">${totalPoints}</div>
-                    <div style="font-size: 0.75em; color: #94a3b8;">Punkte (Ges.)</div>
-                </div>
+        // Points Boxes
+        const statsRow = document.createElement('div');
+        statsRow.style.cssText = "display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;";
+        statsRow.innerHTML = `
+            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
+                <div style="font-size: 1.5em;">👥</div>
+                <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${clubPlayers.length}</div>
+                <div style="font-size: 0.75em; color: #94a3b8;">Spieler</div>
+            </div>
+            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
+                <div style="font-size: 1.5em;">🏆</div>
+                <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${activeLeagues}</div>
+                <div style="font-size: 0.75em; color: #94a3b8;">Ligen</div>
+            </div>
+            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
+                <div style="font-size: 1.5em;">🎯</div>
+                <div style="font-weight: bold; color: #4ade80; font-size: 1.2em;">${totalPoints}</div>
+                <div style="font-size: 0.75em; color: #94a3b8;">Punkte (Ges.)</div>
             </div>
         `;
-        container.innerHTML += statsHtml;
+        container.appendChild(statsRow);
 
-
-        // B) Club Details (Collapsible or improved card)
         const detailsCard = document.createElement('div');
-        detailsCard.style.background = "#1e293b";
-        detailsCard.style.border = "1px solid #334155";
-        detailsCard.style.borderRadius = "8px";
-        detailsCard.style.marginBottom = "20px";
-        detailsCard.style.overflow = "hidden";
-
+        detailsCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 8px; margin-bottom: 20px; overflow: hidden;";
         let detailsHtml = `
             <div style="padding: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02);" onclick="this.nextElementSibling.classList.toggle('hidden')">
                 <span style="font-weight: bold; color: #f8fafc;">📍 Vereinsinfos & Kontakt</span>
@@ -4532,305 +4515,348 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="hidden" style="padding: 15px; border-top: 1px solid #334155;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
         `;
-
-        // Fields to show
         const fields = [
-            { k: 'venue', l: 'Spiellokal', i: '🏠' },
-            { k: 'street', l: 'Adresse', i: '📍' },
-            { k: 'city', l: 'Ort', i: '🏙️' },
-            { k: 'website', l: 'Webseite', i: '🌐', link: true },
-            { k: 'email', l: 'E-Mail', i: '✉️', mail: true },
-            { k: 'contact', l: 'Kontaktperson', i: '👤' },
-            { k: 'mobile', l: 'Mobil', i: '📱' },
+            { k: 'venue', l: 'Spiellokal', i: '🏠' }, { k: 'street', l: 'Adresse', i: '📍' }, { k: 'city', l: 'Ort', i: '🏙️' },
+            { k: 'website', l: 'Webseite', i: '🌐', link: true }, { k: 'email', l: 'E-Mail', i: '✉️', mail: true },
+            { k: 'contact', l: 'Kontaktperson', i: '👤' }, { k: 'mobile', l: 'Mobil', i: '📱' },
         ];
-
         fields.forEach(f => {
             let val = club[f.k];
             if (val && val !== 'null' && val !== '-') {
                 if (f.link && !val.startsWith('http')) val = `<a href="http://${val}" target="_blank" style="color:#3b82f6;">${val}</a>`;
                 else if (f.mail) val = `<a href="mailto:${val}" style="color:#3b82f6;">${val}</a>`;
-
-                detailsHtml += `
-                    <div>
-                        <div style="font-size: 0.8em; color: #64748b; margin-bottom: 2px;">${f.i} ${f.l}</div>
-                        <div style="color: #e2e8f0; font-size: 0.95em;">${val}</div>
-                    </div>
-                 `;
+                detailsHtml += `<div><div style="font-size: 0.8em; color: #64748b; margin-bottom: 2px;">${f.i} ${f.l}</div><div style="color: #e2e8f0; font-size: 0.95em;">${val}</div></div>`;
             }
         });
-
-        // Map Link
         if ((club.street && club.street !== '-') || (club.city && club.city !== '-')) {
             const q = `${club.street || ''} ${club.city || ''}`;
-            detailsHtml += `
-                <div style="grid-column: 1 / -1; margin-top: 10px;">
-                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}" target="_blank" style="display: inline-block; width: 100%; text-align: center; padding: 8px; background: #334155; color: #fff; border-radius: 4px; text-decoration: none; font-size: 0.9em;">
-                        Auf Karte anzeigen
-                    </a>
-                </div>
-             `;
+            detailsHtml += `<div style="grid-column: 1 / -1; margin-top: 10px;"><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}" target="_blank" style="display: inline-block; width: 100%; text-align: center; padding: 8px; background: #334155; color: #fff; border-radius: 4px; text-decoration: none; font-size: 0.9em;">Auf Karte anzeigen</a></div>`;
         }
-
         detailsHtml += `</div></div>`;
         detailsCard.innerHTML = detailsHtml;
-        container.appendChild(detailsCard); // Append Details
+        container.appendChild(detailsCard);
 
-
-        // C) Matches Section (Grid: Left Upcoming, Right Recent)
-        const matchesGrid = document.createElement('div');
-        matchesGrid.style.display = "grid";
-        matchesGrid.style.gridTemplateColumns = "repeat(auto-fit, minmax(300px, 1fr))";
-        matchesGrid.style.gap = "20px";
-        matchesGrid.style.marginBottom = "20px";
-
-        // C-1) Upcoming
-        const upcomingCard = document.createElement('div');
-        upcomingCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📅 Nächste Spiele</h3>`;
-
-        const upcomingList = document.createElement('div');
-        upcomingList.style.maxHeight = "400px";
-        upcomingList.style.overflowY = "auto";
-        upcomingList.style.paddingRight = "5px"; // Scrollbar padding
-
-        if (nextGames.length === 0) {
-            upcomingList.innerHTML += `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele gefunden.</div>`;
-        } else {
-            nextGames.forEach(m => {
-                upcomingList.innerHTML += `
-                    <div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;">
-                            <span>${m.dateStr}</span>
-                            <span style="color: #64748b;">${m.leagueName}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;">
-                            <span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span>
-                            <span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span>
-                            <span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span>
-                        </div>
-                    </div>
-                `;
+        const createMatchesGrid = (upcoming, recent, titlePrefix) => {
+            if (upcoming.length === 0 && recent.length === 0) return null;
+            const grid = document.createElement('div');
+            grid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;";
+            const upCard = document.createElement('div');
+            upCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📅 ${titlePrefix}Nächste Spiele</h3>`;
+            const upList = document.createElement('div');
+            upList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
+            if (upcoming.length === 0) upList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele.</div>`;
+            else upcoming.forEach(m => {
+                upList.innerHTML += `<div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;"><div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div></div>`;
             });
-        }
-        upcomingCard.appendChild(upcomingList);
-
-        // C-2) Recent
-        const recentCard = document.createElement('div');
-        recentCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📊 Letzte Ergebnisse</h3>`;
-
-        const recentList = document.createElement('div');
-        recentList.style.maxHeight = "400px";
-        recentList.style.overflowY = "auto";
-        recentList.style.paddingRight = "5px";
-
-        if (lastGames.length === 0) {
-            recentList.innerHTML += `<div style="color: #64748b; font-size: 0.9em;">Keine Ergebnisse gefunden.</div>`;
-        } else {
-            lastGames.forEach(m => {
-                // Determine Win/Loss mainly by score if we can identify 'our' team
-                // Simple heuristic: if our team score > opponent score -> Win
-                let resColor = "#94a3b8"; // Draw or unknown
-                let isHome = isClubMatch(club.name, m.home);
-                let ourScore = isHome ? m.scoreHome : m.scoreAway;
-                let oppScore = isHome ? m.scoreAway : m.scoreHome;
-
-                if (ourScore > oppScore) resColor = "#4ade80";
-                else if (ourScore < oppScore) resColor = "#f87171";
-
-                recentList.innerHTML += `
-                    <div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px; border-left: 3px solid ${resColor};">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;">
-                            <span>${m.dateStr}</span>
-                            <span style="color: #64748b;">${m.leagueName}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="color: #f8fafc; font-size: 0.95em; flex: 1;">
-                                <div style="${isClubMatch(club.name, m.home) ? 'font-weight:bold;' : ''}">${m.home}</div>
-                                <div style="${isClubMatch(club.name, m.away) ? 'font-weight:bold;' : ''}">${m.away}</div>
-                            </div>
-                            <div style="font-weight: bold; font-size: 1.1em; color: #f8fafc; background: rgba(255,255,255,0.05); padding: 5px 8px; border-radius: 4px;">
-                                ${m.scoreHome}:${m.scoreAway}
-                            </div>
-                        </div>
-                    </div>
-                `;
+            upCard.appendChild(upList);
+            const recCard = document.createElement('div');
+            recCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📊 ${titlePrefix}Letzte Ergebnisse</h3>`;
+            const recList = document.createElement('div');
+            recList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
+            if (recent.length === 0) recList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine Ergebnisse gefunden.</div>`;
+            else recent.forEach(m => {
+                let resColor = "#94a3b8", isH = isClubMatch(club.name, m.home);
+                let oS = isH ? m.scoreHome : m.scoreAway, opS = isH ? m.scoreAway : m.scoreHome;
+                if (oS > opS) resColor = "#4ade80"; else if (oS < opS) resColor = "#f87171";
+                recList.innerHTML += `<div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px; border-left: 3px solid ${resColor};"><div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center;"><div style="color: #f8fafc; font-size: 0.95em; flex: 1;"><div style="${isClubMatch(club.name, m.home) ? 'font-weight:bold;' : ''}">${m.home}</div><div style="${isClubMatch(club.name, m.away) ? 'font-weight:bold;' : ''}">${m.away}</div></div><div style="font-weight: bold; font-size: 1.1em; color: #f8fafc; background: rgba(255,255,255,0.05); padding: 5px 8px; border-radius: 4px;">${m.scoreHome}:${m.scoreAway}</div></div></div>`;
             });
-        }
-        recentCard.appendChild(recentList);
+            recCard.appendChild(recList);
+            grid.appendChild(upCard); grid.appendChild(recCard);
+            return grid;
+        };
 
-        matchesGrid.appendChild(upcomingCard);
-        matchesGrid.appendChild(recentCard);
-        container.appendChild(matchesGrid);
+        const leagueGrid = createMatchesGrid(nextGames, lastGames, '');
+        if (leagueGrid) container.appendChild(leagueGrid);
 
+        // Current Tables
+        currentTables.forEach(t => {
+            const tSec = document.createElement('div');
+            tSec.style.cssText = "margin-bottom: 25px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; overflow: hidden;";
+            tSec.innerHTML = `<div style="padding: 10px 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #334155; font-weight: bold; color: #f8fafc;">📊 Tabelle: ${t.leagueName}</div><div class="table-container" style="padding: 0; border: none;">${t.tableHtml}</div>`;
+            cleanTable(tSec);
+            // Highlight club row
+            const rows = tSec.querySelectorAll('tr');
+            rows.forEach(row => {
+                if (isClubMatch(club.name, row.textContent)) {
+                    row.style.background = "rgba(59, 130, 246, 0.2)";
+                    row.style.fontWeight = "bold";
+                    row.style.color = "#60a5fa";
+                }
+            });
+            container.appendChild(tSec);
+        });
 
-        // D) Players List
+        const ligapokalGrid = createMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
+        if (ligapokalGrid) container.appendChild(ligapokalGrid);
+
         if (clubPlayers.length > 0) {
-            // Sort Players - ALREADY SORTED ABOVE BY LEAGUE & RANK
-            // clubPlayers.sort((a, b) => (parseInt(b.points) || 0) - (parseInt(a.points) || 0));
-
             const playerSection = document.createElement('div');
             playerSection.style.marginTop = "30px";
             playerSection.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;">Mannschaft (${clubPlayers.length})</h3>`;
-
             const pGrid = document.createElement('div');
-            pGrid.style.display = "grid";
-            pGrid.style.gridTemplateColumns = "repeat(auto-fill, minmax(280px, 1fr))";
-            pGrid.style.gap = "10px";
-
+            pGrid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;";
             clubPlayers.forEach(p => {
                 const pCard = document.createElement('div');
                 pCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; display: flex; justify-content: space-between; align-items: center;";
-
-                // Sparkline
-                let spark = "";
-                if (p.rounds) spark = renderSparkline(p.rounds); // reuse existing sparkline
-
-                const tierColor = leagueTierColor(p.league); // reuse existing helper
-
-                pCard.innerHTML = `
-                    <div style="flex: 1;">
-                        <div style="font-weight: bold; color: #f8fafc;">${p.name}</div>
-                        <div style="font-size: 0.8em; color: ${tierColor};">
-                            ${p.league} 
-                            <span style="color: #cbd5e1; margin-left: 5px; background: rgba(255,255,255,0.1); padding: 1px 4px; border-radius: 3px;">
-                                Platz ${p.rank || '-'}
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 15px;">
-                        <div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Spielform</div>
-                        ${spark.replace('margin-left: 10px;', 'margin: 0;')}
-                    </div>
-                    <div style="text-align: right; margin-left: 10px;">
-                        <div style="font-weight: bold; color: #4ade80; font-size: 1.1em;">${p.points || 0}</div>
-                        <div style="font-size: 0.75em; color: #64748b;">Pkt</div>
-                    </div>
-                `;
+                let spark = p.rounds ? renderSparkline(p.rounds) : "";
+                const tierColor = leagueTierColor(p.league);
+                pCard.innerHTML = `<div style="flex: 1;"><div style="font-weight: bold; color: #f8fafc;">${p.name}</div><div style="font-size: 0.8em; color: ${tierColor};">${p.league} <span style="color: #cbd5e1; margin-left: 5px; background: rgba(255,255,255,0.1); padding: 1px 4px; border-radius: 3px;">Platz ${p.rank || '-'}</span></div></div><div style="display: flex; flex-direction: column; align-items: center; margin: 0 15px;"><div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Spielform</div>${spark.replace('margin-left: 10px;', 'margin: 0;')}</div><div style="text-align: right; margin-left: 10px;"><div style="font-weight: bold; color: #4ade80; font-size: 1.1em;">${p.points || 0}</div><div style="font-size: 0.75em; color: #64748b;">Pkt</div></div>`;
                 pGrid.appendChild(pCard);
             });
             playerSection.appendChild(pGrid);
             container.appendChild(playerSection);
         }
 
-        // E) Archive (Keep existing logic mostly, just wrapped nicelier)
-        // ... (We can reuse the logic from previous implementation if we duplicate it or extract it)
-        // For brevity in this replacement, I'll simplify or just check if we have archive tables
-        // To be safe and keep feature parity, I should re-include the archive logic.
+        // --- 3. ARCHIVE ---
+        const allArchiveItems = [];
 
-        if (typeof window.ARCHIVE_TABLES !== 'undefined' && window.ARCHIVE_TABLES.length > 0) {
+        // A) LIGAPOKAL_ARCHIVE (Structured Cups)
+        if (typeof window.LIGAPOKAL_ARCHIVE !== 'undefined') {
+            Object.keys(window.LIGAPOKAL_ARCHIVE).forEach(season => {
+                parseLigapokalArchive(season, window.LIGAPOKAL_ARCHIVE[season].match_days, club.name, allArchiveItems, !!window.LIGAPOKAL_ARCHIVE[season].isCup);
+            });
+        }
 
-            // Normalize current club name for matching
-            const currentClubName = club.name.toLowerCase().trim();
+        // B) ARCHIVE_TABLES (Mixed Leagues & Cups)
+        if (typeof window.ARCHIVE_TABLES !== 'undefined') {
+            window.ARCHIVE_TABLES.forEach(table => {
+                if (!table.rows || table.rows.length < 2) return;
+                
+                const h = table.rows[0].map(cell => cell.toLowerCase()).join(' ');
+                const isMatches = h.includes('heim') && h.includes('gast') && (h.includes('ergebnis') || h.includes('punkte'));
+                const isCup = isLigapokalMatch(table.league) || table.league === 'Unbekannt';
 
-            // Filter relevant tables
-            const relevantTables = window.ARCHIVE_TABLES.filter(table => {
-                if (!table.league || table.league === 'Unbekannt') return false;
+                if (isMatches) {
+                    const myMatches = table.rows.slice(1).filter(row => row.some(cell => isClubMatch(club.name, cell)));
+                    myMatches.forEach(row => {
+                        let dateStr = row[0] || '', home = row[1] || '', away = row[2] || '', res = row[3] || '';
+                        
+                        // Handle shifted format (observed in some cup archive tables)
+                        // Standard: [0]Date, [1]Home, [2]Away, [3]Score
+                        // Shifted: [0]Info, [1]Date, [2]HomeId, [3]Away+Score
+                        if (home && /^\d{2}\.\d{2}\.\d{4}/.test(home)) {
+                            dateStr = home;
+                            const combined = (row[3] || "");
+                            if (combined.includes(':')) {
+                                const parts = combined.split(':');
+                                home = parts[0].trim();
+                                let possibleScore = combined.substring(combined.indexOf(':') + 1).trim();
+                                // Only accept as score if it looks like one (e.g. 11:5)
+                                if (/^\d+\s*[:]\s*\d+$/.test(possibleScore)) {
+                                    res = possibleScore;
+                                } else {
+                                    res = "";
+                                }
+                                away = ""; 
+                            } else {
+                                home = combined; away = ""; res = "";
+                            }
+                        }
 
-                // Skip Ligapokal tables entirely
-                if (isLigapokalMatch(table.league)) return false;
+                        const m = {
+                            season: table.season,
+                            league: (table.league === 'Unbekannt' && (row[0]||'').toLowerCase().includes('runde')) ? 'Ligapokal' : table.league,
+                            home: home,
+                            away: away,
+                            scoreHome: res ? res.split(':')[0] : '',
+                            scoreAway: res ? res.split(':')[1] : '',
+                            dateStr: dateStr,
+                            played: true,
+                            isCup: isCup // Use detected flag
+                        };
+                        allArchiveItems.push(m);
+                    });
+                } else {
+                    // It's a ranking table
+                    const hasClub = table.rows.slice(1).some(row => isClubMatch(club.name, row[1]) || isClubMatch(club.name, row[2]));
+                    if (hasClub) {
+                        const m = { 
+                            season: table.season, 
+                            league: table.league === 'Unbekannt' ? 'Ligapokal (Tabelle)' : table.league, 
+                            isTable: true, 
+                            rows: table.rows,
+                            isCup: isCup // Use detected flag
+                        };
+                        allArchiveItems.push(m);
+                    }
+                }
+            });
+        }
 
-                // Determine if any data row (skip header at index 0) matches our club
-                if (!table.rows || table.rows.length < 2) return false;
-                return table.rows.slice(1).some(row => {
-                    if (row.length < 2) return false;
-                    // Check ALL columns for the club name
-                    return row.some(cell => isClubMatch(club.name, cell));
-                });
+        // --- 4. DEDUPLICATE AND SPLIT ---
+        const seenMatches = new Map();
+        const leagueArchiveFinal = [];
+        const cupArchiveFinal = [];
+
+        allArchiveItems.forEach(item => {
+            const isLP = item.isCup || isLigapokalMatch(item.league);
+            if (item.isTable) {
+                if (isLP) cupArchiveFinal.push(item);
+                else leagueArchiveFinal.push(item);
+            } else {
+                const dKey = item.dateStr.split(' ')[0];
+                const hKey = stripTeamNumber(item.home).toLowerCase().replace(/[^a-z]/g, '');
+                const aKey = stripTeamNumber(item.away).toLowerCase().replace(/[^a-z]/g, '');
+                const sKey = `${item.scoreHome}:${item.scoreAway}`;
+                
+                // Group by Club + Day
+                // We keep the one with the most information
+                const clubKey = hKey || aKey;
+                if (!clubKey) return;
+                
+                const groupKey = `${dKey}|${clubKey}`;
+                const existing = seenMatches.get(groupKey);
+                
+                const currentScoreLen = (item.scoreHome + item.scoreAway).length;
+                const currentHasBoth = hKey && aKey;
+                
+                if (existing) {
+                    const existingScoreLen = (existing.scoreHome + existing.scoreAway).length;
+                    const existingHasBoth = existing.hKey && existing.aKey;
+                    
+                    // Replace existing if current is "better"
+                    if ((currentScoreLen > existingScoreLen) || (!existingHasBoth && currentHasBoth)) {
+                        seenMatches.set(groupKey, { ...item, hKey, aKey });
+                    }
+                } else {
+                    seenMatches.set(groupKey, { ...item, hKey, aKey });
+                }
+            }
+        });
+
+        const roundWeight = (name) => {
+            if (!name) return 0;
+            const n = name.toLowerCase();
+            if (n.includes('runde 1')) return 1;
+            if (n.includes('runde 2')) return 2;
+            if (n.includes('runde 3')) return 3;
+            if (n.includes('runde 4')) return 4;
+            if (n.includes('runde 5')) return 5;
+            if (n.includes('runde 6')) return 6;
+            if (n.includes('achtelfinale')) return 10;
+            if (n.includes('viertelfinale')) return 11;
+            if (n.includes('halbfinale')) return 12;
+            if (n.includes('finale') && !n.includes('halb')) return 15;
+            if (n.includes('spiel um platz')) return 14;
+            return 0;
+        };
+
+        seenMatches.forEach(item => {
+            if (item.isCup || isLigapokalMatch(item.league)) cupArchiveFinal.push(item);
+            else leagueArchiveFinal.push(item);
+        });
+
+        const renderArchive = (matches, title) => {
+            if (matches.length === 0) return;
+            const sec = document.createElement('div');
+            sec.style.cssText = "margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px;";
+            sec.innerHTML = `<h3 style="color: #64748b; font-size: 1.1em; margin-bottom: 20px;">${title}</h3>`;
+            
+            // Group by Season
+            const seasonGroups = {};
+            matches.forEach(m => {
+                if (!seasonGroups[m.season]) seasonGroups[m.season] = {};
+                if (!seasonGroups[m.season][m.league]) seasonGroups[m.season][m.league] = [];
+                seasonGroups[m.season][m.league].push(m);
             });
 
-            if (relevantTables.length > 0) {
-                // Sort by Season Descending
-                relevantTables.sort((a, b) => b.season.localeCompare(a.season));
+            const isCupSection = title.includes('Ligapokal');
 
-                const archSection = document.createElement('div');
-                archSection.style.marginTop = "40px";
-                archSection.innerHTML = `<h3 style="color: #64748b; font-size: 1.1em; border-top: 1px solid #334155; padding-top: 20px;">📜 Archiv & Historie</h3>`;
+            // Inject "Freilos" if it's the cup section
+            if (isCupSection && typeof window.LIGAPOKAL_ARCHIVE !== 'undefined') {
+                Object.keys(seasonGroups).forEach(season => {
+                    const arc = window.LIGAPOKAL_ARCHIVE[season];
+                    if (!arc || !arc.match_days) return;
+                    
+                    const allRoundNames = Object.keys(arc.match_days);
+                    const clubPlayedLeagues = Object.keys(seasonGroups[season]);
+                    
+                    // Find max weight reached by club
+                    let maxW = 0;
+                    clubPlayedLeagues.forEach(l => {
+                        const w = roundWeight(l);
+                        if (w > maxW) maxW = w;
+                    });
 
-                let html = "";
-
-                relevantTables.forEach(table => {
-                    // Inspect Headers to determine type
-                    // Ranking Tables usually have "Pl." and "Tabelle" (or "Team") and "Pkt"
-                    // Match Lists usually have "Heim" and "Gast" and "Ergebnis"
-
-                    const headerRowStr = table.rows[0].map(h => h.toLowerCase()).join(' ');
-                    const isMatchList = headerRowStr.includes('heim') && headerRowStr.includes('gast') && headerRowStr.includes('ergebnis');
-
-                    if (isMatchList) {
-                        // --- MATCH LIST RENDER LOGIC (Filtered) ---
-                        // Only show rows where our club is involved
-                        const myRows = table.rows.filter(row => {
-                            if (row.length < 2) return false;
-                            // Check if club is in ANY column
-                            return row.some(cell => isClubMatch(club.name, cell));
-                        });
-
-                        if (myRows.length > 0) {
-                            html += `<div style="margin-bottom: 25px;">
-                                <div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px;">${table.season} - ${table.league}</div>
-                                <div class="table-container" style="padding: 0; background: transparent; border: none; overflow-x: auto;">
-                                <table style="width: 100%; border-collapse: collapse; font-size: 0.85em; color: #e2e8f0; min-width: 400px;">
-                                    <thead>
-                                        <tr style="background: rgba(30, 41, 59, 0.5); border-bottom: 1px solid #475569;">
-                                            ${table.rows[0].map(header => `<th style="padding: 8px 6px; text-align: left; white-space: nowrap;">${header}</th>`).join('')}
-                                        </tr>
-                                    </thead>
-                                    <tbody>`;
-
-                            myRows.forEach(row => {
-                                html += `<tr style="border-bottom: 1px solid #334155;">
-                                    ${row.map(cell => {
-                                    // Highlight our club
-                                    let isMyClub = isClubMatch(club.name, cell);
-                                    const cellStyle = isMyClub ? 'font-weight: bold; color: #60a5fa;' : '';
-                                    return `<td style="padding: 6px; white-space: nowrap; ${cellStyle}">${cell}</td>`;
-                                }).join('')}
-                                 </tr>`;
-                            });
-
-                            html += `</tbody></table></div></div>`;
+                    allRoundNames.forEach(rName => {
+                        const w = roundWeight(rName);
+                        // If round is within their active participation range but they didn't play
+                        if (w > 0 && w <= maxW && !seasonGroups[season][rName]) {
+                            seasonGroups[season][rName] = [{
+                                season: season,
+                                league: rName,
+                                home: 'Freilos',
+                                away: 'Freilos',
+                                scoreHome: '-',
+                                scoreAway: '-',
+                                dateStr: '-',
+                                played: true,
+                                isFreilos: true
+                            }];
                         }
-
-                    } else {
-                        // --- RANKING TABLE RENDER LOGIC (Full Table) ---
-
-                        // Generate Table HTML
-                        let tableHtml = `<div style="margin-bottom: 25px;">
-                            <div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px;">${table.season} - ${table.league}</div>
-                            <div class="table-container" style="padding: 0; background: transparent; border: none; overflow-x: auto;">
-                            <table style="width: 100%; border-collapse: collapse; font-size: 0.85em; color: #e2e8f0; min-width: 600px;">
-                                <thead>
-                                    <tr style="background: rgba(30, 41, 59, 0.5); border-bottom: 1px solid #475569;">
-                                        ${table.rows[0].map(header => `<th style="padding: 8px 6px; text-align: left; white-space: nowrap;">${header}</th>`).join('')}
-                                    </tr>
-                                </thead>
-                                <tbody>`;
-
-                        // Skip header row (index 0)
-                        for (let i = 1; i < table.rows.length; i++) {
-                            const row = table.rows[i];
-                            if (row.length < 2) continue;
-
-                            // Check if this row belongs to our club
-                            let isMyClub = row.some(cell => isClubMatch(club.name, cell));
-
-                            const bgStyle = isMyClub ? 'background: rgba(59, 130, 246, 0.2);' : '';
-                            const rowStyle = isMyClub ? 'font-weight: bold; color: #60a5fa;' : '';
-
-                            tableHtml += `<tr style="border-bottom: 1px solid #334155; ${bgStyle} ${rowStyle}">
-                                ${row.map(cell => `<td style="padding: 6px; white-space: nowrap;">${cell}</td>`).join('')}
-                             </tr>`;
-                        }
-
-                        tableHtml += `</tbody></table></div></div>`;
-                        html += tableHtml;
-                    }
+                    });
                 });
-
-                archSection.innerHTML += html;
-                container.appendChild(archSection);
             }
-        }
+
+            Object.keys(seasonGroups).sort((a, b) => b.localeCompare(a)).forEach(season => {
+                const seasonTitle = season.replace('/', '-');
+                const isCupSection = title.includes('Ligapokal');
+                const sTitle = isCupSection ? (seasonTitle.startsWith('Ligapokal') ? seasonTitle : 'Ligapokal ' + seasonTitle) : seasonTitle;
+                
+                let block = `<div style="margin-bottom: 35px;">`;
+                block += `<div style="font-size: 1.1em; font-weight: bold; color: #f8fafc; margin-bottom: 15px;">${sTitle}</div>`;
+                
+                const leagues = seasonGroups[season];
+                // Sort rounds logically using roundWeight
+                const sortedLeagues = Object.keys(leagues).sort((a, b) => roundWeight(b) - roundWeight(a));
+                
+                sortedLeagues.forEach(leagueName => {
+                    const g = leagues[leagueName];
+                    block += `<div style="margin-bottom: 20px; padding-left: 10px; border-left: 2px solid #334155;">`;
+                    const displayLeague = (isCupSection && leagueName.toLowerCase().includes('ligapokal')) ? leagueName : leagueName;
+                    block += `<div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px; font-size: 0.9em;">${displayLeague}</div>`;
+                    
+                    let i = 0;
+                    while (i < g.length) {
+                        const item = g[i];
+                        block += `<div class="table-container" style="padding: 0; background: transparent; border: none; overflow-x: auto; margin-bottom: 10px;">`;
+                        if (item.isTable) {
+                            block += `<table style="width: 100%; border-collapse: collapse; font-size: 0.85em; color: #e2e8f0; min-width: 600px;"><thead><tr style="background: rgba(30, 41, 59, 0.5); border-bottom: 1px solid #475569;">${item.rows[0].map(h => `<th style="padding: 8px 6px; text-align: left;">${h}</th>`).join('')}</tr></thead><tbody>`;
+                            item.rows.slice(1).forEach(row => {
+                                const isMy = row.some(cell => isClubMatch(club.name, cell));
+                                block += `<tr style="border-bottom: 1px solid #334155; ${isMy ? 'background: rgba(59, 130, 246, 0.2); font-weight:bold; color:#60a5fa;' : ''}">${row.map(c => `<td style="padding: 6px;">${c}</td>`).join('')}</tr>`;
+                            });
+                            block += `</tbody></table>`;
+                            i++;
+                        } else {
+                            const matchGroup = [];
+                            while (i < g.length && !g[i].isTable) {
+                                matchGroup.push(g[i]);
+                                i++;
+                            }
+                            if (matchGroup.length > 0) {
+                                block += `<table style="width: 100%; border-collapse: collapse; font-size: 0.85em; color: #e2e8f0; min-width: 400px;"><thead><tr style="background: rgba(30, 41, 59, 0.5); border-bottom: 1px solid #475569;"><th style="padding: 8px 6px; text-align: left;">Datum</th><th style="padding: 8px 6px; text-align: left;">Heim</th><th style="padding: 8px 6px; text-align: left;">Gast</th><th style="padding: 8px 6px; text-align: left;">Ergebnis</th></tr></thead><tbody>`;
+                                matchGroup.forEach(m => {
+                                    const hStyle = (isClubMatch(club.name, m.home) || m.isFreilos) ? 'font-weight:bold; color:#60a5fa;' : '';
+                                    const aStyle = (isClubMatch(club.name, m.away) || m.isFreilos) ? 'font-weight:bold; color:#60a5fa;' : '';
+                                    const res = m.isFreilos ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>' : `${m.scoreHome}:${m.scoreAway}`;
+                                    block += `<tr style="border-bottom: 1px solid #334155;"><td style="padding: 6px;">${m.dateStr}</td><td style="padding: 6px; ${hStyle}">${m.home}</td><td style="padding: 6px; ${aStyle}">${m.away}</td><td style="padding: 6px; font-weight:bold;">${res}</td></tr>`;
+                                });
+                                block += `</tbody></table>`;
+                            }
+                        }
+                        block += `</div>`;
+                    }
+                    block += `</div>`;
+                });
+                block += `</div>`;
+                sec.innerHTML += block;
+            });
+            container.appendChild(sec);
+        };
+
+        renderArchive(leagueArchiveFinal, '📜 Liga Historie');
+        renderArchive(cupArchiveFinal, '🏆 Ligapokal Historie');
 
         contentArea.appendChild(container);
     }

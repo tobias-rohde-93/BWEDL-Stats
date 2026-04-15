@@ -62,69 +62,71 @@ def scrape_ligapokal_page(page, url, name):
 
     # Use JavaScript to extract round headers (bold tags) and their
     # associated tables, following the same DOM pattern as the live
-    # Ligapokal page: <b>Round Name</b> followed by <table>
+    # Ligapokal page: Header followed by <table>
     cup_data = page.evaluate("""() => {
         const results = [];
         const fullHtmlParts = [];
 
-        // Get all B and TABLE elements in document order
-        const elems = Array.from(document.querySelectorAll('b, table'));
+        // Get elements that might be headers or tables
+        // Added 'span' and 'div' to catch headers which are not in bold tags
+        const elems = Array.from(document.querySelectorAll('p, b, strong, h1, h2, h3, h4, span, div, table'));
 
         let currentRoundName = null;
 
         for (let el of elems) {
-            if (el.tagName === 'B') {
-                const text = el.innerText.trim();
-                // Match round names: "1. Runde", "Halbfinale", "Finale",
-                // "Spiel um Platz 3", etc.
+            const tagName = el.tagName;
+            const text = el.innerText.trim();
+
+            if (tagName !== 'TABLE') {
+                // Potential header: check if it contains keywords
                 if (text.includes('Runde') ||
                     text.includes('Finale') ||
                     text.includes('Halbfinale') ||
-                    text.includes('Spiel um') ||
                     text.includes('Viertelfinale') ||
-                    text.includes('Achtelfinale')) {
-                    currentRoundName = text;
+                    text.includes('Achtelfinale') ||
+                    text.includes('Spiel um')) {
+                    
+                    // Avoid catching large sections, small fragments or menu items
+                    if (text.length > 5 && text.length < 120 && !text.includes('\\n')) {
+                        // Clean up round name (remove tabs, multiple spaces)
+                        currentRoundName = text.replace(/\\t/g, ' ').replace(/\\s+/g, ' ').trim();
+                    }
                 }
-            } else if (el.tagName === 'TABLE') {
+            } else if (tagName === 'TABLE') {
                 if (currentRoundName) {
                     const rows = Array.from(el.querySelectorAll('tr'));
-                    // Only process tables with actual data rows
+                    // Only process tables with actual data rows (excluding headers)
                     if (rows.length > 1) {
-                        // Build HTML for the table view
-                        fullHtmlParts.push(
-                            `<h3>${currentRoundName}</h3>`
-                        );
-                        fullHtmlParts.push(el.outerHTML);
+                        // Check if it's a results table (should have teams/scores)
+                        const tableText = el.innerText.toLowerCase();
+                        if (tableText.includes('heim') || tableText.includes('gast') || tableText.includes('ergebnis')) {
+                            console.log(`Found round table: ${currentRoundName}`);
+                            fullHtmlParts.push(`<h3>${currentRoundName}</h3>`);
+                            fullHtmlParts.push(el.outerHTML);
 
-                        // Build text representation for match_days
-                        // (compatible with renderLeague result parsing)
-                        let rowText = "";
-                        for (let i = 1; i < rows.length; i++) {
-                            const cells = Array.from(
-                                rows[i].querySelectorAll('td')
-                            ).map(td => td.innerText.trim());
+                            let rowText = "";
+                            for (let i = 1; i < rows.length; i++) {
+                                const cells = Array.from(rows[i].querySelectorAll('td'))
+                                    .map(td => td.innerText.trim());
 
-                            if (cells.length >= 5) {
-                                // Format: Date  Home - Away  Score
-                                rowText += `${cells[0]}   ${cells[2]}`;
-                                rowText += ` - ${cells[3]}`;
-                                rowText += `   ${cells[4]}\\n`;
-                            } else if (cells.length >= 4) {
-                                // Some tables may have fewer columns
-                                rowText += `${cells[0]}   ${cells[1]}`;
-                                rowText += ` - ${cells[2]}`;
-                                rowText += `   ${cells[3]}\\n`;
+                                if (cells.length >= 5) {
+                                    // Datum, Spiel-Nr., Heim, Gast, Ergebnis
+                                    rowText += `${cells[0]}   ${cells[2]} - ${cells[3]}   ${cells[4]}\\n`;
+                                } else if (cells.length >= 4) {
+                                    rowText += `${cells[0]}   ${cells[1]} - ${cells[2]}   ${cells[3]}\\n`;
+                                }
+                            }
+                            if (rowText.trim().length > 0) {
+                                results.push({
+                                    name: currentRoundName,
+                                    text: rowText,
+                                    isCup: true
+                                });
+                                // IMPORTANT: Reset to prevent applying same header to next non-round table
+                                currentRoundName = null; 
                             }
                         }
-                        if (rowText.trim().length > 0) {
-                            results.push({
-                                name: currentRoundName,
-                                text: rowText
-                            });
-                        }
                     }
-                    // Consume the header
-                    currentRoundName = null;
                 }
             }
         }
@@ -138,7 +140,8 @@ def scrape_ligapokal_page(page, url, name):
     league_entry = {
         "url": url,
         "table": cup_data["html"],
-        "match_days": {}
+        "match_days": {},
+        "isCup": True
     }
 
     # Populate match_days from extracted rounds
@@ -165,29 +168,33 @@ def main():
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
 
         for entry in LIGAPOKAL_ARCHIVE_URLS:
+            context = browser.new_context()
+            page = context.new_page()
             try:
                 result = scrape_ligapokal_page(
                     page, entry["url"], entry["name"]
                 )
                 ligapokal_data[entry["name"]] = result
                 print(f"  [OK] {entry['name']} scraped successfully")
+                
+                # Save incrementally after each successful scrape
+                js_content = (
+                    f"window.LIGAPOKAL_ARCHIVE = "
+                    f"{json.dumps(ligapokal_data, indent=4, ensure_ascii=False)};"
+                )
+                with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+                    f.write(js_content)
+                
             except Exception as e:
                 print(f"  [ERR] Error scraping {entry['name']}: {e}")
+            finally:
+                context.close()
 
         browser.close()
 
-    # Save as JavaScript file
-    js_content = (
-        f"window.LIGAPOKAL_ARCHIVE = "
-        f"{json.dumps(ligapokal_data, indent=4, ensure_ascii=False)};"
-    )
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(js_content)
-
-    print(f"\n[INFO] Saved {len(ligapokal_data)} seasons to {OUTPUT_FILE}")
+    print(f"\n[INFO] Progressive save complete to {OUTPUT_FILE}")
     print("Done!")
 
 
