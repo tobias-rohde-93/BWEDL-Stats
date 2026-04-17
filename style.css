@@ -390,6 +390,108 @@ tr:hover td {
     font-weight: 600;
 }
 
+/* --- History Tables Alignment Fix --- */
+.history-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+}
+
+.history-table {
+    table-layout: fixed;
+    width: 100% !important;
+    min-width: 700px;
+    border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+    padding: 10px 12px !important;
+    font-size: 0.85rem !important;
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.history-table th {
+    background-color: #0f172a;
+    color: var(--text-secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem !important;
+}
+
+/* Column widths for match tables (4 columns) */
+.match-history-table th:nth-child(1),
+.match-history-table td:nth-child(1) { width: 150px; } /* Datum */
+.match-history-table th:nth-child(2),
+.match-history-table td:nth-child(2) { width: 33%; }   /* Heim */
+.match-history-table th:nth-child(3),
+.match-history-table td:nth-child(3) { width: 33%; }   /* Gast */
+.match-history-table th:nth-child(4),
+.match-history-table td:nth-child(4) { width: 100px; text-align: center; } /* Ergebnis */
+
+/* Column widths for ranking tables (6 columns: Runde, Datum, Spiel-Nr, Heim, Gast, Ergebnis) */
+.ranking-history-table th:nth-child(1),
+.ranking-history-table td:nth-child(1) { width: 140px; } /* Runde/Info */
+.ranking-history-table th:nth-child(2),
+.ranking-history-table td:nth-child(2) { width: 100px; } /* Datum */
+.ranking-history-table th:nth-child(3),
+.ranking-history-table td:nth-child(3) { width: 60px; text-align: center; }  /* Spiel-Nr. */
+.ranking-history-table th:nth-child(4),
+.ranking-history-table td:nth-child(4) { width: auto; color: #60a5fa; }    /* Heim */
+.ranking-history-table th:nth-child(5),
+.ranking-history-table td:nth-child(5) { width: auto; color: #60a5fa; }    /* Gast */
+.ranking-history-table th:nth-child(6),
+.ranking-history-table td:nth-child(6) { width: 90px; text-align: center; } /* Ergebnis */
+
+/* Optimization for League Tables (10 columns) */
+.league-history-table {
+    table-layout: fixed;
+    width: 100% !important;
+}
+
+/* Minimize stats columns for League History */
+.league-history-table th:nth-child(1), .league-history-table td:nth-child(1) { width: 140px; } /* Runde/Info */
+.league-history-table th:nth-child(2), .league-history-table td:nth-child(2) { width: 45px !important; text-align: center; } /* Pl. */
+
+/* Tabelle (Club Name) - maximize space */
+.league-history-table th:nth-child(3),
+.league-history-table td:nth-child(3) { 
+    width: 250px !important; /* Set a generous base width */
+    min-width: 200px !important;
+    white-space: normal !important; 
+    text-overflow: clip !important;
+    color: #60a5fa;
+    font-weight: 500;
+}
+
+/* Statistical columns at the end */
+.league-history-table th:nth-child(4), .league-history-table td:nth-child(4),
+.league-history-table th:nth-child(5), .league-history-table td:nth-child(5),
+.league-history-table th:nth-child(6), .league-history-table td:nth-child(6),
+.league-history-table th:nth-child(7), .league-history-table td:nth-child(7),
+.league-history-table th:nth-child(9), .league-history-table td:nth-child(9),
+.league-history-table th:nth-child(10), .league-history-table td:nth-child(10),
+.league-history-table th:nth-child(11), .league-history-table td:nth-child(11) {
+    width: 45px !important;
+    min-width: 45px !important;
+    text-align: center !important;
+    padding: 10px 4px !important;
+}
+
+/* SPIELE column needs more space for results (e.g., 177:150) */
+.league-history-table th:nth-child(8),
+.league-history-table td:nth-child(8) {
+    width: 80px !important;
+    min-width: 70px !important;
+    text-align: center !important;
+    padding: 10px 4px !important;
+}
+
 /* --- Tabs --- */
 /* --- Tabs --- */
 .tabs {
@@ -694,3 +796,49 @@ tr:hover td {
         font-size: 1.1rem;
     }
 }
+
+/* --- Sidebar Accordion (Leagues) --- */
+.sidebar-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.25rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid transparent;
+}
+
+.sidebar-accordion-header:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.sidebar-accordion-header.active {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar-accordion-icon {
+    font-size: 0.7rem;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-muted);
+}
+
+.sidebar-accordion-header.active .sidebar-accordion-icon {
+    transform: rotate(90deg);
+}
+
+.sidebar-accordion-content {
+    display: none;
+    padding-left: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-accordion-content.open {
+    display: block;
+}

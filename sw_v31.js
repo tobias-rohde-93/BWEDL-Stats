@@ -1,9 +1,9 @@
-const CACHE_NAME = 'bwedl-dashboard-v35-network-first';
+const CACHE_NAME = 'bwedl-dashboard-v31';
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
-    './bundle_v29.js',
+    './bundle_v31.js',
     './league_data.js',
     './ranking_data.js',
     './club_data.js',

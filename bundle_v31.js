@@ -4438,8 +4438,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (isClubMatch(club.name, m.home) || isClubMatch(club.name, m.away)) {
                         let ts = 0;
                         if (m.dateStr) {
-                            const parts = m.dateStr.split('.');
-                            if (parts.length === 3) ts = new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+                            const dateObj = parseGermanDate(m.dateStr);
+                            if (dateObj) ts = dateObj.getTime();
                         }
                         const matchObj = { ...m, leagueName, ts };
                         if (m.played) {
@@ -4819,14 +4819,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     let i = 0;
                     while (i < g.length) {
                         const item = g[i];
-                        block += `<div class="table-container" style="padding: 0; background: transparent; border: none; overflow-x: auto; margin-bottom: 10px;">`;
                         if (item.isTable) {
-                            block += `<table style="width: 100%; border-collapse: collapse; font-size: 0.85em; color: #e2e8f0; min-width: 600px;"><thead><tr style="background: rgba(30, 41, 59, 0.5); border-bottom: 1px solid #475569;">${item.rows[0].map(h => `<th style="padding: 8px 6px; text-align: left;">${h}</th>`).join('')}</tr></thead><tbody>`;
+                            const isLeague = item.rows[0].some(h => {
+                                const head = String(h || '').toLowerCase().trim();
+                                // Check for common league table headers (Pl., Tabelle, Mannschaft, Pos, etc.)
+                                return head.includes('pl') || head.includes('tab') || head.includes('mans') || head.includes('pos');
+                            });
+                            block += `<div class="history-table-wrapper">`;
+                            block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>`;
                             item.rows.slice(1).forEach(row => {
                                 const isMy = row.some(cell => isClubMatch(club.name, cell));
-                                block += `<tr style="border-bottom: 1px solid #334155; ${isMy ? 'background: rgba(59, 130, 246, 0.2); font-weight:bold; color:#60a5fa;' : ''}">${row.map(c => `<td style="padding: 6px;">${c}</td>`).join('')}</tr>`;
+                                block += `<tr style="${isMy ? 'background: rgba(59, 130, 246, 0.2); font-weight:bold; color:#60a5fa;' : ''}">${row.map(c => `<td>${c}</td>`).join('')}</tr>`;
                             });
-                            block += `</tbody></table>`;
+                            block += `</tbody></table></div>`;
                             i++;
                         } else {
                             const matchGroup = [];
@@ -4835,17 +4840,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                 i++;
                             }
                             if (matchGroup.length > 0) {
-                                block += `<table style="width: 100%; border-collapse: collapse; font-size: 0.85em; color: #e2e8f0; min-width: 400px;"><thead><tr style="background: rgba(30, 41, 59, 0.5); border-bottom: 1px solid #475569;"><th style="padding: 8px 6px; text-align: left;">Datum</th><th style="padding: 8px 6px; text-align: left;">Heim</th><th style="padding: 8px 6px; text-align: left;">Gast</th><th style="padding: 8px 6px; text-align: left;">Ergebnis</th></tr></thead><tbody>`;
+                                block += `<div class="history-table-wrapper">`;
+                                block += `<table class="history-table match-history-table"><thead><tr style="background: rgba(30, 41, 59, 0.5);"><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr></thead><tbody>`;
                                 matchGroup.forEach(m => {
                                     const hStyle = (isClubMatch(club.name, m.home) || m.isFreilos) ? 'font-weight:bold; color:#60a5fa;' : '';
                                     const aStyle = (isClubMatch(club.name, m.away) || m.isFreilos) ? 'font-weight:bold; color:#60a5fa;' : '';
                                     const res = m.isFreilos ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>' : `${m.scoreHome}:${m.scoreAway}`;
-                                    block += `<tr style="border-bottom: 1px solid #334155;"><td style="padding: 6px;">${m.dateStr}</td><td style="padding: 6px; ${hStyle}">${m.home}</td><td style="padding: 6px; ${aStyle}">${m.away}</td><td style="padding: 6px; font-weight:bold;">${res}</td></tr>`;
+                                    block += `<tr><td>${m.dateStr}</td><td style="${hStyle}">${m.home}</td><td style="${aStyle}">${m.away}</td><td style="font-weight:bold;">${res}</td></tr>`;
                                 });
-                                block += `</tbody></table>`;
+                                block += `</tbody></table></div>`;
                             }
                         }
-                        block += `</div>`;
                     }
                     block += `</div>`;
                 });
@@ -4941,13 +4946,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     played = false;
                 }
 
-                // Extract date string for display
+                // Extract date string for display (includes optional time)
                 let dateStr = '';
                 const dateExtract = leftPart.match(
-                    /(?:[A-Za-z]{2}\.\s+)?(\d{1,2}\.\s*\d{1,2}\.\d{4})(?:\s+\d{1,2}:\d{2})?/
+                    /(?:[A-Za-z]{2}\.\s+)?(\d{1,2}\.\s*\d{1,2}\.\d{4}(?:\s+\d{1,2}:\d{2})?)/
                 );
                 if (dateExtract) {
-                    dateStr = dateExtract[1].replace(/\s/g, '');
+                    dateStr = dateExtract[1].trim();
                 }
 
                 if (home && away && home !== 'Spielfrei' && away !== 'Spielfrei') {
