@@ -1564,36 +1564,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionCard.style.display = "flex";
                 actionCard.style.flexDirection = "column";
                 actionCard.style.gap = "20px";
+                actionCard.style.gridColumn = "1 / -1"; // Span full width on desktop
 
-                // Find Next Game (Future only)
-                const now = new Date();
-                // We want the first pending game that is in the future
-                // If date is missing, treat as future? Or ignore?
-                const nextGame = mySchedule.filter(g => g.isPending && (!g.date || g.date >= now))
-                    .sort((a, b) => (a.date || 0) - (b.date || 0))[0];
+                // Find Next Games (Future or Today)
+                const dashboardToday = new Date();
+                dashboardToday.setHours(0, 0, 0, 0);
+                const upcomingGames = mySchedule.filter(g => g.isPending && (!g.date || g.date >= dashboardToday))
+                    .sort((a, b) => (a.date || 0) - (b.date || 0))
+                    .slice(0, 3);
 
-                if (nextGame) {
-                    const nextCard = document.createElement('div');
-                    nextCard.style.background = "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)";
-                    nextCard.style.padding = "20px";
-                    nextCard.style.borderRadius = "12px";
-                    nextCard.style.border = "1px solid #3b82f6";
-                    nextCard.style.cursor = "pointer";
-                    nextCard.onclick = () => navigateTo('league', nextGame.leagueKey);
-                    nextCard.innerHTML = `
-                        <div style="color: #60a5fa; font-weight: bold; font-size: 0.9em; margin-bottom: 10px;">🚀 NÄCHSTES SPIEL</div>
-                        <div style="font-size: 1.1em; color: white; margin-bottom: 5px;">
-                            Gegen <strong>${nextGame.opponent}</strong>
-                        </div>
-                        <div style="color: #94a3b8; font-size: 0.9em;">
-                             ${nextGame.date ? nextGame.date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit' }) : 'Termin offen'}
-                             ${nextGame.isHome ? '(Heim)' : '(Auswärts)'}
-                        </div>
-                        <div style="color: #64748b; font-size: 0.75em; margin-top: 5px;">${nextGame.leagueKey ? nextGame.leagueKey.split('202')[0] : ''}</div>
-                    `;
-                    actionCard.appendChild(nextCard);
+                if (upcomingGames.length > 0) {
+                    const nextGamesContainer = document.createElement('div');
+                    nextGamesContainer.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; width: 100%;';
+                    
+                    upcomingGames.forEach((game, idx) => {
+                        const nextCard = document.createElement('div');
+                        const isPrimary = idx === 0;
+                        
+                        nextCard.style.cssText = isPrimary 
+                            ? 'background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 12px; border: 1px solid #3b82f6; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);'
+                            : 'background: #1e293b; padding: 15px 20px; border-radius: 12px; border: 1px solid #334155; cursor: pointer; opacity: 0.9; transition: all 0.2s;';
+                        
+                        if (!isPrimary) {
+                            nextCard.onmouseover = () => { nextCard.style.borderColor = '#475569'; nextCard.style.opacity = '1'; };
+                            nextCard.onmouseout = () => { nextCard.style.borderColor = '#334155'; nextCard.style.opacity = '0.9'; };
+                        }
+
+                        nextCard.onclick = () => navigateTo('league', game.leagueKey);
+                        
+                        const dateStr = game.date 
+                            ? game.date.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) 
+                            : 'Termin offen';
+
+                        nextCard.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                <div style="color: ${isPrimary ? '#60a5fa' : '#94a3b8'}; font-weight: bold; font-size: ${isPrimary ? '0.9em' : '0.7em'}; text-transform: uppercase; letter-spacing: 1px;">
+                                    ${isPrimary ? '🚀 NÄCHSTES SPIEL' : `📅 SPIEL ${idx + 1}`}
+                                </div>
+                                <div style="color: #64748b; font-size: 0.7em;">${game.leagueKey ? game.leagueKey.split('202')[0].trim() : ''}</div>
+                            </div>
+                            <div style="font-size: ${isPrimary ? '1.15em' : '1em'}; color: white; margin-bottom: 4px;">
+                                Gegen <strong>${game.opponent}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; color: #94a3b8; font-size: 0.85em;">
+                                <span>${dateStr}</span>
+                                <span>${game.isHome ? '(Heim)' : '(Auswärts)'}</span>
+                            </div>
+                        `;
+                        
+                        nextGamesContainer.appendChild(nextCard);
+                    });
+                    
+                    actionCard.appendChild(nextGamesContainer);
                 } else {
-                    // Season finished
+                    // Season finished fallback
                     const nextCard = document.createElement('div');
                     nextCard.style.background = "#1e293b";
                     nextCard.style.padding = "20px";
@@ -4828,8 +4852,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             block += `<div class="history-table-wrapper">`;
                             block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>`;
                             item.rows.slice(1).forEach(row => {
-                                const isMy = row.some(cell => isClubMatch(club.name, cell));
-                                block += `<tr style="${isMy ? 'background: rgba(59, 130, 246, 0.2); font-weight:bold; color:#60a5fa;' : ''}">${row.map(c => `<td>${c}</td>`).join('')}</tr>`;
+                                const isMyRow = row.some(cell => isClubMatch(club.name, cell));
+                                block += `<tr style="${isMyRow ? 'background: rgba(59, 130, 246, 0.2);' : ''}">`;
+                                row.forEach(cell => {
+                                    const isMyCell = isClubMatch(club.name, cell);
+                                    const cellStyle = isMyCell ? 'font-weight:bold; color:#60a5fa;' : '';
+                                    block += `<td style="${cellStyle}">${cell}</td>`;
+                                });
+                                block += `</tr>`;
                             });
                             block += `</tbody></table></div>`;
                             i++;
@@ -4843,8 +4873,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 block += `<div class="history-table-wrapper">`;
                                 block += `<table class="history-table match-history-table"><thead><tr style="background: rgba(30, 41, 59, 0.5);"><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr></thead><tbody>`;
                                 matchGroup.forEach(m => {
-                                    const hStyle = (isClubMatch(club.name, m.home) || m.isFreilos) ? 'font-weight:bold; color:#60a5fa;' : '';
-                                    const aStyle = (isClubMatch(club.name, m.away) || m.isFreilos) ? 'font-weight:bold; color:#60a5fa;' : '';
+                                    const hStyle = isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : '';
+                                    const aStyle = isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : '';
                                     const res = m.isFreilos ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>' : `${m.scoreHome}:${m.scoreAway}`;
                                     block += `<tr><td>${m.dateStr}</td><td style="${hStyle}">${m.home}</td><td style="${aStyle}">${m.away}</td><td style="font-weight:bold;">${res}</td></tr>`;
                                 });
@@ -5180,18 +5210,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('[AutoDetect] Total upcoming across all leagues:',
             allUpcoming.length);
 
-        // Parse date helper (DD.MM.YYYY → Date)
-        const parseDate = d => {
-            const parts = d.split('.');
-            if (parts.length === 3) {
-                return new Date(parts[2], parts[1] - 1, parts[0]);
-            }
-            return new Date(9999, 0, 1);
-        };
+        // Parse date helper (DD.MM.YYYY [HH:mm] → Date)
+        const parseDate = d => parseGermanDate(d) || new Date(9999, 0, 1);
 
         // Filter out past matches (only keep today or future)
         const today = new Date();
         today.setHours(0, 0, 0, 0);
+        
         allUpcoming = allUpcoming.filter(m => {
             const matchDate = parseDate(m.dateStr);
             return matchDate >= today;
@@ -5199,21 +5224,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log('[AutoDetect] Future upcoming matches:', allUpcoming.length);
 
-        if (allUpcoming.length === 0) return null;
+        if (allUpcoming.length === 0) return [];
 
         // Sort by date (soonest first)
         allUpcoming.sort((a, b) => parseDate(a.dateStr) - parseDate(b.dateStr));
 
-        const next = allUpcoming[0];
-        console.log('[AutoDetect] Next match:', next);
-        return {
+        // Return all matches with team context
+        return allUpcoming.map(next => ({
             league: next.league,
             home: next.home,
             away: next.away,
             dateStr: next.dateStr,
             spieltag: next.spieltag,
             teamName: detectedTeamName
-        };
+        }));
     }
 
     /**
@@ -5241,6 +5265,63 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<circle cx="${x}" cy="${y}" r="2" fill="${color}"/>`;
         }).join('')}
         </svg>`;
+    }
+
+    /**
+     * Helper to normalize strings for match preview fuzzy matching.
+     */
+    function normMatchPreview(s) {
+        if (!s) return "";
+        return s.toLowerCase().replace(/\u00a0/g, ' ').trim();
+    }
+
+    /**
+     * Fuzzy matches a team name against a select element's options.
+     */
+    function findTeamOptionMatchPreview(select, teamName) {
+        const nTeam = normMatchPreview(teamName);
+        for (const opt of select.options) {
+            if (!opt.value) continue;
+            const nOpt = normMatchPreview(opt.textContent);
+            if (nOpt === nTeam || nOpt.includes(nTeam) || nTeam.includes(nOpt)) return opt.value;
+        }
+        return null;
+    }
+
+    /**
+     * Executes the auto-fill logic for the Match Preview tool.
+     * Extracts values from nextMatch and selects them in the UI.
+     */
+    function applyMatchSelectorAutoFill(isAuto, nextMatch, elements) {
+        const { leagueSelect, teamASelect, teamBSelect, banner, updateExclusions, loadSelection } = elements;
+        
+        // Step 1: Set league and trigger change to populate teams
+        leagueSelect.value = nextMatch.league;
+        leagueSelect.dispatchEvent(new Event('change'));
+
+        // Step 2: Set teams after a delay to allow the dropdowns to populate
+        setTimeout(() => {
+            const homeVal = findTeamOptionMatchPreview(teamASelect, nextMatch.home);
+            const awayVal = findTeamOptionMatchPreview(teamBSelect, nextMatch.away);
+
+            if (homeVal) { teamASelect.value = homeVal; }
+            if (awayVal) { teamBSelect.value = awayVal; }
+
+            // Refresh selections and results
+            if (typeof updateExclusions === 'function') updateExclusions();
+            if (typeof loadSelection === 'function') loadSelection();
+
+            // Update UI feedback on the banner
+            if (banner) {
+                banner.style.borderColor = '#22c55e';
+                banner.style.boxShadow = '0 0 10px rgba(34, 197, 94, 0.2)';
+                const statusBtn = banner.querySelector('.load-btn') || banner.querySelector('div[style*="padding: 6px 14px"]');
+                if (statusBtn) {
+                    statusBtn.textContent = isAuto ? '✓ Auto-Fill' : '✓ Geladen';
+                    statusBtn.style.background = '#22c55e';
+                }
+            }
+        }, 200);
     }
 
     function renderMatchPreview() {
@@ -5381,54 +5462,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
         contentArea.appendChild(container);
 
-        // AUTO-DETECT NEXT MATCH
+        // AUTO-DETECT NEXT MATCHES
         try {
-            const nextMatch = detectNextMatch();
-            if (nextMatch) {
-                const banner = document.createElement('div');
-                banner.style.cssText = 'background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%); padding: 15px 20px; border-radius: 8px; border: 1px solid #3b82f6; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; gap: 12px;';
-                banner.innerHTML = `
-                    <span style="font-size: 1.5em;">🎯</span>
-                    <div style="flex: 1;">
-                        <div style="font-size: 0.75em; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Nächstes Spiel erkannt</div>
-                        <div style="color: #f8fafc; font-weight: bold;">${nextMatch.home} vs ${nextMatch.away}</div>
-                        <div style="color: #94a3b8; font-size: 0.85em;">${nextMatch.spieltag} · ${nextMatch.dateStr || 'Datum unbekannt'}</div>
-                    </div>
-                    <div style="background: #3b82f6; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold;">Laden →</div>
-                `;
-                banner.addEventListener('click', () => {
-                    // Auto-select league
-                    leagueSelect.value = nextMatch.league;
-                    leagueSelect.dispatchEvent(new Event('change'));
+            const matches = detectNextMatch();
+            if (matches && matches.length > 0) {
+                const scrollerContainer = document.createElement('div');
+                scrollerContainer.style.marginBottom = "25px";
 
-                    // Auto-select teams after a short delay to let league change populate teams
-                    setTimeout(() => {
-                        const norm = s => s.toLowerCase().replace(/\u00a0/g, ' ').trim();
-                        const findTeamOption = (select, teamName) => {
-                            const nTeam = norm(teamName);
-                            for (const opt of select.options) {
-                                if (!opt.value) continue;
-                                const nOpt = norm(opt.textContent);
-                                if (nOpt === nTeam || nOpt.includes(nTeam) || nTeam.includes(nOpt)) return opt.value;
+                const label = document.createElement('div');
+                label.style.cssText = 'font-size: 0.8em; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; font-weight: bold; padding-left: 2px;';
+                label.textContent = matches.length > 1 ? `📅 Nächste Spiele (${matches.length})` : "🎯 Nächstes Spiel erkannt";
+                scrollerContainer.appendChild(label);
+
+                const scroller = document.createElement('div');
+                scroller.style.cssText = 'display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: thin; scrollbar-color: #334155 transparent; scroll-snap-type: x mandatory;';
+                
+                matches.forEach((m, idx) => {
+                    const cardWrap = document.createElement('div');
+                    cardWrap.style.cssText = 'min-width: 280px; flex-shrink: 0; background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); backdrop-filter: blur(10px); border: 1px solid #334155; border-radius: 12px; padding: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; display: flex; flex-direction: column; gap: 10px; scroll-snap-align: start;';
+                    
+                    cardWrap.onmouseenter = () => { 
+                        cardWrap.style.borderColor = '#3b82f6'; 
+                        cardWrap.style.transform = 'translateY(-2px) scale(1.02)';
+                        cardWrap.style.boxShadow = '0 10px 20px -5px rgba(0,0,0,0.5)';
+                    };
+                    cardWrap.onmouseleave = () => { 
+                        cardWrap.style.borderColor = '#334155'; 
+                        cardWrap.style.transform = 'translateY(0) scale(1)';
+                        cardWrap.style.boxShadow = 'none';
+                    };
+                    
+                    cardWrap.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                             <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); text-transform: uppercase;">${m.league.split('202')[0]}</span>
+                             <span style="color: #94a3b8; font-size: 0.75em; font-weight: 500;">${m.dateStr || 'Termin offen'}</span>
+                        </div>
+                        <div style="margin: 5px 0;">
+                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${m.home}</div>
+                            <div style="color: #475569; font-size: 0.75em; font-weight: bold; margin: 4px 0; letter-spacing: 1px;">VERSUS</div>
+                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${m.away}</div>
+                        </div>
+                        <div style="margin-top: 5px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                             <span style="color: #64748b; font-size: 0.75em;">${m.spieltag}</span>
+                             <div class="load-btn" style="background: #3b82f6; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold; transition: all 0.2s;">Analysieren →</div>
+                        </div>
+                    `;
+
+                    cardWrap.onclick = () => {
+                        // Reset other cards' styles first
+                        scroller.querySelectorAll('div').forEach(c => {
+                            if (c.style) {
+                                c.style.borderColor = '#334155';
+                                c.style.boxShadow = 'none';
+                                const btn = c.querySelector('.load-btn');
+                                if (btn && btn.textContent.includes('✓')) {
+                                    btn.textContent = 'Analysieren →';
+                                    btn.style.background = '#3b82f6';
+                                }
                             }
-                            return null;
-                        };
+                        });
 
-                        const homeVal = findTeamOption(teamASelect, nextMatch.home);
-                        const awayVal = findTeamOption(teamBSelect, nextMatch.away);
+                        applyMatchSelectorAutoFill(false, m, {
+                            leagueSelect, teamASelect, teamBSelect,
+                            banner: cardWrap, updateExclusions, loadSelection
+                        });
+                    };
 
-                        if (homeVal) { teamASelect.value = homeVal; }
-                        if (awayVal) { teamBSelect.value = awayVal; }
+                    scroller.appendChild(cardWrap);
 
-                        updateExclusions();
-                        loadSelection();
-                        banner.style.border = '1px solid #22c55e';
-                        banner.querySelector('div[style*="background: #3b82f6"]').textContent = '✓ Geladen';
-                        banner.querySelector('div[style*="background: #3b82f6"]').style.background = '#22c55e';
-                    }, 200);
+                    // Auto-fill the first match immediately on tool load
+                    if (idx === 0) {
+                        setTimeout(() => {
+                           applyMatchSelectorAutoFill(true, m, {
+                                leagueSelect, teamASelect, teamBSelect,
+                                banner: cardWrap, updateExclusions, loadSelection
+                            });
+                        }, 100);
+                    }
                 });
 
-                container.insertBefore(banner, card);
+                scrollerContainer.appendChild(scroller);
+                container.insertBefore(scrollerContainer, card);
             }
         } catch (e) {
             console.warn('[Match Preview] Auto-detect error:', e);
