@@ -27,6 +27,13 @@ window.ARCHIVE_DATA = {
       "points": 30,
       "league": "Bezirksliga",
       "name": "Thomas K\u00f6hnlein"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 167,
+      "league": "Bezirksliga",
+      "name": "Thomas K\u00f6hnlein"
     }
   ],
   "004": [
@@ -57,6 +64,13 @@ window.ARCHIVE_DATA = {
       "points": 93,
       "league": "Bezirksliga",
       "name": "Bernd Fritz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 107,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
     }
   ],
   "397": [
@@ -85,6 +99,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 2,
       "points": 165,
+      "league": "Bezirksliga",
+      "name": "Michael G\u00e4rtner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 8,
+      "points": 149,
       "league": "Bezirksliga",
       "name": "Michael G\u00e4rtner"
     }
@@ -117,6 +138,13 @@ window.ARCHIVE_DATA = {
       "points": 184,
       "league": "Bezirksliga",
       "name": "Maik H\u00f6lzle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 158,
+      "league": "Bezirksliga",
+      "name": "Maik H\u00f6lzle"
     }
   ],
   "775": [
@@ -145,6 +173,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 3,
       "points": 165,
+      "league": "Bezirksliga",
+      "name": "Rolf Nadler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 163,
       "league": "Bezirksliga",
       "name": "Rolf Nadler"
     }
@@ -177,6 +212,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "Bezirksliga",
       "name": "Eike Haug"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 148,
+      "league": "Bezirksliga",
+      "name": "Eike Haug"
     }
   ],
   "746": [
@@ -205,6 +247,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 59,
       "points": 3,
+      "league": "Bezirksliga",
+      "name": "Tarkan Arik"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 148,
       "league": "Bezirksliga",
       "name": "Tarkan Arik"
     }
@@ -237,6 +286,13 @@ window.ARCHIVE_DATA = {
       "points": 173,
       "league": "A-Klasse",
       "name": "Robin Korbmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 156,
+      "league": "Bezirksliga",
+      "name": "Robin Korbmann"
     }
   ],
   "1587": [
@@ -266,6 +322,13 @@ window.ARCHIVE_DATA = {
       "rank": 2,
       "points": 199,
       "league": "C-Klasse",
+      "name": "Andreas Lenz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 182,
+      "league": "A-Klasse",
       "name": "Andreas Lenz"
     }
   ],
@@ -297,6 +360,13 @@ window.ARCHIVE_DATA = {
       "points": 13,
       "league": "A-Klasse",
       "name": "Marco Merz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 172,
+      "league": "Bezirksliga",
+      "name": "Marco Merz"
     }
   ],
   "780": [
@@ -323,6 +393,13 @@ window.ARCHIVE_DATA = {
     },
     {
       "season": "20/22",
+      "rank": 1,
+      "points": 185,
+      "league": "A-Klasse",
+      "name": "Sascha Schneider"
+    },
+    {
+      "season": "2025/2026",
       "rank": 1,
       "points": 185,
       "league": "A-Klasse",
@@ -357,6 +434,13 @@ window.ARCHIVE_DATA = {
       "points": 160,
       "league": "Bezirksliga",
       "name": "Sven Fiedler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 136,
+      "league": "Bezirksliga",
+      "name": "Sven Fiedler"
     }
   ],
   "1282": [
@@ -386,6 +470,13 @@ window.ARCHIVE_DATA = {
       "rank": 7,
       "points": 141,
       "league": "A-Klasse",
+      "name": "Fabian Steube"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 97,
+      "league": "Bezirksliga",
       "name": "Fabian Steube"
     }
   ],
@@ -417,6 +508,13 @@ window.ARCHIVE_DATA = {
       "points": 131,
       "league": "Bezirksliga",
       "name": "Gregor Opacak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 104,
+      "league": "Bezirksliga",
+      "name": "Gregor Opacak"
     }
   ],
   "901": [
@@ -431,6 +529,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 14,
       "points": 108,
+      "league": "Bezirksliga",
+      "name": "Tino Wingerter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 100,
       "league": "Bezirksliga",
       "name": "Tino Wingerter"
     }
@@ -463,6 +568,13 @@ window.ARCHIVE_DATA = {
       "points": 134,
       "league": "Bezirksliga",
       "name": "Thorsten Jost"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 115,
+      "league": "Bezirksliga",
+      "name": "Thorsten Jost"
     }
   ],
   "494": [
@@ -490,6 +602,13 @@ window.ARCHIVE_DATA = {
     {
       "season": "20/22",
       "rank": 9,
+      "points": 119,
+      "league": "Bezirksliga",
+      "name": "R\u00fcstem Aydogan"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 14,
       "points": 119,
       "league": "Bezirksliga",
       "name": "R\u00fcstem Aydogan"
@@ -523,6 +642,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "A-Klasse",
       "name": "Dennis Hummel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 23,
+      "points": 79,
+      "league": "Bezirksliga",
+      "name": "Dennis Hummel"
     }
   ],
   "1309": [
@@ -552,6 +678,13 @@ window.ARCHIVE_DATA = {
       "rank": 20,
       "points": 114,
       "league": "A-Klasse",
+      "name": "Bernd Haberecht"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 22,
+      "points": 91,
+      "league": "Bezirksliga",
       "name": "Bernd Haberecht"
     }
   ],
@@ -583,6 +716,13 @@ window.ARCHIVE_DATA = {
       "points": 101,
       "league": "A-Klasse",
       "name": "Martin Schulze"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 27,
+      "points": 61,
+      "league": "Bezirksliga",
+      "name": "Martin Schulze"
     }
   ],
   "742": [
@@ -611,6 +751,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 29,
       "points": 54,
+      "league": "Bezirksliga",
+      "name": "Thomas Nees"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 53,
       "league": "Bezirksliga",
       "name": "Thomas Nees"
     }
@@ -643,6 +790,13 @@ window.ARCHIVE_DATA = {
       "points": 160,
       "league": "A-Klasse",
       "name": "Chris Kubin"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 15,
+      "points": 117,
+      "league": "Bezirksliga",
+      "name": "Chris Kubin"
     }
   ],
   "989": [
@@ -673,6 +827,13 @@ window.ARCHIVE_DATA = {
       "points": 96,
       "league": "Bezirksliga",
       "name": "Fabian Wirth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 139,
+      "league": "A-Klasse",
+      "name": "Fabian Wirth"
     }
   ],
   "420": [
@@ -701,6 +862,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 23,
       "points": 83,
+      "league": "Bezirksliga",
+      "name": "Jamal Schulte"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 53,
+      "points": 16,
       "league": "Bezirksliga",
       "name": "Jamal Schulte"
     }
@@ -788,6 +956,13 @@ window.ARCHIVE_DATA = {
       "points": 155,
       "league": "B-Klasse",
       "name": "Marco Ruof"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 33,
+      "points": 51,
+      "league": "Bezirksliga",
+      "name": "Marco Ruof"
     }
   ],
   "459": [
@@ -818,6 +993,13 @@ window.ARCHIVE_DATA = {
       "points": 96,
       "league": "Bezirksliga",
       "name": "Kai Lacher"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Kai Lacher"
     }
   ],
   "1892": [
@@ -834,6 +1016,13 @@ window.ARCHIVE_DATA = {
       "points": 128,
       "league": "Bezirksliga",
       "name": "Sven Lernhardt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 40,
+      "league": "Bezirksliga",
+      "name": "Sven Lernhardt"
     }
   ],
   "714": [
@@ -848,6 +1037,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 31,
       "points": 65,
+      "league": "Bezirksliga",
+      "name": "Marc Lernhardt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 32,
       "league": "Bezirksliga",
       "name": "Marc Lernhardt"
     }
@@ -878,6 +1074,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 51,
       "points": 22,
+      "league": "Bezirksliga",
+      "name": "Holger Hentschel-Hoffmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 33,
       "league": "Bezirksliga",
       "name": "Holger Hentschel-Hoffmann"
     }
@@ -940,6 +1143,13 @@ window.ARCHIVE_DATA = {
       "points": 131,
       "league": "B-Klasse",
       "name": "Felix Kr\u00fcger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 57,
+      "league": "Bezirksliga",
+      "name": "Felix Kr\u00fcger"
     }
   ],
   "343": [
@@ -970,6 +1180,13 @@ window.ARCHIVE_DATA = {
       "points": 137,
       "league": "A-Klasse",
       "name": "Corinna Jungmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 123,
+      "league": "A-Klasse",
+      "name": "Corinna Jungmann"
     }
   ],
   "1578": [
@@ -985,6 +1202,13 @@ window.ARCHIVE_DATA = {
       "rank": 215,
       "points": 19,
       "league": "C-Klasse",
+      "name": "Vincenzo Di Grigoli"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 7,
+      "league": "Bezirksliga",
       "name": "Vincenzo Di Grigoli"
     }
   ],
@@ -1007,6 +1231,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 48,
       "points": 19,
+      "league": "Bezirksliga",
+      "name": "Tobias Gutunolu"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 42,
       "league": "Bezirksliga",
       "name": "Tobias Gutunolu"
     }
@@ -1039,6 +1270,13 @@ window.ARCHIVE_DATA = {
       "points": 122,
       "league": "A-Klasse",
       "name": "Mike Bader"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Mike Bader"
     }
   ],
   "617": [
@@ -1069,6 +1307,13 @@ window.ARCHIVE_DATA = {
       "points": 90,
       "league": "C-Klasse",
       "name": "Michael Venzke"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 83,
+      "points": 33,
+      "league": "A-Klasse",
+      "name": "Michael Venzke"
     }
   ],
   "723": [
@@ -1092,6 +1337,13 @@ window.ARCHIVE_DATA = {
       "points": 8,
       "league": "A-Klasse",
       "name": "Marc-Andre Schneider"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Marc-Andr\u00e9 Schneider"
     }
   ],
   "1454": [
@@ -1122,6 +1374,13 @@ window.ARCHIVE_DATA = {
       "points": 94,
       "league": "Bezirksliga",
       "name": "Tobias H\u00e4rter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 58,
+      "points": 8,
+      "league": "Bezirksliga",
+      "name": "Tobias H\u00e4rter"
     }
   ],
   "428": [
@@ -1130,6 +1389,13 @@ window.ARCHIVE_DATA = {
       "rank": 41,
       "points": 41,
       "league": "Bezirksliga",
+      "name": "Norbert Fleischmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 69,
+      "league": "A-Klasse",
       "name": "Norbert Fleischmann"
     }
   ],
@@ -1159,6 +1425,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 47,
       "points": 23,
+      "league": "Bezirksliga",
+      "name": "Michael Heck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 45,
       "league": "Bezirksliga",
       "name": "Michael Heck"
     }
@@ -1207,6 +1480,13 @@ window.ARCHIVE_DATA = {
       "points": 48,
       "league": "B-Klasse",
       "name": "Benjamin Laufer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 110,
+      "league": "A-Klasse",
+      "name": "Benjamin Laufer"
     }
   ],
   "143": [
@@ -1253,6 +1533,13 @@ window.ARCHIVE_DATA = {
       "points": 88,
       "league": "Bezirksliga",
       "name": "Axel Spring"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 62,
+      "league": "Bezirksliga",
+      "name": "Axel Spring"
     }
   ],
   "662": [
@@ -1260,6 +1547,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 47,
       "points": 23,
+      "league": "Bezirksliga",
+      "name": "Patrick Schr\u00f6der"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 52,
       "league": "Bezirksliga",
       "name": "Patrick Schr\u00f6der"
     }
@@ -1299,6 +1593,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 191,
       "points": 6,
+      "league": "B-Klasse",
+      "name": "Luca Feitenhansl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 93,
+      "points": 59,
       "league": "B-Klasse",
       "name": "Luca Feitenhansl"
     }
@@ -1361,6 +1662,13 @@ window.ARCHIVE_DATA = {
       "points": 30,
       "league": "A-Klasse",
       "name": "Andreas Rados"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 36,
+      "league": "A-Klasse",
+      "name": "Andreas Rados"
     }
   ],
   "541": [
@@ -1369,6 +1677,13 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 13,
       "league": "Bezirksliga",
+      "name": "Kevin Eisbrenner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 149,
+      "points": 22,
+      "league": "B-Klasse",
       "name": "Kevin Eisbrenner"
     }
   ],
@@ -1400,6 +1715,13 @@ window.ARCHIVE_DATA = {
       "points": 70,
       "league": "B-Klasse",
       "name": "Christian Kaksch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 55,
+      "points": 14,
+      "league": "Bezirksliga",
+      "name": "Christian Kaksch"
     }
   ],
   "1529": [
@@ -1429,6 +1751,13 @@ window.ARCHIVE_DATA = {
       "rank": 94,
       "points": 56,
       "league": "C-Klasse",
+      "name": "Vanessa Lenz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 88,
+      "points": 30,
+      "league": "A-Klasse",
       "name": "Vanessa Lenz"
     }
   ],
@@ -1460,6 +1789,13 @@ window.ARCHIVE_DATA = {
       "points": 22,
       "league": "Bezirksliga",
       "name": "Klaus Feitenhansl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Klaus Feitenhansl"
     }
   ],
   "972": [
@@ -1490,6 +1826,13 @@ window.ARCHIVE_DATA = {
       "points": 123,
       "league": "A-Klasse",
       "name": "Jacqueline Silvestre Abrante"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 62,
+      "league": "A-Klasse",
+      "name": "Jacqueline Silvestre Abrantes"
     }
   ],
   "145": [
@@ -1506,6 +1849,13 @@ window.ARCHIVE_DATA = {
       "points": 61,
       "league": "A-Klasse",
       "name": "R\u00fcdiger Scheiba"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 67,
+      "league": "Bezirksliga",
+      "name": "R\u00fcdiger Scheiba"
     }
   ],
   "1416": [
@@ -1520,6 +1870,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 54,
       "points": 14,
+      "league": "Bezirksliga",
+      "name": "Ingo Eichenhofer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 11,
       "league": "Bezirksliga",
       "name": "Ingo Eichenhofer"
     }
@@ -1552,6 +1909,13 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "A-Klasse",
       "name": "Lukas Junker"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Lucas Junker"
     }
   ],
   "1645": [
@@ -1566,6 +1930,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 97,
       "points": 12,
+      "league": "A-Klasse",
+      "name": "Benjamin Golling"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 75,
       "league": "A-Klasse",
       "name": "Benjamin Golling"
     }
@@ -1614,6 +1985,13 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "C-Klasse",
       "name": "Assunta Ferraiuolo"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Assunta Venzke"
     }
   ],
   "1565": [
@@ -1644,6 +2022,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 64,
       "points": 3,
+      "league": "Bezirksliga",
+      "name": "Antonio Knapps Thommen"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 48,
+      "points": 25,
       "league": "Bezirksliga",
       "name": "Antonio Knapps Thommen"
     }
@@ -1680,6 +2065,13 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "Bezirksliga",
       "name": "Pavo Saric"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 159,
+      "league": "C-Klasse",
+      "name": "Pavo Saric"
     }
   ],
   "1845": [
@@ -1701,6 +2093,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 158,
       "points": 10,
+      "league": "B-Klasse",
+      "name": "Herward Wagner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 140,
+      "points": 27,
       "league": "B-Klasse",
       "name": "Herward Wagner"
     }
@@ -1731,6 +2130,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 99,
       "points": 16,
+      "league": "A-Klasse",
+      "name": "Florian B\u00fchner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
       "league": "A-Klasse",
       "name": "Florian B\u00fchner"
     }
@@ -1779,6 +2185,13 @@ window.ARCHIVE_DATA = {
       "points": 113,
       "league": "C-Klasse",
       "name": "Jason Whitney"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 164,
+      "league": "Bezirksliga",
+      "name": "Jason Whitney"
     }
   ],
   "918": [
@@ -1808,6 +2221,13 @@ window.ARCHIVE_DATA = {
       "rank": 121,
       "points": 40,
       "league": "C-Klasse",
+      "name": "Dominik Silvestre Abrantes"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 38,
+      "league": "Bezirksliga",
       "name": "Dominik Silvestre Abrantes"
     }
   ],
@@ -1839,6 +2259,13 @@ window.ARCHIVE_DATA = {
       "points": 107,
       "league": "A-Klasse",
       "name": "Robin Zipp"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 25,
+      "points": 67,
+      "league": "Bezirksliga",
+      "name": "Robin Zipp"
     }
   ],
   "1896": [
@@ -1862,6 +2289,13 @@ window.ARCHIVE_DATA = {
       "points": 163,
       "league": "C-Klasse",
       "name": "Sascha Gauss"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 159,
+      "league": "Bezirksliga",
+      "name": "Sascha Gauss"
     }
   ],
   "208": [
@@ -1877,6 +2311,13 @@ window.ARCHIVE_DATA = {
       "rank": 3,
       "points": 161,
       "league": "A-Klasse",
+      "name": "Mark Dew"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 177,
+      "league": "B-Klasse",
       "name": "Mark Dew"
     }
   ],
@@ -1908,6 +2349,13 @@ window.ARCHIVE_DATA = {
       "points": 66,
       "league": "B-Klasse",
       "name": "Max Z\u00fcndel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 30,
+      "points": 54,
+      "league": "Bezirksliga",
+      "name": "Max Z\u00fcndel"
     }
   ],
   "682": [
@@ -1936,6 +2384,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 139,
       "points": 6,
+      "league": "A-Klasse",
+      "name": "Manuel Potrzeba"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 96,
       "league": "A-Klasse",
       "name": "Manuel Potrzeba"
     }
@@ -1968,6 +2423,13 @@ window.ARCHIVE_DATA = {
       "points": 93,
       "league": "B-Klasse",
       "name": "Charalambos Papadopoulos"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Charalambos Papadopoulos"
     }
   ],
   "1307": [
@@ -1990,6 +2452,13 @@ window.ARCHIVE_DATA = {
       "rank": 63,
       "points": 2,
       "league": "Bezirksliga",
+      "name": "Hanno Lohmeyer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 103,
+      "league": "A-Klasse",
       "name": "Hanno Lohmeyer"
     }
   ],
@@ -2021,6 +2490,13 @@ window.ARCHIVE_DATA = {
       "points": 6,
       "league": "B-Klasse",
       "name": "Marco Waidmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 55,
+      "league": "A-Klasse",
+      "name": "Marco Waidmann"
     }
   ],
   "701": [
@@ -2050,6 +2526,13 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 129,
       "league": "A-Klasse",
+      "name": "Michael Hanosek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 23,
+      "points": 124,
+      "league": "B-Klasse",
       "name": "Michael Hanosek"
     }
   ],
@@ -2081,6 +2564,13 @@ window.ARCHIVE_DATA = {
       "points": 183,
       "league": "B-Klasse",
       "name": "Marcel Reiling"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Marcel Reiling"
     }
   ],
   "492": [
@@ -2110,6 +2600,13 @@ window.ARCHIVE_DATA = {
       "rank": 124,
       "points": 40,
       "league": "C-Klasse",
+      "name": "Lucas Herzog"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 78,
+      "league": "A-Klasse",
       "name": "Lucas Herzog"
     }
   ],
@@ -2141,6 +2638,13 @@ window.ARCHIVE_DATA = {
       "points": 151,
       "league": "B-Klasse",
       "name": "Marcel Rischar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 87,
+      "league": "A-Klasse",
+      "name": "Marcel Rischar"
     }
   ],
   "1126": [
@@ -2169,6 +2673,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 3,
       "points": 187,
+      "league": "C-Klasse",
+      "name": "Dominik Koch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 206,
       "league": "C-Klasse",
       "name": "Dominik Koch"
     }
@@ -2201,6 +2712,13 @@ window.ARCHIVE_DATA = {
       "points": 106,
       "league": "A-Klasse",
       "name": "Daniel Hautzinger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 97,
+      "league": "Bezirksliga",
+      "name": "Daniel Hautzinger"
     }
   ],
   "324": [
@@ -2223,6 +2741,13 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 83,
       "league": "B-Klasse",
+      "name": "Sven Thomas"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 8,
+      "points": 130,
+      "league": "A-Klasse",
       "name": "Sven Thomas"
     }
   ],
@@ -2254,6 +2779,13 @@ window.ARCHIVE_DATA = {
       "points": 65,
       "league": "A-Klasse",
       "name": "Stipo Dumancic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Stipo Dumancic"
     }
   ],
   "570": [
@@ -2269,6 +2801,13 @@ window.ARCHIVE_DATA = {
       "rank": 156,
       "points": 10,
       "league": "B-Klasse",
+      "name": "Roberto Giuffrida"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 112,
+      "league": "A-Klasse",
       "name": "Roberto Giuffrida"
     }
   ],
@@ -2298,6 +2837,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 144,
       "points": 5,
+      "league": "A-Klasse",
+      "name": "Oliver Matt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 102,
       "league": "A-Klasse",
       "name": "Oliver Matt"
     }
@@ -2330,6 +2876,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "Bezirksliga",
       "name": "Michael Neub\u00fcser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 166,
+      "league": "C-Klasse",
+      "name": "Michael Neub\u00fcser"
     }
   ],
   "612": [
@@ -2359,6 +2912,13 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 104,
       "league": "A-Klasse",
+      "name": "Tihomir Weissbarth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 160,
+      "league": "C-Klasse",
       "name": "Tihomir Weissbarth"
     }
   ],
@@ -2390,6 +2950,13 @@ window.ARCHIVE_DATA = {
       "points": 97,
       "league": "A-Klasse",
       "name": "Benjamin Bader"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 0,
+      "league": "Bezirksliga",
+      "name": "Benjamin Bader"
     }
   ],
   "1271": [
@@ -2419,6 +2986,13 @@ window.ARCHIVE_DATA = {
       "rank": 22,
       "points": 83,
       "league": "Bezirksliga",
+      "name": "Harald Hoppe"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 152,
+      "league": "B-Klasse",
       "name": "Harald Hoppe"
     }
   ],
@@ -2450,6 +3024,13 @@ window.ARCHIVE_DATA = {
       "points": 155,
       "league": "C-Klasse",
       "name": "Thorsten Klein"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 40,
+      "league": "Bezirksliga",
+      "name": "Thorsten Klein"
     }
   ],
   "1530": [
@@ -2473,6 +3054,13 @@ window.ARCHIVE_DATA = {
       "points": 135,
       "league": "C-Klasse",
       "name": "Kevin Kenz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 34,
+      "points": 48,
+      "league": "Bezirksliga",
+      "name": "Kevin Kenz"
     }
   ],
   "566": [
@@ -2488,6 +3076,13 @@ window.ARCHIVE_DATA = {
       "rank": 140,
       "points": 18,
       "league": "B-Klasse",
+      "name": "Danyal Cagatay"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 90,
+      "league": "A-Klasse",
       "name": "Danyal Cagatay"
     }
   ],
@@ -2517,6 +3112,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 11,
       "points": 132,
+      "league": "A-Klasse",
+      "name": "Steffen Schmierdorfer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 94,
       "league": "A-Klasse",
       "name": "Steffen Schmierdorfer"
     }
@@ -2549,6 +3151,13 @@ window.ARCHIVE_DATA = {
       "points": 110,
       "league": "C-Klasse",
       "name": "Oktay Kocaoglu"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 59,
+      "league": "A-Klasse",
+      "name": "Oktay Kocaoglu"
     }
   ],
   "579": [
@@ -2556,6 +3165,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 33,
       "points": 102,
+      "league": "A-Klasse",
+      "name": "Matija Spiranec"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 126,
       "league": "A-Klasse",
       "name": "Matija Spiranec"
     }
@@ -2588,6 +3204,13 @@ window.ARCHIVE_DATA = {
       "points": 50,
       "league": "Bezirksliga",
       "name": "Martin Zacher"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Martin Zacher"
     }
   ],
   "1865": [
@@ -2617,6 +3240,13 @@ window.ARCHIVE_DATA = {
       "rank": 24,
       "points": 126,
       "league": "C-Klasse",
+      "name": "Artur Penner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 79,
+      "league": "A-Klasse",
       "name": "Artur Penner"
     }
   ],
@@ -2648,6 +3278,13 @@ window.ARCHIVE_DATA = {
       "points": 21,
       "league": "B-Klasse",
       "name": "Jannik Scherle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Jannik Scherle"
     }
   ],
   "1883": [
@@ -2669,6 +3306,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 21,
       "points": 118,
+      "league": "A-Klasse",
+      "name": "Daniel Sowa"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 141,
       "league": "A-Klasse",
       "name": "Daniel Sowa"
     }
@@ -2701,6 +3345,13 @@ window.ARCHIVE_DATA = {
       "points": 84,
       "league": "C-Klasse",
       "name": "Gennadij Penner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Gennadij Penner"
     }
   ],
   "1055": [
@@ -2730,6 +3381,13 @@ window.ARCHIVE_DATA = {
       "rank": 217,
       "points": 1,
       "league": "B-Klasse",
+      "name": "Saskia J\u00e4ger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 93,
+      "league": "A-Klasse",
       "name": "Saskia J\u00e4ger"
     }
   ],
@@ -2761,6 +3419,13 @@ window.ARCHIVE_DATA = {
       "points": 61,
       "league": "Bezirksliga",
       "name": "J\u00fcrgen Herzog"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Herzog"
     }
   ],
   "1523": [
@@ -2790,6 +3455,13 @@ window.ARCHIVE_DATA = {
       "rank": 20,
       "points": 121,
       "league": "B-Klasse",
+      "name": "Vitali Herz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 83,
+      "league": "A-Klasse",
       "name": "Vitali Herz"
     }
   ],
@@ -2821,6 +3493,13 @@ window.ARCHIVE_DATA = {
       "points": 136,
       "league": "B-Klasse",
       "name": "Christian Besesek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Christian Besesek"
     }
   ],
   "114": [
@@ -2850,6 +3529,13 @@ window.ARCHIVE_DATA = {
       "rank": 18,
       "points": 117,
       "league": "A-Klasse",
+      "name": "Thomas Weber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 41,
+      "points": 38,
+      "league": "Bezirksliga",
       "name": "Thomas Weber"
     }
   ],
@@ -2881,6 +3567,13 @@ window.ARCHIVE_DATA = {
       "points": 116,
       "league": "C-Klasse",
       "name": "Benjamin Grau"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 142,
+      "league": "B-Klasse",
+      "name": "Benjamin Grau"
     }
   ],
   "1455": [
@@ -2910,6 +3603,13 @@ window.ARCHIVE_DATA = {
       "rank": 110,
       "points": 35,
       "league": "B-Klasse",
+      "name": "Gianni Morello"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 7,
+      "league": "A-Klasse",
       "name": "Gianni Morello"
     }
   ],
@@ -2941,6 +3641,13 @@ window.ARCHIVE_DATA = {
       "points": 128,
       "league": "B-Klasse",
       "name": "Urban Roth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 16,
+      "league": "Bezirksliga",
+      "name": "Urban Roth"
     }
   ],
   "944": [
@@ -2970,6 +3677,13 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 108,
       "league": "C-Klasse",
+      "name": "Nico Ihli"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 45,
+      "points": 33,
+      "league": "Bezirksliga",
       "name": "Nico Ihli"
     }
   ],
@@ -3001,6 +3715,13 @@ window.ARCHIVE_DATA = {
       "points": 55,
       "league": "B-Klasse",
       "name": "Uwe M\u00fchlbauer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 45,
+      "league": "Bezirksliga",
+      "name": "Uwe M\u00fchlbauer"
     }
   ],
   "1172": [
@@ -3031,6 +3752,13 @@ window.ARCHIVE_DATA = {
       "points": 26,
       "league": "A-Klasse",
       "name": "Christophe Fuchs"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 35,
+      "league": "Bezirksliga",
+      "name": "Christopher Fuchs"
     }
   ],
   "1064": [
@@ -3060,6 +3788,13 @@ window.ARCHIVE_DATA = {
       "rank": 5,
       "points": 157,
       "league": "B-Klasse",
+      "name": "Bernd Langer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
       "name": "Bernd Langer"
     }
   ],
@@ -3091,6 +3826,13 @@ window.ARCHIVE_DATA = {
       "points": 75,
       "league": "C-Klasse",
       "name": "Alexander Kesler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 55,
+      "league": "A-Klasse",
+      "name": "Alexander Kessler"
     }
   ],
   "635": [
@@ -3120,6 +3862,13 @@ window.ARCHIVE_DATA = {
       "rank": 145,
       "points": 17,
       "league": "B-Klasse",
+      "name": "Graziella Crimaldi"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 90,
+      "points": 28,
+      "league": "A-Klasse",
       "name": "Graziella Crimaldi"
     }
   ],
@@ -3151,6 +3900,13 @@ window.ARCHIVE_DATA = {
       "points": 75,
       "league": "A-Klasse",
       "name": "J\u00fcrgen Zorn"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 94,
+      "league": "B-Klasse",
+      "name": "J\u00fcrgen Zorn"
     }
   ],
   "685": [
@@ -3180,6 +3936,13 @@ window.ARCHIVE_DATA = {
       "rank": 43,
       "points": 27,
       "league": "Bezirksliga",
+      "name": "Guido Biehl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 17,
+      "league": "A-Klasse",
       "name": "Guido Biehl"
     }
   ],
@@ -3241,6 +4004,13 @@ window.ARCHIVE_DATA = {
       "points": 1,
       "league": "Bezirksliga",
       "name": "Peter Hartig"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Peter Hartig"
     }
   ],
   "1204": [
@@ -3270,6 +4040,13 @@ window.ARCHIVE_DATA = {
       "rank": 21,
       "points": 119,
       "league": "B-Klasse",
+      "name": "Peter Fenchel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 15,
+      "league": "A-Klasse",
       "name": "Peter Fenchel"
     }
   ],
@@ -3324,6 +4101,13 @@ window.ARCHIVE_DATA = {
       "points": 93,
       "league": "A-Klasse",
       "name": "Jochen Burow"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 62,
+      "league": "A-Klasse",
+      "name": "Jochen Burow"
     }
   ],
   "1738": [
@@ -3353,6 +4137,13 @@ window.ARCHIVE_DATA = {
       "rank": 240,
       "points": 6,
       "league": "C-Klasse",
+      "name": "Thomas G\u00e4ckle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 73,
+      "points": 78,
+      "league": "B-Klasse",
       "name": "Thomas G\u00e4ckle"
     }
   ],
@@ -3384,6 +4175,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "A-Klasse",
       "name": "Reiner Osiniak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 55,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Reiner Osiniak"
     }
   ],
   "270": [
@@ -3413,6 +4211,13 @@ window.ARCHIVE_DATA = {
       "rank": 97,
       "points": 17,
       "league": "A-Klasse",
+      "name": "Marek Pason"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 89,
+      "points": 64,
+      "league": "B-Klasse",
       "name": "Marek Pason"
     }
   ],
@@ -3444,6 +4249,13 @@ window.ARCHIVE_DATA = {
       "points": 15,
       "league": "Bezirksliga",
       "name": "Falk Rathfelder"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 99,
+      "league": "B-Klasse",
+      "name": "Falk Rathfelder"
     }
   ],
   "1802": [
@@ -3474,6 +4286,13 @@ window.ARCHIVE_DATA = {
       "points": 174,
       "league": "C-Klasse",
       "name": "Steve R\u00f6der"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Steve R\u00f6der"
     }
   ],
   "311": [
@@ -3488,6 +4307,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 96,
       "points": 13,
+      "league": "A-Klasse",
+      "name": "Jochen Staib"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 37,
       "league": "A-Klasse",
       "name": "Jochen Staib"
     }
@@ -3518,6 +4344,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 39,
       "points": 102,
+      "league": "C-Klasse",
+      "name": "Matthias Klink"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 247,
+      "points": 19,
       "league": "C-Klasse",
       "name": "Matthias Klink"
     }
@@ -3573,6 +4406,13 @@ window.ARCHIVE_DATA = {
       "points": 70,
       "league": "C-Klasse",
       "name": "Bastian Uhlending"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 144,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Bastian Uhlending"
     }
   ],
   "1685": [
@@ -3601,6 +4441,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 58,
       "points": 81,
+      "league": "B-Klasse",
+      "name": "Bernd Wilhelm"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 82,
+      "points": 72,
       "league": "B-Klasse",
       "name": "Bernd Wilhelm"
     }
@@ -3632,6 +4479,13 @@ window.ARCHIVE_DATA = {
       "rank": 25,
       "points": 113,
       "league": "B-Klasse",
+      "name": "Stefan Rischar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 45,
+      "league": "A-Klasse",
       "name": "Stefan Rischar"
     }
   ],
@@ -3686,6 +4540,13 @@ window.ARCHIVE_DATA = {
       "points": 17,
       "league": "B-Klasse",
       "name": "Dennis Christian"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 175,
+      "points": 10,
+      "league": "B-Klasse",
+      "name": "Dennis Christian"
     }
   ],
   "385": [
@@ -3693,6 +4554,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 78,
       "points": 30,
+      "league": "A-Klasse",
+      "name": "Patrick Konrad"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 91,
+      "points": 27,
       "league": "A-Klasse",
       "name": "Patrick Konrad"
     }
@@ -3725,6 +4593,13 @@ window.ARCHIVE_DATA = {
       "points": 138,
       "league": "C-Klasse",
       "name": "Senay Turan"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Senay Turan"
     }
   ],
   "1351": [
@@ -3754,6 +4629,13 @@ window.ARCHIVE_DATA = {
       "rank": 73,
       "points": 66,
       "league": "B-Klasse",
+      "name": "Ivo Opacak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 4,
+      "league": "A-Klasse",
       "name": "Ivo Opacak"
     }
   ],
@@ -3785,6 +4667,13 @@ window.ARCHIVE_DATA = {
       "points": 22,
       "league": "Bezirksliga",
       "name": "Carsten Bee"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 36,
+      "league": "A-Klasse",
+      "name": "Carsten Bee"
     }
   ],
   "1412": [
@@ -3813,6 +4702,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 105,
       "points": 38,
+      "league": "B-Klasse",
+      "name": "Yves Schmidt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 123,
       "league": "B-Klasse",
       "name": "Yves Schmidt"
     }
@@ -3868,6 +4764,13 @@ window.ARCHIVE_DATA = {
       "points": 117,
       "league": "C-Klasse",
       "name": "Markus Gleich"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 99,
+      "league": "Bezirksliga",
+      "name": "Markus Gleich"
     }
   ],
   "454": [
@@ -3876,6 +4779,13 @@ window.ARCHIVE_DATA = {
       "rank": 86,
       "points": 25,
       "league": "A-Klasse",
+      "name": "Christian Hahn"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 50,
+      "points": 18,
+      "league": "Bezirksliga",
       "name": "Christian Hahn"
     }
   ],
@@ -3923,6 +4833,13 @@ window.ARCHIVE_DATA = {
       "points": 11,
       "league": "Bezirksliga",
       "name": "Ufuk Kraus"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 18,
+      "league": "Bezirksliga",
+      "name": "Ufuk Kraus"
     }
   ],
   "448": [
@@ -3961,6 +4878,13 @@ window.ARCHIVE_DATA = {
       "rank": 92,
       "points": 12,
       "league": "A-Klasse",
+      "name": "Dennis Paseka"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 124,
+      "league": "C-Klasse",
       "name": "Dennis Paseka"
     }
   ],
@@ -4014,6 +4938,13 @@ window.ARCHIVE_DATA = {
       "rank": 90,
       "points": 22,
       "league": "A-Klasse",
+      "name": "Benjamin Marks"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 33,
+      "league": "B-Klasse",
       "name": "Benjamin Marks"
     }
   ],
@@ -4105,6 +5036,13 @@ window.ARCHIVE_DATA = {
       "points": 48,
       "league": "C-Klasse",
       "name": "Klaus Clappier"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 68,
+      "points": 0,
+      "league": "Bezirksliga",
+      "name": "Klaus Clappier"
     }
   ],
   "1748": [
@@ -4167,6 +5105,13 @@ window.ARCHIVE_DATA = {
       "points": 30,
       "league": "A-Klasse",
       "name": "Kerstin Fuust"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 94,
+      "points": 25,
+      "league": "A-Klasse",
+      "name": "Kerstin Fuust"
     }
   ],
   "826": [
@@ -4227,6 +5172,13 @@ window.ARCHIVE_DATA = {
       "points": 55,
       "league": "B-Klasse",
       "name": "Niklas Morlock"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 75,
+      "league": "A-Klasse",
+      "name": "Niklas Morlock"
     }
   ],
   "1818": [
@@ -4235,6 +5187,13 @@ window.ARCHIVE_DATA = {
       "rank": 103,
       "points": 4,
       "league": "A-Klasse",
+      "name": "Louis B\u00e4r"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 25,
+      "league": "Bezirksliga",
       "name": "Louis B\u00e4r"
     }
   ],
@@ -4266,6 +5225,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "B-Klasse",
       "name": "Uwe Deeg"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Uwe Deeg"
     }
   ],
   "1601": [
@@ -4282,6 +5248,13 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "B-Klasse",
       "name": "Francisco Corall"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 65,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Francisco Corall"
     }
   ],
   "161": [
@@ -4290,6 +5263,13 @@ window.ARCHIVE_DATA = {
       "rank": 106,
       "points": 2,
       "league": "A-Klasse",
+      "name": "Klara Nagy"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 0,
+      "league": "Bezirksliga",
       "name": "Klara Nagy"
     }
   ],
@@ -4343,6 +5323,13 @@ window.ARCHIVE_DATA = {
       "rank": 157,
       "points": 34,
       "league": "C-Klasse",
+      "name": "Franziska Ihli"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 1,
+      "league": "Bezirksliga",
       "name": "Franziska Ihli"
     }
   ],
@@ -4404,6 +5391,13 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "B-Klasse",
       "name": "Markus Oehrle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Markus Oehrle"
     }
   ],
   "1573": [
@@ -4426,6 +5420,13 @@ window.ARCHIVE_DATA = {
       "rank": 131,
       "points": 7,
       "league": "A-Klasse",
+      "name": "Judith Ludwig"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 158,
+      "points": 51,
+      "league": "C-Klasse",
       "name": "Judith Ludwig"
     }
   ],
@@ -4457,6 +5458,13 @@ window.ARCHIVE_DATA = {
       "points": 43,
       "league": "Bezirksliga",
       "name": "Willi Ruppert"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Willi Ruppert"
     }
   ],
   "1746": [
@@ -4477,6 +5485,13 @@ window.ARCHIVE_DATA = {
     {
       "season": "22/23",
       "rank": 144,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Nadine Steinberg"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 135,
       "points": 0,
       "league": "A-Klasse",
       "name": "Nadine Steinberg"
@@ -4510,6 +5525,13 @@ window.ARCHIVE_DATA = {
       "points": 136,
       "league": "A-Klasse",
       "name": "Sammy Wolf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Sammy Wolf"
     }
   ],
   "726": [
@@ -4540,6 +5562,13 @@ window.ARCHIVE_DATA = {
       "points": 69,
       "league": "C-Klasse",
       "name": "Marco Frank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "Marco W\u00fcst"
     }
   ],
   "325": [
@@ -4555,6 +5584,13 @@ window.ARCHIVE_DATA = {
       "rank": 23,
       "points": 132,
       "league": "C-Klasse",
+      "name": "Patrick Heib"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 151,
+      "league": "A-Klasse",
       "name": "Patrick Heib"
     }
   ],
@@ -4578,6 +5614,13 @@ window.ARCHIVE_DATA = {
       "rank": 185,
       "points": 15,
       "league": "C-Klasse",
+      "name": "Andreas Gebhard"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 13,
+      "points": 139,
+      "league": "B-Klasse",
       "name": "Andreas Gebhard"
     }
   ],
@@ -4609,6 +5652,13 @@ window.ARCHIVE_DATA = {
       "points": 124,
       "league": "B-Klasse",
       "name": "Oliver Dollan"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Oliver Dollan"
     }
   ],
   "913": [
@@ -4632,6 +5682,13 @@ window.ARCHIVE_DATA = {
       "points": 72,
       "league": "C-Klasse",
       "name": "Dennis Penner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Dennis Penner"
     }
   ],
   "1544": [
@@ -4654,6 +5711,13 @@ window.ARCHIVE_DATA = {
       "rank": 62,
       "points": 90,
       "league": "C-Klasse",
+      "name": "Tobias Lansche"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 105,
+      "league": "B-Klasse",
       "name": "Tobias Lansche"
     }
   ],
@@ -4685,6 +5749,13 @@ window.ARCHIVE_DATA = {
       "points": 154,
       "league": "A-Klasse",
       "name": "Peter Hofmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 97,
+      "league": "A-Klasse",
+      "name": "Peter Hofmann"
     }
   ],
   "1531": [
@@ -4708,6 +5779,13 @@ window.ARCHIVE_DATA = {
       "points": 9,
       "league": "B-Klasse",
       "name": "Sascha Schweinberger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 96,
+      "league": "A-Klasse",
+      "name": "Sascha Schweinberger"
     }
   ],
   "1659": [
@@ -4716,6 +5794,13 @@ window.ARCHIVE_DATA = {
       "rank": 12,
       "points": 137,
       "league": "B-Klasse",
+      "name": "Gianluca Marino"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 176,
+      "league": "A-Klasse",
       "name": "Gianluca Marino"
     }
   ],
@@ -4732,6 +5817,13 @@ window.ARCHIVE_DATA = {
       "rank": 17,
       "points": 146,
       "league": "C-Klasse",
+      "name": "Alexander Durst"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 104,
+      "league": "B-Klasse",
       "name": "Alexander Durst"
     }
   ],
@@ -4755,6 +5847,13 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 41,
       "league": "B-Klasse",
+      "name": "Uli Wimmer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 113,
+      "league": "A-Klasse",
       "name": "Uli Wimmer"
     }
   ],
@@ -4786,6 +5885,13 @@ window.ARCHIVE_DATA = {
       "points": 157,
       "league": "C-Klasse",
       "name": "Daniel Westermann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 76,
+      "league": "A-Klasse",
+      "name": "Daniel Westermann"
     }
   ],
   "1692": [
@@ -4814,6 +5920,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 44,
       "points": 91,
+      "league": "B-Klasse",
+      "name": "Timo Gr\u00f6schl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 121,
       "league": "B-Klasse",
       "name": "Timo Gr\u00f6schl"
     }
@@ -4846,6 +5959,13 @@ window.ARCHIVE_DATA = {
       "points": 79,
       "league": "A-Klasse",
       "name": "Bernd Wagner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 8,
+      "points": 153,
+      "league": "B-Klasse",
+      "name": "Bernd Wagner"
     }
   ],
   "1059": [
@@ -4874,6 +5994,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 4,
       "points": 166,
+      "league": "B-Klasse",
+      "name": "Marvin Prohaska"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 146,
       "league": "B-Klasse",
       "name": "Marvin Prohaska"
     }
@@ -4906,6 +6033,13 @@ window.ARCHIVE_DATA = {
       "points": 96,
       "league": "B-Klasse",
       "name": "Christian Marienfeld"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 15,
+      "points": 158,
+      "league": "C-Klasse",
+      "name": "Christian Marienfeld"
     }
   ],
   "1752": [
@@ -4935,6 +6069,13 @@ window.ARCHIVE_DATA = {
       "rank": 51,
       "points": 92,
       "league": "C-Klasse",
+      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 110,
+      "league": "B-Klasse",
       "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
     }
   ],
@@ -4966,6 +6107,13 @@ window.ARCHIVE_DATA = {
       "points": 89,
       "league": "C-Klasse",
       "name": "Gianni Biscardi"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Gianni Biscardi"
     }
   ],
   "1063": [
@@ -4996,6 +6144,13 @@ window.ARCHIVE_DATA = {
       "points": 73,
       "league": "A-Klasse",
       "name": "Oliver Ursic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 103,
+      "league": "A-Klasse",
+      "name": "Oliver Ursic"
     }
   ],
   "1414": [
@@ -5018,6 +6173,13 @@ window.ARCHIVE_DATA = {
       "rank": 35,
       "points": 100,
       "league": "B-Klasse",
+      "name": "Chris Wendel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 59,
+      "league": "A-Klasse",
       "name": "Chris Wendel"
     }
   ],
@@ -5049,6 +6211,13 @@ window.ARCHIVE_DATA = {
       "points": 57,
       "league": "A-Klasse",
       "name": "Reinhard Bott"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 156,
+      "league": "B-Klasse",
+      "name": "Reinhard Bott"
     }
   ],
   "410": [
@@ -5077,6 +6246,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 16,
       "points": 128,
+      "league": "B-Klasse",
+      "name": "Tarek D\u00fcrr"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 91,
       "league": "B-Klasse",
       "name": "Tarek D\u00fcrr"
     }
@@ -5109,6 +6285,13 @@ window.ARCHIVE_DATA = {
       "points": 84,
       "league": "A-Klasse",
       "name": "Kai H\u00f6lzle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Kai H\u00f6lzle"
     }
   ],
   "368": [
@@ -5124,6 +6307,13 @@ window.ARCHIVE_DATA = {
       "rank": 102,
       "points": 45,
       "league": "B-Klasse",
+      "name": "Michael N\u00fcchter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 74,
+      "league": "A-Klasse",
       "name": "Michael N\u00fcchter"
     }
   ],
@@ -5155,6 +6345,13 @@ window.ARCHIVE_DATA = {
       "points": 130,
       "league": "C-Klasse",
       "name": "Kevin Frank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 165,
+      "league": "C-Klasse",
+      "name": "Kevin Frank"
     }
   ],
   "1842": [
@@ -5178,6 +6375,13 @@ window.ARCHIVE_DATA = {
       "points": 88,
       "league": "C-Klasse",
       "name": "Andre Lippa"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Andr\u00e9 Lippa"
     }
   ],
   "1273": [
@@ -5207,6 +6411,13 @@ window.ARCHIVE_DATA = {
       "rank": 89,
       "points": 23,
       "league": "A-Klasse",
+      "name": "Thomas Hoffmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 34,
+      "points": 112,
+      "league": "B-Klasse",
       "name": "Thomas Hoffmann"
     }
   ],
@@ -5238,6 +6449,13 @@ window.ARCHIVE_DATA = {
       "points": 64,
       "league": "B-Klasse",
       "name": "Jennifer Keller"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 57,
+      "league": "A-Klasse",
+      "name": "Jennifer Keller"
     }
   ],
   "1656": [
@@ -5260,6 +6478,13 @@ window.ARCHIVE_DATA = {
       "rank": 83,
       "points": 74,
       "league": "C-Klasse",
+      "name": "Luca Bergmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 68,
+      "league": "A-Klasse",
       "name": "Luca Bergmann"
     }
   ],
@@ -5289,6 +6514,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 32,
       "points": 113,
+      "league": "C-Klasse",
+      "name": "Markus Huth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 34,
+      "points": 125,
       "league": "C-Klasse",
       "name": "Markus Huth"
     }
@@ -5323,6 +6555,13 @@ window.ARCHIVE_DATA = {
       "points": 154,
       "league": "C-Klasse",
       "name": "Marco Hamp"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Marco Hamp"
     }
   ],
   "1186": [
@@ -5352,6 +6591,13 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 97,
       "league": "A-Klasse",
+      "name": "Thomas Schm\u00e4deke"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 127,
+      "league": "B-Klasse",
       "name": "Thomas Schm\u00e4deke"
     }
   ],
@@ -5413,6 +6659,13 @@ window.ARCHIVE_DATA = {
       "points": 150,
       "league": "B-Klasse",
       "name": "Sven St\u00f6ckler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 118,
+      "league": "B-Klasse",
+      "name": "Sven St\u00f6ckler"
     }
   ],
   "1230": [
@@ -5443,6 +6696,13 @@ window.ARCHIVE_DATA = {
       "points": 111,
       "league": "B-Klasse",
       "name": "Dennis Gaiser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 54,
+      "league": "A-Klasse",
+      "name": "Dennis Gaiser"
     }
   ],
   "1750": [
@@ -5471,6 +6731,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 66,
       "points": 72,
+      "league": "B-Klasse",
+      "name": "Davide Amato"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 22,
+      "points": 125,
       "league": "B-Klasse",
       "name": "Davide Amato"
     }
@@ -5503,6 +6770,13 @@ window.ARCHIVE_DATA = {
       "points": 3,
       "league": "A-Klasse",
       "name": "Marcel G\u00e4rtner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Marcel G\u00e4rtner"
     }
   ],
   "1823": [
@@ -5531,6 +6805,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 40,
       "points": 95,
+      "league": "B-Klasse",
+      "name": "Alexander Jost"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 30,
+      "points": 119,
       "league": "B-Klasse",
       "name": "Alexander Jost"
     }
@@ -5563,6 +6844,13 @@ window.ARCHIVE_DATA = {
       "points": 77,
       "league": "A-Klasse",
       "name": "Robin Rothenberger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 65,
+      "points": 83,
+      "league": "B-Klasse",
+      "name": "Robin Rothenberger"
     }
   ],
   "1721": [
@@ -5592,6 +6880,13 @@ window.ARCHIVE_DATA = {
       "rank": 98,
       "points": 53,
       "league": "C-Klasse",
+      "name": "Kevin Schleeh"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 95,
+      "league": "B-Klasse",
       "name": "Kevin Schleeh"
     }
   ],
@@ -5623,6 +6918,13 @@ window.ARCHIVE_DATA = {
       "points": 125,
       "league": "B-Klasse",
       "name": "Alexander Benjamin Frank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 82,
+      "points": 34,
+      "league": "A-Klasse",
+      "name": "Benjamin Frank"
     }
   ],
   "203": [
@@ -5638,6 +6940,13 @@ window.ARCHIVE_DATA = {
       "rank": 2,
       "points": 186,
       "league": "C-Klasse",
+      "name": "Emmanuel Eweka"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 84,
+      "points": 67,
+      "league": "B-Klasse",
       "name": "Emmanuel Eweka"
     }
   ],
@@ -5660,6 +6969,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 136,
       "points": 24,
+      "league": "B-Klasse",
+      "name": "Johannes Weishaar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 120,
+      "points": 40,
       "league": "B-Klasse",
       "name": "Johannes Weishaar"
     }
@@ -5692,6 +7008,13 @@ window.ARCHIVE_DATA = {
       "points": 146,
       "league": "C-Klasse",
       "name": "Alessandro Bertino"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 84,
+      "league": "A-Klasse",
+      "name": "Alessandro Bertino"
     }
   ],
   "283": [
@@ -5707,6 +7030,13 @@ window.ARCHIVE_DATA = {
       "rank": 140,
       "points": 47,
       "league": "C-Klasse",
+      "name": "Tobias Rohde"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 78,
+      "league": "B-Klasse",
       "name": "Tobias Rohde"
     }
   ],
@@ -5738,6 +7068,13 @@ window.ARCHIVE_DATA = {
       "points": 37,
       "league": "A-Klasse",
       "name": "Rene\u00b4 Irion"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Rene Irion"
     }
   ],
   "412": [
@@ -5767,6 +7104,13 @@ window.ARCHIVE_DATA = {
       "rank": 85,
       "points": 26,
       "league": "A-Klasse",
+      "name": "Thomas Brenk"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 48,
+      "points": 96,
+      "league": "B-Klasse",
       "name": "Thomas Brenk"
     }
   ],
@@ -5798,6 +7142,13 @@ window.ARCHIVE_DATA = {
       "points": 34,
       "league": "Bezirksliga",
       "name": "Markus Herzog"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 74,
+      "points": 42,
+      "league": "A-Klasse",
+      "name": "Markus Herzog"
     }
   ],
   "1689": [
@@ -5828,6 +7179,13 @@ window.ARCHIVE_DATA = {
       "points": 127,
       "league": "A-Klasse",
       "name": "Jasmin Titel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 111,
+      "league": "A-Klasse",
+      "name": "Jasmin Titel"
     }
   ],
   "226": [
@@ -5843,6 +7201,13 @@ window.ARCHIVE_DATA = {
       "rank": 140,
       "points": 6,
       "league": "A-Klasse",
+      "name": "Bodo Riedel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 84,
+      "league": "B-Klasse",
       "name": "Bodo Riedel"
     }
   ],
@@ -5866,6 +7231,13 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 90,
       "league": "C-Klasse",
+      "name": "Christian Blume"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
       "name": "Christian Blume"
     }
   ],
@@ -5895,6 +7267,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 55,
       "points": 66,
+      "league": "A-Klasse",
+      "name": "Ralf Voggenreiter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 24,
       "league": "A-Klasse",
       "name": "Ralf Voggenreiter"
     }
@@ -5927,6 +7306,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "Bezirksliga",
       "name": "Harald Lutz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 71,
+      "league": "A-Klasse",
+      "name": "Harald Lutz"
     }
   ],
   "1769": [
@@ -5956,6 +7342,13 @@ window.ARCHIVE_DATA = {
       "rank": 197,
       "points": 14,
       "league": "C-Klasse",
+      "name": "Erkan Aydinoglu"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 88,
+      "points": 65,
+      "league": "B-Klasse",
       "name": "Erkan Aydinoglu"
     }
   ],
@@ -5987,6 +7380,13 @@ window.ARCHIVE_DATA = {
       "points": 15,
       "league": "B-Klasse",
       "name": "Edgar K\u00e4ser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 83,
+      "league": "A-Klasse",
+      "name": "Edgar K\u00e4ser"
     }
   ],
   "1366": [
@@ -6017,6 +7417,13 @@ window.ARCHIVE_DATA = {
       "points": 19,
       "league": "B-Klasse",
       "name": "Frank Lindner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 80,
+      "league": "B-Klasse",
+      "name": "Frank Lindner"
     }
   ],
   "1545": [
@@ -6024,6 +7431,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 64,
       "points": 76,
+      "league": "B-Klasse",
+      "name": "Filip Pranjic-Maric"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 29,
       "league": "B-Klasse",
       "name": "Filip Pranjic-Maric"
     }
@@ -6042,6 +7456,13 @@ window.ARCHIVE_DATA = {
       "points": 42,
       "league": "C-Klasse",
       "name": "Frank Vincon"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 51,
+      "league": "A-Klasse",
+      "name": "Frank Vincon"
     }
   ],
   "264": [
@@ -6057,6 +7478,13 @@ window.ARCHIVE_DATA = {
       "rank": 90,
       "points": 79,
       "league": "C-Klasse",
+      "name": "Karl Messer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 52,
+      "league": "B-Klasse",
       "name": "Karl Messer"
     }
   ],
@@ -6086,6 +7514,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 39,
       "points": 95,
+      "league": "B-Klasse",
+      "name": "Sascha Miegel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 122,
       "league": "B-Klasse",
       "name": "Sascha Miegel"
     }
@@ -6118,6 +7553,13 @@ window.ARCHIVE_DATA = {
       "points": 50,
       "league": "C-Klasse",
       "name": "Bastian Fischer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 112,
+      "points": 49,
+      "league": "B-Klasse",
+      "name": "Bastian Fischer"
     }
   ],
   "221": [
@@ -6133,6 +7575,13 @@ window.ARCHIVE_DATA = {
       "rank": 116,
       "points": 61,
       "league": "C-Klasse",
+      "name": "Erich Messer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 150,
+      "points": 22,
+      "league": "B-Klasse",
       "name": "Erich Messer"
     }
   ],
@@ -6155,6 +7604,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 123,
       "points": 5,
+      "league": "A-Klasse",
+      "name": "Alex Polschin"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 88,
       "league": "A-Klasse",
       "name": "Alex Polschin"
     }
@@ -6187,6 +7643,13 @@ window.ARCHIVE_DATA = {
       "points": 52,
       "league": "C-Klasse",
       "name": "Andreas Frank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 100,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Andreas Frank"
     }
   ],
   "1086": [
@@ -6216,6 +7679,13 @@ window.ARCHIVE_DATA = {
       "rank": 183,
       "points": 6,
       "league": "B-Klasse",
+      "name": "Mario Ackermann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 92,
+      "league": "A-Klasse",
       "name": "Mario Ackermann"
     }
   ],
@@ -6247,6 +7717,13 @@ window.ARCHIVE_DATA = {
       "points": 77,
       "league": "C-Klasse",
       "name": "Dominik Denner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 85,
+      "league": "B-Klasse",
+      "name": "Dominik Denner"
     }
   ],
   "1532": [
@@ -6277,6 +7754,13 @@ window.ARCHIVE_DATA = {
       "points": 6,
       "league": "A-Klasse",
       "name": "Simon Brodbeck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Simon Brodbeck"
     }
   ],
   "274": [
@@ -6306,6 +7790,13 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 75,
       "league": "A-Klasse",
+      "name": "Bastian Gaiser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 122,
+      "points": 40,
+      "league": "B-Klasse",
       "name": "Bastian Gaiser"
     }
   ],
@@ -6360,6 +7851,13 @@ window.ARCHIVE_DATA = {
       "points": 144,
       "league": "C-Klasse",
       "name": "Johannes Eroglu"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 115,
+      "points": 46,
+      "league": "B-Klasse",
+      "name": "Johannes Eroglu"
     }
   ],
   "1705": [
@@ -6369,6 +7867,13 @@ window.ARCHIVE_DATA = {
       "points": 66,
       "league": "B-Klasse",
       "name": "Rene Raff"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 98,
+      "league": "A-Klasse",
+      "name": "Ren\u00e9 Raff"
     }
   ],
   "1821": [
@@ -6399,6 +7904,13 @@ window.ARCHIVE_DATA = {
       "points": 38,
       "league": "B-Klasse",
       "name": "Tamara D\u00fcrr"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 154,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Tamara Wolfinger"
     }
   ],
   "415": [
@@ -6420,6 +7932,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 26,
       "points": 126,
+      "league": "C-Klasse",
+      "name": "Daniel Ricken"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 13,
+      "points": 160,
       "league": "C-Klasse",
       "name": "Daniel Ricken"
     }
@@ -6452,6 +7971,13 @@ window.ARCHIVE_DATA = {
       "points": 3,
       "league": "Bezirksliga",
       "name": "Alexander Keuerleber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Alexander Keuerleber"
     }
   ],
   "1643": [
@@ -6466,6 +7992,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 133,
       "points": 22,
+      "league": "B-Klasse",
+      "name": "Quentin Kohler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 188,
+      "points": 5,
       "league": "B-Klasse",
       "name": "Quentin Kohler"
     }
@@ -6498,6 +8031,13 @@ window.ARCHIVE_DATA = {
       "points": 26,
       "league": "A-Klasse",
       "name": "Kevin Fr\u00f6hner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 58,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Kevin Fr\u00f6hner"
     }
   ],
   "101": [
@@ -6526,6 +8066,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 57,
       "points": 83,
+      "league": "B-Klasse",
+      "name": "Roland Gratza"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 145,
+      "points": 23,
       "league": "B-Klasse",
       "name": "Roland Gratza"
     }
@@ -6558,6 +8105,13 @@ window.ARCHIVE_DATA = {
       "points": 86,
       "league": "B-Klasse",
       "name": "Michael Kiefer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Michael Kiefer"
     }
   ],
   "1427": [
@@ -6587,6 +8141,13 @@ window.ARCHIVE_DATA = {
       "rank": 61,
       "points": 2,
       "league": "Bezirksliga",
+      "name": "Florian Titel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
       "name": "Florian Titel"
     }
   ],
@@ -6618,6 +8179,13 @@ window.ARCHIVE_DATA = {
       "points": 15,
       "league": "A-Klasse",
       "name": "Andreas Haller"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 109,
+      "league": "B-Klasse",
+      "name": "Andreas Haller"
     }
   ],
   "1415": [
@@ -6648,6 +8216,13 @@ window.ARCHIVE_DATA = {
       "points": 76,
       "league": "B-Klasse",
       "name": "Dario DeFalco"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 78,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Dario DeFalco"
     }
   ],
   "927": [
@@ -6663,6 +8238,13 @@ window.ARCHIVE_DATA = {
       "rank": 50,
       "points": 77,
       "league": "A-Klasse",
+      "name": "Nicky Freiberg"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 41,
+      "points": 105,
+      "league": "B-Klasse",
       "name": "Nicky Freiberg"
     }
   ],
@@ -6692,6 +8274,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 94,
       "points": 48,
+      "league": "B-Klasse",
+      "name": "Jessica J\u00e4ck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 54,
       "league": "B-Klasse",
       "name": "Jessica J\u00e4ck"
     }
@@ -6724,6 +8313,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "A-Klasse",
       "name": "Michael Graf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 116,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Michael Graf"
     }
   ],
   "1335": [
@@ -6747,6 +8343,13 @@ window.ARCHIVE_DATA = {
       "points": 62,
       "league": "C-Klasse",
       "name": "Remo Cireddu"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 137,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Remo Cireddu"
     }
   ],
   "1850": [
@@ -6761,6 +8364,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 65,
       "points": 75,
+      "league": "B-Klasse",
+      "name": "Michael Girrbach"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 130,
+      "points": 34,
       "league": "B-Klasse",
       "name": "Michael Girrbach"
     }
@@ -6792,6 +8402,13 @@ window.ARCHIVE_DATA = {
       "rank": 33,
       "points": 112,
       "league": "C-Klasse",
+      "name": "Klaus Steinmetz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 151,
+      "points": 22,
+      "league": "B-Klasse",
       "name": "Klaus Steinmetz"
     }
   ],
@@ -6853,6 +8470,13 @@ window.ARCHIVE_DATA = {
       "points": 44,
       "league": "A-Klasse",
       "name": "Bernd Jentner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 119,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Bernd Jentner"
     }
   ],
   "1518": [
@@ -6883,6 +8507,13 @@ window.ARCHIVE_DATA = {
       "points": 36,
       "league": "B-Klasse",
       "name": "Robin Masino"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 68,
+      "league": "A-Klasse",
+      "name": "Robin Masino"
     }
   ],
   "262": [
@@ -6898,6 +8529,13 @@ window.ARCHIVE_DATA = {
       "rank": 185,
       "points": 2,
       "league": "B-Klasse",
+      "name": "Pascal Schmauderer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 206,
+      "points": 33,
+      "league": "C-Klasse",
       "name": "Pascal Schmauderer"
     }
   ],
@@ -6929,6 +8567,13 @@ window.ARCHIVE_DATA = {
       "points": 74,
       "league": "C-Klasse",
       "name": "Danielle Koppe"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Danielle Aymar"
     }
   ],
   "1717": [
@@ -6968,6 +8613,13 @@ window.ARCHIVE_DATA = {
       "points": 11,
       "league": "B-Klasse",
       "name": "Kevin Mohr"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 109,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Kevin Mohr"
     }
   ],
   "1771": [
@@ -6975,6 +8627,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 104,
       "points": 44,
+      "league": "B-Klasse",
+      "name": "Michael Roll"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 211,
+      "points": 1,
       "league": "B-Klasse",
       "name": "Michael Roll"
     }
@@ -7007,6 +8666,13 @@ window.ARCHIVE_DATA = {
       "points": 138,
       "league": "B-Klasse",
       "name": "Alfred Eigl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 103,
+      "league": "A-Klasse",
+      "name": "Alfred Eigl"
     }
   ],
   "1715": [
@@ -7037,6 +8703,13 @@ window.ARCHIVE_DATA = {
       "points": 71,
       "league": "C-Klasse",
       "name": "Tayfun Aksoy"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 124,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Tayfun Aksoy"
     }
   ],
   "561": [
@@ -7052,6 +8725,13 @@ window.ARCHIVE_DATA = {
       "rank": 134,
       "points": 2,
       "league": "A-Klasse",
+      "name": "Michael Bierl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 27,
+      "points": 135,
+      "league": "C-Klasse",
       "name": "Michael Bierl"
     }
   ],
@@ -7075,6 +8755,13 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 64,
       "league": "B-Klasse",
+      "name": "Tomislav Bodnar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 26,
+      "league": "A-Klasse",
       "name": "Tomislav Bodnar"
     }
   ],
@@ -7106,6 +8793,13 @@ window.ARCHIVE_DATA = {
       "points": 123,
       "league": "A-Klasse",
       "name": "Denis Brezak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 126,
+      "points": 38,
+      "league": "B-Klasse",
+      "name": "Denis Brezak"
     }
   ],
   "361": [
@@ -7122,6 +8816,13 @@ window.ARCHIVE_DATA = {
       "points": 90,
       "league": "C-Klasse",
       "name": "Abinsan Thurairatnam"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 68,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Abinsan Thurairatnam"
     }
   ],
   "468": [
@@ -7137,6 +8838,13 @@ window.ARCHIVE_DATA = {
       "rank": 59,
       "points": 99,
       "league": "C-Klasse",
+      "name": "Susanne Schwaldt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 96,
+      "points": 57,
+      "league": "B-Klasse",
       "name": "Susanne Schwaldt"
     }
   ],
@@ -7168,6 +8876,13 @@ window.ARCHIVE_DATA = {
       "points": 34,
       "league": "C-Klasse",
       "name": "Markus Barthel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 141,
+      "points": 25,
+      "league": "B-Klasse",
+      "name": "Markus Barthel"
     }
   ],
   "963": [
@@ -7196,6 +8911,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 60,
       "points": 61,
+      "league": "A-Klasse",
+      "name": "Mile Tornjanski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 67,
       "league": "A-Klasse",
       "name": "Mile Tornjanski"
     }
@@ -7228,6 +8950,13 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "B-Klasse",
       "name": "Martin Bochmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 136,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Martin Bochmann"
     }
   ],
   "993": [
@@ -7257,6 +8986,13 @@ window.ARCHIVE_DATA = {
       "rank": 175,
       "points": 8,
       "league": "B-Klasse",
+      "name": "Michael Koch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 68,
+      "points": 96,
+      "league": "C-Klasse",
       "name": "Michael Koch"
     }
   ],
@@ -7288,6 +9024,13 @@ window.ARCHIVE_DATA = {
       "points": 63,
       "league": "B-Klasse",
       "name": "Gabriele Dittus"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Gabriele Dittus"
     }
   ],
   "1732": [
@@ -7311,6 +9054,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 118,
       "points": 31,
+      "league": "B-Klasse",
+      "name": "Peter Wittmers"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 111,
+      "points": 49,
       "league": "B-Klasse",
       "name": "Peter Wittmers"
     }
@@ -7343,6 +9093,13 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "C-Klasse",
       "name": "B\u00fcnyamin Colak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 164,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "B\u00fcnyamin Colak"
     }
   ],
   "1590": [
@@ -7373,6 +9130,13 @@ window.ARCHIVE_DATA = {
       "points": 8,
       "league": "A-Klasse",
       "name": "Andreas Schanz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Andreas Schanz"
     }
   ],
   "1862": [
@@ -7395,6 +9159,13 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 46,
       "league": "C-Klasse",
+      "name": "Thomas Huber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 91,
+      "points": 62,
+      "league": "B-Klasse",
       "name": "Thomas Huber"
     }
   ],
@@ -7435,6 +9206,13 @@ window.ARCHIVE_DATA = {
       "points": 29,
       "league": "B-Klasse",
       "name": "Andreas Gl\u00e4\u00dfer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 157,
+      "points": 19,
+      "league": "B-Klasse",
+      "name": "Andreas Gl\u00e4\u00dfer"
     }
   ],
   "268": [
@@ -7465,6 +9243,13 @@ window.ARCHIVE_DATA = {
       "points": 17,
       "league": "B-Klasse",
       "name": "Martin Fischer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 171,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Martin Fischer"
     }
   ],
   "644": [
@@ -7490,6 +9275,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "C-Klasse",
       "name": "Andreas Schulz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 155,
+      "points": 20,
+      "league": "B-Klasse",
+      "name": "Andreas Schulz"
     }
   ],
   "1004": [
@@ -7512,6 +9304,13 @@ window.ARCHIVE_DATA = {
       "rank": 144,
       "points": 41,
       "league": "C-Klasse",
+      "name": "Ulrike Veit"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 133,
+      "points": 31,
+      "league": "B-Klasse",
       "name": "Ulrike Veit"
     }
   ],
@@ -7542,6 +9341,13 @@ window.ARCHIVE_DATA = {
       "rank": 136,
       "points": 6,
       "league": "A-Klasse",
+      "name": "Michael Dierdorf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 134,
+      "points": 30,
+      "league": "B-Klasse",
       "name": "Michael Dierdorf"
     }
   ],
@@ -7633,6 +9439,13 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "A-Klasse",
       "name": "Sven Krzyzanowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 177,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Sven Krzyzanowski"
     }
   ],
   "1520": [
@@ -7662,6 +9475,13 @@ window.ARCHIVE_DATA = {
       "rank": 115,
       "points": 33,
       "league": "B-Klasse",
+      "name": "Thorsten Masino"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 54,
+      "league": "A-Klasse",
       "name": "Thorsten Masino"
     }
   ],
@@ -7693,6 +9513,13 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "C-Klasse",
       "name": "Timo Frank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 161,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Timo Frank"
     }
   ],
   "537": [
@@ -7700,6 +9527,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 136,
       "points": 21,
+      "league": "B-Klasse",
+      "name": "Timo Ludwig"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 132,
+      "points": 33,
       "league": "B-Klasse",
       "name": "Timo Ludwig"
     }
@@ -7755,6 +9589,13 @@ window.ARCHIVE_DATA = {
       "points": 47,
       "league": "C-Klasse",
       "name": "Josef Bertino"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Josef Bertino"
     }
   ],
   "1677": [
@@ -7783,6 +9624,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 45,
       "points": 100,
+      "league": "C-Klasse",
+      "name": "Sascha R\u00fchle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 124,
+      "points": 68,
       "league": "C-Klasse",
       "name": "Sascha R\u00fchle"
     }
@@ -7845,6 +9693,13 @@ window.ARCHIVE_DATA = {
       "points": 13,
       "league": "B-Klasse",
       "name": "Alexander Rezlaw"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 100,
+      "points": 20,
+      "league": "A-Klasse",
+      "name": "Alexander Rezlaw"
     }
   ],
   "1591": [
@@ -7875,6 +9730,13 @@ window.ARCHIVE_DATA = {
       "points": 34,
       "league": "C-Klasse",
       "name": "Giovanni Corbo"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 126,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Giovanni Corbo"
     }
   ],
   "1360": [
@@ -7890,6 +9752,13 @@ window.ARCHIVE_DATA = {
       "rank": 181,
       "points": 28,
       "league": "C-Klasse",
+      "name": "Alexander Schulz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 15,
+      "league": "A-Klasse",
       "name": "Alexander Schulz"
     }
   ],
@@ -7921,6 +9790,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "C-Klasse",
       "name": "Heiko Gie\u00dfler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 147,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Heiko Gie\u00dfler"
     }
   ],
   "1894": [
@@ -7943,6 +9819,13 @@ window.ARCHIVE_DATA = {
       "rank": 247,
       "points": 5,
       "league": "C-Klasse",
+      "name": "Romina Diana Taton"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 187,
+      "points": 5,
+      "league": "B-Klasse",
       "name": "Romina Diana Taton"
     }
   ],
@@ -7974,6 +9857,13 @@ window.ARCHIVE_DATA = {
       "points": 65,
       "league": "C-Klasse",
       "name": "Vanessa Genthner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 308,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Vanessa Genthner"
     }
   ],
   "1707": [
@@ -7983,6 +9873,13 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "B-Klasse",
       "name": "Justin Hamp"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 109,
+      "points": 11,
+      "league": "A-Klasse",
+      "name": "Justin Hamp"
     }
   ],
   "1155": [
@@ -7990,6 +9887,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 149,
       "points": 15,
+      "league": "B-Klasse",
+      "name": "Florian Nie\u00df"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 40,
       "league": "B-Klasse",
       "name": "Florian Nie\u00df"
     }
@@ -8045,6 +9949,13 @@ window.ARCHIVE_DATA = {
       "points": 69,
       "league": "C-Klasse",
       "name": "Uwe Wasserburger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 276,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Uwe Wasserburger"
     }
   ],
   "845": [
@@ -8075,6 +9986,13 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "C-Klasse",
       "name": "Manuela K\u00e4ser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Manuela K\u00e4ser"
     }
   ],
   "1101": [
@@ -8104,6 +10022,13 @@ window.ARCHIVE_DATA = {
       "rank": 69,
       "points": 43,
       "league": "A-Klasse",
+      "name": "Volker Schmich"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 176,
+      "points": 9,
+      "league": "B-Klasse",
       "name": "Volker Schmich"
     }
   ],
@@ -8165,6 +10090,13 @@ window.ARCHIVE_DATA = {
       "points": 51,
       "league": "C-Klasse",
       "name": "Jacqueline W\u00fcst"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 216,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Jacqueline W\u00fcst"
     }
   ],
   "1324": [
@@ -8194,6 +10126,13 @@ window.ARCHIVE_DATA = {
       "rank": 127,
       "points": 25,
       "league": "B-Klasse",
+      "name": "Erdogan Dombay"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
       "name": "Erdogan Dombay"
     }
   ],
@@ -8225,6 +10164,13 @@ window.ARCHIVE_DATA = {
       "points": 19,
       "league": "A-Klasse",
       "name": "Maria Graf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 217,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Maria Graf"
     }
   ],
   "1527": [
@@ -8253,6 +10199,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 43,
       "points": 84,
+      "league": "A-Klasse",
+      "name": "Ralf Haug"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 84,
+      "points": 32,
       "league": "A-Klasse",
       "name": "Ralf Haug"
     }
@@ -8295,6 +10248,13 @@ window.ARCHIVE_DATA = {
       "rank": 161,
       "points": 9,
       "league": "B-Klasse",
+      "name": "Tobias Raff"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 305,
+      "points": 6,
+      "league": "C-Klasse",
       "name": "Tobias Raff"
     }
   ],
@@ -8356,6 +10316,13 @@ window.ARCHIVE_DATA = {
       "points": 108,
       "league": "B-Klasse",
       "name": "Dennis Schibrowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 148,
+      "league": "C-Klasse",
+      "name": "Dennis Schibrowski"
     }
   ],
   "1740": [
@@ -8377,6 +10344,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 110,
       "points": 59,
+      "league": "C-Klasse",
+      "name": "Daniel R\u00e4uchle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 324,
+      "points": 2,
       "league": "C-Klasse",
       "name": "Daniel R\u00e4uchle"
     }
@@ -8409,6 +10383,13 @@ window.ARCHIVE_DATA = {
       "points": 25,
       "league": "C-Klasse",
       "name": "Tina Schibrowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 241,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Tina Schibrowski"
     }
   ],
   "1833": [
@@ -8432,6 +10413,13 @@ window.ARCHIVE_DATA = {
       "points": 80,
       "league": "C-Klasse",
       "name": "Sven Schibrowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 108,
+      "points": 73,
+      "league": "C-Klasse",
+      "name": "Sven Schibrowski"
     }
   ],
   "272": [
@@ -8447,6 +10435,13 @@ window.ARCHIVE_DATA = {
       "rank": 55,
       "points": 100,
       "league": "C-Klasse",
+      "name": "Neven Zimmermann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 47,
+      "league": "B-Klasse",
       "name": "Neven Zimmermann"
     }
   ],
@@ -8508,6 +10503,13 @@ window.ARCHIVE_DATA = {
       "points": 141,
       "league": "B-Klasse",
       "name": "Tim V\u00f6gele"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 163,
+      "league": "C-Klasse",
+      "name": "Tim V\u00f6gele"
     }
   ],
   "860": [
@@ -8538,6 +10540,13 @@ window.ARCHIVE_DATA = {
       "points": 122,
       "league": "A-Klasse",
       "name": "Philipp Rank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 148,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Philipp Rank"
     }
   ],
   "749": [
@@ -8560,6 +10569,13 @@ window.ARCHIVE_DATA = {
       "rank": 56,
       "points": 89,
       "league": "C-Klasse",
+      "name": "Marco Wolfsegger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 196,
+      "points": 4,
+      "league": "B-Klasse",
       "name": "Marco Wolfsegger"
     }
   ],
@@ -8621,6 +10637,13 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "A-Klasse",
       "name": "Wilfried Michaelis"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 200,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Wilfried Michaelis"
     }
   ],
   "1399": [
@@ -8667,6 +10690,13 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "A-Klasse",
       "name": "J\u00f6rg Leicht"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 344,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Leicht"
     }
   ],
   "781": [
@@ -8704,6 +10734,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 181,
       "points": 5,
+      "league": "B-Klasse",
+      "name": "Carina Menrath"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 101,
+      "points": 54,
       "league": "B-Klasse",
       "name": "Carina Menrath"
     }
@@ -8766,6 +10803,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "C-Klasse",
       "name": "Jacek Koterba"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 86,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Jacek Koterba"
     }
   ],
   "1075": [
@@ -8794,6 +10838,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 199,
       "points": 5,
+      "league": "B-Klasse",
+      "name": "Daniel Sch\u00e4fer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 181,
+      "points": 7,
       "league": "B-Klasse",
       "name": "Daniel Sch\u00e4fer"
     }
@@ -8827,6 +10878,13 @@ window.ARCHIVE_DATA = {
       "rank": 210,
       "points": 11,
       "league": "C-Klasse",
+      "name": "Mathias Kopp"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 190,
+      "points": 5,
+      "league": "B-Klasse",
       "name": "Mathias Kopp"
     }
   ],
@@ -8867,6 +10925,13 @@ window.ARCHIVE_DATA = {
       "points": 6,
       "league": "C-Klasse",
       "name": "Dirk M\u00fcller"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 174,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Dirk Walter M\u00fcller"
     }
   ],
   "300": [
@@ -8882,6 +10947,13 @@ window.ARCHIVE_DATA = {
       "rank": 97,
       "points": 73,
       "league": "C-Klasse",
+      "name": "Christian Giordano"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 160,
+      "points": 18,
+      "league": "B-Klasse",
       "name": "Christian Giordano"
     }
   ],
@@ -8913,6 +10985,13 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "C-Klasse",
       "name": "Savvas Xenitidis"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Savvas Xenitidis"
     }
   ],
   "505": [
@@ -8920,6 +10999,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 192,
       "points": 1,
+      "league": "B-Klasse",
+      "name": "Sven Dondalski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 205,
+      "points": 2,
       "league": "B-Klasse",
       "name": "Sven Dondalski"
     }
@@ -9037,6 +11123,13 @@ window.ARCHIVE_DATA = {
       "points": 21,
       "league": "C-Klasse",
       "name": "Sandra Rudolf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 213,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Sandra Lindner"
     }
   ],
   "488": [
@@ -9092,6 +11185,13 @@ window.ARCHIVE_DATA = {
       "points": 186,
       "league": "C-Klasse",
       "name": "Daniel K\u00f6nig"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 190,
+      "league": "B-Klasse",
+      "name": "Daniel K\u00f6nig"
     }
   ],
   "1651": [
@@ -9114,6 +11214,13 @@ window.ARCHIVE_DATA = {
       "rank": 220,
       "points": 11,
       "league": "C-Klasse",
+      "name": "Simon Klose"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 168,
+      "league": "B-Klasse",
       "name": "Simon Klose"
     }
   ],
@@ -9145,6 +11252,13 @@ window.ARCHIVE_DATA = {
       "points": 89,
       "league": "A-Klasse",
       "name": "Thomas Freimuth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 128,
+      "league": "B-Klasse",
+      "name": "Thomas Freimuth"
     }
   ],
   "1895": [
@@ -9167,6 +11281,13 @@ window.ARCHIVE_DATA = {
       "rank": 116,
       "points": 39,
       "league": "B-Klasse",
+      "name": "Julien Staffl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 113,
+      "league": "A-Klasse",
       "name": "Julien Staffl"
     }
   ],
@@ -9198,6 +11319,13 @@ window.ARCHIVE_DATA = {
       "points": 48,
       "league": "C-Klasse",
       "name": "Manuel Blessing"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 134,
+      "league": "B-Klasse",
+      "name": "Manuel Blessing"
     }
   ],
   "1468": [
@@ -9206,6 +11334,13 @@ window.ARCHIVE_DATA = {
       "rank": 6,
       "points": 178,
       "league": "C-Klasse",
+      "name": "Sebastian Mielke"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 75,
+      "points": 78,
+      "league": "B-Klasse",
       "name": "Sebastian Mielke"
     }
   ],
@@ -9237,6 +11372,13 @@ window.ARCHIVE_DATA = {
       "points": 41,
       "league": "B-Klasse",
       "name": "Mirko Futschek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 122,
+      "league": "B-Klasse",
+      "name": "Mirko Futschek"
     }
   ],
   "1882": [
@@ -9253,6 +11395,13 @@ window.ARCHIVE_DATA = {
       "points": 84,
       "league": "C-Klasse",
       "name": "R\u00fcdiger Riegel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "R\u00fcdiger Riegel"
     }
   ],
   "1642": [
@@ -9261,6 +11410,13 @@ window.ARCHIVE_DATA = {
       "rank": 9,
       "points": 168,
       "league": "C-Klasse",
+      "name": "David Langner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 139,
+      "points": 28,
+      "league": "B-Klasse",
       "name": "David Langner"
     }
   ],
@@ -9292,6 +11448,13 @@ window.ARCHIVE_DATA = {
       "points": 180,
       "league": "C-Klasse",
       "name": "Oliver Grau"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 33,
+      "points": 116,
+      "league": "B-Klasse",
+      "name": "Oliver Grau"
     }
   ],
   "469": [
@@ -9321,6 +11484,13 @@ window.ARCHIVE_DATA = {
       "rank": 93,
       "points": 56,
       "league": "C-Klasse",
+      "name": "Juan Zahn"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 136,
+      "league": "B-Klasse",
       "name": "Juan Zahn"
     }
   ],
@@ -9375,6 +11545,13 @@ window.ARCHIVE_DATA = {
       "points": 65,
       "league": "C-Klasse",
       "name": "Lee Scott Galletly"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 129,
+      "league": "B-Klasse",
+      "name": "Lee Scott Galletly"
     }
   ],
   "1446": [
@@ -9397,6 +11574,13 @@ window.ARCHIVE_DATA = {
       "rank": 105,
       "points": 61,
       "league": "C-Klasse",
+      "name": "Thomas Schm\u00f6ger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 104,
+      "league": "B-Klasse",
       "name": "Thomas Schm\u00f6ger"
     }
   ],
@@ -9430,6 +11614,13 @@ window.ARCHIVE_DATA = {
       "points": 164,
       "league": "C-Klasse",
       "name": "Brian Weszkallnies"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 149,
+      "league": "B-Klasse",
+      "name": "Brian Weszkallnies"
     }
   ],
   "323": [
@@ -9439,6 +11630,13 @@ window.ARCHIVE_DATA = {
       "points": 150,
       "league": "C-Klasse",
       "name": "Ivo Mihov"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 141,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Ivo Mihov"
     }
   ],
   "569": [
@@ -9446,6 +11644,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 18,
       "points": 143,
+      "league": "C-Klasse",
+      "name": "Claus Strubel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 152,
       "league": "C-Klasse",
       "name": "Claus Strubel"
     }
@@ -9463,6 +11668,13 @@ window.ARCHIVE_DATA = {
       "rank": 13,
       "points": 153,
       "league": "C-Klasse",
+      "name": "Andreas Schneider"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 53,
+      "points": 93,
+      "league": "B-Klasse",
       "name": "Andreas Schneider"
     }
   ],
@@ -9494,6 +11706,13 @@ window.ARCHIVE_DATA = {
       "points": 49,
       "league": "A-Klasse",
       "name": "Patrick Hoffmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Patrick Hoffmann"
     }
   ],
   "1238": [
@@ -9524,6 +11743,13 @@ window.ARCHIVE_DATA = {
       "points": 86,
       "league": "B-Klasse",
       "name": "Jenny L\u00f6ffler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 79,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Jenny L\u00f6ffler"
     }
   ],
   "754": [
@@ -9548,6 +11774,13 @@ window.ARCHIVE_DATA = {
       "rank": 178,
       "points": 4,
       "league": "B-Klasse",
+      "name": "Gerd Bitz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 168,
+      "league": "C-Klasse",
       "name": "Gerd Bitz"
     }
   ],
@@ -9579,6 +11812,13 @@ window.ARCHIVE_DATA = {
       "points": 131,
       "league": "C-Klasse",
       "name": "Tugay \u00d6zcelik"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 74,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Tugay \u00d6zcelik"
     }
   ],
   "1395": [
@@ -9595,6 +11835,13 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "B-Klasse",
       "name": "Dennis Schwarz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 115,
+      "league": "C-Klasse",
+      "name": "Dennis Schwarz"
     }
   ],
   "482": [
@@ -9602,6 +11849,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 26,
       "points": 133,
+      "league": "C-Klasse",
+      "name": "Marc Reikowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 154,
       "league": "C-Klasse",
       "name": "Marc Reikowski"
     }
@@ -9634,6 +11888,13 @@ window.ARCHIVE_DATA = {
       "points": 51,
       "league": "C-Klasse",
       "name": "Sascha Scherb"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 23,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Sascha Scherb"
     }
   ],
   "277": [
@@ -9649,6 +11910,13 @@ window.ARCHIVE_DATA = {
       "rank": 133,
       "points": 51,
       "league": "C-Klasse",
+      "name": "Tobias Kling"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 63,
+      "points": 84,
+      "league": "B-Klasse",
       "name": "Tobias Kling"
     }
   ],
@@ -9673,6 +11941,13 @@ window.ARCHIVE_DATA = {
       "points": 8,
       "league": "C-Klasse",
       "name": "Wolfgang Kraft"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 128,
+      "points": 37,
+      "league": "B-Klasse",
+      "name": "Wolfgang Kraft"
     }
   ],
   "1066": [
@@ -9687,6 +11962,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 202,
       "points": 13,
+      "league": "C-Klasse",
+      "name": "Sascha Ruf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 71,
       "league": "C-Klasse",
       "name": "Sascha Ruf"
     }
@@ -9704,6 +11986,13 @@ window.ARCHIVE_DATA = {
       "rank": 40,
       "points": 112,
       "league": "C-Klasse",
+      "name": "Yanni Amrich"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 88,
+      "league": "B-Klasse",
       "name": "Yanni Amrich"
     }
   ],
@@ -9735,6 +12024,13 @@ window.ARCHIVE_DATA = {
       "points": 60,
       "league": "B-Klasse",
       "name": "Peter Wunderle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 120,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Peter Wunderle"
     }
   ],
   "1087": [
@@ -9763,6 +12059,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 232,
       "points": 7,
+      "league": "C-Klasse",
+      "name": "Nadine Ackermann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 143,
       "league": "C-Klasse",
       "name": "Nadine Ackermann"
     }
@@ -9795,6 +12098,13 @@ window.ARCHIVE_DATA = {
       "points": 104,
       "league": "C-Klasse",
       "name": "Axel Fink"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 122,
+      "league": "C-Klasse",
+      "name": "Axel Fink"
     }
   ],
   "1024": [
@@ -9824,6 +12134,13 @@ window.ARCHIVE_DATA = {
       "rank": 31,
       "points": 115,
       "league": "C-Klasse",
+      "name": "Benjamin Link"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 71,
+      "points": 79,
+      "league": "B-Klasse",
       "name": "Benjamin Link"
     }
   ],
@@ -9855,6 +12172,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "B-Klasse",
       "name": "Ali Cam"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Ali Cam"
     }
   ],
   "783": [
@@ -9869,6 +12193,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 199,
       "points": 21,
+      "league": "C-Klasse",
+      "name": "Nico Bremer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 109,
       "league": "C-Klasse",
       "name": "Nico Bremer"
     }
@@ -9901,6 +12232,13 @@ window.ARCHIVE_DATA = {
       "points": 152,
       "league": "C-Klasse",
       "name": "Marisa Link"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 170,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Marisa Link"
     }
   ],
   "1703": [
@@ -9924,6 +12262,13 @@ window.ARCHIVE_DATA = {
       "points": 36,
       "league": "C-Klasse",
       "name": "Leon Schlesinger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 87,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Leon Schlesinger"
     }
   ],
   "603": [
@@ -9932,6 +12277,13 @@ window.ARCHIVE_DATA = {
       "rank": 41,
       "points": 120,
       "league": "C-Klasse",
+      "name": "Emanuelle Crea"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 87,
+      "points": 65,
+      "league": "B-Klasse",
       "name": "Emanuelle Crea"
     }
   ],
@@ -9947,6 +12299,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 109,
       "points": 65,
+      "league": "C-Klasse",
+      "name": "Roman Hihlik"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 63,
+      "points": 97,
       "league": "C-Klasse",
       "name": "Roman Hihlik"
     }
@@ -9979,6 +12338,13 @@ window.ARCHIVE_DATA = {
       "points": 32,
       "league": "B-Klasse",
       "name": "Denis Orta"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 98,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Denis Orta"
     }
   ],
   "451": [
@@ -9986,6 +12352,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 44,
       "points": 119,
+      "league": "C-Klasse",
+      "name": "Nikolaj Kim"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 164,
       "league": "C-Klasse",
       "name": "Nikolaj Kim"
     }
@@ -10003,6 +12376,13 @@ window.ARCHIVE_DATA = {
       "rank": 22,
       "points": 134,
       "league": "C-Klasse",
+      "name": "Klaus K\u00f6nig"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 50,
+      "points": 95,
+      "league": "B-Klasse",
       "name": "Klaus K\u00f6nig"
     }
   ],
@@ -10034,6 +12414,13 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "A-Klasse",
       "name": "Dominik Deutschbein"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 160,
+      "league": "C-Klasse",
+      "name": "Dominik Deutschbein"
     }
   ],
   "869": [
@@ -10064,6 +12451,13 @@ window.ARCHIVE_DATA = {
       "points": 94,
       "league": "C-Klasse",
       "name": "Mathias T\u00fcrksch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 25,
+      "points": 139,
+      "league": "C-Klasse",
+      "name": "Mathias T\u00fcrksch"
     }
   ],
   "322": [
@@ -10071,6 +12465,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 48,
       "points": 116,
+      "league": "C-Klasse",
+      "name": "Philip Kulenski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 127,
       "league": "C-Klasse",
       "name": "Philip Kulenski"
     }
@@ -10089,6 +12490,13 @@ window.ARCHIVE_DATA = {
       "points": 62,
       "league": "C-Klasse",
       "name": "Michael Schneider"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 60,
+      "points": 85,
+      "league": "B-Klasse",
+      "name": "Michael Schneider"
     }
   ],
   "1713": [
@@ -10104,6 +12512,13 @@ window.ARCHIVE_DATA = {
       "rank": 72,
       "points": 87,
       "league": "C-Klasse",
+      "name": "Nico Michalek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 27,
+      "points": 122,
+      "league": "B-Klasse",
       "name": "Nico Michalek"
     }
   ],
@@ -10126,6 +12541,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 82,
       "points": 74,
+      "league": "C-Klasse",
+      "name": "Melanie Krone"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 83,
       "league": "C-Klasse",
       "name": "Melanie Krone"
     }
@@ -10158,6 +12580,13 @@ window.ARCHIVE_DATA = {
       "points": 32,
       "league": "C-Klasse",
       "name": "Dennis Gerhart"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 22,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Dennis Gerhart"
     }
   ],
   "1212": [
@@ -10186,6 +12615,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 47,
       "points": 90,
+      "league": "B-Klasse",
+      "name": "Uwe Prohaska"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 182,
+      "points": 7,
       "league": "B-Klasse",
       "name": "Uwe Prohaska"
     }
@@ -10218,6 +12654,13 @@ window.ARCHIVE_DATA = {
       "points": 99,
       "league": "C-Klasse",
       "name": "Stefan Schleeh"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Stefan Schleeh"
     }
   ],
   "1148": [
@@ -10247,6 +12690,13 @@ window.ARCHIVE_DATA = {
       "rank": 60,
       "points": 84,
       "league": "C-Klasse",
+      "name": "Andreas Naam"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 75,
+      "league": "B-Klasse",
       "name": "Andreas Naam"
     }
   ],
@@ -10278,6 +12728,13 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "A-Klasse",
       "name": "Michael Thiel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Michael Thiel"
     }
   ],
   "1194": [
@@ -10307,6 +12764,13 @@ window.ARCHIVE_DATA = {
       "rank": 36,
       "points": 98,
       "league": "B-Klasse",
+      "name": "Ilhami K\u00fcc\u00fck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 112,
+      "league": "C-Klasse",
       "name": "Ilhami K\u00fcc\u00fck"
     }
   ],
@@ -10338,6 +12802,13 @@ window.ARCHIVE_DATA = {
       "points": 86,
       "league": "B-Klasse",
       "name": "Patrik Lutz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 97,
+      "points": 81,
+      "league": "C-Klasse",
+      "name": "Patrik Lutz"
     }
   ],
   "874": [
@@ -10367,6 +12838,13 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 101,
       "league": "C-Klasse",
+      "name": "Holger Schenk"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 51,
+      "league": "B-Klasse",
       "name": "Holger Schenk"
     }
   ],
@@ -10398,6 +12876,13 @@ window.ARCHIVE_DATA = {
       "points": 75,
       "league": "C-Klasse",
       "name": "Markus Bethke"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 320,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Markus Bethke"
     }
   ],
   "1664": [
@@ -10406,6 +12891,13 @@ window.ARCHIVE_DATA = {
       "rank": 62,
       "points": 99,
       "league": "C-Klasse",
+      "name": "Christian Koch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 97,
+      "points": 23,
+      "league": "A-Klasse",
       "name": "Christian Koch"
     }
   ],
@@ -10437,6 +12929,13 @@ window.ARCHIVE_DATA = {
       "points": 130,
       "league": "C-Klasse",
       "name": "Matthias Hofmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 76,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Matthias Hofmann"
     }
   ],
   "1388": [
@@ -10467,6 +12966,13 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "C-Klasse",
       "name": "Markus Finsterle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 156,
+      "league": "C-Klasse",
+      "name": "Markus Finsterle"
     }
   ],
   "632": [
@@ -10488,6 +12994,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 19,
       "points": 131,
+      "league": "C-Klasse",
+      "name": "Michael Parupka"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 102,
       "league": "C-Klasse",
       "name": "Michael Parupka"
     }
@@ -10520,6 +13033,13 @@ window.ARCHIVE_DATA = {
       "points": 109,
       "league": "B-Klasse",
       "name": "Thomas Bauer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Thomas Bauer"
     }
   ],
   "1686": [
@@ -10534,6 +13054,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 167,
       "points": 34,
+      "league": "C-Klasse",
+      "name": "Celina B\u00e4uerle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 119,
       "league": "C-Klasse",
       "name": "Celina B\u00e4uerle"
     }
@@ -10566,6 +13093,13 @@ window.ARCHIVE_DATA = {
       "points": 99,
       "league": "C-Klasse",
       "name": "Valerij Ziegler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 99,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Valerij Ziegler"
     }
   ],
   "1754": [
@@ -10596,6 +13130,13 @@ window.ARCHIVE_DATA = {
       "points": 84,
       "league": "C-Klasse",
       "name": "Sabine Schuhmacher"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 209,
+      "points": 30,
+      "league": "C-Klasse",
+      "name": "Sabine Schuhmacher"
     }
   ],
   "296": [
@@ -10611,6 +13152,13 @@ window.ARCHIVE_DATA = {
       "rank": 44,
       "points": 111,
       "league": "C-Klasse",
+      "name": "Christoph Deininger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 83,
+      "league": "B-Klasse",
       "name": "Christoph Deininger"
     }
   ],
@@ -10635,6 +13183,13 @@ window.ARCHIVE_DATA = {
       "points": 3,
       "league": "B-Klasse",
       "name": "Marvin Paar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 91,
+      "league": "C-Klasse",
+      "name": "Marvin Paar"
     }
   ],
   "836": [
@@ -10658,6 +13213,13 @@ window.ARCHIVE_DATA = {
       "points": 37,
       "league": "A-Klasse",
       "name": "Stefan Schlenker"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 60,
+      "league": "B-Klasse",
+      "name": "Stefan Schlenker"
     }
   ],
   "1295": [
@@ -10674,6 +13236,13 @@ window.ARCHIVE_DATA = {
       "points": 6,
       "league": "C-Klasse",
       "name": "Samantha Bartsch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Samantha Bartsch"
     }
   ],
   "422": [
@@ -10682,6 +13251,13 @@ window.ARCHIVE_DATA = {
       "rank": 74,
       "points": 95,
       "league": "C-Klasse",
+      "name": "Sabrina Herget"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 136,
+      "points": 29,
+      "league": "B-Klasse",
       "name": "Sabrina Herget"
     }
   ],
@@ -10713,6 +13289,13 @@ window.ARCHIVE_DATA = {
       "points": 19,
       "league": "B-Klasse",
       "name": "Andreas Huber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 89,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Andreas Huber"
     }
   ],
   "907": [
@@ -10743,6 +13326,13 @@ window.ARCHIVE_DATA = {
       "points": 37,
       "league": "B-Klasse",
       "name": "Klaus Wunderle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 143,
+      "points": 60,
+      "league": "C-Klasse",
+      "name": "Klaus Wunderle"
     }
   ],
   "1711": [
@@ -10764,6 +13354,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 197,
       "points": 19,
+      "league": "C-Klasse",
+      "name": "Gino del Viscio"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 96,
       "league": "C-Klasse",
       "name": "Gino del Viscio"
     }
@@ -10796,6 +13393,13 @@ window.ARCHIVE_DATA = {
       "points": 84,
       "league": "C-Klasse",
       "name": "Marcel Pitschke"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 103,
+      "league": "C-Klasse",
+      "name": "Marcel Pitschke"
     }
   ],
   "1716": [
@@ -10819,6 +13423,13 @@ window.ARCHIVE_DATA = {
       "points": 31,
       "league": "C-Klasse",
       "name": "Heiko Krone"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 90,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Heiko Krone"
     }
   ],
   "446": [
@@ -10833,6 +13444,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 102,
       "points": 70,
+      "league": "C-Klasse",
+      "name": "Andreas M\u00fcller"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 58,
+      "points": 102,
       "league": "C-Klasse",
       "name": "Andreas M\u00fcller"
     }
@@ -10858,6 +13476,13 @@ window.ARCHIVE_DATA = {
       "points": 98,
       "league": "C-Klasse",
       "name": "Elke Bremer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 223,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Elke Bremer"
     }
   ],
   "1886": [
@@ -10872,6 +13497,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 158,
       "points": 37,
+      "league": "C-Klasse",
+      "name": "Ralph Roth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 142,
+      "points": 61,
       "league": "C-Klasse",
       "name": "Ralph Roth"
     }
@@ -10904,6 +13536,13 @@ window.ARCHIVE_DATA = {
       "points": 77,
       "league": "C-Klasse",
       "name": "Wolfgang Haag"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 132,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Wolfgang Haag"
     }
   ],
   "651": [
@@ -10911,6 +13550,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 85,
       "points": 89,
+      "league": "C-Klasse",
+      "name": "Dirk Horst Schabert"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 104,
+      "points": 76,
       "league": "C-Klasse",
       "name": "Dirk Horst Schabert"
     }
@@ -10927,6 +13573,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 215,
       "points": 10,
+      "league": "C-Klasse",
+      "name": "Domenik Schulz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 30,
+      "points": 131,
       "league": "C-Klasse",
       "name": "Domenik Schulz"
     }
@@ -10952,6 +13605,13 @@ window.ARCHIVE_DATA = {
       "points": 64,
       "league": "C-Klasse",
       "name": "Bojan Sabo"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 126,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Bojan Sabo"
     }
   ],
   "328": [
@@ -10960,6 +13620,13 @@ window.ARCHIVE_DATA = {
       "rank": 88,
       "points": 85,
       "league": "C-Klasse",
+      "name": "Markus D\u00fcrr"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 179,
+      "points": 7,
+      "league": "B-Klasse",
       "name": "Markus D\u00fcrr"
     }
   ],
@@ -10975,6 +13642,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 212,
       "points": 19,
+      "league": "C-Klasse",
+      "name": "G\u00f6khan \u00d6zdemir"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 132,
       "league": "C-Klasse",
       "name": "G\u00f6khan \u00d6zdemir"
     }
@@ -11007,6 +13681,13 @@ window.ARCHIVE_DATA = {
       "points": 58,
       "league": "B-Klasse",
       "name": "Kai Reusch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 136,
+      "league": "C-Klasse",
+      "name": "Kai Reusch"
     }
   ],
   "828": [
@@ -11036,6 +13717,13 @@ window.ARCHIVE_DATA = {
       "rank": 126,
       "points": 26,
       "league": "B-Klasse",
+      "name": "Melanie Keuerleber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 116,
+      "points": 71,
+      "league": "C-Klasse",
       "name": "Melanie Keuerleber"
     }
   ],
@@ -11067,6 +13755,13 @@ window.ARCHIVE_DATA = {
       "points": 90,
       "league": "C-Klasse",
       "name": "Leo Sauer-E\u00dfwein"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 90,
+      "points": 63,
+      "league": "B-Klasse",
+      "name": "Leo Sauer-E\u00dfwein"
     }
   ],
   "856": [
@@ -11097,6 +13792,13 @@ window.ARCHIVE_DATA = {
       "points": 116,
       "league": "C-Klasse",
       "name": "Oliver Gille"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 79,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Oliver Gille"
     }
   ],
   "1131": [
@@ -11122,6 +13824,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "C-Klasse",
       "name": "Klaus J\u00e4hrmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 167,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Klaus J\u00e4hrmann"
     }
   ],
   "1682": [
@@ -11138,6 +13847,13 @@ window.ARCHIVE_DATA = {
       "points": 40,
       "league": "C-Klasse",
       "name": "Michael B\u00e4uerle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Michael B\u00e4uerle"
     }
   ],
   "520": [
@@ -11145,6 +13861,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 97,
       "points": 79,
+      "league": "C-Klasse",
+      "name": "Tina Hauck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 84,
+      "points": 86,
       "league": "C-Klasse",
       "name": "Tina Hauck"
     }
@@ -11177,6 +13900,13 @@ window.ARCHIVE_DATA = {
       "points": 78,
       "league": "C-Klasse",
       "name": "Elfi Kalweit-Spath"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 264,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Elfi Kalweit-Spath"
     }
   ],
   "1458": [
@@ -11207,6 +13937,13 @@ window.ARCHIVE_DATA = {
       "points": 9,
       "league": "C-Klasse",
       "name": "Wolfgang Endlich"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Wolfgang Endlich"
     }
   ],
   "387": [
@@ -11223,6 +13960,13 @@ window.ARCHIVE_DATA = {
       "points": 19,
       "league": "C-Klasse",
       "name": "Dean Scott Galletly"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 53,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Dean Scott Galletly"
     }
   ],
   "615": [
@@ -11230,6 +13974,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 101,
       "points": 77,
+      "league": "C-Klasse",
+      "name": "Giann Luca Pluchino"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 166,
+      "points": 49,
       "league": "C-Klasse",
       "name": "Giann Luca Pluchino"
     }
@@ -11262,6 +14013,13 @@ window.ARCHIVE_DATA = {
       "points": 78,
       "league": "C-Klasse",
       "name": "Dirk Schuhmacher"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 162,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Dirk Schuhmacher"
     }
   ],
   "1854": [
@@ -11276,6 +14034,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 193,
       "points": 24,
+      "league": "C-Klasse",
+      "name": "Jessica Busch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 94,
+      "points": 81,
       "league": "C-Klasse",
       "name": "Jessica Busch"
     }
@@ -11294,6 +14059,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 105,
       "points": 72,
+      "league": "C-Klasse",
+      "name": "Johannes F\u00f6rschler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 170,
       "league": "C-Klasse",
       "name": "Johannes F\u00f6rschler"
     }
@@ -11356,6 +14128,13 @@ window.ARCHIVE_DATA = {
       "points": 78,
       "league": "C-Klasse",
       "name": "Anatole Musaraganyi"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 207,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Anatole Musaraganyi"
     }
   ],
   "1775": [
@@ -11409,6 +14188,13 @@ window.ARCHIVE_DATA = {
       "points": 18,
       "league": "C-Klasse",
       "name": "Florian Matz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 169,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Florian Matz"
     }
   ],
   "1691": [
@@ -11438,6 +14224,13 @@ window.ARCHIVE_DATA = {
       "rank": 146,
       "points": 17,
       "league": "B-Klasse",
+      "name": "Jennifer Voggenreiter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 76,
+      "points": 91,
+      "league": "C-Klasse",
       "name": "Jennifer Voggenreiter"
     }
   ],
@@ -11471,6 +14264,13 @@ window.ARCHIVE_DATA = {
       "points": 68,
       "league": "C-Klasse",
       "name": "Ferdinand Bard"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Ferdinand Bard"
     }
   ],
   "1525": [
@@ -11479,6 +14279,13 @@ window.ARCHIVE_DATA = {
       "rank": 113,
       "points": 67,
       "league": "C-Klasse",
+      "name": "Hasan Kaya"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 138,
+      "points": 29,
+      "league": "B-Klasse",
       "name": "Hasan Kaya"
     }
   ],
@@ -11502,6 +14309,13 @@ window.ARCHIVE_DATA = {
       "rank": 125,
       "points": 8,
       "league": "A-Klasse",
+      "name": "Benjamin Klapper"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 129,
+      "points": 66,
+      "league": "C-Klasse",
       "name": "Benjamin Klapper"
     }
   ],
@@ -11549,6 +14363,13 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "B-Klasse",
       "name": "Madeleine Kohler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Madeleine Kohler"
     }
   ],
   "1403": [
@@ -11556,6 +14377,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 117,
       "points": 65,
+      "league": "C-Klasse",
+      "name": "Daniel G\u00f6bel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 93,
+      "points": 83,
       "league": "C-Klasse",
       "name": "Daniel G\u00f6bel"
     }
@@ -11611,6 +14439,13 @@ window.ARCHIVE_DATA = {
       "points": 54,
       "league": "C-Klasse",
       "name": "Monika Czifra"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 159,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Monika Czifra"
     }
   ],
   "487": [
@@ -11650,6 +14485,13 @@ window.ARCHIVE_DATA = {
       "points": 21,
       "league": "C-Klasse",
       "name": "Sascha Schenk"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 97,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Sascha Schenk"
     }
   ],
   "867": [
@@ -11678,6 +14520,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 149,
       "points": 29,
+      "league": "C-Klasse",
+      "name": "Oliver Belzner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 100,
+      "points": 78,
       "league": "C-Klasse",
       "name": "Oliver Belzner"
     }
@@ -11726,6 +14575,13 @@ window.ARCHIVE_DATA = {
       "points": 110,
       "league": "B-Klasse",
       "name": "Imdat Cengiz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 55,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Imdat Cengiz"
     }
   ],
   "1623": [
@@ -11741,6 +14597,13 @@ window.ARCHIVE_DATA = {
       "rank": 142,
       "points": 46,
       "league": "C-Klasse",
+      "name": "Ben Dickner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 81,
+      "points": 74,
+      "league": "B-Klasse",
       "name": "Ben Dickner"
     }
   ],
@@ -11788,6 +14651,13 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "C-Klasse",
       "name": "Nick K\u00fcper"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 172,
+      "points": 12,
+      "league": "B-Klasse",
+      "name": "Nick K\u00fcper"
     }
   ],
   "747": [
@@ -11818,6 +14688,13 @@ window.ARCHIVE_DATA = {
       "points": 53,
       "league": "C-Klasse",
       "name": "J\u00fcrgen Gorenflo"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 184,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Gorenflo"
     }
   ],
   "636": [
@@ -11840,6 +14717,13 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 46,
       "league": "B-Klasse",
+      "name": "Stephanie Schweigert-F\u00e4rber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 130,
+      "points": 65,
+      "league": "C-Klasse",
       "name": "Stephanie Schweigert-F\u00e4rber"
     }
   ],
@@ -11871,6 +14755,13 @@ window.ARCHIVE_DATA = {
       "points": 8,
       "league": "A-Klasse",
       "name": "Karsten Jouvenal"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Karsten Jouvenal"
     }
   ],
   "741": [
@@ -11878,6 +14769,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 133,
       "points": 58,
+      "league": "C-Klasse",
+      "name": "Daniel Weiss"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 182,
+      "points": 43,
       "league": "C-Klasse",
       "name": "Daniel Weiss"
     }
@@ -11902,6 +14800,13 @@ window.ARCHIVE_DATA = {
       "rank": 95,
       "points": 66,
       "league": "C-Klasse",
+      "name": "Marco Krell"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 66,
+      "league": "B-Klasse",
       "name": "Marco Krell"
     }
   ],
@@ -11942,6 +14847,13 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "C-Klasse",
       "name": "Michael Kr\u00e4ker"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 195,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Michael Kr\u00e4ker"
     }
   ],
   "178": [
@@ -11972,6 +14884,13 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "B-Klasse",
       "name": "Jana Hesse"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 65,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Jana Hesse"
     }
   ],
   "843": [
@@ -12000,6 +14919,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 126,
       "points": 39,
+      "league": "C-Klasse",
+      "name": "Ronny Wilken"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 188,
+      "points": 40,
       "league": "C-Klasse",
       "name": "Ronny Wilken"
     }
@@ -12041,6 +14967,13 @@ window.ARCHIVE_DATA = {
       "points": 22,
       "league": "C-Klasse",
       "name": "Larissa Schweickert"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 94,
+      "points": 59,
+      "league": "B-Klasse",
+      "name": "Larissa Schweickert"
     }
   ],
   "908": [
@@ -12057,6 +14990,13 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "C-Klasse",
       "name": "Patrycja Dumancic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 81,
+      "league": "C-Klasse",
+      "name": "Patrycja Schieweck"
     }
   ],
   "1863": [
@@ -12071,6 +15011,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 116,
       "points": 39,
+      "league": "B-Klasse",
+      "name": "Alexander Starsinski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 210,
+      "points": 1,
       "league": "B-Klasse",
       "name": "Alexander Starsinski"
     }
@@ -12089,6 +15036,13 @@ window.ARCHIVE_DATA = {
       "points": 20,
       "league": "C-Klasse",
       "name": "Ulla Adam"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Ulla Adam"
     }
   ],
   "1744": [
@@ -12096,6 +15050,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 145,
       "points": 55,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Schache"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 342,
+      "points": 0,
       "league": "C-Klasse",
       "name": "J\u00fcrgen Schache"
     }
@@ -12114,6 +15075,13 @@ window.ARCHIVE_DATA = {
       "points": 11,
       "league": "C-Klasse",
       "name": "Cornelia Sch\u00fc\u00dfler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 111,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Cornelia Sch\u00fc\u00dfler"
     }
   ],
   "1496": [
@@ -12121,6 +15089,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 147,
       "points": 54,
+      "league": "C-Klasse",
+      "name": "Eckart Lohse"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 257,
+      "points": 16,
       "league": "C-Klasse",
       "name": "Eckart Lohse"
     }
@@ -12153,6 +15128,13 @@ window.ARCHIVE_DATA = {
       "points": 54,
       "league": "C-Klasse",
       "name": "Ina Mai"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 330,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Ina Cirak"
     }
   ],
   "280": [
@@ -12236,6 +15218,13 @@ window.ARCHIVE_DATA = {
       "points": 55,
       "league": "C-Klasse",
       "name": "Melanie Horntrich"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 195,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Melanie Horntrich"
     }
   ],
   "1391": [
@@ -12266,6 +15255,13 @@ window.ARCHIVE_DATA = {
       "points": 48,
       "league": "C-Klasse",
       "name": "Mareike Zahnlecker"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 170,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Mareike Zahnlecker"
     }
   ],
   "359": [
@@ -12280,6 +15276,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 165,
       "points": 34,
+      "league": "C-Klasse",
+      "name": "Robert Nowak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 162,
+      "points": 50,
       "league": "C-Klasse",
       "name": "Robert Nowak"
     }
@@ -12351,6 +15354,13 @@ window.ARCHIVE_DATA = {
       "points": 41,
       "league": "C-Klasse",
       "name": "Markus Reichert"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 209,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Markus Reichert"
     }
   ],
   "1448": [
@@ -12399,6 +15409,13 @@ window.ARCHIVE_DATA = {
       "points": 18,
       "league": "C-Klasse",
       "name": "Heide Fink"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 265,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Heide Fink"
     }
   ],
   "1729": [
@@ -12406,6 +15423,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 160,
       "points": 47,
+      "league": "C-Klasse",
+      "name": "Eric Theil"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 134,
+      "points": 64,
       "league": "C-Klasse",
       "name": "Eric Theil"
     }
@@ -12431,6 +15455,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 238,
       "points": 13,
+      "league": "C-Klasse",
+      "name": "Seravina Koser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 256,
+      "points": 16,
       "league": "C-Klasse",
       "name": "Seravina Koser"
     }
@@ -12479,6 +15510,13 @@ window.ARCHIVE_DATA = {
       "points": 19,
       "league": "C-Klasse",
       "name": "Frank Etter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 201,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Frank Etter"
     }
   ],
   "1683": [
@@ -12495,6 +15533,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 166,
       "points": 45,
+      "league": "C-Klasse",
+      "name": "Tobias Reikowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 100,
       "league": "C-Klasse",
       "name": "Tobias Reikowski"
     }
@@ -12527,6 +15572,13 @@ window.ARCHIVE_DATA = {
       "points": 70,
       "league": "B-Klasse",
       "name": "Ferkan Akdag"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 236,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Ferkan Akdag"
     }
   ],
   "560": [
@@ -12535,6 +15587,13 @@ window.ARCHIVE_DATA = {
       "rank": 168,
       "points": 44,
       "league": "C-Klasse",
+      "name": "Markus Sch\u00fcler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 103,
+      "points": 54,
+      "league": "B-Klasse",
       "name": "Markus Sch\u00fcler"
     }
   ],
@@ -12566,6 +15625,13 @@ window.ARCHIVE_DATA = {
       "points": 9,
       "league": "B-Klasse",
       "name": "Steffi Lorent"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 280,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Steffi Lorent"
     }
   ],
   "708": [
@@ -12595,6 +15661,13 @@ window.ARCHIVE_DATA = {
       "rank": 119,
       "points": 30,
       "league": "B-Klasse",
+      "name": "Johanna Nestele"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 157,
+      "points": 52,
+      "league": "C-Klasse",
       "name": "Johanna Nestele"
     }
   ],
@@ -12626,6 +15699,13 @@ window.ARCHIVE_DATA = {
       "points": 26,
       "league": "B-Klasse",
       "name": "Meik Weinhart"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 232,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Meik Weinhart"
     }
   ],
   "320": [
@@ -12633,6 +15713,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 172,
       "points": 43,
+      "league": "C-Klasse",
+      "name": "Daniel Hoffmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 161,
+      "points": 50,
       "league": "C-Klasse",
       "name": "Daniel Hoffmann"
     }
@@ -12674,6 +15761,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 149,
       "points": 41,
+      "league": "C-Klasse",
+      "name": "Jennifer Thomas"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 224,
+      "points": 24,
       "league": "C-Klasse",
       "name": "Jennifer Thomas"
     }
@@ -12724,6 +15818,13 @@ window.ARCHIVE_DATA = {
       "points": 42,
       "league": "C-Klasse",
       "name": "Marcel Lutz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 168,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Marcel Lutz"
     }
   ],
   "435": [
@@ -12752,6 +15853,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 78,
       "points": 72,
+      "league": "C-Klasse",
+      "name": "Andrea Roschko"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 98,
+      "points": 79,
       "league": "C-Klasse",
       "name": "Andrea Roschko"
     }
@@ -12784,6 +15892,13 @@ window.ARCHIVE_DATA = {
       "points": 40,
       "league": "C-Klasse",
       "name": "Manfred M\u00fchlthaler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 296,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Manfred M\u00fchlthaler"
     }
   ],
   "729": [
@@ -12800,6 +15915,13 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "B-Klasse",
       "name": "Luis Voggenreiter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 160,
+      "league": "B-Klasse",
+      "name": "Luis Voggenreiter"
     }
   ],
   "1782": [
@@ -12809,6 +15931,13 @@ window.ARCHIVE_DATA = {
       "points": 40,
       "league": "C-Klasse",
       "name": "Christian Roll"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 194,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Christian Roll"
     }
   ],
   "1441": [
@@ -12816,6 +15945,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 184,
       "points": 40,
+      "league": "C-Klasse",
+      "name": "Jan Hafner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 155,
+      "points": 53,
       "league": "C-Klasse",
       "name": "Jan Hafner"
     }
@@ -12848,6 +15984,13 @@ window.ARCHIVE_DATA = {
       "points": 32,
       "league": "C-Klasse",
       "name": "Frank Spath"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 125,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Frank Spath"
     }
   ],
   "736": [
@@ -12855,6 +15998,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 186,
       "points": 39,
+      "league": "C-Klasse",
+      "name": "Leonardo Pio del Viscio"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 259,
+      "points": 15,
       "league": "C-Klasse",
       "name": "Leonardo Pio del Viscio"
     }
@@ -12879,6 +16029,13 @@ window.ARCHIVE_DATA = {
       "rank": 148,
       "points": 16,
       "league": "B-Klasse",
+      "name": "Marko Sackmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 228,
+      "points": 22,
+      "league": "C-Klasse",
       "name": "Marko Sackmann"
     }
   ],
@@ -12910,6 +16067,13 @@ window.ARCHIVE_DATA = {
       "points": 40,
       "league": "C-Klasse",
       "name": "Eduard Naam"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 118,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "Eduard Naam"
     }
   ],
   "1786": [
@@ -12927,6 +16091,13 @@ window.ARCHIVE_DATA = {
       "rank": 190,
       "points": 38,
       "league": "C-Klasse",
+      "name": "Johann Kunzmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
       "name": "Johann Kunzmann"
     }
   ],
@@ -12953,6 +16124,13 @@ window.ARCHIVE_DATA = {
       "points": 37,
       "league": "C-Klasse",
       "name": "J\u00f6rg Meissner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 75,
+      "points": 92,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Meissner"
     }
   ],
   "1797": [
@@ -12976,6 +16154,13 @@ window.ARCHIVE_DATA = {
       "points": 77,
       "league": "C-Klasse",
       "name": "Markus Greger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 183,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Markus Greger"
     }
   ],
   "641": [
@@ -12983,6 +16168,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 194,
       "points": 35,
+      "league": "C-Klasse",
+      "name": "Petra Bauer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 240,
+      "points": 20,
       "league": "C-Klasse",
       "name": "Petra Bauer"
     }
@@ -13003,6 +16195,13 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "C-Klasse",
       "name": "Sven Jetabek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 48,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Sven Jerabek"
     }
   ],
   "700": [
@@ -13033,6 +16232,13 @@ window.ARCHIVE_DATA = {
       "points": 31,
       "league": "C-Klasse",
       "name": "Daniela Kotsias"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 167,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Daniela Kotsias"
     }
   ],
   "618": [
@@ -13040,6 +16246,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 198,
       "points": 34,
+      "league": "C-Klasse",
+      "name": "Dorothee Prechtl"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 147,
+      "points": 57,
       "league": "C-Klasse",
       "name": "Dorothee Prechtl"
     }
@@ -13072,6 +16285,13 @@ window.ARCHIVE_DATA = {
       "points": 71,
       "league": "C-Klasse",
       "name": "Michael Horntrich"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 115,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Michael Horntrich"
     }
   ],
   "1268": [
@@ -13080,6 +16300,13 @@ window.ARCHIVE_DATA = {
       "rank": 200,
       "points": 34,
       "league": "C-Klasse",
+      "name": "Benjamin Geiger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 143,
+      "points": 24,
+      "league": "B-Klasse",
       "name": "Benjamin Geiger"
     }
   ],
@@ -13111,6 +16338,13 @@ window.ARCHIVE_DATA = {
       "points": 92,
       "league": "B-Klasse",
       "name": "Mirjam Bartsch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Mirjam Bartsch"
     }
   ],
   "381": [
@@ -13119,6 +16353,13 @@ window.ARCHIVE_DATA = {
       "rank": 202,
       "points": 34,
       "league": "C-Klasse",
+      "name": "Thomas Bott"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 45,
+      "points": 103,
+      "league": "B-Klasse",
       "name": "Thomas Bott"
     }
   ],
@@ -13173,6 +16414,13 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "A-Klasse",
       "name": "Corinna Diether"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Corinna Diether"
     }
   ],
   "1550": [
@@ -13181,6 +16429,13 @@ window.ARCHIVE_DATA = {
       "rank": 205,
       "points": 33,
       "league": "C-Klasse",
+      "name": "Sergej Gergalov"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 81,
+      "league": "B-Klasse",
       "name": "Sergej Gergalov"
     }
   ],
@@ -13242,6 +16497,13 @@ window.ARCHIVE_DATA = {
       "points": 34,
       "league": "C-Klasse",
       "name": "Heiko Sand"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 187,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Heiko Sand"
     }
   ],
   "598": [
@@ -13249,6 +16511,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 209,
       "points": 29,
+      "league": "C-Klasse",
+      "name": "Sarah Margic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 251,
+      "points": 17,
       "league": "C-Klasse",
       "name": "Sarah Margic"
     }
@@ -13281,6 +16550,13 @@ window.ARCHIVE_DATA = {
       "points": 29,
       "league": "C-Klasse",
       "name": "Torsten Frey"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 300,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Torsten Frey"
     }
   ],
   "575": [
@@ -13303,6 +16579,13 @@ window.ARCHIVE_DATA = {
       "rank": 180,
       "points": 3,
       "league": "B-Klasse",
+      "name": "Marcell Grohmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 152,
+      "points": 54,
+      "league": "C-Klasse",
       "name": "Marcell Grohmann"
     }
   ],
@@ -13327,6 +16610,13 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "A-Klasse",
       "name": "Sanel Bozic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 169,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Sanel Bozic"
     }
   ],
   "1868": [
@@ -13334,6 +16624,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 213,
       "points": 28,
+      "league": "C-Klasse",
+      "name": "Sarah Skora"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 248,
+      "points": 18,
       "league": "C-Klasse",
       "name": "Sarah Skora"
     }
@@ -13364,6 +16661,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 158,
       "points": 24,
+      "league": "C-Klasse",
+      "name": "Silvio Karliczek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 210,
+      "points": 30,
       "league": "C-Klasse",
       "name": "Silvio Karliczek"
     }
@@ -13405,6 +16709,13 @@ window.ARCHIVE_DATA = {
       "points": 1,
       "league": "B-Klasse",
       "name": "Rita Czifra"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 285,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Rita Czifra"
     }
   ],
   "472": [
@@ -13412,6 +16723,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 218,
       "points": 26,
+      "league": "C-Klasse",
+      "name": "Vivian Schneege"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 192,
+      "points": 39,
       "league": "C-Klasse",
       "name": "Vivian Schneege"
     }
@@ -13444,6 +16762,13 @@ window.ARCHIVE_DATA = {
       "points": 6,
       "league": "C-Klasse",
       "name": "Filippo Geraci"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 239,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Filippo Geraci"
     }
   ],
   "846": [
@@ -13451,6 +16776,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 220,
       "points": 26,
+      "league": "C-Klasse",
+      "name": "Marvin Fink"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 193,
+      "points": 38,
       "league": "C-Klasse",
       "name": "Marvin Fink"
     }
@@ -13482,6 +16814,13 @@ window.ARCHIVE_DATA = {
       "rank": 191,
       "points": 15,
       "league": "C-Klasse",
+      "name": "Steffen Kurfiss"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 203,
+      "points": 3,
+      "league": "B-Klasse",
       "name": "Steffen Kurfiss"
     }
   ],
@@ -13515,6 +16854,13 @@ window.ARCHIVE_DATA = {
       "points": 51,
       "league": "C-Klasse",
       "name": "Andreas Fischer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 201,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Andreas Fischer"
     }
   ],
   "275": [
@@ -13545,6 +16891,13 @@ window.ARCHIVE_DATA = {
       "points": 80,
       "league": "B-Klasse",
       "name": "Martin Benzinger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 176,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Martin Benzinger"
     }
   ],
   "888": [
@@ -13552,6 +16905,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 225,
       "points": 25,
+      "league": "C-Klasse",
+      "name": "Nico Fiedler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 121,
       "league": "C-Klasse",
       "name": "Nico Fiedler"
     }
@@ -13570,6 +16930,13 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "A-Klasse",
       "name": "Heiko Weigel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 126,
+      "league": "B-Klasse",
+      "name": "Heiko Weigel"
     }
   ],
   "977": [
@@ -13585,6 +16952,13 @@ window.ARCHIVE_DATA = {
       "rank": 190,
       "points": 2,
       "league": "B-Klasse",
+      "name": "Marius Rommelfanger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 302,
+      "points": 7,
+      "league": "C-Klasse",
       "name": "Marius Rommelfanger"
     }
   ],
@@ -13616,6 +16990,13 @@ window.ARCHIVE_DATA = {
       "points": 50,
       "league": "C-Klasse",
       "name": "Marcus F\u00f6ller"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 289,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Marcus F\u00f6ller"
     }
   ],
   "735": [
@@ -13641,6 +17022,13 @@ window.ARCHIVE_DATA = {
       "points": 15,
       "league": "C-Klasse",
       "name": "Ali Cirak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 310,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Ali Cirak"
     }
   ],
   "555": [
@@ -13648,6 +17036,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 232,
       "points": 22,
+      "league": "C-Klasse",
+      "name": "Patrick Kreb"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 83,
+      "points": 88,
       "league": "C-Klasse",
       "name": "Patrick Kreb"
     }
@@ -13671,6 +17066,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 230,
       "points": 9,
+      "league": "C-Klasse",
+      "name": "Timo Krauth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 275,
+      "points": 12,
       "league": "C-Klasse",
       "name": "Timo Krauth"
     }
@@ -13705,6 +17107,13 @@ window.ARCHIVE_DATA = {
       "points": 50,
       "league": "C-Klasse",
       "name": "Marcel Molitor"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 151,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Marcel Molitor"
     }
   ],
   "922": [
@@ -13735,11 +17144,25 @@ window.ARCHIVE_DATA = {
       "points": 63,
       "league": "B-Klasse",
       "name": "Christopher Zipperle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 194,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Christopher Zipperle"
     }
   ],
   "1235": [
     {
       "season": "24/25",
+      "rank": 237,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Bj\u00f6rn Ziegler"
+    },
+    {
+      "season": "2025/2026",
       "rank": 237,
       "points": 21,
       "league": "C-Klasse",
@@ -13783,6 +17206,13 @@ window.ARCHIVE_DATA = {
       "points": 102,
       "league": "C-Klasse",
       "name": "Pascal Genthner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 202,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Pascal Genthner"
     }
   ],
   "626": [
@@ -13806,6 +17236,13 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "B-Klasse",
       "name": "Beti Luca"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 270,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Beata Erika Luca"
     }
   ],
   "289": [
@@ -13821,6 +17258,13 @@ window.ARCHIVE_DATA = {
       "rank": 243,
       "points": 11,
       "league": "C-Klasse",
+      "name": "Ingo K\u00fcper"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 204,
+      "points": 2,
+      "league": "B-Klasse",
       "name": "Ingo K\u00fcper"
     }
   ],
@@ -13845,6 +17289,13 @@ window.ARCHIVE_DATA = {
       "points": 1,
       "league": "A-Klasse",
       "name": "Tanja Tippmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 281,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Tanja Tippmann"
     }
   ],
   "302": [
@@ -13861,6 +17312,13 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "C-Klasse",
       "name": "Isabelle K\u00f6feler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 243,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Isabelle K\u00f6feler"
     }
   ],
   "872": [
@@ -13868,6 +17326,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 244,
       "points": 18,
+      "league": "C-Klasse",
+      "name": "Lukas Jost"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 116,
       "league": "C-Klasse",
       "name": "Lukas Jost"
     }
@@ -13888,6 +17353,13 @@ window.ARCHIVE_DATA = {
       "points": 17,
       "league": "C-Klasse",
       "name": "Felix Bock"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 173,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Felix Bock"
     }
   ],
   "481": [
@@ -13895,6 +17367,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 247,
       "points": 17,
+      "league": "C-Klasse",
+      "name": "Andrej Moldovan"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 266,
+      "points": 13,
       "league": "C-Klasse",
       "name": "Andrej Moldovan"
     }
@@ -13905,6 +17384,13 @@ window.ARCHIVE_DATA = {
       "rank": 248,
       "points": 17,
       "league": "C-Klasse",
+      "name": "Mirjam Sch\u00f6n"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 207,
+      "points": 1,
+      "league": "B-Klasse",
       "name": "Mirjam Sch\u00f6n"
     }
   ],
@@ -13959,6 +17445,13 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Melanie Robertus-Dondalski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 249,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Melanie Robertus-Dondalski"
     }
   ],
   "832": [
@@ -13998,6 +17491,13 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "C-Klasse",
       "name": "Silvia Parupka"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 221,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Silvia Parupka"
     }
   ],
   "866": [
@@ -14021,6 +17521,13 @@ window.ARCHIVE_DATA = {
       "points": 9,
       "league": "B-Klasse",
       "name": "Sascha Petrik"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 314,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Sascha Petrik"
     }
   ],
   "929": [
@@ -14028,6 +17535,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 254,
       "points": 16,
+      "league": "C-Klasse",
+      "name": "Andreas Weber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 96,
       "league": "C-Klasse",
       "name": "Andreas Weber"
     }
@@ -14062,6 +17576,13 @@ window.ARCHIVE_DATA = {
       "points": 42,
       "league": "C-Klasse",
       "name": "Marios Xenitidis"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Marios Xenitidis"
     }
   ],
   "1724": [
@@ -14069,6 +17590,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 258,
       "points": 15,
+      "league": "C-Klasse",
+      "name": "Gerhard Stuber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 164,
+      "points": 50,
       "league": "C-Klasse",
       "name": "Gerhard Stuber"
     }
@@ -14079,6 +17607,13 @@ window.ARCHIVE_DATA = {
       "rank": 259,
       "points": 15,
       "league": "C-Klasse",
+      "name": "Sabrina Rossack"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 83,
+      "points": 71,
+      "league": "B-Klasse",
       "name": "Sabrina Rossack"
     }
   ],
@@ -14110,6 +17645,13 @@ window.ARCHIVE_DATA = {
       "points": 27,
       "league": "C-Klasse",
       "name": "Yves Yacoub"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 214,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Yves N\u00fcrnberg"
     }
   ],
   "540": [
@@ -14142,6 +17684,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 265,
       "points": 12,
+      "league": "C-Klasse",
+      "name": "Luca Schmidt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 261,
+      "points": 14,
       "league": "C-Klasse",
       "name": "Luca Schmidt"
     }
@@ -14213,6 +17762,13 @@ window.ARCHIVE_DATA = {
       "points": 3,
       "league": "C-Klasse",
       "name": "Axel Dauner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 214,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Axel Dauner"
     }
   ],
   "1702": [
@@ -14234,6 +17790,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 161,
       "points": 33,
+      "league": "C-Klasse",
+      "name": "Benjamin Glocker"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 174,
+      "points": 46,
       "league": "C-Klasse",
       "name": "Benjamin Glocker"
     }
@@ -14275,6 +17838,13 @@ window.ARCHIVE_DATA = {
       "points": 38,
       "league": "C-Klasse",
       "name": "Hilde Renschler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 202,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Hilde Renschler"
     }
   ],
   "485": [
@@ -14282,6 +17852,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 272,
       "points": 11,
+      "league": "C-Klasse",
+      "name": "Katrin Kretzschmar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 319,
+      "points": 3,
       "league": "C-Klasse",
       "name": "Katrin Kretzschmar"
     }
@@ -14330,6 +17907,13 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "B-Klasse",
       "name": "Nicole Zipperle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 271,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Nicole Zipperle"
     }
   ],
   "1034": [
@@ -14358,6 +17942,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 68,
       "points": 78,
+      "league": "C-Klasse",
+      "name": "Volker L\u00f6ffler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 101,
+      "points": 77,
       "league": "C-Klasse",
       "name": "Volker L\u00f6ffler"
     }
@@ -14390,6 +17981,13 @@ window.ARCHIVE_DATA = {
       "points": 106,
       "league": "Bezirksliga",
       "name": "Axel Spring"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 332,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Eva Bethke"
     }
   ],
   "871": [
@@ -14420,6 +18018,13 @@ window.ARCHIVE_DATA = {
       "points": 92,
       "league": "A-Klasse",
       "name": "Adrian Sieber"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 104,
+      "points": 53,
+      "league": "B-Klasse",
+      "name": "Adrian Sieber"
     }
   ],
   "1773": [
@@ -14427,6 +18032,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 280,
       "points": 9,
+      "league": "C-Klasse",
+      "name": "Monika Frank"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 335,
+      "points": 0,
       "league": "C-Klasse",
       "name": "Monika Frank"
     }
@@ -14447,6 +18059,13 @@ window.ARCHIVE_DATA = {
       "points": 9,
       "league": "C-Klasse",
       "name": "Ralf Naujoks"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 222,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Ralf Naujoks"
     }
   ],
   "1440": [
@@ -14454,6 +18073,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 284,
       "points": 8,
+      "league": "C-Klasse",
+      "name": "Nesrin S\u00f6yleyici"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 321,
+      "points": 3,
       "league": "C-Klasse",
       "name": "Nesrin S\u00f6yleyici"
     }
@@ -14472,6 +18098,13 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "C-Klasse",
       "name": "Monika Wunderle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 218,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Monika Wunderle"
     }
   ],
   "1420": [
@@ -14486,6 +18119,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 241,
       "points": 12,
+      "league": "C-Klasse",
+      "name": "Andrea Rupp"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 106,
+      "points": 74,
       "league": "C-Klasse",
       "name": "Andrea Rupp"
     }
@@ -14527,6 +18167,13 @@ window.ARCHIVE_DATA = {
       "points": 44,
       "league": "C-Klasse",
       "name": "Jacklin Klug-Ursic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 291,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Jacklin Klug-Ursic"
     }
   ],
   "658": [
@@ -14536,6 +18183,13 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "C-Klasse",
       "name": "Bj\u00f6rn H\u00fcttenberger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 278,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Bj\u00f6rn H\u00fcttenberger"
     }
   ],
   "868": [
@@ -14543,6 +18197,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 294,
       "points": 6,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Mayer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 274,
+      "points": 12,
       "league": "C-Klasse",
       "name": "J\u00fcrgen Mayer"
     }
@@ -14567,6 +18228,13 @@ window.ARCHIVE_DATA = {
       "rank": 121,
       "points": 5,
       "league": "A-Klasse",
+      "name": "J\u00fcrgen Sturz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 299,
+      "points": 8,
+      "league": "C-Klasse",
       "name": "J\u00fcrgen Sturz"
     }
   ],
@@ -14605,6 +18273,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 297,
       "points": 6,
+      "league": "C-Klasse",
+      "name": "Dieter Denkmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 292,
+      "points": 9,
       "league": "C-Klasse",
       "name": "Dieter Denkmann"
     }
@@ -14662,6 +18337,13 @@ window.ARCHIVE_DATA = {
       "points": 68,
       "league": "C-Klasse",
       "name": "Hans-Peter Kalweit"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 338,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Hans-Peter Kalweit"
     }
   ],
   "514": [
@@ -14710,6 +18392,13 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "C-Klasse",
       "name": "Bettina Simone Heidt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 333,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Bettina Simone Heidt"
     }
   ],
   "331": [
@@ -14739,6 +18428,13 @@ window.ARCHIVE_DATA = {
       "rank": 149,
       "points": 4,
       "league": "A-Klasse",
+      "name": "Sandra Schenk"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 173,
+      "points": 11,
+      "league": "B-Klasse",
       "name": "Sandra Schenk"
     }
   ],
@@ -14779,6 +18475,13 @@ window.ARCHIVE_DATA = {
       "points": 78,
       "league": "C-Klasse",
       "name": "Beate Bayer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 252,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Beate Bayer"
     }
   ],
   "661": [
@@ -14788,6 +18491,13 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "C-Klasse",
       "name": "Christina Staib"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 227,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Christina Staib"
     }
   ],
   "491": [
@@ -14795,6 +18505,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 309,
       "points": 4,
+      "league": "C-Klasse",
+      "name": "Volker Vollmer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 326,
+      "points": 2,
       "league": "C-Klasse",
       "name": "Volker Vollmer"
     }
@@ -14827,6 +18544,13 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "C-Klasse",
       "name": "Benjamin Lunz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 238,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Benjamin Lunz"
     }
   ],
   "316": [
@@ -14851,6 +18575,13 @@ window.ARCHIVE_DATA = {
       "rank": 312,
       "points": 3,
       "league": "C-Klasse",
+      "name": "Giuseppe Crea"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 166,
+      "points": 17,
+      "league": "B-Klasse",
       "name": "Giuseppe Crea"
     }
   ],
@@ -14882,6 +18613,13 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "C-Klasse",
       "name": "Sabrina Schibrowski"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 229,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Sabrina Schibrowski"
     }
   ],
   "1374": [
@@ -14903,6 +18641,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 223,
       "points": 11,
+      "league": "C-Klasse",
+      "name": "Silvia Sch\u00f6llhammer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 272,
+      "points": 12,
       "league": "C-Klasse",
       "name": "Silvia Sch\u00f6llhammer"
     }
@@ -15066,6 +18811,13 @@ window.ARCHIVE_DATA = {
       "points": 33,
       "league": "C-Klasse",
       "name": "Nicole Bichon"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 331,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Nicole Bichon"
     }
   ],
   "442": [
@@ -15114,6 +18866,13 @@ window.ARCHIVE_DATA = {
       "points": 3,
       "league": "C-Klasse",
       "name": "Natalia Scott Galletly"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 217,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Natalia Scott Galletly"
     }
   ],
   "1878": [
@@ -15135,6 +18894,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 216,
       "points": 12,
+      "league": "C-Klasse",
+      "name": "Alexandros Xenitidis"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 212,
+      "points": 29,
       "league": "C-Klasse",
       "name": "Alexandros Xenitidis"
     }
@@ -15185,6 +18951,13 @@ window.ARCHIVE_DATA = {
       "points": 23,
       "league": "C-Klasse",
       "name": "Andreas Walz"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 298,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Andreas Walz"
     }
   ],
   "772": [
@@ -15192,6 +18965,13 @@ window.ARCHIVE_DATA = {
       "season": "24/25",
       "rank": 331,
       "points": 0,
+      "league": "C-Klasse",
+      "name": "Gertrud Hauser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 318,
+      "points": 3,
       "league": "C-Klasse",
       "name": "Gertrud Hauser"
     }
@@ -15226,12 +19006,26 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Simon K\u00fcbler"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 286,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Simon K\u00fcbler"
     }
   ],
   "464": [
     {
       "season": "24/25",
       "rank": 334,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Mateo Tubach"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 341,
       "points": 0,
       "league": "C-Klasse",
       "name": "Mateo Tubach"
@@ -15274,6 +19068,13 @@ window.ARCHIVE_DATA = {
       "points": 89,
       "league": "B-Klasse",
       "name": "Philipp Flaig"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 48,
+      "league": "Bezirksliga",
+      "name": "Philipp Flaig"
     }
   ],
   "1344": [
@@ -15296,6 +19097,13 @@ window.ARCHIVE_DATA = {
       "rank": 21,
       "points": 113,
       "league": "A-Klasse",
+      "name": "Alexander Seidt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 108,
+      "points": 51,
+      "league": "B-Klasse",
       "name": "Alexander Seidt"
     }
   ],
@@ -15342,6 +19150,13 @@ window.ARCHIVE_DATA = {
       "rank": 97,
       "points": 45,
       "league": "B-Klasse",
+      "name": "Tino Hartmann"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 74,
+      "points": 93,
+      "league": "C-Klasse",
       "name": "Tino Hartmann"
     }
   ],
@@ -15437,6 +19252,13 @@ window.ARCHIVE_DATA = {
       "points": 11,
       "league": "Bezirksliga",
       "name": "Andre M\u00fcller"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 6,
+      "league": "Bezirksliga",
+      "name": "Andre M\u00fcller"
     }
   ],
   "1182": [
@@ -15444,6 +19266,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 59,
       "points": 8,
+      "league": "Bezirksliga",
+      "name": "Wolfgang Cafaro"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 9,
       "league": "Bezirksliga",
       "name": "Wolfgang Cafaro"
     }
@@ -15461,6 +19290,13 @@ window.ARCHIVE_DATA = {
       "rank": 79,
       "points": 31,
       "league": "A-Klasse",
+      "name": "Manuel Selak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 2,
+      "league": "Bezirksliga",
       "name": "Manuel Selak"
     }
   ],
@@ -15507,6 +19343,13 @@ window.ARCHIVE_DATA = {
       "rank": 34,
       "points": 102,
       "league": "B-Klasse",
+      "name": "Stefan Frick"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 170,
+      "league": "C-Klasse",
       "name": "Stefan Frick"
     }
   ],
@@ -15671,6 +19514,13 @@ window.ARCHIVE_DATA = {
       "points": 26,
       "league": "B-Klasse",
       "name": "Andre Muhn"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 17,
+      "league": "A-Klasse",
+      "name": "Andre Muhn"
     }
   ],
   "1138": [
@@ -15786,6 +19636,13 @@ window.ARCHIVE_DATA = {
       "points": 34,
       "league": "B-Klasse",
       "name": "Andrija Opacak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Andrija Opacak"
     }
   ],
   "1887": [
@@ -15841,6 +19698,13 @@ window.ARCHIVE_DATA = {
       "points": 21,
       "league": "A-Klasse",
       "name": "Gabriele P\u00f6tsch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 199,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Gabriele P\u00f6tsch"
     }
   ],
   "135": [
@@ -15893,6 +19757,13 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "A-Klasse",
       "name": "Katarzyna Haug"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Katarzyna Haug"
     }
   ],
   "600": [
@@ -15910,6 +19781,13 @@ window.ARCHIVE_DATA = {
       "rank": 120,
       "points": 0,
       "league": "A-Klasse",
+      "name": "Melanie Steinberg"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 347,
+      "points": 0,
+      "league": "C-Klasse",
       "name": "Melanie Steinberg"
     }
   ],
@@ -15956,6 +19834,13 @@ window.ARCHIVE_DATA = {
       "rank": 52,
       "points": 92,
       "league": "C-Klasse",
+      "name": "Marcus Brodbeck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 51,
+      "league": "A-Klasse",
       "name": "Marcus Brodbeck"
     }
   ],
@@ -16111,6 +19996,13 @@ window.ARCHIVE_DATA = {
       "points": 121,
       "league": "C-Klasse",
       "name": "Daniel Kiefer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 117,
+      "league": "B-Klasse",
+      "name": "Daniel Kiefer"
     }
   ],
   "212": [
@@ -16141,6 +20033,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 80,
       "points": 61,
+      "league": "B-Klasse",
+      "name": "\u00d6mer \u00d6zakcinar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 191,
+      "points": 4,
       "league": "B-Klasse",
       "name": "\u00d6mer \u00d6zakcinar"
     }
@@ -16229,6 +20128,13 @@ window.ARCHIVE_DATA = {
       "rank": 73,
       "points": 75,
       "league": "C-Klasse",
+      "name": "Max Schn\u00fcrle"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 159,
+      "points": 18,
+      "league": "B-Klasse",
       "name": "Max Schn\u00fcrle"
     }
   ],
@@ -16321,6 +20227,13 @@ window.ARCHIVE_DATA = {
       "rank": 74,
       "points": 65,
       "league": "B-Klasse",
+      "name": "\u00d6zcan \u00d6zakcinar"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
       "name": "\u00d6zcan \u00d6zakcinar"
     }
   ],
@@ -16951,6 +20864,13 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "B-Klasse",
       "name": "Dieter Kl\u00f6sel"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 288,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Dieter Kl\u00f6sel"
     }
   ],
   "257": [
@@ -17055,6 +20975,13 @@ window.ARCHIVE_DATA = {
       "points": 8,
       "league": "C-Klasse",
       "name": "Dominick Paci"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Dominick Paci"
     }
   ],
   "684": [
@@ -17119,6 +21046,13 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "C-Klasse",
       "name": "Christopher Burckhardt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 186,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Christopher Burckhardt"
     }
   ],
   "543": [
@@ -17141,6 +21075,13 @@ window.ARCHIVE_DATA = {
       "rank": 225,
       "points": 0,
       "league": "B-Klasse",
+      "name": "Schirin Lukaschek"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 254,
+      "points": 17,
+      "league": "C-Klasse",
       "name": "Schirin Lukaschek"
     }
   ],
@@ -17276,6 +21217,13 @@ window.ARCHIVE_DATA = {
       "points": 3,
       "league": "C-Klasse",
       "name": "Pilleriin Grillo"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 109,
+      "points": 73,
+      "league": "C-Klasse",
+      "name": "Pilleriin Grillo"
     }
   ],
   "1655": [
@@ -17297,6 +21245,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 277,
       "points": 2,
+      "league": "C-Klasse",
+      "name": "Petra Zahnlecker"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 334,
+      "points": 0,
       "league": "C-Klasse",
       "name": "Petra Zahnlecker"
     }
@@ -17321,6 +21276,13 @@ window.ARCHIVE_DATA = {
     {
       "season": "22/23",
       "rank": 260,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Jason Czifra"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 340,
       "points": 0,
       "league": "C-Klasse",
       "name": "Jason Czifra"
@@ -17581,6 +21543,13 @@ window.ARCHIVE_DATA = {
       "rank": 31,
       "points": 51,
       "league": "Bezirksliga",
+      "name": "Marko Puls"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 74,
+      "league": "A-Klasse",
       "name": "Marko Puls"
     }
   ],
@@ -17958,6 +21927,13 @@ window.ARCHIVE_DATA = {
       "points": 10,
       "league": "A-Klasse",
       "name": "Doreen Staudt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 268,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Doreen Staudt"
     }
   ],
   "124": [
@@ -18120,6 +22096,13 @@ window.ARCHIVE_DATA = {
       "points": 15,
       "league": "C-Klasse",
       "name": "Ulrich Zaiser"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 165,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Ulrich Zaiser"
     }
   ],
   "1089": [
@@ -18183,6 +22166,13 @@ window.ARCHIVE_DATA = {
       "rank": 53,
       "points": 72,
       "league": "A-Klasse",
+      "name": "G\u00fcnther Rak"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 129,
+      "points": 35,
+      "league": "B-Klasse",
       "name": "G\u00fcnther Rak"
     }
   ],
@@ -18289,6 +22279,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 155,
       "points": 24,
+      "league": "C-Klasse",
+      "name": "Christina Koch"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 171,
+      "points": 47,
       "league": "C-Klasse",
       "name": "Christina Koch"
     }
@@ -18692,6 +22689,13 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "C-Klasse",
       "name": "Sandra Kusterer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 315,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Sandra Kusterer"
     }
   ],
   "504": [
@@ -18764,6 +22768,13 @@ window.ARCHIVE_DATA = {
       "rank": 217,
       "points": 10,
       "league": "C-Klasse",
+      "name": "Tanja E\u00dfwein"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 206,
+      "points": 2,
+      "league": "B-Klasse",
       "name": "Tanja E\u00dfwein"
     }
   ],
@@ -18942,6 +22953,13 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Tanja Irion"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 212,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Tanja Irion"
     }
   ],
   "1804": [
@@ -19040,6 +23058,13 @@ window.ARCHIVE_DATA = {
       "rank": 47,
       "points": 78,
       "league": "A-Klasse",
+      "name": "Andreas Freimuth"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 174,
+      "league": "C-Klasse",
       "name": "Andreas Freimuth"
     }
   ],
@@ -19327,6 +23352,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 75,
       "points": 64,
+      "league": "B-Klasse",
+      "name": "Michael Swoboda"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 184,
+      "points": 5,
       "league": "B-Klasse",
       "name": "Michael Swoboda"
     }
@@ -19680,6 +23712,13 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "B-Klasse",
       "name": "Manfred Wittlinger"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 138,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Manfred Wittlinger"
     }
   ],
   "1329": [
@@ -19896,6 +23935,13 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "C-Klasse",
       "name": "Florian Funk"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 156,
+      "points": 53,
+      "league": "C-Klasse",
+      "name": "Florian Funk"
     }
   ],
   "1584": [
@@ -19967,6 +24013,13 @@ window.ARCHIVE_DATA = {
       "rank": 200,
       "points": 13,
       "league": "C-Klasse",
+      "name": "Alexandra Volkmer"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 113,
+      "points": 48,
+      "league": "B-Klasse",
       "name": "Alexandra Volkmer"
     }
   ],
@@ -20340,6 +24393,13 @@ window.ARCHIVE_DATA = {
       "points": 115,
       "league": "Bezirksliga",
       "name": "Peter Penndorf"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 13,
+      "points": 120,
+      "league": "Bezirksliga",
+      "name": "Peter Penndorf"
     }
   ],
   "099": [
@@ -20370,6 +24430,13 @@ window.ARCHIVE_DATA = {
       "points": 101,
       "league": "Bezirksliga",
       "name": "Frank Polte"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 166,
+      "league": "B-Klasse",
+      "name": "Frank Polte"
     }
   ],
   "083": [
@@ -20398,6 +24465,13 @@ window.ARCHIVE_DATA = {
       "season": "20/22",
       "rank": 24,
       "points": 74,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 55,
       "league": "Bezirksliga",
       "name": "Heiko Fruhner"
     }
@@ -20430,6 +24504,13 @@ window.ARCHIVE_DATA = {
       "points": 99,
       "league": "A-Klasse",
       "name": "Bernd Sauter"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 46,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
     }
   ],
   "005": [
@@ -20460,6 +24541,13 @@ window.ARCHIVE_DATA = {
       "points": 68,
       "league": "Bezirksliga",
       "name": "Frank Valentin"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 75,
+      "points": 40,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
     }
   ],
   "066": [
@@ -20481,6 +24569,13 @@ window.ARCHIVE_DATA = {
       "season": "22/23",
       "rank": 8,
       "points": 155,
+      "league": "B-Klasse",
+      "name": "Volker Beck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 128,
       "league": "B-Klasse",
       "name": "Volker Beck"
     }
@@ -20512,6 +24607,13 @@ window.ARCHIVE_DATA = {
       "rank": 90,
       "points": 23,
       "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 158,
+      "points": 19,
+      "league": "B-Klasse",
       "name": "Anastasios Spyropoulos"
     }
   ],
@@ -20573,6 +24675,13 @@ window.ARCHIVE_DATA = {
       "points": 164,
       "league": "A-Klasse",
       "name": "Alexander Schmidt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 159,
+      "league": "B-Klasse",
+      "name": "Alexander Schmidt"
     }
   ],
   "022": [
@@ -20602,6 +24711,13 @@ window.ARCHIVE_DATA = {
       "rank": 131,
       "points": 24,
       "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 52,
+      "league": "A-Klasse",
       "name": "Klaus Eberhardt"
     }
   ],
@@ -20633,6 +24749,13 @@ window.ARCHIVE_DATA = {
       "points": 26,
       "league": "A-Klasse",
       "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
     }
   ],
   "064": [
@@ -20655,6 +24778,13 @@ window.ARCHIVE_DATA = {
       "rank": 18,
       "points": 140,
       "league": "C-Klasse",
+      "name": "Annette Beck"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 43,
+      "league": "B-Klasse",
       "name": "Annette Beck"
     }
   ],
@@ -20679,6 +24809,13 @@ window.ARCHIVE_DATA = {
       "points": 69,
       "league": "A-Klasse",
       "name": "Sebastian Kunze"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 86,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Sebastian Kunze"
     }
   ],
   "012": [
@@ -20693,6 +24830,13 @@ window.ARCHIVE_DATA = {
       "season": "23/24",
       "rank": 77,
       "points": 84,
+      "league": "C-Klasse",
+      "name": "Thomas Minkus"
+    },
+    {
+      "season": "2025/2026",
+      "rank": 103,
+      "points": 76,
       "league": "C-Klasse",
       "name": "Thomas Minkus"
     }
@@ -20858,6 +25002,1266 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "B-Klasse",
       "name": "J\u00fcrgen Thillmann"
+    }
+  ],
+  "357": [
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 134,
+      "league": "Bezirksliga",
+      "name": "Daniel Poganatz"
+    }
+  ],
+  "392": [
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 16,
+      "league": "Bezirksliga",
+      "name": "Jakub Ehrhardt"
+    }
+  ],
+  "295": [
+    {
+      "season": "2025/2026",
+      "rank": 60,
+      "points": 7,
+      "league": "Bezirksliga",
+      "name": "Jan-Hendrik Olislagers"
+    }
+  ],
+  "480": [
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 5,
+      "league": "Bezirksliga",
+      "name": "Idris Zan"
+    }
+  ],
+  "951": [
+    {
+      "season": "2025/2026",
+      "rank": 63,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Rene Bandemer"
+    }
+  ],
+  "1127": [
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 98,
+      "league": "A-Klasse",
+      "name": "Serafettin Ayar"
+    }
+  ],
+  "470": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Dennis Jaskulski"
+    }
+  ],
+  "883": [
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Janis Scheithauer"
+    }
+  ],
+  "1215": [
+    {
+      "season": "2025/2026",
+      "rank": 76,
+      "points": 38,
+      "league": "A-Klasse",
+      "name": "Patrick Hendo"
+    }
+  ],
+  "344": [
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Sasa Jelkic"
+    }
+  ],
+  "1568": [
+    {
+      "season": "2025/2026",
+      "rank": 89,
+      "points": 29,
+      "league": "A-Klasse",
+      "name": "Thomas Bock"
+    }
+  ],
+  "694": [
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Brian Fribus"
+    }
+  ],
+  "938": [
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 24,
+      "league": "A-Klasse",
+      "name": "Patrick Haenicke"
+    }
+  ],
+  "1825": [
+    {
+      "season": "2025/2026",
+      "rank": 98,
+      "points": 22,
+      "league": "A-Klasse",
+      "name": "Jochen Fischer"
+    }
+  ],
+  "1234": [
+    {
+      "season": "2025/2026",
+      "rank": 99,
+      "points": 21,
+      "league": "A-Klasse",
+      "name": "S\u00f6ren Wahl"
+    }
+  ],
+  "236": [
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Michael Lamitschka"
+    }
+  ],
+  "1879": [
+    {
+      "season": "2025/2026",
+      "rank": 120,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Jan Bick"
+    }
+  ],
+  "529": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Peter Meeh"
+    }
+  ],
+  "730": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Oksana Kuliieva"
+    }
+  ],
+  "1236": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Justin Stoll"
+    }
+  ],
+  "220": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Diego Naranjo Gomez"
+    }
+  ],
+  "218": [
+    {
+      "season": "2025/2026",
+      "rank": 15,
+      "points": 135,
+      "league": "B-Klasse",
+      "name": "Jonas Jordan"
+    }
+  ],
+  "225": [
+    {
+      "season": "2025/2026",
+      "rank": 25,
+      "points": 123,
+      "league": "B-Klasse",
+      "name": "Thomas Rzepczyk"
+    }
+  ],
+  "419": [
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 101,
+      "league": "B-Klasse",
+      "name": "Michael Buchelt"
+    }
+  ],
+  "1805": [
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 53,
+      "league": "B-Klasse",
+      "name": "Berei Istvan Zslot"
+    }
+  ],
+  "475": [
+    {
+      "season": "2025/2026",
+      "rank": 106,
+      "points": 53,
+      "league": "B-Klasse",
+      "name": "Erdogan \u00d6ng\u00f6ren"
+    }
+  ],
+  "278": [
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 37,
+      "league": "B-Klasse",
+      "name": "Marcel Gehrum"
+    }
+  ],
+  "507": [
+    {
+      "season": "2025/2026",
+      "rank": 142,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Dustin Ludwig"
+    }
+  ],
+  "356": [
+    {
+      "season": "2025/2026",
+      "rank": 146,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Michel Brand"
+    }
+  ],
+  "596": [
+    {
+      "season": "2025/2026",
+      "rank": 152,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Frank Brenner"
+    }
+  ],
+  "353": [
+    {
+      "season": "2025/2026",
+      "rank": 153,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Nico Riedel"
+    }
+  ],
+  "577": [
+    {
+      "season": "2025/2026",
+      "rank": 156,
+      "points": 20,
+      "league": "B-Klasse",
+      "name": "Linus Gr\u00fc\u00dfinger"
+    }
+  ],
+  "362": [
+    {
+      "season": "2025/2026",
+      "rank": 163,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Hans-J\u00fcrgen Kohl"
+    }
+  ],
+  "831": [
+    {
+      "season": "2025/2026",
+      "rank": 180,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Aid Rrudhani"
+    }
+  ],
+  "493": [
+    {
+      "season": "2025/2026",
+      "rank": 183,
+      "points": 6,
+      "league": "B-Klasse",
+      "name": "Jaimie-Lee Taton"
+    }
+  ],
+  "645": [
+    {
+      "season": "2025/2026",
+      "rank": 189,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Roberto Azzaro"
+    }
+  ],
+  "213": [
+    {
+      "season": "2025/2026",
+      "rank": 197,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Philipp Daxberger"
+    }
+  ],
+  "1428": [
+    {
+      "season": "2025/2026",
+      "rank": 198,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Klaus Faa\u00df"
+    }
+  ],
+  "774": [
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 140,
+      "league": "C-Klasse",
+      "name": "Justin Nadler"
+    }
+  ],
+  "807": [
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 132,
+      "league": "C-Klasse",
+      "name": "Holger Treiber"
+    }
+  ],
+  "678": [
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 129,
+      "league": "C-Klasse",
+      "name": "Oliver Jost"
+    }
+  ],
+  "1730": [
+    {
+      "season": "2025/2026",
+      "rank": 33,
+      "points": 127,
+      "league": "C-Klasse",
+      "name": "Stefan Br\u00e4uer"
+    }
+  ],
+  "358": [
+    {
+      "season": "2025/2026",
+      "rank": 41,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Stephan Herz"
+    }
+  ],
+  "247": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Kai Berweck"
+    }
+  ],
+  "1634": [
+    {
+      "season": "2025/2026",
+      "rank": 45,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Efecan Aydinoglu"
+    }
+  ],
+  "110": [
+    {
+      "season": "2025/2026",
+      "rank": 50,
+      "points": 114,
+      "league": "C-Klasse",
+      "name": "Daniel Ruppert"
+    }
+  ],
+  "542": [
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 103,
+      "league": "C-Klasse",
+      "name": "Fynn Burger"
+    }
+  ],
+  "837": [
+    {
+      "season": "2025/2026",
+      "rank": 60,
+      "points": 101,
+      "league": "C-Klasse",
+      "name": "Ivica Sorsa"
+    }
+  ],
+  "231": [
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Hecht"
+    }
+  ],
+  "757": [
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Orhan S\u00f6yleyici"
+    }
+  ],
+  "297": [
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Aydin Cagatay"
+    }
+  ],
+  "795": [
+    {
+      "season": "2025/2026",
+      "rank": 71,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Peter Hofer"
+    }
+  ],
+  "111": [
+    {
+      "season": "2025/2026",
+      "rank": 73,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Nico Stumpp"
+    }
+  ],
+  "292": [
+    {
+      "season": "2025/2026",
+      "rank": 81,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Timo Cieslak"
+    }
+  ],
+  "1693": [
+    {
+      "season": "2025/2026",
+      "rank": 82,
+      "points": 88,
+      "league": "C-Klasse",
+      "name": "Lorenz Pfrommer"
+    }
+  ],
+  "717": [
+    {
+      "season": "2025/2026",
+      "rank": 88,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Nazmi Krasniqi"
+    }
+  ],
+  "877": [
+    {
+      "season": "2025/2026",
+      "rank": 91,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Niklas Roblick"
+    }
+  ],
+  "513": [
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Matthias Gebert"
+    }
+  ],
+  "1731": [
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Kerstin Brack"
+    }
+  ],
+  "366": [
+    {
+      "season": "2025/2026",
+      "rank": 112,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Sarah K\u00f6nig"
+    }
+  ],
+  "887": [
+    {
+      "season": "2025/2026",
+      "rank": 113,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Christian Weber"
+    }
+  ],
+  "436": [
+    {
+      "season": "2025/2026",
+      "rank": 118,
+      "points": 70,
+      "league": "C-Klasse",
+      "name": "Andrea Risken"
+    }
+  ],
+  "431": [
+    {
+      "season": "2025/2026",
+      "rank": 119,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Olaf Risken"
+    }
+  ],
+  "841": [
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Mihael Trgovec"
+    }
+  ],
+  "576": [
+    {
+      "season": "2025/2026",
+      "rank": 128,
+      "points": 66,
+      "league": "C-Klasse",
+      "name": "Marina Spiranec"
+    }
+  ],
+  "528": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Patricia Leibhan"
+    }
+  ],
+  "814": [
+    {
+      "season": "2025/2026",
+      "rank": 133,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Tim Legler"
+    }
+  ],
+  "517": [
+    {
+      "season": "2025/2026",
+      "rank": 137,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Justin Ballhausen"
+    }
+  ],
+  "240": [
+    {
+      "season": "2025/2026",
+      "rank": 140,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Gianni Misuraca"
+    }
+  ],
+  "1621": [
+    {
+      "season": "2025/2026",
+      "rank": 144,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Lukas Schaier"
+    }
+  ],
+  "535": [
+    {
+      "season": "2025/2026",
+      "rank": 145,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Jonas Dressler"
+    }
+  ],
+  "1467": [
+    {
+      "season": "2025/2026",
+      "rank": 146,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Ute Trapp"
+    }
+  ],
+  "716": [
+    {
+      "season": "2025/2026",
+      "rank": 148,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Florin Basca"
+    }
+  ],
+  "367": [
+    {
+      "season": "2025/2026",
+      "rank": 150,
+      "points": 55,
+      "league": "C-Klasse",
+      "name": "Christian Sigrist"
+    }
+  ],
+  "1609": [
+    {
+      "season": "2025/2026",
+      "rank": 153,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Kateryna Masalska"
+    }
+  ],
+  "333": [
+    {
+      "season": "2025/2026",
+      "rank": 160,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Heiko Faber"
+    }
+  ],
+  "294": [
+    {
+      "season": "2025/2026",
+      "rank": 163,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Rudolf Brugger"
+    }
+  ],
+  "1187": [
+    {
+      "season": "2025/2026",
+      "rank": 172,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Jennifer Nie\u00df"
+    }
+  ],
+  "1522": [
+    {
+      "season": "2025/2026",
+      "rank": 175,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Adrian G\u00fcnthner"
+    }
+  ],
+  "1509": [
+    {
+      "season": "2025/2026",
+      "rank": 177,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Max Christian Krone"
+    }
+  ],
+  "217": [
+    {
+      "season": "2025/2026",
+      "rank": 179,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Marc Gr\u00fcnwaldt"
+    }
+  ],
+  "710": [
+    {
+      "season": "2025/2026",
+      "rank": 180,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Dajana Au\u00dfersdorfer"
+    }
+  ],
+  "606": [
+    {
+      "season": "2025/2026",
+      "rank": 181,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Michael Sch\u00e4fer"
+    }
+  ],
+  "1264": [
+    {
+      "season": "2025/2026",
+      "rank": 186,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Stephan"
+    }
+  ],
+  "562": [
+    {
+      "season": "2025/2026",
+      "rank": 189,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Florian Schubert"
+    }
+  ],
+  "737": [
+    {
+      "season": "2025/2026",
+      "rank": 190,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Dragutin Trgovec"
+    }
+  ],
+  "720": [
+    {
+      "season": "2025/2026",
+      "rank": 191,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Zeljko Radulovic"
+    }
+  ],
+  "1813": [
+    {
+      "season": "2025/2026",
+      "rank": 196,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Kelly Grisafi"
+    }
+  ],
+  "414": [
+    {
+      "season": "2025/2026",
+      "rank": 197,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Thomas B\u00f6sch"
+    }
+  ],
+  "254": [
+    {
+      "season": "2025/2026",
+      "rank": 198,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Philipp Straach"
+    }
+  ],
+  "398": [
+    {
+      "season": "2025/2026",
+      "rank": 199,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Patrick Ehlert"
+    }
+  ],
+  "1562": [
+    {
+      "season": "2025/2026",
+      "rank": 200,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Sven Berweck"
+    }
+  ],
+  "585": [
+    {
+      "season": "2025/2026",
+      "rank": 203,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Nico Schick"
+    }
+  ],
+  "620": [
+    {
+      "season": "2025/2026",
+      "rank": 204,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Fabian Vogel"
+    }
+  ],
+  "1517": [
+    {
+      "season": "2025/2026",
+      "rank": 205,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Sonja Schulz"
+    }
+  ],
+  "1728": [
+    {
+      "season": "2025/2026",
+      "rank": 208,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Philipp G\u00fcnthner"
+    }
+  ],
+  "1604": [
+    {
+      "season": "2025/2026",
+      "rank": 211,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Daniela Lavalle"
+    }
+  ],
+  "764": [
+    {
+      "season": "2025/2026",
+      "rank": 213,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Daniel Jurak"
+    }
+  ],
+  "797": [
+    {
+      "season": "2025/2026",
+      "rank": 215,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Petra Brugger"
+    }
+  ],
+  "227": [
+    {
+      "season": "2025/2026",
+      "rank": 216,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen W\u00f6lfl"
+    }
+  ],
+  "340": [
+    {
+      "season": "2025/2026",
+      "rank": 219,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Georg Wilhelm"
+    }
+  ],
+  "453": [
+    {
+      "season": "2025/2026",
+      "rank": 220,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Maximilian Wahrheit"
+    }
+  ],
+  "252": [
+    {
+      "season": "2025/2026",
+      "rank": 230,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Oliver Straach"
+    }
+  ],
+  "711": [
+    {
+      "season": "2025/2026",
+      "rank": 231,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Denise Loy"
+    }
+  ],
+  "526": [
+    {
+      "season": "2025/2026",
+      "rank": 233,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Lena Dill"
+    }
+  ],
+  "919": [
+    {
+      "season": "2025/2026",
+      "rank": 234,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Maximilian Glatt"
+    }
+  ],
+  "786": [
+    {
+      "season": "2025/2026",
+      "rank": 235,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Julian Kannegie\u00dfer"
+    }
+  ],
+  "564": [
+    {
+      "season": "2025/2026",
+      "rank": 242,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Dimitrios Papadopoulos"
+    }
+  ],
+  "510": [
+    {
+      "season": "2025/2026",
+      "rank": 246,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Sylvia Vetter"
+    }
+  ],
+  "408": [
+    {
+      "season": "2025/2026",
+      "rank": 253,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Pascal R\u00e4gle"
+    }
+  ],
+  "740": [
+    {
+      "season": "2025/2026",
+      "rank": 255,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Alla Janke"
+    }
+  ],
+  "1053": [
+    {
+      "season": "2025/2026",
+      "rank": 258,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Simone Herzig"
+    }
+  ],
+  "697": [
+    {
+      "season": "2025/2026",
+      "rank": 260,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Patrick Schlosser"
+    }
+  ],
+  "811": [
+    {
+      "season": "2025/2026",
+      "rank": 263,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Danijel Branjug"
+    }
+  ],
+  "1830": [
+    {
+      "season": "2025/2026",
+      "rank": 267,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Ren\u00e9 Sch\u00f6nthaler"
+    }
+  ],
+  "1294": [
+    {
+      "season": "2025/2026",
+      "rank": 269,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Fabrizio Baccarella"
+    }
+  ],
+  "690": [
+    {
+      "season": "2025/2026",
+      "rank": 273,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Luisa Bauer"
+    }
+  ],
+  "1829": [
+    {
+      "season": "2025/2026",
+      "rank": 277,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Vitorio Ferkovic"
+    }
+  ],
+  "380": [
+    {
+      "season": "2025/2026",
+      "rank": 279,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Stefan Weil"
+    }
+  ],
+  "1488": [
+    {
+      "season": "2025/2026",
+      "rank": 284,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Olena Bidenko"
+    }
+  ],
+  "530": [
+    {
+      "season": "2025/2026",
+      "rank": 287,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Nemanja Mitrovic"
+    }
+  ],
+  "838": [
+    {
+      "season": "2025/2026",
+      "rank": 295,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Falk Wirlitsch"
+    }
+  ],
+  "228": [
+    {
+      "season": "2025/2026",
+      "rank": 301,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Tatiana Reikowski"
+    }
+  ],
+  "259": [
+    {
+      "season": "2025/2026",
+      "rank": 303,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Patrick Speck"
+    }
+  ],
+  "677": [
+    {
+      "season": "2025/2026",
+      "rank": 306,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Norman Meyer"
+    }
+  ],
+  "976": [
+    {
+      "season": "2025/2026",
+      "rank": 307,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Luigi Pacinello"
+    }
+  ],
+  "844": [
+    {
+      "season": "2025/2026",
+      "rank": 309,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Daniel Schneider"
+    }
+  ],
+  "613": [
+    {
+      "season": "2025/2026",
+      "rank": 312,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Tobias Schmitz"
+    }
+  ],
+  "214": [
+    {
+      "season": "2025/2026",
+      "rank": 313,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Miriam Deckenbach"
+    }
+  ],
+  "787": [
+    {
+      "season": "2025/2026",
+      "rank": 316,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Oliver Kannegie\u00dfer"
+    }
+  ],
+  "1633": [
+    {
+      "season": "2025/2026",
+      "rank": 317,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Manfred Sequenz"
+    }
+  ],
+  "1569": [
+    {
+      "season": "2025/2026",
+      "rank": 322,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Helder Marques"
+    }
+  ],
+  "418": [
+    {
+      "season": "2025/2026",
+      "rank": 323,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Kristina Heidenreich"
+    }
+  ],
+  "102": [
+    {
+      "season": "2025/2026",
+      "rank": 325,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Markus Thalhammer"
+    }
+  ],
+  "732": [
+    {
+      "season": "2025/2026",
+      "rank": 327,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Vladimir Granula"
+    }
+  ],
+  "842": [
+    {
+      "season": "2025/2026",
+      "rank": 329,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Richard Rohrmayr"
+    }
+  ],
+  "447": [
+    {
+      "season": "2025/2026",
+      "rank": 336,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Jaqueline Ilg"
+    }
+  ],
+  "631": [
+    {
+      "season": "2025/2026",
+      "rank": 337,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Bettina Endrijaitis"
+    }
+  ],
+  "033": [
+    {
+      "season": "2025/2026",
+      "rank": 343,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Tanja Jost"
+    }
+  ],
+  "279": [
+    {
+      "season": "2025/2026",
+      "rank": 345,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Daniel Klapper"
     }
   ]
 };

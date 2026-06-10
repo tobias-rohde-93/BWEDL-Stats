@@ -1,5 +1,209 @@
 window.ARCHIVE_TABLES = [
   {
+    "season": "2025/2026",
+    "league": "Unbekannt",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "03.09.2025 20:00",
+        "1",
+        "DC Broken Darts 2",
+        "DC Crazy Flights 2",
+        "3:13"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "04.09.2025 20:00",
+        "2",
+        "DC Enztaler Buben",
+        "the Metal Darts 4",
+        "8:9"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "09.09.2025 20:00",
+        "3",
+        "TDF Enzberg 2",
+        "DC Black Scorpions 2",
+        "5:11"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "23.09.2025 20:30",
+        "4",
+        "Alla H\u00e4eeeehr",
+        "DC Conweiler",
+        "7:9"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "26.09.2025 20:00",
+        "5",
+        "DC 180 Stein e.V.",
+        "DC Black Scorpions 3",
+        "6:10"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "17.09.2025 19:30",
+        "6",
+        "DC Knickebocker",
+        "DC Ung\u00fcltig",
+        "7:9"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "17.09.2025 20:00",
+        "7",
+        "ESV DC 25",
+        "the Enz Coast",
+        "10:6"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "08.09.2025 20:00",
+        "8",
+        "DC Crazy Flights 3",
+        "DC HighFlights 2",
+        "13:3"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "01.09.2025 18:00",
+        "9",
+        "the flying Rocks 2",
+        "Los Muertos",
+        "8:9"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "10.09.2025 19:30",
+        "10",
+        "DC U-180",
+        "DC Mephisto's",
+        "6:10"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "20.09.2025 20:00",
+        "11",
+        "the Metal Darts 5",
+        "DC Shamrock",
+        "9:7"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "22.09.2025 19:00",
+        "12",
+        "DC Irish 26 e.V. 4",
+        "DC Ung\u00fcltig 2",
+        "3:13"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "04.09.2025 20:00",
+        "13",
+        "DC Shamrock 2",
+        "TSV Grunbach Darts 2",
+        "13:3"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "16.09.2025 20:00",
+        "14",
+        "M\u00fchle Glabbich e.V.",
+        "Mighty Darts",
+        "2:14"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "23.09.2025 19:30",
+        "15",
+        "DC Irish 26 e.V. 5",
+        "DSV Gro\u00dfglabbich",
+        "3:13"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "12.09.2025 19:30",
+        "16",
+        "DC Hot Shotz",
+        "DC Cim Bom",
+        "9:8"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "06.09.2025 20:00",
+        "17",
+        "DC Crazy Flights",
+        "TSV Grunbach Darts",
+        "5:11"
+      ],
+      [
+        "Runde 1 (501 S.O.) bis 28.09.2025",
+        "24.09.2025 19:00",
+        "18",
+        "Dartfreunde Enzberg",
+        "ESV DC 25 2",
+        "6:10"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "BWEDL e.V. Ligapokal 2024/2025",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 5 (501 M.O.) bis 10.05.2026",
+        "10.04.2026 20:00",
+        "1",
+        "DC Texas Team",
+        "DC Mephisto's",
+        "14:2"
+      ],
+      [
+        "Runde 5 (501 M.O.) bis 10.05.2026",
+        "09.04.2026 20:00",
+        "2",
+        "the Metal Darts",
+        "Mighty Darts",
+        "9:7"
+      ],
+      [
+        "Runde 5 (501 M.O.) bis 10.05.2026",
+        "24.04.2026 20:00",
+        "3",
+        "DC Reloaded",
+        "DC Lachs 14",
+        "10:6"
+      ],
+      [
+        "Runde 5 (501 M.O.) bis 10.05.2026",
+        "23.03.2026 20:00",
+        "4",
+        "DC Green Scorpion's",
+        "DC Ung\u00fcltig",
+        "10:6"
+      ]
+    ]
+  },
+  {
     "season": "2024/2025",
     "league": "Unbekannt",
     "rows": [
