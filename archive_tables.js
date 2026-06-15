@@ -237,6 +237,67 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 Mannschaftsmeisterschaften B-Klasse",
+    "rows": [
+      [
+        "Runde/Info",
+        "Spiel",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "",
+        "Spiel 1",
+        "DC HighFlights",
+        "DC Duselbr\u00fcder",
+        "10:6"
+      ],
+      [
+        "",
+        "Spiel 2",
+        "DC Duselbr\u00fcder",
+        "DC Broken Darts",
+        "9:7"
+      ],
+      [
+        "",
+        "Spiel 3",
+        "DC Broken Darts",
+        "DC HighFlights",
+        "3:13"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 Mannschaftsmeisterschaften A-Klasse am 13.06.2026",
+    "rows": [
+      [
+        "Runde/Info",
+        "Spiel",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "",
+        "Spiel um Platz 1",
+        "DC Green Scorpions",
+        "Mighty Darts",
+        "Nichtantritt Mighty Darts"
+      ],
+      [
+        "",
+        "Spiel um Platz 3",
+        "the Metal Darts 3",
+        "FriendsArrows",
+        "10:6"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
     "league": "BWEDL e.V. Ligapokal 2024/2025",
     "rows": [
       [
