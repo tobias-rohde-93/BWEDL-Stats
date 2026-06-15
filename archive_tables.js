@@ -159,6 +159,84 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2025/2026",
+    "league": "MM_C-Klasse 2025-26",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "1.",
+        "The\u00a0Walking\u00a0Darts",
+        "4",
+        "3",
+        "1",
+        "0",
+        "23:9",
+        "+14",
+        "10"
+      ],
+      [
+        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "2.",
+        "DC\u00a0Enztaler\u00a0Buben",
+        "4",
+        "3",
+        "0",
+        "1",
+        "17:15",
+        "+2",
+        "9"
+      ],
+      [
+        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "3.",
+        "TSV\u00a0Grunbach\u00a0Darts\u00a02",
+        "4",
+        "1",
+        "2",
+        "1",
+        "16:16",
+        "\u00b10",
+        "5"
+      ],
+      [
+        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "4.",
+        "DC\u00a0Crazy\u00a0Flights",
+        "4",
+        "1",
+        "1",
+        "2",
+        "13:19",
+        "-6",
+        "4"
+      ],
+      [
+        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "5.",
+        "DC\u00a0Knickebocker\u00a02",
+        "4",
+        "0",
+        "0",
+        "4",
+        "11:21",
+        "-10",
+        "0"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
     "league": "BWEDL e.V. Ligapokal 2024/2025",
     "rows": [
       [
