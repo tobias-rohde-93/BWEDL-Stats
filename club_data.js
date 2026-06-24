@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "24.06.2026 14:18:47",
+    "last_updated": "24.06.2026 19:40:13",
     "clubs": [
         {
             "venue": "VH Underground Fools e.V.",
@@ -485,7 +485,7 @@ window.CLUB_DATA = {
             "venue": "Bistro U-Boot",
             "street": "Langwiesenweg 51",
             "city": "Bad Wildbad",
-            "phone": "",
+            "phone": "07081 9560054",
             "fax": "",
             "contact": "Fabian Steube",
             "mobile": "0160 7632518",
@@ -497,7 +497,7 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/dc-lachs-14/"
         },
         {
-            "venue": "KostBar",
+            "venue": "Kost & Bar",
             "street": "Hauptstraße 95",
             "city": "Remchingen/Wilferdingen",
             "phone": "",
@@ -505,7 +505,7 @@ window.CLUB_DATA = {
             "contact": "Thorsten Klein",
             "mobile": "0162 6977070",
             "website": "",
-            "contact_email": "thokl-united77@web.de",
+            "contact_email": "thorstenklein358@gmail.com",
             "email": "",
             "name": "Odins Knechte",
             "number": "053",
@@ -545,7 +545,7 @@ window.CLUB_DATA = {
             "venue": "X Cafe Bistro",
             "street": "Westliche-Karl-Friedrich-Str. 259",
             "city": "Pforzheim",
-            "phone": "",
+            "phone": "0157 30854547",
             "fax": "",
             "contact": "Felix Bock",
             "mobile": "0173 8903752",
@@ -562,10 +562,10 @@ window.CLUB_DATA = {
             "city": "Schömberg/Schwarzenberg",
             "phone": "07084 7492",
             "fax": "",
-            "contact": "Ralf Haug",
-            "mobile": "0171 2460485",
+            "contact": "Artur Penner",
+            "mobile": "0176 32552217",
             "website": "",
-            "contact_email": "info@sanitaer-haug.de",
+            "contact_email": "artur.penner@hotmail.com",
             "email": "",
             "name": "DC Ungültig",
             "number": "057",
@@ -587,8 +587,8 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/the-flying-rocks/"
         },
         {
-            "venue": "Eisenbahner Sportverein 1928 e.V.",
-            "street": "Emil-Keßler-Str. 14",
+            "venue": "Euribar Eventhaus",
+            "street": "Pflügerstraße 37",
             "city": "Pforzheim",
             "phone": "",
             "fax": "",
@@ -602,10 +602,10 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/phantom-arrows/"
         },
         {
-            "venue": "Paselino Sportsbar",
-            "street": "Daimlerstr. 2",
-            "city": "Wiernsheim",
-            "phone": "",
+            "venue": "Cafe Nero",
+            "street": "Hauptstraße 12",
+            "city": "Weissach",
+            "phone": "0151 15789880",
             "fax": "",
             "contact": "Thomas Bauer",
             "mobile": "0172 7328010",
@@ -647,21 +647,6 @@ window.CLUB_DATA = {
             "url": "https://www.bwedl.de/vereine/dc-triple-7/"
         },
         {
-            "venue": "Eurobar Eventhaus",
-            "street": "Pflügerstraße 37",
-            "city": "Pforzheim",
-            "phone": "",
-            "fax": "",
-            "contact": "Dorian Stukenbrok",
-            "mobile": "0176 30148728",
-            "website": "",
-            "contact_email": "stukenbrok.dorian@web.de",
-            "email": "",
-            "name": "DC LEVEL",
-            "number": "063",
-            "url": "https://www.bwedl.de/vereine/dc-level/"
-        },
-        {
             "venue": "The Dubliner Irish Pub",
             "street": "Hauptstr. 105",
             "city": "Straubenhardt-Schwann",
@@ -669,16 +654,16 @@ window.CLUB_DATA = {
             "fax": "",
             "contact": "Marco Krell",
             "mobile": "01578 2333232",
-            "website": "http://www.dart-vaders.de",
-            "contact_email": "marco@dart-vaders.de",
-            "email": "dc@dart-vaders.de",
+            "website": "https://thedubliner.pub",
+            "contact_email": "dc@dart-vaders.de",
+            "email": "hallo@thedubliner.pub",
             "name": "DC Dart Vaders",
             "number": "064",
             "url": "https://www.bwedl.de/vereine/dc-dart-vaders/"
         },
         {
-            "venue": "Baradox",
-            "street": "Durlacherstraße 63",
+            "venue": "Baradox / Cafe Balance",
+            "street": "Durlacherstraße 63/ Güterstraße 65",
             "city": "Pforzheim",
             "phone": "",
             "fax": "",
@@ -702,7 +687,7 @@ window.CLUB_DATA = {
             "website": "http://www.paselino.de",
             "contact_email": "muehle.glabbich@web.de",
             "email": "",
-            "name": "Mühle Glabbich e.V.",
+            "name": "Glabbicher Bulls",
             "number": "066",
             "url": "https://www.bwedl.de/vereine/muhle-glabbich-e.v/"
         },
@@ -742,10 +727,10 @@ window.CLUB_DATA = {
             "city": "Pforzheim",
             "phone": "",
             "fax": "",
-            "contact": "Johann Ludwig",
-            "mobile": "0151 22731765",
+            "contact": "Wolfgang Loss",
+            "mobile": "01520 6205376",
             "website": "",
-            "contact_email": "hansiliza_1894@yahoo.de",
+            "contact_email": "wgloss@web.de",
             "email": "hansiliza_1884@yahoo.de",
             "name": "ESV DC 25",
             "number": "070",
@@ -780,6 +765,36 @@ window.CLUB_DATA = {
             "name": "DC Hot Shotz",
             "number": "072",
             "url": "https://www.bwedl.de/vereine/dc-hot-shotz/"
+        },
+        {
+            "venue": "X Cafe",
+            "street": "Westliche-Karl-Friedrich-Str. 261",
+            "city": "Pforzheim",
+            "phone": "0157 30854547",
+            "fax": "",
+            "contact": "Mario Ackermann",
+            "mobile": "0176 45984718",
+            "website": "",
+            "contact_email": "bomer2003@t-online.de",
+            "email": "beti.luca@yahoo.de",
+            "name": "Heavy Weigths Brötzingen",
+            "number": "076",
+            "url": "https://www.bwedl.de/vereine/076-heavy-weigths-brotzingen/"
+        },
+        {
+            "venue": "Art Cafe",
+            "street": "Wilhelmstraße 36",
+            "city": "Bad Wildbad",
+            "phone": "",
+            "fax": "",
+            "contact": "Sanel Bozic",
+            "mobile": "0174 4859653",
+            "website": "",
+            "contact_email": "sanelboziccfc@gmail.com",
+            "email": "",
+            "name": "DC Williams",
+            "number": "078",
+            "url": "https://www.bwedl.de/vereine/dc-williams/"
         }
     ]
 };
