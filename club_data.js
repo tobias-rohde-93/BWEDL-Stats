@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "25.06.2026 02:47:00",
+    "last_updated": "25.06.2026 08:53:25",
     "clubs": [
         {
             "venue": "VH Underground Fools e.V.",
@@ -765,6 +765,21 @@ window.CLUB_DATA = {
             "name": "DC Hot Shotz",
             "number": "072",
             "url": "https://www.bwedl.de/vereine/dc-hot-shotz/"
+        },
+        {
+            "venue": "Meyerhöfle",
+            "street": "Bertholdstr. 28",
+            "city": "Pforzheim",
+            "phone": "07231 5899406",
+            "fax": "",
+            "contact": "Melanie Robertus-Dondalski",
+            "mobile": "0176 63352002",
+            "website": "",
+            "contact_email": "melanie.robertus@gmx.de",
+            "email": "",
+            "name": "DC Höfle",
+            "number": "075",
+            "url": "https://www.bwedl.de/vereine/dc-hofle/"
         },
         {
             "venue": "X Cafe",
