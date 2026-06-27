@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "27.06.2026 02:42:09",
+    "last_updated": "27.06.2026 08:31:00",
     "clubs": [
         {
             "venue": "VH Underground Fools e.V.",
@@ -795,6 +795,21 @@ window.CLUB_DATA = {
             "name": "Heavy Weigths Brötzingen",
             "number": "076",
             "url": "https://www.bwedl.de/vereine/076-heavy-weigths-brotzingen/"
+        },
+        {
+            "venue": "Pharao Niefern",
+            "street": "",
+            "city": "Niefern-Öschelbronn",
+            "phone": "0176 61966811",
+            "fax": "",
+            "contact": "Eros Schembri",
+            "mobile": "0176 78638739",
+            "website": "",
+            "contact_email": "schembri.eros@web.de",
+            "email": "",
+            "name": "United Ikaros",
+            "number": "077",
+            "url": "https://www.bwedl.de/vereine/united-ikaros/"
         },
         {
             "venue": "Art Cafe",
