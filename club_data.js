@@ -1,5 +1,5 @@
 window.CLUB_DATA = {
-    "last_updated": "29.07.2026 19:13:57",
+    "last_updated": "30.07.2026 02:03:34",
     "clubs": [
         {
             "venue": "VH Underground Fools e.V.",
