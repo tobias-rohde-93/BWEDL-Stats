@@ -9,18 +9,15 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  issues: write
-  actions: read
-
 jobs:
   update-data:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
@@ -42,6 +39,7 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Run live data update
+        timeout-minutes: 20
         run: python update_data.py
 
       - name: Render update summary
@@ -77,16 +75,34 @@ jobs:
             git push
           fi
 
-      - name: Record scheduled failure
-        if: ${{ failure() && github.event_name == 'schedule' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python -m pipeline.github_incident failure
+  notify:
+    needs: update-data
+    if: ${{ always() && github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      issues: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
 
-      - name: Resolve scheduled incident
-        if: ${{ success() && github.event_name == 'schedule' }}
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Download current failure evidence
+        if: ${{ needs.update-data.result == 'failure' }}
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-          GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python -m pipeline.github_incident recovery
+        run: gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "update-failure-$GITHUB_RUN_ID" --dir notification-artifact
+
+      - name: Evaluate scheduled update incident
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_UPDATE_RESULT: ${{ needs.update-data.result }}
+          REPORT_PATH: notification-artifact/update_report.json
+        run: python -m pipeline.github_incident notify

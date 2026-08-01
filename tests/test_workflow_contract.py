@@ -19,7 +19,14 @@ def step_block(text: str, name: str) -> str:
     return match.group(0)
 
 
-def test_workflow_has_hardened_triggers_concurrency_permissions_and_timeout():
+def job_block(text: str, job_name: str, next_job: str | None = None) -> str:
+    end = rf"(?=^  {re.escape(next_job)}:|\Z)" if next_job else r"\Z"
+    match = re.search(rf"(?ms)^  {re.escape(job_name)}:\n.*?{end}", text)
+    assert match is not None, f"missing workflow job: {job_name}"
+    return match.group(0)
+
+
+def test_workflow_has_hardened_triggers_concurrency_and_update_timeout():
     text = workflow_text()
 
     assert "cron: '0 */6 * * *'" in text
@@ -27,8 +34,6 @@ def test_workflow_has_hardened_triggers_concurrency_permissions_and_timeout():
     assert "group: ${{ github.workflow }}-${{ github.ref }}" in text
     assert "cancel-in-progress: false" in text
     assert "timeout-minutes: 30" in text
-    for permission in ("contents: write", "issues: write", "actions: read"):
-        assert permission in text
 
 
 def test_offline_tests_run_before_browser_install_and_live_update():
@@ -45,9 +50,11 @@ def test_offline_tests_run_before_browser_install_and_live_update():
 def test_action_versions_and_checkout_history_are_maintained():
     text = workflow_text()
 
-    assert "actions/checkout@v6" in text
-    assert "actions/setup-python@v6" in text
-    assert "actions/upload-artifact@v7" in text
+    assert text.count("actions/checkout@v7") == 2
+    assert text.count("actions/setup-python@v6") == 2
+    assert text.count("actions/upload-artifact@v7") == 1
+    assert "actions/checkout@v6" not in text
+    assert "actions/setup-python@v7" not in text
     assert "fetch-depth: 2" in text
 
 
@@ -65,6 +72,15 @@ def test_summary_and_failure_artifacts_do_not_mask_the_update_result():
     assert "diagnostics/**" not in artifacts
     assert "retention-days: 14" in artifacts
     assert "if-no-files-found: warn" in artifacts
+
+
+def test_live_update_step_has_transactional_timeout_before_always_evidence_steps():
+    text = workflow_text()
+    update = step_block(text, "Run live data update")
+
+    assert "timeout-minutes: 20" in update
+    assert text.index("Run live data update") < text.index("Render update summary")
+    assert text.index("Run live data update") < text.index("Upload failure diagnostics")
 
 
 def test_commit_uses_explicit_generated_file_allowlist_only():
@@ -86,17 +102,30 @@ def test_commit_uses_explicit_generated_file_allowlist_only():
     assert "git push" in commit
 
 
-def test_incident_automation_is_scheduled_only_and_uses_gh_token():
+def test_notify_job_is_separate_always_scheduled_and_least_privilege():
     text = workflow_text()
-    failure = step_block(text, "Record scheduled failure")
-    recovery = step_block(text, "Resolve scheduled incident")
+    update_job = job_block(text, "update-data", "notify")
+    notify_job = job_block(text, "notify")
 
-    assert "github.event_name == 'schedule'" in failure
-    assert "failure()" in failure
-    assert "python -m pipeline.github_incident failure" in failure
-    assert "github.event_name == 'schedule'" in recovery
-    assert "success()" in recovery
-    assert "python -m pipeline.github_incident recovery" in recovery
-    for block in (failure, recovery):
-        assert "GH_TOKEN: ${{ github.token }}" in block
-        assert "GITHUB_RUN_URL:" in block
+    assert "pipeline.github_incident" not in update_job
+    assert "permissions:\n      contents: write" in update_job
+    assert "issues: write" not in update_job
+    assert "needs: update-data" in notify_job
+    assert "if: ${{ always() && github.event_name == 'schedule' }}" in notify_job
+    for permission in ("actions: read", "issues: write", "contents: read"):
+        assert permission in notify_job
+    assert "CURRENT_UPDATE_RESULT: ${{ needs.update-data.result }}" in notify_job
+    assert "python -m pipeline.github_incident notify" in notify_job
+    assert "gh run download" in notify_job
+    assert "continue-on-error: true" in notify_job
+    assert "REPORT_PATH:" in notify_job
+
+
+def test_notify_job_uses_current_actions_and_update_result_not_notify_result():
+    text = workflow_text()
+    notify_job = job_block(text, "notify")
+
+    assert "actions/checkout@v7" in notify_job
+    assert "actions/setup-python@v6" in notify_job
+    assert "needs.update-data.result" in notify_job
+    assert "needs.notify" not in notify_job
