@@ -5,6 +5,7 @@ from playwright.async_api import async_playwright
 import json
 import re
 from pathlib import Path
+from urllib.parse import urlsplit
 from pipeline.diagnostics import AsyncDiagnosticSession, scraper_status
 
 BASE_URL = "https://www.bwedl.de"
@@ -16,6 +17,34 @@ LIGAPOKAL_URLS = [
     f"{BASE_URL}/archiv/2023-2024/",
     f"{BASE_URL}/archiv/2024-2025/",
 ]
+
+COMPETITION_TERMS = (
+    "klasse",
+    "liga",
+    "pokal",
+    "meisterschaft",
+    "rangliste",
+    "tabelle",
+)
+
+
+def is_archive_sub_link(href: str, text: str) -> bool:
+    if not isinstance(href, str) or not isinstance(text, str):
+        return False
+    try:
+        candidate = urlsplit(href)
+        archive_origin = urlsplit(BASE_URL)
+        candidate_port = candidate.port or (443 if candidate.scheme == "https" else None)
+        archive_port = archive_origin.port or 443
+    except ValueError:
+        return False
+    return (
+        candidate.scheme == "https"
+        and candidate.hostname == archive_origin.hostname
+        and candidate_port == archive_port
+        and candidate.path.startswith("/archiv/")
+        and any(term in text.casefold() for term in COMPETITION_TERMS)
+    )
 
 def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser()
@@ -137,7 +166,10 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
 
                 urls_to_scrape = [url] # Always scrape the main landing page too
                 for link in sub_links:
-                    if link['href'] not in urls_to_scrape:
+                    if (
+                        is_archive_sub_link(link.get('href'), link.get('text'))
+                        and link['href'] not in urls_to_scrape
+                    ):
                         print(f"  Found sub-page: {link['text']} -> {link['href']}")
                         urls_to_scrape.append(link['href'])
                 

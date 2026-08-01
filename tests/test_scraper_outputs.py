@@ -27,6 +27,17 @@ SCRAPER_MODULES = [
 ]
 
 
+def test_archive_table_sub_link_requires_same_origin_archive_url() -> None:
+    assert not archive_tables_scraper.is_archive_sub_link(
+        "https://www.google.com/maps/place/Liga+2024-2025",
+        "Liga 2024-2025",
+    )
+    assert archive_tables_scraper.is_archive_sub_link(
+        "https://www.bwedl.de/archiv/2024-2025/abschlusstabellen/",
+        "Abschlusstabellen Liga 2024-2025",
+    )
+
+
 @pytest.mark.parametrize(
     "script",
     [
