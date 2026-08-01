@@ -52,6 +52,22 @@ def _remove_transaction_debris(destinations: list[Path]) -> list[str]:
     return failures
 
 
+def _rollback_transaction(
+    destinations: list[Path], snapshots: dict[Path, bytes | None]
+) -> list[str]:
+    failures: list[str] = []
+    for destination in destinations:
+        try:
+            _restore_destination(destination, snapshots[destination])
+        except Exception as restore_error:
+            failures.append(f"{destination.name}: {restore_error}")
+    try:
+        failures.extend(_remove_transaction_debris(destinations) or [])
+    except Exception as cleanup_error:
+        failures.append(f"cleanup: {cleanup_error}")
+    return failures
+
+
 def publish_domains(
     staging: Path,
     published: Path,
@@ -91,16 +107,12 @@ def publish_domains(
     try:
         for source, destination in changed:
             promote_file(source, destination)
+        cleanup_failures = _remove_transaction_debris(destinations) or []
+        if cleanup_failures:
+            details = "; ".join(cleanup_failures)
+            raise PublicationError(f"publication cleanup failed: {details}")
     except Exception as original_error:
-        restoration_failures: list[str] = []
-        for destination in destinations:
-            try:
-                _restore_destination(destination, snapshots[destination])
-            except Exception as restore_error:
-                restoration_failures.append(
-                    f"{destination.name}: {restore_error}"
-                )
-        restoration_failures.extend(_remove_transaction_debris(destinations))
+        restoration_failures = _rollback_transaction(destinations, snapshots)
         if restoration_failures:
             details = "; ".join(restoration_failures)
             raise PublicationError(
@@ -108,5 +120,4 @@ def publish_domains(
             ) from original_error
         raise
 
-    _remove_transaction_debris(destinations)
     return destinations

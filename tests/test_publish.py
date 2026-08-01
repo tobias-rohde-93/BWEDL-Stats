@@ -288,6 +288,74 @@ def test_rollback_failure_is_reported_with_original_as_cause(
     assert caught.value.__cause__ is original
 
 
+def test_cleanup_failure_after_promotions_rolls_back_and_is_reraised(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {"ranking_data.json": b"new-json", "ranking_data.js": b"new-js"},
+    )
+    write_files(published, {"ranking_data.json": b"old-json"})
+    cleanup_error = OSError("cleanup denied")
+    real_cleanup = publication._remove_transaction_debris
+    calls = 0
+
+    def fail_once(destinations: list[Path]) -> list[str]:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise cleanup_error
+        return real_cleanup(destinations)
+
+    monkeypatch.setattr(publication, "_remove_transaction_debris", fail_once)
+
+    with pytest.raises(OSError) as caught:
+        publish_domains(staging, published, [result("rankings", Decision.PUBLISH)])
+
+    assert caught.value is cleanup_error
+    assert (published / "ranking_data.json").read_bytes() == b"old-json"
+    assert not (published / "ranking_data.js").exists()
+    assert calls == 2
+
+
+def test_cleanup_failure_during_rollback_is_chained_with_context(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"}
+    )
+    write_files(
+        published, {"club_data.json": b"old-json", "club_data.js": b"old-js"}
+    )
+    promotion_error = RuntimeError("promotion failed")
+    real_promote = publication.promote_file
+    calls = 0
+
+    def fail_second(source: Path, destination: Path) -> None:
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            raise promotion_error
+        real_promote(source, destination)
+
+    def fail_cleanup(destinations: list[Path]) -> list[str]:
+        raise OSError("cleanup denied")
+
+    monkeypatch.setattr(publication, "promote_file", fail_second)
+    monkeypatch.setattr(publication, "_remove_transaction_debris", fail_cleanup)
+
+    with pytest.raises(PublicationError, match="cleanup.*cleanup denied") as caught:
+        publish_domains(staging, published, [result("clubs", Decision.PUBLISH)])
+
+    assert caught.value.__cause__ is promotion_error
+    assert (published / "club_data.json").read_bytes() == b"old-json"
+    assert (published / "club_data.js").read_bytes() == b"old-js"
+
+
 def test_write_report_contains_stable_publication_data(tmp_path: Path) -> None:
     report_path = tmp_path / "nested" / "report.json"
     results = [
