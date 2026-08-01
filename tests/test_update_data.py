@@ -178,6 +178,24 @@ def test_stale_explicit_ranking_season_blocks_whole_publication(tmp_path: Path) 
     assert "season" in " ".join(report["domains"][1]["reasons"]).lower()
 
 
+@pytest.mark.parametrize("invalid_season", [2026, ["2026/27"]])
+def test_non_string_explicit_ranking_season_is_not_inferred(
+    tmp_path: Path, invalid_season: Any
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    candidate = rankings()
+    candidate["season"] = invalid_season
+    before = snapshot(root)
+
+    assert update_data.run_update(
+        root, staging, artifacts, scraper_runner=fake_runner(candidate), clock=lambda: NOW
+    ) == 1
+    assert snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["domains"][1]["decision"] == "blocked"
+
+
 @pytest.mark.parametrize("candidate", [rankings(REQUIRED_RANKING_CATEGORIES[:3]), None])
 def test_partial_or_missing_ranking_candidate_never_replaces_prior(tmp_path: Path, candidate: dict[str, Any] | None) -> None:
     root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
@@ -382,6 +400,60 @@ def test_prepublication_exception_is_reported_without_public_mutation(
 
     assert update_data.run_update(
         root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW
+    ) == 1
+    assert snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["success"] is False
+    assert len(report["domains"]) == 4
+
+
+@pytest.mark.parametrize("failure", ["clock", "report", "concise"])
+def test_post_promotion_finalization_failure_rolls_back_public_tree(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, failure: str
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    before = snapshot(root)
+    calls = 0
+
+    def flaky_clock() -> datetime:
+        nonlocal calls
+        calls += 1
+        if failure == "clock" and calls == 3:
+            raise RuntimeError("final clock exploded")
+        return NOW
+
+    if failure == "report":
+        real_report = update_data.write_report
+        report_calls = 0
+
+        def flaky_report(*args: Any, **kwargs: Any) -> Any:
+            nonlocal report_calls
+            report_calls += 1
+            if report_calls == 1:
+                raise RuntimeError("report exploded")
+            return real_report(*args, **kwargs)
+
+        monkeypatch.setattr(update_data, "write_report", flaky_report)
+    elif failure == "concise":
+        real_concise = update_data._write_concise
+        concise_calls = 0
+
+        def flaky_concise(*args: Any, **kwargs: Any) -> Any:
+            nonlocal concise_calls
+            concise_calls += 1
+            if concise_calls == 1:
+                raise RuntimeError("concise exploded")
+            return real_concise(*args, **kwargs)
+
+        monkeypatch.setattr(update_data, "_write_concise", flaky_concise)
+
+    assert update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=fake_runner({**rankings(), "new": "payload-change"}),
+        clock=flaky_clock,
     ) == 1
     assert snapshot(root) == before
     report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))

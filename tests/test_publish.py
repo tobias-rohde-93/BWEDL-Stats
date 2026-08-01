@@ -480,6 +480,52 @@ def test_additional_status_files_share_domain_transaction(
     assert (published / "data_status.js").read_bytes() == b"old-status-js"
 
 
+def test_finalize_failure_rolls_back_all_promoted_files(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {
+            "club_data.json": b"new-clubs",
+            "club_data.js": b"new-clubs-js",
+            "data_status.json": b"new-status",
+        },
+    )
+    write_files(
+        published,
+        {
+            "club_data.json": b"old-clubs",
+            "club_data.js": b"old-clubs-js",
+            "data_status.json": b"old-status",
+        },
+    )
+    observed: list[list[Path]] = []
+
+    def fail_finalize(changed: list[Path]) -> None:
+        observed.append(changed)
+        raise RuntimeError("finalization failed")
+
+    with pytest.raises(RuntimeError, match="finalization failed"):
+        publish_domains(
+            staging,
+            published,
+            [result("clubs", Decision.PUBLISH)],
+            additional_files=("data_status.json",),
+            finalize=fail_finalize,
+        )
+
+    assert observed == [[
+        published / "club_data.json",
+        published / "club_data.js",
+        published / "data_status.json",
+    ]]
+    assert (published / "club_data.json").read_bytes() == b"old-clubs"
+    assert (published / "club_data.js").read_bytes() == b"old-clubs-js"
+    assert (published / "data_status.json").read_bytes() == b"old-status"
+
+
 @pytest.mark.parametrize(
     "additional_files",
     [

@@ -281,7 +281,11 @@ def run_update(
                 results.append(ValidationResult("rankings", Decision.BLOCKED, prior_rankings["season"], ("current league season is unavailable",)))
             else:
                 explicit_season = candidate_for_validation.get("season")
-                if not isinstance(explicit_season, str) or not explicit_season.strip():
+                if (
+                    "season" not in candidate_for_validation
+                    or explicit_season is None
+                    or (isinstance(explicit_season, str) and not explicit_season.strip())
+                ):
                     candidate_for_validation["season"] = league_result.effective_season
                 try:
                     ranking_result = validate_rankings(candidate_for_validation, prior_rankings)
@@ -319,6 +323,14 @@ def run_update(
     indexed = {result.domain: result for result in results}
     results = [indexed.get(domain, _failed(domain, "domain result was not produced")) for domain in DOMAIN_ORDER]
     ready = all(result.decision in {Decision.PUBLISH, Decision.RETAIN} for result in results)
+
+    def finalize_diagnostics(changed_paths: list[Path]) -> None:
+        finished = clock()
+        write_report(
+            root / "update_report.json", results, changed_paths, started, finished
+        )
+        _write_concise(root / "update_status.json", _iso(finished), results)
+
     if ready and not dry_run and previous_status is not None:
         try:
             status = _build_status(
@@ -328,28 +340,37 @@ def run_update(
                 _changed_domains(staging, root, results, previous_status),
             )
             write_json_pair(staging, "data_status", "DATA_STATUS", status)
-            published = publish_domains(staging, root, results, additional_files=("data_status.json", "data_status.js"))
+            published = publish_domains(
+                staging,
+                root,
+                results,
+                additional_files=("data_status.json", "data_status.js"),
+                finalize=finalize_diagnostics,
+            )
         except Exception as error:
             results = [
                 ValidationResult(
                     result.domain,
                     Decision.FAILED,
                     result.effective_season,
-                    result.reasons + (f"prepublication failed: {error}",),
+                    result.reasons + (f"update transaction failed: {error}",),
                     result.metrics,
                 )
                 for result in results
             ]
             published = []
             ready = False
-
-    try:
-        finished = clock()
-        write_report(root / "update_report.json", results, published, started, finished)
-        _write_concise(root / "update_status.json", _iso(finished), results)
-    except Exception:
-        print("error: could not write update report", file=sys.stderr)
-        return 1
+            try:
+                finalize_diagnostics([])
+            except Exception:
+                print("error: could not write update report", file=sys.stderr)
+                return 1
+    else:
+        try:
+            finalize_diagnostics([])
+        except Exception:
+            print("error: could not write update report", file=sys.stderr)
+            return 1
     return 0 if ready else 1
 
 

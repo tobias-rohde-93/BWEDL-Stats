@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import tempfile
+from collections.abc import Callable
 from pathlib import Path
 
 from pipeline.files import content_changed, promote_file, validate_promotion_paths
@@ -60,6 +61,7 @@ def publish_domains(
     results: list[ValidationResult],
     *,
     additional_files: tuple[str, ...] = (),
+    finalize: Callable[[list[Path]], None] | None = None,
 ) -> list[Path]:
     domain_filenames = {name for names in DOMAIN_FILES.values() for name in names}
     seen_additional: set[str] = set()
@@ -104,6 +106,8 @@ def publish_domains(
         if content_changed(source, destination)
     ]
     if not changed:
+        if finalize is not None:
+            finalize([])
         return []
 
     snapshots = {
@@ -115,6 +119,8 @@ def publish_domains(
     try:
         for source, destination in changed:
             promote_file(source, destination)
+        if finalize is not None:
+            finalize(destinations)
     except Exception as original_error:
         restoration_failures = _rollback_transaction(destinations, snapshots)
         if restoration_failures:
