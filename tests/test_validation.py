@@ -1,4 +1,5 @@
 from copy import deepcopy
+import json
 from typing import Any
 
 import pytest
@@ -145,6 +146,27 @@ def test_present_malformed_ranking_table_blocks_candidate(
     assert "malformed" in " ".join(result.reasons).lower()
 
 
+@pytest.mark.parametrize(
+    "malformed_table",
+    [
+        "</table><table>",
+        "<table>missing close",
+        "<tableau>wrong tag</table>",
+        "<table>first</table><table>second</table>",
+    ],
+)
+def test_ranking_table_requires_one_ordered_outer_table(
+    malformed_table: str, prior_rankings: dict
+) -> None:
+    candidate = candidate_for(REQUIRED_CATEGORIES)
+    candidate["rankings"]["Bezirksliga"] = malformed_table
+
+    result = validate_rankings(candidate, prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["malformed_ranking_tables"] == 1
+
+
 def test_empty_ranking_table_retains_previous_season(prior_rankings: dict) -> None:
     candidate = candidate_for(REQUIRED_CATEGORIES)
     candidate["rankings"]["Bezirksliga"] = "   "
@@ -164,6 +186,28 @@ def test_ranking_table_tags_are_case_insensitive(prior_rankings: dict) -> None:
     result = validate_rankings(candidate, prior_rankings)
 
     assert result.decision is Decision.PUBLISH
+
+
+def test_unknown_nonblank_ranking_key_blocks_candidate(prior_rankings: dict) -> None:
+    candidate = candidate_for(REQUIRED_CATEGORIES)
+    candidate["rankings"]["Oberliga"] = "<table>Unexpected</table>"
+
+    result = validate_rankings(candidate, prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["invalid_ranking_categories"] == 1
+
+
+def test_duplicate_canonical_ranking_keys_block_candidate(
+    prior_rankings: dict,
+) -> None:
+    candidate = candidate_for(REQUIRED_CATEGORIES)
+    candidate["rankings"]["A-Klasse 2026-2027"] = "<table>Duplicate</table>"
+
+    result = validate_rankings(candidate, prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["duplicate_ranking_categories"] == 1
 
 
 def test_arbitrary_category_suffix_blocks_candidate(prior_rankings: dict) -> None:
@@ -186,6 +230,30 @@ def test_category_season_suffix_must_match_candidate_season(
     assert "season" in " ".join(result.reasons).lower()
 
 
+@pytest.mark.parametrize("invalid_season", ["not-a-season", "2026/29"])
+def test_invalid_or_nonconsecutive_candidate_season_blocks_candidate(
+    invalid_season: str, prior_rankings: dict
+) -> None:
+    result = validate_rankings(
+        candidate_for(REQUIRED_CATEGORIES, season=invalid_season), prior_rankings
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "season" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize("season", ["2026/2027", "2026-2027"])
+def test_candidate_season_is_normalized_for_publication(
+    season: str, prior_rankings: dict
+) -> None:
+    result = validate_rankings(
+        candidate_for(REQUIRED_CATEGORIES, season=season), prior_rankings
+    )
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2026/27"
+
+
 def test_validation_result_defensively_copies_and_freezes_collections() -> None:
     reasons = ["original"]
     metrics = {"players": 1}
@@ -206,6 +274,30 @@ def test_validation_result_defensively_copies_and_freezes_collections() -> None:
         result.reasons.append("forbidden")
     with pytest.raises(TypeError):
         result.metrics["players"] = 3
+
+
+def test_validation_result_serializes_to_detached_json_safe_dict() -> None:
+    result = ValidationResult(
+        domain="rankings",
+        decision=Decision.BLOCKED,
+        effective_season="2025/26",
+        reasons=["invalid candidate"],
+        metrics={"invalid_players": 1},
+    )
+
+    serialized = result.to_dict()
+
+    assert json.loads(json.dumps(serialized)) == {
+        "domain": "rankings",
+        "decision": "blocked",
+        "effective_season": "2025/26",
+        "reasons": ["invalid candidate"],
+        "metrics": {"invalid_players": 1},
+    }
+    serialized["reasons"].append("changed")
+    serialized["metrics"]["invalid_players"] = 2
+    assert result.reasons == ("invalid candidate",)
+    assert result.metrics == {"invalid_players": 1}
 
 
 def test_same_player_id_in_different_categories_is_allowed(

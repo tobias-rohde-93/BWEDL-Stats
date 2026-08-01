@@ -27,6 +27,15 @@ class ValidationResult:
         object.__setattr__(self, "reasons", tuple(self.reasons))
         object.__setattr__(self, "metrics", MappingProxyType(dict(self.metrics)))
 
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "domain": self.domain,
+            "decision": self.decision.value,
+            "effective_season": self.effective_season,
+            "reasons": list(self.reasons),
+            "metrics": dict(self.metrics),
+        }
+
 
 REQUIRED_RANKING_CATEGORIES = (
     "Bezirksliga",
@@ -36,30 +45,48 @@ REQUIRED_RANKING_CATEGORIES = (
 )
 
 
+def _parse_season(value: Any) -> str | None:
+    if not isinstance(value, str):
+        return None
+    normalized_value = value.strip()
+    short_match = re.fullmatch(r"(\d{4})/(\d{2})", normalized_value)
+    if short_match is not None:
+        start_year, short_end_year = (int(part) for part in short_match.groups())
+        if short_end_year == (start_year + 1) % 100:
+            return f"{start_year}/{short_end_year:02d}"
+        return None
+
+    long_match = re.fullmatch(r"(\d{4})([/-])(\d{4})", normalized_value)
+    if long_match is None:
+        return None
+    start_year = int(long_match.group(1))
+    end_year = int(long_match.group(3))
+    if end_year != start_year + 1:
+        return None
+    return f"{start_year}/{end_year % 100:02d}"
+
+
 def _parse_category(value: Any) -> tuple[str, str | None] | None:
     if not isinstance(value, str):
         return None
     for category in REQUIRED_RANKING_CATEGORIES:
         if value == category:
             return category, None
-        match = re.fullmatch(rf"{re.escape(category)} (\d{{4}})-(\d{{4}})", value)
-        if match is not None:
-            start_year, end_year = (int(part) for part in match.groups())
-            if end_year == start_year + 1:
-                return category, f"{start_year}/{end_year % 100:02d}"
+        prefix = f"{category} "
+        if value.startswith(prefix):
+            season = _parse_season(value[len(prefix) :])
+            return (category, season) if season is not None else None
     return None
 
 
-def _has_category_prefix(value: Any) -> bool:
-    return isinstance(value, str) and any(
-        value.startswith(f"{category} ") for category in REQUIRED_RANKING_CATEGORIES
-    )
-
-
 def _is_ranking_table(value: str) -> bool:
-    return bool(
-        re.search(r"<table(?:\s|>)", value, re.IGNORECASE)
-        and re.search(r"</table\s*>", value, re.IGNORECASE)
+    return (
+        re.fullmatch(
+            r"\s*<table\b[^>]*>(?:(?!<table\b|</table>).)*</table>\s*",
+            value,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        is not None
     )
 
 
@@ -75,10 +102,14 @@ def validate_rankings(
     metrics = {category: 0 for category in REQUIRED_RANKING_CATEGORIES}
     reasons: list[str] = []
     raw_candidate_season = candidate.get("season")
-    candidate_season = (
-        raw_candidate_season.strip()
-        if isinstance(raw_candidate_season, str) and raw_candidate_season.strip()
-        else None
+    candidate_season = _parse_season(raw_candidate_season)
+    invalid_candidate_season = (
+        raw_candidate_season is not None
+        and not (
+            isinstance(raw_candidate_season, str)
+            and not raw_candidate_season.strip()
+        )
+        and candidate_season is None
     )
 
     players = candidate.get("players", [])
@@ -141,18 +172,27 @@ def validate_rankings(
     if duplicate_players:
         metrics["duplicate_players"] = duplicate_players
         reasons.append(f"Duplicate players within a category: {duplicate_players}")
+    if invalid_candidate_season:
+        metrics["invalid_candidate_seasons"] = 1
+        reasons.append("Invalid candidate season")
 
     ranking_categories: set[str] = set()
+    seen_ranking_categories: set[str] = set()
     invalid_ranking_categories = 0
+    duplicate_ranking_categories = 0
     malformed_ranking_tables = 0
     for key, table in rankings.items():
         parsed_category = _parse_category(key)
         if parsed_category is None:
-            if _has_category_prefix(key):
+            if not isinstance(key, str) or key.strip():
                 invalid_ranking_categories += 1
             continue
 
         category, category_season = parsed_category
+        if category in seen_ranking_categories:
+            duplicate_ranking_categories += 1
+        else:
+            seen_ranking_categories.add(category)
         if category_season is not None and category_season != candidate_season:
             season_mismatches += 1
             continue
@@ -170,6 +210,11 @@ def validate_rankings(
         metrics["invalid_ranking_categories"] = invalid_ranking_categories
         reasons.append(
             f"Invalid ranking category labels: {invalid_ranking_categories}"
+        )
+    if duplicate_ranking_categories:
+        metrics["duplicate_ranking_categories"] = duplicate_ranking_categories
+        reasons.append(
+            f"Duplicate canonical ranking categories: {duplicate_ranking_categories}"
         )
     if malformed_ranking_tables:
         metrics["malformed_ranking_tables"] = malformed_ranking_tables
