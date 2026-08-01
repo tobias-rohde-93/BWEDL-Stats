@@ -112,6 +112,61 @@ def test_scraper_main_forwards_output_and_artifacts_directories(
     assert received["paths"] == (Path("candidate"), Path("diagnostics"))
 
 
+@pytest.mark.parametrize(
+    ("module", "boundary_name", "is_async"),
+    [
+        (league_scraper, "run_scrape", False),
+        (ranking_scraper, "run_scrape", False),
+        (club_scraper, "run_scrape", False),
+        (archive_scraper, "scrape_archive", True),
+        (archive_tables_scraper, "scrape_archive_tables", True),
+    ],
+)
+@pytest.mark.parametrize("boundary_status", [0, 1])
+def test_scraper_main_returns_boundary_status(
+    monkeypatch, module, boundary_name, is_async, boundary_status
+):
+    if is_async:
+        async def boundary(output_dir, artifacts_dir):
+            return boundary_status
+    else:
+        def boundary(output_dir, artifacts_dir):
+            return boundary_status
+
+    monkeypatch.setattr(module, boundary_name, boundary)
+
+    assert module.main([]) == boundary_status
+
+
+@pytest.mark.parametrize(
+    ("module", "boundary_name", "is_async"),
+    [
+        (league_scraper, "run_scrape", False),
+        (ranking_scraper, "run_scrape", False),
+        (club_scraper, "run_scrape", False),
+        (archive_scraper, "scrape_archive", True),
+        (archive_tables_scraper, "scrape_archive_tables", True),
+    ],
+)
+def test_scraper_main_converts_unexpected_boundary_error_to_failure_status(
+    tmp_path, monkeypatch, capsys, module, boundary_name, is_async
+):
+    if is_async:
+        async def boundary(output_dir, artifacts_dir):
+            raise RuntimeError("token=do-not-log")
+    else:
+        def boundary(output_dir, artifacts_dir):
+            raise RuntimeError("token=do-not-log")
+
+    monkeypatch.setattr(module, boundary_name, boundary)
+
+    assert module.main(["--artifacts-dir", str(tmp_path)]) == 1
+    lines = [line for line in capsys.readouterr().out.splitlines()
+             if line.startswith("SCRAPER_FAILURE ")]
+    assert len(lines) == 1
+    assert "do-not-log" not in lines[0]
+
+
 def test_league_initialization_does_not_read_published_data_for_candidate(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

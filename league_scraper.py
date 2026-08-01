@@ -6,6 +6,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
+from pipeline.diagnostics import SyncFailureDiagnostics, scraper_status
 
 DATA_FILE = "league_data.json"
 BASE_URL = "https://bwedl.de"
@@ -47,6 +48,7 @@ def save_data(data, output_dir=Path(".")):
     return write_json_pair(output_dir, "league_data", "LEAGUE_DATA", data)
 
 def scrape_league(page, league_url, league_name, data):
+    failures = []
     print(f"Scraping {league_name}...")
     page.goto(league_url)
     
@@ -69,7 +71,8 @@ def scrape_league(page, league_url, league_name, data):
             else:
                  print(f"  [Warn] No table found for {league_name}")
         except Exception as e:
-            print(f"  [Error] extracting table for {league_name}: {e}")
+            failures.append(e)
+            print(f"  [Error] extracting table for {league_name}")
 
         # 2. Extract Match Days
         try:
@@ -107,7 +110,8 @@ def scrape_league(page, league_url, league_name, data):
                     league_storage["match_days"][text] = content
                         
         except Exception as e:
-            print(f"  [Error] extracting match days for {league_name}: {e}")
+            failures.append(e)
+            print(f"  [Error] extracting match days for {league_name}")
             
     else:
         # --- CUP LOGIC (Ligapokal) ---
@@ -203,7 +207,13 @@ def scrape_league(page, league_url, league_name, data):
                 league_storage["match_days"][round_obj["name"]] = round_obj["text"]
                 
         except Exception as e:
-            print(f"  [Error] extracting cup data for {league_name}: {e}")
+            failures.append(e)
+            print(f"  [Error] extracting cup data for {league_name}")
+
+    if failures:
+        raise RuntimeError(
+            f"{league_name} scrape incomplete ({len(failures)} operation failures)"
+        ) from failures[0]
 
 def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     data = load_data(output_dir)
@@ -212,43 +222,60 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.goto(START_URL)
+        with SyncFailureDiagnostics(
+            browser, artifacts_dir, "league_scraper"
+        ) as diagnostics:
+            page = diagnostics.page
+            page.goto(START_URL)
         
         # Find all league links
         # We look for links that start with /tabellen/
         # and ignore the main tabellen link itself if it matches
-        league_links = []
+            league_links = []
         
         # There isn't a single container, so we scan all links on page
         # Filtering for hrefs containing /tabellen/
-        links = page.locator("a[href*='/tabellen/']").all()
+            links = page.locator("a[href*='/tabellen/']").all()
         
-        for link in links:
-            href = link.get_attribute("href")
-            text = link.inner_text().strip()
-            if href and href != "/tabellen/" and text:
-                full_url = BASE_URL + href if href.startswith("/") else href
-                # Deduplicate
-                if not any(l['url'] == full_url for l in league_links):
-                    league_links.append({'url': full_url, 'name': text})
+            for link in links:
+                href = link.get_attribute("href")
+                text = link.inner_text().strip()
+                if href and href != "/tabellen/" and text:
+                    full_url = BASE_URL + href if href.startswith("/") else href
+                    if not any(l['url'] == full_url for l in league_links):
+                        league_links.append({'url': full_url, 'name': text})
         
-        print(f"Found {len(league_links)} leagues.")
+            print(f"Found {len(league_links)} leagues.")
         
-        for league in league_links:
-            scrape_league(page, league['url'], league['name'], data)
-            
+            failures = []
+            for league in league_links:
+                try:
+                    scrape_league(page, league['url'], league['name'], data)
+                except Exception as error:
+                    failures.append(error)
+            if failures:
+                raise RuntimeError(
+                    f"league scrape incomplete ({len(failures)} item failures)"
+                ) from failures[0]
+
         browser.close()
+
+    if diagnostics.error is not None:
+        return 1
 
     json_path, javascript_path = save_data(data, output_dir)
     print(
         f"\n[INFO] Scraping completed. Data saved to {json_path} "
         f"and {javascript_path}"
     )
+    return 0
 
 def main(argv=None):
     args = parse_args(argv)
-    run_scrape(args.output_dir, args.artifacts_dir)
+    return scraper_status(
+        "league_scraper", args.artifacts_dir,
+        lambda: run_scrape(args.output_dir, args.artifacts_dir),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

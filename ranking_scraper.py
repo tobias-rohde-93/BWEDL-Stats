@@ -6,6 +6,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
+from pipeline.diagnostics import SyncFailureDiagnostics, scraper_status
 
 DATA_FILE_JSON = "ranking_data.json"
 DATA_FILE_JS = "ranking_data.js"
@@ -44,17 +45,31 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.goto(START_URL)
+        diagnostics = SyncFailureDiagnostics(
+            browser, artifacts_dir, "ranking_scraper"
+        )
+        diagnostics.__enter__()
+        page = diagnostics.page
+        try:
+            page.goto(START_URL)
+        except Exception as error:
+            diagnostics.__exit__(type(error), error, error.__traceback__)
+            browser.close()
+            return 1
         
         # 1. Find ranking links
         # Use broader selector (like league scraper) to avoid missing them if layout differs
         links = page.locator("a[href*='/ranglisten/']").all()
         
         ranking_links = []
+        failures = []
         for link in links:
-            href = link.get_attribute("href")
-            text = link.inner_text().strip()
+            try:
+                href = link.get_attribute("href")
+                text = link.inner_text().strip()
+            except Exception as error:
+                failures.append(error)
+                continue
             
             if href and href != "/ranglisten/" and "archiv" not in href.lower() and text:
                 full_url = BASE_URL + href if href.startswith("/") else href
@@ -144,15 +159,30 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                     print(f"  [Warn] No table found for {rank['name']}")
                     
             except Exception as e:
-                print(f"  [Error] scraping {rank['name']}: {e}")
+                failures.append(e)
+                print(f"  [Error] scraping {rank['name']}")
 
+        if failures:
+            error = RuntimeError(
+                f"ranking scrape incomplete ({len(failures)} item failures)"
+            )
+            error.__cause__ = failures[0]
+            diagnostics.__exit__(type(error), error, error.__traceback__)
+            browser.close()
+            return 1
+
+        diagnostics.__exit__(None, None, None)
         browser.close()
         
     save_data(data, output_dir)
+    return 0
 
 def main(argv=None):
     args = parse_args(argv)
-    run_scrape(args.output_dir, args.artifacts_dir)
+    return scraper_status(
+        "ranking_scraper", args.artifacts_dir,
+        lambda: run_scrape(args.output_dir, args.artifacts_dir),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -5,6 +5,7 @@ from playwright.async_api import async_playwright
 import json
 import re
 from pathlib import Path
+from pipeline.diagnostics import AsyncFailureDiagnostics, scraper_status
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
@@ -36,10 +37,19 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
         browser = await p.chromium.launch()
-        page = await browser.new_page()
+        diagnostics = AsyncFailureDiagnostics(
+            browser, artifacts_dir, "archive_scraper"
+        )
+        await diagnostics.__aenter__()
+        page = diagnostics.page
         
         # Extract Season Links
-        await page.goto(ARCHIVE_URL, wait_until="networkidle")
+        try:
+            await page.goto(ARCHIVE_URL, wait_until="networkidle")
+        except Exception as error:
+            await diagnostics.__aexit__(type(error), error, error.__traceback__)
+            await browser.close()
+            return 1
         
         # Extract All Archive Links
         season_links = await page.evaluate('''() => {
@@ -80,8 +90,12 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         all_history = {} 
 
         if not unique_seasons:
-            print("ERROR: No unique seasons found to scrape!")
+            error = RuntimeError("No unique archive seasons found")
+            await diagnostics.__aexit__(type(error), error, error.__traceback__)
+            await browser.close()
+            return 1
         
+        failures = []
         for url, season_name in unique_seasons.items():
             print(f"--------------------------------------------------")
             print(f"Starting Scrape for Season: {season_name}")
@@ -343,18 +357,33 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                                 all_history[p_id].append(entry)
 
             except Exception as e:
-                print(f"  Error processing {season_name}: {e}")
+                failures.append(e)
+                print(f"  Error processing {season_name}")
 
+        if failures:
+            error = RuntimeError(
+                f"archive scrape incomplete ({len(failures)} item failures)"
+            )
+            error.__cause__ = failures[0]
+            await diagnostics.__aexit__(type(error), error, error.__traceback__)
+            await browser.close()
+            return 1
+
+        await diagnostics.__aexit__(None, None, None)
         await browser.close()
         
         output_path = save_archive_data(all_history, output_dir)
         print(f"Archive data saved to {output_path}.")
+        return 0
 
 def main(argv=None):
     args = parse_args(argv)
-    asyncio.run(scrape_archive(args.output_dir, args.artifacts_dir))
+    return scraper_status(
+        "archive_scraper", args.artifacts_dir,
+        lambda: asyncio.run(scrape_archive(args.output_dir, args.artifacts_dir)),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
 
 

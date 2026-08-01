@@ -5,6 +5,7 @@ from playwright.async_api import async_playwright
 import json
 import re
 from pathlib import Path
+from pipeline.diagnostics import AsyncFailureDiagnostics, scraper_status
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
@@ -43,15 +44,19 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
         browser = await p.chromium.launch()
-        page = await browser.new_page()
+        diagnostics = AsyncFailureDiagnostics(
+            browser, artifacts_dir, "archive_tables_scraper"
+        )
+        await diagnostics.__aenter__()
+        page = diagnostics.page
         
         # Go to Archive Overview
         try:
             await page.goto(ARCHIVE_URL, wait_until="networkidle", timeout=60000)
         except Exception as e:
-            print(f"Error accessing archive url: {e}")
+            await diagnostics.__aexit__(type(e), e, e.__traceback__)
             await browser.close()
-            return
+            return 1
 
         # Extract Season Links
         season_links = await page.evaluate('''() => {
@@ -96,6 +101,7 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
         print(f"Total URLs to scrape (including Ligapokal): {len(unique_seasons)}")
         
         all_tables = [] 
+        failures = []
 
         for url, season_name in unique_seasons.items():
             print(f"Scraping Season: {season_name} ({url})")
@@ -150,7 +156,8 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
                     if target_url != url:
                          try:
                              await page.goto(target_url, wait_until="networkidle", timeout=20000)
-                         except:
+                         except Exception as error:
+                             failures.append(error)
                              continue
                     
                     # Extract Tables on this page
@@ -267,8 +274,19 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
                                      })
                 
             except Exception as e:
-                print(f"  Error processing {season_name}: {e}")
+                failures.append(e)
+                print(f"  Error processing {season_name}")
 
+        if failures:
+            error = RuntimeError(
+                f"archive tables scrape incomplete ({len(failures)} item failures)"
+            )
+            error.__cause__ = failures[0]
+            await diagnostics.__aexit__(type(error), error, error.__traceback__)
+            await browser.close()
+            return 1
+
+        await diagnostics.__aexit__(None, None, None)
         await browser.close()
         
         final_tables = all_tables
@@ -281,10 +299,16 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
 
         output_path = save_archive_tables(final_tables, output_dir)
         print(f"Archive tables saved to {output_path}.")
+        return 0
 
 def main(argv=None):
     args = parse_args(argv)
-    asyncio.run(scrape_archive_tables(args.output_dir, args.artifacts_dir))
+    return scraper_status(
+        "archive_tables_scraper", args.artifacts_dir,
+        lambda: asyncio.run(
+            scrape_archive_tables(args.output_dir, args.artifacts_dir)
+        ),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
