@@ -48,17 +48,20 @@ def test_promote_file_replaces_destination_without_partial_content(
     assert destination.read_text(encoding="utf-8") == "new"
 
 
-def test_promote_file_removes_partial_next_file_when_copy_fails(
+def test_promote_file_removes_only_owned_temp_when_copy_fails(
     data_trees: tuple[Path, Path], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     published, staging = data_trees
     source = staging / "league_data.json"
     destination = published / "league_data.json"
-    next_path = destination.with_suffix(destination.suffix + ".next")
+    sentinel = destination.with_suffix(destination.suffix + ".next")
     source.write_text("new", encoding="utf-8")
     destination.write_text("old", encoding="utf-8")
+    sentinel.write_text("sentinel", encoding="utf-8")
+    copied_to: list[Path] = []
 
     def fail_copy(_source: Path, target: Path) -> None:
+        copied_to.append(target)
         target.write_text("partial", encoding="utf-8")
         raise OSError("copy failed")
 
@@ -68,20 +71,25 @@ def test_promote_file_removes_partial_next_file_when_copy_fails(
         promote_file(source, destination)
 
     assert destination.read_text(encoding="utf-8") == "old"
-    assert not next_path.exists()
+    assert sentinel.read_text(encoding="utf-8") == "sentinel"
+    assert len(copied_to) == 1
+    assert not copied_to[0].exists()
 
 
-def test_promote_file_removes_next_file_when_replace_fails(
+def test_promote_file_removes_only_owned_temp_when_replace_fails(
     data_trees: tuple[Path, Path], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     published, staging = data_trees
     source = staging / "league_data.json"
     destination = published / "league_data.json"
-    next_path = destination.with_suffix(destination.suffix + ".next")
+    sentinel = destination.with_suffix(destination.suffix + ".next")
     source.write_text("new", encoding="utf-8")
     destination.write_text("old", encoding="utf-8")
+    sentinel.write_text("sentinel", encoding="utf-8")
+    replaced_from: list[Path] = []
 
-    def fail_replace(_source: Path, _destination: Path) -> None:
+    def fail_replace(temporary: Path, _destination: Path) -> None:
+        replaced_from.append(temporary)
         raise OSError("replace failed")
 
     monkeypatch.setattr(file_module.os, "replace", fail_replace)
@@ -90,7 +98,92 @@ def test_promote_file_removes_next_file_when_replace_fails(
         promote_file(source, destination)
 
     assert destination.read_text(encoding="utf-8") == "old"
-    assert not next_path.exists()
+    assert sentinel.read_text(encoding="utf-8") == "sentinel"
+    assert len(replaced_from) == 1
+    assert not replaced_from[0].exists()
+
+
+def test_promote_file_preserves_predictable_collision_paths(
+    data_trees: tuple[Path, Path],
+) -> None:
+    published, staging = data_trees
+    source = staging / "league_data.json"
+    destination = published / "league_data.json"
+    next_collision = destination.with_suffix(destination.suffix + ".next")
+    rollback_collision = destination.with_suffix(destination.suffix + ".rollback")
+    source.write_text("new", encoding="utf-8")
+    next_collision.mkdir()
+    rollback_collision.write_text("sentinel", encoding="utf-8")
+
+    promote_file(source, destination)
+
+    assert destination.read_text(encoding="utf-8") == "new"
+    assert next_collision.is_dir()
+    assert rollback_collision.read_text(encoding="utf-8") == "sentinel"
+
+
+@pytest.mark.parametrize("invalid_source", ["directory", "missing"])
+def test_promote_file_rejects_non_regular_source(
+    data_trees: tuple[Path, Path], invalid_source: str
+) -> None:
+    published, staging = data_trees
+    source = staging / "league_data.json"
+    destination = published / "league_data.json"
+    destination.write_text("old", encoding="utf-8")
+    if invalid_source == "directory":
+        source.mkdir()
+
+    with pytest.raises((FileNotFoundError, ValueError), match="source"):
+        promote_file(source, destination)
+
+    assert destination.read_text(encoding="utf-8") == "old"
+
+
+def test_promote_file_rejects_non_regular_destination(
+    data_trees: tuple[Path, Path],
+) -> None:
+    published, staging = data_trees
+    source = staging / "league_data.json"
+    destination = published / "league_data.json"
+    source.write_text("new", encoding="utf-8")
+    destination.mkdir()
+
+    with pytest.raises(ValueError, match="destination"):
+        promote_file(source, destination)
+
+    assert destination.is_dir()
+
+
+def _symlink_or_skip(link: Path, target: Path) -> None:
+    try:
+        link.symlink_to(target)
+    except OSError as error:
+        pytest.skip(f"symlinks unavailable: {error}")
+
+
+@pytest.mark.parametrize("link_kind", ["source", "destination"])
+def test_promote_file_rejects_symlink_paths_without_following_them(
+    data_trees: tuple[Path, Path], link_kind: str
+) -> None:
+    published, staging = data_trees
+    real_source = staging / "real-source.json"
+    source = staging / "league_data.json"
+    destination = published / "league_data.json"
+    real_destination = published / "real-destination.json"
+    real_source.write_text("new", encoding="utf-8")
+    real_destination.write_text("old", encoding="utf-8")
+    if link_kind == "source":
+        _symlink_or_skip(source, real_source)
+        destination.write_text("destination", encoding="utf-8")
+    else:
+        source.write_text("new", encoding="utf-8")
+        _symlink_or_skip(destination, real_destination)
+
+    with pytest.raises(ValueError, match=link_kind):
+        promote_file(source, destination)
+
+    assert real_source.read_text(encoding="utf-8") == "new"
+    assert real_destination.read_text(encoding="utf-8") == "old"
 
 
 def test_promote_file_creates_missing_destination_parent(

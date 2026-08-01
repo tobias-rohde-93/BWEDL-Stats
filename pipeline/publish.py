@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import os
+import tempfile
 from pathlib import Path
 
-from pipeline.files import content_changed, promote_file
+from pipeline.files import content_changed, promote_file, validate_promotion_paths
 from pipeline.validation import Decision, ValidationResult
 
 
@@ -19,37 +20,26 @@ class PublicationError(RuntimeError):
     """Raised when publication fails and the prior state cannot be restored."""
 
 
-def _temporary_path(destination: Path, suffix: str) -> Path:
-    return destination.with_suffix(destination.suffix + suffix)
-
-
 def _restore_destination_original(destination: Path, previous: bytes | None) -> None:
     if previous is None:
         destination.unlink(missing_ok=True)
         return
 
     destination.parent.mkdir(parents=True, exist_ok=True)
-    rollback_path = _temporary_path(destination, ".rollback")
+    descriptor, rollback_name = tempfile.mkstemp(
+        prefix=f".{destination.name}.rollback-",
+        dir=destination.parent,
+    )
+    rollback_path = Path(rollback_name)
     try:
-        rollback_path.write_bytes(previous)
+        with os.fdopen(descriptor, "wb") as rollback_file:
+            rollback_file.write(previous)
         os.replace(rollback_path, destination)
     finally:
         rollback_path.unlink(missing_ok=True)
 
 
 _restore_destination = _restore_destination_original
-
-
-def _remove_transaction_debris(destinations: list[Path]) -> list[str]:
-    failures: list[str] = []
-    for destination in destinations:
-        for suffix in (".next", ".rollback"):
-            temporary = _temporary_path(destination, suffix)
-            try:
-                temporary.unlink(missing_ok=True)
-            except OSError as error:
-                failures.append(f"{temporary.name}: {error}")
-    return failures
 
 
 def _rollback_transaction(
@@ -61,10 +51,6 @@ def _rollback_transaction(
             _restore_destination(destination, snapshots[destination])
         except Exception as restore_error:
             failures.append(f"{destination.name}: {restore_error}")
-    try:
-        failures.extend(_remove_transaction_debris(destinations) or [])
-    except Exception as cleanup_error:
-        failures.append(f"cleanup: {cleanup_error}")
     return failures
 
 
@@ -73,22 +59,24 @@ def publish_domains(
     published: Path,
     results: list[ValidationResult],
 ) -> list[Path]:
-    seen_domains: set[str] = set()
+    indexed_results: dict[str, ValidationResult] = {}
     for result in results:
         if result.domain not in DOMAIN_FILES:
             raise ValueError(f"unknown publication domain: {result.domain}")
-        if result.domain in seen_domains:
+        if result.domain in indexed_results:
             raise ValueError(f"duplicate publication domain: {result.domain}")
-        seen_domains.add(result.domain)
+        indexed_results[result.domain] = result
 
-    approved = [result for result in results if result.decision is Decision.PUBLISH]
     candidates: list[tuple[Path, Path]] = []
-    for result in approved:
-        for filename in DOMAIN_FILES[result.domain]:
+    for domain, filenames in DOMAIN_FILES.items():
+        result = indexed_results.get(domain)
+        if result is None or result.decision is not Decision.PUBLISH:
+            continue
+        for filename in filenames:
             source = staging / filename
-            if not source.is_file():
-                raise FileNotFoundError(f"approved publication source is missing: {source}")
-            candidates.append((source, published / filename))
+            destination = published / filename
+            validate_promotion_paths(source, destination)
+            candidates.append((source, destination))
 
     changed = [
         (source, destination)
@@ -107,10 +95,6 @@ def publish_domains(
     try:
         for source, destination in changed:
             promote_file(source, destination)
-        cleanup_failures = _remove_transaction_debris(destinations) or []
-        if cleanup_failures:
-            details = "; ".join(cleanup_failures)
-            raise PublicationError(f"publication cleanup failed: {details}")
     except Exception as original_error:
         restoration_failures = _rollback_transaction(destinations, snapshots)
         if restoration_failures:

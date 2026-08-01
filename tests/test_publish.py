@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+from copy import deepcopy
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -10,7 +11,7 @@ import pytest
 
 import pipeline.publish as publication
 from pipeline.publish import PublicationError, publish_domains
-from pipeline.report import render_step_summary, write_report
+from pipeline.report import render_step_summary, validate_report_schema, write_report
 from pipeline.validation import Decision, ValidationResult
 
 
@@ -33,6 +34,17 @@ def write_files(directory: Path, files: dict[str, bytes]) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     for name, contents in files.items():
         (directory / name).write_bytes(contents)
+
+
+def valid_report_dict() -> dict[str, object]:
+    return {
+        "started_at": "2026-08-01T08:30:00Z",
+        "finished_at": "2026-08-01T08:31:00Z",
+        "duration_seconds": 60.0,
+        "success": True,
+        "domains": [result("rankings", Decision.PUBLISH).to_dict()],
+        "published_files": ["ranking_data.json"],
+    }
 
 
 def test_retain_leaves_existing_files_byte_identical(tmp_path: Path) -> None:
@@ -74,6 +86,172 @@ def test_publish_promotes_ranking_pair_together(tmp_path: Path) -> None:
     assert {name: (published / name).read_bytes() for name in candidate} == candidate
 
 
+def test_publish_preserves_predictable_temp_sentinels(tmp_path: Path) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {"ranking_data.json": b"new-json", "ranking_data.js": b"new-js"},
+    )
+    next_sentinel = published / "ranking_data.json.next"
+    rollback_sentinel = published / "ranking_data.js.rollback"
+    write_files(
+        published,
+        {
+            "ranking_data.json": b"old-json",
+            "ranking_data.js": b"old-js",
+            next_sentinel.name: b"next-sentinel",
+            rollback_sentinel.name: b"rollback-sentinel",
+        },
+    )
+
+    publish_domains(staging, published, [result("rankings", Decision.PUBLISH)])
+
+    assert next_sentinel.read_bytes() == b"next-sentinel"
+    assert rollback_sentinel.read_bytes() == b"rollback-sentinel"
+
+
+def test_publish_uses_canonical_domain_order_for_every_result_permutation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    candidate = {
+        "league_data.json": b"league-json",
+        "league_data.js": b"league-js",
+        "club_data.json": b"club-json",
+        "club_data.js": b"club-js",
+    }
+    write_files(staging, candidate)
+    real_promote = publication.promote_file
+    observed_orders: list[list[str]] = []
+
+    for index, results in enumerate(
+        (
+            [result("clubs", Decision.PUBLISH), result("leagues", Decision.PUBLISH)],
+            [result("leagues", Decision.PUBLISH), result("clubs", Decision.PUBLISH)],
+        )
+    ):
+        promoted: list[str] = []
+
+        def record(source: Path, destination: Path) -> None:
+            promoted.append(destination.name)
+            real_promote(source, destination)
+
+        monkeypatch.setattr(publication, "promote_file", record)
+        published = tmp_path / f"published-{index}"
+        changed = publish_domains(staging, published, results)
+        observed_orders.append(promoted)
+        assert [path.name for path in changed] == promoted
+
+    assert observed_orders == [
+        ["league_data.json", "league_data.js", "club_data.json", "club_data.js"],
+        ["league_data.json", "league_data.js", "club_data.json", "club_data.js"],
+    ]
+
+
+def test_non_regular_candidate_is_rejected_before_any_destination_changes(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {"league_data.json": b"new-json", "league_data.js": b"new-js"},
+    )
+    (staging / "club_data.json").mkdir()
+    write_files(staging, {"club_data.js": b"new-club-js"})
+    write_files(
+        published,
+        {"league_data.json": b"old-json", "league_data.js": b"old-js"},
+    )
+
+    with pytest.raises(ValueError, match="source"):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH), result("clubs", Decision.PUBLISH)],
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old-json"
+    assert (published / "league_data.js").read_bytes() == b"old-js"
+
+
+def test_non_regular_destination_is_rejected_before_any_destination_changes(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {
+            "league_data.json": b"new-json",
+            "league_data.js": b"new-js",
+            "club_data.json": b"new-club-json",
+            "club_data.js": b"new-club-js",
+        },
+    )
+    write_files(
+        published,
+        {"league_data.json": b"old-json", "league_data.js": b"old-js"},
+    )
+    (published / "club_data.json").mkdir()
+
+    with pytest.raises(ValueError, match="destination"):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH), result("clubs", Decision.PUBLISH)],
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old-json"
+    assert (published / "league_data.js").read_bytes() == b"old-js"
+    assert (published / "club_data.json").is_dir()
+
+
+@pytest.mark.parametrize("link_kind", ["source", "destination"])
+def test_symlink_candidate_is_rejected_before_any_destination_changes(
+    tmp_path: Path, link_kind: str
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {
+            "league_data.json": b"new-json",
+            "league_data.js": b"new-js",
+            "club_data.js": b"new-club-js",
+        },
+    )
+    write_files(
+        published,
+        {"league_data.json": b"old-json", "league_data.js": b"old-js"},
+    )
+    link = (
+        staging / "club_data.json"
+        if link_kind == "source"
+        else published / "club_data.json"
+    )
+    target = tmp_path / "symlink-target.json"
+    target.write_bytes(b"target-sentinel")
+    if link_kind == "destination":
+        write_files(staging, {"club_data.json": b"new-club-json"})
+    try:
+        link.symlink_to(target)
+    except OSError as error:
+        pytest.skip(f"symlinks unavailable: {error}")
+
+    with pytest.raises(ValueError, match=link_kind):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH), result("clubs", Decision.PUBLISH)],
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old-json"
+    assert (published / "league_data.js").read_bytes() == b"old-js"
+    assert target.read_bytes() == b"target-sentinel"
+
+
 @pytest.mark.parametrize("decision", [Decision.BLOCKED, Decision.FAILED])
 def test_blocked_and_failed_domains_are_skipped(
     tmp_path: Path, decision: Decision
@@ -105,7 +283,7 @@ def test_preflight_missing_source_happens_before_any_mutation(tmp_path: Path) ->
     assert {name: (published / name).read_bytes() for name in original} == original
 
 
-def test_second_promotion_failure_restores_pair_and_removes_debris(
+def test_second_promotion_failure_restores_pair_and_preserves_unowned_sentinel(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     staging = tmp_path / "staging"
@@ -135,8 +313,9 @@ def test_second_promotion_failure_restores_pair_and_removes_debris(
 
     assert caught.value is failure
     assert {name: (published / name).read_bytes() for name in original} == original
-    assert not list(tmp_path.rglob("*.next"))
-    assert not list(tmp_path.rglob("*.rollback"))
+    assert (published / "ranking_data.js.next").read_bytes() == b"debris"
+    assert not list(published.glob(".ranking_data.*.next-*"))
+    assert not list(published.glob(".ranking_data.*.rollback-*"))
 
 
 def test_rollback_restores_destination_absence(
@@ -288,7 +467,7 @@ def test_rollback_failure_is_reported_with_original_as_cause(
     assert caught.value.__cause__ is original
 
 
-def test_cleanup_failure_after_promotions_rolls_back_and_is_reraised(
+def test_promotion_cleanup_failure_rolls_back_and_is_reraised(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     staging = tmp_path / "staging"
@@ -299,17 +478,17 @@ def test_cleanup_failure_after_promotions_rolls_back_and_is_reraised(
     )
     write_files(published, {"ranking_data.json": b"old-json"})
     cleanup_error = OSError("cleanup denied")
-    real_cleanup = publication._remove_transaction_debris
+    real_promote = publication.promote_file
     calls = 0
 
-    def fail_once(destinations: list[Path]) -> list[str]:
+    def fail_after_second_promotion(source: Path, destination: Path) -> None:
         nonlocal calls
         calls += 1
-        if calls == 1:
+        real_promote(source, destination)
+        if calls == 2:
             raise cleanup_error
-        return real_cleanup(destinations)
 
-    monkeypatch.setattr(publication, "_remove_transaction_debris", fail_once)
+    monkeypatch.setattr(publication, "promote_file", fail_after_second_promotion)
 
     with pytest.raises(OSError) as caught:
         publish_domains(staging, published, [result("rankings", Decision.PUBLISH)])
@@ -342,13 +521,19 @@ def test_cleanup_failure_during_rollback_is_chained_with_context(
             raise promotion_error
         real_promote(source, destination)
 
-    def fail_cleanup(destinations: list[Path]) -> list[str]:
-        raise OSError("cleanup denied")
+    real_restore = publication._restore_destination_original
+
+    def fail_cleanup(destination: Path, previous: bytes | None) -> None:
+        real_restore(destination, previous)
+        if destination.name == "club_data.json":
+            raise OSError("cleanup denied")
 
     monkeypatch.setattr(publication, "promote_file", fail_second)
-    monkeypatch.setattr(publication, "_remove_transaction_debris", fail_cleanup)
+    monkeypatch.setattr(publication, "_restore_destination", fail_cleanup)
 
-    with pytest.raises(PublicationError, match="cleanup.*cleanup denied") as caught:
+    with pytest.raises(
+        PublicationError, match="rollback.*club_data.json.*cleanup denied"
+    ) as caught:
         publish_domains(staging, published, [result("clubs", Decision.PUBLISH)])
 
     assert caught.value.__cause__ is promotion_error
@@ -374,8 +559,9 @@ def test_write_report_contains_stable_publication_data(tmp_path: Path) -> None:
     )
 
     assert report == {
-        "started_at": "2026-08-01T08:30:00+00:00",
-        "finished_at": "2026-08-01T08:31:00+00:00",
+        "started_at": "2026-08-01T08:30:00Z",
+        "finished_at": "2026-08-01T08:31:00Z",
+        "duration_seconds": 60.0,
         "success": True,
         "domains": [item.to_dict() for item in results],
         "published_files": ["league_data.json", "league_data.js"],
@@ -385,6 +571,59 @@ def test_write_report_contains_stable_publication_data(tmp_path: Path) -> None:
     assert raw.endswith(b"\n")
     assert b"\r\n" not in raw
     assert "vollständig" in report_path.read_text(encoding="utf-8")
+
+
+@pytest.mark.parametrize(
+    "started, finished",
+    [
+        (datetime(2026, 8, 1, 8, 30), datetime(2026, 8, 1, 8, 31, tzinfo=UTC)),
+        (datetime(2026, 8, 1, 8, 30, tzinfo=UTC), datetime(2026, 8, 1, 8, 31)),
+        (
+            datetime(2026, 8, 1, 8, 31, tzinfo=UTC),
+            datetime(2026, 8, 1, 8, 30, tzinfo=UTC),
+        ),
+    ],
+)
+def test_write_report_rejects_naive_or_reversed_times(
+    tmp_path: Path, started: datetime, finished: datetime
+) -> None:
+    with pytest.raises(ValueError, match="time|chronology"):
+        write_report(
+            tmp_path / "report.json",
+            [result("rankings", Decision.PUBLISH)],
+            [],
+            started,
+            finished,
+        )
+    assert not (tmp_path / "report.json").exists()
+
+
+def test_write_report_orders_domains_canonically(tmp_path: Path) -> None:
+    started = datetime(2026, 8, 1, 8, 30, tzinfo=UTC)
+    finished = datetime(2026, 8, 1, 8, 30, 1, 250000, tzinfo=UTC)
+    reports = []
+    for index, results in enumerate(
+        (
+            [result("clubs", Decision.RETAIN), result("leagues", Decision.PUBLISH)],
+            [result("leagues", Decision.PUBLISH), result("clubs", Decision.RETAIN)],
+        )
+    ):
+        reports.append(
+            write_report(
+                tmp_path / f"report-{index}.json",
+                results,
+                [Path("league_data.json")],
+                started,
+                finished,
+            )
+        )
+
+    assert reports[0] == reports[1]
+    assert [domain["domain"] for domain in reports[0]["domains"]] == [
+        "leagues",
+        "clubs",
+    ]
+    assert reports[0]["duration_seconds"] == 1.25
 
 
 @pytest.mark.parametrize("decision", [Decision.BLOCKED, Decision.FAILED])
@@ -402,18 +641,17 @@ def test_blocked_or_failed_report_is_unsuccessful(
 
 
 def test_render_step_summary_escapes_table_breaking_reasons() -> None:
-    report = {
-        "success": False,
-        "domains": [
-            result(
-                "rankings",
-                Decision.BLOCKED,
-                reasons=("missing | category\ntry later",),
-            ).to_dict(),
-            result("clubs", Decision.PUBLISH).to_dict(),
-        ],
-        "published_files": ["club_data.json", "club_data.js"],
-    }
+    report = valid_report_dict()
+    report["success"] = False
+    report["domains"] = [
+        result(
+            "rankings",
+            Decision.BLOCKED,
+            reasons=("missing | category\ntry later",),
+        ).to_dict(),
+        result("clubs", Decision.PUBLISH).to_dict(),
+    ]
+    report["published_files"] = ["club_data.json", "club_data.js"]
 
     summary = render_step_summary(report)
 
@@ -423,6 +661,96 @@ def test_render_step_summary_escapes_table_breaking_reasons() -> None:
     assert summary.count("\n| clubs |") == 1
     assert "missing \\| category try later" in summary
     assert "club_data.json, club_data.js" in summary
+
+
+REPORT_SCHEMA_FAILURE_CASES = (
+    "missing_timestamps",
+    "empty_domains",
+    "unknown_domain",
+    "duplicate_domain",
+    "incomplete_domain",
+    "wrong_success_type",
+    "wrong_domains_type",
+    "wrong_reasons_type",
+    "wrong_metric_type",
+    "wrong_domain_type",
+    "wrong_decision_type",
+    "bad_decision",
+    "bad_timestamp",
+    "reversed_timestamps",
+    "bad_duration",
+    "duration_mismatch",
+    "bad_filename",
+    "wrong_filename_type",
+    "wrong_published_files_type",
+    "duplicate_filename",
+)
+
+
+def malformed_report(case: str) -> dict[str, object]:
+    report = deepcopy(valid_report_dict())
+    domains = report["domains"]
+    assert isinstance(domains, list)
+    domain = domains[0]
+    assert isinstance(domain, dict)
+
+    if case == "missing_timestamps":
+        del report["started_at"]
+    elif case == "empty_domains":
+        report["domains"] = []
+    elif case == "unknown_domain":
+        domain["domain"] = "unknown"
+    elif case == "duplicate_domain":
+        domains.append(deepcopy(domain))
+    elif case == "incomplete_domain":
+        del domain["metrics"]
+    elif case == "wrong_success_type":
+        report["success"] = 1
+    elif case == "wrong_domains_type":
+        report["domains"] = {}
+    elif case == "wrong_reasons_type":
+        domain["reasons"] = "secret-reason"
+    elif case == "wrong_metric_type":
+        domain["metrics"] = {"records": True}
+    elif case == "wrong_domain_type":
+        domain["domain"] = []
+    elif case == "wrong_decision_type":
+        domain["decision"] = []
+    elif case == "bad_decision":
+        domain["decision"] = "maybe"
+    elif case == "bad_timestamp":
+        report["started_at"] = "yesterday"
+    elif case == "reversed_timestamps":
+        report["finished_at"] = "2026-08-01T08:29:00Z"
+    elif case == "bad_duration":
+        report["duration_seconds"] = True
+    elif case == "duration_mismatch":
+        report["duration_seconds"] = 59.0
+    elif case == "bad_filename":
+        report["published_files"] = ["../secret.json"]
+    elif case == "wrong_filename_type":
+        report["published_files"] = [3]
+    elif case == "wrong_published_files_type":
+        report["published_files"] = "ranking_data.json"
+    elif case == "duplicate_filename":
+        report["published_files"] = ["ranking_data.json", "ranking_data.json"]
+    return report
+
+
+@pytest.mark.parametrize("case", REPORT_SCHEMA_FAILURE_CASES)
+def test_validate_report_schema_rejects_malformed_reports(case: str) -> None:
+    report = malformed_report(case)
+
+    with pytest.raises(ValueError):
+        validate_report_schema(report)
+
+
+def test_render_step_summary_uses_strict_report_validation() -> None:
+    report = valid_report_dict()
+    report["published_files"] = ["nested/secret.json"]
+
+    with pytest.raises(ValueError):
+        render_step_summary(report)
 
 
 def test_report_cli_prints_summary(tmp_path: Path) -> None:
@@ -446,6 +774,41 @@ def test_report_cli_prints_summary(tmp_path: Path) -> None:
     assert "## Data publication summary" in completed.stdout
     assert "| rankings | publish |" in completed.stdout
     assert completed.stderr == ""
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        "missing_timestamps",
+        "empty_domains",
+        "unknown_domain",
+        "duplicate_domain",
+        "incomplete_domain",
+        "wrong_success_type",
+        "wrong_domains_type",
+        "wrong_reasons_type",
+        "bad_decision",
+        "bad_timestamp",
+        "bad_filename",
+    ],
+)
+def test_report_cli_rejects_invalid_schema_without_echoing_contents(
+    tmp_path: Path, case: str
+) -> None:
+    report_path = tmp_path / "report.json"
+    report = malformed_report(case)
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+
+    completed = subprocess.run(
+        [sys.executable, "-m", "pipeline.report", "--summary", str(report_path)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert completed.returncode != 0
+    assert "could not read report" in completed.stderr.lower()
+    assert "secret-reason" not in completed.stderr
 
 
 @pytest.mark.parametrize(
