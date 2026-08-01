@@ -38,6 +38,17 @@ def test_archive_table_sub_link_requires_same_origin_archive_url() -> None:
     )
 
 
+def test_archive_table_season_link_requires_same_origin_archive_url() -> None:
+    assert not archive_tables_scraper.is_archive_season_link(
+        "https://external.example/archiv/2025-2026/",
+        "Saison 2025/2026",
+    )
+    assert archive_tables_scraper.is_archive_season_link(
+        "https://www.bwedl.de/archiv/2025-2026/",
+        "Saison 2025/2026",
+    )
+
+
 @pytest.mark.parametrize(
     "script",
     [

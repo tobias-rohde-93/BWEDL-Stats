@@ -28,23 +28,42 @@ COMPETITION_TERMS = (
 )
 
 
-def is_archive_sub_link(href: str, text: str) -> bool:
-    if not isinstance(href, str) or not isinstance(text, str):
+def is_archive_url(href: str) -> bool:
+    if not isinstance(href, str):
         return False
     try:
         candidate = urlsplit(href)
         archive_origin = urlsplit(BASE_URL)
-        candidate_port = candidate.port or (443 if candidate.scheme == "https" else None)
-        archive_port = archive_origin.port or 443
+        candidate_port = candidate.port
     except ValueError:
         return False
     return (
         candidate.scheme == "https"
         and candidate.hostname == archive_origin.hostname
-        and candidate_port == archive_port
+        and candidate_port in (None, 443)
         and candidate.path.startswith("/archiv/")
+    )
+
+
+def is_archive_season_link(href: str, text: str) -> bool:
+    if not isinstance(text, str) or not is_archive_url(href):
+        return False
+    match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(
+        r"(\d{4})[/-](\d{4})", href
+    )
+    if not match:
+        return False
+    first_year, second_year = (int(year) for year in match.groups())
+    return first_year >= 2010 and 1 <= second_year - first_year <= 2
+
+
+def is_archive_sub_link(href: str, text: str) -> bool:
+    return (
+        isinstance(text, str)
+        and is_archive_url(href)
         and any(term in text.casefold() for term in COMPETITION_TERMS)
     )
+
 
 def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser()
@@ -91,6 +110,9 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
         for s in season_links:
             text = s['text']
             href = s['href']
+
+            if not is_archive_season_link(href, text):
+                continue
             
             # Identify if it's a season link (YYYY/YYYY or similar)
             match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(r"(\d{4})[/-](\d{4})", href)
