@@ -435,6 +435,49 @@ def test_context_creation_failure_unwinds_browser_and_playwright_without_fake_pa
     assert capsys.readouterr().out == ""
 
 
+class _EmptyLocator:
+    def all(self):
+        return []
+
+
+class _EmptyOverviewPage(_Page):
+    def locator(self, selector):
+        return _EmptyLocator()
+
+
+@pytest.mark.parametrize(
+    ("module", "save_name"),
+    [(league_scraper, "save_data"), (club_scraper, "save_data")],
+)
+def test_empty_structural_overview_fails_with_artifacts_and_without_save(
+    tmp_path, monkeypatch, module, save_name
+):
+    playwright = _Playwright()
+    playwright.browser.context.page = _EmptyOverviewPage()
+    saved = []
+    monkeypatch.setattr(module, "sync_playwright", lambda: playwright)
+    monkeypatch.setattr(module, save_name, lambda *args: saved.append(args))
+
+    assert module.main(["--artifacts-dir", str(tmp_path)]) == 1
+    assert saved == []
+    assert list(tmp_path.glob("*.html"))
+    assert list(tmp_path.glob("*-trace.zip"))
+
+
+def test_empty_ranking_overview_is_valid_candidate_for_validator_retain(
+    tmp_path, monkeypatch
+):
+    playwright = _Playwright()
+    playwright.browser.context.page = _EmptyOverviewPage()
+    saved = []
+    monkeypatch.setattr(ranking_scraper, "sync_playwright", lambda: playwright)
+    monkeypatch.setattr(ranking_scraper, "save_data", lambda data, output: saved.append(data))
+
+    assert ranking_scraper.main(["--artifacts-dir", str(tmp_path)]) == 0
+    assert saved == [{"last_updated": "", "rankings": {}, "players": []}]
+    assert not list(tmp_path.iterdir())
+
+
 def test_league_initialization_does_not_read_published_data_for_candidate(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

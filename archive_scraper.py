@@ -353,6 +353,8 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             raise RuntimeError(
                 f"archive scrape incomplete ({len(failures)} item failures)"
             ) from failures[0]
+        if not all_history or not any(all_history.values()):
+            raise RuntimeError("No recognized archive history records found")
         
         output_path = save_archive_data(all_history, output_dir)
         print(f"Archive data saved to {output_path}.")

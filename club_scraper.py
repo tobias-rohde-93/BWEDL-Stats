@@ -269,6 +269,8 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                         break
         
         print(f"Found {len(club_links)} clubs.")
+        if not club_links:
+            raise RuntimeError("No club links discovered")
         
         failures = []
         for club in club_links:

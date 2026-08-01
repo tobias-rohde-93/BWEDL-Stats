@@ -275,6 +275,8 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
             ) from failures[0]
         
         final_tables = all_tables
+        if not final_tables:
+            raise RuntimeError("No archive tables found")
         
         # Sort by Season (descending) then League
         try:

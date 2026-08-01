@@ -11,8 +11,10 @@ import unicodedata
 from typing import Any, Callable, Iterable, Iterator
 
 
+_AUTHORIZATION = re.compile(r"(?im)(authorization\s*:\s*)[^\r\n]+")
 _SECRET = re.compile(
-    r"(?i)\b(token|password|passwd|secret|api[_-]?key|authorization)\s*[:=]\s*[^\s,;]+"
+    r"(?i)(\b(?:token|password|passwd|secret|api[_-]?key)\b\s*[:=]\s*|"
+    r"[?&](?:token|password|passwd|secret|api[_-]?key)=)[^\s&;,]+"
 )
 
 
@@ -53,7 +55,19 @@ class SyncFailureDiagnostics:
         self.context.tracing.start(
             screenshots=True, snapshots=True, sources=True
         )
-        self.page = self.context.new_page()
+        try:
+            self.page = self.context.new_page()
+        except Exception:
+            paths = artifact_paths(self.directory, self.script)
+            try:
+                self.context.tracing.stop(path=str(paths.trace))
+            except Exception:
+                pass
+            try:
+                self.context.close()
+            except Exception:
+                pass
+            raise
         return self
 
     def __exit__(self, error_type, error, traceback):
@@ -87,7 +101,8 @@ class SyncFailureDiagnostics:
             self.context.close()
         except Exception as exception:
             trace_errors.append(_error("context_close", exception))
-        print(structured_failure(self.script, error, paths, trace_errors))
+        self.paths = paths
+        self.capture_errors = tuple(trace_errors)
         return True
 
 
@@ -107,7 +122,19 @@ class AsyncFailureDiagnostics:
         await self.context.tracing.start(
             screenshots=True, snapshots=True, sources=True
         )
-        self.page = await self.context.new_page()
+        try:
+            self.page = await self.context.new_page()
+        except Exception:
+            paths = artifact_paths(self.directory, self.script)
+            try:
+                await self.context.tracing.stop(path=str(paths.trace))
+            except Exception:
+                pass
+            try:
+                await self.context.close()
+            except Exception:
+                pass
+            raise
         return self
 
     async def __aexit__(self, error_type, error, traceback):
@@ -143,7 +170,8 @@ class AsyncFailureDiagnostics:
             await self.context.close()
         except Exception as exception:
             trace_errors.append(_error("context_close", exception))
-        print(structured_failure(self.script, error, paths, trace_errors))
+        self.paths = paths
+        self.capture_errors = tuple(trace_errors)
         return True
 
 
@@ -183,15 +211,28 @@ class SyncDiagnosticSession:
 
     def __exit__(self, error_type, error, traceback):
         handled = self.diagnostics.__exit__(error_type, error, traceback)
+        teardown_errors = []
         try:
             self.browser.close()
         except Exception as close_error:
             if self.diagnostics.error is None:
                 self.diagnostics.error = close_error
-                print(structured_failure(self.script, close_error, None))
+            teardown_errors.append(_error("browser_close", close_error))
             handled = True
-        finally:
+        try:
             self.playwright_manager.__exit__(error_type, error, traceback)
+        except Exception as manager_error:
+            if self.diagnostics.error is None:
+                self.diagnostics.error = manager_error
+            teardown_errors.append(_error("playwright_exit", manager_error))
+            handled = True
+        if self.diagnostics.error is not None:
+            errors = list(getattr(self.diagnostics, "capture_errors", ()))
+            errors.extend(teardown_errors)
+            print(structured_failure(
+                self.script, self.diagnostics.error,
+                getattr(self.diagnostics, "paths", None), errors,
+            ))
         return handled
 
     @property
@@ -235,15 +276,28 @@ class AsyncDiagnosticSession:
 
     async def __aexit__(self, error_type, error, traceback):
         handled = await self.diagnostics.__aexit__(error_type, error, traceback)
+        teardown_errors = []
         try:
             await self.browser.close()
         except Exception as close_error:
             if self.diagnostics.error is None:
                 self.diagnostics.error = close_error
-                print(structured_failure(self.script, close_error, None))
+            teardown_errors.append(_error("browser_close", close_error))
             handled = True
-        finally:
+        try:
             await self.playwright_manager.__aexit__(error_type, error, traceback)
+        except Exception as manager_error:
+            if self.diagnostics.error is None:
+                self.diagnostics.error = manager_error
+            teardown_errors.append(_error("playwright_exit", manager_error))
+            handled = True
+        if self.diagnostics.error is not None:
+            errors = list(getattr(self.diagnostics, "capture_errors", ()))
+            errors.extend(teardown_errors)
+            print(structured_failure(
+                self.script, self.diagnostics.error,
+                getattr(self.diagnostics, "paths", None), errors,
+            ))
         return handled
 
     @property
@@ -252,8 +306,9 @@ class AsyncDiagnosticSession:
 
 
 def _safe_message(value: object, limit: int = 300) -> str:
-    message = str(value).replace("\r", " ").replace("\n", " ")
-    message = _SECRET.sub(lambda match: f"{match.group(1)}=[REDACTED]", message)
+    message = _AUTHORIZATION.sub(r"\1[REDACTED]", str(value))
+    message = _SECRET.sub(lambda match: f"{match.group(1)}[REDACTED]", message)
+    message = message.replace("\r", " ").replace("\n", " ")
     return message[:limit]
 
 
@@ -330,7 +385,7 @@ def structured_failure(
             ("trace", paths.trace),
         ):
             if path.is_file():
-                artifacts[name] = str(path)
+                artifacts[name] = _safe_message(path)
             elif not any(item.operation == name for item in capture_errors):
                 capture_errors.append(
                     CaptureError(
@@ -351,7 +406,7 @@ def structured_failure(
             "message": _safe_message(error),
             "type": type(error).__name__,
         },
-        "script": str(script),
+        "script": _safe_message(script),
     }
     return "SCRAPER_FAILURE " + json.dumps(
         payload, ensure_ascii=True, separators=(",", ":"), sort_keys=True

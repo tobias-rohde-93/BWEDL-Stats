@@ -115,3 +115,18 @@ def test_structured_failure_without_capture_does_not_claim_artifact_paths():
     payload = json.loads(line.removeprefix("SCRAPER_FAILURE "))
     assert payload["artifacts"] == {}
     assert payload["capture_errors"][0]["operation"] == "capture"
+
+
+def test_structured_failure_redacts_authorization_query_script_and_paths(tmp_path):
+    paths = artifact_paths(tmp_path / "token=path-secret", "failure")
+    paths.html.write_text("ok", encoding="utf-8")
+    line = structured_failure(
+        "scraper?password=script-secret",
+        RuntimeError("Authorization: Bearer top secret value\r\nurl?token=query-secret"),
+        paths,
+    )
+
+    assert "top secret" not in line
+    assert "query-secret" not in line
+    assert "script-secret" not in line
+    assert "path-secret" not in line

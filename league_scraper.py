@@ -244,6 +244,8 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                     league_links.append({'url': full_url, 'name': text})
         
         print(f"Found {len(league_links)} leagues.")
+        if not league_links:
+            raise RuntimeError("No league links discovered")
         
         failures = []
         for league in league_links:
@@ -255,6 +257,15 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             raise RuntimeError(
                 f"league scrape incomplete ({len(failures)} item failures)"
             ) from failures[0]
+
+        incomplete = [
+            name for name, league in data["leagues"].items()
+            if not league.get("table") or not league.get("match_days")
+        ]
+        if incomplete:
+            raise RuntimeError(
+                f"league scrape incomplete ({len(incomplete)} empty league records)"
+            )
 
         json_path, javascript_path = save_data(data, output_dir)
 
