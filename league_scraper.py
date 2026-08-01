@@ -6,7 +6,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
-from pipeline.diagnostics import SyncFailureDiagnostics, scraper_status
+from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
 
 DATA_FILE = "league_data.json"
 BASE_URL = "https://bwedl.de"
@@ -220,50 +220,47 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     
     print(f"Connecting to {START_URL}...")
     
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        with SyncFailureDiagnostics(
-            browser, artifacts_dir, "league_scraper"
-        ) as diagnostics:
-            page = diagnostics.page
-            page.goto(START_URL)
+    with SyncDiagnosticSession(
+        sync_playwright, artifacts_dir, "league_scraper", headless=True
+    ) as diagnostics:
+        page = diagnostics.page
+        page.goto(START_URL)
         
         # Find all league links
         # We look for links that start with /tabellen/
         # and ignore the main tabellen link itself if it matches
-            league_links = []
+        league_links = []
         
         # There isn't a single container, so we scan all links on page
         # Filtering for hrefs containing /tabellen/
-            links = page.locator("a[href*='/tabellen/']").all()
+        links = page.locator("a[href*='/tabellen/']").all()
         
-            for link in links:
-                href = link.get_attribute("href")
-                text = link.inner_text().strip()
-                if href and href != "/tabellen/" and text:
-                    full_url = BASE_URL + href if href.startswith("/") else href
-                    if not any(l['url'] == full_url for l in league_links):
-                        league_links.append({'url': full_url, 'name': text})
+        for link in links:
+            href = link.get_attribute("href")
+            text = link.inner_text().strip()
+            if href and href != "/tabellen/" and text:
+                full_url = BASE_URL + href if href.startswith("/") else href
+                if not any(l['url'] == full_url for l in league_links):
+                    league_links.append({'url': full_url, 'name': text})
         
-            print(f"Found {len(league_links)} leagues.")
+        print(f"Found {len(league_links)} leagues.")
         
-            failures = []
-            for league in league_links:
-                try:
-                    scrape_league(page, league['url'], league['name'], data)
-                except Exception as error:
-                    failures.append(error)
-            if failures:
-                raise RuntimeError(
-                    f"league scrape incomplete ({len(failures)} item failures)"
-                ) from failures[0]
+        failures = []
+        for league in league_links:
+            try:
+                scrape_league(page, league['url'], league['name'], data)
+            except Exception as error:
+                failures.append(error)
+        if failures:
+            raise RuntimeError(
+                f"league scrape incomplete ({len(failures)} item failures)"
+            ) from failures[0]
 
-        browser.close()
+        json_path, javascript_path = save_data(data, output_dir)
 
     if diagnostics.error is not None:
         return 1
 
-    json_path, javascript_path = save_data(data, output_dir)
     print(
         f"\n[INFO] Scraping completed. Data saved to {json_path} "
         f"and {javascript_path}"

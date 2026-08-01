@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import json
 from pathlib import Path
 import re
+import sys
 import unicodedata
 from typing import Any, Callable, Iterable, Iterator
 
@@ -57,21 +58,36 @@ class SyncFailureDiagnostics:
 
     def __exit__(self, error_type, error, traceback):
         if error is None:
-            self.context.tracing.stop()
-            self.context.close()
+            try:
+                self.context.tracing.stop()
+            except Exception as stop_error:
+                return self._record_failure(stop_error)
+            try:
+                self.context.close()
+            except Exception as close_error:
+                return self._record_failure(close_error)
             return False
+        return self._record_failure(error)
+
+    def _record_failure(self, error):
         self.error = error
-        capture = capture_page(self.page, self.directory, self.script)
-        trace_errors = list(capture.errors)
         try:
-            self.context.tracing.stop(path=str(capture.paths.trace))
+            capture = capture_page(self.page, self.directory, self.script)
+            paths = capture.paths
+            trace_errors = list(capture.errors)
+        except Exception as capture_error:
+            paths = None
+            trace_errors = [_error("capture", capture_error)]
+        try:
+            if paths is not None:
+                self.context.tracing.stop(path=str(paths.trace))
         except Exception as exception:
             trace_errors.append(_error("trace", exception))
         try:
             self.context.close()
         except Exception as exception:
             trace_errors.append(_error("context_close", exception))
-        print(structured_failure(self.script, error, capture.paths, trace_errors))
+        print(structured_failure(self.script, error, paths, trace_errors))
         return True
 
 
@@ -96,24 +112,143 @@ class AsyncFailureDiagnostics:
 
     async def __aexit__(self, error_type, error, traceback):
         if error is None:
-            await self.context.tracing.stop()
-            await self.context.close()
+            try:
+                await self.context.tracing.stop()
+            except Exception as stop_error:
+                return await self._record_failure(stop_error)
+            try:
+                await self.context.close()
+            except Exception as close_error:
+                return await self._record_failure(close_error)
             return False
+        return await self._record_failure(error)
+
+    async def _record_failure(self, error):
         self.error = error
-        capture = await async_capture_page(
-            self.page, self.directory, self.script
-        )
-        trace_errors = list(capture.errors)
         try:
-            await self.context.tracing.stop(path=str(capture.paths.trace))
+            capture = await async_capture_page(
+                self.page, self.directory, self.script
+            )
+            paths = capture.paths
+            trace_errors = list(capture.errors)
+        except Exception as capture_error:
+            paths = None
+            trace_errors = [_error("capture", capture_error)]
+        try:
+            if paths is not None:
+                await self.context.tracing.stop(path=str(paths.trace))
         except Exception as exception:
             trace_errors.append(_error("trace", exception))
         try:
             await self.context.close()
         except Exception as exception:
             trace_errors.append(_error("context_close", exception))
-        print(structured_failure(self.script, error, capture.paths, trace_errors))
+        print(structured_failure(self.script, error, paths, trace_errors))
         return True
+
+
+class SyncDiagnosticSession:
+    """Cover the complete sync Playwright/browser/context/page lifecycle."""
+
+    def __init__(self, playwright_factory, directory, script, **launch_options):
+        self.playwright_factory = playwright_factory
+        self.directory = directory
+        self.script = script
+        self.launch_options = launch_options
+        self.playwright_manager = None
+        self.browser = None
+        self.diagnostics = None
+        self.page = None
+
+    def __enter__(self):
+        self.playwright_manager = self.playwright_factory()
+        playwright = self.playwright_manager.__enter__()
+        try:
+            self.browser = playwright.chromium.launch(**self.launch_options)
+            self.diagnostics = SyncFailureDiagnostics(
+                self.browser, self.directory, self.script
+            )
+            self.diagnostics.__enter__()
+        except Exception:
+            error_info = sys.exc_info()
+            try:
+                if self.browser is not None:
+                    self.browser.close()
+            except Exception:
+                pass
+            self.playwright_manager.__exit__(*error_info)
+            raise
+        self.page = self.diagnostics.page
+        return self
+
+    def __exit__(self, error_type, error, traceback):
+        handled = self.diagnostics.__exit__(error_type, error, traceback)
+        try:
+            self.browser.close()
+        except Exception as close_error:
+            if self.diagnostics.error is None:
+                self.diagnostics.error = close_error
+                print(structured_failure(self.script, close_error, None))
+            handled = True
+        finally:
+            self.playwright_manager.__exit__(error_type, error, traceback)
+        return handled
+
+    @property
+    def error(self):
+        return self.diagnostics.error
+
+
+class AsyncDiagnosticSession:
+    """Cover the complete async Playwright/browser/context/page lifecycle."""
+
+    def __init__(self, playwright_factory, directory, script, **launch_options):
+        self.playwright_factory = playwright_factory
+        self.directory = directory
+        self.script = script
+        self.launch_options = launch_options
+        self.playwright_manager = None
+        self.browser = None
+        self.diagnostics = None
+        self.page = None
+
+    async def __aenter__(self):
+        self.playwright_manager = self.playwright_factory()
+        playwright = await self.playwright_manager.__aenter__()
+        try:
+            self.browser = await playwright.chromium.launch(**self.launch_options)
+            self.diagnostics = AsyncFailureDiagnostics(
+                self.browser, self.directory, self.script
+            )
+            await self.diagnostics.__aenter__()
+        except Exception:
+            error_info = sys.exc_info()
+            try:
+                if self.browser is not None:
+                    await self.browser.close()
+            except Exception:
+                pass
+            await self.playwright_manager.__aexit__(*error_info)
+            raise
+        self.page = self.diagnostics.page
+        return self
+
+    async def __aexit__(self, error_type, error, traceback):
+        handled = await self.diagnostics.__aexit__(error_type, error, traceback)
+        try:
+            await self.browser.close()
+        except Exception as close_error:
+            if self.diagnostics.error is None:
+                self.diagnostics.error = close_error
+                print(structured_failure(self.script, close_error, None))
+            handled = True
+        finally:
+            await self.playwright_manager.__aexit__(error_type, error, traceback)
+        return handled
+
+    @property
+    def error(self):
+        return self.diagnostics.error
 
 
 def _safe_message(value: object, limit: int = 300) -> str:
@@ -179,22 +314,38 @@ async def async_capture_page(
 def structured_failure(
     script: str,
     error: BaseException,
-    paths: ArtifactPaths,
+    paths: ArtifactPaths | None,
     errors: Iterable[CaptureError] = (),
 ) -> str:
+    capture_errors = list(errors)
+    artifacts = {}
+    if paths is None:
+        capture_errors.append(
+            CaptureError("capture", "ArtifactUnavailable", "capture did not start")
+        )
+    else:
+        for name, path in (
+            ("html", paths.html),
+            ("screenshot", paths.screenshot),
+            ("trace", paths.trace),
+        ):
+            if path.is_file():
+                artifacts[name] = str(path)
+            elif not any(item.operation == name for item in capture_errors):
+                capture_errors.append(
+                    CaptureError(
+                        name, "ArtifactUnavailable", "artifact was not created"
+                    )
+                )
     payload = {
-        "artifacts": {
-            "html": str(paths.html),
-            "screenshot": str(paths.screenshot),
-            "trace": str(paths.trace),
-        },
+        "artifacts": artifacts,
         "capture_errors": [
             {
                 "message": _safe_message(item.message),
                 "operation": item.operation,
                 "type": item.error_type,
             }
-            for item in errors
+            for item in capture_errors
         ],
         "error": {
             "message": _safe_message(error),
@@ -214,6 +365,5 @@ def scraper_status(
     try:
         return int(operation() or 0)
     except Exception as error:
-        paths = artifact_paths(directory, script)
-        print(structured_failure(script, error, paths))
+        print(structured_failure(script, error, None))
         return 1

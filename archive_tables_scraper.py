@@ -5,7 +5,7 @@ from playwright.async_api import async_playwright
 import json
 import re
 from pathlib import Path
-from pipeline.diagnostics import AsyncFailureDiagnostics, scraper_status
+from pipeline.diagnostics import AsyncDiagnosticSession, scraper_status
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
@@ -42,21 +42,13 @@ def save_archive_tables(data, output_dir=Path(".")) -> Path:
 
 async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
-    async with async_playwright() as p:
-        browser = await p.chromium.launch()
-        diagnostics = AsyncFailureDiagnostics(
-            browser, artifacts_dir, "archive_tables_scraper"
-        )
-        await diagnostics.__aenter__()
+    async with AsyncDiagnosticSession(
+        async_playwright, artifacts_dir, "archive_tables_scraper"
+    ) as diagnostics:
         page = diagnostics.page
         
         # Go to Archive Overview
-        try:
-            await page.goto(ARCHIVE_URL, wait_until="networkidle", timeout=60000)
-        except Exception as e:
-            await diagnostics.__aexit__(type(e), e, e.__traceback__)
-            await browser.close()
-            return 1
+        await page.goto(ARCHIVE_URL, wait_until="networkidle", timeout=60000)
 
         # Extract Season Links
         season_links = await page.evaluate('''() => {
@@ -278,16 +270,9 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
                 print(f"  Error processing {season_name}")
 
         if failures:
-            error = RuntimeError(
+            raise RuntimeError(
                 f"archive tables scrape incomplete ({len(failures)} item failures)"
-            )
-            error.__cause__ = failures[0]
-            await diagnostics.__aexit__(type(error), error, error.__traceback__)
-            await browser.close()
-            return 1
-
-        await diagnostics.__aexit__(None, None, None)
-        await browser.close()
+            ) from failures[0]
         
         final_tables = all_tables
         
@@ -299,7 +284,10 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
 
         output_path = save_archive_tables(final_tables, output_dir)
         print(f"Archive tables saved to {output_path}.")
-        return 0
+
+    if diagnostics.error is not None:
+        return 1
+    return 0
 
 def main(argv=None):
     args = parse_args(argv)

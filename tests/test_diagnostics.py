@@ -104,4 +104,14 @@ def test_structured_failure_is_one_json_safe_line_without_html_or_secret(tmp_pat
     payload = json.loads(line.removeprefix("SCRAPER_FAILURE "))
     assert list(payload) == ["artifacts", "capture_errors", "error", "script"]
     assert payload["error"]["type"] == "ValueError"
-    assert payload["artifacts"]["trace"].endswith("failure-trace.zip")
+    assert "trace" not in payload["artifacts"]
+    assert any(error["operation"] == "trace"
+               for error in payload["capture_errors"])
+
+
+def test_structured_failure_without_capture_does_not_claim_artifact_paths():
+    line = structured_failure("scraper", RuntimeError("launch failed"), None)
+
+    payload = json.loads(line.removeprefix("SCRAPER_FAILURE "))
+    assert payload["artifacts"] == {}
+    assert payload["capture_errors"][0]["operation"] == "capture"

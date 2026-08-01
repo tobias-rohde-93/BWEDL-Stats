@@ -1,4 +1,5 @@
 import ast
+import asyncio
 import inspect
 import json
 import subprocess
@@ -13,6 +14,7 @@ import archive_tables_scraper
 import club_scraper
 import league_scraper
 import ranking_scraper
+from pipeline.diagnostics import AsyncDiagnosticSession, SyncDiagnosticSession
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
@@ -165,6 +167,272 @@ def test_scraper_main_converts_unexpected_boundary_error_to_failure_status(
              if line.startswith("SCRAPER_FAILURE ")]
     assert len(lines) == 1
     assert "do-not-log" not in lines[0]
+
+
+class _Tracing:
+    def __init__(self):
+        self.calls = []
+        self.fail_discard = False
+
+    def start(self, **kwargs):
+        self.calls.append(("start", kwargs))
+
+    def stop(self, path=None):
+        self.calls.append(("stop", path))
+        if path is None and self.fail_discard:
+            raise RuntimeError("trace stop failed")
+        if path:
+            Path(path).write_bytes(b"trace")
+
+
+class _Page:
+    def goto(self, *args, **kwargs):
+        return None
+
+    def locator(self, selector):
+        raise RuntimeError("pre-item failure")
+
+    def wait_for_selector(self, *args, **kwargs):
+        return None
+
+    def evaluate(self, *args, **kwargs):
+        raise RuntimeError("pre-item failure")
+
+    def content(self):
+        return "<html>failure</html>"
+
+    def screenshot(self, path, full_page):
+        Path(path).write_bytes(b"png")
+
+
+class _Context:
+    def __init__(self):
+        self.tracing = _Tracing()
+        self.page = _Page()
+        self.closed = False
+
+    def new_page(self):
+        return self.page
+
+    def close(self):
+        self.closed = True
+
+
+class _Browser:
+    def __init__(self):
+        self.context = _Context()
+        self.closed = False
+        self.fail_context = False
+
+    def new_context(self):
+        if self.fail_context:
+            raise RuntimeError("context creation failed")
+        return self.context
+
+    def close(self):
+        self.closed = True
+
+
+class _Playwright:
+    def __init__(self):
+        self.chromium = self
+        self.browser = _Browser()
+        self.exited = False
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.exited = True
+        return False
+
+    def launch(self, **kwargs):
+        return self.browser
+
+
+@pytest.mark.parametrize(
+    ("module", "save_name"),
+    [(ranking_scraper, "save_data"), (club_scraper, "save_data")],
+)
+def test_sync_pre_item_failure_captures_real_artifacts_and_closes_lifecycle(
+    tmp_path, monkeypatch, capsys, module, save_name
+):
+    playwright = _Playwright()
+    saved = []
+    monkeypatch.setattr(module, "sync_playwright", lambda: playwright)
+    monkeypatch.setattr(module, save_name, lambda *args: saved.append(args))
+
+    assert module.main(["--artifacts-dir", str(tmp_path)]) == 1
+
+    assert saved == []
+    assert playwright.browser.context.closed
+    assert playwright.browser.closed
+    assert (tmp_path / f"{Path(module.__file__).stem}.html").is_file()
+    assert (tmp_path / f"{Path(module.__file__).stem}.png").is_file()
+    assert (tmp_path / f"{Path(module.__file__).stem}-trace.zip").is_file()
+    assert len([line for line in capsys.readouterr().out.splitlines()
+                if line.startswith("SCRAPER_FAILURE ")]) == 1
+
+
+class _AsyncTracing(_Tracing):
+    async def start(self, **kwargs):
+        return super().start(**kwargs)
+
+    async def stop(self, path=None):
+        return super().stop(path)
+
+
+class _AsyncPage(_Page):
+    async def goto(self, *args, **kwargs):
+        return None
+
+    async def evaluate(self, *args, **kwargs):
+        raise RuntimeError("pre-item failure")
+
+    async def content(self):
+        return "<html>failure</html>"
+
+    async def screenshot(self, path, full_page):
+        Path(path).write_bytes(b"png")
+
+
+class _AsyncContext(_Context):
+    def __init__(self):
+        self.tracing = _AsyncTracing()
+        self.page = _AsyncPage()
+        self.closed = False
+
+    async def new_page(self):
+        return self.page
+
+    async def close(self):
+        self.closed = True
+
+
+class _AsyncBrowser(_Browser):
+    def __init__(self):
+        self.context = _AsyncContext()
+        self.closed = False
+        self.fail_context = False
+
+    async def new_context(self):
+        if self.fail_context:
+            raise RuntimeError("context creation failed")
+        return self.context
+
+    async def close(self):
+        self.closed = True
+
+
+class _AsyncPlaywright(_Playwright):
+    def __init__(self):
+        self.chromium = self
+        self.browser = _AsyncBrowser()
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *args):
+        self.exited = True
+        return False
+
+    async def launch(self, **kwargs):
+        return self.browser
+
+
+@pytest.mark.parametrize(
+    ("module", "save_name"),
+    [
+        (archive_scraper, "save_archive_data"),
+        (archive_tables_scraper, "save_archive_tables"),
+    ],
+)
+def test_async_pre_item_failure_captures_real_artifacts_and_closes_lifecycle(
+    tmp_path, monkeypatch, capsys, module, save_name
+):
+    playwright = _AsyncPlaywright()
+    saved = []
+    monkeypatch.setattr(module, "async_playwright", lambda: playwright)
+    monkeypatch.setattr(module, save_name, lambda *args: saved.append(args))
+
+    assert module.main(["--artifacts-dir", str(tmp_path)]) == 1
+
+    assert saved == []
+    assert playwright.browser.context.closed
+    assert playwright.browser.closed
+    assert (tmp_path / f"{Path(module.__file__).stem}.html").is_file()
+    assert (tmp_path / f"{Path(module.__file__).stem}.png").is_file()
+    assert (tmp_path / f"{Path(module.__file__).stem}-trace.zip").is_file()
+    assert len([line for line in capsys.readouterr().out.splitlines()
+                if line.startswith("SCRAPER_FAILURE ")]) == 1
+
+
+def test_sync_trace_stop_failure_is_captured_and_all_resources_close(
+    tmp_path, capsys
+):
+    playwright = _Playwright()
+    playwright.browser.context.tracing.fail_discard = True
+    session = SyncDiagnosticSession(lambda: playwright, tmp_path, "sync_post")
+
+    with session:
+        pass
+
+    assert isinstance(session.error, RuntimeError)
+    assert playwright.browser.context.closed
+    assert playwright.browser.closed
+    assert (tmp_path / "sync_post-trace.zip").is_file()
+    assert len([line for line in capsys.readouterr().out.splitlines()
+                if line.startswith("SCRAPER_FAILURE ")]) == 1
+
+
+def test_async_trace_stop_failure_is_captured_and_all_resources_close(
+    tmp_path, capsys
+):
+    playwright = _AsyncPlaywright()
+    playwright.browser.context.tracing.fail_discard = True
+    session = AsyncDiagnosticSession(lambda: playwright, tmp_path, "async_post")
+
+    async def run():
+        async with session:
+            pass
+
+    asyncio.run(run())
+
+    assert isinstance(session.error, RuntimeError)
+    assert playwright.browser.context.closed
+    assert playwright.browser.closed
+    assert (tmp_path / "async_post-trace.zip").is_file()
+    assert len([line for line in capsys.readouterr().out.splitlines()
+                if line.startswith("SCRAPER_FAILURE ")]) == 1
+
+
+@pytest.mark.parametrize("is_async", [False, True])
+def test_context_creation_failure_unwinds_browser_and_playwright_without_fake_paths(
+    tmp_path, capsys, is_async
+):
+    playwright = _AsyncPlaywright() if is_async else _Playwright()
+    playwright.browser.fail_context = True
+    session = (
+        AsyncDiagnosticSession(lambda: playwright, tmp_path, "enter_failure")
+        if is_async
+        else SyncDiagnosticSession(lambda: playwright, tmp_path, "enter_failure")
+    )
+
+    if is_async:
+        async def run():
+            async with session:
+                pass
+        with pytest.raises(RuntimeError, match="context creation failed"):
+            asyncio.run(run())
+    else:
+        with pytest.raises(RuntimeError, match="context creation failed"):
+            with session:
+                pass
+
+    assert playwright.browser.closed
+    assert playwright.exited
+    assert not list(tmp_path.iterdir())
+    assert capsys.readouterr().out == ""
 
 
 def test_league_initialization_does_not_read_published_data_for_candidate(
