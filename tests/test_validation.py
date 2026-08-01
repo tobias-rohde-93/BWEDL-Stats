@@ -520,6 +520,21 @@ def test_table_requires_at_least_one_non_spielfrei_team() -> None:
     assert validation.validate_leagues(candidate, {}).decision is Decision.BLOCKED
 
 
+def test_league_table_ignores_nonstandard_header_row() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = (
+        "<table><tbody>"
+        "<tr><th>Beliebige Überschrift</th></tr>"
+        "<tr><td>1.</td><td>DC Schömberg</td><td>0</td></tr>"
+        "<tr><td>2.</td><td>Spielfrei</td><td>0</td></tr>"
+        "</tbody></table>"
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.PUBLISH
+
+
 def test_historical_and_ligapokal_leagues_do_not_affect_current_validation() -> None:
     candidate = league_candidate()
     candidate["leagues"].update(
@@ -575,6 +590,12 @@ def clubs(count: int) -> dict[str, Any]:
 
 def test_empty_clubs_cannot_replace_nonempty_previous() -> None:
     result = validation.validate_clubs({"clubs": []}, clubs(5))
+
+    assert result.decision is Decision.BLOCKED
+
+
+def test_empty_clubs_block_without_previous_baseline() -> None:
+    result = validation.validate_clubs({"clubs": []}, {})
 
     assert result.decision is Decision.BLOCKED
 
@@ -638,6 +659,14 @@ def test_empty_archive_candidate_cannot_replace_previous() -> None:
     result = validation.validate_archives(set(), {"2025/26"})
 
     assert result.decision is Decision.BLOCKED
+
+
+@pytest.mark.parametrize("candidate", [set(), {"2026/27"}])
+def test_archive_requires_nonempty_previous_baseline(candidate: set[str]) -> None:
+    result = validation.validate_archives(candidate, set())
+
+    assert result.decision is Decision.BLOCKED
+    assert "previous" in " ".join(result.reasons).lower()
 
 
 @pytest.mark.parametrize(

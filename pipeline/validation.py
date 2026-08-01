@@ -301,11 +301,6 @@ def _league_table_issue(table: Any) -> str | None:
     rows = parsed.find_all("tr")
     if not rows:
         return "table has no header"
-    header_cells = rows[0].find_all(["td", "th"])
-    if len(header_cells) < 2 or _normalized_text(
-        header_cells[1].get_text(" ", strip=True)
-    ) != "tabelle":
-        return "table header is incomplete"
 
     teams: set[str] = set()
     found_team = False
@@ -477,8 +472,8 @@ def validate_clubs(
             seen_numbers.add(normalized_number)
 
         previous_count = len(previous_clubs) if isinstance(previous_clubs, list) else 0
-        if previous_count and not candidate_clubs:
-            reasons.append("Empty club candidate cannot replace previous clubs")
+        if not candidate_clubs:
+            reasons.append("Empty club candidate cannot be published")
         elif previous_count and len(candidate_clubs) < previous_count * MIN_CLUB_RATIO:
             reasons.append("Club count is below 80% of the previous count")
 
@@ -517,6 +512,15 @@ def validate_archives(
             decision=Decision.BLOCKED,
             effective_season=previous_effective,
             reasons=("Blank archive season identifier",),
+            metrics=metrics,
+        )
+
+    if not previous_seasons:
+        return ValidationResult(
+            domain="archives",
+            decision=Decision.BLOCKED,
+            effective_season="unknown",
+            reasons=("Previous archive baseline is empty",),
             metrics=metrics,
         )
 
