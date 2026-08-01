@@ -1,6 +1,5 @@
 import argparse
 import json
-import os
 import sys
 import datetime
 from pathlib import Path
@@ -28,10 +27,11 @@ def parse_args(argv=None) -> argparse.Namespace:
     )
     return parser.parse_args(argv)
 
-def load_data():
-    if os.path.exists(DATA_FILE):
+def load_data(output_dir=Path(".")):
+    data_file = output_dir / DATA_FILE
+    if data_file.exists():
         try:
-            with open(DATA_FILE, "r", encoding="utf-8") as f:
+            with data_file.open("r", encoding="utf-8") as f:
                 data = json.load(f)
                 # Ensure structure is consistent with new format
                 if "leagues" not in data:
@@ -44,7 +44,7 @@ def load_data():
 def save_data(data, output_dir=Path(".")):
     data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
 
-    write_json_pair(output_dir, "league_data", "LEAGUE_DATA", data)
+    return write_json_pair(output_dir, "league_data", "LEAGUE_DATA", data)
 
 def scrape_league(page, league_url, league_name, data):
     print(f"Scraping {league_name}...")
@@ -205,9 +205,8 @@ def scrape_league(page, league_url, league_name, data):
         except Exception as e:
             print(f"  [Error] extracting cup data for {league_name}: {e}")
 
-def main(argv=None):
-    args = parse_args(argv)
-    data = load_data()
+def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
+    data = load_data(output_dir)
     
     print(f"Connecting to {START_URL}...")
     
@@ -241,8 +240,15 @@ def main(argv=None):
             
         browser.close()
 
-    save_data(data, args.output_dir)
-    print("\n[INFO] Scraping completed. Data saved to league_data.json")
+    json_path, javascript_path = save_data(data, output_dir)
+    print(
+        f"\n[INFO] Scraping completed. Data saved to {json_path} "
+        f"and {javascript_path}"
+    )
+
+def main(argv=None):
+    args = parse_args(argv)
+    run_scrape(args.output_dir, args.artifacts_dir)
 
 if __name__ == "__main__":
     main()

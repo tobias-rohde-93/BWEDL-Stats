@@ -36,6 +36,7 @@ def save_data(data, output_dir=Path(".")):
         output_dir, "club_data", "CLUB_DATA", data
     )
     print(f"Data saved to {json_path} and {javascript_path}")
+    return json_path, javascript_path
 
 def scrape_club_details(page, url):
     print(f"  Scraping details from {url}...")
@@ -193,8 +194,7 @@ def scrape_club_details(page, url):
         print(f"  [Error] scraping details: {e}")
         return {}
 
-def main(argv=None):
-    args = parse_args(argv)
+def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     data = {"last_updated": "", "clubs": []}
     
     print(f"Connecting to {START_URL}...")
@@ -302,7 +302,11 @@ def main(argv=None):
             
         browser.close()
         
-    save_data(data, args.output_dir)
+    save_data(data, output_dir)
+
+def main(argv=None):
+    args = parse_args(argv)
+    run_scrape(args.output_dir, args.artifacts_dir)
 
 if __name__ == "__main__":
     main()

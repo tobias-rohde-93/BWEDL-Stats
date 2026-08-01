@@ -25,6 +25,13 @@ def parse_args(argv=None) -> argparse.Namespace:
     )
     return parser.parse_args(argv)
 
+def save_archive_data(data, output_dir=Path(".")) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "archive_data.js"
+    js_content = f"window.ARCHIVE_DATA = {json.dumps(data, indent=2)};\n"
+    output_path.write_text(js_content, encoding="utf-8", newline="\n")
+    return output_path
+
 async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
@@ -340,10 +347,7 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
 
         await browser.close()
         
-        output_dir.mkdir(parents=True, exist_ok=True)
-        output_path = output_dir / "archive_data.js"
-        js_content = f"window.ARCHIVE_DATA = {json.dumps(all_history, indent=2)};\n"
-        output_path.write_text(js_content, encoding="utf-8", newline="\n")
+        output_path = save_archive_data(all_history, output_dir)
         print(f"Archive data saved to {output_path}.")
 
 def main(argv=None):

@@ -32,6 +32,13 @@ def parse_args(argv=None) -> argparse.Namespace:
     )
     return parser.parse_args(argv)
 
+def save_archive_tables(data, output_dir=Path(".")) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "archive_tables.js"
+    js_content = f"window.ARCHIVE_TABLES = {json.dumps(data, indent=2)};\n"
+    output_path.write_text(js_content, encoding="utf-8", newline="\n")
+    return output_path
+
 async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
@@ -272,10 +279,7 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
         except:
             pass # sorting not critical if strictly key-based access used later
 
-        output_dir.mkdir(parents=True, exist_ok=True)
-        output_path = output_dir / "archive_tables.js"
-        js_content = f"window.ARCHIVE_TABLES = {json.dumps(final_tables, indent=2)};\n"
-        output_path.write_text(js_content, encoding="utf-8", newline="\n")
+        output_path = save_archive_tables(final_tables, output_dir)
         print(f"Archive tables saved to {output_path}.")
 
 def main(argv=None):
