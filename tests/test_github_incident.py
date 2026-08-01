@@ -43,6 +43,7 @@ def test_failure_opens_incident_on_second_consecutive_scheduled_failure():
     runner = FakeRunner(
         [
             '[{"conclusion":"failure","databaseId":41,"url":"https://run/41"}]',
+            "label ensured\n",
             "[]",
             "https://github.example/issues/7\n",
         ]
@@ -50,6 +51,14 @@ def test_failure_opens_incident_on_second_consecutive_scheduled_failure():
 
     assert github_incident.run("failure", runner=runner, environ=ENV) == 0
 
+    label = runner.commands[1]
+    assert label == [
+        "gh", "label", "create", "automated-scraper-failure",
+        "--color", "D73A4A",
+        "--description", "Repeated failures in the scheduled data update",
+        "--force",
+        "--repo", "owner/repository",
+    ]
     create = runner.commands[-1]
     assert create[:3] == ["gh", "issue", "create"]
     assert create[create.index("--label") + 1] == "automated-scraper-failure"
@@ -62,6 +71,7 @@ def test_repeated_failure_comments_on_existing_incident():
     runner = FakeRunner(
         [
             '[{"conclusion":"failure","databaseId":41,"url":"https://run/41"}]',
+            "label ensured\n",
             '[{"number":7}]',
             "https://github.example/issues/7#comment\n",
         ]
@@ -69,8 +79,29 @@ def test_repeated_failure_comments_on_existing_incident():
 
     assert github_incident.run("failure", runner=runner, environ=ENV) == 0
 
+    assert runner.commands[1][:4] == ["gh", "label", "create", "automated-scraper-failure"]
     assert runner.commands[-1][:4] == ["gh", "issue", "comment", "7"]
     assert ENV["GITHUB_RUN_URL"] in runner.commands[-1][-1]
+
+
+def test_label_provisioning_failure_is_generic_and_does_not_touch_issues(capsys):
+    calls = []
+
+    def runner(command, **kwargs):
+        calls.append(command)
+        if command[:3] == ["gh", "label", "create"]:
+            raise subprocess.CalledProcessError(1, command, stderr="token=secret")
+        return subprocess.CompletedProcess(
+            command,
+            0,
+            '[{"conclusion":"failure","databaseId":41,"url":"https://run/41"}]',
+            "",
+        )
+
+    assert github_incident.run("failure", runner=runner, environ=ENV) == 1
+
+    assert all(command[:3] != ["gh", "issue", "list"] for command in calls)
+    assert capsys.readouterr().err == "error: GitHub incident automation failed\n"
 
 
 def test_recovery_comments_and_closes_existing_incident():

@@ -46,8 +46,8 @@ def test_action_versions_and_checkout_history_are_maintained():
     text = workflow_text()
 
     assert "actions/checkout@v6" in text
-    assert "actions/setup-python@v5" in text
-    assert "actions/upload-artifact@v4" in text
+    assert "actions/setup-python@v6" in text
+    assert "actions/upload-artifact@v7" in text
     assert "fetch-depth: 2" in text
 
 
@@ -61,6 +61,8 @@ def test_summary_and_failure_artifacts_do_not_mask_the_update_result():
     assert "update_report.json" in summary
     assert "if [ -f update_report.json ]" in summary
     assert "if: ${{ failure() }}" in artifacts
+    assert "artifacts/**" in artifacts
+    assert "diagnostics/**" not in artifacts
     assert "retention-days: 14" in artifacts
     assert "if-no-files-found: warn" in artifacts
 

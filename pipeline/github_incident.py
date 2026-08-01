@@ -11,6 +11,7 @@ from typing import Any
 
 INCIDENT_LABEL = "automated-scraper-failure"
 INCIDENT_TITLE = "Automated scraper failed in consecutive scheduled runs"
+INCIDENT_DESCRIPTION = "Repeated failures in the scheduled data update"
 WORKFLOW_FILE = "update.yml"
 COMPLETED_CONCLUSIONS = {
     "action_required",
@@ -112,11 +113,25 @@ def _open_incident(repository: str, runner: Runner) -> int | None:
     return number
 
 
+def _ensure_incident_label(repository: str, runner: Runner) -> None:
+    _gh(
+        [
+            "gh", "label", "create", INCIDENT_LABEL,
+            "--color", "D73A4A",
+            "--description", INCIDENT_DESCRIPTION,
+            "--force",
+            "--repo", repository,
+        ],
+        runner,
+    )
+
+
 def _record_failure(repository: str, run_url: str, runner: Runner) -> None:
     previous = _single_previous_run(repository, runner)
     if previous is None or previous["conclusion"] != "failure":
         return
 
+    _ensure_incident_label(repository, runner)
     issue_number = _open_incident(repository, runner)
     body = f"A scheduled data update failed again. Run: {run_url}"
     if issue_number is None:
