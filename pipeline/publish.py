@@ -61,7 +61,7 @@ def publish_domains(
 ) -> list[Path]:
     indexed_results: dict[str, ValidationResult] = {}
     for result in results:
-        if result.domain not in DOMAIN_FILES:
+        if not isinstance(result.domain, str) or result.domain not in DOMAIN_FILES:
             raise ValueError(f"unknown publication domain: {result.domain}")
         if result.domain in indexed_results:
             raise ValueError(f"duplicate publication domain: {result.domain}")

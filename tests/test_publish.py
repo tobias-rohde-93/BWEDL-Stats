@@ -42,9 +42,29 @@ def valid_report_dict() -> dict[str, object]:
         "finished_at": "2026-08-01T08:31:00Z",
         "duration_seconds": 60.0,
         "success": True,
-        "domains": [result("rankings", Decision.PUBLISH).to_dict()],
+        "domains": [
+            result("leagues", Decision.PUBLISH).to_dict(),
+            result("rankings", Decision.RETAIN).to_dict(),
+            result("clubs", Decision.PUBLISH).to_dict(),
+            result("archives", Decision.RETAIN).to_dict(),
+        ],
         "published_files": ["ranking_data.json"],
     }
+
+
+def complete_results(
+    override_domain: str | None = None,
+    override_decision: Decision | None = None,
+) -> list[ValidationResult]:
+    return [
+        result(
+            domain,
+            override_decision
+            if domain == override_domain and override_decision is not None
+            else Decision.RETAIN,
+        )
+        for domain in ("leagues", "rankings", "clubs", "archives")
+    ]
 
 
 def test_retain_leaves_existing_files_byte_identical(tmp_path: Path) -> None:
@@ -431,6 +451,21 @@ def test_invalid_result_domains_are_rejected_before_mutation(
         publish_domains(tmp_path / "staging", tmp_path / "published", results)
 
 
+def test_unhashable_result_domain_is_rejected_intentionally_before_mutation(
+    tmp_path: Path,
+) -> None:
+    invalid = ValidationResult(
+        domain=[],  # type: ignore[arg-type]
+        decision=Decision.PUBLISH,
+        effective_season="2026/27",
+    )
+
+    with pytest.raises(ValueError, match="domain"):
+        publish_domains(tmp_path / "staging", tmp_path / "published", [invalid])
+
+    assert not (tmp_path / "published").exists()
+
+
 def test_rollback_failure_is_reported_with_original_as_cause(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -546,6 +581,8 @@ def test_write_report_contains_stable_publication_data(tmp_path: Path) -> None:
     results = [
         result("leagues", Decision.PUBLISH),
         result("rankings", Decision.RETAIN, reasons=("Noch nicht vollständig",)),
+        result("clubs", Decision.RETAIN),
+        result("archives", Decision.PUBLISH),
     ]
     started = datetime(2026, 8, 1, 8, 30, tzinfo=UTC)
     finished = datetime(2026, 8, 1, 8, 31, tzinfo=UTC)
@@ -604,8 +641,18 @@ def test_write_report_orders_domains_canonically(tmp_path: Path) -> None:
     reports = []
     for index, results in enumerate(
         (
-            [result("clubs", Decision.RETAIN), result("leagues", Decision.PUBLISH)],
-            [result("leagues", Decision.PUBLISH), result("clubs", Decision.RETAIN)],
+            [
+                result("clubs", Decision.RETAIN),
+                result("archives", Decision.RETAIN),
+                result("leagues", Decision.PUBLISH),
+                result("rankings", Decision.RETAIN),
+            ],
+            [
+                result("rankings", Decision.RETAIN),
+                result("leagues", Decision.PUBLISH),
+                result("archives", Decision.RETAIN),
+                result("clubs", Decision.RETAIN),
+            ],
         )
     ):
         reports.append(
@@ -621,7 +668,9 @@ def test_write_report_orders_domains_canonically(tmp_path: Path) -> None:
     assert reports[0] == reports[1]
     assert [domain["domain"] for domain in reports[0]["domains"]] == [
         "leagues",
+        "rankings",
         "clubs",
+        "archives",
     ]
     assert reports[0]["duration_seconds"] == 1.25
 
@@ -632,7 +681,7 @@ def test_blocked_or_failed_report_is_unsuccessful(
 ) -> None:
     report = write_report(
         tmp_path / "report.json",
-        [result("clubs", decision)],
+        complete_results("clubs", decision),
         [],
         datetime.now(UTC),
         datetime.now(UTC),
@@ -640,16 +689,30 @@ def test_blocked_or_failed_report_is_unsuccessful(
     assert report["success"] is False
 
 
+def test_write_report_rejects_omitted_domain(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="domain"):
+        write_report(
+            tmp_path / "report.json",
+            complete_results()[:-1],
+            [],
+            datetime.now(UTC),
+            datetime.now(UTC),
+        )
+    assert not (tmp_path / "report.json").exists()
+
+
 def test_render_step_summary_escapes_table_breaking_reasons() -> None:
     report = valid_report_dict()
     report["success"] = False
     report["domains"] = [
+        result("leagues", Decision.RETAIN).to_dict(),
         result(
             "rankings",
             Decision.BLOCKED,
             reasons=("missing | category\ntry later",),
         ).to_dict(),
         result("clubs", Decision.PUBLISH).to_dict(),
+        result("archives", Decision.RETAIN).to_dict(),
     ]
     report["published_files"] = ["club_data.json", "club_data.js"]
 
@@ -666,10 +729,16 @@ def test_render_step_summary_escapes_table_breaking_reasons() -> None:
 REPORT_SCHEMA_FAILURE_CASES = (
     "missing_timestamps",
     "empty_domains",
+    "missing_domain",
+    "extra_domain",
     "unknown_domain",
     "duplicate_domain",
+    "wrong_domain_order",
     "incomplete_domain",
     "wrong_success_type",
+    "success_true_with_blocked",
+    "success_true_with_failed",
+    "success_false_with_ready",
     "wrong_domains_type",
     "wrong_reasons_type",
     "wrong_metric_type",
@@ -698,14 +767,28 @@ def malformed_report(case: str) -> dict[str, object]:
         del report["started_at"]
     elif case == "empty_domains":
         report["domains"] = []
+    elif case == "missing_domain":
+        domains.pop()
+    elif case == "extra_domain":
+        extra = deepcopy(domain)
+        extra["domain"] = "extra"
+        domains.append(extra)
     elif case == "unknown_domain":
         domain["domain"] = "unknown"
     elif case == "duplicate_domain":
         domains.append(deepcopy(domain))
+    elif case == "wrong_domain_order":
+        domains[0], domains[1] = domains[1], domains[0]
     elif case == "incomplete_domain":
         del domain["metrics"]
     elif case == "wrong_success_type":
         report["success"] = 1
+    elif case == "success_true_with_blocked":
+        domain["decision"] = Decision.BLOCKED.value
+    elif case == "success_true_with_failed":
+        domain["decision"] = Decision.FAILED.value
+    elif case == "success_false_with_ready":
+        report["success"] = False
     elif case == "wrong_domains_type":
         report["domains"] = {}
     elif case == "wrong_reasons_type":
@@ -757,7 +840,7 @@ def test_report_cli_prints_summary(tmp_path: Path) -> None:
     report_path = tmp_path / "report.json"
     write_report(
         report_path,
-        [result("rankings", Decision.PUBLISH)],
+        complete_results("rankings", Decision.PUBLISH),
         [Path("ranking_data.json")],
         datetime.now(UTC),
         datetime.now(UTC),
@@ -781,10 +864,15 @@ def test_report_cli_prints_summary(tmp_path: Path) -> None:
     [
         "missing_timestamps",
         "empty_domains",
+        "missing_domain",
+        "extra_domain",
         "unknown_domain",
         "duplicate_domain",
+        "wrong_domain_order",
         "incomplete_domain",
         "wrong_success_type",
+        "success_true_with_blocked",
+        "success_true_with_failed",
         "wrong_domains_type",
         "wrong_reasons_type",
         "bad_decision",

@@ -77,6 +77,8 @@ def validate_report_schema(report: dict[str, Any]) -> None:
     if not isinstance(domains, list) or not domains:
         raise ValueError("domains must be a nonempty list")
     seen_domains: set[str] = set()
+    observed_domains: list[str] = []
+    observed_decisions: list[str] = []
     for item in domains:
         if not isinstance(item, dict) or not REQUIRED_DOMAIN_FIELDS <= item.keys():
             raise ValueError("report contains an incomplete domain item")
@@ -86,9 +88,11 @@ def validate_report_schema(report: dict[str, Any]) -> None:
         if domain in seen_domains:
             raise ValueError("report contains a duplicate domain")
         seen_domains.add(domain)
+        observed_domains.append(domain)
         decision = item["decision"]
         if not isinstance(decision, str) or decision not in DECISIONS:
             raise ValueError("report contains an invalid decision")
+        observed_decisions.append(decision)
         season = item["effective_season"]
         if not isinstance(season, str) or not season.strip():
             raise ValueError("effective_season must be a nonblank string")
@@ -105,6 +109,15 @@ def validate_report_schema(report: dict[str, Any]) -> None:
             for name, value in metrics.items()
         ):
             raise ValueError("metrics must map strings to integers")
+
+    if observed_domains != list(DOMAIN_ORDER):
+        raise ValueError("domains must contain every canonical domain in order")
+    expected_success = all(
+        decision in {Decision.PUBLISH.value, Decision.RETAIN.value}
+        for decision in observed_decisions
+    )
+    if report["success"] != expected_success:
+        raise ValueError("success does not match domain decisions")
 
     published_files = report["published_files"]
     if not isinstance(published_files, list):
