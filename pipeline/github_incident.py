@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 from collections.abc import Callable, Mapping, Sequence
@@ -25,6 +26,10 @@ RESULT_CONCLUSIONS = {
     "skipped": {"skipped"},
 }
 SAFE_DOMAINS = ("leagues", "rankings", "clubs", "archives")
+SAFE_METRIC_NAME = re.compile(r"[a-z][a-z0-9_]{0,31}\Z")
+MAX_REPORT_BYTES = 1_000_000
+MAX_METRICS_PER_DOMAIN = 3
+MAX_METRIC_ABS_VALUE = 999_999_999_999
 Runner = Callable[..., subprocess.CompletedProcess[str]]
 
 
@@ -192,31 +197,67 @@ def _ensure_label(repository: str, runner: Runner) -> None:
     )
 
 
-def _affected_domains(report_path: str | None) -> str:
+def _report_context(report_path: str | None) -> tuple[str, str]:
     if not report_path:
-        return "unknown"
+        return "unknown", "unknown"
     try:
-        value = json.loads(Path(report_path).read_text(encoding="utf-8"), parse_constant=_reject_json_constant)
+        path = Path(report_path)
+        if path.stat().st_size > MAX_REPORT_BYTES:
+            return "unknown", "unknown"
+        value = json.loads(path.read_text(encoding="utf-8"), parse_constant=_reject_json_constant)
         domains = value["domains"]
         if not isinstance(domains, list):
-            return "unknown"
-        affected = [
-            domain
-            for domain in SAFE_DOMAINS
-            if any(
-                isinstance(item, dict)
+            return "unknown", "unknown"
+
+        affected_items: list[tuple[str, dict[str, Any]]] = []
+        for domain in SAFE_DOMAINS:
+            matches = [
+                item
+                for item in domains
+                if isinstance(item, dict)
                 and item.get("domain") == domain
                 and item.get("decision") in {"blocked", "failed"}
-                for item in domains
-            )
-        ]
-        return ", ".join(affected) if affected else "none reported"
+            ]
+            if len(matches) > 1:
+                return "unknown", "unknown"
+            if matches:
+                affected_items.append((domain, matches[0]))
+
+        if not affected_items:
+            return "none reported", "unknown"
+
+        count_lines: list[str] = []
+        for domain, item in affected_items:
+            metrics = item.get("metrics")
+            if not isinstance(metrics, dict):
+                continue
+            safe_metrics = sorted(
+                (key, value)
+                for key, value in metrics.items()
+                if isinstance(key, str)
+                and SAFE_METRIC_NAME.fullmatch(key)
+                and isinstance(value, int)
+                and not isinstance(value, bool)
+                and abs(value) <= MAX_METRIC_ABS_VALUE
+            )[:MAX_METRICS_PER_DOMAIN]
+            if safe_metrics:
+                formatted = ", ".join(f"{key}={value}" for key, value in safe_metrics)
+                count_lines.append(f"  - {domain}: {formatted}")
+
+        counts = "\n".join(count_lines) if count_lines else "unknown"
+        return ", ".join(domain for domain, _item in affected_items), counts
     except (OSError, UnicodeError, json.JSONDecodeError, IncidentAutomationError, KeyError, TypeError):
-        return "unknown"
+        return "unknown", "unknown"
 
 
 def _incident_body(current: RunInfo, previous: RunInfo, result: str, report_path: str | None) -> str:
     assert current.update_job is not None
+    affected_domains, relevant_counts = _report_context(report_path)
+    counts_line = (
+        f"- Relevant counts:\n{relevant_counts}"
+        if relevant_counts != "unknown"
+        else "- Relevant counts: unknown"
+    )
     return "\n".join(
         (
             "Automated scheduled data update incident",
@@ -225,7 +266,8 @@ def _incident_body(current: RunInfo, previous: RunInfo, result: str, report_path
             f"- Current workflow: {current.url}",
             f"- Current timestamp: {current.created_at}",
             f"- Current update result: {result} ({current.update_job.conclusion})",
-            f"- Affected domains: {_affected_domains(report_path)}",
+            f"- Affected domains: {affected_domains}",
+            counts_line,
             "- Consecutive failures: at least 2",
         )
     )[:1500]

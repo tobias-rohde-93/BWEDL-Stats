@@ -28,12 +28,14 @@ def job_block(text: str, job_name: str, next_job: str | None = None) -> str:
 
 def test_workflow_has_hardened_triggers_concurrency_and_update_timeout():
     text = workflow_text()
+    update_job = job_block(text, "update-data", "notify")
 
     assert "cron: '0 */6 * * *'" in text
     assert re.search(r"(?m)^  workflow_dispatch:\s*$", text)
     assert "group: ${{ github.workflow }}-${{ github.ref }}" in text
     assert "cancel-in-progress: false" in text
-    assert "timeout-minutes: 30" in text
+    job_timeout = int(re.search(r"(?m)^    timeout-minutes: (\d+)$", update_job).group(1))
+    assert job_timeout >= 45
 
 
 def test_offline_tests_run_before_browser_install_and_live_update():
@@ -76,9 +78,13 @@ def test_summary_and_failure_artifacts_do_not_mask_the_update_result():
 
 def test_live_update_step_has_transactional_timeout_before_always_evidence_steps():
     text = workflow_text()
+    update_job = job_block(text, "update-data", "notify")
     update = step_block(text, "Run live data update")
 
-    assert "timeout-minutes: 20" in update
+    job_timeout = int(re.search(r"(?m)^    timeout-minutes: (\d+)$", update_job).group(1))
+    step_timeout = int(re.search(r"(?m)^        timeout-minutes: (\d+)$", update).group(1))
+    assert step_timeout == 20
+    assert job_timeout - step_timeout >= 25
     assert text.index("Run live data update") < text.index("Render update summary")
     assert text.index("Run live data update") < text.index("Upload failure diagnostics")
 

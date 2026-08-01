@@ -120,9 +120,14 @@ def test_second_update_failure_opens_incident_with_sanitized_context(tmp_path: P
         json.dumps(
             {
                 "domains": [
-                    {"domain": "rankings", "decision": "failed", "reasons": ["token=secret"]},
-                    {"domain": "clubs", "decision": "publish", "reasons": []},
-                    {"domain": "<script>secret</script>", "decision": "blocked", "reasons": []},
+                    {
+                        "domain": "rankings",
+                        "decision": "failed",
+                        "reasons": ["token=secret"],
+                        "metrics": {"parsed_rows": 12, "expected_rows": 20},
+                    },
+                    {"domain": "clubs", "decision": "publish", "reasons": [], "metrics": {"clubs": 55}},
+                    {"domain": "<script>secret</script>", "decision": "blocked", "reasons": [], "metrics": {"leak": 1}},
                 ]
             }
         ),
@@ -156,6 +161,7 @@ def test_second_update_failure_opens_incident_with_sanitized_context(tmp_path: P
         "2026-08-01T02:00:00Z",
         "Current update result: failure (timed_out)",
         "Affected domains: rankings",
+        "Relevant counts:\n  - rankings: expected_rows=20, parsed_rows=12",
         "Consecutive failures: at least 2",
     ):
         assert expected in body
@@ -200,6 +206,58 @@ def test_missing_report_is_reported_as_unknown_without_blocking_incident(tmp_pat
 
     body = runner.commands[-1][runner.commands[-1].index("--body") + 1]
     assert "Affected domains: unknown" in body
+    assert "Relevant counts: unknown" in body
+
+
+def test_incident_metrics_reject_unsafe_values_and_cap_entries(tmp_path: Path):
+    report = tmp_path / "update_report.json"
+    report.write_text(
+        json.dumps(
+            {
+                "domains": [
+                    {
+                        "domain": "rankings",
+                        "decision": "failed",
+                        "metrics": {
+                            "valid_d": 4,
+                            "valid_b": 2,
+                            "valid_a": 1,
+                            "valid_c": 3,
+                            "bool_secret": True,
+                            "string_secret": "token=do-not-copy",
+                            "unsafe-key=secret": 9,
+                            "huge": 10**30,
+                        },
+                    },
+                    {
+                        "domain": "clubs",
+                        "decision": "publish",
+                        "metrics": {"published_secret": 999},
+                    },
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    runner = FakeRunner(
+        [
+            run_payload(42, "failure"),
+            previous_list_payload(),
+            jobs_payload("failure"),
+            "label ensured\n",
+            "[]",
+            "created\n",
+        ]
+    )
+    environ = {**ENV, "REPORT_PATH": str(report)}
+
+    assert github_incident.run("notify", runner=runner, environ=environ) == 0
+
+    body = runner.commands[-1][runner.commands[-1].index("--body") + 1]
+    assert "Relevant counts:\n  - rankings: valid_a=1, valid_b=2, valid_c=3" in body
+    for leaked in ("valid_d", "bool_secret", "string_secret", "do-not-copy", "unsafe-key", "huge", "published_secret"):
+        assert leaked not in body
+    assert len(body) <= 1500
 
 
 def test_first_update_failure_without_previous_run_is_a_noop():
