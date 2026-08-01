@@ -18,10 +18,12 @@ def write_json_pair(
     json_path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
     javascript_path.write_text(
         f"window.{global_name} = {json.dumps(payload, ensure_ascii=False)};\n",
         encoding="utf-8",
+        newline="\n",
     )
 
     return json_path, javascript_path
@@ -30,8 +32,11 @@ def write_json_pair(
 def promote_file(source: Path, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     next_path = destination.with_suffix(destination.suffix + ".next")
-    shutil.copyfile(source, next_path)
-    os.replace(next_path, destination)
+    try:
+        shutil.copyfile(source, next_path)
+        os.replace(next_path, destination)
+    finally:
+        next_path.unlink(missing_ok=True)
 
 
 def content_changed(source: Path, destination: Path) -> bool:
