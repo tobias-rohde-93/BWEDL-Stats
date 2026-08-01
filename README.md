@@ -66,7 +66,7 @@ Das Staging-Verzeichnis muss neu oder leer sein. `update_report.json` enthält E
 
 ### Automatisierung auf GitHub
 
-Der Workflow `Update Data` läuft alle sechs Stunden und kann zusätzlich mit `workflow_dispatch` manuell gestartet werden. Erst zwei aufeinanderfolgende technische Fehler des geplanten `update-data`-Jobs eröffnen beziehungsweise aktualisieren ein Incident-Issue; der nächste erfolgreiche geplante Lauf kommentiert die Erholung und schließt es. Dafür sind keine eigenen Secrets erforderlich: Der Workflow nutzt nur die eng begrenzten Rechte des von GitHub bereitgestellten Tokens.
+Der Workflow `Update Data` läuft alle sechs Stunden und kann zusätzlich mit `workflow_dispatch` manuell gestartet werden. Erst zwei aufeinanderfolgende blockierte oder fehlgeschlagene geplante `update-data`-Läufe eröffnen beziehungsweise aktualisieren ein Incident-Issue; der nächste erfolgreiche geplante Lauf kommentiert die Erholung und schließt es. Dafür sind keine eigenen Secrets erforderlich: Der Workflow nutzt nur die eng begrenzten Rechte des von GitHub bereitgestellten Tokens.
 
 Der Commit-Schritt darf ausschließlich diese generierten Dateien aufnehmen:
 
