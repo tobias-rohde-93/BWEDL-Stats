@@ -1,8 +1,10 @@
 
+import argparse
 import asyncio
 from playwright.async_api import async_playwright
 import json
 import re
+from pathlib import Path
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
@@ -14,7 +16,7 @@ LIGAPOKAL_URLS = [
     f"{BASE_URL}/archiv/2024-2025/",
 ]
 
-async def scrape_archive_tables():
+async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -246,40 +248,7 @@ async def scrape_archive_tables():
 
         await browser.close()
         
-        # MERGE LOGIC START
-        existing_tables = []
-        try:
-            with open("archive_tables.js", "r", encoding="utf-8") as f:
-                content = f.read().strip()
-                if content.startswith("window.ARCHIVE_TABLES =") and content.endswith(";"):
-                    json_str = content[len("window.ARCHIVE_TABLES ="): -1]
-                    existing_tables = json.loads(json_str)
-                    print(f"Loaded existing archive tables: {len(existing_tables)} entries.")
-        except Exception as e:
-            print(f"No existing archive tables found or error reading: {e}")
-
-        # Merge Logic
-        # Uniquely identify a table by: Season + League
-        # If Season+League matches, overwrite with NEW (fresh scrape).
-        # If Old has Season+League that New doesn't, KEEP Old.
-        
-        print("Merging new tables into existing archive...")
-        
-        # Create a map key -> table for existing
-        table_map = {}
-        for t in existing_tables:
-            # Create a unique key. Warning: League names must be consistent.
-            # Using tuple (Season, League)
-            key = (t.get('season'), t.get('league'))
-            table_map[key] = t
-            
-        # Update with new
-        for t in all_tables:
-            key = (t.get('season'), t.get('league'))
-            table_map[key] = t # Overwrite or Add
-            
-        # Reconstruct list
-        final_tables = list(table_map.values())
+        final_tables = all_tables
         
         # Sort by Season (descending) then League
         try:
@@ -287,12 +256,25 @@ async def scrape_archive_tables():
         except:
             pass # sorting not critical if strictly key-based access used later
 
-        print(f"Merge complete. Total tables: {len(final_tables)}")
-        
-        js_content = f"window.ARCHIVE_TABLES = {json.dumps(final_tables, indent=2)};"
-        with open("archive_tables.js", "w", encoding="utf-8") as f:
-            f.write(js_content)
-        print(f"Archive tables saved to archive_tables.js.")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / "archive_tables.js"
+        js_content = f"window.ARCHIVE_TABLES = {json.dumps(final_tables, indent=2)};\n"
+        output_path.write_text(js_content, encoding="utf-8", newline="\n")
+        print(f"Archive tables saved to {output_path}.")
 
 if __name__ == "__main__":
-    asyncio.run(scrape_archive_tables())
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    args = parser.parse_args()
+    asyncio.run(scrape_archive_tables(args.output_dir, args.artifacts_dir))

@@ -1,13 +1,15 @@
 
+import argparse
 import asyncio
 from playwright.async_api import async_playwright
 import json
 import re
+from pathlib import Path
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
 
-async def scrape_archive():
+async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -322,52 +324,27 @@ async def scrape_archive():
 
         await browser.close()
         
-        # MERGE LOGIC START
-        existing_history = {}
-        try:
-            with open("archive_data.js", "r", encoding="utf-8") as f:
-                content = f.read().strip()
-                # Remove "window.ARCHIVE_DATA = " and trailing ";"
-                if content.startswith("window.ARCHIVE_DATA =") and content.endswith(";"):
-                    json_str = content[len("window.ARCHIVE_DATA ="): -1]
-                    existing_history = json.loads(json_str)
-                    print(f"Loaded existing archive data: {len(existing_history)} players.")
-        except Exception as e:
-            print(f"No existing archive data found or error reading: {e}")
-
-        # Merge new data into existing
-        # Strategy:
-        # 1. Iterate over new scraped data
-        # 2. For each player ID, merge their seasons.
-        # 3. If a season exists in both, overwrite with new (assume fresh scrape is better fix for corrections).
-        # 4. If a season exists in OLD but not in NEW (e.g. deleted from site), KEEP IT.
-
-        print("Merging new data into existing archive...")
-        
-        # We want to update existing_history with all_history
-        for p_id, new_entries in all_history.items():
-            if p_id not in existing_history:
-                existing_history[p_id] = new_entries
-            else:
-                # Merge lists based on season
-                existing_entries = existing_history[p_id]
-                existing_map = {e['season']: e for e in existing_entries}
-                
-                for new_entry in new_entries:
-                    # Update or Add
-                    existing_map[new_entry['season']] = new_entry
-                
-                # Convert back to list
-                existing_history[p_id] = list(existing_map.values())
-        
-        print(f"Merge complete. Total unique players: {len(existing_history)}")
-
-        js_content = f"window.ARCHIVE_DATA = {json.dumps(existing_history, indent=2)};"
-        with open("archive_data.js", "w", encoding="utf-8") as f:
-            f.write(js_content)
-        print(f"Archive data saved to archive_data.js.")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / "archive_data.js"
+        js_content = f"window.ARCHIVE_DATA = {json.dumps(all_history, indent=2)};\n"
+        output_path.write_text(js_content, encoding="utf-8", newline="\n")
+        print(f"Archive data saved to {output_path}.")
 
 if __name__ == "__main__":
-    asyncio.run(scrape_archive())
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    args = parser.parse_args()
+    asyncio.run(scrape_archive(args.output_dir, args.artifacts_dir))
 
 

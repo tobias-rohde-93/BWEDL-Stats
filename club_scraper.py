@@ -1,24 +1,25 @@
+import argparse
 import json
 import os
 import datetime
 import time
+from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+from pipeline.files import write_json_pair
 
 DATA_FILE_JSON = "club_data.json"
 DATA_FILE_JS = "club_data.js"
 START_URL = "https://www.bwedl.de/vereine/"
 BASE_URL = "https://www.bwedl.de"
 
-def save_data(data):
+def save_data(data, output_dir=Path(".")):
     data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-    
-    with open(DATA_FILE_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-        
-    js_content = f"window.CLUB_DATA = {json.dumps(data, indent=4, ensure_ascii=False)};"
-    with open(DATA_FILE_JS, "w", encoding="utf-8") as f:
-        f.write(js_content)
-    print(f"Data saved to {DATA_FILE_JSON} and {DATA_FILE_JS}")
+
+    json_path, javascript_path = write_json_pair(
+        output_dir, "club_data", "CLUB_DATA", data
+    )
+    print(f"Data saved to {json_path} and {javascript_path}")
 
 def scrape_club_details(page, url):
     print(f"  Scraping details from {url}...")
@@ -176,7 +177,7 @@ def scrape_club_details(page, url):
         print(f"  [Error] scraping details: {e}")
         return {}
 
-def main():
+def main(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     data = {"last_updated": "", "clubs": []}
     
     print(f"Connecting to {START_URL}...")
@@ -284,7 +285,21 @@ def main():
             
         browser.close()
         
-    save_data(data)
+    save_data(data, output_dir)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    args = parser.parse_args()
+    main(args.output_dir, args.artifacts_dir)

@@ -1,8 +1,12 @@
+import argparse
 import json
 import os
 import sys
 import datetime
+from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+from pipeline.files import write_json_pair
 
 DATA_FILE = "league_data.json"
 BASE_URL = "https://bwedl.de"
@@ -21,17 +25,10 @@ def load_data():
             print("Warning: Could not decode existing data file. Starting fresh.")
     return {"leagues": {}, "last_updated": ""}
 
-def save_data(data):
+def save_data(data, output_dir=Path(".")):
     data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-    
-    # Save as JSON (for potential future API use)
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-        
-    # Save as JS (for local file:// access without CORS)
-    js_content = f"window.LEAGUE_DATA = {json.dumps(data, indent=4, ensure_ascii=False)};"
-    with open("league_data.js", "w", encoding="utf-8") as f:
-        f.write(js_content)
+
+    write_json_pair(output_dir, "league_data", "LEAGUE_DATA", data)
 
 def scrape_league(page, league_url, league_name, data):
     print(f"Scraping {league_name}...")
@@ -192,7 +189,7 @@ def scrape_league(page, league_url, league_name, data):
         except Exception as e:
             print(f"  [Error] extracting cup data for {league_name}: {e}")
 
-def main():
+def main(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     data = load_data()
     
     print(f"Connecting to {START_URL}...")
@@ -227,8 +224,22 @@ def main():
             
         browser.close()
 
-    save_data(data)
+    save_data(data, output_dir)
     print("\n[INFO] Scraping completed. Data saved to league_data.json")
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    args = parser.parse_args()
+    main(args.output_dir, args.artifacts_dir)
