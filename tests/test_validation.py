@@ -198,6 +198,19 @@ def test_unknown_nonblank_ranking_key_blocks_candidate(prior_rankings: dict) -> 
     assert result.metrics["invalid_ranking_categories"] == 1
 
 
+@pytest.mark.parametrize("invalid_key", ["", "   ", None, 17])
+def test_every_unparseable_ranking_key_blocks_candidate(
+    invalid_key: Any, prior_rankings: dict
+) -> None:
+    candidate = candidate_for(REQUIRED_CATEGORIES)
+    candidate["rankings"][invalid_key] = "<table>Unexpected</table>"
+
+    result = validate_rankings(candidate, prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["invalid_ranking_categories"] == 1
+
+
 def test_duplicate_canonical_ranking_keys_block_candidate(
     prior_rankings: dict,
 ) -> None:
@@ -228,6 +241,47 @@ def test_category_season_suffix_must_match_candidate_season(
 
     assert result.decision is Decision.BLOCKED
     assert "season" in " ".join(result.reasons).lower()
+
+
+def test_partial_consistent_suffixes_without_season_retain_previous(
+    prior_rankings: dict,
+) -> None:
+    labels = tuple(
+        f"{category} 2026-2027" for category in REQUIRED_CATEGORIES[:3]
+    )
+
+    result = validate_rankings(candidate_for(labels, season=None), prior_rankings)
+
+    assert result.decision is Decision.RETAIN
+    assert result.effective_season == "2025/26"
+    assert "season_mismatches" not in result.metrics
+
+
+def test_complete_consistent_suffixes_without_season_block_as_missing(
+    prior_rankings: dict,
+) -> None:
+    labels = tuple(f"{category} 2026-2027" for category in REQUIRED_CATEGORIES)
+
+    result = validate_rankings(candidate_for(labels, season=None), prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert "missing" in " ".join(result.reasons).lower()
+
+
+def test_partial_conflicting_suffix_seasons_block_candidate(
+    prior_rankings: dict,
+) -> None:
+    labels = (
+        "Bezirksliga 2026-2027",
+        "A-Klasse 2026-2027",
+        "B-Klasse 2027-2028",
+    )
+
+    result = validate_rankings(candidate_for(labels, season=None), prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["conflicting_suffix_seasons"] == 2
+    assert "conflict" in " ".join(result.reasons).lower()
 
 
 @pytest.mark.parametrize("invalid_season", ["not-a-season", "2026/29"])

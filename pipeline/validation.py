@@ -127,7 +127,7 @@ def validate_rankings(
     invalid_players = 0
     invalid_player_categories = 0
     duplicate_players = 0
-    season_mismatches = 0
+    observed_suffix_seasons: list[str] = []
     player_ids_by_category = {
         category: set() for category in REQUIRED_RANKING_CATEGORIES
     }
@@ -151,9 +151,8 @@ def validate_rankings(
             continue
 
         category, category_season = parsed_category
-        if category_season is not None and category_season != candidate_season:
-            season_mismatches += 1
-            continue
+        if category_season is not None:
+            observed_suffix_seasons.append(category_season)
 
         normalized_id = player_id.strip()
         if normalized_id in player_ids_by_category[category]:
@@ -184,8 +183,7 @@ def validate_rankings(
     for key, table in rankings.items():
         parsed_category = _parse_category(key)
         if parsed_category is None:
-            if not isinstance(key, str) or key.strip():
-                invalid_ranking_categories += 1
+            invalid_ranking_categories += 1
             continue
 
         category, category_season = parsed_category
@@ -193,9 +191,8 @@ def validate_rankings(
             duplicate_ranking_categories += 1
         else:
             seen_ranking_categories.add(category)
-        if category_season is not None and category_season != candidate_season:
-            season_mismatches += 1
-            continue
+        if category_season is not None:
+            observed_suffix_seasons.append(category_season)
         if not isinstance(table, str):
             malformed_ranking_tables += 1
             continue
@@ -219,6 +216,18 @@ def validate_rankings(
     if malformed_ranking_tables:
         metrics["malformed_ranking_tables"] = malformed_ranking_tables
         reasons.append(f"Malformed ranking tables: {malformed_ranking_tables}")
+
+    unique_suffix_seasons = set(observed_suffix_seasons)
+    if len(unique_suffix_seasons) > 1:
+        metrics["conflicting_suffix_seasons"] = len(unique_suffix_seasons)
+        reasons.append(
+            f"Conflicting category suffix seasons: {len(unique_suffix_seasons)}"
+        )
+    season_mismatches = (
+        sum(season != candidate_season for season in observed_suffix_seasons)
+        if candidate_season is not None
+        else 0
+    )
     if season_mismatches:
         metrics["season_mismatches"] = season_mismatches
         reasons.append(f"Category season mismatches: {season_mismatches}")
