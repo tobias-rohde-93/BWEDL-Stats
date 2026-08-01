@@ -4,6 +4,7 @@ from typing import Any
 
 import pytest
 
+import pipeline.validation as validation
 from pipeline.validation import Decision, ValidationResult, validate_rankings
 
 
@@ -13,6 +14,50 @@ REQUIRED_CATEGORIES = (
     "B-Klasse",
     "C-Klasse",
 )
+
+REGULAR_LEAGUES = (
+    "Bezirksliga",
+    "A-Klasse Gruppe 1",
+    "A-Klasse Gruppe 2",
+    "B-Klasse Gruppe 1",
+    "B-Klasse Gruppe 2",
+    "B-Klasse Gruppe 3",
+    "C-Klasse Gruppe 1",
+    "C-Klasse Gruppe 2",
+    "C-Klasse Gruppe 3",
+    "C-Klasse Gruppe 4",
+    "C-Klasse Gruppe 5",
+    "Mix B-Klasse",
+    "Mix C-Klasse",
+)
+
+
+def league_table(*teams: str) -> str:
+    rows = ["<tr><td>Pl.</td><td>Tabelle</td><td>Sp</td></tr>"]
+    rows.extend(
+        f"<tr><td>{index}</td><td>{team}</td><td>0</td><td>0</td></tr>"
+        for index, team in enumerate(teams, 1)
+    )
+    return f"<table><tbody>{''.join(rows)}</tbody></table>"
+
+
+def complete_league(name: str) -> dict[str, Any]:
+    return {
+        "url": f"https://example.test/{name}",
+        "table": league_table(f"{name} Team", "Spielfrei"),
+        "match_days": {f"{index}. Spieltag": "" for index in range(1, 19)},
+    }
+
+
+def league_candidate(season: str | None = "2026/27") -> dict[str, Any]:
+    candidate: dict[str, Any] = {
+        "leagues": {
+            f"{name} 2026-2027": complete_league(name) for name in REGULAR_LEAGUES
+        }
+    }
+    if season is not None:
+        candidate["season"] = season
+    return candidate
 
 
 def player(player_id: Any, name: str, league: str) -> dict[str, Any]:
@@ -387,3 +432,288 @@ def test_missing_category_reasons_follow_required_category_order(
     assert result.reasons == tuple(
         f"Missing ready category: {category}" for category in REQUIRED_CATEGORIES
     )
+
+
+def test_one_current_regular_league_blocks_expected_count() -> None:
+    candidate = {
+        "season": "2026/27",
+        "leagues": {"Bezirksliga 2026-2027": complete_league("Bezirksliga")},
+    }
+
+    result = validation.validate_leagues(candidate, {"season": "2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+    assert "13" in " ".join(result.reasons)
+
+
+def test_complete_current_leagues_publish_with_zero_standings() -> None:
+    result = validation.validate_leagues(
+        league_candidate(), {"season": "2025/26"}
+    )
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2026/27"
+    assert result.metrics["regular_leagues"] == 13
+    assert result.reasons == ()
+
+
+def test_league_season_is_inferred_from_newest_regular_key_suffix() -> None:
+    candidate = league_candidate(season=None)
+    candidate["leagues"]["Bezirksliga 2025-2026"] = {"not": "validated"}
+
+    result = validation.validate_leagues(candidate, {"season": "2025/26"})
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2026/27"
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("table", ""),
+        ("table", "<table><tr><td>missing close"),
+        ("match_days", {"1. Spieltag": ""}),
+        ("match_days", {f"{index}. Spieltag": "" for index in range(17)}),
+        ("match_days", {"": "", **{str(index): "" for index in range(17)}}),
+    ],
+)
+def test_incomplete_current_league_blocks(field: str, value: Any) -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"][field] = value
+
+    result = validation.validate_leagues(candidate, {"season": "2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+
+
+def test_duplicate_nonblank_team_within_league_blocks() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = league_table(
+        "DC Ölbronn", " dc   ölbronn "
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.BLOCKED
+    assert "duplicate" in " ".join(result.reasons).lower()
+
+
+def test_blank_team_cell_blocks_but_repeated_spielfrei_is_allowed() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = league_table(
+        "Team Eins", "Spielfrei", "Spielfrei"
+    )
+    assert validation.validate_leagues(candidate, {}).decision is Decision.PUBLISH
+
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = league_table(
+        "Team Eins", " "
+    )
+    assert validation.validate_leagues(candidate, {}).decision is Decision.BLOCKED
+
+
+def test_table_requires_at_least_one_non_spielfrei_team() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = league_table(
+        "Spielfrei", "Spielfrei"
+    )
+
+    assert validation.validate_leagues(candidate, {}).decision is Decision.BLOCKED
+
+
+def test_historical_and_ligapokal_leagues_do_not_affect_current_validation() -> None:
+    candidate = league_candidate()
+    candidate["leagues"].update(
+        {
+            "Broken League 2025-2026": {"malformed": True},
+            "Ligapokal 2026-2027": {"malformed": True},
+        }
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.PUBLISH
+    assert result.metrics["regular_leagues"] == 13
+
+
+def test_normalized_duplicate_current_league_keys_block() -> None:
+    candidate = league_candidate()
+    candidate["leagues"].pop("Mix C-Klasse 2026-2027")
+    candidate["leagues"]["  bezirksliga   2026-2027"] = complete_league(
+        "Duplicate Bezirksliga"
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.BLOCKED
+    assert "duplicate" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize("season", ["2026/29", "2025/26"])
+def test_invalid_or_mismatching_explicit_league_season_blocks(season: str) -> None:
+    candidate = league_candidate(season=season)
+
+    result = validation.validate_leagues(candidate, {"season": "2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+    assert "season" in " ".join(result.reasons).lower()
+
+
+def clubs(count: int) -> dict[str, Any]:
+    return {
+        "season": "2026/27",
+        "clubs": [
+            {
+                "name": f"Dartclub {index}",
+                "number": f"{index:03d}",
+                "phone": "",
+                "contact_email": "",
+            }
+            for index in range(1, count + 1)
+        ],
+    }
+
+
+def test_empty_clubs_cannot_replace_nonempty_previous() -> None:
+    result = validation.validate_clubs({"clubs": []}, clubs(5))
+
+    assert result.decision is Decision.BLOCKED
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [("name", None), ("name", " "), ("number", None), ("number", " ")],
+)
+def test_club_requires_nonblank_name_and_number(field: str, value: Any) -> None:
+    candidate = clubs(2)
+    if value is None:
+        candidate["clubs"][0].pop(field)
+    else:
+        candidate["clubs"][0][field] = value
+
+    assert validation.validate_clubs(candidate, clubs(2)).decision is Decision.BLOCKED
+
+
+def test_duplicate_club_number_blocks() -> None:
+    candidate = clubs(2)
+    candidate["clubs"][1]["number"] = " 001 "
+
+    result = validation.validate_clubs(candidate, clubs(2))
+
+    assert result.decision is Decision.BLOCKED
+    assert "duplicate" in " ".join(result.reasons).lower()
+
+
+def test_club_count_below_eighty_percent_blocks() -> None:
+    result = validation.validate_clubs(clubs(7), clubs(10))
+
+    assert result.decision is Decision.BLOCKED
+    assert "80" in " ".join(result.reasons)
+
+
+def test_exactly_eighty_percent_clubs_publish_with_metric() -> None:
+    result = validation.validate_clubs(clubs(8), clubs(10))
+
+    assert result.decision is Decision.PUBLISH
+    assert result.metrics == {"clubs": 8}
+
+
+def test_valid_clubs_preserve_blank_optional_contact_fields() -> None:
+    candidate = clubs(2)
+    before = deepcopy(candidate)
+
+    result = validation.validate_clubs(candidate, clubs(2))
+
+    assert result.decision is Decision.PUBLISH
+    assert candidate == before
+
+
+def test_archive_candidate_must_retain_every_previous_season() -> None:
+    result = validation.validate_archives({"2025/26"}, {"2024/25", "2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+    assert "2024/25" in " ".join(result.reasons)
+
+
+def test_empty_archive_candidate_cannot_replace_previous() -> None:
+    result = validation.validate_archives(set(), {"2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+
+
+@pytest.mark.parametrize(
+    ("candidate", "previous", "expected_metrics"),
+    [
+        ({"2024/25"}, {"2024/25"}, {"candidate_seasons": 1, "previous_seasons": 1}),
+        (
+            {"2024/25", "2025/26"},
+            {"2024/25"},
+            {"candidate_seasons": 2, "previous_seasons": 1},
+        ),
+    ],
+)
+def test_equal_or_superset_archive_seasons_publish_deterministically(
+    candidate: set[str], previous: set[str], expected_metrics: dict[str, int]
+) -> None:
+    result = validation.validate_archives(candidate, previous)
+
+    assert result.decision is Decision.PUBLISH
+    assert result.metrics == expected_metrics
+    assert result.reasons == ()
+
+
+@pytest.mark.parametrize("blank", ["", "   "])
+def test_archive_rejects_blank_season_identifiers(blank: str) -> None:
+    result = validation.validate_archives({"2025/26", blank}, set())
+
+    assert result.decision is Decision.BLOCKED
+    assert "blank" in " ".join(result.reasons).lower()
+
+
+def test_parse_javascript_assignment_accepts_exact_german_json() -> None:
+    payload = {"clubs": [{"name": "Dartfreunde Schömberg", "city": "Pforzheim"}]}
+    text = "\n window.CLUB_DATA = " + json.dumps(payload, ensure_ascii=False) + "; \n"
+
+    assert validation.parse_javascript_assignment(text, "CLUB_DATA") == payload
+
+
+@pytest.mark.parametrize(
+    ("text", "global_name"),
+    [
+        ('window.OTHER = {"x": 1};', "DATA"),
+        ('window.DATA = {"x": 1}; alert(1)', "DATA"),
+        ('window.DATA = {x: 1};', "DATA"),
+        ('window.DATA = {"x": 1};', "not-valid"),
+    ],
+)
+def test_parse_javascript_assignment_rejects_non_exact_input(
+    text: str, global_name: str
+) -> None:
+    with pytest.raises(ValueError):
+        validation.parse_javascript_assignment(text, global_name)
+
+
+def test_json_js_pair_accepts_equal_german_data() -> None:
+    payload = {"club": "DC Ungültig", "city": "Königsbach"}
+    javascript = "window.CLUB_DATA = " + json.dumps(payload, ensure_ascii=False) + ";"
+
+    assert validation.validate_json_js_pair(payload, javascript, "CLUB_DATA") == (
+        True,
+        "",
+    )
+
+
+def test_json_js_pair_reports_mismatch_deterministically() -> None:
+    assert validation.validate_json_js_pair(
+        {"name": "Schömberg"}, 'window.DATA = {"name":"Pforzheim"};', "DATA"
+    ) == (False, "JSON and JavaScript payloads differ")
+
+
+@pytest.mark.parametrize(
+    "javascript",
+    ['window.OTHER = {"x": 1};', 'window.DATA = {"x": 1}; trailing'],
+)
+def test_json_js_pair_reports_parse_failures(javascript: str) -> None:
+    valid, reason = validation.validate_json_js_pair({"x": 1}, javascript, "DATA")
+
+    assert valid is False
+    assert reason.startswith("Invalid JavaScript assignment:")

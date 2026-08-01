@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import json
 import re
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from enum import StrEnum
 from types import MappingProxyType
 from typing import Any
+
+from bs4 import BeautifulSoup
 
 
 class Decision(StrEnum):
@@ -43,6 +46,10 @@ REQUIRED_RANKING_CATEGORIES = (
     "B-Klasse",
     "C-Klasse",
 )
+
+EXPECTED_REGULAR_LEAGUES = 13
+EXPECTED_MATCHDAYS = 18
+MIN_CLUB_RATIO = 0.80
 
 
 def _parse_season(value: Any) -> str | None:
@@ -273,3 +280,290 @@ def validate_rankings(
         effective_season=candidate_season,
         metrics=metrics,
     )
+
+
+def _league_key_season(value: Any) -> str | None:
+    if not isinstance(value, str):
+        return None
+    match = re.search(r"(\d{4}(?:/\d{2}|[/-]\d{4}))\s*$", value)
+    return _parse_season(match.group(1)) if match is not None else None
+
+
+def _normalized_text(value: str) -> str:
+    return " ".join(value.split()).casefold()
+
+
+def _league_table_issue(table: Any) -> str | None:
+    if not isinstance(table, str) or not _is_ranking_table(table):
+        return "malformed table"
+
+    parsed = BeautifulSoup(table, "html.parser")
+    rows = parsed.find_all("tr")
+    if not rows:
+        return "table has no header"
+    header_cells = rows[0].find_all(["td", "th"])
+    if len(header_cells) < 2 or _normalized_text(
+        header_cells[1].get_text(" ", strip=True)
+    ) != "tabelle":
+        return "table header is incomplete"
+
+    teams: set[str] = set()
+    found_team = False
+    for row in rows[1:]:
+        cells = row.find_all(["td", "th"])
+        if len(cells) < 2:
+            return "table row is incomplete"
+        team = _normalized_text(cells[1].get_text(" ", strip=True))
+        if not team:
+            return "blank team name"
+        if team == "spielfrei":
+            continue
+        found_team = True
+        if team in teams:
+            return "duplicate team name"
+        teams.add(team)
+
+    if not found_team:
+        return "table has no team"
+    return None
+
+
+def _matchday_issue(match_days: Any) -> str | None:
+    if not isinstance(match_days, dict):
+        return "malformed matchdays"
+    if len(match_days) != EXPECTED_MATCHDAYS:
+        return f"expected {EXPECTED_MATCHDAYS} matchdays"
+    normalized_keys: set[str] = set()
+    for key in match_days:
+        if not isinstance(key, str) or not key.strip():
+            return "blank matchday key"
+        normalized_key = _normalized_text(key)
+        if normalized_key in normalized_keys:
+            return "duplicate matchday key"
+        normalized_keys.add(normalized_key)
+    return None
+
+
+def validate_leagues(
+    candidate: dict[str, Any], previous: dict[str, Any]
+) -> ValidationResult:
+    previous_season = _previous_season(previous)
+    leagues = candidate.get("leagues")
+    metrics = {"regular_leagues": 0}
+    if not isinstance(leagues, dict):
+        return ValidationResult(
+            domain="leagues",
+            decision=Decision.BLOCKED,
+            effective_season=previous_season,
+            reasons=("Malformed leagues structure",),
+            metrics=metrics,
+        )
+
+    regular_seasons = [
+        season
+        for key in leagues
+        if isinstance(key, str)
+        and "ligapokal" not in key.casefold()
+        and (season := _league_key_season(key)) is not None
+    ]
+    raw_explicit_season = candidate.get("season")
+    if raw_explicit_season is not None:
+        current_season = _parse_season(raw_explicit_season)
+        if current_season is None:
+            return ValidationResult(
+                domain="leagues",
+                decision=Decision.BLOCKED,
+                effective_season=previous_season,
+                reasons=("Invalid candidate season",),
+                metrics=metrics,
+            )
+    else:
+        current_season = max(
+            regular_seasons,
+            key=lambda season: int(season[:4]),
+            default=None,
+        )
+        if current_season is None:
+            return ValidationResult(
+                domain="leagues",
+                decision=Decision.BLOCKED,
+                effective_season=previous_season,
+                reasons=("Candidate season is missing",),
+                metrics=metrics,
+            )
+
+    selected = [
+        (key, value)
+        for key, value in leagues.items()
+        if isinstance(key, str)
+        and "ligapokal" not in key.casefold()
+        and _league_key_season(key) == current_season
+    ]
+    metrics["regular_leagues"] = len(selected)
+    reasons: list[str] = []
+    normalized_league_keys: set[str] = set()
+    duplicate_league_keys = 0
+    for key, _ in selected:
+        normalized_key = _normalized_text(key)
+        if normalized_key in normalized_league_keys:
+            duplicate_league_keys += 1
+        normalized_league_keys.add(normalized_key)
+    if duplicate_league_keys:
+        reasons.append(f"Duplicate current league keys: {duplicate_league_keys}")
+    if raw_explicit_season is not None and regular_seasons and not selected:
+        reasons.append("Explicit candidate season does not match league keys")
+    if len(selected) != EXPECTED_REGULAR_LEAGUES:
+        reasons.append(
+            f"Expected {EXPECTED_REGULAR_LEAGUES} current regular leagues, found {len(selected)}"
+        )
+
+    for key, league in sorted(selected, key=lambda item: item[0].casefold()):
+        if not isinstance(league, dict):
+            reasons.append(f"Malformed league: {key}")
+            continue
+        table_issue = _league_table_issue(league.get("table"))
+        if table_issue is not None:
+            reasons.append(f"League {key}: {table_issue}")
+        matchday_issue = _matchday_issue(league.get("match_days"))
+        if matchday_issue is not None:
+            reasons.append(f"League {key}: {matchday_issue}")
+
+    if reasons:
+        return ValidationResult(
+            domain="leagues",
+            decision=Decision.BLOCKED,
+            effective_season=previous_season,
+            reasons=reasons,
+            metrics=metrics,
+        )
+    return ValidationResult(
+        domain="leagues",
+        decision=Decision.PUBLISH,
+        effective_season=current_season,
+        metrics=metrics,
+    )
+
+
+def validate_clubs(
+    candidate: dict[str, Any], previous: dict[str, Any]
+) -> ValidationResult:
+    candidate_clubs = candidate.get("clubs")
+    previous_clubs = previous.get("clubs", [])
+    candidate_season = _parse_season(candidate.get("season"))
+    effective_season = candidate_season or _previous_season(previous)
+    metrics = {
+        "clubs": len(candidate_clubs) if isinstance(candidate_clubs, list) else 0
+    }
+    reasons: list[str] = []
+
+    if not isinstance(candidate_clubs, list):
+        reasons.append("Malformed clubs structure")
+    else:
+        seen_numbers: set[str] = set()
+        for index, club in enumerate(candidate_clubs, 1):
+            if not isinstance(club, dict):
+                reasons.append(f"Club {index} is malformed")
+                continue
+            name = club.get("name")
+            number = club.get("number")
+            if not isinstance(name, str) or not name.strip():
+                reasons.append(f"Club {index} has a blank name")
+            if not isinstance(number, str) or not number.strip():
+                reasons.append(f"Club {index} has a blank number")
+                continue
+            normalized_number = _normalized_text(number)
+            if normalized_number in seen_numbers:
+                reasons.append(f"Duplicate club number: {number.strip()}")
+            seen_numbers.add(normalized_number)
+
+        previous_count = len(previous_clubs) if isinstance(previous_clubs, list) else 0
+        if previous_count and not candidate_clubs:
+            reasons.append("Empty club candidate cannot replace previous clubs")
+        elif previous_count and len(candidate_clubs) < previous_count * MIN_CLUB_RATIO:
+            reasons.append("Club count is below 80% of the previous count")
+
+    if reasons:
+        return ValidationResult(
+            domain="clubs",
+            decision=Decision.BLOCKED,
+            effective_season=_previous_season(previous),
+            reasons=reasons,
+            metrics=metrics,
+        )
+    return ValidationResult(
+        domain="clubs",
+        decision=Decision.PUBLISH,
+        effective_season=effective_season,
+        metrics=metrics,
+    )
+
+
+def validate_archives(
+    candidate_seasons: set[str], previous_seasons: set[str]
+) -> ValidationResult:
+    metrics = {
+        "candidate_seasons": len(candidate_seasons),
+        "previous_seasons": len(previous_seasons),
+    }
+    previous_effective = max(previous_seasons, default="unknown")
+    blank_identifiers = sorted(
+        season
+        for season in candidate_seasons | previous_seasons
+        if not isinstance(season, str) or not season.strip()
+    )
+    if blank_identifiers:
+        return ValidationResult(
+            domain="archives",
+            decision=Decision.BLOCKED,
+            effective_season=previous_effective,
+            reasons=("Blank archive season identifier",),
+            metrics=metrics,
+        )
+
+    missing = sorted(previous_seasons - candidate_seasons)
+    if missing:
+        return ValidationResult(
+            domain="archives",
+            decision=Decision.BLOCKED,
+            effective_season=previous_effective,
+            reasons=tuple(f"Missing archive season: {season}" for season in missing),
+            metrics=metrics,
+        )
+    return ValidationResult(
+        domain="archives",
+        decision=Decision.PUBLISH,
+        effective_season=max(candidate_seasons, default="unknown"),
+        metrics=metrics,
+    )
+
+
+def parse_javascript_assignment(text: str, global_name: str) -> Any:
+    if re.fullmatch(r"[A-Za-z_$][A-Za-z0-9_$]*", global_name) is None:
+        raise ValueError("Invalid JavaScript global name")
+    if not isinstance(text, str):
+        raise ValueError("JavaScript assignment must be text")
+    assignment = re.fullmatch(
+        rf"\s*window\.{re.escape(global_name)}\s*=\s*(.+)\s*;\s*",
+        text,
+        flags=re.DOTALL,
+    )
+    if assignment is None:
+        raise ValueError(f"Expected assignment to window.{global_name}")
+    try:
+        return json.loads(assignment.group(1))
+    except json.JSONDecodeError as error:
+        raise ValueError("Assignment payload is not valid JSON") from error
+
+
+def validate_json_js_pair(
+    json_payload: Any, javascript_text: str, global_name: str
+) -> tuple[bool, str]:
+    try:
+        javascript_payload = parse_javascript_assignment(
+            javascript_text, global_name
+        )
+    except ValueError as error:
+        return False, f"Invalid JavaScript assignment: {error}"
+    if javascript_payload != json_payload:
+        return False, "JSON and JavaScript payloads differ"
+    return True, ""
