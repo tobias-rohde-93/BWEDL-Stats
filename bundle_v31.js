@@ -16,11 +16,93 @@ window.onerror = function (msg, url, line, col, error) {
     return false;
 };
 
+const dataStatus = window.DATA_STATUS || { domains: {} };
+const DATA_STATUS_DOMAINS = [
+    { key: 'leagues', label: 'Liga' },
+    { key: 'rankings', label: 'Rangliste' },
+    { key: 'clubs', label: 'Vereine' },
+    { key: 'archives', label: 'Archiv' }
+];
+
+function formatGermanStatusTime(value) {
+    if (typeof value !== 'string') return null;
+    const timestamp = new Date(value);
+    if (Number.isNaN(timestamp.getTime())) return null;
+
+    return new Intl.DateTimeFormat('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Europe/Berlin'
+    }).format(timestamp);
+}
+
+function getDomainState(domain) {
+    if (!domain || typeof domain !== 'object') return 'unknown';
+    const hasSeason = typeof domain.season === 'string' && domain.season.trim();
+    const hasTimestamp = formatGermanStatusTime(domain.updated_at);
+    return hasSeason && hasTimestamp && ['current', 'retained'].includes(domain.state)
+        ? domain.state
+        : 'unknown';
+}
+
+function formatDomainStatus(label, domain) {
+    const state = getDomainState(domain);
+    if (state === 'unknown') return `${label}: Status unbekannt`;
+
+    const season = domain.season.trim();
+    const updatedAt = formatGermanStatusTime(domain.updated_at);
+
+    if (state === 'retained') {
+        return `${label}: Vorjahresstand ${season} · Stand ${updatedAt}`;
+    }
+
+    const seasonLabel = season === 'current'
+        ? 'aktuell'
+        : season === 'historical'
+            ? 'historischer Bestand'
+            : season;
+    return `${label}: ${seasonLabel} · aktualisiert ${updatedAt}`;
+}
+
+function renderDataStatus() {
+    const statusList = document.getElementById('data-status-list');
+    if (!statusList) return;
+
+    const domains = dataStatus.domains && typeof dataStatus.domains === 'object'
+        ? dataStatus.domains
+        : {};
+
+    DATA_STATUS_DOMAINS.forEach(({ key, label }) => {
+        const domain = domains[key];
+        const state = getDomainState(domain);
+        const statusItem = document.createElement('li');
+        const statusIcon = document.createElement('span');
+        const statusText = document.createElement('span');
+
+        statusItem.className = `data-status-item data-status-item--${state}`;
+        statusIcon.className = 'data-status-icon';
+        statusIcon.setAttribute('aria-hidden', 'true');
+        statusIcon.textContent = state === 'current' ? '●' : state === 'retained' ? '◷' : '?';
+        statusText.textContent = formatDomainStatus(label, domain);
+        statusItem.append(statusIcon, statusText);
+        statusList.appendChild(statusItem);
+    });
+}
+
+window.BWEDL_STATUS_FORMATTERS = {
+    formatDomainStatus,
+    formatGermanStatusTime,
+    getDomainState
+};
+document.addEventListener('DOMContentLoaded', renderDataStatus);
+
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementById('league-nav');
     const contentArea = document.getElementById('content-area');
     const topBarTitle = document.getElementById('current-league-title');
-    const lastUpdatedEl = document.getElementById('last-updated');
     const template = document.getElementById('league-view-template');
 
     const searchInput = document.getElementById('global-search');
@@ -185,11 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             document.head.appendChild(style);
         }
-
-        if (leagueData.last_updated) {
-            lastUpdatedEl.textContent = `Stand: ${leagueData.last_updated}`;
-        }
-
 
         // 0. Pre-sort Clubs
         if (clubData.clubs && clubData.clubs.length > 0) {
@@ -6271,24 +6348,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         contentArea.appendChild(container);
     }
-});
-
-// Global check to hide update button on production environments
-document.addEventListener('DOMContentLoaded', () => {
-    // Styling for Last Updated
-    const style = document.createElement('style');
-    style.innerHTML = `
-        #last-updated {
-            margin-top: 10px;
-            font-size: 0.85em;
-            color: #64748b;
-            text-align: center;
-            width: 100%;
-            display: block;
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Global Update Trigger
-    // Original duplicate triggerUpdate removed to fix bug
 });

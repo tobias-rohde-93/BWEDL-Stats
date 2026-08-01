@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bwedl-dashboard-v31';
+const CACHE_NAME = 'bwedl-dashboard-v32';
 const urlsToCache = [
     './',
     './index.html',
@@ -8,6 +8,8 @@ const urlsToCache = [
     './ranking_data.js',
     './club_data.js',
     './archive_data.js',
+    './data_status.json',
+    './data_status.js',
     './archive_tables.js',
     './ligapokal_archive.js',
     './pwa-icon-192.png',
@@ -31,6 +33,8 @@ self.addEventListener('fetch', event => {
 
     const url = new URL(event.request.url);
     const isDataFile = url.pathname.endsWith('_data.js') || 
+                       url.pathname.endsWith('data_status.json') ||
+                       url.pathname.endsWith('data_status.js') ||
                        url.pathname.endsWith('archive_tables.js') ||
                        url.pathname.endsWith('ligapokal_archive.js');
 

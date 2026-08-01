@@ -169,6 +169,53 @@ a:hover {
     color: var(--text-muted);
 }
 
+.data-status {
+    min-width: 0;
+    padding-block: 0.1rem 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.data-status-heading {
+    margin-bottom: 0.45rem;
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.data-status-list {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+    list-style: none;
+}
+
+.data-status-item {
+    display: grid;
+    grid-template-columns: 0.8rem minmax(0, 1fr);
+    gap: 0.4rem;
+    align-items: baseline;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.data-status-icon {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    text-align: center;
+}
+
+.data-status-item--current .data-status-icon {
+    color: var(--success);
+}
+
+.data-status-item--retained .data-status-icon {
+    color: #f59e0b;
+}
+
 .search-container {
     position: relative;
     width: 100%;
@@ -794,6 +841,10 @@ tr:hover td {
 
     h2 {
         font-size: 1.1rem;
+    }
+
+    .data-status-item {
+        font-size: 0.72rem;
     }
 }
 
