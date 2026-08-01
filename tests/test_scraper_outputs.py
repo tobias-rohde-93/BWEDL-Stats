@@ -49,6 +49,25 @@ def test_archive_table_season_link_requires_same_origin_archive_url() -> None:
     )
 
 
+def test_archive_player_season_and_sub_links_require_same_origin() -> None:
+    assert not archive_scraper.is_archive_season_link(
+        "https://external.example/archiv/2025-2026/",
+        "Saison 2025/2026",
+    )
+    assert archive_scraper.is_archive_season_link(
+        "https://www.bwedl.de/archiv/2025-2026/",
+        "Saison 2025/2026",
+    )
+    assert not archive_scraper.is_archive_sub_link(
+        "https://external.example/archiv/2025-2026/ranglisten/",
+        "Ranglisten 2025-2026",
+    )
+    assert archive_scraper.is_archive_sub_link(
+        "https://www.bwedl.de/archiv/2025-2026/ranglisten/",
+        "Ranglisten 2025-2026",
+    )
+
+
 @pytest.mark.parametrize(
     "script",
     [

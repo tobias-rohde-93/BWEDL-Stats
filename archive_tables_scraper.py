@@ -5,8 +5,8 @@ from playwright.async_api import async_playwright
 import json
 import re
 from pathlib import Path
-from urllib.parse import urlsplit
 from pipeline.diagnostics import AsyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
@@ -29,27 +29,15 @@ COMPETITION_TERMS = (
 
 
 def is_archive_url(href: str) -> bool:
-    if not isinstance(href, str):
-        return False
-    try:
-        candidate = urlsplit(href)
-        archive_origin = urlsplit(BASE_URL)
-        candidate_port = candidate.port
-    except ValueError:
-        return False
-    return (
-        candidate.scheme == "https"
-        and candidate.hostname == archive_origin.hostname
-        and candidate_port in (None, 443)
-        and candidate.path.startswith("/archiv/")
-    )
+    return normalize_bwedl_url(href, "/archiv/") is not None
 
 
 def is_archive_season_link(href: str, text: str) -> bool:
-    if not isinstance(text, str) or not is_archive_url(href):
+    safe_url = normalize_bwedl_url(href, "/archiv/")
+    if not isinstance(text, str) or not safe_url:
         return False
     match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(
-        r"(\d{4})[/-](\d{4})", href
+        r"(\d{4})[/-](\d{4})", safe_url
     )
     if not match:
         return False
@@ -109,9 +97,9 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
         unique_seasons = {}
         for s in season_links:
             text = s['text']
-            href = s['href']
+            href = normalize_bwedl_url(s.get('href'), "/archiv/")
 
-            if not is_archive_season_link(href, text):
+            if not href or not is_archive_season_link(href, text):
                 continue
             
             # Identify if it's a season link (YYYY/YYYY or similar)
@@ -188,12 +176,14 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
 
                 urls_to_scrape = [url] # Always scrape the main landing page too
                 for link in sub_links:
+                    safe_url = normalize_bwedl_url(link.get('href'), "/archiv/")
                     if (
-                        is_archive_sub_link(link.get('href'), link.get('text'))
-                        and link['href'] not in urls_to_scrape
+                        safe_url
+                        and is_archive_sub_link(safe_url, link.get('text'))
+                        and safe_url not in urls_to_scrape
                     ):
-                        print(f"  Found sub-page: {link['text']} -> {link['href']}")
-                        urls_to_scrape.append(link['href'])
+                        print(f"  Found sub-page: {link['text']} -> {safe_url}")
+                        urls_to_scrape.append(safe_url)
                 
                 # --- SUB-LINK LOGIC END ---
 

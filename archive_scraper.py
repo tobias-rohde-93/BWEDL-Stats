@@ -6,9 +6,31 @@ import json
 import re
 from pathlib import Path
 from pipeline.diagnostics import AsyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
+
+
+def is_archive_season_link(href: str, text: str) -> bool:
+    safe_url = normalize_bwedl_url(href, "/archiv/")
+    if not safe_url or not isinstance(text, str):
+        return False
+    match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(
+        r"(\d{4})[/-](\d{4})", safe_url
+    )
+    if not match:
+        return False
+    first_year, second_year = (int(year) for year in match.groups())
+    return first_year >= 2020 and 1 <= second_year - first_year <= 2
+
+
+def is_archive_sub_link(href: str, text: str) -> bool:
+    return (
+        isinstance(text, str)
+        and normalize_bwedl_url(href, "/archiv/") is not None
+    )
+
 
 def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser()
@@ -57,7 +79,10 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         unique_seasons = {}
         for s in season_links:
             text = s['text']
-            href = s['href']
+            href = normalize_bwedl_url(s.get('href'), "/archiv/")
+
+            if not href or not is_archive_season_link(href, text):
+                continue
             
             # Identify if it's a season link
             match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(r"(\d{4})[/-](\d{4})", href)
@@ -126,8 +151,16 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 }''')
                 
                 if sub_link['found']:
-                     target_url = sub_link['href']
-                     if target_url != url:
+                     target_url = normalize_bwedl_url(
+                         sub_link.get('href'), "/archiv/"
+                     )
+                     if (
+                         target_url
+                         and target_url != url
+                         and is_archive_sub_link(
+                             target_url, sub_link.get('text')
+                         )
+                     ):
                         print(f"  Found sub-link to Rankings: {sub_link['text']} -> {target_url}")
                         await page.goto(target_url, wait_until="networkidle")
 

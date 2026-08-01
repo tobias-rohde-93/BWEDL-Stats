@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
 from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE_JSON = "ranking_data.json"
 DATA_FILE_JS = "ranking_data.js"
@@ -63,8 +64,13 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 failures.append(error)
                 continue
             
-            if href and href != "/ranglisten/" and "archiv" not in href.lower() and text:
-                full_url = BASE_URL + href if href.startswith("/") else href
+            full_url = normalize_bwedl_url(href, "/ranglisten/")
+            if (
+                full_url
+                and full_url != "https://www.bwedl.de/ranglisten/"
+                and "archiv" not in full_url.casefold()
+                and text
+            ):
                 # Dedupe
                 if not any(l['url'] == full_url for l in ranking_links):
                     ranking_links.append({'url': full_url, 'name': text})

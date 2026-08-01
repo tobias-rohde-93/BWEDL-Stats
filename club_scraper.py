@@ -8,6 +8,7 @@ from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
 from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE_JSON = "club_data.json"
 DATA_FILE_JS = "club_data.js"
@@ -229,10 +230,11 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             except:
                 text = ""
             
-            print(f"    Link: Text='{text}', Href='{href}'")
+            print(f"    Link text: '{text}'")
             
             # Basic validation
-            if not href or href == "/vereine/":
+            full_url = normalize_bwedl_url(href, "/vereine/")
+            if not full_url or full_url == "https://www.bwedl.de/vereine/":
                 continue
                 
             # Filter empty text
@@ -252,11 +254,12 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             #     continue
                 
             # URL base filtering
-            if "?" in href or "news" in href.lower() or "archiv" in href.lower() or "kalender" in href.lower():
-                print(f"      -> Skipping (URL pattern match): {href}")
+            if any(
+                term in full_url.casefold()
+                for term in ("news", "archiv", "kalender")
+            ):
+                print("      -> Skipping (URL pattern match)")
                 continue
-
-            full_url = BASE_URL + href if href.startswith("/") else href
             
             if full_url not in seen_urls:
                 club_links.append({'url': full_url, 'texts': {text}})

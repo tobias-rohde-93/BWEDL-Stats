@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
 from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE = "league_data.json"
 BASE_URL = "https://bwedl.de"
@@ -238,8 +239,8 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         for link in links:
             href = link.get_attribute("href")
             text = link.inner_text().strip()
-            if href and href != "/tabellen/" and text:
-                full_url = BASE_URL + href if href.startswith("/") else href
+            full_url = normalize_bwedl_url(href, "/tabellen/")
+            if full_url and full_url != "https://www.bwedl.de/tabellen/" and text:
                 if not any(l['url'] == full_url for l in league_links):
                     league_links.append({'url': full_url, 'name': text})
         
