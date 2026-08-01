@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import re
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from enum import StrEnum
+from types import MappingProxyType
 from typing import Any
 
 
@@ -17,8 +20,12 @@ class ValidationResult:
     domain: str
     decision: Decision
     effective_season: str
-    reasons: list[str] = field(default_factory=list)
-    metrics: dict[str, int] = field(default_factory=dict)
+    reasons: tuple[str, ...] = field(default_factory=tuple)
+    metrics: Mapping[str, int] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "reasons", tuple(self.reasons))
+        object.__setattr__(self, "metrics", MappingProxyType(dict(self.metrics)))
 
 
 REQUIRED_RANKING_CATEGORIES = (
@@ -29,13 +36,31 @@ REQUIRED_RANKING_CATEGORIES = (
 )
 
 
-def _canonical_category(value: Any) -> str | None:
+def _parse_category(value: Any) -> tuple[str, str | None] | None:
     if not isinstance(value, str):
         return None
     for category in REQUIRED_RANKING_CATEGORIES:
-        if value == category or value.startswith(f"{category} "):
-            return category
+        if value == category:
+            return category, None
+        match = re.fullmatch(rf"{re.escape(category)} (\d{{4}})-(\d{{4}})", value)
+        if match is not None:
+            start_year, end_year = (int(part) for part in match.groups())
+            if end_year == start_year + 1:
+                return category, f"{start_year}/{end_year % 100:02d}"
     return None
+
+
+def _has_category_prefix(value: Any) -> bool:
+    return isinstance(value, str) and any(
+        value.startswith(f"{category} ") for category in REQUIRED_RANKING_CATEGORIES
+    )
+
+
+def _is_ranking_table(value: str) -> bool:
+    return bool(
+        re.search(r"<table(?:\s|>)", value, re.IGNORECASE)
+        and re.search(r"</table\s*>", value, re.IGNORECASE)
+    )
 
 
 def _previous_season(previous: dict[str, Any]) -> str:
@@ -49,6 +74,12 @@ def validate_rankings(
     effective_previous_season = _previous_season(previous)
     metrics = {category: 0 for category in REQUIRED_RANKING_CATEGORIES}
     reasons: list[str] = []
+    raw_candidate_season = candidate.get("season")
+    candidate_season = (
+        raw_candidate_season.strip()
+        if isinstance(raw_candidate_season, str) and raw_candidate_season.strip()
+        else None
+    )
 
     players = candidate.get("players", [])
     rankings = candidate.get("rankings", {})
@@ -63,7 +94,9 @@ def validate_rankings(
         )
 
     invalid_players = 0
+    invalid_player_categories = 0
     duplicate_players = 0
+    season_mismatches = 0
     player_ids_by_category = {
         category: set() for category in REQUIRED_RANKING_CATEGORIES
     }
@@ -75,14 +108,23 @@ def validate_rankings(
 
         player_id = player.get("id")
         name = player.get("name")
-        category = _canonical_category(player.get("league"))
-        valid_id = player_id is not None and str(player_id).strip() != ""
+        parsed_category = _parse_category(player.get("league"))
+        valid_id = isinstance(player_id, str) and player_id.strip() != ""
         valid_name = isinstance(name, str) and name.strip() != ""
-        if not valid_id or not valid_name or category is None:
+        if parsed_category is None:
+            invalid_players += 1
+            invalid_player_categories += 1
+            continue
+        if not valid_id or not valid_name:
             invalid_players += 1
             continue
 
-        normalized_id = str(player_id).strip()
+        category, category_season = parsed_category
+        if category_season is not None and category_season != candidate_season:
+            season_mismatches += 1
+            continue
+
+        normalized_id = player_id.strip()
         if normalized_id in player_ids_by_category[category]:
             duplicate_players += 1
             continue
@@ -93,9 +135,49 @@ def validate_rankings(
     if invalid_players:
         metrics["invalid_players"] = invalid_players
         reasons.append(f"Invalid players: {invalid_players}")
+    if invalid_player_categories:
+        metrics["invalid_player_categories"] = invalid_player_categories
+        reasons.append(f"Invalid player category labels: {invalid_player_categories}")
     if duplicate_players:
         metrics["duplicate_players"] = duplicate_players
         reasons.append(f"Duplicate players within a category: {duplicate_players}")
+
+    ranking_categories: set[str] = set()
+    invalid_ranking_categories = 0
+    malformed_ranking_tables = 0
+    for key, table in rankings.items():
+        parsed_category = _parse_category(key)
+        if parsed_category is None:
+            if _has_category_prefix(key):
+                invalid_ranking_categories += 1
+            continue
+
+        category, category_season = parsed_category
+        if category_season is not None and category_season != candidate_season:
+            season_mismatches += 1
+            continue
+        if not isinstance(table, str):
+            malformed_ranking_tables += 1
+            continue
+        if not table.strip():
+            continue
+        if not _is_ranking_table(table):
+            malformed_ranking_tables += 1
+            continue
+        ranking_categories.add(category)
+
+    if invalid_ranking_categories:
+        metrics["invalid_ranking_categories"] = invalid_ranking_categories
+        reasons.append(
+            f"Invalid ranking category labels: {invalid_ranking_categories}"
+        )
+    if malformed_ranking_tables:
+        metrics["malformed_ranking_tables"] = malformed_ranking_tables
+        reasons.append(f"Malformed ranking tables: {malformed_ranking_tables}")
+    if season_mismatches:
+        metrics["season_mismatches"] = season_mismatches
+        reasons.append(f"Category season mismatches: {season_mismatches}")
+
     if reasons:
         return ValidationResult(
             domain="rankings",
@@ -105,13 +187,6 @@ def validate_rankings(
             metrics=metrics,
         )
 
-    ranking_categories = {
-        category
-        for key, table in rankings.items()
-        if (category := _canonical_category(key)) is not None
-        and table is not None
-        and str(table).strip() != ""
-    }
     missing_categories = [
         category
         for category in REQUIRED_RANKING_CATEGORIES
@@ -129,8 +204,7 @@ def validate_rankings(
             metrics=metrics,
         )
 
-    season = candidate.get("season")
-    if not isinstance(season, str) or not season.strip():
+    if candidate_season is None:
         return ValidationResult(
             domain="rankings",
             decision=Decision.BLOCKED,
@@ -142,6 +216,6 @@ def validate_rankings(
     return ValidationResult(
         domain="rankings",
         decision=Decision.PUBLISH,
-        effective_season=season.strip(),
+        effective_season=candidate_season,
         metrics=metrics,
     )
