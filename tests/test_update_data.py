@@ -275,3 +275,28 @@ def test_run_scraper_uses_exact_unbuffered_command(tmp_path: Path, monkeypatch: 
 
     assert update_data.run_scraper(script, output, artifacts) == 9
     assert observed[0][0] == [sys.executable, "-u", str(script), "--output-dir", str(output), "--artifacts-dir", str(artifacts)]
+
+
+def test_each_scraper_receives_its_own_artifact_subdirectory(tmp_path: Path) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    base_runner = fake_runner(rankings())
+    observed: dict[str, Path] = {}
+
+    def recording_runner(script: Path, output_dir: Path, artifacts_dir: Path) -> int:
+        observed[script.name] = artifacts_dir
+        return base_runner(script, output_dir, artifacts_dir)
+
+    assert update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=recording_runner,
+        dry_run=True,
+        clock=lambda: NOW,
+    ) == 0
+    assert observed == {
+        script_name: artifacts / Path(script_name).stem
+        for script_name in update_data.SCRAPERS
+    }
+    assert len(set(observed.values())) == 5

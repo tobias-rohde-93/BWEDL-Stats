@@ -255,7 +255,11 @@ def run_update(
     if setup_error is None:
         for script_name in SCRAPERS:
             try:
-                scraper_codes[script_name] = scraper_runner(root / script_name, staging, artifacts)
+                scraper_codes[script_name] = scraper_runner(
+                    root / script_name,
+                    staging,
+                    artifacts / Path(script_name).stem,
+                )
             except Exception:
                 scraper_codes[script_name] = -1
 
