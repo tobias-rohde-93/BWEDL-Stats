@@ -434,6 +434,72 @@ def test_identical_files_are_not_promoted_or_returned(
     assert changed == [published / "archive_tables.js"]
 
 
+def test_additional_status_files_share_domain_transaction(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging,
+        {
+            "club_data.json": b"new-clubs",
+            "club_data.js": b"new-clubs-js",
+            "data_status.json": b"new-status",
+            "data_status.js": b"new-status-js",
+        },
+    )
+    write_files(
+        published,
+        {
+            "club_data.json": b"old-clubs",
+            "club_data.js": b"old-clubs-js",
+            "data_status.json": b"old-status",
+            "data_status.js": b"old-status-js",
+        },
+    )
+    real_promote = publication.promote_file
+
+    def fail_status(source: Path, destination: Path) -> None:
+        if destination.name == "data_status.js":
+            raise OSError("status failed")
+        real_promote(source, destination)
+
+    monkeypatch.setattr(publication, "promote_file", fail_status)
+
+    with pytest.raises(OSError, match="status failed"):
+        publish_domains(
+            staging,
+            published,
+            [result("clubs", Decision.PUBLISH)],
+            additional_files=("data_status.json", "data_status.js"),
+        )
+
+    assert (published / "club_data.json").read_bytes() == b"old-clubs"
+    assert (published / "club_data.js").read_bytes() == b"old-clubs-js"
+    assert (published / "data_status.json").read_bytes() == b"old-status"
+    assert (published / "data_status.js").read_bytes() == b"old-status-js"
+
+
+@pytest.mark.parametrize(
+    "additional_files",
+    [
+        ("nested/data_status.json",),
+        ("data_status.json", "data_status.json"),
+        ("club_data.json",),
+    ],
+)
+def test_additional_files_must_be_unique_non_domain_basenames(
+    tmp_path: Path, additional_files: tuple[str, ...]
+) -> None:
+    with pytest.raises(ValueError, match="additional"):
+        publish_domains(
+            tmp_path / "staging",
+            tmp_path / "published",
+            [],
+            additional_files=additional_files,
+        )
+
+
 @pytest.mark.parametrize(
     "results, message",
     [

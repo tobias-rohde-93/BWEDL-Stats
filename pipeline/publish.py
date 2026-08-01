@@ -58,7 +58,22 @@ def publish_domains(
     staging: Path,
     published: Path,
     results: list[ValidationResult],
+    *,
+    additional_files: tuple[str, ...] = (),
 ) -> list[Path]:
+    domain_filenames = {name for names in DOMAIN_FILES.values() for name in names}
+    seen_additional: set[str] = set()
+    for filename in additional_files:
+        if (
+            not isinstance(filename, str)
+            or not filename
+            or Path(filename).name != filename
+            or filename in seen_additional
+            or filename in domain_filenames
+        ):
+            raise ValueError(f"invalid additional publication file: {filename!r}")
+        seen_additional.add(filename)
+
     indexed_results: dict[str, ValidationResult] = {}
     for result in results:
         if not isinstance(result.domain, str) or result.domain not in DOMAIN_FILES:
@@ -77,6 +92,11 @@ def publish_domains(
             destination = published / filename
             validate_promotion_paths(source, destination)
             candidates.append((source, destination))
+    for filename in additional_files:
+        source = staging / filename
+        destination = published / filename
+        validate_promotion_paths(source, destination)
+        candidates.append((source, destination))
 
     changed = [
         (source, destination)

@@ -560,7 +560,7 @@ def _canonical_archive_seasons(
         if isinstance(season, str) and not season.strip():
             reasons.append(f"Blank {label.lower()} archive season identifier")
             continue
-        canonical_season = _parse_season(season)
+        canonical_season = _parse_archive_season(season)
         if canonical_season is None:
             reasons.append(f"Invalid {label.lower()} archive season identifier: {season!r}")
             continue
@@ -570,6 +570,30 @@ def _canonical_archive_seasons(
             )
         canonical_seasons.add(canonical_season)
     return canonical_seasons, reasons
+
+
+def _parse_archive_season(value: Any) -> str | None:
+    if not isinstance(value, str):
+        return None
+    normalized = value.strip()
+    short = re.fullmatch(r"(\d{2})/(\d{2})", normalized)
+    if short is not None:
+        start_short, end_short = (int(part) for part in short.groups())
+        start_year = 2000 + start_short
+        end_year = 2000 + end_short
+        if end_year > start_year:
+            return f"{start_year}/{end_short:02d}"
+        return None
+
+    long = re.fullmatch(r"(\d{4})[/-](\d{2}|\d{4})", normalized)
+    if long is None:
+        return None
+    start_year = int(long.group(1))
+    raw_end = long.group(2)
+    end_year = int(raw_end) if len(raw_end) == 4 else start_year // 100 * 100 + int(raw_end)
+    if end_year <= start_year:
+        return None
+    return f"{start_year}/{end_year % 100:02d}"
 
 
 def validate_archives(

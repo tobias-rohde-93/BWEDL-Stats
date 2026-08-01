@@ -832,7 +832,7 @@ def test_archive_containers_must_be_actual_sets(
     assert "set" in " ".join(result.reasons).lower()
 
 
-@pytest.mark.parametrize("invalid", ["2024/27", "season 2024/25", 2025])
+@pytest.mark.parametrize("invalid", ["2024/24", "season 2024/25", 2025])
 def test_archive_rejects_invalid_season_identifiers(invalid: Any) -> None:
     result = validation.validate_archives({"2024/25", invalid}, {"2024/25"})
 
@@ -852,6 +852,16 @@ def test_archive_rejects_duplicate_normalized_seasons() -> None:
 def test_archive_compares_canonical_season_labels() -> None:
     result = validation.validate_archives(
         {"2024-2025", "2025/26"}, {"2024/25"}
+    )
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2025/26"
+
+
+def test_archive_normalizes_short_and_multi_year_historical_labels() -> None:
+    result = validation.validate_archives(
+        {"20/22", "24/25", "2025/2026"},
+        {"2020/2022", "2024/25"},
     )
 
     assert result.decision is Decision.PUBLISH
