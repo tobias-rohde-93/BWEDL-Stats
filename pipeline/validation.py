@@ -47,9 +47,23 @@ REQUIRED_RANKING_CATEGORIES = (
     "C-Klasse",
 )
 
-EXPECTED_REGULAR_LEAGUES = 13
+MIN_REGULAR_LEAGUES = 13
 EXPECTED_MATCHDAYS = 18
 MIN_CLUB_RATIO = 0.80
+MIN_STANDINGS_COLUMNS = 9
+OPTIONAL_CLUB_FIELDS = (
+    "venue",
+    "street",
+    "city",
+    "phone",
+    "fax",
+    "contact",
+    "mobile",
+    "website",
+    "contact_email",
+    "email",
+    "url",
+)
 
 
 def _parse_season(value: Any) -> str | None:
@@ -301,13 +315,17 @@ def _league_table_issue(table: Any) -> str | None:
     rows = parsed.find_all("tr")
     if not rows:
         return "table has no header"
+    header_cells = rows[0].find_all(["td", "th"])
+    column_count = len(header_cells)
+    if column_count < MIN_STANDINGS_COLUMNS:
+        return f"table has fewer than {MIN_STANDINGS_COLUMNS} columns"
 
     teams: set[str] = set()
     found_team = False
     for row in rows[1:]:
         cells = row.find_all(["td", "th"])
-        if len(cells) < 2:
-            return "table row is incomplete"
+        if len(cells) != column_count:
+            return "table row has inconsistent columns"
         team = _normalized_text(cells[1].get_text(" ", strip=True))
         if not team:
             return "blank team name"
@@ -328,14 +346,29 @@ def _matchday_issue(match_days: Any) -> str | None:
         return "malformed matchdays"
     if len(match_days) != EXPECTED_MATCHDAYS:
         return f"expected {EXPECTED_MATCHDAYS} matchdays"
-    normalized_keys: set[str] = set()
-    for key in match_days:
-        if not isinstance(key, str) or not key.strip():
-            return "blank matchday key"
-        normalized_key = _normalized_text(key)
-        if normalized_key in normalized_keys:
-            return "duplicate matchday key"
-        normalized_keys.add(normalized_key)
+    matchday_numbers: set[int] = set()
+    for key, value in match_days.items():
+        if not isinstance(key, str):
+            return "invalid matchday key"
+        key_match = re.fullmatch(r"\s*(\d+)\.\s*Spieltag\s*", key, re.IGNORECASE)
+        if key_match is None:
+            return "invalid matchday sequence"
+        matchday_number = int(key_match.group(1))
+        if matchday_number in matchday_numbers:
+            return "duplicate matchday number"
+        matchday_numbers.add(matchday_number)
+
+        if not isinstance(value, str):
+            return "matchday value must be a string"
+        if value == "---":
+            continue
+        for line in value.splitlines():
+            if line.strip() and re.search(
+                r"\d{1,2}\.\s*\d{1,2}\.\s*\d{4}", line
+            ) is None:
+                return "matchday line has no supported date"
+    if matchday_numbers != set(range(1, EXPECTED_MATCHDAYS + 1)):
+        return f"matchday sequence must cover 1 through {EXPECTED_MATCHDAYS}"
     return None
 
 
@@ -361,10 +394,24 @@ def validate_leagues(
         and "ligapokal" not in key.casefold()
         and (season := _league_key_season(key)) is not None
     ]
+    newest_inferred_season = max(
+        regular_seasons,
+        key=lambda season: int(season[:4]),
+        default=None,
+    )
+    if newest_inferred_season is None:
+        return ValidationResult(
+            domain="leagues",
+            decision=Decision.BLOCKED,
+            effective_season=previous_season,
+            reasons=("Candidate season cannot be inferred",),
+            metrics=metrics,
+        )
+
     raw_explicit_season = candidate.get("season")
     if raw_explicit_season is not None:
-        current_season = _parse_season(raw_explicit_season)
-        if current_season is None:
+        explicit_season = _parse_season(raw_explicit_season)
+        if explicit_season is None:
             return ValidationResult(
                 domain="leagues",
                 decision=Decision.BLOCKED,
@@ -372,20 +419,15 @@ def validate_leagues(
                 reasons=("Invalid candidate season",),
                 metrics=metrics,
             )
-    else:
-        current_season = max(
-            regular_seasons,
-            key=lambda season: int(season[:4]),
-            default=None,
-        )
-        if current_season is None:
+        if explicit_season != newest_inferred_season:
             return ValidationResult(
                 domain="leagues",
                 decision=Decision.BLOCKED,
                 effective_season=previous_season,
-                reasons=("Candidate season is missing",),
+                reasons=("Explicit candidate season is not the newest inferred season",),
                 metrics=metrics,
             )
+    current_season = newest_inferred_season
 
     selected = [
         (key, value)
@@ -405,11 +447,9 @@ def validate_leagues(
         normalized_league_keys.add(normalized_key)
     if duplicate_league_keys:
         reasons.append(f"Duplicate current league keys: {duplicate_league_keys}")
-    if raw_explicit_season is not None and regular_seasons and not selected:
-        reasons.append("Explicit candidate season does not match league keys")
-    if len(selected) != EXPECTED_REGULAR_LEAGUES:
+    if len(selected) < MIN_REGULAR_LEAGUES:
         reasons.append(
-            f"Expected {EXPECTED_REGULAR_LEAGUES} current regular leagues, found {len(selected)}"
+            f"Expected at least {MIN_REGULAR_LEAGUES} current regular leagues, found {len(selected)}"
         )
 
     for key, league in sorted(selected, key=lambda item: item[0].casefold()):
@@ -439,11 +479,39 @@ def validate_leagues(
     )
 
 
+def _club_record_issues(records: list[Any], label: str) -> list[str]:
+    reasons: list[str] = []
+    seen_numbers: set[str] = set()
+    for index, club in enumerate(records, 1):
+        if not isinstance(club, dict):
+            reasons.append(f"{label} club {index} is malformed")
+            continue
+
+        name = club.get("name")
+        number = club.get("number")
+        if not isinstance(name, str) or not name.strip():
+            reasons.append(f"{label} club {index} has a blank name")
+        if not isinstance(number, str) or not number.strip():
+            reasons.append(f"{label} club {index} has a blank number")
+        else:
+            normalized_number = _normalized_text(number)
+            if normalized_number in seen_numbers:
+                reasons.append(f"Duplicate {label.lower()} club number: {number.strip()}")
+            seen_numbers.add(normalized_number)
+
+        for field_name in OPTIONAL_CLUB_FIELDS:
+            if field_name in club and not isinstance(club[field_name], str):
+                reasons.append(
+                    f"{label} club {index} field {field_name} must be a string"
+                )
+    return reasons
+
+
 def validate_clubs(
     candidate: dict[str, Any], previous: dict[str, Any]
 ) -> ValidationResult:
     candidate_clubs = candidate.get("clubs")
-    previous_clubs = previous.get("clubs", [])
+    previous_clubs = previous.get("clubs")
     candidate_season = _parse_season(candidate.get("season"))
     effective_season = candidate_season or _previous_season(previous)
     metrics = {
@@ -451,25 +519,15 @@ def validate_clubs(
     }
     reasons: list[str] = []
 
+    if not isinstance(previous_clubs, list):
+        reasons.append("Malformed previous clubs structure")
+    else:
+        reasons.extend(_club_record_issues(previous_clubs, "Previous"))
+
     if not isinstance(candidate_clubs, list):
         reasons.append("Malformed clubs structure")
     else:
-        seen_numbers: set[str] = set()
-        for index, club in enumerate(candidate_clubs, 1):
-            if not isinstance(club, dict):
-                reasons.append(f"Club {index} is malformed")
-                continue
-            name = club.get("name")
-            number = club.get("number")
-            if not isinstance(name, str) or not name.strip():
-                reasons.append(f"Club {index} has a blank name")
-            if not isinstance(number, str) or not number.strip():
-                reasons.append(f"Club {index} has a blank number")
-                continue
-            normalized_number = _normalized_text(number)
-            if normalized_number in seen_numbers:
-                reasons.append(f"Duplicate club number: {number.strip()}")
-            seen_numbers.add(normalized_number)
+        reasons.extend(_club_record_issues(candidate_clubs, "Candidate"))
 
         previous_count = len(previous_clubs) if isinstance(previous_clubs, list) else 0
         if not candidate_clubs:
@@ -493,38 +551,65 @@ def validate_clubs(
     )
 
 
-def validate_archives(
-    candidate_seasons: set[str], previous_seasons: set[str]
-) -> ValidationResult:
-    metrics = {
-        "candidate_seasons": len(candidate_seasons),
-        "previous_seasons": len(previous_seasons),
-    }
-    previous_effective = max(previous_seasons, default="unknown")
-    blank_identifiers = sorted(
-        season
-        for season in candidate_seasons | previous_seasons
-        if not isinstance(season, str) or not season.strip()
-    )
-    if blank_identifiers:
-        return ValidationResult(
-            domain="archives",
-            decision=Decision.BLOCKED,
-            effective_season=previous_effective,
-            reasons=("Blank archive season identifier",),
-            metrics=metrics,
-        )
+def _canonical_archive_seasons(
+    seasons: set[Any], label: str
+) -> tuple[set[str], list[str]]:
+    canonical_seasons: set[str] = set()
+    reasons: list[str] = []
+    for season in sorted(seasons, key=repr):
+        if isinstance(season, str) and not season.strip():
+            reasons.append(f"Blank {label.lower()} archive season identifier")
+            continue
+        canonical_season = _parse_season(season)
+        if canonical_season is None:
+            reasons.append(f"Invalid {label.lower()} archive season identifier: {season!r}")
+            continue
+        if canonical_season in canonical_seasons:
+            reasons.append(
+                f"Duplicate normalized {label.lower()} archive season: {canonical_season}"
+            )
+        canonical_seasons.add(canonical_season)
+    return canonical_seasons, reasons
 
-    if not previous_seasons:
+
+def validate_archives(
+    candidate_seasons: Any, previous_seasons: Any
+) -> ValidationResult:
+    if not isinstance(candidate_seasons, set) or not isinstance(
+        previous_seasons, set
+    ):
         return ValidationResult(
             domain="archives",
             decision=Decision.BLOCKED,
             effective_season="unknown",
-            reasons=("Previous archive baseline is empty",),
+            reasons=("Archive season containers must be sets",),
+            metrics={"candidate_seasons": 0, "previous_seasons": 0},
+        )
+
+    metrics = {
+        "candidate_seasons": len(candidate_seasons),
+        "previous_seasons": len(previous_seasons),
+    }
+    canonical_candidate, candidate_reasons = _canonical_archive_seasons(
+        candidate_seasons, "Candidate"
+    )
+    canonical_previous, previous_reasons = _canonical_archive_seasons(
+        previous_seasons, "Previous"
+    )
+    previous_effective = max(canonical_previous, default="unknown")
+    reasons = candidate_reasons + previous_reasons
+    if not previous_seasons:
+        reasons.append("Previous archive baseline is empty")
+    if reasons:
+        return ValidationResult(
+            domain="archives",
+            decision=Decision.BLOCKED,
+            effective_season=previous_effective,
+            reasons=reasons,
             metrics=metrics,
         )
 
-    missing = sorted(previous_seasons - candidate_seasons)
+    missing = sorted(canonical_previous - canonical_candidate)
     if missing:
         return ValidationResult(
             domain="archives",
@@ -536,7 +621,7 @@ def validate_archives(
     return ValidationResult(
         domain="archives",
         decision=Decision.PUBLISH,
-        effective_season=max(candidate_seasons, default="unknown"),
+        effective_season=max(canonical_candidate, default="unknown"),
         metrics=metrics,
     )
 
@@ -574,6 +659,26 @@ def validate_json_js_pair(
         )
     except ValueError as error:
         return False, f"Invalid JavaScript assignment: {error}"
-    if javascript_payload != json_payload:
+    try:
+        canonical_json = json.dumps(
+            json_payload,
+            sort_keys=True,
+            ensure_ascii=False,
+            allow_nan=False,
+            separators=(",", ":"),
+        )
+    except (TypeError, ValueError):
+        return False, "JSON payload is not valid canonical JSON"
+    try:
+        canonical_javascript = json.dumps(
+            javascript_payload,
+            sort_keys=True,
+            ensure_ascii=False,
+            allow_nan=False,
+            separators=(",", ":"),
+        )
+    except (TypeError, ValueError):
+        return False, "JavaScript payload is not valid canonical JSON"
+    if canonical_javascript != canonical_json:
         return False, "JSON and JavaScript payloads differ"
     return True, ""

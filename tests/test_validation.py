@@ -31,11 +31,29 @@ REGULAR_LEAGUES = (
     "Mix C-Klasse",
 )
 
+OPTIONAL_CLUB_FIELDS = (
+    "venue",
+    "street",
+    "city",
+    "phone",
+    "fax",
+    "contact",
+    "mobile",
+    "website",
+    "contact_email",
+    "email",
+    "url",
+)
+
 
 def league_table(*teams: str) -> str:
-    rows = ["<tr><td>Pl.</td><td>Tabelle</td><td>Sp</td></tr>"]
+    rows = [
+        "<tr><td>Pl.</td><td>Tabelle</td><td>Sp</td><td>g</td><td>u</td>"
+        "<td>v</td><td>Spiele</td><td>±</td><td>Pkt</td></tr>"
+    ]
     rows.extend(
-        f"<tr><td>{index}</td><td>{team}</td><td>0</td><td>0</td></tr>"
+        f"<tr><td>{index}</td><td>{team}</td><td>0</td><td>0</td><td>0</td>"
+        "<td>0</td><td>0:0</td><td>0</td><td>0</td></tr>"
         for index, team in enumerate(teams, 1)
     )
     return f"<table><tbody>{''.join(rows)}</tbody></table>"
@@ -45,7 +63,10 @@ def complete_league(name: str) -> dict[str, Any]:
     return {
         "url": f"https://example.test/{name}",
         "table": league_table(f"{name} Team", "Spielfrei"),
-        "match_days": {f"{index}. Spieltag": "" for index in range(1, 19)},
+        "match_days": {
+            f"{index}. Spieltag": "Mo. 24. 8.2026 20:00 Team A - Team B 0:0"
+            for index in range(1, 19)
+        },
     }
 
 
@@ -467,6 +488,33 @@ def test_league_season_is_inferred_from_newest_regular_key_suffix() -> None:
     assert result.effective_season == "2026/27"
 
 
+def test_explicit_league_season_must_equal_newest_inferred_season() -> None:
+    candidate = league_candidate(season="2025/26")
+    candidate["leagues"].update(
+        {
+            f"{name} 2025-2026": complete_league(f"Historical {name}")
+            for name in REGULAR_LEAGUES
+        }
+    )
+
+    result = validation.validate_leagues(candidate, {"season": "2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+    assert "newest" in " ".join(result.reasons).lower()
+
+
+def test_fourteen_valid_current_leagues_publish() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Additional Division 2026-2027"] = complete_league(
+        "Additional Division"
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.PUBLISH
+    assert result.metrics["regular_leagues"] == 14
+
+
 @pytest.mark.parametrize(
     ("field", "value"),
     [
@@ -524,15 +572,78 @@ def test_league_table_ignores_nonstandard_header_row() -> None:
     candidate = league_candidate()
     candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = (
         "<table><tbody>"
-        "<tr><th>Beliebige Überschrift</th></tr>"
-        "<tr><td>1.</td><td>DC Schömberg</td><td>0</td></tr>"
-        "<tr><td>2.</td><td>Spielfrei</td><td>0</td></tr>"
+        "<tr><th>A</th><th>Beliebige Überschrift</th><th>C</th><th>D</th>"
+        "<th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr>"
+        "<tr><td>1.</td><td>DC Schömberg</td><td>0</td><td>0</td><td>0</td>"
+        "<td>0</td><td>0:0</td><td>0</td><td>0</td></tr>"
+        "<tr><td>2.</td><td>Spielfrei</td><td>0</td><td>0</td><td>0</td>"
+        "<td>0</td><td>0:0</td><td>0</td><td>0</td></tr>"
         "</tbody></table>"
     )
 
     result = validation.validate_leagues(candidate, {})
 
     assert result.decision is Decision.PUBLISH
+
+
+def test_league_table_requires_at_least_nine_columns() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = (
+        "<table><tr><td>Pl.</td><td>Tabelle</td></tr>"
+        "<tr><td>1.</td><td>DC Schömberg</td></tr></table>"
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.BLOCKED
+    assert "columns" in " ".join(result.reasons).lower()
+
+
+def test_league_table_rejects_data_row_with_inconsistent_columns() -> None:
+    candidate = league_candidate()
+    valid_table = league_table("DC Schömberg", "Spielfrei")
+    candidate["leagues"]["Bezirksliga 2026-2027"]["table"] = valid_table.replace(
+        "<td>0</td><td>0</td></tr>", "<td>0</td></tr>", 1
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.BLOCKED
+    assert "columns" in " ".join(result.reasons).lower()
+
+
+def test_matchday_keys_must_cover_exact_sequence_one_through_eighteen() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["match_days"] = {
+        f"{index}. Spieltag": "---" for index in range(2, 20)
+    }
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.BLOCKED
+    assert "sequence" in " ".join(result.reasons).lower()
+
+
+def test_matchday_keys_allow_whitespace_and_placeholder_value() -> None:
+    candidate = league_candidate()
+    match_days = candidate["leagues"]["Bezirksliga 2026-2027"]["match_days"]
+    match_days["  1.   Spieltag  "] = match_days.pop("1. Spieltag")
+    match_days["  1.   Spieltag  "] = "---"
+
+    assert validation.validate_leagues(candidate, {}).decision is Decision.PUBLISH
+
+
+@pytest.mark.parametrize("value", [17, ["Mo. 24. 8.2026"], "no date here"])
+def test_matchday_values_require_strings_with_supported_dates(value: Any) -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["match_days"][
+        "1. Spieltag"
+    ] = value
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.BLOCKED
+    assert "matchday" in " ".join(result.reasons).lower()
 
 
 def test_historical_and_ligapokal_leagues_do_not_affect_current_validation() -> None:
@@ -600,6 +711,31 @@ def test_empty_clubs_block_without_previous_baseline() -> None:
     assert result.decision is Decision.BLOCKED
 
 
+@pytest.mark.parametrize("container", [{}, "clubs", None])
+def test_candidate_clubs_container_must_be_a_list(container: Any) -> None:
+    result = validation.validate_clubs({"clubs": container}, clubs(2))
+
+    assert result.decision is Decision.BLOCKED
+
+
+@pytest.mark.parametrize("container", [{}, "clubs", None])
+def test_previous_clubs_container_must_be_a_list(container: Any) -> None:
+    result = validation.validate_clubs(clubs(2), {"clubs": container})
+
+    assert result.decision is Decision.BLOCKED
+    assert "previous" in " ".join(result.reasons).lower()
+
+
+def test_club_entries_must_be_dicts_in_candidate_and_previous() -> None:
+    candidate = clubs(2)
+    candidate["clubs"][0] = "not a club"
+    assert validation.validate_clubs(candidate, clubs(2)).decision is Decision.BLOCKED
+
+    previous = clubs(2)
+    previous["clubs"][0] = "not a club"
+    assert validation.validate_clubs(clubs(2), previous).decision is Decision.BLOCKED
+
+
 @pytest.mark.parametrize(
     ("field", "value"),
     [("name", None), ("name", " "), ("number", None), ("number", " ")],
@@ -648,6 +784,17 @@ def test_valid_clubs_preserve_blank_optional_contact_fields() -> None:
     assert candidate == before
 
 
+@pytest.mark.parametrize("field", OPTIONAL_CLUB_FIELDS)
+def test_present_optional_club_fields_must_be_strings(field: str) -> None:
+    candidate = clubs(2)
+    candidate["clubs"][0][field] = 17
+
+    result = validation.validate_clubs(candidate, clubs(2))
+
+    assert result.decision is Decision.BLOCKED
+    assert field in " ".join(result.reasons)
+
+
 def test_archive_candidate_must_retain_every_previous_season() -> None:
     result = validation.validate_archives({"2025/26"}, {"2024/25", "2025/26"})
 
@@ -667,6 +814,48 @@ def test_archive_requires_nonempty_previous_baseline(candidate: set[str]) -> Non
 
     assert result.decision is Decision.BLOCKED
     assert "previous" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize(
+    ("candidate", "previous"),
+    [(["2025/26"], {"2025/26"}), ({"2025/26"}, ["2025/26"]), ({}, {})],
+)
+def test_archive_containers_must_be_actual_sets(
+    candidate: Any, previous: Any
+) -> None:
+    try:
+        result = validation.validate_archives(candidate, previous)
+    except Exception as error:
+        pytest.fail(f"validator raised for malformed containers: {error}")
+
+    assert result.decision is Decision.BLOCKED
+    assert "set" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize("invalid", ["2024/27", "season 2024/25", 2025])
+def test_archive_rejects_invalid_season_identifiers(invalid: Any) -> None:
+    result = validation.validate_archives({"2024/25", invalid}, {"2024/25"})
+
+    assert result.decision is Decision.BLOCKED
+    assert "invalid" in " ".join(result.reasons).lower()
+
+
+def test_archive_rejects_duplicate_normalized_seasons() -> None:
+    result = validation.validate_archives(
+        {"2024/25", "2024-2025"}, {"2024/25"}
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "duplicate" in " ".join(result.reasons).lower()
+
+
+def test_archive_compares_canonical_season_labels() -> None:
+    result = validation.validate_archives(
+        {"2024-2025", "2025/26"}, {"2024/25"}
+    )
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2025/26"
 
 
 @pytest.mark.parametrize(
@@ -745,6 +934,33 @@ def test_json_js_pair_reports_mismatch_deterministically() -> None:
     assert validation.validate_json_js_pair(
         {"name": "Schömberg"}, 'window.DATA = {"name":"Pforzheim"};', "DATA"
     ) == (False, "JSON and JavaScript payloads differ")
+
+
+@pytest.mark.parametrize(
+    ("json_payload", "javascript"),
+    [
+        ({"value": True}, 'window.DATA = {"value": 1};'),
+        (
+            {"nested": [{"value": False}]},
+            'window.DATA = {"nested": [{"value": 0}]};',
+        ),
+    ],
+)
+def test_json_js_pair_uses_strict_nested_json_types(
+    json_payload: Any, javascript: str
+) -> None:
+    assert validation.validate_json_js_pair(
+        json_payload, javascript, "DATA"
+    ) == (False, "JSON and JavaScript payloads differ")
+
+
+@pytest.mark.parametrize("invalid_payload", [{"value": {1, 2}}, {"value": float("nan")}])
+def test_json_js_pair_reports_json_serialization_failures(
+    invalid_payload: Any,
+) -> None:
+    assert validation.validate_json_js_pair(
+        invalid_payload, 'window.DATA = {"value": null};', "DATA"
+    ) == (False, "JSON payload is not valid canonical JSON")
 
 
 @pytest.mark.parametrize(
