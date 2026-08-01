@@ -16,6 +16,22 @@ LIGAPOKAL_URLS = [
     f"{BASE_URL}/archiv/2024-2025/",
 ]
 
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
 async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
@@ -262,19 +278,9 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
         output_path.write_text(js_content, encoding="utf-8", newline="\n")
         print(f"Archive tables saved to {output_path}.")
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=Path("."),
-        help="Directory for candidate output files",
-    )
-    parser.add_argument(
-        "--artifacts-dir",
-        type=Path,
-        default=Path("artifacts"),
-        help="Directory for failure diagnostics",
-    )
-    args = parser.parse_args()
+def main(argv=None):
+    args = parse_args(argv)
     asyncio.run(scrape_archive_tables(args.output_dir, args.artifacts_dir))
+
+if __name__ == "__main__":
+    main()

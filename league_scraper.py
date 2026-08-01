@@ -12,6 +12,22 @@ DATA_FILE = "league_data.json"
 BASE_URL = "https://bwedl.de"
 START_URL = "https://bwedl.de/tabellen/"
 
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
 def load_data():
     if os.path.exists(DATA_FILE):
         try:
@@ -189,7 +205,8 @@ def scrape_league(page, league_url, league_name, data):
         except Exception as e:
             print(f"  [Error] extracting cup data for {league_name}: {e}")
 
-def main(output_dir=Path("."), artifacts_dir=Path("artifacts")):
+def main(argv=None):
+    args = parse_args(argv)
     data = load_data()
     
     print(f"Connecting to {START_URL}...")
@@ -224,22 +241,8 @@ def main(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             
         browser.close()
 
-    save_data(data, output_dir)
+    save_data(data, args.output_dir)
     print("\n[INFO] Scraping completed. Data saved to league_data.json")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=Path("."),
-        help="Directory for candidate output files",
-    )
-    parser.add_argument(
-        "--artifacts-dir",
-        type=Path,
-        default=Path("artifacts"),
-        help="Directory for failure diagnostics",
-    )
-    args = parser.parse_args()
-    main(args.output_dir, args.artifacts_dir)
+    main()

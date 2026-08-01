@@ -13,6 +13,22 @@ DATA_FILE_JS = "club_data.js"
 START_URL = "https://www.bwedl.de/vereine/"
 BASE_URL = "https://www.bwedl.de"
 
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
 def save_data(data, output_dir=Path(".")):
     data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
 
@@ -177,7 +193,8 @@ def scrape_club_details(page, url):
         print(f"  [Error] scraping details: {e}")
         return {}
 
-def main(output_dir=Path("."), artifacts_dir=Path("artifacts")):
+def main(argv=None):
+    args = parse_args(argv)
     data = {"last_updated": "", "clubs": []}
     
     print(f"Connecting to {START_URL}...")
@@ -285,21 +302,7 @@ def main(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             
         browser.close()
         
-    save_data(data, output_dir)
+    save_data(data, args.output_dir)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=Path("."),
-        help="Directory for candidate output files",
-    )
-    parser.add_argument(
-        "--artifacts-dir",
-        type=Path,
-        default=Path("artifacts"),
-        help="Directory for failure diagnostics",
-    )
-    args = parser.parse_args()
-    main(args.output_dir, args.artifacts_dir)
+    main()

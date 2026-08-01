@@ -9,6 +9,22 @@ from pathlib import Path
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
 
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
 async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Scrape from {ARCHIVE_URL}")
     async with async_playwright() as p:
@@ -330,21 +346,11 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         output_path.write_text(js_content, encoding="utf-8", newline="\n")
         print(f"Archive data saved to {output_path}.")
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=Path("."),
-        help="Directory for candidate output files",
-    )
-    parser.add_argument(
-        "--artifacts-dir",
-        type=Path,
-        default=Path("artifacts"),
-        help="Directory for failure diagnostics",
-    )
-    args = parser.parse_args()
+def main(argv=None):
+    args = parse_args(argv)
     asyncio.run(scrape_archive(args.output_dir, args.artifacts_dir))
+
+if __name__ == "__main__":
+    main()
 
 
