@@ -130,3 +130,25 @@ def test_structured_failure_redacts_authorization_query_script_and_paths(tmp_pat
     assert "query-secret" not in line
     assert "script-secret" not in line
     assert "path-secret" not in line
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        '{"password":"hunter2"}',
+        "{'Authorization': 'Bearer top-secret'}",
+        "password: correct horse battery staple",
+        "user=safe, token=first secret, API-Key = second secret; mode=safe",
+        "https://example.test/?ToKeN=query-secret&mode=safe",
+        '[{"PASSWD" = "quoted words"}, {"secret": bare words}]',
+    ],
+)
+def test_structured_failure_redacts_structured_credential_values(message):
+    line = structured_failure("scraper", RuntimeError(message), None)
+
+    for leaked in (
+        "hunter2", "top-secret", "correct horse", "first secret",
+        "second secret", "query-secret", "quoted words", "bare words",
+    ):
+        assert leaked not in line
+    assert "[REDACTED]" in line

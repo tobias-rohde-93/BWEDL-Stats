@@ -11,10 +11,15 @@ import unicodedata
 from typing import Any, Callable, Iterable, Iterator
 
 
-_AUTHORIZATION = re.compile(r"(?im)(authorization\s*:\s*)[^\r\n]+")
-_SECRET = re.compile(
-    r"(?i)(\b(?:token|password|passwd|secret|api[_-]?key)\b\s*[:=]\s*|"
-    r"[?&](?:token|password|passwd|secret|api[_-]?key)=)[^\s&;,]+"
+_SENSITIVE_ASSIGNMENT = re.compile(
+    r"(?ix)"
+    r"(?P<prefix>(?<![A-Za-z0-9_])"
+    r"(?P<key_quote>['\"]?)"
+    r"(?:authorization|password|passwd|token|secret|api[_-]?key)"
+    r"(?P=key_quote)\s*[:=]\s*)"
+    r"(?:"
+    r"(?P<value_quote>['\"])(?P<quoted>.*?)(?P=value_quote)"
+    r"|(?P<unquoted>[^,;\r\n}\]&]*))"
 )
 
 
@@ -306,8 +311,11 @@ class AsyncDiagnosticSession:
 
 
 def _safe_message(value: object, limit: int = 300) -> str:
-    message = _AUTHORIZATION.sub(r"\1[REDACTED]", str(value))
-    message = _SECRET.sub(lambda match: f"{match.group(1)}[REDACTED]", message)
+    def redact(match: re.Match) -> str:
+        quote = match.group("value_quote") or ""
+        return f'{match.group("prefix")}{quote}[REDACTED]{quote}'
+
+    message = _SENSITIVE_ASSIGNMENT.sub(redact, str(value))
     message = message.replace("\r", " ").replace("\n", " ")
     return message[:limit]
 
