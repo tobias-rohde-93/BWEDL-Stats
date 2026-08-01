@@ -500,6 +500,74 @@ def test_empty_ranking_overview_is_valid_candidate_for_validator_retain(
     assert not list(tmp_path.iterdir())
 
 
+class _RankingCategoryLink:
+    def __init__(self, name: str):
+        self.name = name
+
+    def get_attribute(self, attribute: str):
+        assert attribute == "href"
+        return f"/ranglisten/{self.name.casefold().replace(' ', '-')}/"
+
+    def inner_text(self):
+        return self.name
+
+
+class _RankingCategoryLinks:
+    def all(self):
+        return [
+            _RankingCategoryLink(name)
+            for name in ("Bezirksliga", "A-Klasse", "B-Klasse", "C-Klasse")
+        ]
+
+
+class _NoRankingTable:
+    def count(self):
+        return 0
+
+
+class _EmptyRankingCategoriesPage(_Page):
+    def locator(self, selector):
+        if selector == "a[href*='/ranglisten/']":
+            return _RankingCategoryLinks()
+        if selector == "div.table-responsive table":
+            return _NoRankingTable()
+        raise AssertionError(selector)
+
+
+def test_ranking_categories_without_tables_save_empty_candidate(
+    tmp_path, monkeypatch
+):
+    playwright = _Playwright()
+    playwright.browser.context.page = _EmptyRankingCategoriesPage()
+    saved = []
+    monkeypatch.setattr(ranking_scraper, "sync_playwright", lambda: playwright)
+    monkeypatch.setattr(
+        ranking_scraper,
+        "save_data",
+        lambda data, output: saved.append((data, output)),
+    )
+    output_dir = tmp_path / "candidate"
+    artifacts_dir = tmp_path / "artifacts"
+
+    assert ranking_scraper.run_scrape(output_dir, artifacts_dir) == 0
+    assert saved == [
+        (
+            {
+                "last_updated": "",
+                "rankings": {
+                    "Bezirksliga": "",
+                    "A-Klasse": "",
+                    "B-Klasse": "",
+                    "C-Klasse": "",
+                },
+                "players": [],
+            },
+            output_dir,
+        )
+    ]
+    assert not artifacts_dir.exists()
+
+
 def test_league_initialization_does_not_read_published_data_for_candidate(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

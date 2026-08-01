@@ -74,6 +74,7 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         # 2. Scrape each ranking
         for rank in ranking_links:
             print(f"Scraping {rank['name']}...")
+            data["rankings"][rank["name"]] = ""
             try:
                 page.goto(rank['url'])
                 
@@ -149,9 +150,6 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                         data["players"].append(p)
                 else:
                     print(f"  [Warn] No table found for {rank['name']}")
-                    failures.append(
-                        RuntimeError(f"No table found for {rank['name']}")
-                    )
                     
             except Exception as e:
                 failures.append(e)
@@ -161,11 +159,6 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             raise RuntimeError(
                 f"ranking scrape incomplete ({len(failures)} item failures)"
             ) from failures[0]
-
-        for rank in ranking_links:
-            category = rank["name"]
-            if not any(player.get("league") == category for player in data["players"]):
-                raise RuntimeError(f"No players found for {category}")
 
         save_data(data, output_dir)
 
