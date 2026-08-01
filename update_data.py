@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import subprocess
 import sys
 import uuid
@@ -17,7 +18,7 @@ from pipeline.validation import (
     Decision,
     ValidationResult,
     parse_javascript_assignment,
-    validate_archives,
+    validate_archive_payloads,
     validate_clubs,
     validate_json_js_pair,
     validate_leagues,
@@ -88,61 +89,44 @@ def _load_status(root: Path) -> dict[str, Any]:
     if not valid:
         raise ValueError(reason)
     domains = payload.get("domains")
-    if not isinstance(domains, dict) or any(domain not in domains for domain in DOMAIN_ORDER):
+    if not isinstance(domains, dict) or set(domains) != set(DOMAIN_ORDER):
         raise ValueError("data status lacks canonical domains")
+    _parse_aware_status_time(payload.get("generated_at"), "generated_at")
+    for domain in DOMAIN_ORDER:
+        record = domains[domain]
+        if not isinstance(record, dict) or set(record) != {"season", "state", "updated_at"}:
+            raise ValueError(f"invalid {domain} status record")
+        if not isinstance(record["season"], str) or not record["season"].strip():
+            raise ValueError(f"invalid {domain} status season")
+        if record["state"] not in {"current", "retained"}:
+            raise ValueError(f"invalid {domain} status state")
+        _parse_aware_status_time(record["updated_at"], f"{domain} updated_at")
     return payload
+
+
+def _parse_aware_status_time(value: Any, label: str) -> datetime:
+    if not isinstance(value, str):
+        raise ValueError(f"invalid {label}")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as error:
+        raise ValueError(f"invalid {label}") from error
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError(f"invalid {label}")
+    return parsed
 
 
 def _load_js(path: Path, global_name: str) -> Any:
     return parse_javascript_assignment(path.read_text(encoding="utf-8"), global_name)
 
 
-def _archive_data_seasons(payload: Any) -> set[Any]:
-    if not isinstance(payload, dict):
-        raise ValueError("archive data must be an object")
-    seasons: set[Any] = set()
-    for history in payload.values():
-        if not isinstance(history, list):
-            raise ValueError("archive histories must be lists")
-        for item in history:
-            if not isinstance(item, dict) or "season" not in item:
-                raise ValueError("archive history item lacks season")
-            season = item["season"]
-            seasons.add(season.strip() if isinstance(season, str) else season)
-    return seasons
-
-
-def _archive_table_seasons(payload: Any) -> set[Any]:
-    if not isinstance(payload, list):
-        raise ValueError("archive tables must be a list")
-    seasons: set[Any] = set()
-    for item in payload:
-        if not isinstance(item, dict) or "season" not in item:
-            raise ValueError("archive table item lacks season")
-        season = item["season"]
-        seasons.add(season.strip() if isinstance(season, str) else season)
-    return seasons
-
-
 def _validate_archives(staging: Path, root: Path) -> ValidationResult:
-    candidate_data = _archive_data_seasons(_load_js(staging / "archive_data.js", "ARCHIVE_DATA"))
-    previous_data = _archive_data_seasons(_load_js(root / "archive_data.js", "ARCHIVE_DATA"))
-    candidate_tables = _archive_table_seasons(_load_js(staging / "archive_tables.js", "ARCHIVE_TABLES"))
-    previous_tables = _archive_table_seasons(_load_js(root / "archive_tables.js", "ARCHIVE_TABLES"))
-    data_result = validate_archives(candidate_data, previous_data)
-    table_result = validate_archives(candidate_tables, previous_tables)
-    if data_result.decision is Decision.PUBLISH and table_result.decision is Decision.PUBLISH:
-        metrics = {
-            "history_candidate_seasons": data_result.metrics["candidate_seasons"],
-            "history_previous_seasons": data_result.metrics["previous_seasons"],
-            "table_candidate_seasons": table_result.metrics["candidate_seasons"],
-            "table_previous_seasons": table_result.metrics["previous_seasons"],
-        }
-        return ValidationResult("archives", Decision.PUBLISH, max(data_result.effective_season, table_result.effective_season), metrics=metrics)
-    reasons = tuple(f"history: {reason}" for reason in data_result.reasons) + tuple(
-        f"tables: {reason}" for reason in table_result.reasons
+    return validate_archive_payloads(
+        _load_js(staging / "archive_data.js", "ARCHIVE_DATA"),
+        _load_js(root / "archive_data.js", "ARCHIVE_DATA"),
+        _load_js(staging / "archive_tables.js", "ARCHIVE_TABLES"),
+        _load_js(root / "archive_tables.js", "ARCHIVE_TABLES"),
     )
-    return ValidationResult("archives", Decision.BLOCKED, min(data_result.effective_season, table_result.effective_season), reasons)
 
 
 def _iso(timestamp: datetime) -> str:
@@ -278,9 +262,15 @@ def run_update(
                 results.append(_failed(domain, f"could not load strict data pair: {error}", season))
                 continue
             if domain == "leagues":
-                results.append(validate_leagues(candidate_payloads[domain], previous_payloads[domain]))
+                try:
+                    results.append(validate_leagues(candidate_payloads[domain], previous_payloads[domain]))
+                except Exception as error:
+                    results.append(_failed(domain, f"validation failed: {error}", season))
             elif domain == "clubs":
-                results.append(validate_clubs(candidate_payloads[domain], previous_payloads[domain]))
+                try:
+                    results.append(validate_clubs(candidate_payloads[domain], previous_payloads[domain]))
+                except Exception as error:
+                    results.append(_failed(domain, f"validation failed: {error}", season))
 
         league_result = next((item for item in results if item.domain == "leagues"), None)
         if "rankings" in candidate_payloads:
@@ -290,8 +280,29 @@ def run_update(
             if league_result is None or league_result.decision not in {Decision.PUBLISH, Decision.RETAIN}:
                 results.append(ValidationResult("rankings", Decision.BLOCKED, prior_rankings["season"], ("current league season is unavailable",)))
             else:
-                candidate_for_validation["season"] = league_result.effective_season
-                results.append(validate_rankings(candidate_for_validation, prior_rankings))
+                explicit_season = candidate_for_validation.get("season")
+                if not isinstance(explicit_season, str) or not explicit_season.strip():
+                    candidate_for_validation["season"] = league_result.effective_season
+                try:
+                    ranking_result = validate_rankings(candidate_for_validation, prior_rankings)
+                    if (
+                        isinstance(explicit_season, str)
+                        and explicit_season.strip()
+                        and ranking_result.decision is Decision.PUBLISH
+                        and ranking_result.effective_season != league_result.effective_season
+                    ):
+                        ranking_result = ValidationResult(
+                            "rankings",
+                            Decision.BLOCKED,
+                            prior_rankings["season"],
+                            ("Explicit ranking season does not match current league season",),
+                            ranking_result.metrics,
+                        )
+                except Exception as error:
+                    ranking_result = _failed(
+                        "rankings", f"validation failed: {error}", prior_rankings["season"]
+                    )
+                results.append(ranking_result)
 
         archive_scripts = ("archive_scraper.py", "archive_tables_scraper.py")
         failed_archives = [name for name in archive_scripts if scraper_codes[name] != 0]
@@ -309,38 +320,69 @@ def run_update(
     results = [indexed.get(domain, _failed(domain, "domain result was not produced")) for domain in DOMAIN_ORDER]
     ready = all(result.decision in {Decision.PUBLISH, Decision.RETAIN} for result in results)
     if ready and not dry_run and previous_status is not None:
-        status = _build_status(
-            previous_status,
-            results,
-            clock(),
-            _changed_domains(staging, root, results, previous_status),
-        )
-        write_json_pair(staging, "data_status", "DATA_STATUS", status)
         try:
+            status = _build_status(
+                previous_status,
+                results,
+                clock(),
+                _changed_domains(staging, root, results, previous_status),
+            )
+            write_json_pair(staging, "data_status", "DATA_STATUS", status)
             published = publish_domains(staging, root, results, additional_files=("data_status.json", "data_status.js"))
         except Exception as error:
-            first_publish = next(index for index, result in enumerate(results) if result.decision is Decision.PUBLISH)
-            failed = results[first_publish]
-            results[first_publish] = ValidationResult(failed.domain, Decision.FAILED, failed.effective_season, failed.reasons + (f"publication failed: {error}",), failed.metrics)
+            results = [
+                ValidationResult(
+                    result.domain,
+                    Decision.FAILED,
+                    result.effective_season,
+                    result.reasons + (f"prepublication failed: {error}",),
+                    result.metrics,
+                )
+                for result in results
+            ]
+            published = []
             ready = False
 
-    finished = clock()
-    write_report(root / "update_report.json", results, published, started, finished)
-    _write_concise(root / "update_status.json", _iso(finished), results)
+    try:
+        finished = clock()
+        write_report(root / "update_report.json", results, published, started, finished)
+        _write_concise(root / "update_status.json", _iso(finished), results)
+    except Exception:
+        print("error: could not write update report", file=sys.stderr)
+        return 1
     return 0 if ready else 1
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def _cleanup_generated_staging(root: Path, staging: Path) -> None:
+    expected_parent = (root / ".staging").resolve()
+    if not staging.exists() or staging.is_symlink():
+        return
+    resolved = staging.resolve()
+    if (
+        resolved.parent != expected_parent
+        or not resolved.name.startswith("run-")
+        or not resolved.is_dir()
+    ):
+        return
+    shutil.rmtree(resolved)
+
+
+def main(argv: Sequence[str] | None = None, *, root: Path | None = None) -> int:
     parser = argparse.ArgumentParser(description="Run and transactionally publish BWEDL data updates")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--staging-dir", type=Path)
     parser.add_argument("--artifacts-dir", type=Path)
     arguments = parser.parse_args(argv)
-    root = Path(__file__).resolve().parent
+    root = Path(root) if root is not None else Path(__file__).resolve().parent
     run_id = f"run-{uuid.uuid4()}"
+    generated_staging = arguments.staging_dir is None
     staging = arguments.staging_dir or root / ".staging" / run_id
     artifacts = arguments.artifacts_dir or root / "artifacts" / run_id
-    return run_update(root, staging, artifacts, dry_run=arguments.dry_run)
+    try:
+        return run_update(root, staging, artifacts, dry_run=arguments.dry_run)
+    finally:
+        if generated_staging:
+            _cleanup_generated_staging(root, staging)
 
 
 if __name__ == "__main__":

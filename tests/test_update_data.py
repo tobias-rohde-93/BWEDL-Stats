@@ -100,8 +100,8 @@ def seed_root(root: Path) -> None:
     write_json_pair(root, "league_data", "LEAGUE_DATA", leagues())
     write_json_pair(root, "ranking_data", "RANKING_DATA", rankings())
     write_json_pair(root, "club_data", "CLUB_DATA", clubs())
-    write_js(root / "archive_data.js", "ARCHIVE_DATA", {"1": [{"season": "20/22"}, {"season": "24/25"}]})
-    write_js(root / "archive_tables.js", "ARCHIVE_TABLES", [{"season": "2020/2022"}, {"season": "2024/25"}])
+    write_js(root / "archive_data.js", "ARCHIVE_DATA", {"1": [{"season": "20/22", "league": "A-Klasse"}, {"season": "24/25", "league": "A-Klasse"}]})
+    write_js(root / "archive_tables.js", "ARCHIVE_TABLES", [{"season": "2020/2022", "league": "A-Klasse", "rows": []}, {"season": "2024/25", "league": "A-Klasse", "rows": []}])
     write_json_pair(root, "data_status", "DATA_STATUS", status_payload())
 
 
@@ -117,9 +117,9 @@ def fake_runner(candidate_rankings: dict[str, Any] | None = None, *, fail_script
         elif script.name == "club_scraper.py":
             write_json_pair(output_dir, "club_data", "CLUB_DATA", clubs())
         elif script.name == "archive_scraper.py":
-            write_js(output_dir / "archive_data.js", "ARCHIVE_DATA", {"1": [{"season": "20/22"}, {"season": "24/25"}]})
+            write_js(output_dir / "archive_data.js", "ARCHIVE_DATA", {"1": [{"season": "20/22", "league": "A-Klasse"}, {"season": "24/25", "league": "A-Klasse"}]})
         elif script.name == "archive_tables_scraper.py":
-            write_js(output_dir / "archive_tables.js", "ARCHIVE_TABLES", [{"season": "2020/2022"}, {"season": "2024/25"}])
+            write_js(output_dir / "archive_tables.js", "ARCHIVE_TABLES", [{"season": "2020/2022", "league": "A-Klasse", "rows": []}, {"season": "2024/25", "league": "A-Klasse", "rows": []}])
         return 0
 
     return run
@@ -159,6 +159,23 @@ def test_complete_rankings_publish_with_league_season(tmp_path: Path) -> None:
     assert status["domains"]["rankings"] == {"season": "2026/27", "state": "current", "updated_at": "2026-08-01T15:30:00Z"}
     published = json.loads((root / "ranking_data.json").read_text(encoding="utf-8"))
     assert "season" not in published
+
+
+def test_stale_explicit_ranking_season_blocks_whole_publication(tmp_path: Path) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    candidate = rankings()
+    candidate["season"] = "2025/26"
+    before = snapshot(root)
+
+    assert update_data.run_update(
+        root, staging, artifacts, scraper_runner=fake_runner(candidate), clock=lambda: NOW
+    ) == 1
+
+    assert snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["domains"][1]["decision"] == "blocked"
+    assert "season" in " ".join(report["domains"][1]["reasons"]).lower()
 
 
 @pytest.mark.parametrize("candidate", [rankings(REQUIRED_RANKING_CATEGORIES[:3]), None])
@@ -300,3 +317,143 @@ def test_each_scraper_receives_its_own_artifact_subdirectory(tmp_path: Path) -> 
         for script_name in update_data.SCRAPERS
     }
     assert len(set(observed.values())) == 5
+
+
+@pytest.mark.parametrize(
+    ("validator_name", "domain"),
+    [
+        ("validate_leagues", "leagues"),
+        ("validate_rankings", "rankings"),
+        ("validate_clubs", "clubs"),
+        ("_validate_archives", "archives"),
+    ],
+)
+def test_validator_exception_becomes_canonical_failed_report(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    validator_name: str,
+    domain: str,
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    before = snapshot(root)
+
+    def explode(*args: Any, **kwargs: Any) -> Any:
+        raise RuntimeError("validator exploded")
+
+    monkeypatch.setattr(update_data, validator_name, explode)
+    assert update_data.run_update(
+        root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW
+    ) == 1
+    assert snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert [item["domain"] for item in report["domains"]] == list(update_data.DOMAIN_ORDER)
+    failed = next(item for item in report["domains"] if item["domain"] == domain)
+    assert failed["decision"] == "failed"
+    assert "validator exploded" in " ".join(failed["reasons"])
+
+
+@pytest.mark.parametrize("stage", ["changed", "status", "status_write", "publisher"])
+def test_prepublication_exception_is_reported_without_public_mutation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, stage: str
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    before = snapshot(root)
+
+    def explode(*args: Any, **kwargs: Any) -> Any:
+        raise RuntimeError(f"{stage} exploded")
+
+    if stage == "changed":
+        monkeypatch.setattr(update_data, "_changed_domains", explode)
+    elif stage == "status":
+        monkeypatch.setattr(update_data, "_build_status", explode)
+    elif stage == "status_write":
+        real_write = update_data.write_json_pair
+
+        def fail_status(output_dir: Path, stem: str, global_name: str, payload: dict[str, Any]):
+            if stem == "data_status":
+                raise RuntimeError("status_write exploded")
+            return real_write(output_dir, stem, global_name, payload)
+
+        monkeypatch.setattr(update_data, "write_json_pair", fail_status)
+    else:
+        monkeypatch.setattr(update_data, "publish_domains", explode)
+
+    assert update_data.run_update(
+        root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW
+    ) == 1
+    assert snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["success"] is False
+    assert len(report["domains"]) == 4
+
+
+@pytest.mark.parametrize(
+    "mutate",
+    [
+        lambda status: status.update({"generated_at": "not-a-time"}),
+        lambda status: status["domains"]["clubs"].update({"state": "maybe"}),
+        lambda status: status["domains"]["clubs"].update({"season": " "}),
+        lambda status: status["domains"]["clubs"].update({"updated_at": "2026-08-01"}),
+        lambda status: status["domains"].update({"extra": dict(status["domains"]["clubs"])}),
+    ],
+)
+def test_malformed_prior_status_becomes_controlled_failed_report(
+    tmp_path: Path, mutate: Any
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    malformed = status_payload()
+    mutate(malformed)
+    write_json_pair(root, "data_status", "DATA_STATUS", malformed)
+
+    assert update_data.run_update(
+        root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW
+    ) == 1
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert len(report["domains"]) == 4
+    assert all(item["decision"] == "failed" for item in report["domains"])
+
+
+def test_main_removes_only_its_generated_staging_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    generated = root / ".staging" / "run-fixed"
+
+    def fake_update(root_arg: Path, staging: Path, artifacts: Path, **kwargs: Any) -> int:
+        assert root_arg == root
+        staging.mkdir(parents=True)
+        (staging / "diagnostic.txt").write_text("temporary", encoding="utf-8")
+        return 0
+
+    monkeypatch.setattr(update_data.uuid, "uuid4", lambda: "fixed")
+    monkeypatch.setattr(update_data, "run_update", fake_update)
+
+    assert update_data.main([], root=root) == 0
+    assert not generated.exists()
+
+
+def test_main_preserves_explicit_and_nonmatching_staging_paths(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    explicit = tmp_path / "caller-staging"
+    nonmatching = root / ".staging" / "keep-me"
+    nonmatching.mkdir(parents=True)
+    (nonmatching / "sentinel.txt").write_text("keep", encoding="utf-8")
+
+    def fake_update(root_arg: Path, staging: Path, artifacts: Path, **kwargs: Any) -> int:
+        staging.mkdir(parents=True)
+        (staging / "sentinel.txt").write_text("keep", encoding="utf-8")
+        return 0
+
+    monkeypatch.setattr(update_data, "run_update", fake_update)
+
+    assert update_data.main(["--staging-dir", str(explicit)], root=root) == 0
+    assert (explicit / "sentinel.txt").read_text(encoding="utf-8") == "keep"
+    update_data._cleanup_generated_staging(root, nonmatching)
+    assert (nonmatching / "sentinel.txt").read_text(encoding="utf-8") == "keep"

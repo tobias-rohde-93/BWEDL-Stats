@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 from collections.abc import Mapping
 from dataclasses import dataclass, field
@@ -647,6 +648,150 @@ def validate_archives(
         decision=Decision.PUBLISH,
         effective_season=max(canonical_candidate, default="unknown"),
         metrics=metrics,
+    )
+
+
+def _archive_fingerprint(record: Any) -> str | None:
+    if not isinstance(record, dict) or not _is_strict_json(record):
+        return None
+    try:
+        return json.dumps(
+            record,
+            sort_keys=True,
+            ensure_ascii=False,
+            allow_nan=False,
+            separators=(",", ":"),
+        )
+    except (TypeError, ValueError):
+        return None
+
+
+def _is_strict_json(value: Any) -> bool:
+    if value is None or isinstance(value, (str, bool, int)):
+        return True
+    if isinstance(value, float):
+        return math.isfinite(value)
+    if isinstance(value, list):
+        return all(_is_strict_json(item) for item in value)
+    if isinstance(value, dict):
+        return all(
+            isinstance(key, str) and _is_strict_json(item)
+            for key, item in value.items()
+        )
+    return False
+
+
+def validate_archive_payloads(
+    candidate_data: Any,
+    previous_data: Any,
+    candidate_tables: Any,
+    previous_tables: Any,
+) -> ValidationResult:
+    reasons: list[str] = []
+    candidate_seasons: set[Any] = set()
+    previous_seasons: set[Any] = set()
+
+    def inspect_data(payload: Any, label: str, seasons: set[Any]) -> dict[str, set[str]]:
+        fingerprints: dict[str, set[str]] = {}
+        if not isinstance(payload, dict) or not payload:
+            reasons.append(f"{label} archive player data must be a nonempty object")
+            return fingerprints
+        for player_key, history in payload.items():
+            if not isinstance(player_key, str) or not player_key.strip():
+                reasons.append(f"{label} archive player key must be nonblank")
+                continue
+            if not isinstance(history, list) or not history:
+                reasons.append(f"{label} archive player history must be a nonempty list")
+                continue
+            seen: set[str] = set()
+            for record in history:
+                fingerprint = _archive_fingerprint(record)
+                if fingerprint is None:
+                    reasons.append(f"{label} archive history record is not strict JSON object")
+                    continue
+                season = record.get("season")
+                league = record.get("league")
+                canonical_season = _parse_archive_season(season)
+                if canonical_season is None:
+                    reasons.append(f"{label} archive history record has invalid season")
+                else:
+                    seasons.add(canonical_season)
+                if not isinstance(league, str) or not league.strip():
+                    reasons.append(f"{label} archive history record has blank league")
+                if fingerprint in seen:
+                    reasons.append(f"{label} archive history has duplicate record")
+                seen.add(fingerprint)
+            fingerprints[player_key] = seen
+        return fingerprints
+
+    def inspect_tables(payload: Any, label: str, seasons: set[Any]) -> tuple[set[str], dict[tuple[str, str], int]]:
+        fingerprints: set[str] = set()
+        counts: dict[tuple[str, str], int] = {}
+        if not isinstance(payload, list) or not payload:
+            reasons.append(f"{label} archive tables must be a nonempty list")
+            return fingerprints, counts
+        for record in payload:
+            fingerprint = _archive_fingerprint(record)
+            if fingerprint is None:
+                reasons.append(f"{label} archive table record is not strict JSON object")
+                continue
+            season = record.get("season")
+            league = record.get("league")
+            rows = record.get("rows")
+            canonical_season = _parse_archive_season(season)
+            if canonical_season is None:
+                reasons.append(f"{label} archive table has invalid season")
+            else:
+                seasons.add(canonical_season)
+            if not isinstance(league, str) or not league.strip():
+                reasons.append(f"{label} archive table has blank league")
+            if not isinstance(rows, list):
+                reasons.append(f"{label} archive table rows must be a list")
+            if fingerprint in fingerprints:
+                reasons.append(f"{label} archive tables have duplicate record")
+            fingerprints.add(fingerprint)
+            if canonical_season is not None and isinstance(league, str) and league.strip():
+                key = (canonical_season, league.strip())
+                counts[key] = counts.get(key, 0) + 1
+        return fingerprints, counts
+
+    candidate_players = inspect_data(candidate_data, "Candidate", candidate_seasons)
+    previous_players = inspect_data(previous_data, "Previous", previous_seasons)
+    candidate_table_records, candidate_counts = inspect_tables(candidate_tables, "Candidate", candidate_seasons)
+    previous_table_records, previous_counts = inspect_tables(previous_tables, "Previous", previous_seasons)
+
+    for player_key, previous_records in previous_players.items():
+        if player_key not in candidate_players:
+            reasons.append(f"Candidate archive is missing previous player: {player_key}")
+            continue
+        missing_records = previous_records - candidate_players[player_key]
+        if missing_records:
+            reasons.append(f"Candidate archive player {player_key} lost {len(missing_records)} record(s)")
+    missing_tables = previous_table_records - candidate_table_records
+    if missing_tables:
+        reasons.append(f"Candidate archive lost {len(missing_tables)} table record(s)")
+    for key, previous_count in previous_counts.items():
+        if candidate_counts.get(key, 0) < previous_count:
+            reasons.append(f"Candidate archive table count loss for {key[0]} {key[1]}")
+
+    season_result = validate_archives(candidate_seasons, previous_seasons)
+    reasons.extend(season_result.reasons)
+    metrics = {
+        "candidate_players": len(candidate_players),
+        "previous_players": len(previous_players),
+        "candidate_records": sum(len(items) for items in candidate_players.values()),
+        "previous_records": sum(len(items) for items in previous_players.values()),
+        "candidate_tables": len(candidate_table_records),
+        "previous_tables": len(previous_table_records),
+        "candidate_seasons": len(candidate_seasons),
+        "previous_seasons": len(previous_seasons),
+    }
+    return ValidationResult(
+        "archives",
+        Decision.BLOCKED if reasons else Decision.PUBLISH,
+        season_result.effective_season,
+        tuple(reasons),
+        metrics,
     )
 
 

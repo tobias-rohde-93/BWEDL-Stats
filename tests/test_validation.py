@@ -868,6 +868,68 @@ def test_archive_normalizes_short_and_multi_year_historical_labels() -> None:
     assert result.effective_season == "2025/26"
 
 
+def archive_record(season: str, *, league: str = "A-Klasse", rank: int = 1) -> dict[str, Any]:
+    return {"season": season, "league": league, "rank": rank, "points": 10, "name": "Player"}
+
+
+def archive_table(season: str, *, league: str = "A-Klasse", marker: int = 1) -> dict[str, Any]:
+    return {"season": season, "league": league, "rows": [{"rank": marker, "name": "Player"}]}
+
+
+@pytest.mark.parametrize(
+    ("candidate_data", "candidate_tables", "reason"),
+    [
+        ({"p1": [archive_record("24/25")]}, [archive_table("24/25")], "record"),
+        ({"p1": [archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25")], "table"),
+        ({}, [archive_table("24/25"), archive_table("25/26")], "player"),
+        ({"p1": [archive_record("24/25"), archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25"), archive_table("25/26")], "duplicate"),
+        ({"p1": [archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25"), archive_table("24/25"), archive_table("25/26")], "duplicate"),
+        ({"p1": []}, [archive_table("24/25"), archive_table("25/26")], "nonempty"),
+    ],
+)
+def test_archive_payload_completeness_blocks_loss_or_malformed_data(
+    candidate_data: Any, candidate_tables: Any, reason: str
+) -> None:
+    previous_data = {"p1": [archive_record("24/25"), archive_record("25/26")]}
+    previous_tables = [archive_table("24/25"), archive_table("25/26")]
+
+    result = validation.validate_archive_payloads(
+        candidate_data, previous_data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert reason in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_equal_or_superset_publishes() -> None:
+    previous_data = {"p1": [archive_record("20/22"), archive_record("24/25")]}
+    previous_tables = [archive_table("2020/2022"), archive_table("24/25")]
+    candidate_data = deepcopy(previous_data)
+    candidate_data["p2"] = [archive_record("25/26", league="B-Klasse")]
+    candidate_tables = deepcopy(previous_tables) + [archive_table("25/26", league="B-Klasse")]
+
+    result = validation.validate_archive_payloads(
+        candidate_data, previous_data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2025/26"
+
+
+def test_archive_payload_rejects_non_json_nested_types() -> None:
+    previous_data = {"p1": [archive_record("24/25")]}
+    candidate_data = deepcopy(previous_data)
+    candidate_data["p2"] = [{**archive_record("25/26"), "extra": ("tuple",)}]
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        candidate_data, previous_data, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "strict json" in " ".join(result.reasons).lower()
+
+
 @pytest.mark.parametrize(
     ("candidate", "previous", "expected_metrics"),
     [
