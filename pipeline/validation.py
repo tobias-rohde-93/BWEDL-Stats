@@ -541,6 +541,10 @@ def validate_archives(
     )
 
 
+def _reject_json_constant(constant: str) -> Any:
+    raise ValueError(f"Non-JSON constant: {constant}")
+
+
 def parse_javascript_assignment(text: str, global_name: str) -> Any:
     if re.fullmatch(r"[A-Za-z_$][A-Za-z0-9_$]*", global_name) is None:
         raise ValueError("Invalid JavaScript global name")
@@ -554,8 +558,10 @@ def parse_javascript_assignment(text: str, global_name: str) -> Any:
     if assignment is None:
         raise ValueError(f"Expected assignment to window.{global_name}")
     try:
-        return json.loads(assignment.group(1))
-    except json.JSONDecodeError as error:
+        return json.loads(
+            assignment.group(1), parse_constant=_reject_json_constant
+        )
+    except (json.JSONDecodeError, ValueError) as error:
         raise ValueError("Assignment payload is not valid JSON") from error
 
 

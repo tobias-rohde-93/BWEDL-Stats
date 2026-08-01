@@ -721,6 +721,16 @@ def test_parse_javascript_assignment_rejects_non_exact_input(
         validation.parse_javascript_assignment(text, global_name)
 
 
+@pytest.mark.parametrize("constant", ["NaN", "Infinity", "-Infinity"])
+def test_parse_javascript_assignment_rejects_non_json_constants(
+    constant: str,
+) -> None:
+    with pytest.raises(ValueError, match="valid JSON"):
+        validation.parse_javascript_assignment(
+            f'window.DATA = {{"value": {constant}}};', "DATA"
+        )
+
+
 def test_json_js_pair_accepts_equal_german_data() -> None:
     payload = {"club": "DC Ungültig", "city": "Königsbach"}
     javascript = "window.CLUB_DATA = " + json.dumps(payload, ensure_ascii=False) + ";"
@@ -746,3 +756,17 @@ def test_json_js_pair_reports_parse_failures(javascript: str) -> None:
 
     assert valid is False
     assert reason.startswith("Invalid JavaScript assignment:")
+
+
+@pytest.mark.parametrize("constant", ["NaN", "Infinity", "-Infinity"])
+def test_json_js_pair_reports_non_json_constants_deterministically(
+    constant: str,
+) -> None:
+    result = validation.validate_json_js_pair(
+        {"value": None}, f'window.DATA = {{"value": {constant}}};', "DATA"
+    )
+
+    assert result == (
+        False,
+        "Invalid JavaScript assignment: Assignment payload is not valid JSON",
+    )
