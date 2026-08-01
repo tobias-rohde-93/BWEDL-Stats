@@ -1,8 +1,12 @@
 
+import argparse
 import asyncio
 from playwright.async_api import async_playwright
 import json
 import re
+from pathlib import Path
+from pipeline.diagnostics import AsyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
@@ -14,19 +18,73 @@ LIGAPOKAL_URLS = [
     f"{BASE_URL}/archiv/2024-2025/",
 ]
 
-async def scrape_archive_tables():
+COMPETITION_TERMS = (
+    "klasse",
+    "liga",
+    "pokal",
+    "meisterschaft",
+    "rangliste",
+    "tabelle",
+)
+
+
+def is_archive_url(href: str) -> bool:
+    return normalize_bwedl_url(href, "/archiv/") is not None
+
+
+def is_archive_season_link(href: str, text: str) -> bool:
+    safe_url = normalize_bwedl_url(href, "/archiv/")
+    if not isinstance(text, str) or not safe_url:
+        return False
+    match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(
+        r"(\d{4})[/-](\d{4})", safe_url
+    )
+    if not match:
+        return False
+    first_year, second_year = (int(year) for year in match.groups())
+    return first_year >= 2010 and 1 <= second_year - first_year <= 2
+
+
+def is_archive_sub_link(href: str, text: str) -> bool:
+    return (
+        isinstance(text, str)
+        and is_archive_url(href)
+        and any(term in text.casefold() for term in COMPETITION_TERMS)
+    )
+
+
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
+def save_archive_tables(data, output_dir=Path(".")) -> Path:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "archive_tables.js"
+    js_content = f"window.ARCHIVE_TABLES = {json.dumps(data, indent=2)};\n"
+    output_path.write_text(js_content, encoding="utf-8", newline="\n")
+    return output_path
+
+async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
-    async with async_playwright() as p:
-        browser = await p.chromium.launch()
-        page = await browser.new_page()
+    async with AsyncDiagnosticSession(
+        async_playwright, artifacts_dir, "archive_tables_scraper"
+    ) as diagnostics:
+        page = diagnostics.page
         
         # Go to Archive Overview
-        try:
-            await page.goto(ARCHIVE_URL, wait_until="networkidle", timeout=60000)
-        except Exception as e:
-            print(f"Error accessing archive url: {e}")
-            await browser.close()
-            return
+        await page.goto(ARCHIVE_URL, wait_until="networkidle", timeout=60000)
 
         # Extract Season Links
         season_links = await page.evaluate('''() => {
@@ -39,7 +97,10 @@ async def scrape_archive_tables():
         unique_seasons = {}
         for s in season_links:
             text = s['text']
-            href = s['href']
+            href = normalize_bwedl_url(s.get('href'), "/archiv/")
+
+            if not href or not is_archive_season_link(href, text):
+                continue
             
             # Identify if it's a season link (YYYY/YYYY or similar)
             match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(r"(\d{4})[/-](\d{4})", href)
@@ -71,6 +132,7 @@ async def scrape_archive_tables():
         print(f"Total URLs to scrape (including Ligapokal): {len(unique_seasons)}")
         
         all_tables = [] 
+        failures = []
 
         for url, season_name in unique_seasons.items():
             print(f"Scraping Season: {season_name} ({url})")
@@ -114,9 +176,14 @@ async def scrape_archive_tables():
 
                 urls_to_scrape = [url] # Always scrape the main landing page too
                 for link in sub_links:
-                    if link['href'] not in urls_to_scrape:
-                        print(f"  Found sub-page: {link['text']} -> {link['href']}")
-                        urls_to_scrape.append(link['href'])
+                    safe_url = normalize_bwedl_url(link.get('href'), "/archiv/")
+                    if (
+                        safe_url
+                        and is_archive_sub_link(safe_url, link.get('text'))
+                        and safe_url not in urls_to_scrape
+                    ):
+                        print(f"  Found sub-page: {link['text']} -> {safe_url}")
+                        urls_to_scrape.append(safe_url)
                 
                 # --- SUB-LINK LOGIC END ---
 
@@ -125,7 +192,8 @@ async def scrape_archive_tables():
                     if target_url != url:
                          try:
                              await page.goto(target_url, wait_until="networkidle", timeout=20000)
-                         except:
+                         except Exception as error:
+                             failures.append(error)
                              continue
                     
                     # Extract Tables on this page
@@ -242,44 +310,17 @@ async def scrape_archive_tables():
                                      })
                 
             except Exception as e:
-                print(f"  Error processing {season_name}: {e}")
+                failures.append(e)
+                print(f"  Error processing {season_name}")
 
-        await browser.close()
+        if failures:
+            raise RuntimeError(
+                f"archive tables scrape incomplete ({len(failures)} item failures)"
+            ) from failures[0]
         
-        # MERGE LOGIC START
-        existing_tables = []
-        try:
-            with open("archive_tables.js", "r", encoding="utf-8") as f:
-                content = f.read().strip()
-                if content.startswith("window.ARCHIVE_TABLES =") and content.endswith(";"):
-                    json_str = content[len("window.ARCHIVE_TABLES ="): -1]
-                    existing_tables = json.loads(json_str)
-                    print(f"Loaded existing archive tables: {len(existing_tables)} entries.")
-        except Exception as e:
-            print(f"No existing archive tables found or error reading: {e}")
-
-        # Merge Logic
-        # Uniquely identify a table by: Season + League
-        # If Season+League matches, overwrite with NEW (fresh scrape).
-        # If Old has Season+League that New doesn't, KEEP Old.
-        
-        print("Merging new tables into existing archive...")
-        
-        # Create a map key -> table for existing
-        table_map = {}
-        for t in existing_tables:
-            # Create a unique key. Warning: League names must be consistent.
-            # Using tuple (Season, League)
-            key = (t.get('season'), t.get('league'))
-            table_map[key] = t
-            
-        # Update with new
-        for t in all_tables:
-            key = (t.get('season'), t.get('league'))
-            table_map[key] = t # Overwrite or Add
-            
-        # Reconstruct list
-        final_tables = list(table_map.values())
+        final_tables = all_tables
+        if not final_tables:
+            raise RuntimeError("No archive tables found")
         
         # Sort by Season (descending) then League
         try:
@@ -287,12 +328,21 @@ async def scrape_archive_tables():
         except:
             pass # sorting not critical if strictly key-based access used later
 
-        print(f"Merge complete. Total tables: {len(final_tables)}")
-        
-        js_content = f"window.ARCHIVE_TABLES = {json.dumps(final_tables, indent=2)};"
-        with open("archive_tables.js", "w", encoding="utf-8") as f:
-            f.write(js_content)
-        print(f"Archive tables saved to archive_tables.js.")
+        output_path = save_archive_tables(final_tables, output_dir)
+        print(f"Archive tables saved to {output_path}.")
+
+    if diagnostics.error is not None:
+        return 1
+    return 0
+
+def main(argv=None):
+    args = parse_args(argv)
+    return scraper_status(
+        "archive_tables_scraper", args.artifacts_dir,
+        lambda: asyncio.run(
+            scrape_archive_tables(args.output_dir, args.artifacts_dir)
+        ),
+    )
 
 if __name__ == "__main__":
-    asyncio.run(scrape_archive_tables())
+    raise SystemExit(main())

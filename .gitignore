@@ -9,7 +9,10 @@ Thumbs.db
 node_modules/
 venv/
 .worktrees/
+.staging/
+artifacts/
 debug_*
 output.txt
 log.txt
 update_status.json
+update_report.json

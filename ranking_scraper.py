@@ -1,32 +1,53 @@
+import argparse
 import json
 import os
 import datetime
+from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+from pipeline.files import write_json_pair
+from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE_JSON = "ranking_data.json"
 DATA_FILE_JS = "ranking_data.js"
 START_URL = "https://www.bwedl.de/ranglisten/"
 BASE_URL = "https://www.bwedl.de"
 
-def save_data(data):
-    data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-    
-    with open(DATA_FILE_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-        
-    js_content = f"window.RANKING_DATA = {json.dumps(data, indent=4, ensure_ascii=False)};"
-    with open(DATA_FILE_JS, "w", encoding="utf-8") as f:
-        f.write(js_content)
-    print(f"Data saved to {DATA_FILE_JSON} and {DATA_FILE_JS}")
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
 
-def main():
+def save_data(data, output_dir=Path(".")):
+    data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+
+    json_path, javascript_path = write_json_pair(
+        output_dir, "ranking_data", "RANKING_DATA", data
+    )
+    print(f"Data saved to {json_path} and {javascript_path}")
+    return json_path, javascript_path
+
+def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     data = {"last_updated": "", "rankings": {}, "players": []}
     
     print(f"Connecting to {START_URL}...")
     
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+    with SyncDiagnosticSession(
+        sync_playwright, artifacts_dir, "ranking_scraper", headless=True
+    ) as diagnostics:
+        page = diagnostics.page
         page.goto(START_URL)
         
         # 1. Find ranking links
@@ -34,12 +55,22 @@ def main():
         links = page.locator("a[href*='/ranglisten/']").all()
         
         ranking_links = []
+        failures = []
         for link in links:
-            href = link.get_attribute("href")
-            text = link.inner_text().strip()
+            try:
+                href = link.get_attribute("href")
+                text = link.inner_text().strip()
+            except Exception as error:
+                failures.append(error)
+                continue
             
-            if href and href != "/ranglisten/" and "archiv" not in href.lower() and text:
-                full_url = BASE_URL + href if href.startswith("/") else href
+            full_url = normalize_bwedl_url(href, "/ranglisten/")
+            if (
+                full_url
+                and full_url != "https://www.bwedl.de/ranglisten/"
+                and "archiv" not in full_url.casefold()
+                and text
+            ):
                 # Dedupe
                 if not any(l['url'] == full_url for l in ranking_links):
                     ranking_links.append({'url': full_url, 'name': text})
@@ -49,6 +80,7 @@ def main():
         # 2. Scrape each ranking
         for rank in ranking_links:
             print(f"Scraping {rank['name']}...")
+            data["rankings"][rank["name"]] = ""
             try:
                 page.goto(rank['url'])
                 
@@ -126,11 +158,26 @@ def main():
                     print(f"  [Warn] No table found for {rank['name']}")
                     
             except Exception as e:
-                print(f"  [Error] scraping {rank['name']}: {e}")
+                failures.append(e)
+                print(f"  [Error] scraping {rank['name']}")
 
-        browser.close()
-        
-    save_data(data)
+        if failures:
+            raise RuntimeError(
+                f"ranking scrape incomplete ({len(failures)} item failures)"
+            ) from failures[0]
+
+        save_data(data, output_dir)
+
+    if diagnostics.error is not None:
+        return 1
+    return 0
+
+def main(argv=None):
+    args = parse_args(argv)
+    return scraper_status(
+        "ranking_scraper", args.artifacts_dir,
+        lambda: run_scrape(args.output_dir, args.artifacts_dir),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

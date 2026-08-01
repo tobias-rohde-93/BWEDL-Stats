@@ -1,24 +1,44 @@
+import argparse
 import json
 import os
 import datetime
 import time
+from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+from pipeline.files import write_json_pair
+from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE_JSON = "club_data.json"
 DATA_FILE_JS = "club_data.js"
 START_URL = "https://www.bwedl.de/vereine/"
 BASE_URL = "https://www.bwedl.de"
 
-def save_data(data):
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
+def save_data(data, output_dir=Path(".")):
     data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-    
-    with open(DATA_FILE_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-        
-    js_content = f"window.CLUB_DATA = {json.dumps(data, indent=4, ensure_ascii=False)};"
-    with open(DATA_FILE_JS, "w", encoding="utf-8") as f:
-        f.write(js_content)
-    print(f"Data saved to {DATA_FILE_JSON} and {DATA_FILE_JS}")
+
+    json_path, javascript_path = write_json_pair(
+        output_dir, "club_data", "CLUB_DATA", data
+    )
+    print(f"Data saved to {json_path} and {javascript_path}")
+    return json_path, javascript_path
 
 def scrape_club_details(page, url):
     print(f"  Scraping details from {url}...")
@@ -173,17 +193,18 @@ def scrape_club_details(page, url):
         return final_details
 
     except Exception as e:
-        print(f"  [Error] scraping details: {e}")
-        return {}
+        print("  [Error] scraping details")
+        raise RuntimeError("club detail scrape failed") from e
 
-def main():
+def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     data = {"last_updated": "", "clubs": []}
     
     print(f"Connecting to {START_URL}...")
     
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+    with SyncDiagnosticSession(
+        sync_playwright, artifacts_dir, "club_scraper", headless=True
+    ) as diagnostics:
+        page = diagnostics.page
         page.goto(START_URL)
         
         # Find all club links
@@ -209,10 +230,11 @@ def main():
             except:
                 text = ""
             
-            print(f"    Link: Text='{text}', Href='{href}'")
+            print(f"    Link text: '{text}'")
             
             # Basic validation
-            if not href or href == "/vereine/":
+            full_url = normalize_bwedl_url(href, "/vereine/")
+            if not full_url or full_url == "https://www.bwedl.de/vereine/":
                 continue
                 
             # Filter empty text
@@ -232,11 +254,12 @@ def main():
             #     continue
                 
             # URL base filtering
-            if "?" in href or "news" in href.lower() or "archiv" in href.lower() or "kalender" in href.lower():
-                print(f"      -> Skipping (URL pattern match): {href}")
+            if any(
+                term in full_url.casefold()
+                for term in ("news", "archiv", "kalender")
+            ):
+                print("      -> Skipping (URL pattern match)")
                 continue
-
-            full_url = BASE_URL + href if href.startswith("/") else href
             
             if full_url not in seen_urls:
                 club_links.append({'url': full_url, 'texts': {text}})
@@ -249,7 +272,10 @@ def main():
                         break
         
         print(f"Found {len(club_links)} clubs.")
+        if not club_links:
+            raise RuntimeError("No club links discovered")
         
+        failures = []
         for club in club_links:
             # Merge texts: Digits first
             sorted_texts = sorted(list(club['texts']), key=lambda s: (not s.isdigit(), s))
@@ -269,7 +295,11 @@ def main():
             
             print(f"  Processing [{club_number}] {clean_name} ...")
 
-            details = scrape_club_details(page, club['url'])
+            try:
+                details = scrape_club_details(page, club['url'])
+            except Exception as error:
+                failures.append(error)
+                continue
             # Merge known name
             if "name" not in details:
                 details["name"] = club["name"]
@@ -282,9 +312,23 @@ def main():
             # polite delay
             # time.sleep(0.5) 
             
-        browser.close()
-        
-    save_data(data)
+        if failures:
+            raise RuntimeError(
+                f"club scrape incomplete ({len(failures)} item failures)"
+            ) from failures[0]
+
+        save_data(data, output_dir)
+
+    if diagnostics.error is not None:
+        return 1
+    return 0
+
+def main(argv=None):
+    args = parse_args(argv)
+    return scraper_status(
+        "club_scraper", args.artifacts_dir,
+        lambda: run_scrape(args.output_dir, args.artifacts_dir),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

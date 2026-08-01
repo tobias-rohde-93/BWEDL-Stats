@@ -2,42 +2,107 @@ name: Update Data
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Run every 6 hours
-  workflow_dispatch:      # Allow manual trigger
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
-permissions:
-  contents: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 50
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: '3.13'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          python -m playwright install chromium
+          pip install -r requirements.txt
 
-      - name: Run update scripts
+      - name: Run offline tests
+        run: python -m pytest
+
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run live data update
+        timeout-minutes: 20
         run: python update_data.py
 
-      - name: Commit and push if changes
+      - name: Render update summary
+        if: ${{ always() }}
+        shell: bash
         run: |
-          git config --global user.name 'GitHub Actions Bot'
-          git config --global user.email 'actions@github.com'
-          git add .
-          # Check if there are changes to commit
+          if [ -f update_report.json ]; then
+            python -m pipeline.report --summary update_report.json >> "$GITHUB_STEP_SUMMARY" || echo "Update report is malformed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Update report was not produced." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload failure diagnostics
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: update-failure-${{ github.run_id }}
+          path: |
+            update_report.json
+            artifacts/**
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Commit and push generated data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- league_data.json league_data.js ranking_data.json ranking_data.js club_data.json club_data.js archive_data.js archive_tables.js data_status.json data_status.js
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Automated Data Update"
+            git commit -m "chore(data): publish validated update"
             git push
           fi
+
+  notify:
+    needs: update-data
+    if: ${{ always() && github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      issues: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Download current failure evidence
+        if: ${{ needs.update-data.result == 'failure' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "update-failure-$GITHUB_RUN_ID" --dir notification-artifact
+
+      - name: Evaluate scheduled update incident
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_UPDATE_RESULT: ${{ needs.update-data.result }}
+          REPORT_PATH: notification-artifact/update_report.json
+        run: python -m pipeline.github_incident notify

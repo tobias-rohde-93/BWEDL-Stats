@@ -48,7 +48,10 @@
             </div>
 
             <div class="sidebar-controls">
-                <div class="status-text" id="last-updated">Stand: --</div>
+                <section class="data-status" aria-labelledby="data-status-heading">
+                    <h2 id="data-status-heading" class="data-status-heading">Datenstand</h2>
+                    <ul id="data-status-list" class="data-status-list" aria-live="polite"></ul>
+                </section>
                 <div class="status-text" style="font-size: 0.65em; opacity: 0.6; margin-top: 2px; margin-bottom: 5px;">
                     v3.1.0</div>
 
@@ -111,6 +114,7 @@
     <script src="archive_data.js?v=8"></script>
     <script src="archive_tables.js?v=5"></script>
     <script src="ligapokal_archive.js?v=3"></script>
+    <script src="data_status.js?v=1"></script>
     <script src="bundle_v31.js?v=3.1"></script>
     <script>
         if ('serviceWorker' in navigator) {

@@ -117,5 +117,29 @@ A: Prüfe, ob du in der Liga-Tabelle offiziell gelistet bist. Manchmal dauert es
 **Q: Was bedeutet "(L3)"?**
 A: "Last 3" - Der Durchschnitt der letzten 3 Spiele.
 
+**Q: Was bedeutet „Vorjahresstand 2025/26“ beim Datenstand?**
+A: Die Ranglisten der neuen Saison sind noch nicht in allen vier Klassen vollständig. Deshalb bleibt der letzte geprüfte Stand sichtbar; Liga-, Vereins- und Archivdaten können trotzdem aktueller sein.
+
+**Q: Wann werden neue Ranglisten angezeigt?**
+A: Erst wenn Bezirksliga, A-Klasse, B-Klasse und C-Klasse jeweils mindestens einen gültigen Spieler liefern. So ersetzt ein leerer oder nur teilweiser Zwischenstand keine funktionierenden Daten.
+
+---
+
+## Technische Prüfung für Betreibende
+
+Die Daten werden zunächst nach `.staging/` geladen und je Bereich als `publish`, `retain`, `blocked` oder `failed` bewertet. Nur ein insgesamt gültiger Lauf wird als Ganzes veröffentlicht. `retain` behält bewusst den letzten gültigen Stand; `blocked` und `failed` verhindern die gesamte Veröffentlichung.
+
+Ein sicherer lokaler Testlauf lautet:
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pytest
+python update_data.py --dry-run --staging-dir .staging/manual-check --artifacts-dir artifacts/manual-check
+```
+
+Der Dry-Run schreibt `update_report.json`, `update_status.json` und gegebenenfalls HTML-, PNG- oder Trace-Diagnosen unter `artifacts/`, lässt aber die öffentlichen Datendateien unverändert. Für eine Browserprüfung `python server.py` starten und `http://localhost:8000/` öffnen.
+
+Bei einem Incident zuerst Bericht und Fehlerartefakte prüfen, dann mit frischen Staging-/Artefaktpfaden reproduzieren. Veröffentlicht werden dürfen nur `league_data.{json,js}`, `ranking_data.{json,js}`, `club_data.{json,js}`, `archive_data.js`, `archive_tables.js` und `data_status.{json,js}`. Der GitHub-Workflow läuft alle sechs Stunden, ist manuell startbar und eröffnet erst nach zwei aufeinanderfolgenden geplanten Fehlern ein Issue; ein erfolgreicher geplanter Lauf schließt es nach einem Recovery-Kommentar.
+
 ---
 *Erstellt mit ❤️ für den Dartsport.*

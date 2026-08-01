@@ -1,17 +1,39 @@
+import argparse
 import json
-import os
 import sys
 import datetime
+from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+from pipeline.files import write_json_pair
+from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE = "league_data.json"
 BASE_URL = "https://bwedl.de"
 START_URL = "https://bwedl.de/tabellen/"
 
-def load_data():
-    if os.path.exists(DATA_FILE):
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("."),
+        help="Directory for candidate output files",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for failure diagnostics",
+    )
+    return parser.parse_args(argv)
+
+def load_data(output_dir=Path(".")):
+    data_file = output_dir / DATA_FILE
+    if data_file.exists():
         try:
-            with open(DATA_FILE, "r", encoding="utf-8") as f:
+            with data_file.open("r", encoding="utf-8") as f:
                 data = json.load(f)
                 # Ensure structure is consistent with new format
                 if "leagues" not in data:
@@ -21,19 +43,13 @@ def load_data():
             print("Warning: Could not decode existing data file. Starting fresh.")
     return {"leagues": {}, "last_updated": ""}
 
-def save_data(data):
+def save_data(data, output_dir=Path(".")):
     data["last_updated"] = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-    
-    # Save as JSON (for potential future API use)
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-        
-    # Save as JS (for local file:// access without CORS)
-    js_content = f"window.LEAGUE_DATA = {json.dumps(data, indent=4, ensure_ascii=False)};"
-    with open("league_data.js", "w", encoding="utf-8") as f:
-        f.write(js_content)
+
+    return write_json_pair(output_dir, "league_data", "LEAGUE_DATA", data)
 
 def scrape_league(page, league_url, league_name, data):
+    failures = []
     print(f"Scraping {league_name}...")
     page.goto(league_url)
     
@@ -56,7 +72,8 @@ def scrape_league(page, league_url, league_name, data):
             else:
                  print(f"  [Warn] No table found for {league_name}")
         except Exception as e:
-            print(f"  [Error] extracting table for {league_name}: {e}")
+            failures.append(e)
+            print(f"  [Error] extracting table for {league_name}")
 
         # 2. Extract Match Days
         try:
@@ -94,7 +111,8 @@ def scrape_league(page, league_url, league_name, data):
                     league_storage["match_days"][text] = content
                         
         except Exception as e:
-            print(f"  [Error] extracting match days for {league_name}: {e}")
+            failures.append(e)
+            print(f"  [Error] extracting match days for {league_name}")
             
     else:
         # --- CUP LOGIC (Ligapokal) ---
@@ -190,16 +208,23 @@ def scrape_league(page, league_url, league_name, data):
                 league_storage["match_days"][round_obj["name"]] = round_obj["text"]
                 
         except Exception as e:
-            print(f"  [Error] extracting cup data for {league_name}: {e}")
+            failures.append(e)
+            print(f"  [Error] extracting cup data for {league_name}")
 
-def main():
-    data = load_data()
+    if failures:
+        raise RuntimeError(
+            f"{league_name} scrape incomplete ({len(failures)} operation failures)"
+        ) from failures[0]
+
+def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
+    data = load_data(output_dir)
     
     print(f"Connecting to {START_URL}...")
     
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
+    with SyncDiagnosticSession(
+        sync_playwright, artifacts_dir, "league_scraper", headless=True
+    ) as diagnostics:
+        page = diagnostics.page
         page.goto(START_URL)
         
         # Find all league links
@@ -214,21 +239,52 @@ def main():
         for link in links:
             href = link.get_attribute("href")
             text = link.inner_text().strip()
-            if href and href != "/tabellen/" and text:
-                full_url = BASE_URL + href if href.startswith("/") else href
-                # Deduplicate
+            full_url = normalize_bwedl_url(href, "/tabellen/")
+            if full_url and full_url != "https://www.bwedl.de/tabellen/" and text:
                 if not any(l['url'] == full_url for l in league_links):
                     league_links.append({'url': full_url, 'name': text})
         
         print(f"Found {len(league_links)} leagues.")
+        if not league_links:
+            raise RuntimeError("No league links discovered")
         
+        failures = []
         for league in league_links:
-            scrape_league(page, league['url'], league['name'], data)
-            
-        browser.close()
+            try:
+                scrape_league(page, league['url'], league['name'], data)
+            except Exception as error:
+                failures.append(error)
+        if failures:
+            raise RuntimeError(
+                f"league scrape incomplete ({len(failures)} item failures)"
+            ) from failures[0]
 
-    save_data(data)
-    print("\n[INFO] Scraping completed. Data saved to league_data.json")
+        incomplete = [
+            name for name, league in data["leagues"].items()
+            if not league.get("table") or not league.get("match_days")
+        ]
+        if incomplete:
+            raise RuntimeError(
+                f"league scrape incomplete ({len(incomplete)} empty league records)"
+            )
+
+        json_path, javascript_path = save_data(data, output_dir)
+
+    if diagnostics.error is not None:
+        return 1
+
+    print(
+        f"\n[INFO] Scraping completed. Data saved to {json_path} "
+        f"and {javascript_path}"
+    )
+    return 0
+
+def main(argv=None):
+    args = parse_args(argv)
+    return scraper_status(
+        "league_scraper", args.artifacts_dir,
+        lambda: run_scrape(args.output_dir, args.artifacts_dir),
+    )
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
