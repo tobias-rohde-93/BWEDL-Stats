@@ -507,10 +507,10 @@ tr:hover td {
 
 /* Tabelle (Club Name) - maximize space */
 .league-history-table th:nth-child(3),
-.league-history-table td:nth-child(3) { 
+.league-history-table td:nth-child(3) {
     width: 250px !important; /* Set a generous base width */
     min-width: 200px !important;
-    white-space: normal !important; 
+    white-space: normal !important;
     text-overflow: clip !important;
     color: #60a5fa;
     font-weight: 500;
@@ -892,4 +892,4 @@ tr:hover td {
 
 .sidebar-accordion-content.open {
     display: block;
-}
+}

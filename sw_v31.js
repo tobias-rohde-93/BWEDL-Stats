@@ -40,12 +40,13 @@ self.addEventListener('fetch', event => {
 
     if (isDataFile) {
         // Network-First Strategy for Data Files
+        const matchCachedData = () => caches.match(event.request, { ignoreSearch: true });
         event.respondWith(
             fetch(event.request)
                 .then(response => {
                     // Check if valid response
                     if (!response || response.status !== 200) {
-                        return caches.match(event.request);
+                        return matchCachedData();
                     }
 
                     // Clone response stream
@@ -60,7 +61,7 @@ self.addEventListener('fetch', event => {
                 })
                 .catch(() => {
                     // Start offline or network fail
-                    return caches.match(event.request);
+                    return matchCachedData();
                 })
         );
     } else {

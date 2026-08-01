@@ -78,3 +78,15 @@ def test_status_formatter_contract_in_node() -> None:
     )
 
     assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_status_service_worker_query_fallback_in_node() -> None:
+    result = subprocess.run(
+        ["node", str(ROOT / "tests" / "test_service_worker_status.js")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
