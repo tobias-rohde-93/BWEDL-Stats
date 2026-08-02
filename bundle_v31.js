@@ -150,7 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
             link.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
             link.style.color = myPlayerName ? "#f8fafc" : "#94a3b8";
         }
-        renderDashboard();
+        const dashboardState = { type: 'dashboard', id: null };
+        history.replaceState(dashboardState, "", "#dashboard");
+        navigateTo('dashboard', null, false);
     };
 
     const mobileOverlay = document.getElementById('mobile-overlay');
