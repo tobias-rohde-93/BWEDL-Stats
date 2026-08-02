@@ -203,6 +203,13 @@ assertDelegatesToClose(
     'sidebar clickable-item handler',
 );
 
+const scopedCloseCallCount = [navigateSource, outsideHandlerSource, sidebarHandlerSource]
+    .reduce(
+        (total, targetSource) => total + (targetSource.match(/closeMobileNavigation\(\);/g) || []).length,
+        0,
+    );
+assert.equal(scopedCloseCallCount, 3, 'Expected three direct close calls in target bodies');
+
 const overlayCloseBindings = source.match(
     /mobileOverlay\s*\.\s*addEventListener\s*\(\s*['"]click['"]\s*,\s*closeMobileNavigation\s*\)/g,
 ) || [];
