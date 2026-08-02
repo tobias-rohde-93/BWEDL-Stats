@@ -155,6 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mobileOverlay = document.getElementById('mobile-overlay');
 
+    function closeMobileNavigation() {
+        if (sidebar) sidebar.classList.remove('open');
+        if (mobileOverlay) mobileOverlay.classList.remove('active');
+    }
+
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
@@ -162,31 +167,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (mobileOverlay) {
-            mobileOverlay.addEventListener('click', () => {
-                sidebar.classList.remove('open');
-                mobileOverlay.classList.remove('active');
-            });
+            mobileOverlay.addEventListener('click', closeMobileNavigation);
         }
 
-        // Close sidebar when clicking outside on mobile (fallback)
+        // Close mobile navigation when clicking outside (fallback)
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 768 &&
                 sidebar.classList.contains('open') &&
                 !sidebar.contains(e.target) &&
                 e.target !== menuToggle &&
                 (!mobileOverlay || !mobileOverlay.contains(e.target))) {
-                sidebar.classList.remove('open');
-                if (mobileOverlay) mobileOverlay.classList.remove('active');
+                closeMobileNavigation();
             }
         });
 
-        // Close sidebar when a link inside it is clicked
+        // Close mobile navigation when a link inside it is clicked
         sidebar.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 // If clicked element is a link or clickable item (league-item)
                 if (e.target.classList.contains('league-item') || e.target.tagName === 'A') {
-                    sidebar.classList.remove('open');
-                    if (mobileOverlay) mobileOverlay.classList.remove('active');
+                    closeMobileNavigation();
                 }
             }
         });
@@ -2027,19 +2027,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function navigateTo(type, id, addToHistory = true) {
-        // 1. Handle History
+        closeMobileNavigation();
+
+        // 1. Handle history
         if (addToHistory) {
             history.pushState({ type, id }, "", `#${type}${id ? '/' + id : ''}`);
         }
 
-        // 2. Update toggle state if back/menu logic exists
-        // (Existing sidebar logic)
-        const sidebar = document.querySelector('.sidebar');
-        if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
-            sidebar.classList.remove('open');
-        }
-
-        // 3. Render
+        // 2. Render
         currentState = { type, id };
 
         if (type === 'league') renderLeague(id);
@@ -2055,7 +2050,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (type === 'profile') renderProfileSelection();
         else if (type === 'wiki') renderWiki();
 
-        // 4. Update Back Button Visibility
+        // 3. Update back button visibility
         // Show back button everywhere except Dashboard
         if (backBtn) {
             backBtn.style.display = (type === 'dashboard') ? 'none' : 'block';
