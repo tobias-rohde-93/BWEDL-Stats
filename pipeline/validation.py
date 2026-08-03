@@ -743,9 +743,9 @@ def _archive_competition_family(identity: tuple[str, str]) -> str | None:
 
 def _archive_title_has_structural_partition(identity: tuple[str, str]) -> bool:
     return re.search(
-        r"\b(?:gruppe|gruppenphase|runde|vorrunde|zwischenrunde|hauptrunde|"
-        r"endrunde|finalrunde|spieltag|achtelfinale|viertelfinale|halbfinale|"
-        r"finale?)\b",
+        r"\b(?:gruppe|gruppen(?:\s+)?(?:phase|runde)|runde|"
+        r"(?:vor|zwischen|haupt|end|final)(?:\s+)?runde|spieltag|"
+        r"(?:achtel|viertel|halb)(?:\s+)?finale?|finale?)\b",
         identity[1],
     ) is not None
 

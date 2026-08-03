@@ -1335,7 +1335,13 @@ def test_archive_payload_keeps_cup_final_variants_distinct() -> None:
     [
         ("Pokal Finalrunde 1", "Pokal Finalrunde 2"),
         ("Pokal Gruppenphase A", "Pokal Gruppenphase B"),
+        ("Pokal Gruppen-Phase A", "Pokal Gruppen-Phase B"),
+        ("Pokal Gruppen Phase A", "Pokal Gruppen Phase B"),
+        ("Pokal Gruppenrunde A", "Pokal Gruppenrunde B"),
         ("Pokal Vorrunde", "Pokal Endrunde"),
+        ("Pokal Final-Runde 1", "Pokal Final-Runde 2"),
+        ("Pokal Vor Runde", "Pokal End Runde"),
+        ("Pokal Halb-Finale 1", "Pokal Halb-Finale 2"),
     ],
 )
 def test_archive_payload_keeps_compound_cup_stages_distinct(
