@@ -721,9 +721,29 @@ def _archive_table_identity(season: Any, league: Any) -> tuple[str, str] | None:
     return canonical_season, title
 
 
+def _archive_competition_family(identity: tuple[str, str]) -> str | None:
+    title = identity[1]
+    class_match = re.search(r"\b([abc])\s+klassen?\b", title)
+    if class_match is not None:
+        return f"{class_match.group(1)}-klasse"
+
+    named_families = (
+        ("bundesliga", r"\bbundesliga\b"),
+        ("verbandsliga", r"\bverbandsliga\b"),
+        ("oberliga", r"\boberliga\b"),
+        ("bezirksliga", r"\bbezirksliga\b"),
+        ("ligapokal", r"\b(?:ligapokal|liga\s+pokal)\b"),
+        ("pokal", r"\bpokal\b"),
+    )
+    for family, pattern in named_families:
+        if re.search(pattern, title) is not None:
+            return family
+    return None
+
+
 def _archive_title_has_structural_partition(identity: tuple[str, str]) -> bool:
     return re.search(
-        r"\b(?:gruppe|runde|spieltag|achtelfinale|viertelfinale|halbfinale|finale)\b",
+        r"\b(?:gruppe|runde|spieltag|achtelfinale|viertelfinale|halbfinale|finale?)\b",
         identity[1],
     ) is not None
 
@@ -865,7 +885,19 @@ def validate_archive_payloads(
                 candidate_table_records[candidate_index].canonical_title_identity
                 == previous_record.canonical_title_identity
                 or (
-                    not _archive_title_has_structural_partition(
+                    _archive_competition_family(
+                        previous_record.canonical_title_identity
+                    )
+                    is not None
+                    and _archive_competition_family(
+                        previous_record.canonical_title_identity
+                    )
+                    == _archive_competition_family(
+                        candidate_table_records[
+                            candidate_index
+                        ].canonical_title_identity
+                    )
+                    and not _archive_title_has_structural_partition(
                         previous_record.canonical_title_identity
                     )
                     and not _archive_title_has_structural_partition(

@@ -943,6 +943,67 @@ def test_archive_payload_reconciles_exact_rows_after_same_season_title_correctio
     assert result.decision is Decision.PUBLISH
 
 
+@pytest.mark.parametrize(
+    ("previous_league", "candidate_league"),
+    [
+        ("A-Klasse", "B-Klasse"),
+        ("Unrelated Alpha", "Unrelated Beta"),
+    ],
+)
+def test_archive_payload_does_not_reconcile_unrelated_exact_row_titles(
+    previous_league: str, candidate_league: str
+) -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": previous_league,
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": candidate_league,
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize(
+    ("previous_league", "candidate_league"),
+    [
+        ("Historische Bezirksliga Tabelle", "Aktuelle Bezirksliga Tabelle"),
+        ("Liga-Pokal Wertung", "Ligapokal Abschlusstabelle"),
+    ],
+)
+def test_archive_payload_reconciles_exact_rows_with_same_named_family(
+    previous_league: str, candidate_league: str
+) -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": previous_league,
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": candidate_league,
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
 def test_archive_payload_blocks_changed_rows_under_different_title() -> None:
     data = {"p1": [archive_record("20/22")]}
     previous_tables = [
@@ -998,19 +1059,19 @@ def test_archive_payload_consumes_exact_row_match_only_once() -> None:
     previous_tables = [
         {
             "season": "2020/2022",
-            "league": "Historical label one",
+            "league": "Historical C-Klassen label one",
             "rows": deepcopy(rows),
         },
         {
             "season": "20/22",
-            "league": "Historical label two",
+            "league": "Historical Mix C-Klasse label two",
             "rows": deepcopy(rows),
         },
     ]
     candidate_tables = [
         {
             "season": "2020-2022",
-            "league": "Corrected current label",
+            "league": "Corrected C-Klasse current label",
             "rows": deepcopy(rows),
         }
     ]
@@ -1047,6 +1108,28 @@ def test_archive_payload_keeps_cup_rounds_distinct() -> None:
 
     assert result.decision is Decision.BLOCKED
     assert "table" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_keeps_cup_final_variants_distinct() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": "Pokal Final 1",
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": "Pokal Final 2",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
 
 
 def test_archive_payload_ignores_presentation_date_in_title() -> None:
