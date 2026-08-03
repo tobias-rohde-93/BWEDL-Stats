@@ -1,5 +1,5 @@
 window.RANKING_DATA = {
-    "last_updated": "02.08.2026 19:10:00",
+    "last_updated": "03.08.2026 02:28:55",
     "rankings": {},
     "players": []
 };
