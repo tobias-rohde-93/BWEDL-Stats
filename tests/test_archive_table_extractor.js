@@ -112,7 +112,7 @@ assert.throws(() => document.querySelectorAll('div'), /Unsupported document sele
 const extractor = new Function('document', `return (${payload.source});`)(document);
 const result = extractor();
 
-assert.equal(result.length, 3);
+assert.equal(result.length, 5);
 
 const splitWrapper = result.find(item => item.league.includes('C-Klasse'));
 assert.ok(splitWrapper, 'split-wrapper table must use its preceding title wrapper');
@@ -133,3 +133,19 @@ assert.equal(embedded.rows.flat().includes(embedded.league), false);
 const directSibling = result.find(item => item.league.includes('B-Klasse'));
 assert.ok(directSibling, 'existing direct-sibling title shape must keep working');
 assert.equal(directSibling.league, 'Bwedl e.V. 2025/2026 B-Klasse Meisterschaft');
+
+const siblingBoundary = result.find(item => item.rows.flat().includes('Sibling Boundary Team'));
+assert.ok(siblingBoundary, 'sibling-boundary table must be extracted');
+assert.equal(
+  siblingBoundary.league,
+  'Unbekannt',
+  'plausible heading at the 16th preceding sibling must remain outside lookback',
+);
+
+const parentBoundary = result.find(item => item.rows.flat().includes('Parent Boundary Team'));
+assert.ok(parentBoundary, 'parent-boundary table must be extracted');
+assert.equal(
+  parentBoundary.league,
+  'Unbekannt',
+  'plausible heading beyond three parent ascents must remain outside lookback',
+);

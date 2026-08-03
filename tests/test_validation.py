@@ -1132,6 +1132,38 @@ def test_archive_payload_keeps_cup_final_variants_distinct() -> None:
     assert "table count loss" in " ".join(result.reasons).lower()
 
 
+@pytest.mark.parametrize(
+    ("previous_league", "candidate_league"),
+    [
+        ("Pokal Finalrunde 1", "Pokal Finalrunde 2"),
+        ("Pokal Gruppenphase A", "Pokal Gruppenphase B"),
+        ("Pokal Vorrunde", "Pokal Endrunde"),
+    ],
+)
+def test_archive_payload_keeps_compound_cup_stages_distinct(
+    previous_league: str, candidate_league: str
+) -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": previous_league,
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": candidate_league,
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
 def test_archive_payload_ignores_presentation_date_in_title() -> None:
     data = {"p1": [archive_record("25/26")]}
     previous_tables = [archive_table("25/26", league="A-Klasse")]
