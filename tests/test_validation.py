@@ -872,8 +872,21 @@ def archive_record(season: str, *, league: str = "A-Klasse", rank: int = 1) -> d
     return {"season": season, "league": league, "rank": rank, "points": 10, "name": "Player"}
 
 
-def archive_table(season: str, *, league: str = "A-Klasse", marker: int = 1) -> dict[str, Any]:
-    return {"season": season, "league": league, "rows": [{"rank": marker, "name": "Player"}]}
+def archive_table(
+    season: str,
+    *,
+    league: str = "A-Klasse",
+    marker: int = 1,
+    row_count: int = 1,
+) -> dict[str, Any]:
+    return {
+        "season": season,
+        "league": league,
+        "rows": [
+            {"rank": marker + offset, "name": f"Player {marker + offset}"}
+            for offset in range(row_count)
+        ],
+    }
 
 
 def test_archive_payload_accepts_current_title_for_legacy_championship() -> None:
@@ -932,6 +945,75 @@ def test_archive_payload_ignores_presentation_date_in_title() -> None:
     previous_tables = [archive_table("25/26", league="A-Klasse")]
     candidate_tables = [
         archive_table("2025/2026", league="Bwedl e.V. A-Klasse am 13.06.2026")
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_ignores_underscore_separators_around_title_metadata() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [archive_table("25/26", league="A-Klasse")]
+    candidate_tables = [
+        archive_table(
+            "2025/2026", league="Bwedl_e.V._A-Klasse_am_13.06.2026"
+        )
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_blocks_same_identity_table_count_loss() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [
+        archive_table("25/26", marker=1),
+        archive_table("2025/2026", marker=10),
+    ]
+    candidate_tables = [archive_table("25/26", marker=20)]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_blocks_paired_same_identity_row_count_loss() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [
+        archive_table("25/26", marker=1, row_count=3),
+        archive_table("2025/2026", marker=10, row_count=2),
+    ]
+    candidate_tables = [
+        archive_table("25/26", marker=20, row_count=3),
+        archive_table("2025/2026", marker=30, row_count=1),
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "row count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_accepts_reordered_same_identity_tables_without_loss() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [
+        archive_table("25/26", marker=1, row_count=3),
+        archive_table("2025/2026", marker=10, row_count=1),
+    ]
+    candidate_tables = [
+        archive_table("2025/2026", marker=20, row_count=1),
+        archive_table("25/26", marker=30, row_count=4),
     ]
 
     result = validation.validate_archive_payloads(

@@ -672,8 +672,6 @@ def _archive_table_identity(season: Any, league: Any) -> tuple[str, str] | None:
     if canonical_season is None or not isinstance(league, str) or not league.strip():
         return None
     title = unicodedata.normalize("NFKC", league).casefold()
-    title = re.sub(r"\bbwedl\s*e\.?\s*v\.?", " ", title)
-    title = re.sub(r"\bam\s+\d{1,2}\.\d{1,2}\.\d{4}\b", " ", title)
 
     def remove_matching_season(match: re.Match[str]) -> str:
         normalized = re.sub(r"\s*[/_.-]\s*", "/", match.group())
@@ -686,12 +684,15 @@ def _archive_table_identity(season: Any, league: Any) -> tuple[str, str] | None:
         remove_matching_season,
         title,
     )
-    title = re.sub(r"[_\W]+", " ", title, flags=re.UNICODE)
+    title = re.sub(r"[_/-]+", " ", title)
+    title = re.sub(r"\bbwedl\s*e\.?\s*v\.?", " ", title)
+    title = re.sub(r"\bam\s+\d{1,2}\.\d{1,2}\.\d{4}\b", " ", title)
     title = re.sub(
         r"\b(?:mm|mannschafts?meisterschaft(?:en)?|meisterschaft(?:en)?)\b",
         " ",
         title,
     )
+    title = re.sub(r"[_\W]+", " ", title, flags=re.UNICODE)
     title = re.sub(r"\s+", " ", title).strip()
     return canonical_season, title
 
