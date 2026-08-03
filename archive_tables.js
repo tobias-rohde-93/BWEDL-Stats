@@ -1,7 +1,497 @@
 window.ARCHIVE_TABLES = [
   {
     "season": "2025/2026",
-    "league": "Unbekannt",
+    "league": "LIGAPOKAL 2025-2026",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "04.03.2026 20:00",
+        "1",
+        "DC Underground Fool\u00b4s e.V.",
+        "DC Texas Team",
+        "2:14"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "02.03.2026 20:00",
+        "2",
+        "the Metal Darts",
+        "Friends Arrows",
+        "13:3"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "11.02.2026 20:00",
+        "3",
+        "DC Reloaded",
+        "the Metal Darts 2",
+        "9:8"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "23.01.2026 20:00",
+        "4",
+        "DC Reloaded 2",
+        "DC Ung\u00fcltig",
+        "6:10"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "05.02.2026 19:30",
+        "5",
+        "DC Black Scorpions 4",
+        "DC Mephisto's",
+        "3:13"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "03.02.2026 20:30",
+        "6",
+        "Mighty Darts",
+        "DC Strikers",
+        "13:3"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "13.02.2026 20:00",
+        "7",
+        "DC Destroyers e.V. 2",
+        "DC Green Scorpion's",
+        "7:9"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 08.03.2026",
+        "11.02.2026 20:00",
+        "8",
+        "DC Lachs 14",
+        "DC Black Scorpions",
+        "9:8"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "LIGAPOKAL 2025-2026",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "28.11.2025 20:00",
+        "1",
+        "DC Reloaded 2",
+        "DC Destroyers e.V.",
+        "11:5"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "22.11.2025 19:30",
+        "2",
+        "DC Duselbr\u00fcder",
+        "DC Green Scorpion's",
+        "7:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "18.11.2025 20:00",
+        "3",
+        "the Metal Darts 2",
+        "the Metal Darts 3",
+        "9:7"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "18.11.2025 20:00",
+        "4",
+        "DC Oiloch Sch\u00f6mberg",
+        "DC Black Scorpions",
+        "0:16"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "29.11.2025 20:00",
+        "5",
+        "DC Shamrock 2",
+        "DC Mephisto's",
+        "4:12"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "17.12.2025 20:00",
+        "6",
+        "DC Crazy Flights 3",
+        "DC Strikers",
+        "3:13"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "27.12.2025 20:00",
+        "7",
+        "DC Triple X",
+        "Friends Arrows",
+        "8:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "02.12.2025 20:00",
+        "8",
+        "DC Irish 26 e.V.",
+        "Mighty Darts",
+        "4:12"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "02.12.2025 20:00",
+        "9",
+        "DC Ung\u00fcltig 2",
+        "DC Ung\u00fcltig",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "05.12.2025 20:00",
+        "10",
+        "DC Sch\u00f6mbergerEck",
+        "DC Underground Fool\u00b4s e.V.",
+        "5:11"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "17.12.2025 20:00",
+        "11",
+        "DC Lachs 14",
+        "DC DARTanions",
+        "15:1"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "16.12.2025 20:00",
+        "12",
+        "TSV Grunbach Darts",
+        "DC Texas Team",
+        "3:13"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "07.01.2026 19:30",
+        "13",
+        "DSV Gro\u00dfglabbich",
+        "DC Destroyers e.V. 2",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "27.11.2025 20:00",
+        "14",
+        "DC Crows",
+        "DC Reloaded",
+        "3:13"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "01.12.2025 19:30",
+        "15",
+        "DC Irish 26 e.V. 3",
+        "the Metal Darts",
+        "0:16"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 18.01.2026",
+        "21.11.2025 20:00",
+        "16",
+        "the Metal Darts 5",
+        "DC Black Scorpions 4",
+        "8:9"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "LIGAPOKAL 2025-2026",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "29.09.2025 20:00",
+        "1",
+        "DC Crazy Flights 2",
+        "DC Oiloch Sch\u00f6mberg",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "17.10.2025 20:00",
+        "2",
+        "DC Enztaler Buben 2",
+        "the Metal Darts 5",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "17.10.2025 20:00",
+        "3",
+        "DC X-Br\u00f6tzingen",
+        "DC Destroyers e.V.",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "14.10.2025 20:00",
+        "4",
+        "ESV DC 25 2",
+        "DC Irish 26 e.V.",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "10.10.2025 20:00",
+        "5",
+        "DC Green Scorpion's",
+        "the Metal Darts 4",
+        "13:3"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "15.10.2025 19:00",
+        "6",
+        "DC Black Scorpions 2",
+        "DC Black Scorpions",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "16.10.2025 20:00",
+        "7",
+        "DC Black Scorpions 4",
+        "TDF Enzberg",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "21.10.2025 20:00",
+        "8",
+        "DC Conweiler",
+        "DC Lachs 14",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "04.10.2025 20:00",
+        "9",
+        "DC Triple X",
+        "DC Bull Hunters",
+        "12:4"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "29.10.2025 20:00",
+        "10",
+        "DC Underground Fool\u00b4s e.V. 2",
+        "DC Strikers",
+        "0:16"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "02.10.2025 20:00",
+        "11",
+        "DC Underground Fool\u00b4s e.V. 3",
+        "DC Underground Fool\u00b4s e.V.",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "24.09.2025 20:00",
+        "12",
+        "DC Broken Darts",
+        "the Metal Darts",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "14.10.2025 20:00",
+        "13",
+        "DC Black Scorpions 3",
+        "DC Ung\u00fcltig",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "18.10.2025 20:00",
+        "14",
+        "DC Sch\u00f6mbergerEck",
+        "DC Oststadt",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "09.10.2025 19:30",
+        "15",
+        "DC Triple 7",
+        "DC Irish 26 e.V. 3",
+        "0:16"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "18.10.2025 19:30",
+        "16",
+        "DC Crazy Flights 3",
+        "ESV DC 25",
+        "9:7"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "15.10.2025 19:00",
+        "17",
+        "Los Muertos",
+        "DC Mephisto's",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "12.09.2025 20:00",
+        "18",
+        "DC Kolibrispitz",
+        "DC Duselbr\u00fcder",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "28.10.2025 20:00",
+        "19",
+        "DC Wild Darts",
+        "DC Reloaded 2",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "22.10.2025 20:00",
+        "20",
+        "DC Dart Vaders",
+        "DC Ung\u00fcltig 2",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "18.10.2025 20:00",
+        "21",
+        "DC Shamrock 2",
+        "DC Bull's Eye Arnbach",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "10.09.2025 20:00",
+        "22",
+        "Phantom Arrows",
+        "the Metal Darts 2",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "03.10.2025 19:30",
+        "23",
+        "DC Lightning Arrows",
+        "DC Destroyers e.V. 2",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "10.09.2025 20:00",
+        "24",
+        "Dartfreunde Eichenherz",
+        "DC Reloaded",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "17.10.2025 20:30",
+        "25",
+        "Mighty Darts",
+        "DC Texas Team 2",
+        "13:3"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "15.10.2025 20:00",
+        "26",
+        "the flying Rocks",
+        "DC Texas Team",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "30.09.2025 19:30",
+        "27",
+        "the Metal Darts 3",
+        "Odins Knechte",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "15.10.2025 19:30",
+        "28",
+        "DC Irish 26 e.V. 2",
+        "Friends Arrows",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "30.10.2025 19:30",
+        "29",
+        "DC Hot Shotz",
+        "DSV Gro\u00dfglabbich",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "02.10.2025 19:30",
+        "30",
+        "DC HighFlights",
+        "DC DARTanions",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "18.09.2025 20:00",
+        "31",
+        "DC Crows",
+        "DC Bull's Eye Arnbach 2",
+        "12:4"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 02.11.2025",
+        "15.10.2025 20:00",
+        "32",
+        "The Walking Darts",
+        "TSV Grunbach Darts",
+        "6:10"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "LIGAPOKAL 2025-2026",
     "rows": [
       [
         "Runde/Info",
@@ -159,79 +649,288 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2025/2026",
-    "league": "MM_C-Klasse 2025-26",
+    "league": "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
     "rows": [
       [
         "Runde/Info",
         "Pl.",
         "Tabelle",
         "Sp",
-        "S",
-        "U",
-        "N",
+        "g",
+        "u",
+        "v",
         "Spiele",
         "\u00b1",
         "Pkt"
       ],
       [
-        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
         "1.",
-        "The\u00a0Walking\u00a0Darts",
-        "4",
-        "3",
-        "1",
+        "DC\u00a0Strikers\u00a03",
+        "16",
+        "16",
         "0",
-        "23:9",
-        "+14",
-        "10"
+        "0",
+        "132:28",
+        "+104",
+        "48"
       ],
       [
-        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
         "2.",
-        "DC\u00a0Enztaler\u00a0Buben",
+        "the\u00a0flying\u00a0Rocks",
+        "16",
+        "10",
+        "3",
+        "3",
+        "97:63",
+        "+34",
+        "33"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "3.",
+        "DC\u00a0Crazy\u00a0Flights",
+        "16",
+        "8",
+        "0",
+        "8",
+        "90:70",
+        "+20",
+        "24"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "4.",
+        "Dartfreunde\u00a0Eichenherz",
+        "16",
+        "7",
+        "3",
+        "6",
+        "79:81",
+        "-2",
+        "24"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "5.",
+        "DC\u00a0Underground\u00a0Fools\u00a02",
+        "16",
+        "6",
+        "5",
+        "5",
+        "80:80",
+        "\u00b10",
+        "23"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "6.",
+        "DC\u00a0Irish\u00a026\u00a0e.V.",
+        "16",
         "4",
         "3",
-        "0",
-        "1",
-        "17:15",
-        "+2",
-        "9"
+        "9",
+        "67:93",
+        "-26",
+        "15"
       ],
       [
-        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
-        "3.",
-        "TSV\u00a0Grunbach\u00a0Darts\u00a02",
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "7.",
+        "DC\u00a0Bull\u00b4s\u00a0Eye\u00a0Arnbach",
+        "16",
+        "4",
+        "2",
+        "10",
+        "55:105",
+        "-50",
+        "14"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "8.",
+        "DC\u00a0Ung\u00fcltig",
+        "16",
         "4",
         "1",
+        "11",
+        "63:97",
+        "-34",
+        "13"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "9.",
+        "Los\u00a0Muertos",
+        "16",
         "2",
-        "1",
-        "16:16",
+        "5",
+        "9",
+        "57:103",
+        "-46",
+        "11"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe C",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0:0",
         "\u00b10",
-        "5"
-      ],
-      [
-        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
-        "4.",
-        "DC\u00a0Crazy\u00a0Flights",
-        "4",
-        "1",
-        "1",
-        "2",
-        "13:19",
-        "-6",
-        "4"
-      ],
-      [
-        "Anzeige der Ergebnisse vom\u00a0\u00a0 \n1. Spieltag\n2. Spieltag\n3. Spieltag\n4. Spieltag\n5. Spieltag",
-        "5.",
-        "DC\u00a0Knickebocker\u00a02",
-        "4",
-        "0",
-        "0",
-        "4",
-        "11:21",
-        "-10",
         "0"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "1.",
+        "the\u00a0Metal\u00a0Darts",
+        "16",
+        "16",
+        "0",
+        "0",
+        "129:31",
+        "+98",
+        "48",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "2.",
+        "DC\u00a0Texas\u00a0Team",
+        "16",
+        "13",
+        "0",
+        "3",
+        "107:53",
+        "+54",
+        "39",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "3.",
+        "DC\u00a0Strikers",
+        "16",
+        "9",
+        "1",
+        "6",
+        "91:69",
+        "+22",
+        "28",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "4.",
+        "DC\u00a0Strikers\u00a02",
+        "16",
+        "7",
+        "3",
+        "6",
+        "74:86",
+        "-12",
+        "23",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "5.",
+        "DC\u00a0Green\u00a0Scorpion\u00b4s",
+        "16",
+        "7",
+        "2",
+        "7",
+        "90:70",
+        "+20",
+        "22",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "6.",
+        "DC\u00a0Reloaded",
+        "16",
+        "6",
+        "2",
+        "8",
+        "71:89",
+        "-18",
+        "19",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "7.",
+        "DC\u00a0Texas\u00a0Team\u00a02",
+        "16",
+        "4",
+        "3",
+        "9",
+        "62:98",
+        "-36",
+        "15",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "8.",
+        "DC\u00a0Underground\u00a0Fools",
+        "16",
+        "2",
+        "2",
+        "12",
+        "57:103",
+        "-46",
+        "7",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "9.",
+        "TSV\u00a0Grunbach\u00a0Darts",
+        "16",
+        "1",
+        "1",
+        "14",
+        "39:121",
+        "-82",
+        "4",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 Mix-Klasse Gruppe B",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0:0",
+        "\u00b10",
+        "0",
+        ""
       ]
     ]
   },
@@ -247,21 +946,21 @@ window.ARCHIVE_TABLES = [
         "Ergebnis"
       ],
       [
-        "",
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
         "Spiel 1",
         "DC HighFlights",
         "DC Duselbr\u00fcder",
         "10:6"
       ],
       [
-        "",
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
         "Spiel 2",
         "DC Duselbr\u00fcder",
         "DC Broken Darts",
         "9:7"
       ],
       [
-        "",
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
         "Spiel 3",
         "DC Broken Darts",
         "DC HighFlights",
@@ -293,6 +992,1580 @@ window.ARCHIVE_TABLES = [
         "the Metal Darts 3",
         "FriendsArrows",
         "10:6"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 C-Klasse Meisterschaft",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "1.",
+        "The\u00a0Walking\u00a0Darts",
+        "4",
+        "3",
+        "1",
+        "0",
+        "23:9",
+        "+14",
+        "10"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "2.",
+        "DC\u00a0Enztaler\u00a0Buben",
+        "4",
+        "3",
+        "0",
+        "1",
+        "17:15",
+        "+2",
+        "9"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "3.",
+        "TSV\u00a0Grunbach\u00a0Darts\u00a02",
+        "4",
+        "1",
+        "2",
+        "1",
+        "16:16",
+        "\u00b10",
+        "5"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "4.",
+        "DC\u00a0Crazy\u00a0Flights",
+        "4",
+        "1",
+        "1",
+        "2",
+        "13:19",
+        "-6",
+        "4"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "5.",
+        "DC\u00a0Knickebocker\u00a02",
+        "4",
+        "0",
+        "0",
+        "4",
+        "11:21",
+        "-10",
+        "0"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "1.",
+        "DC\u00a0Knickebocker\u00a02",
+        "18",
+        "15",
+        "2",
+        "1",
+        "208:80",
+        "+128",
+        "47"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "2.",
+        "DC\u00a0Crazy\u00a0Flights\u00a03",
+        "18",
+        "15",
+        "0",
+        "3",
+        "196:92",
+        "+104",
+        "45"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "3.",
+        "M\u00fchle\u00a0Glabbich\u00a0e.V.",
+        "18",
+        "15",
+        "0",
+        "3",
+        "190:98",
+        "+92",
+        "45"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "4.",
+        "DC\u00a0U-180",
+        "18",
+        "9",
+        "3",
+        "6",
+        "163:125",
+        "+38",
+        "30"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "5.",
+        "DC\u00a0Oststadt\u00a03",
+        "18",
+        "7",
+        "3",
+        "8",
+        "137:151",
+        "-14",
+        "24"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "6.",
+        "Phantom\u00a0Arrows",
+        "18",
+        "7",
+        "1",
+        "10",
+        "139:149",
+        "-10",
+        "22"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "7.",
+        "DC\u00a0180\u00a0Stein\u00a0e.V.\u00a02",
+        "18",
+        "6",
+        "2",
+        "10",
+        "119:169",
+        "-50",
+        "20"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "8.",
+        "DC\u00a0X-Br\u00f6tzingen",
+        "18",
+        "5",
+        "2",
+        "11",
+        "136:152",
+        "-16",
+        "17"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "9.",
+        "Dartfreunde\u00a0Enzberg\u00a02",
+        "18",
+        "4",
+        "1",
+        "13",
+        "125:163",
+        "-38",
+        "13"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 5",
+        "10.",
+        "DC\u00a0Triple\u00a07",
+        "18",
+        "0",
+        "0",
+        "18",
+        "27:261",
+        "-234",
+        "0"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "1.",
+        "The\u00a0Walking\u00a0Darts",
+        "16",
+        "12",
+        "2",
+        "2",
+        "169:87",
+        "+82",
+        "38",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "2.",
+        "DC\u00a0Cim\u00a0Bom",
+        "16",
+        "11",
+        "3",
+        "2",
+        "152:104",
+        "+48",
+        "36",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "3.",
+        "DC\u00a0Hot\u00a0Shotz",
+        "16",
+        "11",
+        "2",
+        "3",
+        "143:113",
+        "+30",
+        "34",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "4.",
+        "DC\u00a0Black\u00a0Scorpions\u00a04",
+        "16",
+        "9",
+        "3",
+        "4",
+        "157:99",
+        "+58",
+        "30",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "5.",
+        "DC\u00a0Irish\u00a026\u00a0e.V.\u00a04",
+        "16",
+        "9",
+        "1",
+        "6",
+        "136:120",
+        "+16",
+        "27",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "6.",
+        "DC\u00a0Wild\u00a0Darts",
+        "16",
+        "4",
+        "1",
+        "11",
+        "108:148",
+        "-40",
+        "13",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "7.",
+        "DC\u00a0HighFlights\u00a02",
+        "16",
+        "3",
+        "4",
+        "9",
+        "113:143",
+        "-30",
+        "12",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "8.",
+        "DC\u00a0Oststadt\u00a02",
+        "16",
+        "2",
+        "1",
+        "13",
+        "87:169",
+        "-82",
+        "7",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "9.",
+        "DC\u00a0Texas\u00a0Team\u00a04",
+        "16",
+        "1",
+        "3",
+        "12",
+        "87:169",
+        "-82",
+        "6",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 4",
+        "10.",
+        "DC\u00a0LEVEL",
+        "zur\u00fcckgezogen"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "1.",
+        "TSV\u00a0Grunbach\u00a0Darts\u00a02",
+        "16",
+        "13",
+        "1",
+        "2",
+        "162:94",
+        "+68",
+        "40",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "2.",
+        "DC\u00a0Crazy\u00a0Flights\u00a02",
+        "16",
+        "13",
+        "0",
+        "3",
+        "174:82",
+        "+92",
+        "39",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "3.",
+        "ESV\u00a0DC\u00a025\u00a02",
+        "16",
+        "11",
+        "2",
+        "3",
+        "164:92",
+        "+72",
+        "34",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "4.",
+        "the\u00a0flying\u00a0Rocks\u00a02",
+        "16",
+        "9",
+        "1",
+        "6",
+        "126:130",
+        "-4",
+        "28",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "5.",
+        "DC\u00a0Enztaler\u00a0Buben\u00a02",
+        "16",
+        "8",
+        "2",
+        "6",
+        "130:126",
+        "+4",
+        "26",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "6.",
+        "DC\u00a0Lightning\u00a0Arrows",
+        "16",
+        "6",
+        "0",
+        "10",
+        "120:136",
+        "-16",
+        "18",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "7.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a05",
+        "16",
+        "3",
+        "3",
+        "10",
+        "102:154",
+        "-52",
+        "12",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "8.",
+        "Los\u00a0Muertos\u00a02",
+        "16",
+        "3",
+        "2",
+        "11",
+        "96:160",
+        "-64",
+        "11",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "9.",
+        "DC\u00a0Bull's\u00a0Eye\u00a0Arnbach\u00a02",
+        "16",
+        "0",
+        "1",
+        "15",
+        "78:178",
+        "-100",
+        "1",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 3",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0:0",
+        "\u00b10",
+        "0*",
+        ""
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "1.",
+        "DC\u00a0Crazy\u00a0Flights",
+        "16",
+        "15",
+        "1",
+        "0",
+        "179:77",
+        "+102",
+        "46"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "2.",
+        "Phantom\u00a0Arrows\u00a02",
+        "16",
+        "13",
+        "1",
+        "2",
+        "179:77",
+        "+102",
+        "40"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "3.",
+        "DC\u00a0Crows",
+        "16",
+        "11",
+        "2",
+        "3",
+        "154:102",
+        "+52",
+        "35"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "4.",
+        "Dartfreunde\u00a0Enzberg",
+        "16",
+        "9",
+        "1",
+        "6",
+        "132:124",
+        "+8",
+        "28"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "5.",
+        "DC\u00a0Knickebocker\u00a03",
+        "16",
+        "5",
+        "2",
+        "9",
+        "115:141",
+        "-26",
+        "17"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "6.",
+        "Dartfreunde\u00a0Eichenherz\u00a02",
+        "16",
+        "5",
+        "1",
+        "10",
+        "99:157",
+        "-58",
+        "16"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "7.",
+        "DC\u00a0Underground\u00a0Fools\u00a04",
+        "16",
+        "4",
+        "0",
+        "12",
+        "118:138",
+        "-20",
+        "12"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "8.",
+        "DC\u00a0Broken\u00a0Darts\u00a02",
+        "16",
+        "3",
+        "1",
+        "12",
+        "100:156",
+        "-56",
+        "10"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "9.",
+        "DC\u00a0180\u00a0Stein\u00a0e.V.\u00a03",
+        "16",
+        "2",
+        "1",
+        "13",
+        "76:180",
+        "-104",
+        "7"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 2",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0:0",
+        "\u00b10",
+        "0*"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "1.",
+        "DC\u00a0Enztaler\u00a0Buben",
+        "14",
+        "12",
+        "2",
+        "0",
+        "150:74",
+        "+76",
+        "37",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "2.",
+        "the\u00a0Metal\u00a0Darts\u00a05",
+        "14",
+        "10",
+        "1",
+        "3",
+        "137:87",
+        "+50",
+        "31",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "3.",
+        "ESV\u00a0DC\u00a025",
+        "14",
+        "9",
+        "1",
+        "4",
+        "136:88",
+        "+48",
+        "28",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "4.",
+        "DSV\u00a0Gro\u00dfglabbich\u00a02",
+        "14",
+        "5",
+        "5",
+        "4",
+        "111:113",
+        "-2",
+        "20",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "5.",
+        "DC\u00a0Strikers\u00a03",
+        "14",
+        "6",
+        "0",
+        "8",
+        "112:112",
+        "\u00b10",
+        "18",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "6.",
+        "TSV\u00a0Grunbach\u00a0Darts\u00a03",
+        "14",
+        "5",
+        "1",
+        "8",
+        "106:118",
+        "-12",
+        "16",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "7.",
+        "DC\u00a0Shamrock\u00a02",
+        "14",
+        "3",
+        "1",
+        "10",
+        "93:131",
+        "-38",
+        "10",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "8.",
+        "DC\u00a0Irish\u00a026\u00a0eV.\u00a05",
+        "14",
+        "0",
+        "1",
+        "13",
+        "51:173",
+        "-122",
+        "1",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "9.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0:0",
+        "\u00b10",
+        "0*",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 C-Klasse Gruppe 1",
+        "10.",
+        "DC\u00a0Kolibrispitz",
+        "zur\u00fcckgezogen"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "1.",
+        "DC\u00a0HighFlights",
+        "18",
+        "15",
+        "2",
+        "1",
+        "202:86",
+        "+116",
+        "47",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "2.",
+        "DC\u00a0Black\u00a0Scorpions\u00a03",
+        "18",
+        "13",
+        "2",
+        "3",
+        "192:96",
+        "+96",
+        "41",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "3.",
+        "DC\u00a0Sch\u00f6mbergerEck",
+        "18",
+        "12",
+        "2",
+        "4",
+        "164:124",
+        "+40",
+        "38",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "4.",
+        "Dartfreunde\u00a0Eichenherz",
+        "18",
+        "10",
+        "3",
+        "5",
+        "169:119",
+        "+50",
+        "33",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "5.",
+        "the\u00a0flying\u00a0Rocks",
+        "18",
+        "8",
+        "2",
+        "8",
+        "147:141",
+        "+6",
+        "26",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "6.",
+        "TDF\u00a0Enzberg\u00a02",
+        "18",
+        "6",
+        "2",
+        "10",
+        "134:154",
+        "-20",
+        "20",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "7.",
+        "DC\u00a0Reloaded\u00a02",
+        "18",
+        "5",
+        "3",
+        "10",
+        "104:184",
+        "-80",
+        "17*",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "8.",
+        "Los\u00a0Muertos",
+        "18",
+        "5",
+        "1",
+        "12",
+        "119:169",
+        "-50",
+        "16",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "9.",
+        "DC\u00a0Dart\u00a0Vaders",
+        "18",
+        "3",
+        "2",
+        "13",
+        "109:179",
+        "-70",
+        "11",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 3",
+        "10.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a04",
+        "18",
+        "2",
+        "3",
+        "13",
+        "100:188",
+        "-88",
+        "9",
+        ""
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "1.",
+        "DC\u00a0Broken\u00a0Darts",
+        "16",
+        "11",
+        "4",
+        "1",
+        "153:103",
+        "+50",
+        "37"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "2.",
+        "DC\u00a0Underground\u00a0Fool\u00b4s\u00a03",
+        "16",
+        "9",
+        "5",
+        "2",
+        "147:109",
+        "+38",
+        "32"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "3.",
+        "DC\u00a0Oststadt",
+        "16",
+        "8",
+        "2",
+        "6",
+        "134:122",
+        "+12",
+        "26"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "4.",
+        "DC\u00a0Oiloch\u00a0Sch\u00f6mberg",
+        "16",
+        "6",
+        "5",
+        "5",
+        "128:128",
+        "\u00b10",
+        "23"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "5.",
+        "DC\u00a0Bull's\u00a0Eye\u00a0Arnbach",
+        "16",
+        "5",
+        "6",
+        "5",
+        "130:126",
+        "+4",
+        "21"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "6.",
+        "DC\u00a0Reloaded\u00a03",
+        "16",
+        "6",
+        "3",
+        "7",
+        "121:135",
+        "-14",
+        "21"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "7.",
+        "TDF\u00a0Enzberg",
+        "16",
+        "5",
+        "3",
+        "8",
+        "121:135",
+        "-14",
+        "18"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "8.",
+        "DC\u00a0Bull\u00a0Hunters",
+        "16",
+        "3",
+        "3",
+        "10",
+        "115:141",
+        "-26",
+        "12"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "9.",
+        "the\u00a0Enz\u00a0Coast",
+        "16",
+        "2",
+        "3",
+        "11",
+        "103:153",
+        "-50",
+        "9"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 2",
+        "10.",
+        "DC\u00a0Sch\u00f6mbergerEck\u00a02",
+        "zur\u00fcckgezogen"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "1.",
+        "DC\u00a0Duselbr\u00fcder",
+        "18",
+        "13",
+        "3",
+        "2",
+        "171:117",
+        "+54",
+        "42"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "2.",
+        "Alla\u00a0H\u00e4eeeehr",
+        "18",
+        "13",
+        "2",
+        "3",
+        "168:120",
+        "+48",
+        "41"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "3.",
+        "DC\u00a0Shamrock",
+        "18",
+        "11",
+        "0",
+        "7",
+        "153:135",
+        "+18",
+        "33"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "4.",
+        "the\u00a0Metal\u00a0Darts\u00a04",
+        "18",
+        "9",
+        "2",
+        "7",
+        "153:135",
+        "+18",
+        "29"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "5.",
+        "DC\u00a0Underground\u00a0Fool\u00b4s\u00a02",
+        "18",
+        "8",
+        "3",
+        "7",
+        "151:137",
+        "+14",
+        "27"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "6.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a03",
+        "18",
+        "6",
+        "4",
+        "8",
+        "132:156",
+        "-24",
+        "22"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "7.",
+        "DC\u00a0180\u00a0Stein\u00a0e.V.",
+        "18",
+        "7",
+        "0",
+        "11",
+        "132:156",
+        "-24",
+        "21"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "8.",
+        "DC\u00a0Irish\u00a026\u00a0e.V.\u00a03",
+        "18",
+        "6",
+        "0",
+        "12",
+        "128:160",
+        "-32",
+        "18"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "9.",
+        "DC\u00a0Conweiler",
+        "18",
+        "5",
+        "2",
+        "11",
+        "121:167",
+        "-46",
+        "17"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 B-Klasse Gruppe 1",
+        "10.",
+        "DSV\u00a0Gro\u00dfglabbich",
+        "18",
+        "3",
+        "2",
+        "13",
+        "131:157",
+        "-26",
+        "11"
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "1.",
+        "Mighty\u00a0Darts",
+        "16",
+        "14",
+        "1",
+        "1",
+        "175",
+        ":",
+        "81",
+        "+94",
+        "42",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "2.",
+        "the\u00a0Metal\u00a0Darts\u00a03",
+        "16",
+        "10",
+        "3",
+        "3",
+        "142",
+        ":",
+        "114",
+        "+28",
+        "33",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "3.",
+        "DC\u00a0Ung\u00fcltig",
+        "16",
+        "9",
+        "1",
+        "6",
+        "129",
+        ":",
+        "127",
+        "+2",
+        "28",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "4.",
+        "DC\u00a0Texas\u00a0Team\u00a02",
+        "16",
+        "9",
+        "1",
+        "6",
+        "128",
+        ":",
+        "128",
+        "\u00b10",
+        "28",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "5.",
+        "DC\u00a0Mephisto's",
+        "16",
+        "9",
+        "0",
+        "7",
+        "131",
+        ":",
+        "125",
+        "+6",
+        "27",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "6.",
+        "TSV\u00a0Grunbach\u00a0Darts",
+        "16",
+        "4",
+        "6",
+        "6",
+        "126",
+        ":",
+        "130",
+        "-4",
+        "18",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "7.",
+        "DC\u00a0Irish\u00a026\u00a0e.V.\u00a02",
+        "16",
+        "4",
+        "3",
+        "9",
+        "111",
+        ":",
+        "145",
+        "-34",
+        "15",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "8.",
+        "DC\u00a0Destroyers\u00a0e.V.",
+        "16",
+        "3",
+        "1",
+        "12",
+        "111",
+        ":",
+        "145",
+        "-34",
+        "10",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "9.",
+        "DC\u00a0Strikers\u00a02",
+        "16",
+        "0",
+        "4",
+        "12",
+        "99",
+        ":",
+        "157",
+        "-58",
+        "4",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 2",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        ":",
+        "0",
+        "\u00b10",
+        "0",
+        ""
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "1.",
+        "DC\u00a0Green\u00a0Scorpion's",
+        "16",
+        "14",
+        "2",
+        "0",
+        "167",
+        ":",
+        "89",
+        "+78",
+        "44",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "2.",
+        "Friends\u00a0Arrows",
+        "16",
+        "13",
+        "1",
+        "2",
+        "171",
+        ":",
+        "85",
+        "+86",
+        "40",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "3.",
+        "DC\u00a0Triple\u00a0X",
+        "16",
+        "9",
+        "4",
+        "3",
+        "149",
+        ":",
+        "107",
+        "+42",
+        "31",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "4.",
+        "DC\u00a0DARTanions",
+        "16",
+        "8",
+        "2",
+        "6",
+        "140",
+        ":",
+        "116",
+        "+24",
+        "26",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "5.",
+        "DC\u00a0Black\u00a0Scorpions\u00a02",
+        "16",
+        "7",
+        "0",
+        "9",
+        "123",
+        ":",
+        "133",
+        "-10",
+        "21",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "6.",
+        "DC\u00a0Ung\u00fcltig\u00a02",
+        "16",
+        "6",
+        "2",
+        "8",
+        "101",
+        ":",
+        "155",
+        "-54",
+        "20",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "7.",
+        "DC\u00a0Texas\u00a0Team\u00a03",
+        "16",
+        "3",
+        "2",
+        "11",
+        "104",
+        ":",
+        "152",
+        "-48",
+        "11",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "8.",
+        "DC\u00a0Knickebocker",
+        "16",
+        "3",
+        "2",
+        "11",
+        "103",
+        ":",
+        "153",
+        "-50",
+        "11",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "9.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a02",
+        "16",
+        "1",
+        "1",
+        "14",
+        "94",
+        ":",
+        "162",
+        "-68",
+        "3",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2025/2026 A-Klasse Gruppe 1",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        ":",
+        "0",
+        "\u00b10",
+        "0",
+        ""
+      ]
+    ]
+  },
+  {
+    "season": "2025/2026",
+    "league": "BWEDL e.V. Ligapokal 2024/2025",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Halbfinale (501 M.O.) (Spielort: Festhalle K\u00f6nigsbach)",
+        "19.06.2026",
+        "1",
+        "DC Green Scorpion's",
+        "DC Texas Team",
+        "1:9"
+      ],
+      [
+        "Halbfinale (501 M.O.) (Spielort: Festhalle K\u00f6nigsbach)",
+        "19.06.2026",
+        "2",
+        "DC Reloaded",
+        "the Metal Darts",
+        "4:9"
       ]
     ]
   },
@@ -343,8 +2616,647 @@ window.ARCHIVE_TABLES = [
     ]
   },
   {
+    "season": "2025/2026",
+    "league": "Abschlusstabellen Saison 2025-2026\n\nStand per: 15.06.2026\n\n\nBwedl e.V. 2025/2026 Bezirksliga",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "",
+        "1.",
+        "the\u00a0Metal\u00a0Darts",
+        "18",
+        "16",
+        "2",
+        "0",
+        "235:89",
+        "+146",
+        "50",
+        ""
+      ],
+      [
+        "",
+        "2.",
+        "DC\u00a0Lachs\u00a014",
+        "18",
+        "13",
+        "3",
+        "2",
+        "197:127",
+        "+70",
+        "41",
+        "(-1)"
+      ],
+      [
+        "",
+        "3.",
+        "DC\u00a0Texas\u00a0Team",
+        "18",
+        "11",
+        "3",
+        "4",
+        "203:121",
+        "+82",
+        "36",
+        ""
+      ],
+      [
+        "",
+        "4.",
+        "DC\u00a0Black\u00a0Scorpions",
+        "18",
+        "9",
+        "4",
+        "5",
+        "180:144",
+        "+36",
+        "31",
+        ""
+      ],
+      [
+        "",
+        "5.",
+        "the\u00a0Metal\u00a0Darts\u00a02",
+        "18",
+        "10",
+        "1",
+        "7",
+        "169:155",
+        "+14",
+        "31",
+        ""
+      ],
+      [
+        "",
+        "6.",
+        "DC\u00a0Strikers",
+        "18",
+        "9",
+        "3",
+        "6",
+        "178:146",
+        "+32",
+        "30",
+        ""
+      ],
+      [
+        "",
+        "7.",
+        "DC\u00a0Reloaded",
+        "18",
+        "7",
+        "2",
+        "9",
+        "170:154",
+        "+16",
+        "23",
+        ""
+      ],
+      [
+        "",
+        "8.",
+        "DC\u00a0Irish\u00a026\u00a0e.V.",
+        "18",
+        "3",
+        "1",
+        "14",
+        "129:195",
+        "-66",
+        "10",
+        ""
+      ],
+      [
+        "",
+        "9.",
+        "Odins\u00a0Knechte",
+        "18",
+        "2",
+        "1",
+        "15",
+        "115:209",
+        "-94",
+        "7",
+        ""
+      ],
+      [
+        "",
+        "10.",
+        "DC\u00a0Underground\u00a0Fools",
+        "18",
+        "0",
+        "0",
+        "18",
+        "44:280",
+        "-236",
+        "0",
+        ""
+      ]
+    ]
+  },
+  {
     "season": "2024/2025",
-    "league": "Unbekannt",
+    "league": "LIGAPOKAL 2024-2025",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "20.02.2025 20:00",
+        "1",
+        "the Metal Darts 3",
+        "DC Underground Fool\u00b4s e.V.",
+        "5:11"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "18.02.2025 19:30",
+        "2",
+        "DC HighFlights",
+        "DC Lachs 14",
+        "4:12"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "14.03.2025 20:30",
+        "3",
+        "DC Reloaded",
+        "DC Irish 26 e.V. 2",
+        "15:1"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "08.03.2025 20:00",
+        "4",
+        "DC Triple X",
+        "DC Black Scorpions 3",
+        "9:8"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "07.03.2025 20:30",
+        "5",
+        "Mighty Darts",
+        "DC Black Scorpions",
+        "7:9"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "22.02.2025 19:00",
+        "6",
+        "DC Sch\u00f6mbergerEck",
+        "DC Green Scorpion's",
+        "7:9"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "03.03.2025 20:00",
+        "7",
+        "Alla H\u00e4eeeehr",
+        "DC Strikers",
+        "3:13"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 16.03.2025",
+        "17.02.2025 20:00",
+        "8",
+        "DC Irish 26 e.V. 3",
+        "DC Texas Team",
+        "2:14"
+      ]
+    ]
+  },
+  {
+    "season": "2024/2025",
+    "league": "LIGAPOKAL 2024-2025",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "02.12.2024 19:30",
+        "1",
+        "DC Irish 26 e.V. 3",
+        "DC Bull's Eye Arnbach",
+        "12:4"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "24.01.2025 20:00",
+        "2",
+        "DC Enztaler Buben",
+        "DC Green Scorpion's",
+        "4:12"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "16.12.2024 20:00",
+        "3",
+        "DC Triple one",
+        "DC Lachs 14",
+        "1:15"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "10.01.2025 20:00",
+        "4",
+        "DC HammerHaie",
+        "DC Reloaded",
+        "2:14"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "20.01.2025 19:30",
+        "5",
+        "DSV Gro\u00dfglabbich",
+        "DC Sch\u00f6mbergerEck",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "09.01.2025 20:00",
+        "6",
+        "Alla H\u00e4eeeehr",
+        "Odins Knechte",
+        "13:3"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "18.12.2024 20:00",
+        "7",
+        "DC Irish 26 e.V.",
+        "DC Underground Fool\u00b4s e.V.",
+        "8:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "12.12.2024 20:00",
+        "8",
+        "DC Ung\u00fcltig",
+        "DC Black Scorpions 3",
+        "7:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "25.01.2025 20:00",
+        "9",
+        "DC Triple X",
+        "DC Conweiler",
+        "12:4"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "04.12.2024 20:00",
+        "10",
+        "DC HighFlights",
+        "DC Black Scorpions 2",
+        "10:6"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "18.12.2024 19:00",
+        "11",
+        "DC Black Scorpions",
+        "DC Underground Fool\u00b4s e.V. 3",
+        "15:1"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "04.01.2025 19:00",
+        "12",
+        "DC Kolibrispitz",
+        "DC Strikers",
+        "3:13"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "17.12.2024 20:00",
+        "13",
+        "the Enz Coast",
+        "DC Irish 26 e.V. 2",
+        "5:11"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "04.01.2025 20:00",
+        "14",
+        "Dartfreunde Eichenherz",
+        "DC Texas Team",
+        "2:14"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "06.12.2024 19:00",
+        "15",
+        "Mighty Darts",
+        "DC Texas Team 2",
+        "12:4"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 26.01.2025",
+        "20.01.2025 19:00",
+        "16",
+        "DC Mephisto's",
+        "the Metal Darts 3",
+        "7:9"
+      ]
+    ]
+  },
+  {
+    "season": "2024/2025",
+    "league": "LIGAPOKAL 2024-2025",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "04.10.2024 20:00",
+        "1",
+        "Mighty Darts",
+        "DC 180 Stein e.V.",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "03.10.2024 19:00",
+        "2",
+        "DC Shamrock",
+        "Dartfreunde Eichenherz",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "11.10.2024 20:30",
+        "3",
+        "DC Bull's Eye Arnbach",
+        "TDF Enzberg",
+        "12:4"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "10.11.2024 00:00",
+        "4",
+        "DC Vikings",
+        "DC Black Scorpions 3",
+        "0:16"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "09.11.2024 20:00",
+        "5",
+        "the Metal Darts 5",
+        "Odins Knechte",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "17.10.2024 20:00",
+        "6",
+        "DC Black Scorpions",
+        "the Metal Darts",
+        "9:7"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "06.11.2024 20:00",
+        "7",
+        "DC Cim Bom",
+        "DC Triple one",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "18.10.2024 19:00",
+        "8",
+        "DC Enztaler Buben",
+        "DC Oststadt",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "14.10.2024 20:00",
+        "9",
+        "DSV Gro\u00dfglabbich 2",
+        "DC Black Scorpions 2",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "04.11.2024 20:00",
+        "10",
+        "Phantom Arrows",
+        "DSV Gro\u00dfglabbich",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "17.10.2024 20:30",
+        "11",
+        "Alla H\u00e4eeeehr",
+        "DC Ung\u00fcltig 2",
+        "9:7"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "02.11.2024 19:00",
+        "12",
+        "DC HammerHaie",
+        "DC Duselbr\u00fcder",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "17.10.2024 19:30",
+        "13",
+        "DC Destroyers e.V.",
+        "the Metal Darts 3",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "01.10.2024 20:00",
+        "14",
+        "the Enz Coast",
+        "DC Underground Fool\u00b4s e.V. 2",
+        "9:8"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "21.10.2024 20:00",
+        "15",
+        "DC Bull Hunters",
+        "DC Irish 26 e.V. 2",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "16.10.2024 20:00",
+        "16",
+        "the flying Rocks",
+        "DC Underground Fool\u00b4s e.V.",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "27.10.2024 12:00",
+        "17",
+        "DC Crows",
+        "DC Ung\u00fcltig",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "22.10.2024 20:00",
+        "18",
+        "DC Strikers",
+        "TSV Grunbach Darts",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "17.10.2024 20:00",
+        "19",
+        "M\u00fchle Glabbich e.V.",
+        "DC Underground Fool\u00b4s e.V. 3",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "09.11.2024 20:00",
+        "20",
+        "DC Bull's Eye Arnbach 2",
+        "DC Conweiler",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "25.10.2024 20:00",
+        "21",
+        "DC Lachs 14 2",
+        "DC Texas Team 2",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "18.10.2024 19:30",
+        "22",
+        "DC Irish 26 e.V. 4",
+        "DC Reloaded",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "05.09.2024 19:30",
+        "23",
+        "HighFlights",
+        "DC Los Muertos",
+        "14:2"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "07.10.2024 20:00",
+        "24",
+        "DC X-Br\u00f6tzingen",
+        "DC Lachs 14",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "02.10.2024 20:00",
+        "25",
+        "DC DARTanions",
+        "DC Green Scorpion's",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "22.10.2024 20:00",
+        "26",
+        "DC Dart Vaders",
+        "DC Mephisto's",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "15.10.2024 19:30",
+        "27",
+        "DC Lightning Arrows",
+        "DC Irish 26 e.V.",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "18.10.2024 19:30",
+        "28",
+        "DC Triple 7",
+        "DC Sch\u00f6mbergerEck",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "08.11.2024 20:00",
+        "29",
+        "DC Triple X",
+        "the Metal Darts 2",
+        "9:8"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "19.10.2024 19:00",
+        "30",
+        "DC Kolibrispitz",
+        "Friends Arrows",
+        "9:8"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "23.10.2024 20:00",
+        "31",
+        "DC Broken Darts",
+        "DC Irish 26 e.V. 3",
+        "6:10"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 10.11.2024",
+        "18.10.2024 20:00",
+        "32",
+        "DC CRAZY TITANS",
+        "DC Texas Team",
+        "1:15"
+      ]
+    ]
+  },
+  {
+    "season": "2024/2025",
+    "league": "LIGAPOKAL 2024-2025",
     "rows": [
       [
         "Runde/Info",
@@ -453,7 +3365,7 @@ window.ARCHIVE_TABLES = [
         "Pkt"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "1.",
         "DC\u00a0Strikers\u00a02",
         "18",
@@ -465,7 +3377,7 @@ window.ARCHIVE_TABLES = [
         "49"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "2.",
         "TSV\u00a0Grunbach\u00a0Darts",
         "18",
@@ -477,7 +3389,7 @@ window.ARCHIVE_TABLES = [
         "46"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "3.",
         "DC\u00a0Ung\u00fcltig",
         "18",
@@ -489,7 +3401,7 @@ window.ARCHIVE_TABLES = [
         "37"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "4.",
         "Dartfreunde\u00a0Eichenherz",
         "18",
@@ -501,7 +3413,7 @@ window.ARCHIVE_TABLES = [
         "26"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "5.",
         "DC\u00a0180\u00a0Stein\u00a0e.V.",
         "18",
@@ -513,7 +3425,7 @@ window.ARCHIVE_TABLES = [
         "26"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "6.",
         "DC\u00a0Irish\u00a026\u00a0e.V.",
         "18",
@@ -525,7 +3437,7 @@ window.ARCHIVE_TABLES = [
         "23"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "7.",
         "DC\u00a0Duselbr\u00fcder",
         "18",
@@ -537,7 +3449,7 @@ window.ARCHIVE_TABLES = [
         "21"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "8.",
         "DC\u00a0Bull\u00b4s\u00a0Eye\u00a0Arnbach",
         "18",
@@ -549,7 +3461,7 @@ window.ARCHIVE_TABLES = [
         "16"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "9.",
         "Los\u00a0Muertos",
         "18",
@@ -561,7 +3473,7 @@ window.ARCHIVE_TABLES = [
         "10"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "10.",
         "DC\u00a0Underground\u00a0Fools\u00a03",
         "18",
@@ -591,7 +3503,7 @@ window.ARCHIVE_TABLES = [
         "Pkt"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "1.",
         "DC\u00a0Texas\u00a0Team",
         "16",
@@ -603,7 +3515,7 @@ window.ARCHIVE_TABLES = [
         "42"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "2.",
         "the\u00a0Metal\u00a0Darts\u00a02",
         "16",
@@ -615,7 +3527,7 @@ window.ARCHIVE_TABLES = [
         "31"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "3.",
         "DC\u00a0Green\u00a0Scorpion\u00b4s",
         "16",
@@ -627,7 +3539,7 @@ window.ARCHIVE_TABLES = [
         "30"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "4.",
         "DC\u00a0Underground\u00a0Fools",
         "16",
@@ -639,7 +3551,7 @@ window.ARCHIVE_TABLES = [
         "28"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "5.",
         "DC\u00a0Strikers",
         "16",
@@ -651,7 +3563,7 @@ window.ARCHIVE_TABLES = [
         "25"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "6.",
         "DC\u00a0Reloaded",
         "16",
@@ -663,7 +3575,7 @@ window.ARCHIVE_TABLES = [
         "20"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "7.",
         "the\u00a0Metal\u00a0Darts",
         "16",
@@ -675,7 +3587,7 @@ window.ARCHIVE_TABLES = [
         "16"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "8.",
         "DC\u00a0Texas\u00a0Team\u00a02",
         "16",
@@ -687,7 +3599,7 @@ window.ARCHIVE_TABLES = [
         "8"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "9.",
         "DC\u00a0Underground\u00a0Fools\u00a02",
         "16",
@@ -699,7 +3611,7 @@ window.ARCHIVE_TABLES = [
         "3"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 C-Klasse Gruppe 5",
         "10.",
         "Spielfrei",
         "0",
@@ -709,6 +3621,40 @@ window.ARCHIVE_TABLES = [
         "0:0",
         "\u00b10",
         "0*"
+      ]
+    ]
+  },
+  {
+    "season": "2024/2025",
+    "league": "Bwedl e.V. 2024/2025 Mannschaftsmeisterschaften B-Klasse",
+    "rows": [
+      [
+        "Runde/Info",
+        "Spiel",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "Spiel 1",
+        "the Metal Darts 3",
+        "Mighty Darts",
+        "5:11"
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "Spiel 2",
+        "DC Ung\u00fcltig 2",
+        "the Metal Darts 3",
+        "8:8"
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "Spiel 3",
+        "Mighty Darts",
+        "DC Ung\u00fcltig 2",
+        "13:3"
       ]
     ]
   },
@@ -756,7 +3702,7 @@ window.ARCHIVE_TABLES = [
         "Pkt"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 B-Klasse Gruppe 3",
         "1.",
         "DC\u00a0High\u00a0Flights",
         "4",
@@ -768,7 +3714,7 @@ window.ARCHIVE_TABLES = [
         "12"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 B-Klasse Gruppe 3",
         "2.",
         "DC\u00a0Shamrock",
         "4",
@@ -780,7 +3726,7 @@ window.ARCHIVE_TABLES = [
         "7"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 B-Klasse Gruppe 3",
         "3.",
         "DC\u00a0Broken\u00a0Darts",
         "4",
@@ -792,7 +3738,7 @@ window.ARCHIVE_TABLES = [
         "7"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 B-Klasse Gruppe 3",
         "4.",
         "DC\u00a0Reloaded\u00a03",
         "4",
@@ -804,7 +3750,7 @@ window.ARCHIVE_TABLES = [
         "3"
       ],
       [
-        "",
+        "Bwedl e.V. 2024/2025 B-Klasse Gruppe 3",
         "5.",
         "DC\u00a0Sch\u00f6mbergerEck\u00a02",
         "4",
@@ -2110,31 +5056,166 @@ window.ARCHIVE_TABLES = [
     "rows": [
       [
         "Runde/Info",
-        "Spiel",
-        "Heim",
-        "Gast",
-        "Ergebnis"
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "g",
+        "u",
+        "v",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
       ],
       [
         "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
-        "Spiel 1",
-        "the Metal Darts 3",
-        "Mighty Darts",
-        "5:11"
+        "1.",
+        "Odins\u00a0Knechte",
+        "16",
+        "14",
+        "1",
+        "1",
+        "161",
+        ":",
+        "95",
+        "+66",
+        "43",
+        ""
       ],
       [
         "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
-        "Spiel 2",
-        "DC Ung\u00fcltig 2",
-        "the Metal Darts 3",
-        "8:8"
+        "2.",
+        "DC\u00a0Reloaded",
+        "16",
+        "12",
+        "3",
+        "1",
+        "168",
+        ":",
+        "88",
+        "+80",
+        "39",
+        ""
       ],
       [
         "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
-        "Spiel 3",
-        "Mighty Darts",
-        "DC Ung\u00fcltig 2",
-        "13:3"
+        "3.",
+        "DC\u00a0Texas\u00a0Team\u00a02",
+        "16",
+        "7",
+        "3",
+        "6",
+        "141",
+        ":",
+        "115",
+        "+26",
+        "24",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "4.",
+        "DC\u00a0Ung\u00fcltig",
+        "16",
+        "7",
+        "3",
+        "6",
+        "138",
+        ":",
+        "118",
+        "+20",
+        "24",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "5.",
+        "DC\u00a0Triple\u00a0one",
+        "16",
+        "8",
+        "1",
+        "7",
+        "121",
+        ":",
+        "135",
+        "-14",
+        "23",
+        "(-2)"
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "6.",
+        "DC\u00a0Strikers\u00a02",
+        "16",
+        "7",
+        "1",
+        "8",
+        "126",
+        ":",
+        "130",
+        "-4",
+        "22",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "7.",
+        "DC\u00a0Lachs\u00a014\u00a02",
+        "16",
+        "5",
+        "3",
+        "8",
+        "124",
+        ":",
+        "132",
+        "-8",
+        "18",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "8.",
+        "DC\u00a0Underground\u00a0Fool's\u00a02",
+        "16",
+        "3",
+        "0",
+        "13",
+        "89",
+        ":",
+        "167",
+        "-78",
+        "9",
+        ""
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "9.",
+        "DC\u00a0Black\u00a0Scorpions\u00a02",
+        "16",
+        "1",
+        "1",
+        "14",
+        "84",
+        ":",
+        "172",
+        "-88",
+        "3",
+        "(-1)"
+      ],
+      [
+        "Bwedl e.V. 2024/2025 A-Klasse Gruppe 2",
+        "10.",
+        "Spielfrei",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        ":",
+        "0",
+        "\u00b10",
+        "0",
+        ""
       ]
     ]
   },
@@ -2309,6 +5390,36 @@ window.ARCHIVE_TABLES = [
         "Ergebnis"
       ],
       [
+        "Halbfinale (501 M.O.) (Spielort: Dartweekend)",
+        "27.06.2025",
+        "1",
+        "DC Underground Fools e.V.",
+        "DC Black Scorpions",
+        "9:8"
+      ],
+      [
+        "Halbfinale (501 M.O.) (Spielort: Dartweekend)",
+        "27.06.2025",
+        "2",
+        "DC Triple X",
+        "DC Lachs 14",
+        "8:9"
+      ]
+    ]
+  },
+  {
+    "season": "2024/2025",
+    "league": "BWEDL e.V. Ligapokal 2024/2025",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
         "Runde 5 (501 M.O.) bis 11.05.2025",
         "08.05.2025 20:00",
         "1",
@@ -2344,7 +5455,497 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2023/2024",
-    "league": "Unbekannt",
+    "league": "LIGAPOKAL 2023-2024",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "13.03.2024 20:00",
+        "1",
+        "the Metal Darts",
+        "DC Lachs 14",
+        "9:7"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "15.02.2024 20:00",
+        "2",
+        "DC Reloaded",
+        "Friends Arrows",
+        "10:6"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "16.02.2024 20:00",
+        "3",
+        "DC Triple X",
+        "DC Strikers",
+        "9:8"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "09.03.2024 20:00",
+        "4",
+        "DC Sch\u00f6mbergerEck",
+        "DC Green Scorpion's",
+        "4:12"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "24.02.2024 19:00",
+        "5",
+        "the Metal Darts 3",
+        "DC Destroyers e.V.",
+        "6:10"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "05.02.2024 20:00",
+        "6",
+        "DC Underground Fools e.V.",
+        "DC Lachs 14 2",
+        "11:5"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "26.02.2024 20:00",
+        "7",
+        "DC Triple one",
+        "DC Texas Team 2",
+        "7:9"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 17.03.2024",
+        "15.03.2024 20:00",
+        "8",
+        "DC Texas Team",
+        "DC Irish 26 e.V.",
+        "13:3"
+      ]
+    ]
+  },
+  {
+    "season": "2023/2024",
+    "league": "LIGAPOKAL 2023-2024",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "10.01.2024 20:00",
+        "1",
+        "DC Green Scorpion's",
+        "Esco Hunters",
+        "14:2"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "10.01.2024 20:00",
+        "2",
+        "DC Lachs 14",
+        "DC Lachs 14 3",
+        "13:3"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "30.12.2024 20:00",
+        "3",
+        "the Metal Darts",
+        "DC Black Scorpions",
+        "10:6"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "02.01.2024 20:00",
+        "4",
+        "DC Crazy Flights",
+        "DC Reloaded",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "13.01.2024 20:00",
+        "5",
+        "DC DARTanions",
+        "DC Triple X",
+        "4:12"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "20.12.2023 20:00",
+        "6",
+        "DC Underground Fools e.V. 2",
+        "DC Irish 26 e.V.",
+        "2:14"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "10.01.2024 20:00",
+        "7",
+        "DC Ung\u00fcltig 2",
+        "DC Strikers",
+        "5:11"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "10.01.2024 20:00",
+        "8",
+        "DSV Gro\u00dfglabbich 2",
+        "DC Texas Team",
+        "2:14"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "13.11.2023",
+        "9",
+        "Friends Arrows",
+        "Freilos",
+        "16:0"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "13.01.2024 20:00",
+        "10",
+        "Odins Knechte",
+        "the Metal Darts 3",
+        "7:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "08.12.2023 20:00",
+        "11",
+        "the Metal Darts 2",
+        "DC Triple one",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "11.01.2024 20:30",
+        "12",
+        "Alla H\u00e4eeeeehr",
+        "DC Texas Team 2",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "13.01.2024 20:00",
+        "13",
+        "DC Underground Fools e.V. 4",
+        "DC Destroyers e.V.",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "12.01.2024 20:00",
+        "14",
+        "Dartfreunde Eichenherz",
+        "DC Lachs 14 2",
+        "4:12"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "16.12.2023 19:30",
+        "15",
+        "DC Sch\u00f6mbergerEck",
+        "DC Bull's Eye Arnbach",
+        "12:4"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 28.01.2024",
+        "07.12.2023 19:00",
+        "16",
+        "Los Muertos",
+        "DC Underground Fools e.V.",
+        "2:14"
+      ]
+    ]
+  },
+  {
+    "season": "2023/2024",
+    "league": "LIGAPOKAL 2023-2024",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "24.10.2023 20:00",
+        "1",
+        "DC Shamrock",
+        "Alla H\u00e4eeeeehr",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "18.10.2023 20:00",
+        "2",
+        "DC Dart Vaders",
+        "DC Destroyers e.V.",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "04.11.2023 20:00",
+        "3",
+        "DC Underground Fools e.V. 2",
+        "DC Bull Hunters",
+        "14:2"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "27.10.2023 20:00",
+        "4",
+        "DC Lachs 14",
+        "TDF Enzberg",
+        "15:1"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "06.10.2023 20:00",
+        "5",
+        "DC Triple 7",
+        "DC Black Scorpions",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "01.11.2023 20:00",
+        "6",
+        "DC DARTanions",
+        "Mighty Darts",
+        "12:4"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "17.10.2023 20:00",
+        "7",
+        "DC Ung\u00fcltig 2",
+        "DC Conweiler",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "09.10.2023 20:00",
+        "8",
+        "DC Oiloch Sch\u00f6mberg",
+        "the Metal Darts 2",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "09.10.2023 20:00",
+        "9",
+        "Dartfreunde Enzberg e.V.",
+        "DC Texas Team",
+        "0:16"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "25.10.2023 20:00",
+        "10",
+        "DC Green Scorpion's",
+        "DSV Gro\u00dfglabbich 3",
+        "14:2"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "13.10.2023 20:00",
+        "11",
+        "DC Cim Bom",
+        "DC Underground Fools e.V. 4",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "30.10.2023 20:00",
+        "12",
+        "the flying Rocks",
+        "DC Lachs 14 3",
+        "6:10"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "31.10.2023 20:00",
+        "13",
+        "DC Triple X",
+        "DC Black Scorpions 3",
+        "13:3"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "20.09.2023 19:00",
+        "14",
+        "DC Knickebocker",
+        "Odins Knechte",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "07.11.2023 20:00",
+        "15",
+        "Dartfreunde Eichenherz",
+        "DSV Gro\u00dfglabbich",
+        "12:4"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "09.11.2023 20:00",
+        "16",
+        "DC Reloaded 2",
+        "DC Reloaded",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "27.10.2023 20:00",
+        "17",
+        "DC Cobra",
+        "DC Strikers",
+        "0:16"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "08.11.2023 20:00",
+        "18",
+        "DC Duselbr\u00fcder",
+        "Esco Hunters",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "13.10.2023 20:30",
+        "19",
+        "DC Bull's Eye Arnbach",
+        "DC Underground Fools e.V. 3",
+        "14:2"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "12.10.2023 20:00",
+        "20",
+        "the Enz Coast",
+        "DC Lachs 14 2",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "04.10.2023 20:00",
+        "21",
+        "DC Black Scorpions 2",
+        "DC Triple one",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "20.09.2023 20:00",
+        "22",
+        "M\u00fchle Glabbich e.V.",
+        "DC Irish 26 e.V.",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "04.10.2023 20:00",
+        "23",
+        "DC Crazy Flights",
+        "DC Vikings",
+        "9:7"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "26.09.2023 20:00",
+        "24",
+        "DC Oststadt",
+        "the Metal Darts 3",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "22.09.2023 20:00",
+        "25",
+        "DC 180 Stein e.V.",
+        "DC Texas Team 2",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "18.10.2023 19:00",
+        "26",
+        "Los Muertos",
+        "DC Heavy Angels",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "09.11.2023 20:00",
+        "27",
+        "Friends Arrows",
+        "DC Ung\u00fcltig",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "06.11.2023 20:00",
+        "28",
+        "the Metal Darts",
+        "DC Mephisto Knittlingen",
+        "14:2"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "11.10.2023 20:00",
+        "29",
+        "DC Broken Darts",
+        "DC Underground Fools e.V.",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "21.10.2023 20:00",
+        "30",
+        "DC Kolibrispitz",
+        "Phantom Arrows",
+        "8:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "07.11.2023 20:00",
+        "31",
+        "DC High Flights",
+        "DSV Gro\u00dfglabbich 2",
+        "5:11"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 19.11.2023",
+        "09.11.2023 20:00",
+        "32",
+        "DC Sch\u00f6mbergerEck",
+        "TSV Grunbach Darts",
+        "9:8"
+      ]
+    ]
+  },
+  {
+    "season": "2023/2024",
+    "league": "LIGAPOKAL 2023-2024",
     "rows": [
       [
         "Runde/Info",
@@ -4324,6 +7925,36 @@ window.ARCHIVE_TABLES = [
         "Ergebnis"
       ],
       [
+        "Halbfinale am 14.06.2024",
+        "14.06.2024 20:00",
+        "1",
+        "DC Triple X",
+        "DC Underground Fools e.V.",
+        "9:3"
+      ],
+      [
+        "Halbfinale am 14.06.2024",
+        "14.06.2024 20:00",
+        "2",
+        "DC Texas Team",
+        "the Metal Darts",
+        "6:9"
+      ]
+    ]
+  },
+  {
+    "season": "2023/2024",
+    "league": "BWEDL e.V. Ligapokal 2023/2024",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
         "Runde 5 (501 M.O.) bis 12.05.2024",
         "01.05.2024 17:00",
         "1",
@@ -4359,7 +7990,497 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2022/2023",
-    "league": "Unbekannt",
+    "league": "LIGAPOKAL 2022-2023",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "21.02.2023",
+        "1",
+        "DC Destroyers e.V.",
+        "DC Underground Fool\u00b4s e.V. 2",
+        "11:5"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "06.03.2023",
+        "2",
+        "DC Green Scorpion's",
+        "DSV Gro\u00dfglabbich 2",
+        "11:5"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "27.02.2023",
+        "3",
+        "DC Strikers",
+        "Dartfreunde Eichenherz",
+        "12:4"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "13.03.2023",
+        "4",
+        "the Metal Darts 4",
+        "DC Underground Fool\u00b4s e.V.",
+        "1:15"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "18.02.2023",
+        "5",
+        "DC Triple X",
+        "DC Deckbullen",
+        "6:10"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "14.03.2023",
+        "6",
+        "DC Lachs 14",
+        "DC Lachs 14 2",
+        "10:6"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "10.02.2023",
+        "7",
+        "DC Texas Team",
+        "Esco Hunters",
+        "15:1"
+      ],
+      [
+        "Runde 4 (501 M.O.) bis 19.03.2023",
+        "01.03.2023",
+        "8",
+        "DC Glabbicher Jacks",
+        "DC Reloaded",
+        "7:9"
+      ]
+    ]
+  },
+  {
+    "season": "2022/2023",
+    "league": "LIGAPOKAL 2022-2023",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "30.01.2023",
+        "1",
+        "DC Underground Fool\u00b4s e.V.",
+        "DC Ung\u00fcltig",
+        "11:5"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "18.01.2023",
+        "2",
+        "DC Ung\u00fcltig 2",
+        "Dartfreunde Eichenherz",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "20.01.2023",
+        "3",
+        "DC Black Scorpions 4",
+        "the Metal Darts 4",
+        "7:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "29.12.2022",
+        "4",
+        "DC Lachs 14 4",
+        "DC Lachs 14 2",
+        "5:11"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "28.12.2022",
+        "5",
+        "DC Triple one",
+        "DC Underground Fool\u00b4s e.V. 2",
+        "8:9"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "31.01.2023",
+        "6",
+        "DC Vikings",
+        "DC Green Scorpion's",
+        "1:15"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "20.01.2023",
+        "7",
+        "DC Bull's Eye Arnbach",
+        "DC Reloaded",
+        "3:13"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "28.12.2022",
+        "8",
+        "DC Triple X",
+        "DC Irish 26 e.V.",
+        "9:8"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "13.01.2023",
+        "9",
+        "DC Reloaded 3",
+        "DC Deckbullen",
+        "5:11"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "18.01.2023",
+        "10",
+        "Esco Hunters",
+        "DC Breakers",
+        "11:5"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "31.01.2023",
+        "11",
+        "DC Black Scorpions 2",
+        "DSV Gro\u00dfglabbich 2",
+        "6:10"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "19.01.2023",
+        "12",
+        "DC Lachs 14",
+        "the Metal Darts",
+        "10:6"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "11.01.2023",
+        "13",
+        "DC Glabbicher Jacks",
+        "DC Texas Team 2",
+        "14:2"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "31.01.2023",
+        "14",
+        "DC Texas Team",
+        "Alla H\u00e4eeeehr",
+        "16:0"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "03.02.2023",
+        "15",
+        "DC Underground Fool\u00b4s e.V. 4",
+        "DC Strikers",
+        "3:13"
+      ],
+      [
+        "Runde 3 (501 M.O.) bis 05.02.2023",
+        "16.01.2023",
+        "16",
+        "DC 180 Stein e.V.",
+        "DC Destroyers e.V.",
+        "5:11"
+      ]
+    ]
+  },
+  {
+    "season": "2022/2023",
+    "league": "LIGAPOKAL 2022-2023",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "18.11.2022",
+        "1",
+        "DC Black Scorpions 2",
+        "DC Oststadt",
+        "9:7"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "26.11.2022",
+        "2",
+        "DC Lachs 14 3",
+        "DC Deckbullen",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "31.10.2022",
+        "3",
+        "Dartfreunde Eichenherz 3",
+        "Dartfreunde Eichenherz",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "27.11.2022",
+        "4",
+        "DC Lachs 14 2",
+        "1.DC 06 Bad Wildbad",
+        "16:0"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "15.11.2022",
+        "5",
+        "DC Cim Bom",
+        "DC Ung\u00fcltig",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "21.09.2022",
+        "6",
+        "DC Reloaded 2",
+        "DC Underground Fool\u00b4s e.V. 2",
+        "6:10"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "05.11.2022",
+        "7",
+        "Ernschtle's Friends",
+        "DC Reloaded",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "09.11.2022",
+        "8",
+        "DC Black Scorpions 4",
+        "DC Underground Fool\u00b4s e.V. 3",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "08.10.2022",
+        "9",
+        "DC Underground Fool\u00b4s e.V. 4",
+        "Dartfreunde Eichenherz 2",
+        "9:7"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "19.10.2022",
+        "10",
+        "DSV Gro\u00dfglabbich",
+        "DC Glabbicher Jacks",
+        "6:10"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "20.10.2022",
+        "11",
+        "DC Reloaded 3",
+        "DC Triple one 2",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "13.09.2022",
+        "12",
+        "DC Ung\u00fcltig 2",
+        "DC Cobra",
+        "11:5"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "22.11.2022",
+        "13",
+        "DC 180 Stein e.V.",
+        "DC Heavy Angels",
+        "13:3"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "27.09.2022",
+        "14",
+        "the Enz Coast",
+        "DC Underground Fool\u00b4s e.V.",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "12.10.2022",
+        "15",
+        "DC Irish 26 e.V. 3",
+        "DSV Gro\u00dfglabbich 2",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "05.11.2022",
+        "16",
+        "Esco Hunters",
+        "DC Black Scorpions",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "04.11.2022",
+        "17",
+        "the Metal Darts 5",
+        "DC Triple X",
+        "1:15"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "26.10.2022",
+        "18",
+        "DC Crazy Flights",
+        "the Metal Darts",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "03.11.2022",
+        "19",
+        "DC Irish 26 e.V. 2",
+        "DC Green Scorpion's",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "21.11.2022",
+        "20",
+        "Dartfreunde Enzberg e.V.",
+        "DC Irish 26 e.V.",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "20.10.2022",
+        "21",
+        "Friends Arrows",
+        "DC Lachs 14",
+        "7:9"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "29.10.2022",
+        "22",
+        "DC Kolibrispitz",
+        "DC Texas Team 2",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "26.10.2022",
+        "23",
+        "M\u00fchle Glabbich e.V.",
+        "DC Breakers",
+        "2:14"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "12.11.2022",
+        "24",
+        "DC Bull's Eye Arnbach",
+        "DC Duselbr\u00fcder",
+        "10:6"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "14.10.2022",
+        "25",
+        "DC Oiloch Sch\u00f6mberg",
+        "DC Lachs 14 4",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "15.10.2022",
+        "26",
+        "the flying Rocks",
+        "the Metal Darts 4",
+        "3:13"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "04.11.2022",
+        "27",
+        "DC Black Scorpions 3",
+        "DC Strikers",
+        "6:10"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "17.11.2022",
+        "28",
+        "DC Texas Team",
+        "TDF Enzberg",
+        "16:0"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "26.10.2022",
+        "29",
+        "DC Knickebocker",
+        "Alla H\u00e4eeeehr",
+        "6:10"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "29.10.2022",
+        "30",
+        "DC Vikings",
+        "DC Underground Fool\u00b4s e.V. 5",
+        "13:3"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "29.09.2022",
+        "31",
+        "DC Bull Hunters",
+        "DC Triple one",
+        "4:12"
+      ],
+      [
+        "Runde 2 (501 S.O.) bis 27.11.2022",
+        "14.09.2022",
+        "32",
+        "Los Muertos",
+        "DC Destroyers e.V.",
+        "1:15"
+      ]
+    ]
+  },
+  {
+    "season": "2022/2023",
+    "league": "LIGAPOKAL 2022-2023",
     "rows": [
       [
         "Runde/Info",
@@ -4726,6 +8847,40 @@ window.ARCHIVE_TABLES = [
         "DC Reloaded 3",
         "DC Ung\u00fcltig 2",
         "3:13"
+      ]
+    ]
+  },
+  {
+    "season": "2022/2023",
+    "league": "Bwedl e.V. 2022/2023 Mannschaftsmeisterschaften B-Klasse am 13.05.2023",
+    "rows": [
+      [
+        "Runde/Info",
+        "Spiel",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
+        "",
+        "Spiel 1",
+        "DC Destroyers e.V. 5",
+        "DC Lachs 14 4",
+        "6:10"
+      ],
+      [
+        "",
+        "Spiel 2",
+        "DC Triple one",
+        "DC Destroyers e.V. 5",
+        "13:3"
+      ],
+      [
+        "",
+        "Spiel 3",
+        "DC Lachs 14 4",
+        "DC Triple one",
+        "8:8"
       ]
     ]
   },
@@ -6351,6 +10506,36 @@ window.ARCHIVE_TABLES = [
         "Ergebnis"
       ],
       [
+        "Halbfinale (501 M.O.) (Spielort: Maddox-Club-Bar, Stuttgarter Str. 1, 75438 Knittlingen)",
+        "06.05.2023",
+        "1",
+        "DC Lachs 14",
+        "DC Strikers",
+        "11:5"
+      ],
+      [
+        "Halbfinale (501 M.O.) (Spielort: Maddox-Club-Bar, Stuttgarter Str. 1, 75438 Knittlingen)",
+        "06.05.2023",
+        "2",
+        "DC Reloaded",
+        "DC Texas Team",
+        "5:11"
+      ]
+    ]
+  },
+  {
+    "season": "2022/2023",
+    "league": "BWEDL e.V. Ligapokal 2022/2023",
+    "rows": [
+      [
+        "Runde/Info",
+        "Datum",
+        "Spiel-Nr.",
+        "Heim",
+        "Gast",
+        "Ergebnis"
+      ],
+      [
         "Runde 5 (501 M.O.) bis 30.04.2023",
         "30.03.2023",
         "1",
@@ -6386,6 +10571,72 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2020/2022",
+    "league": "C-Klassen-Meisterschaft, Platz 5-8_2020-2022",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Tore",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "1.",
+        "the\u00a0Metal\u00a0Darts\u00a05",
+        "3",
+        "2",
+        "1",
+        "0",
+        "16:8",
+        "+8",
+        "7"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "2.",
+        "DC\u00a0Oiloch\u00a0Sch\u00f6mberg",
+        "3",
+        "1",
+        "2",
+        "0",
+        "13:11",
+        "+2",
+        "5"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "3.",
+        "DC\u00a0Lachs\u00a014\u00a03",
+        "3",
+        "1",
+        "1",
+        "1",
+        "11:13",
+        "-2",
+        "4"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "4.",
+        "TDF\u00a0Enzberg\u00a02",
+        "3",
+        "0",
+        "0",
+        "3",
+        "8:16",
+        "-8",
+        "0"
+      ]
+    ]
+  },
+  {
+    "season": "2020/2022",
     "league": "C-Klassen-Meisterschaft, Platz 1-4_2020-2022",
     "rows": [
       [
@@ -6396,107 +10647,62 @@ window.ARCHIVE_TABLES = [
         "S",
         "U",
         "N",
-        "Spiele",
+        "Tore",
         "\u00b1",
         "Pkt",
         ""
       ],
       [
-        "",
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
         "1.",
-        "DC\u00a0Reloaded",
-        "12",
-        "12",
-        "0",
-        "0",
-        "94:26",
-        "+68",
-        "35",
-        "(-1)"
-      ],
-      [
-        "",
-        "2.",
-        "DC\u00a0Lachs\u00a014",
-        "12",
-        "9",
-        "0",
-        "3",
-        "77:43",
-        "+34",
-        "24",
-        "(-3)"
-      ],
-      [
-        "",
-        "3.",
-        "DC\u00a0Ung\u00fcltig",
-        "12",
-        "7",
-        "1",
-        "4",
-        "58:62",
-        "-4",
-        "22",
-        ""
-      ],
-      [
-        "",
-        "4.",
-        "DC\u00a0Duselbr\u00fcder",
-        "12",
-        "4",
-        "1",
-        "7",
-        "48:72",
-        "-24",
-        "13",
-        ""
-      ],
-      [
-        "",
-        "5.",
-        "the\u00a0Metal\u00a0Darts\u00a02",
-        "12",
-        "4",
-        "0",
-        "8",
-        "51:69",
-        "-18",
-        "12",
-        ""
-      ],
-      [
-        "",
-        "6.",
-        "Dartfreunde\u00a0Eichenherz\u00a02",
-        "12",
+        "DC\u00a0Lachs\u00a014\u00a04",
         "3",
         "2",
+        "1",
+        "0",
+        "17:7",
+        "+10",
+        "8",
+        "(+1)"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "2.",
+        "Friends\u00a0Arrows",
+        "3",
+        "2",
+        "1",
+        "0",
+        "17:7",
+        "+10",
         "7",
-        "54:66",
-        "-12",
-        "11",
         ""
       ],
       [
-        "",
-        "7.",
-        "DC\u00a0Destroyers\u00a0e.V.",
-        "12",
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "3.",
+        "Dartfreunde\u00a0Eichenherz\u00a03",
+        "3",
         "1",
         "0",
-        "11",
-        "38:82",
-        "-44",
+        "2",
+        "14:10",
+        "+4",
         "3",
         ""
       ],
       [
-        "",
-        "8.",
-        "Spielfrei\u00a0(TDF\u00a0Enzberg)",
-        "zur\u00fcckgezogen"
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "4.",
+        "DC\u00a0Triple\u00a0one",
+        "3",
+        "0",
+        "0",
+        "3",
+        "0:24",
+        "-24",
+        "0",
+        ""
       ]
     ]
   },
@@ -6634,6 +10840,122 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2020/2022",
+    "league": "BWEDL e.V. Saison 2020-2022 - Mix-C-Klasse",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt",
+        ""
+      ],
+      [
+        "",
+        "1.",
+        "DC\u00a0Reloaded",
+        "12",
+        "12",
+        "0",
+        "0",
+        "94:26",
+        "+68",
+        "35",
+        "(-1)"
+      ],
+      [
+        "",
+        "2.",
+        "DC\u00a0Lachs\u00a014",
+        "12",
+        "9",
+        "0",
+        "3",
+        "77:43",
+        "+34",
+        "24",
+        "(-3)"
+      ],
+      [
+        "",
+        "3.",
+        "DC\u00a0Ung\u00fcltig",
+        "12",
+        "7",
+        "1",
+        "4",
+        "58:62",
+        "-4",
+        "22",
+        ""
+      ],
+      [
+        "",
+        "4.",
+        "DC\u00a0Duselbr\u00fcder",
+        "12",
+        "4",
+        "1",
+        "7",
+        "48:72",
+        "-24",
+        "13",
+        ""
+      ],
+      [
+        "",
+        "5.",
+        "the\u00a0Metal\u00a0Darts\u00a02",
+        "12",
+        "4",
+        "0",
+        "8",
+        "51:69",
+        "-18",
+        "12",
+        ""
+      ],
+      [
+        "",
+        "6.",
+        "Dartfreunde\u00a0Eichenherz\u00a02",
+        "12",
+        "3",
+        "2",
+        "7",
+        "54:66",
+        "-12",
+        "11",
+        ""
+      ],
+      [
+        "",
+        "7.",
+        "DC\u00a0Destroyers\u00a0e.V.",
+        "12",
+        "1",
+        "0",
+        "11",
+        "38:82",
+        "-44",
+        "3",
+        ""
+      ],
+      [
+        "",
+        "8.",
+        "Spielfrei\u00a0(TDF\u00a0Enzberg)",
+        "zur\u00fcckgezogen"
+      ]
+    ]
+  },
+  {
+    "season": "2020/2022",
     "league": "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
     "rows": [
       [
@@ -6651,38 +10973,110 @@ window.ARCHIVE_TABLES = [
       [
         "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
         "1.",
-        "DC\u00a0Black\u00a0Scorpions",
+        "DC\u00a0Crazy\u00a0Flights",
+        "12",
+        "9",
         "2",
-        "2",
-        "0",
-        "0",
-        "27:5",
-        "+22",
-        "6"
+        "1",
+        "118:74",
+        "+44",
+        "29"
       ],
       [
         "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
         "2.",
         "DSV\u00a0Gro\u00dfglabbich\u00a02",
+        "12",
+        "9",
         "2",
         "1",
-        "0",
-        "1",
-        "21:11",
-        "+10",
-        "3"
+        "118:74",
+        "+44",
+        "29"
       ],
       [
         "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
         "3.",
-        "DC\u00a0Irish\u00a026\u00a02",
+        "DC\u00a0Black\u00a0Scorpions\u00a02",
+        "12",
+        "8",
+        "0",
+        "4",
+        "105:87",
+        "+18",
+        "24"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "4.",
+        "DC\u00a0Bull\u00a0Hunters",
+        "12",
+        "6",
         "2",
+        "4",
+        "106:86",
+        "+20",
+        "20"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "5.",
+        "DC\u00a0Conweiler",
+        "12",
+        "3",
+        "1",
+        "8",
+        "79:113",
+        "-34",
+        "10"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "6.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a05",
+        "12",
+        "2",
+        "2",
+        "8",
+        "78:114",
+        "-36",
+        "8"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "7.",
+        "DC\u00a0Underground\u00a0Fools\u00a05",
+        "12",
+        "0",
+        "1",
+        "11",
+        "68:124",
+        "-56",
+        "1"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "8.",
+        "Spielfrei",
         "0",
         "0",
-        "2",
-        "0:32",
-        "-32",
+        "0",
+        "0",
+        "0:0",
+        "\u00b10",
         "0*"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "9.",
+        "Spielfrei\u00a0(Knickebocker)",
+        "zur\u00fcckgezogen"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "10.",
+        "Spielfrei(GreenScorpion2)",
+        "zur\u00fcckgezogen"
       ]
     ]
   },
@@ -6974,55 +11368,131 @@ window.ARCHIVE_TABLES = [
         "N",
         "Spiele",
         "\u00b1",
-        "Pkt"
+        "Pkt",
+        ""
       ],
       [
         "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
         "1.",
         "DC\u00a0Lachs\u00a014\u00a02",
-        "1",
-        "1",
+        "16",
+        "15",
         "0",
-        "0",
-        "13:3",
-        "+10",
-        "3"
+        "1",
+        "192:64",
+        "+128",
+        "45",
+        ""
       ],
       [
         "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
         "2.",
-        "DC\u00a0Ung\u00fcltig",
+        "DC\u00a0Irish\u00a026",
+        "16",
+        "10",
         "1",
-        "0",
-        "0",
-        "1",
-        "3:13",
-        "-10",
-        "0"
+        "5",
+        "148:108",
+        "+40",
+        "31",
+        ""
       ],
       [
         "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
         "3.",
-        "DC\u00a0Irish\u00a026",
-        "1",
-        "1",
-        "0",
-        "0",
-        "12:4",
-        "+8",
-        "3"
+        "the\u00a0Metal\u00a0Darts",
+        "16",
+        "9",
+        "2",
+        "5",
+        "151:105",
+        "+46",
+        "29",
+        ""
       ],
       [
         "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
         "4.",
-        "DC\u00a0Green\u00a0Scorpions",
-        "1",
+        "DC\u00a0Reloaded",
+        "16",
+        "9",
+        "2",
+        "5",
+        "147:109",
+        "+38",
+        "29",
+        ""
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "5.",
+        "Esco\u00a0Hunters",
+        "16",
+        "9",
         "0",
-        "0",
+        "7",
+        "137:119",
+        "+18",
+        "27",
+        ""
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "6.",
+        "DC\u00a0Underground\u00a0Fools\u00a02",
+        "16",
+        "8",
         "1",
-        "4:12",
-        "-8",
-        "0"
+        "7",
+        "130:126",
+        "+4",
+        "25",
+        ""
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "7.",
+        "1.DC\u00a006\u00a0Bad\u00a0Wildbad\u00a02",
+        "16",
+        "5",
+        "1",
+        "10",
+        "94:162",
+        "-68",
+        "15",
+        "(-1)"
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "8.",
+        "DC\u00a0Oststadt",
+        "16",
+        "2",
+        "0",
+        "14",
+        "83:173",
+        "-90",
+        "6",
+        ""
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "9.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a03",
+        "16",
+        "1",
+        "1",
+        "14",
+        "70:186",
+        "-116",
+        "4",
+        ""
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "10.",
+        "Spielfrei\u00a0(Hot\u00a0Peppers)",
+        "zur\u00fcckgezogen"
       ]
     ]
   },
@@ -7170,7 +11640,7 @@ window.ARCHIVE_TABLES = [
   },
   {
     "season": "2020/2022",
-    "league": "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+    "league": "BWEDL e.V. - Saison 2020-2022 - Mix-B-Klasse",
     "rows": [
       [
         "Runde/Info",
@@ -7288,6 +11758,141 @@ window.ARCHIVE_TABLES = [
         "-64",
         "4",
         ""
+      ]
+    ]
+  },
+  {
+    "season": "2020/2022",
+    "league": "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Punkte",
+        ""
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "1.",
+        "Dartfreunde\u00a0Eichenherz\u00a03",
+        "14",
+        "12",
+        "1",
+        "1",
+        "135:89",
+        "+46",
+        "36",
+        "(-1)"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "2.",
+        "DC\u00a0Lachs\u00a014\u00a03",
+        "14",
+        "11",
+        "2",
+        "1",
+        "148:76",
+        "+72",
+        "35",
+        ""
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "3.",
+        "DC\u00a0Black\u00a0Scorpions\u00a03",
+        "14",
+        "9",
+        "1",
+        "4",
+        "136:88",
+        "+48",
+        "28",
+        ""
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "4.",
+        "DC\u00a0Ung\u00fcltig\u00a02",
+        "14",
+        "7",
+        "2",
+        "5",
+        "123:101",
+        "+22",
+        "22",
+        "(-1)"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "5.",
+        "DSV\u00a0Gro\u00dfglabbich\u00a03",
+        "14",
+        "7",
+        "0",
+        "7",
+        "120:104",
+        "+16",
+        "21",
+        ""
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "6.",
+        "the\u00a0Enz\u00a0Coast",
+        "14",
+        "4",
+        "0",
+        "10",
+        "91:133",
+        "-42",
+        "11",
+        "(-1)"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "7.",
+        "DC\u00a0Irish\u00a026\u00a03",
+        "14",
+        "3",
+        "0",
+        "11",
+        "91:133",
+        "-42",
+        "9",
+        ""
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "8.",
+        "DC\u00a0Destroyers\u00a0e.V.\u00a06",
+        "14",
+        "0",
+        "0",
+        "14",
+        "52:172",
+        "-120",
+        "-1",
+        "(-1)"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "9.",
+        "Spielfrei\u00a0(DC\u00a0180\u00a0Stein)",
+        "zur\u00fcckgezogen"
+      ],
+      [
+        "BWEDL e.V. - Saison 2020-2022 - C-Klasse Gruppe 4",
+        "10.",
+        "Spielfrei\u00a0(DC\u00a0Warriors)",
+        "zur\u00fcckgezogen"
       ]
     ]
   },
@@ -7686,6 +12291,180 @@ window.ARCHIVE_TABLES = [
         "10.",
         "Spielfrei\u00a0(DC\u00a0Shadows)",
         "zur\u00fcckgezogen"
+      ]
+    ]
+  },
+  {
+    "season": "2020/2022",
+    "league": "B-Klassen-Meisterschaft Platz 4-6",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "1.",
+        "DC\u00a0Black\u00a0Scorpions",
+        "2",
+        "2",
+        "0",
+        "0",
+        "27:5",
+        "+22",
+        "6"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "2.",
+        "DSV\u00a0Gro\u00dfglabbich\u00a02",
+        "2",
+        "1",
+        "0",
+        "1",
+        "21:11",
+        "+10",
+        "3"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "3.",
+        "DC\u00a0Irish\u00a026\u00a02",
+        "2",
+        "0",
+        "0",
+        "2",
+        "0:32",
+        "-32",
+        "0*"
+      ]
+    ]
+  },
+  {
+    "season": "2020/2022",
+    "league": "B-Klassen-Meisterschaft Platz 1-3",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "1.",
+        "DC\u00a0Deckbullen",
+        "2",
+        "2",
+        "0",
+        "0",
+        "30:2",
+        "+28",
+        "6"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "2.",
+        "DC\u00a0DARTanions",
+        "2",
+        "1",
+        "0",
+        "1",
+        "9:23",
+        "-14",
+        "3"
+      ],
+      [
+        "BWEDL e.V. 2020/22 B-Klasse Gruppe 3",
+        "3.",
+        "DC\u00a0Crazy\u00a0Flights",
+        "2",
+        "0",
+        "0",
+        "2",
+        "9:23",
+        "-14",
+        "0"
+      ]
+    ]
+  },
+  {
+    "season": "2020/2022",
+    "league": "A-Klassen",
+    "rows": [
+      [
+        "Runde/Info",
+        "Pl.",
+        "Tabelle",
+        "Sp",
+        "S",
+        "U",
+        "N",
+        "Spiele",
+        "\u00b1",
+        "Pkt"
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "1.",
+        "DC\u00a0Lachs\u00a014\u00a02",
+        "1",
+        "1",
+        "0",
+        "0",
+        "13:3",
+        "+10",
+        "3"
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "2.",
+        "DC\u00a0Ung\u00fcltig",
+        "1",
+        "0",
+        "0",
+        "1",
+        "3:13",
+        "-10",
+        "0"
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "3.",
+        "DC\u00a0Irish\u00a026",
+        "1",
+        "1",
+        "0",
+        "0",
+        "12:4",
+        "+8",
+        "3"
+      ],
+      [
+        "BWEDL e.V. 2020/22 A-Klasse Gruppe 2",
+        "4.",
+        "DC\u00a0Green\u00a0Scorpions",
+        "1",
+        "0",
+        "0",
+        "1",
+        "4:12",
+        "-8",
+        "0"
       ]
     ]
   }

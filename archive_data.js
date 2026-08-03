@@ -1,338 +1,12 @@
 window.ARCHIVE_DATA = {
-  "1560": [
-    {
-      "season": "24/25",
-      "rank": 1,
-      "points": 181,
-      "league": "Bezirksliga",
-      "name": "Thomas K\u00f6hnlein"
-    },
-    {
-      "season": "23/24",
-      "rank": 1,
-      "points": 161,
-      "league": "Bezirksliga",
-      "name": "Thomas K\u00f6hnlein"
-    },
-    {
-      "season": "22/23",
-      "rank": 79,
-      "points": 44,
-      "league": "A-Klasse",
-      "name": "Thomas K\u00f6hnlein"
-    },
-    {
-      "season": "20/22",
-      "rank": 39,
-      "points": 30,
-      "league": "Bezirksliga",
-      "name": "Thomas K\u00f6hnlein"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 2,
-      "points": 167,
-      "league": "Bezirksliga",
-      "name": "Thomas K\u00f6hnlein"
-    }
-  ],
-  "004": [
-    {
-      "season": "22/23",
-      "rank": 19,
-      "points": 124,
-      "league": "A-Klasse",
-      "name": "Bernd Fritz"
-    },
-    {
-      "season": "24/25",
-      "rank": 13,
-      "points": 136,
-      "league": "A-Klasse",
-      "name": "Bernd Fritz"
-    },
-    {
-      "season": "23/24",
-      "rank": 5,
-      "points": 149,
-      "league": "A-Klasse",
-      "name": "Bernd Fritz"
-    },
-    {
-      "season": "20/22",
-      "rank": 20,
-      "points": 93,
-      "league": "Bezirksliga",
-      "name": "Bernd Fritz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 19,
-      "points": 107,
-      "league": "A-Klasse",
-      "name": "Bernd Fritz"
-    }
-  ],
-  "397": [
-    {
-      "season": "24/25",
-      "rank": 2,
-      "points": 176,
-      "league": "Bezirksliga",
-      "name": "Michael G\u00e4rtner"
-    },
-    {
-      "season": "23/24",
-      "rank": 5,
-      "points": 143,
-      "league": "Bezirksliga",
-      "name": "Michael G\u00e4rtner"
-    },
-    {
-      "season": "22/23",
-      "rank": 4,
-      "points": 174,
-      "league": "Bezirksliga",
-      "name": "Michael G\u00e4rtner"
-    },
-    {
-      "season": "20/22",
-      "rank": 2,
-      "points": 165,
-      "league": "Bezirksliga",
-      "name": "Michael G\u00e4rtner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 8,
-      "points": 149,
-      "league": "Bezirksliga",
-      "name": "Michael G\u00e4rtner"
-    }
-  ],
-  "196": [
-    {
-      "season": "24/25",
-      "rank": 3,
-      "points": 159,
-      "league": "Bezirksliga",
-      "name": "Maik H\u00f6lzle"
-    },
-    {
-      "season": "23/24",
-      "rank": 6,
-      "points": 143,
-      "league": "Bezirksliga",
-      "name": "Maik H\u00f6lzle"
-    },
-    {
-      "season": "22/23",
-      "rank": 2,
-      "points": 175,
-      "league": "Bezirksliga",
-      "name": "Maik H\u00f6lzle"
-    },
-    {
-      "season": "20/22",
-      "rank": 1,
-      "points": 184,
-      "league": "Bezirksliga",
-      "name": "Maik H\u00f6lzle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 6,
-      "points": 158,
-      "league": "Bezirksliga",
-      "name": "Maik H\u00f6lzle"
-    }
-  ],
-  "775": [
-    {
-      "season": "24/25",
-      "rank": 4,
-      "points": 159,
-      "league": "Bezirksliga",
-      "name": "Rolf Nadler"
-    },
-    {
-      "season": "23/24",
-      "rank": 2,
-      "points": 157,
-      "league": "Bezirksliga",
-      "name": "Rolf Nadler"
-    },
-    {
-      "season": "22/23",
-      "rank": 1,
-      "points": 178,
-      "league": "Bezirksliga",
-      "name": "Rolf Nadler"
-    },
-    {
-      "season": "20/22",
-      "rank": 3,
-      "points": 165,
-      "league": "Bezirksliga",
-      "name": "Rolf Nadler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 4,
-      "points": 163,
-      "league": "Bezirksliga",
-      "name": "Rolf Nadler"
-    }
-  ],
-  "582": [
-    {
-      "season": "24/25",
-      "rank": 5,
-      "points": 159,
-      "league": "Bezirksliga",
-      "name": "Eike Haug"
-    },
-    {
-      "season": "23/24",
-      "rank": 3,
-      "points": 151,
-      "league": "Bezirksliga",
-      "name": "Eike Haug"
-    },
-    {
-      "season": "22/23",
-      "rank": 3,
-      "points": 174,
-      "league": "Bezirksliga",
-      "name": "Eike Haug"
-    },
-    {
-      "season": "20/22",
-      "rank": 55,
-      "points": 10,
-      "league": "Bezirksliga",
-      "name": "Eike Haug"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 10,
-      "points": 148,
-      "league": "Bezirksliga",
-      "name": "Eike Haug"
-    }
-  ],
-  "746": [
-    {
-      "season": "24/25",
-      "rank": 6,
-      "points": 149,
-      "league": "Bezirksliga",
-      "name": "Tarkan Arik"
-    },
-    {
-      "season": "23/24",
-      "rank": 15,
-      "points": 107,
-      "league": "Bezirksliga",
-      "name": "Tarkan Arik"
-    },
-    {
-      "season": "22/23",
-      "rank": 88,
-      "points": 24,
-      "league": "A-Klasse",
-      "name": "Tarkan Arik"
-    },
-    {
-      "season": "20/22",
-      "rank": 59,
-      "points": 3,
-      "league": "Bezirksliga",
-      "name": "Tarkan Arik"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 9,
-      "points": 148,
-      "league": "Bezirksliga",
-      "name": "Tarkan Arik"
-    }
-  ],
-  "244": [
-    {
-      "season": "24/25",
-      "rank": 7,
-      "points": 145,
-      "league": "Bezirksliga",
-      "name": "Robin Korbmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 4,
-      "points": 151,
-      "league": "Bezirksliga",
-      "name": "Robin Korbmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 2,
-      "points": 181,
-      "league": "A-Klasse",
-      "name": "Robin Korbmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 2,
-      "points": 173,
-      "league": "A-Klasse",
-      "name": "Robin Korbmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 7,
-      "points": 156,
-      "league": "Bezirksliga",
-      "name": "Robin Korbmann"
-    }
-  ],
-  "1587": [
-    {
-      "season": "24/25",
-      "rank": 8,
-      "points": 143,
-      "league": "Bezirksliga",
-      "name": "Andreas Lenz"
-    },
-    {
-      "season": "23/24",
-      "rank": 1,
-      "points": 193,
-      "league": "A-Klasse",
-      "name": "Andreas Lenz"
-    },
-    {
-      "season": "22/23",
-      "rank": 10,
-      "points": 152,
-      "league": "B-Klasse",
-      "name": "Andreas Lenz"
-    },
-    {
-      "season": "20/22",
-      "rank": 2,
-      "points": 199,
-      "league": "C-Klasse",
-      "name": "Andreas Lenz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 2,
-      "points": 182,
-      "league": "A-Klasse",
-      "name": "Andreas Lenz"
-    }
-  ],
   "425": [
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 172,
+      "league": "Bezirksliga",
+      "name": "Marco Merz"
+    },
     {
       "season": "24/25",
       "rank": 9,
@@ -360,53 +34,335 @@ window.ARCHIVE_DATA = {
       "points": 13,
       "league": "A-Klasse",
       "name": "Marco Merz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 1,
-      "points": 172,
-      "league": "Bezirksliga",
-      "name": "Marco Merz"
     }
   ],
-  "780": [
+  "1560": [
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 167,
+      "league": "Bezirksliga",
+      "name": "Thomas K\u00f6hnlein"
+    },
     {
       "season": "24/25",
-      "rank": 10,
-      "points": 133,
+      "rank": 1,
+      "points": 181,
       "league": "Bezirksliga",
-      "name": "Sascha Schneider"
+      "name": "Thomas K\u00f6hnlein"
+    },
+    {
+      "season": "23/24",
+      "rank": 1,
+      "points": 161,
+      "league": "Bezirksliga",
+      "name": "Thomas K\u00f6hnlein"
+    },
+    {
+      "season": "22/23",
+      "rank": 79,
+      "points": 44,
+      "league": "A-Klasse",
+      "name": "Thomas K\u00f6hnlein"
+    },
+    {
+      "season": "20/22",
+      "rank": 39,
+      "points": 30,
+      "league": "Bezirksliga",
+      "name": "Thomas K\u00f6hnlein"
+    }
+  ],
+  "1456": [
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 164,
+      "league": "Bezirksliga",
+      "name": "Jason Whitney"
+    },
+    {
+      "season": "24/25",
+      "rank": 1,
+      "points": 187,
+      "league": "A-Klasse",
+      "name": "Jason Whitney"
+    },
+    {
+      "season": "23/24",
+      "rank": 34,
+      "points": 109,
+      "league": "B-Klasse",
+      "name": "Jason Whitney"
+    },
+    {
+      "season": "22/23",
+      "rank": 36,
+      "points": 113,
+      "league": "C-Klasse",
+      "name": "Jason Whitney"
+    }
+  ],
+  "775": [
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 163,
+      "league": "Bezirksliga",
+      "name": "Rolf Nadler"
+    },
+    {
+      "season": "24/25",
+      "rank": 4,
+      "points": 159,
+      "league": "Bezirksliga",
+      "name": "Rolf Nadler"
     },
     {
       "season": "23/24",
       "rank": 2,
-      "points": 178,
-      "league": "A-Klasse",
-      "name": "Sascha Schneider"
+      "points": 157,
+      "league": "Bezirksliga",
+      "name": "Rolf Nadler"
     },
     {
       "season": "22/23",
+      "rank": 1,
+      "points": 178,
+      "league": "Bezirksliga",
+      "name": "Rolf Nadler"
+    },
+    {
+      "season": "20/22",
+      "rank": 3,
+      "points": 165,
+      "league": "Bezirksliga",
+      "name": "Rolf Nadler"
+    }
+  ],
+  "1896": [
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 159,
+      "league": "Bezirksliga",
+      "name": "Sascha Gauss"
+    },
+    {
+      "season": "24/25",
       "rank": 4,
-      "points": 170,
+      "points": 162,
       "league": "A-Klasse",
-      "name": "Sascha Schneider"
+      "name": "Sascha Gauss"
+    },
+    {
+      "season": "23/24",
+      "rank": 2,
+      "points": 170,
+      "league": "B-Klasse",
+      "name": "Sascha Gauss"
+    },
+    {
+      "season": "22/23",
+      "rank": 5,
+      "points": 163,
+      "league": "C-Klasse",
+      "name": "Sascha Gauss"
+    }
+  ],
+  "196": [
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 158,
+      "league": "Bezirksliga",
+      "name": "Maik H\u00f6lzle"
+    },
+    {
+      "season": "24/25",
+      "rank": 3,
+      "points": 159,
+      "league": "Bezirksliga",
+      "name": "Maik H\u00f6lzle"
+    },
+    {
+      "season": "23/24",
+      "rank": 6,
+      "points": 143,
+      "league": "Bezirksliga",
+      "name": "Maik H\u00f6lzle"
+    },
+    {
+      "season": "22/23",
+      "rank": 2,
+      "points": 175,
+      "league": "Bezirksliga",
+      "name": "Maik H\u00f6lzle"
     },
     {
       "season": "20/22",
       "rank": 1,
-      "points": 185,
-      "league": "A-Klasse",
-      "name": "Sascha Schneider"
-    },
+      "points": 184,
+      "league": "Bezirksliga",
+      "name": "Maik H\u00f6lzle"
+    }
+  ],
+  "244": [
     {
       "season": "2025/2026",
-      "rank": 1,
-      "points": 185,
+      "rank": 7,
+      "points": 156,
+      "league": "Bezirksliga",
+      "name": "Robin Korbmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 7,
+      "points": 145,
+      "league": "Bezirksliga",
+      "name": "Robin Korbmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 4,
+      "points": 151,
+      "league": "Bezirksliga",
+      "name": "Robin Korbmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 2,
+      "points": 181,
       "league": "A-Klasse",
-      "name": "Sascha Schneider"
+      "name": "Robin Korbmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 2,
+      "points": 173,
+      "league": "A-Klasse",
+      "name": "Robin Korbmann"
+    }
+  ],
+  "397": [
+    {
+      "season": "2025/2026",
+      "rank": 8,
+      "points": 149,
+      "league": "Bezirksliga",
+      "name": "Michael G\u00e4rtner"
+    },
+    {
+      "season": "24/25",
+      "rank": 2,
+      "points": 176,
+      "league": "Bezirksliga",
+      "name": "Michael G\u00e4rtner"
+    },
+    {
+      "season": "23/24",
+      "rank": 5,
+      "points": 143,
+      "league": "Bezirksliga",
+      "name": "Michael G\u00e4rtner"
+    },
+    {
+      "season": "22/23",
+      "rank": 4,
+      "points": 174,
+      "league": "Bezirksliga",
+      "name": "Michael G\u00e4rtner"
+    },
+    {
+      "season": "20/22",
+      "rank": 2,
+      "points": 165,
+      "league": "Bezirksliga",
+      "name": "Michael G\u00e4rtner"
+    }
+  ],
+  "746": [
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 148,
+      "league": "Bezirksliga",
+      "name": "Tarkan Arik"
+    },
+    {
+      "season": "24/25",
+      "rank": 6,
+      "points": 149,
+      "league": "Bezirksliga",
+      "name": "Tarkan Arik"
+    },
+    {
+      "season": "23/24",
+      "rank": 15,
+      "points": 107,
+      "league": "Bezirksliga",
+      "name": "Tarkan Arik"
+    },
+    {
+      "season": "22/23",
+      "rank": 88,
+      "points": 24,
+      "league": "A-Klasse",
+      "name": "Tarkan Arik"
+    },
+    {
+      "season": "20/22",
+      "rank": 59,
+      "points": 3,
+      "league": "Bezirksliga",
+      "name": "Tarkan Arik"
+    }
+  ],
+  "582": [
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 148,
+      "league": "Bezirksliga",
+      "name": "Eike Haug"
+    },
+    {
+      "season": "24/25",
+      "rank": 5,
+      "points": 159,
+      "league": "Bezirksliga",
+      "name": "Eike Haug"
+    },
+    {
+      "season": "23/24",
+      "rank": 3,
+      "points": 151,
+      "league": "Bezirksliga",
+      "name": "Eike Haug"
+    },
+    {
+      "season": "22/23",
+      "rank": 3,
+      "points": 174,
+      "league": "Bezirksliga",
+      "name": "Eike Haug"
+    },
+    {
+      "season": "20/22",
+      "rank": 55,
+      "points": 10,
+      "league": "Bezirksliga",
+      "name": "Eike Haug"
     }
   ],
   "104": [
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 136,
+      "league": "Bezirksliga",
+      "name": "Sven Fiedler"
+    },
     {
       "season": "24/25",
       "rank": 11,
@@ -434,150 +390,62 @@ window.ARCHIVE_DATA = {
       "points": 160,
       "league": "Bezirksliga",
       "name": "Sven Fiedler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 11,
-      "points": 136,
-      "league": "Bezirksliga",
-      "name": "Sven Fiedler"
     }
   ],
-  "1282": [
+  "357": [
     {
-      "season": "24/25",
+      "season": "2025/2026",
       "rank": 12,
-      "points": 124,
-      "league": "Bezirksliga",
-      "name": "Fabian Steube"
-    },
-    {
-      "season": "23/24",
-      "rank": 19,
-      "points": 100,
-      "league": "Bezirksliga",
-      "name": "Fabian Steube"
-    },
-    {
-      "season": "22/23",
-      "rank": 10,
-      "points": 117,
-      "league": "Bezirksliga",
-      "name": "Fabian Steube"
-    },
-    {
-      "season": "20/22",
-      "rank": 7,
-      "points": 141,
-      "league": "A-Klasse",
-      "name": "Fabian Steube"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 20,
-      "points": 97,
-      "league": "Bezirksliga",
-      "name": "Fabian Steube"
-    }
-  ],
-  "573": [
-    {
-      "season": "24/25",
-      "rank": 13,
-      "points": 122,
-      "league": "Bezirksliga",
-      "name": "Gregor Opacak"
-    },
-    {
-      "season": "23/24",
-      "rank": 10,
-      "points": 119,
-      "league": "Bezirksliga",
-      "name": "Gregor Opacak"
-    },
-    {
-      "season": "22/23",
-      "rank": 6,
-      "points": 145,
-      "league": "Bezirksliga",
-      "name": "Gregor Opacak"
-    },
-    {
-      "season": "20/22",
-      "rank": 7,
-      "points": 131,
-      "league": "Bezirksliga",
-      "name": "Gregor Opacak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 17,
-      "points": 104,
-      "league": "Bezirksliga",
-      "name": "Gregor Opacak"
-    }
-  ],
-  "901": [
-    {
-      "season": "24/25",
-      "rank": 14,
-      "points": 109,
-      "league": "Bezirksliga",
-      "name": "Tino Wingerter"
-    },
-    {
-      "season": "23/24",
-      "rank": 14,
-      "points": 108,
-      "league": "Bezirksliga",
-      "name": "Tino Wingerter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 18,
-      "points": 100,
-      "league": "Bezirksliga",
-      "name": "Tino Wingerter"
-    }
-  ],
-  "473": [
-    {
-      "season": "24/25",
-      "rank": 15,
-      "points": 108,
-      "league": "Bezirksliga",
-      "name": "Thorsten Jost"
-    },
-    {
-      "season": "23/24",
-      "rank": 18,
-      "points": 102,
-      "league": "Bezirksliga",
-      "name": "Thorsten Jost"
-    },
-    {
-      "season": "22/23",
-      "rank": 7,
-      "points": 127,
-      "league": "Bezirksliga",
-      "name": "Thorsten Jost"
-    },
-    {
-      "season": "20/22",
-      "rank": 6,
       "points": 134,
       "league": "Bezirksliga",
-      "name": "Thorsten Jost"
-    },
+      "name": "Daniel Poganatz"
+    }
+  ],
+  "073": [
     {
       "season": "2025/2026",
-      "rank": 16,
+      "rank": 13,
+      "points": 120,
+      "league": "Bezirksliga",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "24/25",
+      "rank": 6,
+      "points": 155,
+      "league": "A-Klasse",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "23/24",
+      "rank": 4,
+      "points": 158,
+      "league": "A-Klasse",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "22/23",
+      "rank": 5,
+      "points": 161,
+      "league": "A-Klasse",
+      "name": "Peter Penndorf"
+    },
+    {
+      "season": "20/22",
+      "rank": 10,
       "points": 115,
       "league": "Bezirksliga",
-      "name": "Thorsten Jost"
+      "name": "Peter Penndorf"
     }
   ],
   "494": [
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 119,
+      "league": "Bezirksliga",
+      "name": "R\u00fcstem Aydogan"
+    },
     {
       "season": "24/25",
       "rank": 16,
@@ -605,164 +473,16 @@ window.ARCHIVE_DATA = {
       "points": 119,
       "league": "Bezirksliga",
       "name": "R\u00fcstem Aydogan"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 14,
-      "points": 119,
-      "league": "Bezirksliga",
-      "name": "R\u00fcstem Aydogan"
-    }
-  ],
-  "1290": [
-    {
-      "season": "24/25",
-      "rank": 17,
-      "points": 100,
-      "league": "Bezirksliga",
-      "name": "Dennis Hummel"
-    },
-    {
-      "season": "23/24",
-      "rank": 21,
-      "points": 108,
-      "league": "A-Klasse",
-      "name": "Dennis Hummel"
-    },
-    {
-      "season": "22/23",
-      "rank": 32,
-      "points": 94,
-      "league": "A-Klasse",
-      "name": "Dennis Hummel"
-    },
-    {
-      "season": "20/22",
-      "rank": 27,
-      "points": 102,
-      "league": "A-Klasse",
-      "name": "Dennis Hummel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 23,
-      "points": 79,
-      "league": "Bezirksliga",
-      "name": "Dennis Hummel"
-    }
-  ],
-  "1309": [
-    {
-      "season": "24/25",
-      "rank": 18,
-      "points": 94,
-      "league": "Bezirksliga",
-      "name": "Bernd Haberecht"
-    },
-    {
-      "season": "23/24",
-      "rank": 29,
-      "points": 74,
-      "league": "Bezirksliga",
-      "name": "Bernd Haberecht"
-    },
-    {
-      "season": "22/23",
-      "rank": 19,
-      "points": 93,
-      "league": "Bezirksliga",
-      "name": "Bernd Haberecht"
-    },
-    {
-      "season": "20/22",
-      "rank": 20,
-      "points": 114,
-      "league": "A-Klasse",
-      "name": "Bernd Haberecht"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 22,
-      "points": 91,
-      "league": "Bezirksliga",
-      "name": "Bernd Haberecht"
-    }
-  ],
-  "1470": [
-    {
-      "season": "24/25",
-      "rank": 19,
-      "points": 93,
-      "league": "Bezirksliga",
-      "name": "Martin Schulze"
-    },
-    {
-      "season": "23/24",
-      "rank": 34,
-      "points": 61,
-      "league": "Bezirksliga",
-      "name": "Martin Schulze"
-    },
-    {
-      "season": "22/23",
-      "rank": 17,
-      "points": 97,
-      "league": "Bezirksliga",
-      "name": "Martin Schulze"
-    },
-    {
-      "season": "20/22",
-      "rank": 30,
-      "points": 101,
-      "league": "A-Klasse",
-      "name": "Martin Schulze"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 27,
-      "points": 61,
-      "league": "Bezirksliga",
-      "name": "Martin Schulze"
-    }
-  ],
-  "742": [
-    {
-      "season": "24/25",
-      "rank": 20,
-      "points": 93,
-      "league": "Bezirksliga",
-      "name": "Thomas Nees"
-    },
-    {
-      "season": "23/24",
-      "rank": 13,
-      "points": 112,
-      "league": "Bezirksliga",
-      "name": "Thomas Nees"
-    },
-    {
-      "season": "22/23",
-      "rank": 20,
-      "points": 91,
-      "league": "Bezirksliga",
-      "name": "Thomas Nees"
-    },
-    {
-      "season": "20/22",
-      "rank": 29,
-      "points": 54,
-      "league": "Bezirksliga",
-      "name": "Thomas Nees"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 31,
-      "points": 53,
-      "league": "Bezirksliga",
-      "name": "Thomas Nees"
     }
   ],
   "1049": [
+    {
+      "season": "2025/2026",
+      "rank": 15,
+      "points": 117,
+      "league": "Bezirksliga",
+      "name": "Chris Kubin"
+    },
     {
       "season": "24/25",
       "rank": 21,
@@ -790,53 +510,1161 @@ window.ARCHIVE_DATA = {
       "points": 160,
       "league": "A-Klasse",
       "name": "Chris Kubin"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 15,
-      "points": 117,
-      "league": "Bezirksliga",
-      "name": "Chris Kubin"
     }
   ],
-  "989": [
+  "473": [
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 115,
+      "league": "Bezirksliga",
+      "name": "Thorsten Jost"
+    },
     {
       "season": "24/25",
-      "rank": 22,
-      "points": 91,
+      "rank": 15,
+      "points": 108,
       "league": "Bezirksliga",
-      "name": "Fabian Wirth"
+      "name": "Thorsten Jost"
     },
     {
       "season": "23/24",
-      "rank": 8,
-      "points": 137,
-      "league": "A-Klasse",
-      "name": "Fabian Wirth"
+      "rank": 18,
+      "points": 102,
+      "league": "Bezirksliga",
+      "name": "Thorsten Jost"
     },
     {
       "season": "22/23",
-      "rank": 8,
+      "rank": 7,
+      "points": 127,
+      "league": "Bezirksliga",
+      "name": "Thorsten Jost"
+    },
+    {
+      "season": "20/22",
+      "rank": 6,
+      "points": 134,
+      "league": "Bezirksliga",
+      "name": "Thorsten Jost"
+    }
+  ],
+  "573": [
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 104,
+      "league": "Bezirksliga",
+      "name": "Gregor Opacak"
+    },
+    {
+      "season": "24/25",
+      "rank": 13,
+      "points": 122,
+      "league": "Bezirksliga",
+      "name": "Gregor Opacak"
+    },
+    {
+      "season": "23/24",
+      "rank": 10,
+      "points": 119,
+      "league": "Bezirksliga",
+      "name": "Gregor Opacak"
+    },
+    {
+      "season": "22/23",
+      "rank": 6,
+      "points": 145,
+      "league": "Bezirksliga",
+      "name": "Gregor Opacak"
+    },
+    {
+      "season": "20/22",
+      "rank": 7,
+      "points": 131,
+      "league": "Bezirksliga",
+      "name": "Gregor Opacak"
+    }
+  ],
+  "901": [
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 100,
+      "league": "Bezirksliga",
+      "name": "Tino Wingerter"
+    },
+    {
+      "season": "24/25",
+      "rank": 14,
+      "points": 109,
+      "league": "Bezirksliga",
+      "name": "Tino Wingerter"
+    },
+    {
+      "season": "23/24",
+      "rank": 14,
+      "points": 108,
+      "league": "Bezirksliga",
+      "name": "Tino Wingerter"
+    }
+  ],
+  "1784": [
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 99,
+      "league": "Bezirksliga",
+      "name": "Markus Gleich"
+    },
+    {
+      "season": "24/25",
+      "rank": 85,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Markus Gleich"
+    },
+    {
+      "season": "23/24",
+      "rank": 6,
+      "points": 155,
+      "league": "B-Klasse",
+      "name": "Markus Gleich"
+    },
+    {
+      "season": "22/23",
+      "rank": 30,
+      "points": 117,
+      "league": "C-Klasse",
+      "name": "Markus Gleich"
+    }
+  ],
+  "1282": [
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 97,
+      "league": "Bezirksliga",
+      "name": "Fabian Steube"
+    },
+    {
+      "season": "24/25",
+      "rank": 12,
+      "points": 124,
+      "league": "Bezirksliga",
+      "name": "Fabian Steube"
+    },
+    {
+      "season": "23/24",
+      "rank": 19,
+      "points": 100,
+      "league": "Bezirksliga",
+      "name": "Fabian Steube"
+    },
+    {
+      "season": "22/23",
+      "rank": 10,
+      "points": 117,
+      "league": "Bezirksliga",
+      "name": "Fabian Steube"
+    },
+    {
+      "season": "20/22",
+      "rank": 7,
+      "points": 141,
+      "league": "A-Klasse",
+      "name": "Fabian Steube"
+    }
+  ],
+  "1612": [
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 97,
+      "league": "Bezirksliga",
+      "name": "Daniel Hautzinger"
+    },
+    {
+      "season": "24/25",
+      "rank": 19,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Daniel Hautzinger"
+    },
+    {
+      "season": "23/24",
+      "rank": 21,
+      "points": 97,
+      "league": "Bezirksliga",
+      "name": "Daniel Hautzinger"
+    },
+    {
+      "season": "22/23",
+      "rank": 9,
+      "points": 143,
+      "league": "A-Klasse",
+      "name": "Daniel Hautzinger"
+    },
+    {
+      "season": "20/22",
+      "rank": 23,
+      "points": 106,
+      "league": "A-Klasse",
+      "name": "Daniel Hautzinger"
+    }
+  ],
+  "1309": [
+    {
+      "season": "2025/2026",
+      "rank": 22,
+      "points": 91,
+      "league": "Bezirksliga",
+      "name": "Bernd Haberecht"
+    },
+    {
+      "season": "24/25",
+      "rank": 18,
+      "points": 94,
+      "league": "Bezirksliga",
+      "name": "Bernd Haberecht"
+    },
+    {
+      "season": "23/24",
+      "rank": 29,
+      "points": 74,
+      "league": "Bezirksliga",
+      "name": "Bernd Haberecht"
+    },
+    {
+      "season": "22/23",
+      "rank": 19,
+      "points": 93,
+      "league": "Bezirksliga",
+      "name": "Bernd Haberecht"
+    },
+    {
+      "season": "20/22",
+      "rank": 20,
+      "points": 114,
+      "league": "A-Klasse",
+      "name": "Bernd Haberecht"
+    }
+  ],
+  "1290": [
+    {
+      "season": "2025/2026",
+      "rank": 23,
+      "points": 79,
+      "league": "Bezirksliga",
+      "name": "Dennis Hummel"
+    },
+    {
+      "season": "24/25",
+      "rank": 17,
+      "points": 100,
+      "league": "Bezirksliga",
+      "name": "Dennis Hummel"
+    },
+    {
+      "season": "23/24",
+      "rank": 21,
+      "points": 108,
+      "league": "A-Klasse",
+      "name": "Dennis Hummel"
+    },
+    {
+      "season": "22/23",
+      "rank": 32,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Dennis Hummel"
+    },
+    {
+      "season": "20/22",
+      "rank": 27,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Dennis Hummel"
+    }
+  ],
+  "145": [
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 67,
+      "league": "Bezirksliga",
+      "name": "R\u00fcdiger Scheiba"
+    },
+    {
+      "season": "24/25",
+      "rank": 57,
+      "points": 9,
+      "league": "Bezirksliga",
+      "name": "R\u00fcdiger Scheiba"
+    },
+    {
+      "season": "23/24",
+      "rank": 60,
+      "points": 61,
+      "league": "A-Klasse",
+      "name": "R\u00fcdiger Scheiba"
+    }
+  ],
+  "1276": [
+    {
+      "season": "2025/2026",
+      "rank": 25,
+      "points": 67,
+      "league": "Bezirksliga",
+      "name": "Robin Zipp"
+    },
+    {
+      "season": "24/25",
+      "rank": 3,
+      "points": 162,
+      "league": "A-Klasse",
+      "name": "Robin Zipp"
+    },
+    {
+      "season": "23/24",
+      "rank": 24,
+      "points": 86,
+      "league": "Bezirksliga",
+      "name": "Robin Zipp"
+    },
+    {
+      "season": "22/23",
+      "rank": 67,
+      "points": 57,
+      "league": "A-Klasse",
+      "name": "Robin Zipp"
+    },
+    {
+      "season": "20/22",
+      "rank": 22,
+      "points": 107,
+      "league": "A-Klasse",
+      "name": "Robin Zipp"
+    }
+  ],
+  "1111": [
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 62,
+      "league": "Bezirksliga",
+      "name": "Axel Spring"
+    },
+    {
+      "season": "24/25",
+      "rank": 46,
+      "points": 24,
+      "league": "Bezirksliga",
+      "name": "Axel Spring"
+    },
+    {
+      "season": "23/24",
+      "rank": 23,
+      "points": 88,
+      "league": "Bezirksliga",
+      "name": "Axel Spring"
+    }
+  ],
+  "1470": [
+    {
+      "season": "2025/2026",
+      "rank": 27,
+      "points": 61,
+      "league": "Bezirksliga",
+      "name": "Martin Schulze"
+    },
+    {
+      "season": "24/25",
+      "rank": 19,
+      "points": 93,
+      "league": "Bezirksliga",
+      "name": "Martin Schulze"
+    },
+    {
+      "season": "23/24",
+      "rank": 34,
+      "points": 61,
+      "league": "Bezirksliga",
+      "name": "Martin Schulze"
+    },
+    {
+      "season": "22/23",
+      "rank": 17,
+      "points": 97,
+      "league": "Bezirksliga",
+      "name": "Martin Schulze"
+    },
+    {
+      "season": "20/22",
+      "rank": 30,
+      "points": 101,
+      "league": "A-Klasse",
+      "name": "Martin Schulze"
+    }
+  ],
+  "727": [
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 57,
+      "league": "Bezirksliga",
+      "name": "Felix Kr\u00fcger"
+    },
+    {
+      "season": "24/25",
+      "rank": 33,
+      "points": 57,
+      "league": "Bezirksliga",
+      "name": "Felix Kr\u00fcger"
+    },
+    {
+      "season": "23/24",
+      "rank": 66,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Felix Kr\u00fcger"
+    },
+    {
+      "season": "22/23",
+      "rank": 36,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Felix Kr\u00fcger"
+    },
+    {
+      "season": "20/22",
+      "rank": 14,
+      "points": 131,
+      "league": "B-Klasse",
+      "name": "Felix Kr\u00fcger"
+    }
+  ],
+  "083": [
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 55,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "24/25",
+      "rank": 34,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "23/24",
+      "rank": 39,
+      "points": 52,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "22/23",
+      "rank": 31,
+      "points": 56,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    },
+    {
+      "season": "20/22",
+      "rank": 24,
+      "points": 74,
+      "league": "Bezirksliga",
+      "name": "Heiko Fruhner"
+    }
+  ],
+  "859": [
+    {
+      "season": "2025/2026",
+      "rank": 30,
+      "points": 54,
+      "league": "Bezirksliga",
+      "name": "Max Z\u00fcndel"
+    },
+    {
+      "season": "24/25",
+      "rank": 7,
       "points": 148,
       "league": "A-Klasse",
-      "name": "Fabian Wirth"
+      "name": "Max Z\u00fcndel"
+    },
+    {
+      "season": "23/24",
+      "rank": 22,
+      "points": 93,
+      "league": "Bezirksliga",
+      "name": "Max Z\u00fcndel"
+    },
+    {
+      "season": "22/23",
+      "rank": 6,
+      "points": 160,
+      "league": "A-Klasse",
+      "name": "Max Z\u00fcndel"
+    },
+    {
+      "season": "20/22",
+      "rank": 72,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Max Z\u00fcndel"
+    }
+  ],
+  "742": [
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 53,
+      "league": "Bezirksliga",
+      "name": "Thomas Nees"
+    },
+    {
+      "season": "24/25",
+      "rank": 20,
+      "points": 93,
+      "league": "Bezirksliga",
+      "name": "Thomas Nees"
+    },
+    {
+      "season": "23/24",
+      "rank": 13,
+      "points": 112,
+      "league": "Bezirksliga",
+      "name": "Thomas Nees"
+    },
+    {
+      "season": "22/23",
+      "rank": 20,
+      "points": 91,
+      "league": "Bezirksliga",
+      "name": "Thomas Nees"
+    },
+    {
+      "season": "20/22",
+      "rank": 29,
+      "points": 54,
+      "league": "Bezirksliga",
+      "name": "Thomas Nees"
+    }
+  ],
+  "662": [
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 52,
+      "league": "Bezirksliga",
+      "name": "Patrick Schr\u00f6der"
+    },
+    {
+      "season": "24/25",
+      "rank": 47,
+      "points": 23,
+      "league": "Bezirksliga",
+      "name": "Patrick Schr\u00f6der"
+    }
+  ],
+  "1228": [
+    {
+      "season": "2025/2026",
+      "rank": 33,
+      "points": 51,
+      "league": "Bezirksliga",
+      "name": "Marco Ruof"
+    },
+    {
+      "season": "24/25",
+      "rank": 27,
+      "points": 67,
+      "league": "Bezirksliga",
+      "name": "Marco Ruof"
+    },
+    {
+      "season": "22/23",
+      "rank": 61,
+      "points": 68,
+      "league": "A-Klasse",
+      "name": "Marco Ruof"
+    },
+    {
+      "season": "20/22",
+      "rank": 6,
+      "points": 155,
+      "league": "B-Klasse",
+      "name": "Marco Ruof"
+    }
+  ],
+  "1530": [
+    {
+      "season": "2025/2026",
+      "rank": 34,
+      "points": 48,
+      "league": "Bezirksliga",
+      "name": "Kevin Kenz"
+    },
+    {
+      "season": "24/25",
+      "rank": 29,
+      "points": 112,
+      "league": "A-Klasse",
+      "name": "Kevin Kenz"
+    },
+    {
+      "season": "23/24",
+      "rank": 39,
+      "points": 103,
+      "league": "B-Klasse",
+      "name": "Kevin Kenz"
+    },
+    {
+      "season": "22/23",
+      "rank": 22,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Kevin Kenz"
+    }
+  ],
+  "988": [
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 48,
+      "league": "Bezirksliga",
+      "name": "Philipp Flaig"
+    },
+    {
+      "season": "23/24",
+      "rank": 32,
+      "points": 64,
+      "league": "Bezirksliga",
+      "name": "Philipp Flaig"
+    },
+    {
+      "season": "22/23",
+      "rank": 3,
+      "points": 174,
+      "league": "A-Klasse",
+      "name": "Philipp Flaig"
+    },
+    {
+      "season": "20/22",
+      "rank": 48,
+      "points": 89,
+      "league": "B-Klasse",
+      "name": "Philipp Flaig"
+    }
+  ],
+  "1210": [
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 45,
+      "league": "Bezirksliga",
+      "name": "Uwe M\u00fchlbauer"
+    },
+    {
+      "season": "24/25",
+      "rank": 50,
+      "points": 74,
+      "league": "A-Klasse",
+      "name": "Uwe M\u00fchlbauer"
+    },
+    {
+      "season": "23/24",
+      "rank": 41,
+      "points": 103,
+      "league": "B-Klasse",
+      "name": "Uwe M\u00fchlbauer"
+    },
+    {
+      "season": "22/23",
+      "rank": 30,
+      "points": 106,
+      "league": "B-Klasse",
+      "name": "Uwe M\u00fchlbauer"
+    },
+    {
+      "season": "20/22",
+      "rank": 87,
+      "points": 55,
+      "league": "B-Klasse",
+      "name": "Uwe M\u00fchlbauer"
+    }
+  ],
+  "870": [
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 45,
+      "league": "Bezirksliga",
+      "name": "Michael Heck"
+    },
+    {
+      "season": "24/25",
+      "rank": 42,
+      "points": 39,
+      "league": "Bezirksliga",
+      "name": "Michael Heck"
+    },
+    {
+      "season": "23/24",
+      "rank": 30,
+      "points": 66,
+      "league": "Bezirksliga",
+      "name": "Michael Heck"
+    },
+    {
+      "season": "22/23",
+      "rank": 18,
+      "points": 95,
+      "league": "Bezirksliga",
+      "name": "Michael Heck"
+    },
+    {
+      "season": "20/22",
+      "rank": 47,
+      "points": 23,
+      "league": "Bezirksliga",
+      "name": "Michael Heck"
+    }
+  ],
+  "840": [
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 42,
+      "league": "Bezirksliga",
+      "name": "Tobias Gutunolu"
+    },
+    {
+      "season": "24/25",
+      "rank": 36,
+      "points": 53,
+      "league": "Bezirksliga",
+      "name": "Tobias Gutunolu"
+    },
+    {
+      "season": "23/24",
+      "rank": 33,
+      "points": 62,
+      "league": "Bezirksliga",
+      "name": "Tobias Gutunolu"
+    },
+    {
+      "season": "22/23",
+      "rank": 48,
+      "points": 19,
+      "league": "Bezirksliga",
+      "name": "Tobias Gutunolu"
+    }
+  ],
+  "760": [
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 40,
+      "league": "Bezirksliga",
+      "name": "Thorsten Klein"
+    },
+    {
+      "season": "24/25",
+      "rank": 28,
+      "points": 114,
+      "league": "A-Klasse",
+      "name": "Thorsten Klein"
+    },
+    {
+      "season": "23/24",
+      "rank": 29,
+      "points": 115,
+      "league": "B-Klasse",
+      "name": "Thorsten Klein"
+    },
+    {
+      "season": "22/23",
+      "rank": 19,
+      "points": 139,
+      "league": "C-Klasse",
+      "name": "Thorsten Klein"
+    },
+    {
+      "season": "20/22",
+      "rank": 11,
+      "points": 155,
+      "league": "C-Klasse",
+      "name": "Thorsten Klein"
+    }
+  ],
+  "1892": [
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 40,
+      "league": "Bezirksliga",
+      "name": "Sven Lernhardt"
+    },
+    {
+      "season": "24/25",
+      "rank": 29,
+      "points": 65,
+      "league": "Bezirksliga",
+      "name": "Sven Lernhardt"
+    },
+    {
+      "season": "23/24",
+      "rank": 9,
+      "points": 128,
+      "league": "Bezirksliga",
+      "name": "Sven Lernhardt"
+    }
+  ],
+  "114": [
+    {
+      "season": "2025/2026",
+      "rank": 41,
+      "points": 38,
+      "league": "Bezirksliga",
+      "name": "Thomas Weber"
+    },
+    {
+      "season": "24/25",
+      "rank": 44,
+      "points": 81,
+      "league": "A-Klasse",
+      "name": "Thomas Weber"
+    },
+    {
+      "season": "23/24",
+      "rank": 40,
+      "points": 89,
+      "league": "A-Klasse",
+      "name": "Thomas Weber"
+    },
+    {
+      "season": "22/23",
+      "rank": 50,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Thomas Weber"
     },
     {
       "season": "20/22",
       "rank": 18,
-      "points": 96,
-      "league": "Bezirksliga",
-      "name": "Fabian Wirth"
-    },
+      "points": 117,
+      "league": "A-Klasse",
+      "name": "Thomas Weber"
+    }
+  ],
+  "918": [
     {
       "season": "2025/2026",
-      "rank": 6,
-      "points": 139,
+      "rank": 42,
+      "points": 38,
+      "league": "Bezirksliga",
+      "name": "Dominik Silvestre Abrantes"
+    },
+    {
+      "season": "24/25",
+      "rank": 2,
+      "points": 166,
       "league": "A-Klasse",
-      "name": "Fabian Wirth"
+      "name": "Dominik Silvestre Abrantes"
+    },
+    {
+      "season": "23/24",
+      "rank": 5,
+      "points": 158,
+      "league": "B-Klasse",
+      "name": "Dominik Silvestre Abrantes"
+    },
+    {
+      "season": "22/23",
+      "rank": 1,
+      "points": 182,
+      "league": "C-Klasse",
+      "name": "Dominik Silvestre Abrantes"
+    },
+    {
+      "season": "20/22",
+      "rank": 121,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Dominik Silvestre Abrantes"
+    }
+  ],
+  "1172": [
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 35,
+      "league": "Bezirksliga",
+      "name": "Christopher Fuchs"
+    },
+    {
+      "season": "24/25",
+      "rank": 51,
+      "points": 74,
+      "league": "A-Klasse",
+      "name": "Christopher Fuchs"
+    },
+    {
+      "season": "23/24",
+      "rank": 43,
+      "points": 28,
+      "league": "Bezirksliga",
+      "name": "Christopher Fuchs"
+    },
+    {
+      "season": "22/23",
+      "rank": 76,
+      "points": 47,
+      "league": "A-Klasse",
+      "name": "Christopher Fuchs"
+    },
+    {
+      "season": "20/22",
+      "rank": 87,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Christophe Fuchs"
+    }
+  ],
+  "879": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 33,
+      "league": "Bezirksliga",
+      "name": "Holger Hentschel-Hoffmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 31,
+      "points": 64,
+      "league": "Bezirksliga",
+      "name": "Holger Hentschel-Hoffmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 62,
+      "points": 5,
+      "league": "Bezirksliga",
+      "name": "Holger Hentschel-Hoffmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 50,
+      "points": 15,
+      "league": "Bezirksliga",
+      "name": "Holger Hentschel-Hoffmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 51,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Holger Hentschel-Hoffmann"
+    }
+  ],
+  "944": [
+    {
+      "season": "2025/2026",
+      "rank": 45,
+      "points": 33,
+      "league": "Bezirksliga",
+      "name": "Nico Ihli"
+    },
+    {
+      "season": "24/25",
+      "rank": 49,
+      "points": 74,
+      "league": "A-Klasse",
+      "name": "Nico Ihli"
+    },
+    {
+      "season": "23/24",
+      "rank": 75,
+      "points": 74,
+      "league": "B-Klasse",
+      "name": "Nico Ihli"
+    },
+    {
+      "season": "22/23",
+      "rank": 15,
+      "points": 142,
+      "league": "C-Klasse",
+      "name": "Nico Ihli"
+    },
+    {
+      "season": "20/22",
+      "rank": 35,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Nico Ihli"
+    }
+  ],
+  "714": [
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 32,
+      "league": "Bezirksliga",
+      "name": "Marc Lernhardt"
+    },
+    {
+      "season": "24/25",
+      "rank": 30,
+      "points": 64,
+      "league": "Bezirksliga",
+      "name": "Marc Lernhardt"
+    },
+    {
+      "season": "23/24",
+      "rank": 31,
+      "points": 65,
+      "league": "Bezirksliga",
+      "name": "Marc Lernhardt"
+    }
+  ],
+  "1818": [
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 25,
+      "league": "Bezirksliga",
+      "name": "Louis B\u00e4r"
+    },
+    {
+      "season": "24/25",
+      "rank": 103,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Louis B\u00e4r"
+    }
+  ],
+  "713": [
+    {
+      "season": "2025/2026",
+      "rank": 48,
+      "points": 25,
+      "league": "Bezirksliga",
+      "name": "Antonio Knapps Thommen"
+    },
+    {
+      "season": "24/25",
+      "rank": 64,
+      "points": 3,
+      "league": "Bezirksliga",
+      "name": "Antonio Knapps Thommen"
+    }
+  ],
+  "258": [
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Dominick Paci"
+    },
+    {
+      "season": "23/24",
+      "rank": 260,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Dominick Paci"
+    }
+  ],
+  "454": [
+    {
+      "season": "2025/2026",
+      "rank": 50,
+      "points": 18,
+      "league": "Bezirksliga",
+      "name": "Christian Hahn"
+    },
+    {
+      "season": "24/25",
+      "rank": 86,
+      "points": 25,
+      "league": "A-Klasse",
+      "name": "Christian Hahn"
+    }
+  ],
+  "1637": [
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 18,
+      "league": "Bezirksliga",
+      "name": "Ufuk Kraus"
+    },
+    {
+      "season": "24/25",
+      "rank": 89,
+      "points": 20,
+      "league": "A-Klasse",
+      "name": "Ufuk Kraus"
+    },
+    {
+      "season": "23/24",
+      "rank": 57,
+      "points": 11,
+      "league": "Bezirksliga",
+      "name": "Ufuk Kraus"
+    }
+  ],
+  "1279": [
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 16,
+      "league": "Bezirksliga",
+      "name": "Urban Roth"
+    },
+    {
+      "season": "24/25",
+      "rank": 48,
+      "points": 76,
+      "league": "A-Klasse",
+      "name": "Urban Roth"
+    },
+    {
+      "season": "23/24",
+      "rank": 37,
+      "points": 90,
+      "league": "A-Klasse",
+      "name": "Urban Roth"
+    },
+    {
+      "season": "22/23",
+      "rank": 25,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Urban Roth"
+    },
+    {
+      "season": "20/22",
+      "rank": 15,
+      "points": 128,
+      "league": "B-Klasse",
+      "name": "Urban Roth"
     }
   ],
   "420": [
+    {
+      "season": "2025/2026",
+      "rank": 53,
+      "points": 16,
+      "league": "Bezirksliga",
+      "name": "Jamal Schulte"
+    },
     {
       "season": "24/25",
       "rank": 23,
@@ -864,13 +1692,17415 @@ window.ARCHIVE_DATA = {
       "points": 83,
       "league": "Bezirksliga",
       "name": "Jamal Schulte"
+    }
+  ],
+  "392": [
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 16,
+      "league": "Bezirksliga",
+      "name": "Jakub Ehrhardt"
+    }
+  ],
+  "1652": [
+    {
+      "season": "2025/2026",
+      "rank": 55,
+      "points": 14,
+      "league": "Bezirksliga",
+      "name": "Christian Kaksch"
     },
+    {
+      "season": "24/25",
+      "rank": 53,
+      "points": 13,
+      "league": "Bezirksliga",
+      "name": "Christian Kaksch"
+    },
+    {
+      "season": "23/24",
+      "rank": 95,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Christian Kaksch"
+    },
+    {
+      "season": "22/23",
+      "rank": 16,
+      "points": 134,
+      "league": "A-Klasse",
+      "name": "Christian Kaksch"
+    },
+    {
+      "season": "20/22",
+      "rank": 68,
+      "points": 70,
+      "league": "B-Klasse",
+      "name": "Christian Kaksch"
+    }
+  ],
+  "1416": [
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 11,
+      "league": "Bezirksliga",
+      "name": "Ingo Eichenhofer"
+    },
+    {
+      "season": "24/25",
+      "rank": 58,
+      "points": 7,
+      "league": "Bezirksliga",
+      "name": "Ingo Eichenhofer"
+    },
+    {
+      "season": "23/24",
+      "rank": 54,
+      "points": 14,
+      "league": "Bezirksliga",
+      "name": "Ingo Eichenhofer"
+    }
+  ],
+  "1182": [
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 9,
+      "league": "Bezirksliga",
+      "name": "Wolfgang Cafaro"
+    },
+    {
+      "season": "23/24",
+      "rank": 59,
+      "points": 8,
+      "league": "Bezirksliga",
+      "name": "Wolfgang Cafaro"
+    }
+  ],
+  "1454": [
+    {
+      "season": "2025/2026",
+      "rank": 58,
+      "points": 8,
+      "league": "Bezirksliga",
+      "name": "Tobias H\u00e4rter"
+    },
+    {
+      "season": "24/25",
+      "rank": 40,
+      "points": 41,
+      "league": "Bezirksliga",
+      "name": "Tobias H\u00e4rter"
+    },
+    {
+      "season": "23/24",
+      "rank": 12,
+      "points": 116,
+      "league": "Bezirksliga",
+      "name": "Tobias H\u00e4rter"
+    },
+    {
+      "season": "22/23",
+      "rank": 14,
+      "points": 109,
+      "league": "Bezirksliga",
+      "name": "Tobias H\u00e4rter"
+    },
+    {
+      "season": "20/22",
+      "rank": 19,
+      "points": 94,
+      "league": "Bezirksliga",
+      "name": "Tobias H\u00e4rter"
+    }
+  ],
+  "1578": [
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 7,
+      "league": "Bezirksliga",
+      "name": "Vincenzo Di Grigoli"
+    },
+    {
+      "season": "24/25",
+      "rank": 35,
+      "points": 56,
+      "league": "Bezirksliga",
+      "name": "Vincenzo Di Grigoli"
+    },
+    {
+      "season": "23/24",
+      "rank": 215,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Vincenzo Di Grigoli"
+    }
+  ],
+  "295": [
+    {
+      "season": "2025/2026",
+      "rank": 60,
+      "points": 7,
+      "league": "Bezirksliga",
+      "name": "Jan-Hendrik Olislagers"
+    }
+  ],
+  "926": [
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 6,
+      "league": "Bezirksliga",
+      "name": "Andre M\u00fcller"
+    },
+    {
+      "season": "23/24",
+      "rank": 56,
+      "points": 11,
+      "league": "Bezirksliga",
+      "name": "Andre M\u00fcller"
+    }
+  ],
+  "480": [
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 5,
+      "league": "Bezirksliga",
+      "name": "Idris Zan"
+    }
+  ],
+  "951": [
+    {
+      "season": "2025/2026",
+      "rank": 63,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Rene Bandemer"
+    }
+  ],
+  "1662": [
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Manuel Selak"
+    },
+    {
+      "season": "23/24",
+      "rank": 60,
+      "points": 8,
+      "league": "Bezirksliga",
+      "name": "Manuel Selak"
+    },
+    {
+      "season": "20/22",
+      "rank": 79,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Manuel Selak"
+    }
+  ],
+  "1601": [
+    {
+      "season": "2025/2026",
+      "rank": 65,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Francisco Corall"
+    },
+    {
+      "season": "24/25",
+      "rank": 105,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Francisco Corall"
+    },
+    {
+      "season": "23/24",
+      "rank": 144,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Francisco Corall"
+    }
+  ],
+  "1406": [
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Franziska Ihli"
+    },
+    {
+      "season": "24/25",
+      "rank": 108,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Franziska Ihli"
+    },
+    {
+      "season": "23/24",
+      "rank": 124,
+      "points": 31,
+      "league": "B-Klasse",
+      "name": "Franziska Ihli"
+    },
+    {
+      "season": "22/23",
+      "rank": 157,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Franziska Ihli"
+    }
+  ],
+  "1079": [
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Jannik Scherle"
+    },
+    {
+      "season": "24/25",
+      "rank": 37,
+      "points": 92,
+      "league": "A-Klasse",
+      "name": "Jannik Scherle"
+    },
+    {
+      "season": "23/24",
+      "rank": 64,
+      "points": 58,
+      "league": "A-Klasse",
+      "name": "Jannik Scherle"
+    },
+    {
+      "season": "22/23",
+      "rank": 102,
+      "points": 13,
+      "league": "A-Klasse",
+      "name": "Jannik Scherle"
+    },
+    {
+      "season": "20/22",
+      "rank": 136,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Jannik Scherle"
+    }
+  ],
+  "1214": [
+    {
+      "season": "2025/2026",
+      "rank": 68,
+      "points": 0,
+      "league": "Bezirksliga",
+      "name": "Klaus Clappier"
+    },
+    {
+      "season": "24/25",
+      "rank": 97,
+      "points": 8,
+      "league": "A-Klasse",
+      "name": "Klaus Clappier"
+    },
+    {
+      "season": "23/24",
+      "rank": 135,
+      "points": 19,
+      "league": "B-Klasse",
+      "name": "Klaus Clappier"
+    },
+    {
+      "season": "22/23",
+      "rank": 191,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Klaus Clappier"
+    },
+    {
+      "season": "20/22",
+      "rank": 110,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Klaus Clappier"
+    }
+  ],
+  "161": [
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 0,
+      "league": "Bezirksliga",
+      "name": "Klara Nagy"
+    },
+    {
+      "season": "24/25",
+      "rank": 106,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Klara Nagy"
+    }
+  ],
+  "917": [
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 0,
+      "league": "Bezirksliga",
+      "name": "Benjamin Bader"
+    },
+    {
+      "season": "24/25",
+      "rank": 26,
+      "points": 116,
+      "league": "A-Klasse",
+      "name": "Benjamin Bader"
+    },
+    {
+      "season": "23/24",
+      "rank": 35,
+      "points": 91,
+      "league": "A-Klasse",
+      "name": "Benjamin Bader"
+    },
+    {
+      "season": "22/23",
+      "rank": 20,
+      "points": 119,
+      "league": "A-Klasse",
+      "name": "Benjamin Bader"
+    },
+    {
+      "season": "20/22",
+      "rank": 32,
+      "points": 97,
+      "league": "A-Klasse",
+      "name": "Benjamin Bader"
+    }
+  ],
+  "780": [
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 185,
+      "league": "A-Klasse",
+      "name": "Sascha Schneider"
+    },
+    {
+      "season": "24/25",
+      "rank": 10,
+      "points": 133,
+      "league": "Bezirksliga",
+      "name": "Sascha Schneider"
+    },
+    {
+      "season": "23/24",
+      "rank": 2,
+      "points": 178,
+      "league": "A-Klasse",
+      "name": "Sascha Schneider"
+    },
+    {
+      "season": "22/23",
+      "rank": 4,
+      "points": 170,
+      "league": "A-Klasse",
+      "name": "Sascha Schneider"
+    },
+    {
+      "season": "20/22",
+      "rank": 1,
+      "points": 185,
+      "league": "A-Klasse",
+      "name": "Sascha Schneider"
+    }
+  ],
+  "1587": [
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 182,
+      "league": "A-Klasse",
+      "name": "Andreas Lenz"
+    },
+    {
+      "season": "24/25",
+      "rank": 8,
+      "points": 143,
+      "league": "Bezirksliga",
+      "name": "Andreas Lenz"
+    },
+    {
+      "season": "23/24",
+      "rank": 1,
+      "points": 193,
+      "league": "A-Klasse",
+      "name": "Andreas Lenz"
+    },
+    {
+      "season": "22/23",
+      "rank": 10,
+      "points": 152,
+      "league": "B-Klasse",
+      "name": "Andreas Lenz"
+    },
+    {
+      "season": "20/22",
+      "rank": 2,
+      "points": 199,
+      "league": "C-Klasse",
+      "name": "Andreas Lenz"
+    }
+  ],
+  "1659": [
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 176,
+      "league": "A-Klasse",
+      "name": "Gianluca Marino"
+    },
+    {
+      "season": "24/25",
+      "rank": 12,
+      "points": 137,
+      "league": "B-Klasse",
+      "name": "Gianluca Marino"
+    }
+  ],
+  "325": [
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 151,
+      "league": "A-Klasse",
+      "name": "Patrick Heib"
+    },
+    {
+      "season": "24/25",
+      "rank": 4,
+      "points": 156,
+      "league": "B-Klasse",
+      "name": "Patrick Heib"
+    },
+    {
+      "season": "23/24",
+      "rank": 23,
+      "points": 132,
+      "league": "C-Klasse",
+      "name": "Patrick Heib"
+    }
+  ],
+  "1883": [
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 141,
+      "league": "A-Klasse",
+      "name": "Daniel Sowa"
+    },
+    {
+      "season": "24/25",
+      "rank": 38,
+      "points": 91,
+      "league": "A-Klasse",
+      "name": "Daniel Sowa"
+    },
+    {
+      "season": "23/24",
+      "rank": 32,
+      "points": 95,
+      "league": "A-Klasse",
+      "name": "Daniel Sowa"
+    },
+    {
+      "season": "22/23",
+      "rank": 21,
+      "points": 118,
+      "league": "A-Klasse",
+      "name": "Daniel Sowa"
+    }
+  ],
+  "989": [
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 139,
+      "league": "A-Klasse",
+      "name": "Fabian Wirth"
+    },
+    {
+      "season": "24/25",
+      "rank": 22,
+      "points": 91,
+      "league": "Bezirksliga",
+      "name": "Fabian Wirth"
+    },
+    {
+      "season": "23/24",
+      "rank": 8,
+      "points": 137,
+      "league": "A-Klasse",
+      "name": "Fabian Wirth"
+    },
+    {
+      "season": "22/23",
+      "rank": 8,
+      "points": 148,
+      "league": "A-Klasse",
+      "name": "Fabian Wirth"
+    },
+    {
+      "season": "20/22",
+      "rank": 18,
+      "points": 96,
+      "league": "Bezirksliga",
+      "name": "Fabian Wirth"
+    }
+  ],
+  "957": [
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Marcel Reiling"
+    },
+    {
+      "season": "24/25",
+      "rank": 15,
+      "points": 132,
+      "league": "A-Klasse",
+      "name": "Marcel Reiling"
+    },
+    {
+      "season": "23/24",
+      "rank": 31,
+      "points": 97,
+      "league": "A-Klasse",
+      "name": "Marcel Reiling"
+    },
+    {
+      "season": "22/23",
+      "rank": 18,
+      "points": 127,
+      "league": "A-Klasse",
+      "name": "Marcel Reiling"
+    },
+    {
+      "season": "20/22",
+      "rank": 1,
+      "points": 183,
+      "league": "B-Klasse",
+      "name": "Marcel Reiling"
+    }
+  ],
+  "324": [
+    {
+      "season": "2025/2026",
+      "rank": 8,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Sven Thomas"
+    },
+    {
+      "season": "24/25",
+      "rank": 20,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Sven Thomas"
+    },
+    {
+      "season": "23/24",
+      "rank": 8,
+      "points": 152,
+      "league": "B-Klasse",
+      "name": "Sven Thomas"
+    },
+    {
+      "season": "22/23",
+      "rank": 55,
+      "points": 83,
+      "league": "B-Klasse",
+      "name": "Sven Thomas"
+    }
+  ],
+  "1452": [
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Sammy Wolf"
+    },
+    {
+      "season": "24/25",
+      "rank": 2,
+      "points": 164,
+      "league": "B-Klasse",
+      "name": "Sammy Wolf"
+    },
+    {
+      "season": "23/24",
+      "rank": 15,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Sammy Wolf"
+    },
+    {
+      "season": "22/23",
+      "rank": 40,
+      "points": 31,
+      "league": "Bezirksliga",
+      "name": "Sammy Wolf"
+    },
+    {
+      "season": "20/22",
+      "rank": 10,
+      "points": 136,
+      "league": "A-Klasse",
+      "name": "Sammy Wolf"
+    }
+  ],
+  "579": [
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 126,
+      "league": "A-Klasse",
+      "name": "Matija Spiranec"
+    },
+    {
+      "season": "24/25",
+      "rank": 33,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Matija Spiranec"
+    }
+  ],
+  "343": [
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 123,
+      "league": "A-Klasse",
+      "name": "Corinna Jungmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 34,
+      "points": 56,
+      "league": "Bezirksliga",
+      "name": "Corinna Jungmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 48,
+      "points": 78,
+      "league": "A-Klasse",
+      "name": "Corinna Jungmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 29,
+      "points": 95,
+      "league": "A-Klasse",
+      "name": "Corinna Jungmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 9,
+      "points": 137,
+      "league": "A-Klasse",
+      "name": "Corinna Jungmann"
+    }
+  ],
+  "1274": [
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Oliver Dollan"
+    },
+    {
+      "season": "24/25",
+      "rank": 6,
+      "points": 148,
+      "league": "B-Klasse",
+      "name": "Oliver Dollan"
+    },
+    {
+      "season": "23/24",
+      "rank": 22,
+      "points": 128,
+      "league": "B-Klasse",
+      "name": "Oliver Dollan"
+    },
+    {
+      "season": "22/23",
+      "rank": 20,
+      "points": 119,
+      "league": "B-Klasse",
+      "name": "Oliver Dollan"
+    },
+    {
+      "season": "20/22",
+      "rank": 18,
+      "points": 124,
+      "league": "B-Klasse",
+      "name": "Oliver Dollan"
+    }
+  ],
+  "913": [
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Dennis Penner"
+    },
+    {
+      "season": "24/25",
+      "rank": 7,
+      "points": 146,
+      "league": "B-Klasse",
+      "name": "Dennis Penner"
+    },
+    {
+      "season": "23/24",
+      "rank": 87,
+      "points": 21,
+      "league": "A-Klasse",
+      "name": "Dennis Penner"
+    },
+    {
+      "season": "22/23",
+      "rank": 85,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Dennis Penner"
+    }
+  ],
+  "1895": [
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 113,
+      "league": "A-Klasse",
+      "name": "Julien Staffl"
+    },
+    {
+      "season": "24/25",
+      "rank": 4,
+      "points": 189,
+      "league": "C-Klasse",
+      "name": "Julien Staffl"
+    },
+    {
+      "season": "23/24",
+      "rank": 25,
+      "points": 131,
+      "league": "C-Klasse",
+      "name": "Julien Staffl"
+    },
+    {
+      "season": "22/23",
+      "rank": 116,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Julien Staffl"
+    }
+  ],
+  "1422": [
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 113,
+      "league": "A-Klasse",
+      "name": "Uli Wimmer"
+    },
+    {
+      "season": "24/25",
+      "rank": 14,
+      "points": 132,
+      "league": "B-Klasse",
+      "name": "Uli Wimmer"
+    },
+    {
+      "season": "23/24",
+      "rank": 21,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Uli Wimmer"
+    },
+    {
+      "season": "20/22",
+      "rank": 102,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Uli Wimmer"
+    }
+  ],
+  "570": [
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 112,
+      "league": "A-Klasse",
+      "name": "Roberto Giuffrida"
+    },
+    {
+      "season": "24/25",
+      "rank": 22,
+      "points": 125,
+      "league": "A-Klasse",
+      "name": "Roberto Giuffrida"
+    },
+    {
+      "season": "23/24",
+      "rank": 156,
+      "points": 10,
+      "league": "B-Klasse",
+      "name": "Roberto Giuffrida"
+    }
+  ],
+  "1689": [
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 111,
+      "league": "A-Klasse",
+      "name": "Jasmin Titel"
+    },
+    {
+      "season": "24/25",
+      "rank": 55,
+      "points": 91,
+      "league": "B-Klasse",
+      "name": "Jasmin Titel"
+    },
+    {
+      "season": "23/24",
+      "rank": 16,
+      "points": 121,
+      "league": "A-Klasse",
+      "name": "Jasmin Titel"
+    },
+    {
+      "season": "22/23",
+      "rank": 34,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Jasmin Titel"
+    },
+    {
+      "season": "20/22",
+      "rank": 13,
+      "points": 127,
+      "league": "A-Klasse",
+      "name": "Jasmin Titel"
+    }
+  ],
+  "748": [
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 110,
+      "league": "A-Klasse",
+      "name": "Benjamin Laufer"
+    },
+    {
+      "season": "24/25",
+      "rank": 44,
+      "points": 37,
+      "league": "Bezirksliga",
+      "name": "Benjamin Laufer"
+    },
+    {
+      "season": "23/24",
+      "rank": 40,
+      "points": 50,
+      "league": "Bezirksliga",
+      "name": "Benjamin Laufer"
+    },
+    {
+      "season": "22/23",
+      "rank": 46,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Benjamin Laufer"
+    },
+    {
+      "season": "20/22",
+      "rank": 93,
+      "points": 48,
+      "league": "B-Klasse",
+      "name": "Benjamin Laufer"
+    }
+  ],
+  "004": [
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 107,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "24/25",
+      "rank": 13,
+      "points": 136,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "23/24",
+      "rank": 5,
+      "points": 149,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "22/23",
+      "rank": 19,
+      "points": 124,
+      "league": "A-Klasse",
+      "name": "Bernd Fritz"
+    },
+    {
+      "season": "20/22",
+      "rank": 20,
+      "points": 93,
+      "league": "Bezirksliga",
+      "name": "Bernd Fritz"
+    }
+  ],
+  "1410": [
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Charalambos Papadopoulos"
+    },
+    {
+      "season": "24/25",
+      "rank": 9,
+      "points": 141,
+      "league": "A-Klasse",
+      "name": "Charalambos Papadopoulos"
+    },
+    {
+      "season": "23/24",
+      "rank": 46,
+      "points": 20,
+      "league": "Bezirksliga",
+      "name": "Charalamb Papadopoulos"
+    },
+    {
+      "season": "22/23",
+      "rank": 42,
+      "points": 86,
+      "league": "A-Klasse",
+      "name": "Charalambos Papadopoulos"
+    },
+    {
+      "season": "20/22",
+      "rank": 41,
+      "points": 93,
+      "league": "B-Klasse",
+      "name": "Charalambos Papadopoulos"
+    }
+  ],
+  "1538": [
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 103,
+      "league": "A-Klasse",
+      "name": "Alfred Eigl"
+    },
+    {
+      "season": "24/25",
+      "rank": 105,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Alfred Eigl"
+    },
+    {
+      "season": "23/24",
+      "rank": 19,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Alfred Eigl"
+    },
+    {
+      "season": "22/23",
+      "rank": 138,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Alfred Eigl"
+    },
+    {
+      "season": "20/22",
+      "rank": 11,
+      "points": 138,
+      "league": "B-Klasse",
+      "name": "Alfred Eigl"
+    }
+  ],
+  "1063": [
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 103,
+      "league": "A-Klasse",
+      "name": "Oliver Ursic"
+    },
+    {
+      "season": "24/25",
+      "rank": 22,
+      "points": 117,
+      "league": "B-Klasse",
+      "name": "Oliver Ursic"
+    },
+    {
+      "season": "23/24",
+      "rank": 8,
+      "points": 167,
+      "league": "C-Klasse",
+      "name": "Oliver Ursic"
+    },
+    {
+      "season": "22/23",
+      "rank": 10,
+      "points": 148,
+      "league": "C-Klasse",
+      "name": "Oliver Ursic"
+    },
+    {
+      "season": "20/22",
+      "rank": 52,
+      "points": 73,
+      "league": "A-Klasse",
+      "name": "Oliver Ursic"
+    }
+  ],
+  "1307": [
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 103,
+      "league": "A-Klasse",
+      "name": "Hanno Lohmeyer"
+    },
+    {
+      "season": "24/25",
+      "rank": 10,
+      "points": 140,
+      "league": "A-Klasse",
+      "name": "Hanno Lohmeyer"
+    },
+    {
+      "season": "23/24",
+      "rank": 13,
+      "points": 140,
+      "league": "B-Klasse",
+      "name": "Hanno Lohmeyer"
+    },
+    {
+      "season": "22/23",
+      "rank": 63,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Hanno Lohmeyer"
+    }
+  ],
+  "723": [
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Marc-Andr\u00e9 Schneider"
+    },
+    {
+      "season": "24/25",
+      "rank": 39,
+      "points": 46,
+      "league": "Bezirksliga",
+      "name": "Marc-Andr\u00e9 Schneider"
+    },
+    {
+      "season": "23/24",
+      "rank": 17,
+      "points": 121,
+      "league": "A-Klasse",
+      "name": "Marc-Andr\u00e9 Schneider"
+    },
+    {
+      "season": "22/23",
+      "rank": 111,
+      "points": 8,
+      "league": "A-Klasse",
+      "name": "Marc-Andre Schneider"
+    }
+  ],
+  "1668": [
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Oliver Matt"
+    },
+    {
+      "season": "24/25",
+      "rank": 23,
+      "points": 123,
+      "league": "A-Klasse",
+      "name": "Oliver Matt"
+    },
+    {
+      "season": "23/24",
+      "rank": 14,
+      "points": 138,
+      "league": "B-Klasse",
+      "name": "Oliver Matt"
+    },
+    {
+      "season": "22/23",
+      "rank": 17,
+      "points": 141,
+      "league": "C-Klasse",
+      "name": "Oliver Matt"
+    },
+    {
+      "season": "20/22",
+      "rank": 144,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Oliver Matt"
+    }
+  ],
+  "1705": [
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 98,
+      "league": "A-Klasse",
+      "name": "Ren\u00e9 Raff"
+    },
+    {
+      "season": "24/25",
+      "rank": 80,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Rene Raff"
+    }
+  ],
+  "1127": [
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 98,
+      "league": "A-Klasse",
+      "name": "Serafettin Ayar"
+    }
+  ],
+  "763": [
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 97,
+      "league": "A-Klasse",
+      "name": "Peter Hofmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 9,
+      "points": 145,
+      "league": "B-Klasse",
+      "name": "Peter Hofmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 39,
+      "points": 89,
+      "league": "A-Klasse",
+      "name": "Peter Hofmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 25,
+      "points": 78,
+      "league": "Bezirksliga",
+      "name": "Peter Hofmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 5,
+      "points": 154,
+      "league": "A-Klasse",
+      "name": "Peter Hofmann"
+    }
+  ],
+  "1531": [
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 96,
+      "league": "A-Klasse",
+      "name": "Sascha Schweinberger"
+    },
+    {
+      "season": "24/25",
+      "rank": 10,
+      "points": 143,
+      "league": "B-Klasse",
+      "name": "Sascha Schweinberger"
+    },
+    {
+      "season": "23/24",
+      "rank": 18,
+      "points": 138,
+      "league": "C-Klasse",
+      "name": "Sascha Schweinberger"
+    },
+    {
+      "season": "20/22",
+      "rank": 169,
+      "points": 9,
+      "league": "B-Klasse",
+      "name": "Sascha Schweinberger"
+    }
+  ],
+  "682": [
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 96,
+      "league": "A-Klasse",
+      "name": "Manuel Potrzeba"
+    },
+    {
+      "season": "24/25",
+      "rank": 8,
+      "points": 143,
+      "league": "A-Klasse",
+      "name": "Manuel Potrzeba"
+    },
+    {
+      "season": "23/24",
+      "rank": 68,
+      "points": 54,
+      "league": "A-Klasse",
+      "name": "Manuel Potrzeba"
+    },
+    {
+      "season": "22/23",
+      "rank": 94,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Manuel Potrzeba"
+    },
+    {
+      "season": "20/22",
+      "rank": 139,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Manuel Potrzeba"
+    }
+  ],
+  "688": [
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Steffen Schmierdorfer"
+    },
+    {
+      "season": "24/25",
+      "rank": 31,
+      "points": 107,
+      "league": "A-Klasse",
+      "name": "Steffen Schmierdorfer"
+    },
+    {
+      "season": "23/24",
+      "rank": 47,
+      "points": 79,
+      "league": "A-Klasse",
+      "name": "Steffen Schmierdorfer"
+    },
+    {
+      "season": "22/23",
+      "rank": 41,
+      "points": 87,
+      "league": "A-Klasse",
+      "name": "Steffen Schmierdorfer"
+    },
+    {
+      "season": "20/22",
+      "rank": 11,
+      "points": 132,
+      "league": "A-Klasse",
+      "name": "Steffen Schmierdorfer"
+    }
+  ],
+  "1055": [
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Saskia J\u00e4ger"
+    },
+    {
+      "season": "24/25",
+      "rank": 40,
+      "points": 85,
+      "league": "A-Klasse",
+      "name": "Saskia J\u00e4ger"
+    },
+    {
+      "season": "23/24",
+      "rank": 53,
+      "points": 68,
+      "league": "A-Klasse",
+      "name": "Saskia J\u00e4ger"
+    },
+    {
+      "season": "22/23",
+      "rank": 47,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Saskia J\u00e4ger"
+    },
+    {
+      "season": "20/22",
+      "rank": 217,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Saskia J\u00e4ger"
+    }
+  ],
+  "1859": [
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Mike Bader"
+    },
+    {
+      "season": "24/25",
+      "rank": 37,
+      "points": 47,
+      "league": "Bezirksliga",
+      "name": "Mike Bader"
+    },
+    {
+      "season": "23/24",
+      "rank": 12,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Mike Bader"
+    },
+    {
+      "season": "22/23",
+      "rank": 11,
+      "points": 140,
+      "league": "A-Klasse",
+      "name": "Mike Bader"
+    },
+    {
+      "season": "20/22",
+      "rank": 16,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Mike Bader"
+    }
+  ],
+  "350": [
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Herzog"
+    },
+    {
+      "season": "24/25",
+      "rank": 41,
+      "points": 85,
+      "league": "A-Klasse",
+      "name": "J rgen Herzog"
+    },
+    {
+      "season": "23/24",
+      "rank": 44,
+      "points": 101,
+      "league": "B-Klasse",
+      "name": "J\u00fcrgen Herzog"
+    },
+    {
+      "season": "22/23",
+      "rank": 32,
+      "points": 47,
+      "league": "Bezirksliga",
+      "name": "J\u00fcrgen Herzog"
+    },
+    {
+      "season": "20/22",
+      "rank": 27,
+      "points": 61,
+      "league": "Bezirksliga",
+      "name": "J\u00fcrgen Herzog"
+    }
+  ],
+  "1086": [
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 92,
+      "league": "A-Klasse",
+      "name": "Mario Ackermann"
+    },
+    {
+      "season": "24/25",
+      "rank": 73,
+      "points": 73,
+      "league": "B-Klasse",
+      "name": "Mario Ackermann"
+    },
+    {
+      "season": "23/24",
+      "rank": 20,
+      "points": 129,
+      "league": "B-Klasse",
+      "name": "Mario Ackermann"
+    },
+    {
+      "season": "22/23",
+      "rank": 4,
+      "points": 165,
+      "league": "C-Klasse",
+      "name": "Mario Ackermann"
+    },
+    {
+      "season": "20/22",
+      "rank": 183,
+      "points": 6,
+      "league": "B-Klasse",
+      "name": "Mario Ackermann"
+    }
+  ],
+  "566": [
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 90,
+      "league": "A-Klasse",
+      "name": "Danyal Cagatay"
+    },
+    {
+      "season": "24/25",
+      "rank": 30,
+      "points": 107,
+      "league": "A-Klasse",
+      "name": "Danyal Cagatay"
+    },
+    {
+      "season": "23/24",
+      "rank": 140,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Danyal Cagatay"
+    }
+  ],
+  "1563": [
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 88,
+      "league": "A-Klasse",
+      "name": "Alex Polschin"
+    },
+    {
+      "season": "24/25",
+      "rank": 71,
+      "points": 73,
+      "league": "B-Klasse",
+      "name": "Alex Polschin"
+    },
+    {
+      "season": "23/24",
+      "rank": 63,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Alex Polschin"
+    },
+    {
+      "season": "22/23",
+      "rank": 123,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Alex Polschin"
+    }
+  ],
+  "1135": [
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 87,
+      "league": "A-Klasse",
+      "name": "Marcel Rischar"
+    },
+    {
+      "season": "24/25",
+      "rank": 17,
+      "points": 131,
+      "league": "A-Klasse",
+      "name": "Marcel Rischar"
+    },
+    {
+      "season": "23/24",
+      "rank": 30,
+      "points": 99,
+      "league": "A-Klasse",
+      "name": "Marcel Rischar"
+    },
+    {
+      "season": "22/23",
+      "rank": 17,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Marcel Rischar"
+    },
+    {
+      "season": "20/22",
+      "rank": 7,
+      "points": 151,
+      "league": "B-Klasse",
+      "name": "Marcel Rischar"
+    }
+  ],
+  "660": [
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 84,
+      "league": "A-Klasse",
+      "name": "Alessandro Bertino"
+    },
+    {
+      "season": "24/25",
+      "rank": 50,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Alessandro Bertino"
+    },
+    {
+      "season": "23/24",
+      "rank": 28,
+      "points": 117,
+      "league": "B-Klasse",
+      "name": "Alessandro Bertino"
+    },
+    {
+      "season": "22/23",
+      "rank": 38,
+      "points": 100,
+      "league": "B-Klasse",
+      "name": "Alessandro Bertino"
+    },
+    {
+      "season": "20/22",
+      "rank": 14,
+      "points": 146,
+      "league": "C-Klasse",
+      "name": "Alessandro Bertino"
+    }
+  ],
+  "1523": [
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 83,
+      "league": "A-Klasse",
+      "name": "Vitali Herz"
+    },
+    {
+      "season": "24/25",
+      "rank": 42,
+      "points": 82,
+      "league": "A-Klasse",
+      "name": "Vitali Herz"
+    },
+    {
+      "season": "23/24",
+      "rank": 26,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Vitali Herz"
+    },
+    {
+      "season": "22/23",
+      "rank": 17,
+      "points": 121,
+      "league": "B-Klasse",
+      "name": "Vitali Herz"
+    },
+    {
+      "season": "20/22",
+      "rank": 20,
+      "points": 121,
+      "league": "B-Klasse",
+      "name": "Vitali Herz"
+    }
+  ],
+  "399": [
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 83,
+      "league": "A-Klasse",
+      "name": "Edgar K\u00e4ser"
+    },
+    {
+      "season": "24/25",
+      "rank": 62,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Edgar K\u00e4ser"
+    },
+    {
+      "season": "23/24",
+      "rank": 16,
+      "points": 133,
+      "league": "B-Klasse",
+      "name": "Edgar K\u00e4ser"
+    },
+    {
+      "season": "22/23",
+      "rank": 35,
+      "points": 102,
+      "league": "B-Klasse",
+      "name": "Edgar K\u00e4ser"
+    },
+    {
+      "season": "20/22",
+      "rank": 150,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Edgar K\u00e4ser"
+    }
+  ],
+  "1865": [
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 79,
+      "league": "A-Klasse",
+      "name": "Artur Penner"
+    },
+    {
+      "season": "24/25",
+      "rank": 36,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Artur Penner"
+    },
+    {
+      "season": "23/24",
+      "rank": 18,
+      "points": 130,
+      "league": "B-Klasse",
+      "name": "Artur Penner"
+    },
+    {
+      "season": "22/23",
+      "rank": 20,
+      "points": 139,
+      "league": "C-Klasse",
+      "name": "Artur Penner"
+    },
+    {
+      "season": "20/22",
+      "rank": 24,
+      "points": 126,
+      "league": "C-Klasse",
+      "name": "Artur Penner"
+    }
+  ],
+  "492": [
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 78,
+      "league": "A-Klasse",
+      "name": "Lucas Herzog"
+    },
+    {
+      "season": "24/25",
+      "rank": 16,
+      "points": 131,
+      "league": "A-Klasse",
+      "name": "Lucas Herzog"
+    },
+    {
+      "season": "23/24",
+      "rank": 24,
+      "points": 122,
+      "league": "B-Klasse",
+      "name": "Lucas Herzog"
+    },
+    {
+      "season": "22/23",
+      "rank": 75,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Lucas Herzog"
+    },
+    {
+      "season": "20/22",
+      "rank": 124,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Lucas Herzog"
+    }
+  ],
+  "314": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Martin Zacher"
+    },
+    {
+      "season": "24/25",
+      "rank": 35,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Martin Zacher"
+    },
+    {
+      "season": "23/24",
+      "rank": 56,
+      "points": 66,
+      "league": "A-Klasse",
+      "name": "Martin Zacher"
+    },
+    {
+      "season": "22/23",
+      "rank": 43,
+      "points": 86,
+      "league": "A-Klasse",
+      "name": "Martin Zacher"
+    },
+    {
+      "season": "20/22",
+      "rank": 32,
+      "points": 50,
+      "league": "Bezirksliga",
+      "name": "Martin Zacher"
+    }
+  ],
+  "470": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Dennis Jaskulski"
+    }
+  ],
+  "1776": [
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 76,
+      "league": "A-Klasse",
+      "name": "Daniel Westermann"
+    },
+    {
+      "season": "24/25",
+      "rank": 15,
+      "points": 132,
+      "league": "B-Klasse",
+      "name": "Daniel Westermann"
+    },
+    {
+      "season": "23/24",
+      "rank": 12,
+      "points": 140,
+      "league": "B-Klasse",
+      "name": "Daniel Westermann"
+    },
+    {
+      "season": "22/23",
+      "rank": 27,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "Daniel Westermann"
+    },
+    {
+      "season": "20/22",
+      "rank": 10,
+      "points": 157,
+      "league": "C-Klasse",
+      "name": "Daniel Westermann"
+    }
+  ],
+  "979": [
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 75,
+      "league": "A-Klasse",
+      "name": "Niklas Morlock"
+    },
+    {
+      "season": "24/25",
+      "rank": 102,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Niklas Morlock"
+    },
+    {
+      "season": "23/24",
+      "rank": 47,
+      "points": 97,
+      "league": "B-Klasse",
+      "name": "Niklas Morlock"
+    },
+    {
+      "season": "22/23",
+      "rank": 122,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Niklas Morlock"
+    },
+    {
+      "season": "20/22",
+      "rank": 86,
+      "points": 55,
+      "league": "B-Klasse",
+      "name": "Niklas Morlock"
+    }
+  ],
+  "1645": [
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 75,
+      "league": "A-Klasse",
+      "name": "Benjamin Golling"
+    },
+    {
+      "season": "24/25",
+      "rank": 60,
+      "points": 4,
+      "league": "Bezirksliga",
+      "name": "Benjamin Golling"
+    },
+    {
+      "season": "23/24",
+      "rank": 97,
+      "points": 12,
+      "league": "A-Klasse",
+      "name": "Benjamin Golling"
+    }
+  ],
+  "1304": [
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 74,
+      "league": "A-Klasse",
+      "name": "Marko Puls"
+    },
+    {
+      "season": "22/23",
+      "rank": 51,
+      "points": 12,
+      "league": "Bezirksliga",
+      "name": "Marko Puls"
+    },
+    {
+      "season": "20/22",
+      "rank": 31,
+      "points": 51,
+      "league": "Bezirksliga",
+      "name": "Marko Puls"
+    }
+  ],
+  "368": [
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 74,
+      "league": "A-Klasse",
+      "name": "Michael N\u00fcchter"
+    },
+    {
+      "season": "24/25",
+      "rank": 27,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "Michael N\u00fcchter"
+    },
+    {
+      "season": "23/24",
+      "rank": 102,
+      "points": 45,
+      "league": "B-Klasse",
+      "name": "Michael N\u00fcchter"
+    }
+  ],
+  "1047": [
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 71,
+      "league": "A-Klasse",
+      "name": "Harald Lutz"
+    },
+    {
+      "season": "24/25",
+      "rank": 59,
+      "points": 86,
+      "league": "B-Klasse",
+      "name": "Harald Lutz"
+    },
+    {
+      "season": "23/24",
+      "rank": 36,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Harald Lutz"
+    },
+    {
+      "season": "22/23",
+      "rank": 53,
+      "points": 9,
+      "league": "Bezirksliga",
+      "name": "Harald Lutz"
+    },
+    {
+      "season": "20/22",
+      "rank": 54,
+      "points": 10,
+      "league": "Bezirksliga",
+      "name": "Harald Lutz"
+    }
+  ],
+  "553": [
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Christian Besesek"
+    },
+    {
+      "season": "24/25",
+      "rank": 43,
+      "points": 81,
+      "league": "A-Klasse",
+      "name": "Christian Besesek"
+    },
+    {
+      "season": "23/24",
+      "rank": 36,
+      "points": 90,
+      "league": "A-Klasse",
+      "name": "Christian Besesek"
+    },
+    {
+      "season": "22/23",
+      "rank": 14,
+      "points": 134,
+      "league": "B-Klasse",
+      "name": "Christian Besesek"
+    },
+    {
+      "season": "20/22",
+      "rank": 12,
+      "points": 136,
+      "league": "B-Klasse",
+      "name": "Christian Besesek"
+    }
+  ],
+  "428": [
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Norbert Fleischmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 41,
+      "points": 41,
+      "league": "Bezirksliga",
+      "name": "Norbert Fleischmann"
+    }
+  ],
+  "1518": [
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 68,
+      "league": "A-Klasse",
+      "name": "Robin Masino"
+    },
+    {
+      "season": "24/25",
+      "rank": 99,
+      "points": 48,
+      "league": "B-Klasse",
+      "name": "Robin Masino"
+    },
+    {
+      "season": "23/24",
+      "rank": 120,
+      "points": 35,
+      "league": "B-Klasse",
+      "name": "Robin Masino"
+    },
+    {
+      "season": "22/23",
+      "rank": 29,
+      "points": 107,
+      "league": "B-Klasse",
+      "name": "Robin Masino"
+    },
+    {
+      "season": "20/22",
+      "rank": 109,
+      "points": 36,
+      "league": "B-Klasse",
+      "name": "Robin Masino"
+    }
+  ],
+  "1656": [
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 68,
+      "league": "A-Klasse",
+      "name": "Luca Bergmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 32,
+      "points": 106,
+      "league": "B-Klasse",
+      "name": "Luca Bergmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 52,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Luca Bergmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 83,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Luca Bergmann"
+    }
+  ],
+  "963": [
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 67,
+      "league": "A-Klasse",
+      "name": "Mile Tornjanski"
+    },
+    {
+      "season": "24/25",
+      "rank": 113,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Mile Tornjanski"
+    },
+    {
+      "season": "23/24",
+      "rank": 63,
+      "points": 59,
+      "league": "A-Klasse",
+      "name": "Mile Tornjanski"
+    },
+    {
+      "season": "22/23",
+      "rank": 30,
+      "points": 60,
+      "league": "Bezirksliga",
+      "name": "Mile Tornjanski"
+    },
+    {
+      "season": "20/22",
+      "rank": 60,
+      "points": 61,
+      "league": "A-Klasse",
+      "name": "Mile Tornjanski"
+    }
+  ],
+  "972": [
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 62,
+      "league": "A-Klasse",
+      "name": "Jacqueline Silvestre Abrantes"
+    },
+    {
+      "season": "24/25",
+      "rank": 56,
+      "points": 9,
+      "league": "Bezirksliga",
+      "name": "Jacqueline Silvestre Abrantes"
+    },
+    {
+      "season": "23/24",
+      "rank": 38,
+      "points": 52,
+      "league": "Bezirksliga",
+      "name": "Jacqueline Silvestre Abrantes"
+    },
+    {
+      "season": "22/23",
+      "rank": 10,
+      "points": 143,
+      "league": "A-Klasse",
+      "name": "Jacqueline Silvestre Abrantes"
+    },
+    {
+      "season": "20/22",
+      "rank": 15,
+      "points": 123,
+      "league": "A-Klasse",
+      "name": "Jacqueline Silvestre Abrante"
+    }
+  ],
+  "486": [
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 62,
+      "league": "A-Klasse",
+      "name": "Jochen Burow"
+    },
+    {
+      "season": "24/25",
+      "rank": 63,
+      "points": 53,
+      "league": "A-Klasse",
+      "name": "Jochen Burow"
+    },
+    {
+      "season": "23/24",
+      "rank": 46,
+      "points": 79,
+      "league": "A-Klasse",
+      "name": "Jochen Burow"
+    },
+    {
+      "season": "22/23",
+      "rank": 35,
+      "points": 93,
+      "league": "A-Klasse",
+      "name": "Jochen Burow"
+    }
+  ],
+  "1414": [
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 59,
+      "league": "A-Klasse",
+      "name": "Chris Wendel"
+    },
+    {
+      "season": "24/25",
+      "rank": 23,
+      "points": 116,
+      "league": "B-Klasse",
+      "name": "Chris Wendel"
+    },
+    {
+      "season": "23/24",
+      "rank": 134,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Chris Wendel"
+    },
+    {
+      "season": "20/22",
+      "rank": 35,
+      "points": 100,
+      "league": "B-Klasse",
+      "name": "Chris Wendel"
+    }
+  ],
+  "1481": [
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 59,
+      "league": "A-Klasse",
+      "name": "Oktay Kocaoglu"
+    },
+    {
+      "season": "24/25",
+      "rank": 32,
+      "points": 106,
+      "league": "A-Klasse",
+      "name": "Oktay Kocaoglu"
+    },
+    {
+      "season": "23/24",
+      "rank": 43,
+      "points": 102,
+      "league": "B-Klasse",
+      "name": "Oktay Kocaoglu"
+    },
+    {
+      "season": "22/23",
+      "rank": 37,
+      "points": 112,
+      "league": "C-Klasse",
+      "name": "Oktay Kocaoglu"
+    },
+    {
+      "season": "20/22",
+      "rank": 34,
+      "points": 110,
+      "league": "C-Klasse",
+      "name": "Oktay Kocaoglu"
+    }
+  ],
+  "1174": [
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 57,
+      "league": "A-Klasse",
+      "name": "Jennifer Keller"
+    },
+    {
+      "season": "24/25",
+      "rank": 31,
+      "points": 106,
+      "league": "B-Klasse",
+      "name": "Jennifer Keller"
+    },
+    {
+      "season": "23/24",
+      "rank": 70,
+      "points": 77,
+      "league": "B-Klasse",
+      "name": "Jennifer Keller"
+    },
+    {
+      "season": "22/23",
+      "rank": 90,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Jennifer Keller"
+    },
+    {
+      "season": "20/22",
+      "rank": 76,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Jennifer Keller"
+    }
+  ],
+  "1130": [
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 55,
+      "league": "A-Klasse",
+      "name": "Marco Waidmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 11,
+      "points": 139,
+      "league": "A-Klasse",
+      "name": "Marco Waidmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 10,
+      "points": 133,
+      "league": "A-Klasse",
+      "name": "Marco Waidmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 71,
+      "points": 51,
+      "league": "A-Klasse",
+      "name": "Marco Waidmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 187,
+      "points": 6,
+      "league": "B-Klasse",
+      "name": "Marco Waidmann"
+    }
+  ],
+  "1657": [
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 55,
+      "league": "A-Klasse",
+      "name": "Alexander Kessler"
+    },
+    {
+      "season": "24/25",
+      "rank": 54,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Alexander Kessler"
+    },
+    {
+      "season": "23/24",
+      "rank": 43,
+      "points": 86,
+      "league": "A-Klasse",
+      "name": "Alexander Kessler"
+    },
+    {
+      "season": "22/23",
+      "rank": 77,
+      "points": 45,
+      "league": "A-Klasse",
+      "name": "Alexander Kessler"
+    },
+    {
+      "season": "20/22",
+      "rank": 74,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Alexander Kesler"
+    }
+  ],
+  "1520": [
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 54,
+      "league": "A-Klasse",
+      "name": "Thorsten Masino"
+    },
+    {
+      "season": "24/25",
+      "rank": 134,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Thorsten Masino"
+    },
+    {
+      "season": "23/24",
+      "rank": 174,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Thorsten Masino"
+    },
+    {
+      "season": "22/23",
+      "rank": 85,
+      "points": 60,
+      "league": "B-Klasse",
+      "name": "Thorsten Masino"
+    },
+    {
+      "season": "20/22",
+      "rank": 115,
+      "points": 33,
+      "league": "B-Klasse",
+      "name": "Thorsten Masino"
+    }
+  ],
+  "1230": [
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 54,
+      "league": "A-Klasse",
+      "name": "Dennis Gaiser"
+    },
+    {
+      "season": "24/25",
+      "rank": 40,
+      "points": 100,
+      "league": "B-Klasse",
+      "name": "Dennis Gaiser"
+    },
+    {
+      "season": "23/24",
+      "rank": 24,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Dennis Gaiser"
+    },
+    {
+      "season": "22/23",
+      "rank": 47,
+      "points": 78,
+      "league": "A-Klasse",
+      "name": "Dennis Gaiser"
+    },
+    {
+      "season": "20/22",
+      "rank": 27,
+      "points": 111,
+      "league": "B-Klasse",
+      "name": "Dennis Gaiser"
+    }
+  ],
+  "022": [
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 52,
+      "league": "A-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "24/25",
+      "rank": 11,
+      "points": 139,
+      "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "23/24",
+      "rank": 23,
+      "points": 127,
+      "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "22/23",
+      "rank": 2,
+      "points": 168,
+      "league": "C-Klasse",
+      "name": "Klaus Eberhardt"
+    },
+    {
+      "season": "20/22",
+      "rank": 131,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Klaus Eberhardt"
+    }
+  ],
+  "1408": [
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 51,
+      "league": "A-Klasse",
+      "name": "Marcus Brodbeck"
+    },
+    {
+      "season": "23/24",
+      "rank": 30,
+      "points": 115,
+      "league": "B-Klasse",
+      "name": "Marcus Brodbeck"
+    },
+    {
+      "season": "22/23",
+      "rank": 64,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Marcus Brodbeck"
+    },
+    {
+      "season": "20/22",
+      "rank": 52,
+      "points": 92,
+      "league": "C-Klasse",
+      "name": "Marcus Brodbeck"
+    }
+  ],
+  "1508": [
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 51,
+      "league": "A-Klasse",
+      "name": "Frank Vincon"
+    },
+    {
+      "season": "24/25",
+      "rank": 65,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Frank Vincon"
+    },
+    {
+      "season": "23/24",
+      "rank": 147,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "Frank Vincon"
+    }
+  ],
+  "048": [
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 46,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "24/25",
+      "rank": 53,
+      "points": 72,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "23/24",
+      "rank": 58,
+      "points": 61,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "22/23",
+      "rank": 33,
+      "points": 94,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    },
+    {
+      "season": "20/22",
+      "rank": 31,
+      "points": 99,
+      "league": "A-Klasse",
+      "name": "Bernd Sauter"
+    }
+  ],
+  "1136": [
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 45,
+      "league": "A-Klasse",
+      "name": "Stefan Rischar"
+    },
+    {
+      "season": "24/25",
+      "rank": 75,
+      "points": 36,
+      "league": "A-Klasse",
+      "name": "Stefan Rischar"
+    },
+    {
+      "season": "23/24",
+      "rank": 67,
+      "points": 55,
+      "league": "A-Klasse",
+      "name": "Stefan Rischar"
+    },
+    {
+      "season": "22/23",
+      "rank": 72,
+      "points": 50,
+      "league": "A-Klasse",
+      "name": "Stefan Rischar"
+    },
+    {
+      "season": "20/22",
+      "rank": 25,
+      "points": 113,
+      "league": "B-Klasse",
+      "name": "Stefan Rischar"
+    }
+  ],
+  "883": [
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Janis Scheithauer"
+    }
+  ],
+  "1893": [
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Marco Hamp"
+    },
+    {
+      "season": "24/25",
+      "rank": 36,
+      "points": 103,
+      "league": "B-Klasse",
+      "name": "Marco Hamp"
+    },
+    {
+      "season": "23/24",
+      "rank": 64,
+      "points": 93,
+      "league": "C-Klasse",
+      "name": "Marco Hamp"
+    },
+    {
+      "season": "22/23",
+      "rank": 8,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "Marco Hamp"
+    }
+  ],
+  "1281": [
+    {
+      "season": "2025/2026",
+      "rank": 74,
+      "points": 42,
+      "league": "A-Klasse",
+      "name": "Markus Herzog"
+    },
+    {
+      "season": "24/25",
+      "rank": 54,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Markus Herzog"
+    },
+    {
+      "season": "23/24",
+      "rank": 42,
+      "points": 86,
+      "league": "A-Klasse",
+      "name": "Markus Herzog"
+    },
+    {
+      "season": "22/23",
+      "rank": 68,
+      "points": 56,
+      "league": "A-Klasse",
+      "name": "Markus Herzog"
+    },
+    {
+      "season": "20/22",
+      "rank": 37,
+      "points": 34,
+      "league": "Bezirksliga",
+      "name": "Markus Herzog"
+    }
+  ],
+  "005": [
+    {
+      "season": "2025/2026",
+      "rank": 75,
+      "points": 40,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "24/25",
+      "rank": 62,
+      "points": 53,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "23/24",
+      "rank": 84,
+      "points": 32,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "22/23",
+      "rank": 66,
+      "points": 58,
+      "league": "A-Klasse",
+      "name": "Frank Valentin"
+    },
+    {
+      "season": "20/22",
+      "rank": 26,
+      "points": 68,
+      "league": "Bezirksliga",
+      "name": "Frank Valentin"
+    }
+  ],
+  "1215": [
+    {
+      "season": "2025/2026",
+      "rank": 76,
+      "points": 38,
+      "league": "A-Klasse",
+      "name": "Patrick Hendo"
+    }
+  ],
+  "982": [
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Senay Turan"
+    },
+    {
+      "season": "24/25",
+      "rank": 79,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Senay Turan"
+    },
+    {
+      "season": "23/24",
+      "rank": 31,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Senay Turan"
+    },
+    {
+      "season": "22/23",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Senay Turan"
+    },
+    {
+      "season": "20/22",
+      "rank": 16,
+      "points": 138,
+      "league": "C-Klasse",
+      "name": "Senay Turan"
+    }
+  ],
+  "459": [
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Kai Lacher"
+    },
+    {
+      "season": "24/25",
+      "rank": 28,
+      "points": 65,
+      "league": "Bezirksliga",
+      "name": "Kai Lacher"
+    },
+    {
+      "season": "23/24",
+      "rank": 41,
+      "points": 45,
+      "league": "Bezirksliga",
+      "name": "Kai Lacher"
+    },
+    {
+      "season": "22/23",
+      "rank": 13,
+      "points": 110,
+      "league": "Bezirksliga",
+      "name": "Kai Lacher"
+    },
+    {
+      "season": "20/22",
+      "rank": 17,
+      "points": 96,
+      "league": "Bezirksliga",
+      "name": "Kai Lacher"
+    }
+  ],
+  "311": [
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Jochen Staib"
+    },
+    {
+      "season": "24/25",
+      "rank": 70,
+      "points": 47,
+      "league": "A-Klasse",
+      "name": "Jochen Staib"
+    },
+    {
+      "season": "23/24",
+      "rank": 96,
+      "points": 13,
+      "league": "A-Klasse",
+      "name": "Jochen Staib"
+    }
+  ],
+  "798": [
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 36,
+      "league": "A-Klasse",
+      "name": "Andreas Rados"
+    },
+    {
+      "season": "24/25",
+      "rank": 51,
+      "points": 19,
+      "league": "Bezirksliga",
+      "name": "Andreas Rados"
+    },
+    {
+      "season": "23/24",
+      "rank": 92,
+      "points": 17,
+      "league": "A-Klasse",
+      "name": "Andreas Rados"
+    },
+    {
+      "season": "22/23",
+      "rank": 82,
+      "points": 41,
+      "league": "A-Klasse",
+      "name": "Andreas Rados"
+    },
+    {
+      "season": "20/22",
+      "rank": 83,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Andreas Rados"
+    }
+  ],
+  "460": [
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 36,
+      "league": "A-Klasse",
+      "name": "Carsten Bee"
+    },
+    {
+      "season": "24/25",
+      "rank": 82,
+      "points": 29,
+      "league": "A-Klasse",
+      "name": "Carsten Bee"
+    },
+    {
+      "season": "23/24",
+      "rank": 63,
+      "points": 4,
+      "league": "Bezirksliga",
+      "name": "Carsten Bee"
+    },
+    {
+      "season": "22/23",
+      "rank": 59,
+      "points": 4,
+      "league": "Bezirksliga",
+      "name": "Carsten Bee"
+    },
+    {
+      "season": "20/22",
+      "rank": 49,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Carsten Bee"
+    }
+  ],
+  "1177": [
+    {
+      "season": "2025/2026",
+      "rank": 82,
+      "points": 34,
+      "league": "A-Klasse",
+      "name": "Benjamin Frank"
+    },
+    {
+      "season": "24/25",
+      "rank": 46,
+      "points": 97,
+      "league": "B-Klasse",
+      "name": "Alexander Benjamin Frank"
+    },
+    {
+      "season": "23/24",
+      "rank": 1,
+      "points": 171,
+      "league": "B-Klasse",
+      "name": "Alexander Benjamin Frank"
+    },
+    {
+      "season": "22/23",
+      "rank": 11,
+      "points": 144,
+      "league": "B-Klasse",
+      "name": "Alexander Benjamin Frank"
+    },
+    {
+      "season": "20/22",
+      "rank": 17,
+      "points": 125,
+      "league": "B-Klasse",
+      "name": "Alexander Benjamin Frank"
+    }
+  ],
+  "617": [
+    {
+      "season": "2025/2026",
+      "rank": 83,
+      "points": 33,
+      "league": "A-Klasse",
+      "name": "Michael Venzke"
+    },
+    {
+      "season": "24/25",
+      "rank": 38,
+      "points": 46,
+      "league": "Bezirksliga",
+      "name": "Michael Venzke"
+    },
+    {
+      "season": "23/24",
+      "rank": 55,
+      "points": 66,
+      "league": "A-Klasse",
+      "name": "Michael Venzke"
+    },
+    {
+      "season": "22/23",
+      "rank": 28,
+      "points": 108,
+      "league": "B-Klasse",
+      "name": "Michael Venzke"
+    },
+    {
+      "season": "20/22",
+      "rank": 53,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Michael Venzke"
+    }
+  ],
+  "1527": [
+    {
+      "season": "2025/2026",
+      "rank": 84,
+      "points": 32,
+      "league": "A-Klasse",
+      "name": "Ralf Haug"
+    },
+    {
+      "season": "24/25",
+      "rank": 158,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Ralf Haug"
+    },
+    {
+      "season": "23/24",
+      "rank": 81,
+      "points": 35,
+      "league": "A-Klasse",
+      "name": "Ralf Haug"
+    },
+    {
+      "season": "22/23",
+      "rank": 41,
+      "points": 30,
+      "league": "Bezirksliga",
+      "name": "Ralf Haug"
+    },
+    {
+      "season": "20/22",
+      "rank": 43,
+      "points": 84,
+      "league": "A-Klasse",
+      "name": "Ralf Haug"
+    }
+  ],
+  "344": [
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Sasa Jelkic"
+    }
+  ],
+  "970": [
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Gennadij Penner"
+    },
+    {
+      "season": "24/25",
+      "rank": 39,
+      "points": 88,
+      "league": "A-Klasse",
+      "name": "Gennadij Penner"
+    },
+    {
+      "season": "23/24",
+      "rank": 3,
+      "points": 163,
+      "league": "B-Klasse",
+      "name": "Gennadij Penner"
+    },
+    {
+      "season": "22/23",
+      "rank": 3,
+      "points": 166,
+      "league": "C-Klasse",
+      "name": "Gennadij Penner"
+    },
+    {
+      "season": "20/22",
+      "rank": 59,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Gennadij Penner"
+    }
+  ],
+  "309": [
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 31,
+      "league": "A-Klasse",
+      "name": "Peter Hartig"
+    },
+    {
+      "season": "24/25",
+      "rank": 59,
+      "points": 59,
+      "league": "A-Klasse",
+      "name": "Peter Hartig"
+    },
+    {
+      "season": "23/24",
+      "rank": 77,
+      "points": 41,
+      "league": "A-Klasse",
+      "name": "Peter Hartig"
+    },
+    {
+      "season": "22/23",
+      "rank": 83,
+      "points": 39,
+      "league": "A-Klasse",
+      "name": "Peter Hartig"
+    },
+    {
+      "season": "20/22",
+      "rank": 62,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Peter Hartig"
+    }
+  ],
+  "1529": [
+    {
+      "season": "2025/2026",
+      "rank": 88,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Vanessa Lenz"
+    },
+    {
+      "season": "24/25",
+      "rank": 54,
+      "points": 12,
+      "league": "Bezirksliga",
+      "name": "Vanessa Lenz"
+    },
+    {
+      "season": "23/24",
+      "rank": 95,
+      "points": 14,
+      "league": "A-Klasse",
+      "name": "Vanessa Lenz"
+    },
+    {
+      "season": "22/23",
+      "rank": 123,
+      "points": 33,
+      "league": "B-Klasse",
+      "name": "Vanessa Lenz"
+    },
+    {
+      "season": "20/22",
+      "rank": 94,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Vanessa Lenz"
+    }
+  ],
+  "1568": [
+    {
+      "season": "2025/2026",
+      "rank": 89,
+      "points": 29,
+      "league": "A-Klasse",
+      "name": "Thomas Bock"
+    }
+  ],
+  "635": [
+    {
+      "season": "2025/2026",
+      "rank": 90,
+      "points": 28,
+      "league": "A-Klasse",
+      "name": "Graziella Crimaldi"
+    },
+    {
+      "season": "24/25",
+      "rank": 55,
+      "points": 67,
+      "league": "A-Klasse",
+      "name": "Graziella Crimaldi"
+    },
+    {
+      "season": "23/24",
+      "rank": 42,
+      "points": 102,
+      "league": "B-Klasse",
+      "name": "Graziella Crimaldi"
+    },
+    {
+      "season": "22/23",
+      "rank": 108,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Graziella Crimaldi"
+    },
+    {
+      "season": "20/22",
+      "rank": 145,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Graziella Crimaldi"
+    }
+  ],
+  "385": [
+    {
+      "season": "2025/2026",
+      "rank": 91,
+      "points": 27,
+      "league": "A-Klasse",
+      "name": "Patrick Konrad"
+    },
+    {
+      "season": "24/25",
+      "rank": 78,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Patrick Konrad"
+    }
+  ],
+  "694": [
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Brian Fribus"
+    }
+  ],
+  "1248": [
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Tomislav Bodnar"
+    },
+    {
+      "season": "24/25",
+      "rank": 108,
+      "points": 42,
+      "league": "B-Klasse",
+      "name": "Tomislav Bodnar"
+    },
+    {
+      "season": "23/24",
+      "rank": 143,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Tomislav Bodnar"
+    },
+    {
+      "season": "22/23",
+      "rank": 79,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Tomislav Bodnar"
+    }
+  ],
+  "1566": [
+    {
+      "season": "2025/2026",
+      "rank": 94,
+      "points": 25,
+      "league": "A-Klasse",
+      "name": "Kerstin Fuust"
+    },
+    {
+      "season": "24/25",
+      "rank": 100,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Kerstin Fuust"
+    },
+    {
+      "season": "23/24",
+      "rank": 88,
+      "points": 20,
+      "league": "A-Klasse",
+      "name": "Kerstin Fuust"
+    },
+    {
+      "season": "22/23",
+      "rank": 107,
+      "points": 11,
+      "league": "A-Klasse",
+      "name": "Kerstin Fuust"
+    },
+    {
+      "season": "20/22",
+      "rank": 81,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Kerstin Fuust"
+    }
+  ],
+  "938": [
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 24,
+      "league": "A-Klasse",
+      "name": "Patrick Haenicke"
+    }
+  ],
+  "1602": [
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 24,
+      "league": "A-Klasse",
+      "name": "Ralf Voggenreiter"
+    },
+    {
+      "season": "24/25",
+      "rank": 58,
+      "points": 86,
+      "league": "B-Klasse",
+      "name": "Ralf Voggenreiter"
+    },
+    {
+      "season": "23/24",
+      "rank": 66,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Ralf Voggenreiter"
+    },
+    {
+      "season": "22/23",
+      "rank": 33,
+      "points": 104,
+      "league": "B-Klasse",
+      "name": "Ralf Voggenreiter"
+    },
+    {
+      "season": "20/22",
+      "rank": 55,
+      "points": 66,
+      "league": "A-Klasse",
+      "name": "Ralf Voggenreiter"
+    }
+  ],
+  "1664": [
+    {
+      "season": "2025/2026",
+      "rank": 97,
+      "points": 23,
+      "league": "A-Klasse",
+      "name": "Christian Koch"
+    },
+    {
+      "season": "24/25",
+      "rank": 62,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Christian Koch"
+    }
+  ],
+  "1825": [
+    {
+      "season": "2025/2026",
+      "rank": 98,
+      "points": 22,
+      "league": "A-Klasse",
+      "name": "Jochen Fischer"
+    }
+  ],
+  "1234": [
+    {
+      "season": "2025/2026",
+      "rank": 99,
+      "points": 21,
+      "league": "A-Klasse",
+      "name": "S\u00f6ren Wahl"
+    }
+  ],
+  "1249": [
+    {
+      "season": "2025/2026",
+      "rank": 100,
+      "points": 20,
+      "league": "A-Klasse",
+      "name": "Alexander Rezlaw"
+    },
+    {
+      "season": "24/25",
+      "rank": 142,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Alexander Rezlaw"
+    },
+    {
+      "season": "23/24",
+      "rank": 109,
+      "points": 42,
+      "league": "B-Klasse",
+      "name": "Alexander Rezlaw"
+    },
+    {
+      "season": "22/23",
+      "rank": 13,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Alexander Rezlaw"
+    },
+    {
+      "season": "20/22",
+      "rank": 155,
+      "points": 13,
+      "league": "B-Klasse",
+      "name": "Alexander Rezlaw"
+    }
+  ],
+  "1543": [
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 17,
+      "league": "A-Klasse",
+      "name": "Andre Muhn"
+    },
+    {
+      "season": "23/24",
+      "rank": 71,
+      "points": 49,
+      "league": "A-Klasse",
+      "name": "Andre Muhn"
+    },
+    {
+      "season": "22/23",
+      "rank": 131,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Andre Muhn"
+    }
+  ],
+  "685": [
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 17,
+      "league": "A-Klasse",
+      "name": "Guido Biehl"
+    },
+    {
+      "season": "24/25",
+      "rank": 57,
+      "points": 62,
+      "league": "A-Klasse",
+      "name": "Guido Biehl"
+    },
+    {
+      "season": "23/24",
+      "rank": 127,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Guido Biehl"
+    },
+    {
+      "season": "22/23",
+      "rank": 36,
+      "points": 35,
+      "league": "Bezirksliga",
+      "name": "Guido Biehl"
+    },
+    {
+      "season": "20/22",
+      "rank": 43,
+      "points": 27,
+      "league": "Bezirksliga",
+      "name": "Guido Biehl"
+    }
+  ],
+  "152": [
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Stipo Dumancic"
+    },
+    {
+      "season": "24/25",
+      "rank": 21,
+      "points": 129,
+      "league": "A-Klasse",
+      "name": "Stipo Dumancic"
+    },
+    {
+      "season": "23/24",
+      "rank": 28,
+      "points": 100,
+      "league": "A-Klasse",
+      "name": "Stipo Dumancic"
+    },
+    {
+      "season": "22/23",
+      "rank": 37,
+      "points": 92,
+      "league": "A-Klasse",
+      "name": "Stipo Dumancic"
+    },
+    {
+      "season": "20/22",
+      "rank": 56,
+      "points": 65,
+      "league": "A-Klasse",
+      "name": "Stipo Dumancic"
+    }
+  ],
+  "1400": [
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Andrija Opacak"
+    },
+    {
+      "season": "23/24",
+      "rank": 93,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Andrija Opacak"
+    },
+    {
+      "season": "22/23",
+      "rank": 135,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Andrija Opacak"
+    },
+    {
+      "season": "20/22",
+      "rank": 112,
+      "points": 34,
+      "league": "B-Klasse",
+      "name": "Andrija Opacak"
+    }
+  ],
+  "1204": [
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 15,
+      "league": "A-Klasse",
+      "name": "Peter Fenchel"
+    },
+    {
+      "season": "24/25",
+      "rank": 60,
+      "points": 56,
+      "league": "A-Klasse",
+      "name": "Peter Fenchel"
+    },
+    {
+      "season": "23/24",
+      "rank": 44,
+      "points": 85,
+      "league": "A-Klasse",
+      "name": "Peter Fenchel"
+    },
+    {
+      "season": "22/23",
+      "rank": 39,
+      "points": 88,
+      "league": "A-Klasse",
+      "name": "Peter Fenchel"
+    },
+    {
+      "season": "20/22",
+      "rank": 21,
+      "points": 119,
+      "league": "B-Klasse",
+      "name": "Peter Fenchel"
+    }
+  ],
+  "1360": [
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 15,
+      "league": "A-Klasse",
+      "name": "Alexander Schulz"
+    },
+    {
+      "season": "24/25",
+      "rank": 144,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Alexander Schulz"
+    },
+    {
+      "season": "23/24",
+      "rank": 181,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Alexander Schulz"
+    }
+  ],
+  "1707": [
+    {
+      "season": "2025/2026",
+      "rank": 109,
+      "points": 11,
+      "league": "A-Klasse",
+      "name": "Justin Hamp"
+    },
+    {
+      "season": "24/25",
+      "rank": 148,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Justin Hamp"
+    }
+  ],
+  "1409": [
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Christian Blume"
+    },
+    {
+      "season": "24/25",
+      "rank": 57,
+      "points": 86,
+      "league": "B-Klasse",
+      "name": "Christian Blume"
+    },
+    {
+      "season": "23/24",
+      "rank": 35,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Christian Blume"
+    },
+    {
+      "season": "22/23",
+      "rank": 61,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Christian Blume"
+    }
+  ],
+  "923": [
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Uwe Deeg"
+    },
+    {
+      "season": "24/25",
+      "rank": 104,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Uwe Deeg"
+    },
+    {
+      "season": "23/24",
+      "rank": 117,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Uwe Deeg"
+    },
+    {
+      "season": "22/23",
+      "rank": 140,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Uwe Deeg"
+    },
+    {
+      "season": "20/22",
+      "rank": 168,
+      "points": 10,
+      "league": "B-Klasse",
+      "name": "Uwe Deeg"
+    }
+  ],
+  "182": [
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Florian B\u00fchner"
+    },
+    {
+      "season": "24/25",
+      "rank": 69,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Florian B\u00fchner"
+    },
+    {
+      "season": "23/24",
+      "rank": 106,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Florian B\u00fchner"
+    },
+    {
+      "season": "22/23",
+      "rank": 108,
+      "points": 10,
+      "league": "A-Klasse",
+      "name": "Florian B\u00fchner"
+    },
+    {
+      "season": "20/22",
+      "rank": 99,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Florian B\u00fchner"
+    }
+  ],
+  "1427": [
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Florian Titel"
+    },
+    {
+      "season": "24/25",
+      "rank": 88,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Florian Titel"
+    },
+    {
+      "season": "23/24",
+      "rank": 72,
+      "points": 49,
+      "league": "A-Klasse",
+      "name": "Florian Titel"
+    },
+    {
+      "season": "22/23",
+      "rank": 136,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Florian Titel"
+    },
+    {
+      "season": "20/22",
+      "rank": 61,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Florian Titel"
+    }
+  ],
+  "1455": [
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Gianni Morello"
+    },
+    {
+      "season": "24/25",
+      "rank": 47,
+      "points": 76,
+      "league": "A-Klasse",
+      "name": "Gianni Morello"
+    },
+    {
+      "season": "23/24",
+      "rank": 17,
+      "points": 132,
+      "league": "B-Klasse",
+      "name": "Gianni Morello"
+    },
+    {
+      "season": "22/23",
+      "rank": 131,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Gianni Morello"
+    },
+    {
+      "season": "20/22",
+      "rank": 110,
+      "points": 35,
+      "league": "B-Klasse",
+      "name": "Gianni Morello"
+    }
+  ],
+  "930": [
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Lucas Junker"
+    },
+    {
+      "season": "24/25",
+      "rank": 59,
+      "points": 6,
+      "league": "Bezirksliga",
+      "name": "Lucas Junker"
+    },
+    {
+      "season": "23/24",
+      "rank": 78,
+      "points": 69,
+      "league": "B-Klasse",
+      "name": "Lukas Junker"
+    },
+    {
+      "season": "22/23",
+      "rank": 128,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Lukas Junker"
+    },
+    {
+      "season": "20/22",
+      "rank": 114,
+      "points": 12,
+      "league": "A-Klasse",
+      "name": "Lukas Junker"
+    }
+  ],
+  "1064": [
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Bernd Langer"
+    },
+    {
+      "season": "24/25",
+      "rank": 52,
+      "points": 73,
+      "league": "A-Klasse",
+      "name": "Bernd Langer"
+    },
+    {
+      "season": "23/24",
+      "rank": 25,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Bernd Langer"
+    },
+    {
+      "season": "22/23",
+      "rank": 40,
+      "points": 87,
+      "league": "A-Klasse",
+      "name": "Bernd Langer"
+    },
+    {
+      "season": "20/22",
+      "rank": 5,
+      "points": 157,
+      "league": "B-Klasse",
+      "name": "Bernd Langer"
+    }
+  ],
+  "1324": [
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Erdogan Dombay"
+    },
+    {
+      "season": "24/25",
+      "rank": 156,
+      "points": 12,
+      "league": "B-Klasse",
+      "name": "Erdogan Dombay"
+    },
+    {
+      "season": "23/24",
+      "rank": 80,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Erdogan Dombay"
+    },
+    {
+      "season": "22/23",
+      "rank": 77,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Erdogan Dombay"
+    },
+    {
+      "season": "20/22",
+      "rank": 127,
+      "points": 25,
+      "league": "B-Klasse",
+      "name": "Erdogan Dombay"
+    }
+  ],
+  "236": [
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Michael Lamitschka"
+    }
+  ],
+  "1879": [
+    {
+      "season": "2025/2026",
+      "rank": 120,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Jan Bick"
+    }
+  ],
+  "317": [
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Gabriele Dittus"
+    },
+    {
+      "season": "24/25",
+      "rank": 116,
+      "points": 33,
+      "league": "B-Klasse",
+      "name": "Gabriele Dittus"
+    },
+    {
+      "season": "23/24",
+      "rank": 92,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Gabriele Dittus"
+    },
+    {
+      "season": "22/23",
+      "rank": 87,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Gabriele Dittus"
+    },
+    {
+      "season": "20/22",
+      "rank": 78,
+      "points": 63,
+      "league": "B-Klasse",
+      "name": "Gabriele Dittus"
+    }
+  ],
+  "1351": [
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Ivo Opacak"
+    },
+    {
+      "season": "24/25",
+      "rank": 81,
+      "points": 29,
+      "league": "A-Klasse",
+      "name": "Ivo Opacak"
+    },
+    {
+      "season": "23/24",
+      "rank": 94,
+      "points": 15,
+      "league": "A-Klasse",
+      "name": "Ivo Opacak"
+    },
+    {
+      "season": "22/23",
+      "rank": 26,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Ivo Opacak"
+    },
+    {
+      "season": "20/22",
+      "rank": 73,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Ivo Opacak"
+    }
+  ],
+  "1590": [
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Andreas Schanz"
+    },
+    {
+      "season": "24/25",
+      "rank": 120,
+      "points": 30,
+      "league": "B-Klasse",
+      "name": "Andreas Schanz"
+    },
+    {
+      "season": "23/24",
+      "rank": 90,
+      "points": 18,
+      "league": "A-Klasse",
+      "name": "Andreas Schanz"
+    },
+    {
+      "season": "22/23",
+      "rank": 58,
+      "points": 4,
+      "league": "Bezirksliga",
+      "name": "Andreas Schanz"
+    },
+    {
+      "season": "20/22",
+      "rank": 127,
+      "points": 8,
+      "league": "A-Klasse",
+      "name": "Andreas Schanz"
+    }
+  ],
+  "1475": [
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "\u00d6zcan \u00d6zakcinar"
+    },
+    {
+      "season": "23/24",
+      "rank": 162,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "\u00d6zcan \u00d6zakcinar"
+    },
+    {
+      "season": "22/23",
+      "rank": 142,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "\u00d6zcan \u00d6zakcinar"
+    },
+    {
+      "season": "20/22",
+      "rank": 74,
+      "points": 65,
+      "league": "B-Klasse",
+      "name": "\u00d6zcan \u00d6zakcinar"
+    }
+  ],
+  "1491": [
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Johann Kunzmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 190,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Johann Kunzmann"
+    }
+  ],
+  "845": [
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Manuela K\u00e4ser"
+    },
+    {
+      "season": "24/25",
+      "rank": 152,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Manuela K\u00e4ser"
+    },
+    {
+      "season": "23/24",
+      "rank": 122,
+      "points": 34,
+      "league": "B-Klasse",
+      "name": "Manuela K\u00e4ser"
+    },
+    {
+      "season": "22/23",
+      "rank": 176,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Manuela K\u00e4ser"
+    },
+    {
+      "season": "20/22",
+      "rank": 208,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Manuela K\u00e4ser"
+    }
+  ],
+  "122": [
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Klaus Feitenhansl"
+    },
+    {
+      "season": "24/25",
+      "rank": 55,
+      "points": 12,
+      "league": "Bezirksliga",
+      "name": "Klaus Feitenhansl"
+    },
+    {
+      "season": "23/24",
+      "rank": 23,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Klaus Feitenhansl"
+    },
+    {
+      "season": "22/23",
+      "rank": 13,
+      "points": 139,
+      "league": "B-Klasse",
+      "name": "Klaus Feitenhansl"
+    },
+    {
+      "season": "20/22",
+      "rank": 50,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Klaus Feitenhansl"
+    }
+  ],
+  "1629": [
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Katarzyna Haug"
+    },
+    {
+      "season": "23/24",
+      "rank": 115,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Katarzyna Haug"
+    }
+  ],
+  "1191": [
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Josef Bertino"
+    },
+    {
+      "season": "24/25",
+      "rank": 138,
+      "points": 20,
+      "league": "B-Klasse",
+      "name": "Josef Bertino"
+    },
+    {
+      "season": "23/24",
+      "rank": 138,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Josef Bertino"
+    },
+    {
+      "season": "22/23",
+      "rank": 156,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Josef Bertino"
+    },
+    {
+      "season": "20/22",
+      "rank": 111,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Josef Bertino"
+    }
+  ],
+  "1591": [
+    {
+      "season": "2025/2026",
+      "rank": 126,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Giovanni Corbo"
+    },
+    {
+      "season": "24/25",
+      "rank": 143,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Giovanni Corbo"
+    },
+    {
+      "season": "23/24",
+      "rank": 164,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Giovanni Corbo"
+    },
+    {
+      "season": "22/23",
+      "rank": 133,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Giovanni Corbo"
+    },
+    {
+      "season": "20/22",
+      "rank": 138,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Giovanni Corbo"
+    }
+  ],
+  "529": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Peter Meeh"
+    }
+  ],
+  "730": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Oksana Kuliieva"
+    }
+  ],
+  "465": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Willi Ruppert"
+    },
+    {
+      "season": "24/25",
+      "rank": 112,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Willi Ruppert"
+    },
+    {
+      "season": "23/24",
+      "rank": 65,
+      "points": 57,
+      "league": "A-Klasse",
+      "name": "Willi Ruppert"
+    },
+    {
+      "season": "22/23",
+      "rank": 78,
+      "points": 44,
+      "league": "A-Klasse",
+      "name": "Willi Ruppert"
+    },
+    {
+      "season": "20/22",
+      "rank": 34,
+      "points": 43,
+      "league": "Bezirksliga",
+      "name": "Willi Ruppert"
+    }
+  ],
+  "1236": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Justin Stoll"
+    }
+  ],
+  "1682": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Michael B\u00e4uerle"
+    },
+    {
+      "season": "24/25",
+      "rank": 96,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Michael B\u00e4uerle"
+    },
+    {
+      "season": "23/24",
+      "rank": 151,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Michael B\u00e4uerle"
+    }
+  ],
+  "220": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Diego Naranjo Gomez"
+    }
+  ],
+  "1746": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Nadine Steinberg"
+    },
+    {
+      "season": "24/25",
+      "rank": 113,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Nadine Steinberg"
+    },
+    {
+      "season": "23/24",
+      "rank": 121,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Nadine Steinberg"
+    },
+    {
+      "season": "22/23",
+      "rank": 144,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Nadine Steinberg"
+    }
+  ],
+  "721": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Assunta Venzke"
+    },
+    {
+      "season": "24/25",
+      "rank": 62,
+      "points": 3,
+      "league": "Bezirksliga",
+      "name": "Assunta Venzke"
+    },
+    {
+      "season": "23/24",
+      "rank": 118,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Assunta Venzke"
+    },
+    {
+      "season": "22/23",
+      "rank": 178,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Assunta Venzke"
+    },
+    {
+      "season": "20/22",
+      "rank": 249,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Assunta Ferraiuolo"
+    }
+  ],
+  "1272": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Markus Oehrle"
+    },
+    {
+      "season": "24/25",
+      "rank": 110,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Markus Oehrle"
+    },
+    {
+      "season": "23/24",
+      "rank": 105,
+      "points": 8,
+      "league": "A-Klasse",
+      "name": "Markus Oehrle"
+    },
+    {
+      "season": "22/23",
+      "rank": 174,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Markus Oehrle"
+    },
+    {
+      "season": "20/22",
+      "rank": 153,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Markus Oehrle"
+    }
+  ],
+  "373": [
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 190,
+      "league": "B-Klasse",
+      "name": "Daniel K\u00f6nig"
+    },
+    {
+      "season": "24/25",
+      "rank": 1,
+      "points": 205,
+      "league": "C-Klasse",
+      "name": "Daniel K\u00f6nig"
+    },
+    {
+      "season": "23/24",
+      "rank": 1,
+      "points": 186,
+      "league": "C-Klasse",
+      "name": "Daniel K\u00f6nig"
+    }
+  ],
+  "208": [
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 177,
+      "league": "B-Klasse",
+      "name": "Mark Dew"
+    },
+    {
+      "season": "24/25",
+      "rank": 5,
+      "points": 162,
+      "league": "A-Klasse",
+      "name": "Mark Dew"
+    },
+    {
+      "season": "23/24",
+      "rank": 3,
+      "points": 161,
+      "league": "A-Klasse",
+      "name": "Mark Dew"
+    }
+  ],
+  "1651": [
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 168,
+      "league": "B-Klasse",
+      "name": "Simon Klose"
+    },
+    {
+      "season": "24/25",
+      "rank": 2,
+      "points": 194,
+      "league": "C-Klasse",
+      "name": "Simon Klose"
+    },
+    {
+      "season": "23/24",
+      "rank": 10,
+      "points": 151,
+      "league": "B-Klasse",
+      "name": "Simon Klose"
+    },
+    {
+      "season": "22/23",
+      "rank": 220,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Simon Klose"
+    }
+  ],
+  "099": [
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 166,
+      "league": "B-Klasse",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "24/25",
+      "rank": 14,
+      "points": 133,
+      "league": "A-Klasse",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "23/24",
+      "rank": 20,
+      "points": 99,
+      "league": "Bezirksliga",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "22/23",
+      "rank": 8,
+      "points": 124,
+      "league": "Bezirksliga",
+      "name": "Frank Polte"
+    },
+    {
+      "season": "20/22",
+      "rank": 16,
+      "points": 101,
+      "league": "Bezirksliga",
+      "name": "Frank Polte"
+    }
+  ],
+  "729": [
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 160,
+      "league": "B-Klasse",
+      "name": "Luis Voggenreiter"
+    },
+    {
+      "season": "24/25",
+      "rank": 182,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Luis Voggenreiter"
+    },
+    {
+      "season": "20/22",
+      "rank": 195,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Luis Voggenreiter"
+    }
+  ],
+  "096": [
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 159,
+      "league": "B-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "24/25",
+      "rank": 1,
+      "points": 165,
+      "league": "B-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "23/24",
+      "rank": 7,
+      "points": 153,
+      "league": "B-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "22/23",
+      "rank": 7,
+      "points": 149,
+      "league": "A-Klasse",
+      "name": "Alexander Schmidt"
+    },
+    {
+      "season": "20/22",
+      "rank": 3,
+      "points": 164,
+      "league": "A-Klasse",
+      "name": "Alexander Schmidt"
+    }
+  ],
+  "1835": [
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 156,
+      "league": "B-Klasse",
+      "name": "Reinhard Bott"
+    },
+    {
+      "season": "24/25",
+      "rank": 24,
+      "points": 114,
+      "league": "B-Klasse",
+      "name": "Reinhard Bott"
+    },
+    {
+      "season": "23/24",
+      "rank": 15,
+      "points": 136,
+      "league": "B-Klasse",
+      "name": "Reinhard Bott"
+    },
+    {
+      "season": "22/23",
+      "rank": 97,
+      "points": 17,
+      "league": "A-Klasse",
+      "name": "Reinhard Bott"
+    },
+    {
+      "season": "20/22",
+      "rank": 61,
+      "points": 57,
+      "league": "A-Klasse",
+      "name": "Reinhard Bott"
+    }
+  ],
+  "1175": [
+    {
+      "season": "2025/2026",
+      "rank": 8,
+      "points": 153,
+      "league": "B-Klasse",
+      "name": "Bernd Wagner"
+    },
+    {
+      "season": "24/25",
+      "rank": 17,
+      "points": 130,
+      "league": "B-Klasse",
+      "name": "Bernd Wagner"
+    },
+    {
+      "season": "23/24",
+      "rank": 33,
+      "points": 92,
+      "league": "A-Klasse",
+      "name": "Bernd Wagner"
+    },
+    {
+      "season": "22/23",
+      "rank": 87,
+      "points": 24,
+      "league": "A-Klasse",
+      "name": "Bernd Wagner"
+    },
+    {
+      "season": "20/22",
+      "rank": 46,
+      "points": 79,
+      "league": "A-Klasse",
+      "name": "Bernd Wagner"
+    }
+  ],
+  "1271": [
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 152,
+      "league": "B-Klasse",
+      "name": "Harald Hoppe"
+    },
+    {
+      "season": "24/25",
+      "rank": 27,
+      "points": 115,
+      "league": "A-Klasse",
+      "name": "Harald Hoppe"
+    },
+    {
+      "season": "23/24",
+      "rank": 36,
+      "points": 59,
+      "league": "Bezirksliga",
+      "name": "Harald Hoppe"
+    },
+    {
+      "season": "22/23",
+      "rank": 21,
+      "points": 90,
+      "league": "Bezirksliga",
+      "name": "Harald Hoppe"
+    },
+    {
+      "season": "20/22",
+      "rank": 22,
+      "points": 83,
+      "league": "Bezirksliga",
+      "name": "Harald Hoppe"
+    }
+  ],
+  "369": [
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 149,
+      "league": "B-Klasse",
+      "name": "Brian Weszkallnies"
+    },
+    {
+      "season": "24/25",
+      "rank": 16,
+      "points": 152,
+      "league": "C-Klasse",
+      "name": "Brian Weszkallnies"
+    },
+    {
+      "season": "23/24",
+      "rank": 9,
+      "points": 164,
+      "league": "C-Klasse",
+      "name": "Brian Weszkallnies"
+    }
+  ],
+  "1059": [
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 146,
+      "league": "B-Klasse",
+      "name": "Marvin Prohaska"
+    },
+    {
+      "season": "24/25",
+      "rank": 18,
+      "points": 124,
+      "league": "B-Klasse",
+      "name": "Marvin Prohaska"
+    },
+    {
+      "season": "23/24",
+      "rank": 4,
+      "points": 158,
+      "league": "B-Klasse",
+      "name": "Marvin Prohaska"
+    },
+    {
+      "season": "22/23",
+      "rank": 15,
+      "points": 134,
+      "league": "A-Klasse",
+      "name": "Marvin Prohaska"
+    },
+    {
+      "season": "20/22",
+      "rank": 4,
+      "points": 166,
+      "league": "B-Klasse",
+      "name": "Marvin Prohaska"
+    }
+  ],
+  "1411": [
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 142,
+      "league": "B-Klasse",
+      "name": "Benjamin Grau"
+    },
+    {
+      "season": "24/25",
+      "rank": 45,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Benjamin Grau"
+    },
+    {
+      "season": "23/24",
+      "rank": 52,
+      "points": 15,
+      "league": "Bezirksliga",
+      "name": "Benjamin Grau"
+    },
+    {
+      "season": "22/23",
+      "rank": 59,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Benjamin Grau"
+    },
+    {
+      "season": "20/22",
+      "rank": 30,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Benjamin Grau"
+    }
+  ],
+  "1528": [
+    {
+      "season": "2025/2026",
+      "rank": 13,
+      "points": 139,
+      "league": "B-Klasse",
+      "name": "Andreas Gebhard"
+    },
+    {
+      "season": "24/25",
+      "rank": 5,
+      "points": 153,
+      "league": "B-Klasse",
+      "name": "Andreas Gebhard"
+    },
+    {
+      "season": "23/24",
+      "rank": 5,
+      "points": 175,
+      "league": "C-Klasse",
+      "name": "Andreas Gebhard"
+    },
+    {
+      "season": "20/22",
+      "rank": 185,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Andreas Gebhard"
+    }
+  ],
+  "469": [
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 136,
+      "league": "B-Klasse",
+      "name": "Juan Zahn"
+    },
+    {
+      "season": "24/25",
+      "rank": 11,
+      "points": 161,
+      "league": "C-Klasse",
+      "name": "Juan Zahn"
+    },
+    {
+      "season": "23/24",
+      "rank": 4,
+      "points": 183,
+      "league": "C-Klasse",
+      "name": "Juan Zahn"
+    },
+    {
+      "season": "22/23",
+      "rank": 58,
+      "points": 92,
+      "league": "C-Klasse",
+      "name": "Juan Zahn"
+    },
+    {
+      "season": "20/22",
+      "rank": 93,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Juan Zahn"
+    }
+  ],
+  "218": [
+    {
+      "season": "2025/2026",
+      "rank": 15,
+      "points": 135,
+      "league": "B-Klasse",
+      "name": "Jonas Jordan"
+    }
+  ],
+  "1513": [
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 134,
+      "league": "B-Klasse",
+      "name": "Manuel Blessing"
+    },
+    {
+      "season": "24/25",
+      "rank": 5,
+      "points": 181,
+      "league": "C-Klasse",
+      "name": "Manuel Blessing"
+    },
+    {
+      "season": "23/24",
+      "rank": 64,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Manuel Blessing"
+    },
+    {
+      "season": "22/23",
+      "rank": 78,
+      "points": 65,
+      "league": "B-Klasse",
+      "name": "Manuel Blessing"
+    },
+    {
+      "season": "20/22",
+      "rank": 108,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Manuel Blessing"
+    }
+  ],
+  "1577": [
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 129,
+      "league": "B-Klasse",
+      "name": "Lee Scott Galletly"
+    },
+    {
+      "season": "24/25",
+      "rank": 13,
+      "points": 158,
+      "league": "C-Klasse",
+      "name": "Lee Scott Galletly"
+    },
+    {
+      "season": "23/24",
+      "rank": 28,
+      "points": 126,
+      "league": "C-Klasse",
+      "name": "Lee Scott Galletly"
+    },
+    {
+      "season": "22/23",
+      "rank": 39,
+      "points": 110,
+      "league": "C-Klasse",
+      "name": "Lee Scott Galletly"
+    },
+    {
+      "season": "20/22",
+      "rank": 86,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Lee Scott Galletly"
+    }
+  ],
+  "066": [
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 128,
+      "league": "B-Klasse",
+      "name": "Volker Beck"
+    },
+    {
+      "season": "24/25",
+      "rank": 64,
+      "points": 52,
+      "league": "A-Klasse",
+      "name": "Volker Beck"
+    },
+    {
+      "season": "23/24",
+      "rank": 18,
+      "points": 114,
+      "league": "A-Klasse",
+      "name": "Volker Beck"
+    },
+    {
+      "season": "22/23",
+      "rank": 8,
+      "points": 155,
+      "league": "B-Klasse",
+      "name": "Volker Beck"
+    }
+  ],
+  "132": [
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 128,
+      "league": "B-Klasse",
+      "name": "Thomas Freimuth"
+    },
+    {
+      "season": "24/25",
+      "rank": 3,
+      "points": 190,
+      "league": "C-Klasse",
+      "name": "Thomas Freimuth"
+    },
+    {
+      "season": "23/24",
+      "rank": 7,
+      "points": 169,
+      "league": "C-Klasse",
+      "name": "Thomas Freimuth"
+    },
+    {
+      "season": "22/23",
+      "rank": 6,
+      "points": 162,
+      "league": "B-Klasse",
+      "name": "Thomas Freimuth"
+    },
+    {
+      "season": "20/22",
+      "rank": 39,
+      "points": 89,
+      "league": "A-Klasse",
+      "name": "Thomas Freimuth"
+    }
+  ],
+  "1186": [
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 127,
+      "league": "B-Klasse",
+      "name": "Thomas Schm\u00e4deke"
+    },
+    {
+      "season": "24/25",
+      "rank": 37,
+      "points": 103,
+      "league": "B-Klasse",
+      "name": "Thomas Schm\u00e4deke"
+    },
+    {
+      "season": "23/24",
+      "rank": 34,
+      "points": 92,
+      "league": "A-Klasse",
+      "name": "Thomas Schm\u00e4deke"
+    },
+    {
+      "season": "22/23",
+      "rank": 26,
+      "points": 105,
+      "league": "A-Klasse",
+      "name": "Thomas Schm\u00e4deke"
+    },
+    {
+      "season": "20/22",
+      "rank": 33,
+      "points": 97,
+      "league": "A-Klasse",
+      "name": "Thomas Schm\u00e4deke"
+    }
+  ],
+  "106": [
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 126,
+      "league": "B-Klasse",
+      "name": "Heiko Weigel"
+    },
+    {
+      "season": "24/25",
+      "rank": 226,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Heiko Weigel"
+    },
+    {
+      "season": "20/22",
+      "rank": 107,
+      "points": 14,
+      "league": "A-Klasse",
+      "name": "Heiko Weigel"
+    }
+  ],
+  "1750": [
+    {
+      "season": "2025/2026",
+      "rank": 22,
+      "points": 125,
+      "league": "B-Klasse",
+      "name": "Davide Amato"
+    },
+    {
+      "season": "24/25",
+      "rank": 41,
+      "points": 99,
+      "league": "B-Klasse",
+      "name": "Davide Amato"
+    },
+    {
+      "season": "23/24",
+      "rank": 67,
+      "points": 80,
+      "league": "B-Klasse",
+      "name": "Davide Amato"
+    },
+    {
+      "season": "22/23",
+      "rank": 31,
+      "points": 106,
+      "league": "B-Klasse",
+      "name": "Davide Amato"
+    },
+    {
+      "season": "20/22",
+      "rank": 66,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Davide Amato"
+    }
+  ],
+  "701": [
+    {
+      "season": "2025/2026",
+      "rank": 23,
+      "points": 124,
+      "league": "B-Klasse",
+      "name": "Michael Hanosek"
+    },
+    {
+      "season": "24/25",
+      "rank": 12,
+      "points": 136,
+      "league": "A-Klasse",
+      "name": "Michael Hanosek"
+    },
+    {
+      "season": "23/24",
+      "rank": 9,
+      "points": 136,
+      "league": "A-Klasse",
+      "name": "Michael Hanosek"
+    },
+    {
+      "season": "22/23",
+      "rank": 13,
+      "points": 138,
+      "league": "A-Klasse",
+      "name": "Michael Hanosek"
+    },
+    {
+      "season": "20/22",
+      "rank": 12,
+      "points": 129,
+      "league": "A-Klasse",
+      "name": "Michael Hanosek"
+    }
+  ],
+  "1412": [
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 123,
+      "league": "B-Klasse",
+      "name": "Yves Schmidt"
+    },
+    {
+      "season": "24/25",
+      "rank": 83,
+      "points": 29,
+      "league": "A-Klasse",
+      "name": "Yves Schmidt"
+    },
+    {
+      "season": "23/24",
+      "rank": 99,
+      "points": 50,
+      "league": "B-Klasse",
+      "name": "Yves Schmidt"
+    },
+    {
+      "season": "22/23",
+      "rank": 102,
+      "points": 48,
+      "league": "B-Klasse",
+      "name": "Yves Schmidt"
+    },
+    {
+      "season": "20/22",
+      "rank": 105,
+      "points": 38,
+      "league": "B-Klasse",
+      "name": "Yves Schmidt"
+    }
+  ],
+  "225": [
+    {
+      "season": "2025/2026",
+      "rank": 25,
+      "points": 123,
+      "league": "B-Klasse",
+      "name": "Thomas Rzepczyk"
+    }
+  ],
+  "525": [
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 122,
+      "league": "B-Klasse",
+      "name": "Mirko Futschek"
+    },
+    {
+      "season": "24/25",
+      "rank": 7,
+      "points": 175,
+      "league": "C-Klasse",
+      "name": "Mirko Futschek"
+    },
+    {
+      "season": "23/24",
+      "rank": 11,
+      "points": 143,
+      "league": "B-Klasse",
+      "name": "Mirko Futschek"
+    },
+    {
+      "season": "22/23",
+      "rank": 15,
+      "points": 131,
+      "league": "B-Klasse",
+      "name": "Mirko Futschek"
+    },
+    {
+      "season": "20/22",
+      "rank": 103,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Mirko Futschek"
+    }
+  ],
+  "1713": [
+    {
+      "season": "2025/2026",
+      "rank": 27,
+      "points": 122,
+      "league": "B-Klasse",
+      "name": "Nico Michalek"
+    },
+    {
+      "season": "24/25",
+      "rank": 50,
+      "points": 115,
+      "league": "C-Klasse",
+      "name": "Nico Michalek"
+    },
+    {
+      "season": "23/24",
+      "rank": 72,
+      "points": 87,
+      "league": "C-Klasse",
+      "name": "Nico Michalek"
+    }
+  ],
+  "1181": [
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 122,
+      "league": "B-Klasse",
+      "name": "Sascha Miegel"
+    },
+    {
+      "season": "24/25",
+      "rank": 67,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Sascha Miegel"
+    },
+    {
+      "season": "23/24",
+      "rank": 36,
+      "points": 106,
+      "league": "B-Klasse",
+      "name": "Sascha Miegel"
+    },
+    {
+      "season": "22/23",
+      "rank": 34,
+      "points": 104,
+      "league": "B-Klasse",
+      "name": "Sascha Miegel"
+    },
+    {
+      "season": "20/22",
+      "rank": 39,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Sascha Miegel"
+    }
+  ],
+  "1692": [
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 121,
+      "league": "B-Klasse",
+      "name": "Timo Gr\u00f6schl"
+    },
+    {
+      "season": "24/25",
+      "rank": 16,
+      "points": 132,
+      "league": "B-Klasse",
+      "name": "Timo Gr\u00f6schl"
+    },
+    {
+      "season": "23/24",
+      "rank": 53,
+      "points": 94,
+      "league": "B-Klasse",
+      "name": "Timo Gr\u00f6schl"
+    },
+    {
+      "season": "22/23",
+      "rank": 48,
+      "points": 91,
+      "league": "B-Klasse",
+      "name": "Timo Gr\u00f6schl"
+    },
+    {
+      "season": "20/22",
+      "rank": 44,
+      "points": 91,
+      "league": "B-Klasse",
+      "name": "Timo Gr\u00f6schl"
+    }
+  ],
+  "1823": [
+    {
+      "season": "2025/2026",
+      "rank": 30,
+      "points": 119,
+      "league": "B-Klasse",
+      "name": "Alexander Jost"
+    },
+    {
+      "season": "24/25",
+      "rank": 43,
+      "points": 98,
+      "league": "B-Klasse",
+      "name": "Alexander Jost"
+    },
+    {
+      "season": "23/24",
+      "rank": 65,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Alexander Jost"
+    },
+    {
+      "season": "22/23",
+      "rank": 23,
+      "points": 114,
+      "league": "B-Klasse",
+      "name": "Alexander Jost"
+    },
+    {
+      "season": "20/22",
+      "rank": 40,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Alexander Jost"
+    }
+  ],
+  "948": [
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 118,
+      "league": "B-Klasse",
+      "name": "Sven St\u00f6ckler"
+    },
+    {
+      "season": "24/25",
+      "rank": 39,
+      "points": 100,
+      "league": "B-Klasse",
+      "name": "Sven St\u00f6ckler"
+    },
+    {
+      "season": "23/24",
+      "rank": 40,
+      "points": 103,
+      "league": "B-Klasse",
+      "name": "Sven St\u00f6ckler"
+    },
+    {
+      "season": "22/23",
+      "rank": 32,
+      "points": 104,
+      "league": "B-Klasse",
+      "name": "Sven St\u00f6ckler"
+    },
+    {
+      "season": "20/22",
+      "rank": 8,
+      "points": 150,
+      "league": "B-Klasse",
+      "name": "Sven St\u00f6ckler"
+    }
+  ],
+  "833": [
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 117,
+      "league": "B-Klasse",
+      "name": "Daniel Kiefer"
+    },
+    {
+      "season": "23/24",
+      "rank": 90,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Daniel Kiefer"
+    },
+    {
+      "season": "22/23",
+      "rank": 93,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Daniel Kiefer"
+    },
+    {
+      "season": "20/22",
+      "rank": 28,
+      "points": 121,
+      "league": "C-Klasse",
+      "name": "Daniel Kiefer"
+    }
+  ],
+  "1339": [
+    {
+      "season": "2025/2026",
+      "rank": 33,
+      "points": 116,
+      "league": "B-Klasse",
+      "name": "Oliver Grau"
+    },
+    {
+      "season": "24/25",
+      "rank": 10,
+      "points": 167,
+      "league": "C-Klasse",
+      "name": "Oliver Grau"
+    },
+    {
+      "season": "23/24",
+      "rank": 45,
+      "points": 26,
+      "league": "Bezirksliga",
+      "name": "Oliver Grau"
+    },
+    {
+      "season": "22/23",
+      "rank": 14,
+      "points": 136,
+      "league": "A-Klasse",
+      "name": "Oliver Grau"
+    },
+    {
+      "season": "20/22",
+      "rank": 4,
+      "points": 180,
+      "league": "C-Klasse",
+      "name": "Oliver Grau"
+    }
+  ],
+  "1273": [
+    {
+      "season": "2025/2026",
+      "rank": 34,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Thomas Hoffmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 30,
+      "points": 106,
+      "league": "B-Klasse",
+      "name": "Thomas Hoffmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 14,
+      "points": 153,
+      "league": "C-Klasse",
+      "name": "Thomas Hoffmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 37,
+      "points": 100,
+      "league": "B-Klasse",
+      "name": "Thomas Hoffmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 89,
+      "points": 23,
+      "league": "A-Klasse",
+      "name": "Thomas Hoffmann"
+    }
+  ],
+  "634": [
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Kai H\u00f6lzle"
+    },
+    {
+      "season": "24/25",
+      "rank": 26,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "Kai H\u00f6lzle"
+    },
+    {
+      "season": "23/24",
+      "rank": 54,
+      "points": 67,
+      "league": "A-Klasse",
+      "name": "Kai H\u00f6lzle"
+    },
+    {
+      "season": "22/23",
+      "rank": 22,
+      "points": 112,
+      "league": "A-Klasse",
+      "name": "Kai H\u00f6lzle"
+    },
+    {
+      "season": "20/22",
+      "rank": 44,
+      "points": 84,
+      "league": "A-Klasse",
+      "name": "Kai H\u00f6lzle"
+    }
+  ],
+  "1842": [
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Andr\u00e9 Lippa"
+    },
+    {
+      "season": "24/25",
+      "rank": 29,
+      "points": 108,
+      "league": "B-Klasse",
+      "name": "Andr\u00e9 Lippa"
+    },
+    {
+      "season": "23/24",
+      "rank": 20,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Andr\u00e9 Lippa"
+    },
+    {
+      "season": "22/23",
+      "rank": 66,
+      "points": 88,
+      "league": "C-Klasse",
+      "name": "Andre Lippa"
+    }
+  ],
+  "076": [
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "24/25",
+      "rank": 47,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "23/24",
+      "rank": 27,
+      "points": 121,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "22/23",
+      "rank": 62,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Pasquale Rackovic"
+    },
+    {
+      "season": "20/22",
+      "rank": 88,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Pasquale Rackovic"
+    }
+  ],
+  "726": [
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "Marco W\u00fcst"
+    },
+    {
+      "season": "24/25",
+      "rank": 3,
+      "points": 159,
+      "league": "B-Klasse",
+      "name": "Marco W\u00fcst"
+    },
+    {
+      "season": "23/24",
+      "rank": 3,
+      "points": 183,
+      "league": "C-Klasse",
+      "name": "Marco W\u00fcst"
+    },
+    {
+      "season": "22/23",
+      "rank": 38,
+      "points": 111,
+      "league": "C-Klasse",
+      "name": "Marco Frank"
+    },
+    {
+      "season": "20/22",
+      "rank": 84,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Marco Frank"
+    }
+  ],
+  "1752": [
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
+    },
+    {
+      "season": "24/25",
+      "rank": 20,
+      "points": 119,
+      "league": "B-Klasse",
+      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
+    },
+    {
+      "season": "23/24",
+      "rank": 97,
+      "points": 50,
+      "league": "B-Klasse",
+      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
+    },
+    {
+      "season": "22/23",
+      "rank": 53,
+      "points": 85,
+      "league": "B-Klasse",
+      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
+    },
+    {
+      "season": "20/22",
+      "rank": 51,
+      "points": 92,
+      "league": "C-Klasse",
+      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
+    }
+  ],
+  "815": [
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 109,
+      "league": "B-Klasse",
+      "name": "Andreas Haller"
+    },
+    {
+      "season": "24/25",
+      "rank": 89,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Andreas Haller"
+    },
+    {
+      "season": "23/24",
+      "rank": 46,
+      "points": 110,
+      "league": "C-Klasse",
+      "name": "Andreas Haller"
+    },
+    {
+      "season": "22/23",
+      "rank": 25,
+      "points": 112,
+      "league": "B-Klasse",
+      "name": "Andreas Haller"
+    },
+    {
+      "season": "20/22",
+      "rank": 103,
+      "points": 15,
+      "league": "A-Klasse",
+      "name": "Andreas Haller"
+    }
+  ],
+  "927": [
+    {
+      "season": "2025/2026",
+      "rank": 41,
+      "points": 105,
+      "league": "B-Klasse",
+      "name": "Nicky Freiberg"
+    },
+    {
+      "season": "24/25",
+      "rank": 91,
+      "points": 57,
+      "league": "B-Klasse",
+      "name": "Nicky Freiberg"
+    },
+    {
+      "season": "23/24",
+      "rank": 50,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Nicky Freiberg"
+    }
+  ],
+  "1544": [
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 105,
+      "league": "B-Klasse",
+      "name": "Tobias Lansche"
+    },
+    {
+      "season": "24/25",
+      "rank": 8,
+      "points": 145,
+      "league": "B-Klasse",
+      "name": "Tobias Lansche"
+    },
+    {
+      "season": "23/24",
+      "rank": 12,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "Tobias Lansche"
+    },
+    {
+      "season": "22/23",
+      "rank": 62,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Tobias Lansche"
+    }
+  ],
+  "1446": [
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 104,
+      "league": "B-Klasse",
+      "name": "Thomas Schm\u00f6ger"
+    },
+    {
+      "season": "24/25",
+      "rank": 14,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "Thomas Schm\u00f6ger"
+    },
+    {
+      "season": "23/24",
+      "rank": 10,
+      "points": 158,
+      "league": "C-Klasse",
+      "name": "Thomas Schm\u00f6ger"
+    },
+    {
+      "season": "22/23",
+      "rank": 105,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Thomas Schm\u00f6ger"
+    }
+  ],
+  "318": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 104,
+      "league": "B-Klasse",
+      "name": "Alexander Durst"
+    },
+    {
+      "season": "24/25",
+      "rank": 13,
+      "points": 137,
+      "league": "B-Klasse",
+      "name": "Alexander Durst"
+    },
+    {
+      "season": "23/24",
+      "rank": 17,
+      "points": 146,
+      "league": "C-Klasse",
+      "name": "Alexander Durst"
+    }
+  ],
+  "381": [
+    {
+      "season": "2025/2026",
+      "rank": 45,
+      "points": 103,
+      "league": "B-Klasse",
+      "name": "Thomas Bott"
+    },
+    {
+      "season": "24/25",
+      "rank": 202,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Thomas Bott"
+    }
+  ],
+  "419": [
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 101,
+      "league": "B-Klasse",
+      "name": "Michael Buchelt"
+    }
+  ],
+  "897": [
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 99,
+      "league": "B-Klasse",
+      "name": "Falk Rathfelder"
+    },
+    {
+      "season": "24/25",
+      "rank": 68,
+      "points": 49,
+      "league": "A-Klasse",
+      "name": "Falk Rathfelder"
+    },
+    {
+      "season": "23/24",
+      "rank": 53,
+      "points": 15,
+      "league": "Bezirksliga",
+      "name": "Falk Rathfelder"
+    },
+    {
+      "season": "22/23",
+      "rank": 45,
+      "points": 24,
+      "league": "Bezirksliga",
+      "name": "Falk Rathfelder"
+    },
+    {
+      "season": "20/22",
+      "rank": 52,
+      "points": 15,
+      "league": "Bezirksliga",
+      "name": "Falk Rathfelder"
+    }
+  ],
+  "412": [
+    {
+      "season": "2025/2026",
+      "rank": 48,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Thomas Brenk"
+    },
+    {
+      "season": "24/25",
+      "rank": 53,
+      "points": 94,
+      "league": "B-Klasse",
+      "name": "Thomas Brenk"
+    },
+    {
+      "season": "23/24",
+      "rank": 77,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Thomas Brenk"
+    },
+    {
+      "season": "22/23",
+      "rank": 91,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Thomas Brenk"
+    },
+    {
+      "season": "20/22",
+      "rank": 85,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Thomas Brenk"
+    }
+  ],
+  "1647": [
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Rene Irion"
+    },
+    {
+      "season": "24/25",
+      "rank": 52,
+      "points": 94,
+      "league": "B-Klasse",
+      "name": "Rene Irion"
+    },
+    {
+      "season": "23/24",
+      "rank": 46,
+      "points": 98,
+      "league": "B-Klasse",
+      "name": "Rene\u00b4 Irion"
+    },
+    {
+      "season": "22/23",
+      "rank": 54,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Rene\u00b4 Irion"
+    },
+    {
+      "season": "20/22",
+      "rank": 71,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Rene\u00b4 Irion"
+    }
+  ],
+  "376": [
+    {
+      "season": "2025/2026",
+      "rank": 50,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Klaus K\u00f6nig"
+    },
+    {
+      "season": "24/25",
+      "rank": 45,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Klaus K\u00f6nig"
+    },
+    {
+      "season": "23/24",
+      "rank": 22,
+      "points": 134,
+      "league": "C-Klasse",
+      "name": "Klaus K\u00f6nig"
+    }
+  ],
+  "1721": [
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Kevin Schleeh"
+    },
+    {
+      "season": "24/25",
+      "rank": 45,
+      "points": 98,
+      "league": "B-Klasse",
+      "name": "Kevin Schleeh"
+    },
+    {
+      "season": "23/24",
+      "rank": 130,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Kevin Schleeh"
+    },
+    {
+      "season": "22/23",
+      "rank": 139,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Kevin Schleeh"
+    },
+    {
+      "season": "20/22",
+      "rank": 98,
+      "points": 53,
+      "league": "C-Klasse",
+      "name": "Kevin Schleeh"
+    }
+  ],
+  "873": [
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 94,
+      "league": "B-Klasse",
+      "name": "J\u00fcrgen Zorn"
+    },
+    {
+      "season": "24/25",
+      "rank": 56,
+      "points": 64,
+      "league": "A-Klasse",
+      "name": "J rgen Zorn"
+    },
+    {
+      "season": "23/24",
+      "rank": 27,
+      "points": 104,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Zorn"
+    },
+    {
+      "season": "22/23",
+      "rank": 75,
+      "points": 47,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Zorn"
+    },
+    {
+      "season": "20/22",
+      "rank": 51,
+      "points": 75,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Zorn"
+    }
+  ],
+  "312": [
     {
       "season": "2025/2026",
       "rank": 53,
-      "points": 16,
+      "points": 93,
+      "league": "B-Klasse",
+      "name": "Andreas Schneider"
+    },
+    {
+      "season": "24/25",
+      "rank": 19,
+      "points": 142,
+      "league": "C-Klasse",
+      "name": "Andreas Schneider"
+    },
+    {
+      "season": "23/24",
+      "rank": 13,
+      "points": 153,
+      "league": "C-Klasse",
+      "name": "Andreas Schneider"
+    }
+  ],
+  "1768": [
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Gianni Biscardi"
+    },
+    {
+      "season": "24/25",
+      "rank": 21,
+      "points": 119,
+      "league": "B-Klasse",
+      "name": "Gianni Biscardi"
+    },
+    {
+      "season": "23/24",
+      "rank": 35,
+      "points": 107,
+      "league": "B-Klasse",
+      "name": "Gianni Biscardi"
+    },
+    {
+      "season": "22/23",
+      "rank": 21,
+      "points": 119,
+      "league": "B-Klasse",
+      "name": "Gianni Biscardi"
+    },
+    {
+      "season": "20/22",
+      "rank": 57,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Gianni Biscardi"
+    }
+  ],
+  "298": [
+    {
+      "season": "2025/2026",
+      "rank": 55,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Reiner Osiniak"
+    },
+    {
+      "season": "24/25",
+      "rank": 66,
+      "points": 51,
+      "league": "A-Klasse",
+      "name": "Reiner Osiniak"
+    },
+    {
+      "season": "23/24",
+      "rank": 75,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Reiner Osiniak"
+    },
+    {
+      "season": "22/23",
+      "rank": 63,
+      "points": 65,
+      "league": "A-Klasse",
+      "name": "Reiner Osiniak"
+    },
+    {
+      "season": "20/22",
+      "rank": 28,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Reiner Osiniak"
+    }
+  ],
+  "410": [
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 91,
+      "league": "B-Klasse",
+      "name": "Tarek D\u00fcrr"
+    },
+    {
+      "season": "24/25",
+      "rank": 25,
+      "points": 111,
+      "league": "B-Klasse",
+      "name": "Tarek D\u00fcrr"
+    },
+    {
+      "season": "23/24",
+      "rank": 19,
+      "points": 130,
+      "league": "B-Klasse",
+      "name": "Tarek D\u00fcrr"
+    },
+    {
+      "season": "22/23",
+      "rank": 2,
+      "points": 181,
+      "league": "B-Klasse",
+      "name": "Tarek D\u00fcrr"
+    },
+    {
+      "season": "20/22",
+      "rank": 16,
+      "points": 128,
+      "league": "B-Klasse",
+      "name": "Tarek D\u00fcrr"
+    }
+  ],
+  "1594": [
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Alexander Keuerleber"
+    },
+    {
+      "season": "24/25",
+      "rank": 83,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Alexander Keuerleber"
+    },
+    {
+      "season": "23/24",
+      "rank": 53,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Alexander Keuerleber"
+    },
+    {
+      "season": "22/23",
+      "rank": 129,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Alexander Keuerleber"
+    },
+    {
+      "season": "20/22",
+      "rank": 60,
+      "points": 3,
       "league": "Bezirksliga",
-      "name": "Jamal Schulte"
+      "name": "Alexander Keuerleber"
+    }
+  ],
+  "1205": [
+    {
+      "season": "2025/2026",
+      "rank": 58,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Kevin Fr\u00f6hner"
+    },
+    {
+      "season": "24/25",
+      "rank": 85,
+      "points": 63,
+      "league": "B-Klasse",
+      "name": "Kevin Fr\u00f6hner"
+    },
+    {
+      "season": "23/24",
+      "rank": 48,
+      "points": 97,
+      "league": "B-Klasse",
+      "name": "Kevin Fr\u00f6hner"
+    },
+    {
+      "season": "22/23",
+      "rank": 49,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Kevin Fr\u00f6hner"
+    },
+    {
+      "season": "20/22",
+      "rank": 86,
+      "points": 26,
+      "league": "A-Klasse",
+      "name": "Kevin Fr\u00f6hner"
+    }
+  ],
+  "429": [
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 88,
+      "league": "B-Klasse",
+      "name": "Yanni Amrich"
+    },
+    {
+      "season": "24/25",
+      "rank": 32,
+      "points": 126,
+      "league": "C-Klasse",
+      "name": "Yanni Amrich"
+    },
+    {
+      "season": "23/24",
+      "rank": 40,
+      "points": 112,
+      "league": "C-Klasse",
+      "name": "Yanni Amrich"
+    }
+  ],
+  "286": [
+    {
+      "season": "2025/2026",
+      "rank": 60,
+      "points": 85,
+      "league": "B-Klasse",
+      "name": "Michael Schneider"
+    },
+    {
+      "season": "24/25",
+      "rank": 49,
+      "points": 115,
+      "league": "C-Klasse",
+      "name": "Michael Schneider"
+    },
+    {
+      "season": "23/24",
+      "rank": 112,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Michael Schneider"
+    }
+  ],
+  "432": [
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 85,
+      "league": "B-Klasse",
+      "name": "Dominik Denner"
+    },
+    {
+      "season": "24/25",
+      "rank": 74,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Dominik Denner"
+    },
+    {
+      "season": "23/24",
+      "rank": 6,
+      "points": 174,
+      "league": "C-Klasse",
+      "name": "Dominik Denner"
+    },
+    {
+      "season": "22/23",
+      "rank": 12,
+      "points": 140,
+      "league": "B-Klasse",
+      "name": "Dominik Denner"
+    },
+    {
+      "season": "20/22",
+      "rank": 70,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Dominik Denner"
+    }
+  ],
+  "226": [
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Bodo Riedel"
+    },
+    {
+      "season": "24/25",
+      "rank": 56,
+      "points": 88,
+      "league": "B-Klasse",
+      "name": "Bodo Riedel"
+    },
+    {
+      "season": "20/22",
+      "rank": 140,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Bodo Riedel"
+    }
+  ],
+  "277": [
+    {
+      "season": "2025/2026",
+      "rank": 63,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Tobias Kling"
+    },
+    {
+      "season": "24/25",
+      "rank": 28,
+      "points": 130,
+      "league": "C-Klasse",
+      "name": "Tobias Kling"
+    },
+    {
+      "season": "23/24",
+      "rank": 133,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Tobias Kling"
+    }
+  ],
+  "296": [
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 83,
+      "league": "B-Klasse",
+      "name": "Christoph Deininger"
+    },
+    {
+      "season": "24/25",
+      "rank": 70,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Christoph Deininger"
+    },
+    {
+      "season": "23/24",
+      "rank": 44,
+      "points": 111,
+      "league": "C-Klasse",
+      "name": "Christoph Deininger"
+    }
+  ],
+  "876": [
+    {
+      "season": "2025/2026",
+      "rank": 65,
+      "points": 83,
+      "league": "B-Klasse",
+      "name": "Robin Rothenberger"
+    },
+    {
+      "season": "24/25",
+      "rank": 44,
+      "points": 98,
+      "league": "B-Klasse",
+      "name": "Robin Rothenberger"
+    },
+    {
+      "season": "23/24",
+      "rank": 45,
+      "points": 100,
+      "league": "B-Klasse",
+      "name": "Robin Rothenberger"
+    },
+    {
+      "season": "22/23",
+      "rank": 53,
+      "points": 73,
+      "league": "A-Klasse",
+      "name": "Robin Rothenberger"
+    },
+    {
+      "season": "20/22",
+      "rank": 48,
+      "points": 77,
+      "league": "A-Klasse",
+      "name": "Robin Rothenberger"
+    }
+  ],
+  "1169": [
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Marcel G\u00e4rtner"
+    },
+    {
+      "season": "24/25",
+      "rank": 42,
+      "points": 99,
+      "league": "B-Klasse",
+      "name": "Marcel G\u00e4rtner"
+    },
+    {
+      "season": "23/24",
+      "rank": 68,
+      "points": 79,
+      "league": "B-Klasse",
+      "name": "Marcel G\u00e4rtner"
+    },
+    {
+      "season": "22/23",
+      "rank": 24,
+      "points": 132,
+      "league": "C-Klasse",
+      "name": "Marcel G\u00e4rtner"
+    },
+    {
+      "season": "20/22",
+      "rank": 151,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Marcel G\u00e4rtner"
+    }
+  ],
+  "1550": [
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Sergej Gergalov"
+    },
+    {
+      "season": "24/25",
+      "rank": 205,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Sergej Gergalov"
+    }
+  ],
+  "361": [
+    {
+      "season": "2025/2026",
+      "rank": 68,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Abinsan Thurairatnam"
+    },
+    {
+      "season": "24/25",
+      "rank": 110,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Abinsan Thurairatnam"
+    },
+    {
+      "season": "23/24",
+      "rank": 68,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Abinsan Thurairatnam"
+    }
+  ],
+  "719": [
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Michael Thiel"
+    },
+    {
+      "season": "24/25",
+      "rank": 57,
+      "points": 107,
+      "league": "C-Klasse",
+      "name": "Michael Thiel"
+    },
+    {
+      "season": "23/24",
+      "rank": 107,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Michael Thiel"
+    },
+    {
+      "season": "22/23",
+      "rank": 98,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Michael Thiel"
+    },
+    {
+      "season": "20/22",
+      "rank": 132,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Michael Thiel"
+    }
+  ],
+  "1366": [
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 80,
+      "league": "B-Klasse",
+      "name": "Frank Lindner"
+    },
+    {
+      "season": "24/25",
+      "rank": 63,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Frank Lindner"
+    },
+    {
+      "season": "23/24",
+      "rank": 150,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Frank Lindner"
+    },
+    {
+      "season": "22/23",
+      "rank": 101,
+      "points": 49,
+      "league": "B-Klasse",
+      "name": "Frank Lindner"
+    },
+    {
+      "season": "20/22",
+      "rank": 142,
+      "points": 19,
+      "league": "B-Klasse",
+      "name": "Frank Lindner"
+    }
+  ],
+  "1024": [
+    {
+      "season": "2025/2026",
+      "rank": 71,
+      "points": 79,
+      "league": "B-Klasse",
+      "name": "Benjamin Link"
+    },
+    {
+      "season": "24/25",
+      "rank": 36,
+      "points": 122,
+      "league": "C-Klasse",
+      "name": "Benjamin Link"
+    },
+    {
+      "season": "23/24",
+      "rank": 84,
+      "points": 80,
+      "league": "C-Klasse",
+      "name": "Benjamin Link"
+    },
+    {
+      "season": "22/23",
+      "rank": 107,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Benjamin Link"
+    },
+    {
+      "season": "20/22",
+      "rank": 31,
+      "points": 115,
+      "league": "C-Klasse",
+      "name": "Benjamin Link"
+    }
+  ],
+  "283": [
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Tobias Rohde"
+    },
+    {
+      "season": "24/25",
+      "rank": 51,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Tobias Rohde"
+    },
+    {
+      "season": "23/24",
+      "rank": 140,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Tobias Rohde"
+    }
+  ],
+  "1738": [
+    {
+      "season": "2025/2026",
+      "rank": 73,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Thomas G\u00e4ckle"
+    },
+    {
+      "season": "24/25",
+      "rank": 65,
+      "points": 52,
+      "league": "A-Klasse",
+      "name": "Thomas G\u00e4ckle"
+    },
+    {
+      "season": "23/24",
+      "rank": 83,
+      "points": 33,
+      "league": "A-Klasse",
+      "name": "Thomas G\u00e4ckle"
+    },
+    {
+      "season": "22/23",
+      "rank": 146,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Thomas G\u00e4ckle"
+    },
+    {
+      "season": "20/22",
+      "rank": 240,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Thomas G\u00e4ckle"
+    }
+  ],
+  "1373": [
+    {
+      "season": "2025/2026",
+      "rank": 74,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Tugay \u00d6zcelik"
+    },
+    {
+      "season": "24/25",
+      "rank": 24,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Tugay \u00d6zcelik"
+    },
+    {
+      "season": "23/24",
+      "rank": 15,
+      "points": 152,
+      "league": "C-Klasse",
+      "name": "Tugay \u00d6zcelik"
+    },
+    {
+      "season": "22/23",
+      "rank": 28,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Tugay \u00d6zcelik"
+    },
+    {
+      "season": "20/22",
+      "rank": 20,
+      "points": 131,
+      "league": "C-Klasse",
+      "name": "Tugay \u00d6zcelik"
+    }
+  ],
+  "1468": [
+    {
+      "season": "2025/2026",
+      "rank": 75,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Sebastian Mielke"
+    },
+    {
+      "season": "24/25",
+      "rank": 6,
+      "points": 178,
+      "league": "C-Klasse",
+      "name": "Sebastian Mielke"
+    }
+  ],
+  "656": [
+    {
+      "season": "2025/2026",
+      "rank": 76,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Matthias Hofmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 63,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Matthias Hofmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 60,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Matthias Hofmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 24,
+      "points": 114,
+      "league": "B-Klasse",
+      "name": "Matthias Hofmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 22,
+      "points": 130,
+      "league": "C-Klasse",
+      "name": "Matthias Hofmann"
+    }
+  ],
+  "1532": [
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Simon Brodbeck"
+    },
+    {
+      "season": "24/25",
+      "rank": 75,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Simon Brodbeck"
+    },
+    {
+      "season": "23/24",
+      "rank": 93,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Simon Brodbeck"
+    },
+    {
+      "season": "22/23",
+      "rank": 56,
+      "points": 71,
+      "league": "A-Klasse",
+      "name": "Simon Brodbeck"
+    },
+    {
+      "season": "20/22",
+      "rank": 135,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Simon Brodbeck"
+    }
+  ],
+  "1415": [
+    {
+      "season": "2025/2026",
+      "rank": 78,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Dario DeFalco"
+    },
+    {
+      "season": "24/25",
+      "rank": 90,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Dario DeFalco"
+    },
+    {
+      "season": "23/24",
+      "rank": 81,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Dario DeFalco"
+    },
+    {
+      "season": "22/23",
+      "rank": 87,
+      "points": 59,
+      "league": "B-Klasse",
+      "name": "Dario DeFalco"
+    },
+    {
+      "season": "20/22",
+      "rank": 63,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Dario DeFalco"
+    }
+  ],
+  "1238": [
+    {
+      "season": "2025/2026",
+      "rank": 79,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Jenny L\u00f6ffler"
+    },
+    {
+      "season": "24/25",
+      "rank": 21,
+      "points": 138,
+      "league": "C-Klasse",
+      "name": "Jenny L\u00f6ffler"
+    },
+    {
+      "season": "23/24",
+      "rank": 51,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Jenny L\u00f6ffler"
+    },
+    {
+      "season": "22/23",
+      "rank": 66,
+      "points": 74,
+      "league": "B-Klasse",
+      "name": "Jenny L\u00f6ffler"
+    },
+    {
+      "season": "20/22",
+      "rank": 50,
+      "points": 86,
+      "league": "B-Klasse",
+      "name": "Jenny L\u00f6ffler"
+    }
+  ],
+  "1148": [
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Andreas Naam"
+    },
+    {
+      "season": "24/25",
+      "rank": 56,
+      "points": 109,
+      "league": "C-Klasse",
+      "name": "Andreas Naam"
+    },
+    {
+      "season": "23/24",
+      "rank": 26,
+      "points": 127,
+      "league": "C-Klasse",
+      "name": "Andreas Naam"
+    },
+    {
+      "season": "22/23",
+      "rank": 44,
+      "points": 105,
+      "league": "C-Klasse",
+      "name": "Andreas Naam"
+    },
+    {
+      "season": "20/22",
+      "rank": 60,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Andreas Naam"
+    }
+  ],
+  "1623": [
+    {
+      "season": "2025/2026",
+      "rank": 81,
+      "points": 74,
+      "league": "B-Klasse",
+      "name": "Ben Dickner"
+    },
+    {
+      "season": "24/25",
+      "rank": 127,
+      "points": 60,
+      "league": "C-Klasse",
+      "name": "Ben Dickner"
+    },
+    {
+      "season": "23/24",
+      "rank": 142,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Ben Dickner"
+    }
+  ],
+  "1685": [
+    {
+      "season": "2025/2026",
+      "rank": 82,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Bernd Wilhelm"
+    },
+    {
+      "season": "24/25",
+      "rank": 74,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Bernd Wilhelm"
+    },
+    {
+      "season": "23/24",
+      "rank": 58,
+      "points": 9,
+      "league": "Bezirksliga",
+      "name": "Bernd Wilhelm"
+    },
+    {
+      "season": "22/23",
+      "rank": 68,
+      "points": 0,
+      "league": "Bezirksliga",
+      "name": "Bernd Wilhelm"
+    },
+    {
+      "season": "20/22",
+      "rank": 58,
+      "points": 81,
+      "league": "B-Klasse",
+      "name": "Bernd Wilhelm"
+    }
+  ],
+  "386": [
+    {
+      "season": "2025/2026",
+      "rank": 83,
+      "points": 71,
+      "league": "B-Klasse",
+      "name": "Sabrina Rossack"
+    },
+    {
+      "season": "24/25",
+      "rank": 259,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Sabrina Rossack"
+    }
+  ],
+  "203": [
+    {
+      "season": "2025/2026",
+      "rank": 84,
+      "points": 67,
+      "league": "B-Klasse",
+      "name": "Emmanuel Eweka"
+    },
+    {
+      "season": "24/25",
+      "rank": 48,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Emmanuel Eweka"
+    },
+    {
+      "season": "23/24",
+      "rank": 2,
+      "points": 186,
+      "league": "C-Klasse",
+      "name": "Emmanuel Eweka"
+    }
+  ],
+  "1873": [
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Marco Krell"
+    },
+    {
+      "season": "24/25",
+      "rank": 135,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Marco Krell"
+    },
+    {
+      "season": "23/24",
+      "rank": 104,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Marco Krell"
+    },
+    {
+      "season": "22/23",
+      "rank": 95,
+      "points": 66,
+      "league": "C-Klasse",
+      "name": "Marco Krell"
+    }
+  ],
+  "093": [
+    {
+      "season": "2025/2026",
+      "rank": 86,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Sebastian Kunze"
+    },
+    {
+      "season": "24/25",
+      "rank": 78,
+      "points": 67,
+      "league": "B-Klasse",
+      "name": "Sebastian Kunze"
+    },
+    {
+      "season": "23/24",
+      "rank": 84,
+      "points": 62,
+      "league": "B-Klasse",
+      "name": "Sebastian Kunze"
+    },
+    {
+      "season": "22/23",
+      "rank": 58,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Sebastian Kunze"
+    }
+  ],
+  "603": [
+    {
+      "season": "2025/2026",
+      "rank": 87,
+      "points": 65,
+      "league": "B-Klasse",
+      "name": "Emanuelle Crea"
+    },
+    {
+      "season": "24/25",
+      "rank": 41,
+      "points": 120,
+      "league": "C-Klasse",
+      "name": "Emanuelle Crea"
+    }
+  ],
+  "1769": [
+    {
+      "season": "2025/2026",
+      "rank": 88,
+      "points": 65,
+      "league": "B-Klasse",
+      "name": "Erkan Aydinoglu"
+    },
+    {
+      "season": "24/25",
+      "rank": 61,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Erkan Aydinoglu"
+    },
+    {
+      "season": "23/24",
+      "rank": 57,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Erkan Aydinoglu"
+    },
+    {
+      "season": "22/23",
+      "rank": 76,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Erkan Aydinoglu"
+    },
+    {
+      "season": "20/22",
+      "rank": 197,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Erkan Aydinoglu"
+    }
+  ],
+  "270": [
+    {
+      "season": "2025/2026",
+      "rank": 89,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Marek Pason"
+    },
+    {
+      "season": "24/25",
+      "rank": 67,
+      "points": 49,
+      "league": "A-Klasse",
+      "name": "Marek Pason"
+    },
+    {
+      "season": "23/24",
+      "rank": 74,
+      "points": 46,
+      "league": "A-Klasse",
+      "name": "Marek Pason"
+    },
+    {
+      "season": "22/23",
+      "rank": 91,
+      "points": 21,
+      "league": "A-Klasse",
+      "name": "Marek Pason"
+    },
+    {
+      "season": "20/22",
+      "rank": 97,
+      "points": 17,
+      "league": "A-Klasse",
+      "name": "Marek Pason"
+    }
+  ],
+  "1123": [
+    {
+      "season": "2025/2026",
+      "rank": 90,
+      "points": 63,
+      "league": "B-Klasse",
+      "name": "Leo Sauer-E\u00dfwein"
+    },
+    {
+      "season": "24/25",
+      "rank": 92,
+      "points": 82,
+      "league": "C-Klasse",
+      "name": "Leo Sauer-E\u00dfwein"
+    },
+    {
+      "season": "23/24",
+      "rank": 50,
+      "points": 105,
+      "league": "C-Klasse",
+      "name": "Leo Sauer-E\u00dfwein"
+    },
+    {
+      "season": "22/23",
+      "rank": 64,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Leo Sauer-E\u00dfwein"
+    },
+    {
+      "season": "20/22",
+      "rank": 54,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Leo Sauer-E\u00dfwein"
+    }
+  ],
+  "1862": [
+    {
+      "season": "2025/2026",
+      "rank": 91,
+      "points": 62,
+      "league": "B-Klasse",
+      "name": "Thomas Huber"
+    },
+    {
+      "season": "24/25",
+      "rank": 121,
+      "points": 30,
+      "league": "B-Klasse",
+      "name": "Thomas Huber"
+    },
+    {
+      "season": "23/24",
+      "rank": 141,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Thomas Huber"
+    },
+    {
+      "season": "22/23",
+      "rank": 136,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Thomas Huber"
+    }
+  ],
+  "836": [
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 60,
+      "league": "B-Klasse",
+      "name": "Stefan Schlenker"
+    },
+    {
+      "season": "24/25",
+      "rank": 72,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Stefan Schlenker"
+    },
+    {
+      "season": "22/23",
+      "rank": 99,
+      "points": 15,
+      "league": "A-Klasse",
+      "name": "Stefan Schlenker"
+    },
+    {
+      "season": "20/22",
+      "rank": 72,
+      "points": 37,
+      "league": "A-Klasse",
+      "name": "Stefan Schlenker"
+    }
+  ],
+  "215": [
+    {
+      "season": "2025/2026",
+      "rank": 93,
+      "points": 59,
+      "league": "B-Klasse",
+      "name": "Luca Feitenhansl"
+    },
+    {
+      "season": "24/25",
+      "rank": 49,
+      "points": 22,
+      "league": "Bezirksliga",
+      "name": "Luca Feitenhansl"
+    },
+    {
+      "season": "23/24",
+      "rank": 29,
+      "points": 100,
+      "league": "A-Klasse",
+      "name": "Luca Feitenhansl"
+    },
+    {
+      "season": "22/23",
+      "rank": 7,
+      "points": 160,
+      "league": "B-Klasse",
+      "name": "Luca Feitenhansl"
+    },
+    {
+      "season": "20/22",
+      "rank": 191,
+      "points": 6,
+      "league": "B-Klasse",
+      "name": "Luca Feitenhansl"
+    }
+  ],
+  "1758": [
+    {
+      "season": "2025/2026",
+      "rank": 94,
+      "points": 59,
+      "league": "B-Klasse",
+      "name": "Larissa Schweickert"
+    },
+    {
+      "season": "24/25",
+      "rank": 141,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Larissa Schweickert"
+    },
+    {
+      "season": "23/24",
+      "rank": 117,
+      "points": 38,
+      "league": "B-Klasse",
+      "name": "Larissa Schweickert"
+    },
+    {
+      "season": "22/23",
+      "rank": 54,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Larissa Schweickert"
+    },
+    {
+      "season": "20/22",
+      "rank": 165,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Larissa Schweickert"
+    }
+  ],
+  "1822": [
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Michael Kiefer"
+    },
+    {
+      "season": "24/25",
+      "rank": 87,
+      "points": 61,
+      "league": "B-Klasse",
+      "name": "Michael Kiefer"
+    },
+    {
+      "season": "23/24",
+      "rank": 50,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Michael Kiefer"
+    },
+    {
+      "season": "22/23",
+      "rank": 115,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Michael Kiefer"
+    },
+    {
+      "season": "20/22",
+      "rank": 52,
+      "points": 86,
+      "league": "B-Klasse",
+      "name": "Michael Kiefer"
+    }
+  ],
+  "468": [
+    {
+      "season": "2025/2026",
+      "rank": 96,
+      "points": 57,
+      "league": "B-Klasse",
+      "name": "Susanne Schwaldt"
+    },
+    {
+      "season": "24/25",
+      "rank": 111,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Susanne Schwaldt"
+    },
+    {
+      "season": "23/24",
+      "rank": 59,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Susanne Schwaldt"
+    }
+  ],
+  "611": [
+    {
+      "season": "2025/2026",
+      "rank": 97,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Sascha Schenk"
+    },
+    {
+      "season": "24/25",
+      "rank": 122,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Sascha Schenk"
+    },
+    {
+      "season": "23/24",
+      "rank": 69,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Sascha Schenk"
+    },
+    {
+      "season": "22/23",
+      "rank": 92,
+      "points": 57,
+      "league": "B-Klasse",
+      "name": "Sascha Schenk"
+    },
+    {
+      "season": "20/22",
+      "rank": 167,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Sascha Schenk"
+    }
+  ],
+  "1669": [
+    {
+      "season": "2025/2026",
+      "rank": 98,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Denis Orta"
+    },
+    {
+      "season": "24/25",
+      "rank": 43,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Denis Orta"
+    },
+    {
+      "season": "23/24",
+      "rank": 43,
+      "points": 111,
+      "league": "C-Klasse",
+      "name": "Denis Orta"
+    },
+    {
+      "season": "22/23",
+      "rank": 82,
+      "points": 62,
+      "league": "B-Klasse",
+      "name": "Denis Orta"
+    },
+    {
+      "season": "20/22",
+      "rank": 118,
+      "points": 32,
+      "league": "B-Klasse",
+      "name": "Denis Orta"
+    }
+  ],
+  "1342": [
+    {
+      "season": "2025/2026",
+      "rank": 99,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Valerij Ziegler"
+    },
+    {
+      "season": "24/25",
+      "rank": 68,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Valerij Ziegler"
+    },
+    {
+      "season": "23/24",
+      "rank": 48,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Valerij Ziegler"
+    },
+    {
+      "season": "22/23",
+      "rank": 46,
+      "points": 93,
+      "league": "B-Klasse",
+      "name": "Valerij Ziegler"
+    },
+    {
+      "season": "20/22",
+      "rank": 46,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Valerij Ziegler"
+    }
+  ],
+  "1176": [
+    {
+      "season": "2025/2026",
+      "rank": 100,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Andreas Frank"
+    },
+    {
+      "season": "24/25",
+      "rank": 72,
+      "points": 73,
+      "league": "B-Klasse",
+      "name": "Andreas Frank"
+    },
+    {
+      "season": "23/24",
+      "rank": 83,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Andreas Frank"
+    },
+    {
+      "season": "22/23",
+      "rank": 86,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Andreas Frank"
+    },
+    {
+      "season": "20/22",
+      "rank": 101,
+      "points": 52,
+      "league": "C-Klasse",
+      "name": "Andreas Frank"
+    }
+  ],
+  "437": [
+    {
+      "season": "2025/2026",
+      "rank": 101,
+      "points": 54,
+      "league": "B-Klasse",
+      "name": "Carina Menrath"
+    },
+    {
+      "season": "24/25",
+      "rank": 181,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Carina Menrath"
+    }
+  ],
+  "1816": [
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 54,
+      "league": "B-Klasse",
+      "name": "Jessica J\u00e4ck"
+    },
+    {
+      "season": "24/25",
+      "rank": 92,
+      "points": 56,
+      "league": "B-Klasse",
+      "name": "Jessica J\u00e4ck"
+    },
+    {
+      "season": "23/24",
+      "rank": 101,
+      "points": 49,
+      "league": "B-Klasse",
+      "name": "Jessica J\u00e4ck"
+    },
+    {
+      "season": "22/23",
+      "rank": 68,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Jessica J\u00e4ck"
+    },
+    {
+      "season": "20/22",
+      "rank": 94,
+      "points": 48,
+      "league": "B-Klasse",
+      "name": "Jessica J\u00e4ck"
+    }
+  ],
+  "560": [
+    {
+      "season": "2025/2026",
+      "rank": 103,
+      "points": 54,
+      "league": "B-Klasse",
+      "name": "Markus Sch\u00fcler"
+    },
+    {
+      "season": "24/25",
+      "rank": 168,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Markus Sch\u00fcler"
+    }
+  ],
+  "871": [
+    {
+      "season": "2025/2026",
+      "rank": 104,
+      "points": 53,
+      "league": "B-Klasse",
+      "name": "Adrian Sieber"
+    },
+    {
+      "season": "24/25",
+      "rank": 279,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Adrian Sieber"
+    },
+    {
+      "season": "23/24",
+      "rank": 171,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Adrian Sieber"
+    },
+    {
+      "season": "22/23",
+      "rank": 80,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Adrian Sieber"
+    },
+    {
+      "season": "20/22",
+      "rank": 38,
+      "points": 92,
+      "league": "A-Klasse",
+      "name": "Adrian Sieber"
+    }
+  ],
+  "1805": [
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 53,
+      "league": "B-Klasse",
+      "name": "Berei Istvan Zslot"
+    }
+  ],
+  "475": [
+    {
+      "season": "2025/2026",
+      "rank": 106,
+      "points": 53,
+      "league": "B-Klasse",
+      "name": "Erdogan \u00d6ng\u00f6ren"
+    }
+  ],
+  "264": [
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 52,
+      "league": "B-Klasse",
+      "name": "Karl Messer"
+    },
+    {
+      "season": "24/25",
+      "rank": 66,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Karl Messer"
+    },
+    {
+      "season": "23/24",
+      "rank": 90,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Karl Messer"
+    }
+  ],
+  "1344": [
+    {
+      "season": "2025/2026",
+      "rank": 108,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Alexander Seidt"
+    },
+    {
+      "season": "23/24",
+      "rank": 35,
+      "points": 61,
+      "league": "Bezirksliga",
+      "name": "Alexander Seidt"
+    },
+    {
+      "season": "22/23",
+      "rank": 29,
+      "points": 66,
+      "league": "Bezirksliga",
+      "name": "Alexander Seidt"
+    },
+    {
+      "season": "20/22",
+      "rank": 21,
+      "points": 113,
+      "league": "A-Klasse",
+      "name": "Alexander Seidt"
+    }
+  ],
+  "648": [
+    {
+      "season": "2025/2026",
+      "rank": 109,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Kevin Mohr"
+    },
+    {
+      "season": "24/25",
+      "rank": 103,
+      "points": 45,
+      "league": "B-Klasse",
+      "name": "Kevin Mohr"
+    },
+    {
+      "season": "23/24",
+      "rank": 52,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Kevin Mohr"
+    },
+    {
+      "season": "20/22",
+      "rank": 165,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Kevin Mohr"
+    }
+  ],
+  "874": [
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Holger Schenk"
+    },
+    {
+      "season": "24/25",
+      "rank": 60,
+      "points": 101,
+      "league": "C-Klasse",
+      "name": "Holger Schenk"
+    },
+    {
+      "season": "23/24",
+      "rank": 27,
+      "points": 126,
+      "league": "C-Klasse",
+      "name": "Holger Schenk"
+    },
+    {
+      "season": "22/23",
+      "rank": 70,
+      "points": 72,
+      "league": "B-Klasse",
+      "name": "Holger Schenk"
+    },
+    {
+      "season": "20/22",
+      "rank": 44,
+      "points": 101,
+      "league": "C-Klasse",
+      "name": "Holger Schenk"
+    }
+  ],
+  "479": [
+    {
+      "season": "2025/2026",
+      "rank": 111,
+      "points": 49,
+      "league": "B-Klasse",
+      "name": "Peter Wittmers"
+    },
+    {
+      "season": "24/25",
+      "rank": 118,
+      "points": 31,
+      "league": "B-Klasse",
+      "name": "Peter Wittmers"
+    }
+  ],
+  "1866": [
+    {
+      "season": "2025/2026",
+      "rank": 112,
+      "points": 49,
+      "league": "B-Klasse",
+      "name": "Bastian Fischer"
+    },
+    {
+      "season": "24/25",
+      "rank": 69,
+      "points": 74,
+      "league": "B-Klasse",
+      "name": "Bastian Fischer"
+    },
+    {
+      "season": "23/24",
+      "rank": 69,
+      "points": 78,
+      "league": "B-Klasse",
+      "name": "Bastian Fischer"
+    },
+    {
+      "season": "22/23",
+      "rank": 74,
+      "points": 68,
+      "league": "B-Klasse",
+      "name": "Bastian Fischer"
+    },
+    {
+      "season": "20/22",
+      "rank": 106,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Bastian Fischer"
+    }
+  ],
+  "707": [
+    {
+      "season": "2025/2026",
+      "rank": 113,
+      "points": 48,
+      "league": "B-Klasse",
+      "name": "Alexandra Volkmer"
+    },
+    {
+      "season": "20/22",
+      "rank": 200,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Alexandra Volkmer"
+    }
+  ],
+  "272": [
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 47,
+      "league": "B-Klasse",
+      "name": "Neven Zimmermann"
+    },
+    {
+      "season": "24/25",
+      "rank": 168,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Neven Zimmermann"
+    },
+    {
+      "season": "23/24",
+      "rank": 55,
+      "points": 100,
+      "league": "C-Klasse",
+      "name": "Neven Zimmermann"
+    }
+  ],
+  "1864": [
+    {
+      "season": "2025/2026",
+      "rank": 115,
+      "points": 46,
+      "league": "B-Klasse",
+      "name": "Johannes Eroglu"
+    },
+    {
+      "season": "24/25",
+      "rank": 79,
+      "points": 66,
+      "league": "B-Klasse",
+      "name": "Johannes Eroglu"
+    },
+    {
+      "season": "23/24",
+      "rank": 26,
+      "points": 121,
+      "league": "B-Klasse",
+      "name": "Johannes Eroglu"
+    },
+    {
+      "season": "22/23",
+      "rank": 11,
+      "points": 144,
+      "league": "C-Klasse",
+      "name": "Johannes Eroglu"
+    }
+  ],
+  "847": [
+    {
+      "season": "2025/2026",
+      "rank": 116,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Michael Graf"
+    },
+    {
+      "season": "24/25",
+      "rank": 93,
+      "points": 54,
+      "league": "B-Klasse",
+      "name": "Michael Graf"
+    },
+    {
+      "season": "23/24",
+      "rank": 33,
+      "points": 111,
+      "league": "B-Klasse",
+      "name": "Michael Graf"
+    },
+    {
+      "season": "22/23",
+      "rank": 52,
+      "points": 73,
+      "league": "A-Klasse",
+      "name": "Michael Graf"
+    },
+    {
+      "season": "20/22",
+      "rank": 26,
+      "points": 102,
+      "league": "A-Klasse",
+      "name": "Michael Graf"
+    }
+  ],
+  "064": [
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "Annette Beck"
+    },
+    {
+      "season": "24/25",
+      "rank": 60,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Annette Beck"
+    },
+    {
+      "season": "23/24",
+      "rank": 54,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Annette Beck"
+    },
+    {
+      "season": "22/23",
+      "rank": 18,
+      "points": 140,
+      "league": "C-Klasse",
+      "name": "Annette Beck"
+    }
+  ],
+  "1451": [
+    {
+      "season": "2025/2026",
+      "rank": 118,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "Eduard Naam"
+    },
+    {
+      "season": "24/25",
+      "rank": 188,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Eduard Naam"
+    },
+    {
+      "season": "23/24",
+      "rank": 108,
+      "points": 66,
+      "league": "C-Klasse",
+      "name": "Eduard Naam"
+    },
+    {
+      "season": "22/23",
+      "rank": 77,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Eduard Naam"
+    },
+    {
+      "season": "20/22",
+      "rank": 123,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Eduard Naam"
+    }
+  ],
+  "426": [
+    {
+      "season": "2025/2026",
+      "rank": 119,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Bernd Jentner"
+    },
+    {
+      "season": "24/25",
+      "rank": 98,
+      "points": 50,
+      "league": "B-Klasse",
+      "name": "Bernd Jentner"
+    },
+    {
+      "season": "23/24",
+      "rank": 70,
+      "points": 88,
+      "league": "C-Klasse",
+      "name": "Bernd Jentner"
+    },
+    {
+      "season": "22/23",
+      "rank": 99,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Bernd Jentner"
+    },
+    {
+      "season": "20/22",
+      "rank": 67,
+      "points": 44,
+      "league": "A-Klasse",
+      "name": "Bernd Jentner"
+    }
+  ],
+  "546": [
+    {
+      "season": "2025/2026",
+      "rank": 120,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Johannes Weishaar"
+    },
+    {
+      "season": "24/25",
+      "rank": 49,
+      "points": 95,
+      "league": "B-Klasse",
+      "name": "Johannes Weishaar"
+    },
+    {
+      "season": "23/24",
+      "rank": 49,
+      "points": 107,
+      "league": "C-Klasse",
+      "name": "Johannes Weishaar"
+    },
+    {
+      "season": "22/23",
+      "rank": 136,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Johannes Weishaar"
+    }
+  ],
+  "1155": [
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Florian Nie\u00df"
+    },
+    {
+      "season": "24/25",
+      "rank": 149,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Florian Nie\u00df"
+    }
+  ],
+  "274": [
+    {
+      "season": "2025/2026",
+      "rank": 122,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Bastian Gaiser"
+    },
+    {
+      "season": "24/25",
+      "rank": 76,
+      "points": 71,
+      "league": "B-Klasse",
+      "name": "Bastian Gaiser"
+    },
+    {
+      "season": "23/24",
+      "rank": 59,
+      "points": 61,
+      "league": "A-Klasse",
+      "name": "Bastian Gaiser"
+    },
+    {
+      "season": "22/23",
+      "rank": 55,
+      "points": 72,
+      "league": "A-Klasse",
+      "name": "Bastian Gaiser"
+    },
+    {
+      "season": "20/22",
+      "rank": 50,
+      "points": 75,
+      "league": "A-Klasse",
+      "name": "Bastian Gaiser"
+    }
+  ],
+  "1200": [
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Danielle Aymar"
+    },
+    {
+      "season": "24/25",
+      "rank": 101,
+      "points": 47,
+      "league": "B-Klasse",
+      "name": "Danielle Aymar"
+    },
+    {
+      "season": "23/24",
+      "rank": 39,
+      "points": 112,
+      "league": "C-Klasse",
+      "name": "Danielle Koppe"
+    },
+    {
+      "season": "22/23",
+      "rank": 45,
+      "points": 105,
+      "league": "C-Klasse",
+      "name": "Danielle Koppe"
+    },
+    {
+      "season": "20/22",
+      "rank": 77,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Danielle Koppe"
+    }
+  ],
+  "1715": [
+    {
+      "season": "2025/2026",
+      "rank": 124,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Tayfun Aksoy"
+    },
+    {
+      "season": "24/25",
+      "rank": 106,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "Tayfun Aksoy"
+    },
+    {
+      "season": "23/24",
+      "rank": 132,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Tayfun Aksoy"
+    },
+    {
+      "season": "22/23",
+      "rank": 105,
+      "points": 45,
+      "league": "B-Klasse",
+      "name": "Tayfun Aksoy"
+    },
+    {
+      "season": "20/22",
+      "rank": 79,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Tayfun Aksoy"
+    }
+  ],
+  "1233": [
+    {
+      "season": "2025/2026",
+      "rank": 126,
+      "points": 38,
+      "league": "B-Klasse",
+      "name": "Denis Brezak"
+    },
+    {
+      "season": "24/25",
+      "rank": 109,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Denis Brezak"
+    },
+    {
+      "season": "23/24",
+      "rank": 184,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Denis Brezak"
+    },
+    {
+      "season": "22/23",
+      "rank": 24,
+      "points": 106,
+      "league": "A-Klasse",
+      "name": "Denis Brezak"
+    },
+    {
+      "season": "20/22",
+      "rank": 14,
+      "points": 123,
+      "league": "A-Klasse",
+      "name": "Denis Brezak"
+    }
+  ],
+  "278": [
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 37,
+      "league": "B-Klasse",
+      "name": "Marcel Gehrum"
+    }
+  ],
+  "967": [
+    {
+      "season": "2025/2026",
+      "rank": 128,
+      "points": 37,
+      "league": "B-Klasse",
+      "name": "Wolfgang Kraft"
+    },
+    {
+      "season": "24/25",
+      "rank": 29,
+      "points": 128,
+      "league": "C-Klasse",
+      "name": "Wolfgang Kraft"
+    },
+    {
+      "season": "23/24",
+      "rank": 107,
+      "points": 66,
+      "league": "C-Klasse",
+      "name": "Wolfgang Kraft"
+    },
+    {
+      "season": "22/23",
+      "rank": 235,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Wolfgang Kraft"
+    }
+  ],
+  "1607": [
+    {
+      "season": "2025/2026",
+      "rank": 129,
+      "points": 35,
+      "league": "B-Klasse",
+      "name": "G\u00fcnther Rak"
+    },
+    {
+      "season": "22/23",
+      "rank": 145,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "G\u00fcnther Rak"
+    },
+    {
+      "season": "20/22",
+      "rank": 53,
+      "points": 72,
+      "league": "A-Klasse",
+      "name": "G\u00fcnther Rak"
+    }
+  ],
+  "1850": [
+    {
+      "season": "2025/2026",
+      "rank": 130,
+      "points": 34,
+      "league": "B-Klasse",
+      "name": "Michael Girrbach"
+    },
+    {
+      "season": "24/25",
+      "rank": 95,
+      "points": 52,
+      "league": "B-Klasse",
+      "name": "Michael Girrbach"
+    },
+    {
+      "season": "22/23",
+      "rank": 65,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Michael Girrbach"
+    }
+  ],
+  "639": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 33,
+      "league": "B-Klasse",
+      "name": "Benjamin Marks"
+    },
+    {
+      "season": "24/25",
+      "rank": 94,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Benjamin Marks"
+    },
+    {
+      "season": "23/24",
+      "rank": 70,
+      "points": 53,
+      "league": "A-Klasse",
+      "name": "Benjamin Marks"
+    },
+    {
+      "season": "22/23",
+      "rank": 90,
+      "points": 22,
+      "league": "A-Klasse",
+      "name": "Benjamin Marks"
+    }
+  ],
+  "537": [
+    {
+      "season": "2025/2026",
+      "rank": 132,
+      "points": 33,
+      "league": "B-Klasse",
+      "name": "Timo Ludwig"
+    },
+    {
+      "season": "24/25",
+      "rank": 136,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Timo Ludwig"
+    }
+  ],
+  "1004": [
+    {
+      "season": "2025/2026",
+      "rank": 133,
+      "points": 31,
+      "league": "B-Klasse",
+      "name": "Ulrike Veit"
+    },
+    {
+      "season": "24/25",
+      "rank": 128,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Ulrike Veit"
+    },
+    {
+      "season": "23/24",
+      "rank": 119,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Ulrike Veit"
+    },
+    {
+      "season": "22/23",
+      "rank": 144,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Ulrike Veit"
+    }
+  ],
+  "1164": [
+    {
+      "season": "2025/2026",
+      "rank": 134,
+      "points": 30,
+      "league": "B-Klasse",
+      "name": "Michael Dierdorf"
+    },
+    {
+      "season": "24/25",
+      "rank": 129,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Michael Dierdorf"
+    },
+    {
+      "season": "23/24",
+      "rank": 107,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "Michael Dierdorf"
+    },
+    {
+      "season": "22/23",
+      "rank": 120,
+      "points": 35,
+      "league": "B-Klasse",
+      "name": "Michael Dierdorf"
+    },
+    {
+      "season": "20/22",
+      "rank": 136,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Michael Dierdorf"
+    }
+  ],
+  "1545": [
+    {
+      "season": "2025/2026",
+      "rank": 135,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Filip Pranjic-Maric"
+    },
+    {
+      "season": "24/25",
+      "rank": 64,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Filip Pranjic-Maric"
+    }
+  ],
+  "422": [
+    {
+      "season": "2025/2026",
+      "rank": 136,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Sabrina Herget"
+    },
+    {
+      "season": "24/25",
+      "rank": 74,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Sabrina Herget"
+    }
+  ],
+  "1335": [
+    {
+      "season": "2025/2026",
+      "rank": 137,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Remo Cireddu"
+    },
+    {
+      "season": "24/25",
+      "rank": 94,
+      "points": 54,
+      "league": "B-Klasse",
+      "name": "Remo Cireddu"
+    },
+    {
+      "season": "23/24",
+      "rank": 88,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Remo Cireddu"
+    },
+    {
+      "season": "22/23",
+      "rank": 102,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Remo Cireddu"
+    }
+  ],
+  "1525": [
+    {
+      "season": "2025/2026",
+      "rank": 138,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Hasan Kaya"
+    },
+    {
+      "season": "24/25",
+      "rank": 113,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Hasan Kaya"
+    }
+  ],
+  "1642": [
+    {
+      "season": "2025/2026",
+      "rank": 139,
+      "points": 28,
+      "league": "B-Klasse",
+      "name": "David Langner"
+    },
+    {
+      "season": "24/25",
+      "rank": 9,
+      "points": 168,
+      "league": "C-Klasse",
+      "name": "David Langner"
+    }
+  ],
+  "1845": [
+    {
+      "season": "2025/2026",
+      "rank": 140,
+      "points": 27,
+      "league": "B-Klasse",
+      "name": "Herward Wagner"
+    },
+    {
+      "season": "24/25",
+      "rank": 68,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Herward Wagner"
+    },
+    {
+      "season": "23/24",
+      "rank": 208,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Herward Wagner"
+    },
+    {
+      "season": "22/23",
+      "rank": 158,
+      "points": 10,
+      "league": "B-Klasse",
+      "name": "Herward Wagner"
+    }
+  ],
+  "803": [
+    {
+      "season": "2025/2026",
+      "rank": 141,
+      "points": 25,
+      "league": "B-Klasse",
+      "name": "Markus Barthel"
+    },
+    {
+      "season": "24/25",
+      "rank": 112,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Markus Barthel"
+    },
+    {
+      "season": "23/24",
+      "rank": 76,
+      "points": 73,
+      "league": "B-Klasse",
+      "name": "Markus Barthel"
+    },
+    {
+      "season": "22/23",
+      "rank": 68,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Markus Barthel"
+    },
+    {
+      "season": "20/22",
+      "rank": 139,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Markus Barthel"
+    }
+  ],
+  "507": [
+    {
+      "season": "2025/2026",
+      "rank": 142,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Dustin Ludwig"
+    }
+  ],
+  "1268": [
+    {
+      "season": "2025/2026",
+      "rank": 143,
+      "points": 24,
+      "league": "B-Klasse",
+      "name": "Benjamin Geiger"
+    },
+    {
+      "season": "24/25",
+      "rank": 200,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Benjamin Geiger"
+    }
+  ],
+  "315": [
+    {
+      "season": "2025/2026",
+      "rank": 144,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Bastian Uhlending"
+    },
+    {
+      "season": "24/25",
+      "rank": 73,
+      "points": 40,
+      "league": "A-Klasse",
+      "name": "Bastian Uhlending"
+    },
+    {
+      "season": "23/24",
+      "rank": 91,
+      "points": 18,
+      "league": "A-Klasse",
+      "name": "Bastian Uhlending"
+    },
+    {
+      "season": "22/23",
+      "rank": 59,
+      "points": 80,
+      "league": "B-Klasse",
+      "name": "Bastian Uhlending"
+    },
+    {
+      "season": "20/22",
+      "rank": 82,
+      "points": 70,
+      "league": "C-Klasse",
+      "name": "Bastian Uhlending"
+    }
+  ],
+  "101": [
+    {
+      "season": "2025/2026",
+      "rank": 145,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Roland Gratza"
+    },
+    {
+      "season": "24/25",
+      "rank": 86,
+      "points": 62,
+      "league": "B-Klasse",
+      "name": "Roland Gratza"
+    },
+    {
+      "season": "23/24",
+      "rank": 137,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Roland Gratza"
+    },
+    {
+      "season": "22/23",
+      "rank": 103,
+      "points": 48,
+      "league": "B-Klasse",
+      "name": "Roland Gratza"
+    },
+    {
+      "season": "20/22",
+      "rank": 57,
+      "points": 83,
+      "league": "B-Klasse",
+      "name": "Roland Gratza"
+    }
+  ],
+  "356": [
+    {
+      "season": "2025/2026",
+      "rank": 146,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Michel Brand"
+    }
+  ],
+  "654": [
+    {
+      "season": "2025/2026",
+      "rank": 147,
+      "points": 23,
+      "league": "B-Klasse",
+      "name": "Heiko Gie\u00dfler"
+    },
+    {
+      "season": "24/25",
+      "rank": 145,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Heiko Gie\u00dfler"
+    },
+    {
+      "season": "23/24",
+      "rank": 115,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Heiko Gie\u00dfler"
+    },
+    {
+      "season": "22/23",
+      "rank": 95,
+      "points": 19,
+      "league": "A-Klasse",
+      "name": "Heiko Gie\u00dfler"
+    },
+    {
+      "season": "20/22",
+      "rank": 40,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Heiko Gie\u00dfler"
+    }
+  ],
+  "860": [
+    {
+      "season": "2025/2026",
+      "rank": 148,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Philipp Rank"
+    },
+    {
+      "season": "24/25",
+      "rank": 172,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Philipp Rank"
+    },
+    {
+      "season": "23/24",
+      "rank": 74,
+      "points": 74,
+      "league": "B-Klasse",
+      "name": "Philipp Rank"
+    },
+    {
+      "season": "22/23",
+      "rank": 38,
+      "points": 88,
+      "league": "A-Klasse",
+      "name": "Philipp Rank"
+    },
+    {
+      "season": "20/22",
+      "rank": 17,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Philipp Rank"
+    }
+  ],
+  "541": [
+    {
+      "season": "2025/2026",
+      "rank": 149,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Kevin Eisbrenner"
+    },
+    {
+      "season": "24/25",
+      "rank": 52,
+      "points": 13,
+      "league": "Bezirksliga",
+      "name": "Kevin Eisbrenner"
+    }
+  ],
+  "221": [
+    {
+      "season": "2025/2026",
+      "rank": 150,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Erich Messer"
+    },
+    {
+      "season": "24/25",
+      "rank": 70,
+      "points": 74,
+      "league": "B-Klasse",
+      "name": "Erich Messer"
+    },
+    {
+      "season": "23/24",
+      "rank": 116,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Erich Messer"
+    }
+  ],
+  "1667": [
+    {
+      "season": "2025/2026",
+      "rank": 151,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Klaus Steinmetz"
+    },
+    {
+      "season": "24/25",
+      "rank": 96,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Klaus Steinmetz"
+    },
+    {
+      "season": "23/24",
+      "rank": 11,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "Klaus Steinmetz"
+    },
+    {
+      "season": "22/23",
+      "rank": 47,
+      "points": 101,
+      "league": "C-Klasse",
+      "name": "Klaus Steinmetz"
+    },
+    {
+      "season": "20/22",
+      "rank": 33,
+      "points": 112,
+      "league": "C-Klasse",
+      "name": "Klaus Steinmetz"
+    }
+  ],
+  "596": [
+    {
+      "season": "2025/2026",
+      "rank": 152,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Frank Brenner"
+    }
+  ],
+  "353": [
+    {
+      "season": "2025/2026",
+      "rank": 153,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Nico Riedel"
+    }
+  ],
+  "1821": [
+    {
+      "season": "2025/2026",
+      "rank": 154,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Tamara Wolfinger"
+    },
+    {
+      "season": "24/25",
+      "rank": 81,
+      "points": 65,
+      "league": "B-Klasse",
+      "name": "Tamara Wolfinger"
+    },
+    {
+      "season": "23/24",
+      "rank": 118,
+      "points": 37,
+      "league": "B-Klasse",
+      "name": "Tamara D\u00fcrr"
+    },
+    {
+      "season": "22/23",
+      "rank": 140,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Tamara D\u00fcrr"
+    },
+    {
+      "season": "20/22",
+      "rank": 106,
+      "points": 38,
+      "league": "B-Klasse",
+      "name": "Tamara D\u00fcrr"
+    }
+  ],
+  "1393": [
+    {
+      "season": "2025/2026",
+      "rank": 155,
+      "points": 20,
+      "league": "B-Klasse",
+      "name": "Andreas Schulz"
+    },
+    {
+      "season": "24/25",
+      "rank": 127,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Andreas Schulz"
+    },
+    {
+      "season": "20/22",
+      "rank": 214,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Andreas Schulz"
+    }
+  ],
+  "577": [
+    {
+      "season": "2025/2026",
+      "rank": 156,
+      "points": 20,
+      "league": "B-Klasse",
+      "name": "Linus Gr\u00fc\u00dfinger"
+    }
+  ],
+  "607": [
+    {
+      "season": "2025/2026",
+      "rank": 157,
+      "points": 19,
+      "league": "B-Klasse",
+      "name": "Andreas Gl\u00e4\u00dfer"
+    },
+    {
+      "season": "24/25",
+      "rank": 123,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Andreas Gl\u00e4\u00dfer"
+    }
+  ],
+  "014": [
+    {
+      "season": "2025/2026",
+      "rank": 158,
+      "points": 19,
+      "league": "B-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "24/25",
+      "rank": 87,
+      "points": 25,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "23/24",
+      "rank": 45,
+      "points": 83,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "22/23",
+      "rank": 60,
+      "points": 69,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    },
+    {
+      "season": "20/22",
+      "rank": 90,
+      "points": 23,
+      "league": "A-Klasse",
+      "name": "Anastasios Spyropoulos"
+    }
+  ],
+  "1741": [
+    {
+      "season": "2025/2026",
+      "rank": 159,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Max Schn\u00fcrle"
+    },
+    {
+      "season": "23/24",
+      "rank": 145,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Max Schn\u00fcrle"
+    },
+    {
+      "season": "22/23",
+      "rank": 142,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Max Schn\u00fcrle"
+    },
+    {
+      "season": "20/22",
+      "rank": 73,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Max Schn\u00fcrle"
+    }
+  ],
+  "300": [
+    {
+      "season": "2025/2026",
+      "rank": 160,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Christian Giordano"
+    },
+    {
+      "season": "24/25",
+      "rank": 190,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Christian Giordano"
+    },
+    {
+      "season": "23/24",
+      "rank": 97,
+      "points": 73,
+      "league": "C-Klasse",
+      "name": "Christian Giordano"
+    }
+  ],
+  "1017": [
+    {
+      "season": "2025/2026",
+      "rank": 161,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Timo Frank"
+    },
+    {
+      "season": "24/25",
+      "rank": 135,
+      "points": 21,
+      "league": "B-Klasse",
+      "name": "Timo Frank"
+    },
+    {
+      "season": "23/24",
+      "rank": 210,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Timo Frank"
+    },
+    {
+      "season": "22/23",
+      "rank": 174,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Timo Frank"
+    },
+    {
+      "season": "20/22",
+      "rank": 255,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Timo Frank"
+    }
+  ],
+  "1512": [
+    {
+      "season": "2025/2026",
+      "rank": 162,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Dirk Schuhmacher"
+    },
+    {
+      "season": "24/25",
+      "rank": 102,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Dirk Schuhmacher"
+    },
+    {
+      "season": "23/24",
+      "rank": 87,
+      "points": 61,
+      "league": "B-Klasse",
+      "name": "Dirk Schuhmacher"
+    },
+    {
+      "season": "22/23",
+      "rank": 14,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Dirk Schuhmacher"
+    },
+    {
+      "season": "20/22",
+      "rank": 69,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Dirk Schuhmacher"
+    }
+  ],
+  "362": [
+    {
+      "season": "2025/2026",
+      "rank": 163,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Hans-J\u00fcrgen Kohl"
+    }
+  ],
+  "1719": [
+    {
+      "season": "2025/2026",
+      "rank": 164,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "B\u00fcnyamin Colak"
+    },
+    {
+      "season": "24/25",
+      "rank": 119,
+      "points": 30,
+      "league": "B-Klasse",
+      "name": "B\u00fcnyamin Colak"
+    },
+    {
+      "season": "23/24",
+      "rank": 103,
+      "points": 45,
+      "league": "B-Klasse",
+      "name": "B\u00fcnyamin Colak"
+    },
+    {
+      "season": "22/23",
+      "rank": 111,
+      "points": 42,
+      "league": "B-Klasse",
+      "name": "B\u00fcnyamin Colak"
+    },
+    {
+      "season": "20/22",
+      "rank": 132,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "B\u00fcnyamin Colak"
+    }
+  ],
+  "1298": [
+    {
+      "season": "2025/2026",
+      "rank": 165,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Ulrich Zaiser"
+    },
+    {
+      "season": "22/23",
+      "rank": 121,
+      "points": 34,
+      "league": "B-Klasse",
+      "name": "Ulrich Zaiser"
+    },
+    {
+      "season": "20/22",
+      "rank": 188,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Ulrich Zaiser"
+    }
+  ],
+  "605": [
+    {
+      "season": "2025/2026",
+      "rank": 166,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Giuseppe Crea"
+    },
+    {
+      "season": "24/25",
+      "rank": 312,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Giuseppe Crea"
+    }
+  ],
+  "1354": [
+    {
+      "season": "2025/2026",
+      "rank": 167,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Klaus J\u00e4hrmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 95,
+      "points": 80,
+      "league": "C-Klasse",
+      "name": "Klaus J\u00e4hrmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 249,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Klaus J\u00e4hrmann"
+    }
+  ],
+  "1198": [
+    {
+      "season": "2025/2026",
+      "rank": 168,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Marcel Lutz"
+    },
+    {
+      "season": "24/25",
+      "rank": 179,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "Marcel Lutz"
+    }
+  ],
+  "966": [
+    {
+      "season": "2025/2026",
+      "rank": 169,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Sanel Bozic"
+    },
+    {
+      "season": "24/25",
+      "rank": 212,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Sanel Bozic"
+    },
+    {
+      "season": "22/23",
+      "rank": 116,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Sanel Bozic"
+    },
+    {
+      "season": "20/22",
+      "rank": 129,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Sanel Bozic"
+    }
+  ],
+  "885": [
+    {
+      "season": "2025/2026",
+      "rank": 170,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Marisa Link"
+    },
+    {
+      "season": "24/25",
+      "rank": 39,
+      "points": 121,
+      "league": "C-Klasse",
+      "name": "Marisa Link"
+    },
+    {
+      "season": "23/24",
+      "rank": 33,
+      "points": 121,
+      "league": "C-Klasse",
+      "name": "Marisa Link"
+    },
+    {
+      "season": "22/23",
+      "rank": 98,
+      "points": 51,
+      "league": "B-Klasse",
+      "name": "Marisa Link"
+    },
+    {
+      "season": "20/22",
+      "rank": 12,
+      "points": 152,
+      "league": "C-Klasse",
+      "name": "Marisa Link"
+    }
+  ],
+  "268": [
+    {
+      "season": "2025/2026",
+      "rank": 171,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Martin Fischer"
+    },
+    {
+      "season": "24/25",
+      "rank": 125,
+      "points": 27,
+      "league": "B-Klasse",
+      "name": "Martin Fischer"
+    },
+    {
+      "season": "23/24",
+      "rank": 191,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Martin Fischer"
+    },
+    {
+      "season": "22/23",
+      "rank": 165,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Martin Fischer"
+    },
+    {
+      "season": "20/22",
+      "rank": 147,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Martin Fischer"
+    }
+  ],
+  "1065": [
+    {
+      "season": "2025/2026",
+      "rank": 172,
+      "points": 12,
+      "league": "B-Klasse",
+      "name": "Nick K\u00fcper"
+    },
+    {
+      "season": "24/25",
+      "rank": 129,
+      "points": 59,
+      "league": "C-Klasse",
+      "name": "Nick K\u00fcper"
+    },
+    {
+      "season": "23/24",
+      "rank": 242,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Nick K\u00fcper"
+    }
+  ],
+  "331": [
+    {
+      "season": "2025/2026",
+      "rank": 173,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Sandra Schenk"
+    },
+    {
+      "season": "24/25",
+      "rank": 305,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Sandra Schenk"
+    },
+    {
+      "season": "23/24",
+      "rank": 125,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Sandra Schenk"
+    },
+    {
+      "season": "22/23",
+      "rank": 112,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Sandra Schenk"
+    },
+    {
+      "season": "20/22",
+      "rank": 149,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Sandra Schenk"
+    }
+  ],
+  "1622": [
+    {
+      "season": "2025/2026",
+      "rank": 174,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Dirk Walter M\u00fcller"
+    },
+    {
+      "season": "24/25",
+      "rank": 189,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Dirk Walter M\u00fcller"
+    },
+    {
+      "season": "23/24",
+      "rank": 181,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Dirk Walter M\u00fcller"
+    },
+    {
+      "season": "22/23",
+      "rank": 55,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Dirk Walter M\u00fcller"
+    },
+    {
+      "season": "20/22",
+      "rank": 244,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Dirk M\u00fcller"
+    }
+  ],
+  "591": [
+    {
+      "season": "2025/2026",
+      "rank": 175,
+      "points": 10,
+      "league": "B-Klasse",
+      "name": "Dennis Christian"
+    },
+    {
+      "season": "24/25",
+      "rank": 77,
+      "points": 33,
+      "league": "A-Klasse",
+      "name": "Dennis Christian"
+    },
+    {
+      "season": "23/24",
+      "rank": 92,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Dennis Christian"
+    },
+    {
+      "season": "22/23",
+      "rank": 147,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Dennis Christian"
+    }
+  ],
+  "1101": [
+    {
+      "season": "2025/2026",
+      "rank": 176,
+      "points": 9,
+      "league": "B-Klasse",
+      "name": "Volker Schmich"
+    },
+    {
+      "season": "24/25",
+      "rank": 153,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Volker Schmich"
+    },
+    {
+      "season": "23/24",
+      "rank": 175,
+      "points": 31,
+      "league": "C-Klasse",
+      "name": "Volker Schmich"
+    },
+    {
+      "season": "22/23",
+      "rank": 191,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Volker Schmich"
+    },
+    {
+      "season": "20/22",
+      "rank": 69,
+      "points": 43,
+      "league": "A-Klasse",
+      "name": "Volker Schmich"
+    }
+  ],
+  "1190": [
+    {
+      "season": "2025/2026",
+      "rank": 177,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Sven Krzyzanowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 133,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Sven Krzyzanowski"
+    },
+    {
+      "season": "23/24",
+      "rank": 86,
+      "points": 61,
+      "league": "B-Klasse",
+      "name": "Sven Krzyzanowski"
+    },
+    {
+      "season": "22/23",
+      "rank": 88,
+      "points": 59,
+      "league": "B-Klasse",
+      "name": "Sven Krzyzanowski"
+    },
+    {
+      "season": "20/22",
+      "rank": 146,
+      "points": 4,
+      "league": "A-Klasse",
+      "name": "Sven Krzyzanowski"
+    }
+  ],
+  "328": [
+    {
+      "season": "2025/2026",
+      "rank": 179,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Markus D\u00fcrr"
+    },
+    {
+      "season": "24/25",
+      "rank": 88,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Markus D\u00fcrr"
+    }
+  ],
+  "831": [
+    {
+      "season": "2025/2026",
+      "rank": 180,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Aid Rrudhani"
+    }
+  ],
+  "1075": [
+    {
+      "season": "2025/2026",
+      "rank": 181,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Daniel Sch\u00e4fer"
+    },
+    {
+      "season": "24/25",
+      "rank": 184,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Daniel Sch\u00e4fer"
+    },
+    {
+      "season": "23/24",
+      "rank": 194,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Daniel Sch\u00e4fer"
+    },
+    {
+      "season": "22/23",
+      "rank": 148,
+      "points": 39,
+      "league": "C-Klasse",
+      "name": "Daniel Sch\u00e4fer"
+    },
+    {
+      "season": "20/22",
+      "rank": 199,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Daniel Sch\u00e4fer"
+    }
+  ],
+  "1212": [
+    {
+      "season": "2025/2026",
+      "rank": 182,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Uwe Prohaska"
+    },
+    {
+      "season": "24/25",
+      "rank": 53,
+      "points": 111,
+      "league": "C-Klasse",
+      "name": "Uwe Prohaska"
+    },
+    {
+      "season": "23/24",
+      "rank": 71,
+      "points": 76,
+      "league": "B-Klasse",
+      "name": "Uwe Prohaska"
+    },
+    {
+      "season": "22/23",
+      "rank": 73,
+      "points": 49,
+      "league": "A-Klasse",
+      "name": "Uwe Prohaska"
+    },
+    {
+      "season": "20/22",
+      "rank": 47,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Uwe Prohaska"
+    }
+  ],
+  "493": [
+    {
+      "season": "2025/2026",
+      "rank": 183,
+      "points": 6,
+      "league": "B-Klasse",
+      "name": "Jaimie-Lee Taton"
+    }
+  ],
+  "1028": [
+    {
+      "season": "2025/2026",
+      "rank": 184,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Michael Swoboda"
+    },
+    {
+      "season": "20/22",
+      "rank": 75,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Michael Swoboda"
+    }
+  ],
+  "319": [
+    {
+      "season": "2025/2026",
+      "rank": 186,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Christopher Burckhardt"
+    },
+    {
+      "season": "23/24",
+      "rank": 269,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Christopher Burckhardt"
+    }
+  ],
+  "1894": [
+    {
+      "season": "2025/2026",
+      "rank": 187,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Romina Diana Taton"
+    },
+    {
+      "season": "24/25",
+      "rank": 146,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Romina Diana Taton"
+    },
+    {
+      "season": "23/24",
+      "rank": 183,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Romina Diana Taton"
+    },
+    {
+      "season": "22/23",
+      "rank": 247,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Romina Diana Taton"
+    }
+  ],
+  "1643": [
+    {
+      "season": "2025/2026",
+      "rank": 188,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Quentin Kohler"
+    },
+    {
+      "season": "24/25",
+      "rank": 84,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Quentin Kohler"
+    },
+    {
+      "season": "23/24",
+      "rank": 133,
+      "points": 22,
+      "league": "B-Klasse",
+      "name": "Quentin Kohler"
+    }
+  ],
+  "645": [
+    {
+      "season": "2025/2026",
+      "rank": 189,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Roberto Azzaro"
+    }
+  ],
+  "1158": [
+    {
+      "season": "2025/2026",
+      "rank": 190,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Mathias Kopp"
+    },
+    {
+      "season": "24/25",
+      "rank": 186,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Mathias Kopp"
+    },
+    {
+      "season": "20/22",
+      "rank": 210,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Mathias Kopp"
+    }
+  ],
+  "1490": [
+    {
+      "season": "2025/2026",
+      "rank": 191,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "\u00d6mer \u00d6zakcinar"
+    },
+    {
+      "season": "23/24",
+      "rank": 106,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "\u00d6mer \u00d6zakcinar"
+    },
+    {
+      "season": "22/23",
+      "rank": 75,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "\u00d6mer \u00d6zakcinar"
+    },
+    {
+      "season": "20/22",
+      "rank": 80,
+      "points": 61,
+      "league": "B-Klasse",
+      "name": "\u00d6mer \u00d6zakcinar"
+    }
+  ],
+  "1782": [
+    {
+      "season": "2025/2026",
+      "rank": 194,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Christian Roll"
+    },
+    {
+      "season": "24/25",
+      "rank": 183,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Christian Roll"
+    }
+  ],
+  "1392": [
+    {
+      "season": "2025/2026",
+      "rank": 195,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Michael Kr\u00e4ker"
+    },
+    {
+      "season": "24/25",
+      "rank": 137,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Michael Kr\u00e4ker"
+    },
+    {
+      "season": "23/24",
+      "rank": 229,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Michael Kr\u00e4ker"
+    }
+  ],
+  "749": [
+    {
+      "season": "2025/2026",
+      "rank": 196,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Marco Wolfsegger"
+    },
+    {
+      "season": "24/25",
+      "rank": 174,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Marco Wolfsegger"
+    },
+    {
+      "season": "22/23",
+      "rank": 103,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Marco Wolfsegger"
+    },
+    {
+      "season": "20/22",
+      "rank": 56,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Marco Wolfsegger"
+    }
+  ],
+  "213": [
+    {
+      "season": "2025/2026",
+      "rank": 197,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Philipp Daxberger"
+    }
+  ],
+  "1428": [
+    {
+      "season": "2025/2026",
+      "rank": 198,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Klaus Faa\u00df"
+    }
+  ],
+  "321": [
+    {
+      "season": "2025/2026",
+      "rank": 199,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Gabriele P\u00f6tsch"
+    },
+    {
+      "season": "23/24",
+      "rank": 103,
+      "points": 9,
+      "league": "A-Klasse",
+      "name": "Gabriele P\u00f6tsch"
+    },
+    {
+      "season": "22/23",
+      "rank": 105,
+      "points": 11,
+      "league": "A-Klasse",
+      "name": "Gabriele P\u00f6tsch"
+    },
+    {
+      "season": "20/22",
+      "rank": 94,
+      "points": 21,
+      "league": "A-Klasse",
+      "name": "Gabriele P\u00f6tsch"
+    }
+  ],
+  "121": [
+    {
+      "season": "2025/2026",
+      "rank": 200,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Wilfried Michaelis"
+    },
+    {
+      "season": "24/25",
+      "rank": 176,
+      "points": 6,
+      "league": "B-Klasse",
+      "name": "Wilfried Michaelis"
+    },
+    {
+      "season": "23/24",
+      "rank": 222,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Wilfried Michaelis"
+    },
+    {
+      "season": "22/23",
+      "rank": 133,
+      "points": 25,
+      "league": "B-Klasse",
+      "name": "Wilfried Michaelis"
+    },
+    {
+      "season": "20/22",
+      "rank": 75,
+      "points": 35,
+      "league": "A-Klasse",
+      "name": "Wilfried Michaelis"
+    }
+  ],
+  "718": [
+    {
+      "season": "2025/2026",
+      "rank": 201,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Andreas Fischer"
+    },
+    {
+      "season": "24/25",
+      "rank": 223,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Andreas Fischer"
+    },
+    {
+      "season": "23/24",
+      "rank": 161,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Andreas Fischer"
+    },
+    {
+      "season": "22/23",
+      "rank": 123,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Andreas Fischer"
+    }
+  ],
+  "335": [
+    {
+      "season": "2025/2026",
+      "rank": 202,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Hilde Renschler"
+    },
+    {
+      "season": "24/25",
+      "rank": 271,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Hilde Renschler"
+    },
+    {
+      "season": "23/24",
+      "rank": 162,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Hilde Renschler"
+    },
+    {
+      "season": "22/23",
+      "rank": 155,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Hilde Renschler"
+    },
+    {
+      "season": "20/22",
+      "rank": 128,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Hilde Renschler"
+    }
+  ],
+  "1118": [
+    {
+      "season": "2025/2026",
+      "rank": 203,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Steffen Kurfiss"
+    },
+    {
+      "season": "24/25",
+      "rank": 221,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Steffen Kurfiss"
+    },
+    {
+      "season": "23/24",
+      "rank": 187,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Steffen Kurfiss"
+    },
+    {
+      "season": "22/23",
+      "rank": 141,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Steffen Kurfiss"
+    },
+    {
+      "season": "20/22",
+      "rank": 191,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Steffen Kurfiss"
+    }
+  ],
+  "289": [
+    {
+      "season": "2025/2026",
+      "rank": 204,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Ingo K\u00fcper"
+    },
+    {
+      "season": "24/25",
+      "rank": 241,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Ingo K\u00fcper"
+    },
+    {
+      "season": "23/24",
+      "rank": 243,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Ingo K\u00fcper"
+    }
+  ],
+  "505": [
+    {
+      "season": "2025/2026",
+      "rank": 205,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Sven Dondalski"
+    },
+    {
+      "season": "24/25",
+      "rank": 192,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Sven Dondalski"
+    }
+  ],
+  "1849": [
+    {
+      "season": "2025/2026",
+      "rank": 206,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Tanja E\u00dfwein"
+    },
+    {
+      "season": "22/23",
+      "rank": 228,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Tanja E\u00dfwein"
+    },
+    {
+      "season": "20/22",
+      "rank": 217,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Tanja E\u00dfwein"
+    }
+  ],
+  "1759": [
+    {
+      "season": "2025/2026",
+      "rank": 207,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Mirjam Sch\u00f6n"
+    },
+    {
+      "season": "24/25",
+      "rank": 248,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Mirjam Sch\u00f6n"
+    }
+  ],
+  "1250": [
+    {
+      "season": "2025/2026",
+      "rank": 209,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Markus Reichert"
+    },
+    {
+      "season": "24/25",
+      "rank": 156,
+      "points": 49,
+      "league": "C-Klasse",
+      "name": "Markus Reichert"
+    },
+    {
+      "season": "23/24",
+      "rank": 121,
+      "points": 35,
+      "league": "B-Klasse",
+      "name": "Markus Reichert"
+    },
+    {
+      "season": "22/23",
+      "rank": 116,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Markus Reichert"
+    },
+    {
+      "season": "20/22",
+      "rank": 117,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Markus Reichert"
+    }
+  ],
+  "1863": [
+    {
+      "season": "2025/2026",
+      "rank": 210,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Alexander Starsinski"
+    },
+    {
+      "season": "24/25",
+      "rank": 143,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Alexander Starsinski"
+    },
+    {
+      "season": "23/24",
+      "rank": 116,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Alexander Starsinski"
+    }
+  ],
+  "1771": [
+    {
+      "season": "2025/2026",
+      "rank": 211,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Michael Roll"
+    },
+    {
+      "season": "24/25",
+      "rank": 104,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Michael Roll"
+    }
+  ],
+  "1701": [
+    {
+      "season": "2025/2026",
+      "rank": 212,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Tanja Irion"
+    },
+    {
+      "season": "22/23",
+      "rank": 263,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Tanja Irion"
+    }
+  ],
+  "1837": [
+    {
+      "season": "2025/2026",
+      "rank": 213,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Sandra Lindner"
+    },
+    {
+      "season": "24/25",
+      "rank": 197,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Sandra Lindner"
+    },
+    {
+      "season": "23/24",
+      "rank": 239,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Sandra Rudolf"
+    },
+    {
+      "season": "22/23",
+      "rank": 190,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Sandra Rudolf"
+    }
+  ],
+  "355": [
+    {
+      "season": "2025/2026",
+      "rank": 214,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Yves N\u00fcrnberg"
+    },
+    {
+      "season": "24/25",
+      "rank": 261,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Yves N\u00fcrnberg"
+    },
+    {
+      "season": "23/24",
+      "rank": 221,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Yves N\u00fcrnberg"
+    },
+    {
+      "season": "22/23",
+      "rank": 118,
+      "points": 55,
+      "league": "C-Klasse",
+      "name": "Yves Yacoub"
+    },
+    {
+      "season": "20/22",
+      "rank": 153,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Yves Yacoub"
+    }
+  ],
+  "1649": [
+    {
+      "season": "2025/2026",
+      "rank": 216,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Jacqueline W\u00fcst"
+    },
+    {
+      "season": "24/25",
+      "rank": 155,
+      "points": 13,
+      "league": "B-Klasse",
+      "name": "Jacqueline W\u00fcst"
+    },
+    {
+      "season": "23/24",
+      "rank": 128,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Jacqueline W\u00fcst"
+    },
+    {
+      "season": "22/23",
+      "rank": 46,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Jacqueline W\u00fcst"
+    },
+    {
+      "season": "20/22",
+      "rank": 104,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Jacqueline W\u00fcst"
+    }
+  ],
+  "670": [
+    {
+      "season": "2025/2026",
+      "rank": 217,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Maria Graf"
+    },
+    {
+      "season": "24/25",
+      "rank": 157,
+      "points": 11,
+      "league": "B-Klasse",
+      "name": "Maria Graf"
+    },
+    {
+      "season": "23/24",
+      "rank": 111,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Maria Graf"
+    },
+    {
+      "season": "22/23",
+      "rank": 114,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Maria Graf"
+    },
+    {
+      "season": "20/22",
+      "rank": 96,
+      "points": 19,
+      "league": "A-Klasse",
+      "name": "Maria Graf"
+    }
+  ],
+  "1126": [
+    {
+      "season": "2025/2026",
+      "rank": 1,
+      "points": 206,
+      "league": "C-Klasse",
+      "name": "Dominik Koch"
+    },
+    {
+      "season": "24/25",
+      "rank": 18,
+      "points": 130,
+      "league": "A-Klasse",
+      "name": "Dominik Koch"
+    },
+    {
+      "season": "23/24",
+      "rank": 6,
+      "points": 146,
+      "league": "A-Klasse",
+      "name": "Dominik Koch"
+    },
+    {
+      "season": "22/23",
+      "rank": 4,
+      "points": 173,
+      "league": "B-Klasse",
+      "name": "Dominik Koch"
+    },
+    {
+      "season": "20/22",
+      "rank": 3,
+      "points": 187,
+      "league": "C-Klasse",
+      "name": "Dominik Koch"
+    }
+  ],
+  "133": [
+    {
+      "season": "2025/2026",
+      "rank": 2,
+      "points": 174,
+      "league": "C-Klasse",
+      "name": "Andreas Freimuth"
+    },
+    {
+      "season": "20/22",
+      "rank": 47,
+      "points": 78,
+      "league": "A-Klasse",
+      "name": "Andreas Freimuth"
+    }
+  ],
+  "1419": [
+    {
+      "season": "2025/2026",
+      "rank": 3,
+      "points": 170,
+      "league": "C-Klasse",
+      "name": "Johannes F\u00f6rschler"
+    },
+    {
+      "season": "24/25",
+      "rank": 105,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Johannes F\u00f6rschler"
+    }
+  ],
+  "1542": [
+    {
+      "season": "2025/2026",
+      "rank": 4,
+      "points": 170,
+      "league": "C-Klasse",
+      "name": "Stefan Frick"
+    },
+    {
+      "season": "23/24",
+      "rank": 64,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Stefan Frick"
+    },
+    {
+      "season": "22/23",
+      "rank": 46,
+      "points": 80,
+      "league": "A-Klasse",
+      "name": "Stefan Frick"
+    },
+    {
+      "season": "20/22",
+      "rank": 34,
+      "points": 102,
+      "league": "B-Klasse",
+      "name": "Stefan Frick"
+    }
+  ],
+  "1753": [
+    {
+      "season": "2025/2026",
+      "rank": 5,
+      "points": 168,
+      "league": "C-Klasse",
+      "name": "Gerd Bitz"
+    },
+    {
+      "season": "24/25",
+      "rank": 23,
+      "points": 137,
+      "league": "C-Klasse",
+      "name": "Gerd Bitz"
+    },
+    {
+      "season": "23/24",
+      "rank": 178,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Gerd Bitz"
+    }
+  ],
+  "991": [
+    {
+      "season": "2025/2026",
+      "rank": 6,
+      "points": 166,
+      "league": "C-Klasse",
+      "name": "Michael Neub\u00fcser"
+    },
+    {
+      "season": "24/25",
+      "rank": 24,
+      "points": 122,
+      "league": "A-Klasse",
+      "name": "Michael Neub\u00fcser"
+    },
+    {
+      "season": "23/24",
+      "rank": 9,
+      "points": 152,
+      "league": "B-Klasse",
+      "name": "Michael Neub\u00fcser"
+    },
+    {
+      "season": "22/23",
+      "rank": 27,
+      "points": 75,
+      "league": "Bezirksliga",
+      "name": "Michael Neub\u00fcser"
+    },
+    {
+      "season": "20/22",
+      "rank": 15,
+      "points": 102,
+      "league": "Bezirksliga",
+      "name": "Michael Neub\u00fcser"
+    }
+  ],
+  "1332": [
+    {
+      "season": "2025/2026",
+      "rank": 7,
+      "points": 165,
+      "league": "C-Klasse",
+      "name": "Kevin Frank"
+    },
+    {
+      "season": "24/25",
+      "rank": 28,
+      "points": 109,
+      "league": "B-Klasse",
+      "name": "Kevin Frank"
+    },
+    {
+      "season": "23/24",
+      "rank": 85,
+      "points": 61,
+      "league": "B-Klasse",
+      "name": "Kevin Frank"
+    },
+    {
+      "season": "22/23",
+      "rank": 74,
+      "points": 48,
+      "league": "A-Klasse",
+      "name": "Kevin Frank"
+    },
+    {
+      "season": "20/22",
+      "rank": 21,
+      "points": 130,
+      "league": "C-Klasse",
+      "name": "Kevin Frank"
+    }
+  ],
+  "451": [
+    {
+      "season": "2025/2026",
+      "rank": 9,
+      "points": 164,
+      "league": "C-Klasse",
+      "name": "Nikolaj Kim"
+    },
+    {
+      "season": "24/25",
+      "rank": 44,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Nikolaj Kim"
+    }
+  ],
+  "407": [
+    {
+      "season": "2025/2026",
+      "rank": 10,
+      "points": 163,
+      "league": "C-Klasse",
+      "name": "Tim V\u00f6gele"
+    },
+    {
+      "season": "24/25",
+      "rank": 171,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Tim V\u00f6gele"
+    },
+    {
+      "season": "23/24",
+      "rank": 59,
+      "points": 89,
+      "league": "B-Klasse",
+      "name": "Tim V\u00f6gele"
+    },
+    {
+      "season": "22/23",
+      "rank": 30,
+      "points": 95,
+      "league": "A-Klasse",
+      "name": "Tim V\u00f6gele"
+    },
+    {
+      "season": "20/22",
+      "rank": 9,
+      "points": 141,
+      "league": "B-Klasse",
+      "name": "Tim V\u00f6gele"
+    }
+  ],
+  "612": [
+    {
+      "season": "2025/2026",
+      "rank": 11,
+      "points": 160,
+      "league": "C-Klasse",
+      "name": "Tihomir Weissbarth"
+    },
+    {
+      "season": "24/25",
+      "rank": 25,
+      "points": 120,
+      "league": "A-Klasse",
+      "name": "Tihomir Weissbarth"
+    },
+    {
+      "season": "23/24",
+      "rank": 73,
+      "points": 48,
+      "league": "A-Klasse",
+      "name": "Tihomir Weissbarth"
+    },
+    {
+      "season": "22/23",
+      "rank": 92,
+      "points": 21,
+      "league": "A-Klasse",
+      "name": "Tihomir Weissbarth"
+    },
+    {
+      "season": "20/22",
+      "rank": 25,
+      "points": 104,
+      "league": "A-Klasse",
+      "name": "Tihomir Weissbarth"
+    }
+  ],
+  "1163": [
+    {
+      "season": "2025/2026",
+      "rank": 12,
+      "points": 160,
+      "league": "C-Klasse",
+      "name": "Dominik Deutschbein"
+    },
+    {
+      "season": "24/25",
+      "rank": 46,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Dominik Deutschbein"
+    },
+    {
+      "season": "23/24",
+      "rank": 118,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Dominik Deutschbein"
+    },
+    {
+      "season": "22/23",
+      "rank": 6,
+      "points": 155,
+      "league": "C-Klasse",
+      "name": "Dominik Deutschbein"
+    },
+    {
+      "season": "20/22",
+      "rank": 130,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Dominik Deutschbein"
+    }
+  ],
+  "415": [
+    {
+      "season": "2025/2026",
+      "rank": 13,
+      "points": 160,
+      "league": "C-Klasse",
+      "name": "Daniel Ricken"
+    },
+    {
+      "season": "24/25",
+      "rank": 82,
+      "points": 64,
+      "league": "B-Klasse",
+      "name": "Daniel Ricken"
+    },
+    {
+      "season": "23/24",
+      "rank": 34,
+      "points": 121,
+      "league": "C-Klasse",
+      "name": "Daniel Ricken"
+    },
+    {
+      "season": "22/23",
+      "rank": 26,
+      "points": 126,
+      "league": "C-Klasse",
+      "name": "Daniel Ricken"
+    }
+  ],
+  "201": [
+    {
+      "season": "2025/2026",
+      "rank": 14,
+      "points": 159,
+      "league": "C-Klasse",
+      "name": "Pavo Saric"
+    },
+    {
+      "season": "24/25",
+      "rank": 67,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Pavo Saric"
+    }
+  ],
+  "1909": [
+    {
+      "season": "2025/2026",
+      "rank": 15,
+      "points": 158,
+      "league": "C-Klasse",
+      "name": "Christian Marienfeld"
+    },
+    {
+      "season": "24/25",
+      "rank": 19,
+      "points": 120,
+      "league": "B-Klasse",
+      "name": "Christian Hannig"
+    },
+    {
+      "season": "23/24",
+      "rank": 49,
+      "points": 97,
+      "league": "B-Klasse",
+      "name": "Christian Hannig"
+    },
+    {
+      "season": "22/23",
+      "rank": 64,
+      "points": 63,
+      "league": "A-Klasse",
+      "name": "Christian Hannig"
+    },
+    {
+      "season": "20/22",
+      "rank": 37,
+      "points": 96,
+      "league": "B-Klasse",
+      "name": "Christian Marienfeld"
+    }
+  ],
+  "1388": [
+    {
+      "season": "2025/2026",
+      "rank": 16,
+      "points": 156,
+      "league": "C-Klasse",
+      "name": "Markus Finsterle"
+    },
+    {
+      "season": "24/25",
+      "rank": 64,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Markus Finsterle"
+    },
+    {
+      "season": "23/24",
+      "rank": 94,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Markus Finsterle"
+    },
+    {
+      "season": "22/23",
+      "rank": 151,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Markus Finsterle"
+    },
+    {
+      "season": "20/22",
+      "rank": 271,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Markus Finsterle"
+    }
+  ],
+  "1882": [
+    {
+      "season": "2025/2026",
+      "rank": 17,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "R\u00fcdiger Riegel"
+    },
+    {
+      "season": "24/25",
+      "rank": 8,
+      "points": 171,
+      "league": "C-Klasse",
+      "name": "R\u00fcdiger Riegel"
+    },
+    {
+      "season": "23/24",
+      "rank": 79,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "R\u00fcdiger Riegel"
+    }
+  ],
+  "482": [
+    {
+      "season": "2025/2026",
+      "rank": 18,
+      "points": 154,
+      "league": "C-Klasse",
+      "name": "Marc Reikowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 26,
+      "points": 133,
+      "league": "C-Klasse",
+      "name": "Marc Reikowski"
+    }
+  ],
+  "569": [
+    {
+      "season": "2025/2026",
+      "rank": 19,
+      "points": 152,
+      "league": "C-Klasse",
+      "name": "Claus Strubel"
+    },
+    {
+      "season": "24/25",
+      "rank": 18,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Claus Strubel"
+    }
+  ],
+  "406": [
+    {
+      "season": "2025/2026",
+      "rank": 20,
+      "points": 148,
+      "league": "C-Klasse",
+      "name": "Dennis Schibrowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 164,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Dennis Schibrowski"
+    },
+    {
+      "season": "23/24",
+      "rank": 58,
+      "points": 90,
+      "league": "B-Klasse",
+      "name": "Dennis Schibrowski"
+    },
+    {
+      "season": "22/23",
+      "rank": 54,
+      "points": 72,
+      "league": "A-Klasse",
+      "name": "Dennis Schibrowski"
+    },
+    {
+      "season": "20/22",
+      "rank": 31,
+      "points": 108,
+      "league": "B-Klasse",
+      "name": "Dennis Schibrowski"
+    }
+  ],
+  "1087": [
+    {
+      "season": "2025/2026",
+      "rank": 21,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Nadine Ackermann"
+    },
+    {
+      "season": "24/25",
+      "rank": 34,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Nadine Ackermann"
+    },
+    {
+      "season": "23/24",
+      "rank": 78,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Nadine Ackermann"
+    },
+    {
+      "season": "22/23",
+      "rank": 100,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Nadine Ackermann"
+    },
+    {
+      "season": "20/22",
+      "rank": 232,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Nadine Ackermann"
+    }
+  ],
+  "1256": [
+    {
+      "season": "2025/2026",
+      "rank": 22,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Dennis Gerhart"
+    },
+    {
+      "season": "24/25",
+      "rank": 52,
+      "points": 113,
+      "league": "C-Klasse",
+      "name": "Dennis Gerhart"
+    },
+    {
+      "season": "23/24",
+      "rank": 24,
+      "points": 131,
+      "league": "C-Klasse",
+      "name": "Dennis Gerhart"
+    },
+    {
+      "season": "22/23",
+      "rank": 181,
+      "points": 24,
+      "league": "C-Klasse",
+      "name": "Dennis Gerhart"
+    },
+    {
+      "season": "20/22",
+      "rank": 142,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Dennis Gerhart"
+    }
+  ],
+  "1556": [
+    {
+      "season": "2025/2026",
+      "rank": 23,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Sascha Scherb"
+    },
+    {
+      "season": "24/25",
+      "rank": 27,
+      "points": 133,
+      "league": "C-Klasse",
+      "name": "Sascha Scherb"
+    },
+    {
+      "season": "23/24",
+      "rank": 42,
+      "points": 111,
+      "league": "C-Klasse",
+      "name": "Sascha Scherb"
+    },
+    {
+      "season": "22/23",
+      "rank": 23,
+      "points": 134,
+      "league": "C-Klasse",
+      "name": "Sascha Scherb"
+    },
+    {
+      "season": "20/22",
+      "rank": 103,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Sascha Scherb"
+    }
+  ],
+  "774": [
+    {
+      "season": "2025/2026",
+      "rank": 24,
+      "points": 140,
+      "league": "C-Klasse",
+      "name": "Justin Nadler"
+    }
+  ],
+  "869": [
+    {
+      "season": "2025/2026",
+      "rank": 25,
+      "points": 139,
+      "league": "C-Klasse",
+      "name": "Mathias T\u00fcrksch"
+    },
+    {
+      "season": "24/25",
+      "rank": 47,
+      "points": 117,
+      "league": "C-Klasse",
+      "name": "Mathias T\u00fcrksch"
+    },
+    {
+      "season": "23/24",
+      "rank": 45,
+      "points": 110,
+      "league": "C-Klasse",
+      "name": "Mathias T\u00fcrksch"
+    },
+    {
+      "season": "22/23",
+      "rank": 51,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Mathias T\u00fcrksch"
+    },
+    {
+      "season": "20/22",
+      "rank": 50,
+      "points": 94,
+      "league": "C-Klasse",
+      "name": "Mathias T\u00fcrksch"
+    }
+  ],
+  "1322": [
+    {
+      "season": "2025/2026",
+      "rank": 26,
+      "points": 136,
+      "league": "C-Klasse",
+      "name": "Kai Reusch"
+    },
+    {
+      "season": "24/25",
+      "rank": 90,
+      "points": 83,
+      "league": "C-Klasse",
+      "name": "Kai Reusch"
+    },
+    {
+      "season": "23/24",
+      "rank": 62,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Kai Reusch"
+    },
+    {
+      "season": "22/23",
+      "rank": 81,
+      "points": 63,
+      "league": "B-Klasse",
+      "name": "Kai Reusch"
+    },
+    {
+      "season": "20/22",
+      "rank": 84,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Kai Reusch"
+    }
+  ],
+  "561": [
+    {
+      "season": "2025/2026",
+      "rank": 27,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Michael Bierl"
+    },
+    {
+      "season": "24/25",
+      "rank": 107,
+      "points": 43,
+      "league": "B-Klasse",
+      "name": "Michael Bierl"
+    },
+    {
+      "season": "22/23",
+      "rank": 134,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Michael Bierl"
+    }
+  ],
+  "1209": [
+    {
+      "season": "2025/2026",
+      "rank": 28,
+      "points": 132,
+      "league": "C-Klasse",
+      "name": "G\u00f6khan \u00d6zdemir"
+    },
+    {
+      "season": "24/25",
+      "rank": 89,
+      "points": 83,
+      "league": "C-Klasse",
+      "name": "G\u00f6khan \u00d6zdemir"
+    },
+    {
+      "season": "23/24",
+      "rank": 212,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "G\u00f6khan \u00d6zdemir"
+    }
+  ],
+  "807": [
+    {
+      "season": "2025/2026",
+      "rank": 29,
+      "points": 132,
+      "league": "C-Klasse",
+      "name": "Holger Treiber"
+    }
+  ],
+  "997": [
+    {
+      "season": "2025/2026",
+      "rank": 30,
+      "points": 131,
+      "league": "C-Klasse",
+      "name": "Domenik Schulz"
+    },
+    {
+      "season": "24/25",
+      "rank": 86,
+      "points": 87,
+      "league": "C-Klasse",
+      "name": "Domenik Schulz"
+    },
+    {
+      "season": "20/22",
+      "rank": 215,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Domenik Schulz"
+    }
+  ],
+  "678": [
+    {
+      "season": "2025/2026",
+      "rank": 31,
+      "points": 129,
+      "league": "C-Klasse",
+      "name": "Oliver Jost"
+    }
+  ],
+  "322": [
+    {
+      "season": "2025/2026",
+      "rank": 32,
+      "points": 127,
+      "league": "C-Klasse",
+      "name": "Philip Kulenski"
+    },
+    {
+      "season": "24/25",
+      "rank": 48,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Philip Kulenski"
+    }
+  ],
+  "1730": [
+    {
+      "season": "2025/2026",
+      "rank": 33,
+      "points": 127,
+      "league": "C-Klasse",
+      "name": "Stefan Br\u00e4uer"
+    }
+  ],
+  "1726": [
+    {
+      "season": "2025/2026",
+      "rank": 34,
+      "points": 125,
+      "league": "C-Klasse",
+      "name": "Markus Huth"
+    },
+    {
+      "season": "24/25",
+      "rank": 34,
+      "points": 105,
+      "league": "B-Klasse",
+      "name": "Markus Huth"
+    },
+    {
+      "season": "23/24",
+      "rank": 60,
+      "points": 87,
+      "league": "B-Klasse",
+      "name": "Markus Huth"
+    },
+    {
+      "season": "22/23",
+      "rank": 9,
+      "points": 152,
+      "league": "C-Klasse",
+      "name": "Markus Huth"
+    },
+    {
+      "season": "20/22",
+      "rank": 32,
+      "points": 113,
+      "league": "C-Klasse",
+      "name": "Markus Huth"
+    }
+  ],
+  "825": [
+    {
+      "season": "2025/2026",
+      "rank": 35,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Mirjam Bartsch"
+    },
+    {
+      "season": "24/25",
+      "rank": 201,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Mirjam Bartsch"
+    },
+    {
+      "season": "23/24",
+      "rank": 29,
+      "points": 125,
+      "league": "C-Klasse",
+      "name": "Mirjam Bartsch"
+    },
+    {
+      "season": "22/23",
+      "rank": 49,
+      "points": 88,
+      "league": "B-Klasse",
+      "name": "Mirjam Bartsch"
+    },
+    {
+      "season": "20/22",
+      "rank": 43,
+      "points": 92,
+      "league": "B-Klasse",
+      "name": "Mirjam Bartsch"
+    }
+  ],
+  "534": [
+    {
+      "season": "2025/2026",
+      "rank": 36,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Stefan Schleeh"
+    },
+    {
+      "season": "24/25",
+      "rank": 55,
+      "points": 109,
+      "league": "C-Klasse",
+      "name": "Stefan Schleeh"
+    },
+    {
+      "season": "23/24",
+      "rank": 51,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Stefan Schleeh"
+    },
+    {
+      "season": "22/23",
+      "rank": 48,
+      "points": 101,
+      "league": "C-Klasse",
+      "name": "Stefan Schleeh"
+    },
+    {
+      "season": "20/22",
+      "rank": 47,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Stefan Schleeh"
+    }
+  ],
+  "943": [
+    {
+      "season": "2025/2026",
+      "rank": 37,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Dennis Paseka"
+    },
+    {
+      "season": "24/25",
+      "rank": 92,
+      "points": 12,
+      "league": "A-Klasse",
+      "name": "Dennis Paseka"
+    }
+  ],
+  "1295": [
+    {
+      "season": "2025/2026",
+      "rank": 38,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Samantha Bartsch"
+    },
+    {
+      "season": "24/25",
+      "rank": 73,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Samantha Bartsch"
+    },
+    {
+      "season": "23/24",
+      "rank": 271,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Samantha Bartsch"
+    }
+  ],
+  "819": [
+    {
+      "season": "2025/2026",
+      "rank": 39,
+      "points": 122,
+      "league": "C-Klasse",
+      "name": "Axel Fink"
+    },
+    {
+      "season": "24/25",
+      "rank": 35,
+      "points": 123,
+      "league": "C-Klasse",
+      "name": "Axel Fink"
+    },
+    {
+      "season": "23/24",
+      "rank": 62,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Axel Fink"
+    },
+    {
+      "season": "22/23",
+      "rank": 25,
+      "points": 132,
+      "league": "C-Klasse",
+      "name": "Axel Fink"
+    },
+    {
+      "season": "20/22",
+      "rank": 37,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Axel Fink"
+    }
+  ],
+  "888": [
+    {
+      "season": "2025/2026",
+      "rank": 40,
+      "points": 121,
+      "league": "C-Klasse",
+      "name": "Nico Fiedler"
+    },
+    {
+      "season": "24/25",
+      "rank": 225,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Nico Fiedler"
+    }
+  ],
+  "358": [
+    {
+      "season": "2025/2026",
+      "rank": 41,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Stephan Herz"
+    }
+  ],
+  "1686": [
+    {
+      "season": "2025/2026",
+      "rank": 42,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Celina B\u00e4uerle"
+    },
+    {
+      "season": "24/25",
+      "rank": 67,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Celina B\u00e4uerle"
+    },
+    {
+      "season": "23/24",
+      "rank": 167,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Celina B\u00e4uerle"
+    }
+  ],
+  "1572": [
+    {
+      "season": "2025/2026",
+      "rank": 43,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Ulla Adam"
+    },
+    {
+      "season": "24/25",
+      "rank": 144,
+      "points": 55,
+      "league": "C-Klasse",
+      "name": "Ulla Adam"
+    },
+    {
+      "season": "23/24",
+      "rank": 202,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Ulla Adam"
+    }
+  ],
+  "247": [
+    {
+      "season": "2025/2026",
+      "rank": 44,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Kai Berweck"
+    }
+  ],
+  "1634": [
+    {
+      "season": "2025/2026",
+      "rank": 45,
+      "points": 118,
+      "league": "C-Klasse",
+      "name": "Efecan Aydinoglu"
+    }
+  ],
+  "338": [
+    {
+      "season": "2025/2026",
+      "rank": 46,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Ali Cam"
+    },
+    {
+      "season": "24/25",
+      "rank": 37,
+      "points": 122,
+      "league": "C-Klasse",
+      "name": "Ali Cam"
+    },
+    {
+      "season": "23/24",
+      "rank": 31,
+      "points": 124,
+      "league": "C-Klasse",
+      "name": "Ali Cam"
+    },
+    {
+      "season": "22/23",
+      "rank": 41,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Ali Cam"
+    },
+    {
+      "season": "20/22",
+      "rank": 33,
+      "points": 102,
+      "league": "B-Klasse",
+      "name": "Ali Cam"
+    }
+  ],
+  "872": [
+    {
+      "season": "2025/2026",
+      "rank": 47,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Lukas Jost"
+    },
+    {
+      "season": "24/25",
+      "rank": 244,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Lukas Jost"
+    }
+  ],
+  "1003": [
+    {
+      "season": "2025/2026",
+      "rank": 48,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Sven Jerabek"
+    },
+    {
+      "season": "24/25",
+      "rank": 196,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Sven Jetabek"
+    }
+  ],
+  "1395": [
+    {
+      "season": "2025/2026",
+      "rank": 49,
+      "points": 115,
+      "league": "C-Klasse",
+      "name": "Dennis Schwarz"
+    },
+    {
+      "season": "24/25",
+      "rank": 25,
+      "points": 135,
+      "league": "C-Klasse",
+      "name": "Dennis Schwarz"
+    },
+    {
+      "season": "23/24",
+      "rank": 180,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Dennis Schwarz"
+    }
+  ],
+  "110": [
+    {
+      "season": "2025/2026",
+      "rank": 50,
+      "points": 114,
+      "league": "C-Klasse",
+      "name": "Daniel Ruppert"
+    }
+  ],
+  "1194": [
+    {
+      "season": "2025/2026",
+      "rank": 51,
+      "points": 112,
+      "league": "C-Klasse",
+      "name": "Ilhami K\u00fcc\u00fck"
+    },
+    {
+      "season": "24/25",
+      "rank": 58,
+      "points": 105,
+      "league": "C-Klasse",
+      "name": "Ilhami K\u00fcc\u00fck"
+    },
+    {
+      "season": "23/24",
+      "rank": 57,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Ilhami K\u00fcc\u00fck"
+    },
+    {
+      "season": "22/23",
+      "rank": 43,
+      "points": 106,
+      "league": "C-Klasse",
+      "name": "Ilhami K\u00fcc\u00fck"
+    },
+    {
+      "season": "20/22",
+      "rank": 36,
+      "points": 98,
+      "league": "B-Klasse",
+      "name": "Ilhami K\u00fcc\u00fck"
+    }
+  ],
+  "783": [
+    {
+      "season": "2025/2026",
+      "rank": 52,
+      "points": 109,
+      "league": "C-Klasse",
+      "name": "Nico Bremer"
+    },
+    {
+      "season": "24/25",
+      "rank": 38,
+      "points": 122,
+      "league": "C-Klasse",
+      "name": "Nico Bremer"
+    },
+    {
+      "season": "23/24",
+      "rank": 199,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Nico Bremer"
+    }
+  ],
+  "387": [
+    {
+      "season": "2025/2026",
+      "rank": 53,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Dean Scott Galletly"
+    },
+    {
+      "season": "24/25",
+      "rank": 100,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Dean Scott Galletly"
+    },
+    {
+      "season": "23/24",
+      "rank": 207,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Dean Scott Galletly"
+    }
+  ],
+  "1871": [
+    {
+      "season": "2025/2026",
+      "rank": 54,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Patrick Hoffmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 20,
+      "points": 141,
+      "league": "C-Klasse",
+      "name": "Patrick Hoffmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 38,
+      "points": 113,
+      "league": "C-Klasse",
+      "name": "Patrick Hoffmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 57,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Patrick Hoffmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 63,
+      "points": 49,
+      "league": "A-Klasse",
+      "name": "Patrick Hoffmann"
+    }
+  ],
+  "339": [
+    {
+      "season": "2025/2026",
+      "rank": 55,
+      "points": 104,
+      "league": "C-Klasse",
+      "name": "Imdat Cengiz"
+    },
+    {
+      "season": "24/25",
+      "rank": 125,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Imdat Cengiz"
+    },
+    {
+      "season": "23/24",
+      "rank": 61,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Imdat Cengiz"
+    },
+    {
+      "season": "22/23",
+      "rank": 35,
+      "points": 114,
+      "league": "C-Klasse",
+      "name": "Imdat Cengiz"
+    },
+    {
+      "season": "20/22",
+      "rank": 29,
+      "points": 110,
+      "league": "B-Klasse",
+      "name": "Imdat Cengiz"
+    }
+  ],
+  "1368": [
+    {
+      "season": "2025/2026",
+      "rank": 56,
+      "points": 103,
+      "league": "C-Klasse",
+      "name": "Marcel Pitschke"
+    },
+    {
+      "season": "24/25",
+      "rank": 78,
+      "points": 94,
+      "league": "C-Klasse",
+      "name": "Marcel Pitschke"
+    },
+    {
+      "season": "23/24",
+      "rank": 108,
+      "points": 42,
+      "league": "B-Klasse",
+      "name": "Marcel Pitschke"
+    },
+    {
+      "season": "22/23",
+      "rank": 74,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Marcel Pitschke"
+    },
+    {
+      "season": "20/22",
+      "rank": 61,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Marcel Pitschke"
+    }
+  ],
+  "542": [
+    {
+      "season": "2025/2026",
+      "rank": 57,
+      "points": 103,
+      "league": "C-Klasse",
+      "name": "Fynn Burger"
+    }
+  ],
+  "446": [
+    {
+      "season": "2025/2026",
+      "rank": 58,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Andreas M\u00fcller"
+    },
+    {
+      "season": "24/25",
+      "rank": 80,
+      "points": 93,
+      "league": "C-Klasse",
+      "name": "Andreas M\u00fcller"
+    },
+    {
+      "season": "23/24",
+      "rank": 102,
+      "points": 70,
+      "league": "C-Klasse",
+      "name": "Andreas M\u00fcller"
+    }
+  ],
+  "632": [
+    {
+      "season": "2025/2026",
+      "rank": 59,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Michael Parupka"
+    },
+    {
+      "season": "24/25",
+      "rank": 65,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Michael Parupka"
+    },
+    {
+      "season": "22/23",
+      "rank": 106,
+      "points": 44,
+      "league": "B-Klasse",
+      "name": "Michael Parupka"
+    },
+    {
+      "season": "20/22",
+      "rank": 19,
+      "points": 131,
+      "league": "C-Klasse",
+      "name": "Michael Parupka"
+    }
+  ],
+  "837": [
+    {
+      "season": "2025/2026",
+      "rank": 60,
+      "points": 101,
+      "league": "C-Klasse",
+      "name": "Ivica Sorsa"
+    }
+  ],
+  "467": [
+    {
+      "season": "2025/2026",
+      "rank": 61,
+      "points": 100,
+      "league": "C-Klasse",
+      "name": "Tobias Reikowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 166,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Tobias Reikowski"
+    }
+  ],
+  "1802": [
+    {
+      "season": "2025/2026",
+      "rank": 62,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Steve R\u00f6der"
+    },
+    {
+      "season": "24/25",
+      "rank": 69,
+      "points": 47,
+      "league": "A-Klasse",
+      "name": "Steve R\u00f6der"
+    },
+    {
+      "season": "23/24",
+      "rank": 66,
+      "points": 56,
+      "league": "A-Klasse",
+      "name": "Steve R\u00f6der"
+    },
+    {
+      "season": "22/23",
+      "rank": 50,
+      "points": 88,
+      "league": "B-Klasse",
+      "name": "Steve R\u00f6der"
+    },
+    {
+      "season": "20/22",
+      "rank": 6,
+      "points": 174,
+      "league": "C-Klasse",
+      "name": "Steve R\u00f6der"
+    }
+  ],
+  "443": [
+    {
+      "season": "2025/2026",
+      "rank": 63,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Roman Hihlik"
+    },
+    {
+      "season": "24/25",
+      "rank": 42,
+      "points": 119,
+      "league": "C-Klasse",
+      "name": "Roman Hihlik"
+    },
+    {
+      "season": "23/24",
+      "rank": 109,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Roman Hihlik"
+    }
+  ],
+  "1648": [
+    {
+      "season": "2025/2026",
+      "rank": 64,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Marios Xenitidis"
+    },
+    {
+      "season": "24/25",
+      "rank": 257,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Marios Xenitidis"
+    },
+    {
+      "season": "23/24",
+      "rank": 256,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Marios Xenitidis"
+    },
+    {
+      "season": "22/23",
+      "rank": 141,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "Marios Xenitidis"
+    }
+  ],
+  "178": [
+    {
+      "season": "2025/2026",
+      "rank": 65,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Jana Hesse"
+    },
+    {
+      "season": "24/25",
+      "rank": 138,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Jana Hesse"
+    },
+    {
+      "season": "23/24",
+      "rank": 111,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Jana Hesse"
+    },
+    {
+      "season": "22/23",
+      "rank": 56,
+      "points": 93,
+      "league": "C-Klasse",
+      "name": "Jana Hesse"
+    },
+    {
+      "season": "20/22",
+      "rank": 203,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Jana Hesse"
+    }
+  ],
+  "231": [
+    {
+      "season": "2025/2026",
+      "rank": 66,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Hecht"
+    }
+  ],
+  "757": [
+    {
+      "season": "2025/2026",
+      "rank": 67,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Orhan S\u00f6yleyici"
+    }
+  ],
+  "993": [
+    {
+      "season": "2025/2026",
+      "rank": 68,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Michael Koch"
+    },
+    {
+      "season": "24/25",
+      "rank": 115,
+      "points": 36,
+      "league": "B-Klasse",
+      "name": "Michael Koch"
+    },
+    {
+      "season": "23/24",
+      "rank": 111,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Michael Koch"
+    },
+    {
+      "season": "22/23",
+      "rank": 101,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Michael Koch"
+    },
+    {
+      "season": "20/22",
+      "rank": 175,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Michael Koch"
+    }
+  ],
+  "297": [
+    {
+      "season": "2025/2026",
+      "rank": 69,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Aydin Cagatay"
+    }
+  ],
+  "929": [
+    {
+      "season": "2025/2026",
+      "rank": 70,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Andreas Weber"
+    },
+    {
+      "season": "24/25",
+      "rank": 254,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Andreas Weber"
+    }
+  ],
+  "795": [
+    {
+      "season": "2025/2026",
+      "rank": 71,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Peter Hofer"
+    }
+  ],
+  "1711": [
+    {
+      "season": "2025/2026",
+      "rank": 72,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Gino del Viscio"
+    },
+    {
+      "season": "24/25",
+      "rank": 77,
+      "points": 94,
+      "league": "C-Klasse",
+      "name": "Gino del Viscio"
+    },
+    {
+      "season": "23/24",
+      "rank": 71,
+      "points": 88,
+      "league": "C-Klasse",
+      "name": "Gino del Viscio"
+    },
+    {
+      "season": "22/23",
+      "rank": 197,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Gino del Viscio"
+    }
+  ],
+  "111": [
+    {
+      "season": "2025/2026",
+      "rank": 73,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Nico Stumpp"
+    }
+  ],
+  "1880": [
+    {
+      "season": "2025/2026",
+      "rank": 74,
+      "points": 93,
+      "league": "C-Klasse",
+      "name": "Tino Hartmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 42,
+      "points": 37,
+      "league": "Bezirksliga",
+      "name": "Tino Hartmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 22,
+      "points": 114,
+      "league": "B-Klasse",
+      "name": "Tino Hartmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 97,
+      "points": 45,
+      "league": "B-Klasse",
+      "name": "Tino Hartmann"
+    }
+  ],
+  "965": [
+    {
+      "season": "2025/2026",
+      "rank": 75,
+      "points": 92,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Meissner"
+    },
+    {
+      "season": "24/25",
+      "rank": 192,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Meissner"
+    }
+  ],
+  "1691": [
+    {
+      "season": "2025/2026",
+      "rank": 76,
+      "points": 91,
+      "league": "C-Klasse",
+      "name": "Jennifer Voggenreiter"
+    },
+    {
+      "season": "24/25",
+      "rank": 110,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Jennifer Voggenreiter"
+    },
+    {
+      "season": "23/24",
+      "rank": 139,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Jennifer Voggenreiter"
+    },
+    {
+      "season": "22/23",
+      "rank": 89,
+      "points": 58,
+      "league": "B-Klasse",
+      "name": "Jennifer Voggenreiter"
+    },
+    {
+      "season": "20/22",
+      "rank": 146,
+      "points": 17,
+      "league": "B-Klasse",
+      "name": "Jennifer Voggenreiter"
+    }
+  ],
+  "578": [
+    {
+      "season": "2025/2026",
+      "rank": 77,
+      "points": 91,
+      "league": "C-Klasse",
+      "name": "Marvin Paar"
+    },
+    {
+      "season": "24/25",
+      "rank": 71,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Marvin Paar"
+    },
+    {
+      "season": "23/24",
+      "rank": 88,
+      "points": 60,
+      "league": "B-Klasse",
+      "name": "Marvin Paar"
+    },
+    {
+      "season": "22/23",
+      "rank": 181,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Marvin Paar"
+    }
+  ],
+  "856": [
+    {
+      "season": "2025/2026",
+      "rank": 79,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Oliver Gille"
+    },
+    {
+      "season": "24/25",
+      "rank": 93,
+      "points": 80,
+      "league": "C-Klasse",
+      "name": "Oliver Gille"
+    },
+    {
+      "season": "23/24",
+      "rank": 41,
+      "points": 111,
+      "league": "C-Klasse",
+      "name": "Oliver Gille"
+    },
+    {
+      "season": "22/23",
+      "rank": 31,
+      "points": 117,
+      "league": "C-Klasse",
+      "name": "Oliver Gille"
+    },
+    {
+      "season": "20/22",
+      "rank": 29,
+      "points": 116,
+      "league": "C-Klasse",
+      "name": "Oliver Gille"
+    }
+  ],
+  "759": [
+    {
+      "season": "2025/2026",
+      "rank": 80,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Corinna Diether"
+    },
+    {
+      "season": "24/25",
+      "rank": 204,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Corinna Diether"
+    },
+    {
+      "season": "23/24",
+      "rank": 119,
+      "points": 36,
+      "league": "B-Klasse",
+      "name": "Corinna Diether"
+    },
+    {
+      "season": "22/23",
+      "rank": 130,
+      "points": 27,
+      "league": "B-Klasse",
+      "name": "Corinna Diether"
+    },
+    {
+      "season": "20/22",
+      "rank": 141,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Corinna Diether"
+    }
+  ],
+  "292": [
+    {
+      "season": "2025/2026",
+      "rank": 81,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Timo Cieslak"
+    }
+  ],
+  "1693": [
+    {
+      "season": "2025/2026",
+      "rank": 82,
+      "points": 88,
+      "league": "C-Klasse",
+      "name": "Lorenz Pfrommer"
+    }
+  ],
+  "555": [
+    {
+      "season": "2025/2026",
+      "rank": 83,
+      "points": 88,
+      "league": "C-Klasse",
+      "name": "Patrick Kreb"
+    },
+    {
+      "season": "24/25",
+      "rank": 232,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Patrick Kreb"
+    }
+  ],
+  "520": [
+    {
+      "season": "2025/2026",
+      "rank": 84,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Tina Hauck"
+    },
+    {
+      "season": "24/25",
+      "rank": 97,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Tina Hauck"
+    }
+  ],
+  "1737": [
+    {
+      "season": "2025/2026",
+      "rank": 85,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Ferdinand Bard"
+    },
+    {
+      "season": "24/25",
+      "rank": 112,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Ferdinand Bard"
+    }
+  ],
+  "1062": [
+    {
+      "season": "2025/2026",
+      "rank": 86,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Jacek Koterba"
+    },
+    {
+      "season": "24/25",
+      "rank": 183,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Jacek Koterba"
+    },
+    {
+      "season": "23/24",
+      "rank": 113,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "Jacek Koterba"
+    },
+    {
+      "season": "22/23",
+      "rank": 67,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Jacek Koterba"
+    },
+    {
+      "season": "20/22",
+      "rank": 213,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Jacek Koterba"
+    }
+  ],
+  "1703": [
+    {
+      "season": "2025/2026",
+      "rank": 87,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Leon Schlesinger"
+    },
+    {
+      "season": "24/25",
+      "rank": 40,
+      "points": 121,
+      "league": "C-Klasse",
+      "name": "Leon Schlesinger"
+    },
+    {
+      "season": "23/24",
+      "rank": 127,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Leon Schlesinger"
+    },
+    {
+      "season": "22/23",
+      "rank": 152,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Leon Schlesinger"
+    }
+  ],
+  "717": [
+    {
+      "season": "2025/2026",
+      "rank": 88,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Nazmi Krasniqi"
+    }
+  ],
+  "910": [
+    {
+      "season": "2025/2026",
+      "rank": 89,
+      "points": 85,
+      "league": "C-Klasse",
+      "name": "Andreas Huber"
+    },
+    {
+      "season": "24/25",
+      "rank": 75,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Andreas Huber"
+    },
+    {
+      "season": "23/24",
+      "rank": 96,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Andreas Huber"
+    },
+    {
+      "season": "22/23",
+      "rank": 98,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Andreas Huber"
+    },
+    {
+      "season": "20/22",
+      "rank": 140,
+      "points": 19,
+      "league": "B-Klasse",
+      "name": "Andreas Huber"
+    }
+  ],
+  "1716": [
+    {
+      "season": "2025/2026",
+      "rank": 90,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Heiko Krone"
+    },
+    {
+      "season": "24/25",
+      "rank": 79,
+      "points": 93,
+      "league": "C-Klasse",
+      "name": "Heiko Krone"
+    },
+    {
+      "season": "23/24",
+      "rank": 172,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Heiko Krone"
+    },
+    {
+      "season": "22/23",
+      "rank": 169,
+      "points": 31,
+      "league": "C-Klasse",
+      "name": "Heiko Krone"
+    }
+  ],
+  "877": [
+    {
+      "season": "2025/2026",
+      "rank": 91,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Niklas Roblick"
+    }
+  ],
+  "1760": [
+    {
+      "season": "2025/2026",
+      "rank": 92,
+      "points": 83,
+      "league": "C-Klasse",
+      "name": "Melanie Krone"
+    },
+    {
+      "season": "24/25",
+      "rank": 51,
+      "points": 114,
+      "league": "C-Klasse",
+      "name": "Melanie Krone"
+    },
+    {
+      "season": "23/24",
+      "rank": 155,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Melanie Krone"
+    },
+    {
+      "season": "22/23",
+      "rank": 82,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Melanie Krone"
+    }
+  ],
+  "1403": [
+    {
+      "season": "2025/2026",
+      "rank": 93,
+      "points": 83,
+      "league": "C-Klasse",
+      "name": "Daniel G\u00f6bel"
+    },
+    {
+      "season": "24/25",
+      "rank": 117,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Daniel G\u00f6bel"
+    }
+  ],
+  "1854": [
+    {
+      "season": "2025/2026",
+      "rank": 94,
+      "points": 81,
+      "league": "C-Klasse",
+      "name": "Jessica Busch"
+    },
+    {
+      "season": "24/25",
+      "rank": 103,
+      "points": 73,
+      "league": "C-Klasse",
+      "name": "Jessica Busch"
+    },
+    {
+      "season": "23/24",
+      "rank": 193,
+      "points": 24,
+      "league": "C-Klasse",
+      "name": "Jessica Busch"
+    }
+  ],
+  "908": [
+    {
+      "season": "2025/2026",
+      "rank": 95,
+      "points": 81,
+      "league": "C-Klasse",
+      "name": "Patrycja Schieweck"
+    },
+    {
+      "season": "24/25",
+      "rank": 142,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Patrycja Dumancic"
+    },
+    {
+      "season": "22/23",
+      "rank": 246,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Patrycja Dumancic"
+    }
+  ],
+  "1881": [
+    {
+      "season": "2025/2026",
+      "rank": 97,
+      "points": 81,
+      "league": "C-Klasse",
+      "name": "Patrik Lutz"
+    },
+    {
+      "season": "24/25",
+      "rank": 59,
+      "points": 105,
+      "league": "C-Klasse",
+      "name": "Patrik Lutz"
+    },
+    {
+      "season": "23/24",
+      "rank": 91,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Patrik Lutz"
+    },
+    {
+      "season": "22/23",
+      "rank": 61,
+      "points": 2,
+      "league": "Bezirksliga",
+      "name": "Patrik Lutz"
+    },
+    {
+      "season": "20/22",
+      "rank": 53,
+      "points": 86,
+      "league": "B-Klasse",
+      "name": "Patrik Lutz"
+    }
+  ],
+  "435": [
+    {
+      "season": "2025/2026",
+      "rank": 98,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Andrea Roschko"
+    },
+    {
+      "season": "24/25",
+      "rank": 180,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Andrea Roschko"
+    },
+    {
+      "season": "23/24",
+      "rank": 176,
+      "points": 30,
+      "league": "C-Klasse",
+      "name": "Andrea Roschko"
+    },
+    {
+      "season": "22/23",
+      "rank": 59,
+      "points": 92,
+      "league": "C-Klasse",
+      "name": "Andrea Roschko"
+    },
+    {
+      "season": "20/22",
+      "rank": 78,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Andrea Roschko"
+    }
+  ],
+  "867": [
+    {
+      "season": "2025/2026",
+      "rank": 100,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Oliver Belzner"
+    },
+    {
+      "season": "24/25",
+      "rank": 123,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Oliver Belzner"
+    },
+    {
+      "season": "23/24",
+      "rank": 114,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Oliver Belzner"
+    },
+    {
+      "season": "22/23",
+      "rank": 107,
+      "points": 60,
+      "league": "C-Klasse",
+      "name": "Oliver Belzner"
+    },
+    {
+      "season": "20/22",
+      "rank": 149,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Oliver Belzner"
+    }
+  ],
+  "1034": [
+    {
+      "season": "2025/2026",
+      "rank": 101,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Volker L\u00f6ffler"
+    },
+    {
+      "season": "24/25",
+      "rank": 276,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Volker L\u00f6ffler"
+    },
+    {
+      "season": "23/24",
+      "rank": 115,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Volker L\u00f6ffler"
+    },
+    {
+      "season": "22/23",
+      "rank": 71,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Volker L\u00f6ffler"
+    },
+    {
+      "season": "20/22",
+      "rank": 68,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Volker L\u00f6ffler"
+    }
+  ],
+  "1666": [
+    {
+      "season": "2025/2026",
+      "rank": 102,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Karsten Jouvenal"
+    },
+    {
+      "season": "24/25",
+      "rank": 132,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Karsten Jouvenal"
+    },
+    {
+      "season": "23/24",
+      "rank": 112,
+      "points": 40,
+      "league": "B-Klasse",
+      "name": "Karsten Jouvenal"
+    },
+    {
+      "season": "22/23",
+      "rank": 144,
+      "points": 18,
+      "league": "B-Klasse",
+      "name": "Karsten Jouvenal"
+    },
+    {
+      "season": "20/22",
+      "rank": 124,
+      "points": 8,
+      "league": "A-Klasse",
+      "name": "Karsten Jouvenal"
+    }
+  ],
+  "012": [
+    {
+      "season": "2025/2026",
+      "rank": 103,
+      "points": 76,
+      "league": "C-Klasse",
+      "name": "Thomas Minkus"
+    },
+    {
+      "season": "24/25",
+      "rank": 216,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Thomas Minkus"
+    },
+    {
+      "season": "23/24",
+      "rank": 77,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Thomas Minkus"
+    }
+  ],
+  "651": [
+    {
+      "season": "2025/2026",
+      "rank": 104,
+      "points": 76,
+      "league": "C-Klasse",
+      "name": "Dirk Horst Schabert"
+    },
+    {
+      "season": "24/25",
+      "rank": 85,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Dirk Horst Schabert"
+    }
+  ],
+  "513": [
+    {
+      "season": "2025/2026",
+      "rank": 105,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Matthias Gebert"
+    }
+  ],
+  "1420": [
+    {
+      "season": "2025/2026",
+      "rank": 106,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Andrea Rupp"
+    },
+    {
+      "season": "24/25",
+      "rank": 287,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Andrea Rupp"
+    },
+    {
+      "season": "23/24",
+      "rank": 241,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Andrea Rupp"
+    }
+  ],
+  "1731": [
+    {
+      "season": "2025/2026",
+      "rank": 107,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Kerstin Brack"
+    }
+  ],
+  "1833": [
+    {
+      "season": "2025/2026",
+      "rank": 108,
+      "points": 73,
+      "league": "C-Klasse",
+      "name": "Sven Schibrowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 167,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Sven Schibrowski"
+    },
+    {
+      "season": "23/24",
+      "rank": 75,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Sven Schibrowski"
+    },
+    {
+      "season": "22/23",
+      "rank": 73,
+      "points": 80,
+      "league": "C-Klasse",
+      "name": "Sven Schibrowski"
+    }
+  ],
+  "354": [
+    {
+      "season": "2025/2026",
+      "rank": 109,
+      "points": 73,
+      "league": "C-Klasse",
+      "name": "Pilleriin Grillo"
+    },
+    {
+      "season": "23/24",
+      "rank": 292,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Pilleriin Grillo"
+    }
+  ],
+  "1749": [
+    {
+      "season": "2025/2026",
+      "rank": 110,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Madeleine Kohler"
+    },
+    {
+      "season": "24/25",
+      "rank": 116,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Madeleine Kohler"
+    },
+    {
+      "season": "23/24",
+      "rank": 146,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Madeleine Kohler"
+    }
+  ],
+  "1552": [
+    {
+      "season": "2025/2026",
+      "rank": 111,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Cornelia Sch\u00fc\u00dfler"
+    },
+    {
+      "season": "24/25",
+      "rank": 146,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Cornelia Sch\u00fc\u00dfler"
+    },
+    {
+      "season": "23/24",
+      "rank": 245,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Cornelia Sch\u00fc\u00dfler"
+    }
+  ],
+  "366": [
+    {
+      "season": "2025/2026",
+      "rank": 112,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Sarah K\u00f6nig"
+    }
+  ],
+  "887": [
+    {
+      "season": "2025/2026",
+      "rank": 113,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Christian Weber"
+    }
+  ],
+  "1066": [
+    {
+      "season": "2025/2026",
+      "rank": 114,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Sascha Ruf"
+    },
+    {
+      "season": "24/25",
+      "rank": 30,
+      "points": 127,
+      "league": "C-Klasse",
+      "name": "Sascha Ruf"
+    },
+    {
+      "season": "20/22",
+      "rank": 202,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Sascha Ruf"
+    }
+  ],
+  "490": [
+    {
+      "season": "2025/2026",
+      "rank": 115,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Michael Horntrich"
+    },
+    {
+      "season": "24/25",
+      "rank": 199,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Michael Horntrich"
+    },
+    {
+      "season": "23/24",
+      "rank": 131,
+      "points": 52,
+      "league": "C-Klasse",
+      "name": "Michael Horntrich"
+    },
+    {
+      "season": "22/23",
+      "rank": 170,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Michael Horntrich"
+    },
+    {
+      "season": "20/22",
+      "rank": 80,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Michael Horntrich"
+    }
+  ],
+  "828": [
+    {
+      "season": "2025/2026",
+      "rank": 116,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Melanie Keuerleber"
+    },
+    {
+      "season": "24/25",
+      "rank": 91,
+      "points": 82,
+      "league": "C-Klasse",
+      "name": "Melanie Keuerleber"
+    },
+    {
+      "season": "23/24",
+      "rank": 89,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Melanie Keuerleber"
+    },
+    {
+      "season": "22/23",
+      "rank": 90,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Melanie Keuerleber"
+    },
+    {
+      "season": "20/22",
+      "rank": 126,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Melanie Keuerleber"
+    }
+  ],
+  "276": [
+    {
+      "season": "2025/2026",
+      "rank": 117,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Thomas Bauer"
+    },
+    {
+      "season": "24/25",
+      "rank": 66,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Thomas Bauer"
+    },
+    {
+      "season": "23/24",
+      "rank": 61,
+      "points": 84,
+      "league": "B-Klasse",
+      "name": "Thomas Bauer"
+    },
+    {
+      "season": "22/23",
+      "rank": 60,
+      "points": 79,
+      "league": "B-Klasse",
+      "name": "Thomas Bauer"
+    },
+    {
+      "season": "20/22",
+      "rank": 30,
+      "points": 109,
+      "league": "B-Klasse",
+      "name": "Thomas Bauer"
+    }
+  ],
+  "436": [
+    {
+      "season": "2025/2026",
+      "rank": 118,
+      "points": 70,
+      "league": "C-Klasse",
+      "name": "Andrea Risken"
+    }
+  ],
+  "431": [
+    {
+      "season": "2025/2026",
+      "rank": 119,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Olaf Risken"
+    }
+  ],
+  "1263": [
+    {
+      "season": "2025/2026",
+      "rank": 120,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Peter Wunderle"
+    },
+    {
+      "season": "24/25",
+      "rank": 33,
+      "points": 125,
+      "league": "C-Klasse",
+      "name": "Peter Wunderle"
+    },
+    {
+      "season": "23/24",
+      "rank": 63,
+      "points": 95,
+      "league": "C-Klasse",
+      "name": "Peter Wunderle"
+    },
+    {
+      "season": "22/23",
+      "rank": 69,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Peter Wunderle"
+    },
+    {
+      "season": "20/22",
+      "rank": 82,
+      "points": 60,
+      "league": "B-Klasse",
+      "name": "Peter Wunderle"
+    }
+  ],
+  "841": [
+    {
+      "season": "2025/2026",
+      "rank": 121,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Mihael Trgovec"
+    }
+  ],
+  "1620": [
+    {
+      "season": "2025/2026",
+      "rank": 123,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Savvas Xenitidis"
+    },
+    {
+      "season": "24/25",
+      "rank": 191,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Savvas Xenitidis"
+    },
+    {
+      "season": "23/24",
+      "rank": 187,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Savvas Xenitidis"
+    },
+    {
+      "season": "22/23",
+      "rank": 209,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Savvas Xenitidis"
+    },
+    {
+      "season": "20/22",
+      "rank": 254,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Savvas Xenitidis"
+    }
+  ],
+  "1677": [
+    {
+      "season": "2025/2026",
+      "rank": 124,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Sascha R\u00fchle"
+    },
+    {
+      "season": "24/25",
+      "rank": 139,
+      "points": 20,
+      "league": "B-Klasse",
+      "name": "Sascha R\u00fchle"
+    },
+    {
+      "season": "23/24",
+      "rank": 37,
+      "points": 105,
+      "league": "B-Klasse",
+      "name": "Sascha R\u00fchle"
+    },
+    {
+      "season": "22/23",
+      "rank": 143,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Sascha R\u00fchle"
+    },
+    {
+      "season": "20/22",
+      "rank": 45,
+      "points": 100,
+      "league": "C-Klasse",
+      "name": "Sascha R\u00fchle"
+    }
+  ],
+  "558": [
+    {
+      "season": "2025/2026",
+      "rank": 125,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Frank Spath"
+    },
+    {
+      "season": "24/25",
+      "rank": 185,
+      "points": 39,
+      "league": "C-Klasse",
+      "name": "Frank Spath"
+    },
+    {
+      "season": "23/24",
+      "rank": 188,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Frank Spath"
+    },
+    {
+      "season": "22/23",
+      "rank": 154,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Frank Spath"
+    },
+    {
+      "season": "20/22",
+      "rank": 143,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Frank Spath"
+    }
+  ],
+  "1791": [
+    {
+      "season": "2025/2026",
+      "rank": 126,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Bojan Sabo"
+    },
+    {
+      "season": "24/25",
+      "rank": 87,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Bojan Sabo"
+    },
+    {
+      "season": "23/24",
+      "rank": 209,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Bojan Sabo"
+    },
+    {
+      "season": "22/23",
+      "rank": 97,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Bojan Sabo"
+    }
+  ],
+  "1458": [
+    {
+      "season": "2025/2026",
+      "rank": 127,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Wolfgang Endlich"
+    },
+    {
+      "season": "24/25",
+      "rank": 99,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Wolfgang Endlich"
+    },
+    {
+      "season": "23/24",
+      "rank": 132,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Wolfgang Endlich"
+    },
+    {
+      "season": "22/23",
+      "rank": 42,
+      "points": 108,
+      "league": "C-Klasse",
+      "name": "Wolfgang Endlich"
+    },
+    {
+      "season": "20/22",
+      "rank": 224,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Wolfgang Endlich"
+    }
+  ],
+  "576": [
+    {
+      "season": "2025/2026",
+      "rank": 128,
+      "points": 66,
+      "league": "C-Klasse",
+      "name": "Marina Spiranec"
+    }
+  ],
+  "1497": [
+    {
+      "season": "2025/2026",
+      "rank": 129,
+      "points": 66,
+      "league": "C-Klasse",
+      "name": "Benjamin Klapper"
+    },
+    {
+      "season": "24/25",
+      "rank": 114,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Benjamin Klapper"
+    },
+    {
+      "season": "22/23",
+      "rank": 130,
+      "points": 3,
+      "league": "A-Klasse",
+      "name": "Benjamin Klapper"
+    },
+    {
+      "season": "20/22",
+      "rank": 125,
+      "points": 8,
+      "league": "A-Klasse",
+      "name": "Benjamin Klapper"
+    }
+  ],
+  "636": [
+    {
+      "season": "2025/2026",
+      "rank": 130,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Stephanie Schweigert-F\u00e4rber"
+    },
+    {
+      "season": "24/25",
+      "rank": 131,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Stephanie Schweigert-F\u00e4rber"
+    },
+    {
+      "season": "22/23",
+      "rank": 149,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Stephanie Schweigert-F\u00e4rber"
+    },
+    {
+      "season": "20/22",
+      "rank": 95,
+      "points": 46,
+      "league": "B-Klasse",
+      "name": "Stephanie Schweigert-F\u00e4rber"
+    }
+  ],
+  "528": [
+    {
+      "season": "2025/2026",
+      "rank": 131,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Patricia Leibhan"
+    }
+  ],
+  "1516": [
+    {
+      "season": "2025/2026",
+      "rank": 132,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Wolfgang Haag"
+    },
+    {
+      "season": "24/25",
+      "rank": 84,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Wolfgang Haag"
+    },
+    {
+      "season": "23/24",
+      "rank": 74,
+      "points": 86,
+      "league": "C-Klasse",
+      "name": "Wolfgang Haag"
+    },
+    {
+      "season": "22/23",
+      "rank": 53,
+      "points": 97,
+      "league": "C-Klasse",
+      "name": "Wolfgang Haag"
+    },
+    {
+      "season": "20/22",
+      "rank": 71,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Wolfgang Haag"
+    }
+  ],
+  "814": [
+    {
+      "season": "2025/2026",
+      "rank": 133,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Tim Legler"
+    }
+  ],
+  "1729": [
+    {
+      "season": "2025/2026",
+      "rank": 134,
+      "points": 64,
+      "league": "C-Klasse",
+      "name": "Eric Theil"
+    },
+    {
+      "season": "24/25",
+      "rank": 160,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Eric Theil"
+    }
+  ],
+  "550": [
+    {
+      "season": "2025/2026",
+      "rank": 136,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Martin Bochmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 114,
+      "points": 38,
+      "league": "B-Klasse",
+      "name": "Martin Bochmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 113,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Martin Bochmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 131,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Martin Bochmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 198,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Martin Bochmann"
+    }
+  ],
+  "517": [
+    {
+      "season": "2025/2026",
+      "rank": 137,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Justin Ballhausen"
+    }
+  ],
+  "261": [
+    {
+      "season": "2025/2026",
+      "rank": 138,
+      "points": 63,
+      "league": "C-Klasse",
+      "name": "Manfred Wittlinger"
+    },
+    {
+      "season": "20/22",
+      "rank": 233,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Manfred Wittlinger"
+    }
+  ],
+  "240": [
+    {
+      "season": "2025/2026",
+      "rank": 140,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Gianni Misuraca"
+    }
+  ],
+  "323": [
+    {
+      "season": "2025/2026",
+      "rank": 141,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Ivo Mihov"
+    },
+    {
+      "season": "24/25",
+      "rank": 17,
+      "points": 150,
+      "league": "C-Klasse",
+      "name": "Ivo Mihov"
+    }
+  ],
+  "1886": [
+    {
+      "season": "2025/2026",
+      "rank": 142,
+      "points": 61,
+      "league": "C-Klasse",
+      "name": "Ralph Roth"
+    },
+    {
+      "season": "24/25",
+      "rank": 83,
+      "points": 91,
+      "league": "C-Klasse",
+      "name": "Ralph Roth"
+    },
+    {
+      "season": "23/24",
+      "rank": 158,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Ralph Roth"
+    }
+  ],
+  "907": [
+    {
+      "season": "2025/2026",
+      "rank": 143,
+      "points": 60,
+      "league": "C-Klasse",
+      "name": "Klaus Wunderle"
+    },
+    {
+      "season": "24/25",
+      "rank": 76,
+      "points": 94,
+      "league": "C-Klasse",
+      "name": "Klaus Wunderle"
+    },
+    {
+      "season": "23/24",
+      "rank": 141,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Klaus Wunderle"
+    },
+    {
+      "season": "22/23",
+      "rank": 112,
+      "points": 59,
+      "league": "C-Klasse",
+      "name": "Klaus Wunderle"
+    },
+    {
+      "season": "20/22",
+      "rank": 107,
+      "points": 37,
+      "league": "B-Klasse",
+      "name": "Klaus Wunderle"
+    }
+  ],
+  "1621": [
+    {
+      "season": "2025/2026",
+      "rank": 144,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Lukas Schaier"
+    }
+  ],
+  "535": [
+    {
+      "season": "2025/2026",
+      "rank": 145,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Jonas Dressler"
+    }
+  ],
+  "1467": [
+    {
+      "season": "2025/2026",
+      "rank": 146,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Ute Trapp"
+    }
+  ],
+  "618": [
+    {
+      "season": "2025/2026",
+      "rank": 147,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Dorothee Prechtl"
+    },
+    {
+      "season": "24/25",
+      "rank": 198,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Dorothee Prechtl"
+    }
+  ],
+  "716": [
+    {
+      "season": "2025/2026",
+      "rank": 148,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Florin Basca"
+    }
+  ],
+  "367": [
+    {
+      "season": "2025/2026",
+      "rank": 150,
+      "points": 55,
+      "league": "C-Klasse",
+      "name": "Christian Sigrist"
+    }
+  ],
+  "176": [
+    {
+      "season": "2025/2026",
+      "rank": 151,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Marcel Molitor"
+    },
+    {
+      "season": "24/25",
+      "rank": 235,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Marcel Molitor"
+    },
+    {
+      "season": "23/24",
+      "rank": 105,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Marcel Molitor"
+    },
+    {
+      "season": "22/23",
+      "rank": 126,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Marcel Molitor"
+    }
+  ],
+  "575": [
+    {
+      "season": "2025/2026",
+      "rank": 152,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Marcell Grohmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 211,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Marcell Grohmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 196,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Marcell Grohmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 180,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Marcell Grohmann"
+    }
+  ],
+  "1609": [
+    {
+      "season": "2025/2026",
+      "rank": 153,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Kateryna Masalska"
+    }
+  ],
+  "1441": [
+    {
+      "season": "2025/2026",
+      "rank": 155,
+      "points": 53,
+      "league": "C-Klasse",
+      "name": "Jan Hafner"
+    },
+    {
+      "season": "24/25",
+      "rank": 184,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Jan Hafner"
+    }
+  ],
+  "1632": [
+    {
+      "season": "2025/2026",
+      "rank": 156,
+      "points": 53,
+      "league": "C-Klasse",
+      "name": "Florian Funk"
+    },
+    {
+      "season": "20/22",
+      "rank": 182,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Florian Funk"
+    }
+  ],
+  "708": [
+    {
+      "season": "2025/2026",
+      "rank": 157,
+      "points": 52,
+      "league": "C-Klasse",
+      "name": "Johanna Nestele"
+    },
+    {
+      "season": "24/25",
+      "rank": 170,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Johanna Nestele"
+    },
+    {
+      "season": "23/24",
+      "rank": 175,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "Johanna Nestele"
+    },
+    {
+      "season": "22/23",
+      "rank": 151,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Johanna Nestele"
+    },
+    {
+      "season": "20/22",
+      "rank": 119,
+      "points": 30,
+      "league": "B-Klasse",
+      "name": "Johanna Nestele"
+    }
+  ],
+  "1573": [
+    {
+      "season": "2025/2026",
+      "rank": 158,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Judith Ludwig"
+    },
+    {
+      "season": "24/25",
+      "rank": 111,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Judith Ludwig"
+    },
+    {
+      "season": "22/23",
+      "rank": 192,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Judith Ludwig"
+    },
+    {
+      "season": "20/22",
+      "rank": 131,
+      "points": 7,
+      "league": "A-Klasse",
+      "name": "Judith Ludwig"
+    }
+  ],
+  "1694": [
+    {
+      "season": "2025/2026",
+      "rank": 159,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Monika Czifra"
+    },
+    {
+      "season": "24/25",
+      "rank": 120,
+      "points": 62,
+      "league": "C-Klasse",
+      "name": "Monika Czifra"
+    },
+    {
+      "season": "23/24",
+      "rank": 130,
+      "points": 52,
+      "league": "C-Klasse",
+      "name": "Monika Czifra"
+    },
+    {
+      "season": "22/23",
+      "rank": 64,
+      "points": 1,
+      "league": "Bezirksliga",
+      "name": "Monika Czifra"
+    },
+    {
+      "season": "20/22",
+      "rank": 97,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Monika Czifra"
+    }
+  ],
+  "333": [
+    {
+      "season": "2025/2026",
+      "rank": 160,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Heiko Faber"
+    }
+  ],
+  "320": [
+    {
+      "season": "2025/2026",
+      "rank": 161,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Daniel Hoffmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 172,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Daniel Hoffmann"
+    }
+  ],
+  "359": [
+    {
+      "season": "2025/2026",
+      "rank": 162,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Robert Nowak"
+    },
+    {
+      "season": "24/25",
+      "rank": 153,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Robert Nowak"
+    },
+    {
+      "season": "23/24",
+      "rank": 165,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Robert Nowak"
+    }
+  ],
+  "294": [
+    {
+      "season": "2025/2026",
+      "rank": 163,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Rudolf Brugger"
+    }
+  ],
+  "1724": [
+    {
+      "season": "2025/2026",
+      "rank": 164,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Gerhard Stuber"
+    },
+    {
+      "season": "24/25",
+      "rank": 258,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Gerhard Stuber"
+    }
+  ],
+  "615": [
+    {
+      "season": "2025/2026",
+      "rank": 166,
+      "points": 49,
+      "league": "C-Klasse",
+      "name": "Giann Luca Pluchino"
+    },
+    {
+      "season": "24/25",
+      "rank": 101,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Giann Luca Pluchino"
+    }
+  ],
+  "700": [
+    {
+      "season": "2025/2026",
+      "rank": 167,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Daniela Kotsias"
+    },
+    {
+      "season": "24/25",
+      "rank": 197,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Daniela Kotsias"
+    },
+    {
+      "season": "23/24",
+      "rank": 120,
+      "points": 57,
+      "league": "C-Klasse",
+      "name": "Daniela Kotsias"
+    },
+    {
+      "season": "22/23",
+      "rank": 192,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Daniela Kotsias"
+    },
+    {
+      "season": "20/22",
+      "rank": 145,
+      "points": 31,
+      "league": "C-Klasse",
+      "name": "Daniela Kotsias"
+    }
+  ],
+  "1660": [
+    {
+      "season": "2025/2026",
+      "rank": 169,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Florian Matz"
+    },
+    {
+      "season": "24/25",
+      "rank": 109,
+      "points": 70,
+      "league": "C-Klasse",
+      "name": "Florian Matz"
+    },
+    {
+      "season": "23/24",
+      "rank": 58,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Florian Matz"
+    },
+    {
+      "season": "22/23",
+      "rank": 152,
+      "points": 15,
+      "league": "B-Klasse",
+      "name": "Florian Matz"
+    },
+    {
+      "season": "20/22",
+      "rank": 173,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Florian Matz"
+    }
+  ],
+  "1391": [
+    {
+      "season": "2025/2026",
+      "rank": 170,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Mareike Zahnlecker"
+    },
+    {
+      "season": "24/25",
+      "rank": 152,
+      "points": 51,
+      "league": "C-Klasse",
+      "name": "Mareike Zahnlecker"
+    },
+    {
+      "season": "23/24",
+      "rank": 230,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Mareike Zahnlecker"
+    },
+    {
+      "season": "22/23",
+      "rank": 211,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Mareike Zahnlecker"
+    },
+    {
+      "season": "20/22",
+      "rank": 109,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "Mareike Zahnlecker"
+    }
+  ],
+  "994": [
+    {
+      "season": "2025/2026",
+      "rank": 171,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Christina Koch"
+    },
+    {
+      "season": "22/23",
+      "rank": 179,
+      "points": 3,
+      "league": "B-Klasse",
+      "name": "Christina Koch"
+    },
+    {
+      "season": "20/22",
+      "rank": 155,
+      "points": 24,
+      "league": "C-Klasse",
+      "name": "Christina Koch"
+    }
+  ],
+  "1187": [
+    {
+      "season": "2025/2026",
+      "rank": 172,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Jennifer Nie\u00df"
+    }
+  ],
+  "629": [
+    {
+      "season": "2025/2026",
+      "rank": 173,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Felix Bock"
+    },
+    {
+      "season": "24/25",
+      "rank": 246,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Felix Bock"
+    }
+  ],
+  "1702": [
+    {
+      "season": "2025/2026",
+      "rank": 174,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Benjamin Glocker"
+    },
+    {
+      "season": "24/25",
+      "rank": 269,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Benjamin Glocker"
+    },
+    {
+      "season": "23/24",
+      "rank": 195,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Benjamin Glocker"
+    },
+    {
+      "season": "22/23",
+      "rank": 161,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Benjamin Glocker"
+    }
+  ],
+  "1522": [
+    {
+      "season": "2025/2026",
+      "rank": 175,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Adrian G\u00fcnthner"
+    }
+  ],
+  "275": [
+    {
+      "season": "2025/2026",
+      "rank": 176,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Martin Benzinger"
+    },
+    {
+      "season": "24/25",
+      "rank": 224,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Martin Benzinger"
+    },
+    {
+      "season": "23/24",
+      "rank": 94,
+      "points": 55,
+      "league": "B-Klasse",
+      "name": "Martin Benzinger"
+    },
+    {
+      "season": "22/23",
+      "rank": 56,
+      "points": 82,
+      "league": "B-Klasse",
+      "name": "Martin Benzinger"
+    },
+    {
+      "season": "20/22",
+      "rank": 60,
+      "points": 80,
+      "league": "B-Klasse",
+      "name": "Martin Benzinger"
+    }
+  ],
+  "1509": [
+    {
+      "season": "2025/2026",
+      "rank": 177,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Max Christian Krone"
+    }
+  ],
+  "217": [
+    {
+      "season": "2025/2026",
+      "rank": 179,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Marc Gr\u00fcnwaldt"
+    }
+  ],
+  "710": [
+    {
+      "season": "2025/2026",
+      "rank": 180,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Dajana Au\u00dfersdorfer"
+    }
+  ],
+  "606": [
+    {
+      "season": "2025/2026",
+      "rank": 181,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Michael Sch\u00e4fer"
+    }
+  ],
+  "741": [
+    {
+      "season": "2025/2026",
+      "rank": 182,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Daniel Weiss"
+    },
+    {
+      "season": "24/25",
+      "rank": 133,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "Daniel Weiss"
+    }
+  ],
+  "1797": [
+    {
+      "season": "2025/2026",
+      "rank": 183,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Markus Greger"
+    },
+    {
+      "season": "24/25",
+      "rank": 193,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Markus Greger"
+    },
+    {
+      "season": "23/24",
+      "rank": 198,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Markus Greger"
+    },
+    {
+      "season": "22/23",
+      "rank": 76,
+      "points": 77,
+      "league": "C-Klasse",
+      "name": "Markus Greger"
+    }
+  ],
+  "747": [
+    {
+      "season": "2025/2026",
+      "rank": 184,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Gorenflo"
+    },
+    {
+      "season": "24/25",
+      "rank": 130,
+      "points": 58,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Gorenflo"
+    },
+    {
+      "season": "23/24",
+      "rank": 126,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Gorenflo"
+    },
+    {
+      "season": "22/23",
+      "rank": 130,
+      "points": 48,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Gorenflo"
+    },
+    {
+      "season": "20/22",
+      "rank": 100,
+      "points": 53,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Gorenflo"
+    }
+  ],
+  "1264": [
+    {
+      "season": "2025/2026",
+      "rank": 186,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Stephan"
+    }
+  ],
+  "199": [
+    {
+      "season": "2025/2026",
+      "rank": 187,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Heiko Sand"
+    },
+    {
+      "season": "24/25",
+      "rank": 207,
+      "points": 30,
+      "league": "C-Klasse",
+      "name": "Heiko Sand"
+    },
+    {
+      "season": "23/24",
+      "rank": 237,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Heiko Sand"
+    },
+    {
+      "season": "22/23",
+      "rank": 172,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Heiko Sand"
+    },
+    {
+      "season": "20/22",
+      "rank": 140,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Heiko Sand"
+    }
+  ],
+  "843": [
+    {
+      "season": "2025/2026",
+      "rank": 188,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Ronny Wilken"
+    },
+    {
+      "season": "24/25",
+      "rank": 139,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Ronny Wilken"
+    },
+    {
+      "season": "23/24",
+      "rank": 144,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Ronny Wilken"
+    },
+    {
+      "season": "22/23",
+      "rank": 65,
+      "points": 89,
+      "league": "C-Klasse",
+      "name": "Ronny Wilken"
+    },
+    {
+      "season": "20/22",
+      "rank": 126,
+      "points": 39,
+      "league": "C-Klasse",
+      "name": "Ronny Wilken"
+    }
+  ],
+  "562": [
+    {
+      "season": "2025/2026",
+      "rank": 189,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Florian Schubert"
+    }
+  ],
+  "737": [
+    {
+      "season": "2025/2026",
+      "rank": 190,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Dragutin Trgovec"
+    }
+  ],
+  "720": [
+    {
+      "season": "2025/2026",
+      "rank": 191,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Zeljko Radulovic"
+    }
+  ],
+  "472": [
+    {
+      "season": "2025/2026",
+      "rank": 192,
+      "points": 39,
+      "league": "C-Klasse",
+      "name": "Vivian Schneege"
+    },
+    {
+      "season": "24/25",
+      "rank": 218,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Vivian Schneege"
+    }
+  ],
+  "846": [
+    {
+      "season": "2025/2026",
+      "rank": 193,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Marvin Fink"
+    },
+    {
+      "season": "24/25",
+      "rank": 220,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Marvin Fink"
+    }
+  ],
+  "922": [
+    {
+      "season": "2025/2026",
+      "rank": 194,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Christopher Zipperle"
+    },
+    {
+      "season": "24/25",
+      "rank": 236,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Christopher Zipperle"
+    },
+    {
+      "season": "23/24",
+      "rank": 100,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Christopher Zipperle"
+    },
+    {
+      "season": "22/23",
+      "rank": 146,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Christopher Zipperle"
+    },
+    {
+      "season": "20/22",
+      "rank": 77,
+      "points": 63,
+      "league": "B-Klasse",
+      "name": "Christopher Zipperle"
+    }
+  ],
+  "518": [
+    {
+      "season": "2025/2026",
+      "rank": 195,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Melanie Horntrich"
+    },
+    {
+      "season": "24/25",
+      "rank": 151,
+      "points": 52,
+      "league": "C-Klasse",
+      "name": "Melanie Horntrich"
+    },
+    {
+      "season": "23/24",
+      "rank": 204,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Melanie Horntrich"
+    },
+    {
+      "season": "22/23",
+      "rank": 150,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Melanie Horntrich"
+    },
+    {
+      "season": "20/22",
+      "rank": 95,
+      "points": 55,
+      "league": "C-Klasse",
+      "name": "Melanie Horntrich"
+    }
+  ],
+  "1813": [
+    {
+      "season": "2025/2026",
+      "rank": 196,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Kelly Grisafi"
+    }
+  ],
+  "414": [
+    {
+      "season": "2025/2026",
+      "rank": 197,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Thomas B\u00f6sch"
+    }
+  ],
+  "254": [
+    {
+      "season": "2025/2026",
+      "rank": 198,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Philipp Straach"
+    }
+  ],
+  "398": [
+    {
+      "season": "2025/2026",
+      "rank": 199,
+      "points": 36,
+      "league": "C-Klasse",
+      "name": "Patrick Ehlert"
+    }
+  ],
+  "1562": [
+    {
+      "season": "2025/2026",
+      "rank": 200,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Sven Berweck"
+    }
+  ],
+  "222": [
+    {
+      "season": "2025/2026",
+      "rank": 201,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Frank Etter"
+    },
+    {
+      "season": "24/25",
+      "rank": 164,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Frank Etter"
+    },
+    {
+      "season": "23/24",
+      "rank": 263,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Frank Etter"
+    },
+    {
+      "season": "22/23",
+      "rank": 222,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Frank Etter"
+    },
+    {
+      "season": "20/22",
+      "rank": 170,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Frank Etter"
+    }
+  ],
+  "809": [
+    {
+      "season": "2025/2026",
+      "rank": 202,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Pascal Genthner"
+    },
+    {
+      "season": "24/25",
+      "rank": 239,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Pascal Genthner"
+    },
+    {
+      "season": "23/24",
+      "rank": 123,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Pascal Genthner"
+    },
+    {
+      "season": "22/23",
+      "rank": 84,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Pascal Genthner"
+    },
+    {
+      "season": "20/22",
+      "rank": 41,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Pascal Genthner"
+    }
+  ],
+  "585": [
+    {
+      "season": "2025/2026",
+      "rank": 203,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Nico Schick"
+    }
+  ],
+  "620": [
+    {
+      "season": "2025/2026",
+      "rank": 204,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Fabian Vogel"
+    }
+  ],
+  "1517": [
+    {
+      "season": "2025/2026",
+      "rank": 205,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Sonja Schulz"
+    }
+  ],
+  "262": [
+    {
+      "season": "2025/2026",
+      "rank": 206,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Pascal Schmauderer"
+    },
+    {
+      "season": "24/25",
+      "rank": 100,
+      "points": 47,
+      "league": "B-Klasse",
+      "name": "Pascal Schmauderer"
+    },
+    {
+      "season": "23/24",
+      "rank": 185,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Pascal Schmauderer"
+    }
+  ],
+  "1195": [
+    {
+      "season": "2025/2026",
+      "rank": 207,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Anatole Musaraganyi"
+    },
+    {
+      "season": "24/25",
+      "rank": 107,
+      "points": 71,
+      "league": "C-Klasse",
+      "name": "Anatole Musaraganyi"
+    },
+    {
+      "season": "23/24",
+      "rank": 99,
+      "points": 72,
+      "league": "C-Klasse",
+      "name": "Anatole Musaraganyi"
+    },
+    {
+      "season": "22/23",
+      "rank": 91,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Anatole Musaraganyi"
+    },
+    {
+      "season": "20/22",
+      "rank": 67,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Anatole Musaraganyi"
+    }
+  ],
+  "1728": [
+    {
+      "season": "2025/2026",
+      "rank": 208,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Philipp G\u00fcnthner"
+    }
+  ],
+  "1754": [
+    {
+      "season": "2025/2026",
+      "rank": 209,
+      "points": 30,
+      "league": "C-Klasse",
+      "name": "Sabine Schuhmacher"
+    },
+    {
+      "season": "24/25",
+      "rank": 69,
+      "points": 96,
+      "league": "C-Klasse",
+      "name": "Sabine Schuhmacher"
+    },
+    {
+      "season": "23/24",
+      "rank": 110,
+      "points": 41,
+      "league": "B-Klasse",
+      "name": "Sabine Schuhmacher"
+    },
+    {
+      "season": "22/23",
+      "rank": 50,
+      "points": 99,
+      "league": "C-Klasse",
+      "name": "Sabine Schuhmacher"
+    },
+    {
+      "season": "20/22",
+      "rank": 62,
+      "points": 84,
+      "league": "C-Klasse",
+      "name": "Sabine Schuhmacher"
+    }
+  ],
+  "1425": [
+    {
+      "season": "2025/2026",
+      "rank": 210,
+      "points": 30,
+      "league": "C-Klasse",
+      "name": "Silvio Karliczek"
+    },
+    {
+      "season": "24/25",
+      "rank": 214,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Silvio Karliczek"
+    },
+    {
+      "season": "23/24",
+      "rank": 150,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Silvio Karliczek"
+    },
+    {
+      "season": "22/23",
+      "rank": 225,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Silvio Karliczek"
+    },
+    {
+      "season": "20/22",
+      "rank": 158,
+      "points": 24,
+      "league": "C-Klasse",
+      "name": "Silvio Karliczek"
+    }
+  ],
+  "1604": [
+    {
+      "season": "2025/2026",
+      "rank": 211,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Daniela Lavalle"
+    }
+  ],
+  "1878": [
+    {
+      "season": "2025/2026",
+      "rank": 212,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Alexandros Xenitidis"
+    },
+    {
+      "season": "24/25",
+      "rank": 325,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Alexandros Xenitidis"
+    },
+    {
+      "season": "23/24",
+      "rank": 180,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Alexandros Xenitidis"
+    },
+    {
+      "season": "22/23",
+      "rank": 216,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Alexandros Xenitidis"
+    }
+  ],
+  "764": [
+    {
+      "season": "2025/2026",
+      "rank": 213,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Daniel Jurak"
+    }
+  ],
+  "1646": [
+    {
+      "season": "2025/2026",
+      "rank": 214,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Axel Dauner"
+    },
+    {
+      "season": "24/25",
+      "rank": 268,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Axel Dauner"
+    },
+    {
+      "season": "23/24",
+      "rank": 154,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Axel Dauner"
+    },
+    {
+      "season": "22/23",
+      "rank": 234,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Axel Dauner"
+    },
+    {
+      "season": "20/22",
+      "rank": 263,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Axel Dauner"
+    }
+  ],
+  "797": [
+    {
+      "season": "2025/2026",
+      "rank": 215,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Petra Brugger"
+    }
+  ],
+  "227": [
+    {
+      "season": "2025/2026",
+      "rank": 216,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen W\u00f6lfl"
+    }
+  ],
+  "1533": [
+    {
+      "season": "2025/2026",
+      "rank": 217,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Natalia Scott Galletly"
+    },
+    {
+      "season": "24/25",
+      "rank": 324,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Natalia Scott Galletly"
+    },
+    {
+      "season": "23/24",
+      "rank": 278,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Natalia Scott Galletly"
+    },
+    {
+      "season": "22/23",
+      "rank": 137,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Natalia Scott Galletly"
+    },
+    {
+      "season": "20/22",
+      "rank": 264,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Natalia Scott Galletly"
+    }
+  ],
+  "1811": [
+    {
+      "season": "2025/2026",
+      "rank": 218,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Monika Wunderle"
+    },
+    {
+      "season": "24/25",
+      "rank": 286,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Monika Wunderle"
+    },
+    {
+      "season": "23/24",
+      "rank": 294,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Monika Wunderle"
+    }
+  ],
+  "340": [
+    {
+      "season": "2025/2026",
+      "rank": 219,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Georg Wilhelm"
+    }
+  ],
+  "453": [
+    {
+      "season": "2025/2026",
+      "rank": 220,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Maximilian Wahrheit"
+    }
+  ],
+  "657": [
+    {
+      "season": "2025/2026",
+      "rank": 221,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Silvia Parupka"
+    },
+    {
+      "season": "24/25",
+      "rank": 252,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Silvia Parupka"
+    },
+    {
+      "season": "20/22",
+      "rank": 134,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Silvia Parupka"
+    }
+  ],
+  "1160": [
+    {
+      "season": "2025/2026",
+      "rank": 222,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Ralf Naujoks"
+    },
+    {
+      "season": "24/25",
+      "rank": 282,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Ralf Naujoks"
+    }
+  ],
+  "785": [
+    {
+      "season": "2025/2026",
+      "rank": 223,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Elke Bremer"
+    },
+    {
+      "season": "24/25",
+      "rank": 82,
+      "points": 91,
+      "league": "C-Klasse",
+      "name": "Elke Bremer"
+    },
+    {
+      "season": "23/24",
+      "rank": 232,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Elke Bremer"
+    },
+    {
+      "season": "22/23",
+      "rank": 52,
+      "points": 98,
+      "league": "C-Klasse",
+      "name": "Elke Bremer"
+    }
+  ],
+  "371": [
+    {
+      "season": "2025/2026",
+      "rank": 224,
+      "points": 24,
+      "league": "C-Klasse",
+      "name": "Jennifer Thomas"
+    },
+    {
+      "season": "24/25",
+      "rank": 176,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "Jennifer Thomas"
+    },
+    {
+      "season": "23/24",
+      "rank": 149,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Jennifer Thomas"
+    }
+  ],
+  "661": [
+    {
+      "season": "2025/2026",
+      "rank": 227,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Christina Staib"
+    },
+    {
+      "season": "24/25",
+      "rank": 308,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Christina Staib"
+    }
+  ],
+  "1876": [
+    {
+      "season": "2025/2026",
+      "rank": 228,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Marko Sackmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 187,
+      "points": 38,
+      "league": "C-Klasse",
+      "name": "Marko Sackmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 148,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Marko Sackmann"
+    },
+    {
+      "season": "22/23",
+      "rank": 148,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Marko Sackmann"
+    }
+  ],
+  "652": [
+    {
+      "season": "2025/2026",
+      "rank": 229,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Sabrina Schibrowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 313,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Sabrina Schibrowski"
+    },
+    {
+      "season": "23/24",
+      "rank": 253,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Sabrina Schibrowski"
+    },
+    {
+      "season": "22/23",
+      "rank": 135,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "Sabrina Schibrowski"
+    },
+    {
+      "season": "20/22",
+      "rank": 209,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Sabrina Schibrowski"
+    }
+  ],
+  "252": [
+    {
+      "season": "2025/2026",
+      "rank": 230,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Oliver Straach"
+    }
+  ],
+  "711": [
+    {
+      "season": "2025/2026",
+      "rank": 231,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Denise Loy"
+    }
+  ],
+  "1586": [
+    {
+      "season": "2025/2026",
+      "rank": 232,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Meik Weinhart"
+    },
+    {
+      "season": "24/25",
+      "rank": 171,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Meik Weinhart"
+    },
+    {
+      "season": "23/24",
+      "rank": 250,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Meik Weinhart"
+    },
+    {
+      "season": "22/23",
+      "rank": 93,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Meik Weinhart"
+    },
+    {
+      "season": "20/22",
+      "rank": 125,
+      "points": 26,
+      "league": "B-Klasse",
+      "name": "Meik Weinhart"
+    }
+  ],
+  "526": [
+    {
+      "season": "2025/2026",
+      "rank": 233,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Lena Dill"
+    }
+  ],
+  "919": [
+    {
+      "season": "2025/2026",
+      "rank": 234,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Maximilian Glatt"
+    }
+  ],
+  "786": [
+    {
+      "season": "2025/2026",
+      "rank": 235,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Julian Kannegie\u00dfer"
+    }
+  ],
+  "1265": [
+    {
+      "season": "2025/2026",
+      "rank": 236,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Ferkan Akdag"
+    },
+    {
+      "season": "24/25",
+      "rank": 167,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Ferkan Akdag"
+    },
+    {
+      "season": "23/24",
+      "rank": 122,
+      "points": 56,
+      "league": "C-Klasse",
+      "name": "Ferkan Akdag"
+    },
+    {
+      "season": "22/23",
+      "rank": 96,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Ferkan Akdag"
+    },
+    {
+      "season": "20/22",
+      "rank": 67,
+      "points": 70,
+      "league": "B-Klasse",
+      "name": "Ferkan Akdag"
+    }
+  ],
+  "1235": [
+    {
+      "season": "2025/2026",
+      "rank": 237,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Bj\u00f6rn Ziegler"
+    },
+    {
+      "season": "24/25",
+      "rank": 237,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Bj\u00f6rn Ziegler"
+    }
+  ],
+  "1050": [
+    {
+      "season": "2025/2026",
+      "rank": 238,
+      "points": 21,
+      "league": "C-Klasse",
+      "name": "Benjamin Lunz"
+    },
+    {
+      "season": "24/25",
+      "rank": 310,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Benjamin Lunz"
+    },
+    {
+      "season": "23/24",
+      "rank": 203,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Benjamin Lunz"
+    },
+    {
+      "season": "22/23",
+      "rank": 162,
+      "points": 32,
+      "league": "C-Klasse",
+      "name": "Benjamin Lunz"
+    },
+    {
+      "season": "20/22",
+      "rank": 199,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Benjamin Lunz"
+    }
+  ],
+  "1675": [
+    {
+      "season": "2025/2026",
+      "rank": 239,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Filippo Geraci"
+    },
+    {
+      "season": "24/25",
+      "rank": 219,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Filippo Geraci"
+    },
+    {
+      "season": "23/24",
+      "rank": 145,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Filippo Geraci"
+    },
+    {
+      "season": "22/23",
+      "rank": 198,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Filippo Geraci"
+    },
+    {
+      "season": "20/22",
+      "rank": 242,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Filippo Geraci"
+    }
+  ],
+  "641": [
+    {
+      "season": "2025/2026",
+      "rank": 240,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Petra Bauer"
+    },
+    {
+      "season": "24/25",
+      "rank": 194,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Petra Bauer"
+    }
+  ],
+  "416": [
+    {
+      "season": "2025/2026",
+      "rank": 241,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Tina Schibrowski"
+    },
+    {
+      "season": "24/25",
+      "rank": 166,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Tina Schibrowski"
+    },
+    {
+      "season": "23/24",
+      "rank": 186,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Tina Schibrowski"
+    },
+    {
+      "season": "22/23",
+      "rank": 212,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Tina Schibrowski"
+    },
+    {
+      "season": "20/22",
+      "rank": 154,
+      "points": 25,
+      "league": "C-Klasse",
+      "name": "Tina Schibrowski"
+    }
+  ],
+  "564": [
+    {
+      "season": "2025/2026",
+      "rank": 242,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Dimitrios Papadopoulos"
+    }
+  ],
+  "302": [
+    {
+      "season": "2025/2026",
+      "rank": 243,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Isabelle K\u00f6feler"
+    },
+    {
+      "season": "24/25",
+      "rank": 243,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Isabelle K\u00f6feler"
+    },
+    {
+      "season": "23/24",
+      "rank": 227,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Isabelle K\u00f6feler"
+    }
+  ],
+  "510": [
+    {
+      "season": "2025/2026",
+      "rank": 246,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Sylvia Vetter"
+    }
+  ],
+  "1515": [
+    {
+      "season": "2025/2026",
+      "rank": 247,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Matthias Klink"
+    },
+    {
+      "season": "24/25",
+      "rank": 71,
+      "points": 46,
+      "league": "A-Klasse",
+      "name": "Matthias Klink"
+    },
+    {
+      "season": "23/24",
+      "rank": 73,
+      "points": 75,
+      "league": "B-Klasse",
+      "name": "Matthias Klink"
+    },
+    {
+      "season": "22/23",
+      "rank": 67,
+      "points": 73,
+      "league": "B-Klasse",
+      "name": "Matthias Klink"
+    },
+    {
+      "season": "20/22",
+      "rank": 39,
+      "points": 102,
+      "league": "C-Klasse",
+      "name": "Matthias Klink"
+    }
+  ],
+  "1868": [
+    {
+      "season": "2025/2026",
+      "rank": 248,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Sarah Skora"
+    },
+    {
+      "season": "24/25",
+      "rank": 213,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Sarah Skora"
+    }
+  ],
+  "1104": [
+    {
+      "season": "2025/2026",
+      "rank": 249,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Melanie Robertus-Dondalski"
+    },
+    {
+      "season": "24/25",
+      "rank": 250,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Melanie Robertus-Dondalski"
+    },
+    {
+      "season": "23/24",
+      "rank": 305,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Melanie Robertus-Dondalski"
+    },
+    {
+      "season": "22/23",
+      "rank": 259,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Melanie Robertus-Dondalski"
+    },
+    {
+      "season": "20/22",
+      "rank": 287,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Melanie Robertus-Dondalski"
+    }
+  ],
+  "598": [
+    {
+      "season": "2025/2026",
+      "rank": 251,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Sarah Margic"
+    },
+    {
+      "season": "24/25",
+      "rank": 209,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Sarah Margic"
+    }
+  ],
+  "1025": [
+    {
+      "season": "2025/2026",
+      "rank": 252,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Beate Bayer"
+    },
+    {
+      "season": "24/25",
+      "rank": 307,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Beate Bayer"
+    },
+    {
+      "season": "23/24",
+      "rank": 205,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Beate Bayer"
+    },
+    {
+      "season": "22/23",
+      "rank": 210,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Beate Bayer"
+    },
+    {
+      "season": "20/22",
+      "rank": 66,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Beate Bayer"
+    }
+  ],
+  "408": [
+    {
+      "season": "2025/2026",
+      "rank": 253,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Pascal R\u00e4gle"
+    }
+  ],
+  "543": [
+    {
+      "season": "2025/2026",
+      "rank": 254,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Schirin Lukaschek"
+    },
+    {
+      "season": "23/24",
+      "rank": 272,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Schirin Lukaschek"
+    },
+    {
+      "season": "22/23",
+      "rank": 232,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Schirin Lukaschek"
+    },
+    {
+      "season": "20/22",
+      "rank": 225,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Schirin Lukaschek"
+    }
+  ],
+  "740": [
+    {
+      "season": "2025/2026",
+      "rank": 255,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Alla Janke"
+    }
+  ],
+  "250": [
+    {
+      "season": "2025/2026",
+      "rank": 256,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Seravina Koser"
+    },
+    {
+      "season": "24/25",
+      "rank": 162,
+      "points": 46,
+      "league": "C-Klasse",
+      "name": "Seravina Koser"
+    },
+    {
+      "season": "23/24",
+      "rank": 238,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Seravina Koser"
+    }
+  ],
+  "1496": [
+    {
+      "season": "2025/2026",
+      "rank": 257,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Eckart Lohse"
+    },
+    {
+      "season": "24/25",
+      "rank": 147,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Eckart Lohse"
+    }
+  ],
+  "1053": [
+    {
+      "season": "2025/2026",
+      "rank": 258,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Simone Herzig"
+    }
+  ],
+  "736": [
+    {
+      "season": "2025/2026",
+      "rank": 259,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Leonardo Pio del Viscio"
+    },
+    {
+      "season": "24/25",
+      "rank": 186,
+      "points": 39,
+      "league": "C-Klasse",
+      "name": "Leonardo Pio del Viscio"
+    }
+  ],
+  "697": [
+    {
+      "season": "2025/2026",
+      "rank": 260,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Patrick Schlosser"
+    }
+  ],
+  "471": [
+    {
+      "season": "2025/2026",
+      "rank": 261,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Luca Schmidt"
+    },
+    {
+      "season": "24/25",
+      "rank": 265,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Luca Schmidt"
+    }
+  ],
+  "811": [
+    {
+      "season": "2025/2026",
+      "rank": 263,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Danijel Branjug"
+    }
+  ],
+  "655": [
+    {
+      "season": "2025/2026",
+      "rank": 264,
+      "points": 14,
+      "league": "C-Klasse",
+      "name": "Elfi Kalweit-Spath"
+    },
+    {
+      "season": "24/25",
+      "rank": 98,
+      "points": 79,
+      "league": "C-Klasse",
+      "name": "Elfi Kalweit-Spath"
+    },
+    {
+      "season": "23/24",
+      "rank": 177,
+      "points": 30,
+      "league": "C-Klasse",
+      "name": "Elfi Kalweit-Spath"
+    },
+    {
+      "season": "22/23",
+      "rank": 63,
+      "points": 90,
+      "league": "C-Klasse",
+      "name": "Elfi Kalweit-Spath"
+    },
+    {
+      "season": "20/22",
+      "rank": 65,
+      "points": 78,
+      "league": "C-Klasse",
+      "name": "Elfi Kalweit-Spath"
+    }
+  ],
+  "360": [
+    {
+      "season": "2025/2026",
+      "rank": 265,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Heide Fink"
+    },
+    {
+      "season": "24/25",
+      "rank": 159,
+      "points": 47,
+      "league": "C-Klasse",
+      "name": "Heide Fink"
+    },
+    {
+      "season": "23/24",
+      "rank": 216,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Heide Fink"
+    },
+    {
+      "season": "22/23",
+      "rank": 200,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Heide Fink"
+    },
+    {
+      "season": "20/22",
+      "rank": 175,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Heide Fink"
+    }
+  ],
+  "481": [
+    {
+      "season": "2025/2026",
+      "rank": 266,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Andrej Moldovan"
+    },
+    {
+      "season": "24/25",
+      "rank": 247,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Andrej Moldovan"
+    }
+  ],
+  "1830": [
+    {
+      "season": "2025/2026",
+      "rank": 267,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Ren\u00e9 Sch\u00f6nthaler"
+    }
+  ],
+  "1553": [
+    {
+      "season": "2025/2026",
+      "rank": 268,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Doreen Staudt"
+    },
+    {
+      "season": "22/23",
+      "rank": 138,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Doreen Staudt"
+    },
+    {
+      "season": "20/22",
+      "rank": 119,
+      "points": 10,
+      "league": "A-Klasse",
+      "name": "Doreen Staudt"
+    }
+  ],
+  "1294": [
+    {
+      "season": "2025/2026",
+      "rank": 269,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Fabrizio Baccarella"
+    }
+  ],
+  "626": [
+    {
+      "season": "2025/2026",
+      "rank": 270,
+      "points": 13,
+      "league": "C-Klasse",
+      "name": "Beata Erika Luca"
+    },
+    {
+      "season": "24/25",
+      "rank": 240,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Beata Erika Luca"
+    },
+    {
+      "season": "23/24",
+      "rank": 254,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Beata Erika Luca"
+    },
+    {
+      "season": "20/22",
+      "rank": 229,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Beti Luca"
+    }
+  ],
+  "921": [
+    {
+      "season": "2025/2026",
+      "rank": 271,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Nicole Zipperle"
+    },
+    {
+      "season": "24/25",
+      "rank": 275,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Nicole Zipperle"
+    },
+    {
+      "season": "23/24",
+      "rank": 217,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Nicole Zipperle"
+    },
+    {
+      "season": "22/23",
+      "rank": 224,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Nicole Zipperle"
+    },
+    {
+      "season": "20/22",
+      "rank": 162,
+      "points": 12,
+      "league": "B-Klasse",
+      "name": "Nicole Zipperle"
+    }
+  ],
+  "1374": [
+    {
+      "season": "2025/2026",
+      "rank": 272,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Silvia Sch\u00f6llhammer"
+    },
+    {
+      "season": "24/25",
+      "rank": 314,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Silvia Sch\u00f6llhammer"
+    },
+    {
+      "season": "23/24",
+      "rank": 306,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Silvia Sch\u00f6llhammer"
+    },
+    {
+      "season": "22/23",
+      "rank": 223,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Silvia Sch\u00f6llhammer"
+    }
+  ],
+  "690": [
+    {
+      "season": "2025/2026",
+      "rank": 273,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Luisa Bauer"
+    }
+  ],
+  "868": [
+    {
+      "season": "2025/2026",
+      "rank": 274,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Mayer"
+    },
+    {
+      "season": "24/25",
+      "rank": 294,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Mayer"
+    }
+  ],
+  "1840": [
+    {
+      "season": "2025/2026",
+      "rank": 275,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Timo Krauth"
+    },
+    {
+      "season": "24/25",
+      "rank": 233,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Timo Krauth"
+    },
+    {
+      "season": "23/24",
+      "rank": 183,
+      "points": 28,
+      "league": "C-Klasse",
+      "name": "Timo Krauth"
+    },
+    {
+      "season": "22/23",
+      "rank": 230,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Timo Krauth"
+    }
+  ],
+  "1275": [
+    {
+      "season": "2025/2026",
+      "rank": 276,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Uwe Wasserburger"
+    },
+    {
+      "season": "24/25",
+      "rank": 151,
+      "points": 14,
+      "league": "B-Klasse",
+      "name": "Uwe Wasserburger"
+    },
+    {
+      "season": "23/24",
+      "rank": 156,
+      "points": 37,
+      "league": "C-Klasse",
+      "name": "Uwe Wasserburger"
+    },
+    {
+      "season": "22/23",
+      "rank": 92,
+      "points": 69,
+      "league": "C-Klasse",
+      "name": "Uwe Wasserburger"
+    }
+  ],
+  "1829": [
+    {
+      "season": "2025/2026",
+      "rank": 277,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Vitorio Ferkovic"
+    }
+  ],
+  "658": [
+    {
+      "season": "2025/2026",
+      "rank": 278,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Bj\u00f6rn H\u00fcttenberger"
+    },
+    {
+      "season": "24/25",
+      "rank": 290,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Bj\u00f6rn H\u00fcttenberger"
+    }
+  ],
+  "380": [
+    {
+      "season": "2025/2026",
+      "rank": 279,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Stefan Weil"
+    }
+  ],
+  "334": [
+    {
+      "season": "2025/2026",
+      "rank": 280,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Steffi Lorent"
+    },
+    {
+      "season": "24/25",
+      "rank": 169,
+      "points": 43,
+      "league": "C-Klasse",
+      "name": "Steffi Lorent"
+    },
+    {
+      "season": "23/24",
+      "rank": 200,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Steffi Lorent"
+    },
+    {
+      "season": "22/23",
+      "rank": 190,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Steffi Lorent"
+    },
+    {
+      "season": "20/22",
+      "rank": 173,
+      "points": 9,
+      "league": "B-Klasse",
+      "name": "Steffi Lorent"
+    }
+  ],
+  "1875": [
+    {
+      "season": "2025/2026",
+      "rank": 281,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Tanja Tippmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 242,
+      "points": 19,
+      "league": "C-Klasse",
+      "name": "Tanja Tippmann"
+    },
+    {
+      "season": "23/24",
+      "rank": 282,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Tanja Tippmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 157,
+      "points": 1,
+      "league": "A-Klasse",
+      "name": "Tanja Tippmann"
+    }
+  ],
+  "1488": [
+    {
+      "season": "2025/2026",
+      "rank": 284,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Olena Bidenko"
+    }
+  ],
+  "384": [
+    {
+      "season": "2025/2026",
+      "rank": 285,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Rita Czifra"
+    },
+    {
+      "season": "24/25",
+      "rank": 217,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Rita Czifra"
+    },
+    {
+      "season": "23/24",
+      "rank": 220,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Rita Czifra"
+    },
+    {
+      "season": "22/23",
+      "rank": 176,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Rita Czifra"
+    },
+    {
+      "season": "20/22",
+      "rank": 223,
+      "points": 1,
+      "league": "B-Klasse",
+      "name": "Rita Czifra"
+    }
+  ],
+  "427": [
+    {
+      "season": "2025/2026",
+      "rank": 286,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Simon K\u00fcbler"
+    },
+    {
+      "season": "24/25",
+      "rank": 333,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Simon K\u00fcbler"
+    }
+  ],
+  "530": [
+    {
+      "season": "2025/2026",
+      "rank": 287,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Nemanja Mitrovic"
+    }
+  ],
+  "820": [
+    {
+      "season": "2025/2026",
+      "rank": 288,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Dieter Kl\u00f6sel"
+    },
+    {
+      "season": "23/24",
+      "rank": 226,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Dieter Kl\u00f6sel"
+    },
+    {
+      "season": "22/23",
+      "rank": 203,
+      "points": 17,
+      "league": "C-Klasse",
+      "name": "Dieter Kl\u00f6sel"
+    },
+    {
+      "season": "20/22",
+      "rank": 179,
+      "points": 7,
+      "league": "B-Klasse",
+      "name": "Dieter Kl\u00f6sel"
+    }
+  ],
+  "1595": [
+    {
+      "season": "2025/2026",
+      "rank": 289,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Marcus F\u00f6ller"
+    },
+    {
+      "season": "24/25",
+      "rank": 228,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Marcus F\u00f6ller"
+    },
+    {
+      "season": "23/24",
+      "rank": 143,
+      "points": 45,
+      "league": "C-Klasse",
+      "name": "Marcus F\u00f6ller"
+    },
+    {
+      "season": "22/23",
+      "rank": 145,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Marcus F\u00f6ller"
+    },
+    {
+      "season": "20/22",
+      "rank": 105,
+      "points": 50,
+      "league": "C-Klasse",
+      "name": "Marcus F\u00f6ller"
+    }
+  ],
+  "1644": [
+    {
+      "season": "2025/2026",
+      "rank": 291,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Jacklin Klug-Ursic"
+    },
+    {
+      "season": "24/25",
+      "rank": 289,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Jacklin Klug-Ursic"
+    },
+    {
+      "season": "23/24",
+      "rank": 218,
+      "points": 18,
+      "league": "C-Klasse",
+      "name": "Jacklin Klug-Ursic"
+    },
+    {
+      "season": "22/23",
+      "rank": 194,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Jacklin Klug-Ursic"
+    },
+    {
+      "season": "20/22",
+      "rank": 115,
+      "points": 44,
+      "league": "C-Klasse",
+      "name": "Jacklin Klug-Ursic"
+    }
+  ],
+  "665": [
+    {
+      "season": "2025/2026",
+      "rank": 292,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Dieter Denkmann"
+    },
+    {
+      "season": "24/25",
+      "rank": 297,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Dieter Denkmann"
+    }
+  ],
+  "838": [
+    {
+      "season": "2025/2026",
+      "rank": 295,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Falk Wirlitsch"
+    }
+  ],
+  "592": [
+    {
+      "season": "2025/2026",
+      "rank": 296,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Manfred M\u00fchlthaler"
+    },
+    {
+      "season": "24/25",
+      "rank": 181,
+      "points": 41,
+      "league": "C-Klasse",
+      "name": "Manfred M\u00fchlthaler"
+    },
+    {
+      "season": "23/24",
+      "rank": 173,
+      "points": 31,
+      "league": "C-Klasse",
+      "name": "Manfred M\u00fchlthaler"
+    },
+    {
+      "season": "22/23",
+      "rank": 153,
+      "points": 35,
+      "league": "C-Klasse",
+      "name": "Manfred M\u00fchlthaler"
+    },
+    {
+      "season": "20/22",
+      "rank": 125,
+      "points": 40,
+      "league": "C-Klasse",
+      "name": "Manfred M\u00fchlthaler"
+    }
+  ],
+  "1839": [
+    {
+      "season": "2025/2026",
+      "rank": 298,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Andreas Walz"
+    },
+    {
+      "season": "24/25",
+      "rank": 329,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Andreas Walz"
+    },
+    {
+      "season": "23/24",
+      "rank": 166,
+      "points": 34,
+      "league": "C-Klasse",
+      "name": "Andreas Walz"
+    },
+    {
+      "season": "22/23",
+      "rank": 184,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Andreas Walz"
+    }
+  ],
+  "750": [
+    {
+      "season": "2025/2026",
+      "rank": 299,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Sturz"
+    },
+    {
+      "season": "24/25",
+      "rank": 295,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Sturz"
+    },
+    {
+      "season": "23/24",
+      "rank": 114,
+      "points": 39,
+      "league": "B-Klasse",
+      "name": "J\u00fcrgen Sturz"
+    },
+    {
+      "season": "22/23",
+      "rank": 121,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Sturz"
+    }
+  ],
+  "484": [
+    {
+      "season": "2025/2026",
+      "rank": 300,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Torsten Frey"
+    },
+    {
+      "season": "24/25",
+      "rank": 210,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Torsten Frey"
+    },
+    {
+      "season": "23/24",
+      "rank": 199,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "Torsten Frey"
+    },
+    {
+      "season": "22/23",
+      "rank": 140,
+      "points": 42,
+      "league": "C-Klasse",
+      "name": "Torsten Frey"
+    },
+    {
+      "season": "20/22",
+      "rank": 147,
+      "points": 29,
+      "league": "C-Klasse",
+      "name": "Torsten Frey"
+    }
+  ],
+  "228": [
+    {
+      "season": "2025/2026",
+      "rank": 301,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Tatiana Reikowski"
+    }
+  ],
+  "977": [
+    {
+      "season": "2025/2026",
+      "rank": 302,
+      "points": 7,
+      "league": "C-Klasse",
+      "name": "Marius Rommelfanger"
+    },
+    {
+      "season": "24/25",
+      "rank": 227,
+      "points": 23,
+      "league": "C-Klasse",
+      "name": "Marius Rommelfanger"
+    },
+    {
+      "season": "23/24",
+      "rank": 190,
+      "points": 2,
+      "league": "B-Klasse",
+      "name": "Marius Rommelfanger"
+    }
+  ],
+  "259": [
+    {
+      "season": "2025/2026",
+      "rank": 303,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Patrick Speck"
+    }
+  ],
+  "557": [
+    {
+      "season": "2025/2026",
+      "rank": 305,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Tobias Raff"
+    },
+    {
+      "season": "24/25",
+      "rank": 161,
+      "points": 9,
+      "league": "B-Klasse",
+      "name": "Tobias Raff"
+    }
+  ],
+  "677": [
+    {
+      "season": "2025/2026",
+      "rank": 306,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Norman Meyer"
+    }
+  ],
+  "976": [
+    {
+      "season": "2025/2026",
+      "rank": 307,
+      "points": 6,
+      "league": "C-Klasse",
+      "name": "Luigi Pacinello"
+    }
+  ],
+  "817": [
+    {
+      "season": "2025/2026",
+      "rank": 308,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Vanessa Genthner"
+    },
+    {
+      "season": "24/25",
+      "rank": 147,
+      "points": 16,
+      "league": "B-Klasse",
+      "name": "Vanessa Genthner"
+    },
+    {
+      "season": "23/24",
+      "rank": 95,
+      "points": 74,
+      "league": "C-Klasse",
+      "name": "Vanessa Genthner"
+    },
+    {
+      "season": "22/23",
+      "rank": 94,
+      "points": 67,
+      "league": "C-Klasse",
+      "name": "Vanessa Genthner"
+    },
+    {
+      "season": "20/22",
+      "rank": 87,
+      "points": 65,
+      "league": "C-Klasse",
+      "name": "Vanessa Genthner"
+    }
+  ],
+  "844": [
+    {
+      "season": "2025/2026",
+      "rank": 309,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Daniel Schneider"
+    }
+  ],
+  "1510": [
+    {
+      "season": "2025/2026",
+      "rank": 310,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Ali Cirak"
+    },
+    {
+      "season": "24/25",
+      "rank": 230,
+      "points": 22,
+      "league": "C-Klasse",
+      "name": "Ali Cirak"
+    },
+    {
+      "season": "20/22",
+      "rank": 192,
+      "points": 15,
+      "league": "C-Klasse",
+      "name": "Ali Cirak"
+    }
+  ],
+  "613": [
+    {
+      "season": "2025/2026",
+      "rank": 312,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Tobias Schmitz"
+    }
+  ],
+  "214": [
+    {
+      "season": "2025/2026",
+      "rank": 313,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Miriam Deckenbach"
+    }
+  ],
+  "866": [
+    {
+      "season": "2025/2026",
+      "rank": 314,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Sascha Petrik"
+    },
+    {
+      "season": "24/25",
+      "rank": 253,
+      "points": 16,
+      "league": "C-Klasse",
+      "name": "Sascha Petrik"
+    },
+    {
+      "season": "23/24",
+      "rank": 179,
+      "points": 4,
+      "league": "B-Klasse",
+      "name": "Sascha Petrik"
+    },
+    {
+      "season": "22/23",
+      "rank": 161,
+      "points": 9,
+      "league": "B-Klasse",
+      "name": "Sascha Petrik"
+    }
+  ],
+  "924": [
+    {
+      "season": "2025/2026",
+      "rank": 315,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Sandra Kusterer"
+    },
+    {
+      "season": "22/23",
+      "rank": 217,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Sandra Kusterer"
+    },
+    {
+      "season": "20/22",
+      "rank": 207,
+      "points": 12,
+      "league": "C-Klasse",
+      "name": "Sandra Kusterer"
+    }
+  ],
+  "787": [
+    {
+      "season": "2025/2026",
+      "rank": 316,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Oliver Kannegie\u00dfer"
+    }
+  ],
+  "1633": [
+    {
+      "season": "2025/2026",
+      "rank": 317,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Manfred Sequenz"
+    }
+  ],
+  "772": [
+    {
+      "season": "2025/2026",
+      "rank": 318,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Gertrud Hauser"
+    },
+    {
+      "season": "24/25",
+      "rank": 331,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Gertrud Hauser"
+    }
+  ],
+  "485": [
+    {
+      "season": "2025/2026",
+      "rank": 319,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Katrin Kretzschmar"
+    },
+    {
+      "season": "24/25",
+      "rank": 272,
+      "points": 11,
+      "league": "C-Klasse",
+      "name": "Katrin Kretzschmar"
+    }
+  ],
+  "1109": [
+    {
+      "season": "2025/2026",
+      "rank": 320,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Markus Bethke"
+    },
+    {
+      "season": "24/25",
+      "rank": 61,
+      "points": 100,
+      "league": "C-Klasse",
+      "name": "Markus Bethke"
+    },
+    {
+      "season": "23/24",
+      "rank": 103,
+      "points": 70,
+      "league": "C-Klasse",
+      "name": "Markus Bethke"
+    },
+    {
+      "season": "22/23",
+      "rank": 12,
+      "points": 143,
+      "league": "C-Klasse",
+      "name": "Markus Bethke"
+    },
+    {
+      "season": "20/22",
+      "rank": 72,
+      "points": 75,
+      "league": "C-Klasse",
+      "name": "Markus Bethke"
+    }
+  ],
+  "1440": [
+    {
+      "season": "2025/2026",
+      "rank": 321,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Nesrin S\u00f6yleyici"
+    },
+    {
+      "season": "24/25",
+      "rank": 284,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Nesrin S\u00f6yleyici"
+    }
+  ],
+  "1569": [
+    {
+      "season": "2025/2026",
+      "rank": 322,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Helder Marques"
+    }
+  ],
+  "418": [
+    {
+      "season": "2025/2026",
+      "rank": 323,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Kristina Heidenreich"
+    }
+  ],
+  "1740": [
+    {
+      "season": "2025/2026",
+      "rank": 324,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Daniel R\u00e4uchle"
+    },
+    {
+      "season": "24/25",
+      "rank": 165,
+      "points": 8,
+      "league": "B-Klasse",
+      "name": "Daniel R\u00e4uchle"
+    },
+    {
+      "season": "23/24",
+      "rank": 152,
+      "points": 12,
+      "league": "B-Klasse",
+      "name": "Daniel R\u00e4uchle"
+    },
+    {
+      "season": "22/23",
+      "rank": 110,
+      "points": 59,
+      "league": "C-Klasse",
+      "name": "Daniel R\u00e4uchle"
+    }
+  ],
+  "102": [
+    {
+      "season": "2025/2026",
+      "rank": 325,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Markus Thalhammer"
+    }
+  ],
+  "491": [
+    {
+      "season": "2025/2026",
+      "rank": 326,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Volker Vollmer"
+    },
+    {
+      "season": "24/25",
+      "rank": 309,
+      "points": 4,
+      "league": "C-Klasse",
+      "name": "Volker Vollmer"
+    }
+  ],
+  "732": [
+    {
+      "season": "2025/2026",
+      "rank": 327,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Vladimir Granula"
+    }
+  ],
+  "842": [
+    {
+      "season": "2025/2026",
+      "rank": 329,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Richard Rohrmayr"
+    }
+  ],
+  "1144": [
+    {
+      "season": "2025/2026",
+      "rank": 330,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Ina Cirak"
+    },
+    {
+      "season": "24/25",
+      "rank": 148,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Ina Mai/Cirak"
+    },
+    {
+      "season": "23/24",
+      "rank": 201,
+      "points": 20,
+      "league": "C-Klasse",
+      "name": "Ina Mai"
+    },
+    {
+      "season": "22/23",
+      "rank": 175,
+      "points": 27,
+      "league": "C-Klasse",
+      "name": "Ina Mai"
+    },
+    {
+      "season": "20/22",
+      "rank": 96,
+      "points": 54,
+      "league": "C-Klasse",
+      "name": "Ina Mai"
+    }
+  ],
+  "776": [
+    {
+      "season": "2025/2026",
+      "rank": 331,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Nicole Bichon"
+    },
+    {
+      "season": "24/25",
+      "rank": 321,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Nicole Bichon"
+    },
+    {
+      "season": "23/24",
+      "rank": 293,
+      "points": 3,
+      "league": "C-Klasse",
+      "name": "Nicole Bichon"
+    },
+    {
+      "season": "22/23",
+      "rank": 159,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Nicole Bichon"
+    }
+  ],
+  "1110": [
+    {
+      "season": "2025/2026",
+      "rank": 332,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Eva Bethke"
+    },
+    {
+      "season": "24/25",
+      "rank": 277,
+      "points": 10,
+      "league": "C-Klasse",
+      "name": "Eva Bethke"
+    },
+    {
+      "season": "23/24",
+      "rank": 259,
+      "points": 8,
+      "league": "C-Klasse",
+      "name": "Eva Bethke"
+    },
+    {
+      "season": "22/23",
+      "rank": 11,
+      "points": 116,
+      "league": "Bezirksliga",
+      "name": "Axel Spring"
+    },
+    {
+      "season": "20/22",
+      "rank": 12,
+      "points": 106,
+      "league": "Bezirksliga",
+      "name": "Axel Spring"
+    }
+  ],
+  "669": [
+    {
+      "season": "2025/2026",
+      "rank": 333,
+      "points": 1,
+      "league": "C-Klasse",
+      "name": "Bettina Simone Heidt"
+    },
+    {
+      "season": "24/25",
+      "rank": 304,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Bettina Simone Heidt"
+    }
+  ],
+  "1655": [
+    {
+      "season": "2025/2026",
+      "rank": 334,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Petra Zahnlecker"
+    },
+    {
+      "season": "23/24",
+      "rank": 295,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Petra Zahnlecker"
+    },
+    {
+      "season": "22/23",
+      "rank": 258,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Petra Zahnlecker"
+    },
+    {
+      "season": "20/22",
+      "rank": 277,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Petra Zahnlecker"
+    }
+  ],
+  "1773": [
+    {
+      "season": "2025/2026",
+      "rank": 335,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Monika Frank"
+    },
+    {
+      "season": "24/25",
+      "rank": 280,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Monika Frank"
+    }
+  ],
+  "447": [
+    {
+      "season": "2025/2026",
+      "rank": 336,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Jaqueline Ilg"
+    }
+  ],
+  "631": [
+    {
+      "season": "2025/2026",
+      "rank": 337,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Bettina Endrijaitis"
+    }
+  ],
+  "765": [
+    {
+      "season": "2025/2026",
+      "rank": 338,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Hans-Peter Kalweit"
+    },
+    {
+      "season": "24/25",
+      "rank": 301,
+      "points": 5,
+      "league": "C-Klasse",
+      "name": "Hans-Peter Kalweit"
+    },
+    {
+      "season": "23/24",
+      "rank": 252,
+      "points": 9,
+      "league": "C-Klasse",
+      "name": "Hans-Peter Kalweit"
+    },
+    {
+      "season": "22/23",
+      "rank": 160,
+      "points": 33,
+      "league": "C-Klasse",
+      "name": "Hans-Peter Kalweit"
+    },
+    {
+      "season": "20/22",
+      "rank": 85,
+      "points": 68,
+      "league": "C-Klasse",
+      "name": "Hans-Peter Kalweit"
+    }
+  ],
+  "756": [
+    {
+      "season": "2025/2026",
+      "rank": 340,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Jason Czifra"
+    },
+    {
+      "season": "23/24",
+      "rank": 297,
+      "points": 2,
+      "league": "C-Klasse",
+      "name": "Jason Czifra"
+    },
+    {
+      "season": "22/23",
+      "rank": 260,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Jason Czifra"
+    }
+  ],
+  "464": [
+    {
+      "season": "2025/2026",
+      "rank": 341,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Mateo Tubach"
+    },
+    {
+      "season": "24/25",
+      "rank": 334,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Mateo Tubach"
+    }
+  ],
+  "1744": [
+    {
+      "season": "2025/2026",
+      "rank": 342,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Schache"
+    },
+    {
+      "season": "24/25",
+      "rank": 145,
+      "points": 55,
+      "league": "C-Klasse",
+      "name": "J\u00fcrgen Schache"
+    }
+  ],
+  "033": [
+    {
+      "season": "2025/2026",
+      "rank": 343,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Tanja Jost"
+    }
+  ],
+  "527": [
+    {
+      "season": "2025/2026",
+      "rank": 344,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "J\u00f6rg Leicht"
+    },
+    {
+      "season": "24/25",
+      "rank": 178,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "J\u00f6rg Leicht"
+    },
+    {
+      "season": "23/24",
+      "rank": 119,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "J\u00f6rg Leicht"
+    },
+    {
+      "season": "22/23",
+      "rank": 173,
+      "points": 5,
+      "league": "B-Klasse",
+      "name": "J\u00f6rg Leicht"
+    },
+    {
+      "season": "20/22",
+      "rank": 154,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "J\u00f6rg Leicht"
+    }
+  ],
+  "279": [
+    {
+      "season": "2025/2026",
+      "rank": 345,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Daniel Klapper"
+    }
+  ],
+  "1780": [
+    {
+      "season": "2025/2026",
+      "rank": 347,
+      "points": 0,
+      "league": "C-Klasse",
+      "name": "Melanie Steinberg"
+    },
+    {
+      "season": "23/24",
+      "rank": 120,
+      "points": 0,
+      "league": "A-Klasse",
+      "name": "Melanie Steinberg"
     }
   ],
   "595": [
@@ -935,156 +19165,6 @@ window.ARCHIVE_DATA = {
       "name": "Karlheinz Bauer"
     }
   ],
-  "1228": [
-    {
-      "season": "24/25",
-      "rank": 27,
-      "points": 67,
-      "league": "Bezirksliga",
-      "name": "Marco Ruof"
-    },
-    {
-      "season": "22/23",
-      "rank": 61,
-      "points": 68,
-      "league": "A-Klasse",
-      "name": "Marco Ruof"
-    },
-    {
-      "season": "20/22",
-      "rank": 6,
-      "points": 155,
-      "league": "B-Klasse",
-      "name": "Marco Ruof"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 33,
-      "points": 51,
-      "league": "Bezirksliga",
-      "name": "Marco Ruof"
-    }
-  ],
-  "459": [
-    {
-      "season": "24/25",
-      "rank": 28,
-      "points": 65,
-      "league": "Bezirksliga",
-      "name": "Kai Lacher"
-    },
-    {
-      "season": "23/24",
-      "rank": 41,
-      "points": 45,
-      "league": "Bezirksliga",
-      "name": "Kai Lacher"
-    },
-    {
-      "season": "22/23",
-      "rank": 13,
-      "points": 110,
-      "league": "Bezirksliga",
-      "name": "Kai Lacher"
-    },
-    {
-      "season": "20/22",
-      "rank": 17,
-      "points": 96,
-      "league": "Bezirksliga",
-      "name": "Kai Lacher"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 77,
-      "points": 37,
-      "league": "A-Klasse",
-      "name": "Kai Lacher"
-    }
-  ],
-  "1892": [
-    {
-      "season": "24/25",
-      "rank": 29,
-      "points": 65,
-      "league": "Bezirksliga",
-      "name": "Sven Lernhardt"
-    },
-    {
-      "season": "23/24",
-      "rank": 9,
-      "points": 128,
-      "league": "Bezirksliga",
-      "name": "Sven Lernhardt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 40,
-      "points": 40,
-      "league": "Bezirksliga",
-      "name": "Sven Lernhardt"
-    }
-  ],
-  "714": [
-    {
-      "season": "24/25",
-      "rank": 30,
-      "points": 64,
-      "league": "Bezirksliga",
-      "name": "Marc Lernhardt"
-    },
-    {
-      "season": "23/24",
-      "rank": 31,
-      "points": 65,
-      "league": "Bezirksliga",
-      "name": "Marc Lernhardt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 46,
-      "points": 32,
-      "league": "Bezirksliga",
-      "name": "Marc Lernhardt"
-    }
-  ],
-  "879": [
-    {
-      "season": "24/25",
-      "rank": 31,
-      "points": 64,
-      "league": "Bezirksliga",
-      "name": "Holger Hentschel-Hoffmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 62,
-      "points": 5,
-      "league": "Bezirksliga",
-      "name": "Holger Hentschel-Hoffmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 50,
-      "points": 15,
-      "league": "Bezirksliga",
-      "name": "Holger Hentschel-Hoffmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 51,
-      "points": 22,
-      "league": "Bezirksliga",
-      "name": "Holger Hentschel-Hoffmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 44,
-      "points": 33,
-      "league": "Bezirksliga",
-      "name": "Holger Hentschel-Hoffmann"
-    }
-  ],
   "1617": [
     {
       "season": "24/25",
@@ -1115,327 +19195,6 @@ window.ARCHIVE_DATA = {
       "name": "Marc Trommler"
     }
   ],
-  "727": [
-    {
-      "season": "24/25",
-      "rank": 33,
-      "points": 57,
-      "league": "Bezirksliga",
-      "name": "Felix Kr\u00fcger"
-    },
-    {
-      "season": "23/24",
-      "rank": 66,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Felix Kr\u00fcger"
-    },
-    {
-      "season": "22/23",
-      "rank": 36,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "Felix Kr\u00fcger"
-    },
-    {
-      "season": "20/22",
-      "rank": 14,
-      "points": 131,
-      "league": "B-Klasse",
-      "name": "Felix Kr\u00fcger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 28,
-      "points": 57,
-      "league": "Bezirksliga",
-      "name": "Felix Kr\u00fcger"
-    }
-  ],
-  "343": [
-    {
-      "season": "24/25",
-      "rank": 34,
-      "points": 56,
-      "league": "Bezirksliga",
-      "name": "Corinna Jungmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 48,
-      "points": 78,
-      "league": "A-Klasse",
-      "name": "Corinna Jungmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 29,
-      "points": 95,
-      "league": "A-Klasse",
-      "name": "Corinna Jungmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 9,
-      "points": 137,
-      "league": "A-Klasse",
-      "name": "Corinna Jungmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 11,
-      "points": 123,
-      "league": "A-Klasse",
-      "name": "Corinna Jungmann"
-    }
-  ],
-  "1578": [
-    {
-      "season": "24/25",
-      "rank": 35,
-      "points": 56,
-      "league": "Bezirksliga",
-      "name": "Vincenzo Di Grigoli"
-    },
-    {
-      "season": "23/24",
-      "rank": 215,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Vincenzo Di Grigoli"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 59,
-      "points": 7,
-      "league": "Bezirksliga",
-      "name": "Vincenzo Di Grigoli"
-    }
-  ],
-  "840": [
-    {
-      "season": "24/25",
-      "rank": 36,
-      "points": 53,
-      "league": "Bezirksliga",
-      "name": "Tobias Gutunolu"
-    },
-    {
-      "season": "23/24",
-      "rank": 33,
-      "points": 62,
-      "league": "Bezirksliga",
-      "name": "Tobias Gutunolu"
-    },
-    {
-      "season": "22/23",
-      "rank": 48,
-      "points": 19,
-      "league": "Bezirksliga",
-      "name": "Tobias Gutunolu"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 38,
-      "points": 42,
-      "league": "Bezirksliga",
-      "name": "Tobias Gutunolu"
-    }
-  ],
-  "1859": [
-    {
-      "season": "24/25",
-      "rank": 37,
-      "points": 47,
-      "league": "Bezirksliga",
-      "name": "Mike Bader"
-    },
-    {
-      "season": "23/24",
-      "rank": 12,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Mike Bader"
-    },
-    {
-      "season": "22/23",
-      "rank": 11,
-      "points": 140,
-      "league": "A-Klasse",
-      "name": "Mike Bader"
-    },
-    {
-      "season": "20/22",
-      "rank": 16,
-      "points": 122,
-      "league": "A-Klasse",
-      "name": "Mike Bader"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 32,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "Mike Bader"
-    }
-  ],
-  "617": [
-    {
-      "season": "24/25",
-      "rank": 38,
-      "points": 46,
-      "league": "Bezirksliga",
-      "name": "Michael Venzke"
-    },
-    {
-      "season": "23/24",
-      "rank": 55,
-      "points": 66,
-      "league": "A-Klasse",
-      "name": "Michael Venzke"
-    },
-    {
-      "season": "22/23",
-      "rank": 28,
-      "points": 108,
-      "league": "B-Klasse",
-      "name": "Michael Venzke"
-    },
-    {
-      "season": "20/22",
-      "rank": 53,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Michael Venzke"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 83,
-      "points": 33,
-      "league": "A-Klasse",
-      "name": "Michael Venzke"
-    }
-  ],
-  "723": [
-    {
-      "season": "24/25",
-      "rank": 39,
-      "points": 46,
-      "league": "Bezirksliga",
-      "name": "Marc-Andr\u00e9 Schneider"
-    },
-    {
-      "season": "23/24",
-      "rank": 17,
-      "points": 121,
-      "league": "A-Klasse",
-      "name": "Marc-Andr\u00e9 Schneider"
-    },
-    {
-      "season": "22/23",
-      "rank": 111,
-      "points": 8,
-      "league": "A-Klasse",
-      "name": "Marc-Andre Schneider"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 24,
-      "points": 102,
-      "league": "A-Klasse",
-      "name": "Marc-Andr\u00e9 Schneider"
-    }
-  ],
-  "1454": [
-    {
-      "season": "24/25",
-      "rank": 40,
-      "points": 41,
-      "league": "Bezirksliga",
-      "name": "Tobias H\u00e4rter"
-    },
-    {
-      "season": "23/24",
-      "rank": 12,
-      "points": 116,
-      "league": "Bezirksliga",
-      "name": "Tobias H\u00e4rter"
-    },
-    {
-      "season": "22/23",
-      "rank": 14,
-      "points": 109,
-      "league": "Bezirksliga",
-      "name": "Tobias H\u00e4rter"
-    },
-    {
-      "season": "20/22",
-      "rank": 19,
-      "points": 94,
-      "league": "Bezirksliga",
-      "name": "Tobias H\u00e4rter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 58,
-      "points": 8,
-      "league": "Bezirksliga",
-      "name": "Tobias H\u00e4rter"
-    }
-  ],
-  "428": [
-    {
-      "season": "24/25",
-      "rank": 41,
-      "points": 41,
-      "league": "Bezirksliga",
-      "name": "Norbert Fleischmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 52,
-      "points": 69,
-      "league": "A-Klasse",
-      "name": "Norbert Fleischmann"
-    }
-  ],
-  "870": [
-    {
-      "season": "24/25",
-      "rank": 42,
-      "points": 39,
-      "league": "Bezirksliga",
-      "name": "Michael Heck"
-    },
-    {
-      "season": "23/24",
-      "rank": 30,
-      "points": 66,
-      "league": "Bezirksliga",
-      "name": "Michael Heck"
-    },
-    {
-      "season": "22/23",
-      "rank": 18,
-      "points": 95,
-      "league": "Bezirksliga",
-      "name": "Michael Heck"
-    },
-    {
-      "season": "20/22",
-      "rank": 47,
-      "points": 23,
-      "league": "Bezirksliga",
-      "name": "Michael Heck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 37,
-      "points": 45,
-      "league": "Bezirksliga",
-      "name": "Michael Heck"
-    }
-  ],
   "1357": [
     {
       "season": "24/25",
@@ -1450,43 +19209,6 @@ window.ARCHIVE_DATA = {
       "points": 54,
       "league": "A-Klasse",
       "name": "Malik Genc"
-    }
-  ],
-  "748": [
-    {
-      "season": "24/25",
-      "rank": 44,
-      "points": 37,
-      "league": "Bezirksliga",
-      "name": "Benjamin Laufer"
-    },
-    {
-      "season": "23/24",
-      "rank": 40,
-      "points": 50,
-      "league": "Bezirksliga",
-      "name": "Benjamin Laufer"
-    },
-    {
-      "season": "22/23",
-      "rank": 46,
-      "points": 22,
-      "league": "Bezirksliga",
-      "name": "Benjamin Laufer"
-    },
-    {
-      "season": "20/22",
-      "rank": 93,
-      "points": 48,
-      "league": "B-Klasse",
-      "name": "Benjamin Laufer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 18,
-      "points": 110,
-      "league": "A-Klasse",
-      "name": "Benjamin Laufer"
     }
   ],
   "143": [
@@ -1519,45 +19241,6 @@ window.ARCHIVE_DATA = {
       "name": "Danny Weigel"
     }
   ],
-  "1111": [
-    {
-      "season": "24/25",
-      "rank": 46,
-      "points": 24,
-      "league": "Bezirksliga",
-      "name": "Axel Spring"
-    },
-    {
-      "season": "23/24",
-      "rank": 23,
-      "points": 88,
-      "league": "Bezirksliga",
-      "name": "Axel Spring"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 26,
-      "points": 62,
-      "league": "Bezirksliga",
-      "name": "Axel Spring"
-    }
-  ],
-  "662": [
-    {
-      "season": "24/25",
-      "rank": 47,
-      "points": 23,
-      "league": "Bezirksliga",
-      "name": "Patrick Schr\u00f6der"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 32,
-      "points": 52,
-      "league": "Bezirksliga",
-      "name": "Patrick Schr\u00f6der"
-    }
-  ],
   "1581": [
     {
       "season": "24/25",
@@ -1565,43 +19248,6 @@ window.ARCHIVE_DATA = {
       "points": 23,
       "league": "Bezirksliga",
       "name": "Christian Rademacher"
-    }
-  ],
-  "215": [
-    {
-      "season": "24/25",
-      "rank": 49,
-      "points": 22,
-      "league": "Bezirksliga",
-      "name": "Luca Feitenhansl"
-    },
-    {
-      "season": "23/24",
-      "rank": 29,
-      "points": 100,
-      "league": "A-Klasse",
-      "name": "Luca Feitenhansl"
-    },
-    {
-      "season": "22/23",
-      "rank": 7,
-      "points": 160,
-      "league": "B-Klasse",
-      "name": "Luca Feitenhansl"
-    },
-    {
-      "season": "20/22",
-      "rank": 191,
-      "points": 6,
-      "league": "B-Klasse",
-      "name": "Luca Feitenhansl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 93,
-      "points": 59,
-      "league": "B-Klasse",
-      "name": "Luca Feitenhansl"
     }
   ],
   "808": [
@@ -1634,313 +19280,6 @@ window.ARCHIVE_DATA = {
       "name": "Ralf Bauer"
     }
   ],
-  "798": [
-    {
-      "season": "24/25",
-      "rank": 51,
-      "points": 19,
-      "league": "Bezirksliga",
-      "name": "Andreas Rados"
-    },
-    {
-      "season": "23/24",
-      "rank": 92,
-      "points": 17,
-      "league": "A-Klasse",
-      "name": "Andreas Rados"
-    },
-    {
-      "season": "22/23",
-      "rank": 82,
-      "points": 41,
-      "league": "A-Klasse",
-      "name": "Andreas Rados"
-    },
-    {
-      "season": "20/22",
-      "rank": 83,
-      "points": 30,
-      "league": "A-Klasse",
-      "name": "Andreas Rados"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 80,
-      "points": 36,
-      "league": "A-Klasse",
-      "name": "Andreas Rados"
-    }
-  ],
-  "541": [
-    {
-      "season": "24/25",
-      "rank": 52,
-      "points": 13,
-      "league": "Bezirksliga",
-      "name": "Kevin Eisbrenner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 149,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Kevin Eisbrenner"
-    }
-  ],
-  "1652": [
-    {
-      "season": "24/25",
-      "rank": 53,
-      "points": 13,
-      "league": "Bezirksliga",
-      "name": "Christian Kaksch"
-    },
-    {
-      "season": "23/24",
-      "rank": 95,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Christian Kaksch"
-    },
-    {
-      "season": "22/23",
-      "rank": 16,
-      "points": 134,
-      "league": "A-Klasse",
-      "name": "Christian Kaksch"
-    },
-    {
-      "season": "20/22",
-      "rank": 68,
-      "points": 70,
-      "league": "B-Klasse",
-      "name": "Christian Kaksch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 55,
-      "points": 14,
-      "league": "Bezirksliga",
-      "name": "Christian Kaksch"
-    }
-  ],
-  "1529": [
-    {
-      "season": "24/25",
-      "rank": 54,
-      "points": 12,
-      "league": "Bezirksliga",
-      "name": "Vanessa Lenz"
-    },
-    {
-      "season": "23/24",
-      "rank": 95,
-      "points": 14,
-      "league": "A-Klasse",
-      "name": "Vanessa Lenz"
-    },
-    {
-      "season": "22/23",
-      "rank": 123,
-      "points": 33,
-      "league": "B-Klasse",
-      "name": "Vanessa Lenz"
-    },
-    {
-      "season": "20/22",
-      "rank": 94,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Vanessa Lenz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 88,
-      "points": 30,
-      "league": "A-Klasse",
-      "name": "Vanessa Lenz"
-    }
-  ],
-  "122": [
-    {
-      "season": "24/25",
-      "rank": 55,
-      "points": 12,
-      "league": "Bezirksliga",
-      "name": "Klaus Feitenhansl"
-    },
-    {
-      "season": "23/24",
-      "rank": 23,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Klaus Feitenhansl"
-    },
-    {
-      "season": "22/23",
-      "rank": 13,
-      "points": 139,
-      "league": "B-Klasse",
-      "name": "Klaus Feitenhansl"
-    },
-    {
-      "season": "20/22",
-      "rank": 50,
-      "points": 22,
-      "league": "Bezirksliga",
-      "name": "Klaus Feitenhansl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 127,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Klaus Feitenhansl"
-    }
-  ],
-  "972": [
-    {
-      "season": "24/25",
-      "rank": 56,
-      "points": 9,
-      "league": "Bezirksliga",
-      "name": "Jacqueline Silvestre Abrantes"
-    },
-    {
-      "season": "23/24",
-      "rank": 38,
-      "points": 52,
-      "league": "Bezirksliga",
-      "name": "Jacqueline Silvestre Abrantes"
-    },
-    {
-      "season": "22/23",
-      "rank": 10,
-      "points": 143,
-      "league": "A-Klasse",
-      "name": "Jacqueline Silvestre Abrantes"
-    },
-    {
-      "season": "20/22",
-      "rank": 15,
-      "points": 123,
-      "league": "A-Klasse",
-      "name": "Jacqueline Silvestre Abrante"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 57,
-      "points": 62,
-      "league": "A-Klasse",
-      "name": "Jacqueline Silvestre Abrantes"
-    }
-  ],
-  "145": [
-    {
-      "season": "24/25",
-      "rank": 57,
-      "points": 9,
-      "league": "Bezirksliga",
-      "name": "R\u00fcdiger Scheiba"
-    },
-    {
-      "season": "23/24",
-      "rank": 60,
-      "points": 61,
-      "league": "A-Klasse",
-      "name": "R\u00fcdiger Scheiba"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 24,
-      "points": 67,
-      "league": "Bezirksliga",
-      "name": "R\u00fcdiger Scheiba"
-    }
-  ],
-  "1416": [
-    {
-      "season": "24/25",
-      "rank": 58,
-      "points": 7,
-      "league": "Bezirksliga",
-      "name": "Ingo Eichenhofer"
-    },
-    {
-      "season": "23/24",
-      "rank": 54,
-      "points": 14,
-      "league": "Bezirksliga",
-      "name": "Ingo Eichenhofer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 56,
-      "points": 11,
-      "league": "Bezirksliga",
-      "name": "Ingo Eichenhofer"
-    }
-  ],
-  "930": [
-    {
-      "season": "24/25",
-      "rank": 59,
-      "points": 6,
-      "league": "Bezirksliga",
-      "name": "Lucas Junker"
-    },
-    {
-      "season": "23/24",
-      "rank": 78,
-      "points": 69,
-      "league": "B-Klasse",
-      "name": "Lukas Junker"
-    },
-    {
-      "season": "22/23",
-      "rank": 128,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Lukas Junker"
-    },
-    {
-      "season": "20/22",
-      "rank": 114,
-      "points": 12,
-      "league": "A-Klasse",
-      "name": "Lukas Junker"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 114,
-      "points": 7,
-      "league": "A-Klasse",
-      "name": "Lucas Junker"
-    }
-  ],
-  "1645": [
-    {
-      "season": "24/25",
-      "rank": 60,
-      "points": 4,
-      "league": "Bezirksliga",
-      "name": "Benjamin Golling"
-    },
-    {
-      "season": "23/24",
-      "rank": 97,
-      "points": 12,
-      "league": "A-Klasse",
-      "name": "Benjamin Golling"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 47,
-      "points": 75,
-      "league": "A-Klasse",
-      "name": "Benjamin Golling"
-    }
-  ],
   "1247": [
     {
       "season": "24/25",
@@ -1955,43 +19294,6 @@ window.ARCHIVE_DATA = {
       "points": 13,
       "league": "Bezirksliga",
       "name": "Rene Fiedler"
-    }
-  ],
-  "721": [
-    {
-      "season": "24/25",
-      "rank": 62,
-      "points": 3,
-      "league": "Bezirksliga",
-      "name": "Assunta Venzke"
-    },
-    {
-      "season": "23/24",
-      "rank": 118,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Assunta Venzke"
-    },
-    {
-      "season": "22/23",
-      "rank": 178,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Assunta Venzke"
-    },
-    {
-      "season": "20/22",
-      "rank": 249,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Assunta Ferraiuolo"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 135,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Assunta Venzke"
     }
   ],
   "1565": [
@@ -2015,22 +19317,6 @@ window.ARCHIVE_DATA = {
       "points": 120,
       "league": "B-Klasse",
       "name": "Murat Aydin"
-    }
-  ],
-  "713": [
-    {
-      "season": "24/25",
-      "rank": 64,
-      "points": 3,
-      "league": "Bezirksliga",
-      "name": "Antonio Knapps Thommen"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 48,
-      "points": 25,
-      "league": "Bezirksliga",
-      "name": "Antonio Knapps Thommen"
     }
   ],
   "1798": [
@@ -2058,89 +19344,6 @@ window.ARCHIVE_DATA = {
       "name": "Robin Bauer"
     }
   ],
-  "201": [
-    {
-      "season": "24/25",
-      "rank": 67,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Pavo Saric"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 14,
-      "points": 159,
-      "league": "C-Klasse",
-      "name": "Pavo Saric"
-    }
-  ],
-  "1845": [
-    {
-      "season": "24/25",
-      "rank": 68,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Herward Wagner"
-    },
-    {
-      "season": "23/24",
-      "rank": 208,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Herward Wagner"
-    },
-    {
-      "season": "22/23",
-      "rank": 158,
-      "points": 10,
-      "league": "B-Klasse",
-      "name": "Herward Wagner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 140,
-      "points": 27,
-      "league": "B-Klasse",
-      "name": "Herward Wagner"
-    }
-  ],
-  "182": [
-    {
-      "season": "24/25",
-      "rank": 69,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Florian B\u00fchner"
-    },
-    {
-      "season": "23/24",
-      "rank": 106,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Florian B\u00fchner"
-    },
-    {
-      "season": "22/23",
-      "rank": 108,
-      "points": 10,
-      "league": "A-Klasse",
-      "name": "Florian B\u00fchner"
-    },
-    {
-      "season": "20/22",
-      "rank": 99,
-      "points": 16,
-      "league": "A-Klasse",
-      "name": "Florian B\u00fchner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 110,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Florian B\u00fchner"
-    }
-  ],
   "105": [
     {
       "season": "24/25",
@@ -2162,1788 +19365,6 @@ window.ARCHIVE_DATA = {
       "points": 6,
       "league": "C-Klasse",
       "name": "Sandra Fiedler"
-    }
-  ],
-  "1456": [
-    {
-      "season": "24/25",
-      "rank": 1,
-      "points": 187,
-      "league": "A-Klasse",
-      "name": "Jason Whitney"
-    },
-    {
-      "season": "23/24",
-      "rank": 34,
-      "points": 109,
-      "league": "B-Klasse",
-      "name": "Jason Whitney"
-    },
-    {
-      "season": "22/23",
-      "rank": 36,
-      "points": 113,
-      "league": "C-Klasse",
-      "name": "Jason Whitney"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 3,
-      "points": 164,
-      "league": "Bezirksliga",
-      "name": "Jason Whitney"
-    }
-  ],
-  "918": [
-    {
-      "season": "24/25",
-      "rank": 2,
-      "points": 166,
-      "league": "A-Klasse",
-      "name": "Dominik Silvestre Abrantes"
-    },
-    {
-      "season": "23/24",
-      "rank": 5,
-      "points": 158,
-      "league": "B-Klasse",
-      "name": "Dominik Silvestre Abrantes"
-    },
-    {
-      "season": "22/23",
-      "rank": 1,
-      "points": 182,
-      "league": "C-Klasse",
-      "name": "Dominik Silvestre Abrantes"
-    },
-    {
-      "season": "20/22",
-      "rank": 121,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Dominik Silvestre Abrantes"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 42,
-      "points": 38,
-      "league": "Bezirksliga",
-      "name": "Dominik Silvestre Abrantes"
-    }
-  ],
-  "1276": [
-    {
-      "season": "24/25",
-      "rank": 3,
-      "points": 162,
-      "league": "A-Klasse",
-      "name": "Robin Zipp"
-    },
-    {
-      "season": "23/24",
-      "rank": 24,
-      "points": 86,
-      "league": "Bezirksliga",
-      "name": "Robin Zipp"
-    },
-    {
-      "season": "22/23",
-      "rank": 67,
-      "points": 57,
-      "league": "A-Klasse",
-      "name": "Robin Zipp"
-    },
-    {
-      "season": "20/22",
-      "rank": 22,
-      "points": 107,
-      "league": "A-Klasse",
-      "name": "Robin Zipp"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 25,
-      "points": 67,
-      "league": "Bezirksliga",
-      "name": "Robin Zipp"
-    }
-  ],
-  "1896": [
-    {
-      "season": "24/25",
-      "rank": 4,
-      "points": 162,
-      "league": "A-Klasse",
-      "name": "Sascha Gauss"
-    },
-    {
-      "season": "23/24",
-      "rank": 2,
-      "points": 170,
-      "league": "B-Klasse",
-      "name": "Sascha Gauss"
-    },
-    {
-      "season": "22/23",
-      "rank": 5,
-      "points": 163,
-      "league": "C-Klasse",
-      "name": "Sascha Gauss"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 5,
-      "points": 159,
-      "league": "Bezirksliga",
-      "name": "Sascha Gauss"
-    }
-  ],
-  "208": [
-    {
-      "season": "24/25",
-      "rank": 5,
-      "points": 162,
-      "league": "A-Klasse",
-      "name": "Mark Dew"
-    },
-    {
-      "season": "23/24",
-      "rank": 3,
-      "points": 161,
-      "league": "A-Klasse",
-      "name": "Mark Dew"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 2,
-      "points": 177,
-      "league": "B-Klasse",
-      "name": "Mark Dew"
-    }
-  ],
-  "859": [
-    {
-      "season": "24/25",
-      "rank": 7,
-      "points": 148,
-      "league": "A-Klasse",
-      "name": "Max Z\u00fcndel"
-    },
-    {
-      "season": "23/24",
-      "rank": 22,
-      "points": 93,
-      "league": "Bezirksliga",
-      "name": "Max Z\u00fcndel"
-    },
-    {
-      "season": "22/23",
-      "rank": 6,
-      "points": 160,
-      "league": "A-Klasse",
-      "name": "Max Z\u00fcndel"
-    },
-    {
-      "season": "20/22",
-      "rank": 72,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Max Z\u00fcndel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 30,
-      "points": 54,
-      "league": "Bezirksliga",
-      "name": "Max Z\u00fcndel"
-    }
-  ],
-  "682": [
-    {
-      "season": "24/25",
-      "rank": 8,
-      "points": 143,
-      "league": "A-Klasse",
-      "name": "Manuel Potrzeba"
-    },
-    {
-      "season": "23/24",
-      "rank": 68,
-      "points": 54,
-      "league": "A-Klasse",
-      "name": "Manuel Potrzeba"
-    },
-    {
-      "season": "22/23",
-      "rank": 94,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Manuel Potrzeba"
-    },
-    {
-      "season": "20/22",
-      "rank": 139,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Manuel Potrzeba"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 29,
-      "points": 96,
-      "league": "A-Klasse",
-      "name": "Manuel Potrzeba"
-    }
-  ],
-  "1410": [
-    {
-      "season": "24/25",
-      "rank": 9,
-      "points": 141,
-      "league": "A-Klasse",
-      "name": "Charalambos Papadopoulos"
-    },
-    {
-      "season": "23/24",
-      "rank": 46,
-      "points": 20,
-      "league": "Bezirksliga",
-      "name": "Charalamb Papadopoulos"
-    },
-    {
-      "season": "22/23",
-      "rank": 42,
-      "points": 86,
-      "league": "A-Klasse",
-      "name": "Charalambos Papadopoulos"
-    },
-    {
-      "season": "20/22",
-      "rank": 41,
-      "points": 93,
-      "league": "B-Klasse",
-      "name": "Charalambos Papadopoulos"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 20,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Charalambos Papadopoulos"
-    }
-  ],
-  "1307": [
-    {
-      "season": "24/25",
-      "rank": 10,
-      "points": 140,
-      "league": "A-Klasse",
-      "name": "Hanno Lohmeyer"
-    },
-    {
-      "season": "23/24",
-      "rank": 13,
-      "points": 140,
-      "league": "B-Klasse",
-      "name": "Hanno Lohmeyer"
-    },
-    {
-      "season": "22/23",
-      "rank": 63,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Hanno Lohmeyer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 21,
-      "points": 103,
-      "league": "A-Klasse",
-      "name": "Hanno Lohmeyer"
-    }
-  ],
-  "1130": [
-    {
-      "season": "24/25",
-      "rank": 11,
-      "points": 139,
-      "league": "A-Klasse",
-      "name": "Marco Waidmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 10,
-      "points": 133,
-      "league": "A-Klasse",
-      "name": "Marco Waidmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 71,
-      "points": 51,
-      "league": "A-Klasse",
-      "name": "Marco Waidmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 187,
-      "points": 6,
-      "league": "B-Klasse",
-      "name": "Marco Waidmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 62,
-      "points": 55,
-      "league": "A-Klasse",
-      "name": "Marco Waidmann"
-    }
-  ],
-  "701": [
-    {
-      "season": "24/25",
-      "rank": 12,
-      "points": 136,
-      "league": "A-Klasse",
-      "name": "Michael Hanosek"
-    },
-    {
-      "season": "23/24",
-      "rank": 9,
-      "points": 136,
-      "league": "A-Klasse",
-      "name": "Michael Hanosek"
-    },
-    {
-      "season": "22/23",
-      "rank": 13,
-      "points": 138,
-      "league": "A-Klasse",
-      "name": "Michael Hanosek"
-    },
-    {
-      "season": "20/22",
-      "rank": 12,
-      "points": 129,
-      "league": "A-Klasse",
-      "name": "Michael Hanosek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 23,
-      "points": 124,
-      "league": "B-Klasse",
-      "name": "Michael Hanosek"
-    }
-  ],
-  "957": [
-    {
-      "season": "24/25",
-      "rank": 15,
-      "points": 132,
-      "league": "A-Klasse",
-      "name": "Marcel Reiling"
-    },
-    {
-      "season": "23/24",
-      "rank": 31,
-      "points": 97,
-      "league": "A-Klasse",
-      "name": "Marcel Reiling"
-    },
-    {
-      "season": "22/23",
-      "rank": 18,
-      "points": 127,
-      "league": "A-Klasse",
-      "name": "Marcel Reiling"
-    },
-    {
-      "season": "20/22",
-      "rank": 1,
-      "points": 183,
-      "league": "B-Klasse",
-      "name": "Marcel Reiling"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 7,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Marcel Reiling"
-    }
-  ],
-  "492": [
-    {
-      "season": "24/25",
-      "rank": 16,
-      "points": 131,
-      "league": "A-Klasse",
-      "name": "Lucas Herzog"
-    },
-    {
-      "season": "23/24",
-      "rank": 24,
-      "points": 122,
-      "league": "B-Klasse",
-      "name": "Lucas Herzog"
-    },
-    {
-      "season": "22/23",
-      "rank": 75,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Lucas Herzog"
-    },
-    {
-      "season": "20/22",
-      "rank": 124,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Lucas Herzog"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 43,
-      "points": 78,
-      "league": "A-Klasse",
-      "name": "Lucas Herzog"
-    }
-  ],
-  "1135": [
-    {
-      "season": "24/25",
-      "rank": 17,
-      "points": 131,
-      "league": "A-Klasse",
-      "name": "Marcel Rischar"
-    },
-    {
-      "season": "23/24",
-      "rank": 30,
-      "points": 99,
-      "league": "A-Klasse",
-      "name": "Marcel Rischar"
-    },
-    {
-      "season": "22/23",
-      "rank": 17,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Marcel Rischar"
-    },
-    {
-      "season": "20/22",
-      "rank": 7,
-      "points": 151,
-      "league": "B-Klasse",
-      "name": "Marcel Rischar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 38,
-      "points": 87,
-      "league": "A-Klasse",
-      "name": "Marcel Rischar"
-    }
-  ],
-  "1126": [
-    {
-      "season": "24/25",
-      "rank": 18,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Dominik Koch"
-    },
-    {
-      "season": "23/24",
-      "rank": 6,
-      "points": 146,
-      "league": "A-Klasse",
-      "name": "Dominik Koch"
-    },
-    {
-      "season": "22/23",
-      "rank": 4,
-      "points": 173,
-      "league": "B-Klasse",
-      "name": "Dominik Koch"
-    },
-    {
-      "season": "20/22",
-      "rank": 3,
-      "points": 187,
-      "league": "C-Klasse",
-      "name": "Dominik Koch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 1,
-      "points": 206,
-      "league": "C-Klasse",
-      "name": "Dominik Koch"
-    }
-  ],
-  "1612": [
-    {
-      "season": "24/25",
-      "rank": 19,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Daniel Hautzinger"
-    },
-    {
-      "season": "23/24",
-      "rank": 21,
-      "points": 97,
-      "league": "Bezirksliga",
-      "name": "Daniel Hautzinger"
-    },
-    {
-      "season": "22/23",
-      "rank": 9,
-      "points": 143,
-      "league": "A-Klasse",
-      "name": "Daniel Hautzinger"
-    },
-    {
-      "season": "20/22",
-      "rank": 23,
-      "points": 106,
-      "league": "A-Klasse",
-      "name": "Daniel Hautzinger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 21,
-      "points": 97,
-      "league": "Bezirksliga",
-      "name": "Daniel Hautzinger"
-    }
-  ],
-  "324": [
-    {
-      "season": "24/25",
-      "rank": 20,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Sven Thomas"
-    },
-    {
-      "season": "23/24",
-      "rank": 8,
-      "points": 152,
-      "league": "B-Klasse",
-      "name": "Sven Thomas"
-    },
-    {
-      "season": "22/23",
-      "rank": 55,
-      "points": 83,
-      "league": "B-Klasse",
-      "name": "Sven Thomas"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 8,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Sven Thomas"
-    }
-  ],
-  "152": [
-    {
-      "season": "24/25",
-      "rank": 21,
-      "points": 129,
-      "league": "A-Klasse",
-      "name": "Stipo Dumancic"
-    },
-    {
-      "season": "23/24",
-      "rank": 28,
-      "points": 100,
-      "league": "A-Klasse",
-      "name": "Stipo Dumancic"
-    },
-    {
-      "season": "22/23",
-      "rank": 37,
-      "points": 92,
-      "league": "A-Klasse",
-      "name": "Stipo Dumancic"
-    },
-    {
-      "season": "20/22",
-      "rank": 56,
-      "points": 65,
-      "league": "A-Klasse",
-      "name": "Stipo Dumancic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 105,
-      "points": 16,
-      "league": "A-Klasse",
-      "name": "Stipo Dumancic"
-    }
-  ],
-  "570": [
-    {
-      "season": "24/25",
-      "rank": 22,
-      "points": 125,
-      "league": "A-Klasse",
-      "name": "Roberto Giuffrida"
-    },
-    {
-      "season": "23/24",
-      "rank": 156,
-      "points": 10,
-      "league": "B-Klasse",
-      "name": "Roberto Giuffrida"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 16,
-      "points": 112,
-      "league": "A-Klasse",
-      "name": "Roberto Giuffrida"
-    }
-  ],
-  "1668": [
-    {
-      "season": "24/25",
-      "rank": 23,
-      "points": 123,
-      "league": "A-Klasse",
-      "name": "Oliver Matt"
-    },
-    {
-      "season": "23/24",
-      "rank": 14,
-      "points": 138,
-      "league": "B-Klasse",
-      "name": "Oliver Matt"
-    },
-    {
-      "season": "22/23",
-      "rank": 17,
-      "points": 141,
-      "league": "C-Klasse",
-      "name": "Oliver Matt"
-    },
-    {
-      "season": "20/22",
-      "rank": 144,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Oliver Matt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 24,
-      "points": 102,
-      "league": "A-Klasse",
-      "name": "Oliver Matt"
-    }
-  ],
-  "991": [
-    {
-      "season": "24/25",
-      "rank": 24,
-      "points": 122,
-      "league": "A-Klasse",
-      "name": "Michael Neub\u00fcser"
-    },
-    {
-      "season": "23/24",
-      "rank": 9,
-      "points": 152,
-      "league": "B-Klasse",
-      "name": "Michael Neub\u00fcser"
-    },
-    {
-      "season": "22/23",
-      "rank": 27,
-      "points": 75,
-      "league": "Bezirksliga",
-      "name": "Michael Neub\u00fcser"
-    },
-    {
-      "season": "20/22",
-      "rank": 15,
-      "points": 102,
-      "league": "Bezirksliga",
-      "name": "Michael Neub\u00fcser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 6,
-      "points": 166,
-      "league": "C-Klasse",
-      "name": "Michael Neub\u00fcser"
-    }
-  ],
-  "612": [
-    {
-      "season": "24/25",
-      "rank": 25,
-      "points": 120,
-      "league": "A-Klasse",
-      "name": "Tihomir Weissbarth"
-    },
-    {
-      "season": "23/24",
-      "rank": 73,
-      "points": 48,
-      "league": "A-Klasse",
-      "name": "Tihomir Weissbarth"
-    },
-    {
-      "season": "22/23",
-      "rank": 92,
-      "points": 21,
-      "league": "A-Klasse",
-      "name": "Tihomir Weissbarth"
-    },
-    {
-      "season": "20/22",
-      "rank": 25,
-      "points": 104,
-      "league": "A-Klasse",
-      "name": "Tihomir Weissbarth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 11,
-      "points": 160,
-      "league": "C-Klasse",
-      "name": "Tihomir Weissbarth"
-    }
-  ],
-  "917": [
-    {
-      "season": "24/25",
-      "rank": 26,
-      "points": 116,
-      "league": "A-Klasse",
-      "name": "Benjamin Bader"
-    },
-    {
-      "season": "23/24",
-      "rank": 35,
-      "points": 91,
-      "league": "A-Klasse",
-      "name": "Benjamin Bader"
-    },
-    {
-      "season": "22/23",
-      "rank": 20,
-      "points": 119,
-      "league": "A-Klasse",
-      "name": "Benjamin Bader"
-    },
-    {
-      "season": "20/22",
-      "rank": 32,
-      "points": 97,
-      "league": "A-Klasse",
-      "name": "Benjamin Bader"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 70,
-      "points": 0,
-      "league": "Bezirksliga",
-      "name": "Benjamin Bader"
-    }
-  ],
-  "1271": [
-    {
-      "season": "24/25",
-      "rank": 27,
-      "points": 115,
-      "league": "A-Klasse",
-      "name": "Harald Hoppe"
-    },
-    {
-      "season": "23/24",
-      "rank": 36,
-      "points": 59,
-      "league": "Bezirksliga",
-      "name": "Harald Hoppe"
-    },
-    {
-      "season": "22/23",
-      "rank": 21,
-      "points": 90,
-      "league": "Bezirksliga",
-      "name": "Harald Hoppe"
-    },
-    {
-      "season": "20/22",
-      "rank": 22,
-      "points": 83,
-      "league": "Bezirksliga",
-      "name": "Harald Hoppe"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 9,
-      "points": 152,
-      "league": "B-Klasse",
-      "name": "Harald Hoppe"
-    }
-  ],
-  "760": [
-    {
-      "season": "24/25",
-      "rank": 28,
-      "points": 114,
-      "league": "A-Klasse",
-      "name": "Thorsten Klein"
-    },
-    {
-      "season": "23/24",
-      "rank": 29,
-      "points": 115,
-      "league": "B-Klasse",
-      "name": "Thorsten Klein"
-    },
-    {
-      "season": "22/23",
-      "rank": 19,
-      "points": 139,
-      "league": "C-Klasse",
-      "name": "Thorsten Klein"
-    },
-    {
-      "season": "20/22",
-      "rank": 11,
-      "points": 155,
-      "league": "C-Klasse",
-      "name": "Thorsten Klein"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 39,
-      "points": 40,
-      "league": "Bezirksliga",
-      "name": "Thorsten Klein"
-    }
-  ],
-  "1530": [
-    {
-      "season": "24/25",
-      "rank": 29,
-      "points": 112,
-      "league": "A-Klasse",
-      "name": "Kevin Kenz"
-    },
-    {
-      "season": "23/24",
-      "rank": 39,
-      "points": 103,
-      "league": "B-Klasse",
-      "name": "Kevin Kenz"
-    },
-    {
-      "season": "22/23",
-      "rank": 22,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Kevin Kenz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 34,
-      "points": 48,
-      "league": "Bezirksliga",
-      "name": "Kevin Kenz"
-    }
-  ],
-  "566": [
-    {
-      "season": "24/25",
-      "rank": 30,
-      "points": 107,
-      "league": "A-Klasse",
-      "name": "Danyal Cagatay"
-    },
-    {
-      "season": "23/24",
-      "rank": 140,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Danyal Cagatay"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 36,
-      "points": 90,
-      "league": "A-Klasse",
-      "name": "Danyal Cagatay"
-    }
-  ],
-  "688": [
-    {
-      "season": "24/25",
-      "rank": 31,
-      "points": 107,
-      "league": "A-Klasse",
-      "name": "Steffen Schmierdorfer"
-    },
-    {
-      "season": "23/24",
-      "rank": 47,
-      "points": 79,
-      "league": "A-Klasse",
-      "name": "Steffen Schmierdorfer"
-    },
-    {
-      "season": "22/23",
-      "rank": 41,
-      "points": 87,
-      "league": "A-Klasse",
-      "name": "Steffen Schmierdorfer"
-    },
-    {
-      "season": "20/22",
-      "rank": 11,
-      "points": 132,
-      "league": "A-Klasse",
-      "name": "Steffen Schmierdorfer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 31,
-      "points": 94,
-      "league": "A-Klasse",
-      "name": "Steffen Schmierdorfer"
-    }
-  ],
-  "1481": [
-    {
-      "season": "24/25",
-      "rank": 32,
-      "points": 106,
-      "league": "A-Klasse",
-      "name": "Oktay Kocaoglu"
-    },
-    {
-      "season": "23/24",
-      "rank": 43,
-      "points": 102,
-      "league": "B-Klasse",
-      "name": "Oktay Kocaoglu"
-    },
-    {
-      "season": "22/23",
-      "rank": 37,
-      "points": 112,
-      "league": "C-Klasse",
-      "name": "Oktay Kocaoglu"
-    },
-    {
-      "season": "20/22",
-      "rank": 34,
-      "points": 110,
-      "league": "C-Klasse",
-      "name": "Oktay Kocaoglu"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 59,
-      "points": 59,
-      "league": "A-Klasse",
-      "name": "Oktay Kocaoglu"
-    }
-  ],
-  "579": [
-    {
-      "season": "24/25",
-      "rank": 33,
-      "points": 102,
-      "league": "A-Klasse",
-      "name": "Matija Spiranec"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 10,
-      "points": 126,
-      "league": "A-Klasse",
-      "name": "Matija Spiranec"
-    }
-  ],
-  "314": [
-    {
-      "season": "24/25",
-      "rank": 35,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "Martin Zacher"
-    },
-    {
-      "season": "23/24",
-      "rank": 56,
-      "points": 66,
-      "league": "A-Klasse",
-      "name": "Martin Zacher"
-    },
-    {
-      "season": "22/23",
-      "rank": 43,
-      "points": 86,
-      "league": "A-Klasse",
-      "name": "Martin Zacher"
-    },
-    {
-      "season": "20/22",
-      "rank": 32,
-      "points": 50,
-      "league": "Bezirksliga",
-      "name": "Martin Zacher"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 44,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Martin Zacher"
-    }
-  ],
-  "1865": [
-    {
-      "season": "24/25",
-      "rank": 36,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "Artur Penner"
-    },
-    {
-      "season": "23/24",
-      "rank": 18,
-      "points": 130,
-      "league": "B-Klasse",
-      "name": "Artur Penner"
-    },
-    {
-      "season": "22/23",
-      "rank": 20,
-      "points": 139,
-      "league": "C-Klasse",
-      "name": "Artur Penner"
-    },
-    {
-      "season": "20/22",
-      "rank": 24,
-      "points": 126,
-      "league": "C-Klasse",
-      "name": "Artur Penner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 42,
-      "points": 79,
-      "league": "A-Klasse",
-      "name": "Artur Penner"
-    }
-  ],
-  "1079": [
-    {
-      "season": "24/25",
-      "rank": 37,
-      "points": 92,
-      "league": "A-Klasse",
-      "name": "Jannik Scherle"
-    },
-    {
-      "season": "23/24",
-      "rank": 64,
-      "points": 58,
-      "league": "A-Klasse",
-      "name": "Jannik Scherle"
-    },
-    {
-      "season": "22/23",
-      "rank": 102,
-      "points": 13,
-      "league": "A-Klasse",
-      "name": "Jannik Scherle"
-    },
-    {
-      "season": "20/22",
-      "rank": 136,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Jannik Scherle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 67,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Jannik Scherle"
-    }
-  ],
-  "1883": [
-    {
-      "season": "24/25",
-      "rank": 38,
-      "points": 91,
-      "league": "A-Klasse",
-      "name": "Daniel Sowa"
-    },
-    {
-      "season": "23/24",
-      "rank": 32,
-      "points": 95,
-      "league": "A-Klasse",
-      "name": "Daniel Sowa"
-    },
-    {
-      "season": "22/23",
-      "rank": 21,
-      "points": 118,
-      "league": "A-Klasse",
-      "name": "Daniel Sowa"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 5,
-      "points": 141,
-      "league": "A-Klasse",
-      "name": "Daniel Sowa"
-    }
-  ],
-  "970": [
-    {
-      "season": "24/25",
-      "rank": 39,
-      "points": 88,
-      "league": "A-Klasse",
-      "name": "Gennadij Penner"
-    },
-    {
-      "season": "23/24",
-      "rank": 3,
-      "points": 163,
-      "league": "B-Klasse",
-      "name": "Gennadij Penner"
-    },
-    {
-      "season": "22/23",
-      "rank": 3,
-      "points": 166,
-      "league": "C-Klasse",
-      "name": "Gennadij Penner"
-    },
-    {
-      "season": "20/22",
-      "rank": 59,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Gennadij Penner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 85,
-      "points": 31,
-      "league": "A-Klasse",
-      "name": "Gennadij Penner"
-    }
-  ],
-  "1055": [
-    {
-      "season": "24/25",
-      "rank": 40,
-      "points": 85,
-      "league": "A-Klasse",
-      "name": "Saskia J\u00e4ger"
-    },
-    {
-      "season": "23/24",
-      "rank": 53,
-      "points": 68,
-      "league": "A-Klasse",
-      "name": "Saskia J\u00e4ger"
-    },
-    {
-      "season": "22/23",
-      "rank": 47,
-      "points": 92,
-      "league": "B-Klasse",
-      "name": "Saskia J\u00e4ger"
-    },
-    {
-      "season": "20/22",
-      "rank": 217,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Saskia J\u00e4ger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 32,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "Saskia J\u00e4ger"
-    }
-  ],
-  "350": [
-    {
-      "season": "24/25",
-      "rank": 41,
-      "points": 85,
-      "league": "A-Klasse",
-      "name": "J rgen Herzog"
-    },
-    {
-      "season": "23/24",
-      "rank": 44,
-      "points": 101,
-      "league": "B-Klasse",
-      "name": "J\u00fcrgen Herzog"
-    },
-    {
-      "season": "22/23",
-      "rank": 32,
-      "points": 47,
-      "league": "Bezirksliga",
-      "name": "J\u00fcrgen Herzog"
-    },
-    {
-      "season": "20/22",
-      "rank": 27,
-      "points": 61,
-      "league": "Bezirksliga",
-      "name": "J\u00fcrgen Herzog"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 32,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "J\u00fcrgen Herzog"
-    }
-  ],
-  "1523": [
-    {
-      "season": "24/25",
-      "rank": 42,
-      "points": 82,
-      "league": "A-Klasse",
-      "name": "Vitali Herz"
-    },
-    {
-      "season": "23/24",
-      "rank": 26,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Vitali Herz"
-    },
-    {
-      "season": "22/23",
-      "rank": 17,
-      "points": 121,
-      "league": "B-Klasse",
-      "name": "Vitali Herz"
-    },
-    {
-      "season": "20/22",
-      "rank": 20,
-      "points": 121,
-      "league": "B-Klasse",
-      "name": "Vitali Herz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 40,
-      "points": 83,
-      "league": "A-Klasse",
-      "name": "Vitali Herz"
-    }
-  ],
-  "553": [
-    {
-      "season": "24/25",
-      "rank": 43,
-      "points": 81,
-      "league": "A-Klasse",
-      "name": "Christian Besesek"
-    },
-    {
-      "season": "23/24",
-      "rank": 36,
-      "points": 90,
-      "league": "A-Klasse",
-      "name": "Christian Besesek"
-    },
-    {
-      "season": "22/23",
-      "rank": 14,
-      "points": 134,
-      "league": "B-Klasse",
-      "name": "Christian Besesek"
-    },
-    {
-      "season": "20/22",
-      "rank": 12,
-      "points": 136,
-      "league": "B-Klasse",
-      "name": "Christian Besesek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 52,
-      "points": 69,
-      "league": "A-Klasse",
-      "name": "Christian Besesek"
-    }
-  ],
-  "114": [
-    {
-      "season": "24/25",
-      "rank": 44,
-      "points": 81,
-      "league": "A-Klasse",
-      "name": "Thomas Weber"
-    },
-    {
-      "season": "23/24",
-      "rank": 40,
-      "points": 89,
-      "league": "A-Klasse",
-      "name": "Thomas Weber"
-    },
-    {
-      "season": "22/23",
-      "rank": 50,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Thomas Weber"
-    },
-    {
-      "season": "20/22",
-      "rank": 18,
-      "points": 117,
-      "league": "A-Klasse",
-      "name": "Thomas Weber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 41,
-      "points": 38,
-      "league": "Bezirksliga",
-      "name": "Thomas Weber"
-    }
-  ],
-  "1411": [
-    {
-      "season": "24/25",
-      "rank": 45,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Benjamin Grau"
-    },
-    {
-      "season": "23/24",
-      "rank": 52,
-      "points": 15,
-      "league": "Bezirksliga",
-      "name": "Benjamin Grau"
-    },
-    {
-      "season": "22/23",
-      "rank": 59,
-      "points": 69,
-      "league": "A-Klasse",
-      "name": "Benjamin Grau"
-    },
-    {
-      "season": "20/22",
-      "rank": 30,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Benjamin Grau"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 12,
-      "points": 142,
-      "league": "B-Klasse",
-      "name": "Benjamin Grau"
-    }
-  ],
-  "1455": [
-    {
-      "season": "24/25",
-      "rank": 47,
-      "points": 76,
-      "league": "A-Klasse",
-      "name": "Gianni Morello"
-    },
-    {
-      "season": "23/24",
-      "rank": 17,
-      "points": 132,
-      "league": "B-Klasse",
-      "name": "Gianni Morello"
-    },
-    {
-      "season": "22/23",
-      "rank": 131,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Gianni Morello"
-    },
-    {
-      "season": "20/22",
-      "rank": 110,
-      "points": 35,
-      "league": "B-Klasse",
-      "name": "Gianni Morello"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 114,
-      "points": 7,
-      "league": "A-Klasse",
-      "name": "Gianni Morello"
-    }
-  ],
-  "1279": [
-    {
-      "season": "24/25",
-      "rank": 48,
-      "points": 76,
-      "league": "A-Klasse",
-      "name": "Urban Roth"
-    },
-    {
-      "season": "23/24",
-      "rank": 37,
-      "points": 90,
-      "league": "A-Klasse",
-      "name": "Urban Roth"
-    },
-    {
-      "season": "22/23",
-      "rank": 25,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Urban Roth"
-    },
-    {
-      "season": "20/22",
-      "rank": 15,
-      "points": 128,
-      "league": "B-Klasse",
-      "name": "Urban Roth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 52,
-      "points": 16,
-      "league": "Bezirksliga",
-      "name": "Urban Roth"
-    }
-  ],
-  "944": [
-    {
-      "season": "24/25",
-      "rank": 49,
-      "points": 74,
-      "league": "A-Klasse",
-      "name": "Nico Ihli"
-    },
-    {
-      "season": "23/24",
-      "rank": 75,
-      "points": 74,
-      "league": "B-Klasse",
-      "name": "Nico Ihli"
-    },
-    {
-      "season": "22/23",
-      "rank": 15,
-      "points": 142,
-      "league": "C-Klasse",
-      "name": "Nico Ihli"
-    },
-    {
-      "season": "20/22",
-      "rank": 35,
-      "points": 108,
-      "league": "C-Klasse",
-      "name": "Nico Ihli"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 45,
-      "points": 33,
-      "league": "Bezirksliga",
-      "name": "Nico Ihli"
-    }
-  ],
-  "1210": [
-    {
-      "season": "24/25",
-      "rank": 50,
-      "points": 74,
-      "league": "A-Klasse",
-      "name": "Uwe M\u00fchlbauer"
-    },
-    {
-      "season": "23/24",
-      "rank": 41,
-      "points": 103,
-      "league": "B-Klasse",
-      "name": "Uwe M\u00fchlbauer"
-    },
-    {
-      "season": "22/23",
-      "rank": 30,
-      "points": 106,
-      "league": "B-Klasse",
-      "name": "Uwe M\u00fchlbauer"
-    },
-    {
-      "season": "20/22",
-      "rank": 87,
-      "points": 55,
-      "league": "B-Klasse",
-      "name": "Uwe M\u00fchlbauer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 36,
-      "points": 45,
-      "league": "Bezirksliga",
-      "name": "Uwe M\u00fchlbauer"
-    }
-  ],
-  "1172": [
-    {
-      "season": "24/25",
-      "rank": 51,
-      "points": 74,
-      "league": "A-Klasse",
-      "name": "Christopher Fuchs"
-    },
-    {
-      "season": "23/24",
-      "rank": 43,
-      "points": 28,
-      "league": "Bezirksliga",
-      "name": "Christopher Fuchs"
-    },
-    {
-      "season": "22/23",
-      "rank": 76,
-      "points": 47,
-      "league": "A-Klasse",
-      "name": "Christopher Fuchs"
-    },
-    {
-      "season": "20/22",
-      "rank": 87,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Christophe Fuchs"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 43,
-      "points": 35,
-      "league": "Bezirksliga",
-      "name": "Christopher Fuchs"
-    }
-  ],
-  "1064": [
-    {
-      "season": "24/25",
-      "rank": 52,
-      "points": 73,
-      "league": "A-Klasse",
-      "name": "Bernd Langer"
-    },
-    {
-      "season": "23/24",
-      "rank": 25,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Bernd Langer"
-    },
-    {
-      "season": "22/23",
-      "rank": 40,
-      "points": 87,
-      "league": "A-Klasse",
-      "name": "Bernd Langer"
-    },
-    {
-      "season": "20/22",
-      "rank": 5,
-      "points": 157,
-      "league": "B-Klasse",
-      "name": "Bernd Langer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 117,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Bernd Langer"
-    }
-  ],
-  "1657": [
-    {
-      "season": "24/25",
-      "rank": 54,
-      "points": 69,
-      "league": "A-Klasse",
-      "name": "Alexander Kessler"
-    },
-    {
-      "season": "23/24",
-      "rank": 43,
-      "points": 86,
-      "league": "A-Klasse",
-      "name": "Alexander Kessler"
-    },
-    {
-      "season": "22/23",
-      "rank": 77,
-      "points": 45,
-      "league": "A-Klasse",
-      "name": "Alexander Kessler"
-    },
-    {
-      "season": "20/22",
-      "rank": 74,
-      "points": 75,
-      "league": "C-Klasse",
-      "name": "Alexander Kesler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 62,
-      "points": 55,
-      "league": "A-Klasse",
-      "name": "Alexander Kessler"
-    }
-  ],
-  "635": [
-    {
-      "season": "24/25",
-      "rank": 55,
-      "points": 67,
-      "league": "A-Klasse",
-      "name": "Graziella Crimaldi"
-    },
-    {
-      "season": "23/24",
-      "rank": 42,
-      "points": 102,
-      "league": "B-Klasse",
-      "name": "Graziella Crimaldi"
-    },
-    {
-      "season": "22/23",
-      "rank": 108,
-      "points": 44,
-      "league": "B-Klasse",
-      "name": "Graziella Crimaldi"
-    },
-    {
-      "season": "20/22",
-      "rank": 145,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Graziella Crimaldi"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 90,
-      "points": 28,
-      "league": "A-Klasse",
-      "name": "Graziella Crimaldi"
-    }
-  ],
-  "873": [
-    {
-      "season": "24/25",
-      "rank": 56,
-      "points": 64,
-      "league": "A-Klasse",
-      "name": "J rgen Zorn"
-    },
-    {
-      "season": "23/24",
-      "rank": 27,
-      "points": 104,
-      "league": "A-Klasse",
-      "name": "J\u00fcrgen Zorn"
-    },
-    {
-      "season": "22/23",
-      "rank": 75,
-      "points": 47,
-      "league": "A-Klasse",
-      "name": "J\u00fcrgen Zorn"
-    },
-    {
-      "season": "20/22",
-      "rank": 51,
-      "points": 75,
-      "league": "A-Klasse",
-      "name": "J\u00fcrgen Zorn"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 52,
-      "points": 94,
-      "league": "B-Klasse",
-      "name": "J\u00fcrgen Zorn"
-    }
-  ],
-  "685": [
-    {
-      "season": "24/25",
-      "rank": 57,
-      "points": 62,
-      "league": "A-Klasse",
-      "name": "Guido Biehl"
-    },
-    {
-      "season": "23/24",
-      "rank": 127,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Guido Biehl"
-    },
-    {
-      "season": "22/23",
-      "rank": 36,
-      "points": 35,
-      "league": "Bezirksliga",
-      "name": "Guido Biehl"
-    },
-    {
-      "season": "20/22",
-      "rank": 43,
-      "points": 27,
-      "league": "Bezirksliga",
-      "name": "Guido Biehl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 102,
-      "points": 17,
-      "league": "A-Klasse",
-      "name": "Guido Biehl"
     }
   ],
   "893": [
@@ -3976,80 +19397,6 @@ window.ARCHIVE_DATA = {
       "name": "Sven Fr\u00f6hlich"
     }
   ],
-  "309": [
-    {
-      "season": "24/25",
-      "rank": 59,
-      "points": 59,
-      "league": "A-Klasse",
-      "name": "Peter Hartig"
-    },
-    {
-      "season": "23/24",
-      "rank": 77,
-      "points": 41,
-      "league": "A-Klasse",
-      "name": "Peter Hartig"
-    },
-    {
-      "season": "22/23",
-      "rank": 83,
-      "points": 39,
-      "league": "A-Klasse",
-      "name": "Peter Hartig"
-    },
-    {
-      "season": "20/22",
-      "rank": 62,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Peter Hartig"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 85,
-      "points": 31,
-      "league": "A-Klasse",
-      "name": "Peter Hartig"
-    }
-  ],
-  "1204": [
-    {
-      "season": "24/25",
-      "rank": 60,
-      "points": 56,
-      "league": "A-Klasse",
-      "name": "Peter Fenchel"
-    },
-    {
-      "season": "23/24",
-      "rank": 44,
-      "points": 85,
-      "league": "A-Klasse",
-      "name": "Peter Fenchel"
-    },
-    {
-      "season": "22/23",
-      "rank": 39,
-      "points": 88,
-      "league": "A-Klasse",
-      "name": "Peter Fenchel"
-    },
-    {
-      "season": "20/22",
-      "rank": 21,
-      "points": 119,
-      "league": "B-Klasse",
-      "name": "Peter Fenchel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 107,
-      "points": 15,
-      "league": "A-Klasse",
-      "name": "Peter Fenchel"
-    }
-  ],
   "187": [
     {
       "season": "24/25",
@@ -4080,281 +19427,6 @@ window.ARCHIVE_DATA = {
       "name": "Jan Sch\u00f6ffler"
     }
   ],
-  "486": [
-    {
-      "season": "24/25",
-      "rank": 63,
-      "points": 53,
-      "league": "A-Klasse",
-      "name": "Jochen Burow"
-    },
-    {
-      "season": "23/24",
-      "rank": 46,
-      "points": 79,
-      "league": "A-Klasse",
-      "name": "Jochen Burow"
-    },
-    {
-      "season": "22/23",
-      "rank": 35,
-      "points": 93,
-      "league": "A-Klasse",
-      "name": "Jochen Burow"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 57,
-      "points": 62,
-      "league": "A-Klasse",
-      "name": "Jochen Burow"
-    }
-  ],
-  "1738": [
-    {
-      "season": "24/25",
-      "rank": 65,
-      "points": 52,
-      "league": "A-Klasse",
-      "name": "Thomas G\u00e4ckle"
-    },
-    {
-      "season": "23/24",
-      "rank": 83,
-      "points": 33,
-      "league": "A-Klasse",
-      "name": "Thomas G\u00e4ckle"
-    },
-    {
-      "season": "22/23",
-      "rank": 146,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Thomas G\u00e4ckle"
-    },
-    {
-      "season": "20/22",
-      "rank": 240,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Thomas G\u00e4ckle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 73,
-      "points": 78,
-      "league": "B-Klasse",
-      "name": "Thomas G\u00e4ckle"
-    }
-  ],
-  "298": [
-    {
-      "season": "24/25",
-      "rank": 66,
-      "points": 51,
-      "league": "A-Klasse",
-      "name": "Reiner Osiniak"
-    },
-    {
-      "season": "23/24",
-      "rank": 75,
-      "points": 43,
-      "league": "A-Klasse",
-      "name": "Reiner Osiniak"
-    },
-    {
-      "season": "22/23",
-      "rank": 63,
-      "points": 65,
-      "league": "A-Klasse",
-      "name": "Reiner Osiniak"
-    },
-    {
-      "season": "20/22",
-      "rank": 28,
-      "points": 102,
-      "league": "A-Klasse",
-      "name": "Reiner Osiniak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 55,
-      "points": 92,
-      "league": "B-Klasse",
-      "name": "Reiner Osiniak"
-    }
-  ],
-  "270": [
-    {
-      "season": "24/25",
-      "rank": 67,
-      "points": 49,
-      "league": "A-Klasse",
-      "name": "Marek Pason"
-    },
-    {
-      "season": "23/24",
-      "rank": 74,
-      "points": 46,
-      "league": "A-Klasse",
-      "name": "Marek Pason"
-    },
-    {
-      "season": "22/23",
-      "rank": 91,
-      "points": 21,
-      "league": "A-Klasse",
-      "name": "Marek Pason"
-    },
-    {
-      "season": "20/22",
-      "rank": 97,
-      "points": 17,
-      "league": "A-Klasse",
-      "name": "Marek Pason"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 89,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Marek Pason"
-    }
-  ],
-  "897": [
-    {
-      "season": "24/25",
-      "rank": 68,
-      "points": 49,
-      "league": "A-Klasse",
-      "name": "Falk Rathfelder"
-    },
-    {
-      "season": "23/24",
-      "rank": 53,
-      "points": 15,
-      "league": "Bezirksliga",
-      "name": "Falk Rathfelder"
-    },
-    {
-      "season": "22/23",
-      "rank": 45,
-      "points": 24,
-      "league": "Bezirksliga",
-      "name": "Falk Rathfelder"
-    },
-    {
-      "season": "20/22",
-      "rank": 52,
-      "points": 15,
-      "league": "Bezirksliga",
-      "name": "Falk Rathfelder"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 47,
-      "points": 99,
-      "league": "B-Klasse",
-      "name": "Falk Rathfelder"
-    }
-  ],
-  "1802": [
-    {
-      "season": "24/25",
-      "rank": 69,
-      "points": 47,
-      "league": "A-Klasse",
-      "name": "Steve R\u00f6der"
-    },
-    {
-      "season": "23/24",
-      "rank": 66,
-      "points": 56,
-      "league": "A-Klasse",
-      "name": "Steve R\u00f6der"
-    },
-    {
-      "season": "22/23",
-      "rank": 50,
-      "points": 88,
-      "league": "B-Klasse",
-      "name": "Steve R\u00f6der"
-    },
-    {
-      "season": "20/22",
-      "rank": 6,
-      "points": 174,
-      "league": "C-Klasse",
-      "name": "Steve R\u00f6der"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 62,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Steve R\u00f6der"
-    }
-  ],
-  "311": [
-    {
-      "season": "24/25",
-      "rank": 70,
-      "points": 47,
-      "league": "A-Klasse",
-      "name": "Jochen Staib"
-    },
-    {
-      "season": "23/24",
-      "rank": 96,
-      "points": 13,
-      "league": "A-Klasse",
-      "name": "Jochen Staib"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 77,
-      "points": 37,
-      "league": "A-Klasse",
-      "name": "Jochen Staib"
-    }
-  ],
-  "1515": [
-    {
-      "season": "24/25",
-      "rank": 71,
-      "points": 46,
-      "league": "A-Klasse",
-      "name": "Matthias Klink"
-    },
-    {
-      "season": "23/24",
-      "rank": 73,
-      "points": 75,
-      "league": "B-Klasse",
-      "name": "Matthias Klink"
-    },
-    {
-      "season": "22/23",
-      "rank": 67,
-      "points": 73,
-      "league": "B-Klasse",
-      "name": "Matthias Klink"
-    },
-    {
-      "season": "20/22",
-      "rank": 39,
-      "points": 102,
-      "league": "C-Klasse",
-      "name": "Matthias Klink"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 247,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Matthias Klink"
-    }
-  ],
   "1901": [
     {
       "season": "24/25",
@@ -4376,117 +19448,6 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "Bezirksliga",
       "name": "Nico Rapp"
-    }
-  ],
-  "315": [
-    {
-      "season": "24/25",
-      "rank": 73,
-      "points": 40,
-      "league": "A-Klasse",
-      "name": "Bastian Uhlending"
-    },
-    {
-      "season": "23/24",
-      "rank": 91,
-      "points": 18,
-      "league": "A-Klasse",
-      "name": "Bastian Uhlending"
-    },
-    {
-      "season": "22/23",
-      "rank": 59,
-      "points": 80,
-      "league": "B-Klasse",
-      "name": "Bastian Uhlending"
-    },
-    {
-      "season": "20/22",
-      "rank": 82,
-      "points": 70,
-      "league": "C-Klasse",
-      "name": "Bastian Uhlending"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 144,
-      "points": 23,
-      "league": "B-Klasse",
-      "name": "Bastian Uhlending"
-    }
-  ],
-  "1685": [
-    {
-      "season": "24/25",
-      "rank": 74,
-      "points": 37,
-      "league": "A-Klasse",
-      "name": "Bernd Wilhelm"
-    },
-    {
-      "season": "23/24",
-      "rank": 58,
-      "points": 9,
-      "league": "Bezirksliga",
-      "name": "Bernd Wilhelm"
-    },
-    {
-      "season": "22/23",
-      "rank": 68,
-      "points": 0,
-      "league": "Bezirksliga",
-      "name": "Bernd Wilhelm"
-    },
-    {
-      "season": "20/22",
-      "rank": 58,
-      "points": 81,
-      "league": "B-Klasse",
-      "name": "Bernd Wilhelm"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 82,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Bernd Wilhelm"
-    }
-  ],
-  "1136": [
-    {
-      "season": "24/25",
-      "rank": 75,
-      "points": 36,
-      "league": "A-Klasse",
-      "name": "Stefan Rischar"
-    },
-    {
-      "season": "23/24",
-      "rank": 67,
-      "points": 55,
-      "league": "A-Klasse",
-      "name": "Stefan Rischar"
-    },
-    {
-      "season": "22/23",
-      "rank": 72,
-      "points": 50,
-      "league": "A-Klasse",
-      "name": "Stefan Rischar"
-    },
-    {
-      "season": "20/22",
-      "rank": 25,
-      "points": 113,
-      "league": "B-Klasse",
-      "name": "Stefan Rischar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 70,
-      "points": 45,
-      "league": "A-Klasse",
-      "name": "Stefan Rischar"
     }
   ],
   "1125": [
@@ -4519,200 +19480,6 @@ window.ARCHIVE_DATA = {
       "name": "Ralf Sommer"
     }
   ],
-  "591": [
-    {
-      "season": "24/25",
-      "rank": 77,
-      "points": 33,
-      "league": "A-Klasse",
-      "name": "Dennis Christian"
-    },
-    {
-      "season": "23/24",
-      "rank": 92,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Dennis Christian"
-    },
-    {
-      "season": "22/23",
-      "rank": 147,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Dennis Christian"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 175,
-      "points": 10,
-      "league": "B-Klasse",
-      "name": "Dennis Christian"
-    }
-  ],
-  "385": [
-    {
-      "season": "24/25",
-      "rank": 78,
-      "points": 30,
-      "league": "A-Klasse",
-      "name": "Patrick Konrad"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 91,
-      "points": 27,
-      "league": "A-Klasse",
-      "name": "Patrick Konrad"
-    }
-  ],
-  "982": [
-    {
-      "season": "24/25",
-      "rank": 79,
-      "points": 30,
-      "league": "A-Klasse",
-      "name": "Senay Turan"
-    },
-    {
-      "season": "23/24",
-      "rank": 31,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Senay Turan"
-    },
-    {
-      "season": "22/23",
-      "rank": 110,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Senay Turan"
-    },
-    {
-      "season": "20/22",
-      "rank": 16,
-      "points": 138,
-      "league": "C-Klasse",
-      "name": "Senay Turan"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 77,
-      "points": 37,
-      "league": "A-Klasse",
-      "name": "Senay Turan"
-    }
-  ],
-  "1351": [
-    {
-      "season": "24/25",
-      "rank": 81,
-      "points": 29,
-      "league": "A-Klasse",
-      "name": "Ivo Opacak"
-    },
-    {
-      "season": "23/24",
-      "rank": 94,
-      "points": 15,
-      "league": "A-Klasse",
-      "name": "Ivo Opacak"
-    },
-    {
-      "season": "22/23",
-      "rank": 26,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Ivo Opacak"
-    },
-    {
-      "season": "20/22",
-      "rank": 73,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Ivo Opacak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 121,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Ivo Opacak"
-    }
-  ],
-  "460": [
-    {
-      "season": "24/25",
-      "rank": 82,
-      "points": 29,
-      "league": "A-Klasse",
-      "name": "Carsten Bee"
-    },
-    {
-      "season": "23/24",
-      "rank": 63,
-      "points": 4,
-      "league": "Bezirksliga",
-      "name": "Carsten Bee"
-    },
-    {
-      "season": "22/23",
-      "rank": 59,
-      "points": 4,
-      "league": "Bezirksliga",
-      "name": "Carsten Bee"
-    },
-    {
-      "season": "20/22",
-      "rank": 49,
-      "points": 22,
-      "league": "Bezirksliga",
-      "name": "Carsten Bee"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 80,
-      "points": 36,
-      "league": "A-Klasse",
-      "name": "Carsten Bee"
-    }
-  ],
-  "1412": [
-    {
-      "season": "24/25",
-      "rank": 83,
-      "points": 29,
-      "league": "A-Klasse",
-      "name": "Yves Schmidt"
-    },
-    {
-      "season": "23/24",
-      "rank": 99,
-      "points": 50,
-      "league": "B-Klasse",
-      "name": "Yves Schmidt"
-    },
-    {
-      "season": "22/23",
-      "rank": 102,
-      "points": 48,
-      "league": "B-Klasse",
-      "name": "Yves Schmidt"
-    },
-    {
-      "season": "20/22",
-      "rank": 105,
-      "points": 38,
-      "league": "B-Klasse",
-      "name": "Yves Schmidt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 24,
-      "points": 123,
-      "league": "B-Klasse",
-      "name": "Yves Schmidt"
-    }
-  ],
   "1706": [
     {
       "season": "24/25",
@@ -4741,52 +19508,6 @@ window.ARCHIVE_DATA = {
       "points": 212,
       "league": "C-Klasse",
       "name": "Benjamin Gro\u00dfmann"
-    }
-  ],
-  "1784": [
-    {
-      "season": "24/25",
-      "rank": 85,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Markus Gleich"
-    },
-    {
-      "season": "23/24",
-      "rank": 6,
-      "points": 155,
-      "league": "B-Klasse",
-      "name": "Markus Gleich"
-    },
-    {
-      "season": "22/23",
-      "rank": 30,
-      "points": 117,
-      "league": "C-Klasse",
-      "name": "Markus Gleich"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 19,
-      "points": 99,
-      "league": "Bezirksliga",
-      "name": "Markus Gleich"
-    }
-  ],
-  "454": [
-    {
-      "season": "24/25",
-      "rank": 86,
-      "points": 25,
-      "league": "A-Klasse",
-      "name": "Christian Hahn"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 50,
-      "points": 18,
-      "league": "Bezirksliga",
-      "name": "Christian Hahn"
     }
   ],
   "1673": [
@@ -4819,27 +19540,34 @@ window.ARCHIVE_DATA = {
       "name": "Felicitas Lutz"
     }
   ],
-  "1637": [
+  "085": [
     {
       "season": "24/25",
-      "rank": 89,
-      "points": 20,
+      "rank": 90,
+      "points": 13,
       "league": "A-Klasse",
-      "name": "Ufuk Kraus"
+      "name": "Kay Gottmann"
     },
     {
       "season": "23/24",
-      "rank": 57,
-      "points": 11,
-      "league": "Bezirksliga",
-      "name": "Ufuk Kraus"
+      "rank": 61,
+      "points": 60,
+      "league": "A-Klasse",
+      "name": "Kay Gottmann"
     },
     {
-      "season": "2025/2026",
-      "rank": 51,
-      "points": 18,
+      "season": "22/23",
+      "rank": 55,
+      "points": 8,
       "league": "Bezirksliga",
-      "name": "Ufuk Kraus"
+      "name": "Kay Gottmann"
+    },
+    {
+      "season": "20/22",
+      "rank": 82,
+      "points": 30,
+      "league": "A-Klasse",
+      "name": "Kay Gottmann"
     }
   ],
   "448": [
@@ -4872,22 +19600,6 @@ window.ARCHIVE_DATA = {
       "name": "Martin Daimer"
     }
   ],
-  "943": [
-    {
-      "season": "24/25",
-      "rank": 92,
-      "points": 12,
-      "league": "A-Klasse",
-      "name": "Dennis Paseka"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 37,
-      "points": 124,
-      "league": "C-Klasse",
-      "name": "Dennis Paseka"
-    }
-  ],
   "1474": [
     {
       "season": "24/25",
@@ -4916,36 +19628,6 @@ window.ARCHIVE_DATA = {
       "points": 91,
       "league": "B-Klasse",
       "name": "Jochen Niedermann"
-    }
-  ],
-  "639": [
-    {
-      "season": "24/25",
-      "rank": 94,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Benjamin Marks"
-    },
-    {
-      "season": "23/24",
-      "rank": 70,
-      "points": 53,
-      "league": "A-Klasse",
-      "name": "Benjamin Marks"
-    },
-    {
-      "season": "22/23",
-      "rank": 90,
-      "points": 22,
-      "league": "A-Klasse",
-      "name": "Benjamin Marks"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 131,
-      "points": 33,
-      "league": "B-Klasse",
-      "name": "Benjamin Marks"
     }
   ],
   "1434": [
@@ -5008,43 +19690,6 @@ window.ARCHIVE_DATA = {
       "name": "Frank Ponik"
     }
   ],
-  "1214": [
-    {
-      "season": "24/25",
-      "rank": 97,
-      "points": 8,
-      "league": "A-Klasse",
-      "name": "Klaus Clappier"
-    },
-    {
-      "season": "23/24",
-      "rank": 135,
-      "points": 19,
-      "league": "B-Klasse",
-      "name": "Klaus Clappier"
-    },
-    {
-      "season": "22/23",
-      "rank": 191,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Klaus Clappier"
-    },
-    {
-      "season": "20/22",
-      "rank": 110,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "Klaus Clappier"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 68,
-      "points": 0,
-      "league": "Bezirksliga",
-      "name": "Klaus Clappier"
-    }
-  ],
   "1748": [
     {
       "season": "24/25",
@@ -5077,43 +19722,6 @@ window.ARCHIVE_DATA = {
       "name": "Christian Lauber"
     }
   ],
-  "1566": [
-    {
-      "season": "24/25",
-      "rank": 100,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Kerstin Fuust"
-    },
-    {
-      "season": "23/24",
-      "rank": 88,
-      "points": 20,
-      "league": "A-Klasse",
-      "name": "Kerstin Fuust"
-    },
-    {
-      "season": "22/23",
-      "rank": 107,
-      "points": 11,
-      "league": "A-Klasse",
-      "name": "Kerstin Fuust"
-    },
-    {
-      "season": "20/22",
-      "rank": 81,
-      "points": 30,
-      "league": "A-Klasse",
-      "name": "Kerstin Fuust"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 94,
-      "points": 25,
-      "league": "A-Klasse",
-      "name": "Kerstin Fuust"
-    }
-  ],
   "826": [
     {
       "season": "24/25",
@@ -5142,135 +19750,6 @@ window.ARCHIVE_DATA = {
       "points": 49,
       "league": "C-Klasse",
       "name": "Sabrina Lindner"
-    }
-  ],
-  "979": [
-    {
-      "season": "24/25",
-      "rank": 102,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Niklas Morlock"
-    },
-    {
-      "season": "23/24",
-      "rank": 47,
-      "points": 97,
-      "league": "B-Klasse",
-      "name": "Niklas Morlock"
-    },
-    {
-      "season": "22/23",
-      "rank": 122,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Niklas Morlock"
-    },
-    {
-      "season": "20/22",
-      "rank": 86,
-      "points": 55,
-      "league": "B-Klasse",
-      "name": "Niklas Morlock"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 47,
-      "points": 75,
-      "league": "A-Klasse",
-      "name": "Niklas Morlock"
-    }
-  ],
-  "1818": [
-    {
-      "season": "24/25",
-      "rank": 103,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Louis B\u00e4r"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 47,
-      "points": 25,
-      "league": "Bezirksliga",
-      "name": "Louis B\u00e4r"
-    }
-  ],
-  "923": [
-    {
-      "season": "24/25",
-      "rank": 104,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Uwe Deeg"
-    },
-    {
-      "season": "23/24",
-      "rank": 117,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Uwe Deeg"
-    },
-    {
-      "season": "22/23",
-      "rank": 140,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Uwe Deeg"
-    },
-    {
-      "season": "20/22",
-      "rank": 168,
-      "points": 10,
-      "league": "B-Klasse",
-      "name": "Uwe Deeg"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 110,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Uwe Deeg"
-    }
-  ],
-  "1601": [
-    {
-      "season": "24/25",
-      "rank": 105,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Francisco Corall"
-    },
-    {
-      "season": "23/24",
-      "rank": 144,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Francisco Corall"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 65,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Francisco Corall"
-    }
-  ],
-  "161": [
-    {
-      "season": "24/25",
-      "rank": 106,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Klara Nagy"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 69,
-      "points": 0,
-      "league": "Bezirksliga",
-      "name": "Klara Nagy"
     }
   ],
   "1325": [
@@ -5303,36 +19782,6 @@ window.ARCHIVE_DATA = {
       "name": "Robin Bechtold"
     }
   ],
-  "1406": [
-    {
-      "season": "24/25",
-      "rank": 108,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Franziska Ihli"
-    },
-    {
-      "season": "23/24",
-      "rank": 124,
-      "points": 31,
-      "league": "B-Klasse",
-      "name": "Franziska Ihli"
-    },
-    {
-      "season": "22/23",
-      "rank": 157,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Franziska Ihli"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 66,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Franziska Ihli"
-    }
-  ],
   "1203": [
     {
       "season": "24/25",
@@ -5363,1168 +19812,6 @@ window.ARCHIVE_DATA = {
       "name": "Jose Carrero"
     }
   ],
-  "1272": [
-    {
-      "season": "24/25",
-      "rank": 110,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Markus Oehrle"
-    },
-    {
-      "season": "23/24",
-      "rank": 105,
-      "points": 8,
-      "league": "A-Klasse",
-      "name": "Markus Oehrle"
-    },
-    {
-      "season": "22/23",
-      "rank": 174,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Markus Oehrle"
-    },
-    {
-      "season": "20/22",
-      "rank": 153,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Markus Oehrle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 135,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Markus Oehrle"
-    }
-  ],
-  "1573": [
-    {
-      "season": "24/25",
-      "rank": 111,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Judith Ludwig"
-    },
-    {
-      "season": "22/23",
-      "rank": 192,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Judith Ludwig"
-    },
-    {
-      "season": "20/22",
-      "rank": 131,
-      "points": 7,
-      "league": "A-Klasse",
-      "name": "Judith Ludwig"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 158,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Judith Ludwig"
-    }
-  ],
-  "465": [
-    {
-      "season": "24/25",
-      "rank": 112,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Willi Ruppert"
-    },
-    {
-      "season": "23/24",
-      "rank": 65,
-      "points": 57,
-      "league": "A-Klasse",
-      "name": "Willi Ruppert"
-    },
-    {
-      "season": "22/23",
-      "rank": 78,
-      "points": 44,
-      "league": "A-Klasse",
-      "name": "Willi Ruppert"
-    },
-    {
-      "season": "20/22",
-      "rank": 34,
-      "points": 43,
-      "league": "Bezirksliga",
-      "name": "Willi Ruppert"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 131,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Willi Ruppert"
-    }
-  ],
-  "1746": [
-    {
-      "season": "24/25",
-      "rank": 113,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Nadine Steinberg"
-    },
-    {
-      "season": "23/24",
-      "rank": 121,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Nadine Steinberg"
-    },
-    {
-      "season": "22/23",
-      "rank": 144,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Nadine Steinberg"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 135,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Nadine Steinberg"
-    }
-  ],
-  "1452": [
-    {
-      "season": "24/25",
-      "rank": 2,
-      "points": 164,
-      "league": "B-Klasse",
-      "name": "Sammy Wolf"
-    },
-    {
-      "season": "23/24",
-      "rank": 15,
-      "points": 122,
-      "league": "A-Klasse",
-      "name": "Sammy Wolf"
-    },
-    {
-      "season": "22/23",
-      "rank": 40,
-      "points": 31,
-      "league": "Bezirksliga",
-      "name": "Sammy Wolf"
-    },
-    {
-      "season": "20/22",
-      "rank": 10,
-      "points": 136,
-      "league": "A-Klasse",
-      "name": "Sammy Wolf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 9,
-      "points": 130,
-      "league": "A-Klasse",
-      "name": "Sammy Wolf"
-    }
-  ],
-  "726": [
-    {
-      "season": "24/25",
-      "rank": 3,
-      "points": 159,
-      "league": "B-Klasse",
-      "name": "Marco W\u00fcst"
-    },
-    {
-      "season": "23/24",
-      "rank": 3,
-      "points": 183,
-      "league": "C-Klasse",
-      "name": "Marco W\u00fcst"
-    },
-    {
-      "season": "22/23",
-      "rank": 38,
-      "points": 111,
-      "league": "C-Klasse",
-      "name": "Marco Frank"
-    },
-    {
-      "season": "20/22",
-      "rank": 84,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Marco Frank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 38,
-      "points": 110,
-      "league": "B-Klasse",
-      "name": "Marco W\u00fcst"
-    }
-  ],
-  "325": [
-    {
-      "season": "24/25",
-      "rank": 4,
-      "points": 156,
-      "league": "B-Klasse",
-      "name": "Patrick Heib"
-    },
-    {
-      "season": "23/24",
-      "rank": 23,
-      "points": 132,
-      "league": "C-Klasse",
-      "name": "Patrick Heib"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 4,
-      "points": 151,
-      "league": "A-Klasse",
-      "name": "Patrick Heib"
-    }
-  ],
-  "1528": [
-    {
-      "season": "24/25",
-      "rank": 5,
-      "points": 153,
-      "league": "B-Klasse",
-      "name": "Andreas Gebhard"
-    },
-    {
-      "season": "23/24",
-      "rank": 5,
-      "points": 175,
-      "league": "C-Klasse",
-      "name": "Andreas Gebhard"
-    },
-    {
-      "season": "20/22",
-      "rank": 185,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Andreas Gebhard"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 13,
-      "points": 139,
-      "league": "B-Klasse",
-      "name": "Andreas Gebhard"
-    }
-  ],
-  "1274": [
-    {
-      "season": "24/25",
-      "rank": 6,
-      "points": 148,
-      "league": "B-Klasse",
-      "name": "Oliver Dollan"
-    },
-    {
-      "season": "23/24",
-      "rank": 22,
-      "points": 128,
-      "league": "B-Klasse",
-      "name": "Oliver Dollan"
-    },
-    {
-      "season": "22/23",
-      "rank": 20,
-      "points": 119,
-      "league": "B-Klasse",
-      "name": "Oliver Dollan"
-    },
-    {
-      "season": "20/22",
-      "rank": 18,
-      "points": 124,
-      "league": "B-Klasse",
-      "name": "Oliver Dollan"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 12,
-      "points": 122,
-      "league": "A-Klasse",
-      "name": "Oliver Dollan"
-    }
-  ],
-  "913": [
-    {
-      "season": "24/25",
-      "rank": 7,
-      "points": 146,
-      "league": "B-Klasse",
-      "name": "Dennis Penner"
-    },
-    {
-      "season": "23/24",
-      "rank": 87,
-      "points": 21,
-      "league": "A-Klasse",
-      "name": "Dennis Penner"
-    },
-    {
-      "season": "22/23",
-      "rank": 85,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Dennis Penner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 12,
-      "points": 122,
-      "league": "A-Klasse",
-      "name": "Dennis Penner"
-    }
-  ],
-  "1544": [
-    {
-      "season": "24/25",
-      "rank": 8,
-      "points": 145,
-      "league": "B-Klasse",
-      "name": "Tobias Lansche"
-    },
-    {
-      "season": "23/24",
-      "rank": 12,
-      "points": 154,
-      "league": "C-Klasse",
-      "name": "Tobias Lansche"
-    },
-    {
-      "season": "22/23",
-      "rank": 62,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Tobias Lansche"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 42,
-      "points": 105,
-      "league": "B-Klasse",
-      "name": "Tobias Lansche"
-    }
-  ],
-  "763": [
-    {
-      "season": "24/25",
-      "rank": 9,
-      "points": 145,
-      "league": "B-Klasse",
-      "name": "Peter Hofmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 39,
-      "points": 89,
-      "league": "A-Klasse",
-      "name": "Peter Hofmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 25,
-      "points": 78,
-      "league": "Bezirksliga",
-      "name": "Peter Hofmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 5,
-      "points": 154,
-      "league": "A-Klasse",
-      "name": "Peter Hofmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 28,
-      "points": 97,
-      "league": "A-Klasse",
-      "name": "Peter Hofmann"
-    }
-  ],
-  "1531": [
-    {
-      "season": "24/25",
-      "rank": 10,
-      "points": 143,
-      "league": "B-Klasse",
-      "name": "Sascha Schweinberger"
-    },
-    {
-      "season": "23/24",
-      "rank": 18,
-      "points": 138,
-      "league": "C-Klasse",
-      "name": "Sascha Schweinberger"
-    },
-    {
-      "season": "20/22",
-      "rank": 169,
-      "points": 9,
-      "league": "B-Klasse",
-      "name": "Sascha Schweinberger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 29,
-      "points": 96,
-      "league": "A-Klasse",
-      "name": "Sascha Schweinberger"
-    }
-  ],
-  "1659": [
-    {
-      "season": "24/25",
-      "rank": 12,
-      "points": 137,
-      "league": "B-Klasse",
-      "name": "Gianluca Marino"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 3,
-      "points": 176,
-      "league": "A-Klasse",
-      "name": "Gianluca Marino"
-    }
-  ],
-  "318": [
-    {
-      "season": "24/25",
-      "rank": 13,
-      "points": 137,
-      "league": "B-Klasse",
-      "name": "Alexander Durst"
-    },
-    {
-      "season": "23/24",
-      "rank": 17,
-      "points": 146,
-      "league": "C-Klasse",
-      "name": "Alexander Durst"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 44,
-      "points": 104,
-      "league": "B-Klasse",
-      "name": "Alexander Durst"
-    }
-  ],
-  "1422": [
-    {
-      "season": "24/25",
-      "rank": 14,
-      "points": 132,
-      "league": "B-Klasse",
-      "name": "Uli Wimmer"
-    },
-    {
-      "season": "23/24",
-      "rank": 21,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Uli Wimmer"
-    },
-    {
-      "season": "20/22",
-      "rank": 102,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Uli Wimmer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 14,
-      "points": 113,
-      "league": "A-Klasse",
-      "name": "Uli Wimmer"
-    }
-  ],
-  "1776": [
-    {
-      "season": "24/25",
-      "rank": 15,
-      "points": 132,
-      "league": "B-Klasse",
-      "name": "Daniel Westermann"
-    },
-    {
-      "season": "23/24",
-      "rank": 12,
-      "points": 140,
-      "league": "B-Klasse",
-      "name": "Daniel Westermann"
-    },
-    {
-      "season": "22/23",
-      "rank": 27,
-      "points": 110,
-      "league": "B-Klasse",
-      "name": "Daniel Westermann"
-    },
-    {
-      "season": "20/22",
-      "rank": 10,
-      "points": 157,
-      "league": "C-Klasse",
-      "name": "Daniel Westermann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 46,
-      "points": 76,
-      "league": "A-Klasse",
-      "name": "Daniel Westermann"
-    }
-  ],
-  "1692": [
-    {
-      "season": "24/25",
-      "rank": 16,
-      "points": 132,
-      "league": "B-Klasse",
-      "name": "Timo Gr\u00f6schl"
-    },
-    {
-      "season": "23/24",
-      "rank": 53,
-      "points": 94,
-      "league": "B-Klasse",
-      "name": "Timo Gr\u00f6schl"
-    },
-    {
-      "season": "22/23",
-      "rank": 48,
-      "points": 91,
-      "league": "B-Klasse",
-      "name": "Timo Gr\u00f6schl"
-    },
-    {
-      "season": "20/22",
-      "rank": 44,
-      "points": 91,
-      "league": "B-Klasse",
-      "name": "Timo Gr\u00f6schl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 29,
-      "points": 121,
-      "league": "B-Klasse",
-      "name": "Timo Gr\u00f6schl"
-    }
-  ],
-  "1175": [
-    {
-      "season": "24/25",
-      "rank": 17,
-      "points": 130,
-      "league": "B-Klasse",
-      "name": "Bernd Wagner"
-    },
-    {
-      "season": "23/24",
-      "rank": 33,
-      "points": 92,
-      "league": "A-Klasse",
-      "name": "Bernd Wagner"
-    },
-    {
-      "season": "22/23",
-      "rank": 87,
-      "points": 24,
-      "league": "A-Klasse",
-      "name": "Bernd Wagner"
-    },
-    {
-      "season": "20/22",
-      "rank": 46,
-      "points": 79,
-      "league": "A-Klasse",
-      "name": "Bernd Wagner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 8,
-      "points": 153,
-      "league": "B-Klasse",
-      "name": "Bernd Wagner"
-    }
-  ],
-  "1059": [
-    {
-      "season": "24/25",
-      "rank": 18,
-      "points": 124,
-      "league": "B-Klasse",
-      "name": "Marvin Prohaska"
-    },
-    {
-      "season": "23/24",
-      "rank": 4,
-      "points": 158,
-      "league": "B-Klasse",
-      "name": "Marvin Prohaska"
-    },
-    {
-      "season": "22/23",
-      "rank": 15,
-      "points": 134,
-      "league": "A-Klasse",
-      "name": "Marvin Prohaska"
-    },
-    {
-      "season": "20/22",
-      "rank": 4,
-      "points": 166,
-      "league": "B-Klasse",
-      "name": "Marvin Prohaska"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 11,
-      "points": 146,
-      "league": "B-Klasse",
-      "name": "Marvin Prohaska"
-    }
-  ],
-  "1909": [
-    {
-      "season": "24/25",
-      "rank": 19,
-      "points": 120,
-      "league": "B-Klasse",
-      "name": "Christian Hannig"
-    },
-    {
-      "season": "23/24",
-      "rank": 49,
-      "points": 97,
-      "league": "B-Klasse",
-      "name": "Christian Hannig"
-    },
-    {
-      "season": "22/23",
-      "rank": 64,
-      "points": 63,
-      "league": "A-Klasse",
-      "name": "Christian Hannig"
-    },
-    {
-      "season": "20/22",
-      "rank": 37,
-      "points": 96,
-      "league": "B-Klasse",
-      "name": "Christian Marienfeld"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 15,
-      "points": 158,
-      "league": "C-Klasse",
-      "name": "Christian Marienfeld"
-    }
-  ],
-  "1752": [
-    {
-      "season": "24/25",
-      "rank": 20,
-      "points": 119,
-      "league": "B-Klasse",
-      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
-    },
-    {
-      "season": "23/24",
-      "rank": 97,
-      "points": 50,
-      "league": "B-Klasse",
-      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
-    },
-    {
-      "season": "22/23",
-      "rank": 53,
-      "points": 85,
-      "league": "B-Klasse",
-      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
-    },
-    {
-      "season": "20/22",
-      "rank": 51,
-      "points": 92,
-      "league": "C-Klasse",
-      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 39,
-      "points": 110,
-      "league": "B-Klasse",
-      "name": "G\u00f6kmen K\u00fcc\u00fckoglu"
-    }
-  ],
-  "1768": [
-    {
-      "season": "24/25",
-      "rank": 21,
-      "points": 119,
-      "league": "B-Klasse",
-      "name": "Gianni Biscardi"
-    },
-    {
-      "season": "23/24",
-      "rank": 35,
-      "points": 107,
-      "league": "B-Klasse",
-      "name": "Gianni Biscardi"
-    },
-    {
-      "season": "22/23",
-      "rank": 21,
-      "points": 119,
-      "league": "B-Klasse",
-      "name": "Gianni Biscardi"
-    },
-    {
-      "season": "20/22",
-      "rank": 57,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Gianni Biscardi"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 54,
-      "points": 92,
-      "league": "B-Klasse",
-      "name": "Gianni Biscardi"
-    }
-  ],
-  "1063": [
-    {
-      "season": "24/25",
-      "rank": 22,
-      "points": 117,
-      "league": "B-Klasse",
-      "name": "Oliver Ursic"
-    },
-    {
-      "season": "23/24",
-      "rank": 8,
-      "points": 167,
-      "league": "C-Klasse",
-      "name": "Oliver Ursic"
-    },
-    {
-      "season": "22/23",
-      "rank": 10,
-      "points": 148,
-      "league": "C-Klasse",
-      "name": "Oliver Ursic"
-    },
-    {
-      "season": "20/22",
-      "rank": 52,
-      "points": 73,
-      "league": "A-Klasse",
-      "name": "Oliver Ursic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 21,
-      "points": 103,
-      "league": "A-Klasse",
-      "name": "Oliver Ursic"
-    }
-  ],
-  "1414": [
-    {
-      "season": "24/25",
-      "rank": 23,
-      "points": 116,
-      "league": "B-Klasse",
-      "name": "Chris Wendel"
-    },
-    {
-      "season": "23/24",
-      "rank": 134,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Chris Wendel"
-    },
-    {
-      "season": "20/22",
-      "rank": 35,
-      "points": 100,
-      "league": "B-Klasse",
-      "name": "Chris Wendel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 59,
-      "points": 59,
-      "league": "A-Klasse",
-      "name": "Chris Wendel"
-    }
-  ],
-  "1835": [
-    {
-      "season": "24/25",
-      "rank": 24,
-      "points": 114,
-      "league": "B-Klasse",
-      "name": "Reinhard Bott"
-    },
-    {
-      "season": "23/24",
-      "rank": 15,
-      "points": 136,
-      "league": "B-Klasse",
-      "name": "Reinhard Bott"
-    },
-    {
-      "season": "22/23",
-      "rank": 97,
-      "points": 17,
-      "league": "A-Klasse",
-      "name": "Reinhard Bott"
-    },
-    {
-      "season": "20/22",
-      "rank": 61,
-      "points": 57,
-      "league": "A-Klasse",
-      "name": "Reinhard Bott"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 7,
-      "points": 156,
-      "league": "B-Klasse",
-      "name": "Reinhard Bott"
-    }
-  ],
-  "410": [
-    {
-      "season": "24/25",
-      "rank": 25,
-      "points": 111,
-      "league": "B-Klasse",
-      "name": "Tarek D\u00fcrr"
-    },
-    {
-      "season": "23/24",
-      "rank": 19,
-      "points": 130,
-      "league": "B-Klasse",
-      "name": "Tarek D\u00fcrr"
-    },
-    {
-      "season": "22/23",
-      "rank": 2,
-      "points": 181,
-      "league": "B-Klasse",
-      "name": "Tarek D\u00fcrr"
-    },
-    {
-      "season": "20/22",
-      "rank": 16,
-      "points": 128,
-      "league": "B-Klasse",
-      "name": "Tarek D\u00fcrr"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 56,
-      "points": 91,
-      "league": "B-Klasse",
-      "name": "Tarek D\u00fcrr"
-    }
-  ],
-  "634": [
-    {
-      "season": "24/25",
-      "rank": 26,
-      "points": 110,
-      "league": "B-Klasse",
-      "name": "Kai H\u00f6lzle"
-    },
-    {
-      "season": "23/24",
-      "rank": 54,
-      "points": 67,
-      "league": "A-Klasse",
-      "name": "Kai H\u00f6lzle"
-    },
-    {
-      "season": "22/23",
-      "rank": 22,
-      "points": 112,
-      "league": "A-Klasse",
-      "name": "Kai H\u00f6lzle"
-    },
-    {
-      "season": "20/22",
-      "rank": 44,
-      "points": 84,
-      "league": "A-Klasse",
-      "name": "Kai H\u00f6lzle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 35,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Kai H\u00f6lzle"
-    }
-  ],
-  "368": [
-    {
-      "season": "24/25",
-      "rank": 27,
-      "points": 110,
-      "league": "B-Klasse",
-      "name": "Michael N\u00fcchter"
-    },
-    {
-      "season": "23/24",
-      "rank": 102,
-      "points": 45,
-      "league": "B-Klasse",
-      "name": "Michael N\u00fcchter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 49,
-      "points": 74,
-      "league": "A-Klasse",
-      "name": "Michael N\u00fcchter"
-    }
-  ],
-  "1332": [
-    {
-      "season": "24/25",
-      "rank": 28,
-      "points": 109,
-      "league": "B-Klasse",
-      "name": "Kevin Frank"
-    },
-    {
-      "season": "23/24",
-      "rank": 85,
-      "points": 61,
-      "league": "B-Klasse",
-      "name": "Kevin Frank"
-    },
-    {
-      "season": "22/23",
-      "rank": 74,
-      "points": 48,
-      "league": "A-Klasse",
-      "name": "Kevin Frank"
-    },
-    {
-      "season": "20/22",
-      "rank": 21,
-      "points": 130,
-      "league": "C-Klasse",
-      "name": "Kevin Frank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 7,
-      "points": 165,
-      "league": "C-Klasse",
-      "name": "Kevin Frank"
-    }
-  ],
-  "1842": [
-    {
-      "season": "24/25",
-      "rank": 29,
-      "points": 108,
-      "league": "B-Klasse",
-      "name": "Andr\u00e9 Lippa"
-    },
-    {
-      "season": "23/24",
-      "rank": 20,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Andr\u00e9 Lippa"
-    },
-    {
-      "season": "22/23",
-      "rank": 66,
-      "points": 88,
-      "league": "C-Klasse",
-      "name": "Andre Lippa"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 36,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Andr\u00e9 Lippa"
-    }
-  ],
-  "1273": [
-    {
-      "season": "24/25",
-      "rank": 30,
-      "points": 106,
-      "league": "B-Klasse",
-      "name": "Thomas Hoffmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 14,
-      "points": 153,
-      "league": "C-Klasse",
-      "name": "Thomas Hoffmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 37,
-      "points": 100,
-      "league": "B-Klasse",
-      "name": "Thomas Hoffmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 89,
-      "points": 23,
-      "league": "A-Klasse",
-      "name": "Thomas Hoffmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 34,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Thomas Hoffmann"
-    }
-  ],
-  "1174": [
-    {
-      "season": "24/25",
-      "rank": 31,
-      "points": 106,
-      "league": "B-Klasse",
-      "name": "Jennifer Keller"
-    },
-    {
-      "season": "23/24",
-      "rank": 70,
-      "points": 77,
-      "league": "B-Klasse",
-      "name": "Jennifer Keller"
-    },
-    {
-      "season": "22/23",
-      "rank": 90,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Jennifer Keller"
-    },
-    {
-      "season": "20/22",
-      "rank": 76,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Jennifer Keller"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 61,
-      "points": 57,
-      "league": "A-Klasse",
-      "name": "Jennifer Keller"
-    }
-  ],
-  "1656": [
-    {
-      "season": "24/25",
-      "rank": 32,
-      "points": 106,
-      "league": "B-Klasse",
-      "name": "Luca Bergmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 52,
-      "points": 104,
-      "league": "C-Klasse",
-      "name": "Luca Bergmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 83,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Luca Bergmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 54,
-      "points": 68,
-      "league": "A-Klasse",
-      "name": "Luca Bergmann"
-    }
-  ],
-  "1726": [
-    {
-      "season": "24/25",
-      "rank": 34,
-      "points": 105,
-      "league": "B-Klasse",
-      "name": "Markus Huth"
-    },
-    {
-      "season": "23/24",
-      "rank": 60,
-      "points": 87,
-      "league": "B-Klasse",
-      "name": "Markus Huth"
-    },
-    {
-      "season": "22/23",
-      "rank": 9,
-      "points": 152,
-      "league": "C-Klasse",
-      "name": "Markus Huth"
-    },
-    {
-      "season": "20/22",
-      "rank": 32,
-      "points": 113,
-      "league": "C-Klasse",
-      "name": "Markus Huth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 34,
-      "points": 125,
-      "league": "C-Klasse",
-      "name": "Markus Huth"
-    }
-  ],
   "987": [
     {
       "season": "24/25",
@@ -6532,73 +19819,6 @@ window.ARCHIVE_DATA = {
       "points": 104,
       "league": "B-Klasse",
       "name": "Dirk Flaig"
-    }
-  ],
-  "1893": [
-    {
-      "season": "24/25",
-      "rank": 36,
-      "points": 103,
-      "league": "B-Klasse",
-      "name": "Marco Hamp"
-    },
-    {
-      "season": "23/24",
-      "rank": 64,
-      "points": 93,
-      "league": "C-Klasse",
-      "name": "Marco Hamp"
-    },
-    {
-      "season": "22/23",
-      "rank": 8,
-      "points": 154,
-      "league": "C-Klasse",
-      "name": "Marco Hamp"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 72,
-      "points": 43,
-      "league": "A-Klasse",
-      "name": "Marco Hamp"
-    }
-  ],
-  "1186": [
-    {
-      "season": "24/25",
-      "rank": 37,
-      "points": 103,
-      "league": "B-Klasse",
-      "name": "Thomas Schm\u00e4deke"
-    },
-    {
-      "season": "23/24",
-      "rank": 34,
-      "points": 92,
-      "league": "A-Klasse",
-      "name": "Thomas Schm\u00e4deke"
-    },
-    {
-      "season": "22/23",
-      "rank": 26,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Thomas Schm\u00e4deke"
-    },
-    {
-      "season": "20/22",
-      "rank": 33,
-      "points": 97,
-      "league": "A-Klasse",
-      "name": "Thomas Schm\u00e4deke"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 20,
-      "points": 127,
-      "league": "B-Klasse",
-      "name": "Thomas Schm\u00e4deke"
     }
   ],
   "239": [
@@ -6631,1175 +19851,6 @@ window.ARCHIVE_DATA = {
       "name": "Andreas Brehm"
     }
   ],
-  "948": [
-    {
-      "season": "24/25",
-      "rank": 39,
-      "points": 100,
-      "league": "B-Klasse",
-      "name": "Sven St\u00f6ckler"
-    },
-    {
-      "season": "23/24",
-      "rank": 40,
-      "points": 103,
-      "league": "B-Klasse",
-      "name": "Sven St\u00f6ckler"
-    },
-    {
-      "season": "22/23",
-      "rank": 32,
-      "points": 104,
-      "league": "B-Klasse",
-      "name": "Sven St\u00f6ckler"
-    },
-    {
-      "season": "20/22",
-      "rank": 8,
-      "points": 150,
-      "league": "B-Klasse",
-      "name": "Sven St\u00f6ckler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 31,
-      "points": 118,
-      "league": "B-Klasse",
-      "name": "Sven St\u00f6ckler"
-    }
-  ],
-  "1230": [
-    {
-      "season": "24/25",
-      "rank": 40,
-      "points": 100,
-      "league": "B-Klasse",
-      "name": "Dennis Gaiser"
-    },
-    {
-      "season": "23/24",
-      "rank": 24,
-      "points": 105,
-      "league": "A-Klasse",
-      "name": "Dennis Gaiser"
-    },
-    {
-      "season": "22/23",
-      "rank": 47,
-      "points": 78,
-      "league": "A-Klasse",
-      "name": "Dennis Gaiser"
-    },
-    {
-      "season": "20/22",
-      "rank": 27,
-      "points": 111,
-      "league": "B-Klasse",
-      "name": "Dennis Gaiser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 64,
-      "points": 54,
-      "league": "A-Klasse",
-      "name": "Dennis Gaiser"
-    }
-  ],
-  "1750": [
-    {
-      "season": "24/25",
-      "rank": 41,
-      "points": 99,
-      "league": "B-Klasse",
-      "name": "Davide Amato"
-    },
-    {
-      "season": "23/24",
-      "rank": 67,
-      "points": 80,
-      "league": "B-Klasse",
-      "name": "Davide Amato"
-    },
-    {
-      "season": "22/23",
-      "rank": 31,
-      "points": 106,
-      "league": "B-Klasse",
-      "name": "Davide Amato"
-    },
-    {
-      "season": "20/22",
-      "rank": 66,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Davide Amato"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 22,
-      "points": 125,
-      "league": "B-Klasse",
-      "name": "Davide Amato"
-    }
-  ],
-  "1169": [
-    {
-      "season": "24/25",
-      "rank": 42,
-      "points": 99,
-      "league": "B-Klasse",
-      "name": "Marcel G\u00e4rtner"
-    },
-    {
-      "season": "23/24",
-      "rank": 68,
-      "points": 79,
-      "league": "B-Klasse",
-      "name": "Marcel G\u00e4rtner"
-    },
-    {
-      "season": "22/23",
-      "rank": 24,
-      "points": 132,
-      "league": "C-Klasse",
-      "name": "Marcel G\u00e4rtner"
-    },
-    {
-      "season": "20/22",
-      "rank": 151,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Marcel G\u00e4rtner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 66,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Marcel G\u00e4rtner"
-    }
-  ],
-  "1823": [
-    {
-      "season": "24/25",
-      "rank": 43,
-      "points": 98,
-      "league": "B-Klasse",
-      "name": "Alexander Jost"
-    },
-    {
-      "season": "23/24",
-      "rank": 65,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Alexander Jost"
-    },
-    {
-      "season": "22/23",
-      "rank": 23,
-      "points": 114,
-      "league": "B-Klasse",
-      "name": "Alexander Jost"
-    },
-    {
-      "season": "20/22",
-      "rank": 40,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Alexander Jost"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 30,
-      "points": 119,
-      "league": "B-Klasse",
-      "name": "Alexander Jost"
-    }
-  ],
-  "876": [
-    {
-      "season": "24/25",
-      "rank": 44,
-      "points": 98,
-      "league": "B-Klasse",
-      "name": "Robin Rothenberger"
-    },
-    {
-      "season": "23/24",
-      "rank": 45,
-      "points": 100,
-      "league": "B-Klasse",
-      "name": "Robin Rothenberger"
-    },
-    {
-      "season": "22/23",
-      "rank": 53,
-      "points": 73,
-      "league": "A-Klasse",
-      "name": "Robin Rothenberger"
-    },
-    {
-      "season": "20/22",
-      "rank": 48,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Robin Rothenberger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 65,
-      "points": 83,
-      "league": "B-Klasse",
-      "name": "Robin Rothenberger"
-    }
-  ],
-  "1721": [
-    {
-      "season": "24/25",
-      "rank": 45,
-      "points": 98,
-      "league": "B-Klasse",
-      "name": "Kevin Schleeh"
-    },
-    {
-      "season": "23/24",
-      "rank": 130,
-      "points": 24,
-      "league": "B-Klasse",
-      "name": "Kevin Schleeh"
-    },
-    {
-      "season": "22/23",
-      "rank": 139,
-      "points": 23,
-      "league": "B-Klasse",
-      "name": "Kevin Schleeh"
-    },
-    {
-      "season": "20/22",
-      "rank": 98,
-      "points": 53,
-      "league": "C-Klasse",
-      "name": "Kevin Schleeh"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 51,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Kevin Schleeh"
-    }
-  ],
-  "1177": [
-    {
-      "season": "24/25",
-      "rank": 46,
-      "points": 97,
-      "league": "B-Klasse",
-      "name": "Alexander Benjamin Frank"
-    },
-    {
-      "season": "23/24",
-      "rank": 1,
-      "points": 171,
-      "league": "B-Klasse",
-      "name": "Alexander Benjamin Frank"
-    },
-    {
-      "season": "22/23",
-      "rank": 11,
-      "points": 144,
-      "league": "B-Klasse",
-      "name": "Alexander Benjamin Frank"
-    },
-    {
-      "season": "20/22",
-      "rank": 17,
-      "points": 125,
-      "league": "B-Klasse",
-      "name": "Alexander Benjamin Frank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 82,
-      "points": 34,
-      "league": "A-Klasse",
-      "name": "Benjamin Frank"
-    }
-  ],
-  "203": [
-    {
-      "season": "24/25",
-      "rank": 48,
-      "points": 96,
-      "league": "B-Klasse",
-      "name": "Emmanuel Eweka"
-    },
-    {
-      "season": "23/24",
-      "rank": 2,
-      "points": 186,
-      "league": "C-Klasse",
-      "name": "Emmanuel Eweka"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 84,
-      "points": 67,
-      "league": "B-Klasse",
-      "name": "Emmanuel Eweka"
-    }
-  ],
-  "546": [
-    {
-      "season": "24/25",
-      "rank": 49,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Johannes Weishaar"
-    },
-    {
-      "season": "23/24",
-      "rank": 49,
-      "points": 107,
-      "league": "C-Klasse",
-      "name": "Johannes Weishaar"
-    },
-    {
-      "season": "22/23",
-      "rank": 136,
-      "points": 24,
-      "league": "B-Klasse",
-      "name": "Johannes Weishaar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 120,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Johannes Weishaar"
-    }
-  ],
-  "660": [
-    {
-      "season": "24/25",
-      "rank": 50,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Alessandro Bertino"
-    },
-    {
-      "season": "23/24",
-      "rank": 28,
-      "points": 117,
-      "league": "B-Klasse",
-      "name": "Alessandro Bertino"
-    },
-    {
-      "season": "22/23",
-      "rank": 38,
-      "points": 100,
-      "league": "B-Klasse",
-      "name": "Alessandro Bertino"
-    },
-    {
-      "season": "20/22",
-      "rank": 14,
-      "points": 146,
-      "league": "C-Klasse",
-      "name": "Alessandro Bertino"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 39,
-      "points": 84,
-      "league": "A-Klasse",
-      "name": "Alessandro Bertino"
-    }
-  ],
-  "283": [
-    {
-      "season": "24/25",
-      "rank": 51,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Tobias Rohde"
-    },
-    {
-      "season": "23/24",
-      "rank": 140,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Tobias Rohde"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 72,
-      "points": 78,
-      "league": "B-Klasse",
-      "name": "Tobias Rohde"
-    }
-  ],
-  "1647": [
-    {
-      "season": "24/25",
-      "rank": 52,
-      "points": 94,
-      "league": "B-Klasse",
-      "name": "Rene Irion"
-    },
-    {
-      "season": "23/24",
-      "rank": 46,
-      "points": 98,
-      "league": "B-Klasse",
-      "name": "Rene\u00b4 Irion"
-    },
-    {
-      "season": "22/23",
-      "rank": 54,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Rene\u00b4 Irion"
-    },
-    {
-      "season": "20/22",
-      "rank": 71,
-      "points": 37,
-      "league": "A-Klasse",
-      "name": "Rene\u00b4 Irion"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 49,
-      "points": 96,
-      "league": "B-Klasse",
-      "name": "Rene Irion"
-    }
-  ],
-  "412": [
-    {
-      "season": "24/25",
-      "rank": 53,
-      "points": 94,
-      "league": "B-Klasse",
-      "name": "Thomas Brenk"
-    },
-    {
-      "season": "23/24",
-      "rank": 77,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Thomas Brenk"
-    },
-    {
-      "season": "22/23",
-      "rank": 91,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Thomas Brenk"
-    },
-    {
-      "season": "20/22",
-      "rank": 85,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Thomas Brenk"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 48,
-      "points": 96,
-      "league": "B-Klasse",
-      "name": "Thomas Brenk"
-    }
-  ],
-  "1281": [
-    {
-      "season": "24/25",
-      "rank": 54,
-      "points": 92,
-      "league": "B-Klasse",
-      "name": "Markus Herzog"
-    },
-    {
-      "season": "23/24",
-      "rank": 42,
-      "points": 86,
-      "league": "A-Klasse",
-      "name": "Markus Herzog"
-    },
-    {
-      "season": "22/23",
-      "rank": 68,
-      "points": 56,
-      "league": "A-Klasse",
-      "name": "Markus Herzog"
-    },
-    {
-      "season": "20/22",
-      "rank": 37,
-      "points": 34,
-      "league": "Bezirksliga",
-      "name": "Markus Herzog"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 74,
-      "points": 42,
-      "league": "A-Klasse",
-      "name": "Markus Herzog"
-    }
-  ],
-  "1689": [
-    {
-      "season": "24/25",
-      "rank": 55,
-      "points": 91,
-      "league": "B-Klasse",
-      "name": "Jasmin Titel"
-    },
-    {
-      "season": "23/24",
-      "rank": 16,
-      "points": 121,
-      "league": "A-Klasse",
-      "name": "Jasmin Titel"
-    },
-    {
-      "season": "22/23",
-      "rank": 34,
-      "points": 94,
-      "league": "A-Klasse",
-      "name": "Jasmin Titel"
-    },
-    {
-      "season": "20/22",
-      "rank": 13,
-      "points": 127,
-      "league": "A-Klasse",
-      "name": "Jasmin Titel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 17,
-      "points": 111,
-      "league": "A-Klasse",
-      "name": "Jasmin Titel"
-    }
-  ],
-  "226": [
-    {
-      "season": "24/25",
-      "rank": 56,
-      "points": 88,
-      "league": "B-Klasse",
-      "name": "Bodo Riedel"
-    },
-    {
-      "season": "20/22",
-      "rank": 140,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Bodo Riedel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 62,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Bodo Riedel"
-    }
-  ],
-  "1409": [
-    {
-      "season": "24/25",
-      "rank": 57,
-      "points": 86,
-      "league": "B-Klasse",
-      "name": "Christian Blume"
-    },
-    {
-      "season": "23/24",
-      "rank": 35,
-      "points": 118,
-      "league": "C-Klasse",
-      "name": "Christian Blume"
-    },
-    {
-      "season": "22/23",
-      "rank": 61,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Christian Blume"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 110,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Christian Blume"
-    }
-  ],
-  "1602": [
-    {
-      "season": "24/25",
-      "rank": 58,
-      "points": 86,
-      "league": "B-Klasse",
-      "name": "Ralf Voggenreiter"
-    },
-    {
-      "season": "23/24",
-      "rank": 66,
-      "points": 81,
-      "league": "B-Klasse",
-      "name": "Ralf Voggenreiter"
-    },
-    {
-      "season": "22/23",
-      "rank": 33,
-      "points": 104,
-      "league": "B-Klasse",
-      "name": "Ralf Voggenreiter"
-    },
-    {
-      "season": "20/22",
-      "rank": 55,
-      "points": 66,
-      "league": "A-Klasse",
-      "name": "Ralf Voggenreiter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 95,
-      "points": 24,
-      "league": "A-Klasse",
-      "name": "Ralf Voggenreiter"
-    }
-  ],
-  "1047": [
-    {
-      "season": "24/25",
-      "rank": 59,
-      "points": 86,
-      "league": "B-Klasse",
-      "name": "Harald Lutz"
-    },
-    {
-      "season": "23/24",
-      "rank": 36,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Harald Lutz"
-    },
-    {
-      "season": "22/23",
-      "rank": 53,
-      "points": 9,
-      "league": "Bezirksliga",
-      "name": "Harald Lutz"
-    },
-    {
-      "season": "20/22",
-      "rank": 54,
-      "points": 10,
-      "league": "Bezirksliga",
-      "name": "Harald Lutz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 51,
-      "points": 71,
-      "league": "A-Klasse",
-      "name": "Harald Lutz"
-    }
-  ],
-  "1769": [
-    {
-      "season": "24/25",
-      "rank": 61,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Erkan Aydinoglu"
-    },
-    {
-      "season": "23/24",
-      "rank": 57,
-      "points": 90,
-      "league": "B-Klasse",
-      "name": "Erkan Aydinoglu"
-    },
-    {
-      "season": "22/23",
-      "rank": 76,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Erkan Aydinoglu"
-    },
-    {
-      "season": "20/22",
-      "rank": 197,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Erkan Aydinoglu"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 88,
-      "points": 65,
-      "league": "B-Klasse",
-      "name": "Erkan Aydinoglu"
-    }
-  ],
-  "399": [
-    {
-      "season": "24/25",
-      "rank": 62,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Edgar K\u00e4ser"
-    },
-    {
-      "season": "23/24",
-      "rank": 16,
-      "points": 133,
-      "league": "B-Klasse",
-      "name": "Edgar K\u00e4ser"
-    },
-    {
-      "season": "22/23",
-      "rank": 35,
-      "points": 102,
-      "league": "B-Klasse",
-      "name": "Edgar K\u00e4ser"
-    },
-    {
-      "season": "20/22",
-      "rank": 150,
-      "points": 15,
-      "league": "B-Klasse",
-      "name": "Edgar K\u00e4ser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 40,
-      "points": 83,
-      "league": "A-Klasse",
-      "name": "Edgar K\u00e4ser"
-    }
-  ],
-  "1366": [
-    {
-      "season": "24/25",
-      "rank": 63,
-      "points": 81,
-      "league": "B-Klasse",
-      "name": "Frank Lindner"
-    },
-    {
-      "season": "23/24",
-      "rank": 150,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Frank Lindner"
-    },
-    {
-      "season": "22/23",
-      "rank": 101,
-      "points": 49,
-      "league": "B-Klasse",
-      "name": "Frank Lindner"
-    },
-    {
-      "season": "20/22",
-      "rank": 142,
-      "points": 19,
-      "league": "B-Klasse",
-      "name": "Frank Lindner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 70,
-      "points": 80,
-      "league": "B-Klasse",
-      "name": "Frank Lindner"
-    }
-  ],
-  "1545": [
-    {
-      "season": "24/25",
-      "rank": 64,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Filip Pranjic-Maric"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 135,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Filip Pranjic-Maric"
-    }
-  ],
-  "1508": [
-    {
-      "season": "24/25",
-      "rank": 65,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Frank Vincon"
-    },
-    {
-      "season": "23/24",
-      "rank": 147,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "Frank Vincon"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 67,
-      "points": 51,
-      "league": "A-Klasse",
-      "name": "Frank Vincon"
-    }
-  ],
-  "264": [
-    {
-      "season": "24/25",
-      "rank": 66,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Karl Messer"
-    },
-    {
-      "season": "23/24",
-      "rank": 90,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Karl Messer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 107,
-      "points": 52,
-      "league": "B-Klasse",
-      "name": "Karl Messer"
-    }
-  ],
-  "1181": [
-    {
-      "season": "24/25",
-      "rank": 67,
-      "points": 75,
-      "league": "B-Klasse",
-      "name": "Sascha Miegel"
-    },
-    {
-      "season": "23/24",
-      "rank": 36,
-      "points": 106,
-      "league": "B-Klasse",
-      "name": "Sascha Miegel"
-    },
-    {
-      "season": "22/23",
-      "rank": 34,
-      "points": 104,
-      "league": "B-Klasse",
-      "name": "Sascha Miegel"
-    },
-    {
-      "season": "20/22",
-      "rank": 39,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Sascha Miegel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 28,
-      "points": 122,
-      "league": "B-Klasse",
-      "name": "Sascha Miegel"
-    }
-  ],
-  "1866": [
-    {
-      "season": "24/25",
-      "rank": 69,
-      "points": 74,
-      "league": "B-Klasse",
-      "name": "Bastian Fischer"
-    },
-    {
-      "season": "23/24",
-      "rank": 69,
-      "points": 78,
-      "league": "B-Klasse",
-      "name": "Bastian Fischer"
-    },
-    {
-      "season": "22/23",
-      "rank": 74,
-      "points": 68,
-      "league": "B-Klasse",
-      "name": "Bastian Fischer"
-    },
-    {
-      "season": "20/22",
-      "rank": 106,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Bastian Fischer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 112,
-      "points": 49,
-      "league": "B-Klasse",
-      "name": "Bastian Fischer"
-    }
-  ],
-  "221": [
-    {
-      "season": "24/25",
-      "rank": 70,
-      "points": 74,
-      "league": "B-Klasse",
-      "name": "Erich Messer"
-    },
-    {
-      "season": "23/24",
-      "rank": 116,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Erich Messer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 150,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Erich Messer"
-    }
-  ],
-  "1563": [
-    {
-      "season": "24/25",
-      "rank": 71,
-      "points": 73,
-      "league": "B-Klasse",
-      "name": "Alex Polschin"
-    },
-    {
-      "season": "23/24",
-      "rank": 63,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Alex Polschin"
-    },
-    {
-      "season": "22/23",
-      "rank": 123,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Alex Polschin"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 37,
-      "points": 88,
-      "league": "A-Klasse",
-      "name": "Alex Polschin"
-    }
-  ],
-  "1176": [
-    {
-      "season": "24/25",
-      "rank": 72,
-      "points": 73,
-      "league": "B-Klasse",
-      "name": "Andreas Frank"
-    },
-    {
-      "season": "23/24",
-      "rank": 83,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Andreas Frank"
-    },
-    {
-      "season": "22/23",
-      "rank": 86,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Andreas Frank"
-    },
-    {
-      "season": "20/22",
-      "rank": 101,
-      "points": 52,
-      "league": "C-Klasse",
-      "name": "Andreas Frank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 100,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Andreas Frank"
-    }
-  ],
-  "1086": [
-    {
-      "season": "24/25",
-      "rank": 73,
-      "points": 73,
-      "league": "B-Klasse",
-      "name": "Mario Ackermann"
-    },
-    {
-      "season": "23/24",
-      "rank": 20,
-      "points": 129,
-      "league": "B-Klasse",
-      "name": "Mario Ackermann"
-    },
-    {
-      "season": "22/23",
-      "rank": 4,
-      "points": 165,
-      "league": "C-Klasse",
-      "name": "Mario Ackermann"
-    },
-    {
-      "season": "20/22",
-      "rank": 183,
-      "points": 6,
-      "league": "B-Klasse",
-      "name": "Mario Ackermann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 35,
-      "points": 92,
-      "league": "A-Klasse",
-      "name": "Mario Ackermann"
-    }
-  ],
-  "432": [
-    {
-      "season": "24/25",
-      "rank": 74,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Dominik Denner"
-    },
-    {
-      "season": "23/24",
-      "rank": 6,
-      "points": 174,
-      "league": "C-Klasse",
-      "name": "Dominik Denner"
-    },
-    {
-      "season": "22/23",
-      "rank": 12,
-      "points": 140,
-      "league": "B-Klasse",
-      "name": "Dominik Denner"
-    },
-    {
-      "season": "20/22",
-      "rank": 70,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Dominik Denner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 61,
-      "points": 85,
-      "league": "B-Klasse",
-      "name": "Dominik Denner"
-    }
-  ],
-  "1532": [
-    {
-      "season": "24/25",
-      "rank": 75,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Simon Brodbeck"
-    },
-    {
-      "season": "23/24",
-      "rank": 93,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Simon Brodbeck"
-    },
-    {
-      "season": "22/23",
-      "rank": 56,
-      "points": 71,
-      "league": "A-Klasse",
-      "name": "Simon Brodbeck"
-    },
-    {
-      "season": "20/22",
-      "rank": 135,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Simon Brodbeck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 77,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Simon Brodbeck"
-    }
-  ],
-  "274": [
-    {
-      "season": "24/25",
-      "rank": 76,
-      "points": 71,
-      "league": "B-Klasse",
-      "name": "Bastian Gaiser"
-    },
-    {
-      "season": "23/24",
-      "rank": 59,
-      "points": 61,
-      "league": "A-Klasse",
-      "name": "Bastian Gaiser"
-    },
-    {
-      "season": "22/23",
-      "rank": 55,
-      "points": 72,
-      "league": "A-Klasse",
-      "name": "Bastian Gaiser"
-    },
-    {
-      "season": "20/22",
-      "rank": 50,
-      "points": 75,
-      "league": "A-Klasse",
-      "name": "Bastian Gaiser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 122,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Bastian Gaiser"
-    }
-  ],
   "931": [
     {
       "season": "24/25",
@@ -7828,588 +19879,6 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "A-Klasse",
       "name": "Maximilian Grill"
-    }
-  ],
-  "1864": [
-    {
-      "season": "24/25",
-      "rank": 79,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Johannes Eroglu"
-    },
-    {
-      "season": "23/24",
-      "rank": 26,
-      "points": 121,
-      "league": "B-Klasse",
-      "name": "Johannes Eroglu"
-    },
-    {
-      "season": "22/23",
-      "rank": 11,
-      "points": 144,
-      "league": "C-Klasse",
-      "name": "Johannes Eroglu"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 115,
-      "points": 46,
-      "league": "B-Klasse",
-      "name": "Johannes Eroglu"
-    }
-  ],
-  "1705": [
-    {
-      "season": "24/25",
-      "rank": 80,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Rene Raff"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 26,
-      "points": 98,
-      "league": "A-Klasse",
-      "name": "Ren\u00e9 Raff"
-    }
-  ],
-  "1821": [
-    {
-      "season": "24/25",
-      "rank": 81,
-      "points": 65,
-      "league": "B-Klasse",
-      "name": "Tamara Wolfinger"
-    },
-    {
-      "season": "23/24",
-      "rank": 118,
-      "points": 37,
-      "league": "B-Klasse",
-      "name": "Tamara D\u00fcrr"
-    },
-    {
-      "season": "22/23",
-      "rank": 140,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Tamara D\u00fcrr"
-    },
-    {
-      "season": "20/22",
-      "rank": 106,
-      "points": 38,
-      "league": "B-Klasse",
-      "name": "Tamara D\u00fcrr"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 154,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Tamara Wolfinger"
-    }
-  ],
-  "415": [
-    {
-      "season": "24/25",
-      "rank": 82,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Daniel Ricken"
-    },
-    {
-      "season": "23/24",
-      "rank": 34,
-      "points": 121,
-      "league": "C-Klasse",
-      "name": "Daniel Ricken"
-    },
-    {
-      "season": "22/23",
-      "rank": 26,
-      "points": 126,
-      "league": "C-Klasse",
-      "name": "Daniel Ricken"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 13,
-      "points": 160,
-      "league": "C-Klasse",
-      "name": "Daniel Ricken"
-    }
-  ],
-  "1594": [
-    {
-      "season": "24/25",
-      "rank": 83,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Alexander Keuerleber"
-    },
-    {
-      "season": "23/24",
-      "rank": 53,
-      "points": 104,
-      "league": "C-Klasse",
-      "name": "Alexander Keuerleber"
-    },
-    {
-      "season": "22/23",
-      "rank": 129,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Alexander Keuerleber"
-    },
-    {
-      "season": "20/22",
-      "rank": 60,
-      "points": 3,
-      "league": "Bezirksliga",
-      "name": "Alexander Keuerleber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 57,
-      "points": 90,
-      "league": "B-Klasse",
-      "name": "Alexander Keuerleber"
-    }
-  ],
-  "1643": [
-    {
-      "season": "24/25",
-      "rank": 84,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Quentin Kohler"
-    },
-    {
-      "season": "23/24",
-      "rank": 133,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Quentin Kohler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 188,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Quentin Kohler"
-    }
-  ],
-  "1205": [
-    {
-      "season": "24/25",
-      "rank": 85,
-      "points": 63,
-      "league": "B-Klasse",
-      "name": "Kevin Fr\u00f6hner"
-    },
-    {
-      "season": "23/24",
-      "rank": 48,
-      "points": 97,
-      "league": "B-Klasse",
-      "name": "Kevin Fr\u00f6hner"
-    },
-    {
-      "season": "22/23",
-      "rank": 49,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Kevin Fr\u00f6hner"
-    },
-    {
-      "season": "20/22",
-      "rank": 86,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Kevin Fr\u00f6hner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 58,
-      "points": 90,
-      "league": "B-Klasse",
-      "name": "Kevin Fr\u00f6hner"
-    }
-  ],
-  "101": [
-    {
-      "season": "24/25",
-      "rank": 86,
-      "points": 62,
-      "league": "B-Klasse",
-      "name": "Roland Gratza"
-    },
-    {
-      "season": "23/24",
-      "rank": 137,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Roland Gratza"
-    },
-    {
-      "season": "22/23",
-      "rank": 103,
-      "points": 48,
-      "league": "B-Klasse",
-      "name": "Roland Gratza"
-    },
-    {
-      "season": "20/22",
-      "rank": 57,
-      "points": 83,
-      "league": "B-Klasse",
-      "name": "Roland Gratza"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 145,
-      "points": 23,
-      "league": "B-Klasse",
-      "name": "Roland Gratza"
-    }
-  ],
-  "1822": [
-    {
-      "season": "24/25",
-      "rank": 87,
-      "points": 61,
-      "league": "B-Klasse",
-      "name": "Michael Kiefer"
-    },
-    {
-      "season": "23/24",
-      "rank": 50,
-      "points": 96,
-      "league": "B-Klasse",
-      "name": "Michael Kiefer"
-    },
-    {
-      "season": "22/23",
-      "rank": 115,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Michael Kiefer"
-    },
-    {
-      "season": "20/22",
-      "rank": 52,
-      "points": 86,
-      "league": "B-Klasse",
-      "name": "Michael Kiefer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 95,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Michael Kiefer"
-    }
-  ],
-  "1427": [
-    {
-      "season": "24/25",
-      "rank": 88,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Florian Titel"
-    },
-    {
-      "season": "23/24",
-      "rank": 72,
-      "points": 49,
-      "league": "A-Klasse",
-      "name": "Florian Titel"
-    },
-    {
-      "season": "22/23",
-      "rank": 136,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Florian Titel"
-    },
-    {
-      "season": "20/22",
-      "rank": 61,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Florian Titel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 110,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Florian Titel"
-    }
-  ],
-  "815": [
-    {
-      "season": "24/25",
-      "rank": 89,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Andreas Haller"
-    },
-    {
-      "season": "23/24",
-      "rank": 46,
-      "points": 110,
-      "league": "C-Klasse",
-      "name": "Andreas Haller"
-    },
-    {
-      "season": "22/23",
-      "rank": 25,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Andreas Haller"
-    },
-    {
-      "season": "20/22",
-      "rank": 103,
-      "points": 15,
-      "league": "A-Klasse",
-      "name": "Andreas Haller"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 40,
-      "points": 109,
-      "league": "B-Klasse",
-      "name": "Andreas Haller"
-    }
-  ],
-  "1415": [
-    {
-      "season": "24/25",
-      "rank": 90,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Dario DeFalco"
-    },
-    {
-      "season": "23/24",
-      "rank": 81,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Dario DeFalco"
-    },
-    {
-      "season": "22/23",
-      "rank": 87,
-      "points": 59,
-      "league": "B-Klasse",
-      "name": "Dario DeFalco"
-    },
-    {
-      "season": "20/22",
-      "rank": 63,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Dario DeFalco"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 78,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Dario DeFalco"
-    }
-  ],
-  "927": [
-    {
-      "season": "24/25",
-      "rank": 91,
-      "points": 57,
-      "league": "B-Klasse",
-      "name": "Nicky Freiberg"
-    },
-    {
-      "season": "23/24",
-      "rank": 50,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Nicky Freiberg"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 41,
-      "points": 105,
-      "league": "B-Klasse",
-      "name": "Nicky Freiberg"
-    }
-  ],
-  "1816": [
-    {
-      "season": "24/25",
-      "rank": 92,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Jessica J\u00e4ck"
-    },
-    {
-      "season": "23/24",
-      "rank": 101,
-      "points": 49,
-      "league": "B-Klasse",
-      "name": "Jessica J\u00e4ck"
-    },
-    {
-      "season": "22/23",
-      "rank": 68,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Jessica J\u00e4ck"
-    },
-    {
-      "season": "20/22",
-      "rank": 94,
-      "points": 48,
-      "league": "B-Klasse",
-      "name": "Jessica J\u00e4ck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 102,
-      "points": 54,
-      "league": "B-Klasse",
-      "name": "Jessica J\u00e4ck"
-    }
-  ],
-  "847": [
-    {
-      "season": "24/25",
-      "rank": 93,
-      "points": 54,
-      "league": "B-Klasse",
-      "name": "Michael Graf"
-    },
-    {
-      "season": "23/24",
-      "rank": 33,
-      "points": 111,
-      "league": "B-Klasse",
-      "name": "Michael Graf"
-    },
-    {
-      "season": "22/23",
-      "rank": 52,
-      "points": 73,
-      "league": "A-Klasse",
-      "name": "Michael Graf"
-    },
-    {
-      "season": "20/22",
-      "rank": 26,
-      "points": 102,
-      "league": "A-Klasse",
-      "name": "Michael Graf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 116,
-      "points": 44,
-      "league": "B-Klasse",
-      "name": "Michael Graf"
-    }
-  ],
-  "1335": [
-    {
-      "season": "24/25",
-      "rank": 94,
-      "points": 54,
-      "league": "B-Klasse",
-      "name": "Remo Cireddu"
-    },
-    {
-      "season": "23/24",
-      "rank": 88,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Remo Cireddu"
-    },
-    {
-      "season": "22/23",
-      "rank": 102,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Remo Cireddu"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 137,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Remo Cireddu"
-    }
-  ],
-  "1850": [
-    {
-      "season": "24/25",
-      "rank": 95,
-      "points": 52,
-      "league": "B-Klasse",
-      "name": "Michael Girrbach"
-    },
-    {
-      "season": "22/23",
-      "rank": 65,
-      "points": 75,
-      "league": "B-Klasse",
-      "name": "Michael Girrbach"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 130,
-      "points": 34,
-      "league": "B-Klasse",
-      "name": "Michael Girrbach"
-    }
-  ],
-  "1667": [
-    {
-      "season": "24/25",
-      "rank": 96,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Klaus Steinmetz"
-    },
-    {
-      "season": "23/24",
-      "rank": 11,
-      "points": 154,
-      "league": "C-Klasse",
-      "name": "Klaus Steinmetz"
-    },
-    {
-      "season": "22/23",
-      "rank": 47,
-      "points": 101,
-      "league": "C-Klasse",
-      "name": "Klaus Steinmetz"
-    },
-    {
-      "season": "20/22",
-      "rank": 33,
-      "points": 112,
-      "league": "C-Klasse",
-      "name": "Klaus Steinmetz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 151,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Klaus Steinmetz"
     }
   ],
   "1296": [
@@ -8442,140 +19911,6 @@ window.ARCHIVE_DATA = {
       "name": "Marc Lemcke"
     }
   ],
-  "426": [
-    {
-      "season": "24/25",
-      "rank": 98,
-      "points": 50,
-      "league": "B-Klasse",
-      "name": "Bernd Jentner"
-    },
-    {
-      "season": "23/24",
-      "rank": 70,
-      "points": 88,
-      "league": "C-Klasse",
-      "name": "Bernd Jentner"
-    },
-    {
-      "season": "22/23",
-      "rank": 99,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Bernd Jentner"
-    },
-    {
-      "season": "20/22",
-      "rank": 67,
-      "points": 44,
-      "league": "A-Klasse",
-      "name": "Bernd Jentner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 119,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Bernd Jentner"
-    }
-  ],
-  "1518": [
-    {
-      "season": "24/25",
-      "rank": 99,
-      "points": 48,
-      "league": "B-Klasse",
-      "name": "Robin Masino"
-    },
-    {
-      "season": "23/24",
-      "rank": 120,
-      "points": 35,
-      "league": "B-Klasse",
-      "name": "Robin Masino"
-    },
-    {
-      "season": "22/23",
-      "rank": 29,
-      "points": 107,
-      "league": "B-Klasse",
-      "name": "Robin Masino"
-    },
-    {
-      "season": "20/22",
-      "rank": 109,
-      "points": 36,
-      "league": "B-Klasse",
-      "name": "Robin Masino"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 54,
-      "points": 68,
-      "league": "A-Klasse",
-      "name": "Robin Masino"
-    }
-  ],
-  "262": [
-    {
-      "season": "24/25",
-      "rank": 100,
-      "points": 47,
-      "league": "B-Klasse",
-      "name": "Pascal Schmauderer"
-    },
-    {
-      "season": "23/24",
-      "rank": 185,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Pascal Schmauderer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 206,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Pascal Schmauderer"
-    }
-  ],
-  "1200": [
-    {
-      "season": "24/25",
-      "rank": 101,
-      "points": 47,
-      "league": "B-Klasse",
-      "name": "Danielle Aymar"
-    },
-    {
-      "season": "23/24",
-      "rank": 39,
-      "points": 112,
-      "league": "C-Klasse",
-      "name": "Danielle Koppe"
-    },
-    {
-      "season": "22/23",
-      "rank": 45,
-      "points": 105,
-      "league": "C-Klasse",
-      "name": "Danielle Koppe"
-    },
-    {
-      "season": "20/22",
-      "rank": 77,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Danielle Koppe"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 123,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Danielle Aymar"
-    }
-  ],
   "1717": [
     {
       "season": "24/25",
@@ -8592,447 +19927,6 @@ window.ARCHIVE_DATA = {
       "name": "Andreas Horst"
     }
   ],
-  "648": [
-    {
-      "season": "24/25",
-      "rank": 103,
-      "points": 45,
-      "league": "B-Klasse",
-      "name": "Kevin Mohr"
-    },
-    {
-      "season": "23/24",
-      "rank": 52,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Kevin Mohr"
-    },
-    {
-      "season": "20/22",
-      "rank": 165,
-      "points": 11,
-      "league": "B-Klasse",
-      "name": "Kevin Mohr"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 109,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Kevin Mohr"
-    }
-  ],
-  "1771": [
-    {
-      "season": "24/25",
-      "rank": 104,
-      "points": 44,
-      "league": "B-Klasse",
-      "name": "Michael Roll"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 211,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Michael Roll"
-    }
-  ],
-  "1538": [
-    {
-      "season": "24/25",
-      "rank": 105,
-      "points": 44,
-      "league": "B-Klasse",
-      "name": "Alfred Eigl"
-    },
-    {
-      "season": "23/24",
-      "rank": 19,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Alfred Eigl"
-    },
-    {
-      "season": "22/23",
-      "rank": 138,
-      "points": 23,
-      "league": "B-Klasse",
-      "name": "Alfred Eigl"
-    },
-    {
-      "season": "20/22",
-      "rank": 11,
-      "points": 138,
-      "league": "B-Klasse",
-      "name": "Alfred Eigl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 21,
-      "points": 103,
-      "league": "A-Klasse",
-      "name": "Alfred Eigl"
-    }
-  ],
-  "1715": [
-    {
-      "season": "24/25",
-      "rank": 106,
-      "points": 43,
-      "league": "B-Klasse",
-      "name": "Tayfun Aksoy"
-    },
-    {
-      "season": "23/24",
-      "rank": 132,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Tayfun Aksoy"
-    },
-    {
-      "season": "22/23",
-      "rank": 105,
-      "points": 45,
-      "league": "B-Klasse",
-      "name": "Tayfun Aksoy"
-    },
-    {
-      "season": "20/22",
-      "rank": 79,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Tayfun Aksoy"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 124,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Tayfun Aksoy"
-    }
-  ],
-  "561": [
-    {
-      "season": "24/25",
-      "rank": 107,
-      "points": 43,
-      "league": "B-Klasse",
-      "name": "Michael Bierl"
-    },
-    {
-      "season": "22/23",
-      "rank": 134,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Michael Bierl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 27,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Michael Bierl"
-    }
-  ],
-  "1248": [
-    {
-      "season": "24/25",
-      "rank": 108,
-      "points": 42,
-      "league": "B-Klasse",
-      "name": "Tomislav Bodnar"
-    },
-    {
-      "season": "23/24",
-      "rank": 143,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Tomislav Bodnar"
-    },
-    {
-      "season": "22/23",
-      "rank": 79,
-      "points": 64,
-      "league": "B-Klasse",
-      "name": "Tomislav Bodnar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 92,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Tomislav Bodnar"
-    }
-  ],
-  "1233": [
-    {
-      "season": "24/25",
-      "rank": 109,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Denis Brezak"
-    },
-    {
-      "season": "23/24",
-      "rank": 184,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Denis Brezak"
-    },
-    {
-      "season": "22/23",
-      "rank": 24,
-      "points": 106,
-      "league": "A-Klasse",
-      "name": "Denis Brezak"
-    },
-    {
-      "season": "20/22",
-      "rank": 14,
-      "points": 123,
-      "league": "A-Klasse",
-      "name": "Denis Brezak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 126,
-      "points": 38,
-      "league": "B-Klasse",
-      "name": "Denis Brezak"
-    }
-  ],
-  "361": [
-    {
-      "season": "24/25",
-      "rank": 110,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Abinsan Thurairatnam"
-    },
-    {
-      "season": "23/24",
-      "rank": 68,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Abinsan Thurairatnam"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 68,
-      "points": 81,
-      "league": "B-Klasse",
-      "name": "Abinsan Thurairatnam"
-    }
-  ],
-  "468": [
-    {
-      "season": "24/25",
-      "rank": 111,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Susanne Schwaldt"
-    },
-    {
-      "season": "23/24",
-      "rank": 59,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Susanne Schwaldt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 96,
-      "points": 57,
-      "league": "B-Klasse",
-      "name": "Susanne Schwaldt"
-    }
-  ],
-  "803": [
-    {
-      "season": "24/25",
-      "rank": 112,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Markus Barthel"
-    },
-    {
-      "season": "23/24",
-      "rank": 76,
-      "points": 73,
-      "league": "B-Klasse",
-      "name": "Markus Barthel"
-    },
-    {
-      "season": "22/23",
-      "rank": 68,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Markus Barthel"
-    },
-    {
-      "season": "20/22",
-      "rank": 139,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Markus Barthel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 141,
-      "points": 25,
-      "league": "B-Klasse",
-      "name": "Markus Barthel"
-    }
-  ],
-  "963": [
-    {
-      "season": "24/25",
-      "rank": 113,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Mile Tornjanski"
-    },
-    {
-      "season": "23/24",
-      "rank": 63,
-      "points": 59,
-      "league": "A-Klasse",
-      "name": "Mile Tornjanski"
-    },
-    {
-      "season": "22/23",
-      "rank": 30,
-      "points": 60,
-      "league": "Bezirksliga",
-      "name": "Mile Tornjanski"
-    },
-    {
-      "season": "20/22",
-      "rank": 60,
-      "points": 61,
-      "league": "A-Klasse",
-      "name": "Mile Tornjanski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 56,
-      "points": 67,
-      "league": "A-Klasse",
-      "name": "Mile Tornjanski"
-    }
-  ],
-  "550": [
-    {
-      "season": "24/25",
-      "rank": 114,
-      "points": 38,
-      "league": "B-Klasse",
-      "name": "Martin Bochmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 113,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Martin Bochmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 131,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "Martin Bochmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 198,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Martin Bochmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 136,
-      "points": 63,
-      "league": "C-Klasse",
-      "name": "Martin Bochmann"
-    }
-  ],
-  "993": [
-    {
-      "season": "24/25",
-      "rank": 115,
-      "points": 36,
-      "league": "B-Klasse",
-      "name": "Michael Koch"
-    },
-    {
-      "season": "23/24",
-      "rank": 111,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Michael Koch"
-    },
-    {
-      "season": "22/23",
-      "rank": 101,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Michael Koch"
-    },
-    {
-      "season": "20/22",
-      "rank": 175,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Michael Koch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 68,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Michael Koch"
-    }
-  ],
-  "317": [
-    {
-      "season": "24/25",
-      "rank": 116,
-      "points": 33,
-      "league": "B-Klasse",
-      "name": "Gabriele Dittus"
-    },
-    {
-      "season": "23/24",
-      "rank": 92,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Gabriele Dittus"
-    },
-    {
-      "season": "22/23",
-      "rank": 87,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Gabriele Dittus"
-    },
-    {
-      "season": "20/22",
-      "rank": 78,
-      "points": 63,
-      "league": "B-Klasse",
-      "name": "Gabriele Dittus"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 121,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Gabriele Dittus"
-    }
-  ],
   "1732": [
     {
       "season": "24/25",
@@ -9047,126 +19941,6 @@ window.ARCHIVE_DATA = {
       "points": 71,
       "league": "C-Klasse",
       "name": "Robert Zeller"
-    }
-  ],
-  "479": [
-    {
-      "season": "24/25",
-      "rank": 118,
-      "points": 31,
-      "league": "B-Klasse",
-      "name": "Peter Wittmers"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 111,
-      "points": 49,
-      "league": "B-Klasse",
-      "name": "Peter Wittmers"
-    }
-  ],
-  "1719": [
-    {
-      "season": "24/25",
-      "rank": 119,
-      "points": 30,
-      "league": "B-Klasse",
-      "name": "B\u00fcnyamin Colak"
-    },
-    {
-      "season": "23/24",
-      "rank": 103,
-      "points": 45,
-      "league": "B-Klasse",
-      "name": "B\u00fcnyamin Colak"
-    },
-    {
-      "season": "22/23",
-      "rank": 111,
-      "points": 42,
-      "league": "B-Klasse",
-      "name": "B\u00fcnyamin Colak"
-    },
-    {
-      "season": "20/22",
-      "rank": 132,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "B\u00fcnyamin Colak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 164,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "B\u00fcnyamin Colak"
-    }
-  ],
-  "1590": [
-    {
-      "season": "24/25",
-      "rank": 120,
-      "points": 30,
-      "league": "B-Klasse",
-      "name": "Andreas Schanz"
-    },
-    {
-      "season": "23/24",
-      "rank": 90,
-      "points": 18,
-      "league": "A-Klasse",
-      "name": "Andreas Schanz"
-    },
-    {
-      "season": "22/23",
-      "rank": 58,
-      "points": 4,
-      "league": "Bezirksliga",
-      "name": "Andreas Schanz"
-    },
-    {
-      "season": "20/22",
-      "rank": 127,
-      "points": 8,
-      "league": "A-Klasse",
-      "name": "Andreas Schanz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 123,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Andreas Schanz"
-    }
-  ],
-  "1862": [
-    {
-      "season": "24/25",
-      "rank": 121,
-      "points": 30,
-      "league": "B-Klasse",
-      "name": "Thomas Huber"
-    },
-    {
-      "season": "23/24",
-      "rank": 141,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Thomas Huber"
-    },
-    {
-      "season": "22/23",
-      "rank": 136,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Thomas Huber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 91,
-      "points": 62,
-      "league": "B-Klasse",
-      "name": "Thomas Huber"
     }
   ],
   "1766": [
@@ -9199,59 +19973,6 @@ window.ARCHIVE_DATA = {
       "name": "Sangkharat Nopharat"
     }
   ],
-  "607": [
-    {
-      "season": "24/25",
-      "rank": 123,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Andreas Gl\u00e4\u00dfer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 157,
-      "points": 19,
-      "league": "B-Klasse",
-      "name": "Andreas Gl\u00e4\u00dfer"
-    }
-  ],
-  "268": [
-    {
-      "season": "24/25",
-      "rank": 125,
-      "points": 27,
-      "league": "B-Klasse",
-      "name": "Martin Fischer"
-    },
-    {
-      "season": "23/24",
-      "rank": 191,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Martin Fischer"
-    },
-    {
-      "season": "22/23",
-      "rank": 165,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Martin Fischer"
-    },
-    {
-      "season": "20/22",
-      "rank": 147,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Martin Fischer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 171,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Martin Fischer"
-    }
-  ],
   "644": [
     {
       "season": "24/25",
@@ -9259,96 +19980,6 @@ window.ARCHIVE_DATA = {
       "points": 26,
       "league": "B-Klasse",
       "name": "Florian Krau\u00df"
-    }
-  ],
-  "1393": [
-    {
-      "season": "24/25",
-      "rank": 127,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Andreas Schulz"
-    },
-    {
-      "season": "20/22",
-      "rank": 214,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Andreas Schulz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 155,
-      "points": 20,
-      "league": "B-Klasse",
-      "name": "Andreas Schulz"
-    }
-  ],
-  "1004": [
-    {
-      "season": "24/25",
-      "rank": 128,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Ulrike Veit"
-    },
-    {
-      "season": "23/24",
-      "rank": 119,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Ulrike Veit"
-    },
-    {
-      "season": "22/23",
-      "rank": 144,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Ulrike Veit"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 133,
-      "points": 31,
-      "league": "B-Klasse",
-      "name": "Ulrike Veit"
-    }
-  ],
-  "1164": [
-    {
-      "season": "24/25",
-      "rank": 129,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Michael Dierdorf"
-    },
-    {
-      "season": "23/24",
-      "rank": 107,
-      "points": 43,
-      "league": "B-Klasse",
-      "name": "Michael Dierdorf"
-    },
-    {
-      "season": "22/23",
-      "rank": 120,
-      "points": 35,
-      "league": "B-Klasse",
-      "name": "Michael Dierdorf"
-    },
-    {
-      "season": "20/22",
-      "rank": 136,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Michael Dierdorf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 134,
-      "points": 30,
-      "league": "B-Klasse",
-      "name": "Michael Dierdorf"
     }
   ],
   "934": [
@@ -9411,133 +20042,6 @@ window.ARCHIVE_DATA = {
       "name": "Christian Porte"
     }
   ],
-  "1190": [
-    {
-      "season": "24/25",
-      "rank": 133,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Sven Krzyzanowski"
-    },
-    {
-      "season": "23/24",
-      "rank": 86,
-      "points": 61,
-      "league": "B-Klasse",
-      "name": "Sven Krzyzanowski"
-    },
-    {
-      "season": "22/23",
-      "rank": 88,
-      "points": 59,
-      "league": "B-Klasse",
-      "name": "Sven Krzyzanowski"
-    },
-    {
-      "season": "20/22",
-      "rank": 146,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Sven Krzyzanowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 177,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Sven Krzyzanowski"
-    }
-  ],
-  "1520": [
-    {
-      "season": "24/25",
-      "rank": 134,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Thorsten Masino"
-    },
-    {
-      "season": "23/24",
-      "rank": 174,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Thorsten Masino"
-    },
-    {
-      "season": "22/23",
-      "rank": 85,
-      "points": 60,
-      "league": "B-Klasse",
-      "name": "Thorsten Masino"
-    },
-    {
-      "season": "20/22",
-      "rank": 115,
-      "points": 33,
-      "league": "B-Klasse",
-      "name": "Thorsten Masino"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 64,
-      "points": 54,
-      "league": "A-Klasse",
-      "name": "Thorsten Masino"
-    }
-  ],
-  "1017": [
-    {
-      "season": "24/25",
-      "rank": 135,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Timo Frank"
-    },
-    {
-      "season": "23/24",
-      "rank": 210,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Timo Frank"
-    },
-    {
-      "season": "22/23",
-      "rank": 174,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Timo Frank"
-    },
-    {
-      "season": "20/22",
-      "rank": 255,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Timo Frank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 161,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Timo Frank"
-    }
-  ],
-  "537": [
-    {
-      "season": "24/25",
-      "rank": 136,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Timo Ludwig"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 132,
-      "points": 33,
-      "league": "B-Klasse",
-      "name": "Timo Ludwig"
-    }
-  ],
   "627": [
     {
       "season": "24/25",
@@ -9559,80 +20063,6 @@ window.ARCHIVE_DATA = {
       "points": 25,
       "league": "B-Klasse",
       "name": "Andrei Gheorghe Cluci"
-    }
-  ],
-  "1191": [
-    {
-      "season": "24/25",
-      "rank": 138,
-      "points": 20,
-      "league": "B-Klasse",
-      "name": "Josef Bertino"
-    },
-    {
-      "season": "23/24",
-      "rank": 138,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Josef Bertino"
-    },
-    {
-      "season": "22/23",
-      "rank": 156,
-      "points": 11,
-      "league": "B-Klasse",
-      "name": "Josef Bertino"
-    },
-    {
-      "season": "20/22",
-      "rank": 111,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Josef Bertino"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 127,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Josef Bertino"
-    }
-  ],
-  "1677": [
-    {
-      "season": "24/25",
-      "rank": 139,
-      "points": 20,
-      "league": "B-Klasse",
-      "name": "Sascha R\u00fchle"
-    },
-    {
-      "season": "23/24",
-      "rank": 37,
-      "points": 105,
-      "league": "B-Klasse",
-      "name": "Sascha R\u00fchle"
-    },
-    {
-      "season": "22/23",
-      "rank": 143,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Sascha R\u00fchle"
-    },
-    {
-      "season": "20/22",
-      "rank": 45,
-      "points": 100,
-      "league": "C-Klasse",
-      "name": "Sascha R\u00fchle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 124,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Sascha R\u00fchle"
     }
   ],
   "1145": [
@@ -9665,239 +20095,6 @@ window.ARCHIVE_DATA = {
       "name": "Thomas Burgschat"
     }
   ],
-  "1249": [
-    {
-      "season": "24/25",
-      "rank": 142,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Alexander Rezlaw"
-    },
-    {
-      "season": "23/24",
-      "rank": 109,
-      "points": 42,
-      "league": "B-Klasse",
-      "name": "Alexander Rezlaw"
-    },
-    {
-      "season": "22/23",
-      "rank": 13,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Alexander Rezlaw"
-    },
-    {
-      "season": "20/22",
-      "rank": 155,
-      "points": 13,
-      "league": "B-Klasse",
-      "name": "Alexander Rezlaw"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 100,
-      "points": 20,
-      "league": "A-Klasse",
-      "name": "Alexander Rezlaw"
-    }
-  ],
-  "1591": [
-    {
-      "season": "24/25",
-      "rank": 143,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Giovanni Corbo"
-    },
-    {
-      "season": "23/24",
-      "rank": 164,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Giovanni Corbo"
-    },
-    {
-      "season": "22/23",
-      "rank": 133,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Giovanni Corbo"
-    },
-    {
-      "season": "20/22",
-      "rank": 138,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Giovanni Corbo"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 126,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Giovanni Corbo"
-    }
-  ],
-  "1360": [
-    {
-      "season": "24/25",
-      "rank": 144,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Alexander Schulz"
-    },
-    {
-      "season": "23/24",
-      "rank": 181,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Alexander Schulz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 107,
-      "points": 15,
-      "league": "A-Klasse",
-      "name": "Alexander Schulz"
-    }
-  ],
-  "654": [
-    {
-      "season": "24/25",
-      "rank": 145,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Heiko Gie\u00dfler"
-    },
-    {
-      "season": "23/24",
-      "rank": 115,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Heiko Gie\u00dfler"
-    },
-    {
-      "season": "22/23",
-      "rank": 95,
-      "points": 19,
-      "league": "A-Klasse",
-      "name": "Heiko Gie\u00dfler"
-    },
-    {
-      "season": "20/22",
-      "rank": 40,
-      "points": 102,
-      "league": "C-Klasse",
-      "name": "Heiko Gie\u00dfler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 147,
-      "points": 23,
-      "league": "B-Klasse",
-      "name": "Heiko Gie\u00dfler"
-    }
-  ],
-  "1894": [
-    {
-      "season": "24/25",
-      "rank": 146,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Romina Diana Taton"
-    },
-    {
-      "season": "23/24",
-      "rank": 183,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Romina Diana Taton"
-    },
-    {
-      "season": "22/23",
-      "rank": 247,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Romina Diana Taton"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 187,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Romina Diana Taton"
-    }
-  ],
-  "817": [
-    {
-      "season": "24/25",
-      "rank": 147,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Vanessa Genthner"
-    },
-    {
-      "season": "23/24",
-      "rank": 95,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Vanessa Genthner"
-    },
-    {
-      "season": "22/23",
-      "rank": 94,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Vanessa Genthner"
-    },
-    {
-      "season": "20/22",
-      "rank": 87,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Vanessa Genthner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 308,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Vanessa Genthner"
-    }
-  ],
-  "1707": [
-    {
-      "season": "24/25",
-      "rank": 148,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Justin Hamp"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 109,
-      "points": 11,
-      "league": "A-Klasse",
-      "name": "Justin Hamp"
-    }
-  ],
-  "1155": [
-    {
-      "season": "24/25",
-      "rank": 149,
-      "points": 15,
-      "league": "B-Klasse",
-      "name": "Florian Nie\u00df"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 121,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Florian Nie\u00df"
-    }
-  ],
   "1254": [
     {
       "season": "24/25",
@@ -9928,110 +20125,6 @@ window.ARCHIVE_DATA = {
       "name": "Ahmed Jarade"
     }
   ],
-  "1275": [
-    {
-      "season": "24/25",
-      "rank": 151,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Uwe Wasserburger"
-    },
-    {
-      "season": "23/24",
-      "rank": 156,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Uwe Wasserburger"
-    },
-    {
-      "season": "22/23",
-      "rank": 92,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Uwe Wasserburger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 276,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Uwe Wasserburger"
-    }
-  ],
-  "845": [
-    {
-      "season": "24/25",
-      "rank": 152,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Manuela K\u00e4ser"
-    },
-    {
-      "season": "23/24",
-      "rank": 122,
-      "points": 34,
-      "league": "B-Klasse",
-      "name": "Manuela K\u00e4ser"
-    },
-    {
-      "season": "22/23",
-      "rank": 176,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Manuela K\u00e4ser"
-    },
-    {
-      "season": "20/22",
-      "rank": 208,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Manuela K\u00e4ser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 123,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Manuela K\u00e4ser"
-    }
-  ],
-  "1101": [
-    {
-      "season": "24/25",
-      "rank": 153,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Volker Schmich"
-    },
-    {
-      "season": "23/24",
-      "rank": 175,
-      "points": 31,
-      "league": "C-Klasse",
-      "name": "Volker Schmich"
-    },
-    {
-      "season": "22/23",
-      "rank": 191,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Volker Schmich"
-    },
-    {
-      "season": "20/22",
-      "rank": 69,
-      "points": 43,
-      "league": "A-Klasse",
-      "name": "Volker Schmich"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 176,
-      "points": 9,
-      "league": "B-Klasse",
-      "name": "Volker Schmich"
-    }
-  ],
   "601": [
     {
       "season": "24/25",
@@ -10060,154 +20153,6 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "A-Klasse",
       "name": "Frank Gruhle"
-    }
-  ],
-  "1649": [
-    {
-      "season": "24/25",
-      "rank": 155,
-      "points": 13,
-      "league": "B-Klasse",
-      "name": "Jacqueline W\u00fcst"
-    },
-    {
-      "season": "23/24",
-      "rank": 128,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Jacqueline W\u00fcst"
-    },
-    {
-      "season": "22/23",
-      "rank": 46,
-      "points": 104,
-      "league": "C-Klasse",
-      "name": "Jacqueline W\u00fcst"
-    },
-    {
-      "season": "20/22",
-      "rank": 104,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Jacqueline W\u00fcst"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 216,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Jacqueline W\u00fcst"
-    }
-  ],
-  "1324": [
-    {
-      "season": "24/25",
-      "rank": 156,
-      "points": 12,
-      "league": "B-Klasse",
-      "name": "Erdogan Dombay"
-    },
-    {
-      "season": "23/24",
-      "rank": 80,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Erdogan Dombay"
-    },
-    {
-      "season": "22/23",
-      "rank": 77,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Erdogan Dombay"
-    },
-    {
-      "season": "20/22",
-      "rank": 127,
-      "points": 25,
-      "league": "B-Klasse",
-      "name": "Erdogan Dombay"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 117,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Erdogan Dombay"
-    }
-  ],
-  "670": [
-    {
-      "season": "24/25",
-      "rank": 157,
-      "points": 11,
-      "league": "B-Klasse",
-      "name": "Maria Graf"
-    },
-    {
-      "season": "23/24",
-      "rank": 111,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Maria Graf"
-    },
-    {
-      "season": "22/23",
-      "rank": 114,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Maria Graf"
-    },
-    {
-      "season": "20/22",
-      "rank": 96,
-      "points": 19,
-      "league": "A-Klasse",
-      "name": "Maria Graf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 217,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Maria Graf"
-    }
-  ],
-  "1527": [
-    {
-      "season": "24/25",
-      "rank": 158,
-      "points": 11,
-      "league": "B-Klasse",
-      "name": "Ralf Haug"
-    },
-    {
-      "season": "23/24",
-      "rank": 81,
-      "points": 35,
-      "league": "A-Klasse",
-      "name": "Ralf Haug"
-    },
-    {
-      "season": "22/23",
-      "rank": 41,
-      "points": 30,
-      "league": "Bezirksliga",
-      "name": "Ralf Haug"
-    },
-    {
-      "season": "20/22",
-      "rank": 43,
-      "points": 84,
-      "league": "A-Klasse",
-      "name": "Ralf Haug"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 84,
-      "points": 32,
-      "league": "A-Klasse",
-      "name": "Ralf Haug"
     }
   ],
   "548": [
@@ -10242,22 +20187,6 @@ window.ARCHIVE_DATA = {
       "name": "Ralf Stockert"
     }
   ],
-  "557": [
-    {
-      "season": "24/25",
-      "rank": 161,
-      "points": 9,
-      "league": "B-Klasse",
-      "name": "Tobias Raff"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 305,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Tobias Raff"
-    }
-  ],
   "1153": [
     {
       "season": "24/25",
@@ -10286,163 +20215,6 @@ window.ARCHIVE_DATA = {
       "points": 57,
       "league": "B-Klasse",
       "name": "Peter Toll"
-    }
-  ],
-  "406": [
-    {
-      "season": "24/25",
-      "rank": 164,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Dennis Schibrowski"
-    },
-    {
-      "season": "23/24",
-      "rank": 58,
-      "points": 90,
-      "league": "B-Klasse",
-      "name": "Dennis Schibrowski"
-    },
-    {
-      "season": "22/23",
-      "rank": 54,
-      "points": 72,
-      "league": "A-Klasse",
-      "name": "Dennis Schibrowski"
-    },
-    {
-      "season": "20/22",
-      "rank": 31,
-      "points": 108,
-      "league": "B-Klasse",
-      "name": "Dennis Schibrowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 20,
-      "points": 148,
-      "league": "C-Klasse",
-      "name": "Dennis Schibrowski"
-    }
-  ],
-  "1740": [
-    {
-      "season": "24/25",
-      "rank": 165,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Daniel R\u00e4uchle"
-    },
-    {
-      "season": "23/24",
-      "rank": 152,
-      "points": 12,
-      "league": "B-Klasse",
-      "name": "Daniel R\u00e4uchle"
-    },
-    {
-      "season": "22/23",
-      "rank": 110,
-      "points": 59,
-      "league": "C-Klasse",
-      "name": "Daniel R\u00e4uchle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 324,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Daniel R\u00e4uchle"
-    }
-  ],
-  "416": [
-    {
-      "season": "24/25",
-      "rank": 166,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Tina Schibrowski"
-    },
-    {
-      "season": "23/24",
-      "rank": 186,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Tina Schibrowski"
-    },
-    {
-      "season": "22/23",
-      "rank": 212,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Tina Schibrowski"
-    },
-    {
-      "season": "20/22",
-      "rank": 154,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Tina Schibrowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 241,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Tina Schibrowski"
-    }
-  ],
-  "1833": [
-    {
-      "season": "24/25",
-      "rank": 167,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Sven Schibrowski"
-    },
-    {
-      "season": "23/24",
-      "rank": 75,
-      "points": 86,
-      "league": "C-Klasse",
-      "name": "Sven Schibrowski"
-    },
-    {
-      "season": "22/23",
-      "rank": 73,
-      "points": 80,
-      "league": "C-Klasse",
-      "name": "Sven Schibrowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 108,
-      "points": 73,
-      "league": "C-Klasse",
-      "name": "Sven Schibrowski"
-    }
-  ],
-  "272": [
-    {
-      "season": "24/25",
-      "rank": 168,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "Neven Zimmermann"
-    },
-    {
-      "season": "23/24",
-      "rank": 55,
-      "points": 100,
-      "league": "C-Klasse",
-      "name": "Neven Zimmermann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 114,
-      "points": 47,
-      "league": "B-Klasse",
-      "name": "Neven Zimmermann"
     }
   ],
   "593": [
@@ -10475,110 +20247,6 @@ window.ARCHIVE_DATA = {
       "name": "Ivan Zunic"
     }
   ],
-  "407": [
-    {
-      "season": "24/25",
-      "rank": 171,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Tim V\u00f6gele"
-    },
-    {
-      "season": "23/24",
-      "rank": 59,
-      "points": 89,
-      "league": "B-Klasse",
-      "name": "Tim V\u00f6gele"
-    },
-    {
-      "season": "22/23",
-      "rank": 30,
-      "points": 95,
-      "league": "A-Klasse",
-      "name": "Tim V\u00f6gele"
-    },
-    {
-      "season": "20/22",
-      "rank": 9,
-      "points": 141,
-      "league": "B-Klasse",
-      "name": "Tim V\u00f6gele"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 10,
-      "points": 163,
-      "league": "C-Klasse",
-      "name": "Tim V\u00f6gele"
-    }
-  ],
-  "860": [
-    {
-      "season": "24/25",
-      "rank": 172,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Philipp Rank"
-    },
-    {
-      "season": "23/24",
-      "rank": 74,
-      "points": 74,
-      "league": "B-Klasse",
-      "name": "Philipp Rank"
-    },
-    {
-      "season": "22/23",
-      "rank": 38,
-      "points": 88,
-      "league": "A-Klasse",
-      "name": "Philipp Rank"
-    },
-    {
-      "season": "20/22",
-      "rank": 17,
-      "points": 122,
-      "league": "A-Klasse",
-      "name": "Philipp Rank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 148,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Philipp Rank"
-    }
-  ],
-  "749": [
-    {
-      "season": "24/25",
-      "rank": 174,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Marco Wolfsegger"
-    },
-    {
-      "season": "22/23",
-      "rank": 103,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Marco Wolfsegger"
-    },
-    {
-      "season": "20/22",
-      "rank": 56,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Marco Wolfsegger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 196,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Marco Wolfsegger"
-    }
-  ],
   "925": [
     {
       "season": "24/25",
@@ -10609,43 +20277,6 @@ window.ARCHIVE_DATA = {
       "name": "Benjamin Folk"
     }
   ],
-  "121": [
-    {
-      "season": "24/25",
-      "rank": 176,
-      "points": 6,
-      "league": "B-Klasse",
-      "name": "Wilfried Michaelis"
-    },
-    {
-      "season": "23/24",
-      "rank": 222,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Wilfried Michaelis"
-    },
-    {
-      "season": "22/23",
-      "rank": 133,
-      "points": 25,
-      "league": "B-Klasse",
-      "name": "Wilfried Michaelis"
-    },
-    {
-      "season": "20/22",
-      "rank": 75,
-      "points": 35,
-      "league": "A-Klasse",
-      "name": "Wilfried Michaelis"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 200,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Wilfried Michaelis"
-    }
-  ],
   "1399": [
     {
       "season": "24/25",
@@ -10660,43 +20291,6 @@ window.ARCHIVE_DATA = {
       "points": 8,
       "league": "B-Klasse",
       "name": "Kevin Faber"
-    }
-  ],
-  "527": [
-    {
-      "season": "24/25",
-      "rank": 178,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "J\u00f6rg Leicht"
-    },
-    {
-      "season": "23/24",
-      "rank": 119,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "J\u00f6rg Leicht"
-    },
-    {
-      "season": "22/23",
-      "rank": 173,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "J\u00f6rg Leicht"
-    },
-    {
-      "season": "20/22",
-      "rank": 154,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "J\u00f6rg Leicht"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 344,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "J\u00f6rg Leicht"
     }
   ],
   "781": [
@@ -10729,22 +20323,6 @@ window.ARCHIVE_DATA = {
       "name": "Thomas Jost"
     }
   ],
-  "437": [
-    {
-      "season": "24/25",
-      "rank": 181,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Carina Menrath"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 101,
-      "points": 54,
-      "league": "B-Klasse",
-      "name": "Carina Menrath"
-    }
-  ],
   "818": [
     {
       "season": "24/25",
@@ -10775,80 +20353,6 @@ window.ARCHIVE_DATA = {
       "name": "Gabi G\u00e4rtner"
     }
   ],
-  "1062": [
-    {
-      "season": "24/25",
-      "rank": 183,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Jacek Koterba"
-    },
-    {
-      "season": "23/24",
-      "rank": 113,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Jacek Koterba"
-    },
-    {
-      "season": "22/23",
-      "rank": 67,
-      "points": 86,
-      "league": "C-Klasse",
-      "name": "Jacek Koterba"
-    },
-    {
-      "season": "20/22",
-      "rank": 213,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Jacek Koterba"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 86,
-      "points": 85,
-      "league": "C-Klasse",
-      "name": "Jacek Koterba"
-    }
-  ],
-  "1075": [
-    {
-      "season": "24/25",
-      "rank": 184,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Daniel Sch\u00e4fer"
-    },
-    {
-      "season": "23/24",
-      "rank": 194,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Daniel Sch\u00e4fer"
-    },
-    {
-      "season": "22/23",
-      "rank": 148,
-      "points": 39,
-      "league": "C-Klasse",
-      "name": "Daniel Sch\u00e4fer"
-    },
-    {
-      "season": "20/22",
-      "rank": 199,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Daniel Sch\u00e4fer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 181,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Daniel Sch\u00e4fer"
-    }
-  ],
   "501": [
     {
       "season": "24/25",
@@ -10865,29 +20369,6 @@ window.ARCHIVE_DATA = {
       "name": "Tom Scheible"
     }
   ],
-  "1158": [
-    {
-      "season": "24/25",
-      "rank": 186,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Mathias Kopp"
-    },
-    {
-      "season": "20/22",
-      "rank": 210,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Mathias Kopp"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 190,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Mathias Kopp"
-    }
-  ],
   "650": [
     {
       "season": "24/25",
@@ -10895,119 +20376,6 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "B-Klasse",
       "name": "J\u00fcrgen Fanz"
-    }
-  ],
-  "1622": [
-    {
-      "season": "24/25",
-      "rank": 189,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Dirk Walter M\u00fcller"
-    },
-    {
-      "season": "23/24",
-      "rank": 181,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Dirk Walter M\u00fcller"
-    },
-    {
-      "season": "22/23",
-      "rank": 55,
-      "points": 95,
-      "league": "C-Klasse",
-      "name": "Dirk Walter M\u00fcller"
-    },
-    {
-      "season": "20/22",
-      "rank": 244,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Dirk M\u00fcller"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 174,
-      "points": 11,
-      "league": "B-Klasse",
-      "name": "Dirk Walter M\u00fcller"
-    }
-  ],
-  "300": [
-    {
-      "season": "24/25",
-      "rank": 190,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Christian Giordano"
-    },
-    {
-      "season": "23/24",
-      "rank": 97,
-      "points": 73,
-      "league": "C-Klasse",
-      "name": "Christian Giordano"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 160,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Christian Giordano"
-    }
-  ],
-  "1620": [
-    {
-      "season": "24/25",
-      "rank": 191,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Savvas Xenitidis"
-    },
-    {
-      "season": "23/24",
-      "rank": 187,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Savvas Xenitidis"
-    },
-    {
-      "season": "22/23",
-      "rank": 209,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Savvas Xenitidis"
-    },
-    {
-      "season": "20/22",
-      "rank": 254,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Savvas Xenitidis"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 123,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Savvas Xenitidis"
-    }
-  ],
-  "505": [
-    {
-      "season": "24/25",
-      "rank": 192,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Sven Dondalski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 205,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Sven Dondalski"
     }
   ],
   "308": [
@@ -11102,36 +20470,6 @@ window.ARCHIVE_DATA = {
       "name": "Dennis Cramer"
     }
   ],
-  "1837": [
-    {
-      "season": "24/25",
-      "rank": 197,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Sandra Lindner"
-    },
-    {
-      "season": "23/24",
-      "rank": 239,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Sandra Rudolf"
-    },
-    {
-      "season": "22/23",
-      "rank": 190,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Sandra Rudolf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 213,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Sandra Lindner"
-    }
-  ],
   "488": [
     {
       "season": "24/25",
@@ -11171,329 +20509,6 @@ window.ARCHIVE_DATA = {
       "name": "Andreas Hermann Osl"
     }
   ],
-  "373": [
-    {
-      "season": "24/25",
-      "rank": 1,
-      "points": 205,
-      "league": "C-Klasse",
-      "name": "Daniel K\u00f6nig"
-    },
-    {
-      "season": "23/24",
-      "rank": 1,
-      "points": 186,
-      "league": "C-Klasse",
-      "name": "Daniel K\u00f6nig"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 1,
-      "points": 190,
-      "league": "B-Klasse",
-      "name": "Daniel K\u00f6nig"
-    }
-  ],
-  "1651": [
-    {
-      "season": "24/25",
-      "rank": 2,
-      "points": 194,
-      "league": "C-Klasse",
-      "name": "Simon Klose"
-    },
-    {
-      "season": "23/24",
-      "rank": 10,
-      "points": 151,
-      "league": "B-Klasse",
-      "name": "Simon Klose"
-    },
-    {
-      "season": "22/23",
-      "rank": 220,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Simon Klose"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 3,
-      "points": 168,
-      "league": "B-Klasse",
-      "name": "Simon Klose"
-    }
-  ],
-  "132": [
-    {
-      "season": "24/25",
-      "rank": 3,
-      "points": 190,
-      "league": "C-Klasse",
-      "name": "Thomas Freimuth"
-    },
-    {
-      "season": "23/24",
-      "rank": 7,
-      "points": 169,
-      "league": "C-Klasse",
-      "name": "Thomas Freimuth"
-    },
-    {
-      "season": "22/23",
-      "rank": 6,
-      "points": 162,
-      "league": "B-Klasse",
-      "name": "Thomas Freimuth"
-    },
-    {
-      "season": "20/22",
-      "rank": 39,
-      "points": 89,
-      "league": "A-Klasse",
-      "name": "Thomas Freimuth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 19,
-      "points": 128,
-      "league": "B-Klasse",
-      "name": "Thomas Freimuth"
-    }
-  ],
-  "1895": [
-    {
-      "season": "24/25",
-      "rank": 4,
-      "points": 189,
-      "league": "C-Klasse",
-      "name": "Julien Staffl"
-    },
-    {
-      "season": "23/24",
-      "rank": 25,
-      "points": 131,
-      "league": "C-Klasse",
-      "name": "Julien Staffl"
-    },
-    {
-      "season": "22/23",
-      "rank": 116,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Julien Staffl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 14,
-      "points": 113,
-      "league": "A-Klasse",
-      "name": "Julien Staffl"
-    }
-  ],
-  "1513": [
-    {
-      "season": "24/25",
-      "rank": 5,
-      "points": 181,
-      "league": "C-Klasse",
-      "name": "Manuel Blessing"
-    },
-    {
-      "season": "23/24",
-      "rank": 64,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Manuel Blessing"
-    },
-    {
-      "season": "22/23",
-      "rank": 78,
-      "points": 65,
-      "league": "B-Klasse",
-      "name": "Manuel Blessing"
-    },
-    {
-      "season": "20/22",
-      "rank": 108,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "Manuel Blessing"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 16,
-      "points": 134,
-      "league": "B-Klasse",
-      "name": "Manuel Blessing"
-    }
-  ],
-  "1468": [
-    {
-      "season": "24/25",
-      "rank": 6,
-      "points": 178,
-      "league": "C-Klasse",
-      "name": "Sebastian Mielke"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 75,
-      "points": 78,
-      "league": "B-Klasse",
-      "name": "Sebastian Mielke"
-    }
-  ],
-  "525": [
-    {
-      "season": "24/25",
-      "rank": 7,
-      "points": 175,
-      "league": "C-Klasse",
-      "name": "Mirko Futschek"
-    },
-    {
-      "season": "23/24",
-      "rank": 11,
-      "points": 143,
-      "league": "B-Klasse",
-      "name": "Mirko Futschek"
-    },
-    {
-      "season": "22/23",
-      "rank": 15,
-      "points": 131,
-      "league": "B-Klasse",
-      "name": "Mirko Futschek"
-    },
-    {
-      "season": "20/22",
-      "rank": 103,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Mirko Futschek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 26,
-      "points": 122,
-      "league": "B-Klasse",
-      "name": "Mirko Futschek"
-    }
-  ],
-  "1882": [
-    {
-      "season": "24/25",
-      "rank": 8,
-      "points": 171,
-      "league": "C-Klasse",
-      "name": "R\u00fcdiger Riegel"
-    },
-    {
-      "season": "23/24",
-      "rank": 79,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "R\u00fcdiger Riegel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 17,
-      "points": 154,
-      "league": "C-Klasse",
-      "name": "R\u00fcdiger Riegel"
-    }
-  ],
-  "1642": [
-    {
-      "season": "24/25",
-      "rank": 9,
-      "points": 168,
-      "league": "C-Klasse",
-      "name": "David Langner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 139,
-      "points": 28,
-      "league": "B-Klasse",
-      "name": "David Langner"
-    }
-  ],
-  "1339": [
-    {
-      "season": "24/25",
-      "rank": 10,
-      "points": 167,
-      "league": "C-Klasse",
-      "name": "Oliver Grau"
-    },
-    {
-      "season": "23/24",
-      "rank": 45,
-      "points": 26,
-      "league": "Bezirksliga",
-      "name": "Oliver Grau"
-    },
-    {
-      "season": "22/23",
-      "rank": 14,
-      "points": 136,
-      "league": "A-Klasse",
-      "name": "Oliver Grau"
-    },
-    {
-      "season": "20/22",
-      "rank": 4,
-      "points": 180,
-      "league": "C-Klasse",
-      "name": "Oliver Grau"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 33,
-      "points": 116,
-      "league": "B-Klasse",
-      "name": "Oliver Grau"
-    }
-  ],
-  "469": [
-    {
-      "season": "24/25",
-      "rank": 11,
-      "points": 161,
-      "league": "C-Klasse",
-      "name": "Juan Zahn"
-    },
-    {
-      "season": "23/24",
-      "rank": 4,
-      "points": 183,
-      "league": "C-Klasse",
-      "name": "Juan Zahn"
-    },
-    {
-      "season": "22/23",
-      "rank": 58,
-      "points": 92,
-      "league": "C-Klasse",
-      "name": "Juan Zahn"
-    },
-    {
-      "season": "20/22",
-      "rank": 93,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Juan Zahn"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 14,
-      "points": 136,
-      "league": "B-Klasse",
-      "name": "Juan Zahn"
-    }
-  ],
   "1369": [
     {
       "season": "24/25",
@@ -11517,73 +20532,6 @@ window.ARCHIVE_DATA = {
       "name": "Markus Gette"
     }
   ],
-  "1577": [
-    {
-      "season": "24/25",
-      "rank": 13,
-      "points": 158,
-      "league": "C-Klasse",
-      "name": "Lee Scott Galletly"
-    },
-    {
-      "season": "23/24",
-      "rank": 28,
-      "points": 126,
-      "league": "C-Klasse",
-      "name": "Lee Scott Galletly"
-    },
-    {
-      "season": "22/23",
-      "rank": 39,
-      "points": 110,
-      "league": "C-Klasse",
-      "name": "Lee Scott Galletly"
-    },
-    {
-      "season": "20/22",
-      "rank": 86,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Lee Scott Galletly"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 17,
-      "points": 129,
-      "league": "B-Klasse",
-      "name": "Lee Scott Galletly"
-    }
-  ],
-  "1446": [
-    {
-      "season": "24/25",
-      "rank": 14,
-      "points": 154,
-      "league": "C-Klasse",
-      "name": "Thomas Schm\u00f6ger"
-    },
-    {
-      "season": "23/24",
-      "rank": 10,
-      "points": 158,
-      "league": "C-Klasse",
-      "name": "Thomas Schm\u00f6ger"
-    },
-    {
-      "season": "22/23",
-      "rank": 105,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Thomas Schm\u00f6ger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 43,
-      "points": 104,
-      "league": "B-Klasse",
-      "name": "Thomas Schm\u00f6ger"
-    }
-  ],
   "1855": [
     {
       "season": "24/25",
@@ -11600,158 +20548,6 @@ window.ARCHIVE_DATA = {
       "name": "Dorian Stukenbrok"
     }
   ],
-  "369": [
-    {
-      "season": "24/25",
-      "rank": 16,
-      "points": 152,
-      "league": "C-Klasse",
-      "name": "Brian Weszkallnies"
-    },
-    {
-      "season": "23/24",
-      "rank": 9,
-      "points": 164,
-      "league": "C-Klasse",
-      "name": "Brian Weszkallnies"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 10,
-      "points": 149,
-      "league": "B-Klasse",
-      "name": "Brian Weszkallnies"
-    }
-  ],
-  "323": [
-    {
-      "season": "24/25",
-      "rank": 17,
-      "points": 150,
-      "league": "C-Klasse",
-      "name": "Ivo Mihov"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 141,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Ivo Mihov"
-    }
-  ],
-  "569": [
-    {
-      "season": "24/25",
-      "rank": 18,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Claus Strubel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 19,
-      "points": 152,
-      "league": "C-Klasse",
-      "name": "Claus Strubel"
-    }
-  ],
-  "312": [
-    {
-      "season": "24/25",
-      "rank": 19,
-      "points": 142,
-      "league": "C-Klasse",
-      "name": "Andreas Schneider"
-    },
-    {
-      "season": "23/24",
-      "rank": 13,
-      "points": 153,
-      "league": "C-Klasse",
-      "name": "Andreas Schneider"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 53,
-      "points": 93,
-      "league": "B-Klasse",
-      "name": "Andreas Schneider"
-    }
-  ],
-  "1871": [
-    {
-      "season": "24/25",
-      "rank": 20,
-      "points": 141,
-      "league": "C-Klasse",
-      "name": "Patrick Hoffmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 38,
-      "points": 113,
-      "league": "C-Klasse",
-      "name": "Patrick Hoffmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 57,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Patrick Hoffmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 63,
-      "points": 49,
-      "league": "A-Klasse",
-      "name": "Patrick Hoffmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 54,
-      "points": 108,
-      "league": "C-Klasse",
-      "name": "Patrick Hoffmann"
-    }
-  ],
-  "1238": [
-    {
-      "season": "24/25",
-      "rank": 21,
-      "points": 138,
-      "league": "C-Klasse",
-      "name": "Jenny L\u00f6ffler"
-    },
-    {
-      "season": "23/24",
-      "rank": 51,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Jenny L\u00f6ffler"
-    },
-    {
-      "season": "22/23",
-      "rank": 66,
-      "points": 74,
-      "league": "B-Klasse",
-      "name": "Jenny L\u00f6ffler"
-    },
-    {
-      "season": "20/22",
-      "rank": 50,
-      "points": 86,
-      "league": "B-Klasse",
-      "name": "Jenny L\u00f6ffler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 79,
-      "points": 75,
-      "league": "B-Klasse",
-      "name": "Jenny L\u00f6ffler"
-    }
-  ],
   "754": [
     {
       "season": "24/25",
@@ -11759,2046 +20555,6 @@ window.ARCHIVE_DATA = {
       "points": 138,
       "league": "C-Klasse",
       "name": "Orhan S\u00f6yleyici"
-    }
-  ],
-  "1753": [
-    {
-      "season": "24/25",
-      "rank": 23,
-      "points": 137,
-      "league": "C-Klasse",
-      "name": "Gerd Bitz"
-    },
-    {
-      "season": "23/24",
-      "rank": 178,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Gerd Bitz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 5,
-      "points": 168,
-      "league": "C-Klasse",
-      "name": "Gerd Bitz"
-    }
-  ],
-  "1373": [
-    {
-      "season": "24/25",
-      "rank": 24,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Tugay \u00d6zcelik"
-    },
-    {
-      "season": "23/24",
-      "rank": 15,
-      "points": 152,
-      "league": "C-Klasse",
-      "name": "Tugay \u00d6zcelik"
-    },
-    {
-      "season": "22/23",
-      "rank": 28,
-      "points": 119,
-      "league": "C-Klasse",
-      "name": "Tugay \u00d6zcelik"
-    },
-    {
-      "season": "20/22",
-      "rank": 20,
-      "points": 131,
-      "league": "C-Klasse",
-      "name": "Tugay \u00d6zcelik"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 74,
-      "points": 78,
-      "league": "B-Klasse",
-      "name": "Tugay \u00d6zcelik"
-    }
-  ],
-  "1395": [
-    {
-      "season": "24/25",
-      "rank": 25,
-      "points": 135,
-      "league": "C-Klasse",
-      "name": "Dennis Schwarz"
-    },
-    {
-      "season": "23/24",
-      "rank": 180,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Dennis Schwarz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 49,
-      "points": 115,
-      "league": "C-Klasse",
-      "name": "Dennis Schwarz"
-    }
-  ],
-  "482": [
-    {
-      "season": "24/25",
-      "rank": 26,
-      "points": 133,
-      "league": "C-Klasse",
-      "name": "Marc Reikowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 18,
-      "points": 154,
-      "league": "C-Klasse",
-      "name": "Marc Reikowski"
-    }
-  ],
-  "1556": [
-    {
-      "season": "24/25",
-      "rank": 27,
-      "points": 133,
-      "league": "C-Klasse",
-      "name": "Sascha Scherb"
-    },
-    {
-      "season": "23/24",
-      "rank": 42,
-      "points": 111,
-      "league": "C-Klasse",
-      "name": "Sascha Scherb"
-    },
-    {
-      "season": "22/23",
-      "rank": 23,
-      "points": 134,
-      "league": "C-Klasse",
-      "name": "Sascha Scherb"
-    },
-    {
-      "season": "20/22",
-      "rank": 103,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Sascha Scherb"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 23,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Sascha Scherb"
-    }
-  ],
-  "277": [
-    {
-      "season": "24/25",
-      "rank": 28,
-      "points": 130,
-      "league": "C-Klasse",
-      "name": "Tobias Kling"
-    },
-    {
-      "season": "23/24",
-      "rank": 133,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Tobias Kling"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 63,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Tobias Kling"
-    }
-  ],
-  "967": [
-    {
-      "season": "24/25",
-      "rank": 29,
-      "points": 128,
-      "league": "C-Klasse",
-      "name": "Wolfgang Kraft"
-    },
-    {
-      "season": "23/24",
-      "rank": 107,
-      "points": 66,
-      "league": "C-Klasse",
-      "name": "Wolfgang Kraft"
-    },
-    {
-      "season": "22/23",
-      "rank": 235,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Wolfgang Kraft"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 128,
-      "points": 37,
-      "league": "B-Klasse",
-      "name": "Wolfgang Kraft"
-    }
-  ],
-  "1066": [
-    {
-      "season": "24/25",
-      "rank": 30,
-      "points": 127,
-      "league": "C-Klasse",
-      "name": "Sascha Ruf"
-    },
-    {
-      "season": "20/22",
-      "rank": 202,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Sascha Ruf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 114,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Sascha Ruf"
-    }
-  ],
-  "429": [
-    {
-      "season": "24/25",
-      "rank": 32,
-      "points": 126,
-      "league": "C-Klasse",
-      "name": "Yanni Amrich"
-    },
-    {
-      "season": "23/24",
-      "rank": 40,
-      "points": 112,
-      "league": "C-Klasse",
-      "name": "Yanni Amrich"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 59,
-      "points": 88,
-      "league": "B-Klasse",
-      "name": "Yanni Amrich"
-    }
-  ],
-  "1263": [
-    {
-      "season": "24/25",
-      "rank": 33,
-      "points": 125,
-      "league": "C-Klasse",
-      "name": "Peter Wunderle"
-    },
-    {
-      "season": "23/24",
-      "rank": 63,
-      "points": 95,
-      "league": "C-Klasse",
-      "name": "Peter Wunderle"
-    },
-    {
-      "season": "22/23",
-      "rank": 69,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Peter Wunderle"
-    },
-    {
-      "season": "20/22",
-      "rank": 82,
-      "points": 60,
-      "league": "B-Klasse",
-      "name": "Peter Wunderle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 120,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Peter Wunderle"
-    }
-  ],
-  "1087": [
-    {
-      "season": "24/25",
-      "rank": 34,
-      "points": 124,
-      "league": "C-Klasse",
-      "name": "Nadine Ackermann"
-    },
-    {
-      "season": "23/24",
-      "rank": 78,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Nadine Ackermann"
-    },
-    {
-      "season": "22/23",
-      "rank": 100,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Nadine Ackermann"
-    },
-    {
-      "season": "20/22",
-      "rank": 232,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Nadine Ackermann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 21,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Nadine Ackermann"
-    }
-  ],
-  "819": [
-    {
-      "season": "24/25",
-      "rank": 35,
-      "points": 123,
-      "league": "C-Klasse",
-      "name": "Axel Fink"
-    },
-    {
-      "season": "23/24",
-      "rank": 62,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Axel Fink"
-    },
-    {
-      "season": "22/23",
-      "rank": 25,
-      "points": 132,
-      "league": "C-Klasse",
-      "name": "Axel Fink"
-    },
-    {
-      "season": "20/22",
-      "rank": 37,
-      "points": 104,
-      "league": "C-Klasse",
-      "name": "Axel Fink"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 39,
-      "points": 122,
-      "league": "C-Klasse",
-      "name": "Axel Fink"
-    }
-  ],
-  "1024": [
-    {
-      "season": "24/25",
-      "rank": 36,
-      "points": 122,
-      "league": "C-Klasse",
-      "name": "Benjamin Link"
-    },
-    {
-      "season": "23/24",
-      "rank": 84,
-      "points": 80,
-      "league": "C-Klasse",
-      "name": "Benjamin Link"
-    },
-    {
-      "season": "22/23",
-      "rank": 107,
-      "points": 44,
-      "league": "B-Klasse",
-      "name": "Benjamin Link"
-    },
-    {
-      "season": "20/22",
-      "rank": 31,
-      "points": 115,
-      "league": "C-Klasse",
-      "name": "Benjamin Link"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 71,
-      "points": 79,
-      "league": "B-Klasse",
-      "name": "Benjamin Link"
-    }
-  ],
-  "338": [
-    {
-      "season": "24/25",
-      "rank": 37,
-      "points": 122,
-      "league": "C-Klasse",
-      "name": "Ali Cam"
-    },
-    {
-      "season": "23/24",
-      "rank": 31,
-      "points": 124,
-      "league": "C-Klasse",
-      "name": "Ali Cam"
-    },
-    {
-      "season": "22/23",
-      "rank": 41,
-      "points": 108,
-      "league": "C-Klasse",
-      "name": "Ali Cam"
-    },
-    {
-      "season": "20/22",
-      "rank": 33,
-      "points": 102,
-      "league": "B-Klasse",
-      "name": "Ali Cam"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 46,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Ali Cam"
-    }
-  ],
-  "783": [
-    {
-      "season": "24/25",
-      "rank": 38,
-      "points": 122,
-      "league": "C-Klasse",
-      "name": "Nico Bremer"
-    },
-    {
-      "season": "23/24",
-      "rank": 199,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Nico Bremer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 52,
-      "points": 109,
-      "league": "C-Klasse",
-      "name": "Nico Bremer"
-    }
-  ],
-  "885": [
-    {
-      "season": "24/25",
-      "rank": 39,
-      "points": 121,
-      "league": "C-Klasse",
-      "name": "Marisa Link"
-    },
-    {
-      "season": "23/24",
-      "rank": 33,
-      "points": 121,
-      "league": "C-Klasse",
-      "name": "Marisa Link"
-    },
-    {
-      "season": "22/23",
-      "rank": 98,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Marisa Link"
-    },
-    {
-      "season": "20/22",
-      "rank": 12,
-      "points": 152,
-      "league": "C-Klasse",
-      "name": "Marisa Link"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 170,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Marisa Link"
-    }
-  ],
-  "1703": [
-    {
-      "season": "24/25",
-      "rank": 40,
-      "points": 121,
-      "league": "C-Klasse",
-      "name": "Leon Schlesinger"
-    },
-    {
-      "season": "23/24",
-      "rank": 127,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Leon Schlesinger"
-    },
-    {
-      "season": "22/23",
-      "rank": 152,
-      "points": 36,
-      "league": "C-Klasse",
-      "name": "Leon Schlesinger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 87,
-      "points": 85,
-      "league": "C-Klasse",
-      "name": "Leon Schlesinger"
-    }
-  ],
-  "603": [
-    {
-      "season": "24/25",
-      "rank": 41,
-      "points": 120,
-      "league": "C-Klasse",
-      "name": "Emanuelle Crea"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 87,
-      "points": 65,
-      "league": "B-Klasse",
-      "name": "Emanuelle Crea"
-    }
-  ],
-  "443": [
-    {
-      "season": "24/25",
-      "rank": 42,
-      "points": 119,
-      "league": "C-Klasse",
-      "name": "Roman Hihlik"
-    },
-    {
-      "season": "23/24",
-      "rank": 109,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Roman Hihlik"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 63,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Roman Hihlik"
-    }
-  ],
-  "1669": [
-    {
-      "season": "24/25",
-      "rank": 43,
-      "points": 119,
-      "league": "C-Klasse",
-      "name": "Denis Orta"
-    },
-    {
-      "season": "23/24",
-      "rank": 43,
-      "points": 111,
-      "league": "C-Klasse",
-      "name": "Denis Orta"
-    },
-    {
-      "season": "22/23",
-      "rank": 82,
-      "points": 62,
-      "league": "B-Klasse",
-      "name": "Denis Orta"
-    },
-    {
-      "season": "20/22",
-      "rank": 118,
-      "points": 32,
-      "league": "B-Klasse",
-      "name": "Denis Orta"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 98,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Denis Orta"
-    }
-  ],
-  "451": [
-    {
-      "season": "24/25",
-      "rank": 44,
-      "points": 119,
-      "league": "C-Klasse",
-      "name": "Nikolaj Kim"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 9,
-      "points": 164,
-      "league": "C-Klasse",
-      "name": "Nikolaj Kim"
-    }
-  ],
-  "376": [
-    {
-      "season": "24/25",
-      "rank": 45,
-      "points": 118,
-      "league": "C-Klasse",
-      "name": "Klaus K\u00f6nig"
-    },
-    {
-      "season": "23/24",
-      "rank": 22,
-      "points": 134,
-      "league": "C-Klasse",
-      "name": "Klaus K\u00f6nig"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 50,
-      "points": 95,
-      "league": "B-Klasse",
-      "name": "Klaus K\u00f6nig"
-    }
-  ],
-  "1163": [
-    {
-      "season": "24/25",
-      "rank": 46,
-      "points": 118,
-      "league": "C-Klasse",
-      "name": "Dominik Deutschbein"
-    },
-    {
-      "season": "23/24",
-      "rank": 118,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Dominik Deutschbein"
-    },
-    {
-      "season": "22/23",
-      "rank": 6,
-      "points": 155,
-      "league": "C-Klasse",
-      "name": "Dominik Deutschbein"
-    },
-    {
-      "season": "20/22",
-      "rank": 130,
-      "points": 7,
-      "league": "A-Klasse",
-      "name": "Dominik Deutschbein"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 12,
-      "points": 160,
-      "league": "C-Klasse",
-      "name": "Dominik Deutschbein"
-    }
-  ],
-  "869": [
-    {
-      "season": "24/25",
-      "rank": 47,
-      "points": 117,
-      "league": "C-Klasse",
-      "name": "Mathias T\u00fcrksch"
-    },
-    {
-      "season": "23/24",
-      "rank": 45,
-      "points": 110,
-      "league": "C-Klasse",
-      "name": "Mathias T\u00fcrksch"
-    },
-    {
-      "season": "22/23",
-      "rank": 51,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Mathias T\u00fcrksch"
-    },
-    {
-      "season": "20/22",
-      "rank": 50,
-      "points": 94,
-      "league": "C-Klasse",
-      "name": "Mathias T\u00fcrksch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 25,
-      "points": 139,
-      "league": "C-Klasse",
-      "name": "Mathias T\u00fcrksch"
-    }
-  ],
-  "322": [
-    {
-      "season": "24/25",
-      "rank": 48,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Philip Kulenski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 32,
-      "points": 127,
-      "league": "C-Klasse",
-      "name": "Philip Kulenski"
-    }
-  ],
-  "286": [
-    {
-      "season": "24/25",
-      "rank": 49,
-      "points": 115,
-      "league": "C-Klasse",
-      "name": "Michael Schneider"
-    },
-    {
-      "season": "23/24",
-      "rank": 112,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Michael Schneider"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 60,
-      "points": 85,
-      "league": "B-Klasse",
-      "name": "Michael Schneider"
-    }
-  ],
-  "1713": [
-    {
-      "season": "24/25",
-      "rank": 50,
-      "points": 115,
-      "league": "C-Klasse",
-      "name": "Nico Michalek"
-    },
-    {
-      "season": "23/24",
-      "rank": 72,
-      "points": 87,
-      "league": "C-Klasse",
-      "name": "Nico Michalek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 27,
-      "points": 122,
-      "league": "B-Klasse",
-      "name": "Nico Michalek"
-    }
-  ],
-  "1760": [
-    {
-      "season": "24/25",
-      "rank": 51,
-      "points": 114,
-      "league": "C-Klasse",
-      "name": "Melanie Krone"
-    },
-    {
-      "season": "23/24",
-      "rank": 155,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Melanie Krone"
-    },
-    {
-      "season": "22/23",
-      "rank": 82,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Melanie Krone"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 92,
-      "points": 83,
-      "league": "C-Klasse",
-      "name": "Melanie Krone"
-    }
-  ],
-  "1256": [
-    {
-      "season": "24/25",
-      "rank": 52,
-      "points": 113,
-      "league": "C-Klasse",
-      "name": "Dennis Gerhart"
-    },
-    {
-      "season": "23/24",
-      "rank": 24,
-      "points": 131,
-      "league": "C-Klasse",
-      "name": "Dennis Gerhart"
-    },
-    {
-      "season": "22/23",
-      "rank": 181,
-      "points": 24,
-      "league": "C-Klasse",
-      "name": "Dennis Gerhart"
-    },
-    {
-      "season": "20/22",
-      "rank": 142,
-      "points": 32,
-      "league": "C-Klasse",
-      "name": "Dennis Gerhart"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 22,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Dennis Gerhart"
-    }
-  ],
-  "1212": [
-    {
-      "season": "24/25",
-      "rank": 53,
-      "points": 111,
-      "league": "C-Klasse",
-      "name": "Uwe Prohaska"
-    },
-    {
-      "season": "23/24",
-      "rank": 71,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Uwe Prohaska"
-    },
-    {
-      "season": "22/23",
-      "rank": 73,
-      "points": 49,
-      "league": "A-Klasse",
-      "name": "Uwe Prohaska"
-    },
-    {
-      "season": "20/22",
-      "rank": 47,
-      "points": 90,
-      "league": "B-Klasse",
-      "name": "Uwe Prohaska"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 182,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Uwe Prohaska"
-    }
-  ],
-  "534": [
-    {
-      "season": "24/25",
-      "rank": 55,
-      "points": 109,
-      "league": "C-Klasse",
-      "name": "Stefan Schleeh"
-    },
-    {
-      "season": "23/24",
-      "rank": 51,
-      "points": 104,
-      "league": "C-Klasse",
-      "name": "Stefan Schleeh"
-    },
-    {
-      "season": "22/23",
-      "rank": 48,
-      "points": 101,
-      "league": "C-Klasse",
-      "name": "Stefan Schleeh"
-    },
-    {
-      "season": "20/22",
-      "rank": 47,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Stefan Schleeh"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 36,
-      "points": 124,
-      "league": "C-Klasse",
-      "name": "Stefan Schleeh"
-    }
-  ],
-  "1148": [
-    {
-      "season": "24/25",
-      "rank": 56,
-      "points": 109,
-      "league": "C-Klasse",
-      "name": "Andreas Naam"
-    },
-    {
-      "season": "23/24",
-      "rank": 26,
-      "points": 127,
-      "league": "C-Klasse",
-      "name": "Andreas Naam"
-    },
-    {
-      "season": "22/23",
-      "rank": 44,
-      "points": 105,
-      "league": "C-Klasse",
-      "name": "Andreas Naam"
-    },
-    {
-      "season": "20/22",
-      "rank": 60,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Andreas Naam"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 80,
-      "points": 75,
-      "league": "B-Klasse",
-      "name": "Andreas Naam"
-    }
-  ],
-  "719": [
-    {
-      "season": "24/25",
-      "rank": 57,
-      "points": 107,
-      "league": "C-Klasse",
-      "name": "Michael Thiel"
-    },
-    {
-      "season": "23/24",
-      "rank": 107,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Michael Thiel"
-    },
-    {
-      "season": "22/23",
-      "rank": 98,
-      "points": 16,
-      "league": "A-Klasse",
-      "name": "Michael Thiel"
-    },
-    {
-      "season": "20/22",
-      "rank": 132,
-      "points": 7,
-      "league": "A-Klasse",
-      "name": "Michael Thiel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 69,
-      "points": 81,
-      "league": "B-Klasse",
-      "name": "Michael Thiel"
-    }
-  ],
-  "1194": [
-    {
-      "season": "24/25",
-      "rank": 58,
-      "points": 105,
-      "league": "C-Klasse",
-      "name": "Ilhami K\u00fcc\u00fck"
-    },
-    {
-      "season": "23/24",
-      "rank": 57,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Ilhami K\u00fcc\u00fck"
-    },
-    {
-      "season": "22/23",
-      "rank": 43,
-      "points": 106,
-      "league": "C-Klasse",
-      "name": "Ilhami K\u00fcc\u00fck"
-    },
-    {
-      "season": "20/22",
-      "rank": 36,
-      "points": 98,
-      "league": "B-Klasse",
-      "name": "Ilhami K\u00fcc\u00fck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 51,
-      "points": 112,
-      "league": "C-Klasse",
-      "name": "Ilhami K\u00fcc\u00fck"
-    }
-  ],
-  "1881": [
-    {
-      "season": "24/25",
-      "rank": 59,
-      "points": 105,
-      "league": "C-Klasse",
-      "name": "Patrik Lutz"
-    },
-    {
-      "season": "23/24",
-      "rank": 91,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Patrik Lutz"
-    },
-    {
-      "season": "22/23",
-      "rank": 61,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Patrik Lutz"
-    },
-    {
-      "season": "20/22",
-      "rank": 53,
-      "points": 86,
-      "league": "B-Klasse",
-      "name": "Patrik Lutz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 97,
-      "points": 81,
-      "league": "C-Klasse",
-      "name": "Patrik Lutz"
-    }
-  ],
-  "874": [
-    {
-      "season": "24/25",
-      "rank": 60,
-      "points": 101,
-      "league": "C-Klasse",
-      "name": "Holger Schenk"
-    },
-    {
-      "season": "23/24",
-      "rank": 27,
-      "points": 126,
-      "league": "C-Klasse",
-      "name": "Holger Schenk"
-    },
-    {
-      "season": "22/23",
-      "rank": 70,
-      "points": 72,
-      "league": "B-Klasse",
-      "name": "Holger Schenk"
-    },
-    {
-      "season": "20/22",
-      "rank": 44,
-      "points": 101,
-      "league": "C-Klasse",
-      "name": "Holger Schenk"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 110,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Holger Schenk"
-    }
-  ],
-  "1109": [
-    {
-      "season": "24/25",
-      "rank": 61,
-      "points": 100,
-      "league": "C-Klasse",
-      "name": "Markus Bethke"
-    },
-    {
-      "season": "23/24",
-      "rank": 103,
-      "points": 70,
-      "league": "C-Klasse",
-      "name": "Markus Bethke"
-    },
-    {
-      "season": "22/23",
-      "rank": 12,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Markus Bethke"
-    },
-    {
-      "season": "20/22",
-      "rank": 72,
-      "points": 75,
-      "league": "C-Klasse",
-      "name": "Markus Bethke"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 320,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Markus Bethke"
-    }
-  ],
-  "1664": [
-    {
-      "season": "24/25",
-      "rank": 62,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Christian Koch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 97,
-      "points": 23,
-      "league": "A-Klasse",
-      "name": "Christian Koch"
-    }
-  ],
-  "656": [
-    {
-      "season": "24/25",
-      "rank": 63,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Matthias Hofmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 60,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Matthias Hofmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 24,
-      "points": 114,
-      "league": "B-Klasse",
-      "name": "Matthias Hofmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 22,
-      "points": 130,
-      "league": "C-Klasse",
-      "name": "Matthias Hofmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 76,
-      "points": 76,
-      "league": "B-Klasse",
-      "name": "Matthias Hofmann"
-    }
-  ],
-  "1388": [
-    {
-      "season": "24/25",
-      "rank": 64,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Markus Finsterle"
-    },
-    {
-      "season": "23/24",
-      "rank": 94,
-      "points": 75,
-      "league": "C-Klasse",
-      "name": "Markus Finsterle"
-    },
-    {
-      "season": "22/23",
-      "rank": 151,
-      "points": 36,
-      "league": "C-Klasse",
-      "name": "Markus Finsterle"
-    },
-    {
-      "season": "20/22",
-      "rank": 271,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Markus Finsterle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 16,
-      "points": 156,
-      "league": "C-Klasse",
-      "name": "Markus Finsterle"
-    }
-  ],
-  "632": [
-    {
-      "season": "24/25",
-      "rank": 65,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Michael Parupka"
-    },
-    {
-      "season": "22/23",
-      "rank": 106,
-      "points": 44,
-      "league": "B-Klasse",
-      "name": "Michael Parupka"
-    },
-    {
-      "season": "20/22",
-      "rank": 19,
-      "points": 131,
-      "league": "C-Klasse",
-      "name": "Michael Parupka"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 59,
-      "points": 102,
-      "league": "C-Klasse",
-      "name": "Michael Parupka"
-    }
-  ],
-  "276": [
-    {
-      "season": "24/25",
-      "rank": 66,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Thomas Bauer"
-    },
-    {
-      "season": "23/24",
-      "rank": 61,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Thomas Bauer"
-    },
-    {
-      "season": "22/23",
-      "rank": 60,
-      "points": 79,
-      "league": "B-Klasse",
-      "name": "Thomas Bauer"
-    },
-    {
-      "season": "20/22",
-      "rank": 30,
-      "points": 109,
-      "league": "B-Klasse",
-      "name": "Thomas Bauer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 117,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Thomas Bauer"
-    }
-  ],
-  "1686": [
-    {
-      "season": "24/25",
-      "rank": 67,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Celina B\u00e4uerle"
-    },
-    {
-      "season": "23/24",
-      "rank": 167,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Celina B\u00e4uerle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 42,
-      "points": 119,
-      "league": "C-Klasse",
-      "name": "Celina B\u00e4uerle"
-    }
-  ],
-  "1342": [
-    {
-      "season": "24/25",
-      "rank": 68,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Valerij Ziegler"
-    },
-    {
-      "season": "23/24",
-      "rank": 48,
-      "points": 108,
-      "league": "C-Klasse",
-      "name": "Valerij Ziegler"
-    },
-    {
-      "season": "22/23",
-      "rank": 46,
-      "points": 93,
-      "league": "B-Klasse",
-      "name": "Valerij Ziegler"
-    },
-    {
-      "season": "20/22",
-      "rank": 46,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Valerij Ziegler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 99,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Valerij Ziegler"
-    }
-  ],
-  "1754": [
-    {
-      "season": "24/25",
-      "rank": 69,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Sabine Schuhmacher"
-    },
-    {
-      "season": "23/24",
-      "rank": 110,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Sabine Schuhmacher"
-    },
-    {
-      "season": "22/23",
-      "rank": 50,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Sabine Schuhmacher"
-    },
-    {
-      "season": "20/22",
-      "rank": 62,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Sabine Schuhmacher"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 209,
-      "points": 30,
-      "league": "C-Klasse",
-      "name": "Sabine Schuhmacher"
-    }
-  ],
-  "296": [
-    {
-      "season": "24/25",
-      "rank": 70,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Christoph Deininger"
-    },
-    {
-      "season": "23/24",
-      "rank": 44,
-      "points": 111,
-      "league": "C-Klasse",
-      "name": "Christoph Deininger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 64,
-      "points": 83,
-      "league": "B-Klasse",
-      "name": "Christoph Deininger"
-    }
-  ],
-  "578": [
-    {
-      "season": "24/25",
-      "rank": 71,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Marvin Paar"
-    },
-    {
-      "season": "23/24",
-      "rank": 88,
-      "points": 60,
-      "league": "B-Klasse",
-      "name": "Marvin Paar"
-    },
-    {
-      "season": "22/23",
-      "rank": 181,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Marvin Paar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 77,
-      "points": 91,
-      "league": "C-Klasse",
-      "name": "Marvin Paar"
-    }
-  ],
-  "836": [
-    {
-      "season": "24/25",
-      "rank": 72,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Stefan Schlenker"
-    },
-    {
-      "season": "22/23",
-      "rank": 99,
-      "points": 15,
-      "league": "A-Klasse",
-      "name": "Stefan Schlenker"
-    },
-    {
-      "season": "20/22",
-      "rank": 72,
-      "points": 37,
-      "league": "A-Klasse",
-      "name": "Stefan Schlenker"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 92,
-      "points": 60,
-      "league": "B-Klasse",
-      "name": "Stefan Schlenker"
-    }
-  ],
-  "1295": [
-    {
-      "season": "24/25",
-      "rank": 73,
-      "points": 95,
-      "league": "C-Klasse",
-      "name": "Samantha Bartsch"
-    },
-    {
-      "season": "23/24",
-      "rank": 271,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Samantha Bartsch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 38,
-      "points": 124,
-      "league": "C-Klasse",
-      "name": "Samantha Bartsch"
-    }
-  ],
-  "422": [
-    {
-      "season": "24/25",
-      "rank": 74,
-      "points": 95,
-      "league": "C-Klasse",
-      "name": "Sabrina Herget"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 136,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Sabrina Herget"
-    }
-  ],
-  "910": [
-    {
-      "season": "24/25",
-      "rank": 75,
-      "points": 95,
-      "league": "C-Klasse",
-      "name": "Andreas Huber"
-    },
-    {
-      "season": "23/24",
-      "rank": 96,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Andreas Huber"
-    },
-    {
-      "season": "22/23",
-      "rank": 98,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Andreas Huber"
-    },
-    {
-      "season": "20/22",
-      "rank": 140,
-      "points": 19,
-      "league": "B-Klasse",
-      "name": "Andreas Huber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 89,
-      "points": 85,
-      "league": "C-Klasse",
-      "name": "Andreas Huber"
-    }
-  ],
-  "907": [
-    {
-      "season": "24/25",
-      "rank": 76,
-      "points": 94,
-      "league": "C-Klasse",
-      "name": "Klaus Wunderle"
-    },
-    {
-      "season": "23/24",
-      "rank": 141,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Klaus Wunderle"
-    },
-    {
-      "season": "22/23",
-      "rank": 112,
-      "points": 59,
-      "league": "C-Klasse",
-      "name": "Klaus Wunderle"
-    },
-    {
-      "season": "20/22",
-      "rank": 107,
-      "points": 37,
-      "league": "B-Klasse",
-      "name": "Klaus Wunderle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 143,
-      "points": 60,
-      "league": "C-Klasse",
-      "name": "Klaus Wunderle"
-    }
-  ],
-  "1711": [
-    {
-      "season": "24/25",
-      "rank": 77,
-      "points": 94,
-      "league": "C-Klasse",
-      "name": "Gino del Viscio"
-    },
-    {
-      "season": "23/24",
-      "rank": 71,
-      "points": 88,
-      "league": "C-Klasse",
-      "name": "Gino del Viscio"
-    },
-    {
-      "season": "22/23",
-      "rank": 197,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Gino del Viscio"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 72,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Gino del Viscio"
-    }
-  ],
-  "1368": [
-    {
-      "season": "24/25",
-      "rank": 78,
-      "points": 94,
-      "league": "C-Klasse",
-      "name": "Marcel Pitschke"
-    },
-    {
-      "season": "23/24",
-      "rank": 108,
-      "points": 42,
-      "league": "B-Klasse",
-      "name": "Marcel Pitschke"
-    },
-    {
-      "season": "22/23",
-      "rank": 74,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Marcel Pitschke"
-    },
-    {
-      "season": "20/22",
-      "rank": 61,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Marcel Pitschke"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 56,
-      "points": 103,
-      "league": "C-Klasse",
-      "name": "Marcel Pitschke"
-    }
-  ],
-  "1716": [
-    {
-      "season": "24/25",
-      "rank": 79,
-      "points": 93,
-      "league": "C-Klasse",
-      "name": "Heiko Krone"
-    },
-    {
-      "season": "23/24",
-      "rank": 172,
-      "points": 32,
-      "league": "C-Klasse",
-      "name": "Heiko Krone"
-    },
-    {
-      "season": "22/23",
-      "rank": 169,
-      "points": 31,
-      "league": "C-Klasse",
-      "name": "Heiko Krone"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 90,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Heiko Krone"
-    }
-  ],
-  "446": [
-    {
-      "season": "24/25",
-      "rank": 80,
-      "points": 93,
-      "league": "C-Klasse",
-      "name": "Andreas M\u00fcller"
-    },
-    {
-      "season": "23/24",
-      "rank": 102,
-      "points": 70,
-      "league": "C-Klasse",
-      "name": "Andreas M\u00fcller"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 58,
-      "points": 102,
-      "league": "C-Klasse",
-      "name": "Andreas M\u00fcller"
-    }
-  ],
-  "785": [
-    {
-      "season": "24/25",
-      "rank": 82,
-      "points": 91,
-      "league": "C-Klasse",
-      "name": "Elke Bremer"
-    },
-    {
-      "season": "23/24",
-      "rank": 232,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Elke Bremer"
-    },
-    {
-      "season": "22/23",
-      "rank": 52,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Elke Bremer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 223,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Elke Bremer"
-    }
-  ],
-  "1886": [
-    {
-      "season": "24/25",
-      "rank": 83,
-      "points": 91,
-      "league": "C-Klasse",
-      "name": "Ralph Roth"
-    },
-    {
-      "season": "23/24",
-      "rank": 158,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Ralph Roth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 142,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Ralph Roth"
-    }
-  ],
-  "1516": [
-    {
-      "season": "24/25",
-      "rank": 84,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Wolfgang Haag"
-    },
-    {
-      "season": "23/24",
-      "rank": 74,
-      "points": 86,
-      "league": "C-Klasse",
-      "name": "Wolfgang Haag"
-    },
-    {
-      "season": "22/23",
-      "rank": 53,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Wolfgang Haag"
-    },
-    {
-      "season": "20/22",
-      "rank": 71,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Wolfgang Haag"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 132,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Wolfgang Haag"
-    }
-  ],
-  "651": [
-    {
-      "season": "24/25",
-      "rank": 85,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Dirk Horst Schabert"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 104,
-      "points": 76,
-      "league": "C-Klasse",
-      "name": "Dirk Horst Schabert"
-    }
-  ],
-  "997": [
-    {
-      "season": "24/25",
-      "rank": 86,
-      "points": 87,
-      "league": "C-Klasse",
-      "name": "Domenik Schulz"
-    },
-    {
-      "season": "20/22",
-      "rank": 215,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Domenik Schulz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 30,
-      "points": 131,
-      "league": "C-Klasse",
-      "name": "Domenik Schulz"
-    }
-  ],
-  "1791": [
-    {
-      "season": "24/25",
-      "rank": 87,
-      "points": 86,
-      "league": "C-Klasse",
-      "name": "Bojan Sabo"
-    },
-    {
-      "season": "23/24",
-      "rank": 209,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Bojan Sabo"
-    },
-    {
-      "season": "22/23",
-      "rank": 97,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Bojan Sabo"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 126,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Bojan Sabo"
-    }
-  ],
-  "328": [
-    {
-      "season": "24/25",
-      "rank": 88,
-      "points": 85,
-      "league": "C-Klasse",
-      "name": "Markus D\u00fcrr"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 179,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Markus D\u00fcrr"
-    }
-  ],
-  "1209": [
-    {
-      "season": "24/25",
-      "rank": 89,
-      "points": 83,
-      "league": "C-Klasse",
-      "name": "G\u00f6khan \u00d6zdemir"
-    },
-    {
-      "season": "23/24",
-      "rank": 212,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "G\u00f6khan \u00d6zdemir"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 28,
-      "points": 132,
-      "league": "C-Klasse",
-      "name": "G\u00f6khan \u00d6zdemir"
-    }
-  ],
-  "1322": [
-    {
-      "season": "24/25",
-      "rank": 90,
-      "points": 83,
-      "league": "C-Klasse",
-      "name": "Kai Reusch"
-    },
-    {
-      "season": "23/24",
-      "rank": 62,
-      "points": 84,
-      "league": "B-Klasse",
-      "name": "Kai Reusch"
-    },
-    {
-      "season": "22/23",
-      "rank": 81,
-      "points": 63,
-      "league": "B-Klasse",
-      "name": "Kai Reusch"
-    },
-    {
-      "season": "20/22",
-      "rank": 84,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Kai Reusch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 26,
-      "points": 136,
-      "league": "C-Klasse",
-      "name": "Kai Reusch"
-    }
-  ],
-  "828": [
-    {
-      "season": "24/25",
-      "rank": 91,
-      "points": 82,
-      "league": "C-Klasse",
-      "name": "Melanie Keuerleber"
-    },
-    {
-      "season": "23/24",
-      "rank": 89,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Melanie Keuerleber"
-    },
-    {
-      "season": "22/23",
-      "rank": 90,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Melanie Keuerleber"
-    },
-    {
-      "season": "20/22",
-      "rank": 126,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Melanie Keuerleber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 116,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Melanie Keuerleber"
-    }
-  ],
-  "1123": [
-    {
-      "season": "24/25",
-      "rank": 92,
-      "points": 82,
-      "league": "C-Klasse",
-      "name": "Leo Sauer-E\u00dfwein"
-    },
-    {
-      "season": "23/24",
-      "rank": 50,
-      "points": 105,
-      "league": "C-Klasse",
-      "name": "Leo Sauer-E\u00dfwein"
-    },
-    {
-      "season": "22/23",
-      "rank": 64,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Leo Sauer-E\u00dfwein"
-    },
-    {
-      "season": "20/22",
-      "rank": 54,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Leo Sauer-E\u00dfwein"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 90,
-      "points": 63,
-      "league": "B-Klasse",
-      "name": "Leo Sauer-E\u00dfwein"
-    }
-  ],
-  "856": [
-    {
-      "season": "24/25",
-      "rank": 93,
-      "points": 80,
-      "league": "C-Klasse",
-      "name": "Oliver Gille"
-    },
-    {
-      "season": "23/24",
-      "rank": 41,
-      "points": 111,
-      "league": "C-Klasse",
-      "name": "Oliver Gille"
-    },
-    {
-      "season": "22/23",
-      "rank": 31,
-      "points": 117,
-      "league": "C-Klasse",
-      "name": "Oliver Gille"
-    },
-    {
-      "season": "20/22",
-      "rank": 29,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Oliver Gille"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 79,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Oliver Gille"
     }
   ],
   "1131": [
@@ -13810,241 +20566,6 @@ window.ARCHIVE_DATA = {
       "name": "Jennifer Gette"
     }
   ],
-  "1354": [
-    {
-      "season": "24/25",
-      "rank": 95,
-      "points": 80,
-      "league": "C-Klasse",
-      "name": "Klaus J\u00e4hrmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 249,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Klaus J\u00e4hrmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 167,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Klaus J\u00e4hrmann"
-    }
-  ],
-  "1682": [
-    {
-      "season": "24/25",
-      "rank": 96,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Michael B\u00e4uerle"
-    },
-    {
-      "season": "23/24",
-      "rank": 151,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Michael B\u00e4uerle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 135,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Michael B\u00e4uerle"
-    }
-  ],
-  "520": [
-    {
-      "season": "24/25",
-      "rank": 97,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Tina Hauck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 84,
-      "points": 86,
-      "league": "C-Klasse",
-      "name": "Tina Hauck"
-    }
-  ],
-  "655": [
-    {
-      "season": "24/25",
-      "rank": 98,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Elfi Kalweit-Spath"
-    },
-    {
-      "season": "23/24",
-      "rank": 177,
-      "points": 30,
-      "league": "C-Klasse",
-      "name": "Elfi Kalweit-Spath"
-    },
-    {
-      "season": "22/23",
-      "rank": 63,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Elfi Kalweit-Spath"
-    },
-    {
-      "season": "20/22",
-      "rank": 65,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Elfi Kalweit-Spath"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 264,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Elfi Kalweit-Spath"
-    }
-  ],
-  "1458": [
-    {
-      "season": "24/25",
-      "rank": 99,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Wolfgang Endlich"
-    },
-    {
-      "season": "23/24",
-      "rank": 132,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Wolfgang Endlich"
-    },
-    {
-      "season": "22/23",
-      "rank": 42,
-      "points": 108,
-      "league": "C-Klasse",
-      "name": "Wolfgang Endlich"
-    },
-    {
-      "season": "20/22",
-      "rank": 224,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Wolfgang Endlich"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 127,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Wolfgang Endlich"
-    }
-  ],
-  "387": [
-    {
-      "season": "24/25",
-      "rank": 100,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Dean Scott Galletly"
-    },
-    {
-      "season": "23/24",
-      "rank": 207,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Dean Scott Galletly"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 53,
-      "points": 108,
-      "league": "C-Klasse",
-      "name": "Dean Scott Galletly"
-    }
-  ],
-  "615": [
-    {
-      "season": "24/25",
-      "rank": 101,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Giann Luca Pluchino"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 166,
-      "points": 49,
-      "league": "C-Klasse",
-      "name": "Giann Luca Pluchino"
-    }
-  ],
-  "1512": [
-    {
-      "season": "24/25",
-      "rank": 102,
-      "points": 75,
-      "league": "C-Klasse",
-      "name": "Dirk Schuhmacher"
-    },
-    {
-      "season": "23/24",
-      "rank": 87,
-      "points": 61,
-      "league": "B-Klasse",
-      "name": "Dirk Schuhmacher"
-    },
-    {
-      "season": "22/23",
-      "rank": 14,
-      "points": 143,
-      "league": "C-Klasse",
-      "name": "Dirk Schuhmacher"
-    },
-    {
-      "season": "20/22",
-      "rank": 69,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Dirk Schuhmacher"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 162,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Dirk Schuhmacher"
-    }
-  ],
-  "1854": [
-    {
-      "season": "24/25",
-      "rank": 103,
-      "points": 73,
-      "league": "C-Klasse",
-      "name": "Jessica Busch"
-    },
-    {
-      "season": "23/24",
-      "rank": 193,
-      "points": 24,
-      "league": "C-Klasse",
-      "name": "Jessica Busch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 94,
-      "points": 81,
-      "league": "C-Klasse",
-      "name": "Jessica Busch"
-    }
-  ],
   "1330": [
     {
       "season": "24/25",
@@ -14052,22 +20573,6 @@ window.ARCHIVE_DATA = {
       "points": 72,
       "league": "C-Klasse",
       "name": "Sandy Flaig"
-    }
-  ],
-  "1419": [
-    {
-      "season": "24/25",
-      "rank": 105,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Johannes F\u00f6rschler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 3,
-      "points": 170,
-      "league": "C-Klasse",
-      "name": "Johannes F\u00f6rschler"
     }
   ],
   "1255": [
@@ -14100,43 +20605,6 @@ window.ARCHIVE_DATA = {
       "name": "Pascal Steck"
     }
   ],
-  "1195": [
-    {
-      "season": "24/25",
-      "rank": 107,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Anatole Musaraganyi"
-    },
-    {
-      "season": "23/24",
-      "rank": 99,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Anatole Musaraganyi"
-    },
-    {
-      "season": "22/23",
-      "rank": 91,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Anatole Musaraganyi"
-    },
-    {
-      "season": "20/22",
-      "rank": 67,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Anatole Musaraganyi"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 207,
-      "points": 32,
-      "league": "C-Klasse",
-      "name": "Anatole Musaraganyi"
-    }
-  ],
   "1775": [
     {
       "season": "24/25",
@@ -14160,80 +20628,6 @@ window.ARCHIVE_DATA = {
       "name": "Sebastian Owsianny"
     }
   ],
-  "1660": [
-    {
-      "season": "24/25",
-      "rank": 109,
-      "points": 70,
-      "league": "C-Klasse",
-      "name": "Florian Matz"
-    },
-    {
-      "season": "23/24",
-      "rank": 58,
-      "points": 99,
-      "league": "C-Klasse",
-      "name": "Florian Matz"
-    },
-    {
-      "season": "22/23",
-      "rank": 152,
-      "points": 15,
-      "league": "B-Klasse",
-      "name": "Florian Matz"
-    },
-    {
-      "season": "20/22",
-      "rank": 173,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Florian Matz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 169,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "Florian Matz"
-    }
-  ],
-  "1691": [
-    {
-      "season": "24/25",
-      "rank": 110,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Jennifer Voggenreiter"
-    },
-    {
-      "season": "23/24",
-      "rank": 139,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Jennifer Voggenreiter"
-    },
-    {
-      "season": "22/23",
-      "rank": 89,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Jennifer Voggenreiter"
-    },
-    {
-      "season": "20/22",
-      "rank": 146,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Jennifer Voggenreiter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 76,
-      "points": 91,
-      "league": "C-Klasse",
-      "name": "Jennifer Voggenreiter"
-    }
-  ],
   "1867": [
     {
       "season": "24/25",
@@ -14255,68 +20649,6 @@ window.ARCHIVE_DATA = {
       "points": 51,
       "league": "B-Klasse",
       "name": "Andreas Tietz"
-    }
-  ],
-  "1737": [
-    {
-      "season": "24/25",
-      "rank": 112,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Ferdinand Bard"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 85,
-      "points": 86,
-      "league": "C-Klasse",
-      "name": "Ferdinand Bard"
-    }
-  ],
-  "1525": [
-    {
-      "season": "24/25",
-      "rank": 113,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Hasan Kaya"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 138,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Hasan Kaya"
-    }
-  ],
-  "1497": [
-    {
-      "season": "24/25",
-      "rank": 114,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Benjamin Klapper"
-    },
-    {
-      "season": "22/23",
-      "rank": 130,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Benjamin Klapper"
-    },
-    {
-      "season": "20/22",
-      "rank": 125,
-      "points": 8,
-      "league": "A-Klasse",
-      "name": "Benjamin Klapper"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 129,
-      "points": 66,
-      "league": "C-Klasse",
-      "name": "Benjamin Klapper"
     }
   ],
   "1013": [
@@ -14349,45 +20681,6 @@ window.ARCHIVE_DATA = {
       "name": "Eric Fitschen"
     }
   ],
-  "1749": [
-    {
-      "season": "24/25",
-      "rank": 116,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Madeleine Kohler"
-    },
-    {
-      "season": "23/24",
-      "rank": 146,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Madeleine Kohler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 110,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Madeleine Kohler"
-    }
-  ],
-  "1403": [
-    {
-      "season": "24/25",
-      "rank": 117,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Daniel G\u00f6bel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 93,
-      "points": 83,
-      "league": "C-Klasse",
-      "name": "Daniel G\u00f6bel"
-    }
-  ],
   "1846": [
     {
       "season": "24/25",
@@ -14411,43 +20704,6 @@ window.ARCHIVE_DATA = {
       "name": "Timo Weing\u00e4rtner"
     }
   ],
-  "1694": [
-    {
-      "season": "24/25",
-      "rank": 120,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Monika Czifra"
-    },
-    {
-      "season": "23/24",
-      "rank": 130,
-      "points": 52,
-      "league": "C-Klasse",
-      "name": "Monika Czifra"
-    },
-    {
-      "season": "22/23",
-      "rank": 64,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Monika Czifra"
-    },
-    {
-      "season": "20/22",
-      "rank": 97,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Monika Czifra"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 159,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Monika Czifra"
-    }
-  ],
   "487": [
     {
       "season": "24/25",
@@ -14455,80 +20711,6 @@ window.ARCHIVE_DATA = {
       "points": 62,
       "league": "C-Klasse",
       "name": "Harri Bastian"
-    }
-  ],
-  "611": [
-    {
-      "season": "24/25",
-      "rank": 122,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Sascha Schenk"
-    },
-    {
-      "season": "23/24",
-      "rank": 69,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Sascha Schenk"
-    },
-    {
-      "season": "22/23",
-      "rank": 92,
-      "points": 57,
-      "league": "B-Klasse",
-      "name": "Sascha Schenk"
-    },
-    {
-      "season": "20/22",
-      "rank": 167,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Sascha Schenk"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 97,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Sascha Schenk"
-    }
-  ],
-  "867": [
-    {
-      "season": "24/25",
-      "rank": 123,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Oliver Belzner"
-    },
-    {
-      "season": "23/24",
-      "rank": 114,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Oliver Belzner"
-    },
-    {
-      "season": "22/23",
-      "rank": 107,
-      "points": 60,
-      "league": "C-Klasse",
-      "name": "Oliver Belzner"
-    },
-    {
-      "season": "20/22",
-      "rank": 149,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Oliver Belzner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 100,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Oliver Belzner"
     }
   ],
   "210": [
@@ -14545,66 +20727,6 @@ window.ARCHIVE_DATA = {
       "points": 58,
       "league": "B-Klasse",
       "name": "Kevin Matzner"
-    }
-  ],
-  "339": [
-    {
-      "season": "24/25",
-      "rank": 125,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Imdat Cengiz"
-    },
-    {
-      "season": "23/24",
-      "rank": 61,
-      "points": 98,
-      "league": "C-Klasse",
-      "name": "Imdat Cengiz"
-    },
-    {
-      "season": "22/23",
-      "rank": 35,
-      "points": 114,
-      "league": "C-Klasse",
-      "name": "Imdat Cengiz"
-    },
-    {
-      "season": "20/22",
-      "rank": 29,
-      "points": 110,
-      "league": "B-Klasse",
-      "name": "Imdat Cengiz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 55,
-      "points": 104,
-      "league": "C-Klasse",
-      "name": "Imdat Cengiz"
-    }
-  ],
-  "1623": [
-    {
-      "season": "24/25",
-      "rank": 127,
-      "points": 60,
-      "league": "C-Klasse",
-      "name": "Ben Dickner"
-    },
-    {
-      "season": "23/24",
-      "rank": 142,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Ben Dickner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 81,
-      "points": 74,
-      "league": "B-Klasse",
-      "name": "Ben Dickner"
     }
   ],
   "827": [
@@ -14637,179 +20759,6 @@ window.ARCHIVE_DATA = {
       "name": "Patricia Bartsch"
     }
   ],
-  "1065": [
-    {
-      "season": "24/25",
-      "rank": 129,
-      "points": 59,
-      "league": "C-Klasse",
-      "name": "Nick K\u00fcper"
-    },
-    {
-      "season": "23/24",
-      "rank": 242,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Nick K\u00fcper"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 172,
-      "points": 12,
-      "league": "B-Klasse",
-      "name": "Nick K\u00fcper"
-    }
-  ],
-  "747": [
-    {
-      "season": "24/25",
-      "rank": 130,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Gorenflo"
-    },
-    {
-      "season": "23/24",
-      "rank": 126,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Gorenflo"
-    },
-    {
-      "season": "22/23",
-      "rank": 130,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Gorenflo"
-    },
-    {
-      "season": "20/22",
-      "rank": 100,
-      "points": 53,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Gorenflo"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 184,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Gorenflo"
-    }
-  ],
-  "636": [
-    {
-      "season": "24/25",
-      "rank": 131,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Stephanie Schweigert-F\u00e4rber"
-    },
-    {
-      "season": "22/23",
-      "rank": 149,
-      "points": 15,
-      "league": "B-Klasse",
-      "name": "Stephanie Schweigert-F\u00e4rber"
-    },
-    {
-      "season": "20/22",
-      "rank": 95,
-      "points": 46,
-      "league": "B-Klasse",
-      "name": "Stephanie Schweigert-F\u00e4rber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 130,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Stephanie Schweigert-F\u00e4rber"
-    }
-  ],
-  "1666": [
-    {
-      "season": "24/25",
-      "rank": 132,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Karsten Jouvenal"
-    },
-    {
-      "season": "23/24",
-      "rank": 112,
-      "points": 40,
-      "league": "B-Klasse",
-      "name": "Karsten Jouvenal"
-    },
-    {
-      "season": "22/23",
-      "rank": 144,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Karsten Jouvenal"
-    },
-    {
-      "season": "20/22",
-      "rank": 124,
-      "points": 8,
-      "league": "A-Klasse",
-      "name": "Karsten Jouvenal"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 102,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Karsten Jouvenal"
-    }
-  ],
-  "741": [
-    {
-      "season": "24/25",
-      "rank": 133,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Daniel Weiss"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 182,
-      "points": 43,
-      "league": "C-Klasse",
-      "name": "Daniel Weiss"
-    }
-  ],
-  "1873": [
-    {
-      "season": "24/25",
-      "rank": 135,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Marco Krell"
-    },
-    {
-      "season": "23/24",
-      "rank": 104,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Marco Krell"
-    },
-    {
-      "season": "22/23",
-      "rank": 95,
-      "points": 66,
-      "league": "C-Klasse",
-      "name": "Marco Krell"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 85,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Marco Krell"
-    }
-  ],
   "1841": [
     {
       "season": "24/25",
@@ -14833,103 +20782,6 @@ window.ARCHIVE_DATA = {
       "name": "Janette Weing\u00e4rtner"
     }
   ],
-  "1392": [
-    {
-      "season": "24/25",
-      "rank": 137,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Michael Kr\u00e4ker"
-    },
-    {
-      "season": "23/24",
-      "rank": 229,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Michael Kr\u00e4ker"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 195,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Michael Kr\u00e4ker"
-    }
-  ],
-  "178": [
-    {
-      "season": "24/25",
-      "rank": 138,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Jana Hesse"
-    },
-    {
-      "season": "23/24",
-      "rank": 111,
-      "points": 63,
-      "league": "C-Klasse",
-      "name": "Jana Hesse"
-    },
-    {
-      "season": "22/23",
-      "rank": 56,
-      "points": 93,
-      "league": "C-Klasse",
-      "name": "Jana Hesse"
-    },
-    {
-      "season": "20/22",
-      "rank": 203,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Jana Hesse"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 65,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Jana Hesse"
-    }
-  ],
-  "843": [
-    {
-      "season": "24/25",
-      "rank": 139,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Ronny Wilken"
-    },
-    {
-      "season": "23/24",
-      "rank": 144,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Ronny Wilken"
-    },
-    {
-      "season": "22/23",
-      "rank": 65,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Ronny Wilken"
-    },
-    {
-      "season": "20/22",
-      "rank": 126,
-      "points": 39,
-      "league": "C-Klasse",
-      "name": "Ronny Wilken"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 188,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Ronny Wilken"
-    }
-  ],
   "1898": [
     {
       "season": "24/25",
@@ -14937,204 +20789,6 @@ window.ARCHIVE_DATA = {
       "points": 56,
       "league": "C-Klasse",
       "name": "Andreas Stollsteimer"
-    }
-  ],
-  "1758": [
-    {
-      "season": "24/25",
-      "rank": 141,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Larissa Schweickert"
-    },
-    {
-      "season": "23/24",
-      "rank": 117,
-      "points": 38,
-      "league": "B-Klasse",
-      "name": "Larissa Schweickert"
-    },
-    {
-      "season": "22/23",
-      "rank": 54,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Larissa Schweickert"
-    },
-    {
-      "season": "20/22",
-      "rank": 165,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Larissa Schweickert"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 94,
-      "points": 59,
-      "league": "B-Klasse",
-      "name": "Larissa Schweickert"
-    }
-  ],
-  "908": [
-    {
-      "season": "24/25",
-      "rank": 142,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Patrycja Dumancic"
-    },
-    {
-      "season": "22/23",
-      "rank": 246,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Patrycja Dumancic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 95,
-      "points": 81,
-      "league": "C-Klasse",
-      "name": "Patrycja Schieweck"
-    }
-  ],
-  "1863": [
-    {
-      "season": "24/25",
-      "rank": 143,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Alexander Starsinski"
-    },
-    {
-      "season": "23/24",
-      "rank": 116,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "Alexander Starsinski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 210,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Alexander Starsinski"
-    }
-  ],
-  "1572": [
-    {
-      "season": "24/25",
-      "rank": 144,
-      "points": 55,
-      "league": "C-Klasse",
-      "name": "Ulla Adam"
-    },
-    {
-      "season": "23/24",
-      "rank": 202,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Ulla Adam"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 43,
-      "points": 118,
-      "league": "C-Klasse",
-      "name": "Ulla Adam"
-    }
-  ],
-  "1744": [
-    {
-      "season": "24/25",
-      "rank": 145,
-      "points": 55,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Schache"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 342,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Schache"
-    }
-  ],
-  "1552": [
-    {
-      "season": "24/25",
-      "rank": 146,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Cornelia Sch\u00fc\u00dfler"
-    },
-    {
-      "season": "23/24",
-      "rank": 245,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Cornelia Sch\u00fc\u00dfler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 111,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Cornelia Sch\u00fc\u00dfler"
-    }
-  ],
-  "1496": [
-    {
-      "season": "24/25",
-      "rank": 147,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Eckart Lohse"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 257,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Eckart Lohse"
-    }
-  ],
-  "1144": [
-    {
-      "season": "24/25",
-      "rank": 148,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Ina Mai/Cirak"
-    },
-    {
-      "season": "23/24",
-      "rank": 201,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Ina Mai"
-    },
-    {
-      "season": "22/23",
-      "rank": 175,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Ina Mai"
-    },
-    {
-      "season": "20/22",
-      "rank": 96,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Ina Mai"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 330,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Ina Cirak"
     }
   ],
   "280": [
@@ -15190,103 +20844,6 @@ window.ARCHIVE_DATA = {
       "name": "Andreas Banja"
     }
   ],
-  "518": [
-    {
-      "season": "24/25",
-      "rank": 151,
-      "points": 52,
-      "league": "C-Klasse",
-      "name": "Melanie Horntrich"
-    },
-    {
-      "season": "23/24",
-      "rank": 204,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Melanie Horntrich"
-    },
-    {
-      "season": "22/23",
-      "rank": 150,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Melanie Horntrich"
-    },
-    {
-      "season": "20/22",
-      "rank": 95,
-      "points": 55,
-      "league": "C-Klasse",
-      "name": "Melanie Horntrich"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 195,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Melanie Horntrich"
-    }
-  ],
-  "1391": [
-    {
-      "season": "24/25",
-      "rank": 152,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Mareike Zahnlecker"
-    },
-    {
-      "season": "23/24",
-      "rank": 230,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Mareike Zahnlecker"
-    },
-    {
-      "season": "22/23",
-      "rank": 211,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Mareike Zahnlecker"
-    },
-    {
-      "season": "20/22",
-      "rank": 109,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "Mareike Zahnlecker"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 170,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Mareike Zahnlecker"
-    }
-  ],
-  "359": [
-    {
-      "season": "24/25",
-      "rank": 153,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Robert Nowak"
-    },
-    {
-      "season": "23/24",
-      "rank": 165,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Robert Nowak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 162,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Robert Nowak"
-    }
-  ],
   "439": [
     {
       "season": "24/25",
@@ -15326,43 +20883,6 @@ window.ARCHIVE_DATA = {
       "name": "Florian Kuhnle"
     }
   ],
-  "1250": [
-    {
-      "season": "24/25",
-      "rank": 156,
-      "points": 49,
-      "league": "C-Klasse",
-      "name": "Markus Reichert"
-    },
-    {
-      "season": "23/24",
-      "rank": 121,
-      "points": 35,
-      "league": "B-Klasse",
-      "name": "Markus Reichert"
-    },
-    {
-      "season": "22/23",
-      "rank": 116,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Markus Reichert"
-    },
-    {
-      "season": "20/22",
-      "rank": 117,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Markus Reichert"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 209,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Markus Reichert"
-    }
-  ],
   "1448": [
     {
       "season": "24/25",
@@ -15381,59 +20901,6 @@ window.ARCHIVE_DATA = {
       "name": "J\u00fcrgen Althaus"
     }
   ],
-  "360": [
-    {
-      "season": "24/25",
-      "rank": 159,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Heide Fink"
-    },
-    {
-      "season": "23/24",
-      "rank": 216,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Heide Fink"
-    },
-    {
-      "season": "22/23",
-      "rank": 200,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Heide Fink"
-    },
-    {
-      "season": "20/22",
-      "rank": 175,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Heide Fink"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 265,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Heide Fink"
-    }
-  ],
-  "1729": [
-    {
-      "season": "24/25",
-      "rank": 160,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Eric Theil"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 134,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Eric Theil"
-    }
-  ],
   "1226": [
     {
       "season": "24/25",
@@ -15441,29 +20908,6 @@ window.ARCHIVE_DATA = {
       "points": 46,
       "league": "C-Klasse",
       "name": "Vanessa Schweitzer"
-    }
-  ],
-  "250": [
-    {
-      "season": "24/25",
-      "rank": 162,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Seravina Koser"
-    },
-    {
-      "season": "23/24",
-      "rank": 238,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Seravina Koser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 256,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Seravina Koser"
     }
   ],
   "433": [
@@ -15482,43 +20926,6 @@ window.ARCHIVE_DATA = {
       "name": "Alexander Leibensberger"
     }
   ],
-  "222": [
-    {
-      "season": "24/25",
-      "rank": 164,
-      "points": 45,
-      "league": "C-Klasse",
-      "name": "Frank Etter"
-    },
-    {
-      "season": "23/24",
-      "rank": 263,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Frank Etter"
-    },
-    {
-      "season": "22/23",
-      "rank": 222,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Frank Etter"
-    },
-    {
-      "season": "20/22",
-      "rank": 170,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Frank Etter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 201,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Frank Etter"
-    }
-  ],
   "1683": [
     {
       "season": "24/25",
@@ -15526,202 +20933,6 @@ window.ARCHIVE_DATA = {
       "points": 45,
       "league": "C-Klasse",
       "name": "Raphael M\u00f6lich"
-    }
-  ],
-  "467": [
-    {
-      "season": "24/25",
-      "rank": 166,
-      "points": 45,
-      "league": "C-Klasse",
-      "name": "Tobias Reikowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 61,
-      "points": 100,
-      "league": "C-Klasse",
-      "name": "Tobias Reikowski"
-    }
-  ],
-  "1265": [
-    {
-      "season": "24/25",
-      "rank": 167,
-      "points": 45,
-      "league": "C-Klasse",
-      "name": "Ferkan Akdag"
-    },
-    {
-      "season": "23/24",
-      "rank": 122,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Ferkan Akdag"
-    },
-    {
-      "season": "22/23",
-      "rank": 96,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Ferkan Akdag"
-    },
-    {
-      "season": "20/22",
-      "rank": 67,
-      "points": 70,
-      "league": "B-Klasse",
-      "name": "Ferkan Akdag"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 236,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Ferkan Akdag"
-    }
-  ],
-  "560": [
-    {
-      "season": "24/25",
-      "rank": 168,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Markus Sch\u00fcler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 103,
-      "points": 54,
-      "league": "B-Klasse",
-      "name": "Markus Sch\u00fcler"
-    }
-  ],
-  "334": [
-    {
-      "season": "24/25",
-      "rank": 169,
-      "points": 43,
-      "league": "C-Klasse",
-      "name": "Steffi Lorent"
-    },
-    {
-      "season": "23/24",
-      "rank": 200,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Steffi Lorent"
-    },
-    {
-      "season": "22/23",
-      "rank": 190,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Steffi Lorent"
-    },
-    {
-      "season": "20/22",
-      "rank": 173,
-      "points": 9,
-      "league": "B-Klasse",
-      "name": "Steffi Lorent"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 280,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Steffi Lorent"
-    }
-  ],
-  "708": [
-    {
-      "season": "24/25",
-      "rank": 170,
-      "points": 43,
-      "league": "C-Klasse",
-      "name": "Johanna Nestele"
-    },
-    {
-      "season": "23/24",
-      "rank": 175,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Johanna Nestele"
-    },
-    {
-      "season": "22/23",
-      "rank": 151,
-      "points": 15,
-      "league": "B-Klasse",
-      "name": "Johanna Nestele"
-    },
-    {
-      "season": "20/22",
-      "rank": 119,
-      "points": 30,
-      "league": "B-Klasse",
-      "name": "Johanna Nestele"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 157,
-      "points": 52,
-      "league": "C-Klasse",
-      "name": "Johanna Nestele"
-    }
-  ],
-  "1586": [
-    {
-      "season": "24/25",
-      "rank": 171,
-      "points": 43,
-      "league": "C-Klasse",
-      "name": "Meik Weinhart"
-    },
-    {
-      "season": "23/24",
-      "rank": 250,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Meik Weinhart"
-    },
-    {
-      "season": "22/23",
-      "rank": 93,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Meik Weinhart"
-    },
-    {
-      "season": "20/22",
-      "rank": 125,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Meik Weinhart"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 232,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Meik Weinhart"
-    }
-  ],
-  "320": [
-    {
-      "season": "24/25",
-      "rank": 172,
-      "points": 43,
-      "league": "C-Klasse",
-      "name": "Daniel Hoffmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 161,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Daniel Hoffmann"
     }
   ],
   "574": [
@@ -15747,29 +20958,6 @@ window.ARCHIVE_DATA = {
       "points": 52,
       "league": "B-Klasse",
       "name": "Andre' Bock"
-    }
-  ],
-  "371": [
-    {
-      "season": "24/25",
-      "rank": 176,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "Jennifer Thomas"
-    },
-    {
-      "season": "23/24",
-      "rank": 149,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Jennifer Thomas"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 224,
-      "points": 24,
-      "league": "C-Klasse",
-      "name": "Jennifer Thomas"
     }
   ],
   "680": [
@@ -15811,271 +20999,6 @@ window.ARCHIVE_DATA = {
       "name": "Martin Dehm"
     }
   ],
-  "1198": [
-    {
-      "season": "24/25",
-      "rank": 179,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "Marcel Lutz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 168,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Marcel Lutz"
-    }
-  ],
-  "435": [
-    {
-      "season": "24/25",
-      "rank": 180,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Andrea Roschko"
-    },
-    {
-      "season": "23/24",
-      "rank": 176,
-      "points": 30,
-      "league": "C-Klasse",
-      "name": "Andrea Roschko"
-    },
-    {
-      "season": "22/23",
-      "rank": 59,
-      "points": 92,
-      "league": "C-Klasse",
-      "name": "Andrea Roschko"
-    },
-    {
-      "season": "20/22",
-      "rank": 78,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Andrea Roschko"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 98,
-      "points": 79,
-      "league": "C-Klasse",
-      "name": "Andrea Roschko"
-    }
-  ],
-  "592": [
-    {
-      "season": "24/25",
-      "rank": 181,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Manfred M\u00fchlthaler"
-    },
-    {
-      "season": "23/24",
-      "rank": 173,
-      "points": 31,
-      "league": "C-Klasse",
-      "name": "Manfred M\u00fchlthaler"
-    },
-    {
-      "season": "22/23",
-      "rank": 153,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Manfred M\u00fchlthaler"
-    },
-    {
-      "season": "20/22",
-      "rank": 125,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Manfred M\u00fchlthaler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 296,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Manfred M\u00fchlthaler"
-    }
-  ],
-  "729": [
-    {
-      "season": "24/25",
-      "rank": 182,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Luis Voggenreiter"
-    },
-    {
-      "season": "20/22",
-      "rank": 195,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Luis Voggenreiter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 5,
-      "points": 160,
-      "league": "B-Klasse",
-      "name": "Luis Voggenreiter"
-    }
-  ],
-  "1782": [
-    {
-      "season": "24/25",
-      "rank": 183,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Christian Roll"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 194,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Christian Roll"
-    }
-  ],
-  "1441": [
-    {
-      "season": "24/25",
-      "rank": 184,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Jan Hafner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 155,
-      "points": 53,
-      "league": "C-Klasse",
-      "name": "Jan Hafner"
-    }
-  ],
-  "558": [
-    {
-      "season": "24/25",
-      "rank": 185,
-      "points": 39,
-      "league": "C-Klasse",
-      "name": "Frank Spath"
-    },
-    {
-      "season": "23/24",
-      "rank": 188,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Frank Spath"
-    },
-    {
-      "season": "22/23",
-      "rank": 154,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Frank Spath"
-    },
-    {
-      "season": "20/22",
-      "rank": 143,
-      "points": 32,
-      "league": "C-Klasse",
-      "name": "Frank Spath"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 125,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Frank Spath"
-    }
-  ],
-  "736": [
-    {
-      "season": "24/25",
-      "rank": 186,
-      "points": 39,
-      "league": "C-Klasse",
-      "name": "Leonardo Pio del Viscio"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 259,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Leonardo Pio del Viscio"
-    }
-  ],
-  "1876": [
-    {
-      "season": "24/25",
-      "rank": 187,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Marko Sackmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 148,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "Marko Sackmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 148,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Marko Sackmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 228,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Marko Sackmann"
-    }
-  ],
-  "1451": [
-    {
-      "season": "24/25",
-      "rank": 188,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Eduard Naam"
-    },
-    {
-      "season": "23/24",
-      "rank": 108,
-      "points": 66,
-      "league": "C-Klasse",
-      "name": "Eduard Naam"
-    },
-    {
-      "season": "22/23",
-      "rank": 77,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Eduard Naam"
-    },
-    {
-      "season": "20/22",
-      "rank": 123,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Eduard Naam"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 118,
-      "points": 43,
-      "league": "B-Klasse",
-      "name": "Eduard Naam"
-    }
-  ],
   "1786": [
     {
       "season": "24/25",
@@ -16083,22 +21006,6 @@ window.ARCHIVE_DATA = {
       "points": 38,
       "league": "C-Klasse",
       "name": "Maik H\u00f6sel"
-    }
-  ],
-  "1491": [
-    {
-      "season": "24/25",
-      "rank": 190,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Johann Kunzmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 123,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "Johann Kunzmann"
     }
   ],
   "391": [
@@ -16117,68 +21024,6 @@ window.ARCHIVE_DATA = {
       "name": "Daniel Weindl"
     }
   ],
-  "965": [
-    {
-      "season": "24/25",
-      "rank": 192,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "J\u00f6rg Meissner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 75,
-      "points": 92,
-      "league": "C-Klasse",
-      "name": "J\u00f6rg Meissner"
-    }
-  ],
-  "1797": [
-    {
-      "season": "24/25",
-      "rank": 193,
-      "points": 36,
-      "league": "C-Klasse",
-      "name": "Markus Greger"
-    },
-    {
-      "season": "23/24",
-      "rank": 198,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Markus Greger"
-    },
-    {
-      "season": "22/23",
-      "rank": 76,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Markus Greger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 183,
-      "points": 43,
-      "league": "C-Klasse",
-      "name": "Markus Greger"
-    }
-  ],
-  "641": [
-    {
-      "season": "24/25",
-      "rank": 194,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Petra Bauer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 240,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Petra Bauer"
-    }
-  ],
   "1146": [
     {
       "season": "24/25",
@@ -16186,181 +21031,6 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "C-Klasse",
       "name": "Daniel Krach"
-    }
-  ],
-  "1003": [
-    {
-      "season": "24/25",
-      "rank": 196,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Sven Jetabek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 48,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Sven Jerabek"
-    }
-  ],
-  "700": [
-    {
-      "season": "24/25",
-      "rank": 197,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Daniela Kotsias"
-    },
-    {
-      "season": "23/24",
-      "rank": 120,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Daniela Kotsias"
-    },
-    {
-      "season": "22/23",
-      "rank": 192,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Daniela Kotsias"
-    },
-    {
-      "season": "20/22",
-      "rank": 145,
-      "points": 31,
-      "league": "C-Klasse",
-      "name": "Daniela Kotsias"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 167,
-      "points": 48,
-      "league": "C-Klasse",
-      "name": "Daniela Kotsias"
-    }
-  ],
-  "618": [
-    {
-      "season": "24/25",
-      "rank": 198,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Dorothee Prechtl"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 147,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Dorothee Prechtl"
-    }
-  ],
-  "490": [
-    {
-      "season": "24/25",
-      "rank": 199,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Michael Horntrich"
-    },
-    {
-      "season": "23/24",
-      "rank": 131,
-      "points": 52,
-      "league": "C-Klasse",
-      "name": "Michael Horntrich"
-    },
-    {
-      "season": "22/23",
-      "rank": 170,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Michael Horntrich"
-    },
-    {
-      "season": "20/22",
-      "rank": 80,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Michael Horntrich"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 115,
-      "points": 71,
-      "league": "C-Klasse",
-      "name": "Michael Horntrich"
-    }
-  ],
-  "1268": [
-    {
-      "season": "24/25",
-      "rank": 200,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Benjamin Geiger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 143,
-      "points": 24,
-      "league": "B-Klasse",
-      "name": "Benjamin Geiger"
-    }
-  ],
-  "825": [
-    {
-      "season": "24/25",
-      "rank": 201,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Mirjam Bartsch"
-    },
-    {
-      "season": "23/24",
-      "rank": 29,
-      "points": 125,
-      "league": "C-Klasse",
-      "name": "Mirjam Bartsch"
-    },
-    {
-      "season": "22/23",
-      "rank": 49,
-      "points": 88,
-      "league": "B-Klasse",
-      "name": "Mirjam Bartsch"
-    },
-    {
-      "season": "20/22",
-      "rank": 43,
-      "points": 92,
-      "league": "B-Klasse",
-      "name": "Mirjam Bartsch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 35,
-      "points": 124,
-      "league": "C-Klasse",
-      "name": "Mirjam Bartsch"
-    }
-  ],
-  "381": [
-    {
-      "season": "24/25",
-      "rank": 202,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Thomas Bott"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 45,
-      "points": 103,
-      "league": "B-Klasse",
-      "name": "Thomas Bott"
     }
   ],
   "1444": [
@@ -16384,59 +21054,6 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Thomas Maier"
-    }
-  ],
-  "759": [
-    {
-      "season": "24/25",
-      "rank": 204,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Corinna Diether"
-    },
-    {
-      "season": "23/24",
-      "rank": 119,
-      "points": 36,
-      "league": "B-Klasse",
-      "name": "Corinna Diether"
-    },
-    {
-      "season": "22/23",
-      "rank": 130,
-      "points": 27,
-      "league": "B-Klasse",
-      "name": "Corinna Diether"
-    },
-    {
-      "season": "20/22",
-      "rank": 141,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Corinna Diether"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 80,
-      "points": 90,
-      "league": "C-Klasse",
-      "name": "Corinna Diether"
-    }
-  ],
-  "1550": [
-    {
-      "season": "24/25",
-      "rank": 205,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Sergej Gergalov"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 67,
-      "points": 81,
-      "league": "B-Klasse",
-      "name": "Sergej Gergalov"
     }
   ],
   "743": [
@@ -16469,209 +21086,6 @@ window.ARCHIVE_DATA = {
       "name": "Heiko Sandmeyer"
     }
   ],
-  "199": [
-    {
-      "season": "24/25",
-      "rank": 207,
-      "points": 30,
-      "league": "C-Klasse",
-      "name": "Heiko Sand"
-    },
-    {
-      "season": "23/24",
-      "rank": 237,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Heiko Sand"
-    },
-    {
-      "season": "22/23",
-      "rank": 172,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Heiko Sand"
-    },
-    {
-      "season": "20/22",
-      "rank": 140,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Heiko Sand"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 187,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Heiko Sand"
-    }
-  ],
-  "598": [
-    {
-      "season": "24/25",
-      "rank": 209,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Sarah Margic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 251,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Sarah Margic"
-    }
-  ],
-  "484": [
-    {
-      "season": "24/25",
-      "rank": 210,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Torsten Frey"
-    },
-    {
-      "season": "23/24",
-      "rank": 199,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Torsten Frey"
-    },
-    {
-      "season": "22/23",
-      "rank": 140,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "Torsten Frey"
-    },
-    {
-      "season": "20/22",
-      "rank": 147,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Torsten Frey"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 300,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Torsten Frey"
-    }
-  ],
-  "575": [
-    {
-      "season": "24/25",
-      "rank": 211,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Marcell Grohmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 196,
-      "points": 23,
-      "league": "C-Klasse",
-      "name": "Marcell Grohmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 180,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Marcell Grohmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 152,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Marcell Grohmann"
-    }
-  ],
-  "966": [
-    {
-      "season": "24/25",
-      "rank": 212,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Sanel Bozic"
-    },
-    {
-      "season": "22/23",
-      "rank": 116,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Sanel Bozic"
-    },
-    {
-      "season": "20/22",
-      "rank": 129,
-      "points": 7,
-      "league": "A-Klasse",
-      "name": "Sanel Bozic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 169,
-      "points": 15,
-      "league": "B-Klasse",
-      "name": "Sanel Bozic"
-    }
-  ],
-  "1868": [
-    {
-      "season": "24/25",
-      "rank": 213,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Sarah Skora"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 248,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Sarah Skora"
-    }
-  ],
-  "1425": [
-    {
-      "season": "24/25",
-      "rank": 214,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Silvio Karliczek"
-    },
-    {
-      "season": "23/24",
-      "rank": 150,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Silvio Karliczek"
-    },
-    {
-      "season": "22/23",
-      "rank": 225,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Silvio Karliczek"
-    },
-    {
-      "season": "20/22",
-      "rank": 158,
-      "points": 24,
-      "league": "C-Klasse",
-      "name": "Silvio Karliczek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 210,
-      "points": 30,
-      "league": "C-Klasse",
-      "name": "Silvio Karliczek"
-    }
-  ],
   "1429": [
     {
       "season": "24/25",
@@ -16679,149 +21093,6 @@ window.ARCHIVE_DATA = {
       "points": 27,
       "league": "C-Klasse",
       "name": "Leonie-Maria Kotzur"
-    }
-  ],
-  "384": [
-    {
-      "season": "24/25",
-      "rank": 217,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Rita Czifra"
-    },
-    {
-      "season": "23/24",
-      "rank": 220,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Rita Czifra"
-    },
-    {
-      "season": "22/23",
-      "rank": 176,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Rita Czifra"
-    },
-    {
-      "season": "20/22",
-      "rank": 223,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Rita Czifra"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 285,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Rita Czifra"
-    }
-  ],
-  "472": [
-    {
-      "season": "24/25",
-      "rank": 218,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Vivian Schneege"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 192,
-      "points": 39,
-      "league": "C-Klasse",
-      "name": "Vivian Schneege"
-    }
-  ],
-  "1675": [
-    {
-      "season": "24/25",
-      "rank": 219,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Filippo Geraci"
-    },
-    {
-      "season": "23/24",
-      "rank": 145,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Filippo Geraci"
-    },
-    {
-      "season": "22/23",
-      "rank": 198,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Filippo Geraci"
-    },
-    {
-      "season": "20/22",
-      "rank": 242,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Filippo Geraci"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 239,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Filippo Geraci"
-    }
-  ],
-  "846": [
-    {
-      "season": "24/25",
-      "rank": 220,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Marvin Fink"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 193,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Marvin Fink"
-    }
-  ],
-  "1118": [
-    {
-      "season": "24/25",
-      "rank": 221,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Steffen Kurfiss"
-    },
-    {
-      "season": "23/24",
-      "rank": 187,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Steffen Kurfiss"
-    },
-    {
-      "season": "22/23",
-      "rank": 141,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Steffen Kurfiss"
-    },
-    {
-      "season": "20/22",
-      "rank": 191,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Steffen Kurfiss"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 203,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Steffen Kurfiss"
     }
   ],
   "882": [
@@ -16833,172 +21104,6 @@ window.ARCHIVE_DATA = {
       "name": "Daniel Jasnic"
     }
   ],
-  "718": [
-    {
-      "season": "24/25",
-      "rank": 223,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Andreas Fischer"
-    },
-    {
-      "season": "23/24",
-      "rank": 161,
-      "points": 36,
-      "league": "C-Klasse",
-      "name": "Andreas Fischer"
-    },
-    {
-      "season": "22/23",
-      "rank": 123,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Andreas Fischer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 201,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Andreas Fischer"
-    }
-  ],
-  "275": [
-    {
-      "season": "24/25",
-      "rank": 224,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Martin Benzinger"
-    },
-    {
-      "season": "23/24",
-      "rank": 94,
-      "points": 55,
-      "league": "B-Klasse",
-      "name": "Martin Benzinger"
-    },
-    {
-      "season": "22/23",
-      "rank": 56,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Martin Benzinger"
-    },
-    {
-      "season": "20/22",
-      "rank": 60,
-      "points": 80,
-      "league": "B-Klasse",
-      "name": "Martin Benzinger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 176,
-      "points": 45,
-      "league": "C-Klasse",
-      "name": "Martin Benzinger"
-    }
-  ],
-  "888": [
-    {
-      "season": "24/25",
-      "rank": 225,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Nico Fiedler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 40,
-      "points": 121,
-      "league": "C-Klasse",
-      "name": "Nico Fiedler"
-    }
-  ],
-  "106": [
-    {
-      "season": "24/25",
-      "rank": 226,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Heiko Weigel"
-    },
-    {
-      "season": "20/22",
-      "rank": 107,
-      "points": 14,
-      "league": "A-Klasse",
-      "name": "Heiko Weigel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 21,
-      "points": 126,
-      "league": "B-Klasse",
-      "name": "Heiko Weigel"
-    }
-  ],
-  "977": [
-    {
-      "season": "24/25",
-      "rank": 227,
-      "points": 23,
-      "league": "C-Klasse",
-      "name": "Marius Rommelfanger"
-    },
-    {
-      "season": "23/24",
-      "rank": 190,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Marius Rommelfanger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 302,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Marius Rommelfanger"
-    }
-  ],
-  "1595": [
-    {
-      "season": "24/25",
-      "rank": 228,
-      "points": 23,
-      "league": "C-Klasse",
-      "name": "Marcus F\u00f6ller"
-    },
-    {
-      "season": "23/24",
-      "rank": 143,
-      "points": 45,
-      "league": "C-Klasse",
-      "name": "Marcus F\u00f6ller"
-    },
-    {
-      "season": "22/23",
-      "rank": 145,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Marcus F\u00f6ller"
-    },
-    {
-      "season": "20/22",
-      "rank": 105,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Marcus F\u00f6ller"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 289,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Marcus F\u00f6ller"
-    }
-  ],
   "735": [
     {
       "season": "24/25",
@@ -17006,75 +21111,6 @@ window.ARCHIVE_DATA = {
       "points": 23,
       "league": "C-Klasse",
       "name": "Dominik Schalude"
-    }
-  ],
-  "1510": [
-    {
-      "season": "24/25",
-      "rank": 230,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Ali Cirak"
-    },
-    {
-      "season": "20/22",
-      "rank": 192,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Ali Cirak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 310,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Ali Cirak"
-    }
-  ],
-  "555": [
-    {
-      "season": "24/25",
-      "rank": 232,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Patrick Kreb"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 83,
-      "points": 88,
-      "league": "C-Klasse",
-      "name": "Patrick Kreb"
-    }
-  ],
-  "1840": [
-    {
-      "season": "24/25",
-      "rank": 233,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Timo Krauth"
-    },
-    {
-      "season": "23/24",
-      "rank": 183,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Timo Krauth"
-    },
-    {
-      "season": "22/23",
-      "rank": 230,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Timo Krauth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 275,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Timo Krauth"
     }
   ],
   "1443": [
@@ -17086,89 +21122,6 @@ window.ARCHIVE_DATA = {
       "name": "Nadine Roth"
     }
   ],
-  "176": [
-    {
-      "season": "24/25",
-      "rank": 235,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Marcel Molitor"
-    },
-    {
-      "season": "23/24",
-      "rank": 105,
-      "points": 67,
-      "league": "C-Klasse",
-      "name": "Marcel Molitor"
-    },
-    {
-      "season": "22/23",
-      "rank": 126,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Marcel Molitor"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 151,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Marcel Molitor"
-    }
-  ],
-  "922": [
-    {
-      "season": "24/25",
-      "rank": 236,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Christopher Zipperle"
-    },
-    {
-      "season": "23/24",
-      "rank": 100,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Christopher Zipperle"
-    },
-    {
-      "season": "22/23",
-      "rank": 146,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Christopher Zipperle"
-    },
-    {
-      "season": "20/22",
-      "rank": 77,
-      "points": 63,
-      "league": "B-Klasse",
-      "name": "Christopher Zipperle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 194,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Christopher Zipperle"
-    }
-  ],
-  "1235": [
-    {
-      "season": "24/25",
-      "rank": 237,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Bj\u00f6rn Ziegler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 237,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Bj\u00f6rn Ziegler"
-    }
-  ],
   "1792": [
     {
       "season": "24/25",
@@ -17178,165 +21131,6 @@ window.ARCHIVE_DATA = {
       "name": "Leon Krone"
     }
   ],
-  "809": [
-    {
-      "season": "24/25",
-      "rank": 239,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Pascal Genthner"
-    },
-    {
-      "season": "23/24",
-      "rank": 123,
-      "points": 56,
-      "league": "C-Klasse",
-      "name": "Pascal Genthner"
-    },
-    {
-      "season": "22/23",
-      "rank": 84,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Pascal Genthner"
-    },
-    {
-      "season": "20/22",
-      "rank": 41,
-      "points": 102,
-      "league": "C-Klasse",
-      "name": "Pascal Genthner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 202,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Pascal Genthner"
-    }
-  ],
-  "626": [
-    {
-      "season": "24/25",
-      "rank": 240,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Beata Erika Luca"
-    },
-    {
-      "season": "23/24",
-      "rank": 254,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Beata Erika Luca"
-    },
-    {
-      "season": "20/22",
-      "rank": 229,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Beti Luca"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 270,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Beata Erika Luca"
-    }
-  ],
-  "289": [
-    {
-      "season": "24/25",
-      "rank": 241,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Ingo K\u00fcper"
-    },
-    {
-      "season": "23/24",
-      "rank": 243,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Ingo K\u00fcper"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 204,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Ingo K\u00fcper"
-    }
-  ],
-  "1875": [
-    {
-      "season": "24/25",
-      "rank": 242,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Tanja Tippmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 282,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Tanja Tippmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 157,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Tanja Tippmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 281,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Tanja Tippmann"
-    }
-  ],
-  "302": [
-    {
-      "season": "24/25",
-      "rank": 243,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Isabelle K\u00f6feler"
-    },
-    {
-      "season": "23/24",
-      "rank": 227,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Isabelle K\u00f6feler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 243,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Isabelle K\u00f6feler"
-    }
-  ],
-  "872": [
-    {
-      "season": "24/25",
-      "rank": 244,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Lukas Jost"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 47,
-      "points": 116,
-      "league": "C-Klasse",
-      "name": "Lukas Jost"
-    }
-  ],
   "1042": [
     {
       "season": "24/25",
@@ -17344,54 +21138,6 @@ window.ARCHIVE_DATA = {
       "points": 18,
       "league": "C-Klasse",
       "name": "Fabienne Deringer"
-    }
-  ],
-  "629": [
-    {
-      "season": "24/25",
-      "rank": 246,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Felix Bock"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 173,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Felix Bock"
-    }
-  ],
-  "481": [
-    {
-      "season": "24/25",
-      "rank": 247,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Andrej Moldovan"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 266,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Andrej Moldovan"
-    }
-  ],
-  "1759": [
-    {
-      "season": "24/25",
-      "rank": 248,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Mirjam Sch\u00f6n"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 207,
-      "points": 1,
-      "league": "B-Klasse",
-      "name": "Mirjam Sch\u00f6n"
     }
   ],
   "532": [
@@ -17417,43 +21163,6 @@ window.ARCHIVE_DATA = {
       "name": "Markus Rettig"
     }
   ],
-  "1104": [
-    {
-      "season": "24/25",
-      "rank": 250,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Melanie Robertus-Dondalski"
-    },
-    {
-      "season": "23/24",
-      "rank": 305,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Melanie Robertus-Dondalski"
-    },
-    {
-      "season": "22/23",
-      "rank": 259,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Melanie Robertus-Dondalski"
-    },
-    {
-      "season": "20/22",
-      "rank": 287,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Melanie Robertus-Dondalski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 249,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Melanie Robertus-Dondalski"
-    }
-  ],
   "832": [
     {
       "season": "24/25",
@@ -17477,75 +21186,6 @@ window.ARCHIVE_DATA = {
       "name": "Paul Halda"
     }
   ],
-  "657": [
-    {
-      "season": "24/25",
-      "rank": 252,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Silvia Parupka"
-    },
-    {
-      "season": "20/22",
-      "rank": 134,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Silvia Parupka"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 221,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Silvia Parupka"
-    }
-  ],
-  "866": [
-    {
-      "season": "24/25",
-      "rank": 253,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Sascha Petrik"
-    },
-    {
-      "season": "23/24",
-      "rank": 179,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "Sascha Petrik"
-    },
-    {
-      "season": "22/23",
-      "rank": 161,
-      "points": 9,
-      "league": "B-Klasse",
-      "name": "Sascha Petrik"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 314,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Sascha Petrik"
-    }
-  ],
-  "929": [
-    {
-      "season": "24/25",
-      "rank": 254,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Andreas Weber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 70,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Andreas Weber"
-    }
-  ],
   "506": [
     {
       "season": "24/25",
@@ -17553,105 +21193,6 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "C-Klasse",
       "name": "Dimitrios Akilisou"
-    }
-  ],
-  "1648": [
-    {
-      "season": "24/25",
-      "rank": 257,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Marios Xenitidis"
-    },
-    {
-      "season": "23/24",
-      "rank": 256,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Marios Xenitidis"
-    },
-    {
-      "season": "22/23",
-      "rank": 141,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "Marios Xenitidis"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 64,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Marios Xenitidis"
-    }
-  ],
-  "1724": [
-    {
-      "season": "24/25",
-      "rank": 258,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Gerhard Stuber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 164,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Gerhard Stuber"
-    }
-  ],
-  "386": [
-    {
-      "season": "24/25",
-      "rank": 259,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Sabrina Rossack"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 83,
-      "points": 71,
-      "league": "B-Klasse",
-      "name": "Sabrina Rossack"
-    }
-  ],
-  "355": [
-    {
-      "season": "24/25",
-      "rank": 261,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Yves N\u00fcrnberg"
-    },
-    {
-      "season": "23/24",
-      "rank": 221,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Yves N\u00fcrnberg"
-    },
-    {
-      "season": "22/23",
-      "rank": 118,
-      "points": 55,
-      "league": "C-Klasse",
-      "name": "Yves Yacoub"
-    },
-    {
-      "season": "20/22",
-      "rank": 153,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Yves Yacoub"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 214,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Yves N\u00fcrnberg"
     }
   ],
   "540": [
@@ -17677,22 +21218,6 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "C-Klasse",
       "name": "Jessica Bopp"
-    }
-  ],
-  "471": [
-    {
-      "season": "24/25",
-      "rank": 265,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Luca Schmidt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 261,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Luca Schmidt"
     }
   ],
   "1070": [
@@ -17734,73 +21259,6 @@ window.ARCHIVE_DATA = {
       "name": "Jan Zotter"
     }
   ],
-  "1646": [
-    {
-      "season": "24/25",
-      "rank": 268,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Axel Dauner"
-    },
-    {
-      "season": "23/24",
-      "rank": 154,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Axel Dauner"
-    },
-    {
-      "season": "22/23",
-      "rank": 234,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Axel Dauner"
-    },
-    {
-      "season": "20/22",
-      "rank": 263,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Axel Dauner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 214,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Axel Dauner"
-    }
-  ],
-  "1702": [
-    {
-      "season": "24/25",
-      "rank": 269,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Benjamin Glocker"
-    },
-    {
-      "season": "23/24",
-      "rank": 195,
-      "points": 23,
-      "league": "C-Klasse",
-      "name": "Benjamin Glocker"
-    },
-    {
-      "season": "22/23",
-      "rank": 161,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Benjamin Glocker"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 174,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Benjamin Glocker"
-    }
-  ],
   "968": [
     {
       "season": "24/25",
@@ -17808,59 +21266,6 @@ window.ARCHIVE_DATA = {
       "points": 12,
       "league": "C-Klasse",
       "name": "Torben Krey"
-    }
-  ],
-  "335": [
-    {
-      "season": "24/25",
-      "rank": 271,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Hilde Renschler"
-    },
-    {
-      "season": "23/24",
-      "rank": 162,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Hilde Renschler"
-    },
-    {
-      "season": "22/23",
-      "rank": 155,
-      "points": 14,
-      "league": "B-Klasse",
-      "name": "Hilde Renschler"
-    },
-    {
-      "season": "20/22",
-      "rank": 128,
-      "points": 38,
-      "league": "C-Klasse",
-      "name": "Hilde Renschler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 202,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Hilde Renschler"
-    }
-  ],
-  "485": [
-    {
-      "season": "24/25",
-      "rank": 272,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Katrin Kretzschmar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 319,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Katrin Kretzschmar"
     }
   ],
   "823": [
@@ -17879,170 +21284,6 @@ window.ARCHIVE_DATA = {
       "name": "Stephanie Storr"
     }
   ],
-  "921": [
-    {
-      "season": "24/25",
-      "rank": 275,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Nicole Zipperle"
-    },
-    {
-      "season": "23/24",
-      "rank": 217,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Nicole Zipperle"
-    },
-    {
-      "season": "22/23",
-      "rank": 224,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Nicole Zipperle"
-    },
-    {
-      "season": "20/22",
-      "rank": 162,
-      "points": 12,
-      "league": "B-Klasse",
-      "name": "Nicole Zipperle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 271,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Nicole Zipperle"
-    }
-  ],
-  "1034": [
-    {
-      "season": "24/25",
-      "rank": 276,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Volker L\u00f6ffler"
-    },
-    {
-      "season": "23/24",
-      "rank": 115,
-      "points": 61,
-      "league": "C-Klasse",
-      "name": "Volker L\u00f6ffler"
-    },
-    {
-      "season": "22/23",
-      "rank": 71,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Volker L\u00f6ffler"
-    },
-    {
-      "season": "20/22",
-      "rank": 68,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Volker L\u00f6ffler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 101,
-      "points": 77,
-      "league": "C-Klasse",
-      "name": "Volker L\u00f6ffler"
-    }
-  ],
-  "1110": [
-    {
-      "season": "24/25",
-      "rank": 277,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Eva Bethke"
-    },
-    {
-      "season": "23/24",
-      "rank": 259,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Eva Bethke"
-    },
-    {
-      "season": "22/23",
-      "rank": 11,
-      "points": 116,
-      "league": "Bezirksliga",
-      "name": "Axel Spring"
-    },
-    {
-      "season": "20/22",
-      "rank": 12,
-      "points": 106,
-      "league": "Bezirksliga",
-      "name": "Axel Spring"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 332,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Eva Bethke"
-    }
-  ],
-  "871": [
-    {
-      "season": "24/25",
-      "rank": 279,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Adrian Sieber"
-    },
-    {
-      "season": "23/24",
-      "rank": 171,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Adrian Sieber"
-    },
-    {
-      "season": "22/23",
-      "rank": 80,
-      "points": 43,
-      "league": "A-Klasse",
-      "name": "Adrian Sieber"
-    },
-    {
-      "season": "20/22",
-      "rank": 38,
-      "points": 92,
-      "league": "A-Klasse",
-      "name": "Adrian Sieber"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 104,
-      "points": 53,
-      "league": "B-Klasse",
-      "name": "Adrian Sieber"
-    }
-  ],
-  "1773": [
-    {
-      "season": "24/25",
-      "rank": 280,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Monika Frank"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 335,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Monika Frank"
-    }
-  ],
   "395": [
     {
       "season": "24/25",
@@ -18052,84 +21293,6 @@ window.ARCHIVE_DATA = {
       "name": "Jerel Brean Benjamin"
     }
   ],
-  "1160": [
-    {
-      "season": "24/25",
-      "rank": 282,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Ralf Naujoks"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 222,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Ralf Naujoks"
-    }
-  ],
-  "1440": [
-    {
-      "season": "24/25",
-      "rank": 284,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Nesrin S\u00f6yleyici"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 321,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Nesrin S\u00f6yleyici"
-    }
-  ],
-  "1811": [
-    {
-      "season": "24/25",
-      "rank": 286,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Monika Wunderle"
-    },
-    {
-      "season": "23/24",
-      "rank": 294,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Monika Wunderle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 218,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Monika Wunderle"
-    }
-  ],
-  "1420": [
-    {
-      "season": "24/25",
-      "rank": 287,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Andrea Rupp"
-    },
-    {
-      "season": "23/24",
-      "rank": 241,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Andrea Rupp"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 106,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Andrea Rupp"
-    }
-  ],
   "624": [
     {
       "season": "24/25",
@@ -18137,105 +21300,6 @@ window.ARCHIVE_DATA = {
       "points": 7,
       "league": "C-Klasse",
       "name": "Madeleine Hardel"
-    }
-  ],
-  "1644": [
-    {
-      "season": "24/25",
-      "rank": 289,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Jacklin Klug-Ursic"
-    },
-    {
-      "season": "23/24",
-      "rank": 218,
-      "points": 18,
-      "league": "C-Klasse",
-      "name": "Jacklin Klug-Ursic"
-    },
-    {
-      "season": "22/23",
-      "rank": 194,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Jacklin Klug-Ursic"
-    },
-    {
-      "season": "20/22",
-      "rank": 115,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Jacklin Klug-Ursic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 291,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Jacklin Klug-Ursic"
-    }
-  ],
-  "658": [
-    {
-      "season": "24/25",
-      "rank": 290,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Bj\u00f6rn H\u00fcttenberger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 278,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Bj\u00f6rn H\u00fcttenberger"
-    }
-  ],
-  "868": [
-    {
-      "season": "24/25",
-      "rank": 294,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Mayer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 274,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Mayer"
-    }
-  ],
-  "750": [
-    {
-      "season": "24/25",
-      "rank": 295,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Sturz"
-    },
-    {
-      "season": "23/24",
-      "rank": 114,
-      "points": 39,
-      "league": "B-Klasse",
-      "name": "J\u00fcrgen Sturz"
-    },
-    {
-      "season": "22/23",
-      "rank": 121,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "J\u00fcrgen Sturz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 299,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Sturz"
     }
   ],
   "604": [
@@ -18268,22 +21332,6 @@ window.ARCHIVE_DATA = {
       "name": "Sabine Wilhelm"
     }
   ],
-  "665": [
-    {
-      "season": "24/25",
-      "rank": 297,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Dieter Denkmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 292,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Dieter Denkmann"
-    }
-  ],
   "905": [
     {
       "season": "24/25",
@@ -18307,43 +21355,6 @@ window.ARCHIVE_DATA = {
       "points": 19,
       "league": "C-Klasse",
       "name": "Boris B\u00f6hringer"
-    }
-  ],
-  "765": [
-    {
-      "season": "24/25",
-      "rank": 301,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Hans-Peter Kalweit"
-    },
-    {
-      "season": "23/24",
-      "rank": 252,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Hans-Peter Kalweit"
-    },
-    {
-      "season": "22/23",
-      "rank": 160,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Hans-Peter Kalweit"
-    },
-    {
-      "season": "20/22",
-      "rank": 85,
-      "points": 68,
-      "league": "C-Klasse",
-      "name": "Hans-Peter Kalweit"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 338,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Hans-Peter Kalweit"
     }
   ],
   "514": [
@@ -18385,59 +21396,6 @@ window.ARCHIVE_DATA = {
       "name": "Dirk Gieger"
     }
   ],
-  "669": [
-    {
-      "season": "24/25",
-      "rank": 304,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Bettina Simone Heidt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 333,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Bettina Simone Heidt"
-    }
-  ],
-  "331": [
-    {
-      "season": "24/25",
-      "rank": 305,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Sandra Schenk"
-    },
-    {
-      "season": "23/24",
-      "rank": 125,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Sandra Schenk"
-    },
-    {
-      "season": "22/23",
-      "rank": 112,
-      "points": 41,
-      "league": "B-Klasse",
-      "name": "Sandra Schenk"
-    },
-    {
-      "season": "20/22",
-      "rank": 149,
-      "points": 4,
-      "league": "A-Klasse",
-      "name": "Sandra Schenk"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 173,
-      "points": 11,
-      "league": "B-Klasse",
-      "name": "Sandra Schenk"
-    }
-  ],
   "664": [
     {
       "season": "24/25",
@@ -18445,112 +21403,6 @@ window.ARCHIVE_DATA = {
       "points": 5,
       "league": "C-Klasse",
       "name": "Franz Eisner"
-    }
-  ],
-  "1025": [
-    {
-      "season": "24/25",
-      "rank": 307,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Beate Bayer"
-    },
-    {
-      "season": "23/24",
-      "rank": 205,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Beate Bayer"
-    },
-    {
-      "season": "22/23",
-      "rank": 210,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Beate Bayer"
-    },
-    {
-      "season": "20/22",
-      "rank": 66,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "Beate Bayer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 252,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Beate Bayer"
-    }
-  ],
-  "661": [
-    {
-      "season": "24/25",
-      "rank": 308,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Christina Staib"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 227,
-      "points": 23,
-      "league": "C-Klasse",
-      "name": "Christina Staib"
-    }
-  ],
-  "491": [
-    {
-      "season": "24/25",
-      "rank": 309,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Volker Vollmer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 326,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Volker Vollmer"
-    }
-  ],
-  "1050": [
-    {
-      "season": "24/25",
-      "rank": 310,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Benjamin Lunz"
-    },
-    {
-      "season": "23/24",
-      "rank": 203,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Benjamin Lunz"
-    },
-    {
-      "season": "22/23",
-      "rank": 162,
-      "points": 32,
-      "league": "C-Klasse",
-      "name": "Benjamin Lunz"
-    },
-    {
-      "season": "20/22",
-      "rank": 199,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Benjamin Lunz"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 238,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Benjamin Lunz"
     }
   ],
   "316": [
@@ -18567,89 +21419,6 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Saskia Bremer"
-    }
-  ],
-  "605": [
-    {
-      "season": "24/25",
-      "rank": 312,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Giuseppe Crea"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 166,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "Giuseppe Crea"
-    }
-  ],
-  "652": [
-    {
-      "season": "24/25",
-      "rank": 313,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Sabrina Schibrowski"
-    },
-    {
-      "season": "23/24",
-      "rank": 253,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Sabrina Schibrowski"
-    },
-    {
-      "season": "22/23",
-      "rank": 135,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "Sabrina Schibrowski"
-    },
-    {
-      "season": "20/22",
-      "rank": 209,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Sabrina Schibrowski"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 229,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Sabrina Schibrowski"
-    }
-  ],
-  "1374": [
-    {
-      "season": "24/25",
-      "rank": 314,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Silvia Sch\u00f6llhammer"
-    },
-    {
-      "season": "23/24",
-      "rank": 306,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Silvia Sch\u00f6llhammer"
-    },
-    {
-      "season": "22/23",
-      "rank": 223,
-      "points": 11,
-      "league": "C-Klasse",
-      "name": "Silvia Sch\u00f6llhammer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 272,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Silvia Sch\u00f6llhammer"
     }
   ],
   "173": [
@@ -18790,36 +21559,6 @@ window.ARCHIVE_DATA = {
       "name": "Zsanett Verhoczki"
     }
   ],
-  "776": [
-    {
-      "season": "24/25",
-      "rank": 321,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Nicole Bichon"
-    },
-    {
-      "season": "23/24",
-      "rank": 293,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Nicole Bichon"
-    },
-    {
-      "season": "22/23",
-      "rank": 159,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Nicole Bichon"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 331,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Nicole Bichon"
-    }
-  ],
   "442": [
     {
       "season": "24/25",
@@ -18836,73 +21575,6 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "C-Klasse",
       "name": "Tina Gebhard"
-    }
-  ],
-  "1533": [
-    {
-      "season": "24/25",
-      "rank": 324,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Natalia Scott Galletly"
-    },
-    {
-      "season": "23/24",
-      "rank": 278,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Natalia Scott Galletly"
-    },
-    {
-      "season": "22/23",
-      "rank": 137,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Natalia Scott Galletly"
-    },
-    {
-      "season": "20/22",
-      "rank": 264,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Natalia Scott Galletly"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 217,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Natalia Scott Galletly"
-    }
-  ],
-  "1878": [
-    {
-      "season": "24/25",
-      "rank": 325,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Alexandros Xenitidis"
-    },
-    {
-      "season": "23/24",
-      "rank": 180,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Alexandros Xenitidis"
-    },
-    {
-      "season": "22/23",
-      "rank": 216,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Alexandros Xenitidis"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 212,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Alexandros Xenitidis"
     }
   ],
   "1809": [
@@ -18930,50 +21602,27 @@ window.ARCHIVE_DATA = {
       "name": "Tony Michael Schwank"
     }
   ],
-  "1839": [
+  "034": [
     {
       "season": "24/25",
-      "rank": 329,
-      "points": 1,
+      "rank": 328,
+      "points": 2,
       "league": "C-Klasse",
-      "name": "Andreas Walz"
+      "name": "H\u00fcseyin Yigit"
     },
     {
       "season": "23/24",
-      "rank": 166,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Andreas Walz"
-    },
-    {
-      "season": "22/23",
       "rank": 184,
-      "points": 23,
+      "points": 28,
       "league": "C-Klasse",
-      "name": "Andreas Walz"
+      "name": "H\u00fcseyin Yigit"
     },
     {
-      "season": "2025/2026",
-      "rank": 298,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Andreas Walz"
-    }
-  ],
-  "772": [
-    {
-      "season": "24/25",
-      "rank": 331,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Gertrud Hauser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 318,
+      "season": "20/22",
+      "rank": 210,
       "points": 3,
-      "league": "C-Klasse",
-      "name": "Gertrud Hauser"
+      "league": "B-Klasse",
+      "name": "H\u00fcseyin Yigit"
     }
   ],
   "1359": [
@@ -18999,36 +21648,22 @@ window.ARCHIVE_DATA = {
       "name": "Daniel Eberhardt"
     }
   ],
-  "427": [
+  "10": [
     {
       "season": "24/25",
-      "rank": 333,
-      "points": 0,
+      "rank": 1,
+      "points": 216,
       "league": "C-Klasse",
-      "name": "Simon K\u00fcbler"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 286,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Simon K\u00fcbler"
+      "name": "Matteo P."
     }
   ],
-  "464": [
+  "14": [
     {
       "season": "24/25",
-      "rank": 334,
-      "points": 0,
+      "rank": 7,
+      "points": 127,
       "league": "C-Klasse",
-      "name": "Mateo Tubach"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 341,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Mateo Tubach"
+      "name": "x"
     }
   ],
   "668": [
@@ -19045,66 +21680,6 @@ window.ARCHIVE_DATA = {
       "points": 105,
       "league": "Bezirksliga",
       "name": "Christian Messner"
-    }
-  ],
-  "988": [
-    {
-      "season": "23/24",
-      "rank": 32,
-      "points": 64,
-      "league": "Bezirksliga",
-      "name": "Philipp Flaig"
-    },
-    {
-      "season": "22/23",
-      "rank": 3,
-      "points": 174,
-      "league": "A-Klasse",
-      "name": "Philipp Flaig"
-    },
-    {
-      "season": "20/22",
-      "rank": 48,
-      "points": 89,
-      "league": "B-Klasse",
-      "name": "Philipp Flaig"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 35,
-      "points": 48,
-      "league": "Bezirksliga",
-      "name": "Philipp Flaig"
-    }
-  ],
-  "1344": [
-    {
-      "season": "23/24",
-      "rank": 35,
-      "points": 61,
-      "league": "Bezirksliga",
-      "name": "Alexander Seidt"
-    },
-    {
-      "season": "22/23",
-      "rank": 29,
-      "points": 66,
-      "league": "Bezirksliga",
-      "name": "Alexander Seidt"
-    },
-    {
-      "season": "20/22",
-      "rank": 21,
-      "points": 113,
-      "league": "A-Klasse",
-      "name": "Alexander Seidt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 108,
-      "points": 51,
-      "league": "B-Klasse",
-      "name": "Alexander Seidt"
     }
   ],
   "793": [
@@ -19128,36 +21703,6 @@ window.ARCHIVE_DATA = {
       "points": 104,
       "league": "Bezirksliga",
       "name": "Joey Kuntz"
-    }
-  ],
-  "1880": [
-    {
-      "season": "23/24",
-      "rank": 42,
-      "points": 37,
-      "league": "Bezirksliga",
-      "name": "Tino Hartmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 22,
-      "points": 114,
-      "league": "B-Klasse",
-      "name": "Tino Hartmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 97,
-      "points": 45,
-      "league": "B-Klasse",
-      "name": "Tino Hartmann"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 74,
-      "points": 93,
-      "league": "C-Klasse",
-      "name": "Tino Hartmann"
     }
   ],
   "1906": [
@@ -19245,61 +21790,6 @@ window.ARCHIVE_DATA = {
       "name": "Heiko Br\u00fcckel"
     }
   ],
-  "926": [
-    {
-      "season": "23/24",
-      "rank": 56,
-      "points": 11,
-      "league": "Bezirksliga",
-      "name": "Andre M\u00fcller"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 61,
-      "points": 6,
-      "league": "Bezirksliga",
-      "name": "Andre M\u00fcller"
-    }
-  ],
-  "1182": [
-    {
-      "season": "23/24",
-      "rank": 59,
-      "points": 8,
-      "league": "Bezirksliga",
-      "name": "Wolfgang Cafaro"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 57,
-      "points": 9,
-      "league": "Bezirksliga",
-      "name": "Wolfgang Cafaro"
-    }
-  ],
-  "1662": [
-    {
-      "season": "23/24",
-      "rank": 60,
-      "points": 8,
-      "league": "Bezirksliga",
-      "name": "Manuel Selak"
-    },
-    {
-      "season": "20/22",
-      "rank": 79,
-      "points": 31,
-      "league": "A-Klasse",
-      "name": "Manuel Selak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 64,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Manuel Selak"
-    }
-  ],
   "622": [
     {
       "season": "23/24",
@@ -19321,36 +21811,6 @@ window.ARCHIVE_DATA = {
       "points": 135,
       "league": "Bezirksliga",
       "name": "Michael Haubelt"
-    }
-  ],
-  "1542": [
-    {
-      "season": "23/24",
-      "rank": 64,
-      "points": 1,
-      "league": "Bezirksliga",
-      "name": "Stefan Frick"
-    },
-    {
-      "season": "22/23",
-      "rank": 46,
-      "points": 80,
-      "league": "A-Klasse",
-      "name": "Stefan Frick"
-    },
-    {
-      "season": "20/22",
-      "rank": 34,
-      "points": 102,
-      "league": "B-Klasse",
-      "name": "Stefan Frick"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 4,
-      "points": 170,
-      "league": "C-Klasse",
-      "name": "Stefan Frick"
     }
   ],
   "1558": [
@@ -19500,29 +21960,6 @@ window.ARCHIVE_DATA = {
       "name": "Marco Gernhardt-Sockol"
     }
   ],
-  "1543": [
-    {
-      "season": "23/24",
-      "rank": 71,
-      "points": 49,
-      "league": "A-Klasse",
-      "name": "Andre Muhn"
-    },
-    {
-      "season": "22/23",
-      "rank": 131,
-      "points": 26,
-      "league": "B-Klasse",
-      "name": "Andre Muhn"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 102,
-      "points": 17,
-      "league": "A-Klasse",
-      "name": "Andre Muhn"
-    }
-  ],
   "1138": [
     {
       "season": "23/24",
@@ -19615,36 +22052,6 @@ window.ARCHIVE_DATA = {
       "name": "Benjamin Dauth"
     }
   ],
-  "1400": [
-    {
-      "season": "23/24",
-      "rank": 93,
-      "points": 16,
-      "league": "A-Klasse",
-      "name": "Andrija Opacak"
-    },
-    {
-      "season": "22/23",
-      "rank": 135,
-      "points": 24,
-      "league": "B-Klasse",
-      "name": "Andrija Opacak"
-    },
-    {
-      "season": "20/22",
-      "rank": 112,
-      "points": 34,
-      "league": "B-Klasse",
-      "name": "Andrija Opacak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 105,
-      "points": 16,
-      "league": "A-Klasse",
-      "name": "Andrija Opacak"
-    }
-  ],
   "1887": [
     {
       "season": "23/24",
@@ -19675,36 +22082,6 @@ window.ARCHIVE_DATA = {
       "points": 36,
       "league": "A-Klasse",
       "name": "Roland Schmidt"
-    }
-  ],
-  "321": [
-    {
-      "season": "23/24",
-      "rank": 103,
-      "points": 9,
-      "league": "A-Klasse",
-      "name": "Gabriele P\u00f6tsch"
-    },
-    {
-      "season": "22/23",
-      "rank": 105,
-      "points": 11,
-      "league": "A-Klasse",
-      "name": "Gabriele P\u00f6tsch"
-    },
-    {
-      "season": "20/22",
-      "rank": 94,
-      "points": 21,
-      "league": "A-Klasse",
-      "name": "Gabriele P\u00f6tsch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 199,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Gabriele P\u00f6tsch"
     }
   ],
   "135": [
@@ -19750,20 +22127,27 @@ window.ARCHIVE_DATA = {
       "name": "Christoph Schulz"
     }
   ],
-  "1629": [
+  "027": [
     {
       "season": "23/24",
-      "rank": 115,
-      "points": 0,
+      "rank": 114,
+      "points": 1,
       "league": "A-Klasse",
-      "name": "Katarzyna Haug"
+      "name": "Asterios Karelas"
     },
     {
-      "season": "2025/2026",
-      "rank": 127,
-      "points": 2,
+      "season": "22/23",
+      "rank": 117,
+      "points": 6,
       "league": "A-Klasse",
-      "name": "Katarzyna Haug"
+      "name": "Asterios Karelas"
+    },
+    {
+      "season": "20/22",
+      "rank": 143,
+      "points": 5,
+      "league": "A-Klasse",
+      "name": "Asterios Karelas"
     }
   ],
   "600": [
@@ -19773,22 +22157,6 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "A-Klasse",
       "name": "Andreas Kn\u00f6dlseder"
-    }
-  ],
-  "1780": [
-    {
-      "season": "23/24",
-      "rank": 120,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Melanie Steinberg"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 347,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Melanie Steinberg"
     }
   ],
   "1421": [
@@ -19812,36 +22180,6 @@ window.ARCHIVE_DATA = {
       "points": 129,
       "league": "C-Klasse",
       "name": "Abdullah Kocaoglu"
-    }
-  ],
-  "1408": [
-    {
-      "season": "23/24",
-      "rank": 30,
-      "points": 115,
-      "league": "B-Klasse",
-      "name": "Marcus Brodbeck"
-    },
-    {
-      "season": "22/23",
-      "rank": 64,
-      "points": 75,
-      "league": "B-Klasse",
-      "name": "Marcus Brodbeck"
-    },
-    {
-      "season": "20/22",
-      "rank": 52,
-      "points": 92,
-      "league": "C-Klasse",
-      "name": "Marcus Brodbeck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 67,
-      "points": 51,
-      "league": "A-Klasse",
-      "name": "Marcus Brodbeck"
     }
   ],
   "1302": [
@@ -19975,36 +22313,6 @@ window.ARCHIVE_DATA = {
       "name": "Nina Patzke"
     }
   ],
-  "833": [
-    {
-      "season": "23/24",
-      "rank": 90,
-      "points": 58,
-      "league": "B-Klasse",
-      "name": "Daniel Kiefer"
-    },
-    {
-      "season": "22/23",
-      "rank": 93,
-      "points": 56,
-      "league": "B-Klasse",
-      "name": "Daniel Kiefer"
-    },
-    {
-      "season": "20/22",
-      "rank": 28,
-      "points": 121,
-      "league": "C-Klasse",
-      "name": "Daniel Kiefer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 32,
-      "points": 117,
-      "league": "B-Klasse",
-      "name": "Daniel Kiefer"
-    }
-  ],
   "212": [
     {
       "season": "23/24",
@@ -20012,36 +22320,6 @@ window.ARCHIVE_DATA = {
       "points": 50,
       "league": "B-Klasse",
       "name": "Kevin Kn\u00e4pper"
-    }
-  ],
-  "1490": [
-    {
-      "season": "23/24",
-      "rank": 106,
-      "points": 43,
-      "league": "B-Klasse",
-      "name": "\u00d6mer \u00d6zakcinar"
-    },
-    {
-      "season": "22/23",
-      "rank": 75,
-      "points": 78,
-      "league": "C-Klasse",
-      "name": "\u00d6mer \u00d6zakcinar"
-    },
-    {
-      "season": "20/22",
-      "rank": 80,
-      "points": 61,
-      "league": "B-Klasse",
-      "name": "\u00d6mer \u00d6zakcinar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 191,
-      "points": 4,
-      "league": "B-Klasse",
-      "name": "\u00d6mer \u00d6zakcinar"
     }
   ],
   "1736": [
@@ -20106,36 +22384,6 @@ window.ARCHIVE_DATA = {
       "points": 43,
       "league": "A-Klasse",
       "name": "Michael M\u00fcller"
-    }
-  ],
-  "1741": [
-    {
-      "season": "23/24",
-      "rank": 145,
-      "points": 16,
-      "league": "B-Klasse",
-      "name": "Max Schn\u00fcrle"
-    },
-    {
-      "season": "22/23",
-      "rank": 142,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Max Schn\u00fcrle"
-    },
-    {
-      "season": "20/22",
-      "rank": 73,
-      "points": 75,
-      "league": "C-Klasse",
-      "name": "Max Schn\u00fcrle"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 159,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Max Schn\u00fcrle"
     }
   ],
   "1180": [
@@ -20205,36 +22453,6 @@ window.ARCHIVE_DATA = {
       "points": 95,
       "league": "B-Klasse",
       "name": "Kevin Wolf"
-    }
-  ],
-  "1475": [
-    {
-      "season": "23/24",
-      "rank": 162,
-      "points": 8,
-      "league": "B-Klasse",
-      "name": "\u00d6zcan \u00d6zakcinar"
-    },
-    {
-      "season": "22/23",
-      "rank": 142,
-      "points": 41,
-      "league": "C-Klasse",
-      "name": "\u00d6zcan \u00d6zakcinar"
-    },
-    {
-      "season": "20/22",
-      "rank": 74,
-      "points": 65,
-      "league": "B-Klasse",
-      "name": "\u00d6zcan \u00d6zakcinar"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 123,
-      "points": 3,
-      "league": "A-Klasse",
-      "name": "\u00d6zcan \u00d6zakcinar"
     }
   ],
   "1761": [
@@ -20843,36 +23061,6 @@ window.ARCHIVE_DATA = {
       "name": "Edgard Schock"
     }
   ],
-  "820": [
-    {
-      "season": "23/24",
-      "rank": 226,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Dieter Kl\u00f6sel"
-    },
-    {
-      "season": "22/23",
-      "rank": 203,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Dieter Kl\u00f6sel"
-    },
-    {
-      "season": "20/22",
-      "rank": 179,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Dieter Kl\u00f6sel"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 288,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Dieter Kl\u00f6sel"
-    }
-  ],
   "257": [
     {
       "season": "23/24",
@@ -20968,22 +23156,6 @@ window.ARCHIVE_DATA = {
       "name": "Michaela H\u00fcbner"
     }
   ],
-  "258": [
-    {
-      "season": "23/24",
-      "rank": 260,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Dominick Paci"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 49,
-      "points": 22,
-      "league": "Bezirksliga",
-      "name": "Dominick Paci"
-    }
-  ],
   "684": [
     {
       "season": "23/24",
@@ -21037,52 +23209,6 @@ window.ARCHIVE_DATA = {
       "points": 97,
       "league": "C-Klasse",
       "name": "Thorsten Holzmann"
-    }
-  ],
-  "319": [
-    {
-      "season": "23/24",
-      "rank": 269,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Christopher Burckhardt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 186,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Christopher Burckhardt"
-    }
-  ],
-  "543": [
-    {
-      "season": "23/24",
-      "rank": 272,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Schirin Lukaschek"
-    },
-    {
-      "season": "22/23",
-      "rank": 232,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Schirin Lukaschek"
-    },
-    {
-      "season": "20/22",
-      "rank": 225,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Schirin Lukaschek"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 254,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Schirin Lukaschek"
     }
   ],
   "223": [
@@ -21210,52 +23336,6 @@ window.ARCHIVE_DATA = {
       "name": "Christian Hock"
     }
   ],
-  "354": [
-    {
-      "season": "23/24",
-      "rank": 292,
-      "points": 3,
-      "league": "C-Klasse",
-      "name": "Pilleriin Grillo"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 109,
-      "points": 73,
-      "league": "C-Klasse",
-      "name": "Pilleriin Grillo"
-    }
-  ],
-  "1655": [
-    {
-      "season": "23/24",
-      "rank": 295,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Petra Zahnlecker"
-    },
-    {
-      "season": "22/23",
-      "rank": 258,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Petra Zahnlecker"
-    },
-    {
-      "season": "20/22",
-      "rank": 277,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Petra Zahnlecker"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 334,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Petra Zahnlecker"
-    }
-  ],
   "349": [
     {
       "season": "23/24",
@@ -21263,29 +23343,6 @@ window.ARCHIVE_DATA = {
       "points": 2,
       "league": "C-Klasse",
       "name": "Jens Lenkeit"
-    }
-  ],
-  "756": [
-    {
-      "season": "23/24",
-      "rank": 297,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Jason Czifra"
-    },
-    {
-      "season": "22/23",
-      "rank": 260,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Jason Czifra"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 340,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Jason Czifra"
     }
   ],
   "1681": [
@@ -21528,29 +23585,6 @@ window.ARCHIVE_DATA = {
       "points": 29,
       "league": "Bezirksliga",
       "name": "Musa Kara"
-    }
-  ],
-  "1304": [
-    {
-      "season": "22/23",
-      "rank": 51,
-      "points": 12,
-      "league": "Bezirksliga",
-      "name": "Marko Puls"
-    },
-    {
-      "season": "20/22",
-      "rank": 31,
-      "points": 51,
-      "league": "Bezirksliga",
-      "name": "Marko Puls"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 49,
-      "points": 74,
-      "league": "A-Klasse",
-      "name": "Marko Puls"
     }
   ],
   "1808": [
@@ -21913,29 +23947,6 @@ window.ARCHIVE_DATA = {
       "name": "Sabine Waldenmaier"
     }
   ],
-  "1553": [
-    {
-      "season": "22/23",
-      "rank": 138,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Doreen Staudt"
-    },
-    {
-      "season": "20/22",
-      "rank": 119,
-      "points": 10,
-      "league": "A-Klasse",
-      "name": "Doreen Staudt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 268,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Doreen Staudt"
-    }
-  ],
   "124": [
     {
       "season": "22/23",
@@ -22082,29 +24093,6 @@ window.ARCHIVE_DATA = {
       "name": "Carsten Brand"
     }
   ],
-  "1298": [
-    {
-      "season": "22/23",
-      "rank": 121,
-      "points": 34,
-      "league": "B-Klasse",
-      "name": "Ulrich Zaiser"
-    },
-    {
-      "season": "20/22",
-      "rank": 188,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Ulrich Zaiser"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 165,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Ulrich Zaiser"
-    }
-  ],
   "1089": [
     {
       "season": "22/23",
@@ -22137,6 +24125,15 @@ window.ARCHIVE_DATA = {
       "name": "Pascal Ursic"
     }
   ],
+  "071": [
+    {
+      "season": "22/23",
+      "rank": 129,
+      "points": 29,
+      "league": "B-Klasse",
+      "name": "Wolfgang Vogelmann"
+    }
+  ],
   "693": [
     {
       "season": "22/23",
@@ -22151,29 +24148,6 @@ window.ARCHIVE_DATA = {
       "points": 72,
       "league": "B-Klasse",
       "name": "Manfred Prochaska"
-    }
-  ],
-  "1607": [
-    {
-      "season": "22/23",
-      "rank": 145,
-      "points": 17,
-      "league": "B-Klasse",
-      "name": "G\u00fcnther Rak"
-    },
-    {
-      "season": "20/22",
-      "rank": 53,
-      "points": 72,
-      "league": "A-Klasse",
-      "name": "G\u00fcnther Rak"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 129,
-      "points": 35,
-      "league": "B-Klasse",
-      "name": "G\u00fcnther Rak"
     }
   ],
   "1787": [
@@ -22265,29 +24239,6 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "A-Klasse",
       "name": "Patrick Storr"
-    }
-  ],
-  "994": [
-    {
-      "season": "22/23",
-      "rank": 179,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Christina Koch"
-    },
-    {
-      "season": "20/22",
-      "rank": 155,
-      "points": 24,
-      "league": "C-Klasse",
-      "name": "Christina Koch"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 171,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Christina Koch"
     }
   ],
   "1289": [
@@ -22623,6 +24574,15 @@ window.ARCHIVE_DATA = {
       "name": "Anja Smorra"
     }
   ],
+  "078": [
+    {
+      "season": "22/23",
+      "rank": 177,
+      "points": 26,
+      "league": "C-Klasse",
+      "name": "Stephan Schmich"
+    }
+  ],
   "545": [
     {
       "season": "22/23",
@@ -22673,29 +24633,6 @@ window.ARCHIVE_DATA = {
       "points": 16,
       "league": "C-Klasse",
       "name": "Stefanie Pagels"
-    }
-  ],
-  "924": [
-    {
-      "season": "22/23",
-      "rank": 217,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Sandra Kusterer"
-    },
-    {
-      "season": "20/22",
-      "rank": 207,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Sandra Kusterer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 315,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Sandra Kusterer"
     }
   ],
   "504": [
@@ -22753,29 +24690,6 @@ window.ARCHIVE_DATA = {
       "points": 17,
       "league": "C-Klasse",
       "name": "Felix Pfirmann"
-    }
-  ],
-  "1849": [
-    {
-      "season": "22/23",
-      "rank": 228,
-      "points": 9,
-      "league": "C-Klasse",
-      "name": "Tanja E\u00dfwein"
-    },
-    {
-      "season": "20/22",
-      "rank": 217,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Tanja E\u00dfwein"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 206,
-      "points": 2,
-      "league": "B-Klasse",
-      "name": "Tanja E\u00dfwein"
     }
   ],
   "1299": [
@@ -22946,22 +24860,6 @@ window.ARCHIVE_DATA = {
       "name": "Katja Nicole G\u00f6tz"
     }
   ],
-  "1701": [
-    {
-      "season": "22/23",
-      "rank": 263,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Tanja Irion"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 212,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Tanja Irion"
-    }
-  ],
   "1804": [
     {
       "season": "20/22",
@@ -23052,20 +24950,13 @@ window.ARCHIVE_DATA = {
       "name": "J\u00f6rg Krentz"
     }
   ],
-  "133": [
+  "93": [
     {
       "season": "20/22",
-      "rank": 47,
-      "points": 78,
+      "rank": 45,
+      "points": 79,
       "league": "A-Klasse",
-      "name": "Andreas Freimuth"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 2,
-      "points": 174,
-      "league": "C-Klasse",
-      "name": "Andreas Freimuth"
+      "name": "Sebastian Kunze"
     }
   ],
   "1317": [
@@ -23084,6 +24975,15 @@ window.ARCHIVE_DATA = {
       "points": 35,
       "league": "A-Klasse",
       "name": "Rick Gl\u00fcck"
+    }
+  ],
+  "71": [
+    {
+      "season": "20/22",
+      "rank": 76,
+      "points": 35,
+      "league": "A-Klasse",
+      "name": "Wolfgang Vogelmann"
     }
   ],
   "1600": [
@@ -23131,6 +25031,15 @@ window.ARCHIVE_DATA = {
       "name": "Martina Puls-Bolien"
     }
   ],
+  "051": [
+    {
+      "season": "20/22",
+      "rank": 102,
+      "points": 16,
+      "league": "A-Klasse",
+      "name": "Claus Ratschmann"
+    }
+  ],
   "580": [
     {
       "season": "20/22",
@@ -23138,6 +25047,15 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "A-Klasse",
       "name": "Marc Lindner"
+    }
+  ],
+  "49": [
+    {
+      "season": "20/22",
+      "rank": 110,
+      "points": 13,
+      "league": "A-Klasse",
+      "name": "Ivonne Strahlheim"
     }
   ],
   "112": [
@@ -23212,6 +25130,15 @@ window.ARCHIVE_DATA = {
       "name": "Tony Beltran"
     }
   ],
+  "68": [
+    {
+      "season": "20/22",
+      "rank": 137,
+      "points": 6,
+      "league": "A-Klasse",
+      "name": "Michael H\u00f6fle"
+    }
+  ],
   "1361": [
     {
       "season": "20/22",
@@ -23246,6 +25173,15 @@ window.ARCHIVE_DATA = {
       "points": 4,
       "league": "A-Klasse",
       "name": "Franz Poppe"
+    }
+  ],
+  "50": [
+    {
+      "season": "20/22",
+      "rank": 153,
+      "points": 2,
+      "league": "A-Klasse",
+      "name": "J\u00fcrgen Bischoff"
     }
   ],
   "1546": [
@@ -23338,6 +25274,15 @@ window.ARCHIVE_DATA = {
       "name": "Carmen Leitz"
     }
   ],
+  "002": [
+    {
+      "season": "20/22",
+      "rank": 62,
+      "points": 77,
+      "league": "B-Klasse",
+      "name": "Wolfgang Loss"
+    }
+  ],
   "954": [
     {
       "season": "20/22",
@@ -23347,20 +25292,13 @@ window.ARCHIVE_DATA = {
       "name": "Claudia Busch"
     }
   ],
-  "1028": [
+  "097": [
     {
       "season": "20/22",
-      "rank": 75,
-      "points": 64,
+      "rank": 71,
+      "points": 67,
       "league": "B-Klasse",
-      "name": "Michael Swoboda"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 184,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Michael Swoboda"
+      "name": "Alfred Loth"
     }
   ],
   "189": [
@@ -23696,6 +25634,15 @@ window.ARCHIVE_DATA = {
       "name": "B\u00e4rbel Kansy"
     }
   ],
+  "055": [
+    {
+      "season": "20/22",
+      "rank": 231,
+      "points": 0,
+      "league": "B-Klasse",
+      "name": "J\u00fcrgen Thillmann"
+    }
+  ],
   "1009": [
     {
       "season": "20/22",
@@ -23703,22 +25650,6 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "B-Klasse",
       "name": "Raul M\u00fcller de la Pena"
-    }
-  ],
-  "261": [
-    {
-      "season": "20/22",
-      "rank": 233,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "Manfred Wittlinger"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 138,
-      "points": 63,
-      "league": "C-Klasse",
-      "name": "Manfred Wittlinger"
     }
   ],
   "1329": [
@@ -23928,22 +25859,6 @@ window.ARCHIVE_DATA = {
       "name": "Carmelo Burcio"
     }
   ],
-  "1632": [
-    {
-      "season": "20/22",
-      "rank": 182,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Florian Funk"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 156,
-      "points": 53,
-      "league": "C-Klasse",
-      "name": "Florian Funk"
-    }
-  ],
   "1584": [
     {
       "season": "20/22",
@@ -24005,22 +25920,6 @@ window.ARCHIVE_DATA = {
       "points": 14,
       "league": "C-Klasse",
       "name": "Lisa-Franziska Buchmann"
-    }
-  ],
-  "707": [
-    {
-      "season": "20/22",
-      "rank": 200,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Alexandra Volkmer"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 113,
-      "points": 48,
-      "league": "B-Klasse",
-      "name": "Alexandra Volkmer"
     }
   ],
   "779": [
@@ -24363,1905 +26262,6 @@ window.ARCHIVE_DATA = {
       "points": 0,
       "league": "C-Klasse",
       "name": "Anne Vollmer"
-    }
-  ],
-  "073": [
-    {
-      "season": "24/25",
-      "rank": 6,
-      "points": 155,
-      "league": "A-Klasse",
-      "name": "Peter Penndorf"
-    },
-    {
-      "season": "23/24",
-      "rank": 4,
-      "points": 158,
-      "league": "A-Klasse",
-      "name": "Peter Penndorf"
-    },
-    {
-      "season": "22/23",
-      "rank": 5,
-      "points": 161,
-      "league": "A-Klasse",
-      "name": "Peter Penndorf"
-    },
-    {
-      "season": "20/22",
-      "rank": 10,
-      "points": 115,
-      "league": "Bezirksliga",
-      "name": "Peter Penndorf"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 13,
-      "points": 120,
-      "league": "Bezirksliga",
-      "name": "Peter Penndorf"
-    }
-  ],
-  "099": [
-    {
-      "season": "24/25",
-      "rank": 14,
-      "points": 133,
-      "league": "A-Klasse",
-      "name": "Frank Polte"
-    },
-    {
-      "season": "23/24",
-      "rank": 20,
-      "points": 99,
-      "league": "Bezirksliga",
-      "name": "Frank Polte"
-    },
-    {
-      "season": "22/23",
-      "rank": 8,
-      "points": 124,
-      "league": "Bezirksliga",
-      "name": "Frank Polte"
-    },
-    {
-      "season": "20/22",
-      "rank": 16,
-      "points": 101,
-      "league": "Bezirksliga",
-      "name": "Frank Polte"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 4,
-      "points": 166,
-      "league": "B-Klasse",
-      "name": "Frank Polte"
-    }
-  ],
-  "083": [
-    {
-      "season": "24/25",
-      "rank": 34,
-      "points": 94,
-      "league": "A-Klasse",
-      "name": "Heiko Fruhner"
-    },
-    {
-      "season": "23/24",
-      "rank": 39,
-      "points": 52,
-      "league": "Bezirksliga",
-      "name": "Heiko Fruhner"
-    },
-    {
-      "season": "22/23",
-      "rank": 31,
-      "points": 56,
-      "league": "Bezirksliga",
-      "name": "Heiko Fruhner"
-    },
-    {
-      "season": "20/22",
-      "rank": 24,
-      "points": 74,
-      "league": "Bezirksliga",
-      "name": "Heiko Fruhner"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 29,
-      "points": 55,
-      "league": "Bezirksliga",
-      "name": "Heiko Fruhner"
-    }
-  ],
-  "048": [
-    {
-      "season": "24/25",
-      "rank": 53,
-      "points": 72,
-      "league": "A-Klasse",
-      "name": "Bernd Sauter"
-    },
-    {
-      "season": "23/24",
-      "rank": 58,
-      "points": 61,
-      "league": "A-Klasse",
-      "name": "Bernd Sauter"
-    },
-    {
-      "season": "22/23",
-      "rank": 33,
-      "points": 94,
-      "league": "A-Klasse",
-      "name": "Bernd Sauter"
-    },
-    {
-      "season": "20/22",
-      "rank": 31,
-      "points": 99,
-      "league": "A-Klasse",
-      "name": "Bernd Sauter"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 69,
-      "points": 46,
-      "league": "A-Klasse",
-      "name": "Bernd Sauter"
-    }
-  ],
-  "005": [
-    {
-      "season": "24/25",
-      "rank": 62,
-      "points": 53,
-      "league": "A-Klasse",
-      "name": "Frank Valentin"
-    },
-    {
-      "season": "23/24",
-      "rank": 84,
-      "points": 32,
-      "league": "A-Klasse",
-      "name": "Frank Valentin"
-    },
-    {
-      "season": "22/23",
-      "rank": 66,
-      "points": 58,
-      "league": "A-Klasse",
-      "name": "Frank Valentin"
-    },
-    {
-      "season": "20/22",
-      "rank": 26,
-      "points": 68,
-      "league": "Bezirksliga",
-      "name": "Frank Valentin"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 75,
-      "points": 40,
-      "league": "A-Klasse",
-      "name": "Frank Valentin"
-    }
-  ],
-  "066": [
-    {
-      "season": "24/25",
-      "rank": 64,
-      "points": 52,
-      "league": "A-Klasse",
-      "name": "Volker Beck"
-    },
-    {
-      "season": "23/24",
-      "rank": 18,
-      "points": 114,
-      "league": "A-Klasse",
-      "name": "Volker Beck"
-    },
-    {
-      "season": "22/23",
-      "rank": 8,
-      "points": 155,
-      "league": "B-Klasse",
-      "name": "Volker Beck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 18,
-      "points": 128,
-      "league": "B-Klasse",
-      "name": "Volker Beck"
-    }
-  ],
-  "014": [
-    {
-      "season": "24/25",
-      "rank": 87,
-      "points": 25,
-      "league": "A-Klasse",
-      "name": "Anastasios Spyropoulos"
-    },
-    {
-      "season": "23/24",
-      "rank": 45,
-      "points": 83,
-      "league": "A-Klasse",
-      "name": "Anastasios Spyropoulos"
-    },
-    {
-      "season": "22/23",
-      "rank": 60,
-      "points": 69,
-      "league": "A-Klasse",
-      "name": "Anastasios Spyropoulos"
-    },
-    {
-      "season": "20/22",
-      "rank": 90,
-      "points": 23,
-      "league": "A-Klasse",
-      "name": "Anastasios Spyropoulos"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 158,
-      "points": 19,
-      "league": "B-Klasse",
-      "name": "Anastasios Spyropoulos"
-    }
-  ],
-  "085": [
-    {
-      "season": "24/25",
-      "rank": 90,
-      "points": 13,
-      "league": "A-Klasse",
-      "name": "Kay Gottmann"
-    },
-    {
-      "season": "23/24",
-      "rank": 61,
-      "points": 60,
-      "league": "A-Klasse",
-      "name": "Kay Gottmann"
-    },
-    {
-      "season": "22/23",
-      "rank": 55,
-      "points": 8,
-      "league": "Bezirksliga",
-      "name": "Kay Gottmann"
-    },
-    {
-      "season": "20/22",
-      "rank": 82,
-      "points": 30,
-      "league": "A-Klasse",
-      "name": "Kay Gottmann"
-    }
-  ],
-  "096": [
-    {
-      "season": "24/25",
-      "rank": 1,
-      "points": 165,
-      "league": "B-Klasse",
-      "name": "Alexander Schmidt"
-    },
-    {
-      "season": "23/24",
-      "rank": 7,
-      "points": 153,
-      "league": "B-Klasse",
-      "name": "Alexander Schmidt"
-    },
-    {
-      "season": "22/23",
-      "rank": 7,
-      "points": 149,
-      "league": "A-Klasse",
-      "name": "Alexander Schmidt"
-    },
-    {
-      "season": "20/22",
-      "rank": 3,
-      "points": 164,
-      "league": "A-Klasse",
-      "name": "Alexander Schmidt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 6,
-      "points": 159,
-      "league": "B-Klasse",
-      "name": "Alexander Schmidt"
-    }
-  ],
-  "022": [
-    {
-      "season": "24/25",
-      "rank": 11,
-      "points": 139,
-      "league": "B-Klasse",
-      "name": "Klaus Eberhardt"
-    },
-    {
-      "season": "23/24",
-      "rank": 23,
-      "points": 127,
-      "league": "B-Klasse",
-      "name": "Klaus Eberhardt"
-    },
-    {
-      "season": "22/23",
-      "rank": 2,
-      "points": 168,
-      "league": "C-Klasse",
-      "name": "Klaus Eberhardt"
-    },
-    {
-      "season": "20/22",
-      "rank": 131,
-      "points": 24,
-      "league": "B-Klasse",
-      "name": "Klaus Eberhardt"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 66,
-      "points": 52,
-      "league": "A-Klasse",
-      "name": "Klaus Eberhardt"
-    }
-  ],
-  "076": [
-    {
-      "season": "24/25",
-      "rank": 47,
-      "points": 96,
-      "league": "B-Klasse",
-      "name": "Pasquale Rackovic"
-    },
-    {
-      "season": "23/24",
-      "rank": 27,
-      "points": 121,
-      "league": "B-Klasse",
-      "name": "Pasquale Rackovic"
-    },
-    {
-      "season": "22/23",
-      "rank": 62,
-      "points": 78,
-      "league": "B-Klasse",
-      "name": "Pasquale Rackovic"
-    },
-    {
-      "season": "20/22",
-      "rank": 88,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Pasquale Rackovic"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 37,
-      "points": 112,
-      "league": "B-Klasse",
-      "name": "Pasquale Rackovic"
-    }
-  ],
-  "064": [
-    {
-      "season": "24/25",
-      "rank": 60,
-      "points": 82,
-      "league": "B-Klasse",
-      "name": "Annette Beck"
-    },
-    {
-      "season": "23/24",
-      "rank": 54,
-      "points": 102,
-      "league": "C-Klasse",
-      "name": "Annette Beck"
-    },
-    {
-      "season": "22/23",
-      "rank": 18,
-      "points": 140,
-      "league": "C-Klasse",
-      "name": "Annette Beck"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 117,
-      "points": 43,
-      "league": "B-Klasse",
-      "name": "Annette Beck"
-    }
-  ],
-  "093": [
-    {
-      "season": "24/25",
-      "rank": 78,
-      "points": 67,
-      "league": "B-Klasse",
-      "name": "Sebastian Kunze"
-    },
-    {
-      "season": "23/24",
-      "rank": 84,
-      "points": 62,
-      "league": "B-Klasse",
-      "name": "Sebastian Kunze"
-    },
-    {
-      "season": "22/23",
-      "rank": 58,
-      "points": 69,
-      "league": "A-Klasse",
-      "name": "Sebastian Kunze"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 86,
-      "points": 66,
-      "league": "B-Klasse",
-      "name": "Sebastian Kunze"
-    }
-  ],
-  "012": [
-    {
-      "season": "24/25",
-      "rank": 216,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Thomas Minkus"
-    },
-    {
-      "season": "23/24",
-      "rank": 77,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Thomas Minkus"
-    },
-    {
-      "season": "2025/2026",
-      "rank": 103,
-      "points": 76,
-      "league": "C-Klasse",
-      "name": "Thomas Minkus"
-    }
-  ],
-  "034": [
-    {
-      "season": "24/25",
-      "rank": 328,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "H\u00fcseyin Yigit"
-    },
-    {
-      "season": "23/24",
-      "rank": 184,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "H\u00fcseyin Yigit"
-    },
-    {
-      "season": "20/22",
-      "rank": 210,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "H\u00fcseyin Yigit"
-    }
-  ],
-  "10": [
-    {
-      "season": "24/25",
-      "rank": 1,
-      "points": 216,
-      "league": "C-Klasse",
-      "name": "Matteo P."
-    }
-  ],
-  "14": [
-    {
-      "season": "24/25",
-      "rank": 7,
-      "points": 127,
-      "league": "C-Klasse",
-      "name": "x"
-    }
-  ],
-  "027": [
-    {
-      "season": "23/24",
-      "rank": 114,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Asterios Karelas"
-    },
-    {
-      "season": "22/23",
-      "rank": 117,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Asterios Karelas"
-    },
-    {
-      "season": "20/22",
-      "rank": 143,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Asterios Karelas"
-    }
-  ],
-  "071": [
-    {
-      "season": "22/23",
-      "rank": 129,
-      "points": 29,
-      "league": "B-Klasse",
-      "name": "Wolfgang Vogelmann"
-    }
-  ],
-  "078": [
-    {
-      "season": "22/23",
-      "rank": 177,
-      "points": 26,
-      "league": "C-Klasse",
-      "name": "Stephan Schmich"
-    }
-  ],
-  "93": [
-    {
-      "season": "20/22",
-      "rank": 45,
-      "points": 79,
-      "league": "A-Klasse",
-      "name": "Sebastian Kunze"
-    }
-  ],
-  "71": [
-    {
-      "season": "20/22",
-      "rank": 76,
-      "points": 35,
-      "league": "A-Klasse",
-      "name": "Wolfgang Vogelmann"
-    }
-  ],
-  "051": [
-    {
-      "season": "20/22",
-      "rank": 102,
-      "points": 16,
-      "league": "A-Klasse",
-      "name": "Claus Ratschmann"
-    }
-  ],
-  "49": [
-    {
-      "season": "20/22",
-      "rank": 110,
-      "points": 13,
-      "league": "A-Klasse",
-      "name": "Ivonne Strahlheim"
-    }
-  ],
-  "68": [
-    {
-      "season": "20/22",
-      "rank": 137,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Michael H\u00f6fle"
-    }
-  ],
-  "50": [
-    {
-      "season": "20/22",
-      "rank": 153,
-      "points": 2,
-      "league": "A-Klasse",
-      "name": "J\u00fcrgen Bischoff"
-    }
-  ],
-  "002": [
-    {
-      "season": "20/22",
-      "rank": 62,
-      "points": 77,
-      "league": "B-Klasse",
-      "name": "Wolfgang Loss"
-    }
-  ],
-  "097": [
-    {
-      "season": "20/22",
-      "rank": 71,
-      "points": 67,
-      "league": "B-Klasse",
-      "name": "Alfred Loth"
-    }
-  ],
-  "055": [
-    {
-      "season": "20/22",
-      "rank": 231,
-      "points": 0,
-      "league": "B-Klasse",
-      "name": "J\u00fcrgen Thillmann"
-    }
-  ],
-  "357": [
-    {
-      "season": "2025/2026",
-      "rank": 12,
-      "points": 134,
-      "league": "Bezirksliga",
-      "name": "Daniel Poganatz"
-    }
-  ],
-  "392": [
-    {
-      "season": "2025/2026",
-      "rank": 54,
-      "points": 16,
-      "league": "Bezirksliga",
-      "name": "Jakub Ehrhardt"
-    }
-  ],
-  "295": [
-    {
-      "season": "2025/2026",
-      "rank": 60,
-      "points": 7,
-      "league": "Bezirksliga",
-      "name": "Jan-Hendrik Olislagers"
-    }
-  ],
-  "480": [
-    {
-      "season": "2025/2026",
-      "rank": 62,
-      "points": 5,
-      "league": "Bezirksliga",
-      "name": "Idris Zan"
-    }
-  ],
-  "951": [
-    {
-      "season": "2025/2026",
-      "rank": 63,
-      "points": 2,
-      "league": "Bezirksliga",
-      "name": "Rene Bandemer"
-    }
-  ],
-  "1127": [
-    {
-      "season": "2025/2026",
-      "rank": 26,
-      "points": 98,
-      "league": "A-Klasse",
-      "name": "Serafettin Ayar"
-    }
-  ],
-  "470": [
-    {
-      "season": "2025/2026",
-      "rank": 44,
-      "points": 77,
-      "league": "A-Klasse",
-      "name": "Dennis Jaskulski"
-    }
-  ],
-  "883": [
-    {
-      "season": "2025/2026",
-      "rank": 72,
-      "points": 43,
-      "league": "A-Klasse",
-      "name": "Janis Scheithauer"
-    }
-  ],
-  "1215": [
-    {
-      "season": "2025/2026",
-      "rank": 76,
-      "points": 38,
-      "league": "A-Klasse",
-      "name": "Patrick Hendo"
-    }
-  ],
-  "344": [
-    {
-      "season": "2025/2026",
-      "rank": 85,
-      "points": 31,
-      "league": "A-Klasse",
-      "name": "Sasa Jelkic"
-    }
-  ],
-  "1568": [
-    {
-      "season": "2025/2026",
-      "rank": 89,
-      "points": 29,
-      "league": "A-Klasse",
-      "name": "Thomas Bock"
-    }
-  ],
-  "694": [
-    {
-      "season": "2025/2026",
-      "rank": 92,
-      "points": 26,
-      "league": "A-Klasse",
-      "name": "Brian Fribus"
-    }
-  ],
-  "938": [
-    {
-      "season": "2025/2026",
-      "rank": 95,
-      "points": 24,
-      "league": "A-Klasse",
-      "name": "Patrick Haenicke"
-    }
-  ],
-  "1825": [
-    {
-      "season": "2025/2026",
-      "rank": 98,
-      "points": 22,
-      "league": "A-Klasse",
-      "name": "Jochen Fischer"
-    }
-  ],
-  "1234": [
-    {
-      "season": "2025/2026",
-      "rank": 99,
-      "points": 21,
-      "league": "A-Klasse",
-      "name": "S\u00f6ren Wahl"
-    }
-  ],
-  "236": [
-    {
-      "season": "2025/2026",
-      "rank": 117,
-      "points": 6,
-      "league": "A-Klasse",
-      "name": "Michael Lamitschka"
-    }
-  ],
-  "1879": [
-    {
-      "season": "2025/2026",
-      "rank": 120,
-      "points": 5,
-      "league": "A-Klasse",
-      "name": "Jan Bick"
-    }
-  ],
-  "529": [
-    {
-      "season": "2025/2026",
-      "rank": 131,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Peter Meeh"
-    }
-  ],
-  "730": [
-    {
-      "season": "2025/2026",
-      "rank": 131,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Oksana Kuliieva"
-    }
-  ],
-  "1236": [
-    {
-      "season": "2025/2026",
-      "rank": 131,
-      "points": 1,
-      "league": "A-Klasse",
-      "name": "Justin Stoll"
-    }
-  ],
-  "220": [
-    {
-      "season": "2025/2026",
-      "rank": 135,
-      "points": 0,
-      "league": "A-Klasse",
-      "name": "Diego Naranjo Gomez"
-    }
-  ],
-  "218": [
-    {
-      "season": "2025/2026",
-      "rank": 15,
-      "points": 135,
-      "league": "B-Klasse",
-      "name": "Jonas Jordan"
-    }
-  ],
-  "225": [
-    {
-      "season": "2025/2026",
-      "rank": 25,
-      "points": 123,
-      "league": "B-Klasse",
-      "name": "Thomas Rzepczyk"
-    }
-  ],
-  "419": [
-    {
-      "season": "2025/2026",
-      "rank": 46,
-      "points": 101,
-      "league": "B-Klasse",
-      "name": "Michael Buchelt"
-    }
-  ],
-  "1805": [
-    {
-      "season": "2025/2026",
-      "rank": 105,
-      "points": 53,
-      "league": "B-Klasse",
-      "name": "Berei Istvan Zslot"
-    }
-  ],
-  "475": [
-    {
-      "season": "2025/2026",
-      "rank": 106,
-      "points": 53,
-      "league": "B-Klasse",
-      "name": "Erdogan \u00d6ng\u00f6ren"
-    }
-  ],
-  "278": [
-    {
-      "season": "2025/2026",
-      "rank": 127,
-      "points": 37,
-      "league": "B-Klasse",
-      "name": "Marcel Gehrum"
-    }
-  ],
-  "507": [
-    {
-      "season": "2025/2026",
-      "rank": 142,
-      "points": 24,
-      "league": "B-Klasse",
-      "name": "Dustin Ludwig"
-    }
-  ],
-  "356": [
-    {
-      "season": "2025/2026",
-      "rank": 146,
-      "points": 23,
-      "league": "B-Klasse",
-      "name": "Michel Brand"
-    }
-  ],
-  "596": [
-    {
-      "season": "2025/2026",
-      "rank": 152,
-      "points": 22,
-      "league": "B-Klasse",
-      "name": "Frank Brenner"
-    }
-  ],
-  "353": [
-    {
-      "season": "2025/2026",
-      "rank": 153,
-      "points": 21,
-      "league": "B-Klasse",
-      "name": "Nico Riedel"
-    }
-  ],
-  "577": [
-    {
-      "season": "2025/2026",
-      "rank": 156,
-      "points": 20,
-      "league": "B-Klasse",
-      "name": "Linus Gr\u00fc\u00dfinger"
-    }
-  ],
-  "362": [
-    {
-      "season": "2025/2026",
-      "rank": 163,
-      "points": 18,
-      "league": "B-Klasse",
-      "name": "Hans-J\u00fcrgen Kohl"
-    }
-  ],
-  "831": [
-    {
-      "season": "2025/2026",
-      "rank": 180,
-      "points": 7,
-      "league": "B-Klasse",
-      "name": "Aid Rrudhani"
-    }
-  ],
-  "493": [
-    {
-      "season": "2025/2026",
-      "rank": 183,
-      "points": 6,
-      "league": "B-Klasse",
-      "name": "Jaimie-Lee Taton"
-    }
-  ],
-  "645": [
-    {
-      "season": "2025/2026",
-      "rank": 189,
-      "points": 5,
-      "league": "B-Klasse",
-      "name": "Roberto Azzaro"
-    }
-  ],
-  "213": [
-    {
-      "season": "2025/2026",
-      "rank": 197,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Philipp Daxberger"
-    }
-  ],
-  "1428": [
-    {
-      "season": "2025/2026",
-      "rank": 198,
-      "points": 3,
-      "league": "B-Klasse",
-      "name": "Klaus Faa\u00df"
-    }
-  ],
-  "774": [
-    {
-      "season": "2025/2026",
-      "rank": 24,
-      "points": 140,
-      "league": "C-Klasse",
-      "name": "Justin Nadler"
-    }
-  ],
-  "807": [
-    {
-      "season": "2025/2026",
-      "rank": 29,
-      "points": 132,
-      "league": "C-Klasse",
-      "name": "Holger Treiber"
-    }
-  ],
-  "678": [
-    {
-      "season": "2025/2026",
-      "rank": 31,
-      "points": 129,
-      "league": "C-Klasse",
-      "name": "Oliver Jost"
-    }
-  ],
-  "1730": [
-    {
-      "season": "2025/2026",
-      "rank": 33,
-      "points": 127,
-      "league": "C-Klasse",
-      "name": "Stefan Br\u00e4uer"
-    }
-  ],
-  "358": [
-    {
-      "season": "2025/2026",
-      "rank": 41,
-      "points": 119,
-      "league": "C-Klasse",
-      "name": "Stephan Herz"
-    }
-  ],
-  "247": [
-    {
-      "season": "2025/2026",
-      "rank": 44,
-      "points": 118,
-      "league": "C-Klasse",
-      "name": "Kai Berweck"
-    }
-  ],
-  "1634": [
-    {
-      "season": "2025/2026",
-      "rank": 45,
-      "points": 118,
-      "league": "C-Klasse",
-      "name": "Efecan Aydinoglu"
-    }
-  ],
-  "110": [
-    {
-      "season": "2025/2026",
-      "rank": 50,
-      "points": 114,
-      "league": "C-Klasse",
-      "name": "Daniel Ruppert"
-    }
-  ],
-  "542": [
-    {
-      "season": "2025/2026",
-      "rank": 57,
-      "points": 103,
-      "league": "C-Klasse",
-      "name": "Fynn Burger"
-    }
-  ],
-  "837": [
-    {
-      "season": "2025/2026",
-      "rank": 60,
-      "points": 101,
-      "league": "C-Klasse",
-      "name": "Ivica Sorsa"
-    }
-  ],
-  "231": [
-    {
-      "season": "2025/2026",
-      "rank": 66,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen Hecht"
-    }
-  ],
-  "757": [
-    {
-      "season": "2025/2026",
-      "rank": 67,
-      "points": 97,
-      "league": "C-Klasse",
-      "name": "Orhan S\u00f6yleyici"
-    }
-  ],
-  "297": [
-    {
-      "season": "2025/2026",
-      "rank": 69,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Aydin Cagatay"
-    }
-  ],
-  "795": [
-    {
-      "season": "2025/2026",
-      "rank": 71,
-      "points": 96,
-      "league": "C-Klasse",
-      "name": "Peter Hofer"
-    }
-  ],
-  "111": [
-    {
-      "season": "2025/2026",
-      "rank": 73,
-      "points": 95,
-      "league": "C-Klasse",
-      "name": "Nico Stumpp"
-    }
-  ],
-  "292": [
-    {
-      "season": "2025/2026",
-      "rank": 81,
-      "points": 89,
-      "league": "C-Klasse",
-      "name": "Timo Cieslak"
-    }
-  ],
-  "1693": [
-    {
-      "season": "2025/2026",
-      "rank": 82,
-      "points": 88,
-      "league": "C-Klasse",
-      "name": "Lorenz Pfrommer"
-    }
-  ],
-  "717": [
-    {
-      "season": "2025/2026",
-      "rank": 88,
-      "points": 85,
-      "league": "C-Klasse",
-      "name": "Nazmi Krasniqi"
-    }
-  ],
-  "877": [
-    {
-      "season": "2025/2026",
-      "rank": 91,
-      "points": 84,
-      "league": "C-Klasse",
-      "name": "Niklas Roblick"
-    }
-  ],
-  "513": [
-    {
-      "season": "2025/2026",
-      "rank": 105,
-      "points": 75,
-      "league": "C-Klasse",
-      "name": "Matthias Gebert"
-    }
-  ],
-  "1731": [
-    {
-      "season": "2025/2026",
-      "rank": 107,
-      "points": 74,
-      "league": "C-Klasse",
-      "name": "Kerstin Brack"
-    }
-  ],
-  "366": [
-    {
-      "season": "2025/2026",
-      "rank": 112,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Sarah K\u00f6nig"
-    }
-  ],
-  "887": [
-    {
-      "season": "2025/2026",
-      "rank": 113,
-      "points": 72,
-      "league": "C-Klasse",
-      "name": "Christian Weber"
-    }
-  ],
-  "436": [
-    {
-      "season": "2025/2026",
-      "rank": 118,
-      "points": 70,
-      "league": "C-Klasse",
-      "name": "Andrea Risken"
-    }
-  ],
-  "431": [
-    {
-      "season": "2025/2026",
-      "rank": 119,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Olaf Risken"
-    }
-  ],
-  "841": [
-    {
-      "season": "2025/2026",
-      "rank": 121,
-      "points": 69,
-      "league": "C-Klasse",
-      "name": "Mihael Trgovec"
-    }
-  ],
-  "576": [
-    {
-      "season": "2025/2026",
-      "rank": 128,
-      "points": 66,
-      "league": "C-Klasse",
-      "name": "Marina Spiranec"
-    }
-  ],
-  "528": [
-    {
-      "season": "2025/2026",
-      "rank": 131,
-      "points": 65,
-      "league": "C-Klasse",
-      "name": "Patricia Leibhan"
-    }
-  ],
-  "814": [
-    {
-      "season": "2025/2026",
-      "rank": 133,
-      "points": 64,
-      "league": "C-Klasse",
-      "name": "Tim Legler"
-    }
-  ],
-  "517": [
-    {
-      "season": "2025/2026",
-      "rank": 137,
-      "points": 63,
-      "league": "C-Klasse",
-      "name": "Justin Ballhausen"
-    }
-  ],
-  "240": [
-    {
-      "season": "2025/2026",
-      "rank": 140,
-      "points": 62,
-      "league": "C-Klasse",
-      "name": "Gianni Misuraca"
-    }
-  ],
-  "1621": [
-    {
-      "season": "2025/2026",
-      "rank": 144,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Lukas Schaier"
-    }
-  ],
-  "535": [
-    {
-      "season": "2025/2026",
-      "rank": 145,
-      "points": 58,
-      "league": "C-Klasse",
-      "name": "Jonas Dressler"
-    }
-  ],
-  "1467": [
-    {
-      "season": "2025/2026",
-      "rank": 146,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Ute Trapp"
-    }
-  ],
-  "716": [
-    {
-      "season": "2025/2026",
-      "rank": 148,
-      "points": 57,
-      "league": "C-Klasse",
-      "name": "Florin Basca"
-    }
-  ],
-  "367": [
-    {
-      "season": "2025/2026",
-      "rank": 150,
-      "points": 55,
-      "league": "C-Klasse",
-      "name": "Christian Sigrist"
-    }
-  ],
-  "1609": [
-    {
-      "season": "2025/2026",
-      "rank": 153,
-      "points": 54,
-      "league": "C-Klasse",
-      "name": "Kateryna Masalska"
-    }
-  ],
-  "333": [
-    {
-      "season": "2025/2026",
-      "rank": 160,
-      "points": 51,
-      "league": "C-Klasse",
-      "name": "Heiko Faber"
-    }
-  ],
-  "294": [
-    {
-      "season": "2025/2026",
-      "rank": 163,
-      "points": 50,
-      "league": "C-Klasse",
-      "name": "Rudolf Brugger"
-    }
-  ],
-  "1187": [
-    {
-      "season": "2025/2026",
-      "rank": 172,
-      "points": 47,
-      "league": "C-Klasse",
-      "name": "Jennifer Nie\u00df"
-    }
-  ],
-  "1522": [
-    {
-      "season": "2025/2026",
-      "rank": 175,
-      "points": 46,
-      "league": "C-Klasse",
-      "name": "Adrian G\u00fcnthner"
-    }
-  ],
-  "1509": [
-    {
-      "season": "2025/2026",
-      "rank": 177,
-      "points": 45,
-      "league": "C-Klasse",
-      "name": "Max Christian Krone"
-    }
-  ],
-  "217": [
-    {
-      "season": "2025/2026",
-      "rank": 179,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Marc Gr\u00fcnwaldt"
-    }
-  ],
-  "710": [
-    {
-      "season": "2025/2026",
-      "rank": 180,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Dajana Au\u00dfersdorfer"
-    }
-  ],
-  "606": [
-    {
-      "season": "2025/2026",
-      "rank": 181,
-      "points": 44,
-      "league": "C-Klasse",
-      "name": "Michael Sch\u00e4fer"
-    }
-  ],
-  "1264": [
-    {
-      "season": "2025/2026",
-      "rank": 186,
-      "points": 42,
-      "league": "C-Klasse",
-      "name": "J\u00f6rg Stephan"
-    }
-  ],
-  "562": [
-    {
-      "season": "2025/2026",
-      "rank": 189,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Florian Schubert"
-    }
-  ],
-  "737": [
-    {
-      "season": "2025/2026",
-      "rank": 190,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Dragutin Trgovec"
-    }
-  ],
-  "720": [
-    {
-      "season": "2025/2026",
-      "rank": 191,
-      "points": 40,
-      "league": "C-Klasse",
-      "name": "Zeljko Radulovic"
-    }
-  ],
-  "1813": [
-    {
-      "season": "2025/2026",
-      "rank": 196,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Kelly Grisafi"
-    }
-  ],
-  "414": [
-    {
-      "season": "2025/2026",
-      "rank": 197,
-      "points": 37,
-      "league": "C-Klasse",
-      "name": "Thomas B\u00f6sch"
-    }
-  ],
-  "254": [
-    {
-      "season": "2025/2026",
-      "rank": 198,
-      "points": 36,
-      "league": "C-Klasse",
-      "name": "Philipp Straach"
-    }
-  ],
-  "398": [
-    {
-      "season": "2025/2026",
-      "rank": 199,
-      "points": 36,
-      "league": "C-Klasse",
-      "name": "Patrick Ehlert"
-    }
-  ],
-  "1562": [
-    {
-      "season": "2025/2026",
-      "rank": 200,
-      "points": 35,
-      "league": "C-Klasse",
-      "name": "Sven Berweck"
-    }
-  ],
-  "585": [
-    {
-      "season": "2025/2026",
-      "rank": 203,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Nico Schick"
-    }
-  ],
-  "620": [
-    {
-      "season": "2025/2026",
-      "rank": 204,
-      "points": 34,
-      "league": "C-Klasse",
-      "name": "Fabian Vogel"
-    }
-  ],
-  "1517": [
-    {
-      "season": "2025/2026",
-      "rank": 205,
-      "points": 33,
-      "league": "C-Klasse",
-      "name": "Sonja Schulz"
-    }
-  ],
-  "1728": [
-    {
-      "season": "2025/2026",
-      "rank": 208,
-      "points": 32,
-      "league": "C-Klasse",
-      "name": "Philipp G\u00fcnthner"
-    }
-  ],
-  "1604": [
-    {
-      "season": "2025/2026",
-      "rank": 211,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Daniela Lavalle"
-    }
-  ],
-  "764": [
-    {
-      "season": "2025/2026",
-      "rank": 213,
-      "points": 29,
-      "league": "C-Klasse",
-      "name": "Daniel Jurak"
-    }
-  ],
-  "797": [
-    {
-      "season": "2025/2026",
-      "rank": 215,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "Petra Brugger"
-    }
-  ],
-  "227": [
-    {
-      "season": "2025/2026",
-      "rank": 216,
-      "points": 28,
-      "league": "C-Klasse",
-      "name": "J\u00fcrgen W\u00f6lfl"
-    }
-  ],
-  "340": [
-    {
-      "season": "2025/2026",
-      "rank": 219,
-      "points": 27,
-      "league": "C-Klasse",
-      "name": "Georg Wilhelm"
-    }
-  ],
-  "453": [
-    {
-      "season": "2025/2026",
-      "rank": 220,
-      "points": 25,
-      "league": "C-Klasse",
-      "name": "Maximilian Wahrheit"
-    }
-  ],
-  "252": [
-    {
-      "season": "2025/2026",
-      "rank": 230,
-      "points": 22,
-      "league": "C-Klasse",
-      "name": "Oliver Straach"
-    }
-  ],
-  "711": [
-    {
-      "season": "2025/2026",
-      "rank": 231,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Denise Loy"
-    }
-  ],
-  "526": [
-    {
-      "season": "2025/2026",
-      "rank": 233,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Lena Dill"
-    }
-  ],
-  "919": [
-    {
-      "season": "2025/2026",
-      "rank": 234,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Maximilian Glatt"
-    }
-  ],
-  "786": [
-    {
-      "season": "2025/2026",
-      "rank": 235,
-      "points": 21,
-      "league": "C-Klasse",
-      "name": "Julian Kannegie\u00dfer"
-    }
-  ],
-  "564": [
-    {
-      "season": "2025/2026",
-      "rank": 242,
-      "points": 20,
-      "league": "C-Klasse",
-      "name": "Dimitrios Papadopoulos"
-    }
-  ],
-  "510": [
-    {
-      "season": "2025/2026",
-      "rank": 246,
-      "points": 19,
-      "league": "C-Klasse",
-      "name": "Sylvia Vetter"
-    }
-  ],
-  "408": [
-    {
-      "season": "2025/2026",
-      "rank": 253,
-      "points": 17,
-      "league": "C-Klasse",
-      "name": "Pascal R\u00e4gle"
-    }
-  ],
-  "740": [
-    {
-      "season": "2025/2026",
-      "rank": 255,
-      "points": 16,
-      "league": "C-Klasse",
-      "name": "Alla Janke"
-    }
-  ],
-  "1053": [
-    {
-      "season": "2025/2026",
-      "rank": 258,
-      "points": 15,
-      "league": "C-Klasse",
-      "name": "Simone Herzig"
-    }
-  ],
-  "697": [
-    {
-      "season": "2025/2026",
-      "rank": 260,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Patrick Schlosser"
-    }
-  ],
-  "811": [
-    {
-      "season": "2025/2026",
-      "rank": 263,
-      "points": 14,
-      "league": "C-Klasse",
-      "name": "Danijel Branjug"
-    }
-  ],
-  "1830": [
-    {
-      "season": "2025/2026",
-      "rank": 267,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Ren\u00e9 Sch\u00f6nthaler"
-    }
-  ],
-  "1294": [
-    {
-      "season": "2025/2026",
-      "rank": 269,
-      "points": 13,
-      "league": "C-Klasse",
-      "name": "Fabrizio Baccarella"
-    }
-  ],
-  "690": [
-    {
-      "season": "2025/2026",
-      "rank": 273,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Luisa Bauer"
-    }
-  ],
-  "1829": [
-    {
-      "season": "2025/2026",
-      "rank": 277,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Vitorio Ferkovic"
-    }
-  ],
-  "380": [
-    {
-      "season": "2025/2026",
-      "rank": 279,
-      "points": 12,
-      "league": "C-Klasse",
-      "name": "Stefan Weil"
-    }
-  ],
-  "1488": [
-    {
-      "season": "2025/2026",
-      "rank": 284,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Olena Bidenko"
-    }
-  ],
-  "530": [
-    {
-      "season": "2025/2026",
-      "rank": 287,
-      "points": 10,
-      "league": "C-Klasse",
-      "name": "Nemanja Mitrovic"
-    }
-  ],
-  "838": [
-    {
-      "season": "2025/2026",
-      "rank": 295,
-      "points": 8,
-      "league": "C-Klasse",
-      "name": "Falk Wirlitsch"
-    }
-  ],
-  "228": [
-    {
-      "season": "2025/2026",
-      "rank": 301,
-      "points": 7,
-      "league": "C-Klasse",
-      "name": "Tatiana Reikowski"
-    }
-  ],
-  "259": [
-    {
-      "season": "2025/2026",
-      "rank": 303,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Patrick Speck"
-    }
-  ],
-  "677": [
-    {
-      "season": "2025/2026",
-      "rank": 306,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Norman Meyer"
-    }
-  ],
-  "976": [
-    {
-      "season": "2025/2026",
-      "rank": 307,
-      "points": 6,
-      "league": "C-Klasse",
-      "name": "Luigi Pacinello"
-    }
-  ],
-  "844": [
-    {
-      "season": "2025/2026",
-      "rank": 309,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Daniel Schneider"
-    }
-  ],
-  "613": [
-    {
-      "season": "2025/2026",
-      "rank": 312,
-      "points": 5,
-      "league": "C-Klasse",
-      "name": "Tobias Schmitz"
-    }
-  ],
-  "214": [
-    {
-      "season": "2025/2026",
-      "rank": 313,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Miriam Deckenbach"
-    }
-  ],
-  "787": [
-    {
-      "season": "2025/2026",
-      "rank": 316,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Oliver Kannegie\u00dfer"
-    }
-  ],
-  "1633": [
-    {
-      "season": "2025/2026",
-      "rank": 317,
-      "points": 4,
-      "league": "C-Klasse",
-      "name": "Manfred Sequenz"
-    }
-  ],
-  "1569": [
-    {
-      "season": "2025/2026",
-      "rank": 322,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Helder Marques"
-    }
-  ],
-  "418": [
-    {
-      "season": "2025/2026",
-      "rank": 323,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Kristina Heidenreich"
-    }
-  ],
-  "102": [
-    {
-      "season": "2025/2026",
-      "rank": 325,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Markus Thalhammer"
-    }
-  ],
-  "732": [
-    {
-      "season": "2025/2026",
-      "rank": 327,
-      "points": 2,
-      "league": "C-Klasse",
-      "name": "Vladimir Granula"
-    }
-  ],
-  "842": [
-    {
-      "season": "2025/2026",
-      "rank": 329,
-      "points": 1,
-      "league": "C-Klasse",
-      "name": "Richard Rohrmayr"
-    }
-  ],
-  "447": [
-    {
-      "season": "2025/2026",
-      "rank": 336,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Jaqueline Ilg"
-    }
-  ],
-  "631": [
-    {
-      "season": "2025/2026",
-      "rank": 337,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Bettina Endrijaitis"
-    }
-  ],
-  "033": [
-    {
-      "season": "2025/2026",
-      "rank": 343,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Tanja Jost"
-    }
-  ],
-  "279": [
-    {
-      "season": "2025/2026",
-      "rank": 345,
-      "points": 0,
-      "league": "C-Klasse",
-      "name": "Daniel Klapper"
     }
   ]
 };
