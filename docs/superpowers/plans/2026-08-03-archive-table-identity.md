@@ -306,7 +306,44 @@ git add pipeline/validation.py tests/test_validation.py
 git commit -m "fix: compare canonical archive table identities"
 ```
 
-## Task 3: Verify the live incident without publishing data
+## Task 3: Handle split title containers and historical title corrections
+
+**Files:**
+- Modify: `archive_tables_scraper.py`
+- Modify: `tests/test_archive_table_extractor.js`
+- Modify: `tests/fixtures/archive_table_embedded_title.html`
+- Modify: `tests/test_scraper_outputs.py`
+- Modify: `pipeline/validation.py`
+- Modify: `tests/test_validation.py`
+
+- [ ] **Step 1: Reproduce the split-container title failure**
+
+Extend the sanitized fixture so the C-Klasse title is in one wrapper and the table is nested in the immediately following wrapper. Extend the strict DOM adapter with `parentElement` and realistic `previousElementSibling` chains. Assert that the unchanged production extractor returns `Unbekannt` before implementation.
+
+- [ ] **Step 2: Implement bounded ancestor-sibling title lookup**
+
+Search direct preceding siblings first. If no plausible title is found, move to the parent element and inspect its preceding siblings. Limit both traversal depth and sibling count. Preserve nearest-title priority and embedded-title override. Add a regression case proving a farther plausible heading cannot overwrite the nearest one.
+
+- [ ] **Step 3: Reproduce the historical mislabel block**
+
+Add validator tests proving:
+
+- same season plus exactly identical rows under a corrected title publishes;
+- the same candidate cannot satisfy two previous tables;
+- identical rows in a different season do not match;
+- a differently titled candidate with changed rows remains blocked.
+
+Run these tests against the pre-change validator and verify the corrected-title case fails for the expected missing-identity reason.
+
+- [ ] **Step 4: Implement one-to-one exact-row reconciliation**
+
+Represent inspected tables as records containing canonical season, canonical title identity, row count, and a strict JSON fingerprint of `rows`. Consume exact `(canonical season, rows fingerprint)` matches one-to-one before applying canonical-identity multiplicity and descending row-count checks to the unmatched records. Keep full-record duplicate checks and operational metrics unchanged.
+
+- [ ] **Step 5: Run focused and complete offline tests**
+
+Run the new extractor and validation tests, all scraper-output and validation tests, update-pipeline tests, warning-strict compilation, and `git diff --check`. Commit only the listed files.
+
+## Task 4: Verify the live incident without publishing data
 
 **Files:**
 - No tracked files should change.
@@ -345,7 +382,7 @@ If validation remains blocked, stop and inspect the reported identity or row-cou
 
 Resolve both absolute paths, verify they remain under the repository's `.staging` and `artifacts` directories respectively, then remove only those exact generated directories. Confirm `git status --short` contains no new files.
 
-## Task 4: Complete regression verification and publish the fix
+## Task 5: Complete regression verification and publish the fix
 
 **Files:**
 - No additional production files expected.

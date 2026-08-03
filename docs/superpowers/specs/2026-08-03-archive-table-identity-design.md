@@ -100,6 +100,36 @@ After focused tests pass, run the complete offline suite. Then run the archive-t
 - All offline tests pass without new warnings.
 - The scheduled workflow can publish only after all domain validators return `publish` or `retain`.
 
+## Approved Live-Verification Addendum
+
+The first live dry-run on 2026-08-03 remained safely blocked and revealed two source-specific structures that the initial design did not cover.
+
+### Split title and table containers
+
+On the current 2025/26 closing-table page, C-Klasse titles are rendered in one `<center>` element and the corresponding table is nested in the immediately following `<center>` element. Looking only at `table.previousElementSibling` can therefore never reach the title. A- and B-Klasse championship markup is not consistently split this way, which explains the partial extraction success.
+
+The extractor will search a bounded structural neighborhood: direct preceding element siblings first, then preceding siblings of at most a small fixed number of parent containers. The nearest plausible competition title wins. The search must not scan the whole page or adopt an unrelated earlier heading.
+
+### Historical mislabel correction
+
+The published 2020/22 entry `C-Klassen-Meisterschaft, Platz 1-4_2020-2022` contains the same nine-row table that the current source correctly labels `BWEDL e.V. Saison 2020-2022 - Mix-C-Klasse`. The actual current `Platz 1-4` table has five rows. This is a historical title misassignment, not source data loss.
+
+A previous table may therefore match a differently titled candidate only when:
+
+- both records belong to the same canonical season;
+- their complete normalized `rows` payloads are exactly identical;
+- the candidate record has not already matched another previous record.
+
+Matching is one-to-one. Exact season-and-row matches are consumed first; only unmatched records then use canonical title identity plus multiplicity and row-count safeguards. A title-only correction with changed rows remains blocked unless the canonical identity matches and the existing row-count rules pass. Unrelated new tables cannot compensate for missing historical data.
+
+### Addendum acceptance criteria
+
+- Current 2025/26 C-Klasse championship and group tables receive meaningful titles through bounded container traversal.
+- The historically mislabeled 2020/22 nine-row table is accepted only through exact same-season row equality.
+- One candidate table cannot satisfy two previous tables.
+- Same rows in another season cannot satisfy a missing table.
+- The live archive candidate validates as `publish` without weakening genuine identity, multiplicity, or row-loss failures.
+
 ## Out of Scope
 
 - rewriting the archive scraper;
