@@ -83,30 +83,47 @@ ARCHIVE_TABLE_EXTRACTOR_JS = r"""() => {
 
     tables.forEach(table => {
         // Attempt to find a preceding header to identify the league OR the section (Round)
-        let sibling = table.previousElementSibling;
         let leagueName = "Unbekannt";
         let initialSection = "";
-        let lookback = 0;
+        const maxParentLevels = 3;
+        const maxSiblingLookback = 15;
+        const maxHeadingLength = 240;
+        let scope = table;
 
-        while (sibling && lookback < 15) {
-            const txt = sibling.innerText ? sibling.innerText.trim() : "";
-            // Keep the closest preceding league heading.
-            if (
-                leagueName === "Unbekannt"
-                && txt.match(/(Bezirksliga|Klasse|Oberliga|Verbandsliga|Bundesliga|Pokal)/i)
-            ) {
-                leagueName = txt;
-            }
-            // Check for Section/Round info (e.g. "Achtelfinale", "Runde 1")
-            // prioritize the closest one for section
-            if (!initialSection && txt.match(/(Finale|Runde|Spieltag|Gruppe)/i)) {
-                initialSection = txt;
+        for (let parentLevel = 0; scope && parentLevel <= maxParentLevels; parentLevel++) {
+            let sibling = scope.previousElementSibling;
+            let lookback = 0;
+
+            while (sibling && lookback < maxSiblingLookback) {
+                const txt = sibling.innerText ? sibling.innerText.trim() : "";
+                const isPlausibleHeading = txt.length > 0 && txt.length <= maxHeadingLength;
+
+                // Keep the closest preceding league heading across each bounded scope.
+                if (
+                    leagueName === "Unbekannt"
+                    && isPlausibleHeading
+                    && txt.match(/(Bezirksliga|Klasse|Oberliga|Verbandsliga|Bundesliga|Pokal|Meisterschaft)/i)
+                ) {
+                    leagueName = txt;
+                }
+                // Check for Section/Round info (e.g. "Achtelfinale", "Runde 1")
+                // prioritize the closest one for section
+                if (
+                    !initialSection
+                    && isPlausibleHeading
+                    && txt.match(/(Finale|Runde|Spieltag|Gruppe)/i)
+                ) {
+                    initialSection = txt;
+                }
+
+                if (leagueName !== "Unbekannt" && initialSection) break;
+
+                sibling = sibling.previousElementSibling;
+                lookback++;
             }
 
             if (leagueName !== "Unbekannt" && initialSection) break;
-
-            sibling = sibling.previousElementSibling;
-            lookback++;
+            scope = scope.parentElement;
         }
 
         // Extract rows with Section/Round context

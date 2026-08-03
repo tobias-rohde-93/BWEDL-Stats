@@ -42,6 +42,15 @@ class ValidationResult:
         }
 
 
+@dataclass(frozen=True)
+class _ArchiveTableRecord:
+    canonical_season: str
+    canonical_title_identity: tuple[str, str]
+    row_count: int
+    rows_fingerprint: str
+    label: str
+
+
 REQUIRED_RANKING_CATEGORIES = (
     "Bezirksliga",
     "A-Klasse",
@@ -667,6 +676,21 @@ def _archive_fingerprint(record: Any) -> str | None:
         return None
 
 
+def _archive_rows_fingerprint(rows: Any) -> str | None:
+    if not isinstance(rows, list) or not _is_strict_json(rows):
+        return None
+    try:
+        return json.dumps(
+            rows,
+            sort_keys=True,
+            ensure_ascii=False,
+            allow_nan=False,
+            separators=(",", ":"),
+        )
+    except (TypeError, ValueError):
+        return None
+
+
 def _archive_table_identity(season: Any, league: Any) -> tuple[str, str] | None:
     canonical_season = _parse_archive_season(season)
     if canonical_season is None or not isinstance(league, str) or not league.strip():
@@ -695,6 +719,13 @@ def _archive_table_identity(season: Any, league: Any) -> tuple[str, str] | None:
     title = re.sub(r"[_\W]+", " ", title, flags=re.UNICODE)
     title = re.sub(r"\s+", " ", title).strip()
     return canonical_season, title
+
+
+def _archive_title_has_structural_partition(identity: tuple[str, str]) -> bool:
+    return re.search(
+        r"\b(?:gruppe|runde|spieltag|achtelfinale|viertelfinale|halbfinale|finale)\b",
+        identity[1],
+    ) is not None
 
 
 def _is_strict_json(value: Any) -> bool:
@@ -757,17 +788,12 @@ def validate_archive_payloads(
 
     def inspect_tables(
         payload: Any, label: str, seasons: set[Any]
-    ) -> tuple[
-        set[str],
-        dict[tuple[str, str], list[int]],
-        dict[tuple[str, str], str],
-    ]:
+    ) -> tuple[set[str], list[_ArchiveTableRecord]]:
         fingerprints: set[str] = set()
-        counts: dict[tuple[str, str], list[int]] = {}
-        labels: dict[tuple[str, str], str] = {}
+        records: list[_ArchiveTableRecord] = []
         if not isinstance(payload, list) or not payload:
             reasons.append(f"{label} archive tables must be a nonempty list")
-            return fingerprints, counts, labels
+            return fingerprints, records
         for record in payload:
             fingerprint = _archive_fingerprint(record)
             if fingerprint is None:
@@ -789,17 +815,29 @@ def validate_archive_payloads(
                 reasons.append(f"{label} archive tables have duplicate record")
             fingerprints.add(fingerprint)
             identity = _archive_table_identity(season, league)
-            if identity is not None and isinstance(rows, list):
-                counts.setdefault(identity, []).append(len(rows))
-                labels.setdefault(identity, f"{identity[0]} {league.strip()}")
-        return fingerprints, counts, labels
+            rows_fingerprint = _archive_rows_fingerprint(rows)
+            if (
+                identity is not None
+                and canonical_season is not None
+                and rows_fingerprint is not None
+            ):
+                records.append(
+                    _ArchiveTableRecord(
+                        canonical_season=canonical_season,
+                        canonical_title_identity=identity,
+                        row_count=len(rows),
+                        rows_fingerprint=rows_fingerprint,
+                        label=f"{canonical_season} {league.strip()}",
+                    )
+                )
+        return fingerprints, records
 
     candidate_players = inspect_data(candidate_data, "Candidate", candidate_seasons)
     previous_players = inspect_data(previous_data, "Previous", previous_seasons)
-    candidate_table_records, candidate_counts, _candidate_labels = inspect_tables(
+    candidate_table_fingerprints, candidate_table_records = inspect_tables(
         candidate_tables, "Candidate", candidate_seasons
     )
-    previous_table_records, previous_counts, previous_labels = inspect_tables(
+    previous_table_fingerprints, previous_table_records = inspect_tables(
         previous_tables, "Previous", previous_seasons
     )
 
@@ -810,6 +848,64 @@ def validate_archive_payloads(
         missing_records = previous_records - candidate_players[player_key]
         if missing_records:
             reasons.append(f"Candidate archive player {player_key} lost {len(missing_records)} record(s)")
+    unmatched_previous = set(range(len(previous_table_records)))
+    unmatched_candidate = set(range(len(candidate_table_records)))
+    candidate_exact_matches: dict[tuple[str, str], list[int]] = {}
+    for candidate_index, record in enumerate(candidate_table_records):
+        key = (record.canonical_season, record.rows_fingerprint)
+        candidate_exact_matches.setdefault(key, []).append(candidate_index)
+
+    for previous_index, previous_record in enumerate(previous_table_records):
+        key = (previous_record.canonical_season, previous_record.rows_fingerprint)
+        available = [
+            candidate_index
+            for candidate_index in candidate_exact_matches.get(key, [])
+            if candidate_index in unmatched_candidate
+            and (
+                candidate_table_records[candidate_index].canonical_title_identity
+                == previous_record.canonical_title_identity
+                or (
+                    not _archive_title_has_structural_partition(
+                        previous_record.canonical_title_identity
+                    )
+                    and not _archive_title_has_structural_partition(
+                        candidate_table_records[
+                            candidate_index
+                        ].canonical_title_identity
+                    )
+                )
+            )
+        ]
+        if not available:
+            continue
+        candidate_index = next(
+            (
+                index
+                for index in available
+                if candidate_table_records[index].canonical_title_identity
+                == previous_record.canonical_title_identity
+            ),
+            available[0],
+        )
+        unmatched_previous.remove(previous_index)
+        unmatched_candidate.remove(candidate_index)
+
+    previous_counts: dict[tuple[str, str], list[int]] = {}
+    previous_labels: dict[tuple[str, str], str] = {}
+    for previous_index in unmatched_previous:
+        record = previous_table_records[previous_index]
+        previous_counts.setdefault(record.canonical_title_identity, []).append(
+            record.row_count
+        )
+        previous_labels.setdefault(record.canonical_title_identity, record.label)
+
+    candidate_counts: dict[tuple[str, str], list[int]] = {}
+    for candidate_index in unmatched_candidate:
+        record = candidate_table_records[candidate_index]
+        candidate_counts.setdefault(record.canonical_title_identity, []).append(
+            record.row_count
+        )
+
     for identity, previous_row_counts in previous_counts.items():
         candidate_row_counts = candidate_counts.get(identity, [])
         label = previous_labels[identity]
@@ -831,8 +927,8 @@ def validate_archive_payloads(
         "previous_players": len(previous_players),
         "candidate_records": sum(len(items) for items in candidate_players.values()),
         "previous_records": sum(len(items) for items in previous_players.values()),
-        "candidate_tables": len(candidate_table_records),
-        "previous_tables": len(previous_table_records),
+        "candidate_tables": len(candidate_table_fingerprints),
+        "previous_tables": len(previous_table_fingerprints),
         "candidate_seasons": len(candidate_seasons),
         "previous_seasons": len(previous_seasons),
     }

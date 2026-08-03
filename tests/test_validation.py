@@ -914,6 +914,115 @@ def test_archive_payload_accepts_current_title_for_legacy_championship() -> None
     assert result.decision is Decision.PUBLISH
 
 
+def test_archive_payload_reconciles_exact_rows_after_same_season_title_correction() -> None:
+    data = {"p1": [archive_record("20/22")]}
+    rows = [
+        ["Runde/Info", "Pl.", "Tabelle", "Sp.", "Punkte"],
+        ["", "1", "DC Beispiel", "8", "16"],
+        ["", "2", "SV Muster", "8", "12"],
+    ]
+    previous_tables = [
+        {
+            "season": "2020/2022",
+            "league": "C-Klassen-Meisterschaft, Platz 1-4_2020-2022",
+            "rows": deepcopy(rows),
+        }
+    ]
+    candidate_tables = [
+        {
+            "season": "20/22",
+            "league": "BWEDL e.V. Saison 2020-2022 - Mix-C-Klasse",
+            "rows": deepcopy(rows),
+        }
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_blocks_changed_rows_under_different_title() -> None:
+    data = {"p1": [archive_record("20/22")]}
+    previous_tables = [
+        archive_table(
+            "2020/2022",
+            league="C-Klassen-Meisterschaft, Platz 1-4_2020-2022",
+            marker=1,
+            row_count=5,
+        )
+    ]
+    candidate_tables = [
+        archive_table(
+            "20/22",
+            league="BWEDL e.V. Saison 2020-2022 - Mix-C-Klasse",
+            marker=20,
+            row_count=5,
+        )
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_does_not_reconcile_identical_rows_across_seasons() -> None:
+    data = {"p1": [archive_record("20/22")]}
+    previous_table = archive_table(
+        "2020/2022",
+        league="C-Klassen-Meisterschaft, Platz 1-4_2020-2022",
+        marker=1,
+        row_count=5,
+    )
+    candidate_table = {
+        **deepcopy(previous_table),
+        "season": "2024/2025",
+        "league": "BWEDL e.V. Saison 2024-2025 - Mix-C-Klasse",
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_consumes_exact_row_match_only_once() -> None:
+    data = {"p1": [archive_record("20/22")]}
+    rows = archive_table("20/22", marker=1, row_count=5)["rows"]
+    previous_tables = [
+        {
+            "season": "2020/2022",
+            "league": "Historical label one",
+            "rows": deepcopy(rows),
+        },
+        {
+            "season": "20/22",
+            "league": "Historical label two",
+            "rows": deepcopy(rows),
+        },
+    ]
+    candidate_tables = [
+        {
+            "season": "2020-2022",
+            "league": "Corrected current label",
+            "rows": deepcopy(rows),
+        }
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
 def test_archive_payload_keeps_c_class_groups_distinct() -> None:
     data = {"p1": [archive_record("25/26")]}
     previous_tables = [archive_table("25/26", league="C-Klasse Gruppe 1")]
