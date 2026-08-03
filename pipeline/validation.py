@@ -908,6 +908,20 @@ def validate_archive_payloads(
                         ].canonical_title_identity
                     )
                 )
+                or (
+                    previous_record.canonical_title_identity[1] == "unbekannt"
+                    and _archive_competition_family(
+                        candidate_table_records[
+                            candidate_index
+                        ].canonical_title_identity
+                    )
+                    is not None
+                    and not _archive_title_has_structural_partition(
+                        candidate_table_records[
+                            candidate_index
+                        ].canonical_title_identity
+                    )
+                )
             )
         ]
         if not available:

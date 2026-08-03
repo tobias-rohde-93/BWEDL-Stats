@@ -1004,6 +1004,161 @@ def test_archive_payload_reconciles_exact_rows_with_same_named_family(
     assert result.decision is Decision.PUBLISH
 
 
+def test_archive_payload_reconciles_legacy_unknown_to_meaningful_exact_rows() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": "Unbekannt",
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": "LIGAPOKAL 2025/2026",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_does_not_reconcile_unknown_to_structural_title() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": "Unbekannt",
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": "Pokal Final 1",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_does_not_reconcile_meaningful_title_to_unknown() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": "LIGAPOKAL 2025/2026",
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": "Unbekannt",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_does_not_treat_generic_title_as_unknown_sentinel() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_table = {
+        "season": "2025/2026",
+        "league": "Unrelated Alpha",
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": "LIGAPOKAL 2025/2026",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_does_not_reconcile_unknown_across_seasons() -> None:
+    data = {"p1": [archive_record("24/25")]}
+    rows = archive_table("24/25", row_count=3)["rows"]
+    previous_table = {
+        "season": "2024/2025",
+        "league": "Unbekannt",
+        "rows": deepcopy(rows),
+    }
+    candidate_table = {
+        "season": "25/26",
+        "league": "LIGAPOKAL 2025/2026",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_does_not_reconcile_unknown_with_changed_rows() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_table = archive_table(
+        "2025/2026", league="Unbekannt", marker=1, row_count=3
+    )
+    candidate_table = archive_table(
+        "25/26", league="LIGAPOKAL 2025/2026", marker=20, row_count=3
+    )
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], [previous_table]
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_consumes_unknown_exact_row_match_only_once() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_tables = [
+        {
+            "season": "2025/2026",
+            "league": "Unbekannt",
+            "rows": deepcopy(rows),
+        },
+        {
+            "season": "25/26",
+            "league": "Unbekannt",
+            "rows": deepcopy(rows),
+        },
+    ]
+    candidate_table = {
+        "season": "2025-2026",
+        "league": "LIGAPOKAL 2025/2026",
+        "rows": deepcopy(rows),
+    }
+
+    result = validation.validate_archive_payloads(
+        data, data, [candidate_table], previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table count loss" in " ".join(result.reasons).lower()
+
+
 def test_archive_payload_blocks_changed_rows_under_different_title() -> None:
     data = {"p1": [archive_record("20/22")]}
     previous_tables = [
