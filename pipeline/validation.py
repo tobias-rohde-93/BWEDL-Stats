@@ -4,7 +4,7 @@ import json
 import math
 import re
 import unicodedata
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from enum import StrEnum
 from types import MappingProxyType
@@ -877,66 +877,85 @@ def validate_archive_payloads(
         key = (record.canonical_season, record.rows_fingerprint)
         candidate_exact_matches.setdefault(key, []).append(candidate_index)
 
-    for previous_index, previous_record in enumerate(previous_table_records):
-        key = (previous_record.canonical_season, previous_record.rows_fingerprint)
-        available = [
-            candidate_index
-            for candidate_index in candidate_exact_matches.get(key, [])
-            if candidate_index in unmatched_candidate
-            and (
-                candidate_table_records[candidate_index].canonical_title_identity
-                == previous_record.canonical_title_identity
-                or (
-                    _archive_competition_family(
-                        previous_record.canonical_title_identity
-                    )
-                    is not None
-                    and _archive_competition_family(
-                        previous_record.canonical_title_identity
-                    )
-                    == _archive_competition_family(
-                        candidate_table_records[
-                            candidate_index
-                        ].canonical_title_identity
-                    )
-                    and not _archive_title_has_structural_partition(
-                        previous_record.canonical_title_identity
-                    )
-                    and not _archive_title_has_structural_partition(
-                        candidate_table_records[
-                            candidate_index
-                        ].canonical_title_identity
-                    )
-                )
-                or (
-                    previous_record.canonical_title_identity[1] == "unbekannt"
-                    and _archive_competition_family(
-                        candidate_table_records[
-                            candidate_index
-                        ].canonical_title_identity
-                    )
-                    is not None
-                    and not _archive_title_has_structural_partition(
-                        candidate_table_records[
-                            candidate_index
-                        ].canonical_title_identity
-                    )
-                )
-            )
-        ]
-        if not available:
-            continue
-        candidate_index = next(
-            (
-                index
-                for index in available
-                if candidate_table_records[index].canonical_title_identity
-                == previous_record.canonical_title_identity
-            ),
-            available[0],
+    def table_match_sort_key(
+        record: _ArchiveTableRecord,
+    ) -> tuple[str, str, tuple[str, str], str]:
+        return (
+            record.canonical_season,
+            record.rows_fingerprint,
+            record.canonical_title_identity,
+            record.label,
         )
-        unmatched_previous.remove(previous_index)
-        unmatched_candidate.remove(candidate_index)
+
+    def consume_exact_matches(
+        is_eligible: Callable[[_ArchiveTableRecord, _ArchiveTableRecord], bool],
+    ) -> None:
+        previous_order = sorted(
+            unmatched_previous,
+            key=lambda index: table_match_sort_key(previous_table_records[index]),
+        )
+        for previous_index in previous_order:
+            previous_record = previous_table_records[previous_index]
+            key = (previous_record.canonical_season, previous_record.rows_fingerprint)
+            available = sorted(
+                (
+                    candidate_index
+                    for candidate_index in candidate_exact_matches.get(key, [])
+                    if candidate_index in unmatched_candidate
+                    and is_eligible(
+                        previous_record, candidate_table_records[candidate_index]
+                    )
+                ),
+                key=lambda index: table_match_sort_key(candidate_table_records[index]),
+            )
+            if not available:
+                continue
+            unmatched_previous.remove(previous_index)
+            unmatched_candidate.remove(available[0])
+
+    def has_same_identity(
+        previous_record: _ArchiveTableRecord, candidate_record: _ArchiveTableRecord
+    ) -> bool:
+        return (
+            previous_record.canonical_title_identity
+            == candidate_record.canonical_title_identity
+        )
+
+    def has_same_explicit_family(
+        previous_record: _ArchiveTableRecord, candidate_record: _ArchiveTableRecord
+    ) -> bool:
+        previous_family = _archive_competition_family(
+            previous_record.canonical_title_identity
+        )
+        return (
+            previous_record.canonical_title_identity
+            != candidate_record.canonical_title_identity
+            and previous_family is not None
+            and previous_family
+            == _archive_competition_family(candidate_record.canonical_title_identity)
+            and not _archive_title_has_structural_partition(
+                previous_record.canonical_title_identity
+            )
+            and not _archive_title_has_structural_partition(
+                candidate_record.canonical_title_identity
+            )
+        )
+
+    def migrates_legacy_unknown(
+        previous_record: _ArchiveTableRecord, candidate_record: _ArchiveTableRecord
+    ) -> bool:
+        return (
+            previous_record.canonical_title_identity[1] == "unbekannt"
+            and _archive_competition_family(candidate_record.canonical_title_identity)
+            is not None
+            and not _archive_title_has_structural_partition(
+                candidate_record.canonical_title_identity
+            )
+        )
+
+    consume_exact_matches(has_same_identity)
+    consume_exact_matches(has_same_explicit_family)
+    consume_exact_matches(migrates_legacy_unknown)
 
     previous_counts: dict[tuple[str, str], list[int]] = {}
     previous_labels: dict[tuple[str, str], str] = {}

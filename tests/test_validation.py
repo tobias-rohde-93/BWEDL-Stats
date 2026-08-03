@@ -1159,6 +1159,49 @@ def test_archive_payload_consumes_unknown_exact_row_match_only_once() -> None:
     assert "table count loss" in " ".join(result.reasons).lower()
 
 
+@pytest.mark.parametrize("reverse_previous", [False, True])
+@pytest.mark.parametrize("reverse_candidate", [False, True])
+def test_archive_payload_exact_row_matching_is_order_invariant(
+    reverse_previous: bool, reverse_candidate: bool
+) -> None:
+    data = {"p1": [archive_record("25/26")]}
+    rows = archive_table("25/26", row_count=3)["rows"]
+    previous_tables = [
+        {
+            "season": "2025/2026",
+            "league": "Unbekannt",
+            "rows": deepcopy(rows),
+        },
+        {
+            "season": "25/26",
+            "league": "Ligapokal",
+            "rows": deepcopy(rows),
+        },
+    ]
+    candidate_tables = [
+        {
+            "season": "2025-2026",
+            "league": "Ligapokal",
+            "rows": deepcopy(rows),
+        },
+        {
+            "season": "2025/2026",
+            "league": "A-Klasse",
+            "rows": deepcopy(rows),
+        },
+    ]
+    if reverse_previous:
+        previous_tables.reverse()
+    if reverse_candidate:
+        candidate_tables.reverse()
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
 def test_archive_payload_blocks_changed_rows_under_different_title() -> None:
     data = {"p1": [archive_record("20/22")]}
     previous_tables = [
