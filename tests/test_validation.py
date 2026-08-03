@@ -876,6 +876,96 @@ def archive_table(season: str, *, league: str = "A-Klasse", marker: int = 1) -> 
     return {"season": season, "league": league, "rows": [{"rank": marker, "name": "Player"}]}
 
 
+def test_archive_payload_accepts_current_title_for_legacy_championship() -> None:
+    previous_data = {"p1": [archive_record("25/26")]}
+    candidate_data = deepcopy(previous_data)
+    previous_tables = [
+        {
+            "season": "2025/2026",
+            "league": "MM_C-Klasse 2025-26",
+            "rows": [{"rank": 1}, {"rank": 2}],
+        }
+    ]
+    candidate_tables = [
+        {
+            "season": "2025/2026",
+            "league": "Bwedl e.V. 2025/2026 C-Klasse Meisterschaft",
+            "rows": [{"rank": 1}, {"rank": 2}],
+        }
+    ]
+
+    result = validation.validate_archive_payloads(
+        candidate_data, previous_data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_keeps_c_class_groups_distinct() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [archive_table("25/26", league="C-Klasse Gruppe 1")]
+    candidate_tables = [archive_table("25/26", league="C-Klasse Gruppe 2")]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_keeps_cup_rounds_distinct() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [archive_table("25/26", league="Pokal Runde 16-32")]
+    candidate_tables = [archive_table("25/26", league="Pokal Runde 32-64")]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "table" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_ignores_presentation_date_in_title() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [archive_table("25/26", league="A-Klasse")]
+    candidate_tables = [
+        archive_table("2025/2026", league="Bwedl e.V. A-Klasse am 13.06.2026")
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_blocks_row_loss_after_title_normalization() -> None:
+    data = {"p1": [archive_record("25/26")]}
+    previous_tables = [
+        {
+            "season": "2025/2026",
+            "league": "MM_C-Klasse 2025-26",
+            "rows": [{"rank": 1}, {"rank": 2}],
+        }
+    ]
+    candidate_tables = [
+        {
+            "season": "2025/2026",
+            "league": "Bwedl e.V. 2025/2026 C-Klasse Meisterschaft",
+            "rows": [{"rank": 1}],
+        }
+    ]
+
+    result = validation.validate_archive_payloads(
+        data, data, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "row count loss" in " ".join(result.reasons).lower()
+
+
 @pytest.mark.parametrize(
     ("candidate_data", "candidate_tables", "reason"),
     [

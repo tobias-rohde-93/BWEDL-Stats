@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import re
+import unicodedata
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from enum import StrEnum
@@ -666,6 +667,35 @@ def _archive_fingerprint(record: Any) -> str | None:
         return None
 
 
+def _archive_table_identity(season: Any, league: Any) -> tuple[str, str] | None:
+    canonical_season = _parse_archive_season(season)
+    if canonical_season is None or not isinstance(league, str) or not league.strip():
+        return None
+    title = unicodedata.normalize("NFKC", league).casefold()
+    title = re.sub(r"\bbwedl\s*e\.?\s*v\.?", " ", title)
+    title = re.sub(r"\bam\s+\d{1,2}\.\d{1,2}\.\d{4}\b", " ", title)
+
+    def remove_matching_season(match: re.Match[str]) -> str:
+        normalized = re.sub(r"\s*[/_.-]\s*", "/", match.group())
+        if _parse_archive_season(normalized) == canonical_season:
+            return " "
+        return match.group()
+
+    title = re.sub(
+        r"(?<!\d)(?:\d{4}|\d{2})\s*[/_.-]\s*(?:\d{4}|\d{2})(?!\d)",
+        remove_matching_season,
+        title,
+    )
+    title = re.sub(r"[_\W]+", " ", title, flags=re.UNICODE)
+    title = re.sub(
+        r"\b(?:mm|mannschafts?meisterschaft(?:en)?|meisterschaft(?:en)?)\b",
+        " ",
+        title,
+    )
+    title = re.sub(r"\s+", " ", title).strip()
+    return canonical_season, title
+
+
 def _is_strict_json(value: Any) -> bool:
     if value is None or isinstance(value, (str, bool, int)):
         return True
@@ -724,12 +754,19 @@ def validate_archive_payloads(
             fingerprints[player_key] = seen
         return fingerprints
 
-    def inspect_tables(payload: Any, label: str, seasons: set[Any]) -> tuple[set[str], dict[tuple[str, str], int]]:
+    def inspect_tables(
+        payload: Any, label: str, seasons: set[Any]
+    ) -> tuple[
+        set[str],
+        dict[tuple[str, str], list[int]],
+        dict[tuple[str, str], str],
+    ]:
         fingerprints: set[str] = set()
-        counts: dict[tuple[str, str], int] = {}
+        counts: dict[tuple[str, str], list[int]] = {}
+        labels: dict[tuple[str, str], str] = {}
         if not isinstance(payload, list) or not payload:
             reasons.append(f"{label} archive tables must be a nonempty list")
-            return fingerprints, counts
+            return fingerprints, counts, labels
         for record in payload:
             fingerprint = _archive_fingerprint(record)
             if fingerprint is None:
@@ -750,15 +787,20 @@ def validate_archive_payloads(
             if fingerprint in fingerprints:
                 reasons.append(f"{label} archive tables have duplicate record")
             fingerprints.add(fingerprint)
-            if canonical_season is not None and isinstance(league, str) and league.strip():
-                key = (canonical_season, league.strip())
-                counts[key] = counts.get(key, 0) + 1
-        return fingerprints, counts
+            identity = _archive_table_identity(season, league)
+            if identity is not None and isinstance(rows, list):
+                counts.setdefault(identity, []).append(len(rows))
+                labels.setdefault(identity, f"{identity[0]} {league.strip()}")
+        return fingerprints, counts, labels
 
     candidate_players = inspect_data(candidate_data, "Candidate", candidate_seasons)
     previous_players = inspect_data(previous_data, "Previous", previous_seasons)
-    candidate_table_records, candidate_counts = inspect_tables(candidate_tables, "Candidate", candidate_seasons)
-    previous_table_records, previous_counts = inspect_tables(previous_tables, "Previous", previous_seasons)
+    candidate_table_records, candidate_counts, _candidate_labels = inspect_tables(
+        candidate_tables, "Candidate", candidate_seasons
+    )
+    previous_table_records, previous_counts, previous_labels = inspect_tables(
+        previous_tables, "Previous", previous_seasons
+    )
 
     for player_key, previous_records in previous_players.items():
         if player_key not in candidate_players:
@@ -767,12 +809,19 @@ def validate_archive_payloads(
         missing_records = previous_records - candidate_players[player_key]
         if missing_records:
             reasons.append(f"Candidate archive player {player_key} lost {len(missing_records)} record(s)")
-    missing_tables = previous_table_records - candidate_table_records
-    if missing_tables:
-        reasons.append(f"Candidate archive lost {len(missing_tables)} table record(s)")
-    for key, previous_count in previous_counts.items():
-        if candidate_counts.get(key, 0) < previous_count:
-            reasons.append(f"Candidate archive table count loss for {key[0]} {key[1]}")
+    for identity, previous_row_counts in previous_counts.items():
+        candidate_row_counts = candidate_counts.get(identity, [])
+        label = previous_labels[identity]
+        if len(candidate_row_counts) < len(previous_row_counts):
+            reasons.append(f"Candidate archive table count loss for {label}")
+            continue
+        candidate_sorted = sorted(candidate_row_counts, reverse=True)
+        previous_sorted = sorted(previous_row_counts, reverse=True)
+        if any(
+            candidate < previous
+            for candidate, previous in zip(candidate_sorted, previous_sorted)
+        ):
+            reasons.append(f"Candidate archive table row count loss for {label}")
 
     season_result = validate_archives(candidate_seasons, previous_seasons)
     reasons.extend(season_result.reasons)
