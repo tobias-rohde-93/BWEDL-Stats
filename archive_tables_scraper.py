@@ -76,6 +76,107 @@ def save_archive_tables(data, output_dir=Path(".")) -> Path:
     output_path.write_text(js_content, encoding="utf-8", newline="\n")
     return output_path
 
+
+ARCHIVE_TABLE_EXTRACTOR_JS = r"""() => {
+    const results = [];
+    const tables = Array.from(document.querySelectorAll('table'));
+
+    tables.forEach(table => {
+        // Attempt to find a preceding header to identify the league OR the section (Round)
+        let sibling = table.previousElementSibling;
+        let leagueName = "Unbekannt";
+        let initialSection = "";
+        let lookback = 0;
+
+        while (sibling && lookback < 15) {
+            const txt = sibling.innerText ? sibling.innerText.trim() : "";
+            // Keep the closest preceding league heading.
+            if (
+                leagueName === "Unbekannt"
+                && txt.match(/(Bezirksliga|Klasse|Oberliga|Verbandsliga|Bundesliga|Pokal)/i)
+            ) {
+                leagueName = txt;
+            }
+            // Check for Section/Round info (e.g. "Achtelfinale", "Runde 1")
+            // prioritize the closest one for section
+            if (!initialSection && txt.match(/(Finale|Runde|Spieltag|Gruppe)/i)) {
+                initialSection = txt;
+            }
+
+            if (leagueName !== "Unbekannt" && initialSection) break;
+
+            sibling = sibling.previousElementSibling;
+            lookback++;
+        }
+
+        // Extract rows with Section/Round context
+        // We iterate manually to capture "Header Rows" (e.g. "Runde 1" spanning all cols)
+        let currentAcc = [];
+        let currentSection = initialSection; // Start with external section info if found
+
+        const rows = Array.from(table.querySelectorAll('tr'));
+
+        // First pass: check if we have a header row
+        // Often the first row is headers: ["Datum", "Heim", ...]
+        // If we find headers, we want to add "Runde" to it.
+        rows.forEach(tr => {
+            const cells = Array.from(tr.querySelectorAll('td, th')).map(
+                td => td.innerText.trim().replace(/\n/g, ' ')
+            );
+
+            if (cells.length === 0) return;
+
+            const embeddedTitle = cells.length === 1
+                ? cells.find(cell => /(klasse|liga|pokal|meisterschaft)/i.test(cell))
+                : null;
+            if (embeddedTitle) {
+                leagueName = embeddedTitle;
+                return;
+            }
+
+            const rowText = cells.join(' ').toLowerCase();
+            const hasScore = /\d+:\d+/.test(rowText);
+            const isTableHeader = /heim|gast|tabelle|spiel-?nr/.test(rowText) && !/team/.test(rowText); // Avoid matching "Team" in club names
+
+            // Heuristic for Section Header:
+            // 1. Single cell
+            // 2. OR Multi-cell but NO score AND NO table header keywords (and looks like a title, e.g. "Achtelfinale")
+            const isSectionHeader = (cells.length === 1) || (!hasScore && !isTableHeader && cells.length > 1 && cells.some(c => /finale|runde|spieltag|gruppe/i.test(c)));
+
+            if (isSectionHeader && !isTableHeader) {
+                // Update current section
+                // Use the first non-empty cell as the section name
+                const sectionName = cells.find(c => c.length > 2);
+                if (sectionName) {
+                    currentSection = sectionName;
+                }
+            } else if (cells.length > 2 || (cells.length === 2 && hasScore)) {
+                // It's likely a data row
+                const newRow = [...cells];
+
+                if (isTableHeader) {
+                    // Add "Runde" header
+                    newRow.unshift("Runde/Info");
+                } else {
+                    // Add current section value (or empty if none)
+                    newRow.unshift(currentSection);
+                }
+
+                currentAcc.push(newRow);
+            }
+        });
+
+        if (currentAcc.length > 2) { // meaningful table
+            results.push({
+                league: leagueName,
+                rows: currentAcc
+            });
+        }
+    });
+    return results;
+}"""
+
+
 async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Tables Scrape from {ARCHIVE_URL}")
     async with AsyncDiagnosticSession(
@@ -197,95 +298,7 @@ async def scrape_archive_tables(output_dir=Path("."), artifacts_dir=Path("artifa
                              continue
                     
                     # Extract Tables on this page
-                    extracted_tables = await page.evaluate('''() => {
-                    const results = [];
-                    const tables = Array.from(document.querySelectorAll('table'));
-                    
-                    tables.forEach(table => {
-                        // Attempt to find a preceding header to identify the league OR the section (Round)
-                        let sibling = table.previousElementSibling;
-                        let leagueName = "Unbekannt";
-                        let initialSection = "";
-                        let lookback = 0;
-                        
-                        while(sibling && lookback < 15) {
-                            const txt = sibling.innerText ? sibling.innerText.trim() : "";
-                            // Check for common league names
-                            if (txt.match(/(Bezirksliga|Klasse|Oberliga|Verbandsliga|Bundesliga|Pokal)/i)) {
-                                leagueName = txt;
-                            }
-                            // Check for Section/Round info (e.g. "Achtelfinale", "Runde 1")
-                            // prioritize the closest one for section
-                            if (!initialSection && txt.match(/(Finale|Runde|Spieltag|Gruppe)/i)) {
-                                initialSection = txt;
-                            }
-                            
-                            if (leagueName !== "Unbekannt" && initialSection) break;
-                            
-                            sibling = sibling.previousElementSibling;
-                            lookback++;
-                        }
-                        
-                        // Extract rows with Section/Round context
-                        // We iterate manually to capture "Header Rows" (e.g. "Runde 1" spanning all cols)
-                        let currentAcc = [];
-                        let currentSection = initialSection; // Start with external section info if found
-                        
-                        const rows = Array.from(table.querySelectorAll('tr'));
-                        
-                        // First pass: check if we have a header row
-                        // Often the first row is headers: ["Datum", "Heim", ...]
-                        // If we find headers, we want to add "Runde" to it.
-                        
-                        rows.forEach((tr, index) => {
-                            const cells = Array.from(tr.querySelectorAll('td, th')).map(td => td.innerText.trim().replace(/\\n/g, ' '));
-                            
-                            if (cells.length === 0) return;
-                            
-                            const rowText = cells.join(' ').toLowerCase();
-                            const hasScore = /\d+:\d+/.test(rowText);
-                            const isTableHeader = /heim|gast|tabelle|spiel-?nr/.test(rowText) && !/team/.test(rowText); // Avoid matching "Team" in club names
-                            
-                            // Heuristic for Section Header:
-                            // 1. Single cell
-                            // 2. OR Multi-cell but NO score AND NO table header keywords (and looks like a title, e.g. "Achtelfinale")
-                            const isSectionHeader = (cells.length === 1) || (!hasScore && !isTableHeader && cells.length > 1 && cells.some(c => /finale|runde|spieltag|gruppe/i.test(c)));
-
-                            if (isSectionHeader && !isTableHeader) {
-                                // Update current section
-                                // Use the first non-empty cell as the section name
-                                const sectionName = cells.find(c => c.length > 2);
-                                if (sectionName) {
-                                    currentSection = sectionName;
-                                }
-                            } else if (cells.length > 2 || (cells.length === 2 && hasScore)) {
-                                // It's likely a data row
-                                
-                                // CLONE the cells array
-                                let newRow = [...cells];
-                                
-                                if (isTableHeader) {
-                                    // Add "Runde" header
-                                    newRow.unshift("Runde/Info");
-                                } else {
-                                    // Add current section value (or empty if none)
-                                    newRow.unshift(currentSection);
-                                }
-                                
-                                currentAcc.push(newRow);
-                            }
-                        });
-
-
-                        if (currentAcc.length > 2) { // meaningful table
-                             results.push({
-                                 league: leagueName,
-                                 rows: currentAcc
-                             });
-                        }
-                    });
-                    return results;
-                }''')
+                    extracted_tables = await page.evaluate(ARCHIVE_TABLE_EXTRACTOR_JS)
                 
                     clean_season = season_name.replace("Saison ", "").strip()
                     

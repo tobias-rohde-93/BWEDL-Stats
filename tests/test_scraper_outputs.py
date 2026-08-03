@@ -49,6 +49,29 @@ def test_archive_table_season_link_requires_same_origin_archive_url() -> None:
     )
 
 
+def test_archive_table_extractor_recognizes_embedded_title() -> None:
+    payload = json.dumps(
+        {
+            "source": archive_tables_scraper.ARCHIVE_TABLE_EXTRACTOR_JS,
+            "html": (
+                REPOSITORY_ROOT
+                / "tests"
+                / "fixtures"
+                / "archive_table_embedded_title.html"
+            ).read_text(encoding="utf-8"),
+        }
+    )
+    result = subprocess.run(
+        ["node", str(REPOSITORY_ROOT / "tests" / "test_archive_table_extractor.js")],
+        cwd=REPOSITORY_ROOT,
+        input=payload,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+
+
 def test_archive_player_season_and_sub_links_require_same_origin() -> None:
     assert not archive_scraper.is_archive_season_link(
         "https://external.example/archiv/2025-2026/",
