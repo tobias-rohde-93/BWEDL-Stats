@@ -4396,7 +4396,6 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.padding = "20px";
         container.className = "fade-in";
         const rankingSeasonNotice = createSeasonNotice('ranking');
-        if (rankingSeasonNotice) container.appendChild(rankingSeasonNotice);
 
         // Logic to get players for this ranking
         // We match p.league with rankName
@@ -4415,6 +4414,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 container.innerHTML = '<div style="color: #94a3b8;">Keine Daten verfügbar.</div>';
             }
+            if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
             contentArea.appendChild(container);
             return;
         }
@@ -4501,6 +4501,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
 
         container.innerHTML = html;
+        if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
         contentArea.appendChild(container);
     }
 
@@ -5586,8 +5587,6 @@ document.addEventListener('DOMContentLoaded', () => {
         title.style.color = "#60a5fa";
         title.style.marginBottom = "20px";
         card.appendChild(title);
-        const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
-        if (matchPreviewSeasonNotice) card.appendChild(matchPreviewSeasonNotice);
 
         // LEAGUE SELECTOR
         const leagueGroup = document.createElement('div');
@@ -5699,6 +5698,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // RESULT CONTAINER
         const resultDiv = document.createElement('div');
         resultDiv.id = 'preview-results';
+        const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
+        if (matchPreviewSeasonNotice) container.appendChild(matchPreviewSeasonNotice);
         container.appendChild(resultDiv);
 
         contentArea.appendChild(container);

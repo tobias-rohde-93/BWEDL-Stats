@@ -71,8 +71,9 @@ function extractFunction(name) {
 
 function createDocument() {
     class Element {
-        constructor(tagName) {
+        constructor(tagName, ownerDocument) {
             this.tagName = tagName.toUpperCase();
+            this.ownerDocument = ownerDocument;
             this.children = [];
             this.className = '';
             this.dataset = {};
@@ -80,10 +81,40 @@ function createDocument() {
             this.listeners = {};
             this.textContent = '';
             this.type = '';
+            this.id = '';
+            this.value = '';
+            this.options = [];
+            this.parentElement = null;
+            this.style = {};
+            this.classList = {
+                add: (...names) => {
+                    const classes = new Set(this.className.split(/\s+/).filter(Boolean));
+                    names.forEach((name) => classes.add(name));
+                    this.className = [...classes].join(' ');
+                },
+                remove: (...names) => {
+                    const removed = new Set(names);
+                    this.className = this.className.split(/\s+/).filter((name) => !removed.has(name)).join(' ');
+                },
+                contains: (name) => this.className.split(/\s+/).includes(name),
+            };
         }
 
         appendChild(child) {
             this.children.push(child);
+            child.parentElement = this;
+            return child;
+        }
+
+        append(...children) {
+            children.forEach((child) => this.appendChild(child));
+        }
+
+        insertBefore(child, reference) {
+            const referenceIndex = this.children.indexOf(reference);
+            if (referenceIndex === -1) return this.appendChild(child);
+            this.children.splice(referenceIndex, 0, child);
+            child.parentElement = this;
             return child;
         }
 
@@ -95,16 +126,87 @@ function createDocument() {
             this.listeners[name] = handler;
         }
 
-        querySelectorAll(tagName) {
-            const target = tagName.toUpperCase();
+        querySelectorAll(selector) {
+            const matches = (element) => {
+                if (selector.startsWith('.')) {
+                    return element.className.split(/\s+/).includes(selector.slice(1));
+                }
+                if (selector.startsWith('#')) return element.id === selector.slice(1);
+                return element.tagName === selector.toUpperCase();
+            };
             return this.children.flatMap((child) => [
-                ...(child.tagName === target ? [child] : []),
-                ...child.querySelectorAll(target),
+                ...(matches(child) ? [child] : []),
+                ...child.querySelectorAll(selector),
             ]);
+        }
+
+        querySelector(selector) {
+            return this.querySelectorAll(selector)[0] || null;
+        }
+
+        contains(target) {
+            return target === this || this.children.some((child) => child.contains(target));
+        }
+
+        dispatchEvent(event) {
+            if (this.listeners[event.type]) this.listeners[event.type](event);
+        }
+
+        scrollIntoView() {}
+
+        set innerHTML(value) {
+            this._innerHTML = value;
+            this.children = [];
+        }
+
+        get innerHTML() {
+            return this._innerHTML || '';
         }
     }
 
-    return { createElement: (tagName) => new Element(tagName) };
+    const elementsById = new Map();
+    const document = {
+        createElement: (tagName) => new Element(tagName, document),
+        getElementById(id) {
+            if (!elementsById.has(id)) {
+                const element = new Element('div', document);
+                element.id = id;
+                elementsById.set(id, element);
+            }
+            return elementsById.get(id);
+        },
+        querySelectorAll: () => [],
+    };
+    return document;
+}
+
+function compileFunction(name, bindings) {
+    return new Function(
+        ...Object.keys(bindings),
+        `${extractFunction(name)}; return ${name};`,
+    )(...Object.values(bindings));
+}
+
+function makeSeasonNotice(document, status) {
+    return new Function(
+        'document',
+        'dataStatus',
+        'BwedlAppUtils',
+        `${extractFunction('createSeasonNotice')}; return createSeasonNotice;`,
+    )(document, status, BwedlAppUtils);
+}
+
+function seasonContexts(root) {
+    return root.querySelectorAll('.season-notice').map((notice) => notice.dataset.seasonContext);
+}
+
+function findById(root, id) {
+    if (root.id === id) return root;
+    for (const child of root.children) {
+        const match = findById(child, id);
+        if (match) return match;
+    }
+    return null;
 }
 
 const createSeasonNoticeSource = extractFunction('createSeasonNotice');
@@ -113,6 +215,11 @@ assert.doesNotMatch(createSeasonNoticeSource, /\.style\b|style\s*=/);
 const retainedStatus = {
     domains: {
         rankings: { season: '2025/26', state: 'retained' },
+    },
+};
+const publishedStatus = {
+    domains: {
+        rankings: { season: '2026/27', state: 'published' },
     },
 };
 const document = createDocument();
@@ -139,8 +246,8 @@ const createCurrentSeasonNotice = new Function(
     'dataStatus',
     'BwedlAppUtils',
     `${createSeasonNoticeSource}; return createSeasonNotice;`,
-)(currentDocument, { domains: { rankings: { season: '2026/27', state: 'current' } } }, {
-    buildSeasonNotice: () => ({ state: 'current', season: '2026/27' }),
+)(currentDocument, publishedStatus, {
+    buildSeasonNotice: BwedlAppUtils.buildSeasonNotice,
 });
 assert.equal(createCurrentSeasonNotice('ranking'), null);
 
@@ -163,27 +270,121 @@ assert.equal(buttons.length, 1);
 buttons[0].listeners.click();
 assert.deepEqual(navigationCalls, [['profile']]);
 
-const dashboardSource = extractFunction('renderDashboard');
-assert.equal((dashboardSource.match(/createSeasonNotice\('dashboard-profile'\)/g) || []).length, 1);
-assert.equal((dashboardSource.match(/createSeasonNotice\('top-20'\)/g) || []).length, 1);
-assert.match(
-    dashboardSource,
-    /if\s*\(\s*!myPlayerName\s*\)\s*\{[\s\S]*?createProfileOnboardingCard\(\)[\s\S]*?\}/,
+function runDashboard(status, playerName) {
+    const document = createDocument();
+    const contentArea = document.createElement('main');
+    const topBarTitle = document.createElement('div');
+    const navigationCalls = [];
+    const createSeasonNotice = makeSeasonNotice(document, status);
+    const createProfileOnboardingCard = new Function(
+        'document',
+        'navigateTo',
+        `${createProfileOnboardingCardSource}; return createProfileOnboardingCard;`,
+    )(document, (...args) => navigationCalls.push(args));
+    const players = playerName ? [{
+        name: playerName,
+        rank: 8,
+        league: 'Bezirksliga',
+        rounds: { R1: '54' },
+    }] : [];
+    const renderDashboard = compileFunction('renderDashboard', {
+        topBarTitle,
+        contentArea,
+        document,
+        myPlayerName: playerName,
+        myTeamName: null,
+        rankingData: { players },
+        calculatePlayerStats: () => ({ avg: 54, count: 1 }),
+        calculateTrend: () => null,
+        leagueData: { leagues: {} },
+        normalizeTeamName: (value) => value,
+        clubData: { clubs: [] },
+        navigateTo: (...args) => navigationCalls.push(args),
+        createSeasonNotice,
+        createProfileOnboardingCard,
+    });
+
+    renderDashboard();
+    return { contentArea, navigationCalls };
+}
+
+{
+    const { contentArea } = runDashboard(retainedStatus, 'Public Player');
+    assert.deepEqual(seasonContexts(contentArea).sort(), ['dashboard-profile', 'top-20']);
+    assert.equal(contentArea.querySelectorAll('.profile-onboarding-card').length, 0);
+}
+
+{
+    const { contentArea, navigationCalls } = runDashboard(retainedStatus, null);
+    assert.deepEqual(seasonContexts(contentArea), ['top-20']);
+    const cards = contentArea.querySelectorAll('.profile-onboarding-card');
+    assert.equal(cards.length, 1);
+    const action = cards[0].querySelector('button');
+    assert.ok(action, 'Expected onboarding action to be attached by renderDashboard');
+    action.listeners.click();
+    assert.deepEqual(navigationCalls, [['profile']]);
+}
+
+assert.deepEqual(
+    seasonContexts(runDashboard(publishedStatus, 'Public Player').contentArea),
+    [],
 );
-assert.equal((dashboardSource.match(/createProfileOnboardingCard\(\)/g) || []).length, 1);
+
+function runRenderer(name, context, status) {
+    const document = createDocument();
+    const contentArea = document.createElement('main');
+    const topBarTitle = document.createElement('div');
+    const createSeasonNotice = makeSeasonNotice(document, status);
+    const common = { document, contentArea, topBarTitle, createSeasonNotice };
+    let bindings;
+
+    if (name === 'renderRanking') {
+        bindings = {
+            ...common,
+            rankingData: { players: [], rankings: {} },
+        };
+    } else if (name === 'renderComparisonView') {
+        bindings = {
+            ...common,
+            window: { searchIndex: [] },
+            rankingData: { players: [] },
+            archiveData: {},
+        };
+    } else {
+        bindings = {
+            ...common,
+            leagueData: { leagues: {} },
+            rankingData: { players: [] },
+            detectNextMatch: () => [],
+            myPlayerName: null,
+        };
+    }
+
+    const renderer = compileFunction(name, bindings);
+    renderer(name === 'renderRanking' ? 'Bezirksliga' : undefined);
+    assert.deepEqual(seasonContexts(contentArea), status.domains.rankings.state === 'retained' ? [context] : []);
+    return contentArea;
+}
 
 for (const [renderer, context] of [
     ['renderRanking', 'ranking'],
     ['renderComparisonView', 'h2h'],
     ['renderMatchPreview', 'match-preview'],
 ]) {
-    const rendererSource = extractFunction(renderer);
-    assert.equal(
-        (rendererSource.match(new RegExp(`createSeasonNotice\\('${context}'\\)`, 'g')) || []).length,
-        1,
-        `Expected ${renderer} to add exactly one ${context} notice`,
-    );
+    runRenderer(renderer, context, retainedStatus);
+    runRenderer(renderer, context, publishedStatus);
 }
+
+const matchPreviewRoot = runRenderer('renderMatchPreview', 'match-preview', retainedStatus);
+const matchPreviewNotice = matchPreviewRoot.querySelector('.season-notice');
+const previewResults = findById(matchPreviewRoot, 'preview-results');
+assert.ok(previewResults, 'Expected Match Preview renderer to attach its output container');
+assert.equal(matchPreviewNotice.parentElement, previewResults.parentElement);
+assert.equal(
+    previewResults.parentElement.children.indexOf(matchPreviewNotice) + 1,
+    previewResults.parentElement.children.indexOf(previewResults),
+    'Expected retained notice immediately before ranking-derived Match Preview output',
+);
 
 for (const selector of [
     '.season-notice',
