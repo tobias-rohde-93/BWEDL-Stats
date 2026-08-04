@@ -224,6 +224,58 @@
         return Number.isFinite(parsed) ? parsed : fallback;
     }
 
+    function rankingClubNumber(value) {
+        if (value === null || value === undefined) return '';
+        return String(value).trim();
+    }
+
+    function enrichRankingPlayersWithClubs(players, clubs) {
+        if (!Array.isArray(players)) return [];
+        const byNumber = new Map();
+        if (Array.isArray(clubs)) {
+            clubs.forEach((club, index) => {
+                if (!club || typeof club !== 'object') return;
+                const number = rankingClubNumber(club.number);
+                const name = String(club.name || '').trim();
+                if (!number || !name) return;
+                const current = byNumber.get(number);
+                if (current) {
+                    current.ambiguous = true;
+                } else {
+                    byNumber.set(number, { name, index, ambiguous: false });
+                }
+            });
+        }
+        return players.map((player) => {
+            if (!player || typeof player !== 'object') return player;
+            const enriched = { ...player };
+            const club = byNumber.get(rankingClubNumber(player.v_nr));
+            if (club && !club.ambiguous) {
+                enriched.clubName = club.name;
+                enriched.clubIndex = club.index;
+            }
+            return enriched;
+        });
+    }
+
+    function canonicalRankingPlayerName(value) {
+        return String(value == null ? '' : value)
+            .normalize('NFKC')
+            .replace(/\s+/gu, ' ')
+            .trim()
+            .toLocaleLowerCase('de-DE');
+    }
+
+    function matchRankingPlayer(players, savedName) {
+        const canonical = canonicalRankingPlayerName(savedName);
+        if (!canonical || !Array.isArray(players)) return { status: 'missing', player: null };
+        const matches = players.filter((player) => (
+            player && canonicalRankingPlayerName(player.name) === canonical
+        ));
+        if (matches.length === 1) return { status: 'found', player: matches[0] };
+        return { status: matches.length > 1 ? 'ambiguous' : 'missing', player: null };
+    }
+
     function filterAndSortRanking(players, options) {
         if (!Array.isArray(players)) return [];
         const settings = options && typeof options === 'object' ? options : {};
@@ -244,7 +296,7 @@
                 if (!player || typeof player !== 'object') return false;
                 if (rankingNumber(player.games, 0) < minGames) return false;
                 if (!query) return true;
-                return [player.name, player.company, player.team]
+                return [player.name, player.company, player.team, player.clubName]
                     .some((value) => String(value || '').toLocaleLowerCase('de-DE').includes(query));
             })
             .sort((left, right) => {
@@ -489,6 +541,9 @@
         isByeOpponent,
         selectUpcomingGames,
         buildSeasonNotice,
+        enrichRankingPlayersWithClubs,
+        canonicalRankingPlayerName,
+        matchRankingPlayer,
         filterAndSortRanking,
         buildIcsContent,
         parseAppHash,

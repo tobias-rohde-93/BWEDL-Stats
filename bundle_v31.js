@@ -181,6 +181,30 @@ function parseInertHtmlDocument(html) {
     return new DOMParser().parseFromString(String(html ?? ''), 'text/html');
 }
 
+function createSafeTableFromHtml(tableHtml) {
+    const table = document.createElement('table');
+    const tableHead = document.createElement('thead');
+    const tableBody = document.createElement('tbody');
+    const parsedDocument = parseInertHtmlDocument(tableHtml);
+    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
+        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
+            cell.tagName === 'TH' || cell.tagName === 'TD'
+        ));
+        if (sourceCells.length === 0) return;
+        const row = document.createElement('tr');
+        sourceCells.forEach((sourceCell) => {
+            const cell = document.createElement(sourceCell.tagName.toLowerCase());
+            cell.textContent = String(sourceCell.textContent ?? '');
+            row.appendChild(cell);
+        });
+        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
+        (isHeaderRow ? tableHead : tableBody).appendChild(row);
+    });
+    if (tableHead.children.length > 0) table.appendChild(tableHead);
+    if (tableBody.children.length > 0) table.appendChild(tableBody);
+    return table;
+}
+
 function findWithdrawnTeams(tableHtml) {
     const withdrawnTeams = [];
     const parsedDocument = parseInertHtmlDocument(tableHtml);
@@ -5157,8 +5181,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (players.length === 0) {
             if (rankingData && rankingData.rankings && rankingData.rankings[rankName]) {
                 const fallback = document.createElement('div');
-                fallback.innerHTML = rankingData.rankings[rankName];
-                cleanTable(fallback);
+                fallback.className = 'ranking-table-scroll';
+                fallback.appendChild(createSafeTableFromHtml(rankingData.rankings[rankName]));
                 container.appendChild(fallback);
             } else {
                 const empty = document.createElement('div');
@@ -5171,7 +5195,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const viewModels = players.map((player, sourceIndex) => {
+        const enrichedPlayers = window.BwedlAppUtils.enrichRankingPlayersWithClubs(
+            players,
+            clubData && clubData.clubs,
+        );
+        const viewModels = enrichedPlayers.map((player, sourceIndex) => {
             const stats = calculatePlayerStats(player);
             const officialRank = String(player.rank == null ? '' : player.rank).trim();
             const rankPrefix = officialRank.match(/^\d+/);
@@ -5184,6 +5212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 games: stats.count,
             };
         });
+        const savedPlayerMatch = window.BwedlAppUtils.matchRankingPlayer(viewModels, myPlayerName);
 
         const toolbar = document.createElement('div');
         toolbar.className = 'ranking-toolbar';
@@ -5282,7 +5311,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = document.createElement('tr');
             row.dataset.playerName = String(player.name || '');
             row.setAttribute('tabindex', '-1');
-            if (player.name === myPlayerName) row.classList.add('my-player-row');
+            row._rankingPlayer = player;
+            if (savedPlayerMatch.status === 'found' && player === savedPlayerMatch.player) {
+                row.classList.add('my-player-row');
+            }
 
             const rankCell = document.createElement('td');
             const officialRank = String(player.officialRank || '').trim();
@@ -5297,12 +5329,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 nameCell.appendChild(team);
             }
 
-            let clubIndex = -1;
-            let clubName = player.company;
-            if (clubData && Array.isArray(clubData.clubs)) {
-                clubIndex = clubData.clubs.findIndex((club) => club.number === player.v_nr);
-                if (!clubName && clubIndex !== -1) clubName = clubData.clubs[clubIndex].name;
-            }
+            const clubIndex = Number.isInteger(player.clubIndex) ? player.clubIndex : -1;
+            const clubName = player.clubName || player.company;
             const clubCell = document.createElement('td');
             if (clubIndex !== -1) {
                 const clubLink = document.createElement('button');
@@ -5348,8 +5376,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (myPosition) {
             myPosition.addEventListener('click', () => {
-                const playerExists = viewModels.some((player) => player.name === myPlayerName);
-                if (!playerExists) {
+                if (savedPlayerMatch.status === 'ambiguous') {
+                    status.textContent = 'Der gespeicherte Spielername ist in dieser Rangliste nicht eindeutig.';
+                    return;
+                }
+                if (savedPlayerMatch.status !== 'found') {
                     status.textContent = 'Dein gespeicherter Spieler ist nicht in dieser Rangliste enthalten.';
                     return;
                 }
@@ -5357,14 +5388,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 minGames.value = '0';
                 renderRows();
                 const row = Array.from(tbody.children).find((candidate) => (
-                    candidate.dataset.playerName === myPlayerName
+                    candidate._rankingPlayer === savedPlayerMatch.player
                 ));
                 if (!row) return;
                 const reducedMotion = Boolean(window.matchMedia &&
                     window.matchMedia('(prefers-reduced-motion: reduce)').matches);
                 row.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
                 row.focus();
-                status.textContent = `Position von ${myPlayerName} hervorgehoben.`;
+                status.textContent = `Position von ${savedPlayerMatch.player.name} hervorgehoben.`;
             });
         }
 

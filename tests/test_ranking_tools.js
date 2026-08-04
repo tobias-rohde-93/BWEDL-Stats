@@ -5,6 +5,8 @@ const path = require('node:path');
 const source = fs.readFileSync(path.join(__dirname, '..', 'bundle_v31.js'), 'utf8');
 const styles = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
 const BwedlAppUtils = require('../app_utils.js');
+const currentRankingData = require('../ranking_data.json');
+const currentClubData = require('../club_data.json');
 
 const players = [
     { name: 'Charlie', company: 'DC Drei', officialRank: 3, totalPoints: 30, average: 10, games: 3 },
@@ -28,6 +30,38 @@ const exactTie = [
     { name: 'Second input', officialRank: 7, totalPoints: 10, average: 2, games: 5 },
 ];
 assert.deepEqual(names(BwedlAppUtils.filterAndSortRanking(exactTie, { sort: 'points' })), ['First input', 'Second input']);
+
+const currentPlayersBefore = JSON.stringify(currentRankingData.players);
+const enrichedCurrentPlayers = BwedlAppUtils.enrichRankingPlayersWithClubs(
+    currentRankingData.players,
+    currentClubData.clubs,
+);
+const oststadtPlayers = BwedlAppUtils.filterAndSortRanking(enrichedCurrentPlayers, {
+    query: 'DC Oststadt',
+});
+assert.equal(oststadtPlayers.length, 19, 'current V-Nr. data resolves every DC Oststadt player');
+assert.equal(oststadtPlayers.every((player) => player.clubName === 'DC Oststadt'), true);
+assert.equal(JSON.stringify(currentRankingData.players), currentPlayersBefore, 'club enrichment does not mutate source players');
+const ambiguousClubs = BwedlAppUtils.enrichRankingPlayersWithClubs(
+    [{ name: 'Spieler', v_nr: '007' }, { name: 'Ohne Verein', v_nr: '999' }],
+    [{ number: '007', name: 'Club A' }, { number: '007', name: 'Club B' }],
+);
+assert.equal(ambiguousClubs[0].clubName, undefined, 'duplicate club numbers are not guessed');
+assert.equal(ambiguousClubs[0].clubIndex, undefined);
+assert.equal(ambiguousClubs[1].clubName, undefined, 'missing club numbers remain unresolved');
+
+assert.equal(BwedlAppUtils.canonicalRankingPlayerName('  CAFE\u0301   SPIELER '), 'café spieler');
+assert.deepEqual(
+    BwedlAppUtils.matchRankingPlayer([{ name: 'Café Spieler' }], '  CAFE\u0301   SPIELER '),
+    { status: 'found', player: { name: 'Café Spieler' } },
+);
+assert.deepEqual(
+    BwedlAppUtils.matchRankingPlayer(
+        [{ name: 'Anna  Müller' }, { name: 'anna müller' }],
+        'ANNA MÜLLER',
+    ),
+    { status: 'ambiguous', player: null },
+);
 
 function findClosingBrace(openingBrace, label) {
     let depth = 0;
@@ -116,7 +150,7 @@ const contentArea = document.createElement('main');
 const topBarTitle = document.createElement('h1');
 const rankingData = { players: [
     { name: '<img src=x onerror=alert(1)>', league: 'A-Klasse', rank: '3a', points: '30', company: 'DC Drei', v_nr: '003', rounds: { R1: 10, R2: 10, R3: 10 } },
-    { name: 'Gespeicherter Spieler', league: 'A-Klasse', rank: '1', points: '20', company: 'DC Eins', v_nr: '001', rounds: { R1: 10, R2: 10 } },
+    { name: 'Café Spieler', league: 'A-Klasse', rank: '1', points: '20', company: 'DC Eins', v_nr: '001', rounds: { R1: 10, R2: 10 } },
     { name: 'Bob', league: 'A-Klasse', rank: '2', points: '30', company: 'DC Zwei', v_nr: '002', rounds: { R1: 15, R2: 15 } },
 ] };
 const clubData = { clubs: [
@@ -133,7 +167,7 @@ const renderRanking = compileFunction('renderRanking', {
     document,
     rankingData,
     clubData,
-    myPlayerName: 'Gespeicherter Spieler',
+    myPlayerName: '  CAFE\u0301   SPIELER ',
     createSeasonNotice: () => seasonNotice,
     calculateTotalPoints: (player) => Number(player.points),
     calculatePlayerStats: (player) => {
@@ -160,7 +194,7 @@ assert.match(sort.textContent, /Analyseansicht: Punkte/);
 const tbody = descendants(root).find((element) => element.tagName === 'TBODY');
 const rowNames = () => tbody.children.map((row) => row.dataset.playerName);
 const shownRanks = () => tbody.children.map((row) => row.children[0].textContent.trim());
-assert.deepEqual(rowNames(), ['Gespeicherter Spieler', 'Bob', '<img src=x onerror=alert(1)>']);
+assert.deepEqual(rowNames(), ['Café Spieler', 'Bob', '<img src=x onerror=alert(1)>']);
 assert.deepEqual(shownRanks(), ['1', '2', '3a'], 'official rank labels are displayed verbatim from source data');
 assert.equal(tbody.children[0].classList.contains('my-player-row'), true);
 assert.equal(descendants(tbody).some((element) => element.usedInnerHTML), false, 'visible rows are rebuilt without HTML injection');
@@ -173,7 +207,7 @@ sort.value = 'points';
 sort.dispatch('change');
 search.value = '';
 search.dispatch('input');
-assert.deepEqual(rowNames(), ['Bob', '<img src=x onerror=alert(1)>', 'Gespeicherter Spieler']);
+assert.deepEqual(rowNames(), ['Bob', '<img src=x onerror=alert(1)>', 'Café Spieler']);
 assert.deepEqual(shownRanks(), ['2', '3a', '1'], 'analysis order never rewrites official ranks');
 
 minGames.value = '3';
@@ -184,16 +218,95 @@ search.dispatch('input');
 mine.dispatch('click');
 assert.equal(search.value, '');
 assert.equal(minGames.value, '0');
-const savedRow = tbody.children.find((row) => row.dataset.playerName === 'Gespeicherter Spieler');
+const savedRow = tbody.children.find((row) => row.dataset.playerName === 'Café Spieler');
 assert.ok(savedRow);
 assert.equal(savedRow.focused, true);
 assert.deepEqual(savedRow.scrolledWith, { behavior: 'auto', block: 'center' });
 
-rankingData.players = rankingData.players.filter((player) => player.name !== 'Gespeicherter Spieler');
+rankingData.players = rankingData.players.filter((player) => player.name !== 'Café Spieler');
 renderRanking('A-Klasse');
 document.getElementById('ranking-my-position').dispatch('click');
 assert.match(document.getElementById('ranking-tools-status').textContent, /nicht in dieser Rangliste/i);
 assert.equal(typeof global.alert, 'undefined', 'missing saved players use live feedback, not alerts');
+
+const collisionData = { players: [
+    { name: 'Anna  Müller', league: 'A-Klasse', rank: '1', points: '10', rounds: { R1: 10 } },
+    { name: 'anna müller', league: 'A-Klasse', rank: '2', points: '9', rounds: { R1: 9 } },
+] };
+const collisionRender = compileFunction('renderRanking', {
+    topBarTitle,
+    contentArea,
+    document,
+    rankingData: collisionData,
+    clubData: { clubs: [] },
+    myPlayerName: 'ANNA MÜLLER',
+    createSeasonNotice: () => null,
+    calculateTotalPoints: (player) => Number(player.points),
+    calculatePlayerStats: (player) => ({ count: 1, avg: Number(player.points) }),
+    navigateTo() {},
+    window,
+});
+collisionRender('A-Klasse');
+const collisionRows = descendants(contentArea.firstChild).find((element) => element.tagName === 'TBODY').children;
+assert.equal(collisionRows.some((row) => row.classList.contains('my-player-row')), false, 'ambiguous canonical names highlight no row');
+document.getElementById('ranking-my-position').dispatch('click');
+assert.match(document.getElementById('ranking-tools-status').textContent, /nicht eindeutig/i);
+
+class MaliciousRankingDOMParser {
+    parseFromString(value, type) {
+        assert.match(value, /onerror/);
+        assert.equal(type, 'text/html');
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'tr');
+                return [
+                    { children: [
+                        { tagName: 'TH', textContent: 'Rang<script>alert(1)</script>' },
+                        { tagName: 'TH', textContent: 'Name' },
+                    ] },
+                    { children: [
+                        { tagName: 'TD', textContent: '1' },
+                        { tagName: 'TD', textContent: 'Spieler <img src=x onerror=alert(2)>' },
+                    ] },
+                ];
+            },
+        };
+    }
+}
+const fallbackDocument = createDocument();
+const safeFallbackTable = compileFunction('createSafeTableFromHtml', {
+    document: fallbackDocument,
+    parseInertHtmlDocument: compileFunction('parseInertHtmlDocument', { DOMParser: MaliciousRankingDOMParser }),
+});
+const fallbackContent = fallbackDocument.createElement('main');
+const fallbackNotice = fallbackDocument.createElement('aside');
+fallbackNotice.textContent = 'Vorjahresstand';
+const fallbackRender = compileFunction('renderRanking', {
+    topBarTitle: fallbackDocument.createElement('h1'),
+    contentArea: fallbackContent,
+    document: fallbackDocument,
+    rankingData: {
+        players: [],
+        rankings: { 'A-Klasse': '<table onclick="alert(3)"><tr><th>Rang<script>alert(1)</script></th><th>Name</th></tr><tr><td>1</td><td><img src=x onerror=alert(2)>Spieler</td></tr></table>' },
+    },
+    clubData: { clubs: [] },
+    myPlayerName: null,
+    createSeasonNotice: () => fallbackNotice,
+    calculateTotalPoints() {},
+    calculatePlayerStats() {},
+    navigateTo() {},
+    createSafeTableFromHtml: safeFallbackTable,
+    window,
+});
+fallbackRender('A-Klasse');
+const fallbackRoot = fallbackContent.firstChild;
+assert.equal(fallbackRoot.firstChild, fallbackNotice, 'fallback preserves the season notice');
+assert.equal(descendants(fallbackRoot).filter((element) => element.tagName === 'TH').length, 2);
+assert.equal(descendants(fallbackRoot).filter((element) => element.tagName === 'TD').length, 2);
+assert.match(fallbackRoot.textContent, /Rang<script>alert\(1\)<\/script>.*Spieler <img src=x onerror=alert\(2\)>/);
+assert.equal(descendants(fallbackRoot).some((element) => element.usedInnerHTML), false);
+assert.equal(descendants(fallbackRoot).some((element) => ['IMG', 'SCRIPT', 'SVG', 'STYLE', 'A'].includes(element.tagName)), false);
+assert.equal(descendants(fallbackRoot).some((element) => Object.keys(element.attributes).some((name) => /^on/i.test(name))), false);
 
 assert.match(styles, /\.ranking-toolbar\s*\{/);
 assert.match(styles, /@media \(max-width: 1280px\)[\s\S]*?\.ranking-toolbar/s);
