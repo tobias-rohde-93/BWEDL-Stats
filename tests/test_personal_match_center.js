@@ -4,6 +4,7 @@ const path = require('node:path');
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'bundle_v31.js'), 'utf8');
 const clubData = require('../club_data.json');
+const leagueData = require('../league_data.json');
 const BwedlAppUtils = require('../app_utils.js');
 
 function findClosingBrace(openingBrace, label) {
@@ -80,11 +81,11 @@ const rememberMatchPreviewGame = compileFunction('rememberMatchPreviewGame', {
     MATCH_PREVIEW_SESSION_KEY: 'bwedl_match_preview_game',
 });
 const normalizeClubAlias = compileFunction('normalizeClubAlias');
-const clubAliasDistance = compileFunction('clubAliasDistance');
+const clubNameAliases = compileFunction('clubNameAliases', { normalizeClubAlias });
 const resolveHomeClub = compileFunction('resolveHomeClub', {
     clubData,
     normalizeClubAlias,
-    clubAliasDistance,
+    clubNameAliases,
 });
 const gameAddress = compileFunction('gameAddress', { resolveHomeClub });
 const gameCompetition = compileFunction('gameCompetition');
@@ -175,6 +176,63 @@ for (const alias of [
     assert.ok(resolved, `Expected current club data to resolve home alias: ${alias}`);
     assert.ok(gameAddress({ home: alias }).length > 10);
 }
+assert.equal(normalizeClubAlias('DC Irish 26 e.V. 2'), 'dc irish 26 2');
+assert.equal(normalizeClubAlias('DC Texas Team 2'), 'dc texas team 2');
+assert.equal(normalizeClubAlias('ESV DC 25'), 'esv dc 25');
+for (const alias of [
+    'DC Irish 26 e.V. 2',
+    'DC Irish 26 e.V. 3',
+    'DC Irish 26 e.V. 4',
+    'DC Irish 26 e.V. 5',
+    'DC Texas Team 2',
+    'DC Texas Team 3',
+    'DC Texas Team 4',
+    'ESV DC 25 2',
+]) {
+    const resolved = resolveHomeClub({ home: alias });
+    assert.ok(resolved, `Expected squad marker after full club name to resolve: ${alias}`);
+}
+for (const alias of [
+    "DC Mephisto's",
+    'DC Strikers',
+    'DC Strikers 2',
+    'DC Underground Fools',
+    'DC Underground Fools 2',
+    'DC Underground Fools 4',
+]) {
+    assert.ok(resolveHomeClub({ home: alias }), `Expected explicit current-data alias to resolve: ${alias}`);
+}
+
+const auditedHomeTeams = [];
+Object.values(leagueData.leagues || {}).forEach((league) => {
+    Object.values(league.match_days || {}).forEach((matchDay) => {
+        String(matchDay).split('\n').forEach((line) => {
+            if (!/---\s*$/.test(line)) return;
+            const match = line.match(
+                /^(?:[A-Za-z]{2}\.\s*)?\d{1,2}\.\s*\d{1,2}\.\s*\d{4}(?:\s+\d{1,2}:\d{2})?\s+(.+?)\s+-\s+/,
+            );
+            if (match && !/spielfrei/i.test(match[1])) auditedHomeTeams.push(match[1].trim());
+        });
+    });
+});
+const unresolvedHomeTeams = auditedHomeTeams.filter((home) => !resolveHomeClub({ home }));
+assert.ok(auditedHomeTeams.length > 1000, 'expected the current-data audit to cover the full schedule');
+assert.deepEqual([...new Set(unresolvedHomeTeams)].sort(), []);
+
+const longestMatchResolver = compileFunction('resolveHomeClub', {
+    clubData: { clubs: [{ name: 'DC Texas' }, { name: 'DC Texas Team' }] },
+    normalizeClubAlias,
+    clubNameAliases,
+});
+assert.equal(longestMatchResolver({ home: 'DC Texas Team 2' }).club.name, 'DC Texas Team');
+const ambiguousResolver = compileFunction('resolveHomeClub', {
+    clubData: { clubs: [{ name: 'DC Doppel' }, { name: 'DC Doppel' }] },
+    normalizeClubAlias,
+    clubNameAliases,
+});
+assert.equal(ambiguousResolver({ home: 'DC Doppel 2' }), null);
+assert.equal(resolveHomeClub({ home: 'DC Lightnang Arrows' }), null, 'unknown typos must not fuzzy-match');
+assert.equal(resolveHomeClub({ home: 'ESV DC 252' }), null, 'fixed club numbers must remain meaningful');
 assert.equal(
     gameAddress({ home: 'Völlig unbekannter Heimclub', away: "DC Underground Fool's 2" }),
     '',

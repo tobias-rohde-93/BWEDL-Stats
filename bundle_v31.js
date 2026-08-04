@@ -413,58 +413,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function normalizeClubAlias(value) {
         if (typeof value !== 'string') return '';
-        return value
+        const tokens = value
             .normalize('NFKD')
             .replace(/[\u0300-\u036f]/g, '')
             .toLocaleLowerCase('de-DE')
             .replace(/ß/g, 'ss')
             .replace(/[^a-z0-9]+/g, ' ')
-            .replace(/\s+(?:e\s*v)\s*$/i, '')
-            .replace(/\s+(?:(?:team|mannschaft)\s*)?\d+\s*$/i, '')
             .replace(/\s+/g, ' ')
             .trim()
-            .replace(/\s/g, '');
+            .split(' ')
+            .filter(Boolean);
+        const legalSuffixIndex = /^\d+$/.test(tokens[tokens.length - 1] || '')
+            ? tokens.length - 3
+            : tokens.length - 2;
+        if (tokens[legalSuffixIndex] === 'e' && tokens[legalSuffixIndex + 1] === 'v') {
+            tokens.splice(legalSuffixIndex, 2);
+        }
+        return tokens.join(' ');
     }
 
-    function clubAliasDistance(left, right) {
-        if (left === right) return 0;
-        if (!left || !right) return Math.max(left.length, right.length);
-        let previous = Array.from({ length: right.length + 1 }, (_, index) => index);
-        for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
-            const current = [leftIndex];
-            for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
-                current[rightIndex] = Math.min(
-                    current[rightIndex - 1] + 1,
-                    previous[rightIndex] + 1,
-                    previous[rightIndex - 1] + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1),
-                );
-            }
-            previous = current;
-        }
-        return previous[right.length];
+    function clubNameAliases(club) {
+        if (!club || typeof club !== 'object') return [];
+        const knownAliases = {
+            'alla haeeeehr': ['Alla Häeeehr'],
+            'heavy weigths brotzingen': ['Heavy Weights Brötzingen'],
+            'dc lightning arrows': ['DC Ligthning Arrows'],
+            'dc mephistos': ["DC Mephisto's"],
+            'dc striker s': ['DC Strikers'],
+            'dc underground fool s': ['DC Underground Fools'],
+        };
+        const configured = Array.isArray(club.aliases)
+            ? club.aliases
+            : typeof club.aliases === 'string'
+                ? [club.aliases]
+                : [];
+        const canonical = normalizeClubAlias(club.name);
+        return [club.name, ...configured, ...(knownAliases[canonical] || [])]
+            .map(normalizeClubAlias)
+            .filter(Boolean);
     }
 
     function resolveHomeClub(game) {
         const homeAlias = normalizeClubAlias(game && game.home);
         if (!homeAlias || !clubData || !Array.isArray(clubData.clubs)) return null;
-        let best = null;
-        let bestDistance = Infinity;
-        let ambiguous = false;
+        const matches = [];
         clubData.clubs.forEach((club, index) => {
-            const clubAlias = normalizeClubAlias(club && club.name);
-            if (!clubAlias) return;
-            const distance = clubAliasDistance(homeAlias, clubAlias);
-            const allowedDistance = Math.min(homeAlias.length, clubAlias.length) >= 10 ? 2 : 1;
-            if (distance > allowedDistance) return;
-            if (distance < bestDistance) {
-                best = { club, index };
-                bestDistance = distance;
-                ambiguous = false;
-            } else if (distance === bestDistance) {
-                ambiguous = true;
-            }
+            clubNameAliases(club).forEach((clubAlias) => {
+                const suffix = homeAlias.startsWith(`${clubAlias} `)
+                    ? homeAlias.slice(clubAlias.length + 1)
+                    : '';
+                if (homeAlias === clubAlias || /^\d+$/.test(suffix)) {
+                    matches.push({ club, index, matchLength: clubAlias.length });
+                }
+            });
         });
-        return ambiguous ? null : best;
+        if (matches.length === 0) return null;
+        const longest = Math.max(...matches.map((match) => match.matchLength));
+        const winners = matches.filter((match) => match.matchLength === longest);
+        const uniqueIndexes = [...new Set(winners.map((match) => match.index))];
+        return uniqueIndexes.length === 1 ? winners[0] : null;
     }
 
     function gameAddress(game) {
