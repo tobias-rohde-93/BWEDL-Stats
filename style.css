@@ -911,3 +911,120 @@ tr:hover td {
 .app-status:empty {
     display: none;
 }
+
+.season-notice {
+    position: relative;
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem 0.85rem 1.15rem;
+    overflow: hidden;
+    border: 1px solid rgba(251, 191, 36, 0.32);
+    border-radius: var(--radius-md);
+    background: linear-gradient(110deg, rgba(120, 53, 15, 0.2), rgba(30, 41, 59, 0.82) 48%);
+}
+
+.season-notice::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.25rem;
+    background: #fbbf24;
+    content: '';
+}
+
+.season-notice__title {
+    margin: 0 0 0.25rem;
+    color: #fde68a;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+}
+
+.season-notice__message,
+.season-notice__detail {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+}
+
+.season-notice__detail {
+    margin-top: 0.2rem;
+    color: var(--text-muted);
+}
+
+.profile-onboarding-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 1.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid rgba(59, 130, 246, 0.38);
+    border-radius: var(--radius-md);
+    background: linear-gradient(125deg, rgba(59, 130, 246, 0.16), rgba(30, 41, 59, 0.92) 55%);
+    box-shadow: var(--shadow-md);
+}
+
+.profile-onboarding-card__title,
+.profile-onboarding-card__benefit,
+.profile-onboarding-card__privacy {
+    grid-column: 1;
+    margin: 0;
+}
+
+.profile-onboarding-card__title {
+    color: var(--text-primary);
+    font-size: 1.15rem;
+}
+
+.profile-onboarding-card__benefit {
+    max-width: 48rem;
+    color: var(--text-secondary);
+}
+
+.profile-onboarding-card__privacy {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.profile-onboarding-card__action {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius-sm);
+    background: var(--accent-primary);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.profile-onboarding-card__action:hover {
+    border-color: var(--accent-hover);
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.profile-onboarding-card__action:focus-visible {
+    outline: 3px solid rgba(96, 165, 250, 0.5);
+    outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+    .profile-onboarding-card {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-onboarding-card__action {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 0.5rem;
+        white-space: normal;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-onboarding-card__action {
+        transition: none;
+    }
+}

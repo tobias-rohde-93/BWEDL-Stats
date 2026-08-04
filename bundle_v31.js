@@ -92,6 +92,40 @@ function renderDataStatus() {
     });
 }
 
+function createSeasonNotice(context) {
+    const rankingStatus = dataStatus.domains && dataStatus.domains.rankings;
+    const noticeModel = typeof BwedlAppUtils !== 'undefined'
+        ? BwedlAppUtils.buildSeasonNotice(rankingStatus)
+        : null;
+    if (!noticeModel || noticeModel.state !== 'retained') return null;
+
+    const safeContext = typeof context === 'string'
+        ? context.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-|-$/g, '')
+        : 'ranking';
+    const notice = document.createElement('section');
+    const heading = document.createElement('h2');
+    const message = document.createElement('p');
+    const detail = document.createElement('p');
+    const headingId = `season-notice-${safeContext || 'ranking'}`;
+
+    notice.className = 'season-notice';
+    notice.dataset.seasonContext = safeContext || 'ranking';
+    notice.setAttribute('role', 'note');
+    notice.setAttribute('aria-labelledby', headingId);
+    heading.id = headingId;
+    heading.className = 'season-notice__title';
+    heading.textContent = noticeModel.title;
+    message.className = 'season-notice__message';
+    message.textContent = noticeModel.message;
+    detail.className = 'season-notice__detail';
+    detail.textContent = 'Andere aktuelle Daten wie Spielpläne und Ergebnisse können weiterhin aktuell sein.';
+
+    notice.appendChild(heading);
+    notice.appendChild(message);
+    notice.appendChild(detail);
+    return notice;
+}
+
 window.BWEDL_STATUS_FORMATTERS = {
     formatDomainStatus,
     formatGermanStatusTime,
@@ -136,6 +170,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- My Profile State ---
     let myPlayerName = localStorage.getItem('myPlayerName');
     let myTeamName = localStorage.getItem('myTeamName');
+
+    function createProfileOnboardingCard() {
+        const card = document.createElement('section');
+        const heading = document.createElement('h2');
+        const benefit = document.createElement('p');
+        const privacy = document.createElement('p');
+        const action = document.createElement('button');
+
+        card.className = 'profile-onboarding-card';
+        card.setAttribute('aria-labelledby', 'profile-onboarding-title');
+        heading.id = 'profile-onboarding-title';
+        heading.className = 'profile-onboarding-card__title';
+        heading.textContent = 'Deine persönliche Übersicht';
+        benefit.className = 'profile-onboarding-card__benefit';
+        benefit.textContent = 'Wähle deinen Spielernamen und sieh persönliche Saisonwerte, Form und nächste Spiele direkt auf dem Dashboard.';
+        privacy.className = 'profile-onboarding-card__privacy';
+        privacy.textContent = 'Deine Auswahl bleibt lokal in diesem Browser.';
+        action.type = 'button';
+        action.className = 'profile-onboarding-card__action';
+        action.textContent = 'Spielerprofil auswählen';
+        action.addEventListener('click', () => navigateTo('profile'));
+
+        card.appendChild(heading);
+        card.appendChild(benefit);
+        card.appendChild(privacy);
+        card.appendChild(action);
+        return card;
+    }
+
     const setMyPlayer = (name) => {
         if (name) {
             localStorage.setItem('myPlayerName', name);
@@ -1348,6 +1411,10 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.maxWidth = "1200px";
         container.style.margin = "0 auto";
 
+        if (!myPlayerName) {
+            container.appendChild(createProfileOnboardingCard());
+        }
+
         let myStats = null;
         // --- My Profile Section ---
         if (myPlayerName) {
@@ -1822,6 +1889,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionCard.appendChild(previewTeaser);
 
                 grid.appendChild(actionCard);
+                const profileSeasonNotice = createSeasonNotice('dashboard-profile');
+                if (profileSeasonNotice) container.appendChild(profileSeasonNotice);
                 container.appendChild(grid);
 
                 // --- 3. Season Log Table ---
@@ -2009,6 +2078,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const containerDiv = document.createElement('div');
         containerDiv.innerHTML = topTitle;
+        const topPlayersSeasonNotice = createSeasonNotice('top-20');
+        if (topPlayersSeasonNotice) containerDiv.appendChild(topPlayersSeasonNotice);
 
         // Tab Container
         const tabContainer = document.createElement('div');
@@ -2216,6 +2287,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const comparisonArea = document.createElement('div');
         comparisonArea.id = "comparison-area";
         comparisonArea.style.display = "none";
+        const comparisonSeasonNotice = createSeasonNotice('h2h');
+        if (comparisonSeasonNotice) container.appendChild(comparisonSeasonNotice);
         container.appendChild(comparisonArea);
 
         contentArea.appendChild(container);
@@ -4322,6 +4395,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.createElement('div');
         container.style.padding = "20px";
         container.className = "fade-in";
+        const rankingSeasonNotice = createSeasonNotice('ranking');
+        if (rankingSeasonNotice) container.appendChild(rankingSeasonNotice);
 
         // Logic to get players for this ranking
         // We match p.league with rankName
@@ -5511,6 +5586,8 @@ document.addEventListener('DOMContentLoaded', () => {
         title.style.color = "#60a5fa";
         title.style.marginBottom = "20px";
         card.appendChild(title);
+        const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
+        if (matchPreviewSeasonNotice) card.appendChild(matchPreviewSeasonNotice);
 
         // LEAGUE SELECTOR
         const leagueGroup = document.createElement('div');
