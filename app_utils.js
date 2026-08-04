@@ -485,7 +485,7 @@
         return undefined;
     }
 
-    const VISIT_SNAPSHOT_VERSION = 1;
+    const VISIT_SNAPSHOT_VERSION = 2;
     const VISIT_SNAPSHOT_STORAGE_KEY = 'bwedl_visit_snapshot';
 
     function snapshotText(value) {
@@ -504,6 +504,26 @@
         if (!value) return null;
         const date = value instanceof Date ? value : new Date(value);
         return Number.isFinite(date.getTime()) ? date.toISOString() : null;
+    }
+
+    function buildTeamResultsFingerprint(games) {
+        if (!Array.isArray(games)) return '[]';
+        const completedResults = games
+            .filter((game) => game && (game.isPending === false || game.played === true))
+            .map((game) => [
+                snapshotText(game.leagueKey || game.leagueName || game.competition),
+                snapshotDate(game.date) || snapshotText(game.dateStr),
+                snapshotText(game.home),
+                snapshotText(game.away),
+                snapshotText(game.id || game.round),
+                snapshotText(game.score || (
+                    game.scoreHome !== undefined && game.scoreAway !== undefined
+                        ? `${game.scoreHome}:${game.scoreAway}`
+                        : null
+                )),
+            ])
+            .sort((left, right) => stableSerialize(left).localeCompare(stableSerialize(right)));
+        return stableSerialize(completedResults);
     }
 
     function buildVisitSnapshot({ data = {}, player = null, team = null, nextGame = null } = {}) {
@@ -533,6 +553,10 @@
                 id: snapshotText(team.id),
                 name: snapshotText(team.name),
                 resultCount: snapshotNumber(team.resultCount),
+                resultFingerprint: snapshotText(team.resultFingerprint),
+                sourceSeason: snapshotText(team.sourceSeason),
+                sourceState: snapshotText(team.sourceState),
+                sourceKey: snapshotText(team.sourceKey),
             } : null,
             nextGame: nextGame ? {
                 key: snapshotText(nextGame.key),
@@ -625,16 +649,36 @@
         }
 
         const sameTeam = sameSnapshotIdentity(previous, current, 'team', 'id');
-        if (sameTeam && previous.team && current.team &&
+        const sameTeamSource = sameTeam && previous.team && current.team &&
+            previous.team.sourceKey && previous.team.sourceKey === current.team.sourceKey &&
+            previous.team.sourceSeason === current.team.sourceSeason &&
+            previous.team.sourceState === current.team.sourceState;
+        if (sameTeamSource &&
             previous.team.resultCount !== current.team.resultCount) {
             const difference = current.team.resultCount - previous.team.resultCount;
             const message = difference > 0
                 ? `Für ${current.team.name} ${difference === 1 ? 'liegt 1 neues Ergebnis' : `liegen ${difference} neue Ergebnisse`} vor.`
                 : `Der Ergebnisstand für ${current.team.name} wurde korrigiert.`;
             changes.push({ type: 'results', message });
+        } else if (sameTeamSource &&
+            previous.team.resultFingerprint !== current.team.resultFingerprint) {
+            changes.push({
+                type: 'results',
+                message: `Ergebnisse für ${current.team.name} wurden aktualisiert.`,
+            });
         }
 
-        if (sameTeam && previous.nextGame && current.nextGame) {
+        if (sameTeamSource && !previous.nextGame && current.nextGame) {
+            changes.push({
+                type: 'nextGame',
+                message: `Nächstes Spiel gegen ${current.nextGame.opponent} angesetzt.`,
+            });
+        } else if (sameTeamSource && previous.nextGame && !current.nextGame) {
+            changes.push({
+                type: 'nextGame',
+                message: 'Dein nächstes Spiel wurde abgesagt oder entfernt.',
+            });
+        } else if (sameTeamSource && previous.nextGame && current.nextGame) {
             const sameGame = previous.nextGame.key && previous.nextGame.key === current.nextGame.key;
             const gameDetailsChanged = previous.nextGame.date !== current.nextGame.date ||
                 previous.nextGame.location !== current.nextGame.location ||
@@ -713,23 +757,32 @@
         const changes = comparePrevious && validCurrentSnapshot
             ? diffVisitSnapshots(previousSnapshot, validCurrentSnapshot)
             : [];
-        let completed = false;
+        let rendered = false;
+        let readyToConfirm = false;
+        let confirmed = false;
 
         return {
             changes: changes.slice(),
             render(documentObject, container) {
-                if (completed || !validCurrentSnapshot) return null;
+                if (rendered || !validCurrentSnapshot) return null;
+                rendered = true;
                 let card = null;
                 try {
                     card = renderVisitChangesCard(documentObject, container, changes);
                 } catch (_error) {
                     card = null;
-                } finally {
-                    // The baseline advances only after the render decision has completed.
-                    persistVisitSnapshot(storage, validCurrentSnapshot, key);
-                    completed = true;
                 }
+                readyToConfirm = changes.length === 0 || Boolean(card);
                 return card;
+            },
+            confirmVisible(isVisible) {
+                if (
+                    confirmed || !validCurrentSnapshot || !rendered ||
+                    !readyToConfirm || !isVisible
+                ) return false;
+                persistVisitSnapshot(storage, validCurrentSnapshot, key);
+                confirmed = true;
+                return true;
             },
         };
     }
@@ -793,6 +846,7 @@
     return {
         VISIT_SNAPSHOT_VERSION,
         buildVisitSnapshot,
+        buildTeamResultsFingerprint,
         readVisitSnapshot,
         persistVisitSnapshot,
         renderVisitChangesCard,

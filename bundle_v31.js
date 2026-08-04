@@ -1709,6 +1709,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter(Boolean)
             .sort();
         const rankingStatus = domains.rankings || {};
+        const leagueStatus = domains.leagues || {};
         let player = null;
         let team = null;
         let nextGame = null;
@@ -1741,6 +1742,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         id: `${selected.v_nr || 'team'}:${normalizeTeamName(selectedTeam)}`,
                         name: selectedTeam,
                         resultCount,
+                        resultFingerprint: window.BwedlAppUtils.buildTeamResultsFingerprint(schedule),
+                        sourceSeason: leagueStatus.season || null,
+                        sourceState: leagueStatus.state || null,
+                        sourceKey: ['leagues', leagueStatus.season || 'unknown'].join(':'),
                     };
                     const upcoming = window.BwedlAppUtils.selectUpcomingGames(schedule, new Date())[0];
                     if (upcoming) {
@@ -2852,6 +2857,9 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(topPlayersSection);
 
         contentArea.appendChild(container);
+        if (typeof visitChangesLifecycle !== 'undefined' && visitChangesLifecycle) {
+            visitChangesLifecycle.confirmVisible(container.parentElement === contentArea);
+        }
 
         // Update Nav Active State
         document.querySelectorAll('.nav-section-header').forEach(el => {
