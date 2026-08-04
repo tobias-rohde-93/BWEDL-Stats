@@ -5670,6 +5670,8 @@ document.addEventListener('DOMContentLoaded', () => {
         listGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
         listGrid.style.gap = '20px';
         listGrid.innerHTML = `<div id="list-a"></div><div id="list-b"></div>`;
+        const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
+        if (matchPreviewSeasonNotice) selectionArea.appendChild(matchPreviewSeasonNotice);
         selectionArea.appendChild(listGrid);
 
         const calcBtn = document.createElement('button');
@@ -5698,8 +5700,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // RESULT CONTAINER
         const resultDiv = document.createElement('div');
         resultDiv.id = 'preview-results';
-        const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
-        if (matchPreviewSeasonNotice) container.appendChild(matchPreviewSeasonNotice);
         container.appendChild(resultDiv);
 
         contentArea.appendChild(container);

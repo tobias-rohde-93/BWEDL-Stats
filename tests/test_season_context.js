@@ -377,13 +377,17 @@ for (const [renderer, context] of [
 
 const matchPreviewRoot = runRenderer('renderMatchPreview', 'match-preview', retainedStatus);
 const matchPreviewNotice = matchPreviewRoot.querySelector('.season-notice');
-const previewResults = findById(matchPreviewRoot, 'preview-results');
-assert.ok(previewResults, 'Expected Match Preview renderer to attach its output container');
-assert.equal(matchPreviewNotice.parentElement, previewResults.parentElement);
+const playerSelectionArea = findById(matchPreviewRoot, 'player-selection-area');
+assert.ok(playerSelectionArea, 'Expected Match Preview renderer to attach its player selection area');
+const playerListGrid = playerSelectionArea.children.find((child) => (
+    child.innerHTML.includes('id="list-a"') && child.innerHTML.includes('id="list-b"')
+));
+assert.ok(playerListGrid, 'Expected player selection area to contain the ranking-derived player lists');
+assert.equal(matchPreviewNotice.parentElement, playerSelectionArea);
 assert.equal(
-    previewResults.parentElement.children.indexOf(matchPreviewNotice) + 1,
-    previewResults.parentElement.children.indexOf(previewResults),
-    'Expected retained notice immediately before ranking-derived Match Preview output',
+    playerSelectionArea.children.indexOf(matchPreviewNotice) + 1,
+    playerSelectionArea.children.indexOf(playerListGrid),
+    'Expected retained notice immediately before ranking-derived Match Preview player lists',
 );
 
 for (const selector of [
