@@ -141,6 +141,157 @@ function createClubRankingSeasonNotice(status) {
     return notice;
 }
 
+function createClubRankingStatsRow(playerCount, activeLeagues, totalPoints) {
+    const statsRow = document.createElement('div');
+    statsRow.className = 'club-ranking-stats';
+    statsRow.style.cssText = 'display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;';
+    [
+        { value: playerCount, label: 'Spieler' },
+        { value: activeLeagues, label: 'Ligen' },
+        { value: totalPoints, label: 'Punkte (Ges.)', accent: true },
+    ].forEach(({ value, label, accent }) => {
+        const card = document.createElement('div');
+        card.style.cssText = 'background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;';
+        const metric = document.createElement('div');
+        metric.style.cssText = `font-weight: bold; color: ${accent ? '#4ade80' : '#f8fafc'}; font-size: 1.2em;`;
+        metric.textContent = String(value ?? 0);
+        const description = document.createElement('div');
+        description.style.cssText = 'font-size: 0.75em; color: #94a3b8;';
+        description.textContent = label;
+        card.append(metric, description);
+        statsRow.appendChild(card);
+    });
+    return statsRow;
+}
+
+function createClubRankingSection(status, statsRow, playerGrid, playerCount) {
+    const section = document.createElement('section');
+    section.className = 'club-ranking-season';
+    section.setAttribute('aria-labelledby', 'club-ranking-season-label');
+    const notice = createClubRankingSeasonNotice(status);
+    notice.id = 'club-ranking-season-label';
+    const heading = document.createElement('h3');
+    heading.style.cssText = 'color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;';
+    heading.textContent = `Mannschaft (${playerCount})`;
+    section.append(notice, statsRow, heading, playerGrid);
+    return section;
+}
+
+function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesClub) {
+    const section = document.createElement('div');
+    section.className = 'club-current-table';
+    section.style.cssText = 'margin-bottom: 25px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; overflow: hidden;';
+    const heading = document.createElement('div');
+    heading.style.cssText = 'padding: 10px 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #334155; font-weight: bold; color: #f8fafc;';
+    heading.textContent = `Tabelle: ${String(leagueName ?? '')}`;
+    const tableContainer = document.createElement('div');
+    tableContainer.className = 'table-container';
+    tableContainer.style.cssText = 'padding: 0; border: none;';
+    const table = document.createElement('table');
+    const tableHead = document.createElement('thead');
+    const tableBody = document.createElement('tbody');
+    const parsedDocument = new DOMParser().parseFromString(String(tableHtml ?? ''), 'text/html');
+    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
+        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
+            cell.tagName === 'TH' || cell.tagName === 'TD'
+        ));
+        if (sourceCells.length === 0) return;
+        const row = document.createElement('tr');
+        sourceCells.forEach((sourceCell) => {
+            const cell = document.createElement(sourceCell.tagName.toLowerCase());
+            cell.textContent = String(sourceCell.textContent ?? '');
+            row.appendChild(cell);
+        });
+        if (typeof matchesClub === 'function' && matchesClub(clubName, row.textContent)) {
+            row.style.background = 'rgba(59, 130, 246, 0.2)';
+            row.style.fontWeight = 'bold';
+            row.style.color = '#60a5fa';
+        }
+        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
+        (isHeaderRow ? tableHead : tableBody).appendChild(row);
+    });
+    if (tableHead.children.length > 0) table.appendChild(tableHead);
+    if (tableBody.children.length > 0) table.appendChild(tableBody);
+    tableContainer.appendChild(table);
+    section.append(heading, tableContainer);
+    return section;
+}
+
+function createPlayerFormElement(rounds) {
+    if (!rounds) return null;
+    const data = [];
+    for (let index = 1; index <= 18; index += 1) {
+        const value = parseInt(rounds[`R${index}`]);
+        if (!Number.isNaN(value)) data.push(value);
+    }
+    if (data.length < 2) return null;
+    const width = 60;
+    const height = 25;
+    const maximum = Math.max(...data);
+    const minimum = Math.min(...data);
+    const range = maximum - minimum || 1;
+    const points = data.map((value, index) => {
+        const x = (index / (data.length - 1)) * width;
+        const y = height - ((value - minimum) / range) * height;
+        return `${x},${y}`;
+    }).join(' ');
+    const form = document.createElement('div');
+    form.style.cssText = 'display: flex; flex-direction: column; align-items: center; margin: 0 15px;';
+    const label = document.createElement('div');
+    label.style.cssText = 'font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;';
+    label.textContent = 'Spielform';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', String(width));
+    svg.setAttribute('height', String(height));
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText = 'opacity: 0.8; overflow: visible;';
+    const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    polyline.setAttribute('points', points);
+    polyline.setAttribute('fill', 'none');
+    polyline.setAttribute('stroke', '#4ade80');
+    polyline.setAttribute('stroke-width', '2');
+    polyline.setAttribute('stroke-linecap', 'round');
+    polyline.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(polyline);
+    form.append(label, svg);
+    return form;
+}
+
+function createClubPlayerCard(player, tierColor) {
+    const card = document.createElement('div');
+    card.className = 'club-player-card';
+    card.style.cssText = 'background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; display: flex; justify-content: space-between; align-items: center;';
+    const identity = document.createElement('div');
+    identity.style.flex = '1';
+    const name = document.createElement('div');
+    name.style.cssText = 'font-weight: bold; color: #f8fafc;';
+    name.textContent = String(player && player.name || '');
+    const league = document.createElement('div');
+    const safeTierColor = /^#[0-9a-f]{6}$/i.test(String(tierColor || '')) ? tierColor : '#94a3b8';
+    league.style.cssText = `font-size: 0.8em; color: ${safeTierColor};`;
+    const leagueName = document.createElement('span');
+    leagueName.textContent = String(player && player.league || '');
+    const rank = document.createElement('span');
+    rank.style.cssText = 'color: #cbd5e1; margin-left: 5px; background: rgba(255,255,255,0.1); padding: 1px 4px; border-radius: 3px;';
+    rank.textContent = `Platz ${player && player.rank || '-'}`;
+    league.append(leagueName, rank);
+    identity.append(name, league);
+    const score = document.createElement('div');
+    score.style.cssText = 'text-align: right; margin-left: 10px;';
+    const points = document.createElement('div');
+    points.style.cssText = 'font-weight: bold; color: #4ade80; font-size: 1.1em;';
+    points.textContent = String(player && player.points != null ? player.points : 0);
+    const pointsLabel = document.createElement('div');
+    pointsLabel.style.cssText = 'font-size: 0.75em; color: #64748b;';
+    pointsLabel.textContent = 'Pkt';
+    score.append(points, pointsLabel);
+    card.appendChild(identity);
+    const form = createPlayerFormElement(player && player.rounds);
+    if (form) card.appendChild(form);
+    card.appendChild(score);
+    return card;
+}
+
 function canonicalClubId(value, clubCount) {
     const candidate = typeof value === 'number'
         ? value
@@ -5280,28 +5431,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalPoints = clubPlayers.reduce((acc, p) => acc + (parseInt(p.points) || 0), 0);
         const activeLeagues = [...new Set(clubPlayers.map(p => p.league))].filter(l => l && l !== "Unbekannt").length;
 
-        // Points Boxes
-        const statsRow = document.createElement('div');
-        statsRow.style.cssText = "display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;";
-        statsRow.innerHTML = `
-            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                <div style="font-size: 1.5em;">👥</div>
-                <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${clubPlayers.length}</div>
-                <div style="font-size: 0.75em; color: #94a3b8;">Spieler</div>
-            </div>
-            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                <div style="font-size: 1.5em;">🏆</div>
-                <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${activeLeagues}</div>
-                <div style="font-size: 0.75em; color: #94a3b8;">Ligen</div>
-            </div>
-            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                <div style="font-size: 1.5em;">🎯</div>
-                <div style="font-weight: bold; color: #4ade80; font-size: 1.2em;">${totalPoints}</div>
-                <div style="font-size: 0.75em; color: #94a3b8;">Punkte (Ges.)</div>
-            </div>
-        `;
-        container.appendChild(statsRow);
-
         const detailsContent = document.createElement('div');
         const detailsGrid = document.createElement('div');
         detailsGrid.className = 'club-contact-grid';
@@ -5464,20 +5593,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Current Tables
         currentTables.forEach(t => {
-            const tSec = document.createElement('div');
-            tSec.style.cssText = "margin-bottom: 25px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; overflow: hidden;";
-            tSec.innerHTML = `<div style="padding: 10px 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #334155; font-weight: bold; color: #f8fafc;">📊 Tabelle: ${t.leagueName}</div><div class="table-container" style="padding: 0; border: none;">${t.tableHtml}</div>`;
-            cleanTable(tSec);
-            // Highlight club row
-            const rows = tSec.querySelectorAll('tr');
-            rows.forEach(row => {
-                if (isClubMatch(club.name, row.textContent)) {
-                    row.style.background = "rgba(59, 130, 246, 0.2)";
-                    row.style.fontWeight = "bold";
-                    row.style.color = "#60a5fa";
-                }
-            });
-            currentSeasonContent.appendChild(tSec);
+            currentSeasonContent.appendChild(createSafeLeagueTableSection(
+                t.leagueName,
+                t.tableHtml,
+                club.name,
+                isClubMatch,
+            ));
         });
 
         const ligapokalGrid = createClubMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
@@ -5485,25 +5606,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let playerSection = null;
         if (clubPlayers.length > 0) {
-            playerSection = document.createElement('div');
-            playerSection.style.marginTop = "30px";
-            playerSection.className = 'club-ranking-season';
-            playerSection.appendChild(createClubRankingSeasonNotice(dataStatus.domains && dataStatus.domains.rankings));
-            const playerHeading = document.createElement('h3');
-            playerHeading.style.cssText = 'color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;';
-            playerHeading.textContent = `Mannschaft (${clubPlayers.length})`;
-            playerSection.appendChild(playerHeading);
             const pGrid = document.createElement('div');
             pGrid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;";
             clubPlayers.forEach(p => {
-                const pCard = document.createElement('div');
-                pCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; display: flex; justify-content: space-between; align-items: center;";
-                let spark = p.rounds ? renderSparkline(p.rounds) : "";
-                const tierColor = leagueTierColor(p.league);
-                pCard.innerHTML = `<div style="flex: 1;"><div style="font-weight: bold; color: #f8fafc;">${p.name}</div><div style="font-size: 0.8em; color: ${tierColor};">${p.league} <span style="color: #cbd5e1; margin-left: 5px; background: rgba(255,255,255,0.1); padding: 1px 4px; border-radius: 3px;">Platz ${p.rank || '-'}</span></div></div><div style="display: flex; flex-direction: column; align-items: center; margin: 0 15px;"><div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Spielform</div>${spark.replace('margin-left: 10px;', 'margin: 0;')}</div><div style="text-align: right; margin-left: 10px;"><div style="font-weight: bold; color: #4ade80; font-size: 1.1em;">${p.points || 0}</div><div style="font-size: 0.75em; color: #64748b;">Pkt</div></div>`;
-                pGrid.appendChild(pCard);
+                pGrid.appendChild(createClubPlayerCard(p, leagueTierColor(p.league)));
             });
-            playerSection.appendChild(pGrid);
+            playerSection = createClubRankingSection(
+                dataStatus.domains && dataStatus.domains.rankings,
+                createClubRankingStatsRow(clubPlayers.length, activeLeagues, totalPoints),
+                pGrid,
+                clubPlayers.length,
+            );
         }
 
         container.appendChild(createDisclosureSection(

@@ -121,6 +121,7 @@ function createDocument() {
     }
     return {
         createElement: (tagName) => new Element(tagName),
+        createElementNS: (_namespace, tagName) => new Element(tagName),
         getElementById: (id) => byId.get(id) || null,
     };
 }
@@ -176,6 +177,95 @@ const createClubRankingSeasonNotice = compileFunction('createClubRankingSeasonNo
 const rankingNotice = createClubRankingSeasonNotice(rankingStatus);
 assert.equal(rankingNotice.getAttribute('role'), 'note');
 assert.equal(rankingNotice.textContent, 'Rangliste 2025/26 (letzte vollständige Saison)');
+
+const createClubRankingStatsRow = compileFunction('createClubRankingStatsRow', { document });
+const rankingStats = createClubRankingStatsRow(2, 1, 42);
+const createClubRankingSection = compileFunction('createClubRankingSection', {
+    document,
+    createClubRankingSeasonNotice,
+});
+const rankingGrid = document.createElement('div');
+rankingGrid.textContent = 'Spielerliste';
+const retainedRankingSection = createClubRankingSection(rankingStatus, rankingStats, rankingGrid, 2);
+assert.equal(retainedRankingSection.getAttribute('aria-labelledby'), 'club-ranking-season-label');
+assert.equal(descendants(retainedRankingSection).filter((element) => element.classList.contains('club-ranking-season-notice')).length, 1);
+assert.match(retainedRankingSection.textContent, /Rangliste 2025\/26 \(letzte vollständige Saison\).*2Spieler.*1Ligen.*42Punkte \(Ges\.\).*Mannschaft \(2\).*Spielerliste/);
+for (const state of ['current', 'published']) {
+    const currentGrid = document.createElement('div');
+    currentGrid.textContent = 'Aktuelle Spielerliste';
+    const section = createClubRankingSection(
+        { state, season: '2026/27' },
+        createClubRankingStatsRow(3, 2, 60),
+        currentGrid,
+        3,
+    );
+    assert.equal(section.children[0].id, 'club-ranking-season-label');
+    assert.equal(section.children[0].getAttribute('role'), 'note');
+    assert.match(section.textContent, /^Rangliste 2026\/27.*3Spieler.*2Ligen.*60Punkte \(Ges\.\).*Mannschaft \(3\).*Aktuelle Spielerliste/);
+    assert.doesNotMatch(section.textContent, /letzte vollständige Saison/);
+}
+
+class SafeTableDOMParser {
+    parseFromString(value, type) {
+        assert.equal(value, maliciousTableHtml);
+        assert.equal(type, 'text/html');
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'tr');
+                return [
+                    { children: [
+                        { tagName: 'TH', textContent: 'Team<script>alert(1)</script>' },
+                        { tagName: 'TH', textContent: 'Punkte' },
+                    ] },
+                    { children: [
+                        { tagName: 'TD', textContent: 'DC Nord <img src=x onerror=alert(2)>' },
+                        { tagName: 'TD', textContent: '42' },
+                    ] },
+                ];
+            },
+        };
+    }
+}
+const maliciousLeagueName = '<img src=x onerror=alert(3)>';
+const maliciousTableHtml = '<table onclick="alert(4)"><tr><th>Team<script>alert(1)</script></th><th>Punkte</th></tr><tr><td onmouseover="alert(5)">DC Nord &lt;img src=x onerror=alert(2)&gt;</td><td>42</td></tr></table>';
+const createSafeLeagueTableSection = compileFunction('createSafeLeagueTableSection', {
+    document,
+    DOMParser: SafeTableDOMParser,
+});
+const safeLeagueTable = createSafeLeagueTableSection(
+    maliciousLeagueName,
+    maliciousTableHtml,
+    'DC Nord',
+    (clubName, value) => String(value).includes(clubName),
+);
+assert.match(safeLeagueTable.textContent, /<img src=x onerror=alert\(3\)>/);
+assert.match(safeLeagueTable.textContent, /Team<script>alert\(1\)<\/script>/);
+assert.match(safeLeagueTable.textContent, /DC Nord <img src=x onerror=alert\(2\)>/);
+assert.equal(descendants(safeLeagueTable).some((element) => element.usedInnerHTML), false);
+assert.equal(descendants(safeLeagueTable).some((element) => ['SCRIPT', 'IMG', 'A', 'STYLE'].includes(element.tagName)), false);
+assert.equal(descendants(safeLeagueTable).some((element) => Object.keys(element.attributes).some((name) => /^on/i.test(name))), false);
+assert.equal(descendants(safeLeagueTable).filter((element) => element.tagName === 'TH').length, 2);
+assert.equal(descendants(safeLeagueTable).filter((element) => element.tagName === 'TD').length, 2);
+
+const createPlayerFormElement = compileFunction('createPlayerFormElement', { document });
+const createClubPlayerCard = compileFunction('createClubPlayerCard', {
+    document,
+    createPlayerFormElement,
+});
+const safePlayerCard = createClubPlayerCard({
+    name: '<img src=x onerror=alert(6)>',
+    league: '<svg onload=alert(7)>',
+    rank: '<script>alert(8)</script>',
+    points: '<a href=javascript:alert(9)>9</a>',
+    rounds: { R1: '1" onload="alert(10)', R2: 2 },
+}, '#94a3b8');
+assert.match(safePlayerCard.textContent, /<img src=x onerror=alert\(6\)>/);
+assert.match(safePlayerCard.textContent, /<svg onload=alert\(7\)>/);
+assert.match(safePlayerCard.textContent, /<script>alert\(8\)<\/script>/);
+assert.match(safePlayerCard.textContent, /<a href=javascript:alert\(9\)>9<\/a>/);
+assert.equal(descendants(safePlayerCard).some((element) => element.usedInnerHTML), false);
+assert.equal(descendants(safePlayerCard).some((element) => ['SCRIPT', 'IMG', 'A', 'STYLE'].includes(element.tagName)), false);
+assert.equal(descendants(safePlayerCard).some((element) => Object.keys(element.attributes).some((name) => /^on/i.test(name))), false);
 
 const canonicalClubId = compileFunction('canonicalClubId');
 const normalizeClubIdList = compileFunction('normalizeClubIdList', { canonicalClubId });
@@ -411,7 +501,12 @@ assert.match(styles, /\.club-upcoming-toggle/);
 assert.match(styles, /\.club-contact-grid/);
 assert.match(styles, /\.archive-freilos/);
 assert.match(styles, /\.club-ranking-season-notice/);
-assert.doesNotMatch(extractFunction('renderClub'), /currentSeasonContent\.appendChild\(playerSection\)/);
-assert.match(extractFunction('renderClub'), /container\.appendChild\(playerSection\)/);
+const renderClubSource = extractFunction('renderClub');
+assert.doesNotMatch(renderClubSource, /currentSeasonContent\.appendChild\(playerSection\)/);
+assert.doesNotMatch(renderClubSource, /container\.appendChild\(statsRow\)/);
+assert.doesNotMatch(renderClubSource, /\bpCard\.innerHTML|\btSec\.innerHTML/);
+assert.match(renderClubSource, /createSafeLeagueTableSection/);
+assert.match(renderClubSource, /createClubRankingSection/);
+assert.match(renderClubSource, /container\.appendChild\(playerSection\)/);
 
 console.log('club experience production DOM contracts passed');
