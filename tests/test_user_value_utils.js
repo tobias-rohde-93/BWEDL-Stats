@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const path = require('node:path');
 
 const {
@@ -9,6 +10,15 @@ const {
     parseAppHash,
     diffVisitSnapshots,
 } = require(path.join(__dirname, '..', 'app_utils.js'));
+
+const reviewFailures = [];
+function reviewCheck(name, check) {
+    try {
+        check();
+    } catch (error) {
+        reviewFailures.push(`${name}: ${error.message.split('\n')[0]}`);
+    }
+}
 
 assert.equal(isByeOpponent('Spielfrei (DC Beispiel)'), true);
 assert.equal(isByeOpponent('*** Freilos ***'), true);
@@ -58,7 +68,11 @@ const calendar = buildIcsContent({
 });
 assert.match(calendar, /^BEGIN:VCALENDAR\r\nVERSION:2\.0\r\n/);
 assert.match(calendar, /UID:spiel-42@bwedl-stats\r\n/);
-assert.match(calendar, /DTSTART;TZID=Europe\/Berlin:20260828T200000\r\n/);
+reviewCheck('timed ICS values use unambiguous UTC', () => {
+    assert.doesNotMatch(calendar, /TZID=Europe\/Berlin/);
+    assert.match(calendar, /DTSTART:20260828T180000Z\r\n/);
+    assert.match(calendar, /DTEND:20260828T210000Z\r\n/);
+});
 assert.match(calendar, /SUMMARY:DC Heim\\, 1 - DC Gast\\; 2\r\n/);
 assert.match(calendar, /DESCRIPTION:A-Klasse\\nStaffel 1\r\n/);
 assert.match(calendar, /LOCATION:Vereinsheim\\; Hauptstraße 1\r\n/);
@@ -79,6 +93,48 @@ assert.deepEqual(
     'provided UIDs are escaped as one RFC5545 TEXT property line',
 );
 assert.equal(calendarWithUnsafeUid.includes('\r\nX-EVIL:true'), false);
+
+const allDayCalendar = buildIcsContent({
+    dateStr: '28.08.2026',
+    home: 'DC Heim',
+    away: 'DC Gast',
+});
+assert.match(allDayCalendar, /DTSTART;VALUE=DATE:20260828\r\n/);
+assert.match(allDayCalendar, /DTEND;VALUE=DATE:20260829\r\n/);
+
+reviewCheck('ambiguous browser date strings stay open', () => {
+    const deterministicOrder = selectUpcomingGames(
+        [
+            { id: 'ambiguous', opponent: 'DC Offen', isPending: true, date: '03/04/2027' },
+            { id: 'dated', opponent: 'DC Fix', isPending: true, dateStr: '05.04.2027 20:00' },
+        ],
+        new Date('2027-04-01T12:00:00Z'),
+    );
+    assert.deepEqual(deterministicOrder.map((game) => game.id), ['dated', 'ambiguous']);
+});
+
+reviewCheck('ICS lines fold at 75 UTF-8 octets', () => {
+    const longHome = `DC ${'Ä'.repeat(45)}`;
+    const longLocation = `Vereinsstätte ${'ü'.repeat(50)}, Hauptstraße 123`;
+    const longCalendar = buildIcsContent({
+        dateStr: '28.08.2026 20:00',
+        home: longHome,
+        away: 'DC Gäste',
+        location: longLocation,
+    });
+    const physicalLines = longCalendar.split('\r\n').filter(Boolean);
+    assert.equal(
+        physicalLines.every((line) => Buffer.byteLength(line, 'utf8') <= 75),
+        true,
+    );
+    assert.equal(physicalLines.some((line) => line.startsWith(' ')), true);
+    const unfolded = longCalendar.replace(/\r\n[ \t]/g, '');
+    assert.equal(unfolded.includes(`SUMMARY:${longHome} - DC Gäste`), true);
+    assert.equal(
+        unfolded.includes(`LOCATION:${longLocation.replace(',', '\\,')}`),
+        true,
+    );
+});
 
 const existingRoutes = new Set([
     'dashboard:',
@@ -127,5 +183,29 @@ assert.deepEqual(
 );
 assert.deepEqual(diffVisitSnapshots({ rank: 1 }, { rank: 1 }), []);
 assert.deepEqual(diffVisitSnapshots(null, { rank: 1 }), []);
+
+reviewCheck('snapshot diffs clone next-game values', () => {
+    const previous = { nextGame: { opponent: 'DC Alt', details: { round: 3 } } };
+    const current = { nextGame: { opponent: 'DC Neu', details: { round: 4 } } };
+    const change = diffVisitSnapshots(previous, current).find((item) => item.type === 'nextGame');
+    assert.notStrictEqual(change.previous, previous.nextGame);
+    assert.notStrictEqual(change.current, current.nextGame);
+    assert.notStrictEqual(change.current.details, current.nextGame.details);
+    change.previous.opponent = 'Mutiert';
+    change.current.details.round = 99;
+    assert.equal(previous.nextGame.opponent, 'DC Alt');
+    assert.equal(current.nextGame.details.round, 4);
+});
+
+reviewCheck('service worker cache contract is exact', () => {
+    const worker = fs.readFileSync(path.join(__dirname, '..', 'sw_v31.js'), 'utf8');
+    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v33';$/m);
+    assert.doesNotMatch(worker, /bwedl-dashboard-v32/);
+    assert.match(worker, /^\s*'\.\/app_utils\.js',$/m);
+});
+
+if (reviewFailures.length > 0) {
+    assert.fail(`quality review regressions:\n- ${reviewFailures.join('\n- ')}`);
+}
 
 console.log('user value utilities: ok');

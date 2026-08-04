@@ -1,4 +1,4 @@
-// Supersedes bwedl-dashboard-v32 so clients refresh the static utility API.
+// Increment this cache name whenever the static asset list changes.
 const CACHE_NAME = 'bwedl-dashboard-v33';
 const urlsToCache = [
     './',

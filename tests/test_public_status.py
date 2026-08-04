@@ -1,4 +1,5 @@
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -42,7 +43,8 @@ def test_bundle_uses_safe_status_fallback_without_status_inner_html() -> None:
 def test_service_worker_treats_both_status_files_as_network_first_data() -> None:
     worker = (ROOT / "sw_v31.js").read_text(encoding="utf-8")
 
-    assert "bwedl-dashboard-v32" in worker
+    assert re.search(r"^const CACHE_NAME = 'bwedl-dashboard-v33';$", worker, re.MULTILINE)
+    assert "bwedl-dashboard-v32" not in worker
     assert "'./data_status.json'" in worker
     assert "'./data_status.js'" in worker
     assert "data_status.json" in worker[worker.index("const isDataFile") :]
