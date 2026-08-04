@@ -347,8 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (status) status.textContent = message;
     }
 
-    async function shareCurrentView(summary) {
-        const route = currentState && routeExists(currentState.type, currentState.id)
+    async function shareCurrentView(summary, preferredRoute) {
+        const route = preferredRoute && routeExists(preferredRoute.type, preferredRoute.id)
+            ? preferredRoute
+            : currentState && routeExists(currentState.type, currentState.id)
             ? currentState
             : window.BwedlAppUtils.parseAppHash(window.location.hash, routeExists);
         const url = new URL(window.location.href);
@@ -409,23 +411,92 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function normalizeClubAlias(value) {
+        if (typeof value !== 'string') return '';
+        return value
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLocaleLowerCase('de-DE')
+            .replace(/ß/g, 'ss')
+            .replace(/[^a-z0-9]+/g, ' ')
+            .replace(/\s+(?:e\s*v)\s*$/i, '')
+            .replace(/\s+(?:(?:team|mannschaft)\s*)?\d+\s*$/i, '')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .replace(/\s/g, '');
+    }
+
+    function clubAliasDistance(left, right) {
+        if (left === right) return 0;
+        if (!left || !right) return Math.max(left.length, right.length);
+        let previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+        for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+            const current = [leftIndex];
+            for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+                current[rightIndex] = Math.min(
+                    current[rightIndex - 1] + 1,
+                    previous[rightIndex] + 1,
+                    previous[rightIndex - 1] + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1),
+                );
+            }
+            previous = current;
+        }
+        return previous[right.length];
+    }
+
+    function resolveHomeClub(game) {
+        const homeAlias = normalizeClubAlias(game && game.home);
+        if (!homeAlias || !clubData || !Array.isArray(clubData.clubs)) return null;
+        let best = null;
+        let bestDistance = Infinity;
+        let ambiguous = false;
+        clubData.clubs.forEach((club, index) => {
+            const clubAlias = normalizeClubAlias(club && club.name);
+            if (!clubAlias) return;
+            const distance = clubAliasDistance(homeAlias, clubAlias);
+            const allowedDistance = Math.min(homeAlias.length, clubAlias.length) >= 10 ? 2 : 1;
+            if (distance > allowedDistance) return;
+            if (distance < bestDistance) {
+                best = { club, index };
+                bestDistance = distance;
+                ambiguous = false;
+            } else if (distance === bestDistance) {
+                ambiguous = true;
+            }
+        });
+        return ambiguous ? null : best;
+    }
+
     function gameAddress(game) {
         if (!game || typeof game !== 'object') return '';
         const direct = [game.address, game.location]
             .find((value) => typeof value === 'string' && value.trim());
         if (direct) return direct.trim();
 
-        const homeName = typeof game.home === 'string' ? normalizeTeamName(game.home) : '';
-        if (!homeName || !clubData || !Array.isArray(clubData.clubs)) return '';
-        const homeClub = clubData.clubs.find((club) => {
-            const clubName = normalizeTeamName(club && club.name);
-            return clubName && (clubName === homeName || homeName.startsWith(`${clubName} `));
-        });
+        const resolved = resolveHomeClub(game);
+        const homeClub = resolved && resolved.club;
         if (!homeClub) return '';
         return [homeClub.venue, homeClub.street, homeClub.city]
             .filter((value) => typeof value === 'string' && value.trim() && value !== '-')
             .map((value) => value.trim())
             .join(', ');
+    }
+
+    function gameCompetition(game) {
+        if (!game || typeof game !== 'object') return '';
+        return [game.competition, game.league, game.leagueKey, game.leagueName]
+            .find((value) => typeof value === 'string' && value.trim())?.trim() || '';
+    }
+
+    function calendarGame(game) {
+        if (!game || typeof game !== 'object') return game;
+        const location = gameAddress(game);
+        const competition = gameCompetition(game);
+        return {
+            ...game,
+            ...(competition ? { competition } : {}),
+            ...(location ? { location } : {}),
+        };
     }
 
     function buildMapsUrl(game) {
@@ -439,8 +510,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const matchup = [game && game.home, game && game.away]
             .filter((value) => typeof value === 'string' && value.trim())
             .join(' gegen ');
-        const date = game && typeof game.dateStr === 'string' ? game.dateStr.trim() : '';
-        return [matchup || 'BWEDL-Spiel', date].filter(Boolean).join(' · ');
+        const date = game && typeof game.dateStr === 'string' && game.dateStr.trim()
+            ? game.dateStr.trim()
+            : 'Termin offen';
+        const competition = gameCompetition(game);
+        const location = gameAddress(game);
+        return [matchup || 'BWEDL-Spiel', date, competition, location].filter(Boolean).join(' · ');
+    }
+
+    function bestShareRoute(game) {
+        const resolved = resolveHomeClub(game);
+        return resolved ? { type: 'club', id: resolved.index } : null;
     }
 
     function calendarFilename(game) {
@@ -462,23 +542,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function downloadGameCalendar(game) {
-        const content = window.BwedlAppUtils.buildIcsContent(game);
-        if (!content) return false;
-        const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
-        const objectUrl = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = objectUrl;
-        link.download = calendarFilename(game);
-        link.hidden = true;
+        let objectUrl = '';
+        let link = null;
+        const cleanup = () => {
+            if (link && link.parentElement) link.parentElement.removeChild(link);
+            if (objectUrl) URL.revokeObjectURL(objectUrl);
+        };
         try {
+            const content = window.BwedlAppUtils.buildIcsContent(calendarGame(game));
+            if (!content) throw new Error('calendar data unavailable');
+            const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+            objectUrl = URL.createObjectURL(blob);
+            link = document.createElement('a');
+            link.href = objectUrl;
+            link.download = calendarFilename(game);
+            link.hidden = true;
             document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
             setAppStatus('Kalenderdatei wurde erstellt.');
+            setTimeout(cleanup, 1000);
             return true;
-        } finally {
-            if (link.parentElement) link.parentElement.removeChild(link);
-            URL.revokeObjectURL(objectUrl);
+        } catch (_error) {
+            cleanup();
+            setAppStatus('Kalenderdatei konnte nicht erstellt werden.');
+            return false;
         }
     }
 
@@ -493,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navigateTo('matchPreview');
             },
         }];
-        if (window.BwedlAppUtils.buildIcsContent(game)) {
+        if (window.BwedlAppUtils.buildIcsContent(calendarGame(game))) {
             actions.push({
                 key: 'calendar',
                 label: 'Kalender',
@@ -505,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
             key: 'share',
             label: 'Teilen',
             ariaLabel: `${gameShareText(game)} teilen`,
-            activate: () => shareCurrentView(gameShareText(game)),
+            activate: () => shareCurrentView(gameShareText(game), bestShareRoute(game)),
         });
         const mapsUrl = buildMapsUrl(game);
         if (mapsUrl) {
@@ -519,6 +606,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         return actions;
+    }
+
+    function configureGameCardNavigation(card, game) {
+        const openLeague = () => navigateTo('league', game.leagueKey || game.leagueName || game.league);
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `${gameShareText(game)} – Liga öffnen`);
+        card.addEventListener('click', (event) => {
+            if (event.target !== event.currentTarget && event.target.closest?.('.game-actions')) return;
+            openLeague();
+        });
+        card.addEventListener('keydown', (event) => {
+            if (event.target !== event.currentTarget || (event.key !== 'Enter' && event.key !== ' ')) return;
+            event.preventDefault();
+            openLeague();
+        });
     }
 
     function createGameActionsElement(game) {
@@ -1996,7 +2099,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             nextCard.onmouseout = () => { nextCard.style.borderColor = '#334155'; nextCard.style.opacity = '0.9'; };
                         }
 
-                        nextCard.onclick = () => navigateTo('league', game.leagueKey);
+                        configureGameCardNavigation(nextCard, game);
                         
                         const dateStr = game.date 
                             ? game.date.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) 
