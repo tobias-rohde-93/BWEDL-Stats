@@ -490,9 +490,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function activateSearchResult(event) {
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeSearchResults(true);
+            return;
+        }
         if (event.key !== 'Enter' && event.key !== ' ') return;
         event.preventDefault();
         event.currentTarget.click();
+    }
+
+    function createProfileSuggestionItem(match, selectMatch, closeSuggestions) {
+        const item = document.createElement('li');
+        const button = document.createElement('button');
+        const name = document.createElement('span');
+        const context = document.createElement('span');
+        button.type = 'button';
+        button.className = 'profile-suggestion-button';
+        name.className = 'profile-suggestion-name';
+        name.textContent = match.label;
+        context.className = 'profile-suggestion-context';
+        context.textContent = match.context || 'Vereinslos';
+        button.appendChild(name);
+        button.appendChild(context);
+        button.addEventListener('click', () => selectMatch(match));
+        button.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            event.preventDefault();
+            closeSuggestions(true);
+        });
+        item.appendChild(button);
+        return item;
+    }
+
+    function configureAllTimeDetailButton(button, contentId, expanded, toggle) {
+        button.type = 'button';
+        button.className = 'alltime-detail-button';
+        button.setAttribute('aria-controls', contentId);
+        button.setAttribute('aria-expanded', String(expanded));
+        button.textContent = expanded ? 'Schließen' : 'Details';
+        button.addEventListener('click', toggle);
     }
 
     // --- My Profile State ---
@@ -932,6 +969,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function buildGameActions(game) {
         if (!game || typeof game !== 'object') return [];
+        const league = game.leagueKey || game.leagueName || game.league;
         const actions = [{
             key: 'preview',
             label: 'Match Preview',
@@ -941,6 +979,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 navigateTo('matchPreview');
             },
         }];
+        if (league) {
+            actions.unshift({
+                key: 'league',
+                label: 'Liga öffnen',
+                ariaLabel: `${league} öffnen`,
+                activate: () => navigateTo('league', league),
+            });
+        }
         if (window.BwedlAppUtils.buildIcsContent(calendarGame(game))) {
             actions.push({
                 key: 'calendar',
@@ -967,22 +1013,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         return actions;
-    }
-
-    function configureGameCardNavigation(card, game) {
-        const openLeague = () => navigateTo('league', game.leagueKey || game.leagueName || game.league);
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-label', `${gameShareText(game)} – Liga öffnen`);
-        card.addEventListener('click', (event) => {
-            if (event.target !== event.currentTarget && event.target.closest?.('.game-actions')) return;
-            openLeague();
-        });
-        card.addEventListener('keydown', (event) => {
-            if (event.target !== event.currentTarget || (event.key !== 'Enter' && event.key !== ' ')) return;
-            event.preventDefault();
-            openLeague();
-        });
     }
 
     function createGameActionsElement(game) {
@@ -1977,6 +2007,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputGroup.appendChild(label);
 
         const input = document.createElement('input');
+        input.id = 'profile-player-search-input';
         input.type = "text";
         input.style.width = "100%";
         input.style.padding = "12px";
@@ -1987,8 +2018,14 @@ document.addEventListener('DOMContentLoaded', () => {
         input.placeholder = "Z.B. Max Mustermann";
         input.value = myPlayerName || "";
         input.autocomplete = "off";
+        input.setAttribute('aria-controls', 'profile-player-suggestions');
+        input.setAttribute('aria-expanded', 'false');
+        label.setAttribute('for', input.id);
 
-        const suggestionsBox = document.createElement('div');
+        const suggestionsBox = document.createElement('ul');
+        suggestionsBox.id = 'profile-player-suggestions';
+        suggestionsBox.setAttribute('aria-label', 'Spielervorschläge');
+        suggestionsBox.style.listStyle = 'none';
         suggestionsBox.style.position = "absolute";
         suggestionsBox.style.top = "100%";
         suggestionsBox.style.left = "0";
@@ -2062,13 +2099,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        const closeSuggestions = (restoreFocus = false) => {
+            suggestionsBox.style.display = 'none';
+            input.setAttribute('aria-expanded', 'false');
+            if (restoreFocus) input.focus();
+        };
+
+        const selectSuggestion = (match) => {
+            input.value = match.label;
+            closeSuggestions(false);
+            if (rankingData && rankingData.players) {
+                const player = rankingData.players.find(rp => rp.name === match.label);
+                if (player && player.v_nr && typeof CLUB_DATA !== 'undefined') {
+                    const club = CLUB_DATA.clubs.find(c => c.number == player.v_nr);
+                    populateTeams(club ? club.name : (player.company || 'Unbekannt'));
+                } else if (player && player.company) {
+                    populateTeams(player.company);
+                }
+            }
+        };
+
+        input.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            event.preventDefault();
+            closeSuggestions(true);
+        });
+
         input.addEventListener('input', () => {
             const val = input.value.toLowerCase().trim();
-            suggestionsBox.innerHTML = '';
+            suggestionsBox.replaceChildren();
             teamGroup.style.display = 'none';
 
             if (val.length < 2) {
-                suggestionsBox.style.display = 'none';
+                closeSuggestions(false);
                 return;
             }
 
@@ -2079,51 +2142,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (matches.length > 0) {
                     suggestionsBox.style.display = 'block';
+                    input.setAttribute('aria-expanded', 'true');
                     matches.forEach(m => {
-                        const div = document.createElement('div');
-                        div.style.padding = "10px";
-                        div.style.borderBottom = "1px solid #334155";
-                        div.style.cursor = "pointer";
-                        div.style.color = "#e2e8f0";
-
-                        // Use the context from search index which is already resolved to Club Name
-                        const clubName = m.context || "Vereinslos";
-
-                        div.innerHTML = `<div>${m.label}</div><div style="font-size: 0.8em; color: #94a3b8;">${clubName}</div>`;
-
-                        div.addEventListener('mouseenter', () => div.style.background = "#0f172a");
-                        div.addEventListener('mouseleave', () => div.style.background = "transparent");
-
-                        div.addEventListener('click', () => {
-                            input.value = m.label;
-                            suggestionsBox.style.display = 'none';
-
-                            if (rankingData && rankingData.players) {
-                                const p = rankingData.players.find(rp => rp.name === m.label);
-                                if (p && p.v_nr && typeof CLUB_DATA !== 'undefined') {
-                                    const club = CLUB_DATA.clubs.find(c => c.number == p.v_nr);
-                                    if (club) {
-                                        populateTeams(club.name);
-                                    } else {
-                                        populateTeams(p.company || "Unbekannt");
-                                    }
-                                } else if (p && p.company) {
-                                    populateTeams(p.company);
-                                }
-                            }
-                        });
-                        suggestionsBox.appendChild(div);
+                        suggestionsBox.appendChild(createProfileSuggestionItem(
+                            m,
+                            selectSuggestion,
+                            closeSuggestions,
+                        ));
                     });
                 } else {
                     suggestionsBox.style.display = 'block';
-                    suggestionsBox.innerHTML = '<div style="padding:10px; color: #94a3b8;">Keine Spieler gefunden.</div>';
+                    input.setAttribute('aria-expanded', 'true');
+                    const empty = document.createElement('li');
+                    empty.setAttribute('role', 'status');
+                    empty.style.cssText = 'padding:10px; color: #94a3b8;';
+                    empty.textContent = 'Keine Spieler gefunden.';
+                    suggestionsBox.appendChild(empty);
                 }
             }
         });
 
         document.addEventListener('click', (e) => {
             if (!inputGroup.contains(e.target)) {
-                suggestionsBox.style.display = 'none';
+                closeSuggestions(false);
             }
         });
 
@@ -2615,16 +2656,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         const isPrimary = idx === 0;
                         
                         nextCard.style.cssText = isPrimary 
-                            ? 'background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 12px; border: 1px solid #3b82f6; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);'
-                            : 'background: #1e293b; padding: 15px 20px; border-radius: 12px; border: 1px solid #334155; cursor: pointer; opacity: 0.9; transition: all 0.2s;';
+                            ? 'background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 12px; border: 1px solid #3b82f6; position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);'
+                            : 'background: #1e293b; padding: 15px 20px; border-radius: 12px; border: 1px solid #334155; opacity: 0.9; transition: all 0.2s;';
                         
                         if (!isPrimary) {
                             nextCard.onmouseover = () => { nextCard.style.borderColor = '#475569'; nextCard.style.opacity = '1'; };
                             nextCard.onmouseout = () => { nextCard.style.borderColor = '#334155'; nextCard.style.opacity = '0.9'; };
                         }
 
-                        configureGameCardNavigation(nextCard, game);
-                        
                         const dateStr = game.date 
                             ? game.date.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) 
                             : 'Termin offen';
@@ -2759,7 +2798,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         tbody.appendChild(row);
                     });
                     table.appendChild(tbody);
-                    logContainer.appendChild(table);
+                    const tableScroll = document.createElement('div');
+                    tableScroll.className = 'table-scroll profile-season-history';
+                    tableScroll.tabIndex = 0;
+                    tableScroll.setAttribute('aria-label', 'Saisonverlauf');
+                    tableScroll.appendChild(table);
+                    logContainer.appendChild(tableScroll);
                     container.appendChild(logContainer);
                 }
             }
@@ -3778,10 +3822,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tierColor = leagueTierColor(lastSeason ? lastSeason.league : '');
 
                 const isExpanded = expandedId === p.id;
+                const detailId = `alltime-detail-${String(p.id).replace(/[^A-Za-z0-9_-]/g, '-')}`;
 
                 // Row
                 const row = document.createElement('div');
-                row.style.cssText = 'border-bottom: 1px solid #334155; cursor: pointer; transition: background 0.15s;';
+                row.style.cssText = 'border-bottom: 1px solid #334155; transition: background 0.15s;';
 
                 let rowHtml = `<div style="display: flex; padding: 12px; align-items: center;" class="alltime-row">
                     <div style="width: 36px; text-align: center; font-weight: bold; color: ${rankColor}; font-size: 0.95em;">${medal}</div>
@@ -3798,12 +3843,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="width: 50px; text-align: center; color: #cbd5e1; font-size: 0.9em;">${p.totalSeasons}</div>
                     <div style="width: 70px; text-align: right; color: #60a5fa; font-weight: 500; font-size: 0.9em;">${p.avgPoints.toFixed(1)}</div>
                     <div style="width: 80px; text-align: right; padding-right: 10px; font-weight: bold; color: #4ade80; font-size: 1em;">${p.totalPoints}</div>
+                    <button type="button" class="alltime-detail-button"></button>
                 </div>`;
 
                 // Feature 4: Expandable detail
+                rowHtml += `<div id="${detailId}" class="alltime-detail-content" ${isExpanded ? '' : 'hidden'}>`;
                 if (isExpanded) {
-                    rowHtml += `<div style="padding: 0 12px 12px 56px; animation: fadeIn 0.2s ease;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 0.8em;">
+                    rowHtml += `<div class="table-scroll alltime-detail-table" tabindex="0" aria-label="Saisondetails von ${escapeHtmlText(p.name)}">
+                        <table>
                             <thead>
                                 <tr style="color: #94a3b8; text-align: left;">
                                     <th style="padding: 6px 8px; border-bottom: 1px solid #334155;">Saison</th>
@@ -3832,14 +3879,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </table>
                     </div>`;
                 }
+                rowHtml += '</div>';
 
                 row.innerHTML = rowHtml;
 
-                // Click handler to toggle expand
-                row.querySelector('.alltime-row').addEventListener('click', () => {
-                    expandedId = expandedId === p.id ? null : p.id;
-                    render();
-                });
+                configureAllTimeDetailButton(
+                    row.querySelector('.alltime-detail-button'),
+                    detailId,
+                    isExpanded,
+                    () => {
+                        expandedId = expandedId === p.id ? null : p.id;
+                        render();
+                    },
+                );
 
                 // Hover effect
                 row.addEventListener('mouseenter', () => { row.style.background = 'rgba(51, 65, 85, 0.3)'; });

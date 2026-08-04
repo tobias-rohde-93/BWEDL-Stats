@@ -1,10 +1,10 @@
 // Increment this cache name whenever the static asset list or cache keys change.
-const CACHE_NAME = 'bwedl-dashboard-v34';
+const CACHE_NAME = 'bwedl-dashboard-v35';
 const urlsToCache = [
     './',
     './index.html',
     './manifest.json',
-    './style.css?v=3',
+    './style.css?v=4',
     './bwedl_logo.png',
     './league_data.js?v=5',
     './ranking_data.js?v=4',
@@ -15,7 +15,7 @@ const urlsToCache = [
     './ligapokal_archive.js?v=3',
     './data_status.js?v=1',
     './app_utils.js?v=1',
-    './bundle_v31.js?v=3.2',
+    './bundle_v31.js?v=3.3',
     './pwa-icon-192.png',
     './pwa-icon-512.png'
 ];
@@ -45,22 +45,22 @@ self.addEventListener('fetch', event => {
     if (isDataFile) {
         // Network-First Strategy for Data Files
         const matchCachedData = () => caches.match(event.request, { ignoreSearch: true });
+        const networkRequest = fetch(event.request);
+        const cacheWrite = networkRequest
+            .then(response => {
+                if (!response || response.status !== 200) return undefined;
+                const responseToCache = response.clone();
+                return caches.open(CACHE_NAME)
+                    .then(cache => cache.put(event.request, responseToCache));
+            })
+            .catch(() => undefined);
+        event.waitUntil(cacheWrite);
         event.respondWith(
-            fetch(event.request)
+            networkRequest
                 .then(response => {
-                    // Check if valid response
                     if (!response || response.status !== 200) {
                         return matchCachedData();
                     }
-
-                    // Clone response stream
-                    const responseToCache = response.clone();
-
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(event.request, responseToCache);
-                        });
-
                     return response;
                 })
                 .catch(() => {

@@ -33,8 +33,10 @@ def test_match_preview_handoff_and_accessible_responsive_actions() -> None:
     assert "@media (max-width: 640px)" in STYLES
 
 
-def test_game_cards_expose_keyboard_navigation_without_nested_activation() -> None:
-    assert "function configureGameCardNavigation(card, game)" in SOURCE
-    assert "card.setAttribute('role', 'button')" in SOURCE
-    assert "event.target !== event.currentTarget" in SOURCE
+def test_game_cards_keep_native_actions_without_nested_interactive_semantics() -> None:
+    assert "function configureGameCardNavigation(card, game)" not in SOURCE
+    assert "nextCard.setAttribute('role', 'button')" not in SOURCE
+    assert "nextCard.setAttribute('tabindex', '0')" not in SOURCE
+    assert "key: 'league'" in SOURCE
+    assert "label: 'Liga öffnen'" in SOURCE
     assert "nextCard.onclick =" not in SOURCE

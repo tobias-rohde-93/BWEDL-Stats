@@ -114,32 +114,39 @@ const completeGame = {
     address: 'Hauptstraße 1, Pforzheim',
 };
 const actions = buildGameActions(completeGame);
-assert.deepEqual(actions.map((action) => action.key), ['preview', 'calendar', 'share', 'maps']);
+assert.deepEqual(actions.map((action) => action.key), ['league', 'preview', 'calendar', 'share', 'maps']);
 assert.equal(actions.every((action) => action.label && action.ariaLabel), true);
 assert.deepEqual(
-    { target: actions[3].target, rel: actions[3].rel },
+    { target: actions[4].target, rel: actions[4].rel },
     { target: '_blank', rel: 'noopener noreferrer' },
 );
 
 actions[0].activate();
-assert.deepEqual(calls.slice(0, 2), ['store:bwedl_match_preview_game', 'navigate:matchPreview']);
-assert.deepEqual(JSON.parse(sessionStorage.value), completeGame);
+assert.equal(calls.at(-1), 'navigate:league');
 actions[1].activate();
+assert.deepEqual(calls.slice(-2), ['store:bwedl_match_preview_game', 'navigate:matchPreview']);
+assert.deepEqual(JSON.parse(sessionStorage.value), completeGame);
 actions[2].activate();
+actions[3].activate();
 assert.equal(calls.includes('calendar'), true);
 assert.equal(calls.some((call) => call && call.text && call.text.includes('DC Heim gegen DC Gast')), true);
 
 assert.deepEqual(
-    buildGameActions({ home: 'DC Heim', away: 'DC Gast', dateStr: '28.08.2026' })
+    buildGameActions({ leagueName: 'A-Klasse', home: 'DC Heim', away: 'DC Gast', dateStr: '28.08.2026' })
         .map((action) => action.key),
-    ['preview', 'calendar', 'share'],
+    ['league', 'preview', 'calendar', 'share'],
     'missing address only removes the maps action',
 );
 assert.deepEqual(
-    buildGameActions({ home: 'DC Heim', away: 'DC Gast', address: 'Pforzheim' })
+    buildGameActions({ leagueName: 'A-Klasse', home: 'DC Heim', away: 'DC Gast', address: 'Pforzheim' })
         .map((action) => action.key),
-    ['preview', 'share', 'maps'],
+    ['league', 'preview', 'share', 'maps'],
     'missing date only removes the calendar action',
+);
+assert.equal(
+    buildGameActions({ home: 'DC Heim', away: 'DC Gast' }).some((action) => action.key === 'league'),
+    false,
+    'a game without a league does not render a dead league control',
 );
 
 const realisticDashboardGame = {
@@ -307,40 +314,6 @@ const failedDownload = compileFunction('downloadGameCalendar', {
 assert.equal(failedDownload(completeGame), false);
 assert.match(failedStatuses.at(-1), /nicht/i);
 
-const navigationEvents = [];
-const cardListeners = {};
-const card = {
-    attributes: {},
-    setAttribute(name, value) { this.attributes[name] = value; },
-    addEventListener(name, handler) { cardListeners[name] = handler; },
-};
-const configureGameCardNavigation = compileFunction('configureGameCardNavigation', {
-    navigateTo: (...args) => navigationEvents.push(args),
-    gameShareText,
-});
-configureGameCardNavigation(card, realisticDashboardGame);
-assert.equal(card.attributes.role, 'button');
-assert.equal(card.attributes.tabindex, '0');
-assert.match(card.attributes['aria-label'], /A-Klasse/);
-for (const key of ['Enter', ' ']) {
-    let prevented = false;
-    cardListeners.keydown({ key, target: card, currentTarget: card, preventDefault: () => { prevented = true; } });
-    assert.equal(prevented, true);
-}
-assert.deepEqual(navigationEvents, [
-    ['league', realisticDashboardGame.leagueKey],
-    ['league', realisticDashboardGame.leagueKey],
-]);
-cardListeners.keydown({ key: 'Enter', target: {}, currentTarget: card, preventDefault: () => {} });
-assert.equal(navigationEvents.length, 2, 'nested controls must not trigger card keyboard navigation');
-cardListeners.click({
-    target: { closest: (selector) => selector === '.game-actions' ? {} : null },
-    currentTarget: card,
-});
-assert.equal(navigationEvents.length, 2, 'nested action clicks must not trigger league navigation');
-cardListeners.click({ target: card, currentTarget: card });
-assert.equal(navigationEvents.length, 3);
-
 assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(mySchedule/);
 assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(upcomingLeagueMatches/);
 assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(upcomingLigapokalMatches/);
@@ -350,6 +323,9 @@ assert.match(source, /createClubMatchCard\(m, 'upcoming'\)/);
 assert.match(source, /createGameActionsElement\(match\)/);
 assert.match(source, /readMatchPreviewGame\(\)/);
 assert.doesNotMatch(source, /nextCard\.onclick\s*=/);
+assert.doesNotMatch(source, /function configureGameCardNavigation/);
+assert.doesNotMatch(source, /nextCard\.setAttribute\(['"](?:role|tabindex)['"]/);
+assert.match(source, /key: 'league'[\s\S]*label: 'Liga öffnen'/);
 
 async function verifyCanonicalSharePayload() {
     const payloads = [];

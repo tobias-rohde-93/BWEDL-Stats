@@ -7,15 +7,17 @@ const worker = fs.readFileSync(path.resolve(__dirname, '..', 'sw_v31.js'), 'utf8
 const cacheNameMatch = worker.match(/^const CACHE_NAME = '([^']+)';$/m);
 assert.ok(cacheNameMatch, 'service worker declares one active cache name');
 const currentCacheName = cacheNameMatch[1];
-const previousCacheName = 'bwedl-dashboard-v33';
-assert.equal(currentCacheName, 'bwedl-dashboard-v34');
+const previousCacheName = 'bwedl-dashboard-v34';
+assert.equal(currentCacheName, 'bwedl-dashboard-v35');
 assert.notEqual(currentCacheName, previousCacheName);
-assert.doesNotMatch(worker, /bwedl-dashboard-v33/);
+assert.doesNotMatch(worker, /bwedl-dashboard-v34/);
 
 const listeners = {};
 const calls = [];
 const deletedCaches = [];
 let installedAssets = [];
+let fetchImpl = () => Promise.reject(new Error('offline'));
+let putImpl = () => Promise.resolve();
 const cachedResponse = { source: 'cache' };
 const sandbox = {
     URL,
@@ -33,7 +35,7 @@ const sandbox = {
         open() {
             return Promise.resolve({
                 addAll(assets) { installedAssets = [...assets]; return Promise.resolve(); },
-                put() {},
+                put(request, response) { return putImpl(request, response); },
             });
         },
         keys() { return Promise.resolve([previousCacheName, currentCacheName]); },
@@ -41,36 +43,68 @@ const sandbox = {
     },
     fetch(request) {
         calls.push({ type: 'fetch', url: request.url });
-        return Promise.reject(new Error('offline'));
+        return fetchImpl(request);
     }
 };
 
 vm.createContext(sandbox);
 vm.runInContext(worker, sandbox);
 
-let responsePromise;
-const request = {
-    method: 'GET',
-    url: 'https://example.test/data_status.js?v=1'
-};
-listeners.fetch({
-    request,
-    respondWith(promise) { responsePromise = promise; }
-});
-
 (async () => {
     let installPromise;
     listeners.install({ waitUntil(promise) { installPromise = promise; } });
     await installPromise;
-    assert.ok(installedAssets.includes('./style.css?v=3'));
+    assert.ok(installedAssets.includes('./style.css?v=4'));
     assert.ok(installedAssets.includes('./app_utils.js?v=1'));
-    assert.ok(installedAssets.includes('./bundle_v31.js?v=3.2'));
+    assert.ok(installedAssets.includes('./bundle_v31.js?v=3.3'));
 
     let activatePromise;
     listeners.activate({ waitUntil(promise) { activatePromise = promise; } });
     await activatePromise;
     assert.deepEqual(deletedCaches, [previousCacheName]);
 
+    let releasePut;
+    let putCompleted = false;
+    const delayedPut = new Promise((resolve) => { releasePut = resolve; }).then(() => { putCompleted = true; });
+    const onlineResponse = { status: 200, clone: () => ({ source: 'network-clone' }) };
+    fetchImpl = () => Promise.resolve(onlineResponse);
+    putImpl = () => delayedPut;
+    let onlineResponsePromise;
+    let cacheWriteLifetime;
+    listeners.fetch({
+        request: { method: 'GET', url: 'https://example.test/data_status.js?v=2' },
+        respondWith(promise) { onlineResponsePromise = promise; },
+        waitUntil(promise) { cacheWriteLifetime = promise; },
+    });
+    assert.equal(await onlineResponsePromise, onlineResponse, 'network response is not blocked by cache write');
+    assert.ok(cacheWriteLifetime instanceof Promise, 'cache write extends the fetch event lifetime');
+    assert.equal(putCompleted, false);
+    releasePut();
+    await cacheWriteLifetime;
+    assert.equal(putCompleted, true);
+
+    const cacheFailureResponse = { status: 200, clone: () => ({ source: 'failure-clone' }) };
+    fetchImpl = () => Promise.resolve(cacheFailureResponse);
+    putImpl = () => Promise.reject(new Error('cache unavailable'));
+    let cacheFailureResponsePromise;
+    let handledCacheFailure;
+    listeners.fetch({
+        request: { method: 'GET', url: 'https://example.test/data_status.js?v=3' },
+        respondWith(promise) { cacheFailureResponsePromise = promise; },
+        waitUntil(promise) { handledCacheFailure = promise; },
+    });
+    assert.equal(await cacheFailureResponsePromise, cacheFailureResponse);
+    await handledCacheFailure;
+
+    calls.length = 0;
+    fetchImpl = () => Promise.reject(new Error('offline'));
+    let responsePromise;
+    const request = { method: 'GET', url: 'https://example.test/data_status.js?v=1' };
+    listeners.fetch({
+        request,
+        respondWith(promise) { responsePromise = promise; },
+        waitUntil() {},
+    });
     const response = await responsePromise;
     assert.equal(response, cachedResponse);
     assert.deepEqual(calls.map(call => call.type), ['fetch', 'cache']);

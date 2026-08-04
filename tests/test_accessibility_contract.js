@@ -122,7 +122,9 @@ class FakeElement {
     const closeSearchResults = new Function(
         'searchResults', 'searchInput', `${closeSearchSource}; return closeSearchResults;`,
     )(searchResults, searchInput);
-    const activateSearchResult = new Function(`${activateSearchSource}; return activateSearchResult;`)();
+    const activateSearchResult = new Function(
+        'closeSearchResults', `${activateSearchSource}; return activateSearchResult;`,
+    )(closeSearchResults);
     const handleSearch = new Function(
         'document', 'window', 'searchResults', 'searchInput', 'navigateTo',
         'closeSearchResults', 'activateSearchResult',
@@ -142,22 +144,52 @@ class FakeElement {
     const space = searchResults.children.at(-1).dispatch('keydown', { key: ' ' });
     assert.equal(space.defaultPrevented, true);
     assert.deepEqual(navigation.pop(), ['club', 7]);
-}
 
-// Escape closes the result popup, clears stale input, and restores focus.
-{
-    const searchResults = new FakeElement('div');
-    const searchInput = new FakeElement('input');
-    searchInput.value = 'calw';
-    const source = extractFunction(bundle, 'closeSearchResults');
-    const closeSearchResults = new Function('searchResults', 'searchInput', `${source}; return closeSearchResults;`)(
-        searchResults,
-        searchInput,
-    );
-    closeSearchResults(true);
+    searchInput.value = 'cal';
+    searchInput.focused = false;
+    handleSearch({ target: searchInput });
+    const escape = searchResults.children.at(-1).dispatch('keydown', { key: 'Escape' });
+    assert.equal(escape.defaultPrevented, true);
     assert.equal(searchResults.classList.contains('hidden'), true);
+    assert.equal(searchInput.getAttribute('aria-expanded'), 'false');
     assert.equal(searchInput.value, '');
     assert.equal(searchInput.focused, true);
+}
+
+// Profile autocomplete uses a native button and Escape follows the focused result path.
+{
+    const document = { createElement: (tagName) => new FakeElement(tagName) };
+    const selected = [];
+    let restoredFocus = false;
+    const source = extractFunction(bundle, 'createProfileSuggestionItem');
+    const createProfileSuggestionItem = new Function(
+        'document', `${source}; return createProfileSuggestionItem;`,
+    )(document);
+    const item = createProfileSuggestionItem(
+        { label: 'Max Muster', context: 'DC Calw' },
+        (match) => selected.push(match.label),
+        () => { restoredFocus = true; },
+    );
+    assert.equal(item.tagName, 'LI');
+    assert.equal(item.children[0].tagName, 'BUTTON');
+    item.children[0].click();
+    assert.deepEqual(selected, ['Max Muster']);
+    const escape = item.children[0].dispatch('keydown', { key: 'Escape' });
+    assert.equal(escape.defaultPrevented, true);
+    assert.equal(restoredFocus, true);
+}
+
+// All-time details are controlled by a native disclosure button, never a clickable row.
+{
+    const button = new FakeElement('button');
+    let toggles = 0;
+    const source = extractFunction(bundle, 'configureAllTimeDetailButton');
+    const configureAllTimeDetailButton = new Function(`${source}; return configureAllTimeDetailButton;`)();
+    configureAllTimeDetailButton(button, 'alltime-detail-player-1', false, () => { toggles += 1; });
+    assert.equal(button.getAttribute('aria-controls'), 'alltime-detail-player-1');
+    assert.equal(button.getAttribute('aria-expanded'), 'false');
+    button.click();
+    assert.equal(toggles, 1);
 }
 
 // Sidebar navigation is built from semantic controls, not generic clickable divs.
@@ -188,15 +220,18 @@ assert.match(html, /class="table-container table-scroll"/);
 assert.match(styles, /\.main-content\s*\{[^}]*min-width\s*:\s*0/s);
 assert.match(styles, /\.content-area\s*\{[^}]*min-width\s*:\s*0[^}]*max-width\s*:\s*100%/s);
 assert.match(styles, /@media\s*\(max-width:\s*480px\)[\s\S]*\.content-area\s*\{[^}]*box-sizing\s*:\s*border-box/s);
+assert.match(bundle, /tableScroll\.className = ['"]table-scroll profile-season-history['"][\s\S]{0,180}tableScroll\.tabIndex = 0[\s\S]{0,180}aria-label['"], ['"]Saisonverlauf['"]/);
+assert.match(bundle, /class="table-scroll alltime-detail-table" tabindex="0"[^>]*aria-label="Saisondetails/);
+assert.match(styles, /\.profile-season-history\s+table\s*,\s*\.alltime-detail-table\s+table\s*\{[^}]*min-width\s*:/s);
 
 // PWA shell cache keys exactly match the versioned requests made by index.html.
 const requestedShellUrls = versionedShellUrls(html);
 const requestedLocalAssets = localAssetUrls(html);
 const cachedAssets = serviceWorkerAssets(worker);
 assert.deepEqual(requestedShellUrls, [
-    './style.css?v=3',
+    './style.css?v=4',
     './app_utils.js?v=1',
-    './bundle_v31.js?v=3.2',
+    './bundle_v31.js?v=3.3',
 ]);
 assert.deepEqual(
     cachedAssets.filter((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)/.test(asset)),

@@ -298,6 +298,29 @@ a:hover {
     background-color: var(--bg-card-hover);
 }
 
+.profile-suggestion-button {
+    display: grid;
+    width: 100%;
+    gap: 0.15rem;
+    padding: 0.65rem;
+    border: 0;
+    border-bottom: 1px solid #334155;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.profile-suggestion-button:hover {
+    background: #0f172a;
+}
+
+.profile-suggestion-context {
+    color: var(--text-secondary);
+    font-size: 0.8em;
+}
+
 /* --- Top Bar --- */
 .top-bar {
     padding: 1.5rem 2rem;
@@ -430,6 +453,29 @@ a:hover {
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
+}
+
+.profile-season-history table,
+.alltime-detail-table table {
+    min-width: 36rem;
+}
+
+.alltime-detail-button {
+    flex: 0 0 auto;
+    min-width: 4.75rem;
+    margin-left: 0.5rem;
+    padding: 0.35rem 0.55rem;
+    border: 1px solid #475569;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: #93c5fd;
+    font: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.alltime-detail-content {
+    padding: 0 0.75rem 0.75rem 3.5rem;
 }
 
 table {
