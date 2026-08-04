@@ -335,7 +335,13 @@ function runRenderer(name, context, status) {
     const contentArea = document.createElement('main');
     const topBarTitle = document.createElement('div');
     const createSeasonNotice = makeSeasonNotice(document, status);
-    const common = { document, contentArea, topBarTitle, createSeasonNotice };
+    const common = {
+        document,
+        contentArea,
+        topBarTitle,
+        createSeasonNotice,
+        BwedlAppUtils: { mergeMatchPreviewGames: (_selected, detected) => detected },
+    };
     let bindings;
 
     if (name === 'renderRanking') {

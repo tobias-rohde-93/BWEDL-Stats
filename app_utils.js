@@ -195,6 +195,114 @@
             .map(({ game }) => game);
     }
 
+    function matchPreviewGameKey(game) {
+        if (!game || typeof game !== 'object') return '';
+        const normalize = (value) => String(value || '')
+            .normalize('NFKC')
+            .replace(/\s+/gu, ' ')
+            .trim()
+            .toLocaleLowerCase('de-DE');
+        const league = normalize(game.league || game.leagueName || game.leagueKey);
+        const home = normalize(game.home);
+        const away = normalize(game.away);
+        if (!league || !home || !away) return '';
+        const parsed = gameDate(game);
+        const date = parsed
+            ? `${parsed.dayKey}:${parsed.hasTime ? parsed.value.getTime() : 'date-only'}`
+            : normalize(game.dateStr || game.date);
+        return [league, home, away, date].join('|');
+    }
+
+    function mergeMatchPreviewGames(selectedGame, detectedGames) {
+        const games = [
+            ...(selectedGame && typeof selectedGame === 'object' ? [selectedGame] : []),
+            ...(Array.isArray(detectedGames) ? detectedGames : []),
+        ];
+        const seen = new Set();
+        return games.filter((game) => {
+            const key = matchPreviewGameKey(game);
+            if (!key) return true;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+    }
+
+    function buildLigapokalArchiveEntries(archiveTables) {
+        if (!Array.isArray(archiveTables)) return {};
+        return archiveTables.reduce((entries, table) => {
+            if (!table || typeof table !== 'object' || !Array.isArray(table.rows) || table.rows.length < 2) {
+                return entries;
+            }
+            const league = String(table.league || '').toLocaleLowerCase('de-DE');
+            if (!league.includes('ligapokal') && !league.includes('liga-pokal')) return entries;
+            const season = String(table.season || '').trim().replace('/', '-');
+            if (!/^\d{4}-\d{4}$/.test(season)) return entries;
+            const label = `Ligapokal ${season}`;
+            if (!entries[label]) entries[label] = { tables: [], isCup: true };
+            entries[label].tables.push(table);
+            return entries;
+        }, {});
+    }
+
+    function buildMatchPreviewTeams(players, tableTeams, clubs) {
+        const normalize = (value) => String(value || '')
+            .normalize('NFKC')
+            .replace(/\u00a0/gu, ' ')
+            .replace(/[^\p{L}\p{N}]+/gu, '')
+            .toLocaleLowerCase('de-DE');
+        const validTableTeams = (Array.isArray(tableTeams) ? tableTeams : [])
+            .map((name) => String(name || '').replace(/\u00a0/gu, ' ').replace(/\s+/gu, ' ').trim())
+            .filter((name) => (
+                name && !/^(?:tabelle|team|mannschaft)$/iu.test(name) && !isByeOpponent(name)
+            ));
+        const clubList = Array.isArray(clubs) ? clubs : [];
+        const teams = new Map();
+
+        (Array.isArray(players) ? players : []).forEach((player) => {
+            if (!player || typeof player !== 'object') return;
+            let id = '';
+            let name = '';
+            if (player.v_nr !== null && player.v_nr !== undefined && String(player.v_nr).trim()) {
+                id = String(player.v_nr).trim();
+                const club = clubList.find((candidate) => (
+                    candidate && String(candidate.number) === id
+                ));
+                name = String((club && club.name) || player.company || '').trim();
+            } else if (player.company) {
+                name = String(player.company).trim();
+                id = `NAME:${name}`;
+            }
+            if (!id || !name || teams.has(id)) return;
+            const normalizedName = normalize(name);
+            const exactTableName = validTableTeams.find((candidate) => (
+                normalize(candidate) === normalizedName
+            ));
+            const fuzzyTableName = validTableTeams.find((candidate) => {
+                const normalizedCandidate = normalize(candidate);
+                return normalizedCandidate.includes(normalizedName) || normalizedName.includes(normalizedCandidate);
+            });
+            teams.set(id, exactTableName || fuzzyTableName || name);
+        });
+
+        const knownNames = new Set(Array.from(teams.values(), normalize));
+        validTableTeams.forEach((name) => {
+            const normalizedName = normalize(name);
+            if (!normalizedName || knownNames.has(normalizedName)) return;
+            const club = clubList.find((candidate) => (
+                candidate && normalize(candidate.name) === normalizedName
+            ));
+            const id = club && String(club.number || '').trim()
+                ? String(club.number).trim()
+                : `NAME:${name}`;
+            if (!teams.has(id)) teams.set(id, name);
+            knownNames.add(normalizedName);
+        });
+
+        return Array.from(teams, ([id, name]) => ({ id, name }))
+            .sort((left, right) => left.name.localeCompare(right.name, 'de-DE'));
+    }
+
     function buildSeasonNotice(status) {
         if (!status || typeof status !== 'object') return null;
         const season = typeof status.season === 'string' ? status.season.trim() : '';
@@ -853,6 +961,9 @@
         startVisitChangesLifecycle,
         isByeOpponent,
         selectUpcomingGames,
+        mergeMatchPreviewGames,
+        buildLigapokalArchiveEntries,
+        buildMatchPreviewTeams,
         buildSeasonNotice,
         enrichRankingPlayersWithClubs,
         canonicalRankingPlayerName,

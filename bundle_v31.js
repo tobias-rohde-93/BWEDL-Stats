@@ -354,12 +354,17 @@ function normalizeClubIdList(values, clubCount, limit = 5) {
     return normalized;
 }
 
-function normalizeFavorites(values, clubCount) {
+function normalizeFavorites(values, clubCount, favoriteRouteExists) {
     if (!Array.isArray(values)) return [];
     const seenClubIds = new Set();
     return values.flatMap((favorite) => {
         if (!favorite || typeof favorite !== 'object') return [];
-        if (favorite.type !== 'club') return [favorite];
+        if (favorite.type !== 'club') {
+            if (typeof favoriteRouteExists === 'function' && !favoriteRouteExists(favorite.type, favorite.id)) {
+                return [];
+            }
+            return [favorite];
+        }
         const id = canonicalClubId(favorite.id, clubCount);
         if (id === null || seenClubIds.has(id)) return [];
         seenClubIds.add(id);
@@ -686,9 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof CLUB_DATA !== 'undefined') clubData = CLUB_DATA;
     else if (window.CLUB_DATA) clubData = window.CLUB_DATA;
     const clubCount = Array.isArray(clubData.clubs) ? clubData.clubs.length : 0;
-    favorites = normalizeFavorites(favorites, clubCount);
     recentClubIds = normalizeClubIdList(recentClubIds, clubCount, 5);
-    persistLocalValue(localStorage, 'bwedl_favorites', favorites);
     persistLocalValue(localStorage, RECENT_CLUBS_STORAGE_KEY, recentClubIds);
 
     if (typeof ARCHIVE_DATA !== 'undefined') archiveData = ARCHIVE_DATA;
@@ -697,6 +700,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load Ligapokal Archive Data
     if (typeof LIGAPOKAL_ARCHIVE !== 'undefined') ligapokalArchive = LIGAPOKAL_ARCHIVE;
     else if (window.LIGAPOKAL_ARCHIVE) ligapokalArchive = window.LIGAPOKAL_ARCHIVE;
+    if (window.BwedlAppUtils && typeof window.BwedlAppUtils.buildLigapokalArchiveEntries === 'function') {
+        const derivedLigapokalArchive = window.BwedlAppUtils.buildLigapokalArchiveEntries(window.ARCHIVE_TABLES);
+        ligapokalArchive = { ...derivedLigapokalArchive, ...ligapokalArchive };
+    }
 
     function routeExists(type, id) {
         if (type === 'league') {
@@ -726,6 +733,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'wiki'
         ].includes(type) && id == null;
     }
+
+    favorites = normalizeFavorites(favorites, clubCount, routeExists);
+    persistLocalValue(localStorage, 'bwedl_favorites', favorites);
 
     function routeHash(route) {
         const type = route && route.type ? route.type : 'dashboard';
@@ -1286,6 +1296,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     lpHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
                 });
 
+                const visibleLigapokalSeasons = new Set();
+
                 // Current season Ligapokal entries
                 ligapokalGroup.forEach(lpName => {
                     const el = document.createElement('button');
@@ -1296,6 +1308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         navigateTo('league', lpName);
                     });
                     lpContainer.appendChild(el);
+                    visibleLigapokalSeasons.add(lpName.toLocaleLowerCase('de-DE'));
                 });
 
                 // Historical Ligapokal seasons from archive
@@ -1303,6 +1316,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Sort seasons descending (newest first)
                     const archiveSeasons = Object.keys(ligapokalArchive).sort().reverse();
                     archiveSeasons.forEach(seasonName => {
+                        if (visibleLigapokalSeasons.has(seasonName.toLocaleLowerCase('de-DE'))) return;
                         const el = document.createElement('button');
                         el.type = 'button';
                         el.className = 'league-item';
@@ -1312,6 +1326,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             navigateTo('ligapokalArchive', seasonName);
                         });
                         lpContainer.appendChild(el);
+                        visibleLigapokalSeasons.add(seasonName.toLocaleLowerCase('de-DE'));
                     });
                 }
 
@@ -4998,6 +5013,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             }
+        } else if (Array.isArray(data.tables) && data.tables.length > 0) {
+            data.tables.forEach((archiveTable, tableIndex) => {
+                const rows = Array.isArray(archiveTable.rows) ? archiveTable.rows : [];
+                if (rows.length === 0) return;
+                const heading = document.createElement('h3');
+                const firstDataCell = rows[1] && rows[1][0] ? String(rows[1][0]).trim() : '';
+                heading.textContent = firstDataCell || `Runde ${tableIndex + 1}`;
+                resultsContainer.appendChild(heading);
+
+                const tableElement = document.createElement('table');
+                const tableBody = document.createElement('tbody');
+                rows.forEach((row, rowIndex) => {
+                    const tableRow = document.createElement('tr');
+                    row.forEach((cell) => {
+                        const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        cellElement.textContent = String(cell == null ? '' : cell);
+                        tableRow.appendChild(cellElement);
+                    });
+                    tableBody.appendChild(tableRow);
+                });
+                tableElement.appendChild(tableBody);
+                resultsContainer.appendChild(tableElement);
+            });
+            cleanTable(resultsContainer);
         } else {
             resultsContainer.innerHTML = '<p class="text-secondary">Keine Ergebnisse verfügbar.</p>';
         }
@@ -5006,6 +5045,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderLeague(leagueName) {
         const data = leagueData.leagues[leagueName];
+        if (!data) {
+            favorites = favorites.filter((favorite) => !(
+                favorite.type === 'league' && String(favorite.id) === String(leagueName)
+            ));
+            saveFavorites();
+            topBarTitle.textContent = leagueName || 'Liga nicht verfügbar';
+            contentArea.innerHTML = '<p class="text-secondary">Diese Liga ist im aktuellen Datenstand nicht mehr verfügbar.</p>';
+            setAppStatus('Der veraltete Favorit wurde entfernt.');
+            return;
+        }
         topBarTitle.innerHTML = "";
         const span = document.createElement('span');
         span.textContent = leagueName;
@@ -6778,12 +6827,16 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function findTeamOptionMatchPreview(select, teamName) {
         const nTeam = normMatchPreview(teamName);
+        let fuzzyMatch = null;
         for (const opt of select.options) {
             if (!opt.value) continue;
             const nOpt = normMatchPreview(opt.textContent);
-            if (nOpt === nTeam || nOpt.includes(nTeam) || nTeam.includes(nOpt)) return opt.value;
+            if (nOpt === nTeam) return opt.value;
+            if (!fuzzyMatch && (nOpt.includes(nTeam) || nTeam.includes(nOpt))) {
+                fuzzyMatch = opt.value;
+            }
         }
-        return null;
+        return fuzzyMatch;
     }
 
     /**
@@ -6805,17 +6858,35 @@ document.addEventListener('DOMContentLoaded', () => {
             if (homeVal) { teamASelect.value = homeVal; }
             if (awayVal) { teamBSelect.value = awayVal; }
 
+            const selectionComplete = Boolean(
+                leagueSelect.value && homeVal && awayVal && homeVal !== awayVal
+            );
+            if (!selectionComplete) {
+                if (banner) {
+                    banner.style.borderColor = '#f59e0b';
+                    banner.style.boxShadow = 'none';
+                    const statusBtn = banner.querySelector('.load-btn');
+                    if (statusBtn) {
+                        statusBtn.textContent = 'Auswahl unvollständig';
+                        statusBtn.style.background = '#b45309';
+                    }
+                }
+                setAppStatus('Die Partie konnte nicht vollständig ausgewählt werden. Bitte Teams manuell wählen.');
+                return;
+            }
+
             // Refresh selections and results
             if (typeof updateExclusions === 'function') updateExclusions();
             if (typeof loadSelection === 'function') loadSelection();
+            setAppStatus(`${nextMatch.home} gegen ${nextMatch.away} wurde ausgewählt.`);
 
             // Update UI feedback on the banner
             if (banner) {
                 banner.style.borderColor = '#22c55e';
                 banner.style.boxShadow = '0 0 10px rgba(34, 197, 94, 0.2)';
-                const statusBtn = banner.querySelector('.load-btn') || banner.querySelector('div[style*="padding: 6px 14px"]');
+                const statusBtn = banner.querySelector('.load-btn');
                 if (statusBtn) {
-                    statusBtn.textContent = isAuto ? '✓ Auto-Fill' : '✓ Geladen';
+                    statusBtn.textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
                     statusBtn.style.background = '#22c55e';
                 }
             }
@@ -6973,14 +7044,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 spieltag: selectedGame.spieltag || (selectedGame.round ? `${selectedGame.round}. Spieltag` : ''),
             } : null;
             const detectedMatches = detectNextMatch() || [];
-            const matches = selectedMatch
-                ? [selectedMatch, ...detectedMatches.filter((match) => !(
-                    match.league === selectedMatch.league &&
-                    match.home === selectedMatch.home &&
-                    match.away === selectedMatch.away &&
-                    match.dateStr === selectedMatch.dateStr
-                ))]
-                : detectedMatches;
+            const matches = BwedlAppUtils.mergeMatchPreviewGames(selectedMatch, detectedMatches);
             if (matches && matches.length > 0) {
                 const scrollerContainer = document.createElement('div');
                 scrollerContainer.style.marginBottom = "25px";
@@ -6995,7 +7059,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 matches.forEach((m, idx) => {
                     const cardWrap = document.createElement('div');
-                    cardWrap.style.cssText = 'min-width: 280px; flex-shrink: 0; background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); backdrop-filter: blur(10px); border: 1px solid #334155; border-radius: 12px; padding: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; display: flex; flex-direction: column; gap: 10px; scroll-snap-align: start;';
+                    cardWrap.className = 'match-preview-card';
+                    cardWrap.style.cssText = 'min-width: 280px; flex-shrink: 0; background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); backdrop-filter: blur(10px); border: 1px solid #334155; border-radius: 12px; padding: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; gap: 10px; scroll-snap-align: start;';
                     
                     cardWrap.onmouseenter = () => { 
                         cardWrap.style.borderColor = '#3b82f6'; 
@@ -7020,29 +7085,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div style="margin-top: 5px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
                              <span style="color: #64748b; font-size: 0.75em;">${m.spieltag}</span>
-                             <div class="load-btn" style="background: #3b82f6; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold; transition: all 0.2s;">Analysieren →</div>
+                             <button type="button" class="load-btn" style="background: #3b82f6; color: white; border: 0; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold; transition: all 0.2s; cursor: pointer;">Partie auswählen</button>
                         </div>
                     `;
 
-                    cardWrap.onclick = () => {
+                    const loadButton = cardWrap.querySelector('.load-btn');
+                    loadButton.addEventListener('click', () => {
                         // Reset other cards' styles first
-                        scroller.querySelectorAll('div').forEach(c => {
-                            if (c.style) {
-                                c.style.borderColor = '#334155';
-                                c.style.boxShadow = 'none';
-                                const btn = c.querySelector('.load-btn');
-                                if (btn && btn.textContent.includes('✓')) {
-                                    btn.textContent = 'Analysieren →';
-                                    btn.style.background = '#3b82f6';
-                                }
+                        scroller.querySelectorAll('.load-btn').forEach((button) => {
+                            const previewCard = button.closest('.match-preview-card');
+                            if (previewCard) {
+                                previewCard.style.borderColor = '#334155';
+                                previewCard.style.boxShadow = 'none';
                             }
+                            button.textContent = 'Partie auswählen';
+                            button.style.background = '#3b82f6';
                         });
 
                         applyMatchSelectorAutoFill(false, m, {
                             leagueSelect, teamASelect, teamBSelect,
                             banner: cardWrap, updateExclusions, loadSelection
                         });
-                    };
+                    });
 
                     scroller.appendChild(cardWrap);
 
@@ -7117,52 +7181,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            const teamsSet = new Map();
-            playersInLeague.forEach(p => {
-                let id = null;
-                let name = null;
-
-                if (p.v_nr) {
-                    id = String(p.v_nr);
-                    if (!teamsSet.has(id)) {
-                        name = p.company || "Unbekannt";
-                        if (clubData.clubs) {
-                            const c = clubData.clubs.find(cl => String(cl.number) === id);
-                            if (c) name = c.name;
-                        }
-                    }
-                } else if (p.company) {
-                    id = "NAME:" + p.company;
-                    if (!teamsSet.has(id)) {
-                        name = p.company;
-                    }
-                }
-
-                if (id && name) {
-                    // Try to find better name from table
-                    if (tableTeams.length > 0) {
-                        const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
-                        const nName = norm(name);
-
-                        // Find match: candidate name is usually a substring of table name (e.g. "Club" in "Club 1")
-                        // Or table name is substring of candidate (rare)
-                        const betterName = tableTeams.find(t => {
-                            const nT = norm(t);
-                            return nT.includes(nName) || nName.includes(nT);
-                        });
-
-                        if (betterName) name = betterName;
-                    }
-                    teamsSet.set(id, name);
-                }
-            });
-
-            availableTeams = Array.from(teamsSet.entries()).map(([id, name]) => ({ id, name })).sort((a, b) => a.name.localeCompare(b.name));
+            availableTeams = BwedlAppUtils.buildMatchPreviewTeams(
+                playersInLeague,
+                tableTeams,
+                clubData.clubs || [],
+            );
 
             const populate = (sel) => {
-                sel.innerHTML = '<option value="">-- Team wählen --</option>';
+                sel.textContent = '';
+                const placeholder = document.createElement('option');
+                placeholder.value = '';
+                placeholder.textContent = '-- Team wählen --';
+                sel.appendChild(placeholder);
                 availableTeams.forEach(t => {
-                    sel.innerHTML += `<option value="${t.id}">${t.name}</option>`;
+                    const option = document.createElement('option');
+                    option.value = t.id;
+                    option.textContent = t.name;
+                    sel.appendChild(option);
                 });
             };
             populate(teamASelect);
