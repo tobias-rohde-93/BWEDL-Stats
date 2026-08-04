@@ -225,6 +225,86 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof LIGAPOKAL_ARCHIVE !== 'undefined') ligapokalArchive = LIGAPOKAL_ARCHIVE;
     else if (window.LIGAPOKAL_ARCHIVE) ligapokalArchive = window.LIGAPOKAL_ARCHIVE;
 
+    function routeExists(type, id) {
+        if (type === 'league') {
+            return Object.prototype.hasOwnProperty.call(leagueData.leagues || {}, id);
+        }
+        if (type === 'ranking') {
+            return Object.prototype.hasOwnProperty.call(rankingData.rankings || {}, id);
+        }
+        if (type === 'ligapokalArchive') {
+            return Object.prototype.hasOwnProperty.call(ligapokalArchive || {}, id);
+        }
+        if (type === 'club') {
+            const clubIndex = Number(id);
+            return /^\d+$/.test(String(id)) &&
+                Number.isSafeInteger(clubIndex) &&
+                clubIndex >= 0 &&
+                clubIndex < (clubData.clubs || []).length;
+        }
+        return [
+            'dashboard',
+            'profile',
+            'clubList',
+            'comparison',
+            'alltime',
+            'tools',
+            'matchPreview',
+            'wiki'
+        ].includes(type) && id == null;
+    }
+
+    function routeHash(route) {
+        const type = route && route.type ? route.type : 'dashboard';
+        const id = route && route.id != null ? `/${encodeURIComponent(String(route.id))}` : '';
+        return `#${type}${id}`;
+    }
+
+    function initializeRouteFromLocation() {
+        const route = window.BwedlAppUtils.parseAppHash(window.location.hash, routeExists);
+        history.replaceState(route, "", routeHash(route));
+        navigateTo(route.type, route.id, false);
+    }
+
+    function setAppStatus(message) {
+        const status = document.getElementById('app-status');
+        if (status) status.textContent = message;
+    }
+
+    async function shareCurrentView(summary) {
+        const route = currentState && routeExists(currentState.type, currentState.id)
+            ? currentState
+            : window.BwedlAppUtils.parseAppHash(window.location.hash, routeExists);
+        const url = new URL(window.location.href);
+        url.hash = routeHash(route);
+        const canonicalUrl = url.toString();
+        const text = typeof summary === 'string' && summary.trim()
+            ? summary.trim()
+            : 'BWEDL Stats';
+
+        if (typeof navigator.share === 'function') {
+            try {
+                await navigator.share({ title: document.title || 'BWEDL Stats', text, url: canonicalUrl });
+                setAppStatus('Ansicht wurde geteilt.');
+                return true;
+            } catch (_error) {
+                // Continue with the clipboard fallback, including rejected shares.
+            }
+        }
+
+        try {
+            if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') {
+                throw new Error('Clipboard API unavailable');
+            }
+            await navigator.clipboard.writeText(canonicalUrl);
+            setAppStatus('Link wurde in die Zwischenablage kopiert.');
+            return true;
+        } catch (_error) {
+            setAppStatus('Link konnte nicht geteilt oder kopiert werden.');
+            return false;
+        }
+    }
+
     if (Object.keys(leagueData).length === 0) {
         const contentArea = document.getElementById('content-area');
         if (contentArea) {
@@ -605,10 +685,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // VERSION FOOTER
 
-        // Show Dashboard by default
-        currentState = { type: 'dashboard', id: null };
-        history.replaceState(currentState, "", "#dashboard");
-        renderDashboard();
+        // Resolve the initial view from the URL after all route data is available.
+        initializeRouteFromLocation();
 
         // Check for Update Snapshot (show summary if recently updated)
         try {
@@ -2033,7 +2111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Handle history
         if (addToHistory) {
-            history.pushState({ type, id }, "", `#${type}${id ? '/' + id : ''}`);
+            history.pushState({ type, id }, "", routeHash({ type, id }));
         }
 
         // 2. Render
@@ -2077,6 +2155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Expose to window for inline onclick handlers
     window.navigateTo = navigateTo;
+    window.shareCurrentView = shareCurrentView;
 
     function renderComparisonView() {
         topBarTitle.textContent = "H2H Vergleich";

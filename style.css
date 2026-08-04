@@ -893,3 +893,21 @@ tr:hover td {
 .sidebar-accordion-content.open {
     display: block;
 }
+
+.app-status {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 3000;
+    max-width: min(24rem, calc(100vw - 2rem));
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.app-status:empty {
+    display: none;
+}
