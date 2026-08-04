@@ -7,10 +7,10 @@ const worker = fs.readFileSync(path.resolve(__dirname, '..', 'sw_v31.js'), 'utf8
 const cacheNameMatch = worker.match(/^const CACHE_NAME = '([^']+)';$/m);
 assert.ok(cacheNameMatch, 'service worker declares one active cache name');
 const currentCacheName = cacheNameMatch[1];
-const previousCacheName = 'bwedl-dashboard-v34';
-assert.equal(currentCacheName, 'bwedl-dashboard-v35');
+const previousCacheName = 'bwedl-dashboard-v35';
+assert.equal(currentCacheName, 'bwedl-dashboard-v36');
 assert.notEqual(currentCacheName, previousCacheName);
-assert.doesNotMatch(worker, /bwedl-dashboard-v34/);
+assert.doesNotMatch(worker, /bwedl-dashboard-v35/);
 
 const listeners = {};
 const calls = [];
@@ -56,7 +56,7 @@ vm.runInContext(worker, sandbox);
     await installPromise;
     assert.ok(installedAssets.includes('./style.css?v=4'));
     assert.ok(installedAssets.includes('./app_utils.js?v=1'));
-    assert.ok(installedAssets.includes('./bundle_v31.js?v=3.3'));
+    assert.ok(installedAssets.includes('./bundle_v31.js?v=3.4'));
 
     let activatePromise;
     listeners.activate({ waitUntil(promise) { activatePromise = promise; } });

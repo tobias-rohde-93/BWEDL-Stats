@@ -47,8 +47,9 @@ function extractFunction(source, name) {
 }
 
 class FakeElement {
-    constructor(tagName) {
+    constructor(tagName, ownerDocument = null) {
         this.tagName = tagName.toUpperCase();
+        this.ownerDocument = ownerDocument;
         this.attributes = new Map();
         this.className = '';
         this.children = [];
@@ -73,6 +74,21 @@ class FakeElement {
     getAttribute(name) { return this.attributes.get(name) ?? null; }
     addEventListener(type, listener) { (this.listeners[type] ||= []).push(listener); }
     appendChild(child) { this.children.push(child); child.parentElement = this; return child; }
+    replaceChildren(...children) {
+        this.children.forEach((child) => { child.parentElement = null; });
+        this.children = [];
+        children.forEach((child) => this.appendChild(child));
+    }
+    querySelectorAll(selector) {
+        const className = selector.startsWith('.') ? selector.slice(1) : null;
+        const matches = [];
+        const visit = (element) => {
+            if (className && element.classList.contains(className)) matches.push(element);
+            element.children.forEach(visit);
+        };
+        this.children.forEach(visit);
+        return matches;
+    }
     dispatch(type, properties = {}) {
         const event = {
             target: this,
@@ -85,7 +101,17 @@ class FakeElement {
         return event;
     }
     click() { this.dispatch('click'); }
-    focus() { this.focused = true; }
+    focus() {
+        if (this.ownerDocument?.activeElement) this.ownerDocument.activeElement.focused = false;
+        this.focused = true;
+        if (this.ownerDocument) this.ownerDocument.activeElement = this;
+    }
+}
+
+function createFocusDocument() {
+    const document = { activeElement: null };
+    document.createElement = (tagName) => new FakeElement(tagName, document);
+    return document;
 }
 
 // A real disclosure helper must keep DOM state and ARIA state synchronized.
@@ -158,38 +184,91 @@ class FakeElement {
 
 // Profile autocomplete uses a native button and Escape follows the focused result path.
 {
-    const document = { createElement: (tagName) => new FakeElement(tagName) };
+    const document = createFocusDocument();
+    const input = document.createElement('input');
+    const suggestions = document.createElement('ul');
+    suggestions.style.display = 'block';
+    input.setAttribute('aria-expanded', 'true');
     const selected = [];
-    let restoredFocus = false;
     const source = extractFunction(bundle, 'createProfileSuggestionItem');
+    const closeSource = extractFunction(bundle, 'closeProfileSuggestions');
+    const selectSource = extractFunction(bundle, 'selectProfileSuggestion');
     const createProfileSuggestionItem = new Function(
         'document', `${source}; return createProfileSuggestionItem;`,
     )(document);
+    const closeProfileSuggestions = new Function(
+        `${closeSource}; return closeProfileSuggestions;`,
+    )();
+    const selectProfileSuggestion = new Function(
+        'closeProfileSuggestions', `${selectSource}; return selectProfileSuggestion;`,
+    )(closeProfileSuggestions);
     const item = createProfileSuggestionItem(
         { label: 'Max Muster', context: 'DC Calw' },
-        (match) => selected.push(match.label),
-        () => { restoredFocus = true; },
+        (match) => selectProfileSuggestion(
+            match,
+            input,
+            suggestions,
+            (selectedMatch) => selected.push(selectedMatch.label),
+        ),
+        (restoreFocus) => closeProfileSuggestions(suggestions, input, restoreFocus),
     );
+    suggestions.appendChild(item);
     assert.equal(item.tagName, 'LI');
     assert.equal(item.children[0].tagName, 'BUTTON');
+    item.children[0].focus();
     item.children[0].click();
     assert.deepEqual(selected, ['Max Muster']);
+    assert.equal(input.value, 'Max Muster');
+    assert.equal(suggestions.style.display, 'none');
+    assert.equal(input.getAttribute('aria-expanded'), 'false');
+    assert.equal(document.activeElement, input, 'selection restores focus to the visible profile input');
+
+    suggestions.style.display = 'block';
+    input.setAttribute('aria-expanded', 'true');
+    item.children[0].focus();
     const escape = item.children[0].dispatch('keydown', { key: 'Escape' });
     assert.equal(escape.defaultPrevented, true);
-    assert.equal(restoredFocus, true);
+    assert.equal(document.activeElement, input);
 }
 
-// All-time details are controlled by a native disclosure button, never a clickable row.
+// All-time detail rerenders replace the disclosure but keep focus on the exact same player control.
 {
-    const button = new FakeElement('button');
-    let toggles = 0;
+    const document = createFocusDocument();
+    const container = document.createElement('section');
+    const toggleId = 'alltime-detail-player-1-toggle';
+    let expanded = false;
     const source = extractFunction(bundle, 'configureAllTimeDetailButton');
+    const rerenderSource = extractFunction(bundle, 'rerenderAllTimeDetail');
     const configureAllTimeDetailButton = new Function(`${source}; return configureAllTimeDetailButton;`)();
-    configureAllTimeDetailButton(button, 'alltime-detail-player-1', false, () => { toggles += 1; });
-    assert.equal(button.getAttribute('aria-controls'), 'alltime-detail-player-1');
-    assert.equal(button.getAttribute('aria-expanded'), 'false');
-    button.click();
-    assert.equal(toggles, 1);
+    const rerenderAllTimeDetail = new Function(`${rerenderSource}; return rerenderAllTimeDetail;`)();
+    const render = () => {
+        const button = document.createElement('button');
+        button.id = toggleId;
+        configureAllTimeDetailButton(button, 'alltime-detail-player-1', expanded, () => {
+            expanded = !expanded;
+            rerenderAllTimeDetail(container, toggleId, render);
+        });
+        container.replaceChildren(button);
+    };
+
+    render();
+    const openingButton = container.children[0];
+    openingButton.focus();
+    openingButton.click();
+    const closingButton = container.children[0];
+    assert.notEqual(closingButton, openingButton, 'render replaced the disclosure control');
+    assert.equal(document.activeElement, closingButton, 'focus follows the replacement for the same player');
+    assert.equal(closingButton.id, toggleId);
+    assert.equal(closingButton.hidden, false);
+    assert.equal(closingButton.getAttribute('aria-expanded'), 'true');
+    assert.equal(closingButton.textContent, 'Schließen');
+
+    closingButton.click();
+    const reopenedButton = container.children[0];
+    assert.equal(document.activeElement, reopenedButton);
+    assert.equal(reopenedButton.id, toggleId);
+    assert.equal(reopenedButton.getAttribute('aria-expanded'), 'false');
+    assert.equal(reopenedButton.textContent, 'Details');
 }
 
 // Sidebar navigation is built from semantic controls, not generic clickable divs.
@@ -231,7 +310,7 @@ const cachedAssets = serviceWorkerAssets(worker);
 assert.deepEqual(requestedShellUrls, [
     './style.css?v=4',
     './app_utils.js?v=1',
-    './bundle_v31.js?v=3.3',
+    './bundle_v31.js?v=3.4',
 ]);
 assert.deepEqual(
     cachedAssets.filter((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)/.test(asset)),

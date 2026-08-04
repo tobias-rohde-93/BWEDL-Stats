@@ -523,6 +523,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return item;
     }
 
+    function closeProfileSuggestions(suggestionsBox, input, restoreFocus = false) {
+        suggestionsBox.style.display = 'none';
+        input.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) input.focus();
+    }
+
+    function selectProfileSuggestion(match, input, suggestionsBox, updateSelection) {
+        input.value = match.label;
+        closeProfileSuggestions(suggestionsBox, input, true);
+        updateSelection(match);
+    }
+
     function configureAllTimeDetailButton(button, contentId, expanded, toggle) {
         button.type = 'button';
         button.className = 'alltime-detail-button';
@@ -530,6 +542,13 @@ document.addEventListener('DOMContentLoaded', () => {
         button.setAttribute('aria-expanded', String(expanded));
         button.textContent = expanded ? 'Schließen' : 'Details';
         button.addEventListener('click', toggle);
+    }
+
+    function rerenderAllTimeDetail(container, toggleId, render) {
+        render();
+        const matchingButtons = Array.from(container.querySelectorAll('.alltime-detail-button'))
+            .filter(button => button.id === toggleId && !button.hidden);
+        if (matchingButtons.length === 1) matchingButtons[0].focus();
     }
 
     // --- My Profile State ---
@@ -2099,24 +2118,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const closeSuggestions = (restoreFocus = false) => {
-            suggestionsBox.style.display = 'none';
-            input.setAttribute('aria-expanded', 'false');
-            if (restoreFocus) input.focus();
-        };
+        const closeSuggestions = (restoreFocus = false) => (
+            closeProfileSuggestions(suggestionsBox, input, restoreFocus)
+        );
 
         const selectSuggestion = (match) => {
-            input.value = match.label;
-            closeSuggestions(false);
-            if (rankingData && rankingData.players) {
-                const player = rankingData.players.find(rp => rp.name === match.label);
-                if (player && player.v_nr && typeof CLUB_DATA !== 'undefined') {
-                    const club = CLUB_DATA.clubs.find(c => c.number == player.v_nr);
-                    populateTeams(club ? club.name : (player.company || 'Unbekannt'));
-                } else if (player && player.company) {
-                    populateTeams(player.company);
+            selectProfileSuggestion(match, input, suggestionsBox, (selectedMatch) => {
+                if (rankingData && rankingData.players) {
+                    const player = rankingData.players.find(rp => rp.name === selectedMatch.label);
+                    if (player && player.v_nr && typeof CLUB_DATA !== 'undefined') {
+                        const club = CLUB_DATA.clubs.find(c => c.number == player.v_nr);
+                        populateTeams(club ? club.name : (player.company || 'Unbekannt'));
+                    } else if (player && player.company) {
+                        populateTeams(player.company);
+                    }
                 }
-            }
+            });
         };
 
         input.addEventListener('keydown', (event) => {
@@ -3823,6 +3840,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const isExpanded = expandedId === p.id;
                 const detailId = `alltime-detail-${String(p.id).replace(/[^A-Za-z0-9_-]/g, '-')}`;
+                const toggleId = `${detailId}-toggle`;
 
                 // Row
                 const row = document.createElement('div');
@@ -3882,14 +3900,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 rowHtml += '</div>';
 
                 row.innerHTML = rowHtml;
+                const detailButton = row.querySelector('.alltime-detail-button');
+                detailButton.id = toggleId;
 
                 configureAllTimeDetailButton(
-                    row.querySelector('.alltime-detail-button'),
+                    detailButton,
                     detailId,
                     isExpanded,
                     () => {
                         expandedId = expandedId === p.id ? null : p.id;
-                        render();
+                        rerenderAllTimeDetail(container, toggleId, render);
                     },
                 );
 
