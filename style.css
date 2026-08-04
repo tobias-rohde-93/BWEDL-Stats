@@ -1001,15 +1001,16 @@ tr:hover td {
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 0.4rem;
     border: 0;
     background: transparent;
     text-align: left;
 }
 
 .club-sidebar-disclosure::before {
-    content: '▸';
-    margin-right: 0.4rem;
+    content: '▶';
+    flex: 0 0 auto;
     transition: transform 0.2s ease;
 }
 
