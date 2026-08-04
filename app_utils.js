@@ -208,7 +208,7 @@
             summary,
             competition,
         ].join('|'));
-        const uid = String(rawUid).replace(/[\r\n@]+/g, '-');
+        const uid = escapeIcsText(String(rawUid).replace(/@/g, '-'));
         const lines = [
             'BEGIN:VCALENDAR',
             'VERSION:2.0',

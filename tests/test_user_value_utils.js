@@ -64,6 +64,22 @@ assert.match(calendar, /DESCRIPTION:A-Klasse\\nStaffel 1\r\n/);
 assert.match(calendar, /LOCATION:Vereinsheim\\; Hauptstraße 1\r\n/);
 assert.match(calendar, /END:VCALENDAR\r\n$/);
 
+const calendarWithUnsafeUid = buildIcsContent({
+    uid: 'id,semi;slash\\\r\nX-EVIL:true',
+    dateStr: '28.08.2026 20:00',
+    home: 'DC Heim',
+    away: 'DC Gast',
+});
+const uidLines = calendarWithUnsafeUid
+    .split('\r\n')
+    .filter((line) => line.startsWith('UID:'));
+assert.deepEqual(
+    uidLines,
+    [String.raw`UID:id\,semi\;slash\\\nX-EVIL:true@bwedl-stats`],
+    'provided UIDs are escaped as one RFC5545 TEXT property line',
+);
+assert.equal(calendarWithUnsafeUid.includes('\r\nX-EVIL:true'), false);
+
 const existingRoutes = new Set([
     'dashboard:',
     'ranking:Bezirksliga 2026/27',
