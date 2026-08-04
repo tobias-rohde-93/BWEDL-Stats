@@ -199,9 +199,12 @@ reviewCheck('snapshot diffs clone next-game values', () => {
 
 reviewCheck('service worker cache contract is exact', () => {
     const worker = fs.readFileSync(path.join(__dirname, '..', 'sw_v31.js'), 'utf8');
-    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v33';$/m);
-    assert.doesNotMatch(worker, /bwedl-dashboard-v32/);
-    assert.match(worker, /^\s*'\.\/app_utils\.js',$/m);
+    const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+    const appUtilsUrl = html.match(/<script src="(app_utils\.js\?v=[^"]+)"><\/script>/);
+    assert.ok(appUtilsUrl, 'index uses a versioned app_utils request');
+    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v34';$/m);
+    assert.doesNotMatch(worker, /bwedl-dashboard-v33/);
+    assert.match(worker, new RegExp(`^\\s*'\\./${appUtilsUrl[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}',$`, 'm'));
 });
 
 if (reviewFailures.length > 0) {

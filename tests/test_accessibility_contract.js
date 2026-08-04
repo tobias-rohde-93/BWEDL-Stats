@@ -8,6 +8,24 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
 const worker = fs.readFileSync(path.join(root, 'sw_v31.js'), 'utf8');
 
+function versionedShellUrls(markup) {
+    return [...markup.matchAll(/(?:href|src)="((?:style\.css|app_utils\.js|bundle_v31\.js)\?v=[^"]+)"/g)]
+        .map((match) => `./${match[1]}`);
+}
+
+function localAssetUrls(markup) {
+    return [...markup.matchAll(/(?:href|src)="([^"]+)"/g)]
+        .map((match) => match[1])
+        .filter((url) => !/^(?:https?:|#)/.test(url))
+        .map((url) => `./${url}`);
+}
+
+function serviceWorkerAssets(source) {
+    const declaration = source.match(/const urlsToCache = \[([\s\S]*?)\];/);
+    assert.ok(declaration, 'service worker declares its pre-cache assets');
+    return [...declaration[1].matchAll(/['"]([^'"]+)['"]/g)].map((match) => match[1]);
+}
+
 function extractFunction(source, name) {
     const start = source.indexOf(`function ${name}(`);
     assert.notEqual(start, -1, `Expected function ${name} to exist`);
@@ -171,10 +189,25 @@ assert.match(styles, /\.main-content\s*\{[^}]*min-width\s*:\s*0/s);
 assert.match(styles, /\.content-area\s*\{[^}]*min-width\s*:\s*0[^}]*max-width\s*:\s*100%/s);
 assert.match(styles, /@media\s*\(max-width:\s*480px\)[\s\S]*\.content-area\s*\{[^}]*box-sizing\s*:\s*border-box/s);
 
-// PWA assets are cached once under one active version; each page load must not wipe caches.
-for (const asset of ['./index.html', './style.css', './app_utils.js', './bundle_v31.js']) {
-    assert.ok(worker.includes(`'${asset}'`), `service worker caches ${asset}`);
+// PWA shell cache keys exactly match the versioned requests made by index.html.
+const requestedShellUrls = versionedShellUrls(html);
+const requestedLocalAssets = localAssetUrls(html);
+const cachedAssets = serviceWorkerAssets(worker);
+assert.deepEqual(requestedShellUrls, [
+    './style.css?v=3',
+    './app_utils.js?v=1',
+    './bundle_v31.js?v=3.2',
+]);
+assert.deepEqual(
+    cachedAssets.filter((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)/.test(asset)),
+    requestedShellUrls,
+);
+for (const asset of requestedShellUrls) assert.ok(cachedAssets.includes(asset));
+for (const asset of requestedLocalAssets) {
+    assert.ok(cachedAssets.includes(asset), `service worker pre-caches the exact index request ${asset}`);
 }
+assert.equal(cachedAssets.some((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)$/.test(asset)), false);
+assert.equal(cachedAssets.some((asset) => /(?:style\.css\?v=2|bundle_v31\.js\?v=3\.1)$/.test(asset)), false);
 assert.doesNotMatch(html, /getRegistrations\(|registration\.unregister\(|caches\.delete\(/);
 assert.equal((worker.match(/const CACHE_NAME\s*=\s*['"][^'"]+['"]/g) || []).length, 1);
 

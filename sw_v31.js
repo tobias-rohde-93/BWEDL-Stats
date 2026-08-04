@@ -1,20 +1,21 @@
-// Increment this cache name whenever the static asset list changes.
-// Shell content revision: accessibility-2026-08-04 (asset list unchanged).
-const CACHE_NAME = 'bwedl-dashboard-v33';
+// Increment this cache name whenever the static asset list or cache keys change.
+const CACHE_NAME = 'bwedl-dashboard-v34';
 const urlsToCache = [
     './',
     './index.html',
-    './style.css',
-    './app_utils.js',
-    './bundle_v31.js',
-    './league_data.js',
-    './ranking_data.js',
-    './club_data.js',
-    './archive_data.js',
+    './manifest.json',
+    './style.css?v=3',
+    './bwedl_logo.png',
+    './league_data.js?v=5',
+    './ranking_data.js?v=4',
+    './club_data.js?v=4',
+    './archive_data.js?v=8',
     './data_status.json',
-    './data_status.js',
-    './archive_tables.js',
-    './ligapokal_archive.js',
+    './archive_tables.js?v=5',
+    './ligapokal_archive.js?v=3',
+    './data_status.js?v=1',
+    './app_utils.js?v=1',
+    './bundle_v31.js?v=3.2',
     './pwa-icon-192.png',
     './pwa-icon-512.png'
 ];
