@@ -903,6 +903,26 @@ tr:hover td {
     font: inherit;
 }
 
+.club-sidebar-disclosure {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    background: transparent;
+    text-align: left;
+}
+
+.club-sidebar-disclosure::before {
+    content: '▸';
+    margin-right: 0.4rem;
+    transition: transform 0.2s ease;
+}
+
+.club-sidebar-disclosure[aria-expanded='true']::before {
+    transform: rotate(90deg);
+}
+
 .club-sidebar-link--primary {
     color: #f8fafc;
     font-weight: 700;
@@ -1043,6 +1063,55 @@ tr:hover td {
     display: none;
 }
 
+.club-upcoming-toggle {
+    width: 100%;
+    margin-top: 4px;
+    padding: 8px 10px;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    background: transparent;
+    color: #93c5fd;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+
+.club-upcoming-toggle:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.club-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.club-contact-field__label {
+    margin-bottom: 2px;
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.club-contact-field__value {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+a.club-contact-field__value {
+    color: #60a5fa;
+}
+
+.club-contact-map-link {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    background: #334155;
+    color: #fff;
+    text-align: center;
+}
+
 .history-row--incomplete {
     background: rgba(245, 158, 11, 0.08);
 }
@@ -1050,6 +1119,11 @@ tr:hover td {
 .incomplete-data {
     color: #fbbf24;
     font-weight: 600;
+}
+
+.archive-freilos {
+    color: #94a3b8;
+    font-style: italic;
 }
 
 .app-status {

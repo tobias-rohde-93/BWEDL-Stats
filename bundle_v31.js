@@ -206,6 +206,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     let clubSidebarContainer = null;
 
+    function createDisclosureButton(label, contentId, content, expanded = false) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'disclosure-button';
+        button.setAttribute('aria-expanded', String(expanded));
+        button.setAttribute('aria-controls', contentId);
+        button.textContent = label;
+        content.id = contentId;
+        content.hidden = !expanded;
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!isExpanded));
+            content.hidden = isExpanded;
+        });
+        return button;
+    }
+
     // --- My Profile State ---
     let myPlayerName = localStorage.getItem('myPlayerName');
     let myTeamName = localStorage.getItem('myTeamName');
@@ -972,9 +989,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Clubs: compact access instead of the complete club catalogue.
         if (clubData.clubs && clubData.clubs.length > 0) {
-            const header = document.createElement('div');
-            header.className = 'nav-section-header';
-            header.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> VEREINE';
+            const container = document.createElement('div');
+            const header = createDisclosureButton('VEREINE', 'club-sidebar-shortcuts', container, false);
+            header.className = 'nav-section-header club-sidebar-disclosure';
             header.style.padding = "15px 15px 5px";
             header.style.color = "#888";
             header.style.fontSize = "0.8em";
@@ -983,16 +1000,8 @@ document.addEventListener('DOMContentLoaded', () => {
             header.title = "Vereinszugänge ein- oder ausklappen";
             nav.appendChild(header);
 
-            const container = document.createElement('div');
-            container.style.display = "none";
             container.style.paddingLeft = "0";
             clubSidebarContainer = container;
-
-            header.addEventListener('click', () => {
-                const isHidden = container.style.display === "none";
-                container.style.display = isHidden ? "block" : "none";
-                header.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
-            });
 
             renderClubSidebarShortcuts();
             nav.appendChild(container);
@@ -4979,23 +4988,41 @@ document.addEventListener('DOMContentLoaded', () => {
             section.className = 'club-disclosure';
             const heading = document.createElement('h2');
             heading.className = 'club-disclosure__heading';
-            const button = document.createElement('button');
-            button.type = 'button';
+            const button = createDisclosureButton(title, contentId, content, expanded);
             button.className = 'club-disclosure__trigger';
-            button.setAttribute('aria-expanded', String(expanded));
-            button.setAttribute('aria-controls', contentId);
-            button.textContent = title;
-            content.id = contentId;
             content.classList.add('club-disclosure__content');
-            content.hidden = !expanded;
-            button.addEventListener('click', () => {
-                const isExpanded = button.getAttribute('aria-expanded') === 'true';
-                button.setAttribute('aria-expanded', String(!isExpanded));
-                content.hidden = isExpanded;
-            });
             heading.appendChild(button);
             section.append(heading, content);
             return section;
+        }
+
+        function archiveMatchDisplayState(match, isCupSection) {
+            if (match && match.isFreilos) return { incomplete: false, label: 'Freilos' };
+            const incomplete = Boolean(isCupSection) && (
+                !String(match && match.home || '').trim() ||
+                !String(match && match.away || '').trim() ||
+                !String(match && match.scoreHome || '').trim() ||
+                !String(match && match.scoreAway || '').trim()
+            );
+            return {
+                incomplete,
+                label: incomplete
+                    ? 'Daten unvollständig'
+                    : `${match && match.scoreHome || ''}:${match && match.scoreAway || ''}`,
+            };
+        }
+
+        function createArchiveMatchResult(match, isCupSection) {
+            const state = archiveMatchDisplayState(match, isCupSection);
+            const result = document.createElement('span');
+            result.textContent = state.label;
+            if (state.incomplete) {
+                result.className = 'incomplete-data';
+                result.setAttribute('role', 'status');
+            } else if (match && match.isFreilos) {
+                result.className = 'archive-freilos';
+            }
+            return result;
         }
 
         const stripTeamNumber = (name) => {
@@ -5138,9 +5165,9 @@ document.addEventListener('DOMContentLoaded', () => {
         recentLeagueMatches.sort((a, b) => b.ts - a.ts);
         recentLigapokalMatches.sort((a, b) => b.ts - a.ts);
 
-        const nextGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLeagueMatches, new Date()).slice(0, 5);
+        const nextGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLeagueMatches, new Date());
         const lastGames = recentLeagueMatches.slice(0, 30);
-        const nextLigapokalGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLigapokalMatches, new Date()).slice(0, 5);
+        const nextLigapokalGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLigapokalMatches, new Date());
         const lastLigapokalGames = recentLigapokalMatches.slice(0, 30);
 
         // C) Current League Tables
@@ -5184,56 +5211,101 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         container.appendChild(statsRow);
 
-        const detailsCard = document.createElement('div');
-        detailsCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 8px; margin-bottom: 20px; overflow: hidden;";
-        let detailsHtml = `
-            <div style="padding: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02);" onclick="this.nextElementSibling.classList.toggle('hidden')">
-                <span style="font-weight: bold; color: #f8fafc;">📍 Vereinsinfos & Kontakt</span>
-                <span style="color: #64748b;">▼</span>
-            </div>
-            <div class="hidden" style="padding: 15px; border-top: 1px solid #334155;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-        `;
+        const detailsContent = document.createElement('div');
+        const detailsGrid = document.createElement('div');
+        detailsGrid.className = 'club-contact-grid';
         const fields = [
             { k: 'venue', l: 'Spiellokal', i: '🏠' }, { k: 'street', l: 'Adresse', i: '📍' }, { k: 'city', l: 'Ort', i: '🏙️' },
             { k: 'website', l: 'Webseite', i: '🌐', link: true }, { k: 'email', l: 'E-Mail', i: '✉️', mail: true },
             { k: 'contact', l: 'Kontaktperson', i: '👤' }, { k: 'mobile', l: 'Mobil', i: '📱' },
         ];
         fields.forEach(f => {
-            let val = club[f.k];
-            if (val && val !== 'null' && val !== '-') {
-                if (f.link && !val.startsWith('http')) val = `<a href="http://${val}" target="_blank" style="color:#3b82f6;">${val}</a>`;
-                else if (f.mail) val = `<a href="mailto:${val}" style="color:#3b82f6;">${val}</a>`;
-                detailsHtml += `<div><div style="font-size: 0.8em; color: #64748b; margin-bottom: 2px;">${f.i} ${f.l}</div><div style="color: #e2e8f0; font-size: 0.95em;">${val}</div></div>`;
+            const value = club[f.k];
+            if (!value || value === 'null' || value === '-') return;
+            const field = document.createElement('div');
+            const label = document.createElement('div');
+            label.className = 'club-contact-field__label';
+            label.textContent = `${f.i} ${f.l}`;
+            const valueElement = document.createElement(f.link || f.mail ? 'a' : 'div');
+            valueElement.className = 'club-contact-field__value';
+            valueElement.textContent = value;
+            if (f.link) {
+                valueElement.href = value.startsWith('http') ? value : `http://${value}`;
+                valueElement.target = '_blank';
+                valueElement.rel = 'noopener noreferrer';
+            } else if (f.mail) {
+                valueElement.href = `mailto:${value}`;
             }
+            field.append(label, valueElement);
+            detailsGrid.appendChild(field);
         });
         if ((club.street && club.street !== '-') || (club.city && club.city !== '-')) {
             const q = `${club.street || ''} ${club.city || ''}`;
-            detailsHtml += `<div style="grid-column: 1 / -1; margin-top: 10px;"><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}" target="_blank" style="display: inline-block; width: 100%; text-align: center; padding: 8px; background: #334155; color: #fff; border-radius: 4px; text-decoration: none; font-size: 0.9em;">Auf Karte anzeigen</a></div>`;
+            const mapLink = document.createElement('a');
+            mapLink.className = 'club-contact-map-link';
+            mapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+            mapLink.target = '_blank';
+            mapLink.rel = 'noopener noreferrer';
+            mapLink.textContent = 'Auf Karte anzeigen';
+            detailsGrid.appendChild(mapLink);
         }
-        detailsHtml += `</div></div>`;
-        detailsCard.innerHTML = detailsHtml;
-        container.appendChild(detailsCard);
+        detailsContent.appendChild(detailsGrid);
+        container.appendChild(createDisclosureSection(
+            'Vereinsinfos & Kontakt',
+            'club-contact-details',
+            detailsContent,
+            false,
+        ));
 
         const currentSeasonContent = document.createElement('div');
 
-        const createMatchesGrid = (upcoming, recent, titlePrefix) => {
+        function createClubMatchesGrid(upcoming, recent, titlePrefix) {
             if (upcoming.length === 0 && recent.length === 0) return null;
             const grid = document.createElement('div');
             grid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;";
             const upCard = document.createElement('div');
             upCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📅 ${titlePrefix}Nächste Spiele</h3>`;
             const upList = document.createElement('div');
+            upList.id = titlePrefix.toLowerCase().includes('ligapokal')
+                ? 'club-upcoming-cup'
+                : 'club-upcoming-league';
+            upList.className = 'club-upcoming-list';
             upList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
             if (upcoming.length === 0) upList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele.</div>`;
-            else upcoming.forEach(m => {
-                const matchCard = document.createElement('div');
-                matchCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;";
-                matchCard.innerHTML = `<div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr || 'Termin offen'}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div>`;
-                matchCard.appendChild(createGameActionsElement(m));
-                upList.appendChild(matchCard);
-            });
-            upCard.appendChild(upList);
+            else {
+                const renderUpcoming = (expanded) => {
+                    upList.replaceChildren();
+                    const visibleMatches = expanded ? upcoming : upcoming.slice(0, 5);
+                    visibleMatches.forEach(m => {
+                        const matchCard = document.createElement('div');
+                        matchCard.className = 'club-upcoming-match';
+                        matchCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;";
+                        matchCard.innerHTML = `<div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr || 'Termin offen'}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div>`;
+                        matchCard.appendChild(createGameActionsElement(m));
+                        upList.appendChild(matchCard);
+                    });
+                };
+                renderUpcoming(false);
+
+                if (upcoming.length > 5) {
+                    const toggle = document.createElement('button');
+                    toggle.type = 'button';
+                    toggle.className = 'club-upcoming-toggle';
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-controls', upList.id);
+                    toggle.textContent = 'Alle Spiele anzeigen';
+                    toggle.addEventListener('click', () => {
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!expanded));
+                        toggle.textContent = expanded ? 'Alle Spiele anzeigen' : 'Weniger anzeigen';
+                        renderUpcoming(!expanded);
+                    });
+                    upCard.append(upList, toggle);
+                } else {
+                    upCard.appendChild(upList);
+                }
+            }
+            if (upcoming.length === 0) upCard.appendChild(upList);
             const recCard = document.createElement('div');
             recCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📊 ${titlePrefix}Letzte Ergebnisse</h3>`;
             const recList = document.createElement('div');
@@ -5248,9 +5320,9 @@ document.addEventListener('DOMContentLoaded', () => {
             recCard.appendChild(recList);
             grid.appendChild(upCard); grid.appendChild(recCard);
             return grid;
-        };
+        }
 
-        const leagueGrid = createMatchesGrid(nextGames, lastGames, '');
+        const leagueGrid = createClubMatchesGrid(nextGames, lastGames, '');
         if (leagueGrid) currentSeasonContent.appendChild(leagueGrid);
 
         // Current Tables
@@ -5271,7 +5343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSeasonContent.appendChild(tSec);
         });
 
-        const ligapokalGrid = createMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
+        const ligapokalGrid = createClubMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
         if (ligapokalGrid) currentSeasonContent.appendChild(ligapokalGrid);
 
         if (clubPlayers.length > 0) {
@@ -5542,18 +5614,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 matchGroup.forEach(m => {
                                     const hStyle = isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : '';
                                     const aStyle = isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : '';
-                                    const isIncompleteCupRow = isCupSection && !m.isFreilos && (
-                                        !String(m.home || '').trim() ||
-                                        !String(m.away || '').trim() ||
-                                        !String(m.scoreHome || '').trim() ||
-                                        !String(m.scoreAway || '').trim()
-                                    );
-                                    const res = m.isFreilos
-                                        ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>'
-                                        : isIncompleteCupRow
-                                            ? '<span class="incomplete-data" role="status">Daten unvollständig</span>'
-                                            : `${m.scoreHome}:${m.scoreAway}`;
-                                    const rowState = isIncompleteCupRow ? ' class="history-row--incomplete" aria-label="Daten unvollständig"' : '';
+                                    const displayState = archiveMatchDisplayState(m, isCupSection);
+                                    const res = createArchiveMatchResult(m, isCupSection).outerHTML;
+                                    const rowState = displayState.incomplete ? ' class="history-row--incomplete" aria-label="Daten unvollständig"' : '';
                                     block += `<tr${rowState}><td>${m.dateStr || '–'}</td><td style="${hStyle}">${m.home || '–'}</td><td style="${aStyle}">${m.away || '–'}</td><td style="font-weight:bold;">${res}</td></tr>`;
                                 });
                                 block += `</tbody></table></div>`;
