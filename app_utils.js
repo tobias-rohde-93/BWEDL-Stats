@@ -485,11 +485,183 @@
         return undefined;
     }
 
+    const VISIT_SNAPSHOT_VERSION = 1;
+    const VISIT_SNAPSHOT_STORAGE_KEY = 'bwedl_visit_snapshot';
+
+    function snapshotText(value) {
+        if (value === null || value === undefined) return null;
+        const text = String(value).trim();
+        return text || null;
+    }
+
+    function snapshotNumber(value) {
+        if (value === null || value === undefined || value === '') return null;
+        const number = Number(value);
+        return Number.isFinite(number) ? number : null;
+    }
+
+    function snapshotDate(value) {
+        if (!value) return null;
+        const date = value instanceof Date ? value : new Date(value);
+        return Number.isFinite(date.getTime()) ? date.toISOString() : null;
+    }
+
+    function buildVisitSnapshot({ data = {}, player = null, team = null, nextGame = null } = {}) {
+        const timestamps = ['leagues', 'rankings', 'clubs', 'archives'].reduce((result, domain) => {
+            const timestamp = snapshotDate(data.timestamps && data.timestamps[domain]);
+            if (timestamp) result[domain] = timestamp;
+            return result;
+        }, {});
+        const snapshot = {
+            version: VISIT_SNAPSHOT_VERSION,
+            data: {
+                key: snapshotText(data.key),
+                timestamps,
+                updatedAt: snapshotDate(data.updatedAt) || snapshotText(data.updatedAt),
+            },
+            player: player ? {
+                canonicalName: snapshotText(player.canonicalName),
+                displayName: snapshotText(player.displayName),
+                rank: snapshotNumber(player.rank),
+                points: snapshotNumber(player.points),
+                rankingClass: snapshotText(player.rankingClass),
+                sourceSeason: snapshotText(player.sourceSeason),
+                sourceKey: snapshotText(player.sourceKey),
+            } : null,
+            team: team ? {
+                id: snapshotText(team.id),
+                name: snapshotText(team.name),
+                resultCount: snapshotNumber(team.resultCount),
+            } : null,
+            nextGame: nextGame ? {
+                key: snapshotText(nextGame.key),
+                date: snapshotDate(nextGame.date),
+                opponent: snapshotText(nextGame.opponent),
+                location: snapshotText(nextGame.location),
+            } : null,
+        };
+        return normalizeSnapshotValue(snapshot);
+    }
+
+    function isVisitSnapshot(value) {
+        return Boolean(
+            value && typeof value === 'object' && !Array.isArray(value) &&
+            value.version === VISIT_SNAPSHOT_VERSION &&
+            value.data && typeof value.data === 'object' &&
+            (value.player === null || typeof value.player === 'object') &&
+            (value.team === null || typeof value.team === 'object') &&
+            (value.nextGame === null || typeof value.nextGame === 'object')
+        );
+    }
+
+    function readVisitSnapshot(storage, key = VISIT_SNAPSHOT_STORAGE_KEY) {
+        try {
+            const raw = storage && storage.getItem(key);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            return isVisitSnapshot(parsed) ? buildVisitSnapshot(parsed) : null;
+        } catch (_error) {
+            return null;
+        }
+    }
+
+    function persistVisitSnapshot(storage, snapshot, key = VISIT_SNAPSHOT_STORAGE_KEY) {
+        try {
+            if (!isVisitSnapshot(snapshot)) return false;
+            storage.setItem(key, JSON.stringify(buildVisitSnapshot(snapshot)));
+            return true;
+        } catch (_error) {
+            return false;
+        }
+    }
+
+    function sameSnapshotIdentity(previous, current, field, key) {
+        const before = previous[field];
+        const now = current[field];
+        if (!before && !now) return true;
+        return Boolean(before && now && before[key] && before[key] === now[key]);
+    }
+
+    function diffVersionedVisitSnapshots(previous, current) {
+        if (!isVisitSnapshot(previous) || !isVisitSnapshot(current)) return [];
+
+        const changes = [];
+        const timestampKeys = Array.from(new Set([
+            ...Object.keys(previous.data.timestamps || {}),
+            ...Object.keys(current.data.timestamps || {}),
+        ])).sort();
+        const hasNewerDomainTimestamp = timestampKeys.some((key) => {
+            const before = Date.parse((previous.data.timestamps || {})[key] || '');
+            const now = Date.parse((current.data.timestamps || {})[key] || '');
+            return Number.isFinite(before) && Number.isFinite(now) && now > before;
+        });
+        const beforeTime = Date.parse(previous.data.updatedAt || '');
+        const currentTime = Date.parse(current.data.updatedAt || '');
+        const hasNewerSummaryTimestamp = Number.isFinite(beforeTime) &&
+            Number.isFinite(currentTime) && currentTime > beforeTime;
+        if (
+            previous.data.key !== current.data.key &&
+            (hasNewerDomainTimestamp || hasNewerSummaryTimestamp)
+        ) {
+            changes.push({ type: 'data', message: 'Neue Daten seit deinem letzten Besuch.' });
+        }
+
+        const samePlayer = sameSnapshotIdentity(previous, current, 'player', 'canonicalName');
+        const sameRankingSource = samePlayer && previous.player && current.player &&
+            previous.player.sourceKey && previous.player.sourceKey === current.player.sourceKey &&
+            previous.player.sourceSeason === current.player.sourceSeason;
+        if (sameRankingSource && previous.player.rank !== current.player.rank) {
+            changes.push({
+                type: 'rank',
+                message: `Dein Rang in der Saison ${current.player.sourceSeason}: ${previous.player.rank} → ${current.player.rank}.`,
+            });
+        }
+        if (sameRankingSource && previous.player.points !== current.player.points) {
+            changes.push({
+                type: 'points',
+                message: `Deine Punkte in der Saison ${current.player.sourceSeason}: ${previous.player.points} → ${current.player.points}.`,
+            });
+        }
+
+        const sameTeam = sameSnapshotIdentity(previous, current, 'team', 'id');
+        if (sameTeam && previous.team && current.team &&
+            previous.team.resultCount !== current.team.resultCount) {
+            const difference = current.team.resultCount - previous.team.resultCount;
+            const message = difference > 0
+                ? `Für ${current.team.name} ${difference === 1 ? 'liegt 1 neues Ergebnis' : `liegen ${difference} neue Ergebnisse`} vor.`
+                : `Der Ergebnisstand für ${current.team.name} wurde korrigiert.`;
+            changes.push({ type: 'results', message });
+        }
+
+        if (sameTeam && previous.nextGame && current.nextGame) {
+            const sameGame = previous.nextGame.key && previous.nextGame.key === current.nextGame.key;
+            const gameDetailsChanged = previous.nextGame.date !== current.nextGame.date ||
+                previous.nextGame.location !== current.nextGame.location ||
+                previous.nextGame.opponent !== current.nextGame.opponent;
+            if (sameGame && gameDetailsChanged) {
+                changes.push({
+                    type: 'nextGame',
+                    message: `Dein nächstes Spiel gegen ${current.nextGame.opponent} wurde neu terminiert.`,
+                });
+            } else if (!sameGame && stableSerialize(previous.nextGame) !== stableSerialize(current.nextGame)) {
+                changes.push({
+                    type: 'nextGame',
+                    message: `Dein nächstes Spiel ist gegen ${current.nextGame.opponent}.`,
+                });
+            }
+        }
+        return changes;
+    }
+
     function diffVisitSnapshots(previous, current) {
         if (
             !previous || typeof previous !== 'object' || Array.isArray(previous) ||
             !current || typeof current !== 'object' || Array.isArray(current)
         ) return [];
+
+        if (previous.version !== undefined || current.version !== undefined) {
+            return diffVersionedVisitSnapshots(previous, current);
+        }
 
         const changes = [];
         const rankBefore = firstDefined(previous, [['rank'], ['ranking', 'rank'], ['ranking', 'position']]);
@@ -538,6 +710,10 @@
     }
 
     return {
+        VISIT_SNAPSHOT_VERSION,
+        buildVisitSnapshot,
+        readVisitSnapshot,
+        persistVisitSnapshot,
         isByeOpponent,
         selectUpcomingGames,
         buildSeasonNotice,

@@ -427,6 +427,7 @@ window.BWEDL_STATUS_FORMATTERS = {
 document.addEventListener('DOMContentLoaded', renderDataStatus);
 
 document.addEventListener('DOMContentLoaded', () => {
+    const VISIT_SNAPSHOT_STORAGE_KEY = 'bwedl_visit_snapshot';
     const nav = document.getElementById('league-nav');
     const contentArea = document.getElementById('content-area');
     const topBarTitle = document.getElementById('current-league-title');
@@ -521,6 +522,9 @@ document.addEventListener('DOMContentLoaded', () => {
             link.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
             link.style.color = myPlayerName ? "#f8fafc" : "#94a3b8";
         }
+        if (typeof refreshVisitSnapshotBaseline === 'function') {
+            refreshVisitSnapshotBaseline(false);
+        }
         const dashboardState = { type: 'dashboard', id: null };
         history.replaceState(dashboardState, "", "#dashboard");
         navigateTo('dashboard', null, false);
@@ -578,6 +582,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let historyStack = [];
     let isNavigatingBack = false;
     let currentState = null;
+    let visitChanges = [];
+    let visitChangesDismissed = false;
 
     // Load Data
     if (typeof LEAGUE_DATA !== 'undefined') leagueData = LEAGUE_DATA;
@@ -1317,6 +1323,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // VERSION FOOTER
 
+        // Compare only after every bundled/fetched data source has been initialized.
+        refreshVisitSnapshotBaseline(true);
+
         // Resolve the initial view from the URL after all route data is available.
         initializeRouteFromLocation();
 
@@ -1688,6 +1697,133 @@ document.addEventListener('DOMContentLoaded', () => {
         return schedule.sort((a, b) => a.round - b.round);
     }
 
+    function buildCurrentVisitSnapshot() {
+        if (!window.BwedlAppUtils) return null;
+
+        const domains = dataStatus && dataStatus.domains ? dataStatus.domains : {};
+        const domainTimestamps = Object.keys(domains).reduce((result, key) => {
+            if (domains[key] && domains[key].updated_at) result[key] = domains[key].updated_at;
+            return result;
+        }, {});
+        const timestamps = Object.values(domains)
+            .map((domain) => domain && domain.updated_at)
+            .filter(Boolean)
+            .sort();
+        const rankingStatus = domains.rankings || {};
+        let player = null;
+        let team = null;
+        let nextGame = null;
+
+        if (myPlayerName && Array.isArray(rankingData.players)) {
+            const selected = rankingData.players.find((entry) => entry.name === myPlayerName);
+            if (selected) {
+                const canonicalName = window.BwedlAppUtils.canonicalRankingPlayerName(selected.name);
+                player = {
+                    canonicalName,
+                    displayName: selected.name,
+                    rank: selected.rank,
+                    points: selected.points,
+                    rankingClass: selected.league,
+                    sourceSeason: rankingStatus.season || null,
+                    sourceKey: [
+                        'rankings',
+                        rankingStatus.season || 'unknown',
+                        rankingStatus.state || 'unknown',
+                    ].join(':'),
+                };
+
+                const selectedTeam = myTeamName || selected.company || null;
+                if (selectedTeam && leagueData.leagues) {
+                    const schedule = [];
+                    Object.keys(leagueData.leagues).forEach((leagueKey) => {
+                        getTeamSchedule(leagueKey, selectedTeam).forEach((game) => {
+                            schedule.push({ ...game, leagueKey });
+                        });
+                    });
+                    const resultCount = schedule.filter((game) => !game.isPending).length;
+                    team = {
+                        id: `${selected.v_nr || 'team'}:${normalizeTeamName(selectedTeam)}`,
+                        name: selectedTeam,
+                        resultCount,
+                    };
+                    const upcoming = window.BwedlAppUtils.selectUpcomingGames(schedule, new Date())[0];
+                    if (upcoming) {
+                        nextGame = {
+                            key: [
+                                upcoming.leagueKey || '',
+                                upcoming.round || '',
+                                normalizeTeamName(upcoming.home),
+                                normalizeTeamName(upcoming.away),
+                            ].join(':'),
+                            date: upcoming.date,
+                            opponent: upcoming.opponent,
+                            location: gameAddress(upcoming) || null,
+                        };
+                    }
+                }
+            }
+        }
+
+        return window.BwedlAppUtils.buildVisitSnapshot({
+            data: {
+                key: timestamps.join('|'),
+                timestamps: domainTimestamps,
+                updatedAt: timestamps.length > 0 ? timestamps[timestamps.length - 1] : null,
+            },
+            player,
+            team,
+            nextGame,
+        });
+    }
+
+    function refreshVisitSnapshotBaseline(compareWithPrevious = false) {
+        if (!window.BwedlAppUtils) return;
+        const currentSnapshot = buildCurrentVisitSnapshot();
+        if (!currentSnapshot) return;
+        const previousSnapshot = compareWithPrevious
+            ? window.BwedlAppUtils.readVisitSnapshot(localStorage, VISIT_SNAPSHOT_STORAGE_KEY)
+            : null;
+        visitChanges = compareWithPrevious
+            ? window.BwedlAppUtils.diffVisitSnapshots(previousSnapshot, currentSnapshot)
+            : [];
+        visitChangesDismissed = false;
+        // Persist after comparison. Dismissing the card never changes this baseline.
+        window.BwedlAppUtils.persistVisitSnapshot(localStorage, currentSnapshot, VISIT_SNAPSHOT_STORAGE_KEY);
+    }
+
+    function renderVisitChanges(container) {
+        if (visitChangesDismissed || visitChanges.length === 0) return;
+        const card = document.createElement('section');
+        const header = document.createElement('div');
+        const heading = document.createElement('h2');
+        const dismiss = document.createElement('button');
+        const list = document.createElement('ul');
+
+        card.className = 'visit-changes-card';
+        card.setAttribute('aria-labelledby', 'visit-changes-title');
+        header.className = 'visit-changes-card__header';
+        heading.id = 'visit-changes-title';
+        heading.className = 'visit-changes-card__title';
+        heading.textContent = 'Seit deinem letzten Besuch';
+        dismiss.type = 'button';
+        dismiss.className = 'visit-changes-card__dismiss';
+        dismiss.textContent = 'Schließen';
+        dismiss.setAttribute('aria-label', 'Änderungen ausblenden');
+        dismiss.addEventListener('click', () => {
+            visitChangesDismissed = true;
+            card.remove();
+        });
+        list.className = 'visit-changes-card__list';
+        visitChanges.forEach((change) => {
+            const message = document.createElement('li');
+            message.textContent = change.message;
+            list.appendChild(message);
+        });
+        header.append(heading, dismiss);
+        card.append(header, list);
+        container.appendChild(card);
+    }
+
     function calculateTrend(p) {
         if (!p.rounds) return null;
         // Rounds are R1, R2, etc. convert to array
@@ -1996,7 +2132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
                 setMyPlayer(name);
-                alert(`Profil gespeichert: ${name}`);
+                setAppStatus(`Profil gespeichert: ${name}`);
             }
         };
 
@@ -2033,6 +2169,8 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.padding = "20px";
         container.style.maxWidth = "1200px";
         container.style.margin = "0 auto";
+
+        if (typeof renderVisitChanges === 'function') renderVisitChanges(container);
 
         if (!myPlayerName) {
             container.appendChild(createProfileOnboardingCard());
