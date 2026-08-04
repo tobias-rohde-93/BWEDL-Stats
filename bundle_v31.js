@@ -92,6 +92,30 @@ function renderDataStatus() {
     });
 }
 
+function normalizeClubSearchText(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ß/g, 'ss')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
+
+function filterClubEntries(clubs, query) {
+    if (!Array.isArray(clubs)) return [];
+    const normalizedQuery = normalizeClubSearchText(query);
+    if (!normalizedQuery) return clubs;
+
+    return clubs.filter((club) => normalizeClubSearchText([
+        club && club.name,
+        club && club.venue,
+        club && club.street,
+        club && club.city,
+        club && club.address,
+    ].filter(Boolean).join(' ')).includes(normalizedQuery));
+}
+
 function createSeasonNotice(context) {
     const rankingStatus = dataStatus.domains && dataStatus.domains.rankings;
     const noticeModel = typeof BwedlAppUtils !== 'undefined'
@@ -166,6 +190,21 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
         console.error("Failed to parse favorites", e);
     }
+
+    const RECENT_CLUBS_STORAGE_KEY = 'bwedl_recent_clubs';
+    let recentClubIds = [];
+    try {
+        const storedRecentClubs = JSON.parse(localStorage.getItem(RECENT_CLUBS_STORAGE_KEY)) || [];
+        if (Array.isArray(storedRecentClubs)) {
+            recentClubIds = storedRecentClubs
+                .map(Number)
+                .filter(Number.isSafeInteger)
+                .slice(0, 5);
+        }
+    } catch (e) {
+        console.error("Failed to parse recent clubs", e);
+    }
+    let clubSidebarContainer = null;
 
     // --- My Profile State ---
     let myPlayerName = localStorage.getItem('myPlayerName');
@@ -931,10 +970,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(container);
         }
 
-        // 3. Clubs
+        // 3. Clubs: compact access instead of the complete club catalogue.
         if (clubData.clubs && clubData.clubs.length > 0) {
-            /* Sorted at top of init */
-
             const header = document.createElement('div');
             header.className = 'nav-section-header';
             header.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> VEREINE';
@@ -943,45 +980,21 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.fontSize = "0.8em";
             header.style.fontWeight = "bold";
             header.style.cursor = "pointer";
-            header.title = "Klicken zum Ausklappen / Titel klicken für Übersicht";
+            header.title = "Vereinszugänge ein- oder ausklappen";
             nav.appendChild(header);
 
             const container = document.createElement('div');
             container.style.display = "none";
             container.style.paddingLeft = "0";
+            clubSidebarContainer = container;
 
-            header.addEventListener('click', (e) => {
-                // If user clicks the text "VEREINE" or the arrow, toggle.
-                // But we also have navigation logic for 'clubList'. 
-                // Let's split: Arrow -> Toggle, Text -> Toggle. 
-                // Wait, original logic navigated to clubList on click. 
-                // Let's keep toggle on Arrow/Header, and maybe add a "All Clubs" item inside or just toggle.
-                // Re-reading user request: "ausklappbar sind". 
-                // I will make the whole header toggle. The "Club Overview" can be the first item in the list or explicitly added.
-
+            header.addEventListener('click', () => {
                 const isHidden = container.style.display === "none";
                 container.style.display = isHidden ? "block" : "none";
                 header.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
             });
 
-            // Add 'All Clubs' link as first item
-            const allClubsEl = document.createElement('div');
-            allClubsEl.className = 'league-item';
-            allClubsEl.innerHTML = '<i>Alle Vereine (Übersicht)</i>';
-            allClubsEl.addEventListener('click', () => {
-                navigateTo('clubList', null);
-            });
-            container.appendChild(allClubsEl);
-
-            clubData.clubs.forEach((club, index) => {
-                const el = document.createElement('div');
-                el.className = 'league-item';
-                el.textContent = club.name;
-                el.addEventListener('click', () => {
-                    navigateTo('club', index);
-                });
-                container.appendChild(el);
-            });
+            renderClubSidebarShortcuts();
             nav.appendChild(container);
         }
 
@@ -1121,9 +1134,76 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Favorites Logic ---
     // (favorites state moved to top of file)
 
+    function appendClubSidebarLink(parent, label, action, modifier = '') {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `league-item club-sidebar-link ${modifier}`.trim();
+        button.textContent = label;
+        button.addEventListener('click', action);
+        parent.appendChild(button);
+    }
+
+    function renderClubSidebarShortcuts() {
+        if (!clubSidebarContainer) return;
+        clubSidebarContainer.replaceChildren();
+
+        appendClubSidebarLink(
+            clubSidebarContainer,
+            'Vereinsübersicht',
+            () => navigateTo('clubList', null),
+            'club-sidebar-link--primary',
+        );
+        appendClubSidebarLink(clubSidebarContainer, 'Verein suchen', () => {
+            navigateTo('clubList', null);
+            const clubSearch = document.getElementById('club-search');
+            if (clubSearch) clubSearch.focus();
+        });
+
+        const appendGroup = (title, entries) => {
+            const heading = document.createElement('div');
+            heading.className = 'club-sidebar-group-title';
+            heading.textContent = title;
+            clubSidebarContainer.appendChild(heading);
+
+            if (entries.length === 0) {
+                const empty = document.createElement('p');
+                empty.className = 'club-sidebar-empty';
+                empty.textContent = 'Noch keine';
+                clubSidebarContainer.appendChild(empty);
+                return;
+            }
+
+            entries.forEach(({ club, index }) => {
+                appendClubSidebarLink(clubSidebarContainer, club.name, () => navigateTo('club', index));
+            });
+        };
+
+        const favoriteClubs = favorites
+            .filter((favorite) => favorite.type === 'club')
+            .map((favorite) => ({ club: clubData.clubs[Number(favorite.id)], index: Number(favorite.id) }))
+            .filter(({ club, index }) => club && Number.isSafeInteger(index))
+            .slice(0, 5);
+        const recentClubs = recentClubIds
+            .map((index) => ({ club: clubData.clubs[index], index }))
+            .filter(({ club }) => club)
+            .slice(0, 5);
+
+        appendGroup('Favoriten', favoriteClubs);
+        appendGroup('Zuletzt angesehen', recentClubs);
+    }
+
+    function rememberRecentClub(id) {
+        const clubIndex = Number(id);
+        if (!Number.isSafeInteger(clubIndex) || !clubData.clubs[clubIndex]) return;
+        recentClubIds = [clubIndex, ...recentClubIds.filter((recentId) => recentId !== clubIndex)].slice(0, 5);
+        localStorage.setItem(RECENT_CLUBS_STORAGE_KEY, JSON.stringify(recentClubIds));
+        renderClubSidebarShortcuts();
+    }
+
     function saveFavorites() {
         localStorage.setItem('bwedl_favorites', JSON.stringify(favorites));
         renderFavoritesSidebar();
+        renderClubSidebarShortcuts();
     }
 
     function toggleFavorite(type, id, name) {
@@ -1156,7 +1236,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const existing = document.getElementById('fav-section');
         if (existing) existing.remove();
 
-        if (favorites.length === 0) return;
+        const nonClubFavorites = favorites.filter((favorite) => favorite.type !== 'club');
+        if (nonClubFavorites.length === 0) return;
 
         const container = document.createElement('div');
         container.id = 'fav-section';
@@ -1173,7 +1254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.fontWeight = "bold";
         container.appendChild(header);
 
-        favorites.forEach(fav => {
+        nonClubFavorites.forEach(fav => {
             const el = document.createElement('div');
             el.className = 'league-item';
             el.innerHTML = `<span style="color: #fbbf24; margin-right: 6px;">★</span> ${fav.name}`;
@@ -2472,6 +2553,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function navigateTo(type, id, addToHistory = true) {
         closeMobileNavigation();
+        if (type === 'club') rememberRecentClub(id);
 
         // 1. Handle history
         if (addToHistory) {
@@ -4228,45 +4310,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderClubList() {
         topBarTitle.textContent = "Vereinsübersicht";
-        contentArea.innerHTML = '';
+        contentArea.replaceChildren();
 
         const container = document.createElement('div');
-        container.style.padding = "20px";
-        container.style.display = "grid";
-        container.style.gridTemplateColumns = "repeat(auto-fill, minmax(280px, 1fr))";
-        container.style.gap = "20px";
+        container.className = 'club-overview';
 
-        clubData.clubs.forEach((club, index) => {
-            const card = document.createElement('div');
-            card.className = 'results-card';
-            card.style.cursor = "pointer";
-            card.style.transition = "all 0.2s ease";
-            card.style.height = "100%";
-            card.style.display = "flex";
-            card.style.flexDirection = "column";
+        const searchLabel = document.createElement('label');
+        searchLabel.className = 'club-search__label';
+        searchLabel.htmlFor = 'club-search';
+        searchLabel.textContent = 'Verein nach Name oder Ort finden';
+        const search = document.createElement('input');
+        search.id = 'club-search';
+        search.className = 'club-search';
+        search.type = 'search';
+        search.placeholder = 'Name, Ort oder Adresse';
+        search.setAttribute('aria-label', 'Vereine nach Name oder Ort suchen');
+        const resultStatus = document.createElement('p');
+        resultStatus.className = 'club-search__status';
+        resultStatus.setAttribute('aria-live', 'polite');
+        const grid = document.createElement('div');
+        grid.className = 'club-overview-grid';
 
-            let html = `<div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px; color: #f8fafc;">${club.name}</div>`;
-            if (club.venue) {
-                html += `<div style="font-size: 0.9em; color: #94a3b8;">📍 ${club.venue}</div>`;
+        const renderFilteredClubs = () => {
+            grid.replaceChildren();
+            const filteredClubs = filterClubEntries(clubData.clubs, search.value);
+            resultStatus.textContent = `${filteredClubs.length} ${filteredClubs.length === 1 ? 'Verein' : 'Vereine'}`;
+
+            if (filteredClubs.length === 0) {
+                const empty = document.createElement('p');
+                empty.className = 'club-overview-empty';
+                empty.textContent = 'Keine Vereine für diese Suche gefunden.';
+                grid.appendChild(empty);
+                return;
             }
-            if (club.city) {
-                html += `<div style="font-size: 0.85em; color: #64748b; margin-top: 4px;">${club.city}</div>`;
-            }
 
-            card.innerHTML = html;
-            card.addEventListener('click', () => {
-                navigateTo('club', index);
+            filteredClubs.forEach((club) => {
+                const index = clubData.clubs.indexOf(club);
+                const card = document.createElement('div');
+                card.className = 'results-card club-overview-card';
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', `${club.name || 'Verein'} öffnen`);
+
+                const name = document.createElement('strong');
+                name.className = 'club-overview-card__name';
+                name.textContent = club.name || 'Verein ohne Namen';
+                card.appendChild(name);
+                if (club.venue) {
+                    const venue = document.createElement('span');
+                    venue.className = 'club-overview-card__venue';
+                    venue.textContent = `📍 ${club.venue}`;
+                    card.appendChild(venue);
+                }
+                if (club.city || club.street) {
+                    const locality = document.createElement('span');
+                    locality.className = 'club-overview-card__locality';
+                    locality.textContent = [club.street, club.city].filter(Boolean).join(' · ');
+                    card.appendChild(locality);
+                }
+
+                const selectClub = () => navigateTo('club', index);
+                card.addEventListener('click', selectClub);
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        selectClub();
+                    }
+                });
+                grid.appendChild(card);
             });
-            card.onmouseenter = () => {
-                card.style.transform = "translateY(-2px)";
-                card.style.borderColor = "#3b82f6";
-            };
-            card.onmouseleave = () => {
-                card.style.transform = "none";
-                card.style.borderColor = "#334155";
-            };
-            container.appendChild(card);
-        });
+        };
+
+        search.addEventListener('input', renderFilteredClubs);
+        container.append(searchLabel, search, resultStatus, grid);
+        renderFilteredClubs();
         contentArea.appendChild(container);
     }
 
@@ -4857,6 +4974,30 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.maxWidth = "800px";
         container.style.margin = "0 auto";
 
+        function createDisclosureSection(title, contentId, content, expanded = false) {
+            const section = document.createElement('section');
+            section.className = 'club-disclosure';
+            const heading = document.createElement('h2');
+            heading.className = 'club-disclosure__heading';
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'club-disclosure__trigger';
+            button.setAttribute('aria-expanded', String(expanded));
+            button.setAttribute('aria-controls', contentId);
+            button.textContent = title;
+            content.id = contentId;
+            content.classList.add('club-disclosure__content');
+            content.hidden = !expanded;
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', String(!isExpanded));
+                content.hidden = isExpanded;
+            });
+            heading.appendChild(button);
+            section.append(heading, content);
+            return section;
+        }
+
         const stripTeamNumber = (name) => {
             if (!name) return "";
             let clean = name.replace(/\u00A0/g, ' ').trim();
@@ -4997,9 +5138,9 @@ document.addEventListener('DOMContentLoaded', () => {
         recentLeagueMatches.sort((a, b) => b.ts - a.ts);
         recentLigapokalMatches.sort((a, b) => b.ts - a.ts);
 
-        const nextGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLeagueMatches, new Date()).slice(0, 30);
+        const nextGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLeagueMatches, new Date()).slice(0, 5);
         const lastGames = recentLeagueMatches.slice(0, 30);
-        const nextLigapokalGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLigapokalMatches, new Date()).slice(0, 30);
+        const nextLigapokalGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLigapokalMatches, new Date()).slice(0, 5);
         const lastLigapokalGames = recentLigapokalMatches.slice(0, 30);
 
         // C) Current League Tables
@@ -5074,6 +5215,8 @@ document.addEventListener('DOMContentLoaded', () => {
         detailsCard.innerHTML = detailsHtml;
         container.appendChild(detailsCard);
 
+        const currentSeasonContent = document.createElement('div');
+
         const createMatchesGrid = (upcoming, recent, titlePrefix) => {
             if (upcoming.length === 0 && recent.length === 0) return null;
             const grid = document.createElement('div');
@@ -5108,7 +5251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const leagueGrid = createMatchesGrid(nextGames, lastGames, '');
-        if (leagueGrid) container.appendChild(leagueGrid);
+        if (leagueGrid) currentSeasonContent.appendChild(leagueGrid);
 
         // Current Tables
         currentTables.forEach(t => {
@@ -5125,11 +5268,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     row.style.color = "#60a5fa";
                 }
             });
-            container.appendChild(tSec);
+            currentSeasonContent.appendChild(tSec);
         });
 
         const ligapokalGrid = createMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
-        if (ligapokalGrid) container.appendChild(ligapokalGrid);
+        if (ligapokalGrid) currentSeasonContent.appendChild(ligapokalGrid);
 
         if (clubPlayers.length > 0) {
             const playerSection = document.createElement('div');
@@ -5146,8 +5289,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 pGrid.appendChild(pCard);
             });
             playerSection.appendChild(pGrid);
-            container.appendChild(playerSection);
+            currentSeasonContent.appendChild(playerSection);
         }
+
+        container.appendChild(createDisclosureSection(
+            'Aktuelle Saison',
+            'current-season-summary',
+            currentSeasonContent,
+            true,
+        ));
 
         // --- 3. ARCHIVE ---
         const allArchiveItems = [];
@@ -5291,8 +5441,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderArchive = (matches, title) => {
             if (matches.length === 0) return;
             const sec = document.createElement('div');
-            sec.style.cssText = "margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px;";
-            sec.innerHTML = `<h3 style="color: #64748b; font-size: 1.1em; margin-bottom: 20px;">${title}</h3>`;
+            sec.className = 'club-archive-content';
             
             // Group by Season
             const seasonGroups = {};
@@ -5393,8 +5542,19 @@ document.addEventListener('DOMContentLoaded', () => {
                                 matchGroup.forEach(m => {
                                     const hStyle = isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : '';
                                     const aStyle = isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : '';
-                                    const res = m.isFreilos ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>' : `${m.scoreHome}:${m.scoreAway}`;
-                                    block += `<tr><td>${m.dateStr}</td><td style="${hStyle}">${m.home}</td><td style="${aStyle}">${m.away}</td><td style="font-weight:bold;">${res}</td></tr>`;
+                                    const isIncompleteCupRow = isCupSection && !m.isFreilos && (
+                                        !String(m.home || '').trim() ||
+                                        !String(m.away || '').trim() ||
+                                        !String(m.scoreHome || '').trim() ||
+                                        !String(m.scoreAway || '').trim()
+                                    );
+                                    const res = m.isFreilos
+                                        ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>'
+                                        : isIncompleteCupRow
+                                            ? '<span class="incomplete-data" role="status">Daten unvollständig</span>'
+                                            : `${m.scoreHome}:${m.scoreAway}`;
+                                    const rowState = isIncompleteCupRow ? ' class="history-row--incomplete" aria-label="Daten unvollständig"' : '';
+                                    block += `<tr${rowState}><td>${m.dateStr || '–'}</td><td style="${hStyle}">${m.home || '–'}</td><td style="${aStyle}">${m.away || '–'}</td><td style="font-weight:bold;">${res}</td></tr>`;
                                 });
                                 block += `</tbody></table></div>`;
                             }
@@ -5405,7 +5565,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 block += `</div>`;
                 sec.innerHTML += block;
             });
-            container.appendChild(sec);
+            const contentId = isCupSection ? 'club-cup-history' : 'club-league-history';
+            container.appendChild(createDisclosureSection(title, contentId, sec, false));
         };
 
         renderArchive(leagueArchiveFinal, '📜 Liga Historie');
