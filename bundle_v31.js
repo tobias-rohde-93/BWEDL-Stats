@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (type === 'club') {
             const clubIndex = Number(id);
-            return /^\d+$/.test(String(id)) &&
+            return /^(0|[1-9]\d*)$/.test(String(id)) &&
                 Number.isSafeInteger(clubIndex) &&
                 clubIndex >= 0 &&
                 clubIndex < (clubData.clubs || []).length;
@@ -260,10 +260,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return `#${type}${id}`;
     }
 
+    function routesMatch(left, right) {
+        if (!left || !right || left.type !== right.type) return false;
+        const leftId = left.id == null ? null : String(left.id);
+        const rightId = right.id == null ? null : String(right.id);
+        return leftId === rightId;
+    }
+
     function initializeRouteFromLocation() {
         const route = window.BwedlAppUtils.parseAppHash(window.location.hash, routeExists);
-        history.replaceState(route, "", routeHash(route));
-        navigateTo(route.type, route.id, false);
+        const canonicalHash = routeHash(route);
+        if (!routesMatch(history.state, route) || window.location.hash !== canonicalHash) {
+            history.replaceState(route, "", canonicalHash);
+        }
+        const shouldRender = !routesMatch(currentState, route);
+        currentState = route;
+        if (shouldRender) navigateTo(route.type, route.id, false);
+        return route;
     }
 
     function setAppStatus(message) {
@@ -287,8 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 await navigator.share({ title: document.title || 'BWEDL Stats', text, url: canonicalUrl });
                 setAppStatus('Ansicht wurde geteilt.');
                 return true;
-            } catch (_error) {
-                // Continue with the clipboard fallback, including rejected shares.
+            } catch (error) {
+                if (error && error.name === 'AbortError') {
+                    setAppStatus('Teilen wurde abgebrochen.');
+                    return false;
+                }
+                // Continue with the clipboard fallback for genuine share failures.
             }
         }
 
@@ -2140,15 +2157,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    // History Event Listener
-    window.addEventListener('popstate', (event) => {
-        if (event.state) {
-            navigateTo(event.state.type, event.state.id, false);
-        } else {
-            // Fallback if state is null (e.g. initial load)
-            navigateTo('dashboard', null, false);
-        }
-    });
+    // Both browser navigation and manually edited hashes use the same resolver.
+    window.addEventListener('popstate', initializeRouteFromLocation);
+    window.addEventListener('hashchange', initializeRouteFromLocation);
 
     function goBack() {
         history.back();

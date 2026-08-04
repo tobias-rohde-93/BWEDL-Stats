@@ -69,6 +69,7 @@ function extractFunction(name) {
 
 const routeExistsSource = extractFunction('routeExists');
 const routeHashSource = extractFunction('routeHash');
+const routesMatchSource = extractFunction('routesMatch');
 const initializeSource = extractFunction('initializeRouteFromLocation');
 const setStatusSource = extractFunction('setAppStatus');
 const shareSource = extractFunction('shareCurrentView');
@@ -85,17 +86,37 @@ assert.doesNotMatch(
 const data = {
     leagueData: { leagues: { 'Bezirksliga Süd': {} } },
     rankingData: { rankings: { 'Saison 2026/27': [] } },
-    clubData: { clubs: [{ name: 'DC Eins' }] },
+    clubData: { clubs: [{ name: 'DC Eins' }, { name: 'DC Zwei' }] },
     ligapokalArchive: { '2025/26': {} },
 };
+
+const routeExists = new Function(
+    'leagueData',
+    'rankingData',
+    'clubData',
+    'ligapokalArchive',
+    `${routeExistsSource}; return routeExists;`,
+)(data.leagueData, data.rankingData, data.clubData, data.ligapokalArchive);
+
+assert.equal(routeExists('club', '0'), true);
+assert.equal(routeExists('club', '1'), true);
+for (const invalidClubId of ['00', '01', '-1', '1.0', '2', 'not-a-number']) {
+    assert.equal(routeExists('club', invalidClubId), false, `Expected club/${invalidClubId} to be invalid`);
+}
+
+assert.match(source, /window\.addEventListener\(\s*['"]popstate['"]\s*,\s*initializeRouteFromLocation\s*\)/);
+assert.match(source, /window\.addEventListener\(\s*['"]hashchange['"]\s*,\s*initializeRouteFromLocation\s*\)/);
 
 function createRoutingHarness(hash) {
     const historyCalls = [];
     const navigationCalls = [];
     const window = { location: { hash }, BwedlAppUtils };
     const history = {
+        state: null,
         replaceState(...args) {
             historyCalls.push(args);
+            this.state = args[0];
+            window.location.hash = args[2];
         },
     };
     const harness = new Function(
@@ -109,8 +130,14 @@ function createRoutingHarness(hash) {
         `let currentState = null;
         ${routeExistsSource}
         ${routeHashSource}
+        ${routesMatchSource}
         ${initializeSource}
-        return { initializeRouteFromLocation, getCurrentState: () => currentState };`,
+        return {
+            initializeRouteFromLocation,
+            getCurrentState: () => currentState,
+            setLocationHash: (hash) => { window.location.hash = hash; },
+            clearHistoryState: () => { history.state = null; },
+        };`,
     )(
         window,
         history,
@@ -129,6 +156,39 @@ function createRoutingHarness(hash) {
     const expectedRoute = { type: 'ranking', id: 'Saison 2026/27' };
     assert.deepEqual(harness.navigationCalls, [['ranking', 'Saison 2026/27', false]]);
     assert.deepEqual(harness.historyCalls, [[expectedRoute, '', '#ranking/Saison%202026%2F27']]);
+    assert.deepEqual(harness.getCurrentState(), expectedRoute);
+
+    // A state-less popstate resolves the current hash rather than forcing the dashboard.
+    harness.navigationCalls.length = 0;
+    harness.historyCalls.length = 0;
+    harness.setLocationHash('#league/Bezirksliga%20S%C3%BCd');
+    harness.clearHistoryState();
+    harness.initializeRouteFromLocation();
+    const leagueRoute = { type: 'league', id: 'Bezirksliga Süd' };
+    assert.deepEqual(harness.navigationCalls, [['league', 'Bezirksliga Süd', false]]);
+    assert.deepEqual(harness.historyCalls, [[leagueRoute, '', '#league/Bezirksliga%20S%C3%BCd']]);
+    assert.deepEqual(harness.getCurrentState(), leagueRoute);
+
+    // Manual hash changes use the same resolver and a duplicate browser event does not re-render.
+    harness.navigationCalls.length = 0;
+    harness.historyCalls.length = 0;
+    harness.setLocationHash('#club/0');
+    harness.initializeRouteFromLocation();
+    assert.deepEqual(harness.navigationCalls, [['club', '0', false]]);
+    assert.deepEqual(harness.historyCalls, [[{ type: 'club', id: '0' }, '', '#club/0']]);
+    harness.navigationCalls.length = 0;
+    harness.historyCalls.length = 0;
+    harness.initializeRouteFromLocation();
+    assert.deepEqual(harness.navigationCalls, []);
+    assert.deepEqual(harness.historyCalls, []);
+
+    // An invalid state-less popstate is canonicalized to the rendered dashboard.
+    harness.setLocationHash('#club/00');
+    harness.clearHistoryState();
+    harness.initializeRouteFromLocation();
+    assert.deepEqual(harness.navigationCalls, [['dashboard', null, false]]);
+    assert.deepEqual(harness.historyCalls, [[{ type: 'dashboard', id: null }, '', '#dashboard']]);
+    assert.deepEqual(harness.getCurrentState(), { type: 'dashboard', id: null });
 }
 
 for (const malformedHash of ['#ranking/%E0%A4%A', '#ranking/Nicht%20vorhanden', '#unknown/value']) {
@@ -137,6 +197,7 @@ for (const malformedHash of ['#ranking/%E0%A4%A', '#ranking/Nicht%20vorhanden', 
     const expectedRoute = { type: 'dashboard', id: null };
     assert.deepEqual(harness.navigationCalls, [['dashboard', null, false]]);
     assert.deepEqual(harness.historyCalls, [[expectedRoute, '', '#dashboard']]);
+    assert.deepEqual(harness.getCurrentState(), expectedRoute);
 }
 
 {
@@ -230,11 +291,23 @@ function createShareHarness({ share, writeText }) {
         assert.match(harness.statusNode.textContent, /geteilt/i);
     }
 
-    for (const share of [undefined, async () => { throw new Error('declined'); }]) {
+    for (const share of [undefined, async () => { throw new Error('share failed'); }]) {
         const harness = createShareHarness({ share, writeText: async () => {} });
         await harness.shareCurrentView('Aktuelle Rangliste');
         assert.deepEqual(harness.copied, ['https://example.test/app#ranking/Saison%202026%2F27']);
         assert.match(harness.statusNode.textContent, /kopiert/i);
+    }
+
+    {
+        const abortError = new Error('User cancelled');
+        abortError.name = 'AbortError';
+        const harness = createShareHarness({
+            share: async () => { throw abortError; },
+            writeText: async () => {},
+        });
+        await harness.shareCurrentView('Aktuelle Rangliste');
+        assert.deepEqual(harness.copied, []);
+        assert.match(harness.statusNode.textContent, /abgebrochen/i);
     }
 
     {
