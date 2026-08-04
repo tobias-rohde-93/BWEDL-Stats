@@ -385,6 +385,169 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const MATCH_PREVIEW_SESSION_KEY = 'bwedl_match_preview_game';
+
+    function rememberMatchPreviewGame(game) {
+        if (!game || typeof game !== 'object') return false;
+        try {
+            sessionStorage.setItem(MATCH_PREVIEW_SESSION_KEY, JSON.stringify(game));
+            return true;
+        } catch (_error) {
+            return false;
+        }
+    }
+
+    function readMatchPreviewGame() {
+        try {
+            const value = sessionStorage.getItem(MATCH_PREVIEW_SESSION_KEY);
+            sessionStorage.removeItem(MATCH_PREVIEW_SESSION_KEY);
+            if (!value) return null;
+            const game = JSON.parse(value);
+            return game && typeof game === 'object' ? game : null;
+        } catch (_error) {
+            return null;
+        }
+    }
+
+    function gameAddress(game) {
+        if (!game || typeof game !== 'object') return '';
+        const direct = [game.address, game.location]
+            .find((value) => typeof value === 'string' && value.trim());
+        if (direct) return direct.trim();
+
+        const homeName = typeof game.home === 'string' ? normalizeTeamName(game.home) : '';
+        if (!homeName || !clubData || !Array.isArray(clubData.clubs)) return '';
+        const homeClub = clubData.clubs.find((club) => {
+            const clubName = normalizeTeamName(club && club.name);
+            return clubName && (clubName === homeName || homeName.startsWith(`${clubName} `));
+        });
+        if (!homeClub) return '';
+        return [homeClub.venue, homeClub.street, homeClub.city]
+            .filter((value) => typeof value === 'string' && value.trim() && value !== '-')
+            .map((value) => value.trim())
+            .join(', ');
+    }
+
+    function buildMapsUrl(game) {
+        const address = gameAddress(game);
+        return address
+            ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+            : '';
+    }
+
+    function gameShareText(game) {
+        const matchup = [game && game.home, game && game.away]
+            .filter((value) => typeof value === 'string' && value.trim())
+            .join(' gegen ');
+        const date = game && typeof game.dateStr === 'string' ? game.dateStr.trim() : '';
+        return [matchup || 'BWEDL-Spiel', date].filter(Boolean).join(' · ');
+    }
+
+    function calendarFilename(game) {
+        const name = [game && game.home, game && game.away]
+            .filter((value) => typeof value === 'string' && value.trim())
+            .join('-')
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '') || 'bwedl-spiel';
+        const date = game && typeof game.dateStr === 'string'
+            ? game.dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})/)
+            : null;
+        const dateSuffix = date
+            ? `-${date[3]}-${date[2].padStart(2, '0')}-${date[1].padStart(2, '0')}`
+            : '';
+        return `${name}${dateSuffix}.ics`;
+    }
+
+    function downloadGameCalendar(game) {
+        const content = window.BwedlAppUtils.buildIcsContent(game);
+        if (!content) return false;
+        const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+        const objectUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = objectUrl;
+        link.download = calendarFilename(game);
+        link.hidden = true;
+        try {
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setAppStatus('Kalenderdatei wurde erstellt.');
+            return true;
+        } finally {
+            if (link.parentElement) link.parentElement.removeChild(link);
+            URL.revokeObjectURL(objectUrl);
+        }
+    }
+
+    function buildGameActions(game) {
+        if (!game || typeof game !== 'object') return [];
+        const actions = [{
+            key: 'preview',
+            label: 'Match Preview',
+            ariaLabel: `Match Preview für ${gameShareText(game)} öffnen`,
+            activate: () => {
+                rememberMatchPreviewGame(game);
+                navigateTo('matchPreview');
+            },
+        }];
+        if (window.BwedlAppUtils.buildIcsContent(game)) {
+            actions.push({
+                key: 'calendar',
+                label: 'Kalender',
+                ariaLabel: `Kalendereintrag für ${gameShareText(game)} herunterladen`,
+                activate: () => downloadGameCalendar(game),
+            });
+        }
+        actions.push({
+            key: 'share',
+            label: 'Teilen',
+            ariaLabel: `${gameShareText(game)} teilen`,
+            activate: () => shareCurrentView(gameShareText(game)),
+        });
+        const mapsUrl = buildMapsUrl(game);
+        if (mapsUrl) {
+            actions.push({
+                key: 'maps',
+                label: 'Route',
+                ariaLabel: `Route zum Spielort für ${gameShareText(game)} öffnen`,
+                href: mapsUrl,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+            });
+        }
+        return actions;
+    }
+
+    function createGameActionsElement(game) {
+        const group = document.createElement('div');
+        group.className = 'game-actions';
+        group.setAttribute('role', 'group');
+        group.setAttribute('aria-label', `Aktionen für ${gameShareText(game)}`);
+        buildGameActions(game).forEach((action) => {
+            const control = document.createElement(action.href ? 'a' : 'button');
+            control.className = `game-actions__button game-actions__button--${action.key}`;
+            control.textContent = action.label;
+            control.setAttribute('aria-label', action.ariaLabel);
+            if (action.href) {
+                control.href = action.href;
+                control.target = action.target;
+                control.rel = action.rel;
+            } else {
+                control.type = 'button';
+                control.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    action.activate();
+                });
+            }
+            control.addEventListener('click', (event) => event.stopPropagation());
+            group.appendChild(control);
+        });
+        return group;
+    }
+
     if (Object.keys(leagueData).length === 0) {
         const contentArea = document.getElementById('content-area');
         if (contentArea) {
@@ -1053,6 +1216,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 schedule.push({
                     round: roundNum,
                     date: dateObj,
+                    dateStr: dateStr,
+                    home: homeTeamRaw,
+                    away: awayTeamRaw,
                     opponent: opponent,
                     score: scoreStr,
                     isHome: isHome,
@@ -1807,12 +1973,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionCard.style.gap = "20px";
                 actionCard.style.gridColumn = "1 / -1"; // Span full width on desktop
 
-                // Find Next Games (Future or Today)
-                const dashboardToday = new Date();
-                dashboardToday.setHours(0, 0, 0, 0);
-                const upcomingGames = mySchedule.filter(g => g.isPending && (!g.date || g.date >= dashboardToday))
-                    .sort((a, b) => (a.date || 0) - (b.date || 0))
-                    .slice(0, 3);
+                // The reviewed selector keeps dated games first, open dates last,
+                // and removes byes before a primary card can be chosen.
+                const upcomingGames = typeof window !== 'undefined' && window.BwedlAppUtils
+                    ? window.BwedlAppUtils.selectUpcomingGames(mySchedule, new Date()).slice(0, 3)
+                    : [];
 
                 if (upcomingGames.length > 0) {
                     const nextGamesContainer = document.createElement('div');
@@ -1852,6 +2017,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span>${game.isHome ? '(Heim)' : '(Auswärts)'}</span>
                             </div>
                         `;
+                        nextCard.appendChild(createGameActionsElement(game));
                         
                         nextGamesContainer.appendChild(nextCard);
                     });
@@ -4718,14 +4884,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        upcomingLeagueMatches.sort((a, b) => a.ts - b.ts);
         recentLeagueMatches.sort((a, b) => b.ts - a.ts);
-        upcomingLigapokalMatches.sort((a, b) => a.ts - b.ts);
         recentLigapokalMatches.sort((a, b) => b.ts - a.ts);
 
-        const nextGames = upcomingLeagueMatches.slice(0, 30);
+        const nextGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLeagueMatches, new Date()).slice(0, 30);
         const lastGames = recentLeagueMatches.slice(0, 30);
-        const nextLigapokalGames = upcomingLigapokalMatches.slice(0, 30);
+        const nextLigapokalGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLigapokalMatches, new Date()).slice(0, 30);
         const lastLigapokalGames = recentLigapokalMatches.slice(0, 30);
 
         // C) Current League Tables
@@ -4810,7 +4974,11 @@ document.addEventListener('DOMContentLoaded', () => {
             upList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
             if (upcoming.length === 0) upList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele.</div>`;
             else upcoming.forEach(m => {
-                upList.innerHTML += `<div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;"><div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div></div>`;
+                const matchCard = document.createElement('div');
+                matchCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;";
+                matchCard.innerHTML = `<div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr || 'Termin offen'}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div>`;
+                matchCard.appendChild(createGameActionsElement(m));
+                upList.appendChild(matchCard);
             });
             upCard.appendChild(upList);
             const recCard = document.createElement('div');
@@ -5706,7 +5874,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // AUTO-DETECT NEXT MATCHES
         try {
-            const matches = detectNextMatch();
+            const selectedGame = typeof readMatchPreviewGame === 'function'
+                ? readMatchPreviewGame()
+                : null;
+            const selectedMatch = selectedGame ? {
+                ...selectedGame,
+                league: selectedGame.league || selectedGame.leagueName || selectedGame.leagueKey || '',
+                spieltag: selectedGame.spieltag || (selectedGame.round ? `${selectedGame.round}. Spieltag` : ''),
+            } : null;
+            const detectedMatches = detectNextMatch() || [];
+            const matches = selectedMatch
+                ? [selectedMatch, ...detectedMatches.filter((match) => !(
+                    match.league === selectedMatch.league &&
+                    match.home === selectedMatch.home &&
+                    match.away === selectedMatch.away &&
+                    match.dateStr === selectedMatch.dateStr
+                ))]
+                : detectedMatches;
             if (matches && matches.length > 0) {
                 const scrollerContainer = document.createElement('div');
                 scrollerContainer.style.marginBottom = "25px";
