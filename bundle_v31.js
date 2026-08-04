@@ -116,6 +116,83 @@ function filterClubEntries(clubs, query) {
     ].filter(Boolean).join(' ')).includes(normalizedQuery));
 }
 
+function escapeHtmlText(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(new RegExp(String.fromCharCode(34), 'g'), '&quot;')
+        .replace(new RegExp(String.fromCharCode(39), 'g'), '&#39;');
+}
+
+function clubRankingSeasonLabel(status) {
+    const season = status && typeof status.season === 'string' ? status.season.trim() : '';
+    if (status && status.state === 'retained' && season) {
+        return `Rangliste ${season} (letzte vollständige Saison)`;
+    }
+    return season && season !== 'current' ? `Rangliste ${season}` : 'Rangliste';
+}
+
+function createClubRankingSeasonNotice(status) {
+    const notice = document.createElement('p');
+    notice.className = 'club-ranking-season-notice';
+    notice.setAttribute('role', 'note');
+    notice.textContent = clubRankingSeasonLabel(status);
+    return notice;
+}
+
+function canonicalClubId(value, clubCount) {
+    const candidate = typeof value === 'number'
+        ? value
+        : typeof value === 'string' && /^(0|[1-9]\d*)$/.test(value)
+            ? Number(value)
+            : NaN;
+    return Number.isSafeInteger(candidate) && candidate >= 0 && candidate < clubCount
+        ? candidate
+        : null;
+}
+
+function normalizeClubIdList(values, clubCount, limit = 5) {
+    if (!Array.isArray(values)) return [];
+    const normalized = [];
+    values.forEach((value) => {
+        const id = canonicalClubId(value, clubCount);
+        if (id !== null && !normalized.includes(id) && normalized.length < limit) normalized.push(id);
+    });
+    return normalized;
+}
+
+function normalizeFavorites(values, clubCount) {
+    if (!Array.isArray(values)) return [];
+    const seenClubIds = new Set();
+    return values.flatMap((favorite) => {
+        if (!favorite || typeof favorite !== 'object') return [];
+        if (favorite.type !== 'club') return [favorite];
+        const id = canonicalClubId(favorite.id, clubCount);
+        if (id === null || seenClubIds.has(id)) return [];
+        seenClubIds.add(id);
+        return [{ ...favorite, id }];
+    });
+}
+
+function readLocalArray(storage, key) {
+    try {
+        const value = JSON.parse(storage.getItem(key));
+        return Array.isArray(value) ? value : [];
+    } catch (_error) {
+        return [];
+    }
+}
+
+function persistLocalValue(storage, key, value) {
+    try {
+        storage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch (_error) {
+        return false;
+    }
+}
+
 function createSeasonNotice(context) {
     const rankingStatus = dataStatus.domains && dataStatus.domains.rankings;
     const noticeModel = typeof BwedlAppUtils !== 'undefined'
@@ -183,27 +260,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.querySelector('.sidebar');
 
     // Favorites State (Hoisted to avoid TDZ)
-    let favorites = [];
-    try {
-        favorites = JSON.parse(localStorage.getItem('bwedl_favorites')) || [];
-        if (!Array.isArray(favorites)) favorites = [];
-    } catch (e) {
-        console.error("Failed to parse favorites", e);
-    }
+    let favorites = readLocalArray(localStorage, 'bwedl_favorites');
 
     const RECENT_CLUBS_STORAGE_KEY = 'bwedl_recent_clubs';
-    let recentClubIds = [];
-    try {
-        const storedRecentClubs = JSON.parse(localStorage.getItem(RECENT_CLUBS_STORAGE_KEY)) || [];
-        if (Array.isArray(storedRecentClubs)) {
-            recentClubIds = storedRecentClubs
-                .map(Number)
-                .filter(Number.isSafeInteger)
-                .slice(0, 5);
-        }
-    } catch (e) {
-        console.error("Failed to parse recent clubs", e);
-    }
+    let recentClubIds = readLocalArray(localStorage, RECENT_CLUBS_STORAGE_KEY);
     let clubSidebarContainer = null;
 
     function createDisclosureButton(label, contentId, content, expanded = false) {
@@ -336,6 +396,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof CLUB_DATA !== 'undefined') clubData = CLUB_DATA;
     else if (window.CLUB_DATA) clubData = window.CLUB_DATA;
+    const clubCount = Array.isArray(clubData.clubs) ? clubData.clubs.length : 0;
+    favorites = normalizeFavorites(favorites, clubCount);
+    recentClubIds = normalizeClubIdList(recentClubIds, clubCount, 5);
+    persistLocalValue(localStorage, 'bwedl_favorites', favorites);
+    persistLocalValue(localStorage, RECENT_CLUBS_STORAGE_KEY, recentClubIds);
 
     if (typeof ARCHIVE_DATA !== 'undefined') archiveData = ARCHIVE_DATA;
     else if (window.ARCHIVE_DATA) archiveData = window.ARCHIVE_DATA;
@@ -1202,15 +1267,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function rememberRecentClub(id) {
-        const clubIndex = Number(id);
-        if (!Number.isSafeInteger(clubIndex) || !clubData.clubs[clubIndex]) return;
+        const clubIndex = canonicalClubId(id, clubData.clubs.length);
+        if (clubIndex === null) return;
         recentClubIds = [clubIndex, ...recentClubIds.filter((recentId) => recentId !== clubIndex)].slice(0, 5);
-        localStorage.setItem(RECENT_CLUBS_STORAGE_KEY, JSON.stringify(recentClubIds));
+        persistLocalValue(localStorage, RECENT_CLUBS_STORAGE_KEY, recentClubIds);
         renderClubSidebarShortcuts();
     }
 
     function saveFavorites() {
-        localStorage.setItem('bwedl_favorites', JSON.stringify(favorites));
+        persistLocalValue(localStorage, 'bwedl_favorites', favorites);
         renderFavoritesSidebar();
         renderClubSidebarShortcuts();
     }
@@ -5025,6 +5090,32 @@ document.addEventListener('DOMContentLoaded', () => {
             return result;
         }
 
+        function parseArchiveMatchRow(headers, row) {
+            const normalizedHeaders = Array.isArray(headers)
+                ? headers.map((header) => String(header || '').toLowerCase().trim())
+                : [];
+            const findColumn = (pattern) => normalizedHeaders.findIndex((header) => pattern.test(header));
+            const dateIndex = findColumn(/datum/);
+            const homeIndex = findColumn(/heim/);
+            const awayIndex = findColumn(/gast/);
+            const resultIndex = findColumn(/ergebnis|punkte/);
+            const cell = (index) => index >= 0 ? String(row && row[index] || '').trim() : '';
+
+            if ([dateIndex, homeIndex, awayIndex, resultIndex].every((index) => index >= 0)) {
+                return {
+                    dateStr: cell(dateIndex),
+                    home: cell(homeIndex),
+                    away: cell(awayIndex),
+                    result: cell(resultIndex),
+                };
+            }
+
+            if (Array.isArray(row) && row.length >= 6 && /^\d{2}\.\d{2}\.\d{4}/.test(cell(1))) {
+                return { dateStr: cell(1), home: cell(3), away: cell(4), result: cell(5) };
+            }
+            return { dateStr: cell(0), home: cell(1), away: cell(2), result: cell(3) };
+        }
+
         const stripTeamNumber = (name) => {
             if (!name) return "";
             let clean = name.replace(/\u00A0/g, ' ').trim();
@@ -5259,6 +5350,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentSeasonContent = document.createElement('div');
 
+        function createClubMatchCard(match, mode) {
+            const isUpcoming = mode === 'upcoming';
+            const card = document.createElement('div');
+            card.className = isUpcoming ? 'club-upcoming-match' : 'club-recent-match';
+            card.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;";
+
+            const meta = document.createElement('div');
+            meta.style.cssText = "display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;";
+            const date = document.createElement('span');
+            date.textContent = match.dateStr || (isUpcoming ? 'Termin offen' : '–');
+            const league = document.createElement('span');
+            league.style.color = '#64748b';
+            league.textContent = match.leagueName || '';
+            meta.append(date, league);
+            card.appendChild(meta);
+
+            if (isUpcoming) {
+                const teams = document.createElement('div');
+                teams.style.cssText = "display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;";
+                const home = document.createElement('span');
+                const separator = document.createElement('span');
+                const away = document.createElement('span');
+                home.textContent = match.home || '–';
+                away.textContent = match.away || '–';
+                if (isClubMatch(club.name, match.home)) home.style.cssText = 'font-weight:bold; color:#60a5fa;';
+                if (isClubMatch(club.name, match.away)) away.style.cssText = 'font-weight:bold; color:#60a5fa;';
+                separator.style.cssText = 'font-size: 0.8em; color: #64748b; padding: 0 5px;';
+                separator.textContent = 'vs';
+                teams.append(home, separator, away);
+                card.append(teams, createGameActionsElement(match));
+                return card;
+            }
+
+            const isHome = isClubMatch(club.name, match.home);
+            const ownScore = Number(isHome ? match.scoreHome : match.scoreAway);
+            const opponentScore = Number(isHome ? match.scoreAway : match.scoreHome);
+            const resultColor = ownScore > opponentScore ? '#4ade80' : ownScore < opponentScore ? '#f87171' : '#94a3b8';
+            card.style.borderLeft = `3px solid ${resultColor}`;
+            const resultBody = document.createElement('div');
+            resultBody.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+            const teamNames = document.createElement('div');
+            teamNames.style.cssText = 'color: #f8fafc; font-size: 0.95em; flex: 1;';
+            [match.home, match.away].forEach((teamName) => {
+                const team = document.createElement('div');
+                team.textContent = teamName || '–';
+                if (isClubMatch(club.name, teamName)) team.style.fontWeight = 'bold';
+                teamNames.appendChild(team);
+            });
+            const score = document.createElement('div');
+            score.style.cssText = 'font-weight: bold; font-size: 1.1em; color: #f8fafc; background: rgba(255,255,255,0.05); padding: 5px 8px; border-radius: 4px;';
+            score.textContent = `${match.scoreHome ?? ''}:${match.scoreAway ?? ''}`;
+            resultBody.append(teamNames, score);
+            card.appendChild(resultBody);
+            return card;
+        }
+
         function createClubMatchesGrid(upcoming, recent, titlePrefix) {
             if (upcoming.length === 0 && recent.length === 0) return null;
             const grid = document.createElement('div');
@@ -5277,12 +5424,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     upList.replaceChildren();
                     const visibleMatches = expanded ? upcoming : upcoming.slice(0, 5);
                     visibleMatches.forEach(m => {
-                        const matchCard = document.createElement('div');
-                        matchCard.className = 'club-upcoming-match';
-                        matchCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;";
-                        matchCard.innerHTML = `<div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr || 'Termin offen'}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div>`;
-                        matchCard.appendChild(createGameActionsElement(m));
-                        upList.appendChild(matchCard);
+                        upList.appendChild(createClubMatchCard(m, 'upcoming'));
                     });
                 };
                 renderUpcoming(false);
@@ -5311,12 +5453,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const recList = document.createElement('div');
             recList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
             if (recent.length === 0) recList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine Ergebnisse gefunden.</div>`;
-            else recent.forEach(m => {
-                let resColor = "#94a3b8", isH = isClubMatch(club.name, m.home);
-                let oS = isH ? m.scoreHome : m.scoreAway, opS = isH ? m.scoreAway : m.scoreHome;
-                if (oS > opS) resColor = "#4ade80"; else if (oS < opS) resColor = "#f87171";
-                recList.innerHTML += `<div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px; border-left: 3px solid ${resColor};"><div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center;"><div style="color: #f8fafc; font-size: 0.95em; flex: 1;"><div style="${isClubMatch(club.name, m.home) ? 'font-weight:bold;' : ''}">${m.home}</div><div style="${isClubMatch(club.name, m.away) ? 'font-weight:bold;' : ''}">${m.away}</div></div><div style="font-weight: bold; font-size: 1.1em; color: #f8fafc; background: rgba(255,255,255,0.05); padding: 5px 8px; border-radius: 4px;">${m.scoreHome}:${m.scoreAway}</div></div></div>`;
-            });
+            else recent.forEach(m => recList.appendChild(createClubMatchCard(m, 'recent')));
             recCard.appendChild(recList);
             grid.appendChild(upCard); grid.appendChild(recCard);
             return grid;
@@ -5346,10 +5483,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const ligapokalGrid = createClubMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
         if (ligapokalGrid) currentSeasonContent.appendChild(ligapokalGrid);
 
+        let playerSection = null;
         if (clubPlayers.length > 0) {
-            const playerSection = document.createElement('div');
+            playerSection = document.createElement('div');
             playerSection.style.marginTop = "30px";
-            playerSection.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;">Mannschaft (${clubPlayers.length})</h3>`;
+            playerSection.className = 'club-ranking-season';
+            playerSection.appendChild(createClubRankingSeasonNotice(dataStatus.domains && dataStatus.domains.rankings));
+            const playerHeading = document.createElement('h3');
+            playerHeading.style.cssText = 'color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;';
+            playerHeading.textContent = `Mannschaft (${clubPlayers.length})`;
+            playerSection.appendChild(playerHeading);
             const pGrid = document.createElement('div');
             pGrid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;";
             clubPlayers.forEach(p => {
@@ -5361,7 +5504,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 pGrid.appendChild(pCard);
             });
             playerSection.appendChild(pGrid);
-            currentSeasonContent.appendChild(playerSection);
         }
 
         container.appendChild(createDisclosureSection(
@@ -5370,6 +5512,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSeasonContent,
             true,
         ));
+        if (playerSection) container.appendChild(playerSection);
 
         // --- 3. ARCHIVE ---
         const allArchiveItems = [];
@@ -5393,29 +5536,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isMatches) {
                     const myMatches = table.rows.slice(1).filter(row => row.some(cell => isClubMatch(club.name, cell)));
                     myMatches.forEach(row => {
-                        let dateStr = row[0] || '', home = row[1] || '', away = row[2] || '', res = row[3] || '';
-                        
-                        // Handle shifted format (observed in some cup archive tables)
-                        // Standard: [0]Date, [1]Home, [2]Away, [3]Score
-                        // Shifted: [0]Info, [1]Date, [2]HomeId, [3]Away+Score
-                        if (home && /^\d{2}\.\d{2}\.\d{4}/.test(home)) {
-                            dateStr = home;
-                            const combined = (row[3] || "");
-                            if (combined.includes(':')) {
-                                const parts = combined.split(':');
-                                home = parts[0].trim();
-                                let possibleScore = combined.substring(combined.indexOf(':') + 1).trim();
-                                // Only accept as score if it looks like one (e.g. 11:5)
-                                if (/^\d+\s*[:]\s*\d+$/.test(possibleScore)) {
-                                    res = possibleScore;
-                                } else {
-                                    res = "";
-                                }
-                                away = ""; 
-                            } else {
-                                home = combined; away = ""; res = "";
-                            }
-                        }
+                        const parsedRow = parseArchiveMatchRow(table.rows[0], row);
+                        const { dateStr, home, away, result: res } = parsedRow;
 
                         const m = {
                             season: table.season,
@@ -5567,7 +5689,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sTitle = isCupSection ? (seasonTitle.startsWith('Ligapokal') ? seasonTitle : 'Ligapokal ' + seasonTitle) : seasonTitle;
                 
                 let block = `<div style="margin-bottom: 35px;">`;
-                block += `<div style="font-size: 1.1em; font-weight: bold; color: #f8fafc; margin-bottom: 15px;">${sTitle}</div>`;
+                block += `<div style="font-size: 1.1em; font-weight: bold; color: #f8fafc; margin-bottom: 15px;">${escapeHtmlText(sTitle)}</div>`;
                 
                 const leagues = seasonGroups[season];
                 // Sort rounds logically using roundWeight
@@ -5577,7 +5699,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const g = leagues[leagueName];
                     block += `<div style="margin-bottom: 20px; padding-left: 10px; border-left: 2px solid #334155;">`;
                     const displayLeague = (isCupSection && leagueName.toLowerCase().includes('ligapokal')) ? leagueName : leagueName;
-                    block += `<div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px; font-size: 0.9em;">${displayLeague}</div>`;
+                    block += `<div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px; font-size: 0.9em;">${escapeHtmlText(displayLeague)}</div>`;
                     
                     let i = 0;
                     while (i < g.length) {
@@ -5589,14 +5711,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 return head.includes('pl') || head.includes('tab') || head.includes('mans') || head.includes('pos');
                             });
                             block += `<div class="history-table-wrapper">`;
-                            block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>`;
+                            block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${escapeHtmlText(h)}</th>`).join('')}</tr></thead><tbody>`;
                             item.rows.slice(1).forEach(row => {
                                 const isMyRow = row.some(cell => isClubMatch(club.name, cell));
                                 block += `<tr style="${isMyRow ? 'background: rgba(59, 130, 246, 0.2);' : ''}">`;
                                 row.forEach(cell => {
                                     const isMyCell = isClubMatch(club.name, cell);
                                     const cellStyle = isMyCell ? 'font-weight:bold; color:#60a5fa;' : '';
-                                    block += `<td style="${cellStyle}">${cell}</td>`;
+                                    block += `<td style="${cellStyle}">${escapeHtmlText(cell)}</td>`;
                                 });
                                 block += `</tr>`;
                             });
@@ -5617,7 +5739,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     const displayState = archiveMatchDisplayState(m, isCupSection);
                                     const res = createArchiveMatchResult(m, isCupSection).outerHTML;
                                     const rowState = displayState.incomplete ? ' class="history-row--incomplete" aria-label="Daten unvollständig"' : '';
-                                    block += `<tr${rowState}><td>${m.dateStr || '–'}</td><td style="${hStyle}">${m.home || '–'}</td><td style="${aStyle}">${m.away || '–'}</td><td style="font-weight:bold;">${res}</td></tr>`;
+                                    block += `<tr${rowState}><td>${escapeHtmlText(m.dateStr || '–')}</td><td style="${hStyle}">${escapeHtmlText(m.home || '–')}</td><td style="${aStyle}">${escapeHtmlText(m.away || '–')}</td><td style="font-weight:bold;">${res}</td></tr>`;
                                 });
                                 block += `</tbody></table></div>`;
                             }

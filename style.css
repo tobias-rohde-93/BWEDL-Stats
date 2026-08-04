@@ -1112,6 +1112,24 @@ a.club-contact-field__value {
     text-align: center;
 }
 
+.club-ranking-season {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.35);
+}
+
+.club-ranking-season-notice {
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    border-left: 3px solid #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    color: #fbbf24;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 .history-row--incomplete {
     background: rgba(245, 158, 11, 0.08);
 }

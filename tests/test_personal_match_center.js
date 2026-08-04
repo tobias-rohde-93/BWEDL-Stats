@@ -346,7 +346,8 @@ assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(upcomingLeagueMatches/
 assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(upcomingLigapokalMatches/);
 assert.doesNotMatch(source, /mySchedule\.filter\(g => g\.isPending/);
 assert.match(source, /createGameActionsElement\(game\)/);
-assert.match(source, /createGameActionsElement\(m\)/);
+assert.match(source, /createClubMatchCard\(m, 'upcoming'\)/);
+assert.match(source, /createGameActionsElement\(match\)/);
 assert.match(source, /readMatchPreviewGame\(\)/);
 assert.doesNotMatch(source, /nextCard\.onclick\s*=/);
 

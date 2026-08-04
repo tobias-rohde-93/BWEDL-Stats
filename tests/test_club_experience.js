@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'bundle_v31.js'), 'utf8');
 const styles = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
@@ -96,7 +97,7 @@ function createDocument() {
         get textContent() {
             return this._textContent + this.children.map((child) => child.textContent).join('');
         }
-        set innerHTML(value) { this._innerHTML = String(value); }
+        set innerHTML(value) { this._innerHTML = String(value); this.usedInnerHTML = true; }
         get innerHTML() { return this._innerHTML || ''; }
         appendChild(child) { this.children.push(child); child.parentElement = this; return child; }
         append(...children) { children.forEach((child) => this.appendChild(child)); }
@@ -139,6 +140,79 @@ const clubData = { clubs };
 const navigationCalls = [];
 const navigateTo = (type, id) => navigationCalls.push([type, id]);
 
+const archiveContext = { window: {} };
+vm.createContext(archiveContext);
+vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'archive_tables.js'), 'utf8'), archiveContext);
+const currentCupTables = archiveContext.window.ARCHIVE_TABLES.filter((table) => (
+    table.season === '2025/2026' && String(table.league).toLowerCase().includes('ligapokal')
+));
+const currentCupRows = currentCupTables.flatMap((table) => table.rows.slice(1).map((row) => ({
+    headers: table.rows[0],
+    row,
+})));
+assert.equal(currentCupRows.length, 80, 'current archive fixture contains the audited cup rows');
+const parseArchiveMatchRow = compileFunction('parseArchiveMatchRow');
+currentCupRows.forEach(({ headers, row }) => {
+    const parsed = parseArchiveMatchRow(headers, row);
+    assert.deepEqual(
+        [parsed.dateStr, parsed.home, parsed.away, parsed.result],
+        [row[1], row[3], row[4], row[5]],
+    );
+});
+
+const statusContext = { window: {} };
+vm.createContext(statusContext);
+vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'data_status.js'), 'utf8'), statusContext);
+const rankingStatus = statusContext.window.DATA_STATUS.domains.rankings;
+const clubRankingSeasonLabel = compileFunction('clubRankingSeasonLabel');
+assert.equal(
+    clubRankingSeasonLabel(rankingStatus),
+    'Rangliste 2025/26 (letzte vollständige Saison)',
+);
+const createClubRankingSeasonNotice = compileFunction('createClubRankingSeasonNotice', {
+    document,
+    clubRankingSeasonLabel,
+});
+const rankingNotice = createClubRankingSeasonNotice(rankingStatus);
+assert.equal(rankingNotice.getAttribute('role'), 'note');
+assert.equal(rankingNotice.textContent, 'Rangliste 2025/26 (letzte vollständige Saison)');
+
+const canonicalClubId = compileFunction('canonicalClubId');
+const normalizeClubIdList = compileFunction('normalizeClubIdList', { canonicalClubId });
+assert.deepEqual(
+    normalizeClubIdList([null, false, '', 1.2, -1, 99, '01', '2', 2, 0, 0], 3, 5),
+    [2, 0],
+);
+const normalizeFavorites = compileFunction('normalizeFavorites', { canonicalClubId });
+const normalizedFavorites = normalizeFavorites([
+    { type: 'league', id: 'A-Klasse', name: 'A-Klasse' },
+    { type: 'club', id: null, name: 'bad null' },
+    { type: 'club', id: '2', name: 'Club 2' },
+    { type: 'club', id: 2, name: 'duplicate' },
+    { type: 'club', id: 5, name: 'out of range' },
+], 3);
+assert.deepEqual(normalizedFavorites.map(({ type, id }) => [type, id]), [
+    ['league', 'A-Klasse'],
+    ['club', 2],
+]);
+const readLocalArray = compileFunction('readLocalArray');
+assert.deepEqual(readLocalArray({ getItem() { throw new Error('SecurityError'); } }, 'key'), []);
+assert.deepEqual(readLocalArray({ getItem() { return '{bad'; } }, 'key'), []);
+const persistLocalValue = compileFunction('persistLocalValue');
+assert.equal(persistLocalValue({ setItem() { throw new Error('QuotaExceededError'); } }, 'key', []), false);
+let sidebarRenders = 0;
+const rememberRecentClub = compileFunction('rememberRecentClub', {
+    canonicalClubId,
+    clubData,
+    recentClubIds: [],
+    persistLocalValue,
+    localStorage: { setItem() { throw new Error('QuotaExceededError'); } },
+    RECENT_CLUBS_STORAGE_KEY: 'bwedl_recent_clubs',
+    renderClubSidebarShortcuts: () => { sidebarRenders += 1; },
+});
+assert.doesNotThrow(() => rememberRecentClub('1'));
+assert.equal(sidebarRenders, 1, 'storage failure does not abort navigation-side rendering');
+
 const normalizeClubSearchText = compileFunction('normalizeClubSearchText');
 const filterClubEntries = compileFunction('filterClubEntries', { normalizeClubSearchText });
 assert.deepEqual(filterClubEntries(clubs, 'pforzheim'), [clubs[0]]);
@@ -168,7 +242,17 @@ search.value = 'nord';
 search.dispatch('input');
 grid.children[0].dispatch('keydown', { key: 'Enter' });
 assert.deepEqual(navigationCalls.pop(), ['club', 0]);
-assert.equal(grid.children[0].textContent.includes('<img src=x'), false, 'filtered club data is text, not parsed markup');
+search.value = 'onerror';
+search.dispatch('input');
+assert.equal(grid.children.length, 1, 'malicious club fixture is selected explicitly');
+const maliciousClubCard = grid.children[0];
+assert.match(maliciousClubCard.textContent, /<img src=x onerror=alert\(1\)>/);
+assert.equal(descendants(maliciousClubCard).some((element) => element.usedInnerHTML), false);
+assert.equal(descendants(maliciousClubCard).some((element) => element.tagName === 'IMG'), false);
+const originalSearch = search;
+renderClubList();
+assert.notEqual(document.getElementById('club-search'), originalSearch, 'rerender replaces the complete overview');
+assert.equal(contentArea.children.length, 1, 'rerender leaves a single overview root');
 
 const appendClubSidebarLink = compileFunction('appendClubSidebarLink', { document });
 const clubSidebarContainer = document.createElement('div');
@@ -201,6 +285,7 @@ assert.equal(sidebarDisclosure.getAttribute('aria-expanded'), 'true');
 assert.equal(sidebarDisclosureContent.hidden, false);
 
 const createDisclosureSection = compileFunction('createDisclosureSection', { document, createDisclosureButton });
+const disclosureIds = [];
 for (const [id, expanded] of [
     ['current-season-summary', true],
     ['club-league-history', false],
@@ -209,6 +294,7 @@ for (const [id, expanded] of [
     const body = document.createElement('div');
     const section = createDisclosureSection('Bereich', id, body, expanded);
     const trigger = descendants(section).find((element) => element.tagName === 'BUTTON');
+    disclosureIds.push(trigger.getAttribute('aria-controls'));
     assert.equal(trigger.getAttribute('aria-controls'), id);
     assert.equal(trigger.getAttribute('aria-expanded'), String(expanded));
     assert.equal(body.hidden, !expanded);
@@ -216,6 +302,7 @@ for (const [id, expanded] of [
     assert.equal(body.hidden, expanded);
     assert.equal(trigger.getAttribute('aria-expanded'), String(!expanded));
 }
+assert.equal(new Set(disclosureIds).size, disclosureIds.length, 'disclosure controls remain unique');
 
 const createGameActionsElement = compileFunction('createGameActionsElement', {
     document,
@@ -227,10 +314,29 @@ const createGameActionsElement = compileFunction('createGameActionsElement', {
         activate() {},
     }],
 });
+const createClubMatchCard = compileFunction('createClubMatchCard', {
+    document,
+    isClubMatch: (clubName, team) => team === clubName,
+    club: clubs[0],
+    createGameActionsElement,
+});
+const maliciousGame = {
+    dateStr: '<img src=x onerror=alert(1)>',
+    leagueName: '<svg onload=alert(1)>',
+    home: '<script>alert(1)</script>',
+    away: 'DC Nord',
+};
+const safeMatchCard = createClubMatchCard(maliciousGame, 'upcoming');
+assert.equal(descendants(safeMatchCard).some((element) => element.usedInnerHTML), false);
+assert.equal(descendants(safeMatchCard).some((element) => ['IMG', 'SVG', 'SCRIPT'].includes(element.tagName)), false);
+assert.match(safeMatchCard.textContent, /<script>alert\(1\)<\/script>/);
+assert.equal(descendants(safeMatchCard).filter((element) => element.classList.contains('game-actions')).length, 1);
+
 const createClubMatchesGrid = compileFunction('createClubMatchesGrid', {
     document,
     isClubMatch: (clubName, team) => team === clubName,
     club: clubs[0],
+    createClubMatchCard,
     createGameActionsElement,
 });
 const rawSchedule = [
@@ -256,8 +362,17 @@ expansion.dispatch('click');
 assert.equal(upcomingList.children.length, 7, 'expansion restores every real game');
 assert.equal(expansion.getAttribute('aria-expanded'), 'true');
 assert.equal(expansion.textContent, 'Weniger anzeigen');
+const cupMatchesGrid = createClubMatchesGrid(upcoming, [], '🏆 Ligapokal - ');
+const cupUpcomingList = descendants(cupMatchesGrid).find((element) => element.classList.contains('club-upcoming-list'));
+assert.notEqual(cupUpcomingList.id, upcomingList.id, 'league and cup match controls use unique IDs');
 
 const archiveMatchDisplayState = compileFunction('archiveMatchDisplayState');
+const falseIncompleteRows = currentCupRows.filter(({ headers, row }) => {
+    const parsed = parseArchiveMatchRow(headers, row);
+    const [scoreHome, scoreAway] = parsed.result.split(':').map((value) => value.trim());
+    return archiveMatchDisplayState({ ...parsed, scoreHome, scoreAway }, true).incomplete;
+});
+assert.equal(falseIncompleteRows.length, 0, 'all 80 complete current cup rows stay complete');
 assert.deepEqual(
     archiveMatchDisplayState({ home: 'DC Nord', away: '', scoreHome: '', scoreAway: '' }, true),
     { incomplete: true, label: 'Daten unvollständig' },
@@ -278,6 +393,11 @@ assert.equal(incompleteResult.tagName, 'SPAN');
 assert.equal(incompleteResult.textContent, 'Daten unvollständig');
 assert.equal(incompleteResult.getAttribute('role'), 'status');
 assert.equal(incompleteResult.classList.contains('incomplete-data'), true);
+const escapeHtmlText = compileFunction('escapeHtmlText');
+assert.equal(
+    escapeHtmlText('<img src=x onerror="alert(1)">&'),
+    '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;&amp;',
+);
 
 const clubSidebarBlock = source.slice(source.indexOf('// 3. Clubs'), source.indexOf('// 4. Comparison'));
 assert.match(clubSidebarBlock, /createDisclosureButton/);
@@ -290,5 +410,8 @@ assert.match(styles, /\.club-sidebar-disclosure\s*\{[^}]*border:\s*0;/s);
 assert.match(styles, /\.club-upcoming-toggle/);
 assert.match(styles, /\.club-contact-grid/);
 assert.match(styles, /\.archive-freilos/);
+assert.match(styles, /\.club-ranking-season-notice/);
+assert.doesNotMatch(extractFunction('renderClub'), /currentSeasonContent\.appendChild\(playerSection\)/);
+assert.match(extractFunction('renderClub'), /container\.appendChild\(playerSection\)/);
 
 console.log('club experience production DOM contracts passed');
