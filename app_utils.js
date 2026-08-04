@@ -219,6 +219,52 @@
         return null;
     }
 
+    function rankingNumber(value, fallback) {
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : fallback;
+    }
+
+    function filterAndSortRanking(players, options) {
+        if (!Array.isArray(players)) return [];
+        const settings = options && typeof options === 'object' ? options : {};
+        const query = String(settings.query || '').trim().toLocaleLowerCase('de-DE');
+        const minGames = Math.max(0, rankingNumber(settings.minGames, 0));
+        const sort = ['points', 'average', 'games'].includes(settings.sort)
+            ? settings.sort
+            : 'official';
+        const metric = {
+            points: 'totalPoints',
+            average: 'average',
+            games: 'games',
+        }[sort];
+
+        return players
+            .map((player, index) => ({ player, index }))
+            .filter(({ player }) => {
+                if (!player || typeof player !== 'object') return false;
+                if (rankingNumber(player.games, 0) < minGames) return false;
+                if (!query) return true;
+                return [player.name, player.company, player.team]
+                    .some((value) => String(value || '').toLocaleLowerCase('de-DE').includes(query));
+            })
+            .sort((left, right) => {
+                if (metric) {
+                    const difference = rankingNumber(right.player[metric], 0) -
+                        rankingNumber(left.player[metric], 0);
+                    if (difference) return difference;
+                }
+                const officialDifference = rankingNumber(
+                    left.player.officialSortRank,
+                    rankingNumber(left.player.officialRank, Infinity),
+                ) - rankingNumber(
+                    right.player.officialSortRank,
+                    rankingNumber(right.player.officialRank, Infinity),
+                );
+                return officialDifference || left.index - right.index;
+            })
+            .map(({ player }) => player);
+    }
+
     function escapeIcsText(value) {
         return String(value == null ? '' : value)
             .replace(/\\/g, '\\\\')
@@ -443,6 +489,7 @@
         isByeOpponent,
         selectUpcomingGames,
         buildSeasonNotice,
+        filterAndSortRanking,
         buildIcsContent,
         parseAppHash,
         diffVisitSnapshots,

@@ -5023,7 +5023,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return sum + (avg * dCount);
     }
 
-    function renderRanking(rankName) {
+    function renderRankingLegacy(rankName) {
         topBarTitle.textContent = rankName;
         contentArea.innerHTML = '';
 
@@ -5141,6 +5141,242 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+
+    function renderRanking(rankName) {
+        topBarTitle.textContent = rankName;
+        contentArea.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.style.padding = '20px';
+        container.className = 'fade-in';
+        const rankingSeasonNotice = createSeasonNotice('ranking');
+        const players = rankingData && Array.isArray(rankingData.players)
+            ? rankingData.players.filter((player) => player.league === rankName)
+            : [];
+
+        if (players.length === 0) {
+            if (rankingData && rankingData.rankings && rankingData.rankings[rankName]) {
+                const fallback = document.createElement('div');
+                fallback.innerHTML = rankingData.rankings[rankName];
+                cleanTable(fallback);
+                container.appendChild(fallback);
+            } else {
+                const empty = document.createElement('div');
+                empty.style.color = '#94a3b8';
+                empty.textContent = 'Keine Daten verfügbar.';
+                container.appendChild(empty);
+            }
+            if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
+            contentArea.appendChild(container);
+            return;
+        }
+
+        const viewModels = players.map((player, sourceIndex) => {
+            const stats = calculatePlayerStats(player);
+            const officialRank = String(player.rank == null ? '' : player.rank).trim();
+            const rankPrefix = officialRank.match(/^\d+/);
+            return {
+                ...player,
+                officialRank,
+                officialSortRank: rankPrefix ? Number(rankPrefix[0]) : sourceIndex + 1,
+                totalPoints: calculateTotalPoints(player),
+                average: stats.avg,
+                games: stats.count,
+            };
+        });
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'ranking-toolbar';
+        const createControl = (labelText, control) => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'ranking-toolbar__control';
+            const label = document.createElement('label');
+            label.setAttribute('for', control.id);
+            label.textContent = labelText;
+            wrapper.append(label, control);
+            return wrapper;
+        };
+
+        const search = document.createElement('input');
+        search.id = 'ranking-player-search';
+        search.type = 'search';
+        search.placeholder = 'Name oder Verein';
+        search.setAttribute('autocomplete', 'off');
+        toolbar.appendChild(createControl('Spieler suchen', search));
+
+        const sort = document.createElement('select');
+        sort.id = 'ranking-sort';
+        [
+            ['official', 'Offizielle Reihenfolge'],
+            ['points', 'Analyseansicht: Punkte'],
+            ['average', 'Analyseansicht: Durchschnitt'],
+            ['games', 'Analyseansicht: Spiele'],
+        ].forEach(([value, label]) => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = label;
+            sort.appendChild(option);
+        });
+        sort.value = 'official';
+        toolbar.appendChild(createControl('Sortierung', sort));
+
+        const minGames = document.createElement('input');
+        minGames.id = 'ranking-min-games';
+        minGames.type = 'number';
+        minGames.min = '0';
+        minGames.step = '1';
+        minGames.value = '0';
+        toolbar.appendChild(createControl('Mindestens Spiele', minGames));
+
+        const actions = document.createElement('div');
+        actions.className = 'ranking-toolbar__actions';
+        const reset = document.createElement('button');
+        reset.type = 'button';
+        reset.className = 'ranking-toolbar__button';
+        reset.textContent = 'Zurücksetzen';
+        actions.appendChild(reset);
+
+        let myPosition = null;
+        if (myPlayerName) {
+            myPosition = document.createElement('button');
+            myPosition.id = 'ranking-my-position';
+            myPosition.type = 'button';
+            myPosition.className = 'ranking-toolbar__button ranking-toolbar__button--primary';
+            myPosition.textContent = 'Meine Position';
+            actions.appendChild(myPosition);
+        }
+        toolbar.appendChild(actions);
+
+        const analysisLabel = document.createElement('p');
+        analysisLabel.className = 'ranking-analysis-label';
+        analysisLabel.textContent = 'Analyseansicht – die angezeigten Rangwerte bleiben offiziell.';
+        analysisLabel.hidden = true;
+
+        const status = document.createElement('p');
+        status.id = 'ranking-tools-status';
+        status.className = 'ranking-tools-status';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+
+        const tableCard = document.createElement('div');
+        tableCard.className = 'ranking-table-card';
+        const tableScroller = document.createElement('div');
+        tableScroller.className = 'ranking-table-scroll';
+        const table = document.createElement('table');
+        table.className = 'ranking-table';
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        ['#', 'Name', 'Verein', 'Spiele', 'Ø', 'Punkte'].forEach((label) => {
+            const header = document.createElement('th');
+            header.setAttribute('scope', 'col');
+            header.textContent = label;
+            headerRow.appendChild(header);
+        });
+        thead.appendChild(headerRow);
+        const tbody = document.createElement('tbody');
+        table.append(thead, tbody);
+        tableScroller.appendChild(table);
+        tableCard.appendChild(tableScroller);
+
+        const createRow = (player) => {
+            const row = document.createElement('tr');
+            row.dataset.playerName = String(player.name || '');
+            row.setAttribute('tabindex', '-1');
+            if (player.name === myPlayerName) row.classList.add('my-player-row');
+
+            const rankCell = document.createElement('td');
+            const officialRank = String(player.officialRank || '').trim();
+            rankCell.textContent = officialRank || '–';
+            rankCell.className = 'ranking-table__rank';
+            const nameCell = document.createElement('td');
+            nameCell.textContent = String(player.name || '');
+            if (player.team) {
+                const team = document.createElement('span');
+                team.className = 'ranking-table__team';
+                team.textContent = String(player.team);
+                nameCell.appendChild(team);
+            }
+
+            let clubIndex = -1;
+            let clubName = player.company;
+            if (clubData && Array.isArray(clubData.clubs)) {
+                clubIndex = clubData.clubs.findIndex((club) => club.number === player.v_nr);
+                if (!clubName && clubIndex !== -1) clubName = clubData.clubs[clubIndex].name;
+            }
+            const clubCell = document.createElement('td');
+            if (clubIndex !== -1) {
+                const clubLink = document.createElement('button');
+                clubLink.type = 'button';
+                clubLink.className = 'ranking-table__club-link';
+                clubLink.textContent = String(clubName || 'Unbekannt');
+                clubLink.addEventListener('click', () => navigateTo('club', clubIndex));
+                clubCell.appendChild(clubLink);
+            } else {
+                clubCell.textContent = String(clubName || 'Unbekannt');
+            }
+
+            const gamesCell = document.createElement('td');
+            gamesCell.textContent = String(player.games);
+            const averageCell = document.createElement('td');
+            averageCell.textContent = Number(player.average).toFixed(2);
+            const pointsCell = document.createElement('td');
+            pointsCell.textContent = String(Number.parseFloat(Number(player.totalPoints).toFixed(2)));
+            row.append(rankCell, nameCell, clubCell, gamesCell, averageCell, pointsCell);
+            return row;
+        };
+
+        const renderRows = () => {
+            const visible = window.BwedlAppUtils.filterAndSortRanking(viewModels, {
+                query: search.value,
+                sort: sort.value,
+                minGames: minGames.value,
+            });
+            tbody.replaceChildren(...visible.map(createRow));
+            analysisLabel.hidden = sort.value === 'official';
+            status.textContent = `${visible.length} von ${viewModels.length} Spielern angezeigt.`;
+        };
+
+        search.addEventListener('input', renderRows);
+        sort.addEventListener('change', renderRows);
+        minGames.addEventListener('input', renderRows);
+        reset.addEventListener('click', () => {
+            search.value = '';
+            sort.value = 'official';
+            minGames.value = '0';
+            renderRows();
+            search.focus();
+        });
+        if (myPosition) {
+            myPosition.addEventListener('click', () => {
+                const playerExists = viewModels.some((player) => player.name === myPlayerName);
+                if (!playerExists) {
+                    status.textContent = 'Dein gespeicherter Spieler ist nicht in dieser Rangliste enthalten.';
+                    return;
+                }
+                search.value = '';
+                minGames.value = '0';
+                renderRows();
+                const row = Array.from(tbody.children).find((candidate) => (
+                    candidate.dataset.playerName === myPlayerName
+                ));
+                if (!row) return;
+                const reducedMotion = Boolean(window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+                row.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+                row.focus();
+                status.textContent = `Position von ${myPlayerName} hervorgehoben.`;
+            });
+        }
+
+        const calculationNote = document.createElement('p');
+        calculationNote.className = 'ranking-calculation-note';
+        calculationNote.textContent = "* 'D' wertet als Durchschnitt der gespielten Spiele (Spielfrei-Ausgleich).";
+
+        if (rankingSeasonNotice) container.appendChild(rankingSeasonNotice);
+        container.append(toolbar, analysisLabel, status, tableCard, calculationNote);
+        renderRows();
+        contentArea.appendChild(container);
+    }
 
     function renderSparkline(rounds) {
         if (!rounds) return "";
