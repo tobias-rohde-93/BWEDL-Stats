@@ -9,6 +9,8 @@ Die App ist in drei Hauptbereiche unterteilt:
 2.  **Ligen**: Alle Tabellen, Ergebnisse und Schedules der aktuellen Saison.
 3.  **Tools**: Nützliche Helfer wie der Match Scorer oder H2H-Vergleich.
 
+Ansichten für Ligen, Vereine, Ranglisten und Werkzeuge besitzen direkte Links. Ein geteilter oder kopierter Link öffnet daher wieder die betreffende Ansicht, sofern die dazugehörigen Daten verfügbar sind.
+
 ---
 
 ## 🧭 Navigation & Bereiche
@@ -18,12 +20,16 @@ Hier landest du beim Start.
 -   **Favoriten**: Markiere Spieler (⭐), um ihre Statistiken sofort zu sehen.
 -   **Suche**: Nutze die Suchleiste oben links, um schnell nach *Spielern* oder *Vereinen* zu suchen.
 -   **Status**: Oben links siehst du, wann die Daten zuletzt aktualisiert wurden.
+-   **Profil & Datenschutz**: Die gewählte Spieler- und Mannschaftszuordnung bleibt lokal in diesem Browser und ist kein serverseitiges Benutzerkonto.
+-   **Seit deinem letzten Besuch**: Nach einem erneuten Besuch kann eine Karte neue Daten und vergleichbare persönliche Änderungen zusammenfassen. Details bleiben in den jeweiligen Ansichten maßgeblich.
 
 ### 2. Ligen & Tabellen
 Wähle im Menü links eine Liga aus (z.B. "Bezirksoberliga").
 -   **Tabelle**: Die aktuelle Rangliste.
 -   **Ergebnisse**: Alle Spieltage und Match-Details (klicke auf ein Match für Details).
 -   **Einzelkritik**: Klicke auf einen Spieler in der Tabelle, um seine persönlichen Stats (Wins/Losses) zu sehen.
+-   **Saisonhinweise**: Ist eine neue Ranglistensaison noch unvollständig, benennt die App den weiterverwendeten geprüften Stand. Andere Datenbereiche können trotzdem aktueller sein.
+-   **Ranglistenanalyse**: Suche und Mindestspiele-Filter grenzen die Liste ein. Analyseansichten können nach Punkten, Durchschnitt oder Spielen sortieren, ändern aber nicht die angezeigten offiziellen Rangwerte.
 
 ### 3. Vereinsseiten
 Suche nach einem Verein oder klicke in einer Tabelle auf den Vereinsnamen.
@@ -31,12 +37,17 @@ Suche nach einem Verein oder klicke in einer Tabelle auf den Vereinsnamen.
 -   **Details**: Adresse, Kontaktinfos und Link zum Spielort (Google Maps).
 -   **Kader**: Liste aller Spieler mit aktueller Liga und Rang.
 -   **Archiv**: Historie des Vereins aus vergangenen Saisons.
+-   **Spielaktionen**: Wo Termin und Adresse vorhanden sind, kannst du einen Kalendereintrag laden, die Begegnung teilen beziehungsweise den Link kopieren und die Route in Google Maps öffnen.
 
 ### 4. Spieler-Profile
 Klicke auf einen Spielernamen (z.B. in der Tabelle oder Suche).
 -   **Formkurve**: Die letzten Spiele und Trend.
 -   **Saisonverlauf**: Detaillierte Liste aller gespielten Runden und Ergebnisse.
 -   **Head-to-Head**: Vergleiche diesen Spieler direkt mit einem anderen.
+
+### 5. Kompakte Navigation und Tastatur
+
+Die Seitenleiste verwendet aufklappbare Bereiche. **Vereine** bietet zuerst die Vereinsübersicht und Suche, danach kompakte Favoriten und zuletzt besuchte Vereine statt einer langen Gesamtliste. Mit `Tab` wechselst du zwischen den Bedienelementen; `Enter` oder die Leertaste aktiviert sie. `Esc` schließt Suchtreffer und auf kleinen Bildschirmen die Navigation.
 
 ---
 

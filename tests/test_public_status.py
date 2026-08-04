@@ -1,4 +1,5 @@
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -10,7 +11,7 @@ def test_status_script_loads_synchronously_before_application_bundle() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
 
     status_script = '<script src="data_status.js?v=1"></script>'
-    bundle_script = '<script src="bundle_v31.js?v=3.1"></script>'
+    bundle_script = '<script src="bundle_v31.js?v=3.4"></script>'
     assert status_script in html
     assert html.index(status_script) < html.index(bundle_script)
     assert "async" not in status_script
@@ -42,9 +43,10 @@ def test_bundle_uses_safe_status_fallback_without_status_inner_html() -> None:
 def test_service_worker_treats_both_status_files_as_network_first_data() -> None:
     worker = (ROOT / "sw_v31.js").read_text(encoding="utf-8")
 
-    assert "bwedl-dashboard-v32" in worker
+    assert re.search(r"^const CACHE_NAME = 'bwedl-dashboard-v36';$", worker, re.MULTILINE)
+    assert "bwedl-dashboard-v35" not in worker
     assert "'./data_status.json'" in worker
-    assert "'./data_status.js'" in worker
+    assert "'./data_status.js?v=1'" in worker
     assert "data_status.json" in worker[worker.index("const isDataFile") :]
     assert "data_status.js" in worker[worker.index("const isDataFile") :]
     network_first = worker.index("if (isDataFile)")

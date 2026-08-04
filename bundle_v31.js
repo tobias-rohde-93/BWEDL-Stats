@@ -92,6 +92,333 @@ function renderDataStatus() {
     });
 }
 
+function normalizeClubSearchText(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ß/g, 'ss')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
+
+function filterClubEntries(clubs, query) {
+    if (!Array.isArray(clubs)) return [];
+    const normalizedQuery = normalizeClubSearchText(query);
+    if (!normalizedQuery) return clubs;
+
+    return clubs.filter((club) => normalizeClubSearchText([
+        club && club.name,
+        club && club.venue,
+        club && club.street,
+        club && club.city,
+        club && club.address,
+    ].filter(Boolean).join(' ')).includes(normalizedQuery));
+}
+
+function escapeHtmlText(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(new RegExp(String.fromCharCode(34), 'g'), '&quot;')
+        .replace(new RegExp(String.fromCharCode(39), 'g'), '&#39;');
+}
+
+function clubRankingSeasonLabel(status) {
+    const season = status && typeof status.season === 'string' ? status.season.trim() : '';
+    if (status && status.state === 'retained' && season) {
+        return `Rangliste ${season} (letzte vollständige Saison)`;
+    }
+    return season && season !== 'current' ? `Rangliste ${season}` : 'Rangliste';
+}
+
+function createClubRankingSeasonNotice(status) {
+    const notice = document.createElement('p');
+    notice.className = 'club-ranking-season-notice';
+    notice.setAttribute('role', 'note');
+    notice.textContent = clubRankingSeasonLabel(status);
+    return notice;
+}
+
+function createClubRankingStatsRow(playerCount, activeLeagues, totalPoints) {
+    const statsRow = document.createElement('div');
+    statsRow.className = 'club-ranking-stats';
+    statsRow.style.cssText = 'display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;';
+    [
+        { value: playerCount, label: 'Spieler' },
+        { value: activeLeagues, label: 'Ligen' },
+        { value: totalPoints, label: 'Punkte (Ges.)', accent: true },
+    ].forEach(({ value, label, accent }) => {
+        const card = document.createElement('div');
+        card.style.cssText = 'background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;';
+        const metric = document.createElement('div');
+        metric.style.cssText = `font-weight: bold; color: ${accent ? '#4ade80' : '#f8fafc'}; font-size: 1.2em;`;
+        metric.textContent = String(value ?? 0);
+        const description = document.createElement('div');
+        description.style.cssText = 'font-size: 0.75em; color: #94a3b8;';
+        description.textContent = label;
+        card.append(metric, description);
+        statsRow.appendChild(card);
+    });
+    return statsRow;
+}
+
+function createClubRankingSection(status, statsRow, playerGrid, playerCount) {
+    const section = document.createElement('section');
+    section.className = 'club-ranking-season';
+    section.setAttribute('aria-labelledby', 'club-ranking-season-label');
+    const notice = createClubRankingSeasonNotice(status);
+    notice.id = 'club-ranking-season-label';
+    const heading = document.createElement('h3');
+    heading.style.cssText = 'color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;';
+    heading.textContent = `Mannschaft (${playerCount})`;
+    section.append(notice, statsRow, heading, playerGrid);
+    return section;
+}
+
+function parseInertHtmlDocument(html) {
+    return new DOMParser().parseFromString(String(html ?? ''), 'text/html');
+}
+
+function createSafeTableFromHtml(tableHtml) {
+    const table = document.createElement('table');
+    const tableHead = document.createElement('thead');
+    const tableBody = document.createElement('tbody');
+    const parsedDocument = parseInertHtmlDocument(tableHtml);
+    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
+        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
+            cell.tagName === 'TH' || cell.tagName === 'TD'
+        ));
+        if (sourceCells.length === 0) return;
+        const row = document.createElement('tr');
+        sourceCells.forEach((sourceCell) => {
+            const cell = document.createElement(sourceCell.tagName.toLowerCase());
+            cell.textContent = String(sourceCell.textContent ?? '');
+            row.appendChild(cell);
+        });
+        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
+        (isHeaderRow ? tableHead : tableBody).appendChild(row);
+    });
+    if (tableHead.children.length > 0) table.appendChild(tableHead);
+    if (tableBody.children.length > 0) table.appendChild(tableBody);
+    return table;
+}
+
+function findWithdrawnTeams(tableHtml) {
+    const withdrawnTeams = [];
+    const parsedDocument = parseInertHtmlDocument(tableHtml);
+    Array.from(parsedDocument.querySelectorAll('tr')).forEach((row) => {
+        if (!String(row.textContent || '').toLowerCase().includes('zurückgezogen')) return;
+        const cells = Array.from(row.querySelectorAll('td'));
+        if (cells.length < 2) return;
+        const teamName = String(cells[1].textContent || '').replace(/\u00a0/g, ' ').trim();
+        if (teamName) withdrawnTeams.push(teamName);
+    });
+    return withdrawnTeams;
+}
+
+function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesClub) {
+    const section = document.createElement('div');
+    section.className = 'club-current-table';
+    section.style.cssText = 'margin-bottom: 25px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; overflow: hidden;';
+    const heading = document.createElement('div');
+    heading.style.cssText = 'padding: 10px 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #334155; font-weight: bold; color: #f8fafc;';
+    heading.textContent = `Tabelle: ${String(leagueName ?? '')}`;
+    const tableContainer = document.createElement('div');
+    tableContainer.className = 'table-container table-scroll';
+    tableContainer.style.cssText = 'padding: 0; border: none;';
+    const table = document.createElement('table');
+    const tableHead = document.createElement('thead');
+    const tableBody = document.createElement('tbody');
+    const parsedDocument = parseInertHtmlDocument(tableHtml);
+    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
+        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
+            cell.tagName === 'TH' || cell.tagName === 'TD'
+        ));
+        if (sourceCells.length === 0) return;
+        const row = document.createElement('tr');
+        sourceCells.forEach((sourceCell) => {
+            const cell = document.createElement(sourceCell.tagName.toLowerCase());
+            cell.textContent = String(sourceCell.textContent ?? '');
+            row.appendChild(cell);
+        });
+        if (typeof matchesClub === 'function' && matchesClub(clubName, row.textContent)) {
+            row.style.background = 'rgba(59, 130, 246, 0.2)';
+            row.style.fontWeight = 'bold';
+            row.style.color = '#60a5fa';
+        }
+        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
+        (isHeaderRow ? tableHead : tableBody).appendChild(row);
+    });
+    if (tableHead.children.length > 0) table.appendChild(tableHead);
+    if (tableBody.children.length > 0) table.appendChild(tableBody);
+    tableContainer.appendChild(table);
+    section.append(heading, tableContainer);
+    return section;
+}
+
+function createPlayerFormElement(rounds) {
+    if (!rounds) return null;
+    const data = [];
+    for (let index = 1; index <= 18; index += 1) {
+        const value = parseInt(rounds[`R${index}`]);
+        if (!Number.isNaN(value)) data.push(value);
+    }
+    if (data.length < 2) return null;
+    const width = 60;
+    const height = 25;
+    const maximum = Math.max(...data);
+    const minimum = Math.min(...data);
+    const range = maximum - minimum || 1;
+    const points = data.map((value, index) => {
+        const x = (index / (data.length - 1)) * width;
+        const y = height - ((value - minimum) / range) * height;
+        return `${x},${y}`;
+    }).join(' ');
+    const form = document.createElement('div');
+    form.style.cssText = 'display: flex; flex-direction: column; align-items: center; margin: 0 15px;';
+    const label = document.createElement('div');
+    label.style.cssText = 'font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;';
+    label.textContent = 'Spielform';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', String(width));
+    svg.setAttribute('height', String(height));
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText = 'opacity: 0.8; overflow: visible;';
+    const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    polyline.setAttribute('points', points);
+    polyline.setAttribute('fill', 'none');
+    polyline.setAttribute('stroke', '#4ade80');
+    polyline.setAttribute('stroke-width', '2');
+    polyline.setAttribute('stroke-linecap', 'round');
+    polyline.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(polyline);
+    form.append(label, svg);
+    return form;
+}
+
+function createClubPlayerCard(player, tierColor) {
+    const card = document.createElement('div');
+    card.className = 'club-player-card';
+    card.style.cssText = 'background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; display: flex; justify-content: space-between; align-items: center;';
+    const identity = document.createElement('div');
+    identity.style.flex = '1';
+    const name = document.createElement('div');
+    name.style.cssText = 'font-weight: bold; color: #f8fafc;';
+    name.textContent = String(player && player.name || '');
+    const league = document.createElement('div');
+    const safeTierColor = /^#[0-9a-f]{6}$/i.test(String(tierColor || '')) ? tierColor : '#94a3b8';
+    league.style.cssText = `font-size: 0.8em; color: ${safeTierColor};`;
+    const leagueName = document.createElement('span');
+    leagueName.textContent = String(player && player.league || '');
+    const rank = document.createElement('span');
+    rank.style.cssText = 'color: #cbd5e1; margin-left: 5px; background: rgba(255,255,255,0.1); padding: 1px 4px; border-radius: 3px;';
+    rank.textContent = `Platz ${player && player.rank || '-'}`;
+    league.append(leagueName, rank);
+    identity.append(name, league);
+    const score = document.createElement('div');
+    score.style.cssText = 'text-align: right; margin-left: 10px;';
+    const points = document.createElement('div');
+    points.style.cssText = 'font-weight: bold; color: #4ade80; font-size: 1.1em;';
+    points.textContent = String(player && player.points != null ? player.points : 0);
+    const pointsLabel = document.createElement('div');
+    pointsLabel.style.cssText = 'font-size: 0.75em; color: #64748b;';
+    pointsLabel.textContent = 'Pkt';
+    score.append(points, pointsLabel);
+    card.appendChild(identity);
+    const form = createPlayerFormElement(player && player.rounds);
+    if (form) card.appendChild(form);
+    card.appendChild(score);
+    return card;
+}
+
+function canonicalClubId(value, clubCount) {
+    const candidate = typeof value === 'number'
+        ? value
+        : typeof value === 'string' && /^(0|[1-9]\d*)$/.test(value)
+            ? Number(value)
+            : NaN;
+    return Number.isSafeInteger(candidate) && candidate >= 0 && candidate < clubCount
+        ? candidate
+        : null;
+}
+
+function normalizeClubIdList(values, clubCount, limit = 5) {
+    if (!Array.isArray(values)) return [];
+    const normalized = [];
+    values.forEach((value) => {
+        const id = canonicalClubId(value, clubCount);
+        if (id !== null && !normalized.includes(id) && normalized.length < limit) normalized.push(id);
+    });
+    return normalized;
+}
+
+function normalizeFavorites(values, clubCount) {
+    if (!Array.isArray(values)) return [];
+    const seenClubIds = new Set();
+    return values.flatMap((favorite) => {
+        if (!favorite || typeof favorite !== 'object') return [];
+        if (favorite.type !== 'club') return [favorite];
+        const id = canonicalClubId(favorite.id, clubCount);
+        if (id === null || seenClubIds.has(id)) return [];
+        seenClubIds.add(id);
+        return [{ ...favorite, id }];
+    });
+}
+
+function readLocalArray(storage, key) {
+    try {
+        const value = JSON.parse(storage.getItem(key));
+        return Array.isArray(value) ? value : [];
+    } catch (_error) {
+        return [];
+    }
+}
+
+function persistLocalValue(storage, key, value) {
+    try {
+        storage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch (_error) {
+        return false;
+    }
+}
+
+function createSeasonNotice(context) {
+    const rankingStatus = dataStatus.domains && dataStatus.domains.rankings;
+    const noticeModel = typeof BwedlAppUtils !== 'undefined'
+        ? BwedlAppUtils.buildSeasonNotice(rankingStatus)
+        : null;
+    if (!noticeModel || noticeModel.state !== 'retained') return null;
+
+    const safeContext = typeof context === 'string'
+        ? context.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-|-$/g, '')
+        : 'ranking';
+    const notice = document.createElement('section');
+    const heading = document.createElement('h2');
+    const message = document.createElement('p');
+    const detail = document.createElement('p');
+    const headingId = `season-notice-${safeContext || 'ranking'}`;
+
+    notice.className = 'season-notice';
+    notice.dataset.seasonContext = safeContext || 'ranking';
+    notice.setAttribute('role', 'note');
+    notice.setAttribute('aria-labelledby', headingId);
+    heading.id = headingId;
+    heading.className = 'season-notice__title';
+    heading.textContent = noticeModel.title;
+    message.className = 'season-notice__message';
+    message.textContent = noticeModel.message;
+    detail.className = 'season-notice__detail';
+    detail.textContent = 'Andere aktuelle Daten wie Spielpläne und Ergebnisse können weiterhin aktuell sein.';
+
+    notice.appendChild(heading);
+    notice.appendChild(message);
+    notice.appendChild(detail);
+    return notice;
+}
+
 window.BWEDL_STATUS_FORMATTERS = {
     formatDomainStatus,
     formatGermanStatusTime,
@@ -100,6 +427,7 @@ window.BWEDL_STATUS_FORMATTERS = {
 document.addEventListener('DOMContentLoaded', renderDataStatus);
 
 document.addEventListener('DOMContentLoaded', () => {
+    const VISIT_SNAPSHOT_STORAGE_KEY = 'bwedl_visit_snapshot';
     const nav = document.getElementById('league-nav');
     const contentArea = document.getElementById('content-area');
     const topBarTitle = document.getElementById('current-league-title');
@@ -111,9 +439,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (searchInput) {
         searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeSearchResults(true);
+            }
+        });
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.classList.add('hidden');
+                closeSearchResults(false);
             }
         });
     }
@@ -125,17 +459,130 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.querySelector('.sidebar');
 
     // Favorites State (Hoisted to avoid TDZ)
-    let favorites = [];
-    try {
-        favorites = JSON.parse(localStorage.getItem('bwedl_favorites')) || [];
-        if (!Array.isArray(favorites)) favorites = [];
-    } catch (e) {
-        console.error("Failed to parse favorites", e);
+    let favorites = readLocalArray(localStorage, 'bwedl_favorites');
+
+    const RECENT_CLUBS_STORAGE_KEY = 'bwedl_recent_clubs';
+    let recentClubIds = readLocalArray(localStorage, RECENT_CLUBS_STORAGE_KEY);
+    let clubSidebarContainer = null;
+
+    function createDisclosureButton(label, contentId, content, expanded = false) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'disclosure-button';
+        button.setAttribute('aria-expanded', String(expanded));
+        button.setAttribute('aria-controls', contentId);
+        button.textContent = label;
+        content.id = contentId;
+        content.hidden = !expanded;
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!isExpanded));
+            content.hidden = isExpanded;
+        });
+        return button;
+    }
+
+    function closeSearchResults(restoreFocus = false, clearInput = restoreFocus) {
+        searchResults.classList.add('hidden');
+        searchInput.setAttribute('aria-expanded', 'false');
+        if (clearInput) searchInput.value = '';
+        if (restoreFocus) searchInput.focus();
+    }
+
+    function activateSearchResult(event) {
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeSearchResults(true);
+            return;
+        }
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.currentTarget.click();
+    }
+
+    function createProfileSuggestionItem(match, selectMatch, closeSuggestions) {
+        const item = document.createElement('li');
+        const button = document.createElement('button');
+        const name = document.createElement('span');
+        const context = document.createElement('span');
+        button.type = 'button';
+        button.className = 'profile-suggestion-button';
+        name.className = 'profile-suggestion-name';
+        name.textContent = match.label;
+        context.className = 'profile-suggestion-context';
+        context.textContent = match.context || 'Vereinslos';
+        button.appendChild(name);
+        button.appendChild(context);
+        button.addEventListener('click', () => selectMatch(match));
+        button.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            event.preventDefault();
+            closeSuggestions(true);
+        });
+        item.appendChild(button);
+        return item;
+    }
+
+    function closeProfileSuggestions(suggestionsBox, input, restoreFocus = false) {
+        suggestionsBox.style.display = 'none';
+        input.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) input.focus();
+    }
+
+    function selectProfileSuggestion(match, input, suggestionsBox, updateSelection) {
+        input.value = match.label;
+        closeProfileSuggestions(suggestionsBox, input, true);
+        updateSelection(match);
+    }
+
+    function configureAllTimeDetailButton(button, contentId, expanded, toggle) {
+        button.type = 'button';
+        button.className = 'alltime-detail-button';
+        button.setAttribute('aria-controls', contentId);
+        button.setAttribute('aria-expanded', String(expanded));
+        button.textContent = expanded ? 'Schließen' : 'Details';
+        button.addEventListener('click', toggle);
+    }
+
+    function rerenderAllTimeDetail(container, toggleId, render) {
+        render();
+        const matchingButtons = Array.from(container.querySelectorAll('.alltime-detail-button'))
+            .filter(button => button.id === toggleId && !button.hidden);
+        if (matchingButtons.length === 1) matchingButtons[0].focus();
     }
 
     // --- My Profile State ---
     let myPlayerName = localStorage.getItem('myPlayerName');
     let myTeamName = localStorage.getItem('myTeamName');
+
+    function createProfileOnboardingCard() {
+        const card = document.createElement('section');
+        const heading = document.createElement('h2');
+        const benefit = document.createElement('p');
+        const privacy = document.createElement('p');
+        const action = document.createElement('button');
+
+        card.className = 'profile-onboarding-card';
+        card.setAttribute('aria-labelledby', 'profile-onboarding-title');
+        heading.id = 'profile-onboarding-title';
+        heading.className = 'profile-onboarding-card__title';
+        heading.textContent = 'Deine persönliche Übersicht';
+        benefit.className = 'profile-onboarding-card__benefit';
+        benefit.textContent = 'Wähle deinen Spielernamen und sieh persönliche Saisonwerte, Form und nächste Spiele direkt auf dem Dashboard.';
+        privacy.className = 'profile-onboarding-card__privacy';
+        privacy.textContent = 'Deine Auswahl bleibt lokal in diesem Browser.';
+        action.type = 'button';
+        action.className = 'profile-onboarding-card__action';
+        action.textContent = 'Spielerprofil auswählen';
+        action.addEventListener('click', () => navigateTo('profile'));
+
+        card.appendChild(heading);
+        card.appendChild(benefit);
+        card.appendChild(privacy);
+        card.appendChild(action);
+        return card;
+    }
+
     const setMyPlayer = (name) => {
         if (name) {
             localStorage.setItem('myPlayerName', name);
@@ -150,6 +597,9 @@ document.addEventListener('DOMContentLoaded', () => {
             link.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
             link.style.color = myPlayerName ? "#f8fafc" : "#94a3b8";
         }
+        if (typeof refreshVisitSnapshotBaseline === 'function') {
+            refreshVisitSnapshotBaseline(false);
+        }
         const dashboardState = { type: 'dashboard', id: null };
         history.replaceState(dashboardState, "", "#dashboard");
         navigateTo('dashboard', null, false);
@@ -160,12 +610,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMobileNavigation() {
         if (sidebar) sidebar.classList.remove('open');
         if (mobileOverlay) mobileOverlay.classList.remove('active');
+        if (typeof menuToggle !== 'undefined' && menuToggle) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Navigation öffnen');
+        }
     }
 
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
             if (mobileOverlay) mobileOverlay.classList.toggle('active');
+            const isOpen = sidebar.classList.contains('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+                event.preventDefault();
+                closeMobileNavigation();
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Navigation öffnen');
+                menuToggle.focus();
+            }
         });
 
         if (mobileOverlay) {
@@ -207,6 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let historyStack = [];
     let isNavigatingBack = false;
     let currentState = null;
+    let visitChangesLifecycle = null;
 
     // Load Data
     if (typeof LEAGUE_DATA !== 'undefined') leagueData = LEAGUE_DATA;
@@ -217,6 +685,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof CLUB_DATA !== 'undefined') clubData = CLUB_DATA;
     else if (window.CLUB_DATA) clubData = window.CLUB_DATA;
+    const clubCount = Array.isArray(clubData.clubs) ? clubData.clubs.length : 0;
+    favorites = normalizeFavorites(favorites, clubCount);
+    recentClubIds = normalizeClubIdList(recentClubIds, clubCount, 5);
+    persistLocalValue(localStorage, 'bwedl_favorites', favorites);
+    persistLocalValue(localStorage, RECENT_CLUBS_STORAGE_KEY, recentClubIds);
 
     if (typeof ARCHIVE_DATA !== 'undefined') archiveData = ARCHIVE_DATA;
     else if (window.ARCHIVE_DATA) archiveData = window.ARCHIVE_DATA;
@@ -224,6 +697,369 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load Ligapokal Archive Data
     if (typeof LIGAPOKAL_ARCHIVE !== 'undefined') ligapokalArchive = LIGAPOKAL_ARCHIVE;
     else if (window.LIGAPOKAL_ARCHIVE) ligapokalArchive = window.LIGAPOKAL_ARCHIVE;
+
+    function routeExists(type, id) {
+        if (type === 'league') {
+            return Object.prototype.hasOwnProperty.call(leagueData.leagues || {}, id);
+        }
+        if (type === 'ranking') {
+            return Object.prototype.hasOwnProperty.call(rankingData.rankings || {}, id);
+        }
+        if (type === 'ligapokalArchive') {
+            return Object.prototype.hasOwnProperty.call(ligapokalArchive || {}, id);
+        }
+        if (type === 'club') {
+            const clubIndex = Number(id);
+            return /^(0|[1-9]\d*)$/.test(String(id)) &&
+                Number.isSafeInteger(clubIndex) &&
+                clubIndex >= 0 &&
+                clubIndex < (clubData.clubs || []).length;
+        }
+        return [
+            'dashboard',
+            'profile',
+            'clubList',
+            'comparison',
+            'alltime',
+            'tools',
+            'matchPreview',
+            'wiki'
+        ].includes(type) && id == null;
+    }
+
+    function routeHash(route) {
+        const type = route && route.type ? route.type : 'dashboard';
+        const id = route && route.id != null ? `/${encodeURIComponent(String(route.id))}` : '';
+        return `#${type}${id}`;
+    }
+
+    function routesMatch(left, right) {
+        if (!left || !right || left.type !== right.type) return false;
+        const leftId = left.id == null ? null : String(left.id);
+        const rightId = right.id == null ? null : String(right.id);
+        return leftId === rightId;
+    }
+
+    function initializeRouteFromLocation() {
+        const route = window.BwedlAppUtils.parseAppHash(window.location.hash, routeExists);
+        const canonicalHash = routeHash(route);
+        if (!routesMatch(history.state, route) || window.location.hash !== canonicalHash) {
+            history.replaceState(route, "", canonicalHash);
+        }
+        const shouldRender = !routesMatch(currentState, route);
+        currentState = route;
+        if (shouldRender) navigateTo(route.type, route.id, false);
+        return route;
+    }
+
+    function setAppStatus(message) {
+        const status = document.getElementById('app-status');
+        if (status) status.textContent = message;
+    }
+
+    async function shareCurrentView(summary, preferredRoute) {
+        const route = preferredRoute && routeExists(preferredRoute.type, preferredRoute.id)
+            ? preferredRoute
+            : currentState && routeExists(currentState.type, currentState.id)
+            ? currentState
+            : window.BwedlAppUtils.parseAppHash(window.location.hash, routeExists);
+        const url = new URL(window.location.href);
+        url.hash = routeHash(route);
+        const canonicalUrl = url.toString();
+        const text = typeof summary === 'string' && summary.trim()
+            ? summary.trim()
+            : 'BWEDL Stats';
+
+        if (typeof navigator.share === 'function') {
+            try {
+                await navigator.share({ title: document.title || 'BWEDL Stats', text, url: canonicalUrl });
+                setAppStatus('Ansicht wurde geteilt.');
+                return true;
+            } catch (error) {
+                if (error && error.name === 'AbortError') {
+                    setAppStatus('Teilen wurde abgebrochen.');
+                    return false;
+                }
+                // Continue with the clipboard fallback for genuine share failures.
+            }
+        }
+
+        try {
+            if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') {
+                throw new Error('Clipboard API unavailable');
+            }
+            await navigator.clipboard.writeText(canonicalUrl);
+            setAppStatus('Link wurde in die Zwischenablage kopiert.');
+            return true;
+        } catch (_error) {
+            setAppStatus('Link konnte nicht geteilt oder kopiert werden.');
+            return false;
+        }
+    }
+
+    const MATCH_PREVIEW_SESSION_KEY = 'bwedl_match_preview_game';
+
+    function rememberMatchPreviewGame(game) {
+        if (!game || typeof game !== 'object') return false;
+        try {
+            sessionStorage.setItem(MATCH_PREVIEW_SESSION_KEY, JSON.stringify(game));
+            return true;
+        } catch (_error) {
+            return false;
+        }
+    }
+
+    function readMatchPreviewGame() {
+        try {
+            const value = sessionStorage.getItem(MATCH_PREVIEW_SESSION_KEY);
+            sessionStorage.removeItem(MATCH_PREVIEW_SESSION_KEY);
+            if (!value) return null;
+            const game = JSON.parse(value);
+            return game && typeof game === 'object' ? game : null;
+        } catch (_error) {
+            return null;
+        }
+    }
+
+    function normalizeClubAlias(value) {
+        if (typeof value !== 'string') return '';
+        const tokens = value
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLocaleLowerCase('de-DE')
+            .replace(/ß/g, 'ss')
+            .replace(/[^a-z0-9]+/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .split(' ')
+            .filter(Boolean);
+        const legalSuffixIndex = /^\d+$/.test(tokens[tokens.length - 1] || '')
+            ? tokens.length - 3
+            : tokens.length - 2;
+        if (tokens[legalSuffixIndex] === 'e' && tokens[legalSuffixIndex + 1] === 'v') {
+            tokens.splice(legalSuffixIndex, 2);
+        }
+        return tokens.join(' ');
+    }
+
+    function clubNameAliases(club) {
+        if (!club || typeof club !== 'object') return [];
+        const knownAliases = {
+            'alla haeeeehr': ['Alla Häeeehr'],
+            'heavy weigths brotzingen': ['Heavy Weights Brötzingen'],
+            'dc lightning arrows': ['DC Ligthning Arrows'],
+            'dc mephistos': ["DC Mephisto's"],
+            'dc striker s': ['DC Strikers'],
+            'dc underground fool s': ['DC Underground Fools'],
+        };
+        const configured = Array.isArray(club.aliases)
+            ? club.aliases
+            : typeof club.aliases === 'string'
+                ? [club.aliases]
+                : [];
+        const canonical = normalizeClubAlias(club.name);
+        return [club.name, ...configured, ...(knownAliases[canonical] || [])]
+            .map(normalizeClubAlias)
+            .filter(Boolean);
+    }
+
+    function resolveHomeClub(game) {
+        const homeAlias = normalizeClubAlias(game && game.home);
+        if (!homeAlias || !clubData || !Array.isArray(clubData.clubs)) return null;
+        const matches = [];
+        clubData.clubs.forEach((club, index) => {
+            clubNameAliases(club).forEach((clubAlias) => {
+                const suffix = homeAlias.startsWith(`${clubAlias} `)
+                    ? homeAlias.slice(clubAlias.length + 1)
+                    : '';
+                if (homeAlias === clubAlias || /^\d+$/.test(suffix)) {
+                    matches.push({ club, index, matchLength: clubAlias.length });
+                }
+            });
+        });
+        if (matches.length === 0) return null;
+        const longest = Math.max(...matches.map((match) => match.matchLength));
+        const winners = matches.filter((match) => match.matchLength === longest);
+        const uniqueIndexes = [...new Set(winners.map((match) => match.index))];
+        return uniqueIndexes.length === 1 ? winners[0] : null;
+    }
+
+    function gameAddress(game) {
+        if (!game || typeof game !== 'object') return '';
+        const direct = [game.address, game.location]
+            .find((value) => typeof value === 'string' && value.trim());
+        if (direct) return direct.trim();
+
+        const resolved = resolveHomeClub(game);
+        const homeClub = resolved && resolved.club;
+        if (!homeClub) return '';
+        return [homeClub.venue, homeClub.street, homeClub.city]
+            .filter((value) => typeof value === 'string' && value.trim() && value !== '-')
+            .map((value) => value.trim())
+            .join(', ');
+    }
+
+    function gameCompetition(game) {
+        if (!game || typeof game !== 'object') return '';
+        return [game.competition, game.league, game.leagueKey, game.leagueName]
+            .find((value) => typeof value === 'string' && value.trim())?.trim() || '';
+    }
+
+    function calendarGame(game) {
+        if (!game || typeof game !== 'object') return game;
+        const location = gameAddress(game);
+        const competition = gameCompetition(game);
+        return {
+            ...game,
+            ...(competition ? { competition } : {}),
+            ...(location ? { location } : {}),
+        };
+    }
+
+    function buildMapsUrl(game) {
+        const address = gameAddress(game);
+        return address
+            ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+            : '';
+    }
+
+    function gameShareText(game) {
+        const matchup = [game && game.home, game && game.away]
+            .filter((value) => typeof value === 'string' && value.trim())
+            .join(' gegen ');
+        const date = game && typeof game.dateStr === 'string' && game.dateStr.trim()
+            ? game.dateStr.trim()
+            : 'Termin offen';
+        const competition = gameCompetition(game);
+        const location = gameAddress(game);
+        return [matchup || 'BWEDL-Spiel', date, competition, location].filter(Boolean).join(' · ');
+    }
+
+    function bestShareRoute(game) {
+        const resolved = resolveHomeClub(game);
+        return resolved ? { type: 'club', id: resolved.index } : null;
+    }
+
+    function calendarFilename(game) {
+        const name = [game && game.home, game && game.away]
+            .filter((value) => typeof value === 'string' && value.trim())
+            .join('-')
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '') || 'bwedl-spiel';
+        const date = game && typeof game.dateStr === 'string'
+            ? game.dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})/)
+            : null;
+        const dateSuffix = date
+            ? `-${date[3]}-${date[2].padStart(2, '0')}-${date[1].padStart(2, '0')}`
+            : '';
+        return `${name}${dateSuffix}.ics`;
+    }
+
+    function downloadGameCalendar(game) {
+        let objectUrl = '';
+        let link = null;
+        const cleanup = () => {
+            if (link && link.parentElement) link.parentElement.removeChild(link);
+            if (objectUrl) URL.revokeObjectURL(objectUrl);
+        };
+        try {
+            const content = window.BwedlAppUtils.buildIcsContent(calendarGame(game));
+            if (!content) throw new Error('calendar data unavailable');
+            const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+            objectUrl = URL.createObjectURL(blob);
+            link = document.createElement('a');
+            link.href = objectUrl;
+            link.download = calendarFilename(game);
+            link.hidden = true;
+            document.body.appendChild(link);
+            link.click();
+            setAppStatus('Kalenderdatei wurde erstellt.');
+            setTimeout(cleanup, 1000);
+            return true;
+        } catch (_error) {
+            cleanup();
+            setAppStatus('Kalenderdatei konnte nicht erstellt werden.');
+            return false;
+        }
+    }
+
+    function buildGameActions(game) {
+        if (!game || typeof game !== 'object') return [];
+        const league = game.leagueKey || game.leagueName || game.league;
+        const actions = [{
+            key: 'preview',
+            label: 'Match Preview',
+            ariaLabel: `Match Preview für ${gameShareText(game)} öffnen`,
+            activate: () => {
+                rememberMatchPreviewGame(game);
+                navigateTo('matchPreview');
+            },
+        }];
+        if (league) {
+            actions.unshift({
+                key: 'league',
+                label: 'Liga öffnen',
+                ariaLabel: `${league} öffnen`,
+                activate: () => navigateTo('league', league),
+            });
+        }
+        if (window.BwedlAppUtils.buildIcsContent(calendarGame(game))) {
+            actions.push({
+                key: 'calendar',
+                label: 'Kalender',
+                ariaLabel: `Kalendereintrag für ${gameShareText(game)} herunterladen`,
+                activate: () => downloadGameCalendar(game),
+            });
+        }
+        actions.push({
+            key: 'share',
+            label: 'Teilen',
+            ariaLabel: `${gameShareText(game)} teilen`,
+            activate: () => shareCurrentView(gameShareText(game), bestShareRoute(game)),
+        });
+        const mapsUrl = buildMapsUrl(game);
+        if (mapsUrl) {
+            actions.push({
+                key: 'maps',
+                label: 'Route',
+                ariaLabel: `Route zum Spielort für ${gameShareText(game)} öffnen`,
+                href: mapsUrl,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+            });
+        }
+        return actions;
+    }
+
+    function createGameActionsElement(game) {
+        const group = document.createElement('div');
+        group.className = 'game-actions';
+        group.setAttribute('role', 'group');
+        group.setAttribute('aria-label', `Aktionen für ${gameShareText(game)}`);
+        buildGameActions(game).forEach((action) => {
+            const control = document.createElement(action.href ? 'a' : 'button');
+            control.className = `game-actions__button game-actions__button--${action.key}`;
+            control.textContent = action.label;
+            control.setAttribute('aria-label', action.ariaLabel);
+            if (action.href) {
+                control.href = action.href;
+                control.target = action.target;
+                control.rel = action.rel;
+            } else {
+                control.type = 'button';
+                control.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    action.activate();
+                });
+            }
+            control.addEventListener('click', (event) => event.stopPropagation());
+            group.appendChild(control);
+        });
+        return group;
+    }
 
     if (Object.keys(leagueData).length === 0) {
         const contentArea = document.getElementById('content-area');
@@ -302,7 +1138,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.innerHTML = ""; // Clear for fresh render
 
             // --- Dashboard Link ---
-            const dashboardLink = document.createElement('div');
+            const dashboardLink = document.createElement('button');
+            dashboardLink.type = 'button';
             dashboardLink.className = 'nav-section-header';
             dashboardLink.innerHTML = '🏠 DASHBOARD';
             dashboardLink.style.padding = "15px";
@@ -317,7 +1154,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(dashboardLink);
 
             // --- My Profile Link ---
-            const profileLink = document.createElement('div');
+            const profileLink = document.createElement('button');
+            profileLink.type = 'button';
             profileLink.id = 'my-profile-link';
             profileLink.className = 'nav-section-header';
             profileLink.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
@@ -334,7 +1172,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Leagues
         if (leagueData.leagues) {
-            const leagueHeader = document.createElement('div');
+            const leagueHeader = document.createElement('button');
+            leagueHeader.type = 'button';
             leagueHeader.className = 'nav-section-header';
             leagueHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> LIGEN';
             leagueHeader.style.padding = "10px 15px 5px";
@@ -345,12 +1184,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(leagueHeader);
 
             const container = document.createElement('div');
+            container.id = 'sidebar-leagues';
             container.style.display = "none"; // Hidden by default
             container.style.paddingLeft = "0";
+            leagueHeader.setAttribute('aria-controls', container.id);
+            leagueHeader.setAttribute('aria-expanded', 'false');
 
             leagueHeader.addEventListener('click', () => {
                 const isHidden = container.style.display === "none";
                 container.style.display = isHidden ? "block" : "none";
+                leagueHeader.setAttribute('aria-expanded', String(isHidden));
                 leagueHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
             });
 
@@ -379,18 +1222,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 leagueGroups[category].push(leagueName);
             });
 
-            Object.keys(leagueGroups).sort().forEach(category => {
+            Object.keys(leagueGroups).sort().forEach((category, categoryIndex) => {
                 // Header
-                const catHeader = document.createElement('div');
+                const catHeader = document.createElement('button');
+                catHeader.type = 'button';
                 catHeader.className = 'sidebar-accordion-header';
                 catHeader.innerHTML = `<span>${category}</span> <span class="sidebar-accordion-icon">▶</span>`;
 
                 // Content
                 const catContent = document.createElement('div');
                 catContent.className = 'sidebar-accordion-content';
+                catContent.id = `sidebar-league-group-${categoryIndex}`;
+                catHeader.setAttribute('aria-controls', catContent.id);
+                catHeader.setAttribute('aria-expanded', 'false');
 
                 leagueGroups[category].forEach(leagueName => {
-                    const el = document.createElement('div');
+                    const el = document.createElement('button');
+                    el.type = 'button';
                     el.className = 'league-item';
                     el.textContent = leagueName;
                     el.addEventListener('click', () => {
@@ -403,6 +1251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.stopPropagation(); // Prevent parent toggle
                     catHeader.classList.toggle('active');
                     catContent.classList.toggle('open');
+                    catHeader.setAttribute('aria-expanded', String(catContent.classList.contains('open')));
                 });
 
                 container.appendChild(catHeader);
@@ -412,7 +1261,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 1b. Ligapokal (current + archive seasons)
             {
-                const lpHeader = document.createElement('div');
+                const lpHeader = document.createElement('button');
+                lpHeader.type = 'button';
                 lpHeader.className = 'nav-section-header';
                 lpHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> LIGAPOKAL';
                 lpHeader.style.padding = "10px 15px 5px";
@@ -423,18 +1273,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 nav.appendChild(lpHeader);
 
                 const lpContainer = document.createElement('div');
+                lpContainer.id = 'sidebar-ligapokal';
                 lpContainer.style.display = "none";
                 lpContainer.style.paddingLeft = "0";
+                lpHeader.setAttribute('aria-controls', lpContainer.id);
+                lpHeader.setAttribute('aria-expanded', 'false');
 
                 lpHeader.addEventListener('click', () => {
                     const isHidden = lpContainer.style.display === "none";
                     lpContainer.style.display = isHidden ? "block" : "none";
+                    lpHeader.setAttribute('aria-expanded', String(isHidden));
                     lpHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
                 });
 
                 // Current season Ligapokal entries
                 ligapokalGroup.forEach(lpName => {
-                    const el = document.createElement('div');
+                    const el = document.createElement('button');
+                    el.type = 'button';
                     el.className = 'league-item';
                     el.textContent = lpName;
                     el.addEventListener('click', () => {
@@ -448,7 +1303,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Sort seasons descending (newest first)
                     const archiveSeasons = Object.keys(ligapokalArchive).sort().reverse();
                     archiveSeasons.forEach(seasonName => {
-                        const el = document.createElement('div');
+                        const el = document.createElement('button');
+                        el.type = 'button';
                         el.className = 'league-item';
                         el.textContent = seasonName;
                         el.style.color = '#94a3b8';
@@ -465,7 +1321,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Rankings
         if (rankingData.rankings) {
-            const rankingHeader = document.createElement('div');
+            const rankingHeader = document.createElement('button');
+            rankingHeader.type = 'button';
             rankingHeader.className = 'nav-section-header';
             rankingHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> RANGLISTEN';
             rankingHeader.style.padding = "15px 15px 5px";
@@ -476,18 +1333,23 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(rankingHeader);
 
             const container = document.createElement('div');
+            container.id = 'sidebar-rankings';
             container.style.display = "none";
             container.style.paddingLeft = "0";
+            rankingHeader.setAttribute('aria-controls', container.id);
+            rankingHeader.setAttribute('aria-expanded', 'false');
 
             rankingHeader.addEventListener('click', () => {
                 const isHidden = container.style.display === "none";
                 container.style.display = isHidden ? "block" : "none";
+                rankingHeader.setAttribute('aria-expanded', String(isHidden));
                 rankingHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
             });
 
             const ranks = Object.keys(rankingData.rankings).sort();
             ranks.forEach(rankName => {
-                const el = document.createElement('div');
+                const el = document.createElement('button');
+                el.type = 'button';
                 el.className = 'league-item';
                 el.textContent = rankName;
                 el.addEventListener('click', () => {
@@ -498,62 +1360,29 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(container);
         }
 
-        // 3. Clubs
+        // 3. Clubs: compact access instead of the complete club catalogue.
         if (clubData.clubs && clubData.clubs.length > 0) {
-            /* Sorted at top of init */
-
-            const header = document.createElement('div');
-            header.className = 'nav-section-header';
-            header.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> VEREINE';
+            const container = document.createElement('div');
+            const header = createDisclosureButton('VEREINE', 'club-sidebar-shortcuts', container, false);
+            header.className = 'nav-section-header club-sidebar-disclosure';
             header.style.padding = "15px 15px 5px";
             header.style.color = "#888";
             header.style.fontSize = "0.8em";
             header.style.fontWeight = "bold";
             header.style.cursor = "pointer";
-            header.title = "Klicken zum Ausklappen / Titel klicken für Übersicht";
+            header.title = "Vereinszugänge ein- oder ausklappen";
             nav.appendChild(header);
 
-            const container = document.createElement('div');
-            container.style.display = "none";
             container.style.paddingLeft = "0";
+            clubSidebarContainer = container;
 
-            header.addEventListener('click', (e) => {
-                // If user clicks the text "VEREINE" or the arrow, toggle.
-                // But we also have navigation logic for 'clubList'. 
-                // Let's split: Arrow -> Toggle, Text -> Toggle. 
-                // Wait, original logic navigated to clubList on click. 
-                // Let's keep toggle on Arrow/Header, and maybe add a "All Clubs" item inside or just toggle.
-                // Re-reading user request: "ausklappbar sind". 
-                // I will make the whole header toggle. The "Club Overview" can be the first item in the list or explicitly added.
-
-                const isHidden = container.style.display === "none";
-                container.style.display = isHidden ? "block" : "none";
-                header.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
-            });
-
-            // Add 'All Clubs' link as first item
-            const allClubsEl = document.createElement('div');
-            allClubsEl.className = 'league-item';
-            allClubsEl.innerHTML = '<i>Alle Vereine (Übersicht)</i>';
-            allClubsEl.addEventListener('click', () => {
-                navigateTo('clubList', null);
-            });
-            container.appendChild(allClubsEl);
-
-            clubData.clubs.forEach((club, index) => {
-                const el = document.createElement('div');
-                el.className = 'league-item';
-                el.textContent = club.name;
-                el.addEventListener('click', () => {
-                    navigateTo('club', index);
-                });
-                container.appendChild(el);
-            });
+            renderClubSidebarShortcuts();
             nav.appendChild(container);
         }
 
         // 4. Comparison (New)
-        const compareLink = document.createElement('div');
+        const compareLink = document.createElement('button');
+        compareLink.type = 'button';
         compareLink.className = 'nav-section-header';
         compareLink.innerHTML = '🆚 H2H VERGLEICH';
         compareLink.style.padding = "15px 15px 5px";
@@ -565,7 +1394,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(compareLink);
 
         // 5. All-Time Table (New)
-        const allTimeLink = document.createElement('div');
+        const allTimeLink = document.createElement('button');
+        allTimeLink.type = 'button';
         allTimeLink.className = 'nav-section-header';
         allTimeLink.innerHTML = '🏆 EWIGE TABELLE';
         allTimeLink.style.padding = "10px 15px 5px";
@@ -577,7 +1407,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(allTimeLink);
 
         // 6. Tools (New)
-        const toolsLink = document.createElement('div');
+        const toolsLink = document.createElement('button');
+        toolsLink.type = 'button';
         toolsLink.className = 'nav-section-header';
         toolsLink.innerHTML = '🧮 TOOLS';
         toolsLink.style.padding = "10px 15px 5px";
@@ -589,7 +1420,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(toolsLink);
 
         // 7. Wiki / Help (New)
-        const wikiLink = document.createElement('div');
+        const wikiLink = document.createElement('button');
+        wikiLink.type = 'button';
         wikiLink.className = 'nav-section-header';
         wikiLink.innerHTML = '📘 ANLEITUNG / WIKI';
         wikiLink.style.padding = "10px 15px 5px";
@@ -605,10 +1437,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // VERSION FOOTER
 
-        // Show Dashboard by default
-        currentState = { type: 'dashboard', id: null };
-        history.replaceState(currentState, "", "#dashboard");
-        renderDashboard();
+        // Compare only after every bundled/fetched data source has been initialized.
+        refreshVisitSnapshotBaseline(true);
+
+        // Resolve the initial view from the URL after all route data is available.
+        initializeRouteFromLocation();
 
         // Check for Update Snapshot (show summary if recently updated)
         try {
@@ -690,9 +1523,76 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Favorites Logic ---
     // (favorites state moved to top of file)
 
+    function appendClubSidebarLink(parent, label, action, modifier = '') {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `league-item club-sidebar-link ${modifier}`.trim();
+        button.textContent = label;
+        button.addEventListener('click', action);
+        parent.appendChild(button);
+    }
+
+    function renderClubSidebarShortcuts() {
+        if (!clubSidebarContainer) return;
+        clubSidebarContainer.replaceChildren();
+
+        appendClubSidebarLink(
+            clubSidebarContainer,
+            'Vereinsübersicht',
+            () => navigateTo('clubList', null),
+            'club-sidebar-link--primary',
+        );
+        appendClubSidebarLink(clubSidebarContainer, 'Verein suchen', () => {
+            navigateTo('clubList', null);
+            const clubSearch = document.getElementById('club-search');
+            if (clubSearch) clubSearch.focus();
+        });
+
+        const appendGroup = (title, entries) => {
+            const heading = document.createElement('div');
+            heading.className = 'club-sidebar-group-title';
+            heading.textContent = title;
+            clubSidebarContainer.appendChild(heading);
+
+            if (entries.length === 0) {
+                const empty = document.createElement('p');
+                empty.className = 'club-sidebar-empty';
+                empty.textContent = 'Noch keine';
+                clubSidebarContainer.appendChild(empty);
+                return;
+            }
+
+            entries.forEach(({ club, index }) => {
+                appendClubSidebarLink(clubSidebarContainer, club.name, () => navigateTo('club', index));
+            });
+        };
+
+        const favoriteClubs = favorites
+            .filter((favorite) => favorite.type === 'club')
+            .map((favorite) => ({ club: clubData.clubs[Number(favorite.id)], index: Number(favorite.id) }))
+            .filter(({ club, index }) => club && Number.isSafeInteger(index))
+            .slice(0, 5);
+        const recentClubs = recentClubIds
+            .map((index) => ({ club: clubData.clubs[index], index }))
+            .filter(({ club }) => club)
+            .slice(0, 5);
+
+        appendGroup('Favoriten', favoriteClubs);
+        appendGroup('Zuletzt angesehen', recentClubs);
+    }
+
+    function rememberRecentClub(id) {
+        const clubIndex = canonicalClubId(id, clubData.clubs.length);
+        if (clubIndex === null) return;
+        recentClubIds = [clubIndex, ...recentClubIds.filter((recentId) => recentId !== clubIndex)].slice(0, 5);
+        persistLocalValue(localStorage, RECENT_CLUBS_STORAGE_KEY, recentClubIds);
+        renderClubSidebarShortcuts();
+    }
+
     function saveFavorites() {
-        localStorage.setItem('bwedl_favorites', JSON.stringify(favorites));
+        persistLocalValue(localStorage, 'bwedl_favorites', favorites);
         renderFavoritesSidebar();
+        renderClubSidebarShortcuts();
     }
 
     function toggleFavorite(type, id, name) {
@@ -725,7 +1625,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const existing = document.getElementById('fav-section');
         if (existing) existing.remove();
 
-        if (favorites.length === 0) return;
+        const nonClubFavorites = favorites.filter((favorite) => favorite.type !== 'club');
+        if (nonClubFavorites.length === 0) return;
 
         const container = document.createElement('div');
         container.id = 'fav-section';
@@ -742,8 +1643,9 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.fontWeight = "bold";
         container.appendChild(header);
 
-        favorites.forEach(fav => {
-            const el = document.createElement('div');
+        nonClubFavorites.forEach(fav => {
+            const el = document.createElement('button');
+            el.type = 'button';
             el.className = 'league-item';
             el.innerHTML = `<span style="color: #fbbf24; margin-right: 6px;">★</span> ${fav.name}`;
             el.addEventListener('click', () => {
@@ -895,6 +1797,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 schedule.push({
                     round: roundNum,
                     date: dateObj,
+                    dateStr: dateStr,
+                    home: homeTeamRaw,
+                    away: awayTeamRaw,
                     opponent: opponent,
                     score: scoreStr,
                     isHome: isHome,
@@ -905,6 +1810,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         return schedule.sort((a, b) => a.round - b.round);
+    }
+
+    function buildCurrentVisitSnapshot() {
+        if (!window.BwedlAppUtils) return null;
+
+        const domains = dataStatus && dataStatus.domains ? dataStatus.domains : {};
+        const domainTimestamps = Object.keys(domains).reduce((result, key) => {
+            if (domains[key] && domains[key].updated_at) result[key] = domains[key].updated_at;
+            return result;
+        }, {});
+        const timestamps = Object.values(domains)
+            .map((domain) => domain && domain.updated_at)
+            .filter(Boolean)
+            .sort();
+        const rankingStatus = domains.rankings || {};
+        const leagueStatus = domains.leagues || {};
+        let player = null;
+        let team = null;
+        let nextGame = null;
+
+        if (myPlayerName && Array.isArray(rankingData.players)) {
+            const selected = rankingData.players.find((entry) => entry.name === myPlayerName);
+            if (selected) {
+                const canonicalName = window.BwedlAppUtils.canonicalRankingPlayerName(selected.name);
+                player = {
+                    canonicalName,
+                    displayName: selected.name,
+                    rank: selected.rank,
+                    points: selected.points,
+                    rankingClass: selected.league,
+                    sourceSeason: rankingStatus.season || null,
+                    sourceState: rankingStatus.state || null,
+                    sourceKey: ['rankings', rankingStatus.season || 'unknown'].join(':'),
+                };
+
+                const selectedTeam = myTeamName || selected.company || null;
+                if (selectedTeam && leagueData.leagues) {
+                    const schedule = [];
+                    Object.keys(leagueData.leagues).forEach((leagueKey) => {
+                        getTeamSchedule(leagueKey, selectedTeam).forEach((game) => {
+                            schedule.push({ ...game, leagueKey });
+                        });
+                    });
+                    const resultCount = schedule.filter((game) => !game.isPending).length;
+                    team = {
+                        id: `${selected.v_nr || 'team'}:${normalizeTeamName(selectedTeam)}`,
+                        name: selectedTeam,
+                        resultCount,
+                        resultFingerprint: window.BwedlAppUtils.buildTeamResultsFingerprint(schedule),
+                        sourceSeason: leagueStatus.season || null,
+                        sourceState: leagueStatus.state || null,
+                        sourceKey: ['leagues', leagueStatus.season || 'unknown'].join(':'),
+                    };
+                    const upcoming = window.BwedlAppUtils.selectUpcomingGames(schedule, new Date())[0];
+                    if (upcoming) {
+                        nextGame = {
+                            key: [
+                                upcoming.leagueKey || '',
+                                upcoming.round || '',
+                                normalizeTeamName(upcoming.home),
+                                normalizeTeamName(upcoming.away),
+                            ].join(':'),
+                            date: upcoming.date,
+                            opponent: upcoming.opponent,
+                            location: gameAddress(upcoming) || null,
+                        };
+                    }
+                }
+            }
+        }
+
+        return window.BwedlAppUtils.buildVisitSnapshot({
+            data: {
+                key: timestamps.join('|'),
+                timestamps: domainTimestamps,
+                updatedAt: timestamps.length > 0 ? timestamps[timestamps.length - 1] : null,
+            },
+            player,
+            team,
+            nextGame,
+        });
+    }
+
+    function refreshVisitSnapshotBaseline(compareWithPrevious = false) {
+        if (!window.BwedlAppUtils) return;
+        visitChangesLifecycle = window.BwedlAppUtils.startVisitChangesLifecycle({
+            storage: localStorage,
+            key: VISIT_SNAPSHOT_STORAGE_KEY,
+            comparePrevious: compareWithPrevious,
+            buildCurrentSnapshot: buildCurrentVisitSnapshot,
+        });
     }
 
     function calculateTrend(p) {
@@ -1030,6 +2026,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputGroup.appendChild(label);
 
         const input = document.createElement('input');
+        input.id = 'profile-player-search-input';
         input.type = "text";
         input.style.width = "100%";
         input.style.padding = "12px";
@@ -1040,8 +2037,14 @@ document.addEventListener('DOMContentLoaded', () => {
         input.placeholder = "Z.B. Max Mustermann";
         input.value = myPlayerName || "";
         input.autocomplete = "off";
+        input.setAttribute('aria-controls', 'profile-player-suggestions');
+        input.setAttribute('aria-expanded', 'false');
+        label.setAttribute('for', input.id);
 
-        const suggestionsBox = document.createElement('div');
+        const suggestionsBox = document.createElement('ul');
+        suggestionsBox.id = 'profile-player-suggestions';
+        suggestionsBox.setAttribute('aria-label', 'Spielervorschläge');
+        suggestionsBox.style.listStyle = 'none';
         suggestionsBox.style.position = "absolute";
         suggestionsBox.style.top = "100%";
         suggestionsBox.style.left = "0";
@@ -1115,13 +2118,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        const closeSuggestions = (restoreFocus = false) => (
+            closeProfileSuggestions(suggestionsBox, input, restoreFocus)
+        );
+
+        const selectSuggestion = (match) => {
+            selectProfileSuggestion(match, input, suggestionsBox, (selectedMatch) => {
+                if (rankingData && rankingData.players) {
+                    const player = rankingData.players.find(rp => rp.name === selectedMatch.label);
+                    if (player && player.v_nr && typeof CLUB_DATA !== 'undefined') {
+                        const club = CLUB_DATA.clubs.find(c => c.number == player.v_nr);
+                        populateTeams(club ? club.name : (player.company || 'Unbekannt'));
+                    } else if (player && player.company) {
+                        populateTeams(player.company);
+                    }
+                }
+            });
+        };
+
+        input.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            event.preventDefault();
+            closeSuggestions(true);
+        });
+
         input.addEventListener('input', () => {
             const val = input.value.toLowerCase().trim();
-            suggestionsBox.innerHTML = '';
+            suggestionsBox.replaceChildren();
             teamGroup.style.display = 'none';
 
             if (val.length < 2) {
-                suggestionsBox.style.display = 'none';
+                closeSuggestions(false);
                 return;
             }
 
@@ -1132,51 +2159,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (matches.length > 0) {
                     suggestionsBox.style.display = 'block';
+                    input.setAttribute('aria-expanded', 'true');
                     matches.forEach(m => {
-                        const div = document.createElement('div');
-                        div.style.padding = "10px";
-                        div.style.borderBottom = "1px solid #334155";
-                        div.style.cursor = "pointer";
-                        div.style.color = "#e2e8f0";
-
-                        // Use the context from search index which is already resolved to Club Name
-                        const clubName = m.context || "Vereinslos";
-
-                        div.innerHTML = `<div>${m.label}</div><div style="font-size: 0.8em; color: #94a3b8;">${clubName}</div>`;
-
-                        div.addEventListener('mouseenter', () => div.style.background = "#0f172a");
-                        div.addEventListener('mouseleave', () => div.style.background = "transparent");
-
-                        div.addEventListener('click', () => {
-                            input.value = m.label;
-                            suggestionsBox.style.display = 'none';
-
-                            if (rankingData && rankingData.players) {
-                                const p = rankingData.players.find(rp => rp.name === m.label);
-                                if (p && p.v_nr && typeof CLUB_DATA !== 'undefined') {
-                                    const club = CLUB_DATA.clubs.find(c => c.number == p.v_nr);
-                                    if (club) {
-                                        populateTeams(club.name);
-                                    } else {
-                                        populateTeams(p.company || "Unbekannt");
-                                    }
-                                } else if (p && p.company) {
-                                    populateTeams(p.company);
-                                }
-                            }
-                        });
-                        suggestionsBox.appendChild(div);
+                        suggestionsBox.appendChild(createProfileSuggestionItem(
+                            m,
+                            selectSuggestion,
+                            closeSuggestions,
+                        ));
                     });
                 } else {
                     suggestionsBox.style.display = 'block';
-                    suggestionsBox.innerHTML = '<div style="padding:10px; color: #94a3b8;">Keine Spieler gefunden.</div>';
+                    input.setAttribute('aria-expanded', 'true');
+                    const empty = document.createElement('li');
+                    empty.setAttribute('role', 'status');
+                    empty.style.cssText = 'padding:10px; color: #94a3b8;';
+                    empty.textContent = 'Keine Spieler gefunden.';
+                    suggestionsBox.appendChild(empty);
                 }
             }
         });
 
         document.addEventListener('click', (e) => {
             if (!inputGroup.contains(e.target)) {
-                suggestionsBox.style.display = 'none';
+                closeSuggestions(false);
             }
         });
 
@@ -1215,7 +2220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
                 setMyPlayer(name);
-                alert(`Profil gespeichert: ${name}`);
+                setAppStatus(`Profil gespeichert: ${name}`);
             }
         };
 
@@ -1252,6 +2257,14 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.padding = "20px";
         container.style.maxWidth = "1200px";
         container.style.margin = "0 auto";
+
+        if (typeof visitChangesLifecycle !== 'undefined' && visitChangesLifecycle) {
+            visitChangesLifecycle.render(document, container);
+        }
+
+        if (!myPlayerName) {
+            container.appendChild(createProfileOnboardingCard());
+        }
 
         let myStats = null;
         // --- My Profile Section ---
@@ -1645,12 +2658,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionCard.style.gap = "20px";
                 actionCard.style.gridColumn = "1 / -1"; // Span full width on desktop
 
-                // Find Next Games (Future or Today)
-                const dashboardToday = new Date();
-                dashboardToday.setHours(0, 0, 0, 0);
-                const upcomingGames = mySchedule.filter(g => g.isPending && (!g.date || g.date >= dashboardToday))
-                    .sort((a, b) => (a.date || 0) - (b.date || 0))
-                    .slice(0, 3);
+                // The reviewed selector keeps dated games first, open dates last,
+                // and removes byes before a primary card can be chosen.
+                const upcomingGames = typeof window !== 'undefined' && window.BwedlAppUtils
+                    ? window.BwedlAppUtils.selectUpcomingGames(mySchedule, new Date()).slice(0, 3)
+                    : [];
 
                 if (upcomingGames.length > 0) {
                     const nextGamesContainer = document.createElement('div');
@@ -1661,16 +2673,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         const isPrimary = idx === 0;
                         
                         nextCard.style.cssText = isPrimary 
-                            ? 'background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 12px; border: 1px solid #3b82f6; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);'
-                            : 'background: #1e293b; padding: 15px 20px; border-radius: 12px; border: 1px solid #334155; cursor: pointer; opacity: 0.9; transition: all 0.2s;';
+                            ? 'background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 12px; border: 1px solid #3b82f6; position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);'
+                            : 'background: #1e293b; padding: 15px 20px; border-radius: 12px; border: 1px solid #334155; opacity: 0.9; transition: all 0.2s;';
                         
                         if (!isPrimary) {
                             nextCard.onmouseover = () => { nextCard.style.borderColor = '#475569'; nextCard.style.opacity = '1'; };
                             nextCard.onmouseout = () => { nextCard.style.borderColor = '#334155'; nextCard.style.opacity = '0.9'; };
                         }
 
-                        nextCard.onclick = () => navigateTo('league', game.leagueKey);
-                        
                         const dateStr = game.date 
                             ? game.date.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) 
                             : 'Termin offen';
@@ -1690,6 +2700,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span>${game.isHome ? '(Heim)' : '(Auswärts)'}</span>
                             </div>
                         `;
+                        nextCard.appendChild(createGameActionsElement(game));
                         
                         nextGamesContainer.appendChild(nextCard);
                     });
@@ -1727,6 +2738,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionCard.appendChild(previewTeaser);
 
                 grid.appendChild(actionCard);
+                const profileSeasonNotice = createSeasonNotice('dashboard-profile');
+                if (profileSeasonNotice) container.appendChild(profileSeasonNotice);
                 container.appendChild(grid);
 
                 // --- 3. Season Log Table ---
@@ -1802,7 +2815,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         tbody.appendChild(row);
                     });
                     table.appendChild(tbody);
-                    logContainer.appendChild(table);
+                    const tableScroll = document.createElement('div');
+                    tableScroll.className = 'table-scroll profile-season-history';
+                    tableScroll.tabIndex = 0;
+                    tableScroll.setAttribute('aria-label', 'Saisonverlauf');
+                    tableScroll.appendChild(table);
+                    logContainer.appendChild(tableScroll);
                     container.appendChild(logContainer);
                 }
             }
@@ -1859,7 +2877,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (list.length === 0) return `<div style="text-align:center; padding:20px; color:#94a3b8;">Keine Daten für Spieltag ${latestRound}</div>`;
 
             return `
-            <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow-x: auto;">
+            <div class="table-scroll" style="background: #1e293b; border-radius: 8px; border: 1px solid #334155;">
                 <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em;">
                     <thead>
                         <tr style="background: #0f172a; text-align: left; color: #94a3b8; font-size: 0.8em; text-transform: uppercase;">
@@ -1914,6 +2932,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const containerDiv = document.createElement('div');
         containerDiv.innerHTML = topTitle;
+        const topPlayersSeasonNotice = createSeasonNotice('top-20');
+        if (topPlayersSeasonNotice) containerDiv.appendChild(topPlayersSeasonNotice);
 
         // Tab Container
         const tabContainer = document.createElement('div');
@@ -1965,6 +2985,9 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(topPlayersSection);
 
         contentArea.appendChild(container);
+        if (typeof visitChangesLifecycle !== 'undefined' && visitChangesLifecycle) {
+            visitChangesLifecycle.confirmVisible(container.parentElement === contentArea);
+        }
 
         // Update Nav Active State
         document.querySelectorAll('.nav-section-header').forEach(el => {
@@ -1980,6 +3003,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (query.length < 2) {
             searchResults.classList.add('hidden');
+            searchInput.setAttribute('aria-expanded', 'false');
             return;
         }
 
@@ -1987,37 +3011,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (matches.length > 0) {
             searchResults.classList.remove('hidden');
+            searchInput.setAttribute('aria-expanded', 'true');
             matches.forEach(m => {
-                const div = document.createElement('div');
-                div.className = 'search-result-item';
-                div.style.padding = "8px 10px";
-                div.style.borderBottom = "1px solid #334155";
-                div.style.cursor = "pointer";
-                div.style.color = "#e2e8f0";
-                div.style.fontSize = "0.9em";
-                div.style.backgroundColor = "#1e293b";
-                div.style.zIndex = "2000";
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'search-result-item';
+                button.style.padding = "8px 10px";
+                button.style.borderBottom = "1px solid #334155";
+                button.style.cursor = "pointer";
+                button.style.color = "#e2e8f0";
+                button.style.fontSize = "0.9em";
+                button.style.backgroundColor = "#1e293b";
+                button.style.zIndex = "2000";
 
                 let subtext = "";
                 if (m.context) subtext = ` <span style='color: #94a3b8; font-size: 0.8em;'>(${m.context})</span>`;
 
-                div.innerHTML = `<span style="display:inline-block; width: 60px; color: #64748b; font-size: 0.8em; font-weight:bold;">${m.type}</span> ${m.label}${subtext}`;
+                button.innerHTML = `<span style="display:inline-block; width: 60px; color: #64748b; font-size: 0.8em; font-weight:bold;">${m.type}</span> ${m.label}${subtext}`;
 
-                div.addEventListener('click', () => {
+                button.addEventListener('click', () => {
                     if (m.category === 'league') navigateTo('league', m.id);
                     else if (m.category === 'club') navigateTo('club', m.id);
-                    searchResults.classList.add('hidden');
-                    searchInput.value = "";
+                    closeSearchResults(false, true);
                 });
+                button.addEventListener('keydown', activateSearchResult);
 
-                div.addEventListener('mouseenter', () => div.style.background = "#334155");
-                div.addEventListener('mouseleave', () => div.style.background = "#1e293b");
+                button.addEventListener('mouseenter', () => button.style.background = "#334155");
+                button.addEventListener('mouseleave', () => button.style.background = "#1e293b");
 
-                searchResults.appendChild(div);
+                searchResults.appendChild(button);
             });
         } else {
             searchResults.classList.remove('hidden');
+            searchInput.setAttribute('aria-expanded', 'true');
             const div = document.createElement('div');
+            div.setAttribute('role', 'status');
             div.style.padding = "8px 10px";
             div.style.color = "#94a3b8";
             div.style.fontSize = "0.9em";
@@ -2030,10 +3058,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function navigateTo(type, id, addToHistory = true) {
         closeMobileNavigation();
+        if (type === 'club') rememberRecentClub(id);
 
         // 1. Handle history
         if (addToHistory) {
-            history.pushState({ type, id }, "", `#${type}${id ? '/' + id : ''}`);
+            history.pushState({ type, id }, "", routeHash({ type, id }));
         }
 
         // 2. Render
@@ -2062,21 +3091,16 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    // History Event Listener
-    window.addEventListener('popstate', (event) => {
-        if (event.state) {
-            navigateTo(event.state.type, event.state.id, false);
-        } else {
-            // Fallback if state is null (e.g. initial load)
-            navigateTo('dashboard', null, false);
-        }
-    });
+    // Both browser navigation and manually edited hashes use the same resolver.
+    window.addEventListener('popstate', initializeRouteFromLocation);
+    window.addEventListener('hashchange', initializeRouteFromLocation);
 
     function goBack() {
         history.back();
     }
     // Expose to window for inline onclick handlers
     window.navigateTo = navigateTo;
+    window.shareCurrentView = shareCurrentView;
 
     function renderComparisonView() {
         topBarTitle.textContent = "H2H Vergleich";
@@ -2126,6 +3150,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const comparisonArea = document.createElement('div');
         comparisonArea.id = "comparison-area";
         comparisonArea.style.display = "none";
+        const comparisonSeasonNotice = createSeasonNotice('h2h');
+        if (comparisonSeasonNotice) container.appendChild(comparisonSeasonNotice);
         container.appendChild(comparisonArea);
 
         contentArea.appendChild(container);
@@ -2813,10 +3839,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tierColor = leagueTierColor(lastSeason ? lastSeason.league : '');
 
                 const isExpanded = expandedId === p.id;
+                const detailId = `alltime-detail-${String(p.id).replace(/[^A-Za-z0-9_-]/g, '-')}`;
+                const toggleId = `${detailId}-toggle`;
 
                 // Row
                 const row = document.createElement('div');
-                row.style.cssText = 'border-bottom: 1px solid #334155; cursor: pointer; transition: background 0.15s;';
+                row.style.cssText = 'border-bottom: 1px solid #334155; transition: background 0.15s;';
 
                 let rowHtml = `<div style="display: flex; padding: 12px; align-items: center;" class="alltime-row">
                     <div style="width: 36px; text-align: center; font-weight: bold; color: ${rankColor}; font-size: 0.95em;">${medal}</div>
@@ -2833,12 +3861,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="width: 50px; text-align: center; color: #cbd5e1; font-size: 0.9em;">${p.totalSeasons}</div>
                     <div style="width: 70px; text-align: right; color: #60a5fa; font-weight: 500; font-size: 0.9em;">${p.avgPoints.toFixed(1)}</div>
                     <div style="width: 80px; text-align: right; padding-right: 10px; font-weight: bold; color: #4ade80; font-size: 1em;">${p.totalPoints}</div>
+                    <button type="button" class="alltime-detail-button"></button>
                 </div>`;
 
                 // Feature 4: Expandable detail
+                rowHtml += `<div id="${detailId}" class="alltime-detail-content" ${isExpanded ? '' : 'hidden'}>`;
                 if (isExpanded) {
-                    rowHtml += `<div style="padding: 0 12px 12px 56px; animation: fadeIn 0.2s ease;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 0.8em;">
+                    rowHtml += `<div class="table-scroll alltime-detail-table" tabindex="0" aria-label="Saisondetails von ${escapeHtmlText(p.name)}">
+                        <table>
                             <thead>
                                 <tr style="color: #94a3b8; text-align: left;">
                                     <th style="padding: 6px 8px; border-bottom: 1px solid #334155;">Saison</th>
@@ -2867,14 +3897,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         </table>
                     </div>`;
                 }
+                rowHtml += '</div>';
 
                 row.innerHTML = rowHtml;
+                const detailButton = row.querySelector('.alltime-detail-button');
+                detailButton.id = toggleId;
 
-                // Click handler to toggle expand
-                row.querySelector('.alltime-row').addEventListener('click', () => {
-                    expandedId = expandedId === p.id ? null : p.id;
-                    render();
-                });
+                configureAllTimeDetailButton(
+                    detailButton,
+                    detailId,
+                    isExpanded,
+                    () => {
+                        expandedId = expandedId === p.id ? null : p.id;
+                        rerenderAllTimeDetail(container, toggleId, render);
+                    },
+                );
 
                 // Hover effect
                 row.addEventListener('mouseenter', () => { row.style.background = 'rgba(51, 65, 85, 0.3)'; });
@@ -3789,45 +4826,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderClubList() {
         topBarTitle.textContent = "Vereinsübersicht";
-        contentArea.innerHTML = '';
+        contentArea.replaceChildren();
 
         const container = document.createElement('div');
-        container.style.padding = "20px";
-        container.style.display = "grid";
-        container.style.gridTemplateColumns = "repeat(auto-fill, minmax(280px, 1fr))";
-        container.style.gap = "20px";
+        container.className = 'club-overview';
 
-        clubData.clubs.forEach((club, index) => {
-            const card = document.createElement('div');
-            card.className = 'results-card';
-            card.style.cursor = "pointer";
-            card.style.transition = "all 0.2s ease";
-            card.style.height = "100%";
-            card.style.display = "flex";
-            card.style.flexDirection = "column";
+        const searchLabel = document.createElement('label');
+        searchLabel.className = 'club-search__label';
+        searchLabel.htmlFor = 'club-search';
+        searchLabel.textContent = 'Verein nach Name oder Ort finden';
+        const search = document.createElement('input');
+        search.id = 'club-search';
+        search.className = 'club-search';
+        search.type = 'search';
+        search.placeholder = 'Name, Ort oder Adresse';
+        search.setAttribute('aria-label', 'Vereine nach Name oder Ort suchen');
+        const resultStatus = document.createElement('p');
+        resultStatus.className = 'club-search__status';
+        resultStatus.setAttribute('aria-live', 'polite');
+        const grid = document.createElement('div');
+        grid.className = 'club-overview-grid';
 
-            let html = `<div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px; color: #f8fafc;">${club.name}</div>`;
-            if (club.venue) {
-                html += `<div style="font-size: 0.9em; color: #94a3b8;">📍 ${club.venue}</div>`;
+        const renderFilteredClubs = () => {
+            grid.replaceChildren();
+            const filteredClubs = filterClubEntries(clubData.clubs, search.value);
+            resultStatus.textContent = `${filteredClubs.length} ${filteredClubs.length === 1 ? 'Verein' : 'Vereine'}`;
+
+            if (filteredClubs.length === 0) {
+                const empty = document.createElement('p');
+                empty.className = 'club-overview-empty';
+                empty.textContent = 'Keine Vereine für diese Suche gefunden.';
+                grid.appendChild(empty);
+                return;
             }
-            if (club.city) {
-                html += `<div style="font-size: 0.85em; color: #64748b; margin-top: 4px;">${club.city}</div>`;
-            }
 
-            card.innerHTML = html;
-            card.addEventListener('click', () => {
-                navigateTo('club', index);
+            filteredClubs.forEach((club) => {
+                const index = clubData.clubs.indexOf(club);
+                const card = document.createElement('div');
+                card.className = 'results-card club-overview-card';
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', `${club.name || 'Verein'} öffnen`);
+
+                const name = document.createElement('strong');
+                name.className = 'club-overview-card__name';
+                name.textContent = club.name || 'Verein ohne Namen';
+                card.appendChild(name);
+                if (club.venue) {
+                    const venue = document.createElement('span');
+                    venue.className = 'club-overview-card__venue';
+                    venue.textContent = `📍 ${club.venue}`;
+                    card.appendChild(venue);
+                }
+                if (club.city || club.street) {
+                    const locality = document.createElement('span');
+                    locality.className = 'club-overview-card__locality';
+                    locality.textContent = [club.street, club.city].filter(Boolean).join(' · ');
+                    card.appendChild(locality);
+                }
+
+                const selectClub = () => navigateTo('club', index);
+                card.addEventListener('click', selectClub);
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        selectClub();
+                    }
+                });
+                grid.appendChild(card);
             });
-            card.onmouseenter = () => {
-                card.style.transform = "translateY(-2px)";
-                card.style.borderColor = "#3b82f6";
-            };
-            card.onmouseleave = () => {
-                card.style.transform = "none";
-                card.style.borderColor = "#334155";
-            };
-            container.appendChild(card);
-        });
+        };
+
+        search.addEventListener('input', renderFilteredClubs);
+        container.append(searchLabel, search, resultStatus, grid);
+        renderFilteredClubs();
         contentArea.appendChild(container);
     }
 
@@ -4225,13 +5297,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return sum + (avg * dCount);
     }
 
-    function renderRanking(rankName) {
+    function renderRankingLegacy(rankName) {
         topBarTitle.textContent = rankName;
         contentArea.innerHTML = '';
 
         const container = document.createElement('div');
         container.style.padding = "20px";
         container.className = "fade-in";
+        const rankingSeasonNotice = createSeasonNotice('ranking');
 
         // Logic to get players for this ranking
         // We match p.league with rankName
@@ -4250,6 +5323,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 container.innerHTML = '<div style="color: #94a3b8;">Keine Daten verfügbar.</div>';
             }
+            if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
             contentArea.appendChild(container);
             return;
         }
@@ -4268,7 +5342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build Table
         let html = `
         <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden;">
-            <div style="overflow-x: auto;">
+            <div class="table-scroll">
                 <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em; min-width: 600px;">
                     <thead>
                         <tr style="background: #0f172a; border-bottom: 1px solid #334155; text-align: left;">
@@ -4336,10 +5410,254 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
 
         container.innerHTML = html;
+        if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
         contentArea.appendChild(container);
     }
 
 
+
+    function renderRanking(rankName) {
+        topBarTitle.textContent = rankName;
+        contentArea.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.style.padding = '20px';
+        container.className = 'fade-in';
+        const rankingSeasonNotice = createSeasonNotice('ranking');
+        const players = rankingData && Array.isArray(rankingData.players)
+            ? rankingData.players.filter((player) => player.league === rankName)
+            : [];
+
+        if (players.length === 0) {
+            if (rankingData && rankingData.rankings && rankingData.rankings[rankName]) {
+                const fallback = document.createElement('div');
+                fallback.className = 'ranking-table-scroll table-scroll';
+                fallback.appendChild(createSafeTableFromHtml(rankingData.rankings[rankName]));
+                container.appendChild(fallback);
+            } else {
+                const empty = document.createElement('div');
+                empty.style.color = '#94a3b8';
+                empty.textContent = 'Keine Daten verfügbar.';
+                container.appendChild(empty);
+            }
+            if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
+            contentArea.appendChild(container);
+            return;
+        }
+
+        const enrichedPlayers = window.BwedlAppUtils.enrichRankingPlayersWithClubs(
+            players,
+            clubData && clubData.clubs,
+        );
+        const viewModels = enrichedPlayers.map((player, sourceIndex) => {
+            const stats = calculatePlayerStats(player);
+            const officialRank = String(player.rank == null ? '' : player.rank).trim();
+            const rankPrefix = officialRank.match(/^\d+/);
+            return {
+                ...player,
+                officialRank,
+                officialSortRank: rankPrefix ? Number(rankPrefix[0]) : sourceIndex + 1,
+                totalPoints: calculateTotalPoints(player),
+                average: stats.avg,
+                games: stats.count,
+            };
+        });
+        const savedPlayerMatch = window.BwedlAppUtils.matchRankingPlayer(viewModels, myPlayerName);
+
+        const toolbar = document.createElement('div');
+        toolbar.className = 'ranking-toolbar';
+        const createControl = (labelText, control) => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'ranking-toolbar__control';
+            const label = document.createElement('label');
+            label.setAttribute('for', control.id);
+            label.textContent = labelText;
+            wrapper.append(label, control);
+            return wrapper;
+        };
+
+        const search = document.createElement('input');
+        search.id = 'ranking-player-search';
+        search.type = 'search';
+        search.placeholder = 'Name oder Verein';
+        search.setAttribute('autocomplete', 'off');
+        toolbar.appendChild(createControl('Spieler suchen', search));
+
+        const sort = document.createElement('select');
+        sort.id = 'ranking-sort';
+        [
+            ['official', 'Offizielle Reihenfolge'],
+            ['points', 'Analyseansicht: Punkte'],
+            ['average', 'Analyseansicht: Durchschnitt'],
+            ['games', 'Analyseansicht: Spiele'],
+        ].forEach(([value, label]) => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = label;
+            sort.appendChild(option);
+        });
+        sort.value = 'official';
+        toolbar.appendChild(createControl('Sortierung', sort));
+
+        const minGames = document.createElement('input');
+        minGames.id = 'ranking-min-games';
+        minGames.type = 'number';
+        minGames.min = '0';
+        minGames.step = '1';
+        minGames.value = '0';
+        toolbar.appendChild(createControl('Mindestens Spiele', minGames));
+
+        const actions = document.createElement('div');
+        actions.className = 'ranking-toolbar__actions';
+        const reset = document.createElement('button');
+        reset.type = 'button';
+        reset.className = 'ranking-toolbar__button';
+        reset.textContent = 'Zurücksetzen';
+        actions.appendChild(reset);
+
+        let myPosition = null;
+        if (myPlayerName) {
+            myPosition = document.createElement('button');
+            myPosition.id = 'ranking-my-position';
+            myPosition.type = 'button';
+            myPosition.className = 'ranking-toolbar__button ranking-toolbar__button--primary';
+            myPosition.textContent = 'Meine Position';
+            actions.appendChild(myPosition);
+        }
+        toolbar.appendChild(actions);
+
+        const analysisLabel = document.createElement('p');
+        analysisLabel.className = 'ranking-analysis-label';
+        analysisLabel.textContent = 'Analyseansicht – die angezeigten Rangwerte bleiben offiziell.';
+        analysisLabel.hidden = true;
+
+        const status = document.createElement('p');
+        status.id = 'ranking-tools-status';
+        status.className = 'ranking-tools-status';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+
+        const tableCard = document.createElement('div');
+        tableCard.className = 'ranking-table-card';
+        const tableScroller = document.createElement('div');
+        tableScroller.className = 'ranking-table-scroll table-scroll';
+        const table = document.createElement('table');
+        table.className = 'ranking-table';
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        ['#', 'Name', 'Verein', 'Spiele', 'Ø', 'Punkte'].forEach((label) => {
+            const header = document.createElement('th');
+            header.setAttribute('scope', 'col');
+            header.textContent = label;
+            headerRow.appendChild(header);
+        });
+        thead.appendChild(headerRow);
+        const tbody = document.createElement('tbody');
+        table.append(thead, tbody);
+        tableScroller.appendChild(table);
+        tableCard.appendChild(tableScroller);
+
+        const createRow = (player) => {
+            const row = document.createElement('tr');
+            row.dataset.playerName = String(player.name || '');
+            row.setAttribute('tabindex', '-1');
+            row._rankingPlayer = player;
+            if (savedPlayerMatch.status === 'found' && player === savedPlayerMatch.player) {
+                row.classList.add('my-player-row');
+            }
+
+            const rankCell = document.createElement('td');
+            const officialRank = String(player.officialRank || '').trim();
+            rankCell.textContent = officialRank || '–';
+            rankCell.className = 'ranking-table__rank';
+            const nameCell = document.createElement('td');
+            nameCell.textContent = String(player.name || '');
+            if (player.team) {
+                const team = document.createElement('span');
+                team.className = 'ranking-table__team';
+                team.textContent = String(player.team);
+                nameCell.appendChild(team);
+            }
+
+            const clubIndex = Number.isInteger(player.clubIndex) ? player.clubIndex : -1;
+            const clubName = player.clubName || player.company;
+            const clubCell = document.createElement('td');
+            if (clubIndex !== -1) {
+                const clubLink = document.createElement('button');
+                clubLink.type = 'button';
+                clubLink.className = 'ranking-table__club-link';
+                clubLink.textContent = String(clubName || 'Unbekannt');
+                clubLink.addEventListener('click', () => navigateTo('club', clubIndex));
+                clubCell.appendChild(clubLink);
+            } else {
+                clubCell.textContent = String(clubName || 'Unbekannt');
+            }
+
+            const gamesCell = document.createElement('td');
+            gamesCell.textContent = String(player.games);
+            const averageCell = document.createElement('td');
+            averageCell.textContent = Number(player.average).toFixed(2);
+            const pointsCell = document.createElement('td');
+            pointsCell.textContent = String(Number.parseFloat(Number(player.totalPoints).toFixed(2)));
+            row.append(rankCell, nameCell, clubCell, gamesCell, averageCell, pointsCell);
+            return row;
+        };
+
+        const renderRows = () => {
+            const visible = window.BwedlAppUtils.filterAndSortRanking(viewModels, {
+                query: search.value,
+                sort: sort.value,
+                minGames: minGames.value,
+            });
+            tbody.replaceChildren(...visible.map(createRow));
+            analysisLabel.hidden = sort.value === 'official';
+            status.textContent = `${visible.length} von ${viewModels.length} Spielern angezeigt.`;
+        };
+
+        search.addEventListener('input', renderRows);
+        sort.addEventListener('change', renderRows);
+        minGames.addEventListener('input', renderRows);
+        reset.addEventListener('click', () => {
+            search.value = '';
+            sort.value = 'official';
+            minGames.value = '0';
+            renderRows();
+            search.focus();
+        });
+        if (myPosition) {
+            myPosition.addEventListener('click', () => {
+                if (savedPlayerMatch.status === 'ambiguous') {
+                    status.textContent = 'Der gespeicherte Spielername ist in dieser Rangliste nicht eindeutig.';
+                    return;
+                }
+                if (savedPlayerMatch.status !== 'found') {
+                    status.textContent = 'Dein gespeicherter Spieler ist nicht in dieser Rangliste enthalten.';
+                    return;
+                }
+                search.value = '';
+                minGames.value = '0';
+                renderRows();
+                const row = Array.from(tbody.children).find((candidate) => (
+                    candidate._rankingPlayer === savedPlayerMatch.player
+                ));
+                if (!row) return;
+                const reducedMotion = Boolean(window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+                row.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+                row.focus();
+                status.textContent = `Position von ${savedPlayerMatch.player.name} hervorgehoben.`;
+            });
+        }
+
+        const calculationNote = document.createElement('p');
+        calculationNote.className = 'ranking-calculation-note';
+        calculationNote.textContent = "* 'D' wertet als Durchschnitt der gespielten Spiele (Spielfrei-Ausgleich).";
+
+        if (rankingSeasonNotice) container.appendChild(rankingSeasonNotice);
+        container.append(toolbar, analysisLabel, status, tableCard, calculationNote);
+        renderRows();
+        contentArea.appendChild(container);
+    }
 
     function renderSparkline(rounds) {
         if (!rounds) return "";
@@ -4414,6 +5732,74 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.padding = "20px";
         container.style.maxWidth = "800px";
         container.style.margin = "0 auto";
+
+        function createDisclosureSection(title, contentId, content, expanded = false) {
+            const section = document.createElement('section');
+            section.className = 'club-disclosure';
+            const heading = document.createElement('h2');
+            heading.className = 'club-disclosure__heading';
+            const button = createDisclosureButton(title, contentId, content, expanded);
+            button.className = 'club-disclosure__trigger';
+            content.classList.add('club-disclosure__content');
+            heading.appendChild(button);
+            section.append(heading, content);
+            return section;
+        }
+
+        function archiveMatchDisplayState(match, isCupSection) {
+            if (match && match.isFreilos) return { incomplete: false, label: 'Freilos' };
+            const incomplete = Boolean(isCupSection) && (
+                !String(match && match.home || '').trim() ||
+                !String(match && match.away || '').trim() ||
+                !String(match && match.scoreHome || '').trim() ||
+                !String(match && match.scoreAway || '').trim()
+            );
+            return {
+                incomplete,
+                label: incomplete
+                    ? 'Daten unvollständig'
+                    : `${match && match.scoreHome || ''}:${match && match.scoreAway || ''}`,
+            };
+        }
+
+        function createArchiveMatchResult(match, isCupSection) {
+            const state = archiveMatchDisplayState(match, isCupSection);
+            const result = document.createElement('span');
+            result.textContent = state.label;
+            if (state.incomplete) {
+                result.className = 'incomplete-data';
+                result.setAttribute('role', 'status');
+            } else if (match && match.isFreilos) {
+                result.className = 'archive-freilos';
+            }
+            return result;
+        }
+
+        function parseArchiveMatchRow(headers, row) {
+            const normalizedHeaders = Array.isArray(headers)
+                ? headers.map((header) => String(header || '').toLowerCase().trim())
+                : [];
+            const findColumn = (pattern) => normalizedHeaders.findIndex((header) => pattern.test(header));
+            const dateIndex = findColumn(/datum/);
+            const homeIndex = findColumn(/heim/);
+            const awayIndex = findColumn(/gast/);
+            const resultIndex = findColumn(/ergebnis|punkte/);
+            const cell = (index) => index >= 0 ? String(row && row[index] || '').trim() : '';
+
+            if ([dateIndex, homeIndex, awayIndex, resultIndex].every((index) => index >= 0)) {
+                return {
+                    dateStr: cell(dateIndex),
+                    home: cell(homeIndex),
+                    away: cell(awayIndex),
+                    result: cell(resultIndex),
+                };
+            }
+
+            if (Array.isArray(row) && row.length >= 6 && /^\d{2}\.\d{2}\.\d{4}/.test(cell(1))) {
+                return { dateStr: cell(1), home: cell(3), away: cell(4), result: cell(5) };
+            }
+            return { dateStr: cell(0), home: cell(1), away: cell(2), result: cell(3) };
+        }
 
         const stripTeamNumber = (name) => {
             if (!name) return "";
@@ -4513,23 +5899,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof leagueData !== 'undefined' && leagueData.leagues) {
             Object.keys(leagueData.leagues).forEach(leagueName => {
                 const isLP = isLigapokalMatch(leagueName);
-                const withdrawnTeams = [];
                 const league = leagueData.leagues[leagueName];
-                if (league && typeof league.table === 'string') {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = league.table;
-                    const rows = tempDiv.querySelectorAll('tr');
-                    rows.forEach(row => {
-                        if (row.textContent.toLowerCase().includes("zurückgezogen")) {
-                            const cells = row.querySelectorAll('td');
-                            if (cells.length >= 2) {
-                                let teamName = cells[1].textContent.trim();
-                                teamName = teamName.replace(/\u00a0/g, ' ').trim();
-                                withdrawnTeams.push(teamName);
-                            }
-                        }
-                    });
-                }
+                const withdrawnTeams = league && typeof league.table === 'string'
+                    ? findWithdrawnTeams(league.table)
+                    : [];
                 const matches = parseAllMatches(leagueName);
                 matches.forEach(m => {
                     if (!m.played && (withdrawnTeams.includes(m.home) || withdrawnTeams.includes(m.away))) return;
@@ -4552,14 +5925,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        upcomingLeagueMatches.sort((a, b) => a.ts - b.ts);
         recentLeagueMatches.sort((a, b) => b.ts - a.ts);
-        upcomingLigapokalMatches.sort((a, b) => a.ts - b.ts);
         recentLigapokalMatches.sort((a, b) => b.ts - a.ts);
 
-        const nextGames = upcomingLeagueMatches.slice(0, 30);
+        const nextGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLeagueMatches, new Date());
         const lastGames = recentLeagueMatches.slice(0, 30);
-        const nextLigapokalGames = upcomingLigapokalMatches.slice(0, 30);
+        const nextLigapokalGames = window.BwedlAppUtils.selectUpcomingGames(upcomingLigapokalMatches, new Date());
         const lastLigapokalGames = recentLigapokalMatches.slice(0, 30);
 
         // C) Current League Tables
@@ -4581,129 +5952,201 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalPoints = clubPlayers.reduce((acc, p) => acc + (parseInt(p.points) || 0), 0);
         const activeLeagues = [...new Set(clubPlayers.map(p => p.league))].filter(l => l && l !== "Unbekannt").length;
 
-        // Points Boxes
-        const statsRow = document.createElement('div');
-        statsRow.style.cssText = "display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;";
-        statsRow.innerHTML = `
-            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                <div style="font-size: 1.5em;">👥</div>
-                <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${clubPlayers.length}</div>
-                <div style="font-size: 0.75em; color: #94a3b8;">Spieler</div>
-            </div>
-            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                <div style="font-size: 1.5em;">🏆</div>
-                <div style="font-weight: bold; color: #f8fafc; font-size: 1.2em;">${activeLeagues}</div>
-                <div style="font-size: 0.75em; color: #94a3b8;">Ligen</div>
-            </div>
-            <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; text-align: center;">
-                <div style="font-size: 1.5em;">🎯</div>
-                <div style="font-weight: bold; color: #4ade80; font-size: 1.2em;">${totalPoints}</div>
-                <div style="font-size: 0.75em; color: #94a3b8;">Punkte (Ges.)</div>
-            </div>
-        `;
-        container.appendChild(statsRow);
-
-        const detailsCard = document.createElement('div');
-        detailsCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 8px; margin-bottom: 20px; overflow: hidden;";
-        let detailsHtml = `
-            <div style="padding: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: rgba(255,255,255,0.02);" onclick="this.nextElementSibling.classList.toggle('hidden')">
-                <span style="font-weight: bold; color: #f8fafc;">📍 Vereinsinfos & Kontakt</span>
-                <span style="color: #64748b;">▼</span>
-            </div>
-            <div class="hidden" style="padding: 15px; border-top: 1px solid #334155;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-        `;
+        const detailsContent = document.createElement('div');
+        const detailsGrid = document.createElement('div');
+        detailsGrid.className = 'club-contact-grid';
         const fields = [
             { k: 'venue', l: 'Spiellokal', i: '🏠' }, { k: 'street', l: 'Adresse', i: '📍' }, { k: 'city', l: 'Ort', i: '🏙️' },
             { k: 'website', l: 'Webseite', i: '🌐', link: true }, { k: 'email', l: 'E-Mail', i: '✉️', mail: true },
             { k: 'contact', l: 'Kontaktperson', i: '👤' }, { k: 'mobile', l: 'Mobil', i: '📱' },
         ];
         fields.forEach(f => {
-            let val = club[f.k];
-            if (val && val !== 'null' && val !== '-') {
-                if (f.link && !val.startsWith('http')) val = `<a href="http://${val}" target="_blank" style="color:#3b82f6;">${val}</a>`;
-                else if (f.mail) val = `<a href="mailto:${val}" style="color:#3b82f6;">${val}</a>`;
-                detailsHtml += `<div><div style="font-size: 0.8em; color: #64748b; margin-bottom: 2px;">${f.i} ${f.l}</div><div style="color: #e2e8f0; font-size: 0.95em;">${val}</div></div>`;
+            const value = club[f.k];
+            if (!value || value === 'null' || value === '-') return;
+            const field = document.createElement('div');
+            const label = document.createElement('div');
+            label.className = 'club-contact-field__label';
+            label.textContent = `${f.i} ${f.l}`;
+            const valueElement = document.createElement(f.link || f.mail ? 'a' : 'div');
+            valueElement.className = 'club-contact-field__value';
+            valueElement.textContent = value;
+            if (f.link) {
+                valueElement.href = value.startsWith('http') ? value : `http://${value}`;
+                valueElement.target = '_blank';
+                valueElement.rel = 'noopener noreferrer';
+            } else if (f.mail) {
+                valueElement.href = `mailto:${value}`;
             }
+            field.append(label, valueElement);
+            detailsGrid.appendChild(field);
         });
         if ((club.street && club.street !== '-') || (club.city && club.city !== '-')) {
             const q = `${club.street || ''} ${club.city || ''}`;
-            detailsHtml += `<div style="grid-column: 1 / -1; margin-top: 10px;"><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}" target="_blank" style="display: inline-block; width: 100%; text-align: center; padding: 8px; background: #334155; color: #fff; border-radius: 4px; text-decoration: none; font-size: 0.9em;">Auf Karte anzeigen</a></div>`;
+            const mapLink = document.createElement('a');
+            mapLink.className = 'club-contact-map-link';
+            mapLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+            mapLink.target = '_blank';
+            mapLink.rel = 'noopener noreferrer';
+            mapLink.textContent = 'Auf Karte anzeigen';
+            detailsGrid.appendChild(mapLink);
         }
-        detailsHtml += `</div></div>`;
-        detailsCard.innerHTML = detailsHtml;
-        container.appendChild(detailsCard);
+        detailsContent.appendChild(detailsGrid);
+        container.appendChild(createDisclosureSection(
+            'Vereinsinfos & Kontakt',
+            'club-contact-details',
+            detailsContent,
+            false,
+        ));
 
-        const createMatchesGrid = (upcoming, recent, titlePrefix) => {
+        const currentSeasonContent = document.createElement('div');
+
+        function createClubMatchCard(match, mode) {
+            const isUpcoming = mode === 'upcoming';
+            const card = document.createElement('div');
+            card.className = isUpcoming ? 'club-upcoming-match' : 'club-recent-match';
+            card.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;";
+
+            const meta = document.createElement('div');
+            meta.style.cssText = "display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;";
+            const date = document.createElement('span');
+            date.textContent = match.dateStr || (isUpcoming ? 'Termin offen' : '–');
+            const league = document.createElement('span');
+            league.style.color = '#64748b';
+            league.textContent = match.leagueName || '';
+            meta.append(date, league);
+            card.appendChild(meta);
+
+            if (isUpcoming) {
+                const teams = document.createElement('div');
+                teams.style.cssText = "display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;";
+                const home = document.createElement('span');
+                const separator = document.createElement('span');
+                const away = document.createElement('span');
+                home.textContent = match.home || '–';
+                away.textContent = match.away || '–';
+                if (isClubMatch(club.name, match.home)) home.style.cssText = 'font-weight:bold; color:#60a5fa;';
+                if (isClubMatch(club.name, match.away)) away.style.cssText = 'font-weight:bold; color:#60a5fa;';
+                separator.style.cssText = 'font-size: 0.8em; color: #64748b; padding: 0 5px;';
+                separator.textContent = 'vs';
+                teams.append(home, separator, away);
+                card.append(teams, createGameActionsElement(match));
+                return card;
+            }
+
+            const isHome = isClubMatch(club.name, match.home);
+            const ownScore = Number(isHome ? match.scoreHome : match.scoreAway);
+            const opponentScore = Number(isHome ? match.scoreAway : match.scoreHome);
+            const resultColor = ownScore > opponentScore ? '#4ade80' : ownScore < opponentScore ? '#f87171' : '#94a3b8';
+            card.style.borderLeft = `3px solid ${resultColor}`;
+            const resultBody = document.createElement('div');
+            resultBody.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+            const teamNames = document.createElement('div');
+            teamNames.style.cssText = 'color: #f8fafc; font-size: 0.95em; flex: 1;';
+            [match.home, match.away].forEach((teamName) => {
+                const team = document.createElement('div');
+                team.textContent = teamName || '–';
+                if (isClubMatch(club.name, teamName)) team.style.fontWeight = 'bold';
+                teamNames.appendChild(team);
+            });
+            const score = document.createElement('div');
+            score.style.cssText = 'font-weight: bold; font-size: 1.1em; color: #f8fafc; background: rgba(255,255,255,0.05); padding: 5px 8px; border-radius: 4px;';
+            score.textContent = `${match.scoreHome ?? ''}:${match.scoreAway ?? ''}`;
+            resultBody.append(teamNames, score);
+            card.appendChild(resultBody);
+            return card;
+        }
+
+        function createClubMatchesGrid(upcoming, recent, titlePrefix) {
             if (upcoming.length === 0 && recent.length === 0) return null;
             const grid = document.createElement('div');
             grid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;";
             const upCard = document.createElement('div');
             upCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📅 ${titlePrefix}Nächste Spiele</h3>`;
             const upList = document.createElement('div');
+            upList.id = titlePrefix.toLowerCase().includes('ligapokal')
+                ? 'club-upcoming-cup'
+                : 'club-upcoming-league';
+            upList.className = 'club-upcoming-list';
             upList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
             if (upcoming.length === 0) upList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine angesetzten Spiele.</div>`;
-            else upcoming.forEach(m => {
-                upList.innerHTML += `<div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px;"><div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center; color: #f8fafc; font-size: 0.95em;"><span style="${isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.home}</span><span style="font-size: 0.8em; color: #64748b; padding: 0 5px;">vs</span><span style="${isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : ''}">${m.away}</span></div></div>`;
-            });
-            upCard.appendChild(upList);
+            else {
+                const renderUpcoming = (expanded) => {
+                    upList.replaceChildren();
+                    const visibleMatches = expanded ? upcoming : upcoming.slice(0, 5);
+                    visibleMatches.forEach(m => {
+                        upList.appendChild(createClubMatchCard(m, 'upcoming'));
+                    });
+                };
+                renderUpcoming(false);
+
+                if (upcoming.length > 5) {
+                    const toggle = document.createElement('button');
+                    toggle.type = 'button';
+                    toggle.className = 'club-upcoming-toggle';
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-controls', upList.id);
+                    toggle.textContent = 'Alle Spiele anzeigen';
+                    toggle.addEventListener('click', () => {
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!expanded));
+                        toggle.textContent = expanded ? 'Alle Spiele anzeigen' : 'Weniger anzeigen';
+                        renderUpcoming(!expanded);
+                    });
+                    upCard.append(upList, toggle);
+                } else {
+                    upCard.appendChild(upList);
+                }
+            }
+            if (upcoming.length === 0) upCard.appendChild(upList);
             const recCard = document.createElement('div');
             recCard.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">📊 ${titlePrefix}Letzte Ergebnisse</h3>`;
             const recList = document.createElement('div');
             recList.style.cssText = "max-height: 400px; overflow-y: auto; padding-right: 5px;";
             if (recent.length === 0) recList.innerHTML = `<div style="color: #64748b; font-size: 0.9em;">Keine Ergebnisse gefunden.</div>`;
-            else recent.forEach(m => {
-                let resColor = "#94a3b8", isH = isClubMatch(club.name, m.home);
-                let oS = isH ? m.scoreHome : m.scoreAway, opS = isH ? m.scoreAway : m.scoreHome;
-                if (oS > opS) resColor = "#4ade80"; else if (oS < opS) resColor = "#f87171";
-                recList.innerHTML += `<div style="background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; margin-bottom: 8px; border-left: 3px solid ${resColor};"><div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #94a3b8; margin-bottom: 4px;"><span>${m.dateStr}</span><span style="color: #64748b;">${m.leagueName}</span></div><div style="display: flex; justify-content: space-between; align-items: center;"><div style="color: #f8fafc; font-size: 0.95em; flex: 1;"><div style="${isClubMatch(club.name, m.home) ? 'font-weight:bold;' : ''}">${m.home}</div><div style="${isClubMatch(club.name, m.away) ? 'font-weight:bold;' : ''}">${m.away}</div></div><div style="font-weight: bold; font-size: 1.1em; color: #f8fafc; background: rgba(255,255,255,0.05); padding: 5px 8px; border-radius: 4px;">${m.scoreHome}:${m.scoreAway}</div></div></div>`;
-            });
+            else recent.forEach(m => recList.appendChild(createClubMatchCard(m, 'recent')));
             recCard.appendChild(recList);
             grid.appendChild(upCard); grid.appendChild(recCard);
             return grid;
-        };
+        }
 
-        const leagueGrid = createMatchesGrid(nextGames, lastGames, '');
-        if (leagueGrid) container.appendChild(leagueGrid);
+        const leagueGrid = createClubMatchesGrid(nextGames, lastGames, '');
+        if (leagueGrid) currentSeasonContent.appendChild(leagueGrid);
 
         // Current Tables
         currentTables.forEach(t => {
-            const tSec = document.createElement('div');
-            tSec.style.cssText = "margin-bottom: 25px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; overflow: hidden;";
-            tSec.innerHTML = `<div style="padding: 10px 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #334155; font-weight: bold; color: #f8fafc;">📊 Tabelle: ${t.leagueName}</div><div class="table-container" style="padding: 0; border: none;">${t.tableHtml}</div>`;
-            cleanTable(tSec);
-            // Highlight club row
-            const rows = tSec.querySelectorAll('tr');
-            rows.forEach(row => {
-                if (isClubMatch(club.name, row.textContent)) {
-                    row.style.background = "rgba(59, 130, 246, 0.2)";
-                    row.style.fontWeight = "bold";
-                    row.style.color = "#60a5fa";
-                }
-            });
-            container.appendChild(tSec);
+            currentSeasonContent.appendChild(createSafeLeagueTableSection(
+                t.leagueName,
+                t.tableHtml,
+                club.name,
+                isClubMatch,
+            ));
         });
 
-        const ligapokalGrid = createMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
-        if (ligapokalGrid) container.appendChild(ligapokalGrid);
+        const ligapokalGrid = createClubMatchesGrid(nextLigapokalGames, lastLigapokalGames, '🏆 Ligapokal - ');
+        if (ligapokalGrid) currentSeasonContent.appendChild(ligapokalGrid);
 
+        let playerSection = null;
         if (clubPlayers.length > 0) {
-            const playerSection = document.createElement('div');
-            playerSection.style.marginTop = "30px";
-            playerSection.innerHTML = `<h3 style="color: #f8fafc; font-size: 1.2em; margin-bottom: 15px;">Mannschaft (${clubPlayers.length})</h3>`;
             const pGrid = document.createElement('div');
             pGrid.style.cssText = "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;";
             clubPlayers.forEach(p => {
-                const pCard = document.createElement('div');
-                pCard.style.cssText = "background: #1e293b; border: 1px solid #334155; border-radius: 6px; padding: 10px; display: flex; justify-content: space-between; align-items: center;";
-                let spark = p.rounds ? renderSparkline(p.rounds) : "";
-                const tierColor = leagueTierColor(p.league);
-                pCard.innerHTML = `<div style="flex: 1;"><div style="font-weight: bold; color: #f8fafc;">${p.name}</div><div style="font-size: 0.8em; color: ${tierColor};">${p.league} <span style="color: #cbd5e1; margin-left: 5px; background: rgba(255,255,255,0.1); padding: 1px 4px; border-radius: 3px;">Platz ${p.rank || '-'}</span></div></div><div style="display: flex; flex-direction: column; align-items: center; margin: 0 15px;"><div style="font-size: 0.65em; color: #64748b; text-transform: uppercase; margin-bottom: 2px;">Spielform</div>${spark.replace('margin-left: 10px;', 'margin: 0;')}</div><div style="text-align: right; margin-left: 10px;"><div style="font-weight: bold; color: #4ade80; font-size: 1.1em;">${p.points || 0}</div><div style="font-size: 0.75em; color: #64748b;">Pkt</div></div>`;
-                pGrid.appendChild(pCard);
+                pGrid.appendChild(createClubPlayerCard(p, leagueTierColor(p.league)));
             });
-            playerSection.appendChild(pGrid);
-            container.appendChild(playerSection);
+            playerSection = createClubRankingSection(
+                dataStatus.domains && dataStatus.domains.rankings,
+                createClubRankingStatsRow(clubPlayers.length, activeLeagues, totalPoints),
+                pGrid,
+                clubPlayers.length,
+            );
         }
+
+        container.appendChild(createDisclosureSection(
+            'Aktuelle Saison',
+            'current-season-summary',
+            currentSeasonContent,
+            true,
+        ));
+        if (playerSection) container.appendChild(playerSection);
 
         // --- 3. ARCHIVE ---
         const allArchiveItems = [];
@@ -4727,29 +6170,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isMatches) {
                     const myMatches = table.rows.slice(1).filter(row => row.some(cell => isClubMatch(club.name, cell)));
                     myMatches.forEach(row => {
-                        let dateStr = row[0] || '', home = row[1] || '', away = row[2] || '', res = row[3] || '';
-                        
-                        // Handle shifted format (observed in some cup archive tables)
-                        // Standard: [0]Date, [1]Home, [2]Away, [3]Score
-                        // Shifted: [0]Info, [1]Date, [2]HomeId, [3]Away+Score
-                        if (home && /^\d{2}\.\d{2}\.\d{4}/.test(home)) {
-                            dateStr = home;
-                            const combined = (row[3] || "");
-                            if (combined.includes(':')) {
-                                const parts = combined.split(':');
-                                home = parts[0].trim();
-                                let possibleScore = combined.substring(combined.indexOf(':') + 1).trim();
-                                // Only accept as score if it looks like one (e.g. 11:5)
-                                if (/^\d+\s*[:]\s*\d+$/.test(possibleScore)) {
-                                    res = possibleScore;
-                                } else {
-                                    res = "";
-                                }
-                                away = ""; 
-                            } else {
-                                home = combined; away = ""; res = "";
-                            }
-                        }
+                        const parsedRow = parseArchiveMatchRow(table.rows[0], row);
+                        const { dateStr, home, away, result: res } = parsedRow;
 
                         const m = {
                             season: table.season,
@@ -4847,8 +6269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderArchive = (matches, title) => {
             if (matches.length === 0) return;
             const sec = document.createElement('div');
-            sec.style.cssText = "margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px;";
-            sec.innerHTML = `<h3 style="color: #64748b; font-size: 1.1em; margin-bottom: 20px;">${title}</h3>`;
+            sec.className = 'club-archive-content';
             
             // Group by Season
             const seasonGroups = {};
@@ -4902,7 +6323,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sTitle = isCupSection ? (seasonTitle.startsWith('Ligapokal') ? seasonTitle : 'Ligapokal ' + seasonTitle) : seasonTitle;
                 
                 let block = `<div style="margin-bottom: 35px;">`;
-                block += `<div style="font-size: 1.1em; font-weight: bold; color: #f8fafc; margin-bottom: 15px;">${sTitle}</div>`;
+                block += `<div style="font-size: 1.1em; font-weight: bold; color: #f8fafc; margin-bottom: 15px;">${escapeHtmlText(sTitle)}</div>`;
                 
                 const leagues = seasonGroups[season];
                 // Sort rounds logically using roundWeight
@@ -4912,7 +6333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const g = leagues[leagueName];
                     block += `<div style="margin-bottom: 20px; padding-left: 10px; border-left: 2px solid #334155;">`;
                     const displayLeague = (isCupSection && leagueName.toLowerCase().includes('ligapokal')) ? leagueName : leagueName;
-                    block += `<div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px; font-size: 0.9em;">${displayLeague}</div>`;
+                    block += `<div style="font-weight: 600; color: #94a3b8; margin-bottom: 8px; font-size: 0.9em;">${escapeHtmlText(displayLeague)}</div>`;
                     
                     let i = 0;
                     while (i < g.length) {
@@ -4923,15 +6344,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // Check for common league table headers (Pl., Tabelle, Mannschaft, Pos, etc.)
                                 return head.includes('pl') || head.includes('tab') || head.includes('mans') || head.includes('pos');
                             });
-                            block += `<div class="history-table-wrapper">`;
-                            block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>`;
+                            block += `<div class="history-table-wrapper table-scroll">`;
+                            block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${escapeHtmlText(h)}</th>`).join('')}</tr></thead><tbody>`;
                             item.rows.slice(1).forEach(row => {
                                 const isMyRow = row.some(cell => isClubMatch(club.name, cell));
                                 block += `<tr style="${isMyRow ? 'background: rgba(59, 130, 246, 0.2);' : ''}">`;
                                 row.forEach(cell => {
                                     const isMyCell = isClubMatch(club.name, cell);
                                     const cellStyle = isMyCell ? 'font-weight:bold; color:#60a5fa;' : '';
-                                    block += `<td style="${cellStyle}">${cell}</td>`;
+                                    block += `<td style="${cellStyle}">${escapeHtmlText(cell)}</td>`;
                                 });
                                 block += `</tr>`;
                             });
@@ -4944,13 +6365,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 i++;
                             }
                             if (matchGroup.length > 0) {
-                                block += `<div class="history-table-wrapper">`;
+                                block += `<div class="history-table-wrapper table-scroll">`;
                                 block += `<table class="history-table match-history-table"><thead><tr style="background: rgba(30, 41, 59, 0.5);"><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr></thead><tbody>`;
                                 matchGroup.forEach(m => {
                                     const hStyle = isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : '';
                                     const aStyle = isClubMatch(club.name, m.away) ? 'font-weight:bold; color:#60a5fa;' : '';
-                                    const res = m.isFreilos ? '<span style="color:#94a3b8; font-style:italic;">Freilos</span>' : `${m.scoreHome}:${m.scoreAway}`;
-                                    block += `<tr><td>${m.dateStr}</td><td style="${hStyle}">${m.home}</td><td style="${aStyle}">${m.away}</td><td style="font-weight:bold;">${res}</td></tr>`;
+                                    const displayState = archiveMatchDisplayState(m, isCupSection);
+                                    const res = createArchiveMatchResult(m, isCupSection).outerHTML;
+                                    const rowState = displayState.incomplete ? ' class="history-row--incomplete" aria-label="Daten unvollständig"' : '';
+                                    block += `<tr${rowState}><td>${escapeHtmlText(m.dateStr || '–')}</td><td style="${hStyle}">${escapeHtmlText(m.home || '–')}</td><td style="${aStyle}">${escapeHtmlText(m.away || '–')}</td><td style="font-weight:bold;">${res}</td></tr>`;
                                 });
                                 block += `</tbody></table></div>`;
                             }
@@ -4961,7 +6384,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 block += `</div>`;
                 sec.innerHTML += block;
             });
-            container.appendChild(sec);
+            const contentId = isCupSection ? 'club-cup-history' : 'club-league-history';
+            container.appendChild(createDisclosureSection(title, contentId, sec, false));
         };
 
         renderArchive(leagueArchiveFinal, '📜 Liga Historie');
@@ -5504,6 +6928,8 @@ document.addEventListener('DOMContentLoaded', () => {
         listGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
         listGrid.style.gap = '20px';
         listGrid.innerHTML = `<div id="list-a"></div><div id="list-b"></div>`;
+        const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
+        if (matchPreviewSeasonNotice) selectionArea.appendChild(matchPreviewSeasonNotice);
         selectionArea.appendChild(listGrid);
 
         const calcBtn = document.createElement('button');
@@ -5538,7 +6964,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // AUTO-DETECT NEXT MATCHES
         try {
-            const matches = detectNextMatch();
+            const selectedGame = typeof readMatchPreviewGame === 'function'
+                ? readMatchPreviewGame()
+                : null;
+            const selectedMatch = selectedGame ? {
+                ...selectedGame,
+                league: selectedGame.league || selectedGame.leagueName || selectedGame.leagueKey || '',
+                spieltag: selectedGame.spieltag || (selectedGame.round ? `${selectedGame.round}. Spieltag` : ''),
+            } : null;
+            const detectedMatches = detectNextMatch() || [];
+            const matches = selectedMatch
+                ? [selectedMatch, ...detectedMatches.filter((match) => !(
+                    match.league === selectedMatch.league &&
+                    match.home === selectedMatch.home &&
+                    match.away === selectedMatch.away &&
+                    match.dateStr === selectedMatch.dateStr
+                ))]
+                : detectedMatches;
             if (matches && matches.length > 0) {
                 const scrollerContainer = document.createElement('div');
                 scrollerContainer.style.marginBottom = "25px";
@@ -6007,7 +7449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (listA.length > 0 && listB.length > 0) {
                 html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
                     <h4 style="color: #fb923c; margin-bottom: 15px;">⚔️ 1v1 Paarungen</h4>
-                    <div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                    <div class="table-scroll"><table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
                     <tr><th style="padding: 8px; color: #64748b; text-align: left; border-bottom: 2px solid #334155;"></th>`;
 
                 listB.forEach(pb => {
