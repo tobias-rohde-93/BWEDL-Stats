@@ -9,11 +9,20 @@ Dieses Handbuch erklärt dir **jede Funktion**, **jede Statistik** und **jeden K
 ## ⚡ Schnellstart
 - **App installieren**: Öffne die Seite auf dem Handy, klicke im Browser-Menü auf "Zum Startbildschirm" (Android/iOS). Die App läuft dann auch offline!
 - **Daten aktualisieren**: Die Web-Version aktualisiert sich automatisch beim Neuladen (wenn Internet verfügbar ist).
+- **Direkt einsteigen**: Ansichten für Ligen, Vereine, Ranglisten und Werkzeuge haben direkte Links. Beim Teilen oder Kopieren bleibt deshalb die geöffnete Ansicht erhalten.
+
+### Navigation und Tastatur
+
+Die Seitenleiste fasst die vielen Einträge in aufklappbaren Bereichen zusammen. Unter **Vereine** findest du die Vereinsübersicht, die Vereinssuche sowie kompakte Favoriten und zuletzt besuchte Vereine. Mit `Tab` erreichst du alle Schalter und Links, mit `Enter` oder der Leertaste öffnest du sie. `Esc` schließt Suchtreffer beziehungsweise auf kleinen Bildschirmen die geöffnete Navigation.
 
 ---
 
 ## 🏠 Dashboard (Dein Profil)
 Das Dashboard wird aktiviert, sobald du oben links deinen **Namen eingibst** und auswählst.
+
+Die Profilauswahl wird nur lokal im Speicher dieses Browsers abgelegt. Sie wird nicht als Benutzerkonto an einen Server übertragen; beim Löschen der Browserdaten oder in einem anderen Browser muss sie erneut gewählt werden.
+
+Nach einem erneuten Besuch kann eine Karte **„Seit deinem letzten Besuch“** auf neue Daten sowie – bei vergleichbarer Ranglistenbasis – auf Änderungen an Rang, Punkten oder dem nächsten Spiel hinweisen. Die Karte ist eine Zusammenfassung und ersetzt nicht die Detailansichten.
 
 ### 1. Die "Hero Card" (Profilkarte)
 Ganz oben siehst du dein Spielerprofil mit den wichtigsten Kennzahlen auf einen Blick.
@@ -74,10 +83,18 @@ Hier gehen wir ins Detail.
 ## 🏆 Ligen & Tabellen
 Über "Alle Ligen" im Menü kommst du zur Übersicht.
 
+Wenn Ranglisten für eine neue Saison noch nicht vollständig vorliegen, zeigt ein Saisonhinweis transparent, welcher geprüfte Stand weiterverwendet wird. Spielpläne, Ergebnisse oder Vereinsdaten können trotzdem einen neueren Stand haben; beachte deshalb immer den Datenstand des jeweiligen Bereichs.
+
 ### Tabellen-Ansicht
 Klicke auf eine Liga (z.B. "B-Klasse Gruppe 3"), um die Tabelle zu sehen.
 - **Teams**: Klicke auf einen Team-Namen, um den **Kader** und den **Spielplan** des Teams zu sehen.
 - **Spieltage**: Oben kannst du zwischen "Tabelle" und den einzelnen "Spieltagen" (R1, R2...) umschalten, um Ergebnisse zu sehen.
+
+In Ranglisten kannst du nach Spieler oder Verein suchen, eine Mindestzahl an Spielen filtern und eine Analyseansicht nach Punkten, Durchschnitt oder Spielen wählen. Die ursprünglichen offiziellen Rangwerte bleiben dabei sichtbar; die Analyse-Sortierung ist keine neue offizielle Platzierung. Wenn ein lokales Profil zur Rangliste passt, führt **„Meine Position“** zur passenden Zeile.
+
+### Spielaktionen und Vereinsadressen
+
+Bei passenden Begegnungen stehen direkte Aktionen bereit: **Kalender** lädt einen Kalendereintrag, **Teilen** nutzt – soweit verfügbar – den Teilen-Dialog und sonst eine Kopiermöglichkeit, und **Route** öffnet die hinterlegte Adresse in Google Maps. Fehlen Termin oder Adresse, wird die jeweilige Aktion nicht angeboten. Prüfe vor der Fahrt weiterhin die offiziellen Angaben.
 
 ---
 

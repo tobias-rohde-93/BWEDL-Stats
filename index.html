@@ -63,8 +63,10 @@
                 <div id="update-status" class="hidden text-xs mt-2 text-center text-gray-400">Update läuft...</div>
 
                 <div class="search-container">
-                    <input type="text" id="global-search" class="search-input" placeholder="Suche Club, Spieler...">
-                    <div id="search-results" class="search-results hidden"></div>
+                    <input type="search" id="global-search" class="search-input" placeholder="Suche Club, Spieler..."
+                        aria-label="Verein, Liga oder Spieler suchen" aria-controls="search-results" aria-expanded="false"
+                        autocomplete="off">
+                    <div id="search-results" class="search-results hidden" role="region" aria-label="Suchergebnisse"></div>
                 </div>
             </div>
 
@@ -75,7 +77,8 @@
 
         <main class="main-content">
             <header class="top-bar" style="display: flex; align-items: center; gap: 15px;">
-                <button id="menu-toggle" class="btn btn-secondary mobile-only" style="display: none;">☰</button>
+                <button id="menu-toggle" class="btn btn-secondary mobile-only" style="display: none;"
+                    aria-controls="league-nav" aria-expanded="false" aria-label="Navigation öffnen">☰</button>
                 <button id="mobile-refresh" class="btn btn-secondary mobile-only" style="display: none;"
                     onclick="triggerUpdate()">↻</button>
                 <button id="back-btn" class="btn btn-secondary" style="display: none;">&larr;
@@ -99,7 +102,7 @@
             </div>
 
             <div class="tab-content active" id="tab-table">
-                <div class="table-container" id="league-table-container"></div>
+                <div class="table-container table-scroll" id="league-table-container"></div>
             </div>
 
             <div class="tab-content" id="tab-results">
@@ -120,32 +123,10 @@
     <script src="bundle_v31.js?v=3.1"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', async () => {
-                // NUCLEAR OPTION: Unregister ALL SWs and Clear ALL Caches first
-                try {
-                    const registrations = await navigator.serviceWorker.getRegistrations();
-                    for (const registration of registrations) {
-                        console.log('Unregistering SW:', registration.scope);
-                        await registration.unregister();
-                    }
-
-                    const cacheKeys = await caches.keys();
-                    for (const key of cacheKeys) {
-                        console.log('Deleting cache:', key);
-                        await caches.delete(key);
-                    }
-
-                    // Only register new SW if we are sure it's clean, or just let the bundle load first
-                    // For now, let's explicitly register the NEW one after a short delay
-                    setTimeout(() => {
-                        navigator.serviceWorker.register('./sw_v31.js').then(registration => {
-                            console.log('New SW Registered:', registration.scope);
-                        });
-                    }, 1000);
-
-                } catch (err) {
-                    console.error('Cache cleanup failed:', err);
-                }
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw_v31.js').catch(err => {
+                    console.error('Service Worker registration failed:', err);
+                });
             });
         }
     </script>

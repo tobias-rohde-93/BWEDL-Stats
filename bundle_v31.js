@@ -226,7 +226,7 @@ function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesCl
     heading.style.cssText = 'padding: 10px 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #334155; font-weight: bold; color: #f8fafc;';
     heading.textContent = `Tabelle: ${String(leagueName ?? '')}`;
     const tableContainer = document.createElement('div');
-    tableContainer.className = 'table-container';
+    tableContainer.className = 'table-container table-scroll';
     tableContainer.style.cssText = 'padding: 0; border: none;';
     const table = document.createElement('table');
     const tableHead = document.createElement('thead');
@@ -439,9 +439,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (searchInput) {
         searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeSearchResults(true);
+            }
+        });
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.classList.add('hidden');
+                closeSearchResults(false);
             }
         });
     }
@@ -474,6 +480,19 @@ document.addEventListener('DOMContentLoaded', () => {
             content.hidden = isExpanded;
         });
         return button;
+    }
+
+    function closeSearchResults(restoreFocus = false, clearInput = restoreFocus) {
+        searchResults.classList.add('hidden');
+        searchInput.setAttribute('aria-expanded', 'false');
+        if (clearInput) searchInput.value = '';
+        if (restoreFocus) searchInput.focus();
+    }
+
+    function activateSearchResult(event) {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.currentTarget.click();
     }
 
     // --- My Profile State ---
@@ -535,12 +554,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMobileNavigation() {
         if (sidebar) sidebar.classList.remove('open');
         if (mobileOverlay) mobileOverlay.classList.remove('active');
+        if (typeof menuToggle !== 'undefined' && menuToggle) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Navigation öffnen');
+        }
     }
 
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('open');
             if (mobileOverlay) mobileOverlay.classList.toggle('active');
+            const isOpen = sidebar.classList.contains('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+                event.preventDefault();
+                closeMobileNavigation();
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Navigation öffnen');
+                menuToggle.focus();
+            }
         });
 
         if (mobileOverlay) {
@@ -1053,7 +1089,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.innerHTML = ""; // Clear for fresh render
 
             // --- Dashboard Link ---
-            const dashboardLink = document.createElement('div');
+            const dashboardLink = document.createElement('button');
+            dashboardLink.type = 'button';
             dashboardLink.className = 'nav-section-header';
             dashboardLink.innerHTML = '🏠 DASHBOARD';
             dashboardLink.style.padding = "15px";
@@ -1068,7 +1105,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(dashboardLink);
 
             // --- My Profile Link ---
-            const profileLink = document.createElement('div');
+            const profileLink = document.createElement('button');
+            profileLink.type = 'button';
             profileLink.id = 'my-profile-link';
             profileLink.className = 'nav-section-header';
             profileLink.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
@@ -1085,7 +1123,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Leagues
         if (leagueData.leagues) {
-            const leagueHeader = document.createElement('div');
+            const leagueHeader = document.createElement('button');
+            leagueHeader.type = 'button';
             leagueHeader.className = 'nav-section-header';
             leagueHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> LIGEN';
             leagueHeader.style.padding = "10px 15px 5px";
@@ -1096,12 +1135,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(leagueHeader);
 
             const container = document.createElement('div');
+            container.id = 'sidebar-leagues';
             container.style.display = "none"; // Hidden by default
             container.style.paddingLeft = "0";
+            leagueHeader.setAttribute('aria-controls', container.id);
+            leagueHeader.setAttribute('aria-expanded', 'false');
 
             leagueHeader.addEventListener('click', () => {
                 const isHidden = container.style.display === "none";
                 container.style.display = isHidden ? "block" : "none";
+                leagueHeader.setAttribute('aria-expanded', String(isHidden));
                 leagueHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
             });
 
@@ -1130,18 +1173,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 leagueGroups[category].push(leagueName);
             });
 
-            Object.keys(leagueGroups).sort().forEach(category => {
+            Object.keys(leagueGroups).sort().forEach((category, categoryIndex) => {
                 // Header
-                const catHeader = document.createElement('div');
+                const catHeader = document.createElement('button');
+                catHeader.type = 'button';
                 catHeader.className = 'sidebar-accordion-header';
                 catHeader.innerHTML = `<span>${category}</span> <span class="sidebar-accordion-icon">▶</span>`;
 
                 // Content
                 const catContent = document.createElement('div');
                 catContent.className = 'sidebar-accordion-content';
+                catContent.id = `sidebar-league-group-${categoryIndex}`;
+                catHeader.setAttribute('aria-controls', catContent.id);
+                catHeader.setAttribute('aria-expanded', 'false');
 
                 leagueGroups[category].forEach(leagueName => {
-                    const el = document.createElement('div');
+                    const el = document.createElement('button');
+                    el.type = 'button';
                     el.className = 'league-item';
                     el.textContent = leagueName;
                     el.addEventListener('click', () => {
@@ -1154,6 +1202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.stopPropagation(); // Prevent parent toggle
                     catHeader.classList.toggle('active');
                     catContent.classList.toggle('open');
+                    catHeader.setAttribute('aria-expanded', String(catContent.classList.contains('open')));
                 });
 
                 container.appendChild(catHeader);
@@ -1163,7 +1212,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 1b. Ligapokal (current + archive seasons)
             {
-                const lpHeader = document.createElement('div');
+                const lpHeader = document.createElement('button');
+                lpHeader.type = 'button';
                 lpHeader.className = 'nav-section-header';
                 lpHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> LIGAPOKAL';
                 lpHeader.style.padding = "10px 15px 5px";
@@ -1174,18 +1224,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 nav.appendChild(lpHeader);
 
                 const lpContainer = document.createElement('div');
+                lpContainer.id = 'sidebar-ligapokal';
                 lpContainer.style.display = "none";
                 lpContainer.style.paddingLeft = "0";
+                lpHeader.setAttribute('aria-controls', lpContainer.id);
+                lpHeader.setAttribute('aria-expanded', 'false');
 
                 lpHeader.addEventListener('click', () => {
                     const isHidden = lpContainer.style.display === "none";
                     lpContainer.style.display = isHidden ? "block" : "none";
+                    lpHeader.setAttribute('aria-expanded', String(isHidden));
                     lpHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
                 });
 
                 // Current season Ligapokal entries
                 ligapokalGroup.forEach(lpName => {
-                    const el = document.createElement('div');
+                    const el = document.createElement('button');
+                    el.type = 'button';
                     el.className = 'league-item';
                     el.textContent = lpName;
                     el.addEventListener('click', () => {
@@ -1199,7 +1254,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Sort seasons descending (newest first)
                     const archiveSeasons = Object.keys(ligapokalArchive).sort().reverse();
                     archiveSeasons.forEach(seasonName => {
-                        const el = document.createElement('div');
+                        const el = document.createElement('button');
+                        el.type = 'button';
                         el.className = 'league-item';
                         el.textContent = seasonName;
                         el.style.color = '#94a3b8';
@@ -1216,7 +1272,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Rankings
         if (rankingData.rankings) {
-            const rankingHeader = document.createElement('div');
+            const rankingHeader = document.createElement('button');
+            rankingHeader.type = 'button';
             rankingHeader.className = 'nav-section-header';
             rankingHeader.innerHTML = '<span style="display:inline-block; width:15px; transition: transform 0.2s;">▶</span> RANGLISTEN';
             rankingHeader.style.padding = "15px 15px 5px";
@@ -1227,18 +1284,23 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(rankingHeader);
 
             const container = document.createElement('div');
+            container.id = 'sidebar-rankings';
             container.style.display = "none";
             container.style.paddingLeft = "0";
+            rankingHeader.setAttribute('aria-controls', container.id);
+            rankingHeader.setAttribute('aria-expanded', 'false');
 
             rankingHeader.addEventListener('click', () => {
                 const isHidden = container.style.display === "none";
                 container.style.display = isHidden ? "block" : "none";
+                rankingHeader.setAttribute('aria-expanded', String(isHidden));
                 rankingHeader.querySelector('span').style.transform = isHidden ? "rotate(90deg)" : "rotate(0deg)";
             });
 
             const ranks = Object.keys(rankingData.rankings).sort();
             ranks.forEach(rankName => {
-                const el = document.createElement('div');
+                const el = document.createElement('button');
+                el.type = 'button';
                 el.className = 'league-item';
                 el.textContent = rankName;
                 el.addEventListener('click', () => {
@@ -1270,7 +1332,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 4. Comparison (New)
-        const compareLink = document.createElement('div');
+        const compareLink = document.createElement('button');
+        compareLink.type = 'button';
         compareLink.className = 'nav-section-header';
         compareLink.innerHTML = '🆚 H2H VERGLEICH';
         compareLink.style.padding = "15px 15px 5px";
@@ -1282,7 +1345,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(compareLink);
 
         // 5. All-Time Table (New)
-        const allTimeLink = document.createElement('div');
+        const allTimeLink = document.createElement('button');
+        allTimeLink.type = 'button';
         allTimeLink.className = 'nav-section-header';
         allTimeLink.innerHTML = '🏆 EWIGE TABELLE';
         allTimeLink.style.padding = "10px 15px 5px";
@@ -1294,7 +1358,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(allTimeLink);
 
         // 6. Tools (New)
-        const toolsLink = document.createElement('div');
+        const toolsLink = document.createElement('button');
+        toolsLink.type = 'button';
         toolsLink.className = 'nav-section-header';
         toolsLink.innerHTML = '🧮 TOOLS';
         toolsLink.style.padding = "10px 15px 5px";
@@ -1306,7 +1371,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(toolsLink);
 
         // 7. Wiki / Help (New)
-        const wikiLink = document.createElement('div');
+        const wikiLink = document.createElement('button');
+        wikiLink.type = 'button';
         wikiLink.className = 'nav-section-header';
         wikiLink.innerHTML = '📘 ANLEITUNG / WIKI';
         wikiLink.style.padding = "10px 15px 5px";
@@ -1529,7 +1595,8 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(header);
 
         nonClubFavorites.forEach(fav => {
-            const el = document.createElement('div');
+            const el = document.createElement('button');
+            el.type = 'button';
             el.className = 'league-item';
             el.innerHTML = `<span style="color: #fbbf24; margin-right: 6px;">★</span> ${fav.name}`;
             el.addEventListener('click', () => {
@@ -2749,7 +2816,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (list.length === 0) return `<div style="text-align:center; padding:20px; color:#94a3b8;">Keine Daten für Spieltag ${latestRound}</div>`;
 
             return `
-            <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow-x: auto;">
+            <div class="table-scroll" style="background: #1e293b; border-radius: 8px; border: 1px solid #334155;">
                 <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em;">
                     <thead>
                         <tr style="background: #0f172a; text-align: left; color: #94a3b8; font-size: 0.8em; text-transform: uppercase;">
@@ -2875,6 +2942,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (query.length < 2) {
             searchResults.classList.add('hidden');
+            searchInput.setAttribute('aria-expanded', 'false');
             return;
         }
 
@@ -2882,37 +2950,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (matches.length > 0) {
             searchResults.classList.remove('hidden');
+            searchInput.setAttribute('aria-expanded', 'true');
             matches.forEach(m => {
-                const div = document.createElement('div');
-                div.className = 'search-result-item';
-                div.style.padding = "8px 10px";
-                div.style.borderBottom = "1px solid #334155";
-                div.style.cursor = "pointer";
-                div.style.color = "#e2e8f0";
-                div.style.fontSize = "0.9em";
-                div.style.backgroundColor = "#1e293b";
-                div.style.zIndex = "2000";
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'search-result-item';
+                button.style.padding = "8px 10px";
+                button.style.borderBottom = "1px solid #334155";
+                button.style.cursor = "pointer";
+                button.style.color = "#e2e8f0";
+                button.style.fontSize = "0.9em";
+                button.style.backgroundColor = "#1e293b";
+                button.style.zIndex = "2000";
 
                 let subtext = "";
                 if (m.context) subtext = ` <span style='color: #94a3b8; font-size: 0.8em;'>(${m.context})</span>`;
 
-                div.innerHTML = `<span style="display:inline-block; width: 60px; color: #64748b; font-size: 0.8em; font-weight:bold;">${m.type}</span> ${m.label}${subtext}`;
+                button.innerHTML = `<span style="display:inline-block; width: 60px; color: #64748b; font-size: 0.8em; font-weight:bold;">${m.type}</span> ${m.label}${subtext}`;
 
-                div.addEventListener('click', () => {
+                button.addEventListener('click', () => {
                     if (m.category === 'league') navigateTo('league', m.id);
                     else if (m.category === 'club') navigateTo('club', m.id);
-                    searchResults.classList.add('hidden');
-                    searchInput.value = "";
+                    closeSearchResults(false, true);
                 });
+                button.addEventListener('keydown', activateSearchResult);
 
-                div.addEventListener('mouseenter', () => div.style.background = "#334155");
-                div.addEventListener('mouseleave', () => div.style.background = "#1e293b");
+                button.addEventListener('mouseenter', () => button.style.background = "#334155");
+                button.addEventListener('mouseleave', () => button.style.background = "#1e293b");
 
-                searchResults.appendChild(div);
+                searchResults.appendChild(button);
             });
         } else {
             searchResults.classList.remove('hidden');
+            searchInput.setAttribute('aria-expanded', 'true');
             const div = document.createElement('div');
+            div.setAttribute('role', 'status');
             div.style.padding = "8px 10px";
             div.style.color = "#94a3b8";
             div.style.fontSize = "0.9em";
@@ -5198,7 +5270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build Table
         let html = `
         <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden;">
-            <div style="overflow-x: auto;">
+            <div class="table-scroll">
                 <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em; min-width: 600px;">
                     <thead>
                         <tr style="background: #0f172a; border-bottom: 1px solid #334155; text-align: left;">
@@ -5287,7 +5359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (players.length === 0) {
             if (rankingData && rankingData.rankings && rankingData.rankings[rankName]) {
                 const fallback = document.createElement('div');
-                fallback.className = 'ranking-table-scroll';
+                fallback.className = 'ranking-table-scroll table-scroll';
                 fallback.appendChild(createSafeTableFromHtml(rankingData.rankings[rankName]));
                 container.appendChild(fallback);
             } else {
@@ -5396,7 +5468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tableCard = document.createElement('div');
         tableCard.className = 'ranking-table-card';
         const tableScroller = document.createElement('div');
-        tableScroller.className = 'ranking-table-scroll';
+        tableScroller.className = 'ranking-table-scroll table-scroll';
         const table = document.createElement('table');
         table.className = 'ranking-table';
         const thead = document.createElement('thead');
@@ -6200,7 +6272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // Check for common league table headers (Pl., Tabelle, Mannschaft, Pos, etc.)
                                 return head.includes('pl') || head.includes('tab') || head.includes('mans') || head.includes('pos');
                             });
-                            block += `<div class="history-table-wrapper">`;
+                            block += `<div class="history-table-wrapper table-scroll">`;
                             block += `<table class="history-table ${isLeague ? 'league-history-table' : 'ranking-history-table'}"><thead><tr style="background: rgba(30, 41, 59, 0.5);">${item.rows[0].map(h => `<th>${escapeHtmlText(h)}</th>`).join('')}</tr></thead><tbody>`;
                             item.rows.slice(1).forEach(row => {
                                 const isMyRow = row.some(cell => isClubMatch(club.name, cell));
@@ -6221,7 +6293,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 i++;
                             }
                             if (matchGroup.length > 0) {
-                                block += `<div class="history-table-wrapper">`;
+                                block += `<div class="history-table-wrapper table-scroll">`;
                                 block += `<table class="history-table match-history-table"><thead><tr style="background: rgba(30, 41, 59, 0.5);"><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr></thead><tbody>`;
                                 matchGroup.forEach(m => {
                                     const hStyle = isClubMatch(club.name, m.home) ? 'font-weight:bold; color:#60a5fa;' : '';
@@ -7305,7 +7377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (listA.length > 0 && listB.length > 0) {
                 html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
                     <h4 style="color: #fb923c; margin-bottom: 15px;">⚔️ 1v1 Paarungen</h4>
-                    <div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                    <div class="table-scroll"><table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
                     <tr><th style="padding: 8px; color: #64748b; text-align: left; border-bottom: 2px solid #334155;"></th>`;
 
                 listB.forEach(pb => {

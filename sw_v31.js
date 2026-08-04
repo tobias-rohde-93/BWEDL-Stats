@@ -1,4 +1,5 @@
 // Increment this cache name whenever the static asset list changes.
+// Shell content revision: accessibility-2026-08-04 (asset list unchanged).
 const CACHE_NAME = 'bwedl-dashboard-v33';
 const urlsToCache = [
     './',

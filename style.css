@@ -66,6 +66,7 @@ body {
 
 .main-content {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -75,7 +76,11 @@ body {
 
 .content-area {
     flex: 1;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     padding: 2rem;
+    overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -103,6 +108,11 @@ a:hover {
     text-decoration: underline;
 }
 
+:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
 /* --- Sidebar Components --- */
 .logo {
     margin-bottom: 2rem;
@@ -122,6 +132,13 @@ a:hover {
 }
 
 .nav-section-header {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    font-family: var(--font-family);
+    text-align: left;
+    cursor: pointer;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--text-muted);
@@ -133,6 +150,13 @@ a:hover {
 }
 
 .league-item {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    font-family: var(--font-family);
+    font-size: inherit;
+    text-align: left;
     padding: 0.6rem 0.75rem;
     margin-bottom: 0.25rem;
     border-radius: var(--radius-sm);
@@ -253,6 +277,13 @@ a:hover {
 }
 
 .search-result-item {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-family: var(--font-family);
+    text-align: left;
     padding: 0.5rem 0.75rem;
     cursor: pointer;
     border-bottom: 1px solid var(--border-subtle);
@@ -389,9 +420,15 @@ a:hover {
 
 /* --- Tables --- */
 .table-responsive {
-    overflow-x: auto;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-subtle);
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -439,7 +476,6 @@ tr:hover td {
 
 /* --- History Tables Alignment Fix --- */
 .history-table-wrapper {
-    overflow-x: auto;
     margin-bottom: 20px;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
@@ -816,7 +852,12 @@ tr:hover td {
     }
 
     .content-area {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
         padding: 1rem;
+        overflow-x: hidden;
+        box-sizing: border-box;
         /* Reduce padding */
     }
 
@@ -850,6 +891,13 @@ tr:hover td {
 
 /* --- Sidebar Accordion (Leagues) --- */
 .sidebar-accordion-header {
+    width: 100%;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    background: transparent;
+    font-family: var(--font-family);
+    text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1424,8 +1472,7 @@ a.club-contact-field__value {
 }
 
 .ranking-table-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
 }
 
 .ranking-table {
@@ -1499,9 +1546,13 @@ a.club-contact-field__value {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .ranking-toolbar__button,
-    .ranking-table tbody tr {
-        transition: none;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
 .visit-changes-card {
