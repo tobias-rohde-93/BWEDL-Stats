@@ -177,6 +177,23 @@ function createClubRankingSection(status, statsRow, playerGrid, playerCount) {
     return section;
 }
 
+function parseInertHtmlDocument(html) {
+    return new DOMParser().parseFromString(String(html ?? ''), 'text/html');
+}
+
+function findWithdrawnTeams(tableHtml) {
+    const withdrawnTeams = [];
+    const parsedDocument = parseInertHtmlDocument(tableHtml);
+    Array.from(parsedDocument.querySelectorAll('tr')).forEach((row) => {
+        if (!String(row.textContent || '').toLowerCase().includes('zurückgezogen')) return;
+        const cells = Array.from(row.querySelectorAll('td'));
+        if (cells.length < 2) return;
+        const teamName = String(cells[1].textContent || '').replace(/\u00a0/g, ' ').trim();
+        if (teamName) withdrawnTeams.push(teamName);
+    });
+    return withdrawnTeams;
+}
+
 function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesClub) {
     const section = document.createElement('div');
     section.className = 'club-current-table';
@@ -190,7 +207,7 @@ function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesCl
     const table = document.createElement('table');
     const tableHead = document.createElement('thead');
     const tableBody = document.createElement('tbody');
-    const parsedDocument = new DOMParser().parseFromString(String(tableHtml ?? ''), 'text/html');
+    const parsedDocument = parseInertHtmlDocument(tableHtml);
     Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
         const sourceCells = Array.from(sourceRow.children).filter((cell) => (
             cell.tagName === 'TH' || cell.tagName === 'TD'
@@ -5365,23 +5382,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof leagueData !== 'undefined' && leagueData.leagues) {
             Object.keys(leagueData.leagues).forEach(leagueName => {
                 const isLP = isLigapokalMatch(leagueName);
-                const withdrawnTeams = [];
                 const league = leagueData.leagues[leagueName];
-                if (league && typeof league.table === 'string') {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = league.table;
-                    const rows = tempDiv.querySelectorAll('tr');
-                    rows.forEach(row => {
-                        if (row.textContent.toLowerCase().includes("zurückgezogen")) {
-                            const cells = row.querySelectorAll('td');
-                            if (cells.length >= 2) {
-                                let teamName = cells[1].textContent.trim();
-                                teamName = teamName.replace(/\u00a0/g, ' ').trim();
-                                withdrawnTeams.push(teamName);
-                            }
-                        }
-                    });
-                }
+                const withdrawnTeams = league && typeof league.table === 'string'
+                    ? findWithdrawnTeams(league.table)
+                    : [];
                 const matches = parseAllMatches(leagueName);
                 matches.forEach(m => {
                     if (!m.played && (withdrawnTeams.includes(m.home) || withdrawnTeams.includes(m.away))) return;

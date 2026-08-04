@@ -228,9 +228,12 @@ class SafeTableDOMParser {
 }
 const maliciousLeagueName = '<img src=x onerror=alert(3)>';
 const maliciousTableHtml = '<table onclick="alert(4)"><tr><th>Team<script>alert(1)</script></th><th>Punkte</th></tr><tr><td onmouseover="alert(5)">DC Nord &lt;img src=x onerror=alert(2)&gt;</td><td>42</td></tr></table>';
+const parseInertHtmlDocument = compileFunction('parseInertHtmlDocument', {
+    DOMParser: SafeTableDOMParser,
+});
 const createSafeLeagueTableSection = compileFunction('createSafeLeagueTableSection', {
     document,
-    DOMParser: SafeTableDOMParser,
+    parseInertHtmlDocument,
 });
 const safeLeagueTable = createSafeLeagueTableSection(
     maliciousLeagueName,
@@ -246,6 +249,39 @@ assert.equal(descendants(safeLeagueTable).some((element) => ['SCRIPT', 'IMG', 'A
 assert.equal(descendants(safeLeagueTable).some((element) => Object.keys(element.attributes).some((name) => /^on/i.test(name))), false);
 assert.equal(descendants(safeLeagueTable).filter((element) => element.tagName === 'TH').length, 2);
 assert.equal(descendants(safeLeagueTable).filter((element) => element.tagName === 'TD').length, 2);
+
+class WithdrawnDOMParser {
+    parseFromString(value, type) {
+        assert.match(value, /<img src="https:\/\/attacker\.invalid\/pixel" onerror="alert\(11\)">/);
+        assert.equal(type, 'text/html');
+        const row = (textContent, cells) => ({
+            textContent,
+            querySelectorAll(selector) {
+                assert.equal(selector, 'td');
+                return cells.map((cellText) => ({ textContent: cellText }));
+            },
+        });
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'tr');
+                return [
+                    row('1 DC Nord zurückgezogen', ['1', 'DC Nord']),
+                    row('2 Flying Arrows aktiv', ['2', 'Flying Arrows']),
+                ];
+            },
+        };
+    }
+}
+const parseWithdrawnDocument = compileFunction('parseInertHtmlDocument', {
+    DOMParser: WithdrawnDOMParser,
+});
+const findWithdrawnTeams = compileFunction('findWithdrawnTeams', {
+    parseInertHtmlDocument: parseWithdrawnDocument,
+});
+const withdrawnTeams = findWithdrawnTeams('<table><tr><td>1</td><td><img src="https://attacker.invalid/pixel" onerror="alert(11)">DC Nord</td><td>zurückgezogen</td></tr><tr><td>2</td><td>Flying Arrows</td><td>aktiv</td></tr></table>');
+assert.deepEqual(withdrawnTeams, ['DC Nord']);
+assert.equal(withdrawnTeams.includes('DC Nord'), true, 'withdrawn match data remains excluded');
+assert.equal(withdrawnTeams.includes('Flying Arrows'), false, 'current active match data remains available');
 
 const createPlayerFormElement = compileFunction('createPlayerFormElement', { document });
 const createClubPlayerCard = compileFunction('createClubPlayerCard', {
@@ -506,6 +542,8 @@ assert.doesNotMatch(renderClubSource, /currentSeasonContent\.appendChild\(player
 assert.doesNotMatch(renderClubSource, /container\.appendChild\(statsRow\)/);
 assert.doesNotMatch(renderClubSource, /\bpCard\.innerHTML|\btSec\.innerHTML/);
 assert.match(renderClubSource, /createSafeLeagueTableSection/);
+assert.match(renderClubSource, /findWithdrawnTeams\(league\.table\)/);
+assert.doesNotMatch(source, /innerHTML\s*=\s*league\.table/);
 assert.match(renderClubSource, /createClubRankingSection/);
 assert.match(renderClubSource, /container\.appendChild\(playerSection\)/);
 
