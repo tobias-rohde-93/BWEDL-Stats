@@ -526,6 +526,7 @@
                 points: snapshotNumber(player.points),
                 rankingClass: snapshotText(player.rankingClass),
                 sourceSeason: snapshotText(player.sourceSeason),
+                sourceState: snapshotText(player.sourceState),
                 sourceKey: snapshotText(player.sourceKey),
             } : null,
             team: team ? {
@@ -599,17 +600,17 @@
         const currentTime = Date.parse(current.data.updatedAt || '');
         const hasNewerSummaryTimestamp = Number.isFinite(beforeTime) &&
             Number.isFinite(currentTime) && currentTime > beforeTime;
-        if (
+        const hasNewerData = (
             previous.data.key !== current.data.key &&
             (hasNewerDomainTimestamp || hasNewerSummaryTimestamp)
-        ) {
-            changes.push({ type: 'data', message: 'Neue Daten seit deinem letzten Besuch.' });
-        }
+        );
 
         const samePlayer = sameSnapshotIdentity(previous, current, 'player', 'canonicalName');
         const sameRankingSource = samePlayer && previous.player && current.player &&
             previous.player.sourceKey && previous.player.sourceKey === current.player.sourceKey &&
-            previous.player.sourceSeason === current.player.sourceSeason;
+            previous.player.sourceSeason === current.player.sourceSeason &&
+            previous.player.sourceState === current.player.sourceState &&
+            previous.player.rankingClass === current.player.rankingClass;
         if (sameRankingSource && previous.player.rank !== current.player.rank) {
             changes.push({
                 type: 'rank',
@@ -650,7 +651,87 @@
                 });
             }
         }
+        if (changes.length === 0 && hasNewerData) {
+            changes.push({ type: 'data', message: 'Neue Daten seit deinem letzten Besuch.' });
+        }
         return changes;
+    }
+
+    function renderVisitChangesCard(documentObject, container, changes) {
+        if (!documentObject || !container || !Array.isArray(changes) || changes.length === 0) {
+            return null;
+        }
+        const card = documentObject.createElement('section');
+        const header = documentObject.createElement('div');
+        const heading = documentObject.createElement('h2');
+        const dismiss = documentObject.createElement('button');
+        const list = documentObject.createElement('ul');
+
+        card.className = 'visit-changes-card';
+        card.setAttribute('aria-labelledby', 'visit-changes-title');
+        header.className = 'visit-changes-card__header';
+        heading.id = 'visit-changes-title';
+        heading.className = 'visit-changes-card__title';
+        heading.textContent = 'Seit deinem letzten Besuch';
+        dismiss.type = 'button';
+        dismiss.className = 'visit-changes-card__dismiss';
+        dismiss.textContent = 'Schließen';
+        dismiss.setAttribute('aria-label', 'Änderungen ausblenden');
+        dismiss.addEventListener('click', () => card.remove());
+        list.className = 'visit-changes-card__list';
+        changes.forEach((change) => {
+            const message = documentObject.createElement('li');
+            message.textContent = String(change.message || '');
+            list.appendChild(message);
+        });
+        header.append(heading, dismiss);
+        card.append(header, list);
+        container.appendChild(card);
+        return card;
+    }
+
+    function startVisitChangesLifecycle({
+        storage,
+        buildCurrentSnapshot,
+        comparePrevious = true,
+        key = VISIT_SNAPSHOT_STORAGE_KEY,
+    } = {}) {
+        let currentSnapshot = null;
+        try {
+            currentSnapshot = typeof buildCurrentSnapshot === 'function'
+                ? buildCurrentSnapshot()
+                : null;
+        } catch (_error) {
+            currentSnapshot = null;
+        }
+        const validCurrentSnapshot = isVisitSnapshot(currentSnapshot)
+            ? buildVisitSnapshot(currentSnapshot)
+            : null;
+        const previousSnapshot = comparePrevious && validCurrentSnapshot
+            ? readVisitSnapshot(storage, key)
+            : null;
+        const changes = comparePrevious && validCurrentSnapshot
+            ? diffVisitSnapshots(previousSnapshot, validCurrentSnapshot)
+            : [];
+        let completed = false;
+
+        return {
+            changes: changes.slice(),
+            render(documentObject, container) {
+                if (completed || !validCurrentSnapshot) return null;
+                let card = null;
+                try {
+                    card = renderVisitChangesCard(documentObject, container, changes);
+                } catch (_error) {
+                    card = null;
+                } finally {
+                    // The baseline advances only after the render decision has completed.
+                    persistVisitSnapshot(storage, validCurrentSnapshot, key);
+                    completed = true;
+                }
+                return card;
+            },
+        };
     }
 
     function diffVisitSnapshots(previous, current) {
@@ -714,6 +795,8 @@
         buildVisitSnapshot,
         readVisitSnapshot,
         persistVisitSnapshot,
+        renderVisitChangesCard,
+        startVisitChangesLifecycle,
         isByeOpponent,
         selectUpcomingGames,
         buildSeasonNotice,

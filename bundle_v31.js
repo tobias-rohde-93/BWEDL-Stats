@@ -582,8 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let historyStack = [];
     let isNavigatingBack = false;
     let currentState = null;
-    let visitChanges = [];
-    let visitChangesDismissed = false;
+    let visitChangesLifecycle = null;
 
     // Load Data
     if (typeof LEAGUE_DATA !== 'undefined') leagueData = LEAGUE_DATA;
@@ -1725,11 +1724,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     points: selected.points,
                     rankingClass: selected.league,
                     sourceSeason: rankingStatus.season || null,
-                    sourceKey: [
-                        'rankings',
-                        rankingStatus.season || 'unknown',
-                        rankingStatus.state || 'unknown',
-                    ].join(':'),
+                    sourceState: rankingStatus.state || null,
+                    sourceKey: ['rankings', rankingStatus.season || 'unknown'].join(':'),
                 };
 
                 const selectedTeam = myTeamName || selected.company || null;
@@ -1778,50 +1774,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function refreshVisitSnapshotBaseline(compareWithPrevious = false) {
         if (!window.BwedlAppUtils) return;
-        const currentSnapshot = buildCurrentVisitSnapshot();
-        if (!currentSnapshot) return;
-        const previousSnapshot = compareWithPrevious
-            ? window.BwedlAppUtils.readVisitSnapshot(localStorage, VISIT_SNAPSHOT_STORAGE_KEY)
-            : null;
-        visitChanges = compareWithPrevious
-            ? window.BwedlAppUtils.diffVisitSnapshots(previousSnapshot, currentSnapshot)
-            : [];
-        visitChangesDismissed = false;
-        // Persist after comparison. Dismissing the card never changes this baseline.
-        window.BwedlAppUtils.persistVisitSnapshot(localStorage, currentSnapshot, VISIT_SNAPSHOT_STORAGE_KEY);
-    }
-
-    function renderVisitChanges(container) {
-        if (visitChangesDismissed || visitChanges.length === 0) return;
-        const card = document.createElement('section');
-        const header = document.createElement('div');
-        const heading = document.createElement('h2');
-        const dismiss = document.createElement('button');
-        const list = document.createElement('ul');
-
-        card.className = 'visit-changes-card';
-        card.setAttribute('aria-labelledby', 'visit-changes-title');
-        header.className = 'visit-changes-card__header';
-        heading.id = 'visit-changes-title';
-        heading.className = 'visit-changes-card__title';
-        heading.textContent = 'Seit deinem letzten Besuch';
-        dismiss.type = 'button';
-        dismiss.className = 'visit-changes-card__dismiss';
-        dismiss.textContent = 'Schließen';
-        dismiss.setAttribute('aria-label', 'Änderungen ausblenden');
-        dismiss.addEventListener('click', () => {
-            visitChangesDismissed = true;
-            card.remove();
+        visitChangesLifecycle = window.BwedlAppUtils.startVisitChangesLifecycle({
+            storage: localStorage,
+            key: VISIT_SNAPSHOT_STORAGE_KEY,
+            comparePrevious: compareWithPrevious,
+            buildCurrentSnapshot: buildCurrentVisitSnapshot,
         });
-        list.className = 'visit-changes-card__list';
-        visitChanges.forEach((change) => {
-            const message = document.createElement('li');
-            message.textContent = change.message;
-            list.appendChild(message);
-        });
-        header.append(heading, dismiss);
-        card.append(header, list);
-        container.appendChild(card);
     }
 
     function calculateTrend(p) {
@@ -2170,7 +2128,9 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.maxWidth = "1200px";
         container.style.margin = "0 auto";
 
-        if (typeof renderVisitChanges === 'function') renderVisitChanges(container);
+        if (typeof visitChangesLifecycle !== 'undefined' && visitChangesLifecycle) {
+            visitChangesLifecycle.render(document, container);
+        }
 
         if (!myPlayerName) {
             container.appendChild(createProfileOnboardingCard());
