@@ -1,8 +1,10 @@
-const CACHE_NAME = 'bwedl-dashboard-v32';
+// Supersedes bwedl-dashboard-v32 so clients refresh the static utility API.
+const CACHE_NAME = 'bwedl-dashboard-v33';
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
+    './app_utils.js',
     './bundle_v31.js',
     './league_data.js',
     './ranking_data.js',
