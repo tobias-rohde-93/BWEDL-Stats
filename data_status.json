@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-11T19:04:30.363506Z",
+  "generated_at": "2026-08-12T01:33:58.376263Z",
   "domains": {
     "leagues": {
       "season": "2026/27",
       "state": "current",
-      "updated_at": "2026-08-11T19:04:30.363506Z"
+      "updated_at": "2026-08-12T01:33:58.376263Z"
     },
     "rankings": {
       "season": "2025/26",
@@ -14,7 +14,7 @@
     "clubs": {
       "season": "current",
       "state": "current",
-      "updated_at": "2026-08-11T19:04:30.363506Z"
+      "updated_at": "2026-08-12T01:33:58.376263Z"
     },
     "archives": {
       "season": "historical",
