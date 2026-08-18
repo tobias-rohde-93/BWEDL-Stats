@@ -181,38 +181,124 @@ function parseInertHtmlDocument(html) {
     return new DOMParser().parseFromString(String(html ?? ''), 'text/html');
 }
 
-function createSafeTableFromHtml(tableHtml) {
-    const table = document.createElement('table');
-    const tableHead = document.createElement('thead');
-    const tableBody = document.createElement('tbody');
+function safePublishedSpan(value) {
+    const normalized = String(value ?? '').trim();
+    if (!/^[1-9]\d*$/.test(normalized)) return null;
+    const parsed = Number(normalized);
+    return parsed <= 100 ? normalized : null;
+}
+
+function safeTableModelsFromHtml(tableHtml) {
     const parsedDocument = parseInertHtmlDocument(tableHtml);
-    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
-        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
-            cell.tagName === 'TH' || cell.tagName === 'TD'
-        ));
-        if (sourceCells.length === 0) return;
+    return Array.from(parsedDocument.querySelectorAll('table'))
+        .filter((sourceTable) => !(
+            sourceTable.parentElement &&
+            typeof sourceTable.parentElement.closest === 'function' &&
+            sourceTable.parentElement.closest('table')
+        ))
+        .map((sourceTable) => {
+            const rows = Array.from(sourceTable.querySelectorAll('tr'))
+                .filter((sourceRow) => (
+                    typeof sourceRow.closest !== 'function' ||
+                    sourceRow.closest('table') === sourceTable
+                ))
+                .map((sourceRow, rowIndex) => {
+                    const cells = Array.from(sourceRow.children)
+                        .filter((cell) => cell.tagName === 'TH' || cell.tagName === 'TD')
+                        .map((cell) => ({
+                            tagName: cell.tagName.toLowerCase(),
+                            text: String(cell.textContent ?? ''),
+                            rowspan: safePublishedSpan(cell.getAttribute('rowspan')),
+                            colspan: safePublishedSpan(cell.getAttribute('colspan')),
+                        }));
+                    if (cells.length === 0) return null;
+                    const sourceSection = String(
+                        sourceRow.parentElement && sourceRow.parentElement.tagName || '',
+                    ).toLowerCase();
+                    const section = ['thead', 'tbody', 'tfoot'].includes(sourceSection)
+                        ? sourceSection
+                        : (rowIndex === 0 && cells.every((cell) => cell.tagName === 'th')
+                            ? 'thead'
+                            : 'tbody');
+                    return { section, cells };
+                })
+                .filter(Boolean);
+            return { rows };
+        })
+        .filter((model) => model.rows.length > 0);
+}
+
+function safeTableRowsFromHtml(tableHtml) {
+    return safeTableModelsFromHtml(tableHtml).flatMap((model) => (
+        model.rows.map((row) => row.cells.map((cell) => cell.text))
+    ));
+}
+
+function createSafeTableFromModel(model) {
+    const table = document.createElement('table');
+    let activeSectionName = null;
+    let activeSection = null;
+    model.rows.forEach((sourceRow) => {
+        if (sourceRow.section !== activeSectionName) {
+            activeSectionName = sourceRow.section;
+            activeSection = document.createElement(activeSectionName);
+            table.appendChild(activeSection);
+        }
         const row = document.createElement('tr');
-        sourceCells.forEach((sourceCell) => {
-            const cell = document.createElement(sourceCell.tagName.toLowerCase());
-            cell.textContent = String(sourceCell.textContent ?? '');
+        sourceRow.cells.forEach((sourceCell) => {
+            const cell = document.createElement(sourceCell.tagName);
+            cell.textContent = sourceCell.text;
+            if (sourceCell.rowspan !== null) cell.setAttribute('rowspan', sourceCell.rowspan);
+            if (sourceCell.colspan !== null) cell.setAttribute('colspan', sourceCell.colspan);
             row.appendChild(cell);
         });
-        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
-        (isHeaderRow ? tableHead : tableBody).appendChild(row);
+        activeSection.appendChild(row);
     });
-    if (tableHead.children.length > 0) table.appendChild(tableHead);
-    if (tableBody.children.length > 0) table.appendChild(tableBody);
     return table;
+}
+
+function createSafeTablesFromHtml(tableHtml) {
+    const fragment = document.createDocumentFragment();
+    safeTableModelsFromHtml(tableHtml).forEach((model) => {
+        fragment.appendChild(createSafeTableFromModel(model));
+    });
+    return fragment;
+}
+
+function createSafeTableFromHtml(tableHtml) {
+    const fragment = createSafeTablesFromHtml(tableHtml);
+    return fragment.firstElementChild || document.createElement('table');
+}
+
+function replaceWithSafeTables(container, tableHtml) {
+    const fragment = createSafeTablesFromHtml(tableHtml);
+    const tableCount = fragment.children.length;
+    container.replaceChildren(fragment);
+    return tableCount;
+}
+
+function replaceWithSafeCupTables(container, tableHtml, matchDays) {
+    const safeTables = Array.from(createSafeTablesFromHtml(tableHtml).children);
+    const roundNames = Object.keys(matchDays || {});
+    const fragment = document.createDocumentFragment();
+    safeTables.forEach((table, index) => {
+        if (roundNames[index]) {
+            const heading = document.createElement('h3');
+            heading.textContent = roundNames[index];
+            fragment.appendChild(heading);
+        }
+        fragment.appendChild(table);
+    });
+    container.replaceChildren(fragment);
+    return safeTables.length;
 }
 
 function findWithdrawnTeams(tableHtml) {
     const withdrawnTeams = [];
-    const parsedDocument = parseInertHtmlDocument(tableHtml);
-    Array.from(parsedDocument.querySelectorAll('tr')).forEach((row) => {
-        if (!String(row.textContent || '').toLowerCase().includes('zurückgezogen')) return;
-        const cells = Array.from(row.querySelectorAll('td'));
+    safeTableRowsFromHtml(tableHtml).forEach((cells) => {
+        if (!cells.join(' ').toLowerCase().includes('zurückgezogen')) return;
         if (cells.length < 2) return;
-        const teamName = String(cells[1].textContent || '').replace(/\u00a0/g, ' ').trim();
+        const teamName = String(cells[1] || '').replace(/\u00a0/g, ' ').trim();
         if (teamName) withdrawnTeams.push(teamName);
     });
     return withdrawnTeams;
@@ -228,31 +314,14 @@ function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesCl
     const tableContainer = document.createElement('div');
     tableContainer.className = 'table-container table-scroll';
     tableContainer.style.cssText = 'padding: 0; border: none;';
-    const table = document.createElement('table');
-    const tableHead = document.createElement('thead');
-    const tableBody = document.createElement('tbody');
-    const parsedDocument = parseInertHtmlDocument(tableHtml);
-    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
-        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
-            cell.tagName === 'TH' || cell.tagName === 'TD'
-        ));
-        if (sourceCells.length === 0) return;
-        const row = document.createElement('tr');
-        sourceCells.forEach((sourceCell) => {
-            const cell = document.createElement(sourceCell.tagName.toLowerCase());
-            cell.textContent = String(sourceCell.textContent ?? '');
-            row.appendChild(cell);
-        });
+    const table = createSafeTableFromHtml(tableHtml);
+    Array.from(table.querySelectorAll('tbody tr')).forEach((row) => {
         if (typeof matchesClub === 'function' && matchesClub(clubName, row.textContent)) {
             row.style.background = 'rgba(59, 130, 246, 0.2)';
             row.style.fontWeight = 'bold';
             row.style.color = '#60a5fa';
         }
-        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
-        (isHeaderRow ? tableHead : tableBody).appendChild(row);
     });
-    if (tableHead.children.length > 0) table.appendChild(tableHead);
-    if (tableBody.children.length > 0) table.appendChild(tableBody);
     tableContainer.appendChild(table);
     section.append(heading, tableContainer);
     return section;
@@ -1696,15 +1765,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function extractLeagueLeader(tableHtml) {
-        const temp = document.createElement('div');
-        temp.innerHTML = tableHtml;
-        const rows = temp.querySelectorAll('tr');
-        for (let row of rows) {
-            const cells = row.querySelectorAll('td');
+        const rows = safeTableRowsFromHtml(tableHtml);
+        for (const cells of rows) {
             if (cells.length > 2) {
-                const rankText = cells[0].textContent.trim().replace('.', '');
+                const rankText = cells[0].trim().replace('.', '');
                 if (rankText === '1') {
-                    return cells[1].textContent.trim();
+                    return cells[1].trim();
                 }
             }
         }
@@ -2371,25 +2437,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     matchingLeagues.forEach(lKey => {
                         const lData = leagueData.leagues[lKey];
                         if (lData && lData.table) {
-                            const temp = document.createElement('div');
-                            temp.innerHTML = lData.table;
-                            const rows = temp.querySelectorAll('tr');
+                            const rows = safeTableRowsFromHtml(lData.table);
 
-                            rows.forEach(row => {
-                                const cells = row.querySelectorAll('td');
+                            rows.forEach(cells => {
                                 if (cells.length > 8) {
                                     // Extract Data
                                     // FIXED: Table usually has 10 columns (0-9).
                                     // Index 8 = Points. Index 7 = Diff. Index 2 = Games.
                                     // Last column (Index 9) is for penalties/notes (e.g. "(-1)" or "&nbsp;").
 
-                                    const teamName = cells[1].textContent.trim();
+                                    const teamName = cells[1].trim();
 
                                     // Robust parsing
-                                    const pointsText = cells[8].textContent.replace(/&nbsp;/g, '').trim();
+                                    const pointsText = cells[8].replace(/&nbsp;/g, '').trim();
                                     const points = parseInt(pointsText) || 0;
 
-                                    const diffText = cells[7].textContent.replace(/&nbsp;/g, '').trim();
+                                    const diffText = cells[7].replace(/&nbsp;/g, '').trim();
                                     const diff = parseInt(diffText) || 0;
 
                                     allTeams.push({
@@ -4991,7 +5054,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Render results using the pre-formatted HTML table ---
         const resultsContainer = document.getElementById('league-results-container');
         if (data.table) {
-            resultsContainer.innerHTML = data.table;
+            replaceWithSafeCupTables(resultsContainer, data.table, data.match_days);
             cleanTable(resultsContainer);
             // Make team names clickable
             if (typeof CLUB_DATA !== 'undefined' && CLUB_DATA.clubs) {
@@ -5145,7 +5208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ligapokal: render table HTML directly into results container
             const resultsContainer = document.getElementById('league-results-container');
             if (data.table) {
-                resultsContainer.innerHTML = data.table;
+                replaceWithSafeCupTables(resultsContainer, data.table, data.match_days);
                 cleanTable(resultsContainer);
                 makeTeamsClickable(resultsContainer);
             } else {
@@ -5155,7 +5218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Standard leagues: render table tab
             const tableContainer = document.getElementById('league-table-container');
             if (data.table) {
-                tableContainer.innerHTML = data.table;
+                replaceWithSafeTables(tableContainer, data.table);
                 cleanTable(tableContainer);
                 makeTeamsClickable(tableContainer);
             } else {
@@ -5345,125 +5408,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const avg = count > 0 ? (sum / count) : 0;
         return sum + (avg * dCount);
     }
-
-    function renderRankingLegacy(rankName) {
-        topBarTitle.textContent = rankName;
-        contentArea.innerHTML = '';
-
-        const container = document.createElement('div');
-        container.style.padding = "20px";
-        container.className = "fade-in";
-        const rankingSeasonNotice = createSeasonNotice('ranking');
-
-        // Logic to get players for this ranking
-        // We match p.league with rankName
-        let players = [];
-        if (rankingData && rankingData.players) {
-            players = rankingData.players.filter(p => p.league === rankName);
-        }
-
-        if (players.length === 0) {
-            // Fallback to existing static HTML if no players found (compatibility)
-            if (rankingData.rankings && rankingData.rankings[rankName]) {
-                const div = document.createElement('div');
-                div.innerHTML = rankingData.rankings[rankName];
-                cleanTable(div);
-                container.appendChild(div);
-            } else {
-                container.innerHTML = '<div style="color: #94a3b8;">Keine Daten verfügbar.</div>';
-            }
-            if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
-            contentArea.appendChild(container);
-            return;
-        }
-
-        // Calculate and Sort
-        players = players.map(p => {
-            const total = calculateTotalPoints(p);
-            const stats = calculatePlayerStats(p);
-            return { ...p, _totalPoints: total, _stats: stats };
-        }).sort((a, b) => {
-            // Sort by Points Desc, then Avg Desc
-            if (b._totalPoints !== a._totalPoints) return b._totalPoints - a._totalPoints;
-            return b._stats.avg - a._stats.avg;
-        });
-
-        // Build Table
-        let html = `
-        <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden;">
-            <div class="table-scroll">
-                <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em; min-width: 600px;">
-                    <thead>
-                        <tr style="background: #0f172a; border-bottom: 1px solid #334155; text-align: left;">
-                            <th style="padding: 12px 15px; width: 50px;">#</th>
-                            <th style="padding: 12px 15px;">Name</th>
-                            <th style="padding: 12px 15px;">Verein</th>
-                            <th style="padding: 12px 15px; text-align: center;">Spiele</th>
-                            <th style="padding: 12px 15px; text-align: right;">Ø</th>
-                            <th style="padding: 12px 15px; text-align: right;">Punkte</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        `;
-
-        players.forEach((p, idx) => {
-            const isTop3 = idx < 3;
-            const rankEmoji = idx === 0 ? '🥇 ' : (idx === 1 ? '🥈 ' : (idx === 2 ? '🥉 ' : ''));
-            const rowStyle = idx % 2 === 0 ? 'background: transparent;' : 'background: rgba(255,255,255,0.02);';
-            const rankStyle = isTop3 ? 'color: #fbbf24; font-weight: bold;' : 'color: #94a3b8;';
-            const highlightStyle = isTop3 ? 'color: #f8fafc; font-weight: 600;' : 'color: #e2e8f0;';
-
-            // Find Club Index for link
-            let clubIdx = -1;
-            let clubName = p.company;
-
-            if (clubData.clubs) {
-                clubIdx = clubData.clubs.findIndex(c => c.number === p.v_nr);
-                if (clubIdx !== -1) {
-                    // Use club name from master data if missing on player object
-                    if (!clubName) clubName = clubData.clubs[clubIdx].name;
-                }
-            }
-            // Fallback
-            if (!clubName) clubName = "Unbekannt";
-
-            const isMyPlayer = p.name === myPlayerName;
-            const extraClass = isMyPlayer ? 'my-player-row' : '';
-            // const rowStyle already defined above, reuse/override background in class
-            // If my player, override background in inline style or rely on class !important
-
-            html += `
-            <tr class="${extraClass}" style="${rowStyle} border-bottom: 1px solid #334155; transition: background 0.15s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='${idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)'}'">
-                <td style="padding: 10px 15px; ${rankStyle}">${rankEmoji}${idx + 1}.</td>
-                <td style="padding: 10px 15px; ${highlightStyle}">
-                    ${p.name}
-                    ${p.team ? `<div style="font-size: 0.8em; color: #64748b;">${p.team}</div>` : ''}
-                </td>
-                <td style="padding: 10px 15px; color: #60a5fa; cursor: pointer;" onclick="navigateTo('club', ${clubIdx})">
-                    ${clubName}
-                </td>
-                <td style="padding: 10px 15px; text-align: center; color: #94a3b8;">${p._stats.count}</td>
-                <td style="padding: 10px 15px; text-align: right; color: #4ade80;">${p._stats.avg.toFixed(2)}</td>
-                <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: #f8fafc; font-size: 1.1em;">
-                    ${parseFloat(p._totalPoints.toFixed(2)) /* Remove trailing zeros */}
-                </td>
-            </tr>
-            `;
-        });
-
-        html += `</tbody></table></div></div>`;
-
-        // Add info about calculation
-        html += `<div style="margin-top: 10px; font-size: 0.8em; color: #64748b; font-style: italic;">
-            * 'D' wertet als Durchschnitt der gespielten Spiele (Spielfrei-Ausgleich).
-        </div>`;
-
-        container.innerHTML = html;
-        if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
-        contentArea.appendChild(container);
-    }
-
-
 
     function renderRanking(rankName) {
         topBarTitle.textContent = rankName;
@@ -6446,13 +6390,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // (Rules removed: Duplicate setupTabs definition was here)
 
     function cleanTable(container) {
-        const table = container.querySelector('table');
-        if (table) {
+        container.querySelectorAll('table').forEach((table) => {
             table.removeAttribute('style');
             table.removeAttribute('border');
             table.removeAttribute('cellpadding');
             table.removeAttribute('cellspacing');
-        }
+        });
     }
 
     // =============================================
@@ -7170,13 +7113,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Extract real team names from league table
             let tableTeams = [];
             if (leagueData.leagues[league] && leagueData.leagues[league].table) {
-                const temp = document.createElement('div');
-                temp.innerHTML = leagueData.leagues[league].table;
-                const rows = temp.querySelectorAll('tr');
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
+                const rows = safeTableRowsFromHtml(leagueData.leagues[league].table);
+                rows.forEach(cells => {
                     if (cells.length > 2) {
-                        tableTeams.push(cells[1].textContent.trim());
+                        tableTeams.push(cells[1].trim());
                     }
                 });
             }
