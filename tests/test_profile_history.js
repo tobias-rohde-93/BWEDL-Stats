@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const BwedlAppUtils = require('../app_utils.js');
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'bundle_v31.js'), 'utf8');
 
@@ -75,19 +76,46 @@ function extractAssignedArrow(name) {
 
 const setMyPlayerSource = extractAssignedArrow('setMyPlayer');
 
-function createHarness(initialName) {
+function extractFunction(name) {
+    const start = source.indexOf(`function ${name}(`);
+    assert.notEqual(start, -1, `Expected function ${name} to exist`);
+    const openingBrace = source.indexOf('{', start);
+    return source.slice(start, findClosingBrace(openingBrace, name) + 1);
+}
+
+const storeResolvedPlayerProfile = Function(
+    `${extractFunction('storeResolvedPlayerProfile')}; return storeResolvedPlayerProfile;`,
+)();
+const clearStoredPlayerProfile = Function(
+    `${extractFunction('clearStoredPlayerProfile')}; return clearStoredPlayerProfile;`,
+)();
+
+const players = [{
+    id: '42',
+    v_nr: '007',
+    name: 'Public Player',
+    league: 'A-Klasse',
+    company: 'Public Team',
+}];
+const group = BwedlAppUtils.groupRankingPeople(players)[0];
+const savedProfile = BwedlAppUtils.createPlayerProfile(group, 'A-Klasse|42', 'Public Team');
+
+function createHarness(initialProfile) {
     const storageCalls = [];
     const historyCalls = [];
     const navigationCalls = [];
-    const link = { innerHTML: '', style: {} };
+    const link = { textContent: '', style: {} };
     let directRenderCalls = 0;
+    const values = new Map();
 
     const localStorage = {
         setItem(key, value) {
             storageCalls.push(['setItem', key, value]);
+            values.set(key, value);
         },
         removeItem(key) {
             storageCalls.push(['removeItem', key]);
+            values.delete(key);
         },
     };
     const document = {
@@ -102,14 +130,35 @@ function createHarness(initialName) {
     };
     const navigateTo = (...args) => navigationCalls.push(args);
     const renderDashboard = () => { directRenderCalls += 1; };
+    const replaceWithIconLabel = (element, icon, label) => {
+        element.textContent = `${icon} ${label}`;
+    };
     const profile = new Function(
-        'localStorage',
-        'document',
-        'history',
-        'navigateTo',
-        'renderDashboard',
-        `let myPlayerName = ${JSON.stringify(initialName)}; const setMyPlayer = ${setMyPlayerSource}; return { setMyPlayer, getMyPlayerName: () => myPlayerName };`,
-    )(localStorage, document, history, navigateTo, renderDashboard);
+        'localStorage', 'document', 'history', 'navigateTo', 'renderDashboard',
+        'replaceWithIconLabel', 'storeResolvedPlayerProfile', 'clearStoredPlayerProfile',
+        'window', 'rankingData',
+        `let myPlayerProfile = arguments[10];
+         let myPlayerResolution = myPlayerProfile
+            ? window.BwedlAppUtils.resolvePlayerProfile(rankingData.players, myPlayerProfile)
+            : { status: 'missing', profile: null, group: null, player: null, records: [] };
+         let myPlayerName = myPlayerProfile ? myPlayerProfile.name : null;
+         let myTeamName = myPlayerProfile ? myPlayerProfile.teamName : null;
+         let legacyProfileNeedsConfirmation = false;
+         const applyPlayerResolution = (resolution) => {
+            myPlayerResolution = resolution && resolution.status === 'resolved'
+                ? resolution
+                : { status: 'missing', profile: null, group: null, player: null, records: [] };
+            myPlayerProfile = myPlayerResolution.profile;
+            myPlayerName = myPlayerProfile ? myPlayerProfile.name : null;
+            myTeamName = myPlayerProfile ? myPlayerProfile.teamName : null;
+         };
+         const setMyPlayer = ${setMyPlayerSource};
+         return { setMyPlayer, getMyPlayerProfile: () => myPlayerProfile };`,
+    )(
+        localStorage, document, history, navigateTo, renderDashboard,
+        replaceWithIconLabel, storeResolvedPlayerProfile, clearStoredPlayerProfile,
+        { BwedlAppUtils }, { players }, initialProfile,
+    );
 
     return {
         ...profile,
@@ -131,22 +180,32 @@ function assertDashboardReplacement(harness) {
 
 {
     const harness = createHarness(null);
-    harness.setMyPlayer('Public Player');
+    assert.equal(harness.setMyPlayer(savedProfile), true);
 
-    assert.equal(harness.getMyPlayerName(), 'Public Player');
-    assert.deepEqual(harness.storageCalls, [['setItem', 'myPlayerName', 'Public Player']]);
-    assert.match(harness.link.innerHTML, /Public Player/);
+    assert.equal(harness.getMyPlayerProfile().recordKey, 'A-Klasse|42');
+    assert.equal(harness.storageCalls[0][0], 'setItem');
+    assert.equal(harness.storageCalls[0][1], BwedlAppUtils.PLAYER_PROFILE_STORAGE_KEY);
+    assert.equal(JSON.parse(harness.storageCalls[0][2]).recordKey, 'A-Klasse|42');
+    assert.deepEqual(harness.storageCalls.slice(1), [
+        ['removeItem', 'myPlayerName'],
+        ['removeItem', 'myTeamName'],
+    ]);
+    assert.match(harness.link.textContent, /Public Player/);
     assert.equal(harness.link.style.color, '#f8fafc');
     assertDashboardReplacement(harness);
 }
 
 {
-    const harness = createHarness('Public Player');
-    harness.setMyPlayer(null);
+    const harness = createHarness(savedProfile);
+    assert.equal(harness.setMyPlayer(null), true);
 
-    assert.equal(harness.getMyPlayerName(), null);
-    assert.deepEqual(harness.storageCalls, [['removeItem', 'myPlayerName']]);
-    assert.match(harness.link.innerHTML, /Mein Profil/);
+    assert.equal(harness.getMyPlayerProfile(), null);
+    assert.deepEqual(harness.storageCalls, [
+        ['removeItem', BwedlAppUtils.PLAYER_PROFILE_STORAGE_KEY],
+        ['removeItem', 'myPlayerName'],
+        ['removeItem', 'myTeamName'],
+    ]);
+    assert.match(harness.link.textContent, /Mein Profil/);
     assert.equal(harness.link.style.color, '#94a3b8');
     assertDashboardReplacement(harness);
 }

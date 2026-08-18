@@ -291,8 +291,10 @@ function runDashboard(status, playerName) {
         topBarTitle,
         contentArea,
         document,
-        myPlayerName: playerName,
         myTeamName: null,
+        getMyPrimaryPlayer: () => players[0] || null,
+        isMyPlayerRecord: (player) => player === players[0],
+        escapeHtmlText: BwedlAppUtils.escapeHtmlText,
         rankingData: { players },
         calculatePlayerStats: () => ({ avg: 54, count: 1 }),
         calculateTrend: () => null,
@@ -348,6 +350,8 @@ function runRenderer(name, context, status) {
         bindings = {
             ...common,
             rankingData: { players: [], rankings: {} },
+            myPlayerProfile: null,
+            isMyPlayerRecord: () => false,
         };
     } else if (name === 'renderComparisonView') {
         bindings = {
@@ -363,6 +367,7 @@ function runRenderer(name, context, status) {
             rankingData: { players: [] },
             detectNextMatch: () => [],
             myPlayerName: null,
+            isMyPlayerRecord: () => false,
         };
     }
 

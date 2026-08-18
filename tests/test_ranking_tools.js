@@ -154,9 +154,9 @@ const document = createDocument();
 const contentArea = document.createElement('main');
 const topBarTitle = document.createElement('h1');
 const rankingData = { players: [
-    { name: '<img src=x onerror=alert(1)>', league: 'A-Klasse', rank: '3a', points: '30', company: 'DC Drei', v_nr: '003', rounds: { R1: 10, R2: 10, R3: 10 } },
-    { name: 'Café Spieler', league: 'A-Klasse', rank: '1', points: '20', company: 'DC Eins', v_nr: '001', rounds: { R1: 10, R2: 10 } },
-    { name: 'Bob', league: 'A-Klasse', rank: '2', points: '30', company: 'DC Zwei', v_nr: '002', rounds: { R1: 15, R2: 15 } },
+    { id: '3', name: '<img src=x onerror=alert(1)>', league: 'A-Klasse', rank: '3a', points: '30', company: 'DC Drei', v_nr: '003', rounds: { R1: 10, R2: 10, R3: 10 } },
+    { id: '1', name: 'Café Spieler', league: 'A-Klasse', rank: '1', points: '20', company: 'DC Eins', v_nr: '001', rounds: { R1: 10, R2: 10 } },
+    { id: '2', name: 'Bob', league: 'A-Klasse', rank: '2', points: '30', company: 'DC Zwei', v_nr: '002', rounds: { R1: 15, R2: 15 } },
 ] };
 const clubData = { clubs: [
     { number: '001', name: 'DC Eins' },
@@ -172,7 +172,8 @@ const renderRanking = compileFunction('renderRanking', {
     document,
     rankingData,
     clubData,
-    myPlayerName: '  CAFE\u0301   SPIELER ',
+    myPlayerProfile: { recordKey: 'A-Klasse|1' },
+    isMyPlayerRecord: (player) => BwedlAppUtils.rankingRecordKey(player) === 'A-Klasse|1',
     createSeasonNotice: () => seasonNotice,
     calculateTotalPoints: (player) => Number(player.points),
     calculatePlayerStats: (player) => {
@@ -235,8 +236,8 @@ assert.match(document.getElementById('ranking-tools-status').textContent, /nicht
 assert.equal(typeof global.alert, 'undefined', 'missing saved players use live feedback, not alerts');
 
 const collisionData = { players: [
-    { name: 'Anna  Müller', league: 'A-Klasse', rank: '1', points: '10', rounds: { R1: 10 } },
-    { name: 'anna müller', league: 'A-Klasse', rank: '2', points: '9', rounds: { R1: 9 } },
+    { id: '11', v_nr: '001', name: 'Anna  Müller', league: 'A-Klasse', rank: '1', points: '10', rounds: { R1: 10 } },
+    { id: '12', v_nr: '002', name: 'anna müller', league: 'A-Klasse', rank: '2', points: '9', rounds: { R1: 9 } },
 ] };
 const collisionRender = compileFunction('renderRanking', {
     topBarTitle,
@@ -244,7 +245,8 @@ const collisionRender = compileFunction('renderRanking', {
     document,
     rankingData: collisionData,
     clubData: { clubs: [] },
-    myPlayerName: 'ANNA MÜLLER',
+    myPlayerProfile: { recordKey: 'A-Klasse|999' },
+    isMyPlayerRecord: () => false,
     createSeasonNotice: () => null,
     calculateTotalPoints: (player) => Number(player.points),
     calculatePlayerStats: (player) => ({ count: 1, avg: Number(player.points) }),
@@ -253,9 +255,9 @@ const collisionRender = compileFunction('renderRanking', {
 });
 collisionRender('A-Klasse');
 const collisionRows = descendants(contentArea.firstChild).find((element) => element.tagName === 'TBODY').children;
-assert.equal(collisionRows.some((row) => row.classList.contains('my-player-row')), false, 'ambiguous canonical names highlight no row');
+assert.equal(collisionRows.some((row) => row.classList.contains('my-player-row')), false, 'same names cannot hijack an exact profile');
 document.getElementById('ranking-my-position').dispatch('click');
-assert.match(document.getElementById('ranking-tools-status').textContent, /nicht eindeutig/i);
+assert.match(document.getElementById('ranking-tools-status').textContent, /nicht in dieser Rangliste/i);
 
 class MaliciousRankingDOMParser {
     parseFromString(value, type) {
@@ -322,7 +324,8 @@ const fallbackRender = compileFunction('renderRanking', {
         rankings: { 'A-Klasse': '<table onclick="alert(3)"><tr><th>Rang<script>alert(1)</script></th><th>Name</th></tr><tr><td>1</td><td><img src=x onerror=alert(2)>Spieler</td></tr></table>' },
     },
     clubData: { clubs: [] },
-    myPlayerName: null,
+    myPlayerProfile: null,
+    isMyPlayerRecord: () => false,
     createSeasonNotice: () => fallbackNotice,
     calculateTotalPoints() {},
     calculatePlayerStats() {},

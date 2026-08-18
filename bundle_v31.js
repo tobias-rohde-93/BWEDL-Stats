@@ -155,6 +155,77 @@ function replaceWithSearchResultLabel(element, type, label, context) {
     }
 }
 
+function createPlayerProfileDraft(appUtils, initialResolution = null) {
+    let selectedGroup = null;
+    let selectedRecordKey = null;
+    let selectedLabel = '';
+
+    const selectGroup = (group, preferredRecordKey = null) => {
+        selectedGroup = group && Array.isArray(group.records) ? group : null;
+        selectedLabel = selectedGroup ? String(selectedGroup.name || '') : '';
+        const requestedKey = String(preferredRecordKey == null ? '' : preferredRecordKey);
+        const requestedIsValid = Boolean(selectedGroup && selectedGroup.records.some((record) => (
+            record.recordKey === requestedKey
+        )));
+        selectedRecordKey = requestedIsValid
+            ? requestedKey
+            : selectedGroup && selectedGroup.records.length === 1
+                ? selectedGroup.records[0].recordKey
+                : null;
+        return selectedGroup;
+    };
+
+    if (initialResolution && initialResolution.status === 'resolved') {
+        selectGroup(initialResolution.group, initialResolution.profile.recordKey);
+    }
+
+    return {
+        selectGroup,
+        selectRecord(recordKey) {
+            const requestedKey = String(recordKey == null ? '' : recordKey);
+            selectedRecordKey = selectedGroup && selectedGroup.records.some((record) => (
+                record.recordKey === requestedKey
+            )) ? requestedKey : null;
+            return selectedRecordKey;
+        },
+        updateInput(value) {
+            const inputValue = String(value == null ? '' : value);
+            if (selectedGroup && inputValue !== selectedLabel) {
+                selectedGroup = null;
+                selectedRecordKey = null;
+                selectedLabel = '';
+            }
+        },
+        createProfile(teamName) {
+            if (!selectedGroup || !selectedRecordKey) return null;
+            return appUtils.createPlayerProfile(selectedGroup, selectedRecordKey, teamName);
+        },
+        getSelection() {
+            return { group: selectedGroup, recordKey: selectedRecordKey, label: selectedLabel };
+        },
+    };
+}
+
+function storeResolvedPlayerProfile(storage, appUtils, players, profile) {
+    const resolution = appUtils.resolvePlayerProfile(players, profile);
+    if (resolution.status !== 'resolved') return resolution;
+    try {
+        storage.setItem(appUtils.PLAYER_PROFILE_STORAGE_KEY, JSON.stringify(resolution.profile));
+    } catch (_error) {
+        return { status: 'write-failed', profile: null, group: null, player: null, records: [] };
+    }
+    ['myPlayerName', 'myTeamName'].forEach((key) => {
+        try { storage.removeItem(key); } catch (_error) { /* new profile is already durable */ }
+    });
+    return resolution;
+}
+
+function clearStoredPlayerProfile(storage, appUtils) {
+    [appUtils.PLAYER_PROFILE_STORAGE_KEY, 'myPlayerName', 'myTeamName'].forEach((key) => {
+        try { storage.removeItem(key); } catch (_error) { /* reset remains best effort */ }
+    });
+}
+
 function clubRankingSeasonLabel(status) {
     const season = status && typeof status.season === 'string' ? status.season.trim() : '';
     if (status && status.state === 'retained' && season) {
@@ -656,8 +727,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- My Profile State ---
+    let myPlayerProfile = null;
+    let myPlayerResolution = { status: 'missing', profile: null, group: null, player: null, records: [] };
     let myPlayerName = localStorage.getItem('myPlayerName');
     let myTeamName = localStorage.getItem('myTeamName');
+    let legacyProfileNeedsConfirmation = false;
+
+    function applyPlayerResolution(resolution) {
+        myPlayerResolution = resolution && resolution.status === 'resolved'
+            ? resolution
+            : { status: 'missing', profile: null, group: null, player: null, records: [] };
+        myPlayerProfile = myPlayerResolution.profile;
+        myPlayerName = myPlayerProfile ? myPlayerProfile.name : null;
+        myTeamName = myPlayerProfile
+            ? (myPlayerProfile.teamName || myPlayerResolution.player.company || null)
+            : null;
+    }
+
+    function getMyPrimaryPlayer() {
+        return myPlayerResolution.status === 'resolved' ? myPlayerResolution.player : null;
+    }
+
+    function getMyPlayerRecords() {
+        return myPlayerResolution.status === 'resolved' ? [...myPlayerResolution.records] : [];
+    }
+
+    function isMyPlayerRecord(player) {
+        if (!myPlayerProfile || !player) return false;
+        const personKey = window.BwedlAppUtils.rankingPersonKey(player);
+        const recordKey = window.BwedlAppUtils.rankingRecordKey(player);
+        return personKey === myPlayerProfile.personKey && getMyPlayerRecords().some((record) => (
+            record.recordKey === recordKey
+        ));
+    }
+
+    function initializePlayerProfile() {
+        let storedProfile = null;
+        try {
+            const rawProfile = localStorage.getItem(window.BwedlAppUtils.PLAYER_PROFILE_STORAGE_KEY);
+            storedProfile = rawProfile ? JSON.parse(rawProfile) : null;
+        } catch (_error) {
+            storedProfile = null;
+        }
+
+        const storedResolution = window.BwedlAppUtils.resolvePlayerProfile(
+            rankingData.players || [],
+            storedProfile,
+        );
+        if (storedResolution.status === 'resolved') {
+            applyPlayerResolution(storedResolution);
+            return;
+        }
+
+        const legacyName = localStorage.getItem('myPlayerName');
+        const legacyTeam = localStorage.getItem('myTeamName');
+        const migration = window.BwedlAppUtils.migrateLegacyPlayerProfile(
+            rankingData.players || [],
+            legacyName,
+            legacyTeam,
+        );
+        if (migration.status === 'resolved') {
+            const storedMigration = storeResolvedPlayerProfile(
+                localStorage,
+                window.BwedlAppUtils,
+                rankingData.players || [],
+                migration.profile,
+            );
+            if (storedMigration.status === 'resolved') {
+                applyPlayerResolution(storedMigration);
+                return;
+            }
+        }
+
+        applyPlayerResolution(null);
+        if (legacyName) {
+            myPlayerName = legacyName;
+            myTeamName = legacyTeam;
+            legacyProfileNeedsConfirmation = migration.status === 'ambiguous';
+        }
+    }
 
     function createProfileOnboardingCard() {
         const card = document.createElement('section');
@@ -687,19 +835,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
 
-    const setMyPlayer = (name) => {
-        if (name) {
-            localStorage.setItem('myPlayerName', name);
-            myPlayerName = name;
+    const setMyPlayer = (profile) => {
+        if (profile) {
+            const stored = storeResolvedPlayerProfile(
+                localStorage,
+                window.BwedlAppUtils,
+                rankingData.players || [],
+                profile,
+            );
+            if (stored.status !== 'resolved') return false;
+            applyPlayerResolution(stored);
+            legacyProfileNeedsConfirmation = false;
         } else {
-            localStorage.removeItem('myPlayerName');
-            myPlayerName = null;
+            clearStoredPlayerProfile(localStorage, window.BwedlAppUtils);
+            applyPlayerResolution(null);
+            legacyProfileNeedsConfirmation = false;
         }
         // Update Sidebar Link
         const link = document.getElementById('my-profile-link');
         if (link) {
-            replaceWithIconLabel(link, '👤', myPlayerName || 'Mein Profil');
-            link.style.color = myPlayerName ? "#f8fafc" : "#94a3b8";
+            replaceWithIconLabel(link, '👤', myPlayerProfile ? myPlayerProfile.name : 'Mein Profil');
+            link.style.color = myPlayerProfile ? "#f8fafc" : "#94a3b8";
         }
         if (typeof refreshVisitSnapshotBaseline === 'function') {
             refreshVisitSnapshotBaseline(false);
@@ -707,6 +863,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dashboardState = { type: 'dashboard', id: null };
         history.replaceState(dashboardState, "", "#dashboard");
         navigateTo('dashboard', null, false);
+        return true;
     };
 
     const mobileOverlay = document.getElementById('mobile-overlay');
@@ -803,6 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const derivedLigapokalArchive = window.BwedlAppUtils.buildLigapokalArchiveEntries(window.ARCHIVE_TABLES);
         ligapokalArchive = { ...derivedLigapokalArchive, ...ligapokalArchive };
     }
+    initializePlayerProfile();
 
     function routeExists(type, id) {
         if (type === 'league') {
@@ -1267,7 +1425,7 @@ document.addEventListener('DOMContentLoaded', () => {
             profileLink.type = 'button';
             profileLink.id = 'my-profile-link';
             profileLink.className = 'nav-section-header';
-            replaceWithIconLabel(profileLink, '👤', myPlayerName || 'Mein Profil');
+            replaceWithIconLabel(profileLink, '👤', myPlayerProfile ? myPlayerProfile.name : 'Mein Profil');
             profileLink.style.padding = "10px 15px";
             profileLink.style.cursor = "pointer";
             profileLink.style.color = "#94a3b8";
@@ -1594,7 +1752,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // 3. Players (from Ranking Data)
+        // 3. Players (grouped by exact person identity)
         if (rankingData.players) {
             // Pre-build club lookup maps for O(1) access instead of O(n) per player
             const clubNameMap = new Map();
@@ -1606,24 +1764,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Deduplicate players by ID or Name+Club
-            const seenPlayers = new Set();
-            rankingData.players.forEach(p => {
-                const uniqueKey = p.id ? p.id : (p.name + p.v_nr);
-                if (!seenPlayers.has(uniqueKey)) {
-                    seenPlayers.add(uniqueKey);
-
-                    const clubIdx = clubIdxMap.get(p.v_nr);
-                    if (clubIdx !== undefined) {
-                        searchIndex.push({
-                            label: p.name,
-                            type: "Spieler",
-                            context: clubNameMap.get(p.v_nr) || "",
-                            category: 'club',
-                            id: clubIdx
-                        });
-                    }
-                }
+            window.BwedlAppUtils.groupRankingPeople(rankingData.players).forEach((group) => {
+                const representative = group.records[0];
+                const clubIdx = clubIdxMap.get(representative.v_nr);
+                const clubName = clubNameMap.get(representative.v_nr) || representative.company || 'Vereinslos';
+                searchIndex.push({
+                    label: group.name,
+                    type: "Spieler",
+                    context: `${clubName} · ${group.categories.join(', ')}`,
+                    category: clubIdx === undefined ? 'player' : 'club',
+                    id: clubIdx === undefined ? group.personKey : clubIdx,
+                    profileGroup: group,
+                });
             });
         }
 
@@ -1942,8 +2094,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let team = null;
         let nextGame = null;
 
-        if (myPlayerName && Array.isArray(rankingData.players)) {
-            const selected = rankingData.players.find((entry) => entry.name === myPlayerName);
+        if (myPlayerProfile && Array.isArray(rankingData.players)) {
+            const selected = getMyPrimaryPlayer();
             if (selected) {
                 const canonicalName = window.BwedlAppUtils.canonicalRankingPlayerName(selected.name);
                 player = {
@@ -2098,6 +2250,12 @@ document.addEventListener('DOMContentLoaded', () => {
         topBarTitle.textContent = "Mein Profil";
         contentArea.innerHTML = '';
 
+        const profileGroups = window.BwedlAppUtils.groupRankingPeople(rankingData.players || []);
+        const draft = createPlayerProfileDraft(
+            window.BwedlAppUtils,
+            myPlayerResolution.status === 'resolved' ? myPlayerResolution : null,
+        );
+
         const container = document.createElement('div');
         container.className = "fade-in";
         container.style.padding = "20px";
@@ -2124,6 +2282,16 @@ document.addEventListener('DOMContentLoaded', () => {
         desc.style.textAlign = "center";
         desc.style.marginBottom = "30px";
         card.appendChild(desc);
+
+        const profileStatus = document.createElement('p');
+        profileStatus.className = 'profile-selection-status';
+        profileStatus.setAttribute('role', 'status');
+        profileStatus.setAttribute('aria-live', 'polite');
+        if (legacyProfileNeedsConfirmation) {
+            profileStatus.textContent = 'Der bisher gespeicherte Name ist nicht eindeutig. Bitte wähle den exakten Spielervorschlag und bestätige die primäre Klasse.';
+            profileStatus.classList.add('profile-selection-status--warning');
+        }
+        card.appendChild(profileStatus);
 
         // --- Name Input Group ---
         const inputGroup = document.createElement('div');
@@ -2169,6 +2337,18 @@ document.addEventListener('DOMContentLoaded', () => {
         suggestionsBox.style.overflowY = "auto";
         suggestionsBox.style.display = "none";
 
+        // --- Primary ranking class (shown only for real multi-class people) ---
+        const classGroup = document.createElement('div');
+        classGroup.className = 'profile-primary-class';
+        classGroup.style.display = 'none';
+        const classLabel = document.createElement('label');
+        classLabel.textContent = 'Primäre Klasse';
+        const classSelect = document.createElement('select');
+        classSelect.id = 'profile-primary-class-select';
+        classSelect.className = 'profile-primary-class__select';
+        classLabel.setAttribute('for', classSelect.id);
+        classGroup.append(classLabel, classSelect);
+
         // --- Team Select Group (Hidden initially) ---
         const teamGroup = document.createElement('div');
         teamGroup.style.marginBottom = "30px";
@@ -2182,12 +2362,14 @@ document.addEventListener('DOMContentLoaded', () => {
         teamGroup.appendChild(teamLabel);
 
         const teamSelect = document.createElement('select');
+        teamSelect.id = 'profile-team-select';
         teamSelect.style.width = "100%";
         teamSelect.style.padding = "12px";
         teamSelect.style.borderRadius = "6px";
         teamSelect.style.border = "1px solid #475569";
         teamSelect.style.background = "#0f172a";
         teamSelect.style.color = "white";
+        teamLabel.setAttribute('for', teamSelect.id);
         teamGroup.appendChild(teamSelect);
 
         // Logic
@@ -2211,23 +2393,49 @@ document.addEventListener('DOMContentLoaded', () => {
             teamGroup.style.display = 'block';
         };
 
+        const clubNameForGroup = (group) => {
+            const representative = group && group.records && group.records[0];
+            if (!representative) return '';
+            const club = clubData.clubs && clubData.clubs.find((candidate) => (
+                String(candidate.number) === String(representative.v_nr)
+            ));
+            return club ? club.name : (representative.company || 'Unbekannt');
+        };
 
-        // Auto-show team if player already selected
-        if (myPlayerName) {
-            // Try to restore saved team or find context
-            const savedTeam = localStorage.getItem('myTeamName');
-            if (rankingData && rankingData.players) {
-                const p = rankingData.players.find(rp => rp.name === myPlayerName);
-                if (p) {
-                    if (p.v_nr && typeof CLUB_DATA !== 'undefined' && CLUB_DATA.clubs) {
-                        const club = CLUB_DATA.clubs.find(c => c.number == p.v_nr);
-                        if (club) {
-                            populateTeams(club.name);
-                        }
-                    }
-                    if (savedTeam) teamSelect.value = savedTeam;
-                }
+        const populatePrimaryClasses = (group, preferredRecordKey = null) => {
+            classSelect.replaceChildren();
+            if (!group || group.records.length <= 1) {
+                classGroup.style.display = 'none';
+                return;
             }
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = '-- Primäre Klasse wählen --';
+            classSelect.appendChild(placeholder);
+            group.records.forEach((record) => {
+                const option = document.createElement('option');
+                option.value = record.recordKey;
+                option.textContent = record.category;
+                classSelect.appendChild(option);
+            });
+            classSelect.value = preferredRecordKey || '';
+            classGroup.style.display = 'block';
+        };
+
+        const showSelectedGroup = (group, preferredRecordKey = null) => {
+            draft.selectGroup(group, preferredRecordKey);
+            const selection = draft.getSelection();
+            populatePrimaryClasses(group, selection.recordKey);
+            populateTeams(clubNameForGroup(group));
+            if (myTeamName) teamSelect.value = myTeamName;
+            profileStatus.textContent = group.records.length > 1
+                ? 'Mehrere Klassen gefunden. Bitte bestätige deine primäre Klasse.'
+                : `${group.name} wurde eindeutig ausgewählt.`;
+            profileStatus.classList.remove('profile-selection-status--error');
+        };
+
+        if (myPlayerResolution.status === 'resolved') {
+            showSelectedGroup(myPlayerResolution.group, myPlayerProfile.recordKey);
         }
 
         const closeSuggestions = (restoreFocus = false) => (
@@ -2236,17 +2444,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const selectSuggestion = (match) => {
             selectProfileSuggestion(match, input, suggestionsBox, (selectedMatch) => {
-                if (rankingData && rankingData.players) {
-                    const player = rankingData.players.find(rp => rp.name === selectedMatch.label);
-                    if (player && player.v_nr && typeof CLUB_DATA !== 'undefined') {
-                        const club = CLUB_DATA.clubs.find(c => c.number == player.v_nr);
-                        populateTeams(club ? club.name : (player.company || 'Unbekannt'));
-                    } else if (player && player.company) {
-                        populateTeams(player.company);
-                    }
-                }
+                showSelectedGroup(selectedMatch.profileGroup);
             });
         };
+
+        classSelect.addEventListener('change', () => {
+            draft.selectRecord(classSelect.value);
+            profileStatus.textContent = classSelect.value
+                ? `Primäre Klasse: ${classSelect.options[classSelect.selectedIndex].textContent}`
+                : 'Bitte wähle deine primäre Klasse.';
+        });
 
         input.addEventListener('keydown', (event) => {
             if (event.key !== 'Escape') return;
@@ -2256,18 +2463,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         input.addEventListener('input', () => {
             const val = input.value.toLowerCase().trim();
+            draft.updateInput(input.value);
             suggestionsBox.replaceChildren();
             teamGroup.style.display = 'none';
+            classGroup.style.display = 'none';
+            profileStatus.textContent = '';
 
             if (val.length < 2) {
                 closeSuggestions(false);
                 return;
             }
 
-            if (window.searchIndex && window.searchIndex.length > 0) {
-                const matches = window.searchIndex.filter(item =>
-                    item.type === "Spieler" && item.label.toLowerCase().includes(val)
-                ).slice(0, 10);
+            if (profileGroups.length > 0) {
+                const matches = profileGroups.filter((group) => {
+                    const clubName = clubNameForGroup(group);
+                    return [group.name, clubName, ...group.categories]
+                        .some((value) => String(value).toLowerCase().includes(val));
+                }).slice(0, 10).map((group) => ({
+                    label: group.name,
+                    context: `${clubNameForGroup(group)} · ${group.categories.join(', ')}`,
+                    profileGroup: group,
+                }));
 
                 if (matches.length > 0) {
                     suggestionsBox.style.display = 'block';
@@ -2291,8 +2507,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        document.addEventListener('click', (e) => {
-            if (!inputGroup.contains(e.target)) {
+        inputGroup.addEventListener('focusout', (event) => {
+            if (!inputGroup.contains(event.relatedTarget)) {
                 closeSuggestions(false);
             }
         });
@@ -2300,6 +2516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputGroup.appendChild(input);
         inputGroup.appendChild(suggestionsBox);
         card.appendChild(inputGroup);
+        card.appendChild(classGroup);
         card.appendChild(teamGroup);
 
         const btnRow = document.createElement('div');
@@ -2317,22 +2534,19 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.style.cursor = "pointer";
         saveBtn.style.fontWeight = "bold";
         saveBtn.onclick = () => {
-            const name = input.value.trim();
-            if (name) {
-                if (teamGroup.style.display !== 'none' && teamSelect.value) {
-                    myTeamName = teamSelect.value;
-                    localStorage.setItem('myTeamName', myTeamName);
-                } else {
-                    if (rankingData && rankingData.players) {
-                        const p = rankingData.players.find(rp => rp.name === name);
-                        if (p && p.company) {
-                            myTeamName = p.company;
-                            localStorage.setItem('myTeamName', myTeamName);
-                        }
-                    }
-                }
-                setMyPlayer(name);
-                setAppStatus(`Profil gespeichert: ${name}`);
+            const profile = draft.createProfile(teamSelect.value);
+            if (!profile) {
+                profileStatus.textContent = draft.getSelection().group
+                    ? 'Bitte wähle zuerst deine primäre Klasse.'
+                    : 'Bitte wähle einen exakten Spielervorschlag aus der Liste.';
+                profileStatus.classList.add('profile-selection-status--error');
+                return;
+            }
+            if (setMyPlayer(profile)) {
+                setAppStatus(`Profil gespeichert: ${profile.name}`);
+            } else {
+                profileStatus.textContent = 'Das Profil konnte in diesem Browser nicht gespeichert werden.';
+                profileStatus.classList.add('profile-selection-status--error');
             }
         };
 
@@ -2345,16 +2559,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resetBtn.style.borderRadius = "6px";
         resetBtn.style.cursor = "pointer";
         resetBtn.onclick = () => {
-            myPlayerName = null;
-            myTeamName = null;
-            localStorage.removeItem('myTeamName');
-            setMyPlayer(null); // Clears local storage and name
+            setMyPlayer(null);
             input.value = "";
             teamGroup.style.display = 'none';
+            classGroup.style.display = 'none';
         };
 
         btnRow.appendChild(saveBtn);
-        if (myPlayerName) btnRow.appendChild(resetBtn);
+        if (myPlayerProfile || myPlayerName) btnRow.appendChild(resetBtn);
         card.appendChild(btnRow);
 
         container.appendChild(card);
@@ -2374,13 +2586,14 @@ document.addEventListener('DOMContentLoaded', () => {
             visitChangesLifecycle.render(document, container);
         }
 
-        if (!myPlayerName) {
+        const primaryPlayer = getMyPrimaryPlayer();
+        if (!primaryPlayer) {
             container.appendChild(createProfileOnboardingCard());
         }
 
         let myStats = null;
         // --- My Profile Section ---
-        if (myPlayerName) {
+        if (primaryPlayer) {
             // myStats is now outer scope
             let myLeagueKey = null;
             let mySchedule = [];
@@ -2388,7 +2601,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let searchTeam = null;
 
             if (typeof rankingData !== 'undefined' && rankingData.players) {
-                const p = rankingData.players.find(p => p.name === myPlayerName);
+                const p = primaryPlayer;
                 if (p) {
                     const stats = calculatePlayerStats(p);
                     myStats = { ...p, ...stats };
@@ -3002,7 +3215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let lastRank = 0;
 
                     return list.map((p, idx) => {
-                        const isMyPlayer = p.name === myPlayerName;
+                        const isMyPlayer = isMyPlayerRecord(p);
                         const rowBg = isMyPlayer ? 'rgba(59, 130, 246, 0.1)' : (idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)');
 
                         // Rank Logic
@@ -4313,8 +4526,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Pre-fill with "Ich" if empty
-            if (this.players.length === 0 && myPlayerName) {
-                this.players.push({ name: myPlayerName, score: 501, history: [], legs: 0 });
+            if (this.players.length === 0 && myPlayerProfile) {
+                this.players.push({ name: myPlayerProfile.name, score: 501, history: [], legs: 0 });
                 renderPlayers();
                 updateStartBtn();
             } else {
@@ -5501,7 +5714,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 games: stats.count,
             };
         });
-        const savedPlayerMatch = window.BwedlAppUtils.matchRankingPlayer(viewModels, myPlayerName);
+        const exactSavedPlayer = viewModels.find((player) => isMyPlayerRecord(player)) || null;
+        const savedPlayerMatch = exactSavedPlayer
+            ? { status: 'found', player: exactSavedPlayer }
+            : { status: 'missing', player: null };
 
         const toolbar = document.createElement('div');
         toolbar.className = 'ranking-toolbar';
@@ -5555,7 +5771,7 @@ document.addEventListener('DOMContentLoaded', () => {
         actions.appendChild(reset);
 
         let myPosition = null;
-        if (myPlayerName) {
+        if (myPlayerProfile) {
             myPosition = document.createElement('button');
             myPosition.id = 'ranking-my-position';
             myPosition.type = 'button';
@@ -5665,10 +5881,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (myPosition) {
             myPosition.addEventListener('click', () => {
-                if (savedPlayerMatch.status === 'ambiguous') {
-                    status.textContent = 'Der gespeicherte Spielername ist in dieser Rangliste nicht eindeutig.';
-                    return;
-                }
                 if (savedPlayerMatch.status !== 'found') {
                     status.textContent = 'Dein gespeicherter Spieler ist nicht in dieser Rangliste enthalten.';
                     return;
@@ -6664,10 +6876,10 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function detectNextMatch() {
         // 1. Find the user's team name from the profile
-        console.log('[AutoDetect] myPlayerName:', myPlayerName);
-        const myProfile = rankingData.players.find(p => p.name === myPlayerName);
+        console.log('[AutoDetect] profile record:', myPlayerProfile && myPlayerProfile.recordKey);
+        const myProfile = getMyPrimaryPlayer();
         if (!myProfile) {
-            console.log('[AutoDetect] No profile found for', myPlayerName);
+            console.log('[AutoDetect] No exact profile found');
             return null;
         }
 
@@ -7240,7 +7452,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px solid #1e293b; font-size: 0.9em;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; flex: 1;">
                             <input type="checkbox" value="${idx}" data-list="${containerId}" ${isChecked} style="transform: scale(1.2);">
-                            <span style="color: ${color};" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
+                            <span style="color: ${color};" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         </label>
                         <div style="text-align: right;">
                              <div style="font-weight: bold; color: #4ade80;">${p._avg.toFixed(2)}</div>
@@ -7448,7 +7660,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
                     const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
                     html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         ${renderMatchSparkline(form.values, trendColor)}
                         <span style="font-size: 0.9em;">${trendIcon}</span>
                         <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
@@ -7463,7 +7675,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
                     const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
                     html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         ${renderMatchSparkline(form.values, trendColor)}
                         <span style="font-size: 0.9em;">${trendIcon}</span>
                         <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
@@ -7525,7 +7737,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameA)} – Empfehlung</div>`;
                     optA.players.forEach(p => {
                         html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
+                            <span class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                             <span style="color: #4ade80; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
                         </div>`;
                     });
@@ -7539,7 +7751,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameB)} – Empfehlung</div>`;
                     optB.players.forEach(p => {
                         html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
+                            <span class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                             <span style="color: #60a5fa; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
                         </div>`;
                     });
