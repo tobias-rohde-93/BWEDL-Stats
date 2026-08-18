@@ -29,6 +29,15 @@
         hourCycle: 'h23',
     });
 
+    function escapeHtmlText(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
     async function probePublishedData(fetchImpl, baseUri, nowValue) {
         if (typeof fetchImpl !== 'function') {
             throw new TypeError('A fetch implementation is required');
@@ -981,6 +990,7 @@
 
     return {
         VISIT_SNAPSHOT_VERSION,
+        escapeHtmlText,
         probePublishedData,
         buildVisitSnapshot,
         buildTeamResultsFingerprint,

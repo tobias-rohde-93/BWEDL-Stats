@@ -125,6 +125,36 @@ function escapeHtmlText(value) {
         .replace(new RegExp(String.fromCharCode(39), 'g'), '&#39;');
 }
 
+function replaceWithIconLabel(element, icon, label) {
+    const iconElement = document.createElement('span');
+    iconElement.setAttribute('aria-hidden', 'true');
+    iconElement.textContent = String(icon ?? '');
+    iconElement.style.marginRight = '6px';
+    const labelElement = document.createElement('span');
+    labelElement.textContent = String(label ?? '');
+    element.replaceChildren(iconElement, labelElement);
+}
+
+function replaceWithSearchResultLabel(element, type, label, context) {
+    const typeElement = document.createElement('span');
+    typeElement.style.cssText = 'display:inline-block; width:60px; color:#64748b; font-size:0.8em; font-weight:bold;';
+    typeElement.textContent = String(type ?? '');
+    const labelElement = document.createElement('span');
+    if (!type) {
+        typeElement.style.display = 'none';
+        labelElement.style.cssText = 'display:block; color:#f8fafc; font-weight:bold;';
+    }
+    labelElement.textContent = String(label ?? '');
+    element.replaceChildren(typeElement, labelElement);
+    if (context) {
+        const contextElement = document.createElement('span');
+        contextElement.style.cssText = 'color:#94a3b8; font-size:0.8em;';
+        if (!type) contextElement.style.display = 'block';
+        contextElement.textContent = `(${String(context)})`;
+        element.appendChild(contextElement);
+    }
+}
+
 function clubRankingSeasonLabel(status) {
     const season = status && typeof status.season === 'string' ? status.season.trim() : '';
     if (status && status.state === 'retained' && season) {
@@ -668,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Sidebar Link
         const link = document.getElementById('my-profile-link');
         if (link) {
-            link.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
+            replaceWithIconLabel(link, '👤', myPlayerName || 'Mein Profil');
             link.style.color = myPlayerName ? "#f8fafc" : "#94a3b8";
         }
         if (typeof refreshVisitSnapshotBaseline === 'function') {
@@ -1237,7 +1267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             profileLink.type = 'button';
             profileLink.id = 'my-profile-link';
             profileLink.className = 'nav-section-header';
-            profileLink.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
+            replaceWithIconLabel(profileLink, '👤', myPlayerName || 'Mein Profil');
             profileLink.style.padding = "10px 15px";
             profileLink.style.cursor = "pointer";
             profileLink.style.color = "#94a3b8";
@@ -1731,7 +1761,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const el = document.createElement('button');
             el.type = 'button';
             el.className = 'league-item';
-            el.innerHTML = `<span style="color: #fbbf24; margin-right: 6px;">★</span> ${fav.name}`;
+            replaceWithIconLabel(el, '★', fav.name);
+            el.firstElementChild.style.color = '#fbbf24';
             el.addEventListener('click', () => {
                 navigateTo(fav.type, fav.id);
             });
@@ -2502,9 +2533,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
                             <div>
                                 <div style="color: #60a5fa; font-weight: bold; letter-spacing: 1px; font-size: 0.8em; text-transform: uppercase; margin-bottom: 5px;">Dein Profil</div>
-                                <h1 style="margin: 0; font-size: 2.2em; color: white;">${myStats.name}</h1>
+                                <h1 style="margin: 0; font-size: 2.2em; color: white;">${escapeHtmlText(myStats.name)}</h1>
                                 <div style="color: #94a3b8; font-size: 1.1em; margin-top: 5px;">
-                                    ${myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a")} | ${searchTeam || "Vereinslos"}
+                                    ${escapeHtmlText(myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a"))} | ${escapeHtmlText(searchTeam || "Vereinslos")}
                                     ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold; white-space: nowrap;">(Team-Platz: ${teamRank} <span style="font-size:0.7em; font-weight:normal; color:#64748b;">/ ${totalTeamsInClass}</span>)</span>` : ''}
                                 </div>
                             </div>
@@ -2608,9 +2639,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Helper for items
                     const createItem = (label, val, sub) => `
                         <div style="display:flex; flex-direction:column; align-items:center;">
-                            <div style="color:#94a3b8; font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px;">${label}</div>
-                            <div style="color:white; font-size:1.4em; font-weight:bold;">${val}</div>
-                            ${sub ? `<div style="color:#64748b; font-size:0.7em;">${sub}</div>` : ''}
+                            <div style="color:#94a3b8; font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px;">${escapeHtmlText(label)}</div>
+                            <div style="color:white; font-size:1.4em; font-weight:bold;">${escapeHtmlText(val)}</div>
+                            ${sub ? `<div style="color:#64748b; font-size:0.7em;">${escapeHtmlText(sub)}</div>` : ''}
                         </div>
                      `;
 
@@ -2768,13 +2799,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div style="color: ${isPrimary ? '#60a5fa' : '#94a3b8'}; font-weight: bold; font-size: ${isPrimary ? '0.9em' : '0.7em'}; text-transform: uppercase; letter-spacing: 1px;">
                                     ${isPrimary ? '🚀 NÄCHSTES SPIEL' : `📅 SPIEL ${idx + 1}`}
                                 </div>
-                                <div style="color: #64748b; font-size: 0.7em;">${game.leagueKey ? game.leagueKey.split('202')[0].trim() : ''}</div>
+                                <div style="color: #64748b; font-size: 0.7em;">${escapeHtmlText(game.leagueKey ? game.leagueKey.split('202')[0].trim() : '')}</div>
                             </div>
                             <div style="font-size: ${isPrimary ? '1.15em' : '1em'}; color: white; margin-bottom: 4px;">
-                                Gegen <strong>${game.opponent}</strong>
+                                Gegen <strong>${escapeHtmlText(game.opponent)}</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; color: #94a3b8; font-size: 0.85em;">
-                                <span>${dateStr}</span>
+                                <span>${escapeHtmlText(dateStr)}</span>
                                 <span>${game.isHome ? '(Heim)' : '(Auswärts)'}</span>
                             </div>
                         `;
@@ -2876,18 +2907,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         row.innerHTML = `
-                            <td style="padding: 12px 10px; color: #cbd5e1;">Runde ${game.round} <span style="font-size:0.7em; color:#64748b">(${game.leagueKey ? game.leagueKey.split(' ')[0] : ''})</span></td>
+                            <td style="padding: 12px 10px; color: #cbd5e1;">Runde ${escapeHtmlText(game.round)} <span style="font-size:0.7em; color:#64748b">(${escapeHtmlText(game.leagueKey ? game.leagueKey.split(' ')[0] : '')})</span></td>
                             <td style="padding: 12px 10px;">
-                                <div style="color: white; font-weight: 500;">${game.opponent}</div>
+                                <div style="color: white; font-weight: 500;">${escapeHtmlText(game.opponent)}</div>
                                 <div style="color: #64748b; font-size: 0.8em;">${game.date ? game.date.toLocaleDateString('de-DE') : ''} ${game.isHome ? '(H)' : '(A)'}</div>
                             </td>
                             <td style="padding: 12px 10px; text-align: center;">
                                 <span style="color: ${resColor}; font-weight: bold; background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">
-                                    ${game.score}
+                                    ${escapeHtmlText(game.score)}
                                 </span>
                             </td>
                             <td style="padding: 12px 10px; text-align: center; ${pScoreStyle}">
-                                ${personalScore || '-'}
+                                ${escapeHtmlText(personalScore || '-')}
                             </td>
                          `;
                         tbody.appendChild(row);
@@ -2996,8 +3027,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         return `
                                 <tr style="background: ${rowBg}; border-bottom: 1px solid #334155;">
                                     <td style="padding: 10px 15px; font-weight: bold; color: ${rankColor};">${displayRank}.</td>
-                                    <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${p.name}</td>
-                                    <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${clubName}</td>
+                                    <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${escapeHtmlText(p.name)}</td>
+                                    <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${escapeHtmlText(clubName)}</td>
                                     <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: ${scoreColor}; font-size: 1.1em;">${p.currentScore}</td>
                                 </tr>
                                 `;
@@ -3102,10 +3133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.style.backgroundColor = "#1e293b";
                 button.style.zIndex = "2000";
 
-                let subtext = "";
-                if (m.context) subtext = ` <span style='color: #94a3b8; font-size: 0.8em;'>(${m.context})</span>`;
-
-                button.innerHTML = `<span style="display:inline-block; width: 60px; color: #64748b; font-size: 0.8em; font-weight:bold;">${m.type}</span> ${m.label}${subtext}`;
+                replaceWithSearchResultLabel(button, m.type, m.label, m.context);
 
                 button.addEventListener('click', () => {
                     if (m.category === 'league') navigateTo('league', m.id);
@@ -3250,7 +3278,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 div.style.padding = "8px";
                 div.style.borderBottom = "1px solid #334155";
                 div.style.cursor = "pointer";
-                div.innerHTML = `<span style="color: #f8fafc; font-weight: bold;">${m.label}</span><br><span style="font-size:0.8em; color:#64748b;">${m.context || ''}</span>`;
+                replaceWithSearchResultLabel(div, '', m.label, m.context);
                 div.onmouseover = () => div.style.backgroundColor = "#334155";
                 div.onmouseout = () => div.style.backgroundColor = "transparent";
                 div.onclick = () => {
@@ -3266,11 +3294,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const selEl = document.getElementById(`selected-${sideId}`);
             if (player) {
                 selEl.style.display = "block";
-                selEl.innerHTML = `
-                    <div style="background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; padding: 10px; border-radius: 4px; align-items: center; display: flex; justify-content: space-between;">
-                        <span style="font-weight: bold; color: #60a5fa">${player.label}</span>
-                        <button onclick="this.parentElement.parentElement.style.display='none';" style="background:none; border:none; color: #94a3b8; cursor: pointer;">✕</button>
-                    </div>`;
+                const selectedCard = document.createElement('div');
+                selectedCard.style.cssText = 'background:rgba(59, 130, 246, 0.2); border:1px solid #3b82f6; padding:10px; border-radius:4px; align-items:center; display:flex; justify-content:space-between;';
+                const selectedName = document.createElement('span');
+                selectedName.style.cssText = 'font-weight:bold; color:#60a5fa;';
+                selectedName.textContent = String(player.label ?? '');
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.style.cssText = 'background:none; border:none; color:#94a3b8; cursor:pointer;';
+                removeButton.textContent = '✕';
+                removeButton.addEventListener('click', () => { selEl.style.display = 'none'; });
+                selectedCard.append(selectedName, removeButton);
+                selEl.replaceChildren(selectedCard);
             } else {
                 selEl.style.display = "none";
             }
@@ -3361,6 +3396,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = (val1, val2, label, subLabel, detail1 = "", detail2 = "", isFloat = false, invertWin = false) => {
                 const v1 = isFloat ? val1.toFixed(2) : val1;
                 const v2 = isFloat ? val2.toFixed(2) : val2;
+                const safeDetail1 = escapeHtmlText(detail1);
+                const safeDetail2 = escapeHtmlText(detail2);
 
                 // Winner color logic
                 let c1 = '#94a3b8';
@@ -3380,18 +3417,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `
                  <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 90px;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: ${c1};">${v1}</div>
-                        ${detail1 ? `<div style="${detailStyle}" title="${detail1}">${detail1}</div>` : ''}
+                        <div style="font-size: 1.2em; font-weight: bold; color: ${c1};">${escapeHtmlText(v1)}</div>
+                        ${detail1 ? `<div style="${detailStyle}" title="${safeDetail1}">${safeDetail1}</div>` : ''}
                     </div>
                     
                     <div style="flex: 1; text-align: center; padding: 0 10px;">
-                        <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${label}</div>
-                        <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">${subLabel}</div>
+                        <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${escapeHtmlText(label)}</div>
+                        <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">${escapeHtmlText(subLabel)}</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; align-items: center; width: 90px;">
-                         <div style="font-size: 1.2em; font-weight: bold; color: ${c2};">${v2}</div>
-                         ${detail2 ? `<div style="${detailStyle}" title="${detail2}">${detail2}</div>` : ''}
+                         <div style="font-size: 1.2em; font-weight: bold; color: ${c2};">${escapeHtmlText(v2)}</div>
+                         ${detail2 ? `<div style="${detailStyle}" title="${safeDetail2}">${safeDetail2}</div>` : ''}
                     </div>
                  </div>`;
             };
@@ -3401,16 +3438,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     DIREKTER VERGLEICH
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #334155; background: rgba(15, 23, 42, 0.5); font-size: 0.9em; color: #f8fafc;">
-                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d1.name}</div>
+                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${escapeHtmlText(d1.name)}</div>
                      <div style="width: 20%; text-align: center; color: #64748b; font-size: 0.8em;">vs</div>
-                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d2.name}</div>
+                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${escapeHtmlText(d2.name)}</div>
                 </div>
                 ${card(avg1, avg2, "Ø Aktuell", "Durchschnitt dieser Saison", "", "", true)}
                 
                 <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
-                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${d1.searchItem.context || '-'}</div>
+                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(d1.searchItem.context || '-')}</div>
                    <div style="width: 10%; text-align: center; color: #64748b; font-size: 0.8em;">Team</div>
-                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${d2.searchItem.context || '-'}</div>
+                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(d2.searchItem.context || '-')}</div>
                 </div>
 
                 ${card(h1.length, h2.length, "Erfahrung", "Anzahl gespielter Saisons im Archiv", seasons1, seasons2)}
@@ -3459,12 +3496,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     return `
                      <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
-                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c1}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${l1}</div>
+                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c1}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(l1)}</div>
                         <div style="flex: 1; text-align: center; padding: 0 5px;">
                             <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">Höchste Klasse</div>
                             <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">Bisher gespielt</div>
                         </div>
-                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c2}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${l2}</div>
+                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c2}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(l2)}</div>
                       </div>`;
                 })()}
 
@@ -3525,8 +3562,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Text Prediction
                     let predictionText = "Ausgeglichenes Match";
                     let winnerName = "";
-                    if (winProb1 > 0.6) { winnerName = d1.name; predictionText = `Vorteil für <strong>${d1.name}</strong>`; }
-                    else if (winProb2 > 0.6) { winnerName = d2.name; predictionText = `Vorteil für <strong>${d2.name}</strong>`; }
+                    if (winProb1 > 0.6) { winnerName = d1.name; predictionText = `Vorteil für <strong>${escapeHtmlText(d1.name)}</strong>`; }
+                    else if (winProb2 > 0.6) { winnerName = d2.name; predictionText = `Vorteil für <strong>${escapeHtmlText(d2.name)}</strong>`; }
                     else {
                         if (winProb1 >= 0.5) predictionText = "Knappes Ding (Leichter Vorteil Links)";
                         else predictionText = "Knappes Ding (Leichter Vorteil Rechts)";
@@ -3928,7 +3965,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="width: 36px; text-align: center; font-weight: bold; color: ${rankColor}; font-size: 0.95em;">${medal}</div>
                     <div style="flex: 1; padding-left: 8px; min-width: 0;">
                         <div style="display: flex; align-items: center; gap: 8px;">
-                            <span style="font-weight: 600; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</span>
+                            <span style="font-weight: 600; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(p.name)}</span>
                             ${tierBadge ? `<span style="font-size: 0.65em; font-weight: bold; color: ${tierColor}; border: 1px solid ${tierColor}; padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">${tierBadge}</span>` : ''}
                         </div>
                         <div style="font-size: 0.7em; color: #64748b; margin-top: 2px;">
@@ -3962,9 +3999,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         const isCur = s.isCurrent;
                         const rowBg = isCur ? 'background: rgba(74, 222, 128, 0.07);' : '';
                         return `<tr style="color: #e2e8f0; ${rowBg}">
-                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">${s.season}${isCur ? ' ⚡' : ''}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">${escapeHtmlText(s.season)}${isCur ? ' ⚡' : ''}</td>
                                         <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">
-                                            <span style="color: ${sc}; font-weight: 500;">${s.league || '-'}</span>
+                                            <span style="color: ${sc}; font-weight: 500;">${escapeHtmlText(s.league || '-')}</span>
                                             ${sl ? `<span style="font-size: 0.75em; color: ${sc}; margin-left: 4px; border: 1px solid ${sc}; padding: 0 3px; border-radius: 2px;">${sl}</span>` : ''}
                                         </td>
                                         <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: center;">${s.rank || '-'}</td>
@@ -4253,7 +4290,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.players.forEach((p, i) => {
                     const div = document.createElement('div');
                     div.style.cssText = "display:flex; justify-content:space-between; align-items:center; background:#334155; padding:8px 12px; border-radius:6px;";
-                    div.innerHTML = `<span style="color:white;">${p.name}</span> <button data-idx="${i}" class="remove-p-btn" style="background:transparent; color:#ef4444; border:none; cursor:pointer;">✕</button>`;
+                    const playerName = document.createElement('span');
+                    playerName.style.color = 'white';
+                    playerName.textContent = String(p.name ?? '');
+                    const removeButton = document.createElement('button');
+                    removeButton.type = 'button';
+                    removeButton.dataset.idx = String(i);
+                    removeButton.className = 'remove-p-btn';
+                    removeButton.style.cssText = 'background:transparent; color:#ef4444; border:none; cursor:pointer;';
+                    removeButton.textContent = '✕';
+                    div.append(playerName, removeButton);
                     playerList.appendChild(div);
                 });
 
@@ -4492,7 +4538,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `
                                 <div class="player-card" style="min-width:100px; background:${i === this.activePlayerIndex ? '#3b82f6' : '#1e293b'}; padding:10px; border-radius:10px; text-align:center; transition:all 0.3s ease; transform:${i === this.activePlayerIndex ? 'scale(1.05)' : 'scale(1)'}; border:2px solid ${i === this.activePlayerIndex ? '#60a5fa' : '#334155'}; position: relative;">
                                     ${teamBadge}
-                                    <div style="font-size:0.8em; color:${i === this.activePlayerIndex ? 'white' : '#94a3b8'}">${p.name}</div>
+                                    <div style="font-size:0.8em; color:${i === this.activePlayerIndex ? 'white' : '#94a3b8'}">${escapeHtmlText(p.name)}</div>
                                     <div style="font-size:2em; font-weight:bold; color:white;">
                                         ${i === this.activePlayerIndex ? (p.score - currentTurnTotal) : p.score}
                                     </div>
@@ -4504,7 +4550,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- Active Turn Input -->
                         <div style="background:#1e293b; padding:15px; border-radius:12px; margin-bottom:15px; text-align:center; position: relative;">
-                            <div style="color:#94a3b8; font-size: 0.9em; margin-bottom:5px;">Aufnahme für <strong>${activePlayer.name}</strong></div>
+                            <div style="color:#94a3b8; font-size: 0.9em; margin-bottom:5px;">Aufnahme für <strong>${escapeHtmlText(activePlayer.name)}</strong></div>
                             
                             <!-- 3-Dart Display -->
                             <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
@@ -6877,10 +6923,16 @@ document.addEventListener('DOMContentLoaded', () => {
         leagueSelect.style.border = "1px solid #475569";
         leagueSelect.style.borderRadius = "4px";
 
-        leagueSelect.innerHTML = '<option value="">-- Bitte Liga wählen --</option>';
+        const leaguePlaceholder = document.createElement('option');
+        leaguePlaceholder.value = '';
+        leaguePlaceholder.textContent = '-- Bitte Liga wählen --';
+        leagueSelect.appendChild(leaguePlaceholder);
         const sortedLeagues = Object.keys(leagueData.leagues || {}).sort();
         sortedLeagues.forEach(l => {
-            leagueSelect.innerHTML += `<option value="${l}">${l}</option>`;
+            const option = document.createElement('option');
+            option.value = l;
+            option.textContent = l;
+            leagueSelect.appendChild(option);
         });
         leagueGroup.appendChild(leagueLabel);
         leagueGroup.appendChild(leagueSelect);
@@ -7018,16 +7070,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     cardWrap.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                             <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); text-transform: uppercase;">${m.league.split('202')[0]}</span>
-                             <span style="color: #94a3b8; font-size: 0.75em; font-weight: 500;">${m.dateStr || 'Termin offen'}</span>
+                             <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); text-transform: uppercase;">${escapeHtmlText(m.league.split('202')[0])}</span>
+                             <span style="color: #94a3b8; font-size: 0.75em; font-weight: 500;">${escapeHtmlText(m.dateStr || 'Termin offen')}</span>
                         </div>
                         <div style="margin: 5px 0;">
-                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${m.home}</div>
+                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${escapeHtmlText(m.home)}</div>
                             <div style="color: #475569; font-size: 0.75em; font-weight: bold; margin: 4px 0; letter-spacing: 1px;">VERSUS</div>
-                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${m.away}</div>
+                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${escapeHtmlText(m.away)}</div>
                         </div>
                         <div style="margin-top: 5px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
-                             <span style="color: #64748b; font-size: 0.75em;">${m.spieltag}</span>
+                             <span style="color: #64748b; font-size: 0.75em;">${escapeHtmlText(m.spieltag)}</span>
                              <button type="button" class="load-btn" style="background: #3b82f6; color: white; border: 0; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold; transition: all 0.2s; cursor: pointer;">Partie auswählen</button>
                         </div>
                     `;
@@ -7103,7 +7155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const similar = allLeagues.filter(l => keywords.some(k => l.includes(k))).slice(0, 5);
                 const debugDiv = document.createElement('div');
                 debugDiv.style.color = "#ef4444";
-                debugDiv.innerHTML = `⚠️ Keine Teams gefunden.<br>Similar: ${similar.join(', ')}`;
+                debugDiv.textContent = `⚠️ Keine Teams gefunden. Similar: ${similar.join(', ')}`;
                 leagueGroup.appendChild(debugDiv);
             } else {
                 const old = leagueGroup.querySelector('div[style*="#ef4444"]');
@@ -7172,7 +7224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const renderPlayerList = (players, containerId, selectedSet, headerText) => {
             const el = document.getElementById(containerId);
-            let html = `<h4 style="color: #94a3b8; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">${headerText} <span id="count-${containerId}" style="float: right; font-size: 0.8em; color: #60a5fa">${selectedSet.size} gewählt</span></h4>`;
+            let html = `<h4 style="color: #94a3b8; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">${escapeHtmlText(headerText)} <span id="count-${containerId}" style="float: right; font-size: 0.8em; color: #60a5fa">${selectedSet.size} gewählt</span></h4>`;
 
             html += `<div style="max-height: 400px; overflow-y: auto; padding-right: 5px;">`;
             if (players.length === 0) {
@@ -7188,7 +7240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px solid #1e293b; font-size: 0.9em;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; flex: 1;">
                             <input type="checkbox" value="${idx}" data-list="${containerId}" ${isChecked} style="transform: scale(1.2);">
-                            <span style="color: ${color};" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span style="color: ${color};" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         </label>
                         <div style="text-align: right;">
                              <div style="font-weight: bold; color: #4ade80;">${p._avg.toFixed(2)}</div>
@@ -7276,7 +7328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (history.matches.length > 0) {
                         let hHtml = `
                         <div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
-                            <h4 style="color: #f59e0b; margin-bottom: 15px;">📜 Historische Ergebnisse (${nameA} vs ${nameB})</h4>
+                            <h4 style="color: #f59e0b; margin-bottom: 15px;">📜 Historische Ergebnisse (${escapeHtmlText(nameA)} vs ${escapeHtmlText(nameB)})</h4>
                             <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
                                 <div style="background: #22c55e22; color: #4ade80; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.wins} Sieg${history.wins !== 1 ? 'e' : ''}</div>
                                 <div style="background: #64748b22; color: #94a3b8; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.draws} Unentschieden</div>
@@ -7288,8 +7340,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             const isDraw = m.teamAScore === m.teamBScore;
                             const icon = isWin ? '🟢' : isDraw ? '🟡' : '🔴';
                             hHtml += `<div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1e293b40; color: #cbd5e1;">
-                                <span>${icon} ${m.spieltag} · ${m.dateStr || ''}</span>
-                                <span style="font-weight: bold;">${m.home} ${m.scoreHome}:${m.scoreAway} ${m.away}</span>
+                                <span>${icon} ${escapeHtmlText(m.spieltag)} · ${escapeHtmlText(m.dateStr || '')}</span>
+                                <span style="font-weight: bold;">${escapeHtmlText(m.home)} ${escapeHtmlText(m.scoreHome)}:${escapeHtmlText(m.scoreAway)} ${escapeHtmlText(m.away)}</span>
                             </div>`;
                         });
                         hHtml += `</div></div>`;
@@ -7352,13 +7404,13 @@ document.addEventListener('DOMContentLoaded', () => {
              <div class="fade-in" style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 30px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
                     <div style="text-align: center; flex: 1;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${nameA}</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${escapeHtmlText(nameA)}</div>
                         <div style="font-size: 2.5em; font-weight: bold; color: #4ade80; text-shadow: 0 0 20px rgba(74, 222, 128, 0.2);">${strengthA.toFixed(1)}</div>
                         <div style="font-size: 0.8em; color: #94a3b8;">Team-Score</div>
                     </div>
                     <div style="font-weight: bold; color: #64748b; font-size: 1.5em; opacity: 0.5;">VS</div>
                     <div style="text-align: center; flex: 1;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${nameB}</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${escapeHtmlText(nameB)}</div>
                         <div style="font-size: 2.5em; font-weight: bold; color: #60a5fa; text-shadow: 0 0 20px rgba(96, 165, 250, 0.2);">${strengthB.toFixed(1)}</div>
                          <div style="font-size: 0.8em; color: #94a3b8;">Team-Score</div>
                     </div>
@@ -7390,13 +7442,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
 
                 // Team A form
-                html += `<div><h5 style="color: #4ade80; margin-bottom: 10px;">${nameA}</h5>`;
+                html += `<div><h5 style="color: #4ade80; margin-bottom: 10px;">${escapeHtmlText(nameA)}</h5>`;
                 listA.forEach(p => {
                     const form = getPlayerFormTrend(p);
                     const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
                     const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
                     html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         ${renderMatchSparkline(form.values, trendColor)}
                         <span style="font-size: 0.9em;">${trendIcon}</span>
                         <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
@@ -7405,13 +7457,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 html += '</div>';
 
                 // Team B form
-                html += `<div><h5 style="color: #60a5fa; margin-bottom: 10px;">${nameB}</h5>`;
+                html += `<div><h5 style="color: #60a5fa; margin-bottom: 10px;">${escapeHtmlText(nameB)}</h5>`;
                 listB.forEach(p => {
                     const form = getPlayerFormTrend(p);
                     const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
                     const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
                     html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         ${renderMatchSparkline(form.values, trendColor)}
                         <span style="font-size: 0.9em;">${trendIcon}</span>
                         <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
@@ -7430,14 +7482,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 listB.forEach(pb => {
                     const parts = pb.name.split(' ');
                     const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pb.name;
-                    html += `<th style="padding: 8px; color: #60a5fa; text-align: center; border-bottom: 2px solid #334155; white-space: nowrap;">${shortName}</th>`;
+                    html += `<th style="padding: 8px; color: #60a5fa; text-align: center; border-bottom: 2px solid #334155; white-space: nowrap;">${escapeHtmlText(shortName)}</th>`;
                 });
                 html += '</tr>';
 
                 listA.forEach(pa => {
                     const parts = pa.name.split(' ');
                     const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pa.name;
-                    html += `<tr><td style="padding: 8px; color: #4ade80; font-weight: bold; border-bottom: 1px solid #33415544; white-space: nowrap;">${shortName}</td>`;
+                    html += `<tr><td style="padding: 8px; color: #4ade80; font-weight: bold; border-bottom: 1px solid #33415544; white-space: nowrap;">${escapeHtmlText(shortName)}</td>`;
                     listB.forEach(pb => {
                         const totalAvg = pa._avg + pb._avg;
                         const winProb = totalAvg > 0 ? (pa._avg / totalAvg) * 100 : 50;
@@ -7470,10 +7522,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (playersA.length > 4) {
                     const optA = calculateOptimalLineup(playersA, 4);
                     html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
-                        <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${nameA} – Empfehlung</div>`;
+                        <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameA)} – Empfehlung</div>`;
                     optA.players.forEach(p => {
                         html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                             <span style="color: #4ade80; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
                         </div>`;
                     });
@@ -7484,10 +7536,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (playersB.length > 4) {
                     const optB = calculateOptimalLineup(playersB, 4);
                     html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
-                        <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${nameB} – Empfehlung</div>`;
+                        <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameB)} – Empfehlung</div>`;
                     optB.players.forEach(p => {
                         html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                             <span style="color: #60a5fa; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
                         </div>`;
                     });

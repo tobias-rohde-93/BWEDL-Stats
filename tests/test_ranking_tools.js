@@ -129,6 +129,7 @@ function createDocument() {
         set innerHTML(value) { this.usedInnerHTML = true; this._textContent = String(value); this.children = []; }
         get innerHTML() { return this._textContent; }
         get firstChild() { return this.children[0] || null; }
+        get firstElementChild() { return this.children[0] || null; }
         appendChild(child) { this.children.push(child); child.parentElement = this; return child; }
         append(...children) { children.forEach((child) => this.appendChild(child)); }
         replaceChildren(...children) { this.children.forEach((child) => { child.parentElement = null; }); this.children = []; this.append(...children); }
@@ -140,7 +141,11 @@ function createDocument() {
         focus() { this.focused = true; }
         scrollIntoView(options) { this.scrolledWith = options; }
     }
-    return { createElement: (tagName) => new Element(tagName), getElementById: (id) => byId.get(id) || null };
+    return {
+        createElement: (tagName) => new Element(tagName),
+        createDocumentFragment: () => new Element('#fragment'),
+        getElementById: (id) => byId.get(id) || null,
+    };
 }
 
 function descendants(root) { return [root, ...root.children.flatMap(descendants)]; }
@@ -256,27 +261,54 @@ class MaliciousRankingDOMParser {
     parseFromString(value, type) {
         assert.match(value, /onerror/);
         assert.equal(type, 'text/html');
-        return {
+        const thead = { tagName: 'THEAD' };
+        const tbody = { tagName: 'TBODY' };
+        const cell = (tagName, textContent) => ({
+            tagName,
+            textContent,
+            getAttribute() { return null; },
+        });
+        const rows = [
+            { parentElement: thead, children: [
+                cell('TH', 'Rang<script>alert(1)</script>'),
+                cell('TH', 'Name'),
+            ] },
+            { parentElement: tbody, children: [
+                cell('TD', '1'),
+                cell('TD', 'Spieler <img src=x onerror=alert(2)>'),
+            ] },
+        ];
+        const table = {
             querySelectorAll(selector) {
                 assert.equal(selector, 'tr');
-                return [
-                    { children: [
-                        { tagName: 'TH', textContent: 'Rang<script>alert(1)</script>' },
-                        { tagName: 'TH', textContent: 'Name' },
-                    ] },
-                    { children: [
-                        { tagName: 'TD', textContent: '1' },
-                        { tagName: 'TD', textContent: 'Spieler <img src=x onerror=alert(2)>' },
-                    ] },
-                ];
+                return rows;
+            },
+        };
+        rows.forEach((row) => { row.closest = () => table; });
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'table');
+                return [table];
             },
         };
     }
 }
 const fallbackDocument = createDocument();
+const fallbackParser = compileFunction('parseInertHtmlDocument', { DOMParser: MaliciousRankingDOMParser });
+const fallbackSpan = compileFunction('safePublishedSpan');
+const fallbackModels = compileFunction('safeTableModelsFromHtml', {
+    parseInertHtmlDocument: fallbackParser,
+    safePublishedSpan: fallbackSpan,
+});
+const fallbackModelTable = compileFunction('createSafeTableFromModel', { document: fallbackDocument });
+const fallbackTables = compileFunction('createSafeTablesFromHtml', {
+    document: fallbackDocument,
+    safeTableModelsFromHtml: fallbackModels,
+    createSafeTableFromModel: fallbackModelTable,
+});
 const safeFallbackTable = compileFunction('createSafeTableFromHtml', {
     document: fallbackDocument,
-    parseInertHtmlDocument: compileFunction('parseInertHtmlDocument', { DOMParser: MaliciousRankingDOMParser }),
+    createSafeTablesFromHtml: fallbackTables,
 });
 const fallbackContent = fallbackDocument.createElement('main');
 const fallbackNotice = fallbackDocument.createElement('aside');

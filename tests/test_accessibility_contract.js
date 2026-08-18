@@ -151,11 +151,18 @@ function createFocusDocument() {
     const activateSearchResult = new Function(
         'closeSearchResults', `${activateSearchSource}; return activateSearchResult;`,
     )(closeSearchResults);
+    const searchLabelSource = extractFunction(bundle, 'replaceWithSearchResultLabel');
+    const replaceWithSearchResultLabel = new Function(
+        'document', `${searchLabelSource}; return replaceWithSearchResultLabel;`,
+    )(document);
     const handleSearch = new Function(
         'document', 'window', 'searchResults', 'searchInput', 'navigateTo',
-        'closeSearchResults', 'activateSearchResult',
+        'closeSearchResults', 'activateSearchResult', 'replaceWithSearchResultLabel',
         `${source}; return handleSearch;`,
-    )(document, window, searchResults, searchInput, navigateTo, closeSearchResults, activateSearchResult);
+    )(
+        document, window, searchResults, searchInput, navigateTo,
+        closeSearchResults, activateSearchResult, replaceWithSearchResultLabel,
+    );
 
     handleSearch({ target: searchInput });
     assert.equal(searchResults.children.length, 1);
