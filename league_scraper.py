@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
 from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.html_sanitizer import sanitize_table_fragment
 from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE = "league_data.json"
@@ -68,7 +69,9 @@ def scrape_league(page, league_url, league_name, data):
         try:
             table_locator = page.locator("xpath=//table[contains(., 'Pl.')]")
             if table_locator.count() > 0:
-                 league_storage["table"] = table_locator.first.evaluate("el => el.outerHTML")
+                 league_storage["table"] = sanitize_table_fragment(
+                     table_locator.first.evaluate("el => el.outerHTML")
+                 )
             else:
                  print(f"  [Warn] No table found for {league_name}")
         except Exception as e:
@@ -203,7 +206,7 @@ def scrape_league(page, league_url, league_name, data):
                 return { html: fullHtmlParts.join('<br>'), rounds: results };
             }""")
             
-            league_storage["table"] = cup_data["html"]
+            league_storage["table"] = sanitize_table_fragment(cup_data["html"])
             for round_obj in cup_data["rounds"]:
                 league_storage["match_days"][round_obj["name"]] = round_obj["text"]
                 

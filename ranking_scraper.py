@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 
 from pipeline.files import write_json_pair
 from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
+from pipeline.html_sanitizer import sanitize_table_fragment
 from pipeline.urls import normalize_bwedl_url
 
 DATA_FILE_JSON = "ranking_data.json"
@@ -89,7 +90,7 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 table_loc = page.locator("div.table-responsive table")
                 if table_loc.count() > 0:
                     html = table_loc.first.evaluate("el => el.outerHTML")
-                    data["rankings"][rank['name']] = html
+                    data["rankings"][rank['name']] = sanitize_table_fragment(html)
                     
                     # Extract players
                     category_players = page.evaluate("""(leagueName) => {

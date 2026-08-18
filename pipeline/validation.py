@@ -12,6 +12,8 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 
+from pipeline.html_sanitizer import safe_table_fragment_issue
+
 
 class Decision(StrEnum):
     PUBLISH = "publish"
@@ -212,6 +214,7 @@ def validate_rankings(
     invalid_ranking_categories = 0
     duplicate_ranking_categories = 0
     malformed_ranking_tables = 0
+    unsafe_ranking_tables = 0
     for key, table in rankings.items():
         parsed_category = _parse_category(key)
         if parsed_category is None:
@@ -233,6 +236,9 @@ def validate_rankings(
         if not _is_ranking_table(table):
             malformed_ranking_tables += 1
             continue
+        if safe_table_fragment_issue(table) is not None:
+            unsafe_ranking_tables += 1
+            continue
         ranking_categories.add(category)
 
     if invalid_ranking_categories:
@@ -248,6 +254,9 @@ def validate_rankings(
     if malformed_ranking_tables:
         metrics["malformed_ranking_tables"] = malformed_ranking_tables
         reasons.append(f"Malformed ranking tables: {malformed_ranking_tables}")
+    if unsafe_ranking_tables:
+        metrics["unsafe_ranking_tables"] = unsafe_ranking_tables
+        reasons.append(f"Unsafe ranking tables: {unsafe_ranking_tables}")
 
     unique_suffix_seasons = set(observed_suffix_seasons)
     if len(unique_suffix_seasons) > 1:
@@ -321,6 +330,8 @@ def _normalized_text(value: str) -> str:
 def _league_table_issue(table: Any) -> str | None:
     if not isinstance(table, str) or not _is_ranking_table(table):
         return "malformed table"
+    if safe_table_fragment_issue(table) is not None:
+        return "unsafe table"
 
     parsed = BeautifulSoup(table, "html.parser")
     rows = parsed.find_all("tr")
