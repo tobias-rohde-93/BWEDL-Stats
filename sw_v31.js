@@ -32,7 +32,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-    // Skip non-GET requests (e.g. POST to /api/update)
+    // The static GitHub Pages app only caches idempotent resource requests.
     if (event.request.method !== 'GET') return;
 
     const url = new URL(event.request.url);

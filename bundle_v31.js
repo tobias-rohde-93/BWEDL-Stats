@@ -7563,90 +7563,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Expose triggerUpdate globally so the button onclick works
-    window.triggerUpdate = function () {
-        console.log('[Update] triggerUpdate called');
-        const btn = document.getElementById('update-btn');
+    // GitHub Pages is the only product runtime. This action checks the latest
+    // published status and then reloads the network-first data files.
+    window.triggerUpdate = async function () {
+        const controls = ['update-btn', 'mobile-refresh']
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
+        const originalLabels = controls.map((control) => control.textContent);
         const updateStatus = document.getElementById('update-status');
-        const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-        console.log('[Update] hostname:', window.location.hostname, 'isLocalhost:', isLocalhost);
 
-        if (!isLocalhost) {
-            console.log('[Update] Not localhost, reloading page...');
-            // On static hosting (GitHub Pages), we can't trigger the python scraper.
-            // But we CAN reload the page to fetch the latest data files (handled by Network-First SW).
-            if (btn) {
-                btn.innerHTML = "⏳ Lädt...";
-                btn.disabled = true;
-            }
-
-            // Force reload after short delay to show feedback
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-            return;
+        controls.forEach((control) => {
+            control.disabled = true;
+            control.textContent = '⏳ Lädt...';
+        });
+        if (updateStatus) {
+            updateStatus.textContent = 'Veröffentlichte Daten werden geprüft...';
+            updateStatus.classList.remove('hidden');
+            updateStatus.style.color = '#94a3b8';
+            updateStatus.setAttribute('role', 'status');
+            updateStatus.setAttribute('aria-live', 'polite');
         }
 
-        console.log('[Update] Localhost detected, starting update...');
-
-        if (btn) {
-            btn.disabled = true;
-            btn.innerHTML = "⏳ läuft...";
-        }
-        // Snapshot current stats before update
         try {
             const stats = calculateDataStats();
             localStorage.setItem('update_snapshot', JSON.stringify(stats));
-        } catch (e) { console.error("Snapshot failed", e); }
-
-        let pollInterval;
-
-        if (updateStatus) {
-            updateStatus.textContent = "Starten...";
-            updateStatus.classList.remove('hidden');
-            updateStatus.style.color = "#94a3b8"; // reset color
-
-            // Poll for status
-            pollInterval = setInterval(() => {
-                fetch('update_status.json?t=' + Date.now())
-                    .then(r => r.json())
-                    .then(data => {
-                        if (data && data.status) {
-                            if (data.status === 'running') {
-                                updateStatus.innerHTML = `Update läuft... ${data.progress}%<br><span style="font-size:0.8em; color:#64748b">${data.current_script || ''}</span>`;
-                            } else if (data.status === 'error') {
-                                updateStatus.textContent = `Fehler bei: ${data.current_script}`;
-                                updateStatus.style.color = "#f87171"; // red
-                            }
-                        }
-                    })
-                    .catch(() => { /* ignore poll errors (file might not exist yet) */ });
-            }, 1000);
+        } catch (error) {
+            console.error('Snapshot failed', error);
         }
 
-        fetch('/api/update', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                if (pollInterval) clearInterval(pollInterval);
-
-                if (data.status === 'success') {
-                    if (updateStatus) {
-                        updateStatus.textContent = "Erfolg! 100% - Seite wird neu geladen...";
-                        updateStatus.style.color = "#4ade80"; // green
-                    }
-                    setTimeout(() => location.reload(), 1500);
-                } else {
-                    throw new Error(data.message || "Unknown error");
-                }
-            })
-            .catch(e => {
-                if (pollInterval) clearInterval(pollInterval);
-                if (updateStatus) {
-                    updateStatus.textContent = "Fehler: " + e.message;
-                    updateStatus.style.color = "#f87171"; // red
-                }
-                if (btn) btn.disabled = false;
+        try {
+            await window.BwedlAppUtils.probePublishedData(
+                window.fetch.bind(window),
+                document.baseURI,
+                Date.now(),
+            );
+            if (updateStatus) {
+                updateStatus.textContent = 'Veröffentlichter Datenstand wird geladen...';
+                updateStatus.style.color = '#4ade80';
+            }
+            window.location.reload();
+        } catch (error) {
+            if (updateStatus) {
+                updateStatus.textContent = 'Keine Verbindung – gespeicherter Datenstand bleibt verfügbar.';
+                updateStatus.style.color = '#f87171';
+            }
+            controls.forEach((control, index) => {
+                control.disabled = false;
+                control.textContent = originalLabels[index];
             });
+        }
     };
 
 

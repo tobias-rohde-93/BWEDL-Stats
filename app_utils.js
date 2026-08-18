@@ -29,6 +29,34 @@
         hourCycle: 'h23',
     });
 
+    async function probePublishedData(fetchImpl, baseUri, nowValue) {
+        if (typeof fetchImpl !== 'function') {
+            throw new TypeError('A fetch implementation is required');
+        }
+        const statusUrl = new URL('data_status.json', baseUri);
+        statusUrl.searchParams.set('t', String(nowValue));
+        const response = await fetchImpl(statusUrl.toString(), {
+            cache: 'no-store',
+            credentials: 'omit',
+            headers: { Accept: 'application/json' },
+        });
+        if (!response || response.ok !== true) {
+            const status = response && Number.isFinite(response.status)
+                ? response.status
+                : 'unbekannt';
+            throw new Error(`Öffentlicher Datenstand nicht erreichbar (${status})`);
+        }
+        const payload = await response.json();
+        if (
+            !payload || typeof payload !== 'object' || Array.isArray(payload) ||
+            !payload.domains || typeof payload.domains !== 'object' ||
+            Array.isArray(payload.domains)
+        ) {
+            throw new Error('Öffentlicher Datenstatus ist ungültig');
+        }
+        return payload;
+    }
+
     function isByeOpponent(value) {
         if (typeof value !== 'string') return false;
         const normalized = value
@@ -953,6 +981,7 @@
 
     return {
         VISIT_SNAPSHOT_VERSION,
+        probePublishedData,
         buildVisitSnapshot,
         buildTeamResultsFingerprint,
         readVisitSnapshot,

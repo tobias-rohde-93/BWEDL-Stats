@@ -11,24 +11,13 @@ Die Web-Version ist hier verfügbar: **[BWEDL Stats öffnen](https://tobias-rohd
 
 ---
 
-## Lokal Installieren & Daten Aktualisieren
+## Betrieb und Datenaktualisierung
 
-Da die Web-Version auf statischem Hosting läuft, funktioniert der "Aktualisieren"-Button nur in der lokalen Version. Um die Ligen-Daten zu erneuern, musst du das Tool auf deinem Rechner ausführen.
+GitHub Pages ist die einzige produktive Laufzeit der Anwendung. Der Button **Aktualisieren** prüft den neuesten dort veröffentlichten Datenstand und lädt die statischen Datendateien neu. Er startet weder lokal noch auf GitHub einen Scraper.
 
-### Voraussetzungen
-- [Python 3.x](https://www.python.org/downloads/) muss installiert sein.
-- [Git](https://git-scm.com/downloads) (optional, zum Klonen).
+Die BWEDL-Daten werden ausschließlich durch den GitHub-Actions-Workflow `Update Data` aufbereitet. Der geplante Lauf prüft und validiert neue Kandidaten alle sechs Stunden, bevor geänderte öffentliche Datendateien nach `main` übernommen und über GitHub Pages bereitgestellt werden.
 
-### Schnell-Installation (Windows)
-1.  **Code herunterladen**:
-    Klick oben auf den grünen Button **Code** -> **Download ZIP** und entpacke den Ordner.
-2.  **Installieren**:
-    Doppelklicke auf `setup.bat`. 
-    *   Das Skript installiert alles nötige und erstellt eine Verknüpfung auf deinem Desktop.
-3.  **Starten**:
-    Klicke einfach auf die neue **"BWEDL Stats"** Verknüpfung auf deinem Desktop.
-
-*(Voraussetzung: [Python](https://www.python.org/downloads/) muss installiert sein. Das Skript sagt dir Bescheid, falls es fehlt.)*
+Python und Playwright werden nur für Entwicklung, Tests und die Datenpipeline benötigt. Die öffentliche PWA benötigt keine lokale Installation und keinen lokalen Programmserver.
 
 ---
 
@@ -88,13 +77,15 @@ data_status.json  data_status.js
 
 ### Lokale UI-Prüfung
 
+Eine lokale Vorschau ist ausschließlich Entwicklungsinfrastruktur und führt keine Datenaktualisierung aus:
+
 ```powershell
-python server.py
+python -m http.server 8000 --bind 127.0.0.1
 # in einem zweiten Terminal
-Invoke-WebRequest http://localhost:8000/ -UseBasicParsing
+Invoke-WebRequest http://127.0.0.1:8000/ -UseBasicParsing
 ```
 
-Danach `http://localhost:8000/` im Browser öffnen und Datenstand, Spielersuche, H2H, Match Preview sowie Desktop- und Mobilansicht prüfen. Der lokale Aktualisieren-Button startet weiterhin einen echten Lauf; für eine schreibfreie Prüfung deshalb den obigen Dry-Run im Terminal verwenden.
+Danach `http://127.0.0.1:8000/` im Browser öffnen und Datenstand, Spielersuche, H2H, Match Preview sowie Desktop- und Mobilansicht prüfen. Der Aktualisieren-Button verhält sich dabei wie auf GitHub Pages und lädt ausschließlich bereits veröffentlichte Dateien neu.
 
 ---
 
