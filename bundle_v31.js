@@ -1352,7 +1352,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 init();
             });
     } else {
-        init();
+        // Let the DOMContentLoaded callback finish defining route-specific classes
+        // before a deep link can render one of them (for example #tools).
+        queueMicrotask(init);
     }
 
     function init() {
@@ -2754,7 +2756,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <div style="text-align: right;">
                                 <div style="background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; display: inline-block; white-space: nowrap;">
-                                    Rang ${myStats.rank}
+                                    Rang ${escapeHtmlText(myStats.rank)}
                                 </div>
                             </div>
                         </div>
@@ -4182,7 +4184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${tierBadge ? `<span style="font-size: 0.65em; font-weight: bold; color: ${tierColor}; border: 1px solid ${tierColor}; padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">${tierBadge}</span>` : ''}
                         </div>
                         <div style="font-size: 0.7em; color: #64748b; margin-top: 2px;">
-                            Bester Rang: ${p.bestSeasonRankDisplay} (${p.bestSeasonYearRank}) • Max: ${p.maxPoints} Pkt (${p.maxPointsYear})
+                            Bester Rang: ${p.bestSeasonRankDisplay} (${escapeHtmlText(p.bestSeasonYearRank)}) • Max: ${p.maxPoints} Pkt (${escapeHtmlText(p.maxPointsYear)})
                         </div>
                     </div>
                     <div style="width: 40px; text-align: center; font-size: 0.9em;" title="${p.trend === 'up' ? 'Aufwärtstrend' : p.trend === 'down' ? 'Abwärtstrend' : 'Stabil'}">${trendIcon}</div>
@@ -4217,8 +4219,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                             <span style="color: ${sc}; font-weight: 500;">${escapeHtmlText(s.league || '-')}</span>
                                             ${sl ? `<span style="font-size: 0.75em; color: ${sc}; margin-left: 4px; border: 1px solid ${sc}; padding: 0 3px; border-radius: 2px;">${sl}</span>` : ''}
                                         </td>
-                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: center;">${s.rank || '-'}</td>
-                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: right; font-weight: bold; color: #4ade80;">${s.points || 0}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: center;">${escapeHtmlText(s.rank || '-')}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: right; font-weight: bold; color: #4ade80;">${escapeHtmlText(s.points || 0)}</td>
                                     </tr>`;
                     }).join('')}
                             </tbody>
@@ -7876,9 +7878,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const statusEl = document.getElementById('update-status');
                     if (statusEl) {
-                        // Show message
-                        const msg = "Update erfolgreich!";
-                        statusEl.innerHTML = `<strong>${msg}</strong><br><span style="font-size:0.9em">${changes.join(', ')}</span>`;
+                        const heading = document.createElement('strong');
+                        heading.textContent = 'Update erfolgreich!';
+                        const detail = document.createElement('span');
+                        detail.style.fontSize = '0.9em';
+                        detail.textContent = changes.join(', ');
+                        statusEl.replaceChildren(heading, document.createElement('br'), detail);
                         statusEl.classList.remove('hidden');
                         statusEl.style.color = "#4ade80";
 
@@ -7977,7 +7982,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 style="color: #f8fafc;">❓ FAQ</h3>
                 <p><strong>Wie oft werden die Daten aktualisiert?</strong><br>
                 Die Webseite und App werden automatisch <strong>alle 6 Stunden</strong> aktualisiert. Der "Aktualisieren"-Button im Menü prüft nur, ob neue Daten auf dem Server bereitliegen.</p>
-                <p><em>Hinweis: Ein komplett manuelles Anstoßen des Updates ist nur möglich, wenn das Programm direkt auf dem PC ausgeführt wird.</em></p>
+                <p><em>Ein manuelles Datenupdate kann nur von den Repository-Verantwortlichen über den GitHub-Actions-Workflow ausgelöst werden, nicht aus der App.</em></p>
 
                 <p><strong>Kann ich alte Saisons sehen?</strong><br>
                 Ja, im "Archiv" auf den Vereins- und Spielerseiten.</p>

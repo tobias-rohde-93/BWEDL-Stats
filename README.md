@@ -75,17 +75,18 @@ data_status.json  data_status.js
 4. Nur die Ursache korrigieren; niemals Validierungsgrenzen umgehen oder alte Daten manuell löschen.
 5. `Update Data` manuell auslösen und Bericht sowie explizite Dateiliste kontrollieren. Das Incident-Issue wird erst durch einen erfolgreichen geplanten Lauf automatisch geschlossen.
 
-### Lokale UI-Prüfung
+### Automatischer Browser-Sicherheitstest
 
-Eine lokale Vorschau ist ausschließlich Entwicklungsinfrastruktur und führt keine Datenaktualisierung aus:
+GitHub Actions startet nach der Chromium-Installation einen Browser-Smoke-Test unter dem echten Pages-Unterpfad `/BWEDL-Stats/`. Er prüft, dass veröffentlichte Tabellen und Spielernamen nur als Text erscheinen, keine `/api/`-Abhängigkeit entsteht und Profil sowie Match Setup auch aus dem Service-Worker-Cache funktionieren.
+
+Zur optionalen Reproduktion in einer Entwicklungsumgebung:
 
 ```powershell
-python -m http.server 8000 --bind 127.0.0.1
-# in einem zweiten Terminal
-Invoke-WebRequest http://127.0.0.1:8000/ -UseBasicParsing
+$env:BWEDL_BROWSER_TESTS = "1"
+python -m pytest tests/test_browser_security.py -q
 ```
 
-Danach `http://127.0.0.1:8000/` im Browser öffnen und Datenstand, Spielersuche, H2H, Match Preview sowie Desktop- und Mobilansicht prüfen. Der Aktualisieren-Button verhält sich dabei wie auf GitHub Pages und lädt ausschließlich bereits veröffentlichte Dateien neu.
+Der dabei kurzzeitig erzeugte HTTP-Server gehört ausschließlich zum Test-Harness. Die Anwendung selbst wird weiterhin nur über GitHub Pages betrieben.
 
 ---
 

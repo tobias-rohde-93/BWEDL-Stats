@@ -15,6 +15,8 @@ def test_product_bundle_only_refreshes_published_static_data() -> None:
     javascript = (ROOT / "bundle_v31.js").read_text(encoding="utf-8")
 
     assert "BwedlAppUtils.probePublishedData" in javascript
+    assert "direkt auf dem PC ausgeführt" not in javascript
+    assert "nicht aus der App" in javascript
     for obsolete_contract in (
         "/api/update",
         "update_status.json",

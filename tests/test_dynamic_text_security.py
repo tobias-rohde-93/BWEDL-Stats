@@ -16,6 +16,7 @@ def test_confirmed_simple_text_sinks_do_not_use_inner_html() -> None:
         r"div\.innerHTML\s*=\s*`[^`]*\$\{m\.label\}",
         r"selEl\.innerHTML\s*=\s*`[^`]*\$\{player\.label\}",
         r"div\.innerHTML\s*=\s*`[^`]*\$\{p\.name\}",
+        r"statusEl\.innerHTML\s*=",
     )
     for pattern in forbidden_patterns:
         assert re.search(pattern, source) is None, pattern
@@ -38,6 +39,11 @@ def test_complex_templates_escape_external_text_values() -> None:
         "${escapeHtmlText(m.home)}",
         "${escapeHtmlText(m.away)}",
         "${escapeHtmlText(shortName)}",
+        "${escapeHtmlText(myStats.rank)}",
+        "${escapeHtmlText(p.bestSeasonYearRank)}",
+        "${escapeHtmlText(p.maxPointsYear)}",
+        "${escapeHtmlText(s.rank || '-')}",
+        "${escapeHtmlText(s.points || 0)}",
     )
     for fragment in required_fragments:
         assert fragment in source, fragment

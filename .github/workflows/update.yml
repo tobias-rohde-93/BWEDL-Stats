@@ -38,6 +38,11 @@ jobs:
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
 
+      - name: Run browser security smoke
+        env:
+          BWEDL_BROWSER_TESTS: "1"
+        run: python -m pytest tests/test_browser_security.py -q
+
       - name: Run live data update
         timeout-minutes: 20
         run: python update_data.py
