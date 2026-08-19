@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import errno
 import json
 import subprocess
 import sys
@@ -432,6 +433,309 @@ def test_identical_files_are_not_promoted_or_returned(
 
     assert promoted == ["archive_tables.js"]
     assert changed == [published / "archive_tables.js"]
+
+
+def test_owned_directory_promotes_changes_and_removes_stale_children(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(
+        staging / "calendars",
+        {
+            "club-010-team-1.ics": b"new-calendar",
+            "new.ics": b"brand-new",
+            "unchanged.ics": b"unchanged",
+        },
+    )
+    write_files(
+        published / "calendars",
+        {
+            "club-010-team-1.ics": b"old-calendar",
+            "unchanged.ics": b"unchanged",
+            "stale.ics": b"stale-calendar",
+        },
+    )
+
+    changed = publish_domains(
+        staging,
+        published,
+        [],
+        additional_directories=("calendars",),
+    )
+
+    assert changed == [
+        published / "calendars" / "club-010-team-1.ics",
+        published / "calendars" / "new.ics",
+        published / "calendars" / "stale.ics",
+    ]
+    assert (published / "calendars" / "club-010-team-1.ics").read_bytes() == (
+        b"new-calendar"
+    )
+    assert (published / "calendars" / "unchanged.ics").read_bytes() == b"unchanged"
+    assert not (published / "calendars" / "stale.ics").exists()
+
+
+@pytest.mark.parametrize(
+    "directory",
+    ["", ".", "..", "nested/calendars", r"nested\\calendars", "/calendars", r"C:\\calendars", r"\\\\server\\share"],
+)
+def test_additional_directories_must_be_unique_safe_basenames(
+    tmp_path: Path, directory: str
+) -> None:
+    with pytest.raises(ValueError, match="directory"):
+        publish_domains(
+            tmp_path / "staging",
+            tmp_path / "published",
+            [],
+            additional_directories=(directory,),
+        )
+
+
+def test_additional_directories_reject_drive_relative_names(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="directory"):
+        publish_domains(
+            tmp_path / "staging",
+            tmp_path / "published",
+            [],
+            additional_directories=("C:calendars",),
+        )
+
+
+def test_additional_directories_reject_duplicates_and_file_collisions(
+    tmp_path: Path,
+) -> None:
+    for directories, files in (
+        (("calendars", "calendars"), ()),
+        (("league_data.json",), ()),
+        (("calendars",), ("calendars",)),
+    ):
+        with pytest.raises(ValueError, match="(directory|collision|additional)"):
+            publish_domains(
+                tmp_path / "staging",
+                tmp_path / "published",
+                [],
+                additional_files=files,
+                additional_directories=directories,
+            )
+
+
+def _directory_symlink_or_skip(link: Path, target: Path) -> None:
+    try:
+        link.symlink_to(target, target_is_directory=True)
+    except OSError as error:
+        if getattr(error, "winerror", None) == 1314 or error.errno in {
+            errno.EACCES,
+            errno.EPERM,
+        }:
+            pytest.skip(f"symlink permission unavailable: {error}")
+        raise
+
+
+@pytest.mark.parametrize("link_kind", ["source", "destination"])
+def test_owned_directory_symlink_is_rejected_before_any_mutation(
+    tmp_path: Path, link_kind: str
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"league_data.json": b"new", "league_data.js": b"new"})
+    write_files(published, {"league_data.json": b"old", "league_data.js": b"old"})
+    target = tmp_path / "directory-target"
+    write_files(target, {"club.ics": b"sentinel"})
+    link = staging / "calendars" if link_kind == "source" else published / "calendars"
+    if link_kind == "destination":
+        write_files(staging / "calendars", {"club.ics": b"new-calendar"})
+    _directory_symlink_or_skip(link, target)
+
+    with pytest.raises(ValueError, match="(symlink|reparse|directory)"):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH)],
+            additional_directories=("calendars",),
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old"
+    assert (published / "league_data.js").read_bytes() == b"old"
+    assert (target / "club.ics").read_bytes() == b"sentinel"
+
+
+@pytest.mark.parametrize("tree_kind", ["source", "destination"])
+def test_owned_directory_rejects_nested_children_before_any_mutation(
+    tmp_path: Path, tree_kind: str
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"league_data.json": b"new", "league_data.js": b"new"})
+    write_files(published, {"league_data.json": b"old", "league_data.js": b"old"})
+    tree = staging / "calendars" if tree_kind == "source" else published / "calendars"
+    tree.mkdir(parents=True)
+    (tree / "nested").mkdir()
+    if tree_kind == "destination":
+        write_files(staging / "calendars", {"club.ics": b"new-calendar"})
+
+    with pytest.raises(ValueError, match="regular|directory"):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH)],
+            additional_directories=("calendars",),
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old"
+    assert (published / "league_data.js").read_bytes() == b"old"
+
+
+def test_owned_directory_rejects_non_regular_child_when_supported(tmp_path: Path) -> None:
+    import os
+
+    if not hasattr(os, "mkfifo"):
+        pytest.skip("FIFOs are unavailable on this platform")
+    staging = tmp_path / "staging"
+    calendar = staging / "calendars"
+    calendar.mkdir(parents=True)
+    fifo = calendar / "feed.ics"
+    try:
+        os.mkfifo(fifo)
+    except OSError as error:
+        pytest.skip(f"FIFOs unavailable: {error}")
+
+    with pytest.raises(ValueError, match="regular"):
+        publish_domains(
+            staging,
+            tmp_path / "published",
+            [],
+            additional_directories=("calendars",),
+        )
+
+
+def test_owned_directory_destination_must_be_a_directory(tmp_path: Path) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {"club.ics": b"new"})
+    write_files(published, {"calendars": b"not-a-directory"})
+
+    with pytest.raises(ValueError, match="directory"):
+        publish_domains(
+            staging, published, [], additional_directories=("calendars",)
+        )
+
+
+def test_owned_directory_failure_rolls_back_domain_and_calendar_changes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"league_data.json": b"new-json", "league_data.js": b"new-js"})
+    write_files(staging / "calendars", {"a.ics": b"new-a", "b.ics": b"new-b"})
+    write_files(published, {"league_data.json": b"old-json", "league_data.js": b"old-js"})
+    write_files(published / "calendars", {"a.ics": b"old-a", "b.ics": b"old-b"})
+    real_promote = publication.promote_file
+
+    def fail_calendar_b(source: Path, destination: Path) -> None:
+        if destination.name == "b.ics":
+            raise OSError("calendar promotion failed")
+        real_promote(source, destination)
+
+    monkeypatch.setattr(publication, "promote_file", fail_calendar_b)
+
+    with pytest.raises(OSError, match="calendar promotion failed"):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH)],
+            additional_directories=("calendars",),
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old-json"
+    assert (published / "league_data.js").read_bytes() == b"old-js"
+    assert (published / "calendars" / "a.ics").read_bytes() == b"old-a"
+    assert (published / "calendars" / "b.ics").read_bytes() == b"old-b"
+
+
+def test_stale_owned_child_delete_failure_rolls_back_everything(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"})
+    write_files(staging / "calendars", {"current.ics": b"new-current"})
+    write_files(published, {"club_data.json": b"old-json", "club_data.js": b"old-js"})
+    write_files(published / "calendars", {"current.ics": b"old-current", "stale.ics": b"old-stale"})
+    real_unlink = Path.unlink
+
+    def fail_stale_unlink(path: Path, *args: object, **kwargs: object) -> None:
+        if path.name == "stale.ics":
+            raise OSError("stale delete failed")
+        real_unlink(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "unlink", fail_stale_unlink)
+
+    with pytest.raises(OSError, match="stale delete failed"):
+        publish_domains(
+            staging,
+            published,
+            [result("clubs", Decision.PUBLISH)],
+            additional_directories=("calendars",),
+        )
+
+    assert (published / "club_data.json").read_bytes() == b"old-json"
+    assert (published / "club_data.js").read_bytes() == b"old-js"
+    assert (published / "calendars" / "current.ics").read_bytes() == b"old-current"
+    assert (published / "calendars" / "stale.ics").read_bytes() == b"old-stale"
+
+
+def test_finalize_failure_rolls_back_owned_directory_and_reports_changes(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {"current.ics": b"new-current"})
+    write_files(published / "calendars", {"current.ics": b"old-current", "stale.ics": b"old-stale"})
+    observed: list[list[Path]] = []
+
+    def fail_finalize(changed: list[Path]) -> None:
+        observed.append(changed)
+        raise RuntimeError("finalize failed")
+
+    with pytest.raises(RuntimeError, match="finalize failed"):
+        publish_domains(
+            staging,
+            published,
+            [],
+            additional_directories=("calendars",),
+            finalize=fail_finalize,
+        )
+
+    assert observed == [[
+        published / "calendars" / "current.ics",
+        published / "calendars" / "stale.ics",
+    ]]
+    assert (published / "calendars" / "current.ics").read_bytes() == b"old-current"
+    assert (published / "calendars" / "stale.ics").read_bytes() == b"old-stale"
+
+
+def test_rollback_removes_owned_directory_that_was_absent_before_transaction(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {"a.ics": b"new-a", "b.ics": b"new-b"})
+    real_promote = publication.promote_file
+
+    def fail_second(source: Path, destination: Path) -> None:
+        if destination.name == "b.ics":
+            raise OSError("second calendar promotion failed")
+        real_promote(source, destination)
+
+    monkeypatch.setattr(publication, "promote_file", fail_second)
+
+    with pytest.raises(OSError, match="second calendar promotion failed"):
+        publish_domains(
+            staging, published, [], additional_directories=("calendars",)
+        )
+
+    assert not (published / "calendars").exists()
 
 
 def test_additional_status_files_share_domain_transaction(
