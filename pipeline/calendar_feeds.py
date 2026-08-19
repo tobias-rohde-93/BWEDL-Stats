@@ -474,6 +474,7 @@ def build_calendar_publication(
     source_lines = classify_regular_league_source_lines(league_data)
     season = _single_current_season(league_data, source_lines)
     catalog = build_club_catalog(club_data)
+    feed_teams = _resolved_feed_teams(source_lines, catalog)
     games = parse_regular_league_games(league_data, club_data)
     if season is not None and any(game.season != season for game in games):
         raise CalendarSourceError("Spielplandaten enthalten keine eindeutige aktuelle Saison")
@@ -529,7 +530,7 @@ def build_calendar_publication(
 
     state_events.sort(key=lambda event: event["uid"])
     provisional_index = _build_calendar_index(
-        season, authoritative_updated_at, state_events, catalog
+        season, authoritative_updated_at, state_events, catalog, feed_teams
     )
     index_fingerprint = _index_fingerprint(provisional_index)
     if (
@@ -549,9 +550,9 @@ def build_calendar_publication(
         "index_fingerprint": index_fingerprint,
     }
     index = _build_calendar_index(
-        season, publication_updated_at, state_events, catalog
+        season, publication_updated_at, state_events, catalog, feed_teams
     )
-    calendars = _render_calendars(state_events)
+    calendars = _render_calendars(state_events, feed_teams, season)
     index_json = _json_bytes(index)
     return CalendarPublication(
         season=season,
@@ -658,6 +659,29 @@ def _active_event_record(
     return event
 
 
+def _resolved_feed_teams(
+    source_lines: list[FixtureSourceLine], catalog: ClubCatalog
+) -> dict[str, TeamIdentity]:
+    """Keep stable feeds for resolved teams even before their times are known."""
+    candidates: dict[str, list[TeamIdentity]] = {}
+    for source_line in source_lines:
+        if source_line.classification not in {"game", "missing_time"}:
+            continue
+        assert source_line.home_name is not None
+        assert source_line.away_name is not None
+        for team_name in (source_line.home_name, source_line.away_name):
+            identity = catalog.resolve_team(team_name)
+            if identity is not None:
+                candidates.setdefault(identity.team_id, []).append(identity)
+    return {
+        team_id: min(
+            identities,
+            key=lambda identity: (identity.normalized_name, identity.name),
+        )
+        for team_id, identities in sorted(candidates.items())
+    }
+
+
 def _event_uid(season: str, league: str, round_name: str, team_id: str) -> str:
     payload = "\x1f".join((season, league, round_name, team_id)).encode("utf-8")
     return f"{hashlib.sha256(payload).hexdigest()}@{_UID_DOMAIN}"
@@ -691,21 +715,28 @@ def _build_calendar_index(
     updated_at: datetime,
     events: list[dict[str, Any]],
     catalog: ClubCatalog,
+    feed_teams: Mapping[str, TeamIdentity],
 ) -> dict[str, Any]:
     by_team: dict[str, list[dict[str, Any]]] = {}
     for event in events:
         by_team.setdefault(event["team_id"], []).append(event)
     teams: dict[str, dict[str, Any]] = {}
-    for team_id, team_events in sorted(by_team.items()):
+    team_ids = set(by_team) | set(feed_teams)
+    for team_id in sorted(team_ids):
+        team_events = by_team.get(team_id, [])
         match = _SAFE_TEAM_ID_RE.fullmatch(team_id)
         if match is None:
             raise CalendarSourceError(f"Ungültige Team-ID im Kalender: {team_id!r}")
         preferred = next(
             (event for event in team_events if event["status"] == "CONFIRMED"),
-            team_events[0],
+            team_events[0] if team_events else None,
         )
+        identity = feed_teams.get(team_id)
+        if preferred is None and identity is None:
+            raise CalendarSourceError(f"Kalenderteam ohne Identität: {team_id!r}")
+        team_name = preferred["team_name"] if preferred is not None else identity.name
         entry = {
-            "name": preferred["team_name"],
+            "name": team_name,
             "path": f"calendars/{team_id}.ics",
             "team_id": team_id,
             "club_number": match.group(1),
@@ -714,7 +745,11 @@ def _build_calendar_index(
                 event["location_warning"] is not None for event in team_events
             ),
         }
-        for key in _team_index_keys_for_events(tuple(team_events), catalog):
+        for key in _team_index_keys_for_identity(
+            team_id,
+            {event["team_name"] for event in team_events} or {team_name},
+            catalog,
+        ):
             existing = teams.get(key)
             if existing is not None and existing["team_id"] != team_id:
                 raise CalendarSourceError(
@@ -731,15 +766,16 @@ def _build_calendar_index(
 
 
 def _team_index_keys(event: Mapping[str, Any], catalog: ClubCatalog) -> set[str]:
-    return _team_index_keys_for_events((event,), catalog)
+    return _team_index_keys_for_identity(
+        event["team_id"], {event["team_name"]}, catalog
+    )
 
 
-def _team_index_keys_for_events(
-    events: tuple[Mapping[str, Any], ...], catalog: ClubCatalog
+def _team_index_keys_for_identity(
+    team_id: str, team_names: set[str], catalog: ClubCatalog
 ) -> set[str]:
-    keys = {normalize_team_name(event["team_name"]) for event in events}
-    event = events[0]
-    match = _SAFE_TEAM_ID_RE.fullmatch(event["team_id"])
+    keys = {normalize_team_name(team_name) for team_name in team_names}
+    match = _SAFE_TEAM_ID_RE.fullmatch(team_id)
     assert match is not None
     club = catalog.clubs_by_number.get(match.group(1))
     if club is None:
@@ -757,18 +793,33 @@ def _index_fingerprint(index: Mapping[str, Any]) -> str:
     return hashlib.sha256(_json_bytes(identity)).hexdigest()
 
 
-def _render_calendars(events: list[dict[str, Any]]) -> dict[str, bytes]:
+def _render_calendars(
+    events: list[dict[str, Any]],
+    feed_teams: Mapping[str, TeamIdentity | str] | None = None,
+    season: str | None = None,
+) -> dict[str, bytes]:
+    feed_teams = {} if feed_teams is None else feed_teams
     by_team: dict[str, list[dict[str, Any]]] = {}
     for event in events:
         _validate_team_id(event["team_id"])
         by_team.setdefault(event["team_id"], []).append(event)
-    return {
-        team_id: _render_calendar(team_events[0]["team_name"], sorted(team_events, key=lambda item: item["uid"]))
-        for team_id, team_events in sorted(by_team.items())
-    }
+    team_ids = set(by_team) | set(feed_teams)
+    calendars: dict[str, bytes] = {}
+    for team_id in sorted(team_ids):
+        _validate_team_id(team_id)
+        team_events = sorted(by_team.get(team_id, []), key=lambda item: item["uid"])
+        identity = feed_teams.get(team_id)
+        fallback_name = identity.name if isinstance(identity, TeamIdentity) else identity
+        team_name = team_events[0]["team_name"] if team_events else fallback_name
+        if not isinstance(team_name, str) or not team_name:
+            raise CalendarSourceError(f"Kalenderteam ohne Namen: {team_id!r}")
+        calendars[team_id] = _render_calendar(team_name, team_events, season)
+    return calendars
 
 
-def _render_calendar(team_name: str, events: list[dict[str, Any]]) -> bytes:
+def _render_calendar(
+    team_name: str, events: list[dict[str, Any]], season: str | None
+) -> bytes:
     lines = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
@@ -779,6 +830,15 @@ def _render_calendar(team_name: str, events: list[dict[str, Any]]) -> bytes:
         "REFRESH-INTERVAL;VALUE=DURATION:PT6H",
         "X-PUBLISHED-TTL:PT6H",
     ]
+    if not events and season is not None:
+        lines.append("X-BWEDL-EMPTY-FEED:TRUE")
+        lines.append(
+            _content_line(
+                "X-WR-CALDESC",
+                f"Spieltermine für die Saison {season} sind noch nicht bestätigt.",
+                text=True,
+            )
+        )
     for event in events:
         lines.extend(_render_event(event))
     lines.append("END:VCALENDAR")
@@ -1013,16 +1073,41 @@ def _validate_calendar_publication(publication: CalendarPublication) -> None:
     if not isinstance(index.get("teams"), Mapping) or index.get("schema_version") != _INDEX_SCHEMA_VERSION:
         raise CalendarSourceError("Kalenderindex ist inkompatibel")
     index_team_ids: set[str] = set()
+    index_team_names: dict[str, str] = {}
     for key, entry in index["teams"].items():
         if not isinstance(key, str) or normalize_team_name(key) != key or not isinstance(entry, Mapping):
             raise CalendarSourceError("Kalenderindex enthält einen ungültigen Team-Schlüssel")
-        if not isinstance(entry.get("name"), str) or not isinstance(entry.get("path"), str):
+        if set(entry) != {
+            "name", "path", "team_id", "club_number", "team_slot", "warning_count"
+        }:
+            raise CalendarSourceError("Kalenderindex enthält unbekannte Teamdaten")
+        if (
+            not isinstance(entry.get("name"), str)
+            or not entry["name"]
+            or not isinstance(entry.get("path"), str)
+        ):
             raise CalendarSourceError("Kalenderindex enthält ungültige Teamdaten")
         expected_path = f"calendars/{entry.get('team_id')}.ics"
         if entry.get("path") != expected_path:
             raise CalendarSourceError("Kalenderindex enthält einen unsicheren Feedpfad")
         _validate_team_id(entry.get("team_id"))
-        index_team_ids.add(entry["team_id"])
+        match = _SAFE_TEAM_ID_RE.fullmatch(entry["team_id"])
+        assert match is not None
+        if (
+            entry.get("club_number") != match.group(1)
+            or not isinstance(entry.get("team_slot"), int)
+            or isinstance(entry.get("team_slot"), bool)
+            or entry["team_slot"] != int(match.group(2))
+            or not isinstance(entry.get("warning_count"), int)
+            or isinstance(entry.get("warning_count"), bool)
+            or entry["warning_count"] < 0
+        ):
+            raise CalendarSourceError("Kalenderindex enthält inkonsistente Teamdaten")
+        team_id = entry["team_id"]
+        previous_name = index_team_names.setdefault(team_id, entry["name"])
+        if previous_name != entry["name"]:
+            raise CalendarSourceError("Kalenderindex enthält widersprüchliche Teamnamen")
+        index_team_ids.add(team_id)
     if index.get("season") != validated_state["season"] or index.get("updated_at") != validated_state["updated_at"]:
         raise CalendarSourceError("Kalenderindex und State sind zeitlich oder saisonal inkonsistent")
     if validated_state["index_fingerprint"] != _index_fingerprint(index):
@@ -1038,7 +1123,7 @@ def _validate_calendar_publication(publication: CalendarPublication) -> None:
         feed_events[team_id] = _validate_ics_feed(contents)
     state_team_ids = {event["team_id"] for event in validated_state["events"]}
     feed_team_ids = set(publication.calendars)
-    if index_team_ids != feed_team_ids or state_team_ids != feed_team_ids:
+    if index_team_ids != feed_team_ids or not state_team_ids <= feed_team_ids:
         raise CalendarSourceError("Index, State und Feedmenge sind inkonsistent")
     for team_id in feed_team_ids:
         expected_events = {
@@ -1048,7 +1133,11 @@ def _validate_calendar_publication(publication: CalendarPublication) -> None:
         }
         if feed_events[team_id] != expected_events:
             raise CalendarSourceError("Kalenderfeed stimmt nicht mit dem State überein")
-    expected_calendars = _render_calendars(validated_state["events"])
+    expected_calendars = _render_calendars(
+        validated_state["events"],
+        index_team_names,
+        validated_state["season"],
+    )
     if dict(publication.calendars) != expected_calendars:
         raise CalendarSourceError("Kalenderfeedinhalte stimmen nicht exakt mit dem State überein")
 

@@ -616,6 +616,46 @@ def test_season_change_drops_old_state_and_multiple_seasons_are_diagnostic() -> 
         _publication(multiple)
 
 
+def test_missing_time_roster_keeps_team_feeds_stable_across_season_change() -> None:
+    original = _publication(_one_fixture())
+    assert set(original.calendars) == {"club-101-team-1", "club-202-team-1"}
+
+    next_season_source = _one_fixture(
+        "Fr. 29. 10.2027 DC Heim - DC Gast ---\n",
+        season="2027-2028",
+    )
+    next_season = _publication(
+        next_season_source,
+        previous_state=_state(original),
+        updated_at=datetime(2027, 8, 19, 10, 15, tzinfo=timezone.utc),
+    )
+    fresh_publication = _publication(
+        next_season_source,
+        updated_at=datetime(2027, 8, 19, 10, 15, tzinfo=timezone.utc),
+    )
+
+    assert next_season.season == "2027-2028"
+    assert _state(next_season)["events"] == []
+    assert set(next_season.calendars) == set(original.calendars)
+    assert next_season.calendar_index_json == fresh_publication.calendar_index_json
+    assert next_season.calendar_state_json == fresh_publication.calendar_state_json
+    assert next_season.calendars == fresh_publication.calendars
+    for feed in next_season.calendars.values():
+        text = feed.decode("utf-8").replace("\r\n ", "")
+        assert "BEGIN:VEVENT" not in text
+        assert "2026-2027" not in text
+        assert "X-BWEDL-EMPTY-FEED:TRUE" in text
+        assert "X-WR-CALDESC:Spieltermine für die Saison 2027-2028 sind noch nicht bestätigt." in text
+
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        write_calendar_publication(next_season, output)
+        assert {path.name for path in (output / "calendars").iterdir()} == {
+            "club-101-team-1.ics",
+            "club-202-team-1.ics",
+        }
+
+
 def test_state_schema_and_feed_paths_are_strictly_validated() -> None:
     with pytest.raises(CalendarSourceError, match="State"):
         _publication(_one_fixture(), previous_state={"schema_version": 999})
