@@ -616,6 +616,22 @@ def test_writer_rejects_a_calendar_directory_symlink_without_writing_outside() -
         assert list(outside.iterdir()) == []
 
 
+def test_writer_removes_a_stale_unresolved_hash_feed_without_touching_expected_feeds() -> None:
+    publication = _publication(_one_fixture())
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        calendars = output / "calendars"
+        calendars.mkdir(parents=True)
+        stale_feed = calendars / "team-fdce66b80ba5e109.ics"
+        stale_feed.write_bytes(b"BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n")
+
+        write_calendar_publication(publication, output)
+
+        assert not stale_feed.exists()
+        for team_id, expected_bytes in publication.calendars.items():
+            assert (calendars / f"{team_id}.ics").read_bytes() == expected_bytes
+
+
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
     leagues = {
         "leagues": {

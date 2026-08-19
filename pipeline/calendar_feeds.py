@@ -15,6 +15,7 @@ import json
 import os
 from pathlib import Path
 import re
+import stat
 import tempfile
 from types import MappingProxyType
 import unicodedata
@@ -556,12 +557,12 @@ def write_calendar_publication(publication: CalendarPublication, output_dir: str
     for team_id in publication.calendars:
         _validate_team_id(team_id)
     root = Path(output_dir)
-    if root.exists() and root.is_symlink():
+    if root.exists() and _is_reparse_point(root):
         raise CalendarSourceError("Output-Verzeichnis darf kein Symlink sein")
     root.mkdir(parents=True, exist_ok=True)
     root = root.resolve(strict=True)
     calendars_dir = root / "calendars"
-    if calendars_dir.exists() and calendars_dir.is_symlink():
+    if calendars_dir.exists() and _is_reparse_point(calendars_dir):
         raise CalendarSourceError("Kalender-Verzeichnis darf kein Symlink sein")
     calendars_dir.mkdir(exist_ok=True)
     calendars_dir = calendars_dir.resolve(strict=True)
@@ -577,18 +578,19 @@ def write_calendar_publication(publication: CalendarPublication, output_dir: str
         file_name = f"{team_id}.ics"
         expected_names.add(file_name)
         artifacts[calendars_dir / file_name] = contents
+    existing_feeds = list(calendars_dir.glob("*.ics"))
+    for existing in existing_feeds:
+        _preflight_calendar_file(calendars_dir, existing)
     for path, contents in artifacts.items():
         _ensure_within(root, path)
+        if path.exists() and _is_reparse_point(path):
+            raise CalendarSourceError("Kalenderdatei darf kein Symlink sein")
         _write_bytes_safely(path, contents)
 
-    for existing in calendars_dir.glob("*.ics"):
+    for existing in existing_feeds:
         if existing.name in expected_names:
             continue
-        team_id = existing.stem
-        if _SAFE_TEAM_ID_RE.fullmatch(team_id) is not None:
-            if existing.is_symlink():
-                raise CalendarSourceError("Bestehender Kalender darf kein Symlink sein")
-            existing.unlink()
+        existing.unlink()
 
 
 def _single_current_season(
@@ -913,7 +915,7 @@ def _ensure_within(root: Path, path: Path) -> None:
 
 
 def _write_bytes_safely(path: Path, contents: bytes) -> None:
-    if path.exists() and path.is_symlink():
+    if path.exists() and _is_reparse_point(path):
         raise CalendarSourceError("Kalenderdatei darf kein Symlink sein")
     with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as temporary:
         temporary.write(contents)
@@ -923,6 +925,28 @@ def _write_bytes_safely(path: Path, contents: bytes) -> None:
     finally:
         if temporary_path.exists():
             temporary_path.unlink()
+
+
+def _preflight_calendar_file(calendars_dir: Path, path: Path) -> None:
+    _ensure_within(calendars_dir, path)
+    if _is_reparse_point(path) or not path.is_file():
+        raise CalendarSourceError("Bestehender Kalender darf kein Symlink oder Reparse-Point sein")
+    try:
+        resolved = path.resolve(strict=True)
+    except OSError as error:
+        raise CalendarSourceError("Bestehender Kalender ist nicht sicher lesbar") from error
+    _ensure_within(calendars_dir, resolved)
+
+
+def _is_reparse_point(path: Path) -> bool:
+    try:
+        status = os.lstat(path)
+    except OSError as error:
+        raise CalendarSourceError("Kalenderpfad ist nicht sicher prüfbar") from error
+    attributes = getattr(status, "st_file_attributes", 0)
+    return path.is_symlink() or bool(
+        attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+    )
 
 
 def _load_json_file(path: str) -> Mapping[str, Any]:
