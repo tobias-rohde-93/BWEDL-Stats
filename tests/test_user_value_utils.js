@@ -75,9 +75,60 @@ for (const unsafePath of [
 }
 const inheritedTeams = Object.create({ inherited: { name: 'Inherited', path: 'calendars/club-010-team-2.ics' } });
 assert.equal(resolveCalendarFeed({ schema_version: 1, teams: inheritedTeams }, 'inherited'), null);
-const throwingTeams = {};
-Object.defineProperty(throwingTeams, 'throwing', { get() { throw new Error('blocked'); } });
-assert.equal(resolveCalendarFeed({ schema_version: 1, teams: throwingTeams }, 'throwing'), null);
+assert.deepEqual(
+    resolveCalendarFeed(Object.freeze({
+        schema_version: 1,
+        teams: Object.freeze({
+            'dc frozen': Object.freeze({ name: 'DC Frozen', path: 'calendars/club-010-team-2.ics' }),
+        }),
+    }), 'DC Frozen'),
+    { name: 'DC Frozen', path: 'calendars/club-010-team-2.ics' },
+);
+assert.deepEqual(
+    resolveCalendarFeed(JSON.parse(JSON.stringify(calendarIndex)), 'DC Schömberg'),
+    { name: 'DC Schömberg', path: 'calendars/club-010-team-2.ics' },
+);
+
+function assertCalendarAccessorIsNeverRead(stage, throws) {
+    const index = {
+        schema_version: 1,
+        teams: {
+            'dc schomberg': { name: 'DC Schömberg', path: 'calendars/club-010-team-2.ics' },
+        },
+    };
+    const entry = index.teams['dc schomberg'];
+    const targets = {
+        version: [index, 'schema_version', 1],
+        teams: [index, 'teams', index.teams],
+        team: [index.teams, 'dc schomberg', entry],
+        name: [entry, 'name', 'DC Schömberg'],
+        path: [entry, 'path', 'calendars/club-010-team-2.ics'],
+    };
+    const [target, key, result] = targets[stage];
+    let calls = 0;
+    delete target[key];
+    Object.defineProperty(target, key, {
+        enumerable: true,
+        get() {
+            calls += 1;
+            if (throws) throw new Error(`${stage} getter ran`);
+            return result;
+        },
+    });
+    assert.equal(resolveCalendarFeed(index, 'DC Schömberg'), null, `${stage} accessor is rejected`);
+    assert.equal(calls, 0, `${stage} getter is never executed`);
+}
+
+for (const stage of ['version', 'teams', 'team', 'name', 'path']) {
+    assertCalendarAccessorIsNeverRead(stage, false);
+    assertCalendarAccessorIsNeverRead(stage, true);
+}
+assert.equal(
+    resolveCalendarFeed(new Proxy(calendarIndex, {
+        getOwnPropertyDescriptor() { throw new Error('proxy descriptor trap'); },
+    }), 'DC Schömberg'),
+    null,
+);
 
 assert.deepEqual(
     buildCalendarSubscriptionUrls('calendars/club-010-team-2.ics', 'https://tobias-rohde-93.github.io/BWEDL-Stats/#profile'),

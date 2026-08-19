@@ -60,8 +60,9 @@
 
     function readOwnValue(value, key) {
         try {
-            if (!Object.prototype.hasOwnProperty.call(value, key)) return undefined;
-            return value[key];
+            const descriptor = Object.getOwnPropertyDescriptor(value, key);
+            if (!descriptor || !Object.prototype.hasOwnProperty.call(descriptor, 'value')) return undefined;
+            return descriptor.value;
         } catch (_error) {
             return undefined;
         }
