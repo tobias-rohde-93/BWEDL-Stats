@@ -14,12 +14,15 @@ def test_dashboard_and_club_use_reviewed_upcoming_selector() -> None:
 
 
 def test_match_actions_keep_independent_capabilities() -> None:
+    match_actions = SOURCE.split("function buildGameActions(game)", 1)[1].split(
+        "function renderGameActions", 1
+    )[0]
     assert "function buildGameActions(game)" in SOURCE
     assert "function calendarGame(game)" not in SOURCE
     assert "function calendarFilename(game)" not in SOURCE
     assert "function downloadGameCalendar(game)" not in SOURCE
-    assert "URL.createObjectURL" not in SOURCE
-    assert "link.download" not in SOURCE
+    assert "URL.createObjectURL" not in match_actions
+    assert ".download" not in match_actions
     assert "key: 'calendar'" not in SOURCE
     assert "shareCurrentView(gameShareText(game), bestShareRoute(game))" in SOURCE
     assert "target: '_blank'" in SOURCE

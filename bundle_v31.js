@@ -875,7 +875,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const action = document.createElement('button');
         action.type = 'button';
         action.className = 'calendar-subscription-card__action';
-        action.textContent = 'Kalender abonnieren';
+        action.textContent = 'Kalender hinzufügen';
         action.addEventListener('click', () => {
             if (navigator.onLine === false) {
                 setAppStatus('Für das Kalender-Abo ist eine Internetverbindung erforderlich.');
@@ -892,6 +892,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setAppStatus('Für das Kalender-Abo ist eine Internetverbindung erforderlich.');
             return null;
         }
+        let expectedHttpsUrl;
         try {
             if (!subscription || typeof subscription.name !== 'string' || !subscription.name.trim() ||
                 typeof subscription.path !== 'string' || !subscription.path.trim() ||
@@ -900,6 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const webcalUrl = new URL(subscription.webcal);
             if (httpsUrl.protocol !== 'https:' || webcalUrl.protocol !== 'webcal:' ||
                 httpsUrl.host !== webcalUrl.host || httpsUrl.pathname !== webcalUrl.pathname) return null;
+            expectedHttpsUrl = httpsUrl.href;
         } catch (_error) {
             return null;
         }
@@ -909,10 +911,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const dialog = document.createElement('dialog');
         const heading = document.createElement('h2');
         const description = document.createElement('p');
+        const team = document.createElement('p');
         const season = document.createElement('p');
+        const options = document.createElement('div');
+        const automaticOption = document.createElement('section');
+        const automaticBadge = document.createElement('p');
+        const automaticHeading = document.createElement('h3');
+        const automaticDescription = document.createElement('p');
+        const automaticActions = document.createElement('div');
         const openLink = document.createElement('a');
-        const actions = document.createElement('div');
         const copyButton = document.createElement('button');
+        const staticOption = document.createElement('section');
+        const staticBadge = document.createElement('p');
+        const staticHeading = document.createElement('h3');
+        const staticDescription = document.createElement('p');
+        const staticWarning = document.createElement('p');
+        const downloadButton = document.createElement('button');
+        const actions = document.createElement('div');
         const closeButton = document.createElement('button');
         const status = document.createElement('p');
         const uniqueId = `calendar-subscription-title-${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -920,10 +935,30 @@ document.addEventListener('DOMContentLoaded', () => {
         let removed = false;
         let copyInFlight = false;
         let copyOperation = 0;
+        let downloadInFlight = false;
+        let downloadOperation = 0;
+        let downloadController = null;
+        const createInstructions = (label, text) => {
+            const details = document.createElement('details');
+            const summary = document.createElement('summary');
+            const instructions = document.createElement('p');
+            details.className = 'calendar-subscription-dialog__instructions';
+            summary.textContent = label;
+            instructions.textContent = text;
+            details.append(summary, instructions);
+            return details;
+        };
+        const updateStatus = (message) => {
+            status.textContent = message;
+            setAppStatus(message);
+        };
         const removeOnce = () => {
             if (removed) return;
             removed = true;
             copyOperation += 1;
+            downloadOperation += 1;
+            if (downloadController) downloadController.abort();
+            downloadController = null;
             dialog.remove();
             if (trigger && trigger.isConnected && typeof trigger.focus === 'function') trigger.focus();
         };
@@ -932,19 +967,42 @@ document.addEventListener('DOMContentLoaded', () => {
         dialog.setAttribute('aria-labelledby', uniqueId);
         dialog.setAttribute('aria-describedby', descriptionId);
         heading.id = uniqueId;
-        heading.textContent = 'Teamkalender abonnieren';
+        heading.textContent = 'Teamkalender hinzufügen';
         description.id = descriptionId;
-        description.textContent = `${subscription.name.trim()} · Ligaspiele · aktuelle Saison`;
+        description.className = 'calendar-subscription-dialog__intro';
+        description.textContent = 'Wähle zwischen automatischer Aktualisierung und einer einmaligen Kopie.';
+        team.className = 'calendar-subscription-dialog__team';
+        team.textContent = `${subscription.name.trim()} · Ligaspiele · aktuelle Saison`;
         season.className = 'calendar-subscription-dialog__season';
         if (typeof subscription.season === 'string' && /^(20\d{2})\/(20\d{2})$/.test(subscription.season)) {
             season.textContent = `Saison ${subscription.season}`;
         }
+
+        options.className = 'calendar-subscription-dialog__options';
+        automaticOption.className = 'calendar-subscription-dialog__option calendar-subscription-dialog__option--recommended';
+        automaticBadge.className = 'calendar-subscription-dialog__badge';
+        automaticBadge.textContent = 'Empfohlen';
+        automaticHeading.textContent = 'Automatisch aktuell bleiben';
+        automaticDescription.textContent = 'Wird als eigener, schreibgeschützter Teamkalender hinzugefügt. Terminänderungen und Absagen werden automatisch übernommen.';
+        automaticActions.className = 'calendar-subscription-dialog__option-actions';
         openLink.className = 'calendar-subscription-dialog__open-link';
         openLink.href = subscription.webcal;
         openLink.textContent = 'In Kalender-App öffnen';
-        actions.className = 'calendar-subscription-dialog__actions';
         copyButton.type = 'button';
-        copyButton.textContent = 'HTTPS-Link kopieren';
+        copyButton.textContent = 'Abo-Link kopieren';
+
+        staticOption.className = 'calendar-subscription-dialog__option';
+        staticBadge.className = 'calendar-subscription-dialog__badge calendar-subscription-dialog__badge--secondary';
+        staticBadge.textContent = 'Für bestehende oder gemeinsame Kalender';
+        staticHeading.textContent = 'Termine einmalig übernehmen';
+        staticDescription.textContent = 'Lädt alle zukünftigen, bereits terminierten Ligaspiele als eine gemeinsame ICS-Datei herunter.';
+        staticWarning.className = 'calendar-subscription-dialog__warning';
+        staticWarning.textContent = 'Keine automatische Aktualisierung: Verschiebungen und Absagen musst du anschließend selbst im Zielkalender ändern. Ein erneuter Import kann zu doppelten Terminen führen.';
+        downloadButton.type = 'button';
+        downloadButton.className = 'calendar-subscription-dialog__download';
+        downloadButton.textContent = 'ICS-Datei herunterladen';
+
+        actions.className = 'calendar-subscription-dialog__actions';
         closeButton.type = 'button';
         closeButton.textContent = 'Schließen';
         status.className = 'calendar-subscription-dialog__status';
@@ -960,24 +1018,133 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') throw new Error('clipboard unavailable');
                 await navigator.clipboard.writeText(subscription.https);
                 if (!canUpdate()) return;
-                status.textContent = 'Abo-Link wurde kopiert.';
-                setAppStatus('Abo-Link wurde kopiert.');
+                updateStatus('Abo-Link wurde kopiert.');
             } catch (_error) {
                 if (!canUpdate()) return;
-                status.textContent = 'Abo-Link konnte nicht kopiert werden.';
-                setAppStatus('Abo-Link konnte nicht kopiert werden.');
+                updateStatus('Abo-Link konnte nicht kopiert werden.');
             } finally {
                 if (operation !== copyOperation) return;
                 copyInFlight = false;
                 if (!removed && dialog.isConnected) copyButton.disabled = false;
             }
         });
+        downloadButton.addEventListener('click', async () => {
+            if (removed || downloadInFlight || downloadButton.disabled) return;
+            if (navigator.onLine === false) {
+                updateStatus('Die Kalenderdatei konnte nicht geladen werden. Prüfe deine Internetverbindung.');
+                return;
+            }
+            downloadInFlight = true;
+            downloadButton.disabled = true;
+            downloadButton.textContent = 'ICS-Datei wird erstellt …';
+            const operation = ++downloadOperation;
+            const controller = new AbortController();
+            downloadController = controller;
+            const canUpdate = () => !removed && dialog.isConnected && operation === downloadOperation;
+            let failureKind = 'load';
+            try {
+                const response = await fetch(subscription.https, { cache: 'no-store', signal: controller.signal });
+                if (!canUpdate()) return;
+                if (!response || response.ok !== true) throw new Error('calendar feed unavailable');
+                let responseUrl;
+                try {
+                    responseUrl = new URL(response.url).href;
+                } catch (_error) {
+                    responseUrl = '';
+                }
+                if (responseUrl !== expectedHttpsUrl) {
+                    failureKind = 'safe';
+                    throw new Error('unexpected calendar feed URL');
+                }
+                const buffer = await response.arrayBuffer();
+                if (!canUpdate()) return;
+                failureKind = 'safe';
+                const snapshot = window.BwedlAppUtils.buildStaticCalendarDownload(
+                    new Uint8Array(buffer),
+                    { now: new Date(), teamName: subscription.name, feedPath: subscription.path },
+                );
+                if (!snapshot || snapshot.ok !== true) {
+                    if (snapshot && snapshot.reason === 'empty') {
+                        updateStatus('Aktuell sind keine zukünftigen Spieltermine verfügbar.');
+                        return;
+                    }
+                    throw new Error('calendar snapshot rejected');
+                }
+                if (typeof snapshot.content !== 'string' || !snapshot.content || snapshot.content.length > 1048576 ||
+                    typeof snapshot.filename !== 'string' ||
+                    !/^bwedl-[a-z0-9-]+-zukuenftige-spiele\.ics$/u.test(snapshot.filename) ||
+                    !Number.isSafeInteger(snapshot.eventCount) || snapshot.eventCount < 1) {
+                    throw new Error('calendar snapshot invalid');
+                }
+
+                let objectUrl = null;
+                let anchor = null;
+                try {
+                    const blob = new Blob([snapshot.content], { type: 'text/calendar;charset=utf-8' });
+                    objectUrl = URL.createObjectURL(blob);
+                    anchor = document.createElement('a');
+                    anchor.href = objectUrl;
+                    anchor.download = snapshot.filename;
+                    anchor.hidden = true;
+                    document.body.appendChild(anchor);
+                    anchor.click();
+                    if (canUpdate()) updateStatus('ICS-Datei wurde heruntergeladen.');
+                } finally {
+                    if (anchor) anchor.remove();
+                    if (objectUrl) URL.revokeObjectURL(objectUrl);
+                }
+            } catch (error) {
+                if (!canUpdate() || (error && error.name === 'AbortError')) return;
+                updateStatus(failureKind === 'safe'
+                    ? 'Die Kalenderdatei konnte nicht sicher erstellt werden.'
+                    : 'Die Kalenderdatei konnte nicht geladen werden. Prüfe deine Internetverbindung.');
+            } finally {
+                if (operation !== downloadOperation) return;
+                downloadInFlight = false;
+                if (downloadController === controller) downloadController = null;
+                if (!removed && dialog.isConnected) {
+                    downloadButton.disabled = false;
+                    downloadButton.textContent = 'ICS-Datei herunterladen';
+                }
+            }
+        });
         closeButton.addEventListener('click', () => dialog.close());
         dialog.addEventListener('close', removeOnce);
-        actions.append(copyButton, closeButton);
-        dialog.append(heading, description);
+        automaticActions.append(openLink, copyButton);
+        automaticOption.append(
+            automaticBadge,
+            automaticHeading,
+            automaticDescription,
+            automaticActions,
+            createInstructions(
+                'Anleitung für iPhone',
+                'Tippe auf „In Kalender-App öffnen“, bestätige das Abonnement und wähle bei Bedarf Name und Farbe. Falls sich keine App öffnet, kopiere den Abo-Link und füge ihn in Apple Kalender als Kalenderabonnement ein.',
+            ),
+            createInstructions(
+                'Anleitung für Android / Google Kalender',
+                'Kopiere den Abo-Link. Öffne Google Kalender am Computer und wähle unter „Weitere Kalender“ das Plus und „Per URL“. Danach erscheint der abonnierte Kalender auch in der Google-Kalender-App.',
+            ),
+        );
+        staticOption.append(
+            staticBadge,
+            staticHeading,
+            staticDescription,
+            staticWarning,
+            downloadButton,
+            createInstructions(
+                'Anleitung für iPhone',
+                'Lade die ICS-Datei herunter und öffne sie über „Dateien“ oder als Anhang. Importiere die Termine in einen beschreibbaren Zielkalender. Für einen gemeinsam gepflegten Google-Kalender ist der Import am Computer zuverlässiger.',
+            ),
+            createInstructions(
+                'Anleitung für Android / Google Kalender',
+                'Lade die ICS-Datei herunter. Öffne Google Kalender am Computer, dann „Einstellungen“, „Importieren & Exportieren“, wähle die Datei und anschließend deinen bestehenden oder gemeinsamen Zielkalender. Die importierten Termine werden nicht automatisch aktualisiert.',
+            ),
+        );
+        options.append(automaticOption, staticOption);
+        actions.append(closeButton);
+        dialog.append(heading, description, team);
         if (season.textContent) dialog.appendChild(season);
-        dialog.append(openLink, actions, status);
+        dialog.append(options, actions, status);
         document.body.appendChild(dialog);
         dialog.showModal();
         copyButton.focus();

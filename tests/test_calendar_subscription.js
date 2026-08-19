@@ -50,10 +50,13 @@ function createDocument() {
             this.textContent = '';
             this.type = '';
             this.href = '';
+            this.download = '';
+            this.hidden = false;
             this.id = '';
             this.open = false;
             this.disabled = false;
             this.focused = false;
+            this.clickCount = 0;
             this.removeCount = 0;
             this.classList = {
                 add: (...names) => {
@@ -92,6 +95,7 @@ function createDocument() {
             }
             return !dispatched.defaultPrevented;
         }
+        click() { this.clickCount += 1; this.dispatchEvent({ type: 'click' }); }
         focus() { this.focused = true; document.activeElement = this; }
         showModal() { this.open = true; }
         close() { if (!this.open) return; this.open = false; this.dispatchEvent({ type: 'close' }); }
@@ -103,16 +107,40 @@ function createDocument() {
         }
         querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
     }
+    const createdElements = [];
     const document = {
         activeElement: null,
         baseURI: 'https://stats.example.test/BWEDL-Stats/',
         body: new Element('body'),
-        createElement: (tag) => new Element(tag),
+        createdElements,
+        createElement: (tag) => {
+            const element = new Element(tag);
+            createdElements.push(element);
+            return element;
+        },
         getElementById: (id) => ids.get(id) || null,
         querySelector: (selector) => document.body.querySelector(selector),
         querySelectorAll: (selector) => document.body.querySelectorAll(selector),
     };
     return document;
+}
+
+function allText(node) {
+    return [node.textContent, ...node.children.flatMap((child) => [allText(child)])].join(' ');
+}
+
+function deferred() {
+    let resolve;
+    let reject;
+    const promise = new Promise((resolvePromise, rejectPromise) => {
+        resolve = resolvePromise;
+        reject = rejectPromise;
+    });
+    return { promise, resolve, reject };
+}
+
+function nextTurn() {
+    return new Promise((resolve) => setImmediate(resolve));
 }
 
 {
@@ -185,7 +213,7 @@ function cardHarness({ profile = { recordKey: 'A|1' }, team = 'DC Beispiel', sub
     assert.match(card.textContent + card.children.map((node) => node.textContent).join(' '), /Ligaspiele · aktuelle Saison/);
     const action = card.querySelector('button');
     assert.equal(action.type, 'button');
-    assert.equal(action.textContent, 'Kalender abonnieren');
+    assert.equal(action.textContent, 'Kalender hinzufügen');
     action.dispatchEvent({ type: 'click' });
     assert.equal(calls[0][0], 'dialog');
 }
@@ -228,11 +256,25 @@ async function dialogContract() {
     assert.equal(dialog.className, 'calendar-subscription-dialog');
     assert.equal(dialog.attributes['aria-labelledby'].startsWith('calendar-subscription-title-'), true);
     assert.ok(dialog.attributes['aria-describedby']);
+    assert.equal(dialog.querySelector('h2').textContent, 'Teamkalender hinzufügen');
     assert.equal(dialog.querySelector('a').href, resolvedSubscription.webcal);
     assert.equal(dialog.querySelector('a').textContent, 'In Kalender-App öffnen');
-    assert.match(dialog.textContent + dialog.children.map((node) => node.textContent).join(' '), /Saison 2026\/2027/);
+    assert.match(allText(dialog), /Wähle zwischen automatischer Aktualisierung und einer einmaligen Kopie\./);
+    assert.match(allText(dialog), /Saison 2026\/2027/);
+    assert.equal(dialog.querySelectorAll('.calendar-subscription-dialog__option').length, 2);
+    assert.match(allText(dialog), /Automatisch aktuell bleiben/);
+    assert.match(allText(dialog), /Wird als eigener, schreibgeschützter Teamkalender hinzugefügt\./);
+    assert.match(allText(dialog), /Termine einmalig übernehmen/);
+    assert.match(allText(dialog), /Keine automatische Aktualisierung/);
+    assert.equal(dialog.querySelectorAll('details').length, 4);
+    const summaries = dialog.querySelectorAll('summary').map((summary) => summary.textContent);
+    assert.deepEqual(summaries, [
+        'Anleitung für iPhone', 'Anleitung für Android / Google Kalender',
+        'Anleitung für iPhone', 'Anleitung für Android / Google Kalender',
+    ]);
     const buttons = dialog.querySelectorAll('button');
-    const copy = buttons.find((button) => button.textContent === 'HTTPS-Link kopieren');
+    const copy = buttons.find((button) => button.textContent === 'Abo-Link kopieren');
+    assert.ok(buttons.find((button) => button.textContent === 'ICS-Datei herunterladen'));
     copy.dispatchEvent({ type: 'click' });
     await Promise.resolve();
     assert.deepEqual(copied, [resolvedSubscription.https]);
@@ -278,15 +320,6 @@ async function dialogContract() {
     preventedDialog.close();
     preventedDialog.remove();
 
-    const deferred = () => {
-        let resolve;
-        let reject;
-        const promise = new Promise((resolvePromise, rejectPromise) => {
-            resolve = resolvePromise;
-            reject = rejectPromise;
-        });
-        return { promise, resolve, reject };
-    };
     const concurrencyDocument = createDocument();
     const concurrencyTrigger = concurrencyDocument.createElement('button');
     concurrencyDocument.body.appendChild(concurrencyTrigger);
@@ -308,7 +341,7 @@ async function dialogContract() {
         setAppStatus: (message) => concurrencyStatuses.push(message),
     })(concurrencyTrigger, resolvedSubscription);
     const concurrencyButton = concurrencyDialog.querySelectorAll('button')
-        .find((button) => button.textContent === 'HTTPS-Link kopieren');
+        .find((button) => button.textContent === 'Abo-Link kopieren');
     concurrencyButton.dispatchEvent({ type: 'click' });
     assert.equal(concurrencyButton.disabled, true);
     concurrencyButton.dispatchEvent({ type: 'click' });
@@ -337,7 +370,7 @@ async function dialogContract() {
         navigator: { onLine: true, clipboard: { writeText: () => closePendingCopy.promise } },
         setAppStatus: (message) => closePendingStatuses.push(message),
     })(closePendingTrigger, resolvedSubscription);
-    closePendingDialog.querySelectorAll('button').find((button) => button.textContent === 'HTTPS-Link kopieren')
+    closePendingDialog.querySelectorAll('button').find((button) => button.textContent === 'Abo-Link kopieren')
         .dispatchEvent({ type: 'click' });
     closePendingDialog.close();
     closePendingCopy.reject(new Error('closed'));
@@ -352,7 +385,7 @@ async function dialogContract() {
         setAppStatus: (message) => missingClipboardStatuses.push(message),
     })(missingClipboardDocument.createElement('button'), resolvedSubscription);
     const missingClipboardButton = missingClipboardDialog.querySelectorAll('button')
-        .find((button) => button.textContent === 'HTTPS-Link kopieren');
+        .find((button) => button.textContent === 'Abo-Link kopieren');
     missingClipboardButton.dispatchEvent({ type: 'click' });
     await Promise.resolve(); await Promise.resolve();
     assert.equal(missingClipboardButton.disabled, false);
@@ -366,12 +399,190 @@ async function dialogContract() {
         navigator: { onLine: true, clipboard: { writeText: async () => { throw new Error('denied'); } } },
         setAppStatus: (message) => failedStatuses.push(message),
     })(failedDocument.createElement('button'), resolvedSubscription);
-    failedDialog.querySelectorAll('button').find((button) => button.textContent === 'HTTPS-Link kopieren')
+    failedDialog.querySelectorAll('button').find((button) => button.textContent === 'Abo-Link kopieren')
         .dispatchEvent({ type: 'click' });
     await Promise.resolve(); await Promise.resolve();
     assert.equal(failedDialog.querySelector('.calendar-subscription-dialog__status').textContent, 'Abo-Link konnte nicht kopiert werden.');
     assert.equal(failedStatuses.at(-1), 'Abo-Link konnte nicht kopiert werden.');
-    assert.equal(failedDialog.querySelectorAll('button').find((button) => button.textContent === 'HTTPS-Link kopieren').disabled, false);
+    assert.equal(failedDialog.querySelectorAll('button').find((button) => button.textContent === 'Abo-Link kopieren').disabled, false);
+
+    const NativeUrl = URL;
+    const downloadDocument = createDocument();
+    const downloadStatuses = [];
+    const fetchCalls = [];
+    const builderCalls = [];
+    const createdUrls = [];
+    const revokedUrls = [];
+    class DownloadUrl extends NativeUrl {
+        static createObjectURL(blob) {
+            createdUrls.push(blob);
+            return 'blob:calendar-snapshot';
+        }
+        static revokeObjectURL(value) { revokedUrls.push(value); }
+    }
+    const feedBytes = Uint8Array.from([66, 69, 71, 73, 78]);
+    const downloadDialog = compile('openCalendarSubscriptionDialog', {
+        document: downloadDocument,
+        navigator: { onLine: true, clipboard: { writeText: async () => {} } },
+        setAppStatus: (message) => downloadStatuses.push(message),
+        fetch: async (request, options) => {
+            fetchCalls.push([request, options]);
+            return {
+                ok: true,
+                url: resolvedSubscription.https,
+                arrayBuffer: async () => feedBytes.buffer,
+            };
+        },
+        window: {
+            BwedlAppUtils: {
+                buildStaticCalendarDownload(bytes, options) {
+                    builderCalls.push([bytes, options]);
+                    return {
+                        ok: true,
+                        content: 'BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n',
+                        filename: 'bwedl-dc-beispiel-zukuenftige-spiele.ics',
+                        eventCount: 1,
+                    };
+                },
+            },
+        },
+        URL: DownloadUrl,
+        Blob,
+        AbortController,
+    })(downloadDocument.createElement('button'), resolvedSubscription);
+    const downloadButton = downloadDialog.querySelectorAll('button')
+        .find((button) => button.textContent === 'ICS-Datei herunterladen');
+    downloadButton.dispatchEvent({ type: 'click' });
+    assert.equal(downloadButton.disabled, true);
+    await nextTurn();
+    assert.equal(fetchCalls.length, 1);
+    assert.equal(fetchCalls[0][0], resolvedSubscription.https);
+    assert.equal(fetchCalls[0][1].cache, 'no-store');
+    assert.equal(fetchCalls[0][1].signal instanceof AbortSignal, true);
+    assert.equal(builderCalls.length, 1);
+    assert.deepEqual([...builderCalls[0][0]], [...feedBytes]);
+    assert.equal(builderCalls[0][1].teamName, resolvedSubscription.name);
+    assert.equal(builderCalls[0][1].feedPath, resolvedSubscription.path);
+    assert.equal(builderCalls[0][1].now instanceof Date, true);
+    assert.equal(createdUrls.length, 1);
+    assert.equal(createdUrls[0].type, 'text/calendar;charset=utf-8');
+    assert.equal(await createdUrls[0].text(), 'BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n');
+    const downloadAnchor = downloadDocument.createdElements.find((element) => (
+        element.tagName === 'A' && element.download === 'bwedl-dc-beispiel-zukuenftige-spiele.ics'
+    ));
+    assert.ok(downloadAnchor);
+    assert.equal(downloadAnchor.href, 'blob:calendar-snapshot');
+    assert.equal(downloadAnchor.clickCount, 1);
+    assert.equal(downloadAnchor.parentElement, null);
+    assert.deepEqual(revokedUrls, ['blob:calendar-snapshot']);
+    assert.equal(downloadButton.disabled, false);
+    assert.equal(downloadDialog.querySelector('.calendar-subscription-dialog__status').textContent, 'ICS-Datei wurde heruntergeladen.');
+    assert.equal(downloadStatuses.at(-1), 'ICS-Datei wurde heruntergeladen.');
+
+    const pendingDocument = createDocument();
+    const pendingFetch = deferred();
+    let pendingFetchCount = 0;
+    let pendingSignal = null;
+    let pendingBuilderCalls = 0;
+    const pendingStatuses = [];
+    const pendingDialog = compile('openCalendarSubscriptionDialog', {
+        document: pendingDocument,
+        navigator: { onLine: true, clipboard: { writeText: async () => {} } },
+        setAppStatus: (message) => pendingStatuses.push(message),
+        fetch: (_request, options) => {
+            pendingFetchCount += 1;
+            pendingSignal = options.signal;
+            return pendingFetch.promise;
+        },
+        window: { BwedlAppUtils: { buildStaticCalendarDownload: () => { pendingBuilderCalls += 1; } } },
+        URL: DownloadUrl,
+        Blob,
+        AbortController,
+    })(pendingDocument.createElement('button'), resolvedSubscription);
+    const pendingButton = pendingDialog.querySelectorAll('button')
+        .find((button) => button.textContent === 'ICS-Datei herunterladen');
+    pendingButton.dispatchEvent({ type: 'click' });
+    pendingButton.dispatchEvent({ type: 'click' });
+    assert.equal(pendingFetchCount, 1, 'a pending download ignores repeated clicks');
+    assert.equal(pendingButton.disabled, true);
+    pendingDialog.close();
+    assert.equal(pendingSignal.aborted, true, 'closing aborts the feed request');
+    pendingFetch.resolve({
+        ok: true,
+        url: resolvedSubscription.https,
+        arrayBuffer: async () => feedBytes.buffer,
+    });
+    await nextTurn();
+    assert.equal(pendingBuilderCalls, 0);
+    assert.deepEqual(pendingStatuses, [], 'a settled download after close must not update stale UI');
+    assert.equal(pendingDocument.createdElements.filter((element) => element.download).length, 0);
+
+    const runDownloadFailure = async ({ response, builderResult, createObjectUrl, expected }) => {
+        const failureDocument = createDocument();
+        const failureStatuses = [];
+        class FailureUrl extends NativeUrl {
+            static createObjectURL(blob) {
+                if (createObjectUrl) return createObjectUrl(blob);
+                return 'blob:failure';
+            }
+            static revokeObjectURL() {}
+        }
+        const failureDialog = compile('openCalendarSubscriptionDialog', {
+            document: failureDocument,
+            navigator: { onLine: true, clipboard: { writeText: async () => {} } },
+            setAppStatus: (message) => failureStatuses.push(message),
+            fetch: async () => {
+                if (response instanceof Error) throw response;
+                return response;
+            },
+            window: { BwedlAppUtils: { buildStaticCalendarDownload: () => builderResult } },
+            URL: FailureUrl,
+            Blob,
+            AbortController,
+        })(failureDocument.createElement('button'), resolvedSubscription);
+        const failureButton = failureDialog.querySelectorAll('button')
+            .find((button) => button.textContent === 'ICS-Datei herunterladen');
+        failureButton.dispatchEvent({ type: 'click' });
+        await nextTurn();
+        assert.equal(failureButton.disabled, false);
+        assert.equal(failureDialog.querySelector('.calendar-subscription-dialog__status').textContent, expected);
+        assert.equal(failureStatuses.at(-1), expected);
+        assert.equal(failureDocument.createdElements.filter((element) => element.download).length, 0);
+    };
+    const validResponse = {
+        ok: true,
+        url: resolvedSubscription.https,
+        arrayBuffer: async () => feedBytes.buffer,
+    };
+    await runDownloadFailure({
+        response: new Error('offline'),
+        expected: 'Die Kalenderdatei konnte nicht geladen werden. Prüfe deine Internetverbindung.',
+    });
+    await runDownloadFailure({
+        response: { ...validResponse, ok: false },
+        expected: 'Die Kalenderdatei konnte nicht geladen werden. Prüfe deine Internetverbindung.',
+    });
+    await runDownloadFailure({
+        response: validResponse,
+        builderResult: { ok: false, reason: 'empty' },
+        expected: 'Aktuell sind keine zukünftigen Spieltermine verfügbar.',
+    });
+    await runDownloadFailure({
+        response: validResponse,
+        builderResult: { ok: false, reason: 'invalid' },
+        expected: 'Die Kalenderdatei konnte nicht sicher erstellt werden.',
+    });
+    await runDownloadFailure({
+        response: { ...validResponse, url: 'https://evil.example.test/calendar.ics' },
+        builderResult: { ok: true, content: 'safe', filename: 'safe.ics', eventCount: 1 },
+        expected: 'Die Kalenderdatei konnte nicht sicher erstellt werden.',
+    });
+    await runDownloadFailure({
+        response: validResponse,
+        builderResult: { ok: true, content: 'safe', filename: 'safe.ics', eventCount: 1 },
+        createObjectUrl: () => { throw new Error('blob unavailable'); },
+        expected: 'Die Kalenderdatei konnte nicht sicher erstellt werden.',
+    });
 }
 
 dialogContract().then(() => {
