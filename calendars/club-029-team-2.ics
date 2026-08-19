@@ -1,0 +1,291 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Reloaded 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:097233ca155c863427df3c03593e2d58e4eefe8ba641d185ad2def2bced0ae70@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T173000Z
+DTEND:20261020T203000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC Reloaded 2\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.20
+ 26 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0d987716d27ff6c71f8b3b1062d4aa3bb782bafca9a76edea517bb0d51ff037e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Reloaded 2\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026
+  19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0e92c277f2849803ee7e68b9db6a00c52aa415ce99351d698875784f6a22291e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - TDF Enzberg 2\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 19:00 U
+ TC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:15c6d67e9106d8e165efe94e401bcb179502eb9217b88c4c7696edfe9cce9667@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC Crazy Flights 3\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 1
+ 8:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppinge
+ n
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:220ebef7844576f932bed19bb525fe44ef803f1fce8a23037255498fd5844fe7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC Reloaded 2\nAuswärtsspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:
+ 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
+ ardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:22ad4faee0faa7cc59a1f1f97070671992581e1e0cfb3ac05f57af87b6e94ad0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC Shamrock\nHeimspiel\nLiga: B-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 19:00 UTC
+ \nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:24b4a4b73cb4e1106b8bfe8b9eaafb19ab172158509a60a22f9ded81f32f99e8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T170000Z
+DTEND:20260828T200000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - DC Reloaded 2\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 1
+ 7:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6fdc8acbd7c16b1bde5a265a134a1882ac78cbc1d5d5aaf96e5c86b48de409e8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Reloaded 2\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 1
+ 8:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzbe
+ rg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:87d1626df08b94aa5b6944468e1ca8bc315e732ef66bc7b26c6fa86220884b1e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC Destroyers e.V.\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 1
+ 9:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppinge
+ n
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:89b83f16958b8d232e07a8562098b7ce06e85254cd34c48c908ea3fc89dad175@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - TSV Grunbach Darts 2\nHeimspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 
+ 18:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Epping
+ en
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9d64ea5257418b1378efd7f011fa07065e53408800cfe9e0cac0af8daf8202d2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - DC Reloaded 2\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.202
+ 6 18:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, König
+ sbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bb4b51ac71f10b8f2e8ef1df7bbabf4de42ea97254f3db373368372b69a92dbd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC 180 Stein e.V.\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 19
+ :00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c226e600b376912261c71a0791bc55b2b6294149689cd321d44aba041ab8b02a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T183000Z
+DTEND:20270226T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Reloaded 2\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02
+ .2027 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbr
+ and-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d1ae684a94c27fa9496d9c946180fb58b6c7641d9f703a507a235a72066d4605@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Reloaded 2\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.20
+ 26 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswie
+ sen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3c09d7b2290376b87e790360686e1d5b0dd2ca488c1f181e4fe5c9558652f09@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T190000Z
+DTEND:20270126T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Reloaded 2\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.01.20
+ 27 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e2aeadfe7d623c2d30a34d46e43b4a44e2b0c87fddabf55eb662c9420ba663a8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: DC Reloaded 2 - the Metal Darts 5\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 18:
+ 00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e99db6a5528f2217072479089f67e100095e9ab8bbbbd7c78e3d438af2d12f0b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: DC Reloaded 2 - Phantom Arrows\nHeimspiel\nLiga: B-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19:00
+  UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f2dfcdcb2f91ceeb023b4bd5fbf006d82c00b08587457718f4ac447b35494eca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T180000Z
+DTEND:20270513T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Reloaded 2 - the flying Rocks\nHeimspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.2027 18:
+ 00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

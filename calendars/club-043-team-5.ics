@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Irish 26 e.V. 5
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0914008e8a20b0734f558546411a163ff367c23adabd4b5fcce875f427e975e1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Irish 26 e.V. 5\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 
+ 17.04.2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Web
+ erstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0ac160e7b97d379a66f45e5094af101f87e3b487acf2e3f445d34271dc9046ee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T183000Z
+DTEND:20261031T213000Z
+SUMMARY:Auswärtsspiel bei DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.
+ 2026 18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffens
+ tr. 15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1d103ea0a9200689f46c259ec146951f6c3294642059df4fbc229b0dcf0be7a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25 2
+DESCRIPTION:Begegnung: ESV DC 25 2 - DC Irish 26 e.V. 5\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.202
+ 7 19:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 1
+ 5\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2adffe2d41dc04d8d9fce887f3129a7a005c64629161f323a39e8bd81d1c7bf4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T173000Z
+DTEND:20260825T203000Z
+SUMMARY:Heimspiel gegen DC Shamrock 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Shamrock 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026 17
+ :30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:40a8f1abb4e872c3d1999bddec71710200b97a69d02b3edfe18fda7262d42ad5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock 2
+DESCRIPTION:Begegnung: DC Shamrock 2 - DC Irish 26 e.V. 5\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2
+ 027 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, St
+ raubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:583d3f75b6cebf5e7542e9e72fa62ec3073981de783f8af76e0b8bcc47b75cd2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T183000Z
+DTEND:20261123T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Irish 26 e.V. 5\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.1
+ 1.2026 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25
+ \, Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:61f04e048685916049061456e130ebe44349cd710db4b9562a3a5fda095879c4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T183000Z
+DTEND:20261110T213000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Destroyers e.V. 5\nHeimspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.
+ 2026 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerl
+ e 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:63d0a69ee1aa2a6a7424011e6ff37e3847e2fd482f72784134f6457fad6a85ff@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261007T173000Z
+DTEND:20261007T203000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Irish 26 e.V. 5\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 07.10.2
+ 026 17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, S
+ chömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:77a043dfab15b5d443d857da6f472ede79b17c23dc364abe18295bd21ce9d1c9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T173000Z
+DTEND:20270330T203000Z
+SUMMARY:Heimspiel gegen DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Kolibrispitz\nHeimspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.2027
+  17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:798bfcd6ed05c14ad23c43c17f881a7d2bcf5e4d0f977558f755092b4d7b03d0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DSV Großglabbich\nHeimspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04.20
+ 27 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
+ 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a7ea5aead3795ba749ec6cd3f984efa7dcad15137a6e2057425fea9b9f049d40@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260922T173000Z
+DTEND:20260922T203000Z
+SUMMARY:Heimspiel gegen DC Oststadt 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Oststadt 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 22.09.2026 17
+ :30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bde37d9d248d4410aef5dd026d89821b52d5d87bc680570b72f80a87b974fc31@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T173000Z
+DTEND:20261020T203000Z
+SUMMARY:Heimspiel gegen ESV DC 25 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - ESV DC 25 2\nHeimspiel\nLiga: C
+ -Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.2026 17:3
+ 0 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kö
+ nigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c35d4b69d6460172de98c58b7c24eab183bc2c64ef0d1ae4d25bd5d325545b74@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Heimspiel gegen the Metal Darts 6
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - the Metal Darts 6\nHeimspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.202
+ 6 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1
+ \, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c731d794a7f5018ec6a3671f8446d761e74075520ac1b6da48f02e94e029669d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T183000Z
+DTEND:20270223T213000Z
+SUMMARY:Heimspiel gegen DC Ungültig 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Ungültig 3\nHeimspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 23.02.2027 
+ 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d7a99f4790978dd887686bd82e1486dc5c9a257aa3ea292aacc2a04d346d1165@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 6
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Irish 26 e.V. 5\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.
+ 05.2027 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\
+ , Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:df4811989b55af6111c3df5c7bff3b3b18bca574155b6ab73f542f76692ad4bc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 3
+DESCRIPTION:Begegnung: DC Oststadt 3 - DC Irish 26 e.V. 5\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2
+ 027 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 3
+ 0\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

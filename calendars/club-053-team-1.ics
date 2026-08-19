@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Odins Knechte
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:1051c5166ccafdf2e90c8f254971542b0d58d561232f20bd833a952932789ba0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T173000Z
+DTEND:20261006T203000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 3
+DESCRIPTION:Begegnung: Odins Knechte - DC Black Scorpions 3\nHeimspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026 
+ 17:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfe
+ rdingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:201842d7576d4feb1790aae85066ab43e6048e2a229ac7d5ab36a8d0e3081e02@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's e.V
+DESCRIPTION:Begegnung: Odins Knechte - DC Underground Fool's e.V\nHeimspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04
+ .2027 17:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen
+ /Wilferdingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:22e04311ceb906283818a5b951d744860ac5f71d964ab271b6126bc5565c6588@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T183000Z
+DTEND:20270209T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: Odins Knechte - DC Irish 26 e.V. 2\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.2027 1
+ 8:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfer
+ dingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:36743c32599ee900d01d80b22754d6aa95e8896275cd1fe91951fdbfb39a1e78@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T170000Z
+DTEND:20260828T200000Z
+SUMMARY:Auswärtsspiel bei DC Mephisto's
+DESCRIPTION:Begegnung: DC Mephisto's - Odins Knechte\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 17
+ :00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\,
+  Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:436980c13090b581839d0693d4e3234d2bf72793eca6948e8c6c4ad31283eae4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - Odins Knechte\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027
+  18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:872ab8ff3754af2ee05eb851af231d634357470b189c935eb5cb1d6e09ecaa17@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T183000Z
+DTEND:20261110T213000Z
+SUMMARY:Heimspiel gegen DC Texas Team 3
+DESCRIPTION:Begegnung: Odins Knechte - DC Texas Team 3\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2026 18:30
+  UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferding
+ en
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8fa44223d097b90e57c753ae2c452fa717f93ec14878fd03b10e714c605a9224@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - Odins Knechte\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027
+  18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a24bbf2edacab4da04cdc72051cd64946270e2780733f7b1a68b55e310c2138f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T173000Z
+DTEND:20260908T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts 3
+DESCRIPTION:Begegnung: Odins Knechte - the Metal Darts 3\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08.09.2026 17:
+ 30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdi
+ ngen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:afe945300b3f3bb28a9e854d20a5081affb7c18693454bb6ab23f75cea9ef9ff@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:Heimspiel gegen DC Broken Darts
+DESCRIPTION:Begegnung: Odins Knechte - DC Broken Darts\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026 18:30
+  UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferding
+ en
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b06942540a866835206e00e3dfb64e4f0b77851901e46c4d34a5c78aff496cda@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T173000Z
+DTEND:20260924T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - Odins Knechte\nAuswärtsspiel\n
+ Liga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.20
+ 26 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
+ 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bd2253467f2e14c8c595ad21af4843046fa79a353b5038f5c5f552ea8f0163bd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T183000Z
+DTEND:20270112T213000Z
+SUMMARY:Heimspiel gegen DC Mephisto's
+DESCRIPTION:Begegnung: Odins Knechte - DC Mephisto's\nHeimspiel\nLiga: A-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 12.01.2027 18:30 
+ UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdinge
+ n
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c1804fd33a93219e8e81d06455a5372a51183cdd3d6703313ec9df226437e2f4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T183000Z
+DTEND:20270316T213000Z
+SUMMARY:Heimspiel gegen DC Ungültig 2
+DESCRIPTION:Begegnung: Odins Knechte - DC Ungültig 2\nHeimspiel\nLiga: A-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.2027 18:30
+  UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferding
+ en
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d7ca30d3f466254bfdc16dcb42df0ba4757d5269abcd2d2fda9827a5f6a2ae35@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T173000Z
+DTEND:20261020T203000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - Odins Knechte\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.2026 1
+ 7:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
+ berg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d8518964868265886e235ab4391433176338237f7d482e7021a554fea1064a80@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - Odins Knechte\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02
+ .2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d910c49c430983a384aa7e52c4bc1d9a3777a3f82b8fb10818051ebf835cd45f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T183000Z
+DTEND:20270128T213000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - Odins Knechte\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01.20
+ 27 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e5dc83a4986548ad4adaf7eb91bdb6015782775e83e7a5a8efde640265a9210f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts
+DESCRIPTION:Begegnung: DC Broken Darts - Odins Knechte\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027
+  18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ea7d142087a62e06af0f688e28a371fca6cd459f77aa419a2f61a673d6355012@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: Odins Knechte - DC Duselbrüder\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2026 18:30
+  UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferding
+ en
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fd47a88f4c199beed797dca45e3045ca141c78364edec1a5d5c49b1f83c3f621@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T183000Z
+DTEND:20261125T213000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Underground Fool's e.V - Odins Knechte\nAuswärts
+ spiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 2
+ 5.11.2026 18:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weihe
+ rstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

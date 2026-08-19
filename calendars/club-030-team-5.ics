@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Black Scorpions 5
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:3033fe05df2b5d7659a5e0ac0ee63ddc683cb65288e886c53593cd494020d550@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - DC Black Scorpions 5\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.
+ 2027 18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportpla
+ tz\, Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3191e68c239f5917da06d8cd6bfff3dd1ec0f191b9e6e806d37b612b4f79bbe0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270210T190000Z
+DTEND:20270210T220000Z
+SUMMARY:Heimspiel gegen Phantom Arrows 2
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - Phantom Arrows 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 10.02.2
+ 027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knit
+ tlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3d061cc63295eae21619bfc71ac8d2d8ba1cc9d631afdc13e90716cd8b02a583@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Black Scorpions 5\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.202
+ 7 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 1
+ 5\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4432010b20145a8e62ec2d0343c5218527500f463f1ae2c8b9dd0e0b0870e983@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Black Scorpions 5\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 
+ 12.12.2026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad 
+ Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5bd2184b8e4b6954ad774ca3bd414a4cf2dab7e6bb8f42b5660a75449c2541fb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - ESV DC 25\nHeimspiel\nLiga: C
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 19:0
+ 0 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5d7c7ae24b3ea0801e0181598c2ca64b57965cd85a7e66605fa4d00a0f7c2c72@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T180000Z
+DTEND:20270414T210000Z
+SUMMARY:Heimspiel gegen DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Knickebocker 2\nHeimspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.
+ 2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kni
+ ttlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8c4d0c49bf038bbbaf61b2355be4567655356b00067cf567b456aa4fd66b3891@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270317T190000Z
+DTEND:20270317T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Irish 26 e.V. 4\nHeimspiel
+ \nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 17.03
+ .2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9345cb445f52c1aaebd8b2453bfa052d0ab50aeb3648c02889470e8596387c77@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T170000Z
+DTEND:20261019T200000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Black Scorpions 5\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 1
+ 9.10.2026 17:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendä
+ ckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:956d242aaff04f3ceeccdae4d7cd7aa49fbf3160a52ec4d7283b3a50a90b6b0e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T180000Z
+DTEND:20270512T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Enztaler Buben 3\nHeimspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.0
+ 5.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, K
+ nittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:99eaa7528c35f0ef3e678477bdd1719fd1b55e3caecfea786cec3aa712472758@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC HighFlights 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.20
+ 26 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knitt
+ lingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ba6fc58c4a4d505dcc58df628017a6bb01d6de7ef562d8f9672afb87c11ba5be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261007T180000Z
+DTEND:20261007T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Underground Fools 4\nHeims
+ piel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 07
+ .10.2026 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\,
+  Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:baa5d2f7bc3deaffbba31f8d6e3f784632f2179e4c22870515f20fc46801c738@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260921T180000Z
+DTEND:20260921T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Black Scorpions 5\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 21.
+ 09.2026 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\
+ , Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c3a02f97b36f565b0222722d25e59099f2f821e6b6676bfe8c1543b9a11a29d3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Heimspiel gegen DC Drei Daneben
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Drei Daneben\nHeimspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.20
+ 27 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knitt
+ lingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c4d214fda6565abd1a23e22839248a49351d78ea8979070b8a612f24acc45e37@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T190000Z
+DTEND:20270223T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - DC Black Scorpions 5\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTer
+ min: 23.02.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\,
+  Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ca9356ea4f7e9b599097721a131e99b8f64424d26025f9f99a3697df34a385ce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270113T183000Z
+DTEND:20270113T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Black Scorpions 5\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 13
+ .01.2027 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfel
+ d
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dc2390c90a621bef3998e42995bafaef1d39d7124eb734d9b647cc50ef80a21e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T190000Z
+DTEND:20261125T220000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Conweiler\nHeimspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.2026 1
+ 9:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittling
+ en
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f462ec5f60a64048251007a08a57041d419afd8611ee4b165e6575f177b5c2d1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T183000Z
+DTEND:20261114T213000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Black Scorpions 5\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14
+ .11.2026 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Fr
+ iedrich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ff8789fedd2951c0edde6020a2350aae2c9bd478b35163de51d24ddb65e61b66@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T170000Z
+DTEND:20260912T200000Z
+SUMMARY:Auswärtsspiel bei DC Drei Daneben
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Black Scorpions 5\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.0
+ 9.2026 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, 
+ Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

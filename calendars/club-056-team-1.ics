@@ -1,0 +1,551 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC X-Brötzingen
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:069b17bc1fd1beb1fd64861a6e5feb2f580422053ec920778cc858ba396afa8a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: DC X-Brötzingen - TSV Grunbach Darts 3\nHeimspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2
+ 027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-St
+ r. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:11185617abd097a91f91db523722fe516a0cff5bd57e598c0af0fe04aa50dc7b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T180000Z
+DTEND:20270423T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC X-Brötzingen\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027 18:00
+  UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhar
+ dt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:13e92e33d1a30bfc858b2a84844e9f016e581a073226e26e2da75f751913d028@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260930T170000Z
+DTEND:20260930T200000Z
+SUMMARY:Heimspiel gegen DC Lightning Arrows
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Lightning Arrows\nHeimspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 30.09.2026 17:
+ 00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\
+ , Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:144ddfc57028158c59c2210eba68a8bb6ec437e53c63be04d7dc404207179b6a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Heimspiel gegen DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Ligthning Arrows\nHeimspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.20
+ 27 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str
+ . 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1d48abb7bcdc970d864577e43860f4496a020bc2f006d1c9e258e4e13b21da40@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270123T190000Z
+DTEND:20270123T220000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC X-Brötzingen\nAuswärtsspiel\n
+ Liga: Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 23.01.2027 1
+ 9:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:380adf4b7c4c5a1ef55490acbbf1613a1b2d73ee2b59381fa889b99db4482f4a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261104T180000Z
+DTEND:20261104T210000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC X-Brötzingen - Los Muertos\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 04.11.2026 18:00 UTC\n
+ Austragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzh
+ eim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:44bd50f16d7a6c05911985f54586c79163f0de47154ca2135a52603636343f99@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270407T170000Z
+DTEND:20270407T200000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC X-Brötzingen - ESV DC 25\nHeimspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 07.04.2027 17:00 UTC\nA
+ ustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzhe
+ im
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:464c3c45a297a170596b0e5e8ebe05fcba89bbb0d3249ef8069166f47a73820e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270505T170000Z
+DTEND:20270505T200000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Irish 26 e.V. 2\nHeimspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 05.05.2027 17:
+ 00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\
+ , Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:526661e782785f6ccc75e1abf042f23b6acefbd12b2828131faa9d4c1f657ee8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - DC X-Brötzingen\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.
+ 10.2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webers
+ tr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:56194bbd47e6475131f4db5ee48a80163dcc9e1516b704f8a95ef02e21391545@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T173000Z
+DTEND:20261016T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC X-Brötzingen\nAuswärtsspie
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026
+  17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:567341cbb48321b689ff23f0960627f75a8b4c1dea834d367e163546f57dc585@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260922T173000Z
+DTEND:20260922T203000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC X-Brötzingen\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 3. Spieltag\nTermin: 22.09.20
+ 26 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:58e54728fc1ae3aacb6b2946cafb8392e8a24d738dbb7a90dd1f39c67790a076@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 3
+DESCRIPTION:Begegnung: DC X-Brötzingen - TDF Enzberg 3\nHeimspiel\nLiga: C
+ -Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:0
+ 0 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\,
+  Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f6f1691f000639ea886c75d9c577814f436da123eddca11d0618b7994b2e6cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270206T190000Z
+DTEND:20270206T220000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC X-Brötzingen\nAuswärtsspiel\
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 
+ 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7b8bac87fcd39ddd6720c672b49d9aac8f87968b3a1c255e28117568ef0bbcf6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC X-Brötzingen\nAuswärtsspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 19:00 UT
+ C\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzh
+ eim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7c0d66d2ebd65ab6621fa248a315983c25b66bfce81c56529b63936c6d3c6868@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Auswärtsspiel bei DC Hot Shotz
+DESCRIPTION:Begegnung: DC Hot Shotz - DC X-Brötzingen\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027
+  19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strau
+ benhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9bfec7be2b9369751cd4e02627d7b5f3241f1fd3f17fa40007c2efbe6a9b1008@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270217T180000Z
+DTEND:20270217T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Underground Fools 2\nHeimspiel
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 17.02.2027
+  18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9c27e857f57bfde3e2beae12090dcbfd54ee45fc9ca21bf9813b71f7842e9b04@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC 180 Stein e.V. 3\nHeimspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.202
+ 6 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:adc0a742fb6b27043216a78a6177d64e9f8fd50ce7a97398cbcf4d4001f2d404@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260916T180000Z
+DTEND:20260916T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - DC X-Brötzingen\nAuswärts
+ spiel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 16.09.
+ 2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstra
+ ße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b2444c8be928ebfc16cf5bcbe4b44cfa3d941f32e808aa2efa95a81166edd8be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T180000Z
+DTEND:20270326T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC X-Brötzingen\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 18:00
+  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b36fa3fb830867564d3583280b6dd61e367a3b3652ed9bb777b09f6b84d7eb19@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260827T180000Z
+DTEND:20260827T210000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC X-Brötzingen\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 27.
+ 08.2026 18:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engels
+ brand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b5a6659799a87192750048165a4f753f74fe4dee161956b1ce9137377af5465c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Destroyers e.V. 4\nHeimspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2
+ 027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-St
+ r. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b5d19fb664668213e4518d08de47c0b3c9efe6dc5833064f239bbba375ad5a0d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270310T180000Z
+DTEND:20270310T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC X-Brötzingen - TSV Grunbach Darts\nHeimspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 10.03.2027 18:
+ 00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\
+ , Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b836c02af7a1fc28d571fe1cde4fe73e9663cadecb676efef973d248d9d45170@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260822T180000Z
+DTEND:20260822T210000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Duselbrüder\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 22.08.2026 18:00 U
+ TC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pf
+ orzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc5c33c59a2e876fb3c1932cae9ae8028da152600f3112dbce9b5fac0322bf0a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team 4
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Texas Team 4\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 1
+ 9:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 25
+ 9\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bf5c6a313e666abaaf9578d5b67e43722bae5d162754ac5785bbcdfc7207a438@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T180000Z
+DTEND:20270329T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks 2
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC X-Brötzingen\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.0
+ 3.2027 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 2
+ 8\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c209fe9a7d78771e1e519e1a60be1bf53e33c85c8bc59e5b01def90aa2f57591@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Heimspiel gegen the flying Rocks 2
+DESCRIPTION:Begegnung: DC X-Brötzingen - the flying Rocks 2\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026
+  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c5b400709edbabd3f6dcf8d0f349d0423803b718450d2df3c6cbc8fabc00f456@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T170000Z
+DTEND:20270501T200000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC X-Brötzingen\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.202
+ 7 17:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-En
+ zberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c7e79f918250520eca53c789393e61ed4dcc4db2afdc785e051e27f95a5fd938@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T183000Z
+DTEND:20261218T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC X-Brötzingen\nAuswärtsspie
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026
+  18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d32734000da72912b628efaaffa573c049d9f6cdaf6eb30e16ee5f8b07f14e63@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270305T193000Z
+DTEND:20270305T223000Z
+SUMMARY:Auswärtsspiel bei DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC X-Brötzingen\nAuswärtsspi
+ el\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.20
+ 27 19:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dab41faac5e6658aa3385fa6a6f6976fc0b02caead82894a0bfc1b4238467f1c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261202T180000Z
+DTEND:20261202T210000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Shamrock\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 18:00 UTC\n
+ Austragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzh
+ eim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dfaa7aed231ee09841dbae677d6776e3f2eb9b65af9725742f0c36ecdc6f0238@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T183000Z
+DTEND:20270222T213000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC X-Brötzingen\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.
+ 02.2027 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, 
+ Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e01d6bd39c71e369a529b42be4d8f6cff3bbe9042bdc3b2e165595fa7ec1f412@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260902T170000Z
+DTEND:20260902T200000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Irish 26 e.V.\nHeimspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 02.09.2026 17:00 
+ UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, P
+ forzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ef24fadec5a7c0fe784e7742275f88a8a9f4e92611b175f715ab08af45fa0cfe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen DC Hot Shotz
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Hot Shotz\nHeimspiel\nLiga: C-
+ Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00
+  UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, 
+ Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f3d4970b91222048d8f3c9039439ff69caa74b713dd40df7765bb6314e5a2d98@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T183000Z
+DTEND:20261211T213000Z
+SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC X-Brötzingen\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.1
+ 2.2026 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

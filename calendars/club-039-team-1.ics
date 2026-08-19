@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Destroyers e.V.
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:03a7b0ea696a8b80021900b518d9035baa690d5fce76c819dd1fb2afc8f5765c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260929T173000Z
+DTEND:20260929T203000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC Shamrock\nHeimspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 29.09.2026 17:3
+ 0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eis
+ ingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:261686d418fa7985947bde538d2c784727d10ce68d5d8cdd77976d7ebbae6504@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T173000Z
+DTEND:20260825T203000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. - TDF Enzberg 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026 17
+ :30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:27972a182af5bf7a2237b1ad175135893ad154ae4c796027fc285cf2fc71015e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC Destroyers e.V.\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2
+ 027 19:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Ep
+ pingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2f9ff0a73d94966b3a8a634d493a8f004e70f91ca969891494490b86b621e96f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC Destroyers e.V.\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.202
+ 7 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Stra
+ ubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:561ba8ff9e0c888e557477172994b5d53c3aa92a114d7881429abc88ee1cb5c3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T180000Z
+DTEND:20270416T210000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - DC Destroyers e.V.\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.
+ 04.2027 18:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, 
+ Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:592a1dfefcfa96bb50ce0654fd13d66d07278b97f5e9b307c684e64ea3deb523@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T183000Z
+DTEND:20261127T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Destroyers e.V.\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 2
+ 7.11.2026 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Enge
+ lsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:65b6c37074b8757912efe0632209bd2451f8d0787a7b127ca82e2ea3ded8aff6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. - TSV Grunbach Darts 2\nHeimspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04
+ .2027 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr
+ . 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81a434013c12b8dcd5353c06b047a6090c18027eb27dc973a77c268d643372d5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T183000Z
+DTEND:20270223T213000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Destroyers e.V. - the flying Rocks\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 23.02.202
+ 7 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60
+ \, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9a0041af7bcecfb234c29476919796679386eca4f76135d82112ec0499e187f2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: DC Destroyers e.V. - Phantom Arrows\nHeimspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2026 1
+ 8:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
+ Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9ffa2f2de9221ef02f4e23ce92a485f00c64bffedd9e97d8fc323a4b58946f7c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Destroyers e.V.\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.
+ 09.2026 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simo
+ nswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:adf23388a7c2d6fcd428f625ad4d20de0abb01737de518eb55739d910a120ae5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T173000Z
+DTEND:20261020T203000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC Reloaded 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.2026 17
+ :30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b1cd5e7905f9d7200d5616f8d818586273df0da1e8992af5cbee3931b2a1fb20@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T173000Z
+DTEND:20270330T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. - the Metal Darts 5\nHeimspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.20
+ 27 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b2fd93f74180d6f29b30e2c410c5a9052df3029d698faf57764ab413219b71d2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T190000Z
+DTEND:20261027T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Destroyers e.V.\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.1
+ 0.2026 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c2e684d1183a65f0a1f4dd1a45a9985156b2b324cc49a4f3b5d058ef67ab6f91@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T183000Z
+DTEND:20261110T213000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC 180 Stein e.V.\nHeimspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.202
+ 6 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60
+ \, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c6e696dfb2a52db155d3d3fcf74bb785162ca2a39b4265eec8309860c95189c8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T183000Z
+DTEND:20270126T213000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC Crazy Flights 3\nHeimspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.01.2
+ 027 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:db8b94ea625629072d60deb67a446a721bd5535f64aa45f651d2d6cb5392a441@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T170000Z
+DTEND:20270514T200000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - DC Destroyers e.V.\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.
+ 2027 17:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e3e18c0b7542b6b6bec4611b778f2f73b8c8ab41d1e778824587a80c57ae78c2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Destroyers e.V.\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2
+ 027 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-
+ Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f41a07f06d3b67eb236405e1959d60c0b060d1d3810b875ea2d3ccc9ed896cd1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Destroyers e.V.\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10
+ .2026 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28
+ \, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,287 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC HighFlights
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:047a5638338fb463ed53c750ea74ed61bbcbdf326b4c09a39280d846e9b1ac65@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T173000Z
+DTEND:20260924T203000Z
+SUMMARY:Heimspiel gegen DC Texas Team 2
+DESCRIPTION:Begegnung: DC HighFlights - DC Texas Team 2\nHeimspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2026 17:3
+ 0 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:11cea81707ee42f3561368acddfbf1659ce1a2fa5a9958a55f130038c53dd015@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261112T183000Z
+DTEND:20261112T213000Z
+SUMMARY:Heimspiel gegen DC Triple X
+DESCRIPTION:Begegnung: DC HighFlights - DC Triple X\nHeimspiel\nLiga: A-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 18:30 UT
+ C\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:14cc2a541f362f1682d6ad318a7dbceeca4b693eca823a4ed291fa95183f99ef@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T193000Z
+DTEND:20270318T223000Z
+SUMMARY:Auswärtsspiel bei Alla Häeeehr
+DESCRIPTION:Begegnung: Alla Häeeehr - DC HighFlights\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 
+ 19:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
+ rzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2f4a1b0912a436012c0bae6575bd48bd1f7e1425f52af3c55083830b8da53ba4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T173000Z
+DTEND:20261022T203000Z
+SUMMARY:Heimspiel gegen Alla Häeeehr
+DESCRIPTION:Begegnung: DC HighFlights - Alla Häeeehr\nHeimspiel\nLiga: A-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.2026 17:30 
+ UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:34afd31a6281e9e9dadd55d3beb2bfe70d74ce9d73a8310a3b2d283c69cab4a8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261210T183000Z
+DTEND:20261210T213000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC HighFlights - DC Underground Fool's 2\nHeimspiel\
+ nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 10.12.2
+ 026 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:35379eca529bf8d7a119cb02f7d92405798f8333734495da425c2831d3539f4a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Black Scorpions 2 - DC HighFlights\nAuswärtsspie
+ l\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11
+ .2026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:495f6f3aca3f0dc55225d9a67f018b085d7204e35ff30afb8e90d06357c25ad9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC DARTanions
+DESCRIPTION:Begegnung: DC DARTanions - DC HighFlights\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 1
+ 9:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernshe
+ im
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5e7e7dfb8cbbaf69b7f9890e8e42c273cd4195e0fe78feef0a81399d3bd336bc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T180000Z
+DTEND:20270513T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Underground Fool's 2 - DC HighFlights\nAuswärtss
+ piel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 1
+ 3.05.2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weihe
+ rstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f9467b941dd79650e06115cbbafa67316a0dd7de5e51a263fbccde9942b9675@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC HighFlights\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.202
+ 6 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1
+ \, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6a68ffea8847620801a753450c1924a90cbf6c6000c0f3c0baf0ef8b39fb5811@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Triple X
+DESCRIPTION:Begegnung: DC Triple X - DC HighFlights\nAuswärtsspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 18
+ :00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:778d8fdab3d1d75b068f0a89de1080a31ca6596e6aa077685efcb41f13213e3e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270429T173000Z
+DTEND:20270429T203000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC HighFlights - DC Black Scorpions 2\nHeimspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.202
+ 7 17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:84f859d746f8f49678c0d02de31f57db91ea185f26443aa7c073ab4d9d7e11df@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T183000Z
+DTEND:20270127T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC HighFlights\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.
+ 2027 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8a51ae4e6d3eaa584e3e65a66f8bac78990c2ab2ca3f4e1a1e2a495024d4bd33@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T173000Z
+DTEND:20260910T203000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC HighFlights - TSV Grunbach Darts\nHeimspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 1
+ 7:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:be0c701a54b0921bceb58a610231eaf41da5f26014466083dc9d783d4000a283@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T183000Z
+DTEND:20270209T213000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 2
+DESCRIPTION:Begegnung: DC Texas Team 2 - DC HighFlights\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.202
+ 7 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
+ rzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e2d286775b63d04a752672d94a39da5b1524e21397d9cb46c1a24f1371ca2bbc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270401T173000Z
+DTEND:20270401T203000Z
+SUMMARY:Heimspiel gegen DC DARTanions
+DESCRIPTION:Begegnung: DC HighFlights - DC DARTanions\nHeimspiel\nLiga: A-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04.2027 17:30
+  UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e42f4a59fe13c6ff2592e648d983458bb706ebceab0bec64a88c3e8437713857@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig
+DESCRIPTION:Begegnung: DC Ungültig - DC HighFlights\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18
+ :00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömb
+ erg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f273e2b2b3ae19b760b36242131f0fc914ae4908e69f5fc78c105d34ce7af3e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T183000Z
+DTEND:20270225T213000Z
+SUMMARY:Heimspiel gegen DC Ungültig
+DESCRIPTION:Begegnung: DC HighFlights - DC Ungültig\nHeimspiel\nLiga: A-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2027 18:30 
+ UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:faccc0f24c0ffc6a390587d143f0a6c4cb14e71d89404bdf15a33f3bba699e90@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T183000Z
+DTEND:20270114T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC HighFlights - DC Irish 26 e.V.\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 18
+ :30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,293 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Texas Team 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:01172dc68578222b3a3d05a06881797963ae638e4b7956f45509a67cfe41d4cf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Heimspiel gegen DC Ungültig 2
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Ungültig 2\nHeimspiel\nLiga: A
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 19:0
+ 0 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:045e947f34ec07c2d7cfcfb474958e86a6cc5f531b3f67a3ec050b595435e569@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261210T190000Z
+DTEND:20261210T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Underground Fool's e.V\nHeimspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 10.1
+ 2.2026 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
+ , Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:33e862b2730bc751d37a1cc7c7df60889f43cabe90c3f2214249f611d571c6bb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T173000Z
+DTEND:20270512T203000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Texas Team 3\nAuswär
+ tsspiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin
+ : 12.05.2027 17:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, We
+ iherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3a559a010aeba86a6f64ed0531e9c5837f702dd316b7c77e53aaa8b5db2198cd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Black Scorpions 3\nHeimspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.20
+ 27 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3c4352b7c29f6ac1189a5da28f5e08bccc857c1f85d4c1ee104de35b811531d1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - the Metal Darts 3\nHeimspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 
+ 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3cd1508cf950b1cc7a7c4aa63495f8a9b2996b0acfd1bdf42643c17b28593552@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts
+DESCRIPTION:Begegnung: DC Broken Darts - DC Texas Team 3\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.202
+ 6 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildba
+ d
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:60e401afa2c5a5820a02cbcb05e8a5ef4260ff2f3f8c49020f936241bb2c0087@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Texas Team 3\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.1
+ 0.2026 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, K
+ nittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7cefa5ab3306e4a149ce7fb732325394a775fa04d554a2a3637037bee98ff5c8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Duselbrüder\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19
+ :00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:848ab1bf920ec9c0eafee7dede2ef677c01a8055faddf4e90f7fa212ab791e9a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Heimspiel gegen Odins Knechte
+DESCRIPTION:Begegnung: DC Texas Team 3 - Odins Knechte\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 18:0
+ 0 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:86aaf14145d02f2fa0a60282f2b5d7e5b02194245764ad5cbe59a3191193ae55@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270429T180000Z
+DTEND:20270429T210000Z
+SUMMARY:Heimspiel gegen DC Broken Darts
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Broken Darts\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2027 18
+ :00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:879b32630aae1a1a62551495d365e95a5a07fec70bf671403797032974248a8f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T183000Z
+DTEND:20261110T213000Z
+SUMMARY:Auswärtsspiel bei Odins Knechte
+DESCRIPTION:Begegnung: Odins Knechte - DC Texas Team 3\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2026 
+ 18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfe
+ rdingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8a986e6921d2410fcd76004fc94c6efbe74b82a2605721f4bfc0de680ebedee7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T173000Z
+DTEND:20270330T203000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - DC Texas Team 3\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.202
+ 7 17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9b7681dcdd434c48fbafc940d3c2faf7f08ad7857d369b1ed246a9d2867d0b86@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T180000Z
+DTEND:20270129T210000Z
+SUMMARY:Auswärtsspiel bei DC Mephisto's
+DESCRIPTION:Begegnung: DC Mephisto's - DC Texas Team 3\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027
+  18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 9
+ 2\, Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b3b30b5eb3b571f3b1ecc46a3bc3ed1f8427d7e35500a954366713928895e0e0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T173000Z
+DTEND:20260924T203000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Texas Team 3\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2
+ 026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c54d1b7d733ea42ad7e30316fc77839d0dee4a8e5afa5c6c6f0e5132a5b4d4dc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Texas Team 3\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.202
+ 6 18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e0e14e4c77da0eb34a1a824fba11ebbf80120fdf652f2c409f6faaf8f334ef98@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Heimspiel gegen DC Mephisto's
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Mephisto's\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 18:00
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ebf24866bbadda985f6c2ae9805aab2c4388b39db0a69578944772fd10a2e72d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Irish 26 e.V. 2\nHeimspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 
+ 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ff89a7ec2912b8a299c33e919bd820eddb8fd0e645b487d7cb90f7abc637aee3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T183000Z
+DTEND:20270225T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Texas Team 3\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02
+ .2027 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcker
+ le 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

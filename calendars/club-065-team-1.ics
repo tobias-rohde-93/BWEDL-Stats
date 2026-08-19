@@ -1,0 +1,562 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Los Muertos
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0192613b2a53a878cb204800d71180991e2c4c713103f5044c671676dc00f9f4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T170000Z
+DTEND:20261006T200000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: Los Muertos - United Ikaros\nHeimspiel\nLiga: C-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026 17:00 UTC
+ \nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:026fef920898cf0b3bc139409cdad11fe978f22ca524702eb9c8ca4c14c4b1b2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261104T180000Z
+DTEND:20261104T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - Los Muertos\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 04.11.2026 18:00 
+ UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, P
+ forzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0768a5e797b6e9531311ccd3fcb1f01e54497a3547aac48dbf0908e1958e159a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270507T183000Z
+DTEND:20270507T213000Z
+SUMMARY:Auswärtsspiel bei DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Lightning Arrows - Los Muertos\nAuswärtsspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 18
+ :30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0ab41846e3be48c55b8f10829c0598d956490b6fb09c5a8364366017d5cdadf7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T180000Z
+DTEND:20270326T210000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: Los Muertos - DC X-Brötzingen\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 18:00 UTC\
+ nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1c031b252184322baee05db565fe9f39e53a0d8371901ea17b544f410c43c5f2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T180000Z
+DTEND:20270209T210000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: Los Muertos - DC Bull's Eye Arnbach 2\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.202
+ 7 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:231a26ed841460ce0496b06cbf27499b5c1111063d0293ffda5b14dc492a801f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T173000Z
+DTEND:20270430T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - Los Muertos\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2
+ 027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbran
+ d-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:233ec218bc5a97ab8b9a74144abd9c7827b574ca5de7267565309b66984d55d9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - Los Muertos\nAuswärtsspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 18:00 UTC\n
+ Austragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2810d8146cb8b2daccc0b596b125ea79a0b1aad15d672bab3a58b944c7c59e60@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T173000Z
+DTEND:20260908T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - Los Muertos\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08.09.2026
+  17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2975f2139c7fa9fd74ce963e2cc7bd962c8fa31c45a7e1caeb31a2ff1632c94c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - Los Muertos\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19:
+ 00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259
+ \, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:36024ac5b989919b92b888205f6bfc3db2c3efa41a1e853f1195e89700fae55c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T170000Z
+DTEND:20260826T200000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: Los Muertos - the Enz Coast\nHeimspiel\nLiga: C-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 17:00 UTC
+ \nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3c6362105225c58cfdc5525381842bcacb78be729e9007dfc4d359c7fd9fb329@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260918T170000Z
+DTEND:20260918T200000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: Los Muertos - ESV DC 25\nHeimspiel\nLiga: Mix C-Klas
+ se 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 17:00 UTC\nAustrag
+ ungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5153119731ec51538f9c602bc04e971ec20adf181c369e5c35226f8292379e28@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270122T180000Z
+DTEND:20270122T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: Los Muertos - TSV Grunbach Darts\nHeimspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.2027 18:00 UT
+ C\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:52e800a576cd472e758054894361e1f4e126b6b12f5c1ee67ba6c9f79de23221@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - Los Muertos\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 18:0
+ 0 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pfor
+ zheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:56f75148fa2c334f5bb39fa6fa73e9c10999f38377d3bf206cfb0f7e4a926799@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T190000Z
+DTEND:20270225T220000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - Los Muertos\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2027 19:
+ 00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse unv
+ ollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5b088baa9ecbc0451e4d9f8f1224765e30bb8b46c44a35fbaa6f9d749938f01a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270305T180000Z
+DTEND:20270305T210000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: Los Muertos - DC Shamrock\nHeimspiel\nLiga: Mix C-Kl
+ asse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.2027 18:00 UTC\nAust
+ ragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:713b712ea7f1d04a93a20c172b383f5fa54a928577a80d226e425d41789488d8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T180000Z
+DTEND:20261027T210000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: Los Muertos - DC Höfle\nHeimspiel\nLiga: C-Klasse G
+ ruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026 18:00 UTC\nAu
+ stragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7d6f21ea0a8fbdb40c530a296270c7add6c6373cfc7e76389c469cb5c3895c65@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T180000Z
+DTEND:20270316T210000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: Los Muertos - DC Oststadt 2\nHeimspiel\nLiga: C-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.2027 18:00 UT
+ C\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81f33f872b780ca3ce0561458f240a13b2b8e37df00fc5445b621bb0b7012c0f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - Los Muertos\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.202
+ 6 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:94aba8267c1fc6aed6a15fd53b474f553e558308bebbc5a0772739c85f7ccc0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T170000Z
+DTEND:20270413T200000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: Los Muertos - DC Enztaler Buben 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.2027 17
+ :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:95d4d753f653f316da4e80f15360334f9ca406da880180760c914afdf0c64aa7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T170000Z
+DTEND:20261016T200000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: Los Muertos - DC Irish 26 e.V. 2\nHeimspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 17:00 UTC
+ \nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b0cf7b3298096c71106cf8d420b4d991842555ae02bd771df45bd5bf5b7ce757@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270206T190000Z
+DTEND:20270206T220000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - Los Muertos\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 19:00 
+ UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b0e2af06d2f056bcaf514d1e90c8d557f0ae273ea5179a16e594d82d696ca7ea@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261202T190000Z
+DTEND:20261202T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - Los Muertos\nAuswärtsspiel
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 
+ 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 3
+ 0\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bd37eb113b121cd27df0d7ce9a86e34070b98df682a554b13e51c8a07aef8398@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260922T183000Z
+DTEND:20260922T213000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - Los Muertos\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 22.09
+ .2026 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenb
+ ürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bd6488369d04474448c8445e5b3b52fe64d2b1a8f5959a4588d30c70e3e7f7da@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261120T180000Z
+DTEND:20261120T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: Los Muertos - DC Irish 26 e.V.\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 18:00 UTC\n
+ Austragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c4c22a0c4c85640add076f9086a6bd140fde56b9ed72af6f4668cf9da6fcc06d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T180000Z
+DTEND:20261218T210000Z
+SUMMARY:Heimspiel gegen DC Lightning Arrows
+DESCRIPTION:Begegnung: Los Muertos - DC Lightning Arrows\nHeimspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 18:00 UT
+ C\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c91cc5c6c9ad4929d4f058753fd9602f248ce8427a442818e14d3779677cdf50@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T170000Z
+DTEND:20270423T200000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: Los Muertos - DC Underground Fools 2\nHeimspiel\nLig
+ a: Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027 17:0
+ 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cc4ea1f544ccb5379c9504300689e8d2dc4c3c0c2e969084d94b23d7835f6f8d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270312T183000Z
+DTEND:20270312T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - Los Muertos\nAuswärtsspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 12.03.2027 18:
+ 30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d4cb7f021de60a414a07429692b6468eb2edb4d60d387e82959bc4d1eb8b610f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - Los Muertos\nAuswärtsspiel\nLiga: C-Kla
+ sse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 18:00 U
+ TC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d8358d924099c7fb530c71028c95ae92f8c1daf3129d3e36ac877e737ca3f4f4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T170000Z
+DTEND:20260904T200000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: Los Muertos - DC Duselbrüder\nHeimspiel\nLiga: Mix 
+ C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 17:00 UTC\nA
+ ustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e377963ba0bbfdec176b0407ae7b4dc308d12b3ebf66e4b310d0fbfd864b492f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T190000Z
+DTEND:20270219T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - Los Muertos\nAuswärtsspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 19:00 UTC\nA
+ ustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e4a2ca151641c7e2407a2a88c9d60de202ecf28d997d893a3eab379005de3200@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T180000Z
+DTEND:20261124T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: Los Muertos - TSV Grunbach Darts 4\nHeimspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.2026 18
+ :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e79a2268a347883ef2dc677179368799ffa7dc53ba44272cd968dcd77a6277a1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261207T183000Z
+DTEND:20261207T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - Los Muertos\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 07.12.202
+ 6 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, M
+ ühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e92776d8c45232f1259bcdb5b14a9e5f8e5466f921068a93103da84d434b74ba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T180000Z
+DTEND:20270126T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: Los Muertos - DC Irish 26 e.V. 3\nHeimspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.01.2027 18:
+ 00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ea8d8d1d51b1de1742a4f608b928163cc161dc7b5446910b4d4cf690d999de4d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270410T180000Z
+DTEND:20270410T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - Los Muertos\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 10.04.2027 18:00
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f2c751b4d6f09df9568ed6647c4589324f92dfb7a8ce4610971441b16555b284@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260821T173000Z
+DTEND:20260821T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - Los Muertos\nAuswärtsspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.08.2026 17:3
+ 0 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunba
+ ch
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f5c1214ed2bbce76fce73e3290a678abdb99666f24fa79e6567a1afaa1c13c1c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T170000Z
+DTEND:20270511T200000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: Los Muertos - DSV Großglabbich 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 17
+ :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

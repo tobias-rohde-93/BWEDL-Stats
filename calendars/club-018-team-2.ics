@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Knickebocker 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:042fc2eb664c13a636a0271e1c270d7363b2c4f6e72b3742f2e5d907c2f3b42c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T190000Z
+DTEND:20261124T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - DC Knickebocker 2\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 
+ 24.11.2026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
+ erstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:13d0e774942e8323353605d2921a37243d259477d456fb373f33e55f0292dc46@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T173000Z
+DTEND:20261024T203000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC HighFlights 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 
+ 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-S
+ tr.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1f300ef4a06efd1f550960593bfdbe1b88b539abad5f466deac10f4eb6539682@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Knickebocker 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.
+ 10.2026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wil
+ dbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2a1e6d42f498301ca83d26eebce884a1ee5fb854ba334f40ccd0451b36b4ec08@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T180000Z
+DTEND:20261031T210000Z
+SUMMARY:Auswärtsspiel bei DC Drei Daneben
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Knickebocker 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2
+ 026 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pfo
+ rzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:50aa015d0bfc3b2b4acc8c5c56d34590bfbccb8b10289189efa83b8c19d1b4f2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Knickebocker 2\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 18
+ :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
+ Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:640bf5178a183349e80132a69e69378a5a49b3767e43d43bbfb7a76615bc2092@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T183000Z
+DTEND:20270227T213000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Enztaler Buben 3\nHeimspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.2
+ 027 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedri
+ ch-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:714c4f8c523e4205e6365267056aa718c3c739237381ad26ab637c3f9986596e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T173000Z
+DTEND:20260912T203000Z
+SUMMARY:Heimspiel gegen Phantom Arrows 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - Phantom Arrows 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2026 
+ 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-S
+ tr.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:913d2f22f62d40f4ff7c23e923effedb79d7a76ded15e3fa79d8bd67b4e8a05f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270317T183000Z
+DTEND:20270317T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Knickebocker 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 17.03
+ .2027 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9199c095873cb806d2e5e3909fce1c3882f544a5b4180814f886ae8ad0ddfb8c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T190000Z
+DTEND:20270125T220000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Knickebocker 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01
+ .2027 19:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:949adf3643d2c062ae3eb0361a4b6379ac3fee0ff830cd3b76080ab0f322d586@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T173000Z
+DTEND:20270501T203000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Underground Fools 4\nHeimspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.0
+ 5.2027 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Frie
+ drich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:94c86b7f05d56e19b3690ce21ed6b4aacf901448a2f39e6d073a1cdb6a31eca2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T173000Z
+DTEND:20260926T203000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Conweiler\nHeimspiel\nLiga: C
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 17:3
+ 0 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-Str.3
+ 78\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0abf388283a87dc1ba71a93e25281f2475b6ed5de060f0608b77fc3342a397a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T183000Z
+DTEND:20270116T213000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Knickebocker 2 - ESV DC 25\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 18:30 
+ UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378
+ \, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a4787d47ca85da86711829d32c85ccde1139654472700c7dbc98a9ebb62a900c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T180000Z
+DTEND:20270414T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Knickebocker 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 1
+ 4.04.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\
+ , Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ac8695f548ad08a5be366e45fb32bd0d3f3e972a20a43ca3351025419fca9a75@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T170000Z
+DTEND:20270510T200000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Knickebocker 2\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.
+ 05.2027 17:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäck
+ erle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c507af23490db36da2cdeec22bd5b479e8dbf25e6bede2892500b89810bc5b1e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - DC Knickebocker 2\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.202
+ 7 19:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\
+ , Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cfd2b33c13defd63b78b554a568e1423003e20e3521b40b6c9e4a08aa6e33342@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T183000Z
+DTEND:20261212T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Irish 26 e.V. 4\nHeimspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.202
+ 6 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich
+ -Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:df427db260a8c6169299599284bbd84e17e35b64e433238210778bc09c8b70c5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T183000Z
+DTEND:20261114T213000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Black Scorpions 5\nHeimspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2
+ 026 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedri
+ ch-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fabd81ecbd12e3da4aa9ae7b97da70c61270324eb72a141f830cdae9fcf917bf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T173000Z
+DTEND:20270403T203000Z
+SUMMARY:Heimspiel gegen DC Drei Daneben
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Drei Daneben\nHeimspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 
+ 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-S
+ tr.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

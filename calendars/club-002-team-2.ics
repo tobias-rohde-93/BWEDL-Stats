@@ -1,0 +1,292 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Oststadt 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:02f959166d72c7ff199336627dcc580ee74942f6d2a6a44750c20372f0bc44ce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T193000Z
+DTEND:20261110T223000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Oststadt 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.
+ 11.2026 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neue
+ nbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0f3b07ee9640a19b03b9f3b27c462b72305be49439a8973589b5678b88bf0c15@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - DC Oststadt 2\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 19
+ :00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse un
+ vollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1727d4509b450492eb18b40f38fd2e8507f06c742a5a2900e7765e4bb418bb50@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Bull's Eye Arnbach 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2
+ 027 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 3
+ 0\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1a0cc0439aac7581cd7f8719c69299ca5efaf68bef0b422748cd29f0e33be435@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Enztaler Buben 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 
+ 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
+ Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4568fa1345d9c38ace24794074dee9ee54b03ce92965b81921503057abe3a617@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - DC Oststadt 2\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 1
+ 9:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 2
+ 59\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4f523ad04fdf07deb817f7dabda69c851c063c08ef8ff0dee9feba47b344a6e0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260907T173000Z
+DTEND:20260907T203000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - DC Oststadt 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 07.09.2
+ 026 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, 
+ Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:59fdbf9a1e16e1dc50c74e2429884f20423f508194285b46f3f91e8a99013c90@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T173000Z
+DTEND:20261006T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - DC Oststadt 2\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.20
+ 26 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
+ 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:839a3c74eed0d223e7dd7e51b1d1c1e3066bbe0711990cbf814e8c2e66bb5d18@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260919T180000Z
+DTEND:20260919T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: DC Oststadt 2 - TSV Grunbach Darts 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 19.09.2026 
+ 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
+ Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8400ec1773ed608a6251f8f87422b916dca818d701b2d821d5502254fae20d58@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Oststadt 2 - Los Muertos\nHeimspiel\nLiga: C-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 18:00 UTC
+ \nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:aac396852866515ada7a89642ec530d0c4d7038f72079017ebb8153da0a9cc8c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Oststadt 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2
+ 026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:af181634e5e62f64bf1d54208055650cda57579215f67b37ed8313591e5fc95a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T183000Z
+DTEND:20270115T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Oststadt 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01
+ .2027 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbr
+ and-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8cf2239a6d6a27d20835aea3f4213d20502d427a201aa0a874befdacdf5d7e2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Irish 26 e.V. 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.2027 1
+ 9:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, P
+ forzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8edc399d720440df609c88119badc8a5ef67d1a6533a34d829b6e5b20e9e36e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Höfle\nHeimspiel\nLiga: C-Klasse
+  Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:00 UTC\n
+ Austragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:db346bcb9d854b16e05139a0acc1a6acf3e8974e6bdb2ebc3394f4d9b6e66182@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - DSV Großglabbich 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 
+ 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
+ Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dbe6c1bcc5cdac837ce5c2e349f11c4fe975cd14239fd66912f79485e614072f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: DC Oststadt 2 - the Enz Coast\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 18:00 U
+ TC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzhe
+ im
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:de9eb475dddcc629071f08ca4bb910ea2e7e7924c4225bfcb45510408fb7212a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: DC Oststadt 2 - United Ikaros\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 18:00 
+ UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzh
+ eim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec4364b2b676dc1b147e9c8412f2ccf471bce87c627746010afd7ef254c8a17b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T180000Z
+DTEND:20270316T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Oststadt 2\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.2027 18:
+ 00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:efe8221770cfb88d83a956a34bf67ce28c1e353f4b195da5ae8e0d56a271436c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - DC Oststadt 2\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.2027 18:00
+  UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

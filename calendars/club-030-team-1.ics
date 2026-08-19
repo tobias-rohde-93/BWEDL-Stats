@@ -1,0 +1,255 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Black Scorpions
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:12eec11f11d2b387ac37f599039931de425d37edb09414b50e8d02b5b78b1a09@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270315T190000Z
+DTEND:20270315T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Black Scorpions\nAuswärtsspiel
+ \nLiga: Bezirksliga 2026-2027\nSpieltag: 14. Spieltag\nTermin: 15.03.2027 
+ 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1c5c6686ce48783829a3093cb7da3780792f91b36855e04ff56a8636c73d5559@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T183000Z
+DTEND:20261209T213000Z
+SUMMARY:Heimspiel gegen Friends Arrows
+DESCRIPTION:Begegnung: DC Black Scorpions - Friends Arrows\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 18:30 U
+ TC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:356373dbfc2f97c3e44904428c20b39292da9e431cd1388baf8a9512c94f6693@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei Friends Arrows
+DESCRIPTION:Begegnung: Friends Arrows - DC Black Scorpions\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 1
+ 8:00 UTC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5cf174ff35c212c5fb2533863f52cf23850b335a83f9c0b20f2d234145a5eee9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270113T183000Z
+DTEND:20270113T213000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Strikers\nHeimspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 10. Spieltag\nTermin: 13.01.2027 18:30 UTC
+ \nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5e0ccee997ef710f08d89a33adfa8fbdfeaa0e6c8cd4132e7dc70d751e677058@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T173000Z
+DTEND:20261021T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Black Scorpions - the Metal Darts\nHeimspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2026 17:30 
+ UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5fb14d87cc0e694835cc8517951f51235e69eddae7fa211eb7e16428b4b2a0a1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Green Scorpion's\nHeimspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 1
+ 7:30 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittling
+ en
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:608c71e2a212535453a7c660b354edb80079757b44435e9753553499785cff18@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T193000Z
+DTEND:20261030T223000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Black Scorpions\nAuswärtss
+ piel\nLiga: Bezirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.20
+ 26 19:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:799a6c58bb483c4618937d476d4f5469422f8626d45647b2d49524cb328d5c81@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Black Scorpions\nAuswärtsspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 18:00
+  UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7ab04dcd4ec4bb5e865f511999cce0b2987b3339b3d559e080693a74744b9bcd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T173000Z
+DTEND:20260923T203000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Texas Team\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 17:30 UT
+ C\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a13c6f3a490d2195a051f5a4b693938f4e82cbcb419fe96978fb024303a59476@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T183000Z
+DTEND:20261111T213000Z
+SUMMARY:Heimspiel gegen the Metal Darts 2
+DESCRIPTION:Begegnung: DC Black Scorpions - the Metal Darts 2\nHeimspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.11.2026 18:3
+ 0 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:af142a9a62ed8ed1619961c51555db7cc17d2c9d14ef5a0d9235aec94f41d491@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T190000Z
+DTEND:20261125T220000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Black Scorpions\nAuswärtsspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.2026 19:00
+  UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cceecf9166e4cec2f5e2e5d8cba8657a4919be31881c405bd98fc2aa15940601@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T191500Z
+DTEND:20270212T221500Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Black Scorpions\nAuswärtsspiel\n
+ Liga: Bezirksliga 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19
+ :15 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:deec29a7f49acb1f1631a4a45b36b8c227dc12e79aab3e46b73274907ab3e5c2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Black Scorpions\nAuswärtsspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:00
+  UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e43e7603a60d89f0563cc71774c813ebd043daa6b4a37b457a0ca213efff7f64@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T173000Z
+DTEND:20270428T203000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Lachs 14\nHeimspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2027 17:30 UTC
+ \nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e745d8e6a4a3f36ba2e9ffb1c911d4885813be6565f133db7a9598e619557cd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T180000Z
+DTEND:20270412T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Black Scorpions\nAuswärtsspi
+ el\nLiga: Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.04.202
+ 7 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f3033c36ec2da5a2b1d5b9ee982fe5154ad2928c6894947a2d7095fca64004be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T183000Z
+DTEND:20270224T213000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Reloaded\nHeimspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 18:30 UTC
+ \nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

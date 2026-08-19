@@ -1,0 +1,294 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – the Enz Coast
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:00cdd2cfeb7f4103e603c28ce74d9ea6c6341c52b3f50d40e366f517691c28bb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: the Enz Coast - DSV Großglabbich 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 
+ 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0df15e34428267dcffb13cae5406ee19284681793251b961aeef5c0449d2fafa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261210T190000Z
+DTEND:20261210T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: the Enz Coast - DC Irish 26 e.V. 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 10.12.2026 19
+ :00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 25
+ 9\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:23c34e4c964b36afabb30f8ac43c3d20e08a72c5767d408a86d100070da30f90@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T193000Z
+DTEND:20261124T223000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - the Enz Coast\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.
+ 11.2026 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neue
+ nbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2ee538ae838095434f8be068b30fef555c2b71cc0fbc59cdfa22816f11abdb00@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - the Enz Coast\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 18
+ :00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pf
+ orzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3376cbc38c92661ec3d50d17f6f5eb4b3cad2efb8aede81bb16dbf6a8e0f31a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: the Enz Coast - Los Muertos\nHeimspiel\nLiga: C-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19:00 UT
+ C\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pf
+ orzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:385109f1519e96c1a76489aa4dbf38fa50958b5c38a9528f33175d666874f994@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261109T183000Z
+DTEND:20261109T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - the Enz Coast\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2
+ 026 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, 
+ Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3f3a1570984166a8cb16c66952a0db1ecc60142ba9d599278250a6d3d849cd97@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T170000Z
+DTEND:20260826T200000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - the Enz Coast\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 17:0
+ 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5486439696a79ba22cbdea4598b5609db3dbff0dbfd089ce53c8067269f8e88c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: the Enz Coast - DC Enztaler Buben 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 
+ 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:61239d707df86ffb080cf490d7772a7d1b7de6f5397109d7e95fb7b27daa5f71@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270429T180000Z
+DTEND:20270429T210000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: the Enz Coast - DC Bull's Eye Arnbach 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2
+ 027 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- S
+ tr. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6958f2f329c234f71119b9f6e6bac750d67da5af39f01d598c6bedb7eb446df5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - the Enz Coast\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2
+ 026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:76165c7dea84c3a784e0352e96643c785a81d7b50bbbcdc958a421f0287d0924@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: the Enz Coast - DC Höfle\nHeimspiel\nLiga: C-Klasse
+  Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 18:00 UTC\n
+ Austragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforz
+ heim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:89dced23640c9c9866c57e00b8003a46d43e11a9e93aa53a9209970fa172ba20@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T190000Z
+DTEND:20270128T220000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - the Enz Coast\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01.2027 1
+ 9:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse u
+ nvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:97619612dfd4548d5b48b99d15da10c5918162952c95a1a9a618f4c0411019e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: the Enz Coast - TSV Grunbach Darts 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 
+ 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a26fa6c976dee6ed1ec3be8b84efffa6e3d887ebe6dc846a0f43b5bc62e47251@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: the Enz Coast - DC Oststadt 2\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 19:00 
+ UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, 
+ Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:beaad54705c343c7035b7cfef078d1fe216ff0026e0f965fbb17bd53156ed29b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - the Enz Coast\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.2027 19:00
+  UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce9ec2cb8ccd4823a32c41be095c7736a61d6784b39d2ced388b0921b441f22a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T173000Z
+DTEND:20270402T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - the Enz Coast\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04
+ .2027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbr
+ and-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d0f3012078a2d68e4756da8808914ccd0f3355867c9120fad88ed7b1a1a2e0bd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: the Enz Coast - United Ikaros\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 18:00 U
+ TC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, P
+ forzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e1a40f81e27075e1e23524781cacc116acd34343315094b82f17e225d97105ce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T173000Z
+DTEND:20270511T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - the Enz Coast\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2
+ 027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

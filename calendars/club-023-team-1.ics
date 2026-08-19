@@ -1,0 +1,565 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Duselbrüder
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0abc2db85489e8c46542f6ab06c2ed8e2a985f464ce88a9ecd1ffcce57d01af7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T173000Z
+DTEND:20270423T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Duselbrüder\nAuswärtsspiel
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027
+  17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:13869d2968ec9194f066d57ea82005e6c6972a4e2beda95473c71333229a1d54@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T173000Z
+DTEND:20261022T203000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Duselbrüder\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.2
+ 026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1757b8a87f1572e4251b5be026d1b98044437488e7ddb2185249180217b9914e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Auswärtsspiel bei Odins Knechte
+DESCRIPTION:Begegnung: Odins Knechte - DC Duselbrüder\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2026 
+ 18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfe
+ rdingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:42b8c0ce38d8979b0c161aa7b8d2984bd451ef8b43c714403330f80ff462d601@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC Duselbrüder\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 19:00 U
+ TC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:45b9c6f37cbbea13dd611392526c37924b8c81736d9f6a62c28427f6365ca097@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261205T190000Z
+DTEND:20261205T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Irish 26 e.V. 2\nHeimspiel\nLig
+ a: Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 05.12.2026 19:00
+  UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4759a17853ae0375bbe1d0fd7cdbccc559c0ed21473bdc30c8c8b95934b15dee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260909T173000Z
+DTEND:20260909T203000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Duselbrüder\nAuswär
+ tsspiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin:
+  09.09.2026 17:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
+ herstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:496bf7eea33a3739baa592ddcea2f262993e4ff4edfe878d15bbbf260e2e7e9b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261121T190000Z
+DTEND:20261121T220000Z
+SUMMARY:Heimspiel gegen DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Lightning Arrows\nHeimspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 21.11.2026 19:0
+ 0 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4b7a3a7529d8203dd7a3dfaca1dafba54c5557101756c925f278ac81f3f7de9c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Heimspiel gegen Odins Knechte
+DESCRIPTION:Begegnung: DC Duselbrüder - Odins Knechte\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:0
+ 0 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4bd004d9970c9d190da8cfd3e767ce46cdd8284eb89a4589c57c39f32b9cb400@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Duselbrüder\nAuswärtsspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 18:00 UTC
+ \nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzhe
+ im
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4befab15083dd9a37ef3f9f5e19b4c75260716badb37b9b35d8008a3737e6b4d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260919T180000Z
+DTEND:20260919T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Irish 26 e.V.\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 19.09.2026 18:00 U
+ TC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4f4701b65237c25df57178ccf7d11734f3e5c38e147ed7809662c54f43a86f89@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270220T190000Z
+DTEND:20270220T220000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Duselbrüder\nAuswärtsspiel\n
+ Liga: Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 20.02.2027 1
+ 9:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, 
+ Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:561c639f5e72090d1ebc387b7fa19ad4f092cd42ff5402ddfdb8d870b2aa008f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Underground Fool's e.V\nHeimspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.
+ 01.2027 19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:682bc411459862540ebfb0d6e76046e4a09fec3301708a1ce88f12eb539591a6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270306T190000Z
+DTEND:20270306T220000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Duselbrüder - ESV DC 25\nHeimspiel\nLiga: Mix C-
+ Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 06.03.2027 19:00 UTC\nAu
+ stragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:75673fa26e2bfd3002e768de1adb25158e85c62725abb65307f61a66c7254ed5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T180000Z
+DTEND:20270226T210000Z
+SUMMARY:Auswärtsspiel bei DC Mephisto's
+DESCRIPTION:Begegnung: DC Mephisto's - DC Duselbrüder\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027
+  18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 9
+ 2\, Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:777dd8f5313c92c67c9030aa6bb9c2284e724ddb94713087d2950dfdc9757700@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Heimspiel gegen DC Broken Darts
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Broken Darts\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19
+ :00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7f84b5f07e05f666a096dda3e3ab3a443ffce010c35db198d451a5150ff870aa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team 3
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Texas Team 3\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:
+ 00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:837d24518433a5a30b1da9d6a23e20ac20aec353786c18b06ba48a6b07010353@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Irish 26 e.V. 2\nHeimspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 
+ 19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:874b8513ead8595ec5aa14c847f274bdb504354fed169c5b3e3ae976068570f1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 3
+DESCRIPTION:Begegnung: DC Duselbrüder - the Metal Darts 3\nHeimspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 
+ 19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8785b98fe430f20f08242309443312c5c92ce8128f4abe25e7a09185a2cb6526@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270327T190000Z
+DTEND:20270327T220000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Shamrock\nHeimspiel\nLiga: Mix 
+ C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 27.03.2027 19:00 UTC\n
+ Austragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:880a0dc75dd301aed74f14562ff993dab4a8c94c446812c8a94809230bf158d6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270206T190000Z
+DTEND:20270206T220000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Duselbrüder - Los Muertos\nHeimspiel\nLiga: Mix 
+ C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 19:00 UTC\n
+ Austragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:89c389e5649a96d5e71f1deafa083c7b3a3463d2f73ea64d8f4a1fbc352f85ab@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts
+DESCRIPTION:Begegnung: DC Broken Darts - DC Duselbrüder\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.202
+ 6 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildba
+ d
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9a65512d961e9b2b9bc5dc55c2f4e0e89d93e76b2f66e26eb079bb68e9d6a05f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Heimspiel gegen DC Mephisto's
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Mephisto's\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18:00
+  UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9a83a1fd76fa3772ffda3b9cda78383cabcec3701b2700fd76c5b57bef7c7c85@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270401T173000Z
+DTEND:20270401T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Duselbrüder\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04
+ .2027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcker
+ le 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a68c1656124e31ac3a018f6d9b96ea841c52f40dc8f008e775aae33c4a453d63@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260822T180000Z
+DTEND:20260822T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Duselbrüder\nAuswärtsspiel\n
+ Liga: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 22.08.2026 18
+ :00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259
+ \, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ae80b7d0a4656428e670b744e7880400aab59b7eb4e19006ec0d792d32987730@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Duselbrüder\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.1
+ 1.2026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, K
+ nittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:af08ebdeccc97fadc08f7305dc44984bf443bc81a7fd4d5bf77a48861f903efd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261017T180000Z
+DTEND:20261017T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Underground Fools 2\nHeimspiel\
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 17.10.2026 1
+ 8:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:caae7bc89d20a3289fcd52bf80eb2c5efbb481e5804c7fc6a6b7d88558a59a2a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270409T183000Z
+DTEND:20270409T213000Z
+SUMMARY:Auswärtsspiel bei DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Duselbrüder\nAuswärtsspie
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 09.04.202
+ 7 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d625ab160f6f1996f15f01ee5b649c18e645fa579b9127064f93f62ca1a02e18@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270508T180000Z
+DTEND:20270508T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Duselbrüder - TSV Grunbach Darts\nHeimspiel\nLig
+ a: Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 08.05.2027 18:0
+ 0 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e16d6050a88eb391673a515f727d97146d97e5ccbcbea3a0f097d882b71d54cf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Black Scorpions 3\nHeimspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.20
+ 27 18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e55f8cfcb9c8be6e025e1c332eb24987b8f62d825b4e046ba54b0dd44a10f25d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Duselbrüder\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.20
+ 27 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e5a26f328ed097a920270f85e1afecec8d716121ab1cfa6043ad6c6e45cab2db@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270123T190000Z
+DTEND:20270123T220000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Duselbrüder - DC X-Brötzingen\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 23.01.2027 19:00 
+ UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec213326d0ee387707ed0dfa2b9f59c62dc845698df8f659699fb63d39e0bb4e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270310T190000Z
+DTEND:20270310T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - DC Duselbrüder\nAuswärtss
+ piel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 10.03.
+ 2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstra
+ ße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ee344d6cc02c86d4394b8c442e6f7aeb8f99029382c852b23b995658331fd3ef@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T170000Z
+DTEND:20260904T200000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Duselbrüder\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 17:00 U
+ TC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f40b99888a9ebb1d960061092d42e83681120d84854513d0eb3a63864817c56b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - DC Duselbrüder\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04.202
+ 7 17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f645189bd4f8c77383f23b9c1aba2b40b6c0ffee2c71158af12f3a03196640bc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Heimspiel gegen DC Ungültig 2
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Ungültig 2\nHeimspiel\nLiga: A
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:0
+ 0 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb4339398e25e36124fae24abde29b59e3810887aae7b9d8f2246f65e3d7de99@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T183000Z
+DTEND:20261218T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Duselbrüder\nAuswärtsspiel
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 
+ 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gr
+ unbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

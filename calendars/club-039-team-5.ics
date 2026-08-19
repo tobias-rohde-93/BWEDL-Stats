@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Destroyers e.V. 5
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0940a661c09aa654738bd5aaf593d6f7f9bd37d430a3fd1361ba797450b58aa9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DSV Großglabbich\nHeimspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2
+ 026 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0f62e3d5006ffea4d7ad8bf80d2c46aaed5f9d2980144dcfeea5422f4761189d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Heimspiel gegen DC Shamrock 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Shamrock 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 
+ 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
+  Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:169d11522a5aaf4ccc303a6fb94f039865924f8054ca12b0fdc5368864bf49e1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Kolibrispitz\nHeimspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.20
+ 27 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:33f96b7b7d8e65a9c5ec8b5e7ba2dbc0ebd0e71b122b26361b4246995fe8ce1f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DC Ungültig 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Ungültig 3\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.202
+ 7 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60
+ \, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4fd226b97aa29f9232c3013a3f021d847a987a4541d8ef87da509f77e50ac9b5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T173000Z
+DTEND:20270329T203000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Destroyers e.V. 5\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 2
+ 9.03.2027 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg
+  25\, Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:728f33be4e9c736567d837bfa297f2bd6a0f41e30ab2a9746e57e887e184c6bf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T183000Z
+DTEND:20261110T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Destroyers e.V. 5\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 1
+ 0.11.2026 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendä
+ ckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:816da19392ae2306e333dbe83e28e4d03e9f083537420cea34bbd95281aa649a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T173000Z
+DTEND:20261010T203000Z
+SUMMARY:Auswärtsspiel bei DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Destroyers e.V. 5\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.1
+ 0.2026 17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffe
+ nstr. 15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:899dc306405262b30acc7e7129c4c1458044900e08092ff5bad9f52624caccd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 6
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Destroyers e.V. 5\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23
+ .10.2026 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37
+ \, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9bc8bb022022662d17f1314e4ba57031a85130522dc1b452c0bdf5860c50c06f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen ESV DC 25 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - ESV DC 25 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 18
+ :00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b23b7b0d680e2b5a61289d2f092b8b233cfd8b55512fb4c1bd42547b651f33d7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260909T173000Z
+DTEND:20260909T203000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Destroyers e.V. 5\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.09
+ .2026 17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\,
+  Schömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b3a3ace9cf113b88ee73f29758b69dd48d5ba0a06bb5cc606289822c6f20de3d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260905T180000Z
+DTEND:20260905T210000Z
+SUMMARY:Heimspiel gegen DC Oststadt 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Oststadt 3\nHeimspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 05.09.2026 
+ 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
+  Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b437d60230ca08b6161a691a87c4ac80c939a1df20acc496d909cc7b4101936b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25 2
+DESCRIPTION:Begegnung: ESV DC 25 2 - DC Destroyers e.V. 5\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2
+ 027 19:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str.
+  15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ccd43d9ab9426605da0a5cae7c0ce1782a360d7a2b093c03c6b3f7f76ab9e4ef@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 3
+DESCRIPTION:Begegnung: DC Oststadt 3 - DC Destroyers e.V. 5\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01
+ .2027 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse
+  30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e32f141843f631e4b1ba08b7a6d073d3547c267e4a4951424373ccea9560ab18@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock 2
+DESCRIPTION:Begegnung: DC Shamrock 2 - DC Destroyers e.V. 5\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05
+ .2027 18:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, 
+ Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e5809b9dde438b0aea7eb645118b7b6ab9e0763316dd8be7dda9d91dbd9c0540@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 6
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - the Metal Darts 6\nHeimspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.
+ 2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr.
+  60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb03df3e2795a84a8f82cca7c532bd04636bfb3f1faa2542708035b7ef595932@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Irish 26 e.V. 5\nHeimspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04
+ .2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr
+ . 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

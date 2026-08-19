@@ -1,0 +1,291 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – TDF Enzberg 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:1c46e4946042e41028759044ed145510a0f90baa7aceadafbe421de43e68f3a7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - TDF Enzberg 2\nAuswärtsspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:0
+ 0 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenha
+ rdt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:23c5ae7161c1a1541dc05182e3048a74a8b992a6e05b3ecde0d9d92b88b50c98@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Crazy Flights 3\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18
+ :00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzber
+ g
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:24344f8fffc2ebf6692e5903a37e130358a534683f41ab886c0742c78485ef7e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: TDF Enzberg 2 - the Metal Darts 5\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:
+ 00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3003fb6f07edf21826054bc5b3a16d5e4aeaa3484b7f44d4ea06be7be07d2304@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Destroyers e.V.\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 1
+ 9:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzbe
+ rg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4252b970744989432c3304c17cd20157a0ecaa3994df5efb3fd92eb0ad2a1859@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T180000Z
+DTEND:20270413T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - TDF Enzberg 2\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.20
+ 27 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6afaaca9175ee63084f82f708e0b201b94ab70eb737414fcc1ce8631854f6d5c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Reloaded 2\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:00 
+ UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7a5062564cd61b76b1f658aee95a9df2c7c948ef770baf94111ca5017a8aeb80@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: TDF Enzberg 2 - the flying Rocks\nHeimspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:0
+ 0 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8113d5a86f6128b792c0e14ce719d159678e3c5e506fcb2da4a0f0f82a3a2f69@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Shamrock\nHeimspiel\nLiga: B-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 19:00 UT
+ C\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8d0f5106375e1e7ea6df0255fa326005a3ed7af8966072c1f426e83b80f7a0de@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T180000Z
+DTEND:20270129T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - TDF Enzberg 2\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 
+ 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a45e3531a4ad947555d6df948fdaff37bc6cce163d8925d902745c3c8ba80de7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC 180 Stein e.V.\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18
+ :00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzber
+ g
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ab83c2d424d057493064059d61b905025c3589716566e7b6630f8a5b85f97b9b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - TSV Grunbach Darts 2\nHeimspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 
+ 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzb
+ erg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bdea8e59105ad664bdcf9dc321e2430554ce74b11cfcd1df5a4a925bc387d2f8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - TDF Enzberg 2\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 19
+ :00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c5e8c2a72912f87cfeb21f0fdb8a58333294e81670d5b700f27a17e91268fc0a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T173000Z
+DTEND:20260825T203000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - TDF Enzberg 2\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.20
+ 26 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c88a9d782ca0e3069671383c5cbab7df5173bc13d9e1a1f2af1730084f76a48a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - TDF Enzberg 2\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.202
+ 6 19:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, König
+ sbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cbfe889c2f3a03f192278fafccf89675a66a4326a806679c527971c904dbeb98@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - TDF Enzberg 2\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2
+ 027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswi
+ esen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce066f0683244aad86b2d05bd79676d2fcdf9158095e0187241ec3b46d9f78bf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - TDF Enzberg 2\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.202
+ 7 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, P
+ forzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e9f6f6851e145fba6c1b1e3370a763eefc55fb468e649a55bebc03061a2ab0cc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T173000Z
+DTEND:20270514T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - TDF Enzberg 2\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05
+ .2027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbr
+ and-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:edee4ba5d0957f3adee7294b4bd2e848a0da8f53019b8c04657e5fa5d8c6a8a0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: TDF Enzberg 2 - Phantom Arrows\nHeimspiel\nLiga: B-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 
+ UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

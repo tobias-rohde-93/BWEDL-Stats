@@ -1,0 +1,263 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Texas Team 4
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:02b578e931ca77ebf1263fac4bcc773913bc108e4f1af58a187d406327ff68e4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T183000Z
+DTEND:20270316T213000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: DC Texas Team 4 - TSV Grunbach Darts 3\nHeimspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.20
+ 27 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:100339c872c49f1b01722e1f349790d0a1d46fc20e449677812a6bdd7eb6b858@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T173000Z
+DTEND:20270329T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Texas Team 4\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.0
+ 3.2027 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, K
+ önigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1d7c1801ddaac2fb03647a0393da7a80aca8a6d7c526a17a8f2b8d87cf0ca559@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Texas Team 4\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2
+ 027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-St
+ r. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:367bf02e047807881809fe88ae847dd326038dacedb2e5ca43d61b1e7c07ff96@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC 180 Stein e.V. 3\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026
+  18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:43cafaddab8b44579f4a11022fcd900b240b00ecd70903f50f254f12bbfc9005@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270426T180000Z
+DTEND:20270426T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks 2
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Texas Team 4\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 17. Spieltag\nTermin: 26.04
+ .2027 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28
+ \, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6ecffbc50526a04664bbcaf82090186bb923e7720892289b66d5a5ab0b06ce74@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T183000Z
+DTEND:20270126T213000Z
+SUMMARY:Heimspiel gegen DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC Ligthning Arrows\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.01.202
+ 7 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
+ rzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:76562268e63b472b49198d0dda468abd19de3a300d184b32e4219cac177e4fd8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T183000Z
+DTEND:20270223T213000Z
+SUMMARY:Heimspiel gegen DC Hot Shotz
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC Hot Shotz\nHeimspiel\nLiga: C-K
+ lasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 23.02.2027 18:30
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:79f428c779f5f2ff727b23cbed0639a3362fff5e60b5dc5445cca58d11b2ea9e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T173000Z
+DTEND:20270413T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC Destroyers e.V. 4\nHeimspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.20
+ 27 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b68710e80f7b5288163a2a3eabd1cc6c59d8f5a737eecb150a7fb6e670ee0816@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - DC Texas Team 4\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.1
+ 1.2026 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberst
+ r. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b6e951220c05ea596d23a8bea6b3df8c2aca5a98763ebc703ad337feedb9f38a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260922T173000Z
+DTEND:20260922T203000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC X-Brötzingen\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 3. Spieltag\nTermin: 22.09.2026 17
+ :30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:be197aec303fd254dd7552f7345f1b84c41af1606b36ee1c39d7ddee72df2dac@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T180000Z
+DTEND:20261022T210000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC Texas Team 4\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.1
+ 0.2026 18:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsb
+ rand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c8416c8acf5e683afdaddfc3cf36d24aafd6498eab7f31ed713f20c3fa700500@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T173000Z
+DTEND:20260825T203000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 3
+DESCRIPTION:Begegnung: DC Texas Team 4 - TDF Enzberg 3\nHeimspiel\nLiga: C-
+ Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026 17:30
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ca7b78724799d4f1e1236f209280cffbfa81f1621ea6713f5333421c99a054a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T180000Z
+DTEND:20270116T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Texas Team 4\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027
+  18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enz
+ berg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cb910400ef130b356cc788cef8e2ebf873862f5bfea77ebd016cb6c7bb745157@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260901T173000Z
+DTEND:20260901T203000Z
+SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Texas Team 4\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 01.09
+ .2026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e183ad405f6afe4ed67f9186749638b3e31148521541f0643383be800526ab88@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Auswärtsspiel bei DC Hot Shotz
+DESCRIPTION:Begegnung: DC Hot Shotz - DC Texas Team 4\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 1
+ 8:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f1640eacdab07307ce62a9985f1b95cd1617aec3936aa91db2b3aa2ec0b6be09@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T183000Z
+DTEND:20261124T213000Z
+SUMMARY:Heimspiel gegen the flying Rocks 2
+DESCRIPTION:Begegnung: DC Texas Team 4 - the flying Rocks 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.2026 
+ 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

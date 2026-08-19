@@ -1,0 +1,294 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC 180 Stein e.V. 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:019f6ad0cb4e8a88dd747ebdce7ffc0ddc77fdab50d3f8b58e27b2a29d1242df@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T183000Z
+DTEND:20270224T213000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Black Scorpions 4\nHeimspie
+ l\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.0
+ 2.2027 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, K
+ önigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:25dbf6546df1bede54ff7c7e2846b875c0a3682376aeaef6948d606356fc9c02@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T173000Z
+DTEND:20270414T203000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC 180 Stein e.V. 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTer
+ min: 14.04.2027 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufe
+ nstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:385e09590c79a086430aab11c163d61d39b97aa469d3464f5d63e740d4015449@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Heimspiel gegen DC Triple 7
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Triple 7\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 17
+ :30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsbac
+ h - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4032439f527518aea1924cb4fdb1b9f8ed746ed5319143eadebca7dfcb85ce22@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T173000Z
+DTEND:20261021T203000Z
+SUMMARY:Heimspiel gegen DC Dart Vaders
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Dart Vaders\nHeimspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2026 
+ 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsb
+ ach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:44053f88737b3f633a7b8687519344378c73419ef49f56333658d1e31ede0957@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC Bull Hunters
+DESCRIPTION:Begegnung: DC Bull Hunters - DC 180 Stein e.V. 2\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09
+ .2026 18:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:443e248987a5d79fabeb605c0f223e333f1812fa915e2b3914ca6835b02a992f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T183000Z
+DTEND:20261125T213000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Broken Darts 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.20
+ 26 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Köni
+ gsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:490daa91bb16129d601d1e2f60ba06326b0e36b50200c6c7c6e0e88251b4d466@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - DC 180 Stein e.V. 2\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 
+ 08.10.2026 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1
+ \, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4c23e5c97c752a9439aaeea46216455454dba3f1b98264f6bfb90d3d2aa7eb8b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T173000Z
+DTEND:20260826T203000Z
+SUMMARY:Heimspiel gegen Los Muertos 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - Los Muertos 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 1
+ 7:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsba
+ ch - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:65eac7e1eb8b3dfd42d4ff74d614353e279507931add71972bc6dccc3846a038@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:Auswärtsspiel bei DC Triple 7
+DESCRIPTION:Begegnung: DC Triple 7 - DC 180 Stein e.V. 2\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.202
+ 6 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforz
+ heim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6998c8199a56485ddad1c79ad7c7ef59dd8b5f3d67051d14498d7f258705d31c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T173000Z
+DTEND:20260923T203000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC X-Brötzingen 2\nHeimspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2
+ 026 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kön
+ igsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81c0d88980f5974c65211c4ef67d7238c39e543e8b5a0661935a26f8d0f5ad29@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T183000Z
+DTEND:20270127T213000Z
+SUMMARY:Heimspiel gegen DC Bull Hunters
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Bull Hunters\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.202
+ 7 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, König
+ sbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0346300c818875bd73f85ba96fd07f45a081e8b2faccb2b5f3c36690729477e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T180000Z
+DTEND:20261209T210000Z
+SUMMARY:Auswärtsspiel bei DC Williams
+DESCRIPTION:Begegnung: DC Williams - DC 180 Stein e.V. 2\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.202
+ 6 18:00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c7a25f844817e0af983015da17a87cb14f1cc807a6c3a32d570eea8cf2bb4c7f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270317T190000Z
+DTEND:20270317T220000Z
+SUMMARY:Auswärtsspiel bei DC Dart Vaders
+DESCRIPTION:Begegnung: DC Dart Vaders - DC 180 Stein e.V. 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 17.03
+ .2027 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, 
+ Straubenhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c941d7ffb2cd98d6bb7db427e4e1f6b12bb2766fb32e8bc3bb6677fec11caef8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T173000Z
+DTEND:20270512T203000Z
+SUMMARY:Heimspiel gegen DC Williams
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Williams\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.05.2027 17
+ :30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsbac
+ h - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d84318ef9dd684e7f6c9c47f952c3b5dcdfb07bf56cf560f7edbb2dd211dbc31@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T183000Z
+DTEND:20261111T213000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - Dartfreunde Eichenherz 2\nHeim
+ spiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 1
+ 1.11.2026 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\
+ , Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ebe1821b4e1b2f995b71b142cc4efaf4c5f32e79fdbd313d1dd8414f47f31cdc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T180000Z
+DTEND:20270114T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC 180 Stein e.V. 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.
+ 2027 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f8504712a7623d78b11cd62f351701e2e9cb5c07bd48eef0ff11f96c7a17472d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - DC 180 Stein e.V. 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30
+ .04.2027 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad
+  Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb6459789d5e0593491dff841f1d3c17d8d03c1139860d3ac59cc50a0e14b20b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - DC 180 Stein e.V. 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 1
+ 3.02.2027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedr
+ ich-Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

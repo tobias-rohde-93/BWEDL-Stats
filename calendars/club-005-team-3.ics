@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC 180 Stein e.V. 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0b7e1c2b185c444d06ed975c1ff1a1648fae09029f0285fff7a617221b0bc96d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T183000Z
+DTEND:20261123T213000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Destroyers e.V. 4\nHeimspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11
+ .2026 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, K
+ önigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:17811e051b7613cb74ce3e8a9de161a6e48044a000c45801f5407e26153c29f0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T173000Z
+DTEND:20270329T203000Z
+SUMMARY:Heimspiel gegen DC Texas Team 4
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Texas Team 4\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.03.202
+ 7 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, König
+ sbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:47782abb295f2e11bdd529c40a78b3f50b7585eaf82d077a2c88f1f5cc00864f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T183000Z
+DTEND:20270222T213000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC X-Brötzingen\nHeimspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02.20
+ 27 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Köni
+ gsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:745952dfefab56161936d582899ece77f10f7b0e5e0969b0cc9b17a8d9cebba9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T173000Z
+DTEND:20270412T203000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - TSV Grunbach Darts 3\nHeimspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.0
+ 4.2027 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, K
+ önigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7cdefdff1e95621e7b06bfeab067789f46abb040fc820e81596e9f8e81ce5863@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T173000Z
+DTEND:20261019T203000Z
+SUMMARY:Heimspiel gegen DC Hot Shotz
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Hot Shotz\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.2026 17
+ :30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsbac
+ h - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:823c92615be63d59b6c4550c78b9d085ab5aa50a11750f66d44314891eff437f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261112T190000Z
+DTEND:20261112T220000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC 180 Stein e.V. 3\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 
+ 12.11.2026 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Eng
+ elsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8e77023e39ec153927495025425f2e5ff68133ffaaafa02deff33d247bd7d2ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260921T173000Z
+DTEND:20260921T203000Z
+SUMMARY:Heimspiel gegen DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Ligthning Arrows\nHeimspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 3. Spieltag\nTermin: 21.09.
+ 2026 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kö
+ nigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0ce8dc2a1940d8fd4bed14f1c3d3493c97921ef32894bd13ec11a85cdbbaff8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Hot Shotz
+DESCRIPTION:Begegnung: DC Hot Shotz - DC 180 Stein e.V. 3\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2
+ 027 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, St
+ raubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a1b9ca8ee194f8b5131da723c5e4acabfb684155188627985ebd22e98211c197@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T173000Z
+DTEND:20270510T203000Z
+SUMMARY:Heimspiel gegen the flying Rocks 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - the flying Rocks 2\nHeimspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.
+ 2027 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kö
+ nigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b4d6e9d02d67ab199c7cda354392f8a1c9334cc29803da09d03112597b3a2c33@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC 180 Stein e.V. 3\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10
+ .2026 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b5ea15ab46982b8364bd4394f670fa85ea27507af7a7c4badb65774e0164766d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T170000Z
+DTEND:20260912T200000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC 180 Stein e.V. 3\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2
+ 026 17:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-
+ Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc13b8fc3b10134ad9577f0fd750f6ea93ab142d06b0383bdc6a953743472911@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC 180 Stein e.V. 3\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.1
+ 0.2026 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich
+ -Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c05af4fd496149ed75e191e83c27b120402793f68e637b10d91f7f457804a7c0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261207T190000Z
+DTEND:20261207T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks 2
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC 180 Stein e.V. 3\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 9. Spieltag\nTermin: 07
+ .12.2026 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr.
+  28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d867feb036a590d26e6aa2eee67ecd9cc7361450850243ba3aaf964e923281e6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T183000Z
+DTEND:20270212T213000Z
+SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC 180 Stein e.V. 3\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 
+ 12.02.2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 
+ 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e2775c012e8d1e29fe4f252ef370be3f04bff378e84c12c757eca04be9578008@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T183000Z
+DTEND:20270125T213000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - TDF Enzberg 3\nHeimspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.2027 
+ 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsb
+ ach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e491d0c96534804026b36b689c0d9c902e53441606a99b4868a5c060f5df2c3d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - DC 180 Stein e.V. 3\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 17. Spieltag\nTermin:
+  30.04.2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, We
+ berstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

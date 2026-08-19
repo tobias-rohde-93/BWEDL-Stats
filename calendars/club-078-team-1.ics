@@ -1,0 +1,284 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Williams
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:08bb673e7319ecb065beedd57e29a25e2151c74b8e2934d36c0b3109bb36b941@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T180000Z
+DTEND:20270212T210000Z
+SUMMARY:Auswärtsspiel bei DC Triple 7
+DESCRIPTION:Begegnung: DC Triple 7 - DC Williams\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 18:00
+  UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:13bffa5fa4866f615c91984e12fbb343b028adc96c0eb063afe669be54f4592e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T180000Z
+DTEND:20270224T210000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Williams - DC Broken Darts 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 18:0
+ 0 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:192fbcf4851fe180a778145b5aaecda2d89a42ca83384099ee6fac10f2c61577@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T173000Z
+DTEND:20270512T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Williams\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.05.20
+ 27 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Köni
+ gsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:30ec2e8e53e04a43c6ac5cd3ef9dd7e48ac6fcfadbc43dfb80cac05d4db3bb17@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T170000Z
+DTEND:20270428T200000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: DC Williams - Dartfreunde Eichenherz 2\nHeimspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.20
+ 27 17:00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3ff9830ed109d8d704ed00f385bcc1ac1535d80870b6b4c1b902231ad3434f76@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T180000Z
+DTEND:20270318T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Williams\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 18:
+ 00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:45dc6b8f643ae7631cfa248bfcd2092d26130a323dff8714e05e270da1f8699a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - DC Williams\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.20
+ 26 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knitt
+ lingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4cccc5725d3b48b0ea4f8c6ad33ce5c91db60e76619f9a86224b29286d880c4c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T180000Z
+DTEND:20270414T210000Z
+SUMMARY:Auswärtsspiel bei DC Dart Vaders
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Williams\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027 18
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:51a8861be1e3d834fe2d6a86e32853746a7f40056e1dce5bac8aa66a5bc12103@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T170000Z
+DTEND:20270331T200000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC Williams - DC X-Brötzingen 2\nHeimspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 17:
+ 00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:68cc038adc89af22f70153f8f171205b4dab364e11e7eba0a398d78f11e99a75@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T170000Z
+DTEND:20260826T200000Z
+SUMMARY:Heimspiel gegen DC Bull Hunters
+DESCRIPTION:Begegnung: DC Williams - DC Bull Hunters\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 17:00 U
+ TC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:71994e7cd76f6d854029b1dc15250442cbbacac426baac21bbed5d0fbdb32f25@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T183000Z
+DTEND:20261125T213000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Williams\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.1
+ 1.2026 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
+ , Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:74dca35e443543e3367e41f89d15fd230658ed80083d5028a1f9c6d7ee649594@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - DC Williams\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
+  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:754d63ae46ff124235f7d388f8c5d01d9929e84b25acecffd44a3e8ff9cc9d8f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T180000Z
+DTEND:20261209T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC Williams - DC 180 Stein e.V. 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 18:
+ 00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:93eb35467d8d17664e95ce798471bda2e818869fd380e6b23bfe3252ec8caa6d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:Heimspiel gegen Los Muertos 2
+DESCRIPTION:Begegnung: DC Williams - Los Muertos 2\nHeimspiel\nLiga: C-Klas
+ se Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2026 17:00 UTC
+ \nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:95956b7ddb4299b77e46047e7805692e3366536bd874b0e0cffa68992d7380dc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:Heimspiel gegen DC Dart Vaders
+DESCRIPTION:Begegnung: DC Williams - DC Dart Vaders\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.11.2026 18:00 UT
+ C\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c565fab8f8b87175e58dabbef432720fd05c9c24236b02037aab891118cca3d9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T180000Z
+DTEND:20270127T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Williams - DC Black Scorpions 4\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.2027 1
+ 8:00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d337ea129e07eb2abf1ad748e24d116d99ecbe3883e979088b7e54b840508083@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T170000Z
+DTEND:20260923T200000Z
+SUMMARY:Heimspiel gegen DC Triple 7
+DESCRIPTION:Begegnung: DC Williams - DC Triple 7\nHeimspiel\nLiga: C-Klasse
+  Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 17:00 UTC\n
+ Austragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e0d9807f55e745eed7eb5fef2343ad738c33273492c73687bfeed09b5f97a75e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Auswärtsspiel bei DC Bull Hunters
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Williams\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 1
+ 9:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fd1a0e1f2d65de4d82b62a9fbad06a5a6b4655781db4ea1a44e87a1fc22a96a0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - DC Williams\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 
+ 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

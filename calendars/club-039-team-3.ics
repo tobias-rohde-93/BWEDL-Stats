@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Destroyers e.V. 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0aa4aa708245f35f9555bdc0dcee4784bcfc7137440ec90b1d2fc7958f8fb462@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T173000Z
+DTEND:20261010T203000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker
+DESCRIPTION:Begegnung: DC Knickebocker - DC Destroyers e.V. 3\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.1
+ 0.2026 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Frie
+ drich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1248a53d07fc025af6737b4251aefe781598b2c8541adf98656a08808ff3fa85@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen DC Knickebocker
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Knickebocker\nHeimspiel\nL
+ iga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.20
+ 27 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:14c0e00a051c78999d2fe44065cde01f93bacfe734e5bac478d3a62aa8ee53ac@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Crazy Flights 2\nHeimspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01
+ .2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr
+ . 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:22315a56a179c4d1dc4c22b64299b446d723e30bf64caf9d8634f76ca3b90348@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen DC Cim Bom
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Cim Bom\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 18:
+ 00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Ei
+ singen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:481eb8598938716596ffad2007ed6309d8e89621c03629f265788aa5d73aa58c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen Glabbicher Bulls
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - Glabbicher Bulls\nHeimspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2
+ 027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:524093b29b7c4e7e5c1b06de729b3b9bcfef2b5fb160bef559da2e807420fdfc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T190000Z
+DTEND:20261111T220000Z
+SUMMARY:Auswärtsspiel bei Glabbicher Bulls
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Destroyers e.V. 3\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.
+ 11.2026 19:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\,
+  Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:55d23e4ca31a946d2ca0ef57ca4c527344328ff2f77a5a9dd3ba005c0ec793fe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - the Metal Darts 4\nHeimspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2
+ 026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:627e04bf0027a3eeac10f4f655ed4624a16815a732039e628816e3fe62d6196b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Destroyers e.V. 3\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 1
+ 2.09.2026 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Si
+ monswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7bea6b6d1693ffc69650b582af55937b6fcdc0f96464b4e21599fb7786e312b8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Heimspiel gegen DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Oiloch Schömberg\nHeimspi
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.1
+ 1.2026 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberst
+ r. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8562b758028a4876af6bbef1682d91a36dd7ca16ba08da12f2326000ed971538@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Bull's Eye Arnbach\nHeimsp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15
+ .05.2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weber
+ str. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:86b92c6ee4c7ad19ba27936101c0535e9faa1abd9aea2e4251dbfaf9e90a8439@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Destroyers e.V. 3\nAuswär
+ tsspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin
+ : 01.05.2027 18:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr.
+  35\, Schömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9441c947a87920bc2141f9359d01aa3b93f7200dcdae7b23b989bfc9ee5ff12f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt
+DESCRIPTION:Begegnung: DC Oststadt - DC Destroyers e.V. 3\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.20
+ 26 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30
+ \, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b663ad9a83f2afa0330ec62268d164fbfe85c8566e83eefdd678a2523e9e6884@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen The Walking Darts
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - The Walking Darts\nHeimspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2
+ 026 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3153e248232e9fc922aac671a35d2d381f70a871668d568cb5c4243d54cdfc7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Auswärtsspiel bei The Walking Darts
+DESCRIPTION:Begegnung: The Walking Darts - DC Destroyers e.V. 3\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 3
+ 1.03.2027 18:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\
+ , Bad Wildbad
+LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d57ec5611e7087bd74809bc424e1446ab9804c5232541a284393d8192fddb3c7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen DC Oststadt
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Oststadt\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 1
+ 9:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
+ Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dd294b9a4c2be5c8f5068a30d65657ecd209da5a96c6df38a6d63966735d888a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 4
+DESCRIPTION:Begegnung: the Metal Darts 4 - DC Destroyers e.V. 3\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 1
+ 4.01.2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 3
+ 7\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb7ef3572cadcf6dfec5b006e748f05d40e2daffc4340c3e1d4a2ca88bcb3162@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T173000Z
+DTEND:20261212T203000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Destroyers e.V. 3\nAuswä
+ rtsspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin
+ : 12.12.2026 17:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\,
+  Neuenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fed912d833f94faf81150b67ddee33b15a5988b6485d9fcda8b7832e6498e467@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T193000Z
+DTEND:20270213T223000Z
+SUMMARY:Auswärtsspiel bei DC Cim Bom
+DESCRIPTION:Begegnung: DC Cim Bom - DC Destroyers e.V. 3\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.20
+ 27 19:30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pfor
+ zheim
+LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

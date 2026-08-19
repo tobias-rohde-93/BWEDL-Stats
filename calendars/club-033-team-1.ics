@@ -1,0 +1,294 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Drei Daneben
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:008136c0f73d1fa7feac7740a0784ce8bcad561aba9b6c42c14908c036278e28@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T170000Z
+DTEND:20261010T200000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Irish 26 e.V. 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 
+ 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhe
+ im
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0b330189a43afdb4bc6124a7c76f9146b24f8567b8b2cbd9bff38ccbf5c75016@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T180000Z
+DTEND:20270213T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Underground Fools 4\nHeimspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.
+ 2027 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pf
+ orzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:158fc4c596fb6e9d4870fc60e82391bf4f92ac7914c72c0f46609321e59ed055@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T170000Z
+DTEND:20270515T200000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: DC Drei Daneben - DC HighFlights 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 1
+ 7:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhei
+ m
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:18c54985895bff59d2000074bc39c0ca3847afc1ab59fc5f9b8e622e97eade5b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T183000Z
+DTEND:20261209T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Drei Daneben\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.20
+ 26 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:24e0571d3e60f001c764c060e0426c2ca19a9ce4587dfe9ec7ca294b747b1c77@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T180000Z
+DTEND:20261128T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Enztaler Buben 3\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026
+  18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzh
+ eim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:28e3d772143ed07877fd6e959b47b1e6be9e43730f120a8c9d097d786f56353f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T180000Z
+DTEND:20270320T210000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Drei Daneben - ESV DC 25\nHeimspiel\nLiga: C-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 18:00 UT
+ C\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2e8badf4f1dd6b6c757fa840fb4030842572e67c904aa86d3c7797ddbb58c421@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T180000Z
+DTEND:20261031T210000Z
+SUMMARY:Heimspiel gegen DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Knickebocker 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 1
+ 8:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhei
+ m
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4986618e52b267e74ff38c82c9e89580821785a472b6db1405b7572dfa83fe0a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Drei Daneben\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.
+ 01.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, 
+ Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6b6da47f74d7aee5ac805564ac7788093fa4a9852607b5ba248ed185178daf70@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Drei Daneben\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.0
+ 5.2027 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wild
+ bad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6f460398c99298681c6db9a35e485a2d435ecd55021f7c0fb326a6a3d85a7a19@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T180000Z
+DTEND:20270222T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Drei Daneben\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02
+ .2027 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcker
+ le 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7b8173f59224d9c094227907a5f1500862acdf5aa439be3d315289f1c2e26dd6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T180000Z
+DTEND:20270116T210000Z
+SUMMARY:Heimspiel gegen Phantom Arrows 2
+DESCRIPTION:Begegnung: DC Drei Daneben - Phantom Arrows 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 1
+ 8:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhei
+ m
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:883661c6674639841656aa4abdef088890f7d02dda08e9b033327d0eff90885d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Drei Daneben\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:0
+ 0 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pf
+ orzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8ae71029d7c0eb789d21104f2f9e295590a86ec7d9033d57a806b677b13ab2e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - DC Drei Daneben\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 1
+ 9:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, S
+ traubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a480333c9388c25d96a20617def9f71941d76bf8758f6d2df6a61984992d2062@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T170000Z
+DTEND:20270417T200000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Conweiler\nHeimspiel\nLiga: C-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 17:00
+  UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b9b3e7f352fa9634633e12f1e483866ebf4364284f970629b3052b1e493c717c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260824T180000Z
+DTEND:20260824T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Drei Daneben\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.20
+ 26 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ea5c55cac37c8cd5de01057865ef77ec963bc670f37a9804d7e28099b6cf3c02@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T170000Z
+DTEND:20260912T200000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Black Scorpions 5\nHeimspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.202
+ 6 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforz
+ heim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eff8185b9d6b5c237135c72eccc3b31b45ced2e76c81eff446a82f4417dae884@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T173000Z
+DTEND:20270403T203000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Drei Daneben\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.
+ 2027 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedr
+ ich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f4da5aff7a4c5f402e22134f9bff972b8588364f88c3af31bb3d0780ae8f537a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260922T180000Z
+DTEND:20260922T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - DC Drei Daneben\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 22
+ .09.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiher
+ straße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

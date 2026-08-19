@@ -1,0 +1,285 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Los Muertos 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:08b17546d6b519cbd784439f6fa85f4b0e52e341e331d2569adc0b0bf6f076b6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T173000Z
+DTEND:20260826T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - Los Muertos 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2
+ 026 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kön
+ igsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0e6bc441948da2e5cc21fc2d4c22550c6509ca499e57d032d1fabd3da53a844c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - Los Muertos 2\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.202
+ 6 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildba
+ d
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1e716a5b026d69105ce6615122f987780b445ea5d639d856ebdf725e8727ff19@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T180000Z
+DTEND:20270114T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC 180 Stein e.V. 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 
+ 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:25c37411be2713c2a6995d6cbf8497537a042a214af1d3ab1d278f832becc075@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T170000Z
+DTEND:20260910T200000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC X-Brötzingen 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 17
+ :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:262a92200c5c7e6fd6c6d0c28fd708ff5b161fd5783e94f809f625600a752dc1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Los Muertos 2 - Dartfreunde Eichenherz 2\nHeimspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2
+ 026 17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:34d6ef831235e62c8bc81256bbdd23aaee5bfaad096d74631dcc6fb9787dc05f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:Heimspiel gegen DC Bull Hunters
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Bull Hunters\nHeimspiel\nLiga: C-
+ Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 18:00
+  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:450080f6486411cbc71ba2b1bb51f858766209c2bfbdbc658ade4154efb03ee7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T180000Z
+DTEND:20270211T210000Z
+SUMMARY:Heimspiel gegen DC Dart Vaders
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Dart Vaders\nHeimspiel\nLiga: C-K
+ lasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 18:00
+  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4c407e514044ba0cde6699eaf9c94afa18536475f07f6d42fbdf9e857ce6fe11@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T170000Z
+DTEND:20270513T200000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Broken Darts 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.2027 17
+ :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:691b5c43dfd837263aa0d447ba5dedb8782a92d74d18ab7ab1cfaac3ba4a6cb4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261112T190000Z
+DTEND:20261112T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - Los Muertos 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.
+ 2026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kni
+ ttlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7f660cbc2893fdce5030858f67ce175b792d6d017caf2801b9190112fa6df822@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T170000Z
+DTEND:20270430T200000Z
+SUMMARY:Auswärtsspiel bei DC Triple 7
+DESCRIPTION:Begegnung: DC Triple 7 - Los Muertos 2\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 17:
+ 00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8883654067f0a350905898b62e8c59a38ad5c2b3adda0e582394a31eafac6d37@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei DC Bull Hunters
+DESCRIPTION:Begegnung: DC Bull Hunters - Los Muertos 2\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027
+  18:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9b27dc252b554c520d77413ca432eb9765b91b9d0822b334f7a4e0b66b292536@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T180000Z
+DTEND:20270318T210000Z
+SUMMARY:Heimspiel gegen DC Williams
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Williams\nHeimspiel\nLiga: C-Klas
+ se Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 18:00 UT
+ C\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a2a67718f4f7ea1268c542c7a04d465b4449807984bb9c6720a08a5be484336a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T180000Z
+DTEND:20261126T210000Z
+SUMMARY:Heimspiel gegen DC Triple 7
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Triple 7\nHeimspiel\nLiga: C-Klas
+ se Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 18:00 UTC
+ \nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:aa1112f0fb9673ff1ea99433cb3c0578b9a9266a220dae3148a1ecb8d889b71f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T183000Z
+DTEND:20270224T213000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - Los Muertos 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 2
+ 4.02.2027 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 
+ 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cd56f9879a174203b3c951ec69a9852a064312ee095b140449286c0793400002@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T170000Z
+DTEND:20270415T200000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Black Scorpions 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027
+  17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d21e7af7910529735078ddb35cec5784e859d7239df471154db93c41678118d3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - Los Muertos 2\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2
+ 027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-St
+ r. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f0052e4ad7bcb549de3509803272223f4d31973019ec81365277de56947885d4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T170000Z
+DTEND:20261021T200000Z
+SUMMARY:Auswärtsspiel bei DC Williams
+DESCRIPTION:Begegnung: DC Williams - Los Muertos 2\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2026 17:0
+ 0 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fff3259bf03a19df8f6bf2264210dbc609ee943454873322c8493c18560d2aee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Auswärtsspiel bei DC Dart Vaders
+DESCRIPTION:Begegnung: DC Dart Vaders - Los Muertos 2\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 1
+ 8:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,294 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Ungültig
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:07671743d308182692d5e104bfc38dee91eeeadc267be359e993a37f5b6bf421@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Ungültig\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.20
+ 27 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand
+ -Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0b380fb8f22dab207b3c11bb47c30656ba6309127f3c5c08ce94b22f9f0d6b49@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Ungültig - DC Irish 26 e.V.\nHeimspiel\nLiga: A-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:0
+ 0 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömber
+ g/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0ed40406ed0061130885ab64752b851f36c17f600c67e4a16383fe204a23c869@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC Triple X
+DESCRIPTION:Begegnung: DC Triple X - DC Ungültig\nAuswärtsspiel\nLiga: A-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:0
+ 0 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:107482cd369b8a1e470512a94e9d0a943c95e9b153962741534ca9c43aa5e97a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Heimspiel gegen DC HighFlights
+DESCRIPTION:Begegnung: DC Ungültig - DC HighFlights\nHeimspiel\nLiga: A-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:00 U
+ TC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/S
+ chwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1f95c9675ea1f5dedc5be5be8ca517e617d83bc84ed6c274fc25c561211fd25c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T183000Z
+DTEND:20270225T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights
+DESCRIPTION:Begegnung: DC HighFlights - DC Ungültig\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2027 1
+ 8:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:64a36cff3615e88d7aa5aeb972d46db172783d60484313e7a2a1fb3f4a7cfe81@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Auswärtsspiel bei DC DARTanions
+DESCRIPTION:Begegnung: DC DARTanions - DC Ungültig\nAuswärtsspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:
+ 00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6c97f62a7a3bd49e610becc8ef6eba4a48b5846a5ba8965ba4aba7160d7b2eb4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Ungültig - TSV Grunbach Darts\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 19:
+ 00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömbe
+ rg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6ee1e6d25c8524cf3f4499acb6406613db62ee3d481c5922712041193e5b305f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC DARTanions
+DESCRIPTION:Begegnung: DC Ungültig - DC DARTanions\nHeimspiel\nLiga: A-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00 U
+ TC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/S
+ chwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7a469a91e46aa0d4898247e5f8a3f83e998cdb930f15fba28699f42cdb8435bd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Ungültig\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 
+ 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8d37b7fe1dd9fb8c30f958896468c1b922cccbb8a11e4b7386d1d7a6cb0e9d1a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team 2
+DESCRIPTION:Begegnung: DC Ungültig - DC Texas Team 2\nHeimspiel\nLiga: A-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 19:00
+  UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg
+ /Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0d6bd1a4d80d5ceef2d95992b5d6d74ff078424d6dc10c26a192cca7fff31b4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen Alla Häeeehr
+DESCRIPTION:Begegnung: DC Ungültig - Alla Häeeehr\nHeimspiel\nLiga: A-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 UT
+ C\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Sc
+ hwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c2b1c0032def64657e3ee0aea819452b426106671cc93b742021ba20eec87b3a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Ungültig - DC Black Scorpions 2\nHeimspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 
+ 19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schö
+ mberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ca554dfa7f3bb349debfe314db84a20b894d800b68668e60b1d8127c35c17772@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen DC Triple X
+DESCRIPTION:Begegnung: DC Ungültig - DC Triple X\nHeimspiel\nLiga: A-Klass
+ e Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00 UTC\
+ nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schw
+ arzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d8b9660dba263f6c186b4eb64ac929acca0308050a9e5bcdfee32403029a815e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Underground Fool's 2 - DC Ungültig\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.0
+ 9.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherst
+ raße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d9c413d69e5e48f315019db78ba88abbdccfad85a4edf5caa96f9e827bf255a8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T183000Z
+DTEND:20270415T213000Z
+SUMMARY:Auswärtsspiel bei Alla Häeeehr
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Ungültig\nAuswärtsspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 18
+ :30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforz
+ heim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ee51c42e2868cf30e23836a8aade2112858dc7d39d99af339ac66b345d7d47a3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260827T180000Z
+DTEND:20260827T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Black Scorpions 2 - DC Ungültig\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 27.08.2
+ 026 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knit
+ tlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ee5aec92a043ef516db0c850ab927e541d3686b78f060c3d33319a26856a2096@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T173000Z
+DTEND:20261020T203000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 2
+DESCRIPTION:Begegnung: DC Texas Team 2 - DC Ungültig\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.2026 1
+ 7:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzh
+ eim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f0bd43aa3f55c82cb85f39fc1278f4b09f533e909dbd802e1434079aa3bcc07d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T190000Z
+DTEND:20270128T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Ungültig - DC Underground Fool's 2\nHeimspiel\nL
+ iga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01.20
+ 27 19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sc
+ hömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

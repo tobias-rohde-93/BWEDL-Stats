@@ -1,0 +1,286 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Höfle
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:046929f6b59d14f28f9d121473a2a7104d5c995ac10ed785c9472e8930be00e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Höfle - DC Enztaler Buben 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:00
+  UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:237a02f65d05b219204ede2a069567237e242f32a34238715c3de87f56afc8ce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - DC Höfle\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 18:00 
+ UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, 
+ Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:313285704dc42cfce95ad8b5b8e7dcffbb16b1690bfb07e3904a525a353bc838@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T183000Z
+DTEND:20270316T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - DC Höfle\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.2027 
+ 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:452f450127ddaf15e55b1c45d3a092341beee6720b8b3959c6710f0a544044ff@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - DC Höfle\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 18:00
+  UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse unvol
+ lständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4b459bdecc7d0335e5b1cec47c7214cd4a5c94a357c35c3066409ee0d17cfd8a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Höfle - DC Bull's Eye Arnbach 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 1
+ 9:00 UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:53c2b604884656650c480eeed06f09e5b15c75255f8144a175a048bf6fed984c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: DC Höfle - DC Oststadt 2\nHeimspiel\nLiga: C-Klasse
+  Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.2027 18:00 UTC\
+ nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5d6db3beb1ba3901f9bfa692027cd18aa581c2a2c35cffec32141c5b3f733102@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T183000Z
+DTEND:20270511T213000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Höfle\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.
+ 2027 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenb
+ ürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:69242476e0909eaf343837121621361073cb9b1a48a3478cfe67f081193463a4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: DC Höfle - TSV Grunbach Darts 4\nHeimspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 19:
+ 00 UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:715ddf6c5acfa0cd994b96e4a4163319ac9dd516ba5bf987266524679a04b4cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T173000Z
+DTEND:20260911T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Höfle\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026
+  17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7b43947229c63bb532f42a9a8aeb60d4d8c7973237d9572b5ed289529b11e2de@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270208T183000Z
+DTEND:20270208T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - DC Höfle\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 08.02.2027
+  18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mü
+ hlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81e0c08e8089b9262ec528c9259d84ec4d8c276c4f12ce31467ec6d0934be40d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Höfle\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027
+  19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:85b6d87abe3fef7e1ca5b5bdb90c378feb6587fd8cfa3331dbc40cd643737efe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Höfle\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:00 
+ UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzh
+ eim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9ed36aae4172560561e836dbe95da5ddb20bf42b56572f7acd7716beecc7bfb0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: DC Höfle - United Ikaros\nHeimspiel\nLiga: C-Klasse
+  Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 19:00 UTC\n
+ Austragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a7a9561862237825b58cf21252b52d5a302f73dfccde5121709299d277b4efae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Höfle - Los Muertos\nHeimspiel\nLiga: C-Klasse G
+ ruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 18:00 UTC\nA
+ ustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ae2bccb22e5b680bc201f33e6aee221ed97bf9f69fe8d3f5e8c729e00e01415b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Höfle - DC Irish 26 e.V. 3\nHeimspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 18:00 
+ UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b78b0674b5a7aac4b03b60e68e394f9551c517a3956a06b2c65eb808cf962502@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T180000Z
+DTEND:20261027T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Höfle\nAuswärtsspiel\nLiga: C-Kla
+ sse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026 18:00 UT
+ C\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c421f9e61fb396157444c7a9e6ac92ab027f821efadf5b331448ff5749d3eb2d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: DC Höfle - DSV Großglabbich 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 18:00
+  UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cabde5fe48bfcc9196302634dae772b62beb3514bbd16edc886c229ed14ebf89@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: DC Höfle - the Enz Coast\nHeimspiel\nLiga: C-Klasse
+  Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.2027 19:00 UTC\
+ nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

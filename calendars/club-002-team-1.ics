@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Oststadt
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:06fe412377e943d8d2debac0c8acdebc182d92c3a84d61e80975a3f6f0a71c7a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Auswärtsspiel bei DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Oststadt\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.20
+ 26 18:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Sch
+ ömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:34ee82ed094e7767a0fd373fd061fc70b2370944ff5e320a126a35b863ad3f3c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Oststadt - DC Bull's Eye Arnbach\nHeimspiel\nLiga
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 
+ 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
+ Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:414d56adabc8010dc6924168931ad47ffee9246c9b79f5a687992087fb448973@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 4
+DESCRIPTION:Begegnung: DC Oststadt - the Metal Darts 4\nHeimspiel\nLiga: B-
+ Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:0
+ 0 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pfor
+ zheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:44d6a51554d8c80f03d560d8ce0a68dffc74cd05523317e413d19f81e18b587d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T193000Z
+DTEND:20270116T223000Z
+SUMMARY:Auswärtsspiel bei DC Cim Bom
+DESCRIPTION:Begegnung: DC Cim Bom - DC Oststadt\nAuswärtsspiel\nLiga: B-Kl
+ asse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:30 
+ UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4c790c3744a593c522869c4530e234c06f434f14c0bc5ef63d276f24d5bef354@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Oststadt\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.202
+ 7 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswies
+ en 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5afc15536702d6e1ee6a7afdc9df103eea8ffa99a4a442a4729a2bb71e393771@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Oststadt - DC Destroyers e.V. 3\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18
+ :00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pf
+ orzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:638f2e7716b63b9bdbd20fd7523a8a8403d61b6ad85677bbc5f0fa8a8bf074d1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Oststadt\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2
+ 027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:90c32a69574160ea72d852a47d8ce3e1dcc8ca483db5445dbf081628d41730c7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Heimspiel gegen DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Oststadt - DC Oiloch Schömberg\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 1
+ 9:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, P
+ forzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:919d1d77e30c386f19323449b4319667d55ce16b95efacaf58756c7ca37b212d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Oststadt - DC Crazy Flights 2\nHeimspiel\nLiga: B
+ -Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:0
+ 0 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pfor
+ zheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:989590b5d5f162f8849de9e517a298a48f4fef3567462ab4a1d32621b5e10869@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen DC Knickebocker
+DESCRIPTION:Begegnung: DC Oststadt - DC Knickebocker\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18:00 U
+ TC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzhe
+ im
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9996dccb8093620961bb1503a751f01594ca2514296b57a1014e4a6d63adf231@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen The Walking Darts
+DESCRIPTION:Begegnung: DC Oststadt - The Walking Darts\nHeimspiel\nLiga: B-
+ Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00
+  UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforz
+ heim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ab352693f6e45cdf0c389f7396cf6aa38abc1c1698e04c42210d023da9447ea7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 4
+DESCRIPTION:Begegnung: the Metal Darts 4 - DC Oststadt\nAuswärtsspiel\nLig
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 
+ 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b7b2791d0619d66b94f0a75fa407f22ac8d03dd94c631899058bde2dca3584a7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T183000Z
+DTEND:20270213T213000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker
+DESCRIPTION:Begegnung: DC Knickebocker - DC Oststadt\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 1
+ 8:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-St
+ r.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ccfcf38ba9839bf734e6bbef057443b221f5aec5e1e98b90777a2acaba2b8ecc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T163000Z
+DTEND:20261010T193000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Oststadt\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2
+ 026 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbü
+ rg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d6feb8549dc8f831d9fd0c797a36c92aa7eac9cf7540157fcf7a6697c3685b3c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T190000Z
+DTEND:20261209T220000Z
+SUMMARY:Auswärtsspiel bei Glabbicher Bulls
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Oststadt\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 1
+ 9:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernshe
+ im
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d89d7f92d7324f42e73cd45b56004b62c3494e80f4d1be23ad4fd0e33d51c170@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T180000Z
+DTEND:20270414T210000Z
+SUMMARY:Auswärtsspiel bei The Walking Darts
+DESCRIPTION:Begegnung: The Walking Darts - DC Oststadt\nAuswärtsspiel\nLig
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027
+  18:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\, Bad Wil
+ dbad
+LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e8c2ac9bcc0da490397af1efd6fbebc36b37a7559b97c23b0a08a8342954bf20@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T180000Z
+DTEND:20260904T210000Z
+SUMMARY:Heimspiel gegen DC Cim Bom
+DESCRIPTION:Begegnung: DC Oststadt - DC Cim Bom\nHeimspiel\nLiga: B-Klasse 
+ Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 04.09.2026 18:00 UTC\nA
+ ustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f66ac4461bca0b4b6119800080b502553d5986e3a2a4dc6c3b3815424c00e06e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Heimspiel gegen Glabbicher Bulls
+DESCRIPTION:Begegnung: DC Oststadt - Glabbicher Bulls\nHeimspiel\nLiga: B-K
+ lasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 18:00
+  UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforz
+ heim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

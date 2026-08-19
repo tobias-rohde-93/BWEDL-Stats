@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC SchömbergerEck
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:038b1c9e3153b735ffc7ec084c0587403ae7c8bc909811b39f69f1e6535682bc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Enztaler Buben - DC SchömbergerEck\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.1
+ 0.2026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wild
+ bad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0e9c47e7249884f9e135d7766012206fc64180c048e91e23a208cfecb3827ea1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T150000Z
+DTEND:20261128T180000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC SchömbergerEck\nAuswär
+ tsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin:
+  28.11.2026 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr
+ . 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:156a2bfcdc7b2b4f78912b6919dfb727d6d520d73603ec7dc6eb3f7c8552fa02@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T183000Z
+DTEND:20270316T213000Z
+SUMMARY:Auswärtsspiel bei DC Strikers 2
+DESCRIPTION:Begegnung: DC Strikers 2 - DC SchömbergerEck\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.2
+ 027 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstra
+ ße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:279f4b328e06d2cb62ef1776ebf9378a5dbfe8701e80bb956296dbf3797a7055@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Destroyers e.V. 2\nHeimspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.
+ 2026 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, 
+ Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:27f35ff36c4f20fec3a99d8b7ef790a26b22856c1e016e1e14399eeb51d9ce9d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270208T190000Z
+DTEND:20270208T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - DC SchömbergerEck\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 
+ 08.02.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Web
+ erstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3c527b0354bdec2a8c8efa10ce12bd27db0f8c219f45ddc0d5044b0dd46148a1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen DC Crows
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Crows\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.2027 19:00 
+ UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:50390bbd718647435aded6a01a12c0f0e1eb17aa298f8cf096e855cfeb3eb922@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Underground Fool´s 3\nHeims
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 3
+ 0.01.2027 19:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 
+ 31\, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6088bd2de26c0b00cea8cacca3f0c082ac1868ff3db9705d647e348a9333073a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T180000Z
+DTEND:20260908T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC SchömbergerEck\nAusw
+ ärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTerm
+ in: 08.09.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, 
+ Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6c453f60a418d0a7f66de8f370060b0f26965e342b27fd93ce7079f0f95c5b8c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Enztaler Buben\nHeimspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.20
+ 27 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Sc
+ hömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:73681dbb7f4d3faa690d49f4b8b3c04dd17fb31271cd6358f842b5e3644ad813@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Crazy Flights\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026
+  19:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Sch
+ ömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7460ee8e29ac604b5fd0dec235684fe1464557c938499cb99c4f5fe84bc6e54d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen TDF Enzberg
+DESCRIPTION:Begegnung: DC SchömbergerEck - TDF Enzberg\nHeimspiel\nLiga: B
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:0
+ 0 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömber
+ g
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:77cfc0e725c0da9176f7d4b06a8ae5894e8a3a3041a8d54794876dd158fa2077@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Auswärtsspiel bei Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC SchömbergerEck\nAusw
+ ärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTer
+ min: 16.01.2027 19:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedri
+ ch-Str. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7e7c58bffe73f4c664267008b2db5b2c50f8bc02c57de246d1de0ef9b77219ae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Auswärtsspiel bei DC Crows
+DESCRIPTION:Begegnung: DC Crows - DC SchömbergerEck\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18
+ :00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c7620a1e3b700af8ceb530c2c7fc0cd1eb65ab4d5199a91bd25c9af43cb77c6f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T180000Z
+DTEND:20270513T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg
+DESCRIPTION:Begegnung: TDF Enzberg - DC SchömbergerEck\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.202
+ 7 18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-En
+ zberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3f93db441655e055a2db08f6a06499aaeff30047985fef78e03d3a31792f4f7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC SchömbergerEck - Dartfreunde Eichenherz\nHeimspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.
+ 05.2027 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31
+ \, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eca05f079e701d4a97167398fae89cd845ad8f7d75770e893a52519eb1cfdf90@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T180000Z
+DTEND:20270416T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC SchömbergerEck\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.0
+ 4.2027 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simon
+ swiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f1b9c00f9ed5d6435254ca65d9df5194191ba288e1b06fe578e7b659dab692ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Heimspiel gegen Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: DC SchömbergerEck - Heavy Weights Brötzingen\nHeim
+ spiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 2
+ 9.08.2026 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 
+ 31\, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f6297d3c334fb33e7fe05a1377aea22650978a9600f1c98f30c2c67e4d47dee8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Heimspiel gegen DC Strikers 2
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Strikers 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 18
+ :00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömb
+ erg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

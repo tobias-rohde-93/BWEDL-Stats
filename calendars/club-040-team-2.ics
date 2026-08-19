@@ -1,0 +1,255 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – the Metal Darts 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:07a87063c335519a8761e6f916976170e71cebd94c94053b4bb0aa1f9d719472@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260824T180000Z
+DTEND:20260824T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts 2 - the Metal Darts\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.2026 18:00 U
+ TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1378f848a5d4bc3d033162ce0cfee1ce5d45ff9e1567e610527c461ee216fdf2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261026T190000Z
+DTEND:20261026T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Strikers\nHeimspiel\nLiga: Be
+ zirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 26.10.2026 19:00 UTC\n
+ Austragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2fa6ffbcfd5be8e9d64bd5a8f79283545c44291b87b74c4464ddc8382cb2f605@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei Friends Arrows
+DESCRIPTION:Begegnung: Friends Arrows - the Metal Darts 2\nAuswärtsspiel\n
+ Liga: Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:
+ 00 UTC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4f04a37fdc50a5ffabb0eea3a34af904e4d70d72ce9789850ca2a1d627dc47a4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T190000Z
+DTEND:20270125T220000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Green Scorpion's\nHeimspiel\n
+ Liga: Bezirksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.2027 19
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6440494c5f3c8be9203dd00c443f992430d437ba9b4fa1903fc26b25f9a76109@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T180000Z
+DTEND:20270412T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Black Scorpions\nHeimspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.04.2027 18:
+ 00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:77e6eae6594f3e372cfef085d0f402f85efaa0d0da7e3a810e0a225f8c4e3922@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T183000Z
+DTEND:20260911T213000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - the Metal Darts 2\nAuswärtssp
+ iel\nLiga: Bezirksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.202
+ 6 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60
+ \, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:79ce74c91e2008ea2eddc26afdb93dd361dc334c2a422a8060c14a79356b0769@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts 2\nAuswärtsspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00 
+ UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7bbc1ccdb5046aaf0a3bbecd759cfbb649228e5587ae0302c982ea15b2d03b01@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T190000Z
+DTEND:20270224T220000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts 2\nAuswärtsspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 19:00
+  UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:82fe5526b65c55cd8aba44e6c744ca1c21acbc66d17db6e2d8ff2b4c3b1e2bbe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270315T190000Z
+DTEND:20270315T220000Z
+SUMMARY:Heimspiel gegen Friends Arrows
+DESCRIPTION:Begegnung: the Metal Darts 2 - Friends Arrows\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 14. Spieltag\nTermin: 15.03.2027 19:00 U
+ TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9fa2cba2b5cdbb9365de23aa169414120df6e7c8f2e256bcb994ce4446ec570f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T181500Z
+DTEND:20270430T211500Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - the Metal Darts 2\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:
+ 15 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhei
+ m
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a3f0513b44237b1195bf70c6803fce4ee0b057be3003e42b13af10ef9a1cdc58@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - the Metal Darts 2\nAuswärtsspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:00
+  UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b50e8143472c58291a8c9c567fa039e25094d8d3efaea8874c1a99df00be5c30@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T190000Z
+DTEND:20261123T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Texas Team\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 19:00 UTC
+ \nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b78a8582d5c42e0e8f578c349cdfa1d4090b39a7d7c970f1c337b9187745e250@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270111T190000Z
+DTEND:20270111T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - the Metal Darts 2\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 10. Spieltag\nTermin: 11.01.2027 1
+ 9:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:be233f191041444de4377eeee0a5a1e92dda6931cc2846fb325f8c5948b13fcc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T183000Z
+DTEND:20261111T213000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions
+DESCRIPTION:Begegnung: DC Black Scorpions - the Metal Darts 2\nAuswärtsspi
+ el\nLiga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.11.2026
+  18:30 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittli
+ ngen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e9623e9295aa264ded9be89d56464ed4e4a873617c5f4c59a622732aa4489a14@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261005T180000Z
+DTEND:20261005T210000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Lachs 14\nHeimspiel\nLiga: Be
+ zirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 05.10.2026 18:00 UTC\n
+ Austragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eac7435ed2626e58f2ac6ffcbfabe8b76a4c3749be6e8d7f39ba74d86b16b73b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T180000Z
+DTEND:20270510T210000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Reloaded\nHeimspiel\nLiga: Be
+ zirksliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 18:00 UTC\
+ nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

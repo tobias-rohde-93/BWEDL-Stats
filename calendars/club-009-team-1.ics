@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Mephisto's
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:076be4147339f15678718e1b27e66ba0c8c7693d53393c1ad2e9a8959909d2ba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T170000Z
+DTEND:20270514T200000Z
+SUMMARY:Heimspiel gegen DC Ungültig 2
+DESCRIPTION:Begegnung: DC Mephisto's - DC Ungültig 2\nHeimspiel\nLiga: A-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 17:00
+  UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Kn
+ ittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0fb8c971bf959b71010cd8e782c8b15984652549d245e7e4aacae7566ea94c01@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261112T183000Z
+DTEND:20261112T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Mephisto's\nAuswärtsspiel\n
+ Liga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.20
+ 26 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
+ 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:39414acad8818c726854a22ae0f58ccba092695d42002010530130f9b589ba1c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 3
+DESCRIPTION:Begegnung: DC Mephisto's - the Metal Darts 3\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 18:
+ 00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, 
+ Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3e8e902bdcf708a74463348849a3d8c7496348fa7977c444d3b099b6c584f302@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Mephisto's\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 
+ 18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4d80b328a849382cb4e2c9eabfa9199c56fd349d4092f5130e794d66b78b06cc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T170000Z
+DTEND:20260828T200000Z
+SUMMARY:Heimspiel gegen Odins Knechte
+DESCRIPTION:Begegnung: DC Mephisto's - Odins Knechte\nHeimspiel\nLiga: A-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 17:00 U
+ TC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knit
+ tlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4ea23b6f62af45933d94812538979b41cd2cc9a6b7a1c034776bf97e7be586b2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T180000Z
+DTEND:20270129T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team 3
+DESCRIPTION:Begegnung: DC Mephisto's - DC Texas Team 3\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 18:0
+ 0 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, K
+ nittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:52236b8df860dc21f780111b717f8c3902bb329c7b1a72dd9577c6244cc94d56@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts
+DESCRIPTION:Begegnung: DC Broken Darts - DC Mephisto's\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 
+ 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:56084fe90f2a463aaaef0567a20562b65d556db95535f047abee190fa14f4352@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T180000Z
+DTEND:20270226T210000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC Mephisto's - DC Duselbrüder\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 18:0
+ 0 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, K
+ nittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5a459411a9d810d9e82883abe15d1292d0ab11ab86136a908121eb145d110336@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T170000Z
+DTEND:20270416T200000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Mephisto's - DC Irish 26 e.V. 2\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 1
+ 7:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\
+ , Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:74104856ab2b1e8becbdea229a0d15455f29e874d72794775f7dd2b32089ab15@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270210T183000Z
+DTEND:20270210T213000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Mephisto's\nAuswärts
+ spiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 
+ 10.02.2027 18:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
+ erstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:84b1db6f648f9a173b8409658d507fb8597277eede9cccbc730ff507b16e4a4a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T183000Z
+DTEND:20270112T213000Z
+SUMMARY:Auswärtsspiel bei Odins Knechte
+DESCRIPTION:Begegnung: Odins Knechte - DC Mephisto's\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 12.01.2027 1
+ 8:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfer
+ dingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:96a164d448f31ff537dd06a041896145fce4960882c3fc991bd672bb4951169b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T170000Z
+DTEND:20260925T200000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Mephisto's - DC Underground Fool's e.V\nHeimspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.
+ 2026 17:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstras
+ se 92\, Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b5d0e1450995675a5d3dcd937c7853f268c746d88607d035b0bc2b037cfd3b05@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Mephisto's\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 
+ 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c4dcaa9c77582cdbc46fcbb0bf293fe9740a94ce583522d35ed5ea1f27141122@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T180000Z
+DTEND:20270319T210000Z
+SUMMARY:Heimspiel gegen DC Broken Darts
+DESCRIPTION:Begegnung: DC Mephisto's - DC Broken Darts\nHeimspiel\nLiga: A-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 18:0
+ 0 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, K
+ nittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cd40ee2cfbf54ec961b8f3caf259b66ebb3cbf9c66f660df8f60bd0095d96412@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T180000Z
+DTEND:20261127T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Mephisto's - DC Black Scorpions 3\nHeimspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 
+ 18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92
+ \, Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d9f8cdb8bea7c774bb7e8a379341aa7edfccd8da1a2edad53c0c28d9a0caf0f8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Mephisto's\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04
+ .2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:da977cbb0ba64a825cf29723535f2ff59e82f6e83eb988771f57cafd973659aa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - DC Mephisto's\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2026 1
+ 8:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
+ berg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f7bfffd387dcad1ab6559f173adca350e0a2d0c260c7e5372438d2056e46b814@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270401T173000Z
+DTEND:20270401T203000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Mephisto's\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04.20
+ 27 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

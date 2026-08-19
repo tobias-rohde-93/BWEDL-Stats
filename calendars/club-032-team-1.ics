@@ -1,0 +1,253 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Friends Arrows
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:12fb03f89a2dfdf07164677e741bae70483e6adb19e947bb6c5f3543fda1dd89@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T183000Z
+DTEND:20261009T213000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - Friends Arrows\nAuswärtsspiel
+ \nLiga: Bezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 1
+ 8:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
+ Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:201d959c7e3b089861311585f2c121acc1d440ac5eaa83aa25b0f9a188a90e48@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270315T190000Z
+DTEND:20270315T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 2 - Friends Arrows\nAuswärtsspiel\n
+ Liga: Bezirksliga 2026-2027\nSpieltag: 14. Spieltag\nTermin: 15.03.2027 19
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:234ebfaac33ec8b6fb5d88fb36c3692d861dcd95bace368920e67ffd7f581134@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T183000Z
+DTEND:20261209T213000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions
+DESCRIPTION:Begegnung: DC Black Scorpions - Friends Arrows\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 18
+ :30 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlinge
+ n
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2bba545f5079142eb66442d0a5f4a4814502ec94dcf48ac987308b597b3202de@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - Friends Arrows\nAuswärtsspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 19:00 UTC
+ \nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4044608581ea6c117a39fa84fe1681301ddd503bfbe9f547245666192c5d4f9c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: Friends Arrows - DC Lachs 14\nHeimspiel\nLiga: Bezir
+ ksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:00 UTC\nAu
+ stragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:646f24f3cfdc078d3ead8a6ce375e93a44dad401141a0ea134d8781d9d9bb0ee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions
+DESCRIPTION:Begegnung: Friends Arrows - DC Black Scorpions\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 18:00 
+ UTC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6b0fe20b1178ae8862527cec5f553d69a78f21abb68603f44c46121307aadc37@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270208T190000Z
+DTEND:20270208T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - Friends Arrows\nAuswärtsspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 12. Spieltag\nTermin: 08.02.2027 19:0
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:791041e8dbd163f0355e523939f2f5f466434647476cbb52333d0d84b941f69d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - Friends Arrows\nAuswärtsspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00 UT
+ C\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisi
+ ngen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:96b0dbb6eec619f13a75e3a94a8d5892aece037c30992e149b25c1e0704ddbd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 2
+DESCRIPTION:Begegnung: Friends Arrows - the Metal Darts 2\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:00 UT
+ C\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a228c2e215ac4a5a62e9de6396dcb5f408510bfa9cb7f73780b7e2abdecaa16a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: Friends Arrows - the Metal Darts\nHeimspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18:00 UTC\
+ nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a3869bcdb3a0efd966792f0bbd1f6e3c8477387be1f032e3115998e3f9dcf2c6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - Friends Arrows\nAuswärtsspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 UTC
+ \nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c05b490e38bc900e38bf4b22f7a8740486d185b71074a45bb9eb7813a7a03538@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: Friends Arrows - DC Green Scorpion's\nHeimspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 19:00
+  UTC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c5d8228769f58661761cb16021921ad48964f4360dfbb6e611ee99777d701492@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: Friends Arrows - DC Strikers\nHeimspiel\nLiga: Bezir
+ ksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:00 UTC\nAus
+ tragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d9240d11fcc6c48d579ede7719a3ae903b33636075ddc0fce1dafd55baf62467@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: Friends Arrows - DC Texas Team\nHeimspiel\nLiga: Bez
+ irksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 18:00 UTC\nA
+ ustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:df165f10faa46094cb1d3fc9b0ea47a67879f2d078bb816a6a7258ecd1d08e9e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: Friends Arrows - DC Reloaded\nHeimspiel\nLiga: Bezir
+ ksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UTC\nAu
+ stragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eb0f2b3a4b16bc13e5380b2c7ee6bf816dc435c899edd4134087fa39dc251979@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T191500Z
+DTEND:20270115T221500Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - Friends Arrows\nAuswärtsspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:15 
+ UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

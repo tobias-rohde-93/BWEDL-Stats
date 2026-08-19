@@ -1,0 +1,547 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Green Scorpion´s
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:030c86ce339d56a7840b13c6b33f20da26cfdec8aef14b4b8845a5a14889c83d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Crazy Flights\nHeimspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 18
+ :00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:063e86ef66e0451d57724253aac00061f9e8d6014e207c9daff8c633021ec4a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270422T180000Z
+DTEND:20270422T210000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion´s\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 22.04.2027 1
+ 8:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0742dfb0445e32026b9a25b8ca20b35dac7187a2ae70599a8496a03709e938ba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T180000Z
+DTEND:20261016T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Green Scorpion´s\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18
+ :00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\
+ , Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:077e6f797c165ec9066a50bd40718e24d74701c9f237c4eaae6a4dde20f498d6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T190000Z
+DTEND:20270219T220000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Reloaded\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 19:00 
+ UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisin
+ gen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:12862dd0dca82b6464489886f88ca7dfd40f688fcab548d0adabc9e90f9a8250@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T193000Z
+DTEND:20261030T223000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Black Scorpions\nHeimspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 19
+ :30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2999f415e969a6721a043a147d937c052dc917b26cdba1b6deb203fd0c38c180@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260821T180000Z
+DTEND:20260821T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Green Scorpion´s - the flying Rocks\nHeimspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.08.2026 18
+ :00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3182aaf78f0389318e4c9b1f77d520a1a95cf27ba4c058f0aed9793ea47601ae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270324T190000Z
+DTEND:20270324T220000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion´s\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 24.03.2027
+  19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:320d120cb70b32120cca6a05a95ccefbefb80ac89728e4c8eb67b1c5cdcad246@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T190000Z
+DTEND:20270205T220000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Green Scorpion´s\nAusw
+ ärtsspiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 
+ 05.02.2027 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
+  42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:339e1557c1959d3b85dd1136d6e9e7e4efda09c250a8b5538a195dfd3b497771@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270122T190000Z
+DTEND:20270122T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Green Scorpion´s\nAuswärtssp
+ iel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.2
+ 027 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\,
+  Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3976d69172d88b659d889890f6c46d599dbb88f0df03b4f21326f754e86ed9fb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261118T190000Z
+DTEND:20261118T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools
+DESCRIPTION:Begegnung: DC Underground Fools - DC Green Scorpion´s\nAuswär
+ tsspiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 18.1
+ 1.2026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherst
+ raße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:449b0309b772e0854f941b9c9692b47e04aec17e4d0338ba5071724838b715d4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261204T190000Z
+DTEND:20261204T220000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Lachs 14\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 04.12.2026 19:00 U
+ TC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eising
+ en
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4756deafe4b0c6a8d9cfed2d4eac80ff102842f96d124747acff2abe77b4c11b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Green Scorpion's\nAuswärtss
+ piel\nLiga: Bezirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2
+ 027 17:30 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knit
+ tlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4da2df26547df4dd054fcc26ca4ea805c565895dea1d3dd015194eae150cf92c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T180000Z
+DTEND:20260904T210000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Green Scorpion´s - Dartfreunde Eichenherz\nHeims
+ piel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2
+ 026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:55747ca1fff4889a06aab5386758a2ec96f43d88bbe44d8541edbefc3e597478@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei Friends Arrows
+DESCRIPTION:Begegnung: Friends Arrows - DC Green Scorpion's\nAuswärtsspiel
+ \nLiga: Bezirksliga 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 
+ 19:00 UTC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5b84569f7df9619687e2e0171c9dc2581d5327b8dd7889d5d3d22f77cc7ed143@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261207T190000Z
+DTEND:20261207T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Green Scorpion's\nAuswärtsspie
+ l\nLiga: Bezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 07.12.2026 
+ 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5ec81fcdcc20befa05ddfbcf374399ebf3ba7a89aa96befeb7ffc3997d84da93@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion's\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 18:0
+ 0 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:758dc6197cbfb27b4f88651aea96a0fe3067d2dfb409ed1a6f05b7fc6ac46008@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260916T180000Z
+DTEND:20260916T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Green Scorpion´s\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 16.09.2026 18
+ :00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:76f9dbc7baef673b760f9cb9fd0ad909b8458dd522abf087c3457c2664aae0cc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261217T190000Z
+DTEND:20261217T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Green Scorpion´s\nAuswärtsspi
+ el\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 17.12.202
+ 6 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:82f25dc34ca4be47590e42b97d7350fee013b7c42876588213862f95ee10bd57@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T193000Z
+DTEND:20261127T223000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Reloaded\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:30 UTC
+ \nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8b1931fad462953be39fc86c0e777bd0a3b788da3249d5553eed679e83b1d1d0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T183000Z
+DTEND:20270416T213000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Texas Team\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 18:30 
+ UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisin
+ gen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:957e8957ab0da40e4998e268525c6dd8802ba8c7fab9b85772cd57e654bead3b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270409T180000Z
+DTEND:20270409T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Underground Fools\nHeimspi
+ el\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 09.04.20
+ 27 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9d003ad5278fe7372fa15ff635a2c0c5b9ffb6be76fd2aec2bb43b8f1fababdf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T183000Z
+DTEND:20270514T213000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Green Scorpion's - the Metal Darts\nHeimspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 18:3
+ 0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eis
+ ingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9decdb51de8459be3553e71bd03f0d70a174e06193c7961c83eb773412e4ef6b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Green Scorpion's\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:0
+ 0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, 
+ Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a6f9e8469a496aa8c2f5bec765d91d703a229cc2786a0217b13fc73bb64ecde9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270312T190000Z
+DTEND:20270312T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Strikers\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 12.03.2027 19:00 
+ UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisin
+ gen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b69c0037d5e87a58c80787473f3bda42ce676f2b8799da2da1883b19f54f660d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Green Scorpion's\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:
+ 00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c131e1fc7820afaf1ecee62f88d5aecf9c26cd294ecf140a71a513b5a9775002@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270507T180000Z
+DTEND:20270507T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Green Scorpion´s - the Metal Darts\nHeimspiel\nL
+ iga: Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 18
+ :00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cb2de53dda9df12448e15bd6bf777259d8c4b14bbae213f99b852692249ddfc3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T191500Z
+DTEND:20261113T221500Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
+ :15 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cd87098abfb0d5fa4129cdd4360f76e97c0268ea303562db60c33e7d54354a76@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270305T183000Z
+DTEND:20270305T213000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Green Scorpion´s\nAuswärtssp
+ iel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.2
+ 027 18:30 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswi
+ esen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d0b819f64979cc7b5a868c18dbcdb2216daf4532adff6501952fb10bd8f7f0df@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T183000Z
+DTEND:20261009T213000Z
+SUMMARY:Heimspiel gegen Friends Arrows
+DESCRIPTION:Begegnung: DC Green Scorpion's - Friends Arrows\nHeimspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:30 
+ UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisin
+ gen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eab90dcebb4520f9e1289045dc1b44128a7414750e02189017cf8d1c5845ec30@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T183000Z
+DTEND:20260911T213000Z
+SUMMARY:Heimspiel gegen the Metal Darts 2
+DESCRIPTION:Begegnung: DC Green Scorpion's - the Metal Darts 2\nHeimspiel\n
+ Liga: Bezirksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:
+ 30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Ei
+ singen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec22fef459e49be0e7cd28490eb95eb5b0be0baaca93298c947c2a82c9860bce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T193000Z
+DTEND:20270319T223000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Strikers\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 19:30 UT
+ C\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisinge
+ n
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec7b132b4f609b47bc6512ba1013db09d015bb21dc05855c38001566c5f63354@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T193000Z
+DTEND:20270212T223000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Lachs 14\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:30 UT
+ C\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisinge
+ n
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f413171df3d197a644a757f9e4a6e6017cceda2acff804f122133dce89c5bdf7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Texas Team\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 19:00
+  UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisi
+ ngen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f9e189af24977528641566376ed1e01c48c434d9a788aef7b48713d737d29762@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T190000Z
+DTEND:20270125T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Green Scorpion's\nAuswärtssp
+ iel\nLiga: Bezirksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.20
+ 27 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

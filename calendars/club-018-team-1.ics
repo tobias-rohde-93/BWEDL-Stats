@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Knickebocker
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:004f9be2469f92c221ab682fb4f73a656da898b68843894c02e3ec25404a1769@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Knickebocker\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.
+ 02.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webers
+ tr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:04b7f59a8d8d691e967c6f71219b5c315eae423b13b22825db29b0ac9fe3786e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T183000Z
+DTEND:20270130T213000Z
+SUMMARY:Heimspiel gegen DC Cim Bom
+DESCRIPTION:Begegnung: DC Knickebocker - DC Cim Bom\nHeimspiel\nLiga: B-Kla
+ sse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 18:30 U
+ TC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\
+ , Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:29eb26bf81f2eefba9b3d90af5d502f9ccb675e34567aed5e937a71bef302f0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T163000Z
+DTEND:20270501T193000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Knickebocker\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01
+ .05.2027 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neu
+ enbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:535eb64deb04dd9d4b9373861998a6256888711c11452440760de8cb808eb871@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T173000Z
+DTEND:20270417T203000Z
+SUMMARY:Heimspiel gegen DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Knickebocker - DC Oiloch Schömberg\nHeimspiel\nL
+ iga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.20
+ 27 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedric
+ h-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5c9a1866fb108e2c219bc6bda3d9e74a315030b1e82b476ad09b87dea5ec935f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T173000Z
+DTEND:20270515T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts 4
+DESCRIPTION:Begegnung: DC Knickebocker - the Metal Darts 4\nHeimspiel\nLiga
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 
+ 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-S
+ tr.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6d2e7029d6902843e9505228dfea832a6088db5b9fae0f0046871595275045b7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T173000Z
+DTEND:20260829T203000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Knickebocker - DC Crazy Flights 2\nHeimspiel\nLig
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 
+ 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-S
+ tr.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:77798d0d2682bdc2ac9c2b801bc1a73d1b32cd50237c9245026ff698d9510c32@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261210T190000Z
+DTEND:20261210T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 4
+DESCRIPTION:Begegnung: the Metal Darts 4 - DC Knickebocker\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 10.12.2
+ 026 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81c67dae3f4648fc0143aaf892843d9485dc2a9c1a2ba536da6172c3fc74d4ea@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T183000Z
+DTEND:20261031T213000Z
+SUMMARY:Heimspiel gegen Glabbicher Bulls
+DESCRIPTION:Begegnung: DC Knickebocker - Glabbicher Bulls\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 18
+ :30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-Str
+ .378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9047b434fd7e0fd2c12ad6f9b610dfc2cc7855eaa1e8576ec55d86942551d594@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Auswärtsspiel bei DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Knickebocker\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.1
+ 1.2026 19:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, 
+ Schömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9deaeeed61f88b931a90553f267f150ab00a6988d0b6197fd4fc87ea85ccf0b2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T180000Z
+DTEND:20261021T210000Z
+SUMMARY:Auswärtsspiel bei The Walking Darts
+DESCRIPTION:Begegnung: The Walking Darts - DC Knickebocker\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2
+ 026 18:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\, Bad 
+ Wildbad
+LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a7fc0e1b45d5faf6cefc451adc295bd9376be56459db6e752b68e66f3bf93a6a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T183000Z
+DTEND:20261128T213000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Knickebocker - DC Bull's Eye Arnbach\nHeimspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.20
+ 26 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedric
+ h-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c0b5a33e2c04ed1da0789ac679dd57162d4d09ceff822735dcbbb803c18e80c3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T183000Z
+DTEND:20260912T213000Z
+SUMMARY:Auswärtsspiel bei DC Cim Bom
+DESCRIPTION:Begegnung: DC Cim Bom - DC Knickebocker\nAuswärtsspiel\nLiga: 
+ B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2026 18:
+ 30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d220d963668536ad932bbc7b68168d78203d5412fb4bcc3d9f84ac5c26fa14a6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T173000Z
+DTEND:20261010T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Knickebocker - DC Destroyers e.V. 3\nHeimspiel\nL
+ iga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.202
+ 6 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich
+ -Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d9a7490df79767f91f09b8f50b8f89ecc7309784c4d15108004f47dd861b88a7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt
+DESCRIPTION:Begegnung: DC Oststadt - DC Knickebocker\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18
+ :00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pf
+ orzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e8549773ac524b64d69c4d9e6e12963a8e92906c866ee2ee87defec7aba9bd5a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Knickebocker\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01
+ .2027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simons
+ wiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e86a7be5245e92ea6671cd9610a22f88a553148a5a39cb822e6937df29cdc17e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Auswärtsspiel bei Glabbicher Bulls
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Knickebocker\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2
+ 027 18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wie
+ rnsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f4c9f137a307151256639ae699f99e5ad159a4d65ab5f769620ca137661783fe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T183000Z
+DTEND:20270320T213000Z
+SUMMARY:Heimspiel gegen The Walking Darts
+DESCRIPTION:Begegnung: DC Knickebocker - The Walking Darts\nHeimspiel\nLiga
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 
+ 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-S
+ tr.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fe1123f01dfce78bc08f4981b0ceab1ea4c2ee4422f5b3620de65cbc970b725c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T183000Z
+DTEND:20270213T213000Z
+SUMMARY:Heimspiel gegen DC Oststadt
+DESCRIPTION:Begegnung: DC Knickebocker - DC Oststadt\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 18:30 
+ UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378
+ \, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

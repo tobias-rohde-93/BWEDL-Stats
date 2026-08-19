@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – the flying Rocks 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:08dbd21967bc1a3bcc492dff705774a02bb471132989b03ef56bbd6b4c870b2f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270426T180000Z
+DTEND:20270426T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team 4
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Texas Team 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 17. Spieltag\nTermin: 26.04.2027
+  18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0e2823b06edd0c08bffbdc574eb1911725fa99dab1dfd6521635cc249ac2c229@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T180000Z
+DTEND:20261019T210000Z
+SUMMARY:Heimspiel gegen DC Ligthning Arrows
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Ligthning Arrows\nHeimspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.2
+ 026 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\,
+  Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0e8b2c0b8f40bafc2275a4cf11e2782bdd52caa0470f2da2626afee9d19e8c1f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T170000Z
+DTEND:20261010T200000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - the flying Rocks 2\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.20
+ 26 17:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-E
+ nzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:30da74ece82ac4d950707ffc8effaed1792b71dbc2e3758a684a0490c1ee1c5b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261109T190000Z
+DTEND:20261109T220000Z
+SUMMARY:Heimspiel gegen DC Hot Shotz
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Hot Shotz\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026 19:
+ 00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzh
+ eim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:68f3a45615089cb6e4d64ec070fc20bc8d8fbac7d8f1fb13f010b158a4d89d1d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260907T180000Z
+DTEND:20260907T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: the flying Rocks 2 - TSV Grunbach Darts 3\nHeimspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 07.09.
+ 2026 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\
+ , Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6d67d9ab989720b4737d45dda456b5d0f9f88f7db210c1705a488d5b1ad021cc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T190000Z
+DTEND:20270222T220000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 3
+DESCRIPTION:Begegnung: the flying Rocks 2 - TDF Enzberg 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02.2027 1
+ 9:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfor
+ zheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6dd0bfc1ca1e1a85775eff4b363e491b51a1462fc15f6ca278655c7974a1fa61@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - the flying Rocks 2\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10
+ .2026 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-
+ Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7537c9fec24a0d73387c544f2e2b7c1198af6fc177010b1abe60c2b27c2d8923@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - the flying Rocks 2\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 2
+ 8.08.2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webe
+ rstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:77dd6047ae72c6f854b4f721430e51df8db2dc381ec17c132c026b0243761c9a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T173000Z
+DTEND:20270510T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - the flying Rocks 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 1
+ 0.05.2027 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\
+ , Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7e5b4b633a40c51ce8771e4d07fcbe0c4f83960058b666408e516f4cb2c4c579@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T190000Z
+DTEND:20270128T220000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - the flying Rocks 2\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 
+ 28.01.2027 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Eng
+ elsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9381d97b49e6d43048c02eb491d4388d351e987cf7c38a02fd731d630bb6dd83@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261207T190000Z
+DTEND:20261207T220000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC 180 Stein e.V. 3\nHeimspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 9. Spieltag\nTermin: 07.12.2
+ 026 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\,
+  Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b55ce9a377cefe10db23f12ac1c950bb62f1338940688610563534ee46388757@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Hot Shotz
+DESCRIPTION:Begegnung: DC Hot Shotz - the flying Rocks 2\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.20
+ 27 18:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Str
+ aubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b7253298bd23edb76438cc65b4a0255911d20c1c6b273ece021a23d84bb4dc7c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T183000Z
+DTEND:20261124T213000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - the flying Rocks 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.
+ 2026 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
+ Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce133aabf4a22056f6041459c1446176dc324d82d81e34319de8e941392df03c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T180000Z
+DTEND:20270329T210000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC X-Brötzingen\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.03.202
+ 7 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, P
+ forzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d33ca54af6f948b42ad57cf6c3c9cdc03a1bef76a0e13169285d62166b22cf77@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T183000Z
+DTEND:20270319T213000Z
+SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Ligthning Arrows - the flying Rocks 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 14. Spieltag\nTermin: 1
+ 9.03.2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 3
+ 7\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ebdb1eed2525c0b35d09f35b1c7b2515446b1bfc5e52353c55e4eddcab5b46de@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270111T190000Z
+DTEND:20270111T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Destroyers e.V. 4\nHeimspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 10. Spieltag\nTermin: 11.01
+ .2027 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28
+ \, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

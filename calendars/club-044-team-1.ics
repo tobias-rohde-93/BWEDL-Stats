@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Bull's Eye Arnbach
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:079dd51fb04ffaae87103ce61395c0412b1df2503f8062d255791b789aa0e45f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T173000Z
+DTEND:20270213T203000Z
+SUMMARY:Heimspiel gegen DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Oiloch Schömberg\nHeimsp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13
+ .02.2027 17:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neu
+ enbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:100f5dcd5820bda7a9bedc4da1fa297144f450eb8ccab4374cacd4e6bbaa7da7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Bull's Eye Arnbach\nAuswä
+ rtsspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermi
+ n: 15.05.2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, 
+ Weberstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:16bc71282114c2a51895f6a4918924724b2ea48063fb5b01b0e7e05b9d8e1fb7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt
+DESCRIPTION:Begegnung: DC Oststadt - DC Bull's Eye Arnbach\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.
+ 2027 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 
+ 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1a0231feaca6ba20d1e532b72085c6170167d832fa740e004e1a43806aff437f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Bull's Eye Arnbach\nAuswärt
+ sspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 
+ 31.10.2026 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, S
+ imonswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:30290054723dc067fcef11e263baf87000002312e823d1736477dcecbe34d682@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T163000Z
+DTEND:20260912T193000Z
+SUMMARY:Heimspiel gegen Glabbicher Bulls
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - Glabbicher Bulls\nHeimspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2
+ 026 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbü
+ rg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:324a2017e0d4a95b61f23e88c20bbaa559e7aad4eb57de71ed7d633a2cd1a94d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T173000Z
+DTEND:20270116T203000Z
+SUMMARY:Heimspiel gegen The Walking Darts
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - The Walking Darts\nHeimspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01
+ .2027 17:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenb
+ ürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:393ed651f812939ef2f4a22dfccae0226172e8d272a2625532b5e4c018794340@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T163000Z
+DTEND:20270501T193000Z
+SUMMARY:Heimspiel gegen DC Knickebocker
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Knickebocker\nHeimspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.2
+ 027 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbü
+ rg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:429090582942723a8feeeec500d24b3050f9748c6c253342aa2e287d9ef31c86@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T163000Z
+DTEND:20261010T193000Z
+SUMMARY:Heimspiel gegen DC Oststadt
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Oststadt\nHeimspiel\nLiga
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 1
+ 6:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - 
+ Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:48ce762fa7e97701d2de8f06ff766bce68c946eddbb02aef381ba1680a2d1305@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T173000Z
+DTEND:20261114T203000Z
+SUMMARY:Heimspiel gegen DC Cim Bom
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Cim Bom\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 17
+ :30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - A
+ rnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5e3dca90e0c8fcd27a2eea041274eff73de804c756a06ee067097fb7847f8312@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T183000Z
+DTEND:20261128T213000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker
+DESCRIPTION:Begegnung: DC Knickebocker - DC Bull's Eye Arnbach\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.
+ 11.2026 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Fri
+ edrich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:61b5495395071514ac2d13b47d282e7171641eb06d7f7f3330e9de28a86a31db@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T183000Z
+DTEND:20270417T213000Z
+SUMMARY:Auswärtsspiel bei DC Cim Bom
+DESCRIPTION:Begegnung: DC Cim Bom - DC Bull's Eye Arnbach\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2
+ 027 18:30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pfo
+ rzheim
+LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:650d12c9877286f5efacdf4bc153aea0d898af9f8a7f3bca1de3adf03b7bef06@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Auswärtsspiel bei DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Bull's Eye Arnbach\nAuswä
+ rtsspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin
+ : 26.09.2026 18:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr.
+  35\, Schömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:989b45d5502febcbe18f5ebfdefe1f5174a28962439e99a603cff6ae24da3e8a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T163000Z
+DTEND:20261024T193000Z
+SUMMARY:Heimspiel gegen the Metal Darts 4
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - the Metal Darts 4\nHeimspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.
+ 2026 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenb
+ ürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9b95bd9aae3b936c122fe95254cf564696a3180682ecd0438508eca89adef768@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T173000Z
+DTEND:20261212T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Destroyers e.V. 3\nHeimsp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.
+ 12.2026 17:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neue
+ nbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9fef013392b9d1f53f902f327a14f387a9c3841aa2e3d1c7fb332b8a7376e9b8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 4
+DESCRIPTION:Begegnung: the Metal Darts 4 - DC Bull's Eye Arnbach\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
+ 18.03.2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 
+ 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a636b9304839bebac38a4731bf39b07635d341912459a41d50eac2e5010518a9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T163000Z
+DTEND:20270403T193000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Crazy Flights 2\nHeimspie
+ l\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.0
+ 4.2027 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuen
+ bürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3293e13b680f3f4fdf69ec36644644bb3e5c3700245a901120afa6d1c7fb344@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Auswärtsspiel bei Glabbicher Bulls
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Bull's Eye Arnbach\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 2
+ 7.01.2027 19:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2
+ \, Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f7c2d0473d89eaa14f72096dd0c44c5206b35dc7c5ba2f17385f11ee1b7abf88@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Auswärtsspiel bei The Walking Darts
+DESCRIPTION:Begegnung: The Walking Darts - DC Bull's Eye Arnbach\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 2
+ 6.08.2026 18:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\
+ , Bad Wildbad
+LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

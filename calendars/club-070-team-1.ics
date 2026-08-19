@@ -1,0 +1,571 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – ESV DC 25
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0015d0cc69bde6480eed24843ea21e644f8a2f6466dd77d8ad93e2d6f85bb632@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Heimspiel gegen DC Knickebocker 2
+DESCRIPTION:Begegnung: ESV DC 25 - DC Knickebocker 2\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 18:00 U
+ TC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforz
+ heim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:08d4d325130f9ee481c22849c028c4c98d39688236e1a303d419a8b6ca2608b2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270122T190000Z
+DTEND:20270122T220000Z
+SUMMARY:Heimspiel gegen DC Lightning Arrows
+DESCRIPTION:Begegnung: ESV DC 25 - DC Lightning Arrows\nHeimspiel\nLiga: Mi
+ x C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.2027 19:00 UTC
+ \nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzhe
+ im
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:09c0c8a6a440137742f3b9267c44497655fee50461c2ee8c87f55546dd99bea1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: ESV DC 25 - DC Duselbrüder\nHeimspiel\nLiga: Mix C-
+ Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 18:00 UTC\nAus
+ tragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1b4f0bf120588e4e8e34102e443902fad278c4388f5d7acc45e93c952d704e1a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T180000Z
+DTEND:20270320T210000Z
+SUMMARY:Auswärtsspiel bei DC Drei Daneben
+DESCRIPTION:Begegnung: DC Drei Daneben - ESV DC 25\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 18:
+ 00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:21a61633145f274294a2c1e8c07e7acb5402b8a968d92438471d8963667e6f2e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T183000Z
+DTEND:20270116T213000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - ESV DC 25\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 1
+ 8:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-St
+ r.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:22cde98cdc3b70218d1894bf92bc5a705b0198b390b022f36575f9951796a75a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T190000Z
+DTEND:20270326T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: ESV DC 25 - DC Irish 26 e.V. 2\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 19:00 UTC\
+ nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzhei
+ m
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2d7a87549f18b9a647cf6edf6bba53bcd53fbc6eed0038c770c3b2311cb07609@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - ESV DC 25\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026
+  19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittli
+ ngen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:32a36ef40df95beb11422136d6db0ef5e00edc4ec7b8cb40e32a8f9b87de352e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T180000Z
+DTEND:20270423T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: ESV DC 25 - DC Irish 26 e.V.\nHeimspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027 18:00 UTC\nA
+ ustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:345529917943ffd5a3c83d0e16c177be14266e095e6b979b57f68645706319b9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270306T190000Z
+DTEND:20270306T220000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - ESV DC 25\nAuswärtsspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 06.03.2027 19:00 UT
+ C\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:352067af53a59f84e8d7f1763f9f68f496f99fe1af3ff58f06d75dde71e264f3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - ESV DC 25\nAuswärtsspiel\nLiga: C-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 U
+ TC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straube
+ nhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:36ba9557c5b85a861fa2795bf935dd46aecddd73558921afe9d0032f220201d6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T180000Z
+DTEND:20270510T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - ESV DC 25\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 18
+ :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:49f976a4fab511c1556f0093e2b767f4564e98d1b63ab0a0def7b9edf1aa11d4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Drei Daneben
+DESCRIPTION:Begegnung: ESV DC 25 - DC Drei Daneben\nHeimspiel\nLiga: C-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:00 UTC
+ \nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzhe
+ im
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5122d02801138df33aaa8d1dd148f18ed9bc1fb669b2fe4f54bdc34fae012f59@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261205T190000Z
+DTEND:20261205T220000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - ESV DC 25\nAuswärtsspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 05.12.2026 19:00 UT
+ C\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Königs
+ bach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f0db6ba4a78017651dfcb4443dad134d0af99a897aed42e4d661771e2767bec@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: ESV DC 25 - DC X-Brötzingen\nHeimspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 19:00 UTC\nAu
+ stragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:636562fd7091161e350b388b4b1c4f4b460c1d1eec055260baabfa73e3e41d9a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T183000Z
+DTEND:20270205T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - ESV DC 25\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 18:30
+  UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbac
+ h
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:66646926b7539390ddd82899a542abdd84d80a2e66ab8d9591d8b33b56400a01@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270505T180000Z
+DTEND:20270505T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - ESV DC 25\nAuswärtsspiel\n
+ Liga: Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 05.05.2027 1
+ 8:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 30
+ \, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:68f913abdb49735fd4555aff3606a34c1ad963db0d201f32c0fbd5862d7b29c2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261106T183000Z
+DTEND:20261106T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - ESV DC 25\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 18:30 
+ UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Köni
+ gsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:737c986a29d6c63c2578ba0e6d8e073a9c4f0cf46e06c054d930de9578ef3f43@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - ESV DC 25\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027
+  19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:78e29bf47bf2e008d659476f9bdd341adb4c8d5bd347346c7c123237a18e9043@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T180000Z
+DTEND:20261123T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - ESV DC 25\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 1
+ 8:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, 
+ Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7ca9c542d41ba45bdb665bdc8fda6a7c33360b5e6db6a23e8e2fbbdf6e3b8b4d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261007T173000Z
+DTEND:20261007T203000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - ESV DC 25\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 07.10.2026 17:
+ 30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7f9a28fb4bfc5553f0c32442aa18948a33081ed1e695450e76d904d9bd2683ec@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T180000Z
+DTEND:20270413T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - ESV DC 25\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.2
+ 027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstra
+ ße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9952a9b3d185678b98d9beff4b54f14213c25358e96b80543bf470d77531b06d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 5
+DESCRIPTION:Begegnung: ESV DC 25 - DC Black Scorpions 5\nHeimspiel\nLiga: C
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:
+ 00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, P
+ forzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a8fe78e0356a035925a91e06ecea11d7b4a333afc1d43a19384f38b2ad059a66@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: ESV DC 25 - DC Conweiler\nHeimspiel\nLiga: C-Klasse 
+ Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UTC\n
+ Austragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:abd579bef70a3991785ca940e0b1253e64d0698562112b56391be71c5a2f7430@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270407T170000Z
+DTEND:20270407T200000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - ESV DC 25\nAuswärtsspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 07.04.2027 17:00 U
+ TC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pf
+ orzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ae39dd0816ffb87240e18ce7fa0842deef51df4bd0eaad54cf3fd9695869f495@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270312T190000Z
+DTEND:20270312T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - ESV DC 25\nAuswärtsspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 12.03.2027 19:00 UTC\nA
+ ustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b04c5499b184b93f37c536d53750ec82873e5aa67b2e89d30419ff466468f38a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T190000Z
+DTEND:20261218T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: ESV DC 25 - DC Underground Fools 2\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 19:00 U
+ TC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforz
+ heim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c049ac0a821a55215538991823f12b08612bef4acbd735f2a0742959a0dbe6d8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: ESV DC 25 - DC Irish 26 e.V. 4\nHeimspiel\nLiga: C-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00
+  UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfo
+ rzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c596fffcfa982581e90afee857d75d28459f5c4a4e38ef30c123a076edd400d8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T190000Z
+DTEND:20270219T220000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: ESV DC 25 - Los Muertos\nHeimspiel\nLiga: Mix C-Klas
+ se 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 19:00 UTC\nAustra
+ gungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c7cd1b047a729c2d0a64209f456f6e0b5b2c9b1248c14e76c23b36fd83792af1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 3
+DESCRIPTION:Begegnung: ESV DC 25 - DC Enztaler Buben 3\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18:00
+  UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfo
+ rzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cecebd8c488a4a4f8e10d35ec58839beade767f81d4995df0d357ae847dfcbd7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: ESV DC 25 - DC Underground Fools 4\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
+ :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
+ Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:db2bcd0052362f873f938ec9436e1b986dd9e7db3aaf394b09df9d792eff9cba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: ESV DC 25 - DC HighFlights 2\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 19:00 U
+ TC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforz
+ heim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:db38ab433d7ac2bd8f80258e4d50675277dd79dfdf4789b622524f1c6a350100@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen Phantom Arrows 2
+DESCRIPTION:Begegnung: ESV DC 25 - Phantom Arrows 2\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00 UT
+ C\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzh
+ eim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dfe40a3a901d652870d67e23d0e4c98fca83cb5d1cb1e005798593e9d43dd832@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260821T183000Z
+DTEND:20260821T213000Z
+SUMMARY:Auswärtsspiel bei DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Lightning Arrows - ESV DC 25\nAuswärtsspiel\nLig
+ a: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.08.2026 18:30
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e93b0eb36041e8e509ef9d7dc415f9988da8f26317aabe4c16e73ba32cf0efc4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260918T170000Z
+DTEND:20260918T200000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - ESV DC 25\nAuswärtsspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 17:00 UTC\nAu
+ stragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f8128421955a036377e19d2e84ee1b1c9eb6bbae8ed41306c95033d7d49e43be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T180000Z
+DTEND:20260904T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: ESV DC 25 - TSV Grunbach Darts\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:00 UTC\n
+ Austragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ffcb04a8e8434de980316a5dd491899fda501aead2d3be1bdb72d4a1233537a6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T180000Z
+DTEND:20261016T210000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: ESV DC 25 - DC Shamrock\nHeimspiel\nLiga: Mix C-Klas
+ se 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18:00 UTC\nAustrag
+ ungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

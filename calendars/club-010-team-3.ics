@@ -1,0 +1,262 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – TDF Enzberg 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:007ed88f7ca27627cc47a3cc6a0c64536d2b2fb0cc6daa87f3df3565fdf24819@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T180000Z
+DTEND:20270213T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Destroyers e.V. 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027
+  18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enz
+ berg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:01a6d799c1c4d24e6f00b271375b57bca4485b4ff66d408c51a0b07d0a9b653d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T170000Z
+DTEND:20260912T200000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC 180 Stein e.V. 3\nHeimspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2026 1
+ 7:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzbe
+ rg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:048795cc049f338d75799efc42615b019fe2fd3e4f801a9e9f766abb9579a39f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T190000Z
+DTEND:20270222T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks 2
+DESCRIPTION:Begegnung: the flying Rocks 2 - TDF Enzberg 3\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02.2
+ 027 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\,
+  Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:15244be8562bc5bdc3b4c7307d5db662bf5b02b65657ca7bae1d163b6339f245@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270401T180000Z
+DTEND:20270401T210000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - TDF Enzberg 3\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04
+ .2027 18:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbr
+ and-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38a1c5db6e3b6fabb1113f2b6a9defca952f2eb5a3612aa3a30a5c2df281071d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:Heimspiel gegen DC Ligthning Arrows
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Ligthning Arrows\nHeimspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 1
+ 8:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzbe
+ rg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38f1bca89ce16f5af086613d2b882757384b2cc27df81d0bc7a5047a161eed74@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T170000Z
+DTEND:20261010T200000Z
+SUMMARY:Heimspiel gegen the flying Rocks 2
+DESCRIPTION:Begegnung: TDF Enzberg 3 - the flying Rocks 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 17
+ :00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzber
+ g
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:476ab9dc73fadcee4481ff8c91ae9ad3f19877c6cdbdea0e66e40f0494cc0eb4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T170000Z
+DTEND:20270501T200000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC X-Brötzingen\nHeimspiel\nLiga: C
+ -Klasse Gruppe 4 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.2027 17:
+ 00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4c90bffe35f2cc736d22035cd1ffcf3b036e342c0e5ee237b1593edfbeb0617d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T183000Z
+DTEND:20270125T213000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - TDF Enzberg 3\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.
+ 2027 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kö
+ nigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:68132ffa318eacdaf238afb5ecf09a957706a9d7002fd655e450cfa0b51c6a47@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC Hot Shotz
+DESCRIPTION:Begegnung: DC Hot Shotz - TDF Enzberg 3\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6f8efd137d85ed51beb1bc7d2d913017d240b9e6d88dac2cd23aa5cd2e9e4367@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T180000Z
+DTEND:20270116T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team 4
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Texas Team 4\nHeimspiel\nLiga: C-
+ Klasse Gruppe 4 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 18:0
+ 0 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:70909606e02738766a617bedbca07df9f5344e2273c95f938fa386635c1083d9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T180000Z
+DTEND:20261031T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - TSV Grunbach Darts 3\nHeimspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 
+ 18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzb
+ erg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:79d47f51ac535cf55370319b3419df7ee3ff1020280a7538e4897793ecd6d75b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T180000Z
+DTEND:20261212T210000Z
+SUMMARY:Heimspiel gegen DC Hot Shotz
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Hot Shotz\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 4 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 18:00 UT
+ C\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:80bcebc54da5a5fb0e2ca593436545879a6531f572f802eb05f9dac26a125504@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - TDF Enzberg 3\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026
+  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
+ 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a930142fb8ec0bc6524ab4ddbdcadf1b63696a8241676000660a912a55ab1221@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - TDF Enzberg 3\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.
+ 2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr.
+  60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fe4344b94a6202bc231aaa6e8fcca61f73a3508ef266219e2351426940849350@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T173000Z
+DTEND:20260825T203000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - TDF Enzberg 3\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026 
+ 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:feab5853e3c507dd8fc8e6e657eaf23da79bf6a0f175415544b63655a8714b19@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T173000Z
+DTEND:20270416T203000Z
+SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Ligthning Arrows - TDF Enzberg 3\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.
+ 2027 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

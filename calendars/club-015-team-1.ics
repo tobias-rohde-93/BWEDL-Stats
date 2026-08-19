@@ -1,0 +1,528 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Texas Team
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:012c6c6abcb8e921fcef0d8a708a44e9208c5aee3f25f4b1eced551288665e79@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Auswärtsspiel bei Friends Arrows
+DESCRIPTION:Begegnung: Friends Arrows - DC Texas Team\nAuswärtsspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 18:00 U
+ TC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0bd0c1edd43b1dd3794375ddbb47e1de8ae238bb880b0470e5caef3653ea638f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Texas Team\nAuswärtsspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UTC
+ \nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisin
+ gen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:100661c76c15be1947724e00e62e7ab6533e0386d3561ae1ae54d358ff794f1b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270409T180000Z
+DTEND:20270409T210000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Texas Team\nAuswärtsspi
+ el\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 09.04.20
+ 27 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:24b5c09ae41af01420d902b42a023e1f8792d8a97f5f4926ec353b9baeaa5c33@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T191500Z
+DTEND:20261113T221500Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:15 U
+ TC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:29cdff1933b4cc8a34783da766733d1e5f26513b0ae6642f68fcf6f542fb6c08@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260902T180000Z
+DTEND:20260902T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Texas Team - the flying Rocks\nHeimspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 02.09.2026 18:00 UTC
+ \nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2ac8b7c220fef83ab6aca32eb35df1d285df92bc30704137c47115e53e7490ee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270217T190000Z
+DTEND:20270217T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools
+DESCRIPTION:Begegnung: DC Underground Fools - DC Texas Team\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 17.02.2027
+  19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 
+ 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:39414bdbf330d2ce9bd113302e53a2549b951fe71fc20dafd19fbefa36237c44@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T181500Z
+DTEND:20261023T211500Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Texas Team - DC Reloaded\nHeimspiel\nLiga: Bezirk
+ sliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:15 UTC\nAust
+ ragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3a01619f87a5d4d81f508c26b8d5ae14ee650b03478cbcfcf047eaff9e50e1d0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Texas Team\nAuswärtsspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 19:00 UTC
+ \nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3bc51525b98da49be03e74b9b467286e27c5df70b08387205bb54e8bc69e4c04@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270324T190000Z
+DTEND:20270324T220000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion´s\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 24.03.2027 19:0
+ 0 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3f250ab93e5ebc42e60941f9f42e207a70b72ad00e60c40f7de46c1a53165d14@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270507T173000Z
+DTEND:20270507T203000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Texas Team\nAuswärtsspiel\nLi
+ ga: Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 17:
+ 30 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\
+ , Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:48c1028865a9fa61a9670d6a21484905bde9cd4fad35b0f63d2e54b250de1a77@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261001T180000Z
+DTEND:20261001T210000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Texas Team\nAuswärtsspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 01.10.2026 18:00 UTC
+ \nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7c79d0b7f7ed290c1f9fd0d5e71a46c26fcdd8c278f6324b18e48d51f8bab4db@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261026T190000Z
+DTEND:20261026T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Texas Team\nAuswärtsspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 26.10.2026 19:00 
+ UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8ac1242b5d6cf0ee6ce141e0b41ecd06566def193232b93075b9c9a90aaa0518@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T191500Z
+DTEND:20270212T221500Z
+SUMMARY:Heimspiel gegen DC Black Scorpions
+DESCRIPTION:Begegnung: DC Texas Team - DC Black Scorpions\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:15 U
+ TC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8d6eae2a8dce84eb5ea7a5f134aca5bb887566908ad1495c6567b964ebf39627@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T180000Z
+DTEND:20270512T210000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Texas Team\nAuswärtsspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.05.2027 18:00 UTC
+ \nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8fd395540d059a75096dc220eb95c0995911f5e03dba1d7fa5c1b3a9e23434db@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T191500Z
+DTEND:20261211T221500Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Texas Team - DC Lachs 14\nHeimspiel\nLiga: Bezirk
+ sliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:15 UTC\nAust
+ ragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:942ed0dce0b99c8b6d2c7055f8f62053f863db0af53442665af9409e83a142d1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T181500Z
+DTEND:20260911T211500Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Texas Team - DC Strikers\nHeimspiel\nLiga: Bezirk
+ sliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:15 UTC\nAust
+ ragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9a2ddf9870545967f9e80a2c93c6238e375ef141f335c817caba2747efc4eb97@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T190000Z
+DTEND:20261123T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Texas Team\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 19:0
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0ed6b90be775126e365229c94f654b4c079719c4799bdbadac141042ce6de85@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T190000Z
+DTEND:20270205T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Texas Team\nAuswärtsspiel\nLi
+ ga: Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19:
+ 00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzh
+ eim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a921dc73c26384e1514578f4f51917152f940888d850aaf445f8a0a96d49ae2b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T173000Z
+DTEND:20260923T203000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Texas Team\nAuswärtsspiel\n
+ Liga: Bezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 17:
+ 30 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ab3f43c0208fa49b200474f72d282fc4f50c8abd29b03d82576958d5b23060b6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270120T190000Z
+DTEND:20270120T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Texas Team - DC Strikers\nHeimspiel\nLiga: Mix B-
+ Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 20.01.2027 19:00 UTC\nAu
+ stragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ae55aecd1e6385ab051ce90650bd7f5c7eaa8b9b240b97b73c74bb66fdcaeddd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270303T190000Z
+DTEND:20270303T220000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Texas Team - DC Lachs 14\nHeimspiel\nLiga: Mix B-
+ Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 03.03.2027 19:00 UTC\nAu
+ stragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b4c3ce65ddf436ab7e5c1a9ff71b7e5a8c1a3b41c7d5b0448aac82c026030e72@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T191500Z
+DTEND:20270115T221500Z
+SUMMARY:Heimspiel gegen Friends Arrows
+DESCRIPTION:Begegnung: DC Texas Team - Friends Arrows\nHeimspiel\nLiga: Bez
+ irksliga 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:15 UTC\n
+ Austragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b7114952ade8fef84424457e96bfcd4964109a34db894bcf7a76fd367801d324@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261014T180000Z
+DTEND:20261014T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Texas Team - the Metal Darts\nHeimspiel\nLiga: Mi
+ x B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 14.10.2026 18:00 UTC\
+ nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ba6e66a206c0a25cb679f71959ad2a9df13427b7b1e7e99d47b28ad29288a9ab@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T181500Z
+DTEND:20270430T211500Z
+SUMMARY:Heimspiel gegen the Metal Darts 2
+DESCRIPTION:Begegnung: DC Texas Team - the Metal Darts 2\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:15 UT
+ C\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc271cb17decd745499d97a716e4dc12eae0475564c518f9ec5400eccfa70ff5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261216T190000Z
+DTEND:20261216T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Texas Team - DC Crazy Flights\nHeimspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 16.12.2026 19:00 UTC
+ \nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c5aaef7a336281c62cfe8e25bfe279551dafead25907583b366fa411540f3b4c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261202T190000Z
+DTEND:20261202T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Texas Team\nAuswärtsspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 19:00 UTC
+ \nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d526770ae9cbe4a02daf52e8bd3bd38a2578011a883a60335cec02519e392314@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270311T190000Z
+DTEND:20270311T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Texas Team\nAuswärtsspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 11.03.2027 19:0
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:da4758f95a24ab47abeea17de1ed4188fd2f14342d4036a490bacbcde19a14be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260821T180000Z
+DTEND:20260821T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Texas Team\nAuswärtsspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.08.2026 18:00 UTC
+ \nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisin
+ gen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e570a5155f4ad21b48411d69e87267e2b955d9cd834e71476eadfdc37f7d4aae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T183000Z
+DTEND:20270416T213000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Texas Team\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 1
+ 8:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
+ Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f9f3a427690c0311b9f33fd1f243be7aeaa8325769eca9b5e77bf4e4401f2a93@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T181500Z
+DTEND:20270402T211500Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Texas Team - the Metal Darts\nHeimspiel\nLiga: Be
+ zirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:15 UTC\
+ nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fa2d5af7cdd1edd93c2d2c5d7d7ba00b200d714e59a161e0683e98059d7de588@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270421T180000Z
+DTEND:20270421T210000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Texas Team - DC Reloaded\nHeimspiel\nLiga: Mix B-
+ Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 21.04.2027 18:00 UTC\nAu
+ stragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fd15837db5d89d3bc2dcf8a5a061d0fb1203f30dc6b204446833a8d489d4c0d0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Texas Team\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 
+ 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
+  Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ff01f01938355e463c250b333a7d9e4accfe4bcdaf6fb3d4359b805592b1844a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260916T180000Z
+DTEND:20260916T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools
+DESCRIPTION:Begegnung: DC Texas Team - DC Underground Fools\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 16.09.2026 18:00
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ffed052eac3d4092bd7d41a895684bd4cc42628cf621e486914e82b515b1a387@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261118T190000Z
+DTEND:20261118T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Texas Team - Dartfreunde Eichenherz\nHeimspiel\nL
+ iga: Mix B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 18.11.2026 19:
+ 00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhei
+ m
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Kolibrispitz
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:036cee577daa13127f4da7517ef4e4e67c7a8a5e094e6911657fcf563c452b86@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T173000Z
+DTEND:20261019T203000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Kolibrispitz\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.2
+ 026 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, 
+ Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0b7c7d66eec5800e8a4cb2700da435bbb54edc0b747597a00ce06f683040b835@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock 2
+DESCRIPTION:Begegnung: DC Shamrock 2 - DC Kolibrispitz\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 
+ 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straub
+ enhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1ef85644eabec527b307a8e961f06b2984c415115bcb549ec69a85bac3eb9fc9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T173000Z
+DTEND:20261010T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Destroyers e.V. 5\nHeimspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.202
+ 6 17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
+  15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:25bbd17e07b34f299e0bd8a57fb27e1b73f14b4bf79d24f672b87731d45eb8e5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T183000Z
+DTEND:20270213T213000Z
+SUMMARY:Heimspiel gegen the Metal Darts 6
+DESCRIPTION:Begegnung: DC Kolibrispitz - the Metal Darts 6\nHeimspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 
+ 18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 1
+ 5\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2a42a409d94e96e12d710a810f24c1c04232aba77e97877f901348d28019b7de@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25 2
+DESCRIPTION:Begegnung: ESV DC 25 2 - DC Kolibrispitz\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18
+ :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
+ Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:34a4bef7a50cf6701f3815a8a8be6ef3e42ee8191f0bf4244dd43f8d71617259@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T173000Z
+DTEND:20260904T203000Z
+SUMMARY:Heimspiel gegen DC Ungültig 3
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Ungültig 3\nHeimspiel\nLiga: C
+ -Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 04.09.2026 17:3
+ 0 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, 
+ Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:45d490fd44f35a831aae661f4e015ba9c1afed3fd67d3e8891894279c7f6f906@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Kolibrispitz\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.
+ 02.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webers
+ tr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4b8338a2699c0d88f6dd09e870f52d903a013caf7fbd5aeeb9409d3a64fc90c8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270113T183000Z
+DTEND:20270113T213000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Kolibrispitz\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 13.01.202
+ 7 18:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6a7f53fe10147e56ec615a798c95bbee2bb6910f41ecef0db02956c02a7ae45e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T183000Z
+DTEND:20270320T213000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich
+DESCRIPTION:Begegnung: DC Kolibrispitz - DSV Großglabbich\nHeimspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 
+ 18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 1
+ 5\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7d0040724fecf4745b8f38d8b8db4af5e3a3469dc43b58ca1da655d10f8a1971@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 3
+DESCRIPTION:Begegnung: DC Oststadt 3 - DC Kolibrispitz\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 
+ 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
+ Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8e6ac1d1d0d58a26608da879ae984a5c754797fa51dbcf16fd28c31e5c9427c1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T183000Z
+DTEND:20270130T213000Z
+SUMMARY:Heimspiel gegen ESV DC 25 2
+DESCRIPTION:Begegnung: DC Kolibrispitz - ESV DC 25 2\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 18:30 
+ UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pf
+ orzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8a7581039c10a8ecf31265167a34a042adfa9639faa3e1d1ee5be8cf086d9e2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 6
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Kolibrispitz\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2
+ 026 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c63a19aa9cc508412c19b311e47f92d40683b0f46094ae7ec5a53100e954b732@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T173000Z
+DTEND:20270330T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Kolibrispitz\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03
+ .2027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcker
+ le 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e52502ab3133deec2b17e8a9ea3e3d3c17125f9b482d8ba9ef0425d4a11cdef2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T173000Z
+DTEND:20270515T203000Z
+SUMMARY:Heimspiel gegen DC Oststadt 3
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Oststadt 3\nHeimspiel\nLiga: C-
+ Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 17:3
+ 0 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, 
+ Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eac6073fbb90b2cd35f77cce97fddf4c3198cfd856cc25e8a4ac8b5ab10dd1fa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T173000Z
+DTEND:20270417T203000Z
+SUMMARY:Heimspiel gegen DC Shamrock 2
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Shamrock 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 17:3
+ 0 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, 
+ Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f99501277a1dfa0a3f5297c7bd48db42419688b61bd216959c76061985b89354@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T183000Z
+DTEND:20261031T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nHeimspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 
+ 18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 1
+ 5\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

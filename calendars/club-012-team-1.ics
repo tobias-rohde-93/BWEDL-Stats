@@ -1,0 +1,569 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Shamrock
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:05c6323a78e013b18924af00f30a850d856648bc3fefe961e636b7eadd7ea9da@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260819T180000Z
+DTEND:20260819T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - DC Shamrock\nAuswärtsspiel
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 19.08.2026 
+ 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 3
+ 0\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:06633bb06bf5b6ebad64edc4bc7c3f6f4b3fe553322b5388d168626c9e637bfa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270122T190000Z
+DTEND:20270122T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Shamrock - DC Underground Fools 2\nHeimspiel\nLig
+ a: Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.2027 19:0
+ 0 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenha
+ rdt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0c82811bd8721502a0b705e58f4d2d990a35111e8a8660377202f355dad80ffb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Shamrock - Los Muertos\nHeimspiel\nLiga: Mix C-Kl
+ asse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 18:00 UTC\nAustr
+ agungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1c6052bc3757ed4643f5fc8396c07c0567257a6b8165e2bc12d53a06c7630770@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC Shamrock\nAuswärtsspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 19:0
+ 0 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:27518e45c9af56f2999b4320ae1ce74fbc8f886bcc4b0c4dc444e40d6b1acc60@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: DC Shamrock - DC Reloaded 2\nHeimspiel\nLiga: B-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00 UT
+ C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2be71266d9ab135ef8922c59262379d2b4698eab2a786d17756b00681c7275a8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260929T173000Z
+DTEND:20260929T203000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC Shamrock\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 29.09.2026
+  17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\
+ , Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2bf15f43b33c7df2203699897c764b936856d5d5f8eb65efcdd61f72b5aad018@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260918T173000Z
+DTEND:20260918T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Shamrock\nAuswärtsspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 17:3
+ 0 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunba
+ ch
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2dabf780eb502ddceeab9250af9100d9e64bab7278eeada035b99e3a2eb2a6a0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T190000Z
+DTEND:20261218T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Shamrock - DC Irish 26 e.V.\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 19:00 UTC\n
+ Austragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:34e161a09b12cf809c5e3e963c58278b9c6fdecb55f2ef710b03252d5a9a3082@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Shamrock\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026
+  18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiese
+ n 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3995c38f88c83a9947a38398b26053f00330cb648d46b2fbfb3ab1a9a3b30b1a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T180000Z
+DTEND:20270511T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Shamrock\nAuswärtsspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027
+  18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:407ce837e9ab8598f2d92fb4107b49f6ea6940cc177557497f4f7926c88a1e94@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T180000Z
+DTEND:20260904T210000Z
+SUMMARY:Heimspiel gegen DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Shamrock - DC Lightning Arrows\nHeimspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:00 UT
+ C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:40bf1654395745d430fa7118907567a82a17f3dfd449ed264d678cceca4408fa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270409T173000Z
+DTEND:20270409T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Shamrock\nAuswärtsspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 09.04.2027 17:
+ 30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:40f2cdd17fd92836de62b346f63d9e6ab3415449ab78dcaab976c28a75459a02@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC Shamrock - DC Duselbrüder\nHeimspiel\nLiga: Mix 
+ C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 19:00 UTC\nA
+ ustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:42c71fcaa4ac7d2b96c9dad74f14bbd7e98eda7a7759c8a8298b659636e9a185@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T180000Z
+DTEND:20260828T210000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - DC Shamrock\nAuswärtsspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 
+ 18:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsb
+ ach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:43385bfe09ef8dd489edb4ac977018e7bf62cbe02386f64ba5ab4ba06644bad2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261202T180000Z
+DTEND:20261202T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Shamrock\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 18:00 
+ UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, P
+ forzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4f6c29832885f583888f13fb5f74236fe09f6d2232d80c4ae35f3b6fb5217697@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: DC Shamrock - TDF Enzberg 2\nHeimspiel\nLiga: B-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:00 UTC
+ \nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:54cd07b8190cf34904246a73da364ae6dce93bf9a81c3f7647ac387c3764c54d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Shamrock\nAuswärtsspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 19:
+ 00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f90d9d39bc6ede805e6851dc99a4513befef1eb3d1c2d27918d6cecb404c194@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270508T180000Z
+DTEND:20270508T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Shamrock\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 08.05.2027 18:00
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:67f4f4f8ec7e46fa59b0a9b28b7a09d64348576cb3184eca3653db13b0d75610@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T183000Z
+DTEND:20270129T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Shamrock\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2
+ 027 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbran
+ d-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:70c34d120619fa2942d875f3a04af099a698921eb57565908121ee947b19e7c0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T180000Z
+DTEND:20270416T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Shamrock\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 
+ 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
+ rzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7612ef862d8db69dac00480b1c1fea5bee6d9b294a07fdafa4bbcffe54a13d5f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Shamrock - DC Irish 26 e.V. 2\nHeimspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 19:00 UTC
+ \nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7faee4ed8e52d4403155aaf3d90bc1e6171b8e9adf771ffb848ed919e4162f96@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270312T190000Z
+DTEND:20270312T220000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Shamrock - ESV DC 25\nHeimspiel\nLiga: Mix C-Klas
+ se 2026-2027\nSpieltag: 14. Spieltag\nTermin: 12.03.2027 19:00 UTC\nAustra
+ gungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8294b88a40d57610c6ca3de9d134f13725ccb0e0684100021b6708c137085725@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T193000Z
+DTEND:20270205T223000Z
+SUMMARY:Auswärtsspiel bei DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Shamrock\nAuswärtsspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19
+ :30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:85ae684d05968ccc6db4625c8c1a2cf74ccd071cbc861c804fd2e158793a472d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: DC Shamrock - Phantom Arrows\nHeimspiel\nLiga: B-Kla
+ sse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 19:00 UT
+ C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9467fcdc44bcc8b251528637f8f2ed441e92346dfea553b63d2fdd9934212eab@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: DC Shamrock - the Metal Darts 5\nHeimspiel\nLiga: B-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00
+  UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhar
+ dt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:950c91ca734a484cb6d1ce3a11664b1219e50af8843807c20660b1ec060f9123@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Shamrock - DC Crazy Flights 3\nHeimspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 19:
+ 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
+ ardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9b38b7b7a9f03d636aa3e3a232b24d1d8b4b48d55b963577e74071ce1b90c250@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270327T190000Z
+DTEND:20270327T220000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Shamrock\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 27.03.2027 19:00 
+ UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bdc3bb39223276ba8630fa478a146aee6249814fd5346150f2a028d08670221a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC Shamrock - DC 180 Stein e.V.\nHeimspiel\nLiga: B-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:0
+ 0 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenha
+ rdt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d26d9299c7e44feb5c37f74691fa0120f07b7c1a5fec7cf21008eba7c198a61e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T170000Z
+DTEND:20270402T200000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - DC Shamrock\nAuswärtsspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 17
+ :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e0a573e5ab42af427303eae821862237cdeeec2774ba49aa9c439a4c1d7ddff1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T180000Z
+DTEND:20270423T210000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Shamrock - DC X-Brötzingen\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027 18:00 UTC\
+ nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e154774e0ff76e9c46182a5b0712190bbf5409803a7ca2c3329d0c2f30369ed8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T190000Z
+DTEND:20270219T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Shamrock - TSV Grunbach Darts\nHeimspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 19:00 UT
+ C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e280a2fc50d8e48d6586a41b8b7337c994026d5a05340f83da19aabe36c5e346@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260901T180000Z
+DTEND:20260901T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: DC Shamrock - TSV Grunbach Darts 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 01.09.2026 18
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e5b8396688eb537acb38ea71eeeb307a7f2610b541702fd949e89847410aee24@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270305T180000Z
+DTEND:20270305T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Shamrock\nAuswärtsspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.2027 18:00 UTC\
+ nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e9bfdfc9606acf928fee423178e495d6490f242f71e9a487e7523aeb242de810@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T180000Z
+DTEND:20261016T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Shamrock\nAuswärtsspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18:00 UTC\nAu
+ stragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fbfecec345c7c3d5def6814bf8bae47ef445fbdeb4cb75e6ca4c18790393c466@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Shamrock - the flying Rocks\nHeimspiel\nLiga: B-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 
+ UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhard
+ t
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fe9c1efe928923e7e4bca76bd824c02d027a0dc6857b0cd9e8845a79d3e34edc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Shamrock - DC Destroyers e.V.\nHeimspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:
+ 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
+ ardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

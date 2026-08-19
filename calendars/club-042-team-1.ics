@@ -1,0 +1,285 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Bull Hunters
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:053989d41dee42109e953c59f2a245923aeb00820e13cc40391fe24ce0b8426b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Broken Darts 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 1
+ 8:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0ab0af263bc5ce82ce89de657666490e04ad3c2f4bd270ff63f9955732fa8971@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC Dart Vaders
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Dart Vaders\nHeimspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:
+ 00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:101bf5f8e1a1aa1ca0b0c1f509d6f7acdcca065d774c136672f9766b54321305@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T173000Z
+DTEND:20270512T203000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Bull Hunters\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin:
+  12.05.2027 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr
+ . 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:10eae82e98eec551c0416b34844eb6e2d9fd3be2416372ded973f03fb55998c8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - DC Bull Hunters\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.
+ 2027 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wil
+ dbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3f660d552eb9b08e79df2fd09dca4a2adcf9f10221d0b5c7c98ea024de10d2ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC Bull Hunters - DC 180 Stein e.V. 2\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026
+  18:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:45840c7614b733b94d0ac6324e7307918b3524ab1f06050b15d1d1d52390deae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T170000Z
+DTEND:20260826T200000Z
+SUMMARY:Auswärtsspiel bei DC Williams
+DESCRIPTION:Begegnung: DC Williams - DC Bull Hunters\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 17
+ :00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:476058b8b4cac6148b37da8a326e1589133f6c28ef6bf302561799bc2c495e65@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei DC Dart Vaders
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Bull Hunters\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026
+  19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strau
+ benhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:63aeb6cb59342510946c164c7dd64e3a720bb5dcdfe9dcf5b9498376618d3422@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T183000Z
+DTEND:20270127T213000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Bull Hunters\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.0
+ 1.2027 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, K
+ önigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6c55938c93d236a52ac3d60a70f776626ba4637761550e2b91c013cad54c0125@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T170000Z
+DTEND:20261009T200000Z
+SUMMARY:Auswärtsspiel bei DC Triple 7
+DESCRIPTION:Begegnung: DC Triple 7 - DC Bull Hunters\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 17
+ :00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:84107f2e2da6031bc13377f58432715d7c6725893f6f1de25665e6512dc68c60@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC Bull Hunters - DC X-Brötzingen 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 
+ 19:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:86288ed255674c7383e107bcacb3000fed5dc4915e906a423568d27d30a2faa4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC Williams
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Williams\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:00 
+ UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:be5906e2657e33953602ddd78856fa9db5d628ceb331b8e514021bc55d72b04a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen Los Muertos 2
+DESCRIPTION:Begegnung: DC Bull Hunters - Los Muertos 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:0
+ 0 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c4951f53f3dcda1166839da0d3d0ee2274a84f71ced91ae203850c7c6a2f87ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Heimspiel gegen DC Triple 7
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Triple 7\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 19:00 
+ UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce01f1cc36ae89bb46a9c8584f05a4dfbe221686dd32efe67ae76a0a7976ee41@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - DC Bull Hunters\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04
+ .2027 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-
+ Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:daed8e64fa82de4812c8a77a283512b134c9bcb6b0b9dda363882935651f0b16@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Black Scorpions 4\nHeimspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.202
+ 6 18:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e4946fccc366f92a2d87e95904ab296e032dcd50836f8e10f337f1b1a3592d0f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - DC Bull Hunters\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.
+ 02.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, 
+ Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eb281798d911e51d34d90228ac1b6b957919be7c2ad714ad56e269ab773d4734@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Bull Hunters\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 
+ 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb1c2221407f9f3c6efdb5eaee8bcdfe2b599651b472932f7c5ac0b399ee917f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: DC Bull Hunters - Dartfreunde Eichenherz 2\nHeimspie
+ l\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12
+ .2026 19:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

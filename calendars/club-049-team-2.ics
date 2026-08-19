@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Dartfreunde Eichenherz 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:22be0fb2f708419fb1a28302702980fa273928b6c34a8833e8b8a1cb9f83df86@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T183000Z
+DTEND:20261125T213000Z
+SUMMARY:Heimspiel gegen DC Williams
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Williams\nHeimspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.202
+ 6 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
+ rzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2b55064f6087ad8731134fe2097fa1dcecb6999182b18f5ea345c1607f8c36f8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - Dartfreunde Eichenherz 2\nAus
+ wärtsspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTe
+ rmin: 14.01.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter 
+ Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:42e301c8c5c08681f41780ea2dfb830bb101e6d4307bbcd8351144c7e13b2d71@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T173000Z
+DTEND:20270512T203000Z
+SUMMARY:Heimspiel gegen DC Bull Hunters
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Bull Hunters\nHeimspie
+ l\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.0
+ 5.2027 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
+ , Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:631676ec5b3debe697d2baceaeca56931fd62700d298205057dd1ef0c5bfb1bf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Heimspiel gegen DC Dart Vaders
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Dart Vaders\nHeimspiel
+ \nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03
+ .2027 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6db7f19193b85c10e4a698ee1fdb662cd0ee98264474006a18039248a5e120af@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T183000Z
+DTEND:20270127T213000Z
+SUMMARY:Heimspiel gegen DC Triple 7
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Triple 7\nHeimspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.20
+ 27 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7a675496689ef9fafd8ef9ca1e0e6d1519d54d89909f2ccdfcc02fae9ea6b7b2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260909T173000Z
+DTEND:20260909T203000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Black Scorpions 4\nHei
+ mspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 
+ 09.09.2026 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
+  42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7c6e1f944d4ef6495384f17306219cdb8f4f880e149e1fb3c09b22c99d75782e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T173000Z
+DTEND:20270414T203000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC 180 Stein e.V. 2\nHeim
+ spiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 
+ 14.04.2027 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
+  42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7d1e9a06e6c181609b2c9faca2410fd7ff9e16376e046df29caf6730fb826706@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - Dartfreunde Eichenherz 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTer
+ min: 20.03.2027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-
+ Friedrich-Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:890d2fb9e3c772675b40f32b964218dd2b05b724173acbed0275d74012571345@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - Dartfreunde Eichenherz 2\nAuswä
+ rtsspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermi
+ n: 12.02.2027 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\
+ , Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8a3124576d6b4ff26a75f94682a48f8b7bbeeab045c70f0ae451d8ac4a799dda@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T183000Z
+DTEND:20270224T213000Z
+SUMMARY:Heimspiel gegen Los Muertos 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - Los Muertos 2\nHeimspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.
+ 2027 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
+ Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8b0dcf581e1d7875901b54f101833e002b598017cfa627f9307d1a0fed6c8e65@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T170000Z
+DTEND:20261008T200000Z
+SUMMARY:Auswärtsspiel bei Los Muertos 2
+DESCRIPTION:Begegnung: Los Muertos 2 - Dartfreunde Eichenherz 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08
+ .10.2026 17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzh
+ eim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:935abf71cb21bffe33dec95cf9e9ab4a5b1240ac14956c2430316d0f573ffe1a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T183000Z
+DTEND:20261111T213000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - Dartfreunde Eichenherz 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTerm
+ in: 11.11.2026 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherst
+ r. 6\, Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9d10294ac91ec43ab46012995fde92bf8b3ee5ae2a1df3c642869ff13931d1dd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T173000Z
+DTEND:20260923T203000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Broken Darts 2\nHeimsp
+ iel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.
+ 09.2026 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42
+ \, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bbd6b2ab3ed94986ee067e1066f37141c7a18b3429fda46d9b354de40c81212f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T173000Z
+DTEND:20261021T203000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC X-Brötzingen 2\nHeims
+ piel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21
+ .10.2026 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 4
+ 2\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d0e76a2ab2d6945797132e86dfa110e8ee644af80f1d1d1bceab7b3822001645@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei DC Bull Hunters
+DESCRIPTION:Begegnung: DC Bull Hunters - Dartfreunde Eichenherz 2\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 
+ 11.12.2026 19:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchinge
+ n
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dba639109bde7ac9c99e47bb5e6e12208e8a7012d7413572c479e94798d67b53@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
+SUMMARY:Auswärtsspiel bei DC Dart Vaders
+DESCRIPTION:Begegnung: DC Dart Vaders - Dartfreunde Eichenherz 2\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 2
+ 8.10.2026 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 10
+ 5\, Straubenhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f4615d2f06b67514bbace7bddd93869cf77b4964b092f19cc7298f938d5c6367@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T170000Z
+DTEND:20260911T200000Z
+SUMMARY:Auswärtsspiel bei DC Triple 7
+DESCRIPTION:Begegnung: DC Triple 7 - Dartfreunde Eichenherz 2\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.0
+ 9.2026 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, 
+ Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ff5f7abbf1f369481aea0a7cf17fab6a76e9192401588cd20947ff5a9d39e1d5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T170000Z
+DTEND:20270428T200000Z
+SUMMARY:Auswärtsspiel bei DC Williams
+DESCRIPTION:Begegnung: DC Williams - Dartfreunde Eichenherz 2\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.
+ 04.2027 17:00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wild
+ bad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

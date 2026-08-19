@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Underground Fool´s 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:004984c780758bb4f6f85af4f8636136d38318f175321f5fd30571cce17a9255@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Crows
+DESCRIPTION:Begegnung: DC Crows - DC Underground Fool´s 3\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2
+ 026 19:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:08cef547ae78a42fe507f357b6a39a2cec1dbae33db6edd9b62043c97fcedd59@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Underground Fool´s 3\nAuswär
+ tsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin
+ : 14.05.2027 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\,
+  Simonswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0d7f36bfd9d91a64df79f427b9b64f69ddf0abf8a228481781972c4cd58d400c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T190000Z
+DTEND:20270225T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg
+DESCRIPTION:Begegnung: TDF Enzberg - DC Underground Fool´s 3\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.
+ 02.2027 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlac
+ ker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:11f3af096ca032afafeaae8beb810ebf686a062aee427374d4bca5c46b7a1f70@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T190000Z
+DTEND:20261208T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Crazy Flights\nHeimspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.1
+ 2.2026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherst
+ raße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:13a807ecacf43728dc40a7ae103f102ccc3610fbea3330001de2432ea6f38bea@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270315T190000Z
+DTEND:20270315T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - DC Underground Fool´s 3\nAus
+ wärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTe
+ rmin: 15.03.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.
+ \, Weberstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4cd14b90575e16a43bf93311d84dd7b554aec9bd9371064c3adc4792347a22f2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Auswärtsspiel bei DC SchömbergerEck
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Underground Fool´s 3\nAusw
+ ärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTer
+ min: 30.01.2027 19:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-St
+ raße 31\, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:507b8b7f3b65d7db0673046438072e9f2227f36c217b748f276e66a176a4f594@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T190000Z
+DTEND:20261110T220000Z
+SUMMARY:Heimspiel gegen DC Strikers 2
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Strikers 2\nHeimspiel\
+ nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2
+ 026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstra
+ ße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5cd07ec8e9c9d1700e5b5eb5ecbf41407a28d6451eba4ff8030c1e67e07e41cf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T173000Z
+DTEND:20270413T203000Z
+SUMMARY:Auswärtsspiel bei DC Strikers 2
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Underground Fool´s 3\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 1
+ 3.04.2027 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webe
+ rstraße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:64483ac4515d8d3007eb3dd78842d7a134022d9e266942b3bc62834983fe8755@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T170000Z
+DTEND:20260826T200000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Underground Fool´s 3\nA
+ uswärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nT
+ ermin: 26.08.2026 17:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstau
+ fenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:73bc46075245cede638c5f79327fb98d5a214b50b789312d61ed2a31c9c8f576@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Auswärtsspiel bei Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Underground Fool´s 3
+ \nAuswärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag
+ \nTermin: 26.09.2026 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Fr
+ iedrich-Str. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:78e8ee27ac15da26c9cfd29730be95fd412e311af04bd25408742dfb35b22a5d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T180000Z
+DTEND:20270427T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Enztaler Buben\nHeimsp
+ iel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27
+ .04.2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiher
+ straße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7e01fefe7fa4e036c6bb3de62a7fa99462c04b608dd46abf34b98a84375f99ba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Enztaler Buben - DC Underground Fool´s 3\nAuswä
+ rtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin
+ : 28.11.2026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Ba
+ d Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9f4c965ac2011d1beedaf6129ab195b59cc62761edf5b27d2aac75526849fe4e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T180000Z
+DTEND:20260908T210000Z
+SUMMARY:Heimspiel gegen DC SchömbergerEck
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC SchömbergerEck\nHeims
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08
+ .09.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiher
+ straße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b357dece8c047c015c2cff95de12c878ba9607315206c490f4d678a2fddf5f9b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T180000Z
+DTEND:20270330T210000Z
+SUMMARY:Heimspiel gegen DC Crows
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Crows\nHeimspiel\nLiga
+ : B-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.2027 
+ 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 3
+ 0\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bf5840ee0a0798710c2d98f946069c15701d941ffaab1aae1ee3355f4dbd3e64@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T180000Z
+DTEND:20261020T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Destroyers e.V. 2\nHei
+ mspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 
+ 20.10.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
+ erstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d440e98c2a99eee504f5e65b589ce643f9a287df643b24345c3e01474201d665@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T190000Z
+DTEND:20270112T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - Dartfreunde Eichenherz\nH
+ eimspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermi
+ n: 12.01.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, W
+ eiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f126a9c945f451162cb8bd8724a6cb5dc616d544f1f6243e6d5758e7bde61597@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T180000Z
+DTEND:20261006T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - TDF Enzberg\nHeimspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.202
+ 6 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße
+  30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f5127531ebf319c7971f392e9fe1aca2c0b2f9f427e970182fda5e4add5a4254@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T190000Z
+DTEND:20270209T220000Z
+SUMMARY:Heimspiel gegen Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - Heavy Weights Brötzingen
+ \nHeimspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTe
+ rmin: 09.02.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\
+ , Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

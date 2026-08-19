@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – TSV Grunbach Darts 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:254c38be27325cb9f57f797f62f2cbc5912d429a8c9d9e20f486c7620d3a6751@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - TSV Grunbach Darts 2\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.
+ 2026 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker
+ -Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2adb66b1675d43b25c8c60da29fda9a220e09a42fb9acf9eff3ab32cca751a7d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T183000Z
+DTEND:20270226T213000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Reloaded 2\nHeimspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027
+  18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2d7a5f6fa7a9d0fc1ed21e732de90aa0762575b8145c6f28cfa57f46caff24fa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T173000Z
+DTEND:20270416T203000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - Phantom Arrows\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.202
+ 7 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-
+ Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:37cbf7731c849b03ae1f64acfc69171a198ec3a537ae417c4d82965c0f483334@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - TSV Grunbach Darts 2\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 
+ 15.01.2027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, S
+ imonswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3b40996502961a34931a670a73ef660bc994b8cc92471b1cc2442a47fa69961a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T190000Z
+DTEND:20270316T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - TSV Grunbach Darts 2\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 1
+ 6.03.2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 3
+ 7\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:488db513ecfab91206dd2a7ac52b72a62567731cf8495d5a04df41e86dcb913f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T173000Z
+DTEND:20261023T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - the Metal Darts 5\nHeimspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2
+ 026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbran
+ d-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4e7234f7b2e6d54edab69005fc6b0857e42b404edda3322bdf522e5db9e5a983@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T173000Z
+DTEND:20260925T203000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - the flying Rocks\nHeimspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.20
+ 26 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand
+ -Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4f85a03c285c90dda3668f350fbcc781a041859ba5bfa9ca69c87bee76ffd14f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T183000Z
+DTEND:20270129T213000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Shamrock\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 1
+ 8:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gru
+ nbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:56b29f6f25a798c26b253b2cb269e63033443cc9d8715db1ef348b3da47453a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T173000Z
+DTEND:20270514T203000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - TDF Enzberg 2\nHeimspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027
+  17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5efb2cae67bded804cfb5dc9eee755175cef1d0752391d154aa39bebedf48a09@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T173000Z
+DTEND:20270402T203000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC 180 Stein e.V.\nHeimspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.
+ 2027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6329edc4c96d78b54f7e806e446757ee9d178788d05abe1eeef0a919844563c7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T173000Z
+DTEND:20260828T203000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Crazy Flights 3\nHeimspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.
+ 2026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8d72068fd4f9666d7159f7208142c8a82a1f9f737ab35c9afca5f27a99977802@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - TSV Grunbach Darts 2\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30
+ .10.2026 19:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\,
+  Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:90a5c4b599653b32b4d23faf3572fab2bd014e9cdcb9aa0207bcde1d329bc628@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - TSV Grunbach Darts 2\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11
+ .2026 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c81c5aa9ae47a2a7533cf0836b9f979dbf7acf4886b079815b81d5d73bd96b5f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - TSV Grunbach Darts 2\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.
+ 2026 18:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, E
+ ppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c872572386ba67a5063269ddab8b4763ebeb238a28c293b8efc68bb04068e6a1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - TSV Grunbach Darts 2\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 
+ 27.04.2027 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Web
+ erstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e747424b54c87272e24b7ad36ddb20bbf2f0dd5970a82a2ceee1c9e44707d67a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - TSV Grunbach Darts 2\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12
+ .02.2027 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr.
+  28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f0516d589c272117af662f6d03e6f463b45b1aa726a6d7f0be9cfe3f3928fc96@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260901T180000Z
+DTEND:20260901T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - TSV Grunbach Darts 2\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 01.09.20
+ 26 18:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Str
+ aubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ff7d285fdace038aff844d6ee3a6f2780cc5bce87a4a22d95d62198185559b30@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T183000Z
+DTEND:20261127T213000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Destroyers e.V.\nHeimspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.
+ 2026 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

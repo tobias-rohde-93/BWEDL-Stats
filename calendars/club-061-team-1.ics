@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Oiloch Schömberg
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:01c1a9da89732249ff13fd610552716b76f42df115c77fc91da49e7c8a488978@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 4
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - the Metal Darts 4\nHeimspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.
+ 2027 19:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Sc
+ hömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:15013046769edb7e00237cdfb33c7320cbdfebbc688b8350e6ad69ecf7965b20@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Oiloch Schömberg\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
+ 20.03.2027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, S
+ imonswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:29195176588eee0e364681f6342d88c9f0d4d5fdb769bdff53346678cdfa295c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 4
+DESCRIPTION:Begegnung: the Metal Darts 4 - DC Oiloch Schömberg\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08
+ .10.2026 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37
+ \, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2dd93dec4df27ec70674a456511fc6d4b988bbd8012c86b2d981b6c2335adc42@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen The Walking Darts
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - The Walking Darts\nHeimspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2
+ 026 19:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Sch
+ ömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:31fc8aa40f28181659d6435e03b2b627adc05e8cee51273710332d84bbaeb3cf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Destroyers e.V. 3\nHeimspi
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.
+ 05.2027 18:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\,
+  Schömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3895f1f2a53fcd5b970e131e2bea5b2480860cda35a1caa491182a1927ddc8a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Heimspiel gegen Glabbicher Bulls
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - Glabbicher Bulls\nHeimspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2
+ 027 19:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Sch
+ ömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:59d3f1fc6aa4d3e3d74ea545f42979b29b0759b453a294348c9f0de2fa331d31@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Oiloch Schömberg\nAuswär
+ tsspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin:
+  28.11.2026 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, We
+ berstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f8d2db9dff74bd97973bd332a4f776b6076230420828ff6050b60933d954efa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T193000Z
+DTEND:20261031T223000Z
+SUMMARY:Auswärtsspiel bei DC Cim Bom
+DESCRIPTION:Begegnung: DC Cim Bom - DC Oiloch Schömberg\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.202
+ 6 19:30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforz
+ heim
+LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:644dc968d619753abeb2fb9ac9039c3b7000c1b32bc5e8a1451ffac6a4b7b977@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Bull's Eye Arnbach\nHeimsp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.
+ 09.2026 18:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\,
+  Schömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:810bfebc693ac4f65657da686b8533f6a265bb4450ee659aaf0948789d16790a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Crazy Flights 2\nHeimspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.
+ 2026 18:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Sc
+ hömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8138f77dd57a2d0e60fb51b0f7b7c4fc090d7e35871d5e12743b928731c00cd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Heimspiel gegen DC Knickebocker
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Knickebocker\nHeimspiel\nL
+ iga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.202
+ 6 19:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Schö
+ mberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a3272d3b9917df558775ec00bc5241be4c4380708d839262898579699ab73ef8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Heimspiel gegen DC Oststadt
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Oststadt\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2026 18
+ :00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Schömber
+ g
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a9567577bafaa6701fa2045f8d50a4712563302c154a296a1c184aaafb9dd3f7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T173000Z
+DTEND:20270417T203000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker
+DESCRIPTION:Begegnung: DC Knickebocker - DC Oiloch Schömberg\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.
+ 04.2027 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Fri
+ edrich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ae1ad5ba74836b645629d758489773017b726579b699d327b1fbeeee8f892c82@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt
+DESCRIPTION:Begegnung: DC Oststadt - DC Oiloch Schömberg\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2
+ 027 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 3
+ 0\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c35277fb0c07d90a2ed262d2d8ad50e5eafccc950369b6a16eb37f88f0395d1d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T173000Z
+DTEND:20270213T203000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - DC Oiloch Schömberg\nAuswä
+ rtsspiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermi
+ n: 13.02.2027 17:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\
+ , Neuenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:da983d1e5ff94c1959524664c1cb7c1c3adc737494d2c2cf447360084eb14ac2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Auswärtsspiel bei Glabbicher Bulls
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Oiloch Schömberg\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.
+ 08.2026 18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\,
+  Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f73a87cd76d003bee87f04f911e455482a3d990a8da93c8b9c6835d8ae18ea01@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Heimspiel gegen DC Cim Bom
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Cim Bom\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 18
+ :00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Schömber
+ g
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb54508e396ac967ecf8115919f65bd389e260096bc4c29db4defb33474dbf89@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T180000Z
+DTEND:20270512T210000Z
+SUMMARY:Auswärtsspiel bei The Walking Darts
+DESCRIPTION:Begegnung: The Walking Darts - DC Oiloch Schömberg\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 1
+ 2.05.2027 18:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\
+ , Bad Wildbad
+LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

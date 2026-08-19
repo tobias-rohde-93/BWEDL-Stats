@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – the Metal Darts 5
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:12b4a479b8f435aee763bb82d252f03bb71dd7b9c7122de65f20188cdf80b381@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T190000Z
+DTEND:20261027T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Destroyers e.V.\nHeimspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.202
+ 6 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:25c2d913e0457cadf4b6beaf5229285d006979d733a9f81439ac308f78adccef@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T190000Z
+DTEND:20270209T220000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: the Metal Darts 5 - Phantom Arrows\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.2027 1
+ 9:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:27e13b8cc45e0ede47bdf0172d23e1ccbb08016933e30d126f4e7fa04511cbf7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T180000Z
+DTEND:20260825T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: the Metal Darts 5 - the flying Rocks\nHeimspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026 
+ 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:31d17fd922ad407cc6e0a2823d22064c74ffcf3d3b4879dbd70b15029fe3b6e3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T190000Z
+DTEND:20261124T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Crazy Flights 3\nHeimspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.202
+ 6 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:43e885a1d6781844dd5c45564e2f24b6b042e592824f70b0df18617255e8dcf9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T180000Z
+DTEND:20270413T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: the Metal Darts 5 - TDF Enzberg 2\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.2027 18
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:46cd3a468d57ae4c5863a02e10ab6dd09c95ee2ae83f9d91be6d50cf666513fc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - the Metal Darts 5\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.
+ 04.2027 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simo
+ nswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:575720cd4e14d1743e647a43643996014ba29b43a88d81351f3004fd7b0055e3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T173000Z
+DTEND:20261023T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - the Metal Darts 5\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23
+ .10.2026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engel
+ sbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:69debd88d4c8308804613ba6aa1643ccc68d3da8f218e604bbdffcd28d2a8771@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T190000Z
+DTEND:20270316T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 5 - TSV Grunbach Darts 2\nHeimspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.
+ 2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:86e360548c4556be18f94b0ed3889b1a872624bf3a62183aa32fb656db62c190@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - the Metal Darts 5\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.202
+ 6 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-En
+ zberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8781dac42d87295e1d84698ab829f4dbc5b2c06740903394adab1dfd6cb4d070@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - the Metal Darts 5\nAuswärtsspiel\nLig
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 
+ 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straub
+ enhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8af5c733e238902c83f7b02ecfd0887fa7e3c7f7594a3bc5c90c74bc20fed3d8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T180000Z
+DTEND:20270511T210000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Shamrock\nHeimspiel\nLiga: B-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 18:0
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a4cd8dd0b2143b4a46482ce83a30dd5afac15cae72839a0e8363ff664bd8fd76@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T180000Z
+DTEND:20261006T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC 180 Stein e.V.\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026
+  18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce04ad92ecb824312d96cd9641ed83ae9fbc61989aa52ed396ccdb59ff5bfa78@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - the Metal Darts 5\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01
+ .2027 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28
+ \, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cf38ca3703d50086fe160aece73455d0719fb6c3c1ca4ab0abcb5b9633ee58fd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - the Metal Darts 5\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.202
+ 6 18:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppi
+ ngen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:db07cb37af1ed13be1cba140c00f55ab20cfff1044b36a00240a7c3ad5a274a9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T173000Z
+DTEND:20270330T203000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - the Metal Darts 5\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.
+ 03.2027 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webers
+ tr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eeb34eac2f4c26740f1f298ac3fcbeea1f3745226d4bdbcbe3401a89a7e29ba4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - the Metal Darts 5\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.0
+ 2.2027 19:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, K
+ önigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f26fb3af3b4a8c0febd81ed4d39b3d201dce4ac77928f23dc7b2460f364d686a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T190000Z
+DTEND:20270126T220000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Reloaded 2\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.01.2027 19
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fe98ab4c5f29f0e6b4dfb6f44ffd2081fc7a7503da5b53c698a06d2d8c0252a4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T170000Z
+DTEND:20260925T200000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - the Metal Darts 5\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.20
+ 26 17:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

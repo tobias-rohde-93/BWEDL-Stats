@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Glabbicher Bulls
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0c1b5c69aa47a8fbdf2c9c8076c954815daa41df67e8f97c070dcd7784f382f5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T190000Z
+DTEND:20270224T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 2
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Crazy Flights 2\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.202
+ 7 19:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiern
+ sheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0edcceda52d8f5e0c1f5b039bcfd5d439e02181d714aa444e52be477188f3034@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T193000Z
+DTEND:20270320T223000Z
+SUMMARY:Auswärtsspiel bei DC Cim Bom
+DESCRIPTION:Begegnung: DC Cim Bom - Glabbicher Bulls\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 1
+ 9:30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzhei
+ m
+LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:18bf5fb178d4141f073166658d2e06c718dc0bfe32b75ef20dbf8ca5efc25b0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Heimspiel gegen DC Oiloch Schömberg
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Oiloch Schömberg\nHeimspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.20
+ 26 18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wier
+ nsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:34ea3ba54b5f0681b32e2412787e7526960343625cded4a4f66ebfac7b98e200@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
+DESCRIPTION:Begegnung: DC Crazy Flights 2 - Glabbicher Bulls\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10
+ .2026 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simons
+ wiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:35090df96d2489c92bfb175e76425273cdababee78df32a670f5d21940a746b1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T190000Z
+DTEND:20261125T220000Z
+SUMMARY:Auswärtsspiel bei The Walking Darts
+DESCRIPTION:Begegnung: The Walking Darts - Glabbicher Bulls\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.
+ 2026 19:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\, Bad
+  Wildbad
+LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:417033299a0374508b66f17b735420d34ec0e341d25e1d101c4f3ad0d2b0cbd8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Heimspiel gegen DC Knickebocker
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Knickebocker\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 1
+ 8:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernshe
+ im
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4247bcb25bf72b71fe31a83f47f7edb3b1805188b5850ca6b11bd7672338b1cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T180000Z
+DTEND:20270428T210000Z
+SUMMARY:Heimspiel gegen The Walking Darts
+DESCRIPTION:Begegnung: Glabbicher Bulls - The Walking Darts\nHeimspiel\nLig
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2027
+  18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wierns
+ heim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:460bd7e6417fe9db4ba1a68d9be4f589cb707a790b56657560b9ded819ff65fd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T163000Z
+DTEND:20260912T193000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - Glabbicher Bulls\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12
+ .09.2026 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neu
+ enbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:48c6f2d63a4ff0cc40be01dfed1c714c54ebc53be640011902892c46f017e074@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T180000Z
+DTEND:20261021T210000Z
+SUMMARY:Heimspiel gegen DC Cim Bom
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Cim Bom\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2026 18:00 U
+ TC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:49c64fb7c43d102f8bf286de6d1cece853b1ed0c6e2fab0d45b8f36a261a481d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt
+DESCRIPTION:Begegnung: DC Oststadt - Glabbicher Bulls\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 
+ 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
+ Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:87c03964034837e2d4684d22b5bdba85adc7a256edcecd013bead6bb97529611@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 4
+DESCRIPTION:Begegnung: Glabbicher Bulls - the Metal Darts 4\nHeimspiel\nLig
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 
+ 18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsh
+ eim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:98c033d091c34599f4ad5e4b31f5ad5420762dc2838e59ca04855afbeddf3cdd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T190000Z
+DTEND:20261209T220000Z
+SUMMARY:Heimspiel gegen DC Oststadt
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Oststadt\nHeimspiel\nLiga: B-K
+ lasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 19:00 
+ UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a5da466bdecf2f3343d25632de1697663957e240629a22fb372a35f80f0fd19b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 4
+DESCRIPTION:Begegnung: the Metal Darts 4 - Glabbicher Bulls\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02
+ .2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bbbcc6e197898c8693434380b64aee20da44c79c27820ce1b7183424086aa3fa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T183000Z
+DTEND:20261031T213000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker
+DESCRIPTION:Begegnung: DC Knickebocker - Glabbicher Bulls\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.20
+ 26 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedric
+ h-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bea2fffab0e13610d814a9adad5cf3e4b6986bf608802685dad73e636546db4f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - Glabbicher Bulls\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17
+ .04.2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weber
+ str. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bea4a42e4bc8fcb17593cc942c33671f37d8bb383958579be810bf49cbd5a290@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Auswärtsspiel bei DC Oiloch Schömberg
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - Glabbicher Bulls\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16
+ .01.2027 19:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\
+ , Schömberg
+LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d235c373ca98d4897e874a911d4ec7a5b02093e035e210c38c3f059d456a5aa1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Bull's Eye Arnbach\nHeimspiel\
+ nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.
+ 2027 19:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wi
+ ernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f43bd25fb246645be164b3cf71a5ff3deee34fda04f7b091988f1b247c62a4b0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T190000Z
+DTEND:20261111T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 3
+DESCRIPTION:Begegnung: Glabbicher Bulls - DC Destroyers e.V. 3\nHeimspiel\n
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.11.20
+ 26 19:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wier
+ nsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

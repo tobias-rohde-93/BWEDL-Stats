@@ -1,0 +1,580 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Irish 26 e.V.
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:048df8322f633b1dfcc953234b670bfea989f5c43e4bd5b18bd3c9eddadeea27@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Black Scorpions 2 - DC Irish 26 e.V.\nAuswärtssp
+ iel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15
+ .04.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\,
+  Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:11e4a29c93b1d198ff8a9d09befa9e72cac17ba6fcc76e5b8afd426b15c8db1a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261120T180000Z
+DTEND:20261120T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Irish 26 e.V.\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 18:00 
+ UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1fc8c38793750898870c30e41084b52fa185e19b4360e226459627f7b8bd11b3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Triple X
+DESCRIPTION:Begegnung: DC Triple X - DC Irish 26 e.V.\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 1
+ 9:00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:23278069e4db6efee91da97466033b6388ed16da91458aec2f808565ac85ff81@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T183000Z
+DTEND:20270326T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Irish 26 e.V.\nAuswärtsspie
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.202
+ 7 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-
+ Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:31ef555e1133dd7a355db839792603bde425b44cfecd9fa4960921d2cab04fc6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T190000Z
+DTEND:20270224T220000Z
+SUMMARY:Heimspiel gegen Alla Häeeehr
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - Alla Häeeehr\nHeimspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 19:
+ 00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:35a16cc80bc669153f101bf9d1f3e389ee9e7d7d65e02446c01597e8ed74b84c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270206T190000Z
+DTEND:20270206T220000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC X-Brötzingen\nHeimspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 19:00
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38cbd9065f4dd4f94f0888a574748fa23edc36898e9316c069fc1695420b581b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig
+DESCRIPTION:Begegnung: DC Ungültig - DC Irish 26 e.V.\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027
+  19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3d1fab4e44a8d966ef30be70bb439376cb0573ff0e1c9b655f2a314fafba2294@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T183000Z
+DTEND:20261008T213000Z
+SUMMARY:Auswärtsspiel bei Alla Häeeehr
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Irish 26 e.V.\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026
+  18:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3e26a604a91fa10491ac3dcf540f6d6e6a704d3d3b999665acc81e50135c0ae2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T190000Z
+DTEND:20261218T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC Irish 26 e.V.\nAuswärtsspiel\nLiga
+ : Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 19:00 
+ UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhard
+ t
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:443a3203e638ce6bed1e78d3048006997b0d35c64dbbf2b772ac7b16f008a947@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260902T170000Z
+DTEND:20260902T200000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Irish 26 e.V.\nAuswärtsspiel\
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 02.09.2026 1
+ 7:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 25
+ 9\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:60da7fdb5ed400dbda454a1c1afd9970c47c45eb75b5a86fa5f986cfd9d43123@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261205T190000Z
+DTEND:20261205T220000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - ESV DC 25\nHeimspiel\nLiga: Mix C
+ -Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 05.12.2026 19:00 UTC\nAu
+ stragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6310f28ca649ec2c47b78126d1db169576964514c2761d00f26815d526754bc7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270220T190000Z
+DTEND:20270220T220000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Duselbrüder\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 20.02.2027 19:00 
+ UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Köni
+ gsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:69fcd7479c8ee7de953e0f0b469df982c6128d0767b3650f996cefd32d9f3f64@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC DARTanions
+DESCRIPTION:Begegnung: DC DARTanions - DC Irish 26 e.V.\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.202
+ 7 19:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiern
+ sheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6e6e0ab9cdcbad6f088091efbfef8b7b0e378318be125a932e71fd2d1dc3dc3c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270410T180000Z
+DTEND:20270410T210000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - Los Muertos\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 10.04.2027 18:00 UTC\
+ nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Königsba
+ ch
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:700bb63d753a4c1d09cfb39406125bd7e34a50dba24b4d118d8749cbc9dc9da7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T173000Z
+DTEND:20270512T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Irish 26 e.V.\nAuswärtsspie
+ l\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.0
+ 5.2027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsb
+ rand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:90605ac06f685baf3ec8dedd89bedfc9203450da92028f1950221cbde12b892a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Underground Fool's 2 - DC Irish 26 e.V.\nAuswärt
+ sspiel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 
+ 26.11.2026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
+ erstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:92eca0ef78e887ea671fd42f67f77d11934a832fae6cb8ca9353357156ceaba7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270303T190000Z
+DTEND:20270303T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - DC Irish 26 e.V.\nAuswärts
+ spiel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 03.03
+ .2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstr
+ aße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9c5e06dd8ced12665335d7decbb620de8575689d20a69d4c78b7e20a9d110fe1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Texas Team 2\nHeimspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.2027 1
+ 9:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, 
+ Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9f5aea82a36e874fe1b9dcf4c7ad8dbd42aa1b3ee4bff6701f27c19cca21ebb0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T180000Z
+DTEND:20270423T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Irish 26 e.V.\nAuswärtsspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027 18:00 U
+ TC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforz
+ heim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a010598ee63c76a5205028b456089e6b1982669e43339b51b2630d2763466959@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T183000Z
+DTEND:20270114T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights
+DESCRIPTION:Begegnung: DC HighFlights - DC Irish 26 e.V.\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.20
+ 27 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a144f8ff63c234509e4a8cda159393fc3d45cd91b5fa1d85506fb0e0f3052908@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270122T183000Z
+DTEND:20270122T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Irish 26 e.V.\nAuswärtsspie
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.202
+ 7 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1
+ \, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a23b68c7f9f1453044cd611b1a96dd4b117aaa265c10548c7e3ac1f4daf4b679@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261107T190000Z
+DTEND:20261107T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - TSV Grunbach Darts\nHeimspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 07.11.2026 19:0
+ 0 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kö
+ nigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a5573401cbcca8864f9d2d8effc16d0de3f14e73cc217d1f8426ee26f1779c63@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Heimspiel gegen DC HighFlights
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC HighFlights\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18:
+ 00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b061a8ef95f4a233197ae3e5b7259fa69b784ac0f05cc9bb4ce0a93e5c5e88d3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260919T180000Z
+DTEND:20260919T210000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Irish 26 e.V.\nAuswärtsspiel\n
+ Liga: Mix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 19.09.2026 18
+ :00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b776dfe1885c68ab663106fa22ee43ab05be1b74a6574d1d523ffcbe1a07d420@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Heimspiel gegen DC Triple X
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Triple X\nHeimspiel\nLiga: A-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 18:00
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bbb6613a089bc765a0dc0062f684ebf1e7f7cc2326395f1def764982b2953a21@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260822T180000Z
+DTEND:20260822T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Irish 26 e.V. 2\nHeimspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 22.08.2026 18:0
+ 0 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kö
+ nigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c3c5199e13dd30b8242e6d5f5eaac45a763099394793d14773931d345cfa0488@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T190000Z
+DTEND:20261111T220000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Black Scorpions 2\nHeimspiel\n
+ Liga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.11.20
+ 26 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
+ 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c47e196bd16f0d5098460dd99000faed03ecc29b2bb39c84f7146660f1593fea@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T180000Z
+DTEND:20270428T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Underground Fool's 2\nHeimspie
+ l\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.0
+ 4.2027 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcke
+ rle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c9ab188eebf6dfa3ff6b57441f09ae92b1f6136efbe440d3caa76bfcf968207e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T183000Z
+DTEND:20261016T213000Z
+SUMMARY:Auswärtsspiel bei DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Irish 26 e.V.\nAuswärtsspi
+ el\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.202
+ 6 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce48b39cebeb961a7d4083a1c731144642602de0ea375c9d8944e260702e5cb1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T173000Z
+DTEND:20260908T203000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 2
+DESCRIPTION:Begegnung: DC Texas Team 2 - DC Irish 26 e.V.\nAuswärtsspiel\n
+ Liga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08.09.20
+ 26 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d60eca446c85977aa7b67c299ffb26fe1dcaafaa07b13b9a5b236fa03f1d1ed8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261003T180000Z
+DTEND:20261003T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Underground Fools 2\nHeimspiel
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 03.10.2026 
+ 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d66bf3244974de49f651c6181a1a41da1cfa77da2a8ef15bd4ef693ee6412754@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T180000Z
+DTEND:20261021T210000Z
+SUMMARY:Heimspiel gegen DC DARTanions
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC DARTanions\nHeimspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.2026 18:0
+ 0 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kö
+ nigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d8b9b5886067d1b19639a323397b10bb61f6d938d8c02fc55fb7cefecb9f06d3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270313T190000Z
+DTEND:20270313T220000Z
+SUMMARY:Heimspiel gegen DC Lightning Arrows
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Lightning Arrows\nHeimspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 13.03.2027 19
+ :00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+ önigsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:decf85919f42420ee6398cf154330db2afc43c28a77b54c0612f74006f5470b0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T190000Z
+DTEND:20261209T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - TSV Grunbach Darts\nHeimspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026
+  19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e24bd7367027a828a97fda22934cfd8d1468dbbbfeb9d60ef7d9999c7344139b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Heimspiel gegen DC Ungültig
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Ungültig\nHeimspiel\nLiga: A-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 18:00
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f7265574470f6763a1595c1e0be9f0b6e7f15e0cf9c20d060ef5a3ba307423b4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270508T180000Z
+DTEND:20270508T210000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Shamrock\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 08.05.2027 18:00 UTC\
+ nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Königsba
+ ch
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

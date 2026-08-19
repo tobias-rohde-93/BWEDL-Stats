@@ -1,0 +1,292 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Alla Häeeehr
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:249cfeebf14b48872e60a2b6c7701963914d979866cdac8e21fae092ed171d29@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Auswärtsspiel bei DC Triple X
+DESCRIPTION:Begegnung: DC Triple X - Alla Häeeehr\nAuswärtsspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:0
+ 0 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2733690d609448b5ef1716468f029c4d1eef125abbb5c7b2e9fc16fc5dfa0aed@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig
+DESCRIPTION:Begegnung: DC Ungültig - Alla Häeeehr\nAuswärtsspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:
+ 00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömbe
+ rg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2a48ca865840289b0a76b71cd03eeb17d62458c9d8b761a9fb0fe2f763c9d42c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T173000Z
+DTEND:20261022T203000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights
+DESCRIPTION:Begegnung: DC HighFlights - Alla Häeeehr\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.2026 1
+ 7:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:315b75323fd58e246ac6fbbf722062ade64dcc282fc77af6e20b8681dde4f070@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T190000Z
+DTEND:20270224T220000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - Alla Häeeehr\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.202
+ 7 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1
+ \, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:53a28b21d585292c41edf5c4da099ebd2130287360aaebefef83f2363b9b0bd8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T183000Z
+DTEND:20270415T213000Z
+SUMMARY:Heimspiel gegen DC Ungültig
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Ungültig\nHeimspiel\nLiga: A-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 18:30 U
+ TC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:634b6236108aad7b73b8f318e638e01b4d6f211029669df937eb3a31bc20a83f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T190000Z
+DTEND:20270128T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Black Scorpions 2 - Alla Häeeehr\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01
+ .2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:65478e2421f8f28e7b5307303f3c20307dce215aa2d0a20e8c2fe5595755cbd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270429T183000Z
+DTEND:20270429T213000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: Alla Häeeehr - TSV Grunbach Darts\nHeimspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2027 1
+ 8:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfor
+ zheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6ed453edc93659486d43e52853bb56e388be0a5e03f8c7b2e039bd1569f0f99d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T183000Z
+DTEND:20261125T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - Alla Häeeehr\nAuswärtsspiel\n
+ Liga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.20
+ 26 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand
+ -Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:70eedcf82e9aaa3ffc283ccfcea515d38cee600d4c39a3a1eb657bfefea7b7a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T183000Z
+DTEND:20260910T213000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 2
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Black Scorpions 2\nHeimspiel\nLig
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 
+ 18:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
+ rzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7728af6bba733e9237ce8d8f6e56720992c5a7e9523790dd58175386d7828570@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC DARTanions
+DESCRIPTION:Begegnung: DC DARTanions - Alla Häeeehr\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 1
+ 8:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernshe
+ im
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:870a9b802cfce480d55e39f99ae982cea2b322e7e8af90173bc867cd483eb950@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T193000Z
+DTEND:20270211T223000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's 2
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Underground Fool's 2\nHeimspiel\n
+ Liga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2
+ 027 19:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\,
+  Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8715e93eaf8cc2b11c82a528ea216bb0c49bb069dbc0fab5a4f7a5112f3f0ac4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T173000Z
+DTEND:20270330T203000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 2
+DESCRIPTION:Begegnung: DC Texas Team 2 - Alla Häeeehr\nAuswärtsspiel\nLig
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.2027
+  17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:87cbe3a5859fcc484b3aa93d7aed08e971990150b97f7439eaa7c79a9e768d46@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261210T193000Z
+DTEND:20261210T223000Z
+SUMMARY:Heimspiel gegen DC DARTanions
+DESCRIPTION:Begegnung: Alla Häeeehr - DC DARTanions\nHeimspiel\nLiga: A-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 10.12.2026 19:30 U
+ TC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9fd5d055c81645676702d75db8792bde84e415862143f2a5dd2d62da707acafb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T193000Z
+DTEND:20261029T223000Z
+SUMMARY:Heimspiel gegen DC Texas Team 2
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Texas Team 2\nHeimspiel\nLiga: A-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 19:30
+  UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzhei
+ m
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc13de3de4226f5892b50349be05634e9fe0d5b517de3a6f9af09aee611f5e72@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T193000Z
+DTEND:20270318T223000Z
+SUMMARY:Heimspiel gegen DC HighFlights
+DESCRIPTION:Begegnung: Alla Häeeehr - DC HighFlights\nHeimspiel\nLiga: A-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 19:30
+  UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzhei
+ m
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3ad11ef8af0a371d27acae3ac183c3262a1377dc0a304a1672b3129f5c43a8b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261008T183000Z
+DTEND:20261008T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Irish 26 e.V.\nHeimspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 18:3
+ 0 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzhe
+ im
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d691e6eb47cda933b3f9897be72c36d0d6848f281429b46cc1aa33c55b1bea69@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T180000Z
+DTEND:20260924T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Underground Fool's 2 - Alla Häeeehr\nAuswärtssp
+ iel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.
+ 09.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weihers
+ traße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f0d74c44fec5c5163fe626661f03cf7437224fd3b14c4ff34cf924e340c0d634@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T193000Z
+DTEND:20270114T223000Z
+SUMMARY:Heimspiel gegen DC Triple X
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Triple X\nHeimspiel\nLiga: A-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19:30 UT
+ C\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

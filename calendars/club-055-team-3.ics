@@ -1,0 +1,289 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Enztaler Buben 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0d4bac17f6cf13b4ed71b7ecceda896f9be3d5a4352318e41e19a587f4063ab1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T180000Z
+DTEND:20261128T210000Z
+SUMMARY:Auswärtsspiel bei DC Drei Daneben
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Enztaler Buben 3\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11
+ .2026 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, P
+ forzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:23270f53c47865e20015649bb9ba64dbe67a6d4aa94d60ebcf23b4f27db8191f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - DC Enztaler Buben 3\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.20
+ 26 18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz
+ \, Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:357c0a2941df8cff84f5f637db95141f88ced59b990f3b1f0baabeb667f21eaa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC HighFlights 2\nHeimspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.202
+ 6 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3734fabf5f2c099d385cb874c050abdc00bf49b13a0f45e14793f5cf3cd4d807@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T180000Z
+DTEND:20260825T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - DC Enztaler Buben 3\nAuswä
+ rtsspiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin
+ : 25.08.2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, We
+ iherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38581a8332234d4ffd9fc86582c7b02daef446025c46f1f2c71396ede94b11e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen DC Drei Daneben
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Drei Daneben\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.202
+ 7 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:40f8eacf566df6f7b8197f9deaac4e5802e34c5e7a115d90b9703f9032c4af2d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T173000Z
+DTEND:20270414T203000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Enztaler Buben 3\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.
+ 04.2027 17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:580ec0c919a86dcf23dec347ff06f77b46c1d4653997bb77472b18eda5940a08@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Black Scorpions 5\nHeimspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12
+ .2026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildb
+ ad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:775d841645b513539e4922042ae5d059636b53dcdf5db1b8a68325558dffc08a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Underground Fools 4\nHeimsp
+ iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16
+ .01.2027 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wi
+ ldbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7b10e00d2fa1a1eb47b87e8066799e2bd6efc59dd01b403c99225fb5f067c132@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T180000Z
+DTEND:20270329T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Enztaler Buben 3\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.
+ 03.2027 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\
+ , Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7ed6f3a85a8e5d05be35f7a3fa96dffe538c52808f6e8d0ad2aca143c24eb497@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Heimspiel gegen DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Knickebocker 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.20
+ 26 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:88de24a95d7e39c3acfc3003bdae5d18774e146c0d4a9378aa5c413d6e483340@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T180000Z
+DTEND:20270512T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Enztaler Buben 3\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin:
+  12.05.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 
+ 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:92d4d4acb132f7908c41e70456535b9e934843c3571b2cca2ede73eb38559adb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T180000Z
+DTEND:20270125T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Enztaler Buben 3\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 2
+ 5.01.2027 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendä
+ ckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a826d241663b81eff94b859a81967d5842ac4a480f1a3b08b4c26107759a2967@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - ESV DC 25\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19:0
+ 0 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b299a3dde37ce196d466e62c4ef8f9756a16c4e431f2612c387425f0c7968c6e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T183000Z
+DTEND:20270227T213000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Enztaler Buben 3\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27
+ .02.2027 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Fr
+ iedrich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cf1f4bd37802ae5dc9500e8a6f25312ced03368d453664b20e246cb19915d31c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Conweiler\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 1
+ 9:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cfb873eae6762c5ff3db32ca915c0d5179a439b5664c9478d8a449a893e0090d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Irish 26 e.V. 4\nHeimspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2
+ 026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e66c55901b59c198106db210c980bdd378e3f402e0c3a6cbd02a6b2cf3289574@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen Phantom Arrows 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - Phantom Arrows 2\nHeimspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.202
+ 6 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f053cf12a14851a591360fc22b3bc8f781d6ae6e22074c10c4387f40cd6e98af@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Enztaler Buben 3\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 
+ 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\
+ , Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

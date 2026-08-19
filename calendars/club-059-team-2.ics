@@ -1,0 +1,294 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Phantom Arrows 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:04ec291d1e248196fe5bbf641556236f0aa58ec1febaf01b8b6385249be80f80@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T180000Z
+DTEND:20261019T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Underground Fools 4\nHeimspiel
+ \nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.
+ 2026 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:058a9d93505f854c59b7121c9c35afd822e972b40b5d6014e0d4fb03e92bf55a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - Phantom Arrows 2\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:
+ 00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, P
+ forzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3dc2ea4d3e233b36c49260abcd647d4b35bf8272576db2f127ddacc39ddf279d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T190000Z
+DTEND:20270316T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - Phantom Arrows 2\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
+ 16.03.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
+ erstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:40c35702d965e0289a7968acab536957f1c94c4ad9f2b6de1a185b4dd9abfbf9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T173000Z
+DTEND:20260912T203000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - Phantom Arrows 2\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.
+ 2026 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedr
+ ich-Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4341c0b335785130a82bf77528c1859e041a8c68dee4462786596c9ceef6cf18@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T190000Z
+DTEND:20270125T220000Z
+SUMMARY:Heimspiel gegen DC Knickebocker 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Knickebocker 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.2027
+  19:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:50b3663b13f1eebe12d01749696643e33fb8e72145490060cd5979ae7018c158@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T180000Z
+DTEND:20270329T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 3
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Enztaler Buben 3\nHeimspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.03.20
+ 27 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5367a1452289d48d7d0584a8099c7edd196cad580016a1c2e54361ed2725c277@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T180000Z
+DTEND:20270510T210000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: Phantom Arrows 2 - ESV DC 25\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 18:00 U
+ TC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5fc7cf83dedb14940afa62ad735ce7322910b8a3e398b72d0d430cf491f2d618@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T173000Z
+DTEND:20270428T203000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - Phantom Arrows 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.
+ 2027 17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:62a94a18498494f582d5891bcc465c02f60bd69ad5002b77b9eac3befb5dd5a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260921T180000Z
+DTEND:20260921T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 5
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Black Scorpions 5\nHeimspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 21.09.20
+ 26 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8bba7fd60228b44e8dc0f7fb042101de2e8bf132dcb241ea6dbbd7a9ac643521@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - Phantom Arrows 2\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.1
+ 0.2026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wild
+ bad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:936a50e98f541e981e6c85b9737a181a588cc6e3e2468b4dc68cf08eb23443a3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T180000Z
+DTEND:20270116T210000Z
+SUMMARY:Auswärtsspiel bei DC Drei Daneben
+DESCRIPTION:Begegnung: DC Drei Daneben - Phantom Arrows 2\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2
+ 027 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pfo
+ rzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:af2d6fe50e49e782b7b315b4b3be4aa9f552f732e9db6530f4a91d44daf1fd28@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T190000Z
+DTEND:20261123T220000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC HighFlights 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 1
+ 9:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8cd724138736466add58fa3b6570c6855472c04d7f37e4ebc621d2ecbe0a48e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T170000Z
+DTEND:20270412T200000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - Phantom Arrows 2\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.0
+ 4.2027 17:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcke
+ rle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bceb3dfe571704ea3eb053669b4a430e2de09b181d9f1232846a05c7d0f8d3ba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261109T190000Z
+DTEND:20261109T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Irish 26 e.V. 4\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026
+  19:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cd557dee973a2474c870e4d0c820c3ce31e41898f81a2c8f05c0a0e9e4c6747b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260824T180000Z
+DTEND:20260824T210000Z
+SUMMARY:Heimspiel gegen DC Drei Daneben
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Drei Daneben\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.2026 18
+ :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d6b472f39eb01872eeb45f5a2a2c0be8dbb82c904576e55082957d574944914e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270210T190000Z
+DTEND:20270210T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - Phantom Arrows 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 10
+ .02.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\,
+  Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e899f7c6d8b35995fb5ebf5aeed150c183ccb37a1d3783fa1327071343acf838@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - Phantom Arrows 2\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 
+ 18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, 
+ Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f9c8b1e68758dd5d362ea36cd1a46a19f71af7968e7df1c5b02fa92faaee5793@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T190000Z
+DTEND:20270222T220000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Conweiler\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02.2027 19:0
+ 0 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

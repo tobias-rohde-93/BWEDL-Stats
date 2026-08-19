@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Bull's Eye Arnbach 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0204bd7468ef476f25db5a7f7d56a56ec5e5d727648bcd51d96dabc7e0845d00@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260922T183000Z
+DTEND:20260922T213000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - Los Muertos\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 22.09.2026
+  18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg 
+ - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:04c916113fc59918678a4cc873df0a4492bc52093c6b98dd381da6c9a6f5a454@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T183000Z
+DTEND:20270112T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - DC Bull's Eye Arnbach 2\nAuswä
+ rtsspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermi
+ n: 12.01.2027 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allme
+ ndäckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2f7c7daec0b97eb5ccf9b2efcd51e876c71c7c4c363fd4a499b623e5c5749ab4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Bull's Eye Arnbach 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17
+ .04.2027 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstra
+ sse 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3b9815a963c4b2553b06babe425731bbca4a7d8b422c371687e8df7c4c32b91d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T173000Z
+DTEND:20261009T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Bull's Eye Arnbach 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTerm
+ in: 09.10.2026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\,
+  Engelsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:40139f11d3ac1f1f6cf68d77f75af9ebf2f661f9e0e85d97db73cc8cff4e8338@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T193000Z
+DTEND:20270126T223000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Enztaler Buben 2\nHeims
+ piel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 2
+ 6.01.2027 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Ne
+ uenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4e8c9e372e49ee81b130e9c374d9382d706628287867b6f750d1c0cfc32b4c00@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - DC Bull's Eye Arnbach 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18
+ .03.2027 19:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\
+ nAdresse unvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:57b9f0465d53e597597a36ffc3476e4c1ff47d49805cb156a5d85f3be151a479@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T183000Z
+DTEND:20270511T213000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Höfle\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 
+ 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg -
+  Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:68d2649ba81714af26ac608e0291dc6588c5ba6b86a30e065ccda38b19392082@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T183000Z
+DTEND:20270330T213000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DSV Großglabbich 2\nHeims
+ piel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 3
+ 0.03.2027 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Ne
+ uenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6a5c616d7e0d5e2fe98057d502d43b4feaabce4c5908a896c407063e94c34774@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - DC Bull's Eye Arnbach 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2
+ 026 19:00 UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:757ea8e6f56578503c8204138a13e7f9ffcd935fc45c68ea903e7d3620fc2814@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T193000Z
+DTEND:20270223T223000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - TSV Grunbach Darts 4\nHeim
+ spiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 
+ 23.02.2027 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, N
+ euenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7e926a12c01c35a46d803202223c612f472797e189989963f6ccb36dcb7fcfa5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261026T183000Z
+DTEND:20261026T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - DC Bull's Eye Arnbach 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTerm
+ in: 26.10.2026 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritt
+ erweg 25\, Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:981e371b34ccaba2ce01219c625db0160f02ffa56d543ac625112567d0969c38@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260825T183000Z
+DTEND:20260825T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Irish 26 e.V. 3\nHeimsp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.
+ 08.2026 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neue
+ nbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9f94f5e91676c9cf45745028402e395d1424638693b92dd8ab4b4154277e67ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Bull's Eye Arnbach 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTerm
+ in: 12.09.2026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, 
+ Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d89a4baa0f3478e72b40e3ff46cd683b307d90ccbfa703e196d8cf53b65ffab8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T193000Z
+DTEND:20261124T223000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - the Enz Coast\nHeimspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.20
+ 26 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbür
+ g - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dd29b3355e65ca2b9ffb560adfc7206c0d8d72683bdc7a44137c0967e57684e0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T183000Z
+DTEND:20261020T213000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - United Ikaros\nHeimspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.20
+ 26 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbür
+ g - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dfadc53bbfab0fd1f51931eb553eda4ecf95b83716f228879c7da866339df00b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270429T180000Z
+DTEND:20270429T210000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - DC Bull's Eye Arnbach 2\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29
+ .04.2027 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedri
+ ch- Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e4c1e65d5912e33f2a620bef06e08f6877e9a4fc0dec74e2116b4459f1e747d6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T180000Z
+DTEND:20270209T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Bull's Eye Arnbach 2\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.0
+ 2.2027 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzhei
+ m
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eb8c3dd03410ab0fc483945916cecc091c2921f0288ecbb7de57a425627fa737@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T193000Z
+DTEND:20261110T223000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Oststadt 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.20
+ 26 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbür
+ g - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

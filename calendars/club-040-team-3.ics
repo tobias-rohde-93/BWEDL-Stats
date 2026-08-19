@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – the Metal Darts 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:008b92391be718d8cd0fb2d64480747facb6064181d452f3609b39f8fe866993@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T173000Z
+DTEND:20270415T203000Z
+SUMMARY:Heimspiel gegen DC Broken Darts
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Broken Darts\nHeimspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 
+ 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0ba019641b56052f3143a3546dfbfa709500e0c864d5b821338befcc5cb76518@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:Auswärtsspiel bei DC Mephisto's
+DESCRIPTION:Begegnung: DC Mephisto's - the Metal Darts 3\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.202
+ 6 18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 
+ 92\, Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1a039f5b2f3176699f6802858f6228d3eaea71710c99e172ff4630107508a2e5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T183000Z
+DTEND:20270128T213000Z
+SUMMARY:Heimspiel gegen Odins Knechte
+DESCRIPTION:Begegnung: the Metal Darts 3 - Odins Knechte\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01.2027 18
+ :30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2197a470c325aed8571da087c52084c6670483483fc0d6448555304a4a2451b0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T173000Z
+DTEND:20261022T203000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Duselbrüder\nHeimspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.2026 1
+ 7:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:28cf6c32f351dffd9bb9420c5f93adcc0d07942a28fdb87ae605dd0dc90db9fe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T183000Z
+DTEND:20261126T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Irish 26 e.V. 2\nHeimspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.202
+ 6 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2910196bd0ed8fd76b2f2db4ab743007f8d820aee6dc108506aadde4eedeeed4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T173000Z
+DTEND:20260924T203000Z
+SUMMARY:Heimspiel gegen DC Texas Team 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Texas Team 3\nHeimspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2026 1
+ 7:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3077a004128509c2e66e3b0976d8ecab686860376d49613eb29b2c179d0be788@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T183000Z
+DTEND:20270225T213000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's e.V
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Underground Fool's e.V\nHeims
+ piel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 2
+ 5.02.2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 3
+ 7\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5c69592aec27afb312da0d794c981a5dddd8a3e2ec9cc0a16960f6494d30f7a4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - the Metal Darts 3\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.
+ 2027 19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:60d17331d9038295ac577ec382159dc8cff9ef367faca65ca71c9bcbee4cb9be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260914T173000Z
+DTEND:20260914T203000Z
+SUMMARY:Heimspiel gegen DC Ungültig 2
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Ungültig 2\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 14.09.2026 17
+ :30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:767634ebaec97cfbe9945e5f5e06503e83ff07e91e4ea0eebbe8c6a061a3908c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T173000Z
+DTEND:20260908T203000Z
+SUMMARY:Auswärtsspiel bei Odins Knechte
+DESCRIPTION:Begegnung: Odins Knechte - the Metal Darts 3\nAuswärtsspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08.09.202
+ 6 17:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wil
+ ferdingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a8d78aaa8ef9d40b57ca85bd45649853955f44a81d6f79be8dd4ef1b55584512@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270401T173000Z
+DTEND:20270401T203000Z
+SUMMARY:Heimspiel gegen DC Mephisto's
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Mephisto's\nHeimspiel\nLiga: 
+ A-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04.2027 17
+ :30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b6e7785edbb3705cdd0b6e2d94ade64f68a5b2b782b363681e23ab4b2f883a54@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts
+DESCRIPTION:Begegnung: DC Broken Darts - the Metal Darts 3\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2
+ 026 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wild
+ bad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c515491c5b51b556d285c2f073ae75e2e9a745cca64584f71724fcd7e7582d39@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261007T173000Z
+DTEND:20261007T203000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Underground Fool's e.V - the Metal Darts 3\nAusw
+ ärtsspiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTerm
+ in: 07.10.2026 17:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, 
+ Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cb4bcaf7c7bed751e4098a455ab57a4f3596fdb9d7708580b67d9c3f713b6469@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T190000Z
+DTEND:20270211T220000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - the Metal Darts 3\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.
+ 2027 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
+ Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e662dee15a0310cbe280636146c0dd8b8f346cf7c9f238da535706edb5a391f3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T173000Z
+DTEND:20270513T203000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Black Scorpions 3\nHeimspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.
+ 2027 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f18ae6f402799ceaf53e7b1a8c6ae6d4f6282bb4536f79fb1423d2d372df272c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T183000Z
+DTEND:20270112T213000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - the Metal Darts 3\nAuswärtsspiel\n
+ Liga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 12.01.2
+ 027 18:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, S
+ chömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f84ed23719ba9fcecf76dbfda393b5b23d3854a2a24d38f5c5eddb07c08c12e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - the Metal Darts 3\nAuswärtss
+ piel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11
+ .12.2026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\,
+  Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f88af674fafb0c6791714042b0af41c0177ace34149362038fd00f780a2f3ece@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270429T173000Z
+DTEND:20270429T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - the Metal Darts 3\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.
+ 04.2027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäck
+ erle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

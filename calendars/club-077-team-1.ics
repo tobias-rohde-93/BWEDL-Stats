@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – United Ikaros
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:066f6a4979e77f030da7a027b174db80585ae0133aba8838e9fa6f4ace70d345@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T190000Z
+DTEND:20270128T220000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: United Ikaros - the Enz Coast\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01.2027 19:00 
+ UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse unvoll
+ ständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:08fba12c157409ce3921bbfc5dcfb74301f4beb579c3654c987bcdbe828cb721@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: United Ikaros - DC Oststadt 2\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 19:00 U
+ TC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse unvolls
+ tändig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:16cb3d481c98a314acc0bcdabf355604931d35b6d0139c7cabfcafb85c301af7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - United Ikaros\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 19:00 
+ UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5bf925d7b6900317a3ec4858fbe5610c3995a216118c114c71590c6d1e4ca99a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: United Ikaros - DC Enztaler Buben 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 1
+ 9:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse u
+ nvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6ef0ba26ea41611748bb81ae1de3a53f1374d16cdc84c107c08ccaaac07652e3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T190000Z
+DTEND:20270225T220000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: United Ikaros - Los Muertos\nHeimspiel\nLiga: C-Klas
+ se Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2027 19:00 UT
+ C\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse unvollst
+ ändig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7870068da90618da3d757e96d4afe14de0237ea7f59e132cc5369a203a5a945c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270111T183000Z
+DTEND:20270111T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - United Ikaros\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 11.01.
+ 2027 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\,
+  Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8114c17a53d5a1d33cd3933513f33fee76982669520a863c1823119936d7fee4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T180000Z
+DTEND:20260924T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: United Ikaros - DC Irish 26 e.V. 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2026 18
+ :00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse un
+ vollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81a31122a460a39c984de62c38f9ded923d2915358cf6b35d8e85b4e71031b1e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: United Ikaros - DC Bull's Eye Arnbach 2\nHeimspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2
+ 027 19:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdre
+ sse unvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:834df4541a2a33ae674eb3d600eab6708b2872d2b53f90a04dba02a5372fca2a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T183000Z
+DTEND:20270209T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - United Ikaros\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.2
+ 027 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0665abf4995be7bbb9e1b7a9bfaadd83afaf9e1c3c8e9ba5d038f599f3553f7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T170000Z
+DTEND:20261006T200000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - United Ikaros\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026 17:0
+ 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a9110506f0e715ea4083a8ac78c2c57a529943ca73ff5400099f468b94860bb7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: United Ikaros - DC Höfle\nHeimspiel\nLiga: C-Klasse
+  Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027 18:00 UTC\
+ nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse unvollstä
+ ndig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b6b778e08a83793abff3804d00c46f9082160ee7afbbb1e552e725685fa70608@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - United Ikaros\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.
+ 2027 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildba
+ d
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ba257d6640b9a320b409471713d37b0dcc201d4204b9341beb625ca322a17679@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261020T183000Z
+DTEND:20261020T213000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - United Ikaros\nAuswärtssp
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.
+ 10.2026 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neue
+ nbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c02e1f6d29153bdffc2cb9ea7c030b0cef19d6aca5eb57f62c6710a71ee1d746@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260827T180000Z
+DTEND:20260827T210000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: United Ikaros - DSV Großglabbich 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 27.08.2026 1
+ 8:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse u
+ nvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cc92c5ae338473c0e5c63e5c4daf1055a42b801df4cf50a797b3d6f4f21650a1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - United Ikaros\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 1
+ 8:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, P
+ forzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d26e1b75fbfa4ac3aaeb1753aadb712967887de368bada5a151ae3558d781da9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T180000Z
+DTEND:20270513T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: United Ikaros - TSV Grunbach Darts 4\nHeimspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.2027
+  18:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdresse
+  unvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e97b76975407a964cda9851aff12a8a3cd57501ec6262760250d2f81b81787a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260910T180000Z
+DTEND:20260910T210000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - United Ikaros\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 18
+ :00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 25
+ 9\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f096cc016ce72e26b7899e1059b68d8b72481041a2158be13720303be5c97ad5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T183000Z
+DTEND:20261211T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - United Ikaros\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.
+ 2026 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

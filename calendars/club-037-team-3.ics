@@ -1,0 +1,297 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Crazy Flights 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:045fe274dfdac1370b44ed47b8806d1d3e496a512b450b77aaafd23da2bec3f8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - DC Crazy Flights 3\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.20
+ 26 18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-E
+ nzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:04fa35e61f0758358c521bfcf29e87d90ade6e89b8b9df82e3cecee3537ffd51@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - the Metal Darts 5\nHeimspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.20
+ 27 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswie
+ sen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0d57dea0d2ce3eb39e3fc6d34ccb8cdb6f0b911718301c45742d7d746cf816fb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T173000Z
+DTEND:20260828T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - DC Crazy Flights 3\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 2
+ 8.08.2026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Enge
+ lsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:210fa0ee515c444c622840179e2bc71a5c42ff25ed6e2eaaf059278d792b5a0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - TSV Grunbach Darts 2\nHeimspiel
+ \nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01
+ .2027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simons
+ wiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:26d634e961980442746ff1500dc765e7ab3a1f070a0ebaedc58d6388ab082d4a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Destroyers e.V.\nHeimspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.20
+ 26 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswie
+ sen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:27942d562f241a17ddd935851b03db169df878002d77bd117938b4067af59fd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Reloaded 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
+ :00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2
+ \, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3511b3335fdb2e7789a6856ffbfdaeb4488455898564fbca3f84d466456b9b3e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC 180 Stein e.V.\nHeimspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.202
+ 6 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswies
+ en 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5cd239ae58962bfbcd20df260ad601c809ba42a137960aca4817b4660d883b3d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC Crazy Flights 3\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.202
+ 7 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Stra
+ ubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5ddf595b529c52f71ee18543182fcb9afd2aaca7fb8aa809be0134f37bd3674b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270415T180000Z
+DTEND:20270415T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC Crazy Flights 3\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2
+ 027 18:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Ep
+ pingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:70aac7d3bd8773347a4b8941f4221b55f08807bd238be07de4e67dbcc8bf4087@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Crazy Flights 3\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10
+ .2026 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28
+ \, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7765f05a239803396effd29ab2994f0eaa0bec8eda758de8e7c051d3fc9514f3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - TDF Enzberg 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 1
+ 9:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 
+ 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8a56f53903d68651e5e38fc63a277fb56e5b66e04ff2fb93bebea9afd10677b6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - DC Crazy Flights 3\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.
+ 05.2027 18:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, 
+ Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:92d695afb16e4491339b0ac3e358e36c3276c2775d33f2ac216530ecfe2b3f65@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - the flying Rocks\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.202
+ 7 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswies
+ en 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8fb15fd29e262087e513effd138d39c68ce1cbb6ba40dab1292c5dfa6177cc4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Heimspiel gegen Phantom Arrows
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - Phantom Arrows\nHeimspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 1
+ 8:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 
+ 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c6db0f4096c0544f6de76b133f28b13625ac1419962c7312da93fa9cc33b9c50@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Shamrock\nHeimspiel\nLiga: B
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:0
+ 0 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\,
+  Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e131a0888bc7d4475f165000b244d566a1d0fcc500a5d75a355de5b9823a9935@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T183000Z
+DTEND:20270126T213000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - DC Crazy Flights 3\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26
+ .01.2027 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weber
+ str. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f3e1a99b308f5f35dd72da4de2e28b831c82a9b25ec1edacd32a4c01e27755e6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T190000Z
+DTEND:20261124T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - DC Crazy Flights 3\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.1
+ 1.2026 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fd34792dacdd3a6ba44d23fdca30a9b60ec200162d75544a032963137a164bd0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T180000Z
+DTEND:20270226T210000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows
+DESCRIPTION:Begegnung: Phantom Arrows - DC Crazy Flights 3\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.
+ 2027 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

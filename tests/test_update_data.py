@@ -10,8 +10,14 @@ from typing import Any
 import pytest
 
 import update_data
+from pipeline.calendar_feeds import build_calendar_publication, write_calendar_publication
 from pipeline.files import write_json_pair
-from pipeline.validation import REQUIRED_RANKING_CATEGORIES, parse_javascript_assignment
+from pipeline.validation import (
+    REQUIRED_RANKING_CATEGORIES,
+    Decision,
+    ValidationResult,
+    parse_javascript_assignment,
+)
 
 
 REGULAR_LEAGUES = (
@@ -133,6 +139,19 @@ NOW = datetime(2026, 8, 1, 15, 30, tzinfo=UTC)
 
 def snapshot(root: Path) -> dict[str, bytes]:
     return {path.name: path.read_bytes() for path in root.iterdir() if path.name not in {"update_report.json", "update_status.json"}}
+
+
+def publication_snapshot(root: Path) -> dict[str, bytes]:
+    return {
+        path.relative_to(root).as_posix(): path.read_bytes()
+        for path in root.rglob("*")
+        if path.is_file()
+        and path.name not in {"update_report.json", "update_status.json"}
+    }
+
+
+def result(domain: str, decision: Decision, season: str = "2026/27") -> ValidationResult:
+    return ValidationResult(domain, decision, season)
 
 
 def test_empty_rankings_retain_prior_bytes_and_publish_other_domains(tmp_path: Path) -> None:
@@ -257,18 +276,35 @@ def test_dry_run_reports_without_public_writes(tmp_path: Path) -> None:
     assert report["published_files"] == []
 
 
-def test_noop_run_keeps_status_pair_byte_identical(tmp_path: Path) -> None:
+def test_noop_run_keeps_all_data_and_calendar_bytes_without_publication_changes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
     seed_root(root)
     prior = status_payload()
+    prior["generated_at"] = "2026-08-01T15:30:00Z"
     prior["domains"]["leagues"]["season"] = "2026/27"
+    prior["domains"]["leagues"]["updated_at"] = "2026-08-01T15:30:00Z"
     prior["domains"]["rankings"]["season"] = "2026/27"
     write_json_pair(root, "data_status", "DATA_STATUS", prior)
-    before = (root / "data_status.json").read_bytes(), (root / "data_status.js").read_bytes()
+    write_calendar_publication(
+        build_calendar_publication(leagues(), clubs(), updated_at=NOW), root
+    )
+    before = publication_snapshot(root)
+    calls: list[list[Path]] = []
+    real_publish = update_data.publish_domains
+
+    def spy_publish(*args: Any, **kwargs: Any) -> list[Path]:
+        changed = real_publish(*args, **kwargs)
+        calls.append(changed)
+        return changed
+
+    monkeypatch.setattr(update_data, "publish_domains", spy_publish)
 
     assert update_data.run_update(root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW) == 0
 
-    assert ((root / "data_status.json").read_bytes(), (root / "data_status.js").read_bytes()) == before
+    assert publication_snapshot(root) == before
+    assert calls == [[]]
 
 
 def test_malformed_candidate_pair_fails_without_public_mutation(tmp_path: Path) -> None:
@@ -416,7 +452,7 @@ def test_post_promotion_finalization_failure_rolls_back_public_tree(
 ) -> None:
     root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
     seed_root(root)
-    before = snapshot(root)
+    before = publication_snapshot(root)
     calls = 0
 
     def flaky_clock() -> datetime:
@@ -458,7 +494,7 @@ def test_post_promotion_finalization_failure_rolls_back_public_tree(
         scraper_runner=fake_runner({**rankings(), "new": "payload-change"}),
         clock=flaky_clock,
     ) == 1
-    assert snapshot(root) == before
+    assert publication_snapshot(root) == before
     report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
     assert report["success"] is False
     assert len(report["domains"]) == 4
@@ -532,3 +568,218 @@ def test_main_preserves_explicit_and_nonmatching_staging_paths(
     assert (explicit / "sentinel.txt").read_text(encoding="utf-8") == "keep"
     update_data._cleanup_generated_staging(root, nonmatching)
     assert (nonmatching / "sentinel.txt").read_text(encoding="utf-8") == "keep"
+
+
+@pytest.mark.parametrize(
+    ("league_decision", "club_decision", "league_source", "club_source"),
+    [
+        (Decision.PUBLISH, Decision.PUBLISH, "candidate", "candidate"),
+        (Decision.PUBLISH, Decision.RETAIN, "candidate", "prior"),
+        (Decision.RETAIN, Decision.PUBLISH, "prior", "candidate"),
+        (Decision.RETAIN, Decision.RETAIN, "prior", "prior"),
+    ],
+)
+def test_effective_calendar_payloads_follow_final_domain_decisions(
+    league_decision: Decision,
+    club_decision: Decision,
+    league_source: str,
+    club_source: str,
+) -> None:
+    candidates = {"leagues": {"source": "candidate-leagues"}, "clubs": {"source": "candidate-clubs"}}
+    previous = {"leagues": {"source": "prior-leagues"}, "clubs": {"source": "prior-clubs"}}
+    indexed = {
+        "leagues": result("leagues", league_decision),
+        "clubs": result("clubs", club_decision),
+    }
+
+    assert update_data._effective_payload("leagues", candidates, previous, indexed) is (
+        candidates if league_source == "candidate" else previous
+    )["leagues"]
+    assert update_data._effective_payload("clubs", candidates, previous, indexed) is (
+        candidates if club_source == "candidate" else previous
+    )["clubs"]
+
+
+@pytest.mark.parametrize("decision", [Decision.BLOCKED, Decision.FAILED])
+def test_effective_calendar_payload_rejects_non_final_or_missing_domain_state(
+    decision: Decision,
+) -> None:
+    candidates = {"leagues": {"source": "candidate"}}
+    previous = {"leagues": {"source": "previous"}}
+
+    with pytest.raises(ValueError, match="leagues.*decision"):
+        update_data._effective_payload(
+            "leagues", candidates, previous, {"leagues": result("leagues", decision)}
+        )
+    with pytest.raises(ValueError, match="leagues.*result"):
+        update_data._effective_payload("leagues", candidates, previous, {})
+
+
+def test_ready_pipeline_builds_and_writes_calendar_before_one_exact_publication(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    (root / "calendar_state.json").write_text('{"prior": true}\n', encoding="utf-8")
+    candidate_leagues = {**leagues(), "source": "candidate-leagues"}
+    candidate_clubs = {**clubs(), "source": "candidate-clubs"}
+    prior_leagues = json.loads((root / "league_data.json").read_text(encoding="utf-8"))
+    prior_clubs = json.loads((root / "club_data.json").read_text(encoding="utf-8"))
+    calls: list[str] = []
+    captured: dict[str, Any] = {}
+
+    def runner(script: Path, output_dir: Path, artifacts_dir: Path) -> int:
+        artifacts_dir.mkdir(parents=True, exist_ok=True)
+        if script.name == "league_scraper.py":
+            write_json_pair(output_dir, "league_data", "LEAGUE_DATA", candidate_leagues)
+        elif script.name == "ranking_scraper.py":
+            write_json_pair(output_dir, "ranking_data", "RANKING_DATA", rankings())
+        elif script.name == "club_scraper.py":
+            write_json_pair(output_dir, "club_data", "CLUB_DATA", candidate_clubs)
+        elif script.name == "archive_scraper.py":
+            write_js(output_dir / "archive_data.js", "ARCHIVE_DATA", {"1": []})
+        elif script.name == "archive_tables_scraper.py":
+            write_js(output_dir / "archive_tables.js", "ARCHIVE_TABLES", [])
+        return 0
+
+    monkeypatch.setattr(update_data, "validate_leagues", lambda *_: result("leagues", Decision.PUBLISH))
+    monkeypatch.setattr(update_data, "validate_rankings", lambda *_: result("rankings", Decision.RETAIN))
+    monkeypatch.setattr(update_data, "validate_clubs", lambda *_: result("clubs", Decision.RETAIN, "current"))
+    monkeypatch.setattr(update_data, "_validate_archives", lambda *_: result("archives", Decision.RETAIN, "historical"))
+
+    def build(effective_leagues: dict[str, Any], effective_clubs: dict[str, Any], *, previous_state: dict[str, Any] | None, updated_at: datetime) -> object:
+        calls.append("build")
+        captured.update(leagues=effective_leagues, clubs=effective_clubs, state=previous_state, updated_at=updated_at)
+        return object()
+
+    def write(publication: object, output_dir: Path) -> None:
+        assert publication is not None
+        assert output_dir == staging
+        calls.append("write")
+        for name in ("calendar_index.json", "calendar_index.js", "calendar_state.json"):
+            (output_dir / name).write_bytes(name.encode("ascii"))
+        (output_dir / "calendars").mkdir()
+        (output_dir / "calendars" / "club-1-team-1.ics").write_bytes(b"calendar")
+
+    def publish(*args: Any, **kwargs: Any) -> list[Path]:
+        calls.append("publish")
+        assert kwargs["additional_files"] == (
+            "data_status.json", "data_status.js",
+            "calendar_index.json", "calendar_index.js", "calendar_state.json",
+        )
+        assert kwargs["additional_directories"] == ("calendars",)
+        assert callable(kwargs["finalize"])
+        return []
+
+    monkeypatch.setattr(update_data, "build_calendar_publication", build)
+    monkeypatch.setattr(update_data, "write_calendar_publication", write)
+    monkeypatch.setattr(update_data, "publish_domains", publish)
+
+    assert update_data.run_update(root, staging, artifacts, scraper_runner=runner, clock=lambda: NOW) == 0
+    assert calls == ["build", "write", "publish"]
+    assert captured["leagues"] == candidate_leagues
+    assert captured["clubs"] == prior_clubs
+    assert captured["state"] == {"prior": True}
+    assert captured["updated_at"] == NOW
+    assert captured["leagues"] != prior_leagues
+    assert captured["clubs"] != candidate_clubs
+
+
+def test_dry_run_generates_calendar_only_in_fresh_staging(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    calls: list[Path] = []
+
+    def build(*args: Any, **kwargs: Any) -> object:
+        return object()
+
+    def write(_publication: object, output_dir: Path) -> None:
+        calls.append(output_dir)
+        for name in ("calendar_index.json", "calendar_index.js", "calendar_state.json"):
+            (output_dir / name).write_text(name, encoding="utf-8")
+        (output_dir / "calendars").mkdir()
+
+    monkeypatch.setattr(update_data, "build_calendar_publication", build)
+    monkeypatch.setattr(update_data, "write_calendar_publication", write)
+    monkeypatch.setattr(update_data, "publish_domains", lambda *args, **kwargs: pytest.fail("dry run must not publish"))
+
+    assert update_data.run_update(root, staging, artifacts, scraper_runner=fake_runner(rankings()), dry_run=True, clock=lambda: NOW) == 0
+    assert calls == [staging]
+    assert (staging / "calendar_state.json").is_file()
+    assert (staging / "calendars").is_dir()
+    assert not (root / "calendar_state.json").exists()
+    assert not (root / "calendars").exists()
+
+
+def test_calendar_generation_failure_keeps_all_existing_publication_bytes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    (root / "calendar_index.json").write_bytes(b"old-index")
+    (root / "calendar_index.js").write_bytes(b"old-index-js")
+    (root / "calendar_state.json").write_text(
+        json.dumps(
+            {
+                "schema_version": 2,
+                "season": None,
+                "updated_at": "2026-08-01T13:17:22Z",
+                "events": [],
+                "index_fingerprint": "0" * 64,
+            }
+        ),
+        encoding="utf-8",
+    )
+    (root / "calendars").mkdir()
+    (root / "calendars" / "club-1-team-1.ics").write_bytes(b"old-calendar")
+    before = publication_snapshot(root)
+
+    def fail(*args: Any, **kwargs: Any) -> object:
+        raise RuntimeError("calendar generator exploded")
+
+    monkeypatch.setattr(update_data, "build_calendar_publication", fail)
+    assert update_data.run_update(root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW) == 1
+    assert publication_snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["success"] is False
+    assert "calendar generator exploded" in " ".join(report["domains"][0]["reasons"])
+
+
+def test_corrupt_prior_calendar_state_blocks_without_resetting_public_files(
+    tmp_path: Path,
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    (root / "calendar_state.json").write_text("{not-json", encoding="utf-8")
+    (root / "calendars").mkdir()
+    (root / "calendars" / "club-1-team-1.ics").write_bytes(b"old-calendar")
+    before = publication_snapshot(root)
+
+    assert update_data.run_update(root, staging, artifacts, scraper_runner=fake_runner(rankings()), clock=lambda: NOW) == 1
+
+    assert publication_snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["success"] is False
+    assert "line 1" in " ".join(report["domains"][0]["reasons"]).lower()
+
+
+def test_calendar_generated_at_is_always_the_effective_league_status_timestamp() -> None:
+    status = status_payload()
+    status["domains"]["leagues"]["updated_at"] = "2026-07-30T09:10:11Z"
+    status["domains"]["clubs"]["updated_at"] = "2026-08-01T15:30:00Z"
+
+    assert update_data._calendar_generated_at(status) == datetime(2026, 7, 30, 9, 10, 11, tzinfo=UTC)
+
+
+@pytest.mark.parametrize("value", [None, "not-a-timestamp", "2026-08-01T10:00:00"])
+def test_calendar_generated_at_rejects_missing_or_invalid_league_status_timestamp(value: Any) -> None:
+    status = status_payload()
+    if value is None:
+        del status["domains"]["leagues"]["updated_at"]
+    else:
+        status["domains"]["leagues"]["updated_at"] = value
+
+    with pytest.raises(ValueError, match="calendar leagues updated_at|calendar league status timestamp"):
+        update_data._calendar_generated_at(status)

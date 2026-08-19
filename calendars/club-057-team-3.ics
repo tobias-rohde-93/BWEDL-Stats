@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Ungültig 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:03fff35a083c56a70931057d4356a1d0d5ec030e9fb9e430343300e3e730e408@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25 2
+DESCRIPTION:Begegnung: ESV DC 25 2 - DC Ungültig 3\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 18
+ :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
+ Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:14da29449fe39d474f769e226b233aac9e1de8cc703ca19213c3651c3b74e3db@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T183000Z
+DTEND:20270223T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Ungültig 3\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 23.02.
+ 2027 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerl
+ e 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:23c66ee555ce19d541fe3ff94fbb24df96e863d56180d2b7c231aab3671d8b11@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270113T183000Z
+DTEND:20270113T213000Z
+SUMMARY:Heimspiel gegen DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Kolibrispitz\nHeimspiel\nLiga: C
+ -Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 13.01.2027 18:
+ 30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömbe
+ rg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4cd94af9481b4d2ee2a61450e572736a8e3fc17248b1b2ba4a802ce5be3ce61f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261007T173000Z
+DTEND:20261007T203000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Irish 26 e.V. 5\nHeimspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 07.10.2026 1
+ 7:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
+ berg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4f654c41508a50714262b77c760563aa654becca03a9f30fca938de3ff573de9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261209T183000Z
+DTEND:20261209T213000Z
+SUMMARY:Heimspiel gegen ESV DC 25 2
+DESCRIPTION:Begegnung: DC Ungültig 3 - ESV DC 25 2\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 18:30 UT
+ C\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Sc
+ hwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:56ada1bfe2116e6540877078b773dd6ab6e50293b97d525b85cf5d73f3854b0a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock 2
+DESCRIPTION:Begegnung: DC Shamrock 2 - DC Ungültig 3\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 1
+ 8:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:71a1b388faf9240ef1b69958181984a9403b756e51d9e1d89d71cd1a01c9b674@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T173000Z
+DTEND:20260904T203000Z
+SUMMARY:Auswärtsspiel bei DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Ungültig 3\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 04.09.2026
+  17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 
+ 15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:782cbe5c78cf9348a76f6e6bd2b7b5b4af12c5209dd5f0696aa9046f85e3ca34@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T173000Z
+DTEND:20270414T203000Z
+SUMMARY:Heimspiel gegen DC Oststadt 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Oststadt 3\nHeimspiel\nLiga: C-K
+ lasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027 17:30
+  UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg
+ /Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7a00549709c87c659b6cfeec9a8af070b5cb992c78b0296cc1c957bec93efdb2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 3
+DESCRIPTION:Begegnung: DC Oststadt 3 - DC Ungültig 3\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 1
+ 9:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, P
+ forzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a16dceb39243e5cb4d5c5a1830d1e77b3ac016da8af2917755ad0d55c444027b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260909T173000Z
+DTEND:20260909T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Destroyers e.V. 5\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.09.2026
+  17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a4cba3574bac5fe6e739f56c896838961821c0f2422392dd4f51a7031e52daef@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270210T183000Z
+DTEND:20270210T213000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich
+DESCRIPTION:Begegnung: DC Ungültig 3 - DSV Großglabbich\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 10.02.2027 1
+ 8:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
+ berg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bd60939eba297f0c1d0e2f433aefbbd2d1fae70cad4968ed224e27f72961913a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260921T173000Z
+DTEND:20260921T203000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Ungültig 3\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 21.09.20
+ 26 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, M
+ ühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d349dadf87bde9d1cd31d758cfbacaca84c30a352c8cbf30606012aab26f20d8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270317T183000Z
+DTEND:20270317T213000Z
+SUMMARY:Heimspiel gegen DC Shamrock 2
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Shamrock 2\nHeimspiel\nLiga: C-K
+ lasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 17.03.2027 18:30
+  UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg
+ /Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e441119e67f60edf7c068bcf5a78b07983e0f17c523cfb446224737fee46d4d2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T173000Z
+DTEND:20270428T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts 6
+DESCRIPTION:Begegnung: DC Ungültig 3 - the Metal Darts 6\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2027 1
+ 7:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
+ berg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eb3496cfe8ac40cd68a81be03fbbe976d7eab4ce6e75b634c709ef04580edc0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Ungültig 3\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.0
+ 1.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberst
+ r. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ed640ae6a8d495f7ec0802d7cbf49876015ab7b99c3cde2b7d3365a6f776a4f3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 6
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Ungültig 3\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.20
+ 26 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,263 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Hot Shotz
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:00217f50bc25cc9f3a9e2302b8a699552a45cdbf77665d160885785e8e8af994@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T180000Z
+DTEND:20261212T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Hot Shotz\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 4 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 18:
+ 00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38bd3eaa98553029fe0605111eacb3903c1639c7a98d5edb08855ff215d0f7fb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Hot Shotz - DC X-Brötzingen\nHeimspiel\nLiga: C-
+ Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 19:0
+ 0 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenha
+ rdt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4389545c6cbce88538a4133f21df11c9ed1b4f44baf2806cbb500984c2d4ac6c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: DC Hot Shotz - TSV Grunbach Darts 3\nHeimspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 
+ 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straub
+ enhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:67d1c356c5d1742cf9325e8664dbf25e72912be8473f0efecd57caa96200060b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC Hot Shotz - DC 180 Stein e.V. 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 1
+ 9:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6b04d625267d22e7b21b19caf40dd4571b32206dcdb5e4de4d5ea4fff8a9b0d2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261109T190000Z
+DTEND:20261109T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks 2
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Hot Shotz\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.202
+ 6 19:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, P
+ forzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:86f507767e727f5fdda647bee10f31c1014b5493e32d7ed61e4c2c9608672566@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260924T180000Z
+DTEND:20260924T210000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC Hot Shotz\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2
+ 026 18:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbran
+ d-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8701889afbae58ea6ab3afcde3c4f2898b156a064aa45c0ce9d7f00f3ba14b7d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks 2
+DESCRIPTION:Begegnung: DC Hot Shotz - the flying Rocks 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 18
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:897359c0055d8f1e59f3438525a973dbfb9036e1810549fc5545d1da9b5d1b9d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T183000Z
+DTEND:20270223T213000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC Hot Shotz\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 23.02.2027 
+ 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:99b2c86791772b225d8d225b0410c80a864d0d77058e1a295cff2b86e13303b9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Hot Shotz\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 
+ 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 2
+ 59\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a18db5d059afe8eb819634c5f08949ed3d7174c00fa7a8755aeeda3809d9b31a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T183000Z
+DTEND:20270115T213000Z
+SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Hot Shotz\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2
+ 027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b0b1cf793f6e17ca31a76588e1099e9d088e41c9bd89762d7d35a4e7795378a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Hot Shotz - DC Destroyers e.V. 4\nHeimspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 1
+ 9:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b45ba5ad17acbe376a80dacde075cea8bd03b635fe538bebfdaa75e239bf0446@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T173000Z
+DTEND:20261019T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Hot Shotz\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.20
+ 26 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Köni
+ gsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bfe3dcb717a5c6f154b07ab6feeeb8aead9f4d3c1a3f44f1d8827fe17b4f21b3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Heimspiel gegen DC Ligthning Arrows
+DESCRIPTION:Begegnung: DC Hot Shotz - DC Ligthning Arrows\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d2769b960ea7da0b4b396db25a9f24d712d99a779ced933b514ae59cca1a112a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - DC Hot Shotz\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.
+ 2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr.
+  60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3b13af74ac155cd00b4bb86043833462b5b3c60e0de3d09052ee11a764fd1f5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team 4
+DESCRIPTION:Begegnung: DC Hot Shotz - DC Texas Team 4\nHeimspiel\nLiga: C-K
+ lasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18:00 
+ UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhard
+ t
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d6c87d7e4de3c3d2f1091db78e2f394392fcc2b1ab7963ebd86f022abba83d7b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 3
+DESCRIPTION:Begegnung: DC Hot Shotz - TDF Enzberg 3\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:00 U
+ TC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,526 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Lachs 14
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:04e109661598de223c9909cfa5717a92e4cd47c16348a71019a63548d4d40a39@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts\nHeimspiel\nLiga: Bezi
+ rksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.2027 19:00 UTC\nA
+ ustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:130703eab57088c8f79ff9ab43b69583df76cbcd7533fa498010ee692a47acab@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261204T190000Z
+DTEND:20261204T220000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Lachs 14\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 04.12.2026 19
+ :00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1fd2d7ddc432b1b7f76bdbd771316faa306bc9efdd11669d53d1ebc1a1af78c3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261217T190000Z
+DTEND:20261217T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Lachs 14 - Dartfreunde Eichenherz\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 17.12.2026 19:00
+  UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2317dbf5f952e2b108834f9e18f81094f4cd6697cb08f22cf4f7d8e57ef709e9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T191500Z
+DTEND:20261211T221500Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Lachs 14\nAuswärtsspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:15 UTC\
+ nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:338ddd4dd2c1305b30cf312bf989f2fd14052145a3886dbb4a405932209eeebb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T180000Z
+DTEND:20270512T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Texas Team\nHeimspiel\nLiga: Bezirk
+ sliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.05.2027 18:00 UTC\nAus
+ tragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38173febae97ce746797ad2e573d9f8b7a4d5e9c71690cb337110ae966d4af40@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261001T180000Z
+DTEND:20261001T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Texas Team\nHeimspiel\nLiga: Mix B-
+ Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 01.10.2026 18:00 UTC\nAus
+ tragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3ad3c8032bb40c447d332914f5f3464d1a16e2fa7bb245d7a0c17c554e751a60@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T190000Z
+DTEND:20270326T220000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Lachs 14\nAuswärtsspiel\nLiga
+ : Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 19:00
+  UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzhei
+ m
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:45eccf558a6b09c8bf116eb9c82acc60118c8573315a987222168add2b98cd2c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261105T190000Z
+DTEND:20261105T220000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Lachs 14 - the flying Rocks\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 05.11.2026 19:00 UTC\n
+ Austragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:48688b5ae45f075fda3d9a6c3a0cea3570b87665383c814526b81c90b6461da6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Auswärtsspiel bei Friends Arrows
+DESCRIPTION:Begegnung: Friends Arrows - DC Lachs 14\nAuswärtsspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:00 UT
+ C\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:49ef19a59cd24b455bf9ab2297aaf850f7c892b69ec23136c5492d93e9755082@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260903T180000Z
+DTEND:20260903T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Crazy Flights\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 03.09.2026 18:00 UTC\n
+ Austragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4cdf6987d86585773051add68e19204d8aab55c4f534ebcbfad80b0fdf4988dd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T180000Z
+DTEND:20270414T210000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Strikers\nHeimspiel\nLiga: Bezirksl
+ iga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027 18:00 UTC\nAustr
+ agungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5ea1035f38ef8df425fff13acd347911a632a68e62699113b2c14d34840d4539@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270121T190000Z
+DTEND:20270121T220000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Reloaded\nHeimspiel\nLiga: Mix B-Kl
+ asse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 21.01.2027 19:00 UTC\nAust
+ ragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:60246919a5404468bd29a084e340c66dabf74fcb34c4c2496e9f04c8f1c8348e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260907T180000Z
+DTEND:20260907T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Lachs 14\nAuswärtsspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 07.09.2026 18:00 UT
+ C\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6b42cb2a2561f92c7154aecb3e088c0a7987d5334cc1b61840768184fd57b1b0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270311T190000Z
+DTEND:20270311T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Underground Fools\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 11.03.2027 19:00 
+ UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:70594b1cf930878913bb8df445bc545de25825a81c1acb5e13aa5b09a8e095d0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261014T180000Z
+DTEND:20261014T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools
+DESCRIPTION:Begegnung: DC Underground Fools - DC Lachs 14\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 14.10.2026 18
+ :00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 30\
+ , Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7d6807f72293b26926664f75be955c9f4e49c8a8ba25f092ea502309736f1618@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270507T180000Z
+DTEND:20270507T210000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Lachs 14\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027
+  18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7f651f351b3a8825bc0eeca5558fc545385c49a4d43f125172cf7cd4c04b2119@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Lachs 14\nAuswärtsspiel\nLiga: Bez
+ irksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 UTC\nA
+ ustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:81ff513c7a6ec4ff7f6590b9ffebb60e9a3460716b90d116189ab6ddfdf07fe1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261119T190000Z
+DTEND:20261119T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts\nHeimspiel\nLiga: Mix 
+ B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 19.11.2026 19:00 UTC\nA
+ ustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:85abb6394b2855c0cd753a59bbbb9a3fcdc5b4a2ea8e2da031554bc438557772@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270408T180000Z
+DTEND:20270408T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Lachs 14\nAuswärtsspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 08.04.2027 18:00 
+ UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9a7a05bbb17dc16dbfeb96c5d1bb334e942bd5cb3fa8cb92e8de9549b7f1ae50@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260918T180000Z
+DTEND:20260918T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Lachs 14\nAuswärtsspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 18:00 UTC\n
+ Austragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisinge
+ n
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9e0362ed5cc2b8a1c2b084876cacdcf821b099138d3d720aa1faba74d88974cc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261005T180000Z
+DTEND:20261005T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Lachs 14\nAuswärtsspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 05.10.2026 18:00 
+ UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a66b3331092b29d943c369c0013304b3d5158b0a4a70cd8959abd1e2a661d3c2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
+SUMMARY:Heimspiel gegen Friends Arrows
+DESCRIPTION:Begegnung: DC Lachs 14 - Friends Arrows\nHeimspiel\nLiga: Bezir
+ ksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 19:00 UTC\nAus
+ tragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ab11ed1859a1233da14665e228cb451c7dd20736e920e0155c8b736784af288b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Reloaded\nHeimspiel\nLiga: Bezirksl
+ iga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18:00 UTC\nAustra
+ gungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ab4ecb871b31e39771e897d606fb571c248308072bf4eea03982f016d93cb086@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T190000Z
+DTEND:20261125T220000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Black Scorpions\nHeimspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.2026 19:00 UTC\
+ nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:abbd8cfe44cc0ab4727c1d24d4295ea84de7e960e4b4ae775c90779ecd7dc6cf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Lachs 14\nAuswärtsspiel\nLiga: Bez
+ irksliga 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:00 UTC\n
+ Austragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b102af0e191ef43368aa258e81104aff39078900a54c36d4897d41fa952bced7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T173000Z
+DTEND:20270428T203000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Lachs 14\nAuswärtsspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2027 17:3
+ 0 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b4cc404ab8a6fad13eac505b553108f2d41a6f784555ae8eca209c2bb06f3a57@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260820T180000Z
+DTEND:20260820T210000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - DC Lachs 14\nAuswärtsspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 20.08.2026 18:00 UTC\n
+ Austragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d1f99fd50c2cc59d74c87e225c9eb9ca5122de5d7748a81f3957688b8814c1ce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270422T180000Z
+DTEND:20270422T210000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion´s\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 22.04.2027 18:00 
+ UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d22d389064e1e4e3896b5a8d715ff3c14e799bb0f0795b2564837e2994147342@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T183000Z
+DTEND:20270205T213000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Lachs 14\nAuswärtsspiel\nLiga
+ : Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 18:30
+  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, 
+ Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d2ffa40ea29526779a556aea375a42957e11867be8fd6b953808a62956b1beac@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion's\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 18:00 UTC
+ \nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dc7b3034dee63a31393482d7dfb830704db108df1d669735e9693cd7bb84e60a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T193000Z
+DTEND:20270212T223000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Lachs 14\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:
+ 30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Ei
+ singen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:de3e9a1eea20c93842af438886d23c7114bb56bcc4a6da9eba95d8ba1987c69b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270303T190000Z
+DTEND:20270303T220000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Lachs 14\nAuswärtsspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 03.03.2027 19:00 UT
+ C\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e72eb0bdc797e50d71b75f1a577d783e7bbe5c02b7a7179d1ae28fae2dd4f380@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T190000Z
+DTEND:20270224T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 2
+DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts 2\nHeimspiel\nLiga: Be
+ zirksliga 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 19:00 UTC\
+ nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec41e2d964931ff3ed3b128ff42cb4f050fca43232996c7e9a17350c58435315@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270218T190000Z
+DTEND:20270218T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Strikers\nHeimspiel\nLiga: Mix B-Kl
+ asse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 18.02.2027 19:00 UTC\nAust
+ ragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

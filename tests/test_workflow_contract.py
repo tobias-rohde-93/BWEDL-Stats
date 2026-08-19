@@ -109,6 +109,7 @@ def test_commit_uses_explicit_generated_file_allowlist_only():
         "club_data.json", "club_data.js",
         "archive_data.js", "archive_tables.js",
         "data_status.json", "data_status.js",
+        "calendar_index.json", "calendar_index.js", "calendar_state.json", "calendars",
     }
 
     assert "git add ." not in commit

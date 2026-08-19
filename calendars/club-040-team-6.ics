@@ -1,0 +1,264 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – the Metal Darts 6
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:00e6365638f3f374d32c60dbb61de9cef2f9f212a43c9623dfdb16684c24c077@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Heimspiel gegen DC Shamrock 2
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Shamrock 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1f30bef2812873c7106f8aa1762243021e014463e7737852f6adabedbf67a54c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock 2
+DESCRIPTION:Begegnung: DC Shamrock 2 - the Metal Darts 6\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.202
+ 6 18:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Stra
+ ubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1f4c29e8b3dff795bdde7d34a55858f967e5ccde82f8ddbb9ea64d00178d8e73@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T173000Z
+DTEND:20270412T203000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich
+DESCRIPTION:Begegnung: DSV Großglabbich - the Metal Darts 6\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.0
+ 4.2027 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25
+ \, Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:210a9ea4b7b62e9a0f0d7127a2e8e397ff4e3a972f3258c4738a5db9c1dcdbde@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - the Metal Darts 6\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.1
+ 2.2026 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcke
+ rle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6abb3f3d7898ef57dbbedcab2bcf0d63a82889a414ad6a0ad5f8328f20cc2144@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen DC Oststadt 3
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Oststadt 3\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:742f7a0456b20c92d1f93f84eec23b86f9cd961fa1d8ae9bb2d9a6eca0bff003@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Irish 26 e.V. 5\nHeimspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.20
+ 27 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:88bda0d05508ca97325a2abf3232bc1edba6c04a0d109c8c05d0f70fad03547b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260907T180000Z
+DTEND:20260907T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25 2
+DESCRIPTION:Begegnung: ESV DC 25 2 - the Metal Darts 6\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 07.09.2026 
+ 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\
+ , Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9fad703be2341e204770f5e48316f1f4dfc6d30c630837c781860b1ba26ced66@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen ESV DC 25 2
+DESCRIPTION:Begegnung: the Metal Darts 6 - ESV DC 25 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:0
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ad828757519dc2c834f6fa8a7cddc8fea99aa58f1d8aadbcbbc42ce20e035cce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 3
+DESCRIPTION:Begegnung: DC Oststadt 3 - the Metal Darts 6\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.202
+ 6 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\
+ , Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b2fbbee024a913b1a56f11bb084c8d34f04469916c6875100a9f43fa7a99ddb3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - the Metal Darts 6\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 2
+ 0.03.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webe
+ rstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b6ef4e581049b2f7a61f1e363336daa3247364e8daad2f1d193d9384dea5d13f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Heimspiel gegen DC Ungültig 3
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Ungültig 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c033acf23ebfda62132444f609a67f0308fb95910de3240ac340b0b2a0d7ab4d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T183000Z
+DTEND:20270213T213000Z
+SUMMARY:Auswärtsspiel bei DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Kolibrispitz - the Metal Darts 6\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.
+ 2027 18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffens
+ tr. 15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d4ce199f975a3234b263df12b21bbec3ff3e80c6bb13b073736427ad4d42b758@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich
+DESCRIPTION:Begegnung: the Metal Darts 6 - DSV Großglabbich\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026
+  19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e1bb2930011cab288b0f69f5b3c19471931e4f4cf590e2287ed245aad8e821ec@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen DC Kolibrispitz
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Kolibrispitz\nHeimspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 1
+ 8:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ed1d01962574198434e61d0c8541dd736b45b9ad707e623476168c60c541fae8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270428T173000Z
+DTEND:20270428T203000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - the Metal Darts 6\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2
+ 027 17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, S
+ chömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f99d92abac0e7b304e5486293b94712914a3d42047f55da7ac796dc56336cc88@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Destroyers e.V. 5\nHeimspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2
+ 026 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,286 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Crows
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:4ef32ca84a0d46f814b6e704089693f30c0cd9124fa9bc6245b7657326f4e49f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Crows - DC Destroyers e.V. 2\nHeimspiel\nLiga: B-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 18:0
+ 0 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5319cee2dd031c6e9cecefe57a070c91f8392fd24981987f47c8afc62c81953e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261109T190000Z
+DTEND:20261109T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - DC Crows\nAuswärtsspiel\nLig
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026 
+ 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
+  Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5edb9c70c631c64ca6e40cdce0980db62b68676edc79817604fae53f66dc2b2d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: DC Crows - Heavy Weights Brötzingen\nHeimspiel\nLig
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027
+  19:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6c2a674c7871edddaf311c4ffa2ef22ffb2415285075738617cd14c05f49edda@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Crows - Dartfreunde Eichenherz\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19
+ :00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:747443679c5ac216b1151eafa84bc5b5254a8778183a7774f6bee031e67dedf5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Enztaler Buben - DC Crows\nAuswärtsspiel\nLiga: 
+ B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:
+ 00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7d568e54ff1f6d71dfae1d2987bf7cf0ee41d6059e4a25fc070bd43f9ab8f8f5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg
+DESCRIPTION:Begegnung: DC Crows - TDF Enzberg\nHeimspiel\nLiga: B-Klasse Gr
+ uppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.2027 18:00 UTC\nAu
+ stragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9bd8dfe69d64348a19a7ac3671612386f61a4ab422d855f8be089276dc5d5ced@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg
+DESCRIPTION:Begegnung: TDF Enzberg - DC Crows\nAuswärtsspiel\nLiga: B-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 19:00 UTC
+ \nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a794d6ee6c5da630e495fd8f89bff6d94c72b0e23182c5d3259555061e554dfe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Crows - DC Enztaler Buben\nHeimspiel\nLiga: B-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:00 U
+ TC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ac3c94dd869f755abb0ec407aa1c159d882df0ad29b705b02910a900b1ef3854@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Auswärtsspiel bei DC SchömbergerEck
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Crows\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.2027 1
+ 9:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Schöm
+ berg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b5818e092575de5ca7582d87e272b4cd75ee624d3fca1e579525ed07b380140b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T173000Z
+DTEND:20270511T203000Z
+SUMMARY:Auswärtsspiel bei DC Strikers 2
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Crows\nAuswärtsspiel\nLiga: B-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 17:30 
+ UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Ei
+ singen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b788d7d4766cad8551be7cf687d5055b4d55f7bbfa07571ab2881d2b10e13934@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Crows\nAuswärtsspiel\nLiga: B
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:
+ 00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\
+ , Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8d3c0e9236661735e64752b8dce45a12ff46a6322192bfe53041bd96b1c7fc1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crows - DC Crazy Flights\nHeimspiel\nLiga: B-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2026 18:00 UTC
+ \nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ba5ccb4f2adf0951855abd57cb8a83d5221b287f553d57200fa4944eb78e97b7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Auswärtsspiel bei Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Crows\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.
+ 2026 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-Str. 261
+ \, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c2f6ace3ec24105df8d7861e0976217521366f360d19fbbdc7ed13fe5f9b2730@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Crows - DC Underground Fool´s 3\nHeimspiel\nLiga
+ : B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 1
+ 9:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c41f56f8b9faaca6527b304f972a905bcca5ada125946edefbb637c438489731@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270330T180000Z
+DTEND:20270330T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Crows\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.
+ 2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstra
+ ße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e4d24e85f5e9af707aa682dc556cfe7d69189184cc944783b2bb3f8af8e829c3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T140000Z
+DTEND:20260926T170000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crows\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.202
+ 6 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
+ rzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e4d933cf02e58951fd55a2a90c2432981b6eb00438f60b71d9769b1c848adf6d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen DC Strikers 2
+DESCRIPTION:Begegnung: DC Crows - DC Strikers 2\nHeimspiel\nLiga: B-Klasse 
+ Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00 UTC\nA
+ ustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e5eeed167e1f1e4ef11cafd418ffcaf810f6eed71a6820a6042bbe69a970368d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Heimspiel gegen DC SchömbergerEck
+DESCRIPTION:Begegnung: DC Crows - DC SchömbergerEck\nHeimspiel\nLiga: B-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18:00 U
+ TC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

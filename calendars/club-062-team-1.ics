@@ -1,0 +1,286 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Triple 7
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:1dec69bfbeb0d3d4b8421314ade4716df49ff6fc390848b0118bdf06bc9115ae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Triple 7 - DC Broken Darts 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 18:00
+  UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:31fd81b064cd84161ca3b579c18b596c4ba861afe1306b1cc4ae6ef8da08191b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T180000Z
+DTEND:20270319T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Triple 7 - DC Black Scorpions 4\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 1
+ 8:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhei
+ m
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:479552f5e36d1244cf7b225ed88e5dfbaea12878b48370d175b6e2552af35b87@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T170000Z
+DTEND:20260911T200000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: DC Triple 7 - Dartfreunde Eichenherz 2\nHeimspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.202
+ 6 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforz
+ heim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:498cc99d5ed9e9181ee30fd4f53fedfe0e0cd15f6fcd06e97eac0b7cc6544e32@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T183000Z
+DTEND:20270127T213000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Triple 7\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.
+ 01.2027 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42
+ \, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4eee3c61a9a9b69fb31ada2cba7b24b47be437cfe92a9c6311422568ba4faba3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T180000Z
+DTEND:20270416T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - DC Triple 7\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027
+  18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5d42555a28f0e6bfd83aad69f5c8abb2d19719aee26ec44c1e77db7857a284fc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T170000Z
+DTEND:20260923T200000Z
+SUMMARY:Auswärtsspiel bei DC Williams
+DESCRIPTION:Begegnung: DC Williams - DC Triple 7\nAuswärtsspiel\nLiga: C-K
+ lasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 17:00 
+ UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6b4794874acb62725746c4e88e19b770e991eff17c2d16f6194714868dee239b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Triple 7\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.20
+ 27 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Köni
+ gsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:726ca7e7fc0ef8fee868937899cb3c9d25f8fec6192a4b289c6af43e8c689b4d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T180000Z
+DTEND:20270115T210000Z
+SUMMARY:Heimspiel gegen DC Dart Vaders
+DESCRIPTION:Begegnung: DC Triple 7 - DC Dart Vaders\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 18:00 U
+ TC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:79d7b561ed3f67e5fc9c62e3fd0cab354e36a4fa7736b7b7244d3e8e0d998326@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T170000Z
+DTEND:20261009T200000Z
+SUMMARY:Heimspiel gegen DC Bull Hunters
+DESCRIPTION:Begegnung: DC Triple 7 - DC Bull Hunters\nHeimspiel\nLiga: C-Kl
+ asse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 17:00 U
+ TC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8bda5ca342298043a632c241b7472d5f9f1fb0c5fee46284ece829befb2ea9b3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T180000Z
+DTEND:20261126T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Triple 7\nAuswärtsspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 18:0
+ 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:937a6c07fc83ddb61fd571c73ba3028b0ddef485c2c11fdc44732fa5f7b0ca49@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Auswärtsspiel bei DC Dart Vaders
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Triple 7\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18:
+ 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
+ ardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:94fb19c1ea92d7388ae50061a73fff8e4135fc0131bbfe65d8bd73009655a5e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T180000Z
+DTEND:20261022T210000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - DC Triple 7\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.20
+ 26 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knitt
+ lingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a0431d719177c71e637676c83095b950dbae6fe23816c94a73f95be30f95008a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T170000Z
+DTEND:20270430T200000Z
+SUMMARY:Heimspiel gegen Los Muertos 2
+DESCRIPTION:Begegnung: DC Triple 7 - Los Muertos 2\nHeimspiel\nLiga: C-Klas
+ se Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 17:00 UT
+ C\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b71c90b82e945a252cba2ac67c9816d22ad85668aa3dc8bedb7cf3e0d6e155f4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei DC Bull Hunters
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Triple 7\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 1
+ 9:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cd65262085680ca5df0f96a769ea357eb6b600a68663b7969b683ab210d67f79@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC Triple 7 - DC 180 Stein e.V. 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 18:
+ 00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dcf41d08cd8938cf5ba95de39bfe287cdc7350b2c5c6f9b67a4a3b61387ae9b7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T180000Z
+DTEND:20261211T210000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC Triple 7 - DC X-Brötzingen 2\nHeimspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 18:0
+ 0 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:df4a82e4f383faa0d6bbe298b559dc552c370509783bf33c76ff5b14b37a3350@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T180000Z
+DTEND:20270212T210000Z
+SUMMARY:Heimspiel gegen DC Williams
+DESCRIPTION:Begegnung: DC Triple 7 - DC Williams\nHeimspiel\nLiga: C-Klasse
+  Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 18:00 UTC\
+ nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:efb2f84b17e6d206ca840d1b2a4c6f85a90e577e2b40ea31693008b5a6fd5236@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - DC Triple 7\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.202
+ 7 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

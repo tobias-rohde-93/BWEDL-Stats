@@ -1,0 +1,293 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Phantom Arrows
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:214fe74de0ca54e1e832615b1825ba47c38769177858009831df767669cb7e69@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T170000Z
+DTEND:20261023T200000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V.
+DESCRIPTION:Begegnung: Phantom Arrows - DC 180 Stein e.V.\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 17
+ :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:24baf585387f9d19b079e2d4d05231e3997ac53041a23214607f2c521a58e180@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T190000Z
+DTEND:20270114T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded 2
+DESCRIPTION:Begegnung: DC Reloaded 2 - Phantom Arrows\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 
+ 19:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Epping
+ en
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2c9b515f27a70b9c91936068519c7332ce08ec0eeb94b45950a44ccdb761d97d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T180000Z
+DTEND:20270226T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights 3
+DESCRIPTION:Begegnung: Phantom Arrows - DC Crazy Flights 3\nHeimspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 
+ 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:30bc296c77d9bb590d6a82fdb7692a0cd3fe9d0d3d79db94e9ca26d0abfaf7ac@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T170000Z
+DTEND:20260925T200000Z
+SUMMARY:Heimspiel gegen the Metal Darts 5
+DESCRIPTION:Begegnung: Phantom Arrows - the Metal Darts 5\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 17
+ :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:50a23e4168ae8da3f779534fbeafd10d413db954bd335fc7a8260216c2d7ed0f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
+DESCRIPTION:Begegnung: DC Crazy Flights 3 - Phantom Arrows\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2
+ 026 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswi
+ esen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5426d2374721d995a15c7abf4bbc28bf8e8a891850477f41de9bfb6d1e0e58da@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - Phantom Arrows\nAuswärtsspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 19:
+ 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
+ ardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:60926d653f09175e0f6ca5c3fffa56db55bbde6816f3a6b0c689811ba5c52030@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
+DESCRIPTION:Begegnung: DC 180 Stein e.V. - Phantom Arrows\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2
+ 027 19:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kön
+ igsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7a231aec01c98a01bc6e0164047001bce0d6828249e4e9cc94d334158d7c5cc9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T180000Z
+DTEND:20261127T210000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: Phantom Arrows - the flying Rocks\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 18:
+ 00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:889562e64e3c19d083934484f375a639fc116874b022493aa8c3ea8473618249@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T190000Z
+DTEND:20270209T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 5
+DESCRIPTION:Begegnung: the Metal Darts 5 - Phantom Arrows\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.2
+ 027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:88d5b7b1fbb4a9de8a4a267e8afd14eddac085515f34fc582b4aa1924fac8702@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T170000Z
+DTEND:20270402T200000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: Phantom Arrows - DC Shamrock\nHeimspiel\nLiga: B-Kla
+ sse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 17:00 U
+ TC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9a9c9083c33d1c83ee42e93465d3ee7edb86ad6f0c4fbc4b6a251dc0816bab62@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261208T183000Z
+DTEND:20261208T213000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
+DESCRIPTION:Begegnung: DC Destroyers e.V. - Phantom Arrows\nAuswärtsspiel\
+ nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2
+ 026 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9ca9992acd958067e2d990ec6f8061401ad980a00258a6f4c82adecfe820c1bf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - Phantom Arrows\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.20
+ 27 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, 
+ Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c0de0ce216740fd1ec1cdf3e3450949f33abb2962741f5f393baab700d19c7dc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T180000Z
+DTEND:20270129T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 2
+DESCRIPTION:Begegnung: Phantom Arrows - TDF Enzberg 2\nHeimspiel\nLiga: B-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 18:00
+  UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c9a5a8ce9be6d300b05bf9857a955c224580669038459775044995e18399b31c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T170000Z
+DTEND:20270514T200000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V.
+DESCRIPTION:Begegnung: Phantom Arrows - DC Destroyers e.V.\nHeimspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 
+ 17:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ce45c3717d0d509f67972ee19fe5078e7ae75b301ea5d366615dedb7c36ab108@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T173000Z
+DTEND:20270416T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 2 - Phantom Arrows\nAuswärtsspie
+ l\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.0
+ 4.2027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsb
+ rand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e7b8f7b648ccd9c0ec7520caead4e82cd8d80ba72924877fed947c1940e006e0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260828T170000Z
+DTEND:20260828T200000Z
+SUMMARY:Heimspiel gegen DC Reloaded 2
+DESCRIPTION:Begegnung: Phantom Arrows - DC Reloaded 2\nHeimspiel\nLiga: B-K
+ lasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 17:00 
+ UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f4ef4a5ef078176b8e432c5a03884c48b7eadab8915a6c35708bbd6c89abe763@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 2
+DESCRIPTION:Begegnung: TDF Enzberg 2 - Phantom Arrows\nAuswärtsspiel\nLiga
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 1
+ 8:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzbe
+ rg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fd4b94e6811fb879044f7dda2c0bb92b6ba744393717aaa4e1e3b0c489b920b6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T180000Z
+DTEND:20261113T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
+DESCRIPTION:Begegnung: Phantom Arrows - TSV Grunbach Darts 2\nHeimspiel\nLi
+ ga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026
+  18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

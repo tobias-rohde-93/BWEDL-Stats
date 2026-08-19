@@ -1,0 +1,287 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Triple X
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:29f0941744c2e78a5a859f4cc58cdcf2e2d6d0134bc34b2e835bcf5513106aa7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Auswärtsspiel bei DC DARTanions
+DESCRIPTION:Begegnung: DC DARTanions - DC Triple X\nAuswärtsspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2026 18:0
+ 0 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3282d09c318e4ffab241848876bb89efe65ebb25d62208ecb66caa0a52374ea2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T173000Z
+DTEND:20260923T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Triple X\nAuswärtsspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026
+  17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38e86bd29c1301c68c8f27d14566f27cfbf871fcdfd7708e21d9e8757841884c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T190000Z
+DTEND:20261128T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team 2
+DESCRIPTION:Begegnung: DC Triple X - DC Texas Team 2\nHeimspiel\nLiga: A-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:00 U
+ TC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4dde7a97070b2ec35b4634162b5af0fe5ef414f5c9755e7300688af07633786b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Triple X - DC Black Scorpions 2\nHeimspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18
+ :00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4e86f255ed1f24f82bfeaa531a3848dc19b7892db2e9f85dcb0a9c0e2c62d259@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Triple X - DC Irish 26 e.V.\nHeimspiel\nLiga: A-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:00 
+ UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5a39a5670cb58bb4e5d1f554f637602ecea8e11ebd3356034814a63eb358c5d1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270225T190000Z
+DTEND:20270225T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
+DESCRIPTION:Begegnung: DC Black Scorpions 2 - DC Triple X\nAuswärtsspiel\n
+ Liga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2
+ 027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knit
+ tlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f90d55262f22f37e1b17b83c7ce5776eddfdfbe0415477a76f85425b03699d2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Heimspiel gegen DC HighFlights
+DESCRIPTION:Begegnung: DC Triple X - DC HighFlights\nHeimspiel\nLiga: A-Kla
+ sse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 18:00 U
+ TC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6d35082b1a1218d21bd8e23143802828d709ceb24831ae318874533ea570278b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Triple X - TSV Grunbach Darts\nHeimspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19:
+ 00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:738d4ffe7afcdf41f59d7410791d7392aa6f60d9427a46c453130a5856b97ccc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261112T183000Z
+DTEND:20261112T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights
+DESCRIPTION:Begegnung: DC HighFlights - DC Triple X\nAuswärtsspiel\nLiga: 
+ A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 18:
+ 30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7b458fb8e1038b334915312206c2f794aa65b774c42bf88a89bba62e751f0559@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Heimspiel gegen DC DARTanions
+DESCRIPTION:Begegnung: DC Triple X - DC DARTanions\nHeimspiel\nLiga: A-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 19:00 UT
+ C\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8ef9793d35d825d3f4ea7340cd5d080704f38ca61484896c4164eb091668cb7a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261022T180000Z
+DTEND:20261022T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Underground Fool's 2 - DC Triple X\nAuswärtsspie
+ l\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10
+ .2026 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstr
+ aße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:babe06584e7b976588ccb7a34551686dd8dea1957493496aceafa0ee1a2a9c37@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Heimspiel gegen DC Ungültig
+DESCRIPTION:Begegnung: DC Triple X - DC Ungültig\nHeimspiel\nLiga: A-Klass
+ e Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:00 UTC
+ \nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cc31bac2de33e30a1b50106b9ea27b5ae9853fd3aa35655c7352c5db96294a3a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig
+DESCRIPTION:Begegnung: DC Ungültig - DC Triple X\nAuswärtsspiel\nLiga: A-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00
+  UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg
+ /Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cf4fdbd57f2c497be712d1e8f93ecae3cc5c3f3385517fdb587c33fb8eb5acc7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Triple X\nAuswärtsspiel\nLiga
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 
+ 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e5a1709da0d9f1eb15ed801efdf4ebc43d1046b6588fa202c3296c15fbf8b7fa@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270114T193000Z
+DTEND:20270114T223000Z
+SUMMARY:Auswärtsspiel bei Alla Häeeehr
+DESCRIPTION:Begegnung: Alla Häeeehr - DC Triple X\nAuswärtsspiel\nLiga: A
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19:
+ 30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzh
+ eim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ecff9022d7d26b42f8f8273a08751c06b0f78692ccdf977b2a0c33ea8039d799@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 2
+DESCRIPTION:Begegnung: DC Texas Team 2 - DC Triple X\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04.2027 1
+ 7:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzh
+ eim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f93ae9aace9e99a0aa49ddca4426a9712abdf0243dd8c8d405ab8b053fd6342e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Heimspiel gegen Alla Häeeehr
+DESCRIPTION:Begegnung: DC Triple X - Alla Häeeehr\nHeimspiel\nLiga: A-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:00 UTC
+ \nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fe931c04e6d463cbb3a48360fac3c8d38c08a0ba03e3158fca6ad75f7bc48ba5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's 2
+DESCRIPTION:Begegnung: DC Triple X - DC Underground Fool's 2\nHeimspiel\nLi
+ ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.202
+ 7 19:00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karls
+ bad
+LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,525 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Reloaded
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:25a883fc9e250be40f1d295666c818f8488b38378500eee0fe0c1841b20d1ed8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Reloaded\nAuswärtsspiel\nLiga: Bez
+ irksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18:00 UTC\nA
+ ustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:279e47ea2e6de9447f554fcdbb821990c3c37f37ea9538a7cd9dfbf8fa30753d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270407T180000Z
+DTEND:20270407T210000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Reloaded - DC Strikers\nHeimspiel\nLiga: Mix B-Kl
+ asse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 07.04.2027 18:00 UTC\nAust
+ ragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:285df44fd0e93d1e97d8accf5f50ecab8e8fc0290ba15c96168da5290ead4ac6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270121T190000Z
+DTEND:20270121T220000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Reloaded\nAuswärtsspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 21.01.2027 19:00 UTC\
+ nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2d3220f6aa5dffe280ba0b7d708d82f9d1fe0e923f50eea61fe0bba043d76e0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270505T180000Z
+DTEND:20270505T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fools
+DESCRIPTION:Begegnung: DC Reloaded - DC Underground Fools\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 05.05.2027 18:00 
+ UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:303bc419612291b6e6abfda566bd74b79c5d4e50d4c50eefce8edde0bda8c4cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270203T190000Z
+DTEND:20270203T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts\nHeimspiel\nLiga: Mix 
+ B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 03.02.2027 19:00 UTC\n
+ Austragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:33fa300bbbe64350d484b53f740a19bc1f1a1514088b9385c56795487adee61e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T193000Z
+DTEND:20261127T223000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Reloaded\nAuswärtsspiel\nL
+ iga: Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:3
+ 0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eis
+ ingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:39761fc27fc25a55b68e1e90f9e9329bb90f3dfce7d4d98fc7f617c9e562ad61@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 2
+DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts 2\nHeimspiel\nLiga: Be
+ zirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00 UTC\n
+ Austragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:41fc3b0af9d3b095ce10089759f4a35b3fb652bdea6ade07fe4bc8c68d301d3e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261216T190000Z
+DTEND:20261216T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools
+DESCRIPTION:Begegnung: DC Underground Fools - DC Reloaded\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 16.12.2026 19
+ :00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 30\
+ , Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5dedfdd1c4c22122495a0d35cef33bf3711fce40b3f6899515e619cc5f3010ac@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270303T190000Z
+DTEND:20270303T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Reloaded - Dartfreunde Eichenherz\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 03.03.2027 19:0
+ 0 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:684f73f7b486971536134f9f41d5f5e5d74e08a8a11683fa191c2b0dcd76bbe4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T180000Z
+DTEND:20270412T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Reloaded\nAuswärtsspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.04.2027 18:00 U
+ TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:69d19ef9fcbddbe101d117ff69b6fcf994559321b79671cc852431a1f4c23c70@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T190000Z
+DTEND:20270219T220000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Reloaded\nAuswärtsspiel\n
+ Liga: Mix B-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 1
+ 9:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
+ Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6bc1f30fad8ee4e0100951e2f9529c658100a9a721526d8d141eb1487cf47431@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Reloaded\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 
+ 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6ceeababed18faf0d5634370d47abfedcb0ab466e94c8ee48e7d7d69865c0b24@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts\nHeimspiel\nLiga: Bezi
+ rksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 UTC\nAu
+ stragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6d24f9d440b7e3831e27cc96c4300a1dd94a53a7982f2d103ff29fdb4d987b52@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260820T180000Z
+DTEND:20260820T210000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Reloaded - DC Lachs 14\nHeimspiel\nLiga: Mix B-Kl
+ asse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 20.08.2026 18:00 UTC\nAustr
+ agungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:790e714a5e30a2285abbd5012c3007f2ca93aabc7dd7f7d8669997e075eb097a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: DC Reloaded - DC Strikers\nHeimspiel\nLiga: Bezirksl
+ iga 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:00 UTC\nAustr
+ agungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:89c07d23c2d68f04aa78a1da28ea3818d1808b0e3798ae96a7ed27587c933f8c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260903T180000Z
+DTEND:20260903T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - DC Reloaded\nAuswärtsspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 03.09.2026 18:00 U
+ TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8d4a2a10ca7c878d179218003a5773120f650768105bd67b8c3f99411d6143c7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270421T180000Z
+DTEND:20270421T210000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Reloaded\nAuswärtsspiel\nLiga: M
+ ix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 21.04.2027 18:00 UT
+ C\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9c76a1bd9bc744ae70c6420bd5d2b32baaacc1ac6f2cfb800b5c34a9a0ecee2e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261202T190000Z
+DTEND:20261202T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Reloaded - DC Texas Team\nHeimspiel\nLiga: Mix B-
+ Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 19:00 UTC\nAus
+ tragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b74a2ab374c780754c9907a56ce97f139798b8861d742b374438310da2d67c87@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T181500Z
+DTEND:20261023T211500Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Reloaded\nAuswärtsspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:15 UTC\
+ nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b7a9da2df76f1c77ebd0ff0a956f1f51154b6348243cf8e7f63dd34f59fe839f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen Friends Arrows
+DESCRIPTION:Begegnung: DC Reloaded - Friends Arrows\nHeimspiel\nLiga: Bezir
+ ksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 UTC\nAus
+ tragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b8094149b95449864eee6a11f1bc62ebb710fdbc95ea9197d74bb1f0d2f38b81@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - DC Reloaded\nAuswärtsspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 19:00 UTC\n
+ Austragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisinge
+ n
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bb21f3a3a80216b026aba8f771a7dd0a44664e130e6d6e3404e27138aaa3a69b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T183000Z
+DTEND:20270326T213000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Reloaded\nAuswärtsspiel\nLiga
+ : Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 18:30
+  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, 
+ Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bb80cfdfec7db9425a3872dd9e4fe066f3d86c9b8cb89ff6c78327974fd38558@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260916T180000Z
+DTEND:20260916T210000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Reloaded - DC Green Scorpion´s\nHeimspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 16.09.2026 18:00 U
+ TC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ca98e18daaee4e394bd92b84b58d3c000492eb79802547fa344212ef22779041@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Auswärtsspiel bei Friends Arrows
+DESCRIPTION:Begegnung: Friends Arrows - DC Reloaded\nAuswärtsspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UT
+ C\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d81b4bebfe72d9088fa4cf19f7fe02571454073a1e63281e5a5a208c789434b2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Reloaded\nAuswärtsspiel\nLiga: Bez
+ irksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18:00 UTC\nA
+ ustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:dd842dfdc2300ae18a0c2c2e1a1293d358abbbf8196a424e9534a347d02fc3bd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T190000Z
+DTEND:20270319T220000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Reloaded - DC Texas Team\nHeimspiel\nLiga: Bezirk
+ sliga 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 19:00 UTC\nAus
+ tragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:de328bf65cc4c3ef4002cb65289cc6e2da419f4ea5e0c23bd03e7fba15e811b3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270310T190000Z
+DTEND:20270310T220000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: DC Reloaded - the flying Rocks\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 10.03.2027 19:00 UTC\
+ nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:df6840c8488e8ce69aea932c3406b72e47540c6a71209980741f7a6308f47043@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T180000Z
+DTEND:20261016T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - DC Reloaded\nAuswärtsspiel\nLiga
+ : Mix B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18:00 
+ UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e8acfdda678d223cd8211c256a924e8df2d25ffabeb6b412d6cecefaa00421b7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261104T190000Z
+DTEND:20261104T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Reloaded - DC Crazy Flights\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 04.11.2026 19:00 UTC\n
+ Austragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e9d50c1cf3eab0a2677d4e95f643f6f5db62146260ddc71d6f704bff1e10ba74@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions
+DESCRIPTION:Begegnung: DC Reloaded - DC Black Scorpions\nHeimspiel\nLiga: B
+ ezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:00 UTC\
+ nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eab50d380afb50dadf457ffd15eff9ba7b8e0bde0210905e005d97501335c3a0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Reloaded - DC Green Scorpion's\nHeimspiel\nLiga: 
+ Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00 UT
+ C\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f3d913c97b4a6d76b337598f69c36e86127543b4ac0c4936d220d27abec2188c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T183000Z
+DTEND:20270224T213000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions
+DESCRIPTION:Begegnung: DC Black Scorpions - DC Reloaded\nAuswärtsspiel\nLi
+ ga: Bezirksliga 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 18:3
+ 0 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fbde1a768ef00cb7c3fbeebfe58f64852c8ae453543402ab77db5a0673403597@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: DC Reloaded - DC Lachs 14\nHeimspiel\nLiga: Bezirksl
+ iga 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19:00 UTC\nAustr
+ agungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ff4a2b269878c68c497bede35c653ed232eca99295e208547bf34cf600116b3a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T180000Z
+DTEND:20270510T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 2
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Reloaded\nAuswärtsspiel\nLig
+ a: Bezirksliga 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 18:00
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

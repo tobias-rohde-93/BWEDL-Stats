@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Black Scorpions 3
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:03dcfd3070ac235c8b9c509cb52fdc0a31a3b5115e206e70a2d1c11f2a0a4b65@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 3
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Black Scorpions 3\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.
+ 03.2027 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42
+ \, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3dddeb91ee31c2b3db6d7653e19908276524e5127defe388af3f33e93f4714fb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Heimspiel gegen Odins Knechte
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - Odins Knechte\nHeimspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027
+  19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittli
+ ngen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:43fdbd2477b4033fc1a39c697f00d6e67f9225cecff35d9d3cc212828afccaff@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen DC Broken Darts
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Broken Darts\nHeimspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.202
+ 6 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittl
+ ingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:523a876c3239d2bc8d94a68a3d693a28aa27eb6d2dba3a00e648d637150728b4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T183000Z
+DTEND:20270209T213000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - DC Black Scorpions 3\nAuswärtsspie
+ l\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.0
+ 2.2027 18:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\
+ , Schömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:530565aaf711b0f99bff88870ace8af4d6d469809f531228a01e5e410f50cc9e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Duselbrüder\nHeimspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.202
+ 6 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittl
+ ingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5711e7d1fac0bcf9e3c0e2bdd52619d7f181fee7f2331f0730c92cd34f3a2cde@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T173000Z
+DTEND:20270513T203000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 3
+DESCRIPTION:Begegnung: the Metal Darts 3 - DC Black Scorpions 3\nAuswärtss
+ piel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 1
+ 3.05.2027 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 3
+ 7\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5f9c322ec0eb76cc13980f4165b79123c8a64bafd48dcdbde917c83d3904dbf7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts
+DESCRIPTION:Begegnung: DC Broken Darts - DC Black Scorpions 3\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.
+ 01.2027 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad 
+ Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:727ac02d66a4272b551f5f5f0415ad48b2cc1d4e143d6012941c3ca1ae712602@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - the Metal Darts 3\nHeimspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2
+ 026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knit
+ tlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:83c8592dbe144d8700b04b3f04e10544adfa7ebbf9cef722281716751f2a8f0d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Irish 26 e.V. 2\nHeimspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01
+ .2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:87cf5beb25300784b9f9de9aad8419f53a752b5499b1365a37437f72a508a5d1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Heimspiel gegen DC Ungültig 2
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Ungültig 2\nHeimspiel\nLi
+ ga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026
+  18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittli
+ ngen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:96a76fe08a56f0ea898b5310792c2b8c2bdafc990028240591d87d45aac9dc49@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC Mephisto's
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Mephisto's\nHeimspiel\nLig
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027
+  18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittli
+ ngen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9bd6305347c5c5090f11f745f71132872d9e1fb78d47e61a6e5c33535f615829@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team 3
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Texas Team 3\nHeimspiel\nL
+ iga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.202
+ 6 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittl
+ ingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc4170799382afc8b32d409809e7a965ef86340811ce485601096d8337340574@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260903T173000Z
+DTEND:20260903T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Black Scorpions 3\nAuswärts
+ spiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 0
+ 3.09.2026 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendä
+ ckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c7e611cda088300a2dd0032e1b9eb97e6ed275c9bb3d8b255fdf0a2cf0487f98@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T173000Z
+DTEND:20261006T203000Z
+SUMMARY:Auswärtsspiel bei Odins Knechte
+DESCRIPTION:Begegnung: Odins Knechte - DC Black Scorpions 3\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.
+ 2026 17:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/
+ Wilferdingen
+LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d0fda5818e201562cbbf3f7d2237137ed7a3f915fd3727d37f9c7e49149517a1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T180000Z
+DTEND:20261127T210000Z
+SUMMARY:Auswärtsspiel bei DC Mephisto's
+DESCRIPTION:Begegnung: DC Mephisto's - DC Black Scorpions 3\nAuswärtsspiel
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.
+ 2026 18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstras
+ se 92\, Knittlingen
+LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e17b4589e95681b86ff53bda8b977cdb605982752b8632c8efd3867bcfdb5ef4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Black Scorpions 3 - DC Underground Fool's e.V\nHe
+ imspiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin
+ : 02.04.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str.
+  1\, Knittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eaa8adb8fc5eb6b1bf360ca1bf007057424b54a43775fc352a30ddbd0ed4f180@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Black Scorpions 3\nAuswärtsspi
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.
+ 04.2027 18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f6bc0f6c72dd68789baabae45da20a8d6206cd224f482039a273ebb53700c66b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T183000Z
+DTEND:20261028T213000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
+DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Black Scorpions 3\nAu
+ swärtsspiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTe
+ rmin: 28.10.2026 18:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\
+ , Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

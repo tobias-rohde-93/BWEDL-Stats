@@ -1,0 +1,293 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Dart Vaders
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:096e36b07f94047eeb40f33830dd7e88e5ac726be2bcdcd2d75ecca026ec19d4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270224T190000Z
+DTEND:20270224T220000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC Dart Vaders - DC X-Brötzingen 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 
+ 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straub
+ enhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:14c953dc9023db47a977b3585a544a4691cd5838822dbf7d23525ca9801a6eee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Auswärtsspiel bei DC Bull Hunters
+DESCRIPTION:Begegnung: DC Bull Hunters - DC Dart Vaders\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.202
+ 7 18:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
+LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1b876348dc3e3deabd664933d9230f44a4c4e5a627b90474b24685ee1f1505ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270127T190000Z
+DTEND:20270127T220000Z
+SUMMARY:Heimspiel gegen DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Broken Darts 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.2027 1
+ 9:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1b8c20919d8df9f4441785aae43d496c555fd25cec50b7cb7fb3f5b91c1bca7f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270512T180000Z
+DTEND:20270512T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Black Scorpions 4\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 12.05.202
+ 7 18:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Stra
+ ubenhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1c2d9c18862cc24863514960b82bad543f4de7e352459c17d8e27b9647967b7a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270414T180000Z
+DTEND:20270414T210000Z
+SUMMARY:Heimspiel gegen DC Williams
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Williams\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027 18:00 U
+ TC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+ -Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2d85f3a2e84f72c10a4600018d19d0e4f1ac457264ebcd82fe79af5a13751026@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: DC Dart Vaders - Dartfreunde Eichenherz 2\nHeimspiel
+ \nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.
+ 2026 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, S
+ traubenhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2e4b922fc77b72f1d271cb81fb9180c86b3c3f22d539bd3c199a9cd970237afc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Heimspiel gegen DC Bull Hunters
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Bull Hunters\nHeimspiel\nLiga: C
+ -Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 19:0
+ 0 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenha
+ rdt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:472cadf3d57a02bfc506fbb2662a2068f3884955b4c30ad51a93ceec0a70eed3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270317T190000Z
+DTEND:20270317T220000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC Dart Vaders - DC 180 Stein e.V. 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 17.03.2027
+  19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strau
+ benhardt-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:48407ffbd1bbc7915e1d085364d216b7941c4f0082a4e552f38153aaf7bac5b1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270331T173000Z
+DTEND:20270331T203000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - DC Dart Vaders\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 15. Spieltag\nTermin: 
+ 31.03.2027 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
+  42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5b1589519fb5fcf7a2fadd2a8e0f82997b83606777fe694f40dc5f9a0eec273d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261210T190000Z
+DTEND:20261210T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 4
+DESCRIPTION:Begegnung: DC Black Scorpions 4 - DC Dart Vaders\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 10.12
+ .2026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Kn
+ ittlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5caf562a6618e7b8a3b98e4a0ef6f76458e0c746530f921350dba1f14740783e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261021T173000Z
+DTEND:20261021T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Dart Vaders\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.
+ 2026 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Kö
+ nigsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:698b1b5662849a94b7d13b714a9c76f523d94d76c5d4342a465e67205afa3cb3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260923T180000Z
+DTEND:20260923T210000Z
+SUMMARY:Heimspiel gegen Los Muertos 2
+DESCRIPTION:Begegnung: DC Dart Vaders - Los Muertos 2\nHeimspiel\nLiga: C-K
+ lasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 18:00 
+ UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhard
+ t-Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:69de1b4d9fb7eea8ff43b1097f6b832fb6a7e400e49ec46421841e9dd5284e0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T180000Z
+DTEND:20260826T210000Z
+SUMMARY:Heimspiel gegen DC Triple 7
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Triple 7\nHeimspiel\nLiga: C-Kla
+ sse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18:00 UT
+ C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-
+ Schwann
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8061ca9f48f9c4b9b01aebc1493262366e1c7ddbf3e5acda78a92e2b40c5953d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261111T180000Z
+DTEND:20261111T210000Z
+SUMMARY:Auswärtsspiel bei DC Williams
+DESCRIPTION:Begegnung: DC Williams - DC Dart Vaders\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.11.2026 18:
+ 00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8a4797796549c9ce3dd0af4f2b5d3498baa893ba19d996d47ef65a3aa6329379@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Auswärtsspiel bei DC Broken Darts 2
+DESCRIPTION:Begegnung: DC Broken Darts 2 - DC Dart Vaders\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.20
+ 26 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildb
+ ad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8c164c86cf5e3233d14a016e4b1849e771d19949b7cf29fcc9b4bceebaf3c314@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270211T180000Z
+DTEND:20270211T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos 2
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Dart Vaders\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 
+ 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:df52858ab9d84809f58d544c8c7efa6d1713691c43149103b05826c5e12c8697@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261010T180000Z
+DTEND:20261010T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
+DESCRIPTION:Begegnung: DC X-Brötzingen 2 - DC Dart Vaders\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2
+ 026 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-St
+ r. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e9164fc6a39705000f98787ccb0054057802cf2b7b3b91d6bc5a349181a73c49@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T180000Z
+DTEND:20270115T210000Z
+SUMMARY:Auswärtsspiel bei DC Triple 7
+DESCRIPTION:Begegnung: DC Triple 7 - DC Dart Vaders\nAuswärtsspiel\nLiga: 
+ C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 18
+ :00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

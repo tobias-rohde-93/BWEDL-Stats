@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – TSV Grunbach Darts 4
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:13080e5e9fe42d9a60c7fc76317ba0300711b2e4aeeedb05de0dfd7253e6e877@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T173000Z
+DTEND:20270413T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - TSV Grunbach Darts 4\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 
+ 13.04.2027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmend
+ äckerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:18accc61b3ad652aef55c2db44f5ac5011384509cfd521ae40d386a20b924b90@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T183000Z
+DTEND:20261113T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Irish 26 e.V. 3\nHeimspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.
+ 2026 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:38217e3617281f9a7510ae36d729ae3420b3a075e945764ea21c8e08af671b72@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T180000Z
+DTEND:20261124T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - TSV Grunbach Darts 4\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.20
+ 26 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:70b89b845b7c4bb2bf414063a35297bd7ca81e34d6a7ffaa776014f8c530f188@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - TSV Grunbach Darts 4\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.202
+ 7 19:00 UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:75eca895399ce6123a1c25e0e996407a67a5ef6d207f24f256f48feb95e85ebf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T173000Z
+DTEND:20261009T203000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Bull's Eye Arnbach 2\nHeim
+ spiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 0
+ 9.10.2026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Enge
+ lsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:768fd924d1f469a86886e3dca03dcdfcc30b2b55aba4ca70f41becef5da97a3d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T183000Z
+DTEND:20261211T213000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - United Ikaros\nHeimspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 
+ 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gr
+ unbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:89009deb82332acfc2cd6ea938e5aa4ecb7db3f3ce474bdcd447f9ef6ddb5b0c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270315T183000Z
+DTEND:20270315T213000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - TSV Grunbach Darts 4\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin:
+  15.03.2027 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterw
+ eg 25\, Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8d6d6d58b4fca5eb5892b93e7051b985b5b141d31dc6fadd47fea532d1a29842@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T173000Z
+DTEND:20270402T203000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - the Enz Coast\nHeimspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027
+  17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a471ce4645572a5c4c62d47a3350c13c1cabc9841d18c722afe211fbbad5f258@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - TSV Grunbach Darts 4\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.
+ 2026 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- 
+ Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b9e5115b664f639e6360b2b4bed1bb4e264f793294718dbb863f2fcd100e73c9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T173000Z
+DTEND:20260911T203000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Höfle\nHeimspiel\nLiga: C
+ -Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 17:3
+ 0 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunba
+ ch
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:be6aebd4eeeac863bc725e1a14a68dbd740e63a93879849ceb0648d30fe56ee6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T173000Z
+DTEND:20261023T203000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DSV Großglabbich 2\nHeimspie
+ l\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10
+ .2026 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbr
+ and-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c712cdb6af52031d76bdda3791d51ca127deda7b1f08718bfbe385779605f653@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260919T180000Z
+DTEND:20260919T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - TSV Grunbach Darts 4\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 19.09.
+ 2026 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 
+ 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d54bc174e80837eef7eec2f57325301d0299bae9be54adb23cbbb5ebdf7457bd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - TSV Grunbach Darts 4\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 
+ 26.09.2026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad 
+ Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d6c308c23616e2af404841619152ccf7717495214aa96a74c91fd37521b99233@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270513T180000Z
+DTEND:20270513T210000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - TSV Grunbach Darts 4\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05
+ .2027 18:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAd
+ resse unvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e18600c7e066b21d5f705ea95034f6ef6ccb56503d9a78c0625685c6a77a656a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T173000Z
+DTEND:20270430T203000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - Los Muertos\nHeimspiel\nLiga:
+  C-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 1
+ 7:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gru
+ nbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e4ecdea313c8089b3732b95564ad5645c8e5496b7dc1f4a3bf85b18f8eda1dcc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T183000Z
+DTEND:20270212T213000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Enztaler Buben 2\nHeimspie
+ l\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.0
+ 2.2027 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsb
+ rand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e6c72d0eaa0fff522a1092bc635f8b64c99ad4774ad46afe3e3208a6205f118f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270223T193000Z
+DTEND:20270223T223000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - TSV Grunbach Darts 4\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTer
+ min: 23.02.2027 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 
+ 7\, Neuenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ed1ef52d17f3794e8949dadcac74b9d5d19c4edb79519a19d50244bca7048ce9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T183000Z
+DTEND:20270115T213000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Oststadt 2\nHeimspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027
+  18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

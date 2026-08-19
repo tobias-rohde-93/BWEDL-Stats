@@ -1,0 +1,546 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Lightning Arrows
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:0efcb237a00cf0f7e791c540c8ef570914f2f9b4c1968a337d27edb488c576eb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T183000Z
+DTEND:20270219T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Lightning Arrows\nAuswärtss
+ piel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.
+ 2027 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerl
+ e 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1392913b1897c84606cf9f35bead9c1b4d3483bc356df1bb0685c8a6e005dbe8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T180000Z
+DTEND:20261019T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks 2
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Ligthning Arrows\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19
+ .10.2026 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr.
+  28\, Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:14470a7e8dea9d62778cc2d2e67039482b2aa50c99fae77dd233df1eb0558258@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260821T183000Z
+DTEND:20260821T213000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Lightning Arrows - ESV DC 25\nHeimspiel\nLiga: Mi
+ x C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.08.2026 18:30 UTC\
+ nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1fe4b2e71974e21757e47bd3011e2708cf4827a9c45f11799a78164f1eb049af@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T173000Z
+DTEND:20270430T203000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: DC Ligthning Arrows - TSV Grunbach Darts 3\nHeimspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.0
+ 4.2027 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:208fc3f31dfe5677ccac7467ca4c3ea8d111a614491655e86f46410b884660b5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270416T173000Z
+DTEND:20270416T203000Z
+SUMMARY:Heimspiel gegen TDF Enzberg 3
+DESCRIPTION:Begegnung: DC Ligthning Arrows - TDF Enzberg 3\nHeimspiel\nLiga
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 
+ 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
+ eim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:215215626e9997acf2e93b397328452fccecde955510f0dc253440ba7ab02e55@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T193000Z
+DTEND:20270326T223000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Underground Fools 2\nHeimsp
+ iel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2
+ 027 19:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:23b0c6b14a8ed5ea2dc4693a818bc57f08f59bfc64664d45d1986c6fed0b25a3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270507T183000Z
+DTEND:20270507T213000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Lightning Arrows - Los Muertos\nHeimspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 18:30 U
+ TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2c4a629a1da883bcc72eaa8a088813cbdc28f6dc11eeed20fcd38d8f160f676f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260921T173000Z
+DTEND:20260921T203000Z
+SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC Ligthning Arrows\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 3. Spieltag\nTermin: 2
+ 1.09.2026 17:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\
+ , Königsbach - Stein
+LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:37f9ed3075dd895ff62b6a5a3c7625b1d17aa7ee5c7d1d2c7f5f82992127e812@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
+DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC Ligthning Arrows\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 
+ 26.11.2026 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Eng
+ elsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:54e9834d0e1afe3621237324da39dbe9ba3d111ec6546c33574094fd08d08a4e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T180000Z
+DTEND:20261114T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg 3
+DESCRIPTION:Begegnung: TDF Enzberg 3 - DC Ligthning Arrows\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2
+ 026 18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-
+ Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:57265985a448676f2548bb59a2d16df1fdb8f24cfd519246c117a3fa3181f7cc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T183000Z
+DTEND:20270212T213000Z
+SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC 180 Stein e.V. 3\nHeimspiel
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02
+ .2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:5c29c0f6361bdbcd810c9d0610df034ae161ef25ff4ec888a7901ef2043a4c89@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270409T183000Z
+DTEND:20270409T213000Z
+SUMMARY:Heimspiel gegen DC Duselbrüder
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Duselbrüder\nHeimspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 09.04.2027 18:
+ 30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:652979b6eb8b9cda3f7ced86ab719589dc05fe9613719e931015763c8e8742a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270313T190000Z
+DTEND:20270313T220000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Lightning Arrows\nAuswärtsspi
+ el\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 13.03.20
+ 27 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
+ 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:66920ccbe46f865e40079515e51919fd3001625aba1c0c5ce3b46418b2239823@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T173000Z
+DTEND:20261009T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Destroyers e.V. 4\nHeimspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10
+ .2026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6c56a19210fb47b1195e3d612a91dbab56755f81474719c6d39953da4e75486c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270226T190000Z
+DTEND:20270226T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 4
+DESCRIPTION:Begegnung: DC Destroyers e.V. 4 - DC Ligthning Arrows\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin:
+  26.02.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, We
+ berstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:713bd084fbfddc268112fe1172e8bd7c7fdf58ad3422db104838fcb4f368d7ec@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261204T193000Z
+DTEND:20261204T223000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Lightning Arrows - TSV Grunbach Darts\nHeimspiel\
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 04.12.2026 1
+ 9:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:72a070a52f2fd30363dd5033d1726003f9b9867ec69e9fde31f0b605f721b3bb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261121T190000Z
+DTEND:20261121T220000Z
+SUMMARY:Auswärtsspiel bei DC Duselbrüder
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Lightning Arrows\nAuswärtsspie
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 21.11.2026
+  19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:74d8ffaa9680953f8497b1952199a2d20b6afd21cd6c191cbb7794d78c4c568b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T183000Z
+DTEND:20270115T213000Z
+SUMMARY:Heimspiel gegen DC Hot Shotz
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Hot Shotz\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 1
+ 8:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7b06ba22c78f9da9e88fdc3ac0237f20d97fe8fad573b41ce3c41eaed112d39a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260901T173000Z
+DTEND:20260901T203000Z
+SUMMARY:Heimspiel gegen DC Texas Team 4
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Texas Team 4\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 01.09.2026
+  17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8070ab56f5edf725e8bc6c07fe4fc2c37874c9d46c2acf9fcecd4587e5f823cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270423T173000Z
+DTEND:20270423T203000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Lightning Arrows\nAuswärtss
+ piel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.
+ 2027 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbra
+ nd-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8995b5cb885e50b126dc69b0ddcaa9286b9d8ebc6798f0928819d46fabec5f42@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261218T180000Z
+DTEND:20261218T210000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Lightning Arrows\nAuswärtsspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 18:
+ 00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9aec74b291b2ddbb4cfc74b66af4c37e72a53fed87f6a91d9e4293e01c810a82@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270514T180000Z
+DTEND:20270514T210000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Ligthning Arrows\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.
+ 05.2027 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedric
+ h-Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b660ebaaeacfb5810b64016f984de9ed9819752565ada7f32935759eaa5d76e3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T183000Z
+DTEND:20261211T213000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Ligthning Arrows - DC X-Brötzingen\nHeimspiel\nL
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.202
+ 6 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfor
+ zheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc58ee7dd81daa3fc9a16adcd2177f719af3c94a6d633e4bb78aed73a2c23a66@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T193000Z
+DTEND:20270205T223000Z
+SUMMARY:Heimspiel gegen DC Shamrock
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Shamrock\nHeimspiel\nLiga: 
+ Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19:30 U
+ TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c3c6450f2c843abd64a7f20eab0fa439d0ede2ec669a5cd488b8889fa8aaec08@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270319T183000Z
+DTEND:20270319T213000Z
+SUMMARY:Heimspiel gegen the flying Rocks 2
+DESCRIPTION:Begegnung: DC Ligthning Arrows - the flying Rocks 2\nHeimspiel\
+ nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.
+ 2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c3daf58e82e2588ff171b3aaf1fb9223a18d76375f3d943a78fdff8c9d7dd2a7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260918T183000Z
+DTEND:20260918T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Irish 26 e.V. 2\nHeimspiel\
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 1
+ 8:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d0bfab44cbdcb7b46d76cc2bfc23afe0fcb20c52b9c6c27013c0ca10f90d2e78@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T183000Z
+DTEND:20261016T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V.
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Irish 26 e.V.\nHeimspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18:
+ 30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d64d9d9b679b9efbf897da9f583c59a93d10889c3b52a34b8fc485848f731406@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T183000Z
+DTEND:20270126T213000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team 4
+DESCRIPTION:Begegnung: DC Texas Team 4 - DC Ligthning Arrows\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.0
+ 1.2027 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
+ , Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e797e7cef92b230f099fe9bcd77c8a200aa37c7a559f2b905825f3d63d8643ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270122T190000Z
+DTEND:20270122T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Lightning Arrows\nAuswärtsspiel\nLig
+ a: Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.2027 19:0
+ 0 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pf
+ orzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:eb789f180930b2c84f4d644888dfd10d5717c744cf698b3d0b7b1ac222cc2a4a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T180000Z
+DTEND:20260904T210000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock
+DESCRIPTION:Begegnung: DC Shamrock - DC Lightning Arrows\nAuswärtsspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:
+ 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
+ ardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec0d02d1a551e743ee5bc86394a5ff73a2050446888596473495825ab5736565@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261104T190000Z
+DTEND:20261104T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 2
+DESCRIPTION:Begegnung: DC Underground Fools 2 - DC Lightning Arrows\nAuswä
+ rtsspiel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 04.
+ 11.2026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weihers
+ traße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f253a0085c5dec995fe103bba6f971c142d7327b2431aebc4f6e6c7d8231c1f0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Auswärtsspiel bei DC Hot Shotz
+DESCRIPTION:Begegnung: DC Hot Shotz - DC Ligthning Arrows\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.20
+ 26 18:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Str
+ aubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f75b69c2ba914efb296427828dd254e0a788a9fb34d25a590c11e723387435ea@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270305T193000Z
+DTEND:20270305T223000Z
+SUMMARY:Heimspiel gegen DC X-Brötzingen
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC X-Brötzingen\nHeimspiel\nL
+ iga: Mix C-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.2027 19
+ :30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fafb9084be202145ace38521dedc7917a450a1e25b9c6623f88d038afc32bc21@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260930T170000Z
+DTEND:20260930T200000Z
+SUMMARY:Auswärtsspiel bei DC X-Brötzingen
+DESCRIPTION:Begegnung: DC X-Brötzingen - DC Lightning Arrows\nAuswärtsspi
+ el\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 30.09.202
+ 6 17:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

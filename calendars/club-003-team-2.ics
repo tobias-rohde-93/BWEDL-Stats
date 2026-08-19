@@ -1,0 +1,294 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Strikers 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2fcf8131eb0646e6e1d70e78b80ca2692330b5c9282d5744123c55e6f22d2318@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T190000Z
+DTEND:20270130T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Enztaler Buben - DC Strikers 2\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.20
+ 27 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:39a29d826c495b0922d196fc1e0b44fac132d9f5040652b2f784c9605fa40db8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270426T180000Z
+DTEND:20270426T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - DC Strikers 2\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 26.04
+ .2027 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr
+ . 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:634d167da3f3792cc9437480e382c8df72cec1a89e18f36c48cc7661f7c018c6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T173000Z
+DTEND:20270413T203000Z
+SUMMARY:Heimspiel gegen DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Underground Fool´s 3\nHeimspiel\
+ nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.
+ 2027 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstra
+ ße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:647bb7ad07d6d80ea90d09c270e7bf71aed08d5b8eea6cd04c987f6fbdd9588c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260925T180000Z
+DTEND:20260925T210000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - DC Strikers 2\nAuswärtsspiel\nLi
+ ga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026
+  18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiese
+ n 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:79c2bc66c25734d8d8e6329c66fcaaa014af520f65a418a2b4593cb832bc63f6@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260908T173000Z
+DTEND:20260908T203000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Enztaler Buben\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08.09.2026 17:
+ 30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\,
+  Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:853f45e81f8c3b2d8c4dcc7efc907659c9ca5a0aaa77352e42b8f21fb904a258@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Crows
+DESCRIPTION:Begegnung: DC Crows - DC Strikers 2\nAuswärtsspiel\nLiga: B-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00 U
+ TC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:870b883a730281f65944c81eee1df6af9b035d1238c12e89e64c33704b6c29e7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261110T190000Z
+DTEND:20261110T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - DC Strikers 2\nAuswärtss
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10
+ .11.2026 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiher
+ straße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:89b27f7be61d0e827a384763b53cc6bdd303f4c79c97e681c6f334c1209912a8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Auswärtsspiel bei Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Strikers 2\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 
+ 03.04.2027 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-St
+ r. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9f6e3a12a520d7d8cdce330da97e3b8c1a4bf4158f08827f88f21ab76ff54c2e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Auswärtsspiel bei DC SchömbergerEck
+DESCRIPTION:Begegnung: DC SchömbergerEck - DC Strikers 2\nAuswärtsspiel\n
+ Liga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.20
+ 26 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\, Sc
+ hömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:af66be2a48db7ce28faa7c8ed32de4ed2e7d4887686a1ad610e0e052db53990e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261124T183000Z
+DTEND:20261124T213000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Destroyers e.V. 2\nHeimspiel\nLig
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.2026 
+ 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 6
+ 0\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b7e4bea937fbb9bc96e79e8e7dab6f2089399715cd19510b101b8e3aa4fa7214@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270316T183000Z
+DTEND:20270316T213000Z
+SUMMARY:Heimspiel gegen DC SchömbergerEck
+DESCRIPTION:Begegnung: DC Strikers 2 - DC SchömbergerEck\nHeimspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 16.03.2027 1
+ 8:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60
+ \, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bc5b6e48169d7dc069a3b24a42f4cc5c76b3b94d64dd6977c15a126df5fcfa0d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T183000Z
+DTEND:20270112T213000Z
+SUMMARY:Heimspiel gegen TDF Enzberg
+DESCRIPTION:Begegnung: DC Strikers 2 - TDF Enzberg\nHeimspiel\nLiga: B-Klas
+ se Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 12.01.2027 18:30 UT
+ C\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisi
+ ngen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:be64cb4a4e64841ccb46525c0d50dfa1d11c86d98c0df605e89d55b84cce97f3@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260819T180000Z
+DTEND:20260819T210000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg
+DESCRIPTION:Begegnung: TDF Enzberg - DC Strikers 2\nAuswärtsspiel\nLiga: B
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 19.08.2026 18:0
+ 0 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c959f3854f654c2d6331bc36d6ae1c6d358c8536cd8d0f394cf6cb66b4683d39@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T173000Z
+DTEND:20261006T203000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: DC Strikers 2 - Dartfreunde Eichenherz\nHeimspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.202
+ 6 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße
+  60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e6c3f05d0822784cfbc6ec8d3eec8167096fcbcd70b22c14247a01b84831cf96@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T173000Z
+DTEND:20270511T203000Z
+SUMMARY:Heimspiel gegen DC Crows
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Crows\nHeimspiel\nLiga: B-Klasse 
+ Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 17:30 UTC\n
+ Austragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisinge
+ n
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f15f059fc61613a631869255bb64506c3ad9c1cb6f9bdae4fa905cbaccd9b42a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T183000Z
+DTEND:20270209T213000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: DC Strikers 2 - DC Crazy Flights\nHeimspiel\nLiga: B
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.02.2027 18:
+ 30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\,
+  Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f659af19bdd1b1bbef0057ef3e5f665820f0c4600ea5a59efa1b10ff42254aa7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T150000Z
+DTEND:20270227T180000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Strikers 2\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.
+ 02.2027 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42
+ \, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f8859d50769811f8af5e3fb3f74137a95ac74c324bdc22d88a2833a2c66a1f50@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:Heimspiel gegen Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: DC Strikers 2 - Heavy Weights Brötzingen\nHeimspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.
+ 2026 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstra
+ ße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

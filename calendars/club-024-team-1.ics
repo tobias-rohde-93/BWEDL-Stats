@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DSV Großglabbich
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:031caaf4b71187f1c590202b907a6e5cec4dfd1875f37ea1f062d6254ec1a9c1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261031T190000Z
+DTEND:20261031T220000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DSV Großglabbich\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31
+ .10.2026 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weber
+ str. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1101c1b635bfde6d9589a7c23d16acea20c65ce100216662dc82489a0225d6a0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T183000Z
+DTEND:20270222T213000Z
+SUMMARY:Heimspiel gegen ESV DC 25 2
+DESCRIPTION:Begegnung: DSV Großglabbich - ESV DC 25 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02.2027 18:3
+ 0 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühlack
+ er
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1c70f3d029a7fdfd6d313f3c577e29dcd65a254baefb11c23b202c37610211c7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25 2
+DESCRIPTION:Begegnung: ESV DC 25 2 - DSV Großglabbich\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 
+ 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\
+ , Pforzheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1e1349ab0183f3d061aa9708277f2cfd86f5b9ee801818742953ede824a2b6d2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270412T173000Z
+DTEND:20270412T203000Z
+SUMMARY:Heimspiel gegen the Metal Darts 6
+DESCRIPTION:Begegnung: DSV Großglabbich - the Metal Darts 6\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 16. Spieltag\nTermin: 12.04.202
+ 7 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, M
+ ühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1ef1db539d6c5f5c6c489d6fc7f7663b5e722e5d6d84a6d137be7a3ddb0e4b08@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts 6
+DESCRIPTION:Begegnung: the Metal Darts 6 - DSV Großglabbich\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11
+ .2026 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
+ Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2a34f667f541baac023c009147dd6e3505474d47b3b88faf030edbb6f60cbecd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260921T173000Z
+DTEND:20260921T203000Z
+SUMMARY:Heimspiel gegen DC Ungültig 3
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Ungültig 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 21.09.2026 17
+ :30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühla
+ cker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2a40894972f3c312e527be92aea59abb3925dcbea45b5b7a9e23540c556deba8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270210T183000Z
+DTEND:20270210T213000Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - DSV Großglabbich\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 10.02.2
+ 027 18:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, S
+ chömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2b04e5a87b8c21c54e8a96d83c8a932e2b4d5c5a6677fa9b69bc819c533bfae9@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270125T183000Z
+DTEND:20270125T213000Z
+SUMMARY:Heimspiel gegen DC Oststadt 3
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Oststadt 3\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.2027 18
+ :30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühla
+ cker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4defbcaad1cec72b56f69ad771a65c156296195fa6bc46f8a06ed1ec66e65245@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T183000Z
+DTEND:20270320T213000Z
+SUMMARY:Auswärtsspiel bei DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Kolibrispitz - DSV Großglabbich\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.
+ 2027 18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffens
+ tr. 15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:62970ee5d80d18e456f50c0cfc49a6b57bf4ab14777ca652edeff0ed340efa73@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270427T173000Z
+DTEND:20270427T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DSV Großglabbich\nAuswärtsspi
+ el\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.
+ 04.2027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäck
+ erle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9b47f3b3093848226ee04efd1d7fd2f6bcfa4df0276e626f8192d0a60df0650e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270329T173000Z
+DTEND:20270329T203000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Destroyers e.V. 5\nHeimspiel\
+ nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 29.03.
+ 2027 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\,
+  Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d316c17d3f22ab25a9d3fc197579f41e30aa390d21cb5d79de846115e6061a69@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261019T173000Z
+DTEND:20261019T203000Z
+SUMMARY:Heimspiel gegen DC Kolibrispitz
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Kolibrispitz\nHeimspiel\nLiga
+ : C-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.2026 1
+ 7:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühl
+ acker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e6e21f87b118726cff53605de98e3e772f6b9c8f8272649d34d7ccb4bb28a39d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270510T173000Z
+DTEND:20270510T203000Z
+SUMMARY:Heimspiel gegen DC Shamrock 2
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Shamrock 2\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 17
+ :30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühla
+ cker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ee42d3f57e6600fdc9c9af19edb464851d78e6407c53bb1649bf6a2a201652b7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 3
+DESCRIPTION:Begegnung: DC Oststadt 3 - DSV Großglabbich\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.202
+ 6 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\
+ , Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f2997299466df2d0c480f98db44b452cc45ef542081b060f6c4b1b00ed39dd53@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei DC Shamrock 2
+DESCRIPTION:Begegnung: DC Shamrock 2 - DSV Großglabbich\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.202
+ 6 19:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Stra
+ ubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f6449656d226c6a8093125972ebf0be60dd5caea097f8adcba5e0fd86e9b9512@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261123T183000Z
+DTEND:20261123T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Irish 26 e.V. 5\nHeimspiel\nL
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.202
+ 6 18:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, M
+ ühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

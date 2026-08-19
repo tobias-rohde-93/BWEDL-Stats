@@ -11,6 +11,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Callable, Sequence
 
+from pipeline.calendar_feeds import build_calendar_publication, write_calendar_publication
 from pipeline.files import write_json_pair
 from pipeline.publish import publish_domains
 from pipeline.report import DOMAIN_ORDER, write_report
@@ -114,6 +115,48 @@ def _parse_aware_status_time(value: Any, label: str) -> datetime:
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise ValueError(f"invalid {label}")
     return parsed
+
+
+def _effective_payload(
+    domain: str,
+    candidate_payloads: dict[str, dict[str, Any]],
+    previous_payloads: dict[str, dict[str, Any]],
+    indexed_results: dict[str, ValidationResult],
+) -> dict[str, Any]:
+    result = indexed_results.get(domain)
+    if result is None:
+        raise ValueError(f"calendar {domain} result is missing")
+    if result.decision is Decision.PUBLISH:
+        payloads = candidate_payloads
+    elif result.decision is Decision.RETAIN:
+        payloads = previous_payloads
+    else:
+        raise ValueError(
+            f"calendar {domain} decision is not final: {result.decision.value}"
+        )
+    try:
+        return payloads[domain]
+    except KeyError as error:
+        source = "candidate" if result.decision is Decision.PUBLISH else "previous"
+        raise ValueError(f"calendar {source} {domain} payload is missing") from error
+
+
+def _load_calendar_state(root: Path) -> dict[str, Any] | None:
+    path = root / "calendar_state.json"
+    if not path.exists():
+        return None
+    payload = _strict_json(path)
+    if not isinstance(payload, dict):
+        raise ValueError("calendar state root must be an object")
+    return payload
+
+
+def _calendar_generated_at(status: dict[str, Any]) -> datetime:
+    try:
+        updated_at = status["domains"]["leagues"]["updated_at"]
+    except (KeyError, TypeError) as error:
+        raise ValueError("calendar league status timestamp is missing") from error
+    return _parse_aware_status_time(updated_at, "calendar leagues updated_at")
 
 
 def _load_js(path: Path, global_name: str) -> Any:
@@ -331,7 +374,7 @@ def run_update(
         )
         _write_concise(root / "update_status.json", _iso(finished), results)
 
-    if ready and not dry_run and previous_status is not None:
+    if ready and previous_status is not None:
         try:
             status = _build_status(
                 previous_status,
@@ -340,13 +383,36 @@ def run_update(
                 _changed_domains(staging, root, results, previous_status),
             )
             write_json_pair(staging, "data_status", "DATA_STATUS", status)
-            published = publish_domains(
-                staging,
-                root,
-                results,
-                additional_files=("data_status.json", "data_status.js"),
-                finalize=finalize_diagnostics,
+            effective_leagues = _effective_payload(
+                "leagues", candidate_payloads, previous_payloads, indexed
             )
+            effective_clubs = _effective_payload(
+                "clubs", candidate_payloads, previous_payloads, indexed
+            )
+            calendar_publication = build_calendar_publication(
+                effective_leagues,
+                effective_clubs,
+                previous_state=_load_calendar_state(root),
+                updated_at=_calendar_generated_at(status),
+            )
+            write_calendar_publication(calendar_publication, staging)
+            if not dry_run:
+                published = publish_domains(
+                    staging,
+                    root,
+                    results,
+                    additional_files=(
+                        "data_status.json",
+                        "data_status.js",
+                        "calendar_index.json",
+                        "calendar_index.js",
+                        "calendar_state.json",
+                    ),
+                    additional_directories=("calendars",),
+                    finalize=finalize_diagnostics,
+                )
+            else:
+                finalize_diagnostics([])
         except Exception as error:
             results = [
                 ValidationResult(

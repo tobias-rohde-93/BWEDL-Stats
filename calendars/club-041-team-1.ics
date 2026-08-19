@@ -1,0 +1,295 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Conweiler
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:18f84bd3da8ef10c9f72d5ebcd8cc898fe6f9073c91584729b83ca2df66f460f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261028T183000Z
+DTEND:20261028T213000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Conweiler\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 
+ 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:22f23e111fd35668b3b11717f41a4a9a162ac38537ecbae43d4697ada0e00eb2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270430T180000Z
+DTEND:20270430T210000Z
+SUMMARY:Heimspiel gegen DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Conweiler - DC Black Scorpions 5\nHeimspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 
+ 18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, 
+ Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:33ec352a655139a4fa0117f0994970457272fd7ba3c42993118d8a392de716c0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
+SUMMARY:Heimspiel gegen DC Drei Daneben
+DESCRIPTION:Begegnung: DC Conweiler - DC Drei Daneben\nHeimspiel\nLiga: C-K
+ lasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 
+ UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straub
+ enhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3ab47b92bc17053f7bf387a6c79fe43c183e662ea0c3b1de472956a750077b5a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 3 - DC Conweiler\nAuswärtsspiel\n
+ Liga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2
+ 027 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:44e4c32b43d1569cfb4938088399089b4a817944908e1563e20a23986bf16ac4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T170000Z
+DTEND:20270417T200000Z
+SUMMARY:Auswärtsspiel bei DC Drei Daneben
+DESCRIPTION:Begegnung: DC Drei Daneben - DC Conweiler\nAuswärtsspiel\nLiga
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 
+ 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhe
+ im
+LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:560f80f5fb6d5ac1445d6cad32f5557e2e0ca3957a16187b90f539c574cb7e8b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270511T180000Z
+DTEND:20270511T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Underground Fools 4 - DC Conweiler\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.0
+ 5.2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherst
+ raße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6039b1cd219a2053ffbe3a573335337a2f0a83d9a0f83e40227b77dfe305c096@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260824T170000Z
+DTEND:20260824T200000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Conweiler\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.202
+ 6 17:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1
+ \, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:98f4bddb6ae8e6c1838dcb598a670e30d838cdd761a991319d4a076e00a05c15@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T173000Z
+DTEND:20260926T203000Z
+SUMMARY:Auswärtsspiel bei DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Knickebocker 2 - DC Conweiler\nAuswärtsspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026
+  17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-
+ Str.378\, Pforzheim
+LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b74b9c8659704cbd7e282719440f2f941cf8c5d752f2323bd7042d59cd4aa8f1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270222T190000Z
+DTEND:20270222T220000Z
+SUMMARY:Auswärtsspiel bei Phantom Arrows 2
+DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Conweiler\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.02.2027
+  19:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b9ccbc0cbe3415d311c4b15d4037ce78ffa29c6b4b3dda9ff1eacbd5c5ead4cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261009T180000Z
+DTEND:20261009T210000Z
+SUMMARY:Heimspiel gegen Phantom Arrows 2
+DESCRIPTION:Begegnung: DC Conweiler - Phantom Arrows 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18:00
+  UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Strau
+ benhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d1f5f9170f310e523d811e2172d387a3f68da11567912a48b7fa0462f809b73c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270129T190000Z
+DTEND:20270129T220000Z
+SUMMARY:Auswärtsspiel bei ESV DC 25
+DESCRIPTION:Begegnung: ESV DC 25 - DC Conweiler\nAuswärtsspiel\nLiga: C-Kl
+ asse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 
+ UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfor
+ zheim
+LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d3e0c68f4351922695f787a652c6426f3440ddcc50eaa2d4e2a0ca119dcdc79d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T190000Z
+DTEND:20270212T220000Z
+SUMMARY:Heimspiel gegen DC Knickebocker 2
+DESCRIPTION:Begegnung: DC Conweiler - DC Knickebocker 2\nHeimspiel\nLiga: C
+ -Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02.2027 19:
+ 00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Str
+ aubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d48c1f91da8ba2227ea899c48f68102ddb18bf53668fddd441cb2fc939f69fae@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270402T180000Z
+DTEND:20270402T210000Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: DC Conweiler - DC HighFlights 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:0
+ 0 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Stra
+ ubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e198d129145e36472f05131357085c255be6c285da293a0c7b493532b626eaef@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261023T180000Z
+DTEND:20261023T210000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben 3
+DESCRIPTION:Begegnung: DC Conweiler - DC Enztaler Buben 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18
+ :00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, St
+ raubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e23f2942a07643d45763a8cdbeb415f7b3b7b26fa9b0b5f7378878e6800e806d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260911T180000Z
+DTEND:20260911T210000Z
+SUMMARY:Heimspiel gegen ESV DC 25
+DESCRIPTION:Begegnung: DC Conweiler - ESV DC 25\nHeimspiel\nLiga: C-Klasse 
+ Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 UTC\nA
+ ustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhard
+ t
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec4dcbbd99737572f58ffcc059458a3e7388bb694d40e1c44746070a228cf751@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools 4
+DESCRIPTION:Begegnung: DC Conweiler - DC Underground Fools 4\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026
+  19:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\,
+  Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ec4f5cab34be82aac7d0eeb52398b7532b8064de6c866ef2fe91d911b735c11c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270115T190000Z
+DTEND:20270115T220000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
+DESCRIPTION:Begegnung: DC Conweiler - DC Irish 26 e.V. 4\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19
+ :00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, St
+ raubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fb84534f05f6ec31a50e0d89b5e215de11c562c215861689da17e76c30f97af8@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261125T190000Z
+DTEND:20261125T220000Z
+SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
+DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Conweiler\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.11.2
+ 026 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, Knit
+ tlingen
+LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

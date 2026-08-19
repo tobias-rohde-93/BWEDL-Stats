@@ -1,0 +1,290 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – DC Enztaler Buben 2
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:01d004bdf4a322883e05d02eca602838b5301cd376b2c035fc5c3e840741191c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270126T193000Z
+DTEND:20270126T223000Z
+SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - DC Enztaler Buben 2\nAusw
+ ärtsspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTer
+ min: 26.01.2027 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 
+ 7\, Neuenbürg - Arnbach
+LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:055fc8d88ba3c42cd6e22badd8dbd3704b770d74c02aa68e7ebca65c1ae910cf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Bull's Eye Arnbach 2\nHeims
+ piel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12
+ .09.2026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wi
+ ldbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:06fb695f197f57368e9508486cc4e8473c02ba8ef4a0fab7790934de666f06fd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T180000Z
+DTEND:20270515T210000Z
+SUMMARY:Auswärtsspiel bei DC Oststadt 2
+DESCRIPTION:Begegnung: DC Oststadt 2 - DC Enztaler Buben 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.
+ 2027 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 
+ 30\, Pforzheim
+LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:087cb3c4867ab85bbdb84ea6c90f1cefc52d0eb1c4880ccf00102b971bac7182@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270212T183000Z
+DTEND:20270212T213000Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: TSV Grunbach Darts 4 - DC Enztaler Buben 2\nAuswärt
+ sspiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin:
+  12.02.2027 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, En
+ gelsbrand-Grunbach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:137459a54c6a766b598ed9c6cabde1920e8ea1b052b28e16d5936696e009e080@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270413T170000Z
+DTEND:20270413T200000Z
+SUMMARY:Auswärtsspiel bei Los Muertos
+DESCRIPTION:Begegnung: Los Muertos - DC Enztaler Buben 2\nAuswärtsspiel\nL
+ iga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.20
+ 27 17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:260d2bdc96ba3689c33af9c26a78e7d6d1e49ba93412ecf2fff86e4b43cf573f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
+SUMMARY:Auswärtsspiel bei the Enz Coast
+DESCRIPTION:Begegnung: the Enz Coast - DC Enztaler Buben 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.
+ 2027 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich- 
+ Str. 259\, Pforzheim
+LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich- Str. 259\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:284e30444c993874e006a646865d4edc27300fe4b7e60c738e373fe430a0f027@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:Auswärtsspiel bei United Ikaros
+DESCRIPTION:Begegnung: United Ikaros - DC Enztaler Buben 2\nAuswärtsspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2
+ 026 19:00 UTC\nAustragungsort: Pharao Niefern\, Niefern-Öschelbronn\nAdre
+ sse unvollständig
+LOCATION:Pharao Niefern\, Niefern-Öschelbronn
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:356053b2659d5e6dd1d566c2099df056c3da742e5559d1977908c8f5d81b8cf7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Auswärtsspiel bei DC Höfle
+DESCRIPTION:Begegnung: DC Höfle - DC Enztaler Buben 2\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 
+ 18:00 UTC\nAustragungsort: Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+LOCATION:Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4609420a8f33f67179e15df18052c8f77a63d88c64aaa087944da7f466080db1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen DSV Großglabbich 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DSV Großglabbich 2\nHeimspiel
+ \nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02
+ .2027 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildb
+ ad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:497617aec769a7d2d826b036a052c9420a405719e6cea225ebc50909b690141b@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen United Ikaros
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - United Ikaros\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01.05.2027 
+ 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6de350c6491795cb18acfd3d570d6058b0520abcf38dce90c54bb231f8144c79@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 3 - DC Enztaler Buben 2\nAuswärtss
+ piel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27
+ .10.2026 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäc
+ kerle 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:97ffc7ec98104389f4d59d3dda15a172667d8f5c0e2910158eb4d7addba42fc4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261005T173000Z
+DTEND:20261005T203000Z
+SUMMARY:Auswärtsspiel bei DSV Großglabbich 2
+DESCRIPTION:Begegnung: DSV Großglabbich 2 - DC Enztaler Buben 2\nAuswärts
+ spiel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 0
+ 5.10.2026 17:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg
+  25\, Mühlacker
+LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b2472474f5e21c36a9d30dd4e4d3dea5c25a92ac2184633e161db7a28f2825a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen DC Oststadt 2
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Oststadt 2\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 1
+ 9:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c9c289689df4c9f7a923499005840b932d8ce857be0e2d6f553105df7eb7d7cb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Heimspiel gegen the Enz Coast
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - the Enz Coast\nHeimspiel\nLiga
+ : C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 1
+ 8:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d584944c64cf771364083e2cd705f826a0310549094c4edeb60696253431eca5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 3
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Irish 26 e.V. 3\nHeimspiel\
+ nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.
+ 2027 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildba
+ d
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:da3f361bc962819c0ba81fd61248224b142751b0b1f5cc776481ecc9a292c158@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts 4
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - TSV Grunbach Darts 4\nHeimspie
+ l\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09
+ .2026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildb
+ ad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e1587221bc11116edd7c3013b23a3ee59096deeb4bc9700c6e44a7373d0913be@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Heimspiel gegen Los Muertos
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - Los Muertos\nHeimspiel\nLiga: 
+ C-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11.2026 19:
+ 00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:fac0615f0f51e782eabaf75ad305a09d7866620a98c67a6bccf329b4b5f7eb86@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Heimspiel gegen DC Höfle
+DESCRIPTION:Begegnung: DC Enztaler Buben 2 - DC Höfle\nHeimspiel\nLiga: C-
+ Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:0
+ 0 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

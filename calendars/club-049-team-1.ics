@@ -1,0 +1,580 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Dartfreunde Eichenherz
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:093f9cdd9446b6a26a2b388cc9b1988da0bd7a92396f1201be74b422dde59bf2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261006T173000Z
+DTEND:20261006T203000Z
+SUMMARY:Auswärtsspiel bei DC Strikers 2
+DESCRIPTION:Begegnung: DC Strikers 2 - Dartfreunde Eichenherz\nAuswärtsspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.1
+ 0.2026 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberst
+ raße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:0a99087eb606c428643ea4effec460e7b9ca59b2df16d79f6ab9f6157226c2b4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260821T180000Z
+DTEND:20260821T210000Z
+SUMMARY:Auswärtsspiel bei the Metal Darts
+DESCRIPTION:Begegnung: the Metal Darts - Dartfreunde Eichenherz\nAuswärtss
+ piel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.08.2
+ 026 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:100a47f9c850f4eaa3e316baf159399cd5ffc1795bb97fb5507068ee9bca0080@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261016T173000Z
+DTEND:20261016T203000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - Dartfreunde Eichenherz\nAuswärts
+ spiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.
+ 2026 17:30 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonsw
+ iesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:12654108453c2295bba7feda33726c5ffddb67b7e77bcafb876492fee00af4c1@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260907T180000Z
+DTEND:20260907T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - Dartfreunde Eichenherz\nAusw
+ ärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTerm
+ in: 07.09.2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\,
+  Weberstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1424f668bf29298b78f3da5a33e4b62dbf28999fbfee07fab7217f249a5382fe@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Auswärtsspiel bei Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - Dartfreunde Eichenherz\n
+ Auswärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\n
+ Termin: 12.12.2026 19:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Frie
+ drich-Str. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:164e38ff9f962698980f671e26c1b72bce4647b540f35e98285ef419089cfaee@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
+SUMMARY:Heimspiel gegen DC Strikers
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Strikers\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 19:00
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1a649d66023b1d5b2838f06fef20e56351e674f143c13f896c57990ed5d9f3ce@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260826T170000Z
+DTEND:20260826T200000Z
+SUMMARY:Heimspiel gegen DC Underground Fool´s 3
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Underground Fool´s 3\nH
+ eimspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin
+ : 26.08.2026 17:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenst
+ r. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1aeb9201f62a111a91619b5bf515abced53dcf6e9c5bf5dc50a310fd2c864bfb@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270303T190000Z
+DTEND:20270303T220000Z
+SUMMARY:Auswärtsspiel bei DC Reloaded
+DESCRIPTION:Begegnung: DC Reloaded - Dartfreunde Eichenherz\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 03.03.2027
+  19:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppin
+ gen
+LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1db9e78f79c6ce8218d4ce2942c0b4e2be2852be152528a91a4e31576181aac4@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T140000Z
+DTEND:20260926T170000Z
+SUMMARY:Heimspiel gegen DC Crows
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crows\nHeimspiel\nLiga: 
+ B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 14:
+ 00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhei
+ m
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1f442e13dc936c520809e5733580ef33d10f71a3d2c4d1ab60e1711f2fe76f82@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T140000Z
+DTEND:20270417T170000Z
+SUMMARY:Heimspiel gegen TDF Enzberg
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - TDF Enzberg\nHeimspiel\nLig
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027
+  14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:3feeb7e39e085d6df24f3b43782ceda6e6cf55adca7ef8c2f99745ef547e96db@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270130T150000Z
+DTEND:20270130T180000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Destroyers e.V. 2\nHeims
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 3
+ 0.01.2027 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 
+ 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:53b2ea240515969422a0396f747d550fb7000738ea948cd17b6e7c2be05ff4a5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270112T190000Z
+DTEND:20270112T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - Dartfreunde Eichenherz\nA
+ uswärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\n
+ Termin: 12.01.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V
+ .\, Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:590d060b9141e4bfe3b065af4a4663101d96005ff219b559779911ad9177dd13@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Enztaler Buben - Dartfreunde Eichenherz\nAuswärt
+ sspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin:
+  20.03.2027 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad
+  Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:609bbf5d6aec0aa23803724833cae8a6e4f8f136e7d494642474b23610b72dcd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - Dartfreunde Eichenherz\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 3
+ 0.10.2026 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Si
+ monswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6182c4f90992b87fc7ad4d48efc858a992fd5dd7f6ec3b57e73cf9cec8ea3c44@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270409T180000Z
+DTEND:20270409T210000Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Texas Team\nHeimspiel\nL
+ iga: Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 09.04.2027 18
+ :00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6ba80971d62824b12cec5df5981d5d69e6bbf1244684cc002434e2002d62fef0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270205T190000Z
+DTEND:20270205T220000Z
+SUMMARY:Heimspiel gegen DC Green Scorpion´s
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Green Scorpion´s\nHeims
+ piel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.
+ 2027 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
+ Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:6c7a5f8c0ac3986c60e37ee89cd8e47c065b58817b20dff8ddec24dd0f58b330@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260918T180000Z
+DTEND:20260918T210000Z
+SUMMARY:Auswärtsspiel bei the flying Rocks
+DESCRIPTION:Begegnung: the flying Rocks - Dartfreunde Eichenherz\nAuswärts
+ spiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.
+ 2026 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\
+ , Pforzheim
+LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:76c74e99f17ce0e9f9060cdd205a95578689b8ccdddfdb0c2c54a89315cfeb3f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261112T190000Z
+DTEND:20261112T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg
+DESCRIPTION:Begegnung: TDF Enzberg - Dartfreunde Eichenherz\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.
+ 2026 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker
+ -Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:79702e069df7fef9bd9d46e520483a651accb864846bc8f14e2dc906dac85d85@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270121T190000Z
+DTEND:20270121T220000Z
+SUMMARY:Heimspiel gegen the Metal Darts
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - the Metal Darts\nHeimspiel\
+ nLiga: Mix B-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 21.01.2027 
+ 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
+ heim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:7aff0a19987e1e1494e2639299274a3b9d3dcade673f613961e19ce18c05ceba@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261118T190000Z
+DTEND:20261118T220000Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - Dartfreunde Eichenherz\nAuswärtsspi
+ el\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 18.11.202
+ 6 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
+ rzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8495c8d53624be65f85cd7c635cfa3c0c95a406b2e7d8d4a17cdf2cc70aaf93c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270507T180000Z
+DTEND:20270507T210000Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Lachs 14\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 18:0
+ 0 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8972ee1e903df779030268335671f6568efa05d39fc5dd4fcc53302fddeeb2af@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270326T190000Z
+DTEND:20270326T220000Z
+SUMMARY:Auswärtsspiel bei DC Strikers
+DESCRIPTION:Begegnung: DC Strikers - Dartfreunde Eichenherz\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027
+  19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 
+ 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:8dbbff899289bc3598a27b3f43da2acd6af9c8d3c7165c26e7d835a2356de7a2@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T140000Z
+DTEND:20270403T170000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crazy Flights\nHeimspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04
+ .2027 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:90082dc82cbfa960e1b81a76431a903445378861c59c37bef4a5c110cc58194f@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270421T180000Z
+DTEND:20270421T210000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fools
+DESCRIPTION:Begegnung: DC Underground Fools - Dartfreunde Eichenherz\nAusw
+ ärtsspiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 
+ 21.04.2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
+ erstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9549a30fcfc9711d12bdd95cea00aeec19841e0f0073dd6a8c0a42390fc0ca22@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T150000Z
+DTEND:20270227T180000Z
+SUMMARY:Heimspiel gegen DC Strikers 2
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Strikers 2\nHeimspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 27.02.20
+ 27 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pf
+ orzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:afd41e1b7065a4f7696f13542a2f847ef6fc9c1ed3331de916142fd0f0a1310a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270213T190000Z
+DTEND:20270213T220000Z
+SUMMARY:Auswärtsspiel bei DC Crows
+DESCRIPTION:Begegnung: DC Crows - Dartfreunde Eichenherz\nAuswärtsspiel\nL
+ iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.20
+ 27 19:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b0cfefdc3677b9d71b48509c433f0975645c5221af3d62e6ee1773007feba3cd@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261217T190000Z
+DTEND:20261217T220000Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - Dartfreunde Eichenherz\nAuswärtsspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 17.12.2026 
+ 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b26063d023f19ca0df3db406496fe4ff97d1814e1f870ffec14a43ab6b052a39@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261002T180000Z
+DTEND:20261002T210000Z
+SUMMARY:Heimspiel gegen DC Reloaded
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Reloaded\nHeimspiel\nLig
+ a: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 18:00
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:bbcb854959874b2fd1f4c27f68e8ca0e8942f99dcb022f75ea90d5bbd74e3fe7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270219T190000Z
+DTEND:20270219T220000Z
+SUMMARY:Heimspiel gegen the flying Rocks
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - the flying Rocks\nHeimspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027
+  19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:c9a1d8a6c63a047fcc92a0cfb87bf5e91bc62bb54deb74def93e9e54185ba32e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T140000Z
+DTEND:20261024T170000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Enztaler Buben\nHeimspie
+ l\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10
+ .2026 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ccf7633dbea14f227250ed83e53baf0e8f79eaedb8ad76a7dea34594d0fdae86@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261128T150000Z
+DTEND:20261128T180000Z
+SUMMARY:Heimspiel gegen DC SchömbergerEck
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC SchömbergerEck\nHeimspi
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.1
+ 1.2026 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
+ , Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d4c1589faf6b2151808ba95ab5a448f01fabc428057a645bf2511f1a9915ea9a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Auswärtsspiel bei DC SchömbergerEck
+DESCRIPTION:Begegnung: DC SchömbergerEck - Dartfreunde Eichenherz\nAuswär
+ tsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin
+ : 01.05.2027 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Stra
+ ße 31\, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d870c384fde2613d3a667ee0a21dcf1b6f7e32249ad628306b7c08756fec93b0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260904T180000Z
+DTEND:20260904T210000Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion´s
+DESCRIPTION:Begegnung: DC Green Scorpion´s - Dartfreunde Eichenherz\nAusw
+ ärtsspiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 0
+ 4.09.2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webe
+ rstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:e7314f30d569ff82eb28075123868ef37c60709e82e0007ff3924107a77ebd8d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261204T190000Z
+DTEND:20261204T220000Z
+SUMMARY:Heimspiel gegen DC Underground Fools
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Underground Fools\nHeims
+ piel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 04.12.2
+ 026 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, P
+ forzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ecea139d8a4e661774cbabc0e4aa4708c1662c848d6a71f469eddedae31e6fc5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T140000Z
+DTEND:20270515T170000Z
+SUMMARY:Heimspiel gegen Heavy Weights Brötzingen
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - Heavy Weights Brötzingen\n
+ Heimspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTerm
+ in: 15.05.2027 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufen
+ str. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:f9340ec6038400b49c76b68f5f736c1d79c31811684108891f4be9cf0b503fdf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270312T190000Z
+DTEND:20270312T220000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crazy Flights\nHeimspiel
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 12.03.2027
+  19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

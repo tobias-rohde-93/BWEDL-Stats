@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BWEDL//Team Calendar//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:BWEDL – Heavy Weights Brötzingen
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:1272ae33cf5bcf2764d6fbb3e4cce9aedf775d687ebd8d91fdee199a6feb296e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270403T180000Z
+DTEND:20270403T210000Z
+SUMMARY:Heimspiel gegen DC Strikers 2
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Strikers 2\nHeimspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04
+ .2027 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-Str. 26
+ 1\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:1e7cbcd47d41e86a36eeeae8e00b19e94061a022adee8b7d1325d9aeab631067@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261027T183000Z
+DTEND:20261027T213000Z
+SUMMARY:Auswärtsspiel bei DC Strikers 2
+DESCRIPTION:Begegnung: DC Strikers 2 - Heavy Weights Brötzingen\nAuswärts
+ spiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 2
+ 7.10.2026 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Webe
+ rstraße 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:2bd3749e2ec94bb85dae7e8d3a1772b8cf24cf4ce304497b516bbcf16a86557e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270417T180000Z
+DTEND:20270417T210000Z
+SUMMARY:Auswärtsspiel bei DC Enztaler Buben
+DESCRIPTION:Begegnung: DC Enztaler Buben - Heavy Weights Brötzingen\nAusw
+ ärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTer
+ min: 17.04.2027 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\,
+  Bad Wildbad
+LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:400ca59757335384aa33c4263163c99d432c3552a39f9920253f756052c45acc@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270227T190000Z
+DTEND:20270227T220000Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Destroyers e.V. 2\nHe
+ imspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin
+ : 27.02.2027 19:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-
+ Str. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:476401b4ff573f57f5d205c229ee68dc0f4b82ecd302a6d17d4f80f7cb7b1b5a@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260912T180000Z
+DTEND:20260912T210000Z
+SUMMARY:Heimspiel gegen TDF Enzberg
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - TDF Enzberg\nHeimspiel\n
+ Liga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.20
+ 26 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-Str. 261\,
+  Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:4830787fd626445eb589c7c0b136e0ff9c07319aeded7a7866cbe9e84f0843ca@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270515T140000Z
+DTEND:20270515T170000Z
+SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - Heavy Weights Brötzingen\n
+ Auswärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\
+ nTermin: 15.05.2027 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenst
+ aufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:49218e15db6d1c19a15c3210d398fe683f9f07df6cf256a82839f2dc3c565b38@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260829T180000Z
+DTEND:20260829T210000Z
+SUMMARY:Auswärtsspiel bei DC SchömbergerEck
+DESCRIPTION:Begegnung: DC SchömbergerEck - Heavy Weights Brötzingen\nAusw
+ ärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTerm
+ in: 29.08.2026 18:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Str
+ aße 31\, Schömberg
+LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:64fc6f577214a28b11c6fd45f90242b77b23ba491adf4aadd331a3ac77b67e8d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261127T190000Z
+DTEND:20261127T220000Z
+SUMMARY:Auswärtsspiel bei DC Crazy Flights
+DESCRIPTION:Begegnung: DC Crazy Flights - Heavy Weights Brötzingen\nAuswä
+ rtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin
+ : 27.11.2026 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\,
+  Simonswiesen 2\, Höfen
+LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:954aa9f292c658d1d613f711f1e2443d2289810bfa32dec9392fa6a3c2da3e4d@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270209T190000Z
+DTEND:20270209T220000Z
+SUMMARY:Auswärtsspiel bei DC Underground Fool´s 3
+DESCRIPTION:Begegnung: DC Underground Fool´s 3 - Heavy Weights Brötzingen
+ \nAuswärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spielta
+ g\nTermin: 09.02.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's 
+ e.V.\, Weiherstraße 30\, Pforzheim
+LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:97598afc4e1899382740ee04c056e7c9f6c21884ef14e23bacaa8f82af01369e@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270501T180000Z
+DTEND:20270501T210000Z
+SUMMARY:Heimspiel gegen DC Crazy Flights
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Crazy Flights\nHeimsp
+ iel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 01
+ .05.2027 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-Str.
+  261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9da7442c63ebf74a863100a096e2bfeb61ac905bffaa4ffcdd0007e958b12f1c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270128T190000Z
+DTEND:20270128T220000Z
+SUMMARY:Auswärtsspiel bei TDF Enzberg
+DESCRIPTION:Begegnung: TDF Enzberg - Heavy Weights Brötzingen\nAuswärtssp
+ iel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28
+ .01.2027 19:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühla
+ cker-Enzberg
+LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:9f8c7d2937aa2e460ef7ce78aed64eb019c5888593e67cad905d9909e2617a9c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261114T190000Z
+DTEND:20261114T220000Z
+SUMMARY:Heimspiel gegen DC Enztaler Buben
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Enztaler Buben\nHeims
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14
+ .11.2026 19:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-Str.
+  261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:a1f68efa6c7bfe2a26c72969d90bde650ea1823224ac8a9e7b182704a3057fa5@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270116T190000Z
+DTEND:20270116T220000Z
+SUMMARY:Heimspiel gegen DC SchömbergerEck
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC SchömbergerEck\nHeim
+ spiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 
+ 16.01.2027 19:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-St
+ r. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:aa68b980ee59bd8b3b4d8c7ba9e06ae39e4afb86c2cc9806f77517ec97a0ae4c@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
+SUMMARY:Heimspiel gegen DC Crows
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Crows\nHeimspiel\nLig
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.2026 
+ 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pf
+ orzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:b6a83a15e7094bcd9c5f3bc6f1eb65c9387df6eb751dc6b0909706c3e75231a0@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261005T180000Z
+DTEND:20261005T210000Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
+DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - Heavy Weights Brötzingen\nAu
+ swärtsspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTe
+ rmin: 05.10.2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.
+ \, Weberstr. 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:ccce333ef59958e8b1fa9c72ccec01d6d18adf48cb03b45a7221503f864fdeb7@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - Dartfreunde Eichenherz\n
+ Heimspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermi
+ n: 12.12.2026 19:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedrich
+ -Str. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:d9367c46f0917a58b2e6eaeced823ceee1d3b1861b8accd0c9c896934674bc93@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
+SUMMARY:Heimspiel gegen DC Underground Fool´s 3
+DESCRIPTION:Begegnung: Heavy Weights Brötzingen - DC Underground Fool´s 3
+ \nHeimspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTer
+ min: 26.09.2026 18:00 UTC\nAustragungsort: X Cafe\, Westliche-Karl-Friedri
+ ch-Str. 261\, Pforzheim
+LOCATION:X Cafe\, Westliche-Karl-Friedrich-Str. 261\, Pforzheim
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:da5649a3b7749a64a47b2af95d732ac392d8e567a155e79377340c6076db34bf@calend
+ ar.bwedl.invalid
+DTSTAMP:20260819T010538Z
+DTSTART:20270320T190000Z
+DTEND:20270320T220000Z
+SUMMARY:Auswärtsspiel bei DC Crows
+DESCRIPTION:Begegnung: DC Crows - Heavy Weights Brötzingen\nAuswärtsspiel
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03
+ .2027 19:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
+SEQUENCE:0
+LAST-MODIFIED:20260819T010538Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
