@@ -2011,34 +2011,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (existing) existing.remove();
 
         const supportedFavoriteTypes = new Set(['league', 'ranking', 'ligapokalArchive', 'club']);
-        const visibleFavorites = favorites.filter((favorite) => {
+        const snapshotFavorite = (favorite) => {
             try {
-                if (!favorite || typeof favorite !== 'object' || Array.isArray(favorite)) return false;
+                if (!favorite || typeof favorite !== 'object' || Array.isArray(favorite)) return null;
                 const prototype = Object.getPrototypeOf(favorite);
-                if (prototype !== Object.prototype && prototype !== null) return false;
+                if (prototype !== Object.prototype && prototype !== null) return null;
                 const typeDescriptor = Object.getOwnPropertyDescriptor(favorite, 'type');
                 const idDescriptor = Object.getOwnPropertyDescriptor(favorite, 'id');
                 const nameDescriptor = Object.getOwnPropertyDescriptor(favorite, 'name');
                 if (!typeDescriptor || !idDescriptor || !nameDescriptor ||
                     typeDescriptor.get || typeDescriptor.set ||
                     idDescriptor.get || idDescriptor.set ||
-                    nameDescriptor.get || nameDescriptor.set) return false;
+                    nameDescriptor.get || nameDescriptor.set) return null;
                 const { type, id, name } = {
                     type: typeDescriptor.value,
                     id: idDescriptor.value,
                     name: nameDescriptor.value,
                 };
-                if (!supportedFavoriteTypes.has(type) || typeof name !== 'string' || !name.trim()) return false;
+                if (!supportedFavoriteTypes.has(type) || typeof name !== 'string' || !name.trim()) return null;
+                let normalizedId = id;
                 if (type === 'club') {
-                    if (!Number.isSafeInteger(id) || id < 0) return false;
+                    normalizedId = canonicalClubId(id, clubCount);
+                    if (normalizedId === null) return null;
                 } else if (typeof id !== 'string' || !id.trim()) {
-                    return false;
+                    return null;
                 }
-                return typeof routeExists !== 'function' || routeExists(type, id);
+                if (typeof routeExists !== 'function' || !routeExists(type, normalizedId)) return null;
+                return Object.freeze({ type, id: normalizedId, name });
             } catch (_error) {
-                return false;
+                return null;
             }
+        };
+        const seenRoutes = new Set();
+        const visibleFavorites = [];
+        favorites.forEach((favorite) => {
+            const snapshot = snapshotFavorite(favorite);
+            if (!snapshot) return;
+            const routeKey = JSON.stringify([snapshot.type, snapshot.id]);
+            if (seenRoutes.has(routeKey)) return;
+            seenRoutes.add(routeKey);
+            visibleFavorites.push(snapshot);
         });
+        Object.freeze(visibleFavorites);
         if (visibleFavorites.length === 0) return;
 
         const container = document.createElement('div');

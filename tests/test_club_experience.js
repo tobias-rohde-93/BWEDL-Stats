@@ -475,26 +475,38 @@ assert.deepEqual(navigationCalls.pop(), ['clubList', null]);
 const favoriteNav = document.createElement('nav');
 favoriteNav.id = 'league-nav';
 const favoriteRouteExists = (type, id) => (
-    (type === 'league' && id === 'A-Klasse 2026-2027') ||
+    (type === 'league' && ['A-Klasse 2026-2027', 'shared'].includes(id)) ||
+    (type === 'ranking' && id === 'shared') ||
     (type === 'club' && Number.isSafeInteger(id) && id >= 0 && id < clubs.length)
 );
+const globalFavorites = [
+    { type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' },
+    { type: 'league', id: 'A-Klasse 2026-2027', name: 'duplicate league label' },
+    { type: 'club', id: 1, name: clubs[1].name },
+    { type: 'club', id: '1', name: 'duplicate club label' },
+    { type: 'ranking', id: 'shared', name: 'shared ranking' },
+    { type: 'league', id: 'shared', name: 'shared league' },
+];
 const replaceWithIconLabel = compileFunction('replaceWithIconLabel', { document });
 const renderFavoritesSidebar = compileFunction('renderFavoritesSidebar', {
     document,
     nav: favoriteNav,
-    favorites: favoritesForViews,
+    favorites: globalFavorites,
     replaceWithIconLabel,
     navigateTo,
     routeExists: favoriteRouteExists,
+    canonicalClubId,
+    clubCount: clubs.length,
 });
 renderFavoritesSidebar();
 const globalFavoritesSection = favoriteNav.children[0];
 assert.equal(globalFavoritesSection.id, 'fav-section');
 assert.equal(globalFavoritesSection.children[0].textContent, 'FAVORITEN');
+const globalFavoriteButtons = descendants(globalFavoritesSection).filter((element) => element.tagName === 'BUTTON');
 assert.deepEqual(
-    descendants(globalFavoritesSection).filter((element) => element.tagName === 'SPAN').map((element) => element.textContent),
-    ['★', 'A-Klasse 2026-2027', '★', clubs[1].name],
-    'global FAVORITEN renders league and club labels in stable order',
+    globalFavoriteButtons.map((button) => button.textContent),
+    [`★A-Klasse 2026-2027`, `★${clubs[1].name}`, '★shared ranking', '★shared league'],
+    'global FAVORITEN keeps stable first-seen route snapshots and deduplicates exact routes',
 );
 const globalClubButton = descendants(globalFavoritesSection).find((element) => (
     element.tagName === 'BUTTON' && element.textContent === `★${clubs[1].name}`
@@ -502,23 +514,35 @@ const globalClubButton = descendants(globalFavoritesSection).find((element) => (
 assert.ok(globalClubButton, 'global FAVORITEN exposes the club action');
 globalClubButton.dispatch('click');
 assert.deepEqual(navigationCalls.pop(), ['club', 1]);
+const globalLeagueButton = descendants(globalFavoritesSection).find((element) => (
+    element.tagName === 'BUTTON' && element.textContent === '★A-Klasse 2026-2027'
+));
+globalLeagueButton.dispatch('click');
+assert.deepEqual(navigationCalls.pop(), ['league', 'A-Klasse 2026-2027']);
 
 renderClubSidebarShortcuts();
 const clubSidebarFavoriteHeading = descendants(clubSidebarContainer).find((element) => (
     element.classList.contains('club-sidebar-group-title') && element.textContent === 'Favoriten'
 ));
 assert.ok(clubSidebarFavoriteHeading, 'VEREINE keeps its Favoriten heading');
+const clubSidebarFavoriteHeadingIndex = clubSidebarContainer.children.indexOf(clubSidebarFavoriteHeading);
+const clubSidebarRecentHeadingIndex = clubSidebarContainer.children.findIndex((element, index) => (
+    index > clubSidebarFavoriteHeadingIndex &&
+    element.classList.contains('club-sidebar-group-title') &&
+    element.textContent === 'Zuletzt angesehen'
+));
+const clubSidebarFavoriteButtons = clubSidebarContainer.children
+    .slice(clubSidebarFavoriteHeadingIndex + 1, clubSidebarRecentHeadingIndex)
+    .filter((element) => element.tagName === 'BUTTON');
 assert.equal(
-    clubSidebarContainer.children.indexOf(clubSidebarFavoriteHeading) < clubSidebarContainer.children.length,
-    true,
+    clubSidebarFavoriteButtons.filter((element) => element.textContent === clubs[1].name).length,
+    1,
+    'the same club remains exactly once under VEREINE → Favoriten',
 );
-assert.equal(
-    descendants(clubSidebarContainer).some((element) => element.tagName === 'BUTTON' && element.textContent === clubs[1].name),
-    true,
-    'the same club remains under VEREINE → Favoriten',
-);
+clubSidebarFavoriteButtons.find((element) => element.textContent === clubs[1].name).dispatch('click');
+assert.deepEqual(navigationCalls.pop(), ['club', 1]);
 
-favoritesForViews.splice(0, favoritesForViews.length,
+globalFavorites.splice(0, globalFavorites.length,
     null,
     { type: 'dashboard', id: null, name: 'Dashboard' },
     { type: 'league', id: 'missing', name: 'Missing league' },
@@ -527,7 +551,27 @@ favoritesForViews.splice(0, favoritesForViews.length,
 renderFavoritesSidebar();
 assert.equal(favoriteNav.children.length, 0, 'invalid favorites leave the global empty state unchanged');
 
-favoritesForViews.splice(0, favoritesForViews.length, {
+let proxyIdReads = 0;
+const proxyFavorite = new Proxy({ type: 'club', id: 1, name: clubs[1].name }, {
+    get(target, property, receiver) {
+        if (property === 'id') {
+            proxyIdReads += 1;
+            return 999;
+        }
+        return Reflect.get(target, property, receiver);
+    },
+});
+globalFavorites.splice(0, globalFavorites.length, proxyFavorite);
+renderFavoritesSidebar();
+const proxyFavoriteButton = descendants(favoriteNav).find((element) => (
+    element.tagName === 'BUTTON' && element.textContent === `★${clubs[1].name}`
+));
+assert.ok(proxyFavoriteButton, 'proxy-backed favorites render from validated snapshots');
+proxyFavoriteButton.dispatch('click');
+assert.deepEqual(navigationCalls.pop(), ['club', 1], 'navigation uses the validated snapshot, not a later proxy read');
+assert.equal(proxyIdReads, 0, 'render and click never access original favorite properties after validation');
+
+globalFavorites.splice(0, globalFavorites.length, {
     type: 'club',
     id: 2,
     name: clubs[2].name,
