@@ -1,15 +1,23 @@
 import json
-from datetime import timezone
+import os
+import subprocess
+import sys
+import tempfile
+from datetime import datetime, timezone
+from dataclasses import FrozenInstanceError
 from pathlib import Path
 
 import pytest
 
 from pipeline.calendar_feeds import (
     CalendarSourceError,
+    CalendarPublication,
     build_club_catalog,
+    build_calendar_publication,
     classify_regular_league_source_lines,
     normalize_team_name,
     parse_regular_league_games,
+    write_calendar_publication,
 )
 
 
@@ -51,6 +59,44 @@ LEAGUES = {
         },
     }
 }
+
+UPDATED_AT = datetime(2026, 8, 19, 10, 15, tzinfo=timezone.utc)
+
+
+def _publication(
+    leagues: dict[str, object] = LEAGUES,
+    clubs: dict[str, object] = CLUBS,
+    *,
+    previous_state: dict[str, object] | None = None,
+    updated_at: datetime = UPDATED_AT,
+) -> CalendarPublication:
+    return build_calendar_publication(
+        leagues,
+        clubs,
+        previous_state=previous_state,
+        updated_at=updated_at,
+    )
+
+
+def _state(publication: CalendarPublication) -> dict[str, object]:
+    return json.loads(publication.calendar_state_json)
+
+
+def _feed(publication: CalendarPublication, team_id: str) -> str:
+    return publication.calendars[team_id].decode("utf-8")
+
+
+def _one_fixture(
+    fixture: str = "Fr. 30. 10.2026 20:00 DC Heim - DC Gast ---\n",
+    *,
+    season: str = "2026-2027",
+    round_name: str = "2. Spieltag",
+) -> dict[str, object]:
+    return {
+        "leagues": {
+            f"A-Klasse {season}": {"match_days": {round_name: fixture}}
+        }
+    }
 
 
 def test_normalization_matches_the_cross_runtime_contract() -> None:
@@ -378,3 +424,253 @@ def test_repository_calendar_data_is_a_complete_resolved_regular_fixture_set() -
         "missing_time",
         "invalid_time",
     }
+
+
+def test_publication_has_immutable_artifacts_and_perspective_specific_events() -> None:
+    publication = _publication(_one_fixture())
+
+    assert publication.season == "2026-2027"
+    assert publication.updated_at == UPDATED_AT
+    assert isinstance(publication, CalendarPublication)
+    with pytest.raises(FrozenInstanceError):
+        publication.season = "changed"  # type: ignore[misc]
+
+    home = _feed(publication, "club-101-team-1")
+    away = _feed(publication, "club-202-team-1")
+    assert "SUMMARY:Dart: DC Heim – DC Gast (Heimspiel)" in home
+    assert "SUMMARY:Dart: DC Gast – DC Heim (Ausw\u00e4rtsspiel)" in away
+    assert "DTSTART:20261030T190000Z" in home
+    assert "DTEND:20261030T220000Z" in home
+    assert "LOCATION:Heimspielst\u00e4tte\\, Dartweg 7\\, 75172 Pforzheim" in home
+    assert "DESCRIPTION:" in home
+    assert "Austragungsort: Heimspielst\u00e4tte\\, Dartweg 7\\, 75172 Pforzheim" in home.replace("\r\n ", "")
+
+
+def test_publication_keeps_partial_location_and_warns_when_home_is_unresolved() -> None:
+    partial = {"clubs": [{**CLUBS["clubs"][0], "city": ""}, CLUBS["clubs"][1]]}
+    partial_feed = _feed(_publication(_one_fixture(), partial), "club-101-team-1")
+    assert "LOCATION:Heimspielst\u00e4tte\\, Dartweg 7" in partial_feed
+    assert "Adresse unvollst\u00e4ndig" in partial_feed
+
+    unresolved = _one_fixture("Fr. 30. 10.2026 20:00 Fremdes Team - DC Gast ---\n")
+    guest_feed = _feed(_publication(unresolved), "club-202-team-1")
+    assert "LOCATION:" not in guest_feed
+    assert "Austragungsort nicht aufl\u00f6sbar" in guest_feed
+    assert "Ausw\u00e4rtsweg" not in guest_feed
+
+
+def test_ics_text_escaping_folding_and_crlf_are_rfc_safe() -> None:
+    dangerous_name = "DC Heim,;\\\r\n" + ("Ä" * 40)
+    clubs = {
+        "clubs": [
+            {**CLUBS["clubs"][0], "venue": dangerous_name},
+            CLUBS["clubs"][1],
+        ]
+    }
+    leagues = _one_fixture()
+
+    feed = _feed(_publication(leagues, clubs), "club-101-team-1")
+    raw = feed.encode("utf-8")
+    assert b"\\\\" in raw and b"\\," in raw and b"\\;" in raw and b"\\n" in raw
+    assert b"\n" not in raw.replace(b"\r\n", b"")
+    assert feed.endswith("\r\n")
+    for physical_line in feed.split("\r\n"):
+        assert len(physical_line.encode("utf-8")) <= 75
+        physical_line.encode("utf-8").decode("utf-8")
+    assert "\r\n BEGIN" not in feed
+
+
+def test_uid_is_stable_and_only_the_changed_event_gets_a_sequence_bump() -> None:
+    original_leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "2. Spieltag": "Fr. 30. 10.2026 20:00 DC Heim - DC Gast ---\n",
+                    "3. Spieltag": "Sa. 31. 10.2026 20:00 DC Gast - DC Heim ---\n",
+                }
+            }
+        }
+    }
+    original = _publication(
+        original_leagues
+    )
+    old_state = _state(original)
+    changed_leagues = json.loads(json.dumps(original_leagues))
+    changed_leagues["leagues"]["A-Klasse 2026-2027"]["match_days"]["2. Spieltag"] = (
+        "Fr. 30. 10.2026 21:00 DC Heim - DC Gast ---\n"
+    )
+    changed = _publication(
+        changed_leagues,
+        previous_state=old_state,
+        updated_at=datetime(2026, 8, 20, 10, 15, tzinfo=timezone.utc),
+    )
+    before = {event["uid"]: event for event in old_state["events"]}
+    after = {event["uid"]: event for event in _state(changed)["events"]}
+    assert set(before) == set(after)
+    changed_uids = [uid for uid in before if before[uid]["fingerprint"] != after[uid]["fingerprint"]]
+    assert len(changed_uids) == 2  # One fixture has one event for each participating team.
+    for uid in before:
+        assert after[uid]["uid"] == uid
+        if uid in changed_uids:
+            assert after[uid]["sequence"] == before[uid]["sequence"] + 1
+        else:
+            assert after[uid]["sequence"] == before[uid]["sequence"]
+            assert after[uid]["last_modified"] == before[uid]["last_modified"]
+
+
+def test_noop_is_byte_identical_despite_a_later_authoritative_timestamp() -> None:
+    original = _publication(_one_fixture())
+    repeated = _publication(
+        _one_fixture(),
+        previous_state=_state(original),
+        updated_at=datetime(2026, 9, 1, tzinfo=timezone.utc),
+    )
+
+    assert repeated.calendar_index_json == original.calendar_index_json
+    assert repeated.calendar_index_js == original.calendar_index_js
+    assert repeated.calendar_state_json == original.calendar_state_json
+    assert repeated.calendars == original.calendars
+
+
+def test_removed_or_detimed_event_is_cancelled_and_restores_with_same_uid() -> None:
+    original = _publication(_one_fixture())
+    original_event = _state(original)["events"][0]
+    removed = _publication(
+        {"leagues": {"A-Klasse 2026-2027": {"match_days": {}}}},
+        previous_state=_state(original),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    removed_events = _state(removed)["events"]
+    assert len(removed_events) == 2
+    assert all(event["status"] == "CANCELLED" for event in removed_events)
+    assert all(event["sequence"] == 1 for event in removed_events)
+    assert "STATUS:CANCELLED" in _feed(removed, "club-101-team-1")
+
+    detimed = _publication(
+        _one_fixture("Fr. 30. 10.2026 DC Heim - DC Gast ---\n"),
+        previous_state=_state(original),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    assert all(event["status"] == "CANCELLED" for event in _state(detimed)["events"])
+
+    restored = _publication(
+        _one_fixture(),
+        previous_state=_state(removed),
+        updated_at=datetime(2026, 8, 21, tzinfo=timezone.utc),
+    )
+    restored_event = _state(restored)["events"][0]
+    assert restored_event["uid"] == original_event["uid"]
+    assert restored_event["sequence"] == 2
+    assert restored_event["status"] == "CONFIRMED"
+    assert "STATUS:CANCELLED" not in _feed(restored, "club-101-team-1")
+
+
+def test_season_change_drops_old_state_and_multiple_seasons_are_diagnostic() -> None:
+    original = _publication(_one_fixture())
+    next_season = _publication(
+        _one_fixture(season="2027-2028"), previous_state=_state(original)
+    )
+    state = _state(next_season)
+    assert state["season"] == "2027-2028"
+    assert all(event["season"] == "2027-2028" for event in state["events"])
+
+    multiple = _one_fixture()
+    multiple["leagues"]["A-Klasse 2027-2028"] = {"match_days": {"1. Spieltag": "Fr. 1. 1.2027 20:00 DC Heim - DC Gast ---\n"}}
+    with pytest.raises(CalendarSourceError, match="Mehrere.*Saison"):
+        _publication(multiple)
+
+
+def test_state_schema_and_feed_paths_are_strictly_validated() -> None:
+    with pytest.raises(CalendarSourceError, match="State"):
+        _publication(_one_fixture(), previous_state={"schema_version": 999})
+
+    with pytest.raises(CalendarSourceError, match="Team-ID"):
+        write_calendar_publication(
+            CalendarPublication(
+                season="2026-2027",
+                updated_at=UPDATED_AT,
+                calendar_index_json=b"{}\n",
+                calendar_index_js=b"window.BWEDL_CALENDAR_INDEX = {};\n",
+                calendar_state_json=b"{}\n",
+                calendars={"../outside": b"BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n"},
+            ),
+            Path.cwd(),
+        )
+
+
+def test_writer_rejects_a_calendar_directory_symlink_without_writing_outside() -> None:
+    publication = _publication(_one_fixture())
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        root = Path(temporary_directory)
+        output = root / "output"
+        outside = root / "outside"
+        output.mkdir()
+        outside.mkdir()
+        try:
+            os.symlink(outside, output / "calendars", target_is_directory=True)
+        except OSError as error:
+            pytest.skip(f"Symlinks are unavailable for this test user: {error}")
+
+        with pytest.raises(CalendarSourceError, match="Symlink"):
+            write_calendar_publication(publication, output)
+        assert list(outside.iterdir()) == []
+
+
+def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "3. Spieltag": "Fr. 30. 10.2026 20:00 DC Gast - DC Heim ---\n",
+                    "4. Spieltag": "Sa. 31. 10.2026 20:00 DC Heim - DC Gast ---\n",
+                }
+            }
+        }
+    }
+    publication = _publication(
+        leagues
+    )
+    index = json.loads(publication.calendar_index_json)
+    assert index["schema_version"] == 1
+    assert [team["team_id"] for team in index["teams"]] == sorted(
+        team["team_id"] for team in index["teams"]
+    )
+    assert publication.calendar_index_js.startswith(b"window.BWEDL_CALENDAR_INDEX = ")
+    assert b"function" not in publication.calendar_index_js
+    assert json.loads(publication.calendar_index_js.split(b"= ", 1)[1].rstrip(b";\n")) == index
+
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        tmp_path = Path(temporary_directory)
+        output = tmp_path / "output"
+        write_calendar_publication(publication, output)
+        assert (output / "calendar_index.json").read_bytes() == publication.calendar_index_json
+        assert (output / "calendar_index.js").read_bytes() == publication.calendar_index_js
+        assert (output / "calendar_state.json").read_bytes() == publication.calendar_state_json
+        assert (output / "calendars" / "club-101-team-1.ics").is_file()
+        assert not (tmp_path / "calendars").exists()
+
+        league_path = tmp_path / "league.json"
+        club_path = tmp_path / "club.json"
+        cli_output = tmp_path / "cli-output"
+        league_path.write_text(json.dumps(_one_fixture()), encoding="utf-8")
+        club_path.write_text(json.dumps(CLUBS), encoding="utf-8")
+        result = subprocess.run(
+            [
+                sys.executable,
+                "pipeline/calendar_feeds.py",
+                "--league-json",
+                str(league_path),
+                "--club-json",
+                str(club_path),
+                "--output-dir",
+                str(cli_output),
+                "--updated-at",
+                "2026-08-19T10:15:00+00:00",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        assert result.returncode == 0, result.stderr
+        assert (cli_output / "calendar_state.json").is_file()

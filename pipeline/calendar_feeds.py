@@ -7,10 +7,15 @@ does not read files or perform network I/O.
 from __future__ import annotations
 
 from collections.abc import Mapping
+import argparse
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
+import json
+import os
+from pathlib import Path
 import re
+import tempfile
 from types import MappingProxyType
 import unicodedata
 from typing import Any
@@ -29,6 +34,10 @@ _DATE_PREFIX_RE = re.compile(
 )
 _SCORE_SUFFIX_RE = re.compile(r"\s+(?:---|\d+\s*:\s*\d+|:)\s*$")
 _TEAM_SEPARATOR_RE = re.compile(r"^(?P<home>.+?)\s+-\s+(?P<away>.+?)\s*$")
+_SAFE_TEAM_ID_RE = re.compile(r"club-([0-9]+)-team-([0-9]+)\Z")
+_STATE_SCHEMA_VERSION = 1
+_INDEX_SCHEMA_VERSION = 1
+_UID_DOMAIN = "calendar.bwedl.invalid"
 
 # These are source spelling variants observed in BWEDL's own club and fixture
 # exports. They are a closed, explicit alias list; matching never guesses.
@@ -45,6 +54,18 @@ _KNOWN_CLUB_ALIASES = {
 
 class CalendarSourceError(ValueError):
     """Raised when a source fixture cannot describe one unambiguous schedule."""
+
+
+@dataclass(frozen=True)
+class CalendarPublication:
+    """All deterministic, public artifacts for one calendar publication run."""
+
+    season: str | None
+    updated_at: datetime
+    calendar_index_json: bytes
+    calendar_index_js: bytes
+    calendar_state_json: bytes
+    calendars: Mapping[str, bytes]
 
 
 def normalize_team_name(value: str) -> str:
@@ -433,3 +454,508 @@ def _unambiguous_berlin_time_or_none(
     if utc_instants[0] != utc_instants[1]:
         return None
     return utc_instants[0]
+
+
+def build_calendar_publication(
+    league_data: Mapping[str, Any],
+    club_data: Mapping[str, Any],
+    *,
+    previous_state: Mapping[str, Any] | None = None,
+    updated_at: datetime,
+) -> CalendarPublication:
+    """Create deterministic team feeds from parsed regular-league fixtures.
+
+    The source decides which season is current: exactly one season may occur in
+    non-cup league names.  An empty source publishes no season; a source with
+    several seasons is rejected rather than guessing which one is authoritative.
+    """
+    authoritative_updated_at = _require_aware_utc(updated_at, "updated_at")
+    prior = _validate_previous_state(previous_state) if previous_state is not None else None
+    source_lines = classify_regular_league_source_lines(league_data)
+    season = _single_current_season(league_data, source_lines)
+    games = parse_regular_league_games(league_data, club_data)
+    if season is not None and any(game.season != season for game in games):
+        raise CalendarSourceError("Spielplandaten enthalten keine eindeutige aktuelle Saison")
+
+    active: dict[str, dict[str, Any]] = {}
+    for game in games:
+        for team, opponent, is_home in (
+            (game.home, game.away, True),
+            (game.away, game.home, False),
+        ):
+            if _SAFE_TEAM_ID_RE.fullmatch(team.team_id) is None:
+                continue
+            event = _active_event_record(game, team, opponent, is_home)
+            uid = event["uid"]
+            if uid in active:
+                raise CalendarSourceError(
+                    f"Mehrere Kalenderereignisse für {team.team_id}, "
+                    f"{game.league}, {game.round_name}"
+                )
+            active[uid] = event
+
+    if prior is not None and prior["season"] != season:
+        # A season change is a replacement of the feed, never a bulk cancellation.
+        prior = None
+
+    previous_events = {} if prior is None else {event["uid"]: event for event in prior["events"]}
+    state_events: list[dict[str, Any]] = []
+    for uid in sorted(active):
+        candidate = active[uid]
+        previous = previous_events.pop(uid, None)
+        if previous is not None and previous["fingerprint"] == candidate["fingerprint"]:
+            candidate["sequence"] = previous["sequence"]
+            candidate["last_modified"] = previous["last_modified"]
+        elif previous is None:
+            candidate["sequence"] = 0
+            candidate["last_modified"] = _canonical_timestamp(authoritative_updated_at)
+        else:
+            candidate["sequence"] = previous["sequence"] + 1
+            candidate["last_modified"] = _canonical_timestamp(authoritative_updated_at)
+        state_events.append(candidate)
+
+    if season is not None:
+        for previous in previous_events.values():
+            if previous["status"] == "CANCELLED":
+                state_events.append(dict(previous))
+                continue
+            cancelled = dict(previous)
+            cancelled["status"] = "CANCELLED"
+            cancelled["fingerprint"] = _event_fingerprint(cancelled)
+            cancelled["sequence"] = previous["sequence"] + 1
+            cancelled["last_modified"] = _canonical_timestamp(authoritative_updated_at)
+            state_events.append(cancelled)
+
+    state_events.sort(key=lambda event: event["uid"])
+    if prior is not None and state_events == prior["events"]:
+        publication_updated_at = _parse_state_timestamp(prior["updated_at"], "State updated_at")
+    else:
+        publication_updated_at = authoritative_updated_at
+
+    state = {
+        "schema_version": _STATE_SCHEMA_VERSION,
+        "season": season,
+        "updated_at": _canonical_timestamp(publication_updated_at),
+        "events": state_events,
+    }
+    index = _build_calendar_index(season, publication_updated_at, state_events)
+    calendars = _render_calendars(state_events)
+    index_json = _json_bytes(index)
+    return CalendarPublication(
+        season=season,
+        updated_at=publication_updated_at,
+        calendar_index_json=index_json,
+        calendar_index_js=b"window.BWEDL_CALENDAR_INDEX = " + index_json.rstrip(b"\n") + b";\n",
+        calendar_state_json=_json_bytes(state),
+        calendars=MappingProxyType(calendars),
+    )
+
+
+def write_calendar_publication(publication: CalendarPublication, output_dir: str | Path) -> None:
+    """Write only validated, publication-owned paths below an explicit directory."""
+    for team_id in publication.calendars:
+        _validate_team_id(team_id)
+    root = Path(output_dir)
+    if root.exists() and root.is_symlink():
+        raise CalendarSourceError("Output-Verzeichnis darf kein Symlink sein")
+    root.mkdir(parents=True, exist_ok=True)
+    root = root.resolve(strict=True)
+    calendars_dir = root / "calendars"
+    if calendars_dir.exists() and calendars_dir.is_symlink():
+        raise CalendarSourceError("Kalender-Verzeichnis darf kein Symlink sein")
+    calendars_dir.mkdir(exist_ok=True)
+    calendars_dir = calendars_dir.resolve(strict=True)
+    _ensure_within(root, calendars_dir)
+
+    artifacts = {
+        root / "calendar_index.json": publication.calendar_index_json,
+        root / "calendar_index.js": publication.calendar_index_js,
+        root / "calendar_state.json": publication.calendar_state_json,
+    }
+    expected_names: set[str] = set()
+    for team_id, contents in publication.calendars.items():
+        file_name = f"{team_id}.ics"
+        expected_names.add(file_name)
+        artifacts[calendars_dir / file_name] = contents
+    for path, contents in artifacts.items():
+        _ensure_within(root, path)
+        _write_bytes_safely(path, contents)
+
+    for existing in calendars_dir.glob("*.ics"):
+        if existing.name in expected_names:
+            continue
+        team_id = existing.stem
+        if _SAFE_TEAM_ID_RE.fullmatch(team_id) is not None:
+            if existing.is_symlink():
+                raise CalendarSourceError("Bestehender Kalender darf kein Symlink sein")
+            existing.unlink()
+
+
+def _single_current_season(
+    league_data: Mapping[str, Any], source_lines: list[FixtureSourceLine]
+) -> str | None:
+    del source_lines  # Classification above validates the complete source structure.
+    leagues = league_data.get("leagues")
+    if not isinstance(leagues, Mapping):
+        raise CalendarSourceError("Ligadaten: leagues muss ein Objekt sein")
+    seasons = {
+        _season_for(league)
+        for league in leagues
+        if isinstance(league, str) and "ligapokal" not in league.casefold()
+    }
+    if len(seasons) > 1:
+        raise CalendarSourceError("Mehrere aktuelle Saisons in den Spielplandaten")
+    return next(iter(seasons), None)
+
+
+def _active_event_record(
+    game: LeagueGame, team: TeamIdentity, opponent: TeamIdentity, is_home: bool
+) -> dict[str, Any]:
+    location = game.location.address if game.location is not None else None
+    warning = (
+        "Adresse unvollständig"
+        if game.location is not None and game.location.incomplete
+        else "Austragungsort nicht auflösbar"
+        if game.location is None
+        else None
+    )
+    event = {
+        "uid": _event_uid(game.season, game.league, game.round_name, team.team_id),
+        "season": game.season,
+        "league": game.league,
+        "round_name": game.round_name,
+        "team_id": team.team_id,
+        "team_name": team.name,
+        "opponent": opponent.name,
+        "is_home": is_home,
+        "starts_at": _canonical_timestamp(game.starts_at_utc),
+        "location": location,
+        "location_warning": warning,
+        "status": "CONFIRMED",
+    }
+    event["fingerprint"] = _event_fingerprint(event)
+    return event
+
+
+def _event_uid(season: str, league: str, round_name: str, team_id: str) -> str:
+    payload = "\x1f".join((season, league, round_name, team_id)).encode("utf-8")
+    return f"{hashlib.sha256(payload).hexdigest()}@{_UID_DOMAIN}"
+
+
+def _event_fingerprint(event: Mapping[str, Any]) -> str:
+    contents = {
+        key: event[key]
+        for key in (
+            "uid",
+            "season",
+            "league",
+            "round_name",
+            "team_id",
+            "team_name",
+            "opponent",
+            "is_home",
+            "starts_at",
+            "location",
+            "location_warning",
+            "status",
+        )
+    }
+    return hashlib.sha256(_json_bytes(contents)).hexdigest()
+
+
+def _build_calendar_index(
+    season: str | None, updated_at: datetime, events: list[dict[str, Any]]
+) -> dict[str, Any]:
+    teams: dict[str, dict[str, Any]] = {}
+    for event in events:
+        if event["status"] != "CONFIRMED":
+            continue
+        match = _SAFE_TEAM_ID_RE.fullmatch(event["team_id"])
+        if match is None:
+            raise CalendarSourceError(f"Ungültige Team-ID im Kalender: {event['team_id']!r}")
+        team = teams.setdefault(
+            event["team_id"],
+            {
+                "team_id": event["team_id"],
+                "name": event["team_name"],
+                "club_number": match.group(1),
+                "team_slot": int(match.group(2)),
+                "ics_path": f"calendars/{event['team_id']}.ics",
+                "warning_count": 0,
+            },
+        )
+        if event["location_warning"] is not None:
+            team["warning_count"] += 1
+    return {
+        "schema_version": _INDEX_SCHEMA_VERSION,
+        "season": season,
+        "updated_at": _canonical_timestamp(updated_at),
+        "teams": [teams[team_id] for team_id in sorted(teams)],
+    }
+
+
+def _render_calendars(events: list[dict[str, Any]]) -> dict[str, bytes]:
+    by_team: dict[str, list[dict[str, Any]]] = {}
+    for event in events:
+        _validate_team_id(event["team_id"])
+        by_team.setdefault(event["team_id"], []).append(event)
+    return {
+        team_id: _render_calendar(team_events[0]["team_name"], sorted(team_events, key=lambda item: item["uid"]))
+        for team_id, team_events in sorted(by_team.items())
+    }
+
+
+def _render_calendar(team_name: str, events: list[dict[str, Any]]) -> bytes:
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//BWEDL//Team Calendar//DE",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        _content_line("X-WR-CALNAME", f"BWEDL – {team_name}", text=True),
+        "REFRESH-INTERVAL;VALUE=DURATION:PT6H",
+        "X-PUBLISHED-TTL:PT6H",
+    ]
+    for event in events:
+        lines.extend(_render_event(event))
+    lines.append("END:VCALENDAR")
+    return _fold_ical_lines(lines).encode("utf-8")
+
+
+def _render_event(event: Mapping[str, Any]) -> list[str]:
+    starts_at = _parse_state_timestamp(event["starts_at"], "Event starts_at")
+    ends_at = starts_at + timedelta(hours=3)
+    last_modified = _parse_state_timestamp(event["last_modified"], "Event last_modified")
+    home_or_away = "Heimspiel" if event["is_home"] else "Auswärtsspiel"
+    summary = f"Dart: {event['team_name']} – {event['opponent']} ({home_or_away})"
+    description = [
+        f"Gegner: {event['opponent']}",
+        home_or_away,
+        f"Termin: {starts_at.strftime('%d.%m.%Y %H:%M UTC')}",
+    ]
+    if event["location"] is not None:
+        description.append(f"Austragungsort: {event['location']}")
+    if event["location_warning"] is not None:
+        description.append(event["location_warning"])
+    lines = [
+        "BEGIN:VEVENT",
+        _content_line("UID", event["uid"], text=True),
+        _content_line("DTSTAMP", _ical_timestamp(last_modified)),
+        _content_line("DTSTART", _ical_timestamp(starts_at)),
+        _content_line("DTEND", _ical_timestamp(ends_at)),
+        _content_line("SUMMARY", summary, text=True),
+        _content_line("DESCRIPTION", "\n".join(description), text=True),
+    ]
+    if event["location"] is not None:
+        lines.append(_content_line("LOCATION", event["location"], text=True))
+    lines.extend(
+        (
+            _content_line("SEQUENCE", str(event["sequence"])),
+            _content_line("LAST-MODIFIED", _ical_timestamp(last_modified)),
+        )
+    )
+    if event["status"] == "CANCELLED":
+        lines.append("STATUS:CANCELLED")
+    lines.append("END:VEVENT")
+    return lines
+
+
+def _content_line(name: str, value: str, *, text: bool = False) -> str:
+    return f"{name}:{_escape_text(value) if text else value}"
+
+
+def _escape_text(value: str) -> str:
+    value = value.replace("\r\n", "\n").replace("\r", "\n")
+    return value.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+
+def _fold_ical_lines(lines: list[str]) -> str:
+    physical_lines: list[str] = []
+    for line in lines:
+        remaining = line
+        first = True
+        while remaining:
+            limit = 75 if first else 74
+            current: list[str] = []
+            used = 0
+            index = 0
+            for index, character in enumerate(remaining):
+                size = len(character.encode("utf-8"))
+                if used + size > limit:
+                    break
+                current.append(character)
+                used += size
+            else:
+                index = len(remaining)
+            if not current:
+                raise CalendarSourceError("ICS-Zeile enthält ein nicht faltbares Zeichen")
+            physical_lines.append(("" if first else " ") + "".join(current))
+            remaining = remaining[index:]
+            first = False
+    return "\r\n".join(physical_lines) + "\r\n"
+
+
+def _json_bytes(value: Any) -> bytes:
+    return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+
+
+def _canonical_timestamp(value: datetime) -> str:
+    return _require_aware_utc(value, "Zeitstempel").isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _ical_timestamp(value: datetime) -> str:
+    return _require_aware_utc(value, "ICS-Zeitstempel").strftime("%Y%m%dT%H%M%SZ")
+
+
+def _require_aware_utc(value: datetime, label: str) -> datetime:
+    if not isinstance(value, datetime) or value.tzinfo is None or value.utcoffset() is None:
+        raise CalendarSourceError(f"{label} muss timezone-aware sein")
+    return value.astimezone(timezone.utc)
+
+
+def _parse_state_timestamp(value: Any, label: str) -> datetime:
+    if not isinstance(value, str):
+        raise CalendarSourceError(f"{label} muss ein UTC-Zeitstempel sein")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as error:
+        raise CalendarSourceError(f"{label} ist ungültig") from error
+    parsed = _require_aware_utc(parsed, label)
+    if _canonical_timestamp(parsed) != value:
+        raise CalendarSourceError(f"{label} muss kanonisches UTC-Format verwenden")
+    return parsed
+
+
+def _parse_authoritative_timestamp(value: Any, label: str) -> datetime:
+    if not isinstance(value, str):
+        raise CalendarSourceError(f"{label} muss ein UTC-Zeitstempel sein")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as error:
+        raise CalendarSourceError(f"{label} ist ungültig") from error
+    return _require_aware_utc(parsed, label)
+
+
+def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
+    if not isinstance(value, Mapping):
+        raise CalendarSourceError("State muss ein Objekt sein")
+    expected = {"schema_version", "season", "updated_at", "events"}
+    if set(value) != expected or value.get("schema_version") != _STATE_SCHEMA_VERSION:
+        raise CalendarSourceError("State-Schema ist inkompatibel")
+    season = value["season"]
+    if season is not None and not isinstance(season, str):
+        raise CalendarSourceError("State season ist ungültig")
+    _parse_state_timestamp(value["updated_at"], "State updated_at")
+    events = value["events"]
+    if not isinstance(events, list):
+        raise CalendarSourceError("State events muss eine Liste sein")
+    normalized: list[dict[str, Any]] = []
+    event_keys = {
+        "uid", "season", "league", "round_name", "team_id", "team_name", "opponent", "is_home",
+        "starts_at", "location", "location_warning", "status", "fingerprint", "sequence", "last_modified",
+    }
+    seen: set[str] = set()
+    for event in events:
+        if not isinstance(event, Mapping) or set(event) != event_keys:
+            raise CalendarSourceError("State Event-Schema ist inkompatibel")
+        item = dict(event)
+        string_keys = ("uid", "season", "league", "round_name", "team_id", "team_name", "opponent", "fingerprint", "last_modified", "starts_at")
+        if any(not isinstance(item[key], str) or not item[key] for key in string_keys):
+            raise CalendarSourceError("State Event enthält ungültigen Text")
+        if _SAFE_TEAM_ID_RE.fullmatch(item["team_id"]) is None:
+            raise CalendarSourceError("State Event enthält ungültige Team-ID")
+        expected_uid = _event_uid(
+            item["season"], item["league"], item["round_name"], item["team_id"]
+        )
+        if item["uid"] != expected_uid:
+            raise CalendarSourceError("State Event enthält ungültige UID")
+        if item["status"] not in {"CONFIRMED", "CANCELLED"} or not isinstance(item["is_home"], bool):
+            raise CalendarSourceError("State Event enthält ungültigen Status")
+        if item["location"] is not None and not isinstance(item["location"], str):
+            raise CalendarSourceError("State Event enthält ungültigen Ort")
+        if item["location_warning"] is not None and not isinstance(item["location_warning"], str):
+            raise CalendarSourceError("State Event enthält ungültige Ortswarnung")
+        if item["location_warning"] not in {
+            None,
+            "Adresse unvollständig",
+            "Austragungsort nicht auflösbar",
+        }:
+            raise CalendarSourceError("State Event enthält unbekannte Ortswarnung")
+        if not isinstance(item["sequence"], int) or isinstance(item["sequence"], bool) or item["sequence"] < 0:
+            raise CalendarSourceError("State Event enthält ungültige Sequence")
+        _parse_state_timestamp(item["starts_at"], "State Event starts_at")
+        _parse_state_timestamp(item["last_modified"], "State Event last_modified")
+        if item["fingerprint"] != _event_fingerprint(item):
+            raise CalendarSourceError("State Event Fingerprint stimmt nicht")
+        if item["uid"] in seen:
+            raise CalendarSourceError("State enthält doppelte UID")
+        seen.add(item["uid"])
+        normalized.append(item)
+    if [event["uid"] for event in normalized] != sorted(event["uid"] for event in normalized):
+        raise CalendarSourceError("State Events müssen nach UID sortiert sein")
+    if season is None and normalized:
+        raise CalendarSourceError("State ohne Saison darf keine Events enthalten")
+    if season is not None and any(event["season"] != season for event in normalized):
+        raise CalendarSourceError("State Event-Saison stimmt nicht")
+    return {"schema_version": _STATE_SCHEMA_VERSION, "season": season, "updated_at": value["updated_at"], "events": normalized}
+
+
+def _validate_team_id(team_id: Any) -> None:
+    if not isinstance(team_id, str) or _SAFE_TEAM_ID_RE.fullmatch(team_id) is None:
+        raise CalendarSourceError(f"Ungültige Team-ID für Feedpfad: {team_id!r}")
+
+
+def _ensure_within(root: Path, path: Path) -> None:
+    try:
+        path.resolve(strict=False).relative_to(root)
+    except ValueError as error:
+        raise CalendarSourceError("Kalenderpfad verlässt das Output-Verzeichnis") from error
+
+
+def _write_bytes_safely(path: Path, contents: bytes) -> None:
+    if path.exists() and path.is_symlink():
+        raise CalendarSourceError("Kalenderdatei darf kein Symlink sein")
+    with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as temporary:
+        temporary.write(contents)
+        temporary_path = Path(temporary.name)
+    try:
+        os.replace(temporary_path, path)
+    finally:
+        if temporary_path.exists():
+            temporary_path.unlink()
+
+
+def _load_json_file(path: str) -> Mapping[str, Any]:
+    try:
+        value = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise CalendarSourceError(f"JSON-Datei nicht lesbar: {path}") from error
+    if not isinstance(value, Mapping):
+        raise CalendarSourceError(f"JSON-Datei muss ein Objekt enthalten: {path}")
+    return value
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Erzeugt zustandsbehaftete BWEDL-Teamkalender.")
+    parser.add_argument("--league-json", required=True)
+    parser.add_argument("--club-json", required=True)
+    parser.add_argument("--previous-state")
+    parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--updated-at", required=True)
+    arguments = parser.parse_args(argv)
+    try:
+        updated_at = _parse_authoritative_timestamp(arguments.updated_at, "updated_at")
+        publication = build_calendar_publication(
+            _load_json_file(arguments.league_json),
+            _load_json_file(arguments.club_json),
+            previous_state=_load_json_file(arguments.previous_state) if arguments.previous_state else None,
+            updated_at=updated_at,
+        )
+        write_calendar_publication(publication, arguments.output_dir)
+    except CalendarSourceError as error:
+        parser.error(str(error))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
