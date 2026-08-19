@@ -135,9 +135,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270402T180000Z
 DTEND:20270402T210000Z
 SUMMARY:Auswärtsspiel bei Friends Arrows
-DESCRIPTION:Begegnung: Friends Arrows - DC Lachs 14\nAuswärtsspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:00 UT
- C\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: Friends Arrows - DC Lachs 14\nAuswärtsspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:00 U
+ TC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -211,8 +211,8 @@ DTSTART:20270311T190000Z
 DTEND:20270311T220000Z
 SUMMARY:Heimspiel gegen DC Underground Fools
 DESCRIPTION:Begegnung: DC Lachs 14 - DC Underground Fools\nHeimspiel\nLiga:
-  Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 11.03.2027 19:00 
- UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+  Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 11.03.2027 19:00
+  UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -272,9 +272,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261119T190000Z
 DTEND:20261119T220000Z
 SUMMARY:Heimspiel gegen the Metal Darts
-DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts\nHeimspiel\nLiga: Mix 
- B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 19.11.2026 19:00 UTC\nA
- ustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 19.11.2026 19:00 UTC\n
+ Austragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -288,8 +288,8 @@ DTSTART:20270408T180000Z
 DTEND:20270408T210000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts
 DESCRIPTION:Begegnung: the Metal Darts - DC Lachs 14\nAuswärtsspiel\nLiga:
-  Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 08.04.2027 18:00 
- UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+  Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 08.04.2027 18:00
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -319,8 +319,8 @@ DTSTART:20261005T180000Z
 DTEND:20261005T210000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 2
 DESCRIPTION:Begegnung: the Metal Darts 2 - DC Lachs 14\nAuswärtsspiel\nLig
- a: Bezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 05.10.2026 18:00 
- UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+ a: Bezirksliga 2026-2027\nSpieltag: 4. Spieltag\nTermin: 05.10.2026 18:00
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -424,8 +424,8 @@ DTSTART:20270422T180000Z
 DTEND:20270422T210000Z
 SUMMARY:Heimspiel gegen DC Green Scorpion´s
 DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion´s\nHeimspiel\nLiga:
-  Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 22.04.2027 18:00 
- UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+  Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 22.04.2027 18:00
+  UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -440,8 +440,8 @@ DTEND:20270205T213000Z
 SUMMARY:Auswärtsspiel bei DC Crazy Flights
 DESCRIPTION:Begegnung: DC Crazy Flights - DC Lachs 14\nAuswärtsspiel\nLiga
  : Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 18:30
-  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, 
- Höfen
+  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\,
+  Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -454,9 +454,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260923T180000Z
 DTEND:20260923T210000Z
 SUMMARY:Heimspiel gegen DC Green Scorpion's
-DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion's\nHeimspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 18:00 UTC
- \nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Lachs 14 - DC Green Scorpion's\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 18:00 UT
+ C\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

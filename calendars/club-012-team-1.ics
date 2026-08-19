@@ -14,9 +14,9 @@ DTSTART:20260819T180000Z
 DTEND:20260819T210000Z
 SUMMARY:Auswärtsspiel bei DC Underground Fools 2
 DESCRIPTION:Begegnung: DC Underground Fools 2 - DC Shamrock\nAuswärtsspiel
- \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 19.08.2026 
- 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße 3
- 0\, Pforzheim
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 1. Spieltag\nTermin: 19.08.2026
+  18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherstraße
+  30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -169,9 +169,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260904T180000Z
 DTEND:20260904T210000Z
 SUMMARY:Heimspiel gegen DC Lightning Arrows
-DESCRIPTION:Begegnung: DC Shamrock - DC Lightning Arrows\nHeimspiel\nLiga: 
- Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:00 UT
- C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+DESCRIPTION:Begegnung: DC Shamrock - DC Lightning Arrows\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:00 U
+ TC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -200,9 +200,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261106T190000Z
 DTEND:20261106T220000Z
 SUMMARY:Heimspiel gegen DC Duselbrüder
-DESCRIPTION:Begegnung: DC Shamrock - DC Duselbrüder\nHeimspiel\nLiga: Mix 
- C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 19:00 UTC\nA
- ustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+DESCRIPTION:Begegnung: DC Shamrock - DC Duselbrüder\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 19:00 UTC\n
+ Austragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -216,9 +216,9 @@ DTSTART:20260828T180000Z
 DTEND:20260828T210000Z
 SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
 DESCRIPTION:Begegnung: DC 180 Stein e.V. - DC Shamrock\nAuswärtsspiel\nLig
- a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 
- 18:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königsb
- ach - Stein
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026
+  18:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, Königs
+ bach - Stein
 LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -232,9 +232,9 @@ DTSTART:20261202T180000Z
 DTEND:20261202T210000Z
 SUMMARY:Auswärtsspiel bei DC X-Brötzingen
 DESCRIPTION:Begegnung: DC X-Brötzingen - DC Shamrock\nAuswärtsspiel\nLiga
- : Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 18:00 
- UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, P
- forzheim
+ : Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 02.12.2026 18:00
+  UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\,
+  Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -310,9 +310,9 @@ DTSTART:20270416T180000Z
 DTEND:20270416T210000Z
 SUMMARY:Auswärtsspiel bei the flying Rocks
 DESCRIPTION:Begegnung: the flying Rocks - DC Shamrock\nAuswärtsspiel\nLiga
- : B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 
- 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
- rzheim
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027
+  18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -419,8 +419,8 @@ DTSTART:20270327T190000Z
 DTEND:20270327T220000Z
 SUMMARY:Auswärtsspiel bei DC Duselbrüder
 DESCRIPTION:Begegnung: DC Duselbrüder - DC Shamrock\nAuswärtsspiel\nLiga:
-  Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 27.03.2027 19:00 
- UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+  Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 27.03.2027 19:00
+  UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -449,10 +449,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270402T170000Z
 DTEND:20270402T200000Z
 SUMMARY:Auswärtsspiel bei Phantom Arrows
-DESCRIPTION:Begegnung: Phantom Arrows - DC Shamrock\nAuswärtsspiel\nLiga: 
- B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 17
- :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
- m
+DESCRIPTION:Begegnung: Phantom Arrows - DC Shamrock\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 1
+ 7:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -542,9 +542,9 @@ DTSTART:20261113T190000Z
 DTEND:20261113T220000Z
 SUMMARY:Heimspiel gegen the flying Rocks
 DESCRIPTION:Begegnung: DC Shamrock - the flying Rocks\nHeimspiel\nLiga: B-K
- lasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 
- UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhard
- t
+ lasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00
+  UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhar
+ dt
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

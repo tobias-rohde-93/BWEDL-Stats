@@ -61,10 +61,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261109T190000Z
 DTEND:20261109T220000Z
 SUMMARY:Heimspiel gegen DC Hot Shotz
-DESCRIPTION:Begegnung: the flying Rocks 2 - DC Hot Shotz\nHeimspiel\nLiga: 
- C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026 19:
- 00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzh
- eim
+DESCRIPTION:Begegnung: the flying Rocks 2 - DC Hot Shotz\nHeimspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026 19
+ :00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforz
+ heim
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -158,9 +158,9 @@ DTSTART:20270128T190000Z
 DTEND:20270128T220000Z
 SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
 DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - the flying Rocks 2\nAuswärts
- spiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin: 
- 28.01.2027 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Eng
- elsbrand-Grunbach
+ spiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 11. Spieltag\nTermin:
+  28.01.2027 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, En
+ gelsbrand-Grunbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -207,8 +207,8 @@ DTEND:20261124T213000Z
 SUMMARY:Auswärtsspiel bei DC Texas Team 4
 DESCRIPTION:Begegnung: DC Texas Team 4 - the flying Rocks 2\nAuswärtsspiel
  \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.
- 2026 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
- Pforzheim
+ 2026 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

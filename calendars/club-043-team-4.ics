@@ -14,9 +14,9 @@ DTSTART:20270317T190000Z
 DTEND:20270317T220000Z
 SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
 DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC Irish 26 e.V. 4\nAuswärts
- spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
- 17.03.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1
- \, Knittlingen
+ spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin:
+  17.03.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str.
+  1\, Knittlingen
 LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -62,9 +62,9 @@ DTSTART:20261123T180000Z
 DTEND:20261123T210000Z
 SUMMARY:Heimspiel gegen ESV DC 25
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - ESV DC 25\nHeimspiel\nLiga: C-K
- lasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 18:00 
- UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Köni
- gsbach
+ lasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 18:00
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -111,8 +111,8 @@ DTEND:20270510T200000Z
 SUMMARY:Heimspiel gegen DC Knickebocker 2
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Knickebocker 2\nHeimspiel\nL
  iga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.20
- 27 17:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
- 1\, Königsbach
+ 27 17:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -141,9 +141,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260824T170000Z
 DTEND:20260824T200000Z
 SUMMARY:Heimspiel gegen DC Conweiler
-DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Conweiler\nHeimspiel\nLiga: 
- C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.2026 17:
- 00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - DC Conweiler\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.2026 17
+ :00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, K
  önigsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
@@ -159,8 +159,8 @@ DTEND:20261109T220000Z
 SUMMARY:Auswärtsspiel bei Phantom Arrows 2
 DESCRIPTION:Begegnung: Phantom Arrows 2 - DC Irish 26 e.V. 4\nAuswärtsspie
  l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11
- .2026 19:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, 
- Pforzheim
+ .2026 19:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -237,9 +237,9 @@ DTSTART:20270430T180000Z
 DTEND:20270430T210000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25
 DESCRIPTION:Begegnung: ESV DC 25 - DC Irish 26 e.V. 4\nAuswärtsspiel\nLiga
- : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 
- 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\
- , Pforzheim
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027
+  18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15
+ \, Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

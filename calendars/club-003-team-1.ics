@@ -107,8 +107,8 @@ DTEND:20270312T220000Z
 SUMMARY:Auswärtsspiel bei DC Green Scorpion´s
 DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Strikers\nAuswärtsspiel\n
  Liga: Mix B-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 12.03.2027 1
- 9:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
- Eisingen
+ 9:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
+  Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -137,9 +137,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261127T190000Z
 DTEND:20261127T220000Z
 SUMMARY:Auswärtsspiel bei Friends Arrows
-DESCRIPTION:Begegnung: Friends Arrows - DC Strikers\nAuswärtsspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:00 UTC
- \nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: Friends Arrows - DC Strikers\nAuswärtsspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:00 UT
+ C\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -152,10 +152,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261023T180000Z
 DTEND:20261023T210000Z
 SUMMARY:Heimspiel gegen DC Green Scorpion's
-DESCRIPTION:Begegnung: DC Strikers - DC Green Scorpion's\nHeimspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:00 UTC
- \nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisin
- gen
+DESCRIPTION:Begegnung: DC Strikers - DC Green Scorpion's\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:00 UT
+ C\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisi
+ ngen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -169,9 +169,9 @@ DTSTART:20261106T190000Z
 DTEND:20261106T220000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Strikers\nAuswärtsspiel
- \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 
- 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026
+  19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -184,10 +184,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270305T190000Z
 DTEND:20270305T220000Z
 SUMMARY:Heimspiel gegen the Metal Darts
-DESCRIPTION:Begegnung: DC Strikers - the Metal Darts\nHeimspiel\nLiga: Mix 
- B-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.2027 19:00 UTC\n
- Austragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisinge
- n
+DESCRIPTION:Begegnung: DC Strikers - the Metal Darts\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 13. Spieltag\nTermin: 05.03.2027 19:00 UTC\
+ nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eising
+ en
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -246,9 +246,9 @@ DTSTART:20270205T190000Z
 DTEND:20270205T220000Z
 SUMMARY:Heimspiel gegen DC Underground Fools
 DESCRIPTION:Begegnung: DC Strikers - DC Underground Fools\nHeimspiel\nLiga:
-  Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19:00 
- UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Ei
- singen
+  Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19:00
+  UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, E
+ isingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -432,8 +432,8 @@ DTEND:20270326T220000Z
 SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: DC Strikers - Dartfreunde Eichenherz\nHeimspiel\nLig
  a: Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 19:0
- 0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, 
- Eisingen
+ 0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\,
+  Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -447,9 +447,9 @@ DTSTART:20261204T183000Z
 DTEND:20261204T213000Z
 SUMMARY:Auswärtsspiel bei DC Crazy Flights
 DESCRIPTION:Begegnung: DC Crazy Flights - DC Strikers\nAuswärtsspiel\nLiga
- : Mix B-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 04.12.2026 18:30 
- UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, H
- öfen
+ : Mix B-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 04.12.2026 18:30
+  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\,
+  Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -524,8 +524,8 @@ DTSTART:20261026T190000Z
 DTEND:20261026T220000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 2
 DESCRIPTION:Begegnung: the Metal Darts 2 - DC Strikers\nAuswärtsspiel\nLig
- a: Bezirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 26.10.2026 19:00 
- UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+ a: Bezirksliga 2026-2027\nSpieltag: 6. Spieltag\nTermin: 26.10.2026 19:00
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

@@ -46,8 +46,8 @@ DTSTART:20270114T180000Z
 DTEND:20270114T210000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC 180 Stein e.V. 2\nHeimspiel\nLiga
- : C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 
- 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027
+  18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
 LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -120,9 +120,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270513T170000Z
 DTEND:20270513T200000Z
 SUMMARY:Heimspiel gegen DC Broken Darts 2
-DESCRIPTION:Begegnung: Los Muertos 2 - DC Broken Darts 2\nHeimspiel\nLiga: 
- C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.2027 17
- :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
+DESCRIPTION:Begegnung: Los Muertos 2 - DC Broken Darts 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.2027 1
+ 7:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
 LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -213,8 +213,8 @@ DTEND:20270224T213000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz 2
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz 2 - Los Muertos 2\nAuswärtss
  piel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 13. Spieltag\nTermin: 2
- 4.02.2027 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 
- 42\, Pforzheim
+ 4.02.2027 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
+  42\, Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

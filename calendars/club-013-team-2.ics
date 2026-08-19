@@ -90,8 +90,8 @@ DTSTART:20270428T173000Z
 DTEND:20270428T203000Z
 SUMMARY:Heimspiel gegen Phantom Arrows 2
 DESCRIPTION:Begegnung: DC HighFlights 2 - Phantom Arrows 2\nHeimspiel\nLiga
- : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2027 
- 17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 28.04.2027
+  17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -136,9 +136,9 @@ DTSTART:20270126T190000Z
 DTEND:20270126T220000Z
 SUMMARY:Auswärtsspiel bei DC Underground Fools 4
 DESCRIPTION:Begegnung: DC Underground Fools 4 - DC HighFlights 2\nAuswärts
- spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 
- 26.01.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
- erstraße 30\, Pforzheim
+ spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin:
+  26.01.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
+ herstraße 30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -151,10 +151,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270226T190000Z
 DTEND:20270226T220000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25
-DESCRIPTION:Begegnung: ESV DC 25 - DC HighFlights 2\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 19
- :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
- Pforzheim
+DESCRIPTION:Begegnung: ESV DC 25 - DC HighFlights 2\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 1
+ 9:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\,
+  Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -263,8 +263,8 @@ DTEND:20260826T210000Z
 SUMMARY:Auswärtsspiel bei DC Black Scorpions 5
 DESCRIPTION:Begegnung: DC Black Scorpions 5 - DC HighFlights 2\nAuswärtssp
  iel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.
- 08.2026 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, 
- Knittlingen
+ 08.2026 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\,
+  Knittlingen
 LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

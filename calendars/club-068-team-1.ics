@@ -30,8 +30,8 @@ DTSTART:20261031T190000Z
 DTEND:20261031T220000Z
 SUMMARY:Heimspiel gegen DC HighFlights
 DESCRIPTION:Begegnung: DC DARTanions - DC HighFlights\nHeimspiel\nLiga: A-K
- lasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:00 
- UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+ lasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:00
+  UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -186,9 +186,9 @@ DTSTART:20261110T183000Z
 DTEND:20261110T213000Z
 SUMMARY:Auswärtsspiel bei DC Texas Team 2
 DESCRIPTION:Begegnung: DC Texas Team 2 - DC DARTanions\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2026 
- 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2026
+  18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -201,10 +201,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270430T180000Z
 DTEND:20270430T210000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
-DESCRIPTION:Begegnung: DC Ungültig - DC DARTanions\nAuswärtsspiel\nLiga: 
- A-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18
- :00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömb
- erg/Schwarzenberg
+DESCRIPTION:Begegnung: DC Ungültig - DC DARTanions\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 1
+ 8:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
+ berg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -249,8 +249,8 @@ DTSTART:20270401T173000Z
 DTEND:20270401T203000Z
 SUMMARY:Auswärtsspiel bei DC HighFlights
 DESCRIPTION:Begegnung: DC HighFlights - DC DARTanions\nAuswärtsspiel\nLiga
- : A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04.2027 
- 17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 01.04.2027
+  17:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -264,8 +264,8 @@ DTSTART:20270515T180000Z
 DTEND:20270515T210000Z
 SUMMARY:Heimspiel gegen Alla Häeeehr
 DESCRIPTION:Begegnung: DC DARTanions - Alla Häeeehr\nHeimspiel\nLiga: A-Kl
- asse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:00 
- UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+ asse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:00
+  UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

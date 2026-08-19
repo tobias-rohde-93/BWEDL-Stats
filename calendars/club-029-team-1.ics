@@ -59,8 +59,8 @@ DTSTART:20270505T180000Z
 DTEND:20270505T210000Z
 SUMMARY:Heimspiel gegen DC Underground Fools
 DESCRIPTION:Begegnung: DC Reloaded - DC Underground Fools\nHeimspiel\nLiga:
-  Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 05.05.2027 18:00 
- UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+  Mix B-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 05.05.2027 18:00
+  UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -73,9 +73,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270203T190000Z
 DTEND:20270203T220000Z
 SUMMARY:Heimspiel gegen the Metal Darts
-DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts\nHeimspiel\nLiga: Mix 
- B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 03.02.2027 19:00 UTC\n
- Austragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 03.02.2027 19:00 UTC\
+ nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -167,8 +167,8 @@ DTEND:20270219T220000Z
 SUMMARY:Auswärtsspiel bei DC Green Scorpion´s
 DESCRIPTION:Begegnung: DC Green Scorpion´s - DC Reloaded\nAuswärtsspiel\n
  Liga: Mix B-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 1
- 9:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, 
- Eisingen
+ 9:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
+  Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -182,9 +182,9 @@ DTSTART:20261002T180000Z
 DTEND:20261002T210000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Reloaded\nAuswärtsspiel
- \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026 
- 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026
+  18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -335,8 +335,8 @@ DTEND:20270326T213000Z
 SUMMARY:Auswärtsspiel bei DC Crazy Flights
 DESCRIPTION:Begegnung: DC Crazy Flights - DC Reloaded\nAuswärtsspiel\nLiga
  : Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 18:30
-  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, 
- Höfen
+  UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\,
+  Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -364,9 +364,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270129T190000Z
 DTEND:20270129T220000Z
 SUMMARY:Auswärtsspiel bei Friends Arrows
-DESCRIPTION:Begegnung: Friends Arrows - DC Reloaded\nAuswärtsspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UT
- C\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: Friends Arrows - DC Reloaded\nAuswärtsspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 U
+ TC\nAustragungsort: Reiterstüble\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -425,8 +425,9 @@ DTSTART:20261016T180000Z
 DTEND:20261016T210000Z
 SUMMARY:Auswärtsspiel bei the flying Rocks
 DESCRIPTION:Begegnung: the flying Rocks - DC Reloaded\nAuswärtsspiel\nLiga
- : Mix B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18:00 
- UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
+ : Mix B-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 18:00
+  UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzhei
+ m
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -469,9 +470,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270430T180000Z
 DTEND:20270430T210000Z
 SUMMARY:Heimspiel gegen DC Green Scorpion's
-DESCRIPTION:Begegnung: DC Reloaded - DC Green Scorpion's\nHeimspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00 UT
- C\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: DC Reloaded - DC Green Scorpion's\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 18:00 U
+ TC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

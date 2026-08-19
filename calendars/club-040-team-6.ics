@@ -13,10 +13,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270129T190000Z
 DTEND:20270129T220000Z
 SUMMARY:Heimspiel gegen DC Shamrock 2
-DESCRIPTION:Begegnung: the Metal Darts 6 - DC Shamrock 2\nHeimspiel\nLiga: 
- C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19
- :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
- m
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Shamrock 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 1
+ 9:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -77,10 +77,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270402T180000Z
 DTEND:20270402T210000Z
 SUMMARY:Heimspiel gegen DC Oststadt 3
-DESCRIPTION:Begegnung: the Metal Darts 6 - DC Oststadt 3\nHeimspiel\nLiga: 
- C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18
- :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
- m
+DESCRIPTION:Begegnung: the Metal Darts 6 - DC Oststadt 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 1
+ 8:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -110,9 +110,9 @@ DTSTART:20260907T180000Z
 DTEND:20260907T210000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25 2
 DESCRIPTION:Begegnung: ESV DC 25 2 - the Metal Darts 6\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 07.09.2026 
- 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\
- , Pforzheim
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 07.09.2026
+  18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15
+ \, Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

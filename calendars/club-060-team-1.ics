@@ -29,9 +29,9 @@ DTSTART:20261109T190000Z
 DTEND:20261109T220000Z
 SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
 DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - DC Crows\nAuswärtsspiel\nLig
- a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026 
- 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
-  Eisingen
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 09.11.2026
+  19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\
+ , Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -59,9 +59,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270213T190000Z
 DTEND:20270213T220000Z
 SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
-DESCRIPTION:Begegnung: DC Crows - Dartfreunde Eichenherz\nHeimspiel\nLiga: 
- B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19
- :00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+DESCRIPTION:Begegnung: DC Crows - Dartfreunde Eichenherz\nHeimspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 1
+ 9:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
 LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -74,9 +74,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260829T180000Z
 DTEND:20260829T210000Z
 SUMMARY:Auswärtsspiel bei DC Enztaler Buben
-DESCRIPTION:Begegnung: DC Enztaler Buben - DC Crows\nAuswärtsspiel\nLiga: 
- B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:
- 00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Enztaler Buben - DC Crows\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18
+ :00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -151,9 +151,9 @@ DTSTART:20270511T173000Z
 DTEND:20270511T203000Z
 SUMMARY:Auswärtsspiel bei DC Strikers 2
 DESCRIPTION:Begegnung: DC Strikers 2 - DC Crows\nAuswärtsspiel\nLiga: B-Kl
- asse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 17:30 
- UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Ei
- singen
+ asse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 11.05.2027 17:30
+  UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, E
+ isingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -260,9 +260,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261212T190000Z
 DTEND:20261212T220000Z
 SUMMARY:Heimspiel gegen DC Strikers 2
-DESCRIPTION:Begegnung: DC Crows - DC Strikers 2\nHeimspiel\nLiga: B-Klasse 
- Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00 UTC\nA
- ustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+DESCRIPTION:Begegnung: DC Crows - DC Strikers 2\nHeimspiel\nLiga: B-Klasse
+  Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00 UTC\n
+ Austragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
 LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

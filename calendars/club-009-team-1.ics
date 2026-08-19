@@ -31,8 +31,8 @@ DTEND:20261112T213000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Mephisto's\nAuswärtsspiel\n
  Liga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.20
- 26 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
- 1\, Königsbach
+ 26 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -45,10 +45,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261030T180000Z
 DTEND:20261030T210000Z
 SUMMARY:Heimspiel gegen the Metal Darts 3
-DESCRIPTION:Begegnung: DC Mephisto's - the Metal Darts 3\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 18:
- 00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, 
- Knittlingen
+DESCRIPTION:Begegnung: DC Mephisto's - the Metal Darts 3\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 18
+ :00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\,
+  Knittlingen
 LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -62,8 +62,8 @@ DTSTART:20261010T180000Z
 DTEND:20261010T210000Z
 SUMMARY:Auswärtsspiel bei DC Duselbrüder
 DESCRIPTION:Begegnung: DC Duselbrüder - DC Mephisto's\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 
- 18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026
+  18:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -109,8 +109,8 @@ DTSTART:20261023T180000Z
 DTEND:20261023T210000Z
 SUMMARY:Auswärtsspiel bei DC Broken Darts
 DESCRIPTION:Begegnung: DC Broken Darts - DC Mephisto's\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 
- 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026
+  18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -156,9 +156,9 @@ DTSTART:20270210T183000Z
 DTEND:20270210T213000Z
 SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
 DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Mephisto's\nAuswärts
- spiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 
- 10.02.2027 18:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
- erstraße 30\, Pforzheim
+ spiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin:
+  10.02.2027 18:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
+ herstraße 30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -204,9 +204,9 @@ DTSTART:20260910T180000Z
 DTEND:20260910T210000Z
 SUMMARY:Auswärtsspiel bei DC Texas Team 3
 DESCRIPTION:Begegnung: DC Texas Team 3 - DC Mephisto's\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 
- 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026
+  18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -236,9 +236,9 @@ DTSTART:20261127T180000Z
 DTEND:20261127T210000Z
 SUMMARY:Heimspiel gegen DC Black Scorpions 3
 DESCRIPTION:Begegnung: DC Mephisto's - DC Black Scorpions 3\nHeimspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 
- 18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92
- \, Knittlingen
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026
+  18:00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 9
+ 2\, Knittlingen
 LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

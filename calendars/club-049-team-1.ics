@@ -140,10 +140,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260926T140000Z
 DTEND:20260926T170000Z
 SUMMARY:Heimspiel gegen DC Crows
-DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crows\nHeimspiel\nLiga: 
- B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 14:
- 00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhei
- m
+DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crows\nHeimspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.2026 14
+ :00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
+ im
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -174,8 +174,8 @@ DTEND:20270130T180000Z
 SUMMARY:Heimspiel gegen DC Destroyers e.V. 2
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Destroyers e.V. 2\nHeims
  piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 3
- 0.01.2027 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 
- 42\, Pforzheim
+ 0.01.2027 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
+  42\, Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -254,8 +254,8 @@ DTEND:20270205T220000Z
 SUMMARY:Heimspiel gegen DC Green Scorpion´s
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Green Scorpion´s\nHeims
  piel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.
- 2027 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
- Pforzheim
+ 2027 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -301,9 +301,9 @@ DTSTART:20270121T190000Z
 DTEND:20270121T220000Z
 SUMMARY:Heimspiel gegen the Metal Darts
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - the Metal Darts\nHeimspiel\
- nLiga: Mix B-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 21.01.2027 
- 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ nLiga: Mix B-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 21.01.2027
+  19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -349,8 +349,8 @@ DTEND:20270326T220000Z
 SUMMARY:Auswärtsspiel bei DC Strikers
 DESCRIPTION:Begegnung: DC Strikers - Dartfreunde Eichenherz\nAuswärtsspiel
  \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027
-  19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 
- 60\, Eisingen
+  19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße
+  60\, Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -380,9 +380,9 @@ DTSTART:20270421T180000Z
 DTEND:20270421T210000Z
 SUMMARY:Auswärtsspiel bei DC Underground Fools
 DESCRIPTION:Begegnung: DC Underground Fools - Dartfreunde Eichenherz\nAusw
- ärtsspiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 
- 21.04.2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
- erstraße 30\, Pforzheim
+ ärtsspiel\nLiga: Mix B-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin:
+  21.04.2027 18:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
+ herstraße 30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -427,8 +427,8 @@ DTSTART:20261217T190000Z
 DTEND:20261217T220000Z
 SUMMARY:Auswärtsspiel bei DC Lachs 14
 DESCRIPTION:Begegnung: DC Lachs 14 - Dartfreunde Eichenherz\nAuswärtsspiel
- \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 17.12.2026 
- 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 17.12.2026
+  19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

@@ -140,10 +140,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270515T180000Z
 DTEND:20270515T210000Z
 SUMMARY:Auswärtsspiel bei DC Hot Shotz
-DESCRIPTION:Begegnung: DC Hot Shotz - TDF Enzberg 3\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18
- :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
- hardt
+DESCRIPTION:Begegnung: DC Hot Shotz - TDF Enzberg 3\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 4 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 1
+ 8:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -172,9 +172,9 @@ DTSTART:20261031T180000Z
 DTEND:20261031T210000Z
 SUMMARY:Heimspiel gegen TSV Grunbach Darts 3
 DESCRIPTION:Begegnung: TDF Enzberg 3 - TSV Grunbach Darts 3\nHeimspiel\nLig
- a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 
- 18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzb
- erg
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
+  18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enz
+ berg
 LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -204,8 +204,8 @@ DTEND:20261127T220000Z
 SUMMARY:Auswärtsspiel bei DC X-Brötzingen
 DESCRIPTION:Begegnung: DC X-Brötzingen - TDF Enzberg 3\nAuswärtsspiel\nLi
  ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026
-  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
- 259\, Pforzheim
+  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -235,9 +235,9 @@ DTSTART:20260825T173000Z
 DTEND:20260825T203000Z
 SUMMARY:Auswärtsspiel bei DC Texas Team 4
 DESCRIPTION:Begegnung: DC Texas Team 4 - TDF Enzberg 3\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026 
- 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 1. Spieltag\nTermin: 25.08.2026
+  17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

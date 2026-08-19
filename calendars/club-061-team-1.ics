@@ -30,9 +30,9 @@ DTSTART:20270320T190000Z
 DTEND:20270320T220000Z
 SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
 DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Oiloch Schömberg\nAuswärts
- spiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
- 20.03.2027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, S
- imonswiesen 2\, Höfen
+ spiel\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin:
+  20.03.2027 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\,
+  Simonswiesen 2\, Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -269,10 +269,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270403T180000Z
 DTEND:20270403T210000Z
 SUMMARY:Heimspiel gegen DC Cim Bom
-DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Cim Bom\nHeimspiel\nLiga: 
- B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 18
- :00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Schömber
- g
+DESCRIPTION:Begegnung: DC Oiloch Schömberg - DC Cim Bom\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 03.04.2027 1
+ 8:00 UTC\nAustragungsort: Bistro Orchidee\, Liebenzellerstr. 35\, Schömbe
+ rg
 LOCATION:Bistro Orchidee\, Liebenzellerstr. 35\, Schömberg
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

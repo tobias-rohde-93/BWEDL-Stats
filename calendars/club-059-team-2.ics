@@ -29,10 +29,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261211T190000Z
 DTEND:20261211T220000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25
-DESCRIPTION:Begegnung: ESV DC 25 - Phantom Arrows 2\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:
- 00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, P
- forzheim
+DESCRIPTION:Begegnung: ESV DC 25 - Phantom Arrows 2\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19
+ :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\,
+  Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -46,9 +46,9 @@ DTSTART:20270316T190000Z
 DTEND:20270316T220000Z
 SUMMARY:Auswärtsspiel bei DC Underground Fools 4
 DESCRIPTION:Begegnung: DC Underground Fools 4 - Phantom Arrows 2\nAuswärts
- spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
- 16.03.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weih
- erstraße 30\, Pforzheim
+ spiel\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin:
+  16.03.2027 19:00 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
+ herstraße 30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -268,9 +268,9 @@ DTSTART:20261009T180000Z
 DTEND:20261009T210000Z
 SUMMARY:Auswärtsspiel bei DC Conweiler
 DESCRIPTION:Begegnung: DC Conweiler - Phantom Arrows 2\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 
- 18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, 
- Straubenhardt
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026
+  18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\,
+  Straubenhardt
 LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

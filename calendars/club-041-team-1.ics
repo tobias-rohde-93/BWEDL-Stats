@@ -14,8 +14,8 @@ DTSTART:20261028T183000Z
 DTEND:20261028T213000Z
 SUMMARY:Auswärtsspiel bei DC HighFlights 2
 DESCRIPTION:Begegnung: DC HighFlights 2 - DC Conweiler\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 
- 18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026
+  18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -29,9 +29,9 @@ DTSTART:20270430T180000Z
 DTEND:20270430T210000Z
 SUMMARY:Heimspiel gegen DC Black Scorpions 5
 DESCRIPTION:Begegnung: DC Conweiler - DC Black Scorpions 5\nHeimspiel\nLiga
- : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027 
- 18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, 
- Straubenhardt
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.2027
+  18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\,
+  Straubenhardt
 LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -45,9 +45,9 @@ DTSTART:20261113T190000Z
 DTEND:20261113T220000Z
 SUMMARY:Heimspiel gegen DC Drei Daneben
 DESCRIPTION:Begegnung: DC Conweiler - DC Drei Daneben\nHeimspiel\nLiga: C-K
- lasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00 
- UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straub
- enhardt
+ lasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:00
+  UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Strau
+ benhardt
 LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -76,9 +76,9 @@ DTSTART:20270417T170000Z
 DTEND:20270417T200000Z
 SUMMARY:Auswärtsspiel bei DC Drei Daneben
 DESCRIPTION:Begegnung: DC Drei Daneben - DC Conweiler\nAuswärtsspiel\nLiga
- : C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 
- 17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhe
- im
+ : C-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027
+  17:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzh
+ eim
 LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -172,9 +172,9 @@ DTSTART:20270129T190000Z
 DTEND:20270129T220000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25
 DESCRIPTION:Begegnung: ESV DC 25 - DC Conweiler\nAuswärtsspiel\nLiga: C-Kl
- asse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 
- UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfor
- zheim
+ asse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00
+  UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfo
+ rzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -235,10 +235,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260911T180000Z
 DTEND:20260911T210000Z
 SUMMARY:Heimspiel gegen ESV DC 25
-DESCRIPTION:Begegnung: DC Conweiler - ESV DC 25\nHeimspiel\nLiga: C-Klasse 
- Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 UTC\nA
- ustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhard
- t
+DESCRIPTION:Begegnung: DC Conweiler - ESV DC 25\nHeimspiel\nLiga: C-Klasse
+  Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00 UTC\n
+ Austragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhar
+ dt
 LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -267,10 +267,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270115T190000Z
 DTEND:20270115T220000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V. 4
-DESCRIPTION:Begegnung: DC Conweiler - DC Irish 26 e.V. 4\nHeimspiel\nLiga: 
- C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 19
- :00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, St
- raubenhardt
+DESCRIPTION:Begegnung: DC Conweiler - DC Irish 26 e.V. 4\nHeimspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 15.01.2027 1
+ 9:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, S
+ traubenhardt
 LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

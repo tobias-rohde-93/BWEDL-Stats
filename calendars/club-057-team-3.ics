@@ -13,10 +13,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270514T180000Z
 DTEND:20270514T210000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25 2
-DESCRIPTION:Begegnung: ESV DC 25 2 - DC Ungültig 3\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 18
- :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
- Pforzheim
+DESCRIPTION:Begegnung: ESV DC 25 2 - DC Ungültig 3\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 1
+ 8:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\,
+  Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -111,8 +111,8 @@ DTEND:20260904T203000Z
 SUMMARY:Auswärtsspiel bei DC Kolibrispitz
 DESCRIPTION:Begegnung: DC Kolibrispitz - DC Ungültig 3\nAuswärtsspiel\nLi
  ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 04.09.2026
-  17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr. 
- 15\, Pforzheim
+  17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
+  15\, Pforzheim
 LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

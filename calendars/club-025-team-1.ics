@@ -28,10 +28,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261113T190000Z
 DTEND:20261113T220000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
-DESCRIPTION:Begegnung: DC Ungültig - Alla Häeeehr\nAuswärtsspiel\nLiga: 
- A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19:
- 00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömbe
- rg/Schwarzenberg
+DESCRIPTION:Begegnung: DC Ungültig - Alla Häeeehr\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
+ :00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömb
+ erg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -139,9 +139,9 @@ DTSTART:20260910T183000Z
 DTEND:20260910T213000Z
 SUMMARY:Heimspiel gegen DC Black Scorpions 2
 DESCRIPTION:Begegnung: Alla Häeeehr - DC Black Scorpions 2\nHeimspiel\nLig
- a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 
- 18:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
- rzheim
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026
+  18:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

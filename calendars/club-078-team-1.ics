@@ -105,10 +105,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270414T180000Z
 DTEND:20270414T210000Z
 SUMMARY:Auswärtsspiel bei DC Dart Vaders
-DESCRIPTION:Begegnung: DC Dart Vaders - DC Williams\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027 18
- :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
- hardt-Schwann
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Williams\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 14.04.2027 1
+ 8:00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straube
+ nhardt-Schwann
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -169,8 +169,8 @@ DTEND:20261031T220000Z
 SUMMARY:Auswärtsspiel bei DC X-Brötzingen 2
 DESCRIPTION:Begegnung: DC X-Brötzingen 2 - DC Williams\nAuswärtsspiel\nLi
  ga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
-  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
- 259\, Pforzheim
+  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -183,9 +183,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261209T180000Z
 DTEND:20261209T210000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
-DESCRIPTION:Begegnung: DC Williams - DC 180 Stein e.V. 2\nHeimspiel\nLiga: 
- C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 18:
- 00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Williams - DC 180 Stein e.V. 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 18
+ :00 UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
 LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -274,8 +274,8 @@ DTSTART:20261009T180000Z
 DTEND:20261009T210000Z
 SUMMARY:Auswärtsspiel bei DC Broken Darts 2
 DESCRIPTION:Begegnung: DC Broken Darts 2 - DC Williams\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 
- 18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026
+  18:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

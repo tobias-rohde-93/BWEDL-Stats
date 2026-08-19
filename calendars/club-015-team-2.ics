@@ -60,9 +60,9 @@ DTSTART:20261029T193000Z
 DTEND:20261029T223000Z
 SUMMARY:Auswärtsspiel bei Alla Häeeehr
 DESCRIPTION:Begegnung: Alla Häeeehr - DC Texas Team 2\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 
- 19:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
- rzheim
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026
+  19:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -124,9 +124,9 @@ DTSTART:20270319T190000Z
 DTEND:20270319T220000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
 DESCRIPTION:Begegnung: DC Ungültig - DC Texas Team 2\nAuswärtsspiel\nLiga
- : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 
- 19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schö
- mberg/Schwarzenberg
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027
+  19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -155,8 +155,8 @@ DTSTART:20270427T173000Z
 DTEND:20270427T203000Z
 SUMMARY:Heimspiel gegen DC Triple X
 DESCRIPTION:Begegnung: DC Texas Team 2 - DC Triple X\nHeimspiel\nLiga: A-Kl
- asse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04.2027 17:30 
- UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+ asse Gruppe 2 2026-2027\nSpieltag: 17. Spieltag\nTermin: 27.04.2027 17:30
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -235,8 +235,8 @@ DTEND:20270513T210000Z
 SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
 DESCRIPTION:Begegnung: DC Black Scorpions 2 - DC Texas Team 2\nAuswärtsspi
  el\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.
- 05.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\, 
- Knittlingen
+ 05.2027 18:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1\,
+  Knittlingen
 LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -265,8 +265,8 @@ DTSTART:20261020T173000Z
 DTEND:20261020T203000Z
 SUMMARY:Heimspiel gegen DC Ungültig
 DESCRIPTION:Begegnung: DC Texas Team 2 - DC Ungültig\nHeimspiel\nLiga: A-K
- lasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.2026 17:30 
- UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+ lasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.2026 17:30
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -280,9 +280,9 @@ DTSTART:20261006T173000Z
 DTEND:20261006T203000Z
 SUMMARY:Heimspiel gegen TSV Grunbach Darts
 DESCRIPTION:Begegnung: DC Texas Team 2 - TSV Grunbach Darts\nHeimspiel\nLig
- a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026 
- 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ a: A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026
+  17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

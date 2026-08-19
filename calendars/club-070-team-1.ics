@@ -169,10 +169,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270510T180000Z
 DTEND:20270510T210000Z
 SUMMARY:Auswärtsspiel bei Phantom Arrows 2
-DESCRIPTION:Begegnung: Phantom Arrows 2 - ESV DC 25\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 18
- :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
- m
+DESCRIPTION:Begegnung: Phantom Arrows 2 - ESV DC 25\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 1
+ 8:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -201,10 +201,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261205T190000Z
 DTEND:20261205T220000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
-DESCRIPTION:Begegnung: DC Irish 26 e.V. - ESV DC 25\nAuswärtsspiel\nLiga: 
- Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 05.12.2026 19:00 UT
- C\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Königs
- bach
+DESCRIPTION:Begegnung: DC Irish 26 e.V. - ESV DC 25\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 8. Spieltag\nTermin: 05.12.2026 19:00 U
+ TC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, König
+ sbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -265,9 +265,9 @@ DTSTART:20261106T183000Z
 DTEND:20261106T213000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - ESV DC 25\nAuswärtsspiel\nLiga
- : Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 18:30 
- UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Köni
- gsbach
+ : Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026 18:30
+  UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, Kön
+ igsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -297,8 +297,8 @@ DTEND:20261123T210000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 4
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 4 - ESV DC 25\nAuswärtsspiel\nLiga
  : C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 1
- 8:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, 
- Königsbach
+ 8:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -311,9 +311,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261007T173000Z
 DTEND:20261007T203000Z
 SUMMARY:Auswärtsspiel bei DC HighFlights 2
-DESCRIPTION:Begegnung: DC HighFlights 2 - ESV DC 25\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 07.10.2026 17:
- 30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+DESCRIPTION:Begegnung: DC HighFlights 2 - ESV DC 25\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 07.10.2026 17
+ :30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -358,9 +358,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270129T190000Z
 DTEND:20270129T220000Z
 SUMMARY:Heimspiel gegen DC Conweiler
-DESCRIPTION:Begegnung: ESV DC 25 - DC Conweiler\nHeimspiel\nLiga: C-Klasse 
- Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UTC\n
- Austragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
+DESCRIPTION:Begegnung: ESV DC 25 - DC Conweiler\nHeimspiel\nLiga: C-Klasse
+  Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 29.01.2027 19:00 UTC\
+ nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzhei
+ m
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -373,10 +374,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270407T170000Z
 DTEND:20270407T200000Z
 SUMMARY:Auswärtsspiel bei DC X-Brötzingen
-DESCRIPTION:Begegnung: DC X-Brötzingen - ESV DC 25\nAuswärtsspiel\nLiga: 
- Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 07.04.2027 17:00 U
- TC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pf
- orzheim
+DESCRIPTION:Begegnung: DC X-Brötzingen - ESV DC 25\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 07.04.2027 17:00
+  UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\,
+  Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -469,8 +470,8 @@ DTEND:20261113T220000Z
 SUMMARY:Heimspiel gegen DC Underground Fools 4
 DESCRIPTION:Begegnung: ESV DC 25 - DC Underground Fools 4\nHeimspiel\nLiga:
   C-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
- :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, 
- Pforzheim
+ :00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\,
+  Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

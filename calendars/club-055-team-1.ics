@@ -139,9 +139,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270116T190000Z
 DTEND:20270116T220000Z
 SUMMARY:Auswärtsspiel bei DC Crows
-DESCRIPTION:Begegnung: DC Crows - DC Enztaler Buben\nAuswärtsspiel\nLiga: 
- B-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19
- :00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
+DESCRIPTION:Begegnung: DC Crows - DC Enztaler Buben\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 1
+ 9:00 UTC\nAustragungsort: Cafe Nero\, Hauptstraße 12\, Weissach
 LOCATION:Cafe Nero\, Hauptstraße 12\, Weissach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -155,8 +155,8 @@ DTSTART:20261010T180000Z
 DTEND:20261010T210000Z
 SUMMARY:Heimspiel gegen DC Crazy Flights
 DESCRIPTION:Begegnung: DC Enztaler Buben - DC Crazy Flights\nHeimspiel\nLig
- a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 
- 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026
+  18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -185,9 +185,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270130T190000Z
 DTEND:20270130T220000Z
 SUMMARY:Heimspiel gegen DC Strikers 2
-DESCRIPTION:Begegnung: DC Enztaler Buben - DC Strikers 2\nHeimspiel\nLiga: 
- B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 19
- :00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Enztaler Buben - DC Strikers 2\nHeimspiel\nLiga:
+  B-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 1
+ 9:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -217,9 +217,9 @@ DTSTART:20260924T180000Z
 DTEND:20260924T210000Z
 SUMMARY:Auswärtsspiel bei TDF Enzberg
 DESCRIPTION:Begegnung: TDF Enzberg - DC Enztaler Buben\nAuswärtsspiel\nLig
- a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2026 
- 18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzb
- erg
+ a: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 24.09.2026
+  18:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enz
+ berg
 LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -265,9 +265,9 @@ DTSTART:20261024T140000Z
 DTEND:20261024T170000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Enztaler Buben\nAuswärt
- sspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 
- 24.10.2026 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr.
-  42\, Pforzheim
+ sspiel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin:
+  24.10.2026 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr
+ . 42\, Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

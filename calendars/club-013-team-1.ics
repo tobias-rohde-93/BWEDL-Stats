@@ -44,9 +44,9 @@ DTSTART:20270318T193000Z
 DTEND:20270318T223000Z
 SUMMARY:Auswärtsspiel bei Alla Häeeehr
 DESCRIPTION:Begegnung: Alla Häeeehr - DC HighFlights\nAuswärtsspiel\nLiga
- : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 
- 19:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pfo
- rzheim
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027
+  19:30 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pf
+ orzheim
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -60,8 +60,8 @@ DTSTART:20261022T173000Z
 DTEND:20261022T203000Z
 SUMMARY:Heimspiel gegen Alla Häeeehr
 DESCRIPTION:Begegnung: DC HighFlights - Alla Häeeehr\nHeimspiel\nLiga: A-K
- lasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.2026 17:30 
- UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+ lasse Gruppe 2 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.10.2026 17:30
+  UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -153,9 +153,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270417T180000Z
 DTEND:20270417T210000Z
 SUMMARY:Auswärtsspiel bei DC Triple X
-DESCRIPTION:Begegnung: DC Triple X - DC HighFlights\nAuswärtsspiel\nLiga: 
- A-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 18
- :00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+DESCRIPTION:Begegnung: DC Triple X - DC HighFlights\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 1
+ 8:00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
 LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -262,8 +262,8 @@ DTSTART:20270225T183000Z
 DTEND:20270225T213000Z
 SUMMARY:Heimspiel gegen DC Ungültig
 DESCRIPTION:Begegnung: DC HighFlights - DC Ungültig\nHeimspiel\nLiga: A-Kl
- asse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2027 18:30 
- UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+ asse Gruppe 2 2026-2027\nSpieltag: 13. Spieltag\nTermin: 25.02.2027 18:30
+  UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -276,9 +276,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270114T183000Z
 DTEND:20270114T213000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V.
-DESCRIPTION:Begegnung: DC HighFlights - DC Irish 26 e.V.\nHeimspiel\nLiga: 
- A-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 18
- :30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+DESCRIPTION:Begegnung: DC HighFlights - DC Irish 26 e.V.\nHeimspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 1
+ 8:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

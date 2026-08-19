@@ -157,9 +157,9 @@ DTSTART:20270514T180000Z
 DTEND:20270514T210000Z
 SUMMARY:Auswärtsspiel bei DC Oststadt
 DESCRIPTION:Begegnung: DC Oststadt - Glabbicher Bulls\nAuswärtsspiel\nLiga
- : B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 
- 18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
- Pforzheim
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027
+  18:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\,
+  Pforzheim
 LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -173,9 +173,9 @@ DTSTART:20260923T180000Z
 DTEND:20260923T210000Z
 SUMMARY:Heimspiel gegen the Metal Darts 4
 DESCRIPTION:Begegnung: Glabbicher Bulls - the Metal Darts 4\nHeimspiel\nLig
- a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 
- 18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsh
- eim
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026
+  18:00 UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wierns
+ heim
 LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -189,8 +189,8 @@ DTSTART:20261209T190000Z
 DTEND:20261209T220000Z
 SUMMARY:Heimspiel gegen DC Oststadt
 DESCRIPTION:Begegnung: Glabbicher Bulls - DC Oststadt\nHeimspiel\nLiga: B-K
- lasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 19:00 
- UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
+ lasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 09.12.2026 19:00
+  UTC\nAustragungsort: Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 LOCATION:Paselino Sportsbar\, Daimlerstraße 2\, Wiernsheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -205,8 +205,8 @@ DTEND:20270211T220000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 4
 DESCRIPTION:Begegnung: the Metal Darts 4 - Glabbicher Bulls\nAuswärtsspiel
  \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02
- .2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
- Pforzheim
+ .2027 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

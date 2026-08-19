@@ -77,9 +77,9 @@ DTSTART:20270416T173000Z
 DTEND:20270416T203000Z
 SUMMARY:Heimspiel gegen TDF Enzberg 3
 DESCRIPTION:Begegnung: DC Ligthning Arrows - TDF Enzberg 3\nHeimspiel\nLiga
- : C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 
- 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
- eim
+ : C-Klasse Gruppe 4 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027
+  17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -108,9 +108,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270507T183000Z
 DTEND:20270507T213000Z
 SUMMARY:Heimspiel gegen Los Muertos
-DESCRIPTION:Begegnung: DC Lightning Arrows - Los Muertos\nHeimspiel\nLiga: 
- Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 18:30 U
- TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+DESCRIPTION:Begegnung: DC Lightning Arrows - Los Muertos\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 18. Spieltag\nTermin: 07.05.2027 18:30
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -140,9 +140,9 @@ DTSTART:20261126T190000Z
 DTEND:20261126T220000Z
 SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
 DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC Ligthning Arrows\nAuswärt
- sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 
- 26.11.2026 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Eng
- elsbrand-Grunbach
+ sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin:
+  26.11.2026 19:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, En
+ gelsbrand-Grunbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -173,8 +173,8 @@ DTEND:20270212T213000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
 DESCRIPTION:Begegnung: DC Ligthning Arrows - DC 180 Stein e.V. 3\nHeimspiel
  \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 12. Spieltag\nTermin: 12.02
- .2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
- Pforzheim
+ .2027 18:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -204,8 +204,8 @@ DTEND:20270313T220000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Lightning Arrows\nAuswärtsspi
  el\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 14. Spieltag\nTermin: 13.03.20
- 27 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
- 1\, Königsbach
+ 27 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -220,8 +220,8 @@ DTEND:20261009T203000Z
 SUMMARY:Heimspiel gegen DC Destroyers e.V. 4
 DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Destroyers e.V. 4\nHeimspie
  l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10
- .2026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
- Pforzheim
+ .2026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -376,9 +376,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270205T193000Z
 DTEND:20270205T223000Z
 SUMMARY:Heimspiel gegen DC Shamrock
-DESCRIPTION:Begegnung: DC Lightning Arrows - DC Shamrock\nHeimspiel\nLiga: 
- Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19:30 U
- TC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+DESCRIPTION:Begegnung: DC Lightning Arrows - DC Shamrock\nHeimspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 05.02.2027 19:30
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

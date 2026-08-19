@@ -77,10 +77,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270331T173000Z
 DTEND:20270331T203000Z
 SUMMARY:Heimspiel gegen DC Ungültig
-DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Ungültig\nHeimspiel\nLiga: 
- A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 17
- :30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grun
- bach
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Ungültig\nHeimspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 1
+ 7:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gru
+ nbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -110,9 +110,9 @@ DTSTART:20270423T173000Z
 DTEND:20270423T203000Z
 SUMMARY:Heimspiel gegen DC Lightning Arrows
 DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Lightning Arrows\nHeimspiel\
- nLiga: Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027 
- 17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gr
- unbach
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 17. Spieltag\nTermin: 23.04.2027
+  17:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -127,8 +127,8 @@ DTEND:20261006T203000Z
 SUMMARY:Auswärtsspiel bei DC Texas Team 2
 DESCRIPTION:Begegnung: DC Texas Team 2 - TSV Grunbach Darts\nAuswärtsspiel
  \nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.
- 2026 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, 
- Pforzheim
+ 2026 17:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
+  Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -157,9 +157,9 @@ DTSTART:20270318T190000Z
 DTEND:20270318T220000Z
 SUMMARY:Auswärtsspiel bei DC Black Scorpions 2
 DESCRIPTION:Begegnung: DC Black Scorpions 2 - TSV Grunbach Darts\nAuswärts
- spiel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 
- 18.03.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str. 1
- \, Knittlingen
+ spiel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin:
+  18.03.2027 19:00 UTC\nAustragungsort: Maddox-Club-Bar\, Stuttgarter Str.
+  1\, Knittlingen
 LOCATION:Maddox-Club-Bar\, Stuttgarter Str. 1\, Knittlingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -237,9 +237,9 @@ DTSTART:20260904T180000Z
 DTEND:20260904T210000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25
 DESCRIPTION:Begegnung: ESV DC 25 - TSV Grunbach Darts\nAuswärtsspiel\nLiga
- : Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:00 
- UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfor
- zheim
+ : Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 04.09.2026 18:00
+  UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pfo
+ rzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -441,8 +441,8 @@ DTEND:20261002T203000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - TSV Grunbach Darts\nAuswärtssp
  iel\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.20
- 26 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 
- 1\, Königsbach
+ 26 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -568,9 +568,9 @@ DTSTART:20270127T183000Z
 DTEND:20270127T213000Z
 SUMMARY:Heimspiel gegen DC HighFlights
 DESCRIPTION:Begegnung: TSV Grunbach Darts - DC HighFlights\nHeimspiel\nLiga
- : A-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.2027 
- 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gr
- unbach
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 27.01.2027
+  18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

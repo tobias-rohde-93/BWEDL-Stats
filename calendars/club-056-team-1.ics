@@ -205,9 +205,9 @@ DTSTART:20270206T190000Z
 DTEND:20270206T220000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC X-Brötzingen\nAuswärtsspiel\
- nLiga: Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 
- 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
-  Königsbach
+ nLiga: Mix C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027
+  19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -220,10 +220,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261120T190000Z
 DTEND:20261120T220000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25
-DESCRIPTION:Begegnung: ESV DC 25 - DC X-Brötzingen\nAuswärtsspiel\nLiga: 
- Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 19:00 UT
- C\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzh
- eim
+DESCRIPTION:Begegnung: ESV DC 25 - DC X-Brötzingen\nAuswärtsspiel\nLiga:
+  Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 19:00 U
+ TC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforz
+ heim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -254,8 +254,8 @@ DTEND:20270217T210000Z
 SUMMARY:Heimspiel gegen DC Underground Fools 2
 DESCRIPTION:Begegnung: DC X-Brötzingen - DC Underground Fools 2\nHeimspiel
  \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 17.02.2027
-  18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
- 259\, Pforzheim
+  18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -413,8 +413,8 @@ DTEND:20261030T220000Z
 SUMMARY:Heimspiel gegen the flying Rocks 2
 DESCRIPTION:Begegnung: DC X-Brötzingen - the flying Rocks 2\nHeimspiel\nLi
  ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026
-  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 
- 259\, Pforzheim
+  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+  259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -493,8 +493,8 @@ DTEND:20270222T213000Z
 SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 3
 DESCRIPTION:Begegnung: DC 180 Stein e.V. 3 - DC X-Brötzingen\nAuswärtsspi
  el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 13. Spieltag\nTermin: 22.
- 02.2027 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, 
- Königsbach - Stein
+ 02.2027 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\,
+  Königsbach - Stein
 LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -508,9 +508,9 @@ DTSTART:20260902T170000Z
 DTEND:20260902T200000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC X-Brötzingen - DC Irish 26 e.V.\nHeimspiel\nLiga
- : Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 02.09.2026 17:00 
- UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, P
- forzheim
+ : Mix C-Klasse 2026-2027\nSpieltag: 2. Spieltag\nTermin: 02.09.2026 17:00
+  UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\,
+  Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -525,8 +525,8 @@ DTEND:20260911T210000Z
 SUMMARY:Heimspiel gegen DC Hot Shotz
 DESCRIPTION:Begegnung: DC X-Brötzingen - DC Hot Shotz\nHeimspiel\nLiga: C-
  Klasse Gruppe 4 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.2026 18:00
-  UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, 
- Pforzheim
+  UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\,
+  Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

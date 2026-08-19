@@ -106,8 +106,8 @@ DTSTART:20261211T190000Z
 DTEND:20261211T220000Z
 SUMMARY:Auswärtsspiel bei DC Reloaded
 DESCRIPTION:Begegnung: DC Reloaded - the Metal Darts 2\nAuswärtsspiel\nLig
- a: Bezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00 
- UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+ a: Bezirksliga 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00
+  UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -182,9 +182,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261123T190000Z
 DTEND:20261123T220000Z
 SUMMARY:Heimspiel gegen DC Texas Team
-DESCRIPTION:Begegnung: the Metal Darts 2 - DC Texas Team\nHeimspiel\nLiga: 
- Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 19:00 UTC
- \nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+DESCRIPTION:Begegnung: the Metal Darts 2 - DC Texas Team\nHeimspiel\nLiga:
+  Bezirksliga 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.11.2026 19:00 UT
+ C\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

@@ -75,8 +75,8 @@ DTSTART:20261031T190000Z
 DTEND:20261031T220000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Triple X - DC Irish 26 e.V.\nHeimspiel\nLiga: A-K
- lasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:00 
- UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
+ lasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:00
+  UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
 LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -135,9 +135,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261112T183000Z
 DTEND:20261112T213000Z
 SUMMARY:Auswärtsspiel bei DC HighFlights
-DESCRIPTION:Begegnung: DC HighFlights - DC Triple X\nAuswärtsspiel\nLiga: 
- A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 18:
- 30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+DESCRIPTION:Begegnung: DC HighFlights - DC Triple X\nAuswärtsspiel\nLiga:
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 18
+ :30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
 LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -213,9 +213,9 @@ DTSTART:20270331T180000Z
 DTEND:20270331T210000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Triple X\nAuswärtsspiel\nLiga
- : A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 
- 18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
-  Königsbach
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027
+  18:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

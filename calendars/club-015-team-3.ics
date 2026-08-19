@@ -77,9 +77,9 @@ DTSTART:20270211T190000Z
 DTEND:20270211T220000Z
 SUMMARY:Heimspiel gegen the Metal Darts 3
 DESCRIPTION:Begegnung: DC Texas Team 3 - the Metal Darts 3\nHeimspiel\nLiga
- : A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 
- 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027
+  19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -124,10 +124,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270114T190000Z
 DTEND:20270114T220000Z
 SUMMARY:Heimspiel gegen DC Duselbrüder
-DESCRIPTION:Begegnung: DC Texas Team 3 - DC Duselbrüder\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 19
- :00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
- im
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Duselbrüder\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 1
+ 9:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzh
+ eim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -155,10 +155,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270429T180000Z
 DTEND:20270429T210000Z
 SUMMARY:Heimspiel gegen DC Broken Darts
-DESCRIPTION:Begegnung: DC Texas Team 3 - DC Broken Darts\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2027 18
- :00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
- im
+DESCRIPTION:Begegnung: DC Texas Team 3 - DC Broken Darts\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2027 1
+ 8:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzh
+ eim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -172,9 +172,9 @@ DTSTART:20261110T183000Z
 DTEND:20261110T213000Z
 SUMMARY:Auswärtsspiel bei Odins Knechte
 DESCRIPTION:Begegnung: Odins Knechte - DC Texas Team 3\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2026 
- 18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfe
- rdingen
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 7. Spieltag\nTermin: 10.11.2026
+  18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilf
+ erdingen
 LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -266,9 +266,9 @@ DTSTART:20261008T180000Z
 DTEND:20261008T210000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
 DESCRIPTION:Begegnung: DC Texas Team 3 - DC Irish 26 e.V. 2\nHeimspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 
- 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforz
- heim
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026
+  18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
+ zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

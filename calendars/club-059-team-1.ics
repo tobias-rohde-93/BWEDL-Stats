@@ -30,9 +30,9 @@ DTSTART:20270114T190000Z
 DTEND:20270114T220000Z
 SUMMARY:Auswärtsspiel bei DC Reloaded 2
 DESCRIPTION:Begegnung: DC Reloaded 2 - Phantom Arrows\nAuswärtsspiel\nLiga
- : B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027 
- 19:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Epping
- en
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027
+  19:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppin
+ gen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -46,9 +46,9 @@ DTSTART:20270226T180000Z
 DTEND:20270226T210000Z
 SUMMARY:Heimspiel gegen DC Crazy Flights 3
 DESCRIPTION:Begegnung: Phantom Arrows - DC Crazy Flights 3\nHeimspiel\nLiga
- : B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 
- 18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzh
- eim
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027
+  18:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -93,10 +93,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261030T190000Z
 DTEND:20261030T220000Z
 SUMMARY:Auswärtsspiel bei DC Shamrock
-DESCRIPTION:Begegnung: DC Shamrock - Phantom Arrows\nAuswärtsspiel\nLiga: 
- B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 19:
- 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
- ardt
+DESCRIPTION:Begegnung: DC Shamrock - Phantom Arrows\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 19
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -125,9 +125,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261127T180000Z
 DTEND:20261127T210000Z
 SUMMARY:Heimspiel gegen the flying Rocks
-DESCRIPTION:Begegnung: Phantom Arrows - the flying Rocks\nHeimspiel\nLiga: 
- B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 18:
- 00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+DESCRIPTION:Begegnung: Phantom Arrows - the flying Rocks\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 18
+ :00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -173,8 +174,8 @@ DTEND:20261208T213000Z
 SUMMARY:Auswärtsspiel bei DC Destroyers e.V.
 DESCRIPTION:Begegnung: DC Destroyers e.V. - Phantom Arrows\nAuswärtsspiel\
  nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2
- 026 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
- 60\, Eisingen
+ 026 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr.
+  60\, Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -189,8 +190,8 @@ DTEND:20270430T210000Z
 SUMMARY:Auswärtsspiel bei the flying Rocks
 DESCRIPTION:Begegnung: the flying Rocks - Phantom Arrows\nAuswärtsspiel\nL
  iga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 17. Spieltag\nTermin: 30.04.20
- 27 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\, 
- Pforzheim
+ 27 18:00 UTC\nAustragungsort: Gaststätte Meyerhöfle\, Bertholdstr. 28\,
+  Pforzheim
 LOCATION:Gaststätte Meyerhöfle\, Bertholdstr. 28\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -219,9 +220,9 @@ DTSTART:20270514T170000Z
 DTEND:20270514T200000Z
 SUMMARY:Heimspiel gegen DC Destroyers e.V.
 DESCRIPTION:Begegnung: Phantom Arrows - DC Destroyers e.V.\nHeimspiel\nLiga
- : B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027 
- 17:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzh
- eim
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 18. Spieltag\nTermin: 14.05.2027
+  17:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -251,8 +252,8 @@ DTSTART:20260828T170000Z
 DTEND:20260828T200000Z
 SUMMARY:Heimspiel gegen DC Reloaded 2
 DESCRIPTION:Begegnung: Phantom Arrows - DC Reloaded 2\nHeimspiel\nLiga: B-K
- lasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 17:00 
- UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
+ lasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 17:00
+  UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

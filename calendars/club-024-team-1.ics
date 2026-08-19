@@ -46,9 +46,9 @@ DTSTART:20261009T180000Z
 DTEND:20261009T210000Z
 SUMMARY:Auswärtsspiel bei ESV DC 25 2
 DESCRIPTION:Begegnung: ESV DC 25 2 - DSV Großglabbich\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 
- 18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\
- , Pforzheim
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026
+  18:00 UTC\nAustragungsort: ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15
+ \, Pforzheim
 LOCATION:ESV Pforzheim 1929 e.V.\, Emil-Keßler-Str. 15\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -79,8 +79,8 @@ DTEND:20261113T220000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 6
 DESCRIPTION:Begegnung: the Metal Darts 6 - DSV Großglabbich\nAuswärtsspie
  l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11
- .2026 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, 
- Pforzheim
+ .2026 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -125,10 +125,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270125T183000Z
 DTEND:20270125T213000Z
 SUMMARY:Heimspiel gegen DC Oststadt 3
-DESCRIPTION:Begegnung: DSV Großglabbich - DC Oststadt 3\nHeimspiel\nLiga: 
- C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.2027 18
- :30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühla
- cker
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Oststadt 3\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 25.01.2027 1
+ 8:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühl
+ acker
 LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -205,10 +205,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270510T173000Z
 DTEND:20270510T203000Z
 SUMMARY:Heimspiel gegen DC Shamrock 2
-DESCRIPTION:Begegnung: DSV Großglabbich - DC Shamrock 2\nHeimspiel\nLiga: 
- C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 17
- :30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühla
- cker
+DESCRIPTION:Begegnung: DSV Großglabbich - DC Shamrock 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 3 2026-2027\nSpieltag: 18. Spieltag\nTermin: 10.05.2027 1
+ 7:30 UTC\nAustragungsort: Jugendraum Großglattbach\, Ritterweg 25\, Mühl
+ acker
 LOCATION:Jugendraum Großglattbach\, Ritterweg 25\, Mühlacker
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

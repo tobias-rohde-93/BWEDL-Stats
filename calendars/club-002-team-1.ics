@@ -30,9 +30,9 @@ DTSTART:20270226T190000Z
 DTEND:20270226T220000Z
 SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
 DESCRIPTION:Begegnung: DC Oststadt - DC Bull's Eye Arnbach\nHeimspiel\nLiga
- : B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027 
- 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, 
- Pforzheim
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 26.02.2027
+  19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\,
+  Pforzheim
 LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -62,8 +62,8 @@ DTSTART:20270116T193000Z
 DTEND:20270116T223000Z
 SUMMARY:Auswärtsspiel bei DC Cim Bom
 DESCRIPTION:Begegnung: DC Cim Bom - DC Oststadt\nAuswärtsspiel\nLiga: B-Kl
- asse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:30 
- UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+ asse Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:30
+  UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -110,8 +110,8 @@ DTEND:20270320T220000Z
 SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 3
 DESCRIPTION:Begegnung: DC Destroyers e.V. 3 - DC Oststadt\nAuswärtsspiel\n
  Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2
- 027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 
- 60\, Eisingen
+ 027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr.
+  60\, Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -189,9 +189,9 @@ DTSTART:20261029T190000Z
 DTEND:20261029T220000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 4
 DESCRIPTION:Begegnung: the Metal Darts 4 - DC Oststadt\nAuswärtsspiel\nLig
- a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 
- 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
- eim
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026
+  19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -268,9 +268,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260904T180000Z
 DTEND:20260904T210000Z
 SUMMARY:Heimspiel gegen DC Cim Bom
-DESCRIPTION:Begegnung: DC Oststadt - DC Cim Bom\nHeimspiel\nLiga: B-Klasse 
- Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 04.09.2026 18:00 UTC\nA
- ustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
+DESCRIPTION:Begegnung: DC Oststadt - DC Cim Bom\nHeimspiel\nLiga: B-Klasse
+  Gruppe 3 2026-2027\nSpieltag: 1. Spieltag\nTermin: 04.09.2026 18:00 UTC\n
+ Austragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
 LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

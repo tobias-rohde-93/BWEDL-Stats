@@ -46,9 +46,9 @@ DTSTART:20261208T183000Z
 DTEND:20261208T213000Z
 SUMMARY:Auswärtsspiel bei Odins Knechte
 DESCRIPTION:Begegnung: Odins Knechte - DC Duselbrüder\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2026 
- 18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfe
- rdingen
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 9. Spieltag\nTermin: 08.12.2026
+  18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilf
+ erdingen
 LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -170,8 +170,8 @@ DTEND:20270220T220000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Duselbrüder\nAuswärtsspiel\n
  Liga: Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 20.02.2027 1
- 9:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\, 
- Königsbach
+ 9:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\,
+  Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -230,9 +230,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270213T190000Z
 DTEND:20270213T220000Z
 SUMMARY:Heimspiel gegen DC Broken Darts
-DESCRIPTION:Begegnung: DC Duselbrüder - DC Broken Darts\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19
- :00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Broken Darts\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 1
+ 9:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -245,9 +245,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260829T180000Z
 DTEND:20260829T210000Z
 SUMMARY:Heimspiel gegen DC Texas Team 3
-DESCRIPTION:Begegnung: DC Duselbrüder - DC Texas Team 3\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:
- 00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Texas Team 3\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18
+ :00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -261,8 +261,8 @@ DTSTART:20261031T190000Z
 DTEND:20261031T220000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
 DESCRIPTION:Begegnung: DC Duselbrüder - DC Irish 26 e.V. 2\nHeimspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 
- 19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
+  19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -276,8 +276,8 @@ DTSTART:20270320T190000Z
 DTEND:20270320T220000Z
 SUMMARY:Heimspiel gegen the Metal Darts 3
 DESCRIPTION:Begegnung: DC Duselbrüder - the Metal Darts 3\nHeimspiel\nLiga
- : A-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 
- 19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027
+  19:00 UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -290,9 +290,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270327T190000Z
 DTEND:20270327T220000Z
 SUMMARY:Heimspiel gegen DC Shamrock
-DESCRIPTION:Begegnung: DC Duselbrüder - DC Shamrock\nHeimspiel\nLiga: Mix 
- C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 27.03.2027 19:00 UTC\n
- Austragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+DESCRIPTION:Begegnung: DC Duselbrüder - DC Shamrock\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 27.03.2027 19:00 UTC\
+ nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -305,9 +305,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270206T190000Z
 DTEND:20270206T220000Z
 SUMMARY:Heimspiel gegen Los Muertos
-DESCRIPTION:Begegnung: DC Duselbrüder - Los Muertos\nHeimspiel\nLiga: Mix 
- C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 19:00 UTC\n
- Austragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+DESCRIPTION:Begegnung: DC Duselbrüder - Los Muertos\nHeimspiel\nLiga: Mix
+  C-Klasse 2026-2027\nSpieltag: 11. Spieltag\nTermin: 06.02.2027 19:00 UTC\
+ nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -477,8 +477,8 @@ DTSTART:20270123T190000Z
 DTEND:20270123T220000Z
 SUMMARY:Heimspiel gegen DC X-Brötzingen
 DESCRIPTION:Begegnung: DC Duselbrüder - DC X-Brötzingen\nHeimspiel\nLiga:
-  Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 23.01.2027 19:00 
- UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
+  Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 23.01.2027 19:00
+  UTC\nAustragungsort: Why Not\, Spitalstr. 7\, Vaihingen Enz
 LOCATION:Why Not\, Spitalstr. 7\, Vaihingen Enz
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -554,9 +554,9 @@ DTSTART:20261218T183000Z
 DTEND:20261218T213000Z
 SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
 DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Duselbrüder\nAuswärtsspiel
- \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026 
- 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Gr
- unbach
+ \nLiga: Mix C-Klasse 2026-2027\nSpieltag: 9. Spieltag\nTermin: 18.12.2026
+  18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-G
+ runbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

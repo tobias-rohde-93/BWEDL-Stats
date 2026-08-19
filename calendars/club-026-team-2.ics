@@ -76,8 +76,8 @@ DTSTART:20270319T190000Z
 DTEND:20270319T220000Z
 SUMMARY:Heimspiel gegen DC Bull Hunters
 DESCRIPTION:Begegnung: DC Broken Darts 2 - DC Bull Hunters\nHeimspiel\nLiga
- : C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027 
- 19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+ : C-Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027
+  19:00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -171,8 +171,8 @@ DTEND:20261125T213000Z
 SUMMARY:Auswärtsspiel bei DC 180 Stein e.V. 2
 DESCRIPTION:Begegnung: DC 180 Stein e.V. 2 - DC Broken Darts 2\nAuswärtssp
  iel\nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 25.
- 11.2026 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\, 
- Königsbach - Stein
+ 11.2026 18:30 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\,
+  Königsbach - Stein
 LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -216,9 +216,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261211T190000Z
 DTEND:20261211T220000Z
 SUMMARY:Heimspiel gegen Los Muertos 2
-DESCRIPTION:Begegnung: DC Broken Darts 2 - Los Muertos 2\nHeimspiel\nLiga: 
- C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:
- 00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Broken Darts 2 - Los Muertos 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19
+ :00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -232,9 +232,9 @@ DTSTART:20261113T180000Z
 DTEND:20261113T210000Z
 SUMMARY:Auswärtsspiel bei DC Triple 7
 DESCRIPTION:Begegnung: DC Triple 7 - DC Broken Darts 2\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 
- 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzhe
- im
+ a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026
+  18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzh
+ eim
 LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

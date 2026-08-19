@@ -92,8 +92,8 @@ DTSTART:20260923T170000Z
 DTEND:20260923T200000Z
 SUMMARY:Auswärtsspiel bei DC Williams
 DESCRIPTION:Begegnung: DC Williams - DC Triple 7\nAuswärtsspiel\nLiga: C-K
- lasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 17:00 
- UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
+ lasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 23.09.2026 17:00
+  UTC\nAustragungsort: Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
 LOCATION:Art Cafe\, Wilhelmstraße 36\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -167,10 +167,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260826T180000Z
 DTEND:20260826T210000Z
 SUMMARY:Auswärtsspiel bei DC Dart Vaders
-DESCRIPTION:Begegnung: DC Dart Vaders - DC Triple 7\nAuswärtsspiel\nLiga: 
- C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18:
- 00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenh
- ardt-Schwann
+DESCRIPTION:Begegnung: DC Dart Vaders - DC Triple 7\nAuswärtsspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 1. Spieltag\nTermin: 26.08.2026 18
+ :00 UTC\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Strauben
+ hardt-Schwann
 LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt-Schwann
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -229,9 +229,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261030T180000Z
 DTEND:20261030T210000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
-DESCRIPTION:Begegnung: DC Triple 7 - DC 180 Stein e.V. 2\nHeimspiel\nLiga: 
- C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 18:
- 00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
+DESCRIPTION:Begegnung: DC Triple 7 - DC 180 Stein e.V. 2\nHeimspiel\nLiga:
+  C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026 18
+ :00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
 LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

@@ -13,9 +13,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270213T193000Z
 DTEND:20270213T223000Z
 SUMMARY:Heimspiel gegen DC Destroyers e.V. 3
-DESCRIPTION:Begegnung: DC Cim Bom - DC Destroyers e.V. 3\nHeimspiel\nLiga: 
- B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19
- :30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+DESCRIPTION:Begegnung: DC Cim Bom - DC Destroyers e.V. 3\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 1
+ 9:30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzhei
+ m
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -29,8 +30,8 @@ DTSTART:20261010T183000Z
 DTEND:20261010T213000Z
 SUMMARY:Heimspiel gegen The Walking Darts
 DESCRIPTION:Begegnung: DC Cim Bom - The Walking Darts\nHeimspiel\nLiga: B-K
- lasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18:30 
- UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+ lasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.2026 18:30
+  UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -44,9 +45,9 @@ DTSTART:20270224T190000Z
 DTEND:20270224T220000Z
 SUMMARY:Auswärtsspiel bei The Walking Darts
 DESCRIPTION:Begegnung: The Walking Darts - DC Cim Bom\nAuswärtsspiel\nLiga
- : B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027 
- 19:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\, Bad Wild
- bad
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 13. Spieltag\nTermin: 24.02.2027
+  19:00 UTC\nAustragungsort: Schindelstüble\, Rennbachstrasse 17\, Bad Wil
+ dbad
 LOCATION:Schindelstüble\, Rennbachstrasse 17\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -75,9 +76,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270116T193000Z
 DTEND:20270116T223000Z
 SUMMARY:Heimspiel gegen DC Oststadt
-DESCRIPTION:Begegnung: DC Cim Bom - DC Oststadt\nHeimspiel\nLiga: B-Klasse 
- Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:30 UTC\n
- Austragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+DESCRIPTION:Begegnung: DC Cim Bom - DC Oststadt\nHeimspiel\nLiga: B-Klasse
+  Gruppe 3 2026-2027\nSpieltag: 10. Spieltag\nTermin: 16.01.2027 19:30 UTC\
+ nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -91,9 +92,9 @@ DTSTART:20270429T180000Z
 DTEND:20270429T210000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 4
 DESCRIPTION:Begegnung: the Metal Darts 4 - DC Cim Bom\nAuswärtsspiel\nLiga
- : B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2027 
- 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzh
- eim
+ : B-Klasse Gruppe 3 2026-2027\nSpieltag: 17. Spieltag\nTermin: 29.04.2027
+  18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -106,9 +107,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261031T193000Z
 DTEND:20261031T223000Z
 SUMMARY:Heimspiel gegen DC Oiloch Schömberg
-DESCRIPTION:Begegnung: DC Cim Bom - DC Oiloch Schömberg\nHeimspiel\nLiga: 
- B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:
- 30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+DESCRIPTION:Begegnung: DC Cim Bom - DC Oiloch Schömberg\nHeimspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19
+ :30 UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -154,8 +155,8 @@ DTSTART:20270320T193000Z
 DTEND:20270320T223000Z
 SUMMARY:Heimspiel gegen Glabbicher Bulls
 DESCRIPTION:Begegnung: DC Cim Bom - Glabbicher Bulls\nHeimspiel\nLiga: B-Kl
- asse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 19:30 
- UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+ asse Gruppe 3 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.2027 19:30
+  UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -199,10 +200,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270130T183000Z
 DTEND:20270130T213000Z
 SUMMARY:Auswärtsspiel bei DC Knickebocker
-DESCRIPTION:Begegnung: DC Knickebocker - DC Cim Bom\nAuswärtsspiel\nLiga: 
- B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 18
- :30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-Str
- .378\, Pforzheim
+DESCRIPTION:Begegnung: DC Knickebocker - DC Cim Bom\nAuswärtsspiel\nLiga:
+  B-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 1
+ 8:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedrich-St
+ r.378\, Pforzheim
 LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -263,9 +264,9 @@ DTSTART:20261212T190000Z
 DTEND:20261212T220000Z
 SUMMARY:Auswärtsspiel bei DC Crazy Flights 2
 DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Cim Bom\nAuswärtsspiel\nLig
- a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 
- 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiesen
-  2\, Höfen
+ a: B-Klasse Gruppe 3 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026
+  19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonswiese
+ n 2\, Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -279,8 +280,8 @@ DTSTART:20261128T193000Z
 DTEND:20261128T223000Z
 SUMMARY:Heimspiel gegen the Metal Darts 4
 DESCRIPTION:Begegnung: DC Cim Bom - the Metal Darts 4\nHeimspiel\nLiga: B-K
- lasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:30 
- UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
+ lasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:30
+  UTC\nAustragungsort: Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 LOCATION:Y Cafe-Bistro\, Am Waisenhausplatz 18\, Pforzheim
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

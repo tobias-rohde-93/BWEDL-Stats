@@ -156,9 +156,9 @@ DTSTART:20261008T180000Z
 DTEND:20261008T210000Z
 SUMMARY:Heimspiel gegen TSV Grunbach Darts 2
 DESCRIPTION:Begegnung: DC Reloaded 2 - TSV Grunbach Darts 2\nHeimspiel\nLig
- a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 
- 18:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Epping
- en
+ a: B-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026
+  18:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppin
+ gen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -187,9 +187,10 @@ DTSTAMP:20260819T010538Z
 DTSTART:20270211T190000Z
 DTEND:20270211T220000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V.
-DESCRIPTION:Begegnung: DC Reloaded 2 - DC 180 Stein e.V.\nHeimspiel\nLiga: 
- B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 19
- :00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: DC Reloaded 2 - DC 180 Stein e.V.\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 1
+ 9:00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppinge
+ n
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -250,9 +251,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260910T180000Z
 DTEND:20260910T210000Z
 SUMMARY:Heimspiel gegen the Metal Darts 5
-DESCRIPTION:Begegnung: DC Reloaded 2 - the Metal Darts 5\nHeimspiel\nLiga: 
- B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 18:
- 00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
+DESCRIPTION:Begegnung: DC Reloaded 2 - the Metal Darts 5\nHeimspiel\nLiga:
+  B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 18
+ :00 UTC\nAustragungsort: Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 LOCATION:Reiterstüble Eppingen\, Talstraße 25\, Eppingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z

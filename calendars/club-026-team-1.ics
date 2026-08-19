@@ -44,9 +44,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20261127T190000Z
 DTEND:20261127T220000Z
 SUMMARY:Heimspiel gegen DC Texas Team 3
-DESCRIPTION:Begegnung: DC Broken Darts - DC Texas Team 3\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19:
- 00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Broken Darts - DC Texas Team 3\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.2026 19
+ :00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -168,9 +168,9 @@ DTSTAMP:20260819T010538Z
 DTSTART:20260925T180000Z
 DTEND:20260925T210000Z
 SUMMARY:Heimspiel gegen DC Duselbrüder
-DESCRIPTION:Begegnung: DC Broken Darts - DC Duselbrüder\nHeimspiel\nLiga: 
- A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18:
- 00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+DESCRIPTION:Begegnung: DC Broken Darts - DC Duselbrüder\nHeimspiel\nLiga:
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.2026 18
+ :00 UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
@@ -200,9 +200,9 @@ DTSTART:20261027T183000Z
 DTEND:20261027T213000Z
 SUMMARY:Auswärtsspiel bei Odins Knechte
 DESCRIPTION:Begegnung: Odins Knechte - DC Broken Darts\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026 
- 18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilfe
- rdingen
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026
+  18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilf
+ erdingen
 LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
 SEQUENCE:0
 LAST-MODIFIED:20260819T010538Z
