@@ -8,9 +8,11 @@ from pathlib import Path
 import pytest
 
 from pipeline.calendar_feeds import (
+    CalendarSourceError,
     build_calendar_publication,
     classify_regular_league_source_lines,
     parse_regular_league_games,
+    _fold_ical_lines,
 )
 
 
@@ -173,7 +175,31 @@ def _assert_calendar_artifacts(
     feed_payloads: dict[str, bytes],
     league_data: dict[str, object],
     club_data: dict[str, object],
+    index_js: bytes,
 ) -> None:
+    assert isinstance(state.get("updated_at"), str)
+    try:
+        authoritative_updated_at = datetime.fromisoformat(
+            state["updated_at"].replace("Z", "+00:00")
+        )
+        canonical = build_calendar_publication(
+            league_data,
+            club_data,
+            previous_state=state,
+            updated_at=authoritative_updated_at,
+        )
+    except (AttributeError, CalendarSourceError, TypeError, ValueError) as error:
+        raise AssertionError("Kalenderartefakte sind nicht kanonisch reproduzierbar") from error
+
+    canonical_feed_payloads = {
+        f"calendars/{team_id}.ics": payload
+        for team_id, payload in canonical.calendars.items()
+    }
+    assert index == json.loads(canonical.calendar_index_json)
+    assert index_js == canonical.calendar_index_js
+    assert state == json.loads(canonical.calendar_state_json)
+    assert feed_payloads == canonical_feed_payloads
+
     path_team_ids: dict[str, set[str]] = {}
     for entry in index["teams"].values():
         path = entry["path"]
@@ -251,9 +277,6 @@ def _assert_calendar_artifacts(
     confirmed_fixtures: dict[
         tuple[str, str, str, str, str], Counter[tuple[str, str, bool, str]]
     ] = {}
-    cancelled_fixtures: dict[
-        tuple[str, str, str, str, str], list[dict[str, object]]
-    ] = {}
     for event in events:
         team_id = event["team_id"]
         team_name = event["team_name"]
@@ -277,8 +300,6 @@ def _assert_calendar_artifacts(
         if status == "CONFIRMED":
             perspective = (team_id, team_name, event["is_home"], event["opponent"])
             confirmed_fixtures.setdefault(fixture_key, Counter())[perspective] += 1
-        else:
-            cancelled_fixtures.setdefault(fixture_key, []).append(event)
 
     assert published_uids == set(state_events_by_uid)
 
@@ -292,29 +313,6 @@ def _assert_calendar_artifacts(
     for fixture_key, expected_perspectives in expected_fixtures.items():
         assert confirmed_fixtures[fixture_key] == expected_perspectives
 
-    assert set(cancelled_fixtures).isdisjoint(expected_fixtures)
-    for fixture_key, cancelled_events in cancelled_fixtures.items():
-        _, _, home_team, away_team, _ = fixture_key
-        assert home_team != away_team
-        assert len(cancelled_events) == 2
-        home_event = next(
-            (event for event in cancelled_events if event["is_home"] is True),
-            None,
-        )
-        away_event = next(
-            (event for event in cancelled_events if event["is_home"] is False),
-            None,
-        )
-        assert home_event is not None
-        assert away_event is not None
-        assert (
-            home_event["team_name"],
-            home_event["opponent"],
-            away_event["team_name"],
-            away_event["opponent"],
-        ) == (home_team, away_team, away_team, home_team)
-        assert home_event["team_id"] != away_event["team_id"]
-
 
 def _committed_calendar_artifacts() -> tuple[
     dict[str, object],
@@ -322,18 +320,20 @@ def _committed_calendar_artifacts() -> tuple[
     dict[str, bytes],
     dict[str, object],
     dict[str, object],
+    bytes,
 ]:
     index = json.loads((ROOT / "calendar_index.json").read_text(encoding="utf-8"))
     state = json.loads((ROOT / "calendar_state.json").read_text(encoding="utf-8"))
     league_data = json.loads((ROOT / "league_data.json").read_text(encoding="utf-8"))
     club_data = json.loads((ROOT / "club_data.json").read_text(encoding="utf-8"))
+    index_js = (ROOT / "calendar_index.js").read_bytes()
     calendar_directory = ROOT / "calendars"
     assert all(path.is_file() and path.suffix == ".ics" for path in calendar_directory.iterdir())
     feed_payloads = {
         path.relative_to(ROOT).as_posix(): path.read_bytes()
         for path in calendar_directory.iterdir()
     }
-    return index, state, feed_payloads, league_data, club_data
+    return index, state, feed_payloads, league_data, club_data, index_js
 
 
 def test_committed_calendar_artifacts_are_complete_and_consistent() -> None:
@@ -341,7 +341,9 @@ def test_committed_calendar_artifacts_are_complete_and_consistent() -> None:
 
 
 def test_calendar_audit_rejects_duplicate_fixture_perspective() -> None:
-    index, state, feed_payloads, league_data, club_data = _committed_calendar_artifacts()
+    index, state, feed_payloads, league_data, club_data, index_js = (
+        _committed_calendar_artifacts()
+    )
     mutated_state = deepcopy(state)
     first = mutated_state["events"][0]
     fixture_key = (
@@ -366,6 +368,7 @@ def test_calendar_audit_rejects_duplicate_fixture_perspective() -> None:
             feed_payloads,
             league_data,
             club_data,
+            index_js,
         )
 
 
@@ -430,4 +433,138 @@ def test_calendar_audit_accepts_complete_cancelled_fixture_tombstones() -> None:
         feed_payloads,
         current_league_data,
         club_data,
+        current.calendar_index_js,
     )
+
+
+def test_calendar_audit_accepts_opponent_change_with_one_cancelled_perspective() -> None:
+    club_data = {
+        "clubs": [
+            {
+                "name": "DC A",
+                "number": "101",
+                "venue": "A",
+                "street": "A 1",
+                "city": "A-Stadt",
+            },
+            {
+                "name": "DC B",
+                "number": "202",
+                "venue": "B",
+                "street": "B 2",
+                "city": "B-Stadt",
+            },
+            {
+                "name": "DC C",
+                "number": "303",
+                "venue": "C",
+                "street": "C 3",
+                "city": "C-Stadt",
+            },
+        ]
+    }
+    initial_league_data = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "1. Spieltag": "Fr. 23. 10.2026 20:00 DC A - DC B ---\n"
+                }
+            }
+        }
+    }
+    initial = build_calendar_publication(
+        initial_league_data,
+        club_data,
+        updated_at=datetime(2026, 8, 19, tzinfo=timezone.utc),
+    )
+    current_league_data = deepcopy(initial_league_data)
+    current_league_data["leagues"]["A-Klasse 2026-2027"]["match_days"][
+        "1. Spieltag"
+    ] = "Fr. 23. 10.2026 20:00 DC A - DC C ---\n"
+    current = build_calendar_publication(
+        current_league_data,
+        club_data,
+        previous_state=json.loads(initial.calendar_state_json),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    index = json.loads(current.calendar_index_json)
+    state = json.loads(current.calendar_state_json)
+    feed_payloads = {
+        f"calendars/{team_id}.ics": payload
+        for team_id, payload in current.calendars.items()
+    }
+
+    assert Counter(event["status"] for event in state["events"]) == {
+        "CONFIRMED": 2,
+        "CANCELLED": 1,
+    }
+    _assert_calendar_artifacts(
+        index,
+        state,
+        feed_payloads,
+        current_league_data,
+        club_data,
+        current.calendar_index_js,
+    )
+
+
+def test_calendar_audit_rejects_joint_state_and_feed_uid_tampering() -> None:
+    index, state, feed_payloads, league_data, club_data, index_js = (
+        _committed_calendar_artifacts()
+    )
+    mutated_state = deepcopy(state)
+    event = mutated_state["events"][0]
+    original_uid = event["uid"]
+    bogus_uid = "bogus-uid@calendar.bwedl.de"
+    event["uid"] = bogus_uid
+    path = f"calendars/{event['team_id']}.ics"
+    logical_lines = _unfold_ics(feed_payloads[path])
+    assert logical_lines.count(f"UID:{original_uid}") == 1
+    mutated_lines = [
+        f"UID:{bogus_uid}" if line == f"UID:{original_uid}" else line
+        for line in logical_lines
+    ]
+    mutated_feeds = dict(feed_payloads)
+    mutated_feeds[path] = _fold_ical_lines(mutated_lines).encode("utf-8")
+
+    with pytest.raises(AssertionError):
+        _assert_calendar_artifacts(
+            index,
+            mutated_state,
+            mutated_feeds,
+            league_data,
+            club_data,
+            index_js,
+        )
+
+
+def test_calendar_audit_rejects_ghost_index_team_and_empty_feed() -> None:
+    index, state, feed_payloads, league_data, club_data, index_js = (
+        _committed_calendar_artifacts()
+    )
+    mutated_index = deepcopy(index)
+    mutated_index["teams"]["ghost team"] = {
+        "name": "Ghost Team",
+        "path": "calendars/club-999-team-1.ics",
+        "team_id": "club-999-team-1",
+        "club_number": "999",
+        "team_slot": 1,
+        "warning_count": 0,
+    }
+    mutated_feeds = dict(feed_payloads)
+    mutated_feeds["calendars/club-999-team-1.ics"] = (
+        b"BEGIN:VCALENDAR\r\n"
+        b"VERSION:2.0\r\n"
+        b"X-BWEDL-EMPTY-FEED:TRUE\r\n"
+        b"END:VCALENDAR\r\n"
+    )
+
+    with pytest.raises(AssertionError):
+        _assert_calendar_artifacts(
+            mutated_index,
+            state,
+            mutated_feeds,
+            league_data,
+            club_data,
+            index_js,
+        )
