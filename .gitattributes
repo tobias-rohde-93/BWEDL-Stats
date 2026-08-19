@@ -1,0 +1,4 @@
+calendar_index.js text eol=lf
+calendar_index.json text eol=lf
+calendar_state.json text eol=lf
+calendars/*.ics binary

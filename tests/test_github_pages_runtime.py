@@ -102,6 +102,39 @@ def test_service_worker_has_no_local_api_runtime_contract() -> None:
     assert "calendars/" not in worker.split("const urlsToCache = [", 1)[1].split("];", 1)[0]
 
 
+def test_calendar_artifacts_keep_canonical_git_line_endings() -> None:
+    result = subprocess.run(
+        [
+            "git",
+            "check-attr",
+            "text",
+            "eol",
+            "diff",
+            "--",
+            "calendar_index.js",
+            "calendar_index.json",
+            "calendar_state.json",
+            "calendars/club-009-team-1.ics",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    attributes = result.stdout.splitlines()
+    assert "calendar_index.js: text: set" in attributes
+    assert "calendar_index.js: eol: lf" in attributes
+    assert "calendar_index.json: text: set" in attributes
+    assert "calendar_index.json: eol: lf" in attributes
+    assert "calendar_state.json: text: set" in attributes
+    assert "calendar_state.json: eol: lf" in attributes
+    assert "calendars/club-009-team-1.ics: text: unset" in attributes
+    assert "calendars/club-009-team-1.ics: eol: unspecified" in attributes
+    assert "calendars/club-009-team-1.ics: diff: unset" in attributes
+
+
 def test_calendar_index_shell_order_and_pages_subpath_contract() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     data_status = '<script src="data_status.js?v=1"></script>'
