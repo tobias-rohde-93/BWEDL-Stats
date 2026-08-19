@@ -2,11 +2,13 @@ import json
 import subprocess
 from collections import Counter
 from copy import deepcopy
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
 
 from pipeline.calendar_feeds import (
+    build_calendar_publication,
     classify_regular_league_source_lines,
     parse_regular_league_games,
 )
@@ -138,6 +140,33 @@ def _unfold_ics(payload: bytes) -> list[str]:
     return [line.decode("utf-8") for line in logical_lines]
 
 
+def _ics_event_statuses(logical_lines: list[str]) -> dict[str, str]:
+    events: dict[str, str] = {}
+    current: dict[str, str] | None = None
+    for line in logical_lines:
+        if line == "BEGIN:VEVENT":
+            assert current is None
+            current = {}
+            continue
+        if line == "END:VEVENT":
+            assert current is not None
+            assert set(current) == {"UID", "STATUS"}
+            uid = current["UID"]
+            assert uid not in events
+            events[uid] = current["STATUS"]
+            current = None
+            continue
+        if current is None or ":" not in line:
+            continue
+        property_name, value = line.split(":", 1)
+        property_name = property_name.split(";", 1)[0]
+        if property_name in {"UID", "STATUS"}:
+            assert property_name not in current
+            current[property_name] = value
+    assert current is None
+    return events
+
+
 def _assert_calendar_artifacts(
     index: dict[str, object],
     state: dict[str, object],
@@ -149,8 +178,10 @@ def _assert_calendar_artifacts(
     for entry in index["teams"].values():
         path = entry["path"]
         team_id = entry["team_id"]
+        team_name = entry["name"]
         assert isinstance(path, str)
         assert isinstance(team_id, str)
+        assert isinstance(team_name, str)
         assert path == f"calendars/{team_id}.ics"
         path_team_ids.setdefault(path, set()).add(team_id)
     assert all(len(team_ids) == 1 for team_ids in path_team_ids.values())
@@ -160,24 +191,24 @@ def _assert_calendar_artifacts(
     assert set(feed_payloads) == indexed_paths
 
     published_uids: set[str] = set()
-    feed_uids: dict[str, set[str]] = {}
+    feed_events: dict[str, dict[str, str]] = {}
     published_event_count = 0
     for relative_path in sorted(indexed_paths):
         payload = feed_payloads[relative_path]
         logical_lines = _unfold_ics(payload)
         text = "\n".join(logical_lines)
-        uids = [line.removeprefix("UID:") for line in logical_lines if line.startswith("UID:")]
+        ics_events = _ics_event_statuses(logical_lines)
+        uids = set(ics_events)
         event_count = logical_lines.count("BEGIN:VEVENT")
         assert event_count == logical_lines.count("END:VEVENT")
         assert event_count > 0 or "X-BWEDL-EMPTY-FEED:TRUE" in logical_lines
-        assert len(uids) == event_count
-        assert len(uids) == len(set(uids))
+        assert len(ics_events) == event_count
         assert not published_uids.intersection(uids)
         assert "Ligapokal" not in text
         if event_count:
             assert index["season"] in text
         published_uids.update(uids)
-        feed_uids[relative_path] = set(uids)
+        feed_events[relative_path] = ics_events
         published_event_count += event_count
 
     events = state["events"]
@@ -188,7 +219,10 @@ def _assert_calendar_artifacts(
     parsed_games = parse_regular_league_games(league_data, club_data)
     assert len(parsed_games) == scheduled_source_count
 
-    expected_fixtures: dict[tuple[str, str, str, str, str], Counter[tuple[str, bool, str]]] = {}
+    expected_fixtures: dict[
+        tuple[str, str, str, str, str],
+        Counter[tuple[str, str, bool, str]],
+    ] = {}
     for game in parsed_games:
         starts_at = game.starts_at_utc.isoformat().replace("+00:00", "Z")
         fixture_key = (
@@ -201,26 +235,37 @@ def _assert_calendar_artifacts(
         assert fixture_key not in expected_fixtures
         expected_fixtures[fixture_key] = Counter(
             (
-                (game.home.name, True, game.away.name),
-                (game.away.name, False, game.home.name),
+                (game.home.team_id, game.home.name, True, game.away.name),
+                (game.away.team_id, game.away.name, False, game.home.name),
             )
         )
 
     assert state["season"] == index["season"]
-    assert {game.season for game in parsed_games} == {index["season"]}
-    assert published_event_count == len(events) == len(parsed_games) * 2
-    assert published_uids == {event["uid"] for event in events}
+    assert all(game.season == index["season"] for game in parsed_games)
+    assert published_event_count == len(events)
     assert all(event["season"] == index["season"] for event in events)
     assert all("Ligapokal" not in event["league"] for event in events)
 
-    state_uids_by_team: dict[str, set[str]] = {}
-    actual_fixtures: dict[
-        tuple[str, str, str, str, str], Counter[tuple[str, bool, str]]
+    state_events_by_uid: dict[str, str] = {}
+    state_events_by_team: dict[str, dict[str, str]] = {}
+    confirmed_fixtures: dict[
+        tuple[str, str, str, str, str], Counter[tuple[str, str, bool, str]]
+    ] = {}
+    cancelled_fixtures: dict[
+        tuple[str, str, str, str, str], list[dict[str, object]]
     ] = {}
     for event in events:
         team_id = event["team_id"]
+        team_name = event["team_name"]
+        uid = event["uid"]
+        status = event["status"]
         assert isinstance(team_id, str)
-        state_uids_by_team.setdefault(team_id, set()).add(event["uid"])
+        assert isinstance(team_name, str)
+        assert isinstance(uid, str)
+        assert status in {"CONFIRMED", "CANCELLED"}
+        assert uid not in state_events_by_uid
+        state_events_by_uid[uid] = status
+        state_events_by_team.setdefault(team_id, {})[uid] = status
         assert isinstance(event["is_home"], bool)
         fixture_key = (
             event["league"],
@@ -229,18 +274,46 @@ def _assert_calendar_artifacts(
             event["away_team"],
             event["starts_at"],
         )
-        perspective = (event["team_name"], event["is_home"], event["opponent"])
-        actual_fixtures.setdefault(fixture_key, Counter())[perspective] += 1
+        if status == "CONFIRMED":
+            perspective = (team_id, team_name, event["is_home"], event["opponent"])
+            confirmed_fixtures.setdefault(fixture_key, Counter())[perspective] += 1
+        else:
+            cancelled_fixtures.setdefault(fixture_key, []).append(event)
+
+    assert published_uids == set(state_events_by_uid)
 
     indexed_team_ids = {next(iter(team_ids)) for team_ids in path_team_ids.values()}
-    assert set(state_uids_by_team) == indexed_team_ids
+    assert set(state_events_by_team) <= indexed_team_ids
     for path, team_ids in path_team_ids.items():
         team_id = next(iter(team_ids))
-        assert feed_uids[path] == state_uids_by_team[team_id]
+        assert feed_events[path] == state_events_by_team.get(team_id, {})
 
-    assert set(actual_fixtures) == set(expected_fixtures)
+    assert set(confirmed_fixtures) == set(expected_fixtures)
     for fixture_key, expected_perspectives in expected_fixtures.items():
-        assert actual_fixtures[fixture_key] == expected_perspectives
+        assert confirmed_fixtures[fixture_key] == expected_perspectives
+
+    assert set(cancelled_fixtures).isdisjoint(expected_fixtures)
+    for fixture_key, cancelled_events in cancelled_fixtures.items():
+        _, _, home_team, away_team, _ = fixture_key
+        assert home_team != away_team
+        assert len(cancelled_events) == 2
+        home_event = next(
+            (event for event in cancelled_events if event["is_home"] is True),
+            None,
+        )
+        away_event = next(
+            (event for event in cancelled_events if event["is_home"] is False),
+            None,
+        )
+        assert home_event is not None
+        assert away_event is not None
+        assert (
+            home_event["team_name"],
+            home_event["opponent"],
+            away_event["team_name"],
+            away_event["opponent"],
+        ) == (home_team, away_team, away_team, home_team)
+        assert home_event["team_id"] != away_event["team_id"]
 
 
 def _committed_calendar_artifacts() -> tuple[
@@ -294,3 +367,67 @@ def test_calendar_audit_rejects_duplicate_fixture_perspective() -> None:
             league_data,
             club_data,
         )
+
+
+def test_calendar_audit_accepts_complete_cancelled_fixture_tombstones() -> None:
+    club_data = {
+        "clubs": [
+            {
+                "name": "DC Heim e.V.",
+                "number": "101",
+                "venue": "Heimspielstätte",
+                "street": "Dartweg 7",
+                "city": "75172 Pforzheim",
+            },
+            {
+                "name": "DC Gast",
+                "number": "202",
+                "venue": "Gastheim",
+                "street": "Auswärtsweg 3",
+                "city": "75300 Musterstadt",
+            },
+        ]
+    }
+    initial_league_data = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "1. Spieltag": "Fr. 23. 10.2026 20:00 DC Heim - DC Gast ---\n",
+                    "2. Spieltag": "Fr. 30. 10.2026 20:00 DC Gast - DC Heim ---\n",
+                }
+            }
+        }
+    }
+    initial = build_calendar_publication(
+        initial_league_data,
+        club_data,
+        updated_at=datetime(2026, 8, 19, tzinfo=timezone.utc),
+    )
+    current_league_data = deepcopy(initial_league_data)
+    del current_league_data["leagues"]["A-Klasse 2026-2027"]["match_days"][
+        "2. Spieltag"
+    ]
+    current = build_calendar_publication(
+        current_league_data,
+        club_data,
+        previous_state=json.loads(initial.calendar_state_json),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    index = json.loads(current.calendar_index_json)
+    state = json.loads(current.calendar_state_json)
+    feed_payloads = {
+        f"calendars/{team_id}.ics": payload
+        for team_id, payload in current.calendars.items()
+    }
+
+    assert Counter(event["status"] for event in state["events"]) == {
+        "CONFIRMED": 2,
+        "CANCELLED": 2,
+    }
+    _assert_calendar_artifacts(
+        index,
+        state,
+        feed_payloads,
+        current_league_data,
+        club_data,
+    )
