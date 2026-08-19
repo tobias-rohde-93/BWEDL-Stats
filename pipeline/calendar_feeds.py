@@ -1097,6 +1097,8 @@ def _validate_ics_feed(contents: Any) -> dict[str, str]:
         if re.fullmatch(r"[A-Za-z0-9-]+", name) is None:
             raise CalendarSourceError("Kalenderfeed enthält einen ungültigen Propertynamen")
         for parameter in parameter_parts[1:]:
+            # This is intentionally only the generator's RFC parameter subset;
+            # UTC feeds never emit general parser features such as TZID/ALTREP.
             if parameter.count("=") != 1:
                 raise CalendarSourceError("Kalenderfeed enthält einen ungültigen Parameter")
             parameter_name, parameter_value = parameter.split("=", 1)
@@ -1204,7 +1206,10 @@ def _preflight_artifact_target(root: Path, path: Path) -> None:
 
 
 def _preflight_output_root(output_dir: Path) -> Path:
-    root = output_dir.absolute()
+    try:
+        root = output_dir.absolute()
+    except OSError as error:
+        raise CalendarSourceError("Output-Pfad kann nicht aufgelöst werden") from error
     chain = [root, *root.parents]
     for node in reversed(chain):
         if not os.path.lexists(node):

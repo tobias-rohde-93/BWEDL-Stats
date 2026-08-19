@@ -15,6 +15,7 @@ from pipeline.calendar_feeds import (
     build_club_catalog,
     build_calendar_publication,
     classify_regular_league_source_lines,
+    main,
     normalize_team_name,
     parse_regular_league_games,
     write_calendar_publication,
@@ -986,6 +987,33 @@ def test_writer_wraps_preflight_resolve_oserror(monkeypatch: pytest.MonkeyPatch)
         monkeypatch.setattr(Path, "resolve", fail_calendar_resolve)
         with pytest.raises(CalendarSourceError):
             write_calendar_publication(publication, output)
+
+
+def test_writer_and_cli_wrap_output_path_absolute_oserror(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    publication = _publication(_one_fixture())
+
+    def fail_absolute(_: Path) -> Path:
+        raise OSError("absolute blocked")
+
+    monkeypatch.setattr(Path, "absolute", fail_absolute)
+    with pytest.raises(CalendarSourceError):
+        write_calendar_publication(publication, Path("relative-output"))
+
+    league_path = tmp_path / "league.json"
+    club_path = tmp_path / "clubs.json"
+    league_path.write_text(json.dumps(_one_fixture()), encoding="utf-8")
+    club_path.write_text(json.dumps(CLUBS), encoding="utf-8")
+    with pytest.raises(SystemExit) as exit_code:
+        main(
+            [
+                "--league-json", str(league_path), "--club-json", str(club_path),
+                "--output-dir", "relative-output", "--updated-at", "2026-08-19T10:15:00Z",
+            ]
+        )
+    assert exit_code.value.code != 0
+    assert "Traceback" not in capsys.readouterr().err
 
 
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
