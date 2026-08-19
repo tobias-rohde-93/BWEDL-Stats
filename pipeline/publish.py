@@ -114,33 +114,33 @@ def _target_key(name: str) -> str:
     return name.casefold()
 
 
-def _owned_regular_children(directory: Path, root: Path, label: str) -> list[Path]:
+def _owned_regular_children(directory: Path, root: Path, label: str) -> dict[str, Path]:
     try:
         children = sorted(directory.iterdir(), key=lambda child: child.name)
     except OSError as error:
         raise ValueError(f"could not inspect {label}: {directory}") from error
 
-    seen_target_keys: set[str] = set()
+    inventory: dict[str, Path] = {}
     for child in children:
         _validate_direct_child(root, child, label)
         _validate_safe_path_components(child, label)
         child_name = _safe_basename(child.name, f"{label} child")
         target_key = _target_key(child_name)
-        if target_key in seen_target_keys:
+        if target_key in inventory:
             raise ValueError(f"{label} contains colliding child aliases: {child}")
-        seen_target_keys.add(target_key)
         try:
             child_stat = child.lstat()
         except FileNotFoundError as error:
             raise ValueError(f"{label} changed during preflight: {child}") from error
         if _has_reparse_point(child) or not stat.S_ISREG(child_stat.st_mode):
             raise ValueError(f"{label} children must be regular files: {child}")
-    return children
+        inventory[target_key] = child
+    return inventory
 
 
 def _validate_owned_directory(
     staging: Path, published: Path, name: str
-) -> tuple[list[Path], list[Path], bool]:
+) -> tuple[dict[str, Path], dict[str, Path], bool]:
     source = staging / name
     destination = published / name
     _validate_direct_child(staging, source, "owned directory source")
@@ -153,9 +153,25 @@ def _validate_owned_directory(
     destination_children = (
         _owned_regular_children(destination, destination, "owned directory destination")
         if destination_existed
-        else []
+        else {}
     )
     return source_children, destination_children, destination_existed
+
+
+def _mutation_target_key(destination: Path) -> str:
+    return str(Path(os.path.abspath(destination))).casefold()
+
+
+def _validate_unique_mutation_targets(destinations: list[Path]) -> None:
+    seen_targets: dict[str, Path] = {}
+    for destination in destinations:
+        target_key = _mutation_target_key(destination)
+        if target_key in seen_targets:
+            raise ValueError(
+                "publication contains colliding mutation targets: "
+                f"{seen_targets[target_key]} and {destination}"
+            )
+        seen_targets[target_key] = destination
 
 
 def _rollback_created_directories(directories: list[Path]) -> list[str]:
@@ -239,16 +255,17 @@ def publish_domains(
         source_children, destination_children, destination_existed = _validate_owned_directory(
             staging, published, directory
         )
-        destination_by_name = {child.name: child for child in destination_children}
-        source_names = {child.name for child in source_children}
-        for source in source_children:
-            destination = published / directory / source.name
+        for target_key, source in source_children.items():
+            destination = destination_children.get(
+                target_key, published / directory / source.name
+            )
             validate_promotion_paths(source, destination)
             if content_changed(source, destination):
                 directory_promotions.append((source, destination))
         directory_deletions.extend(
-            destination_by_name[name]
-            for name in sorted(set(destination_by_name) - source_names)
+            destination
+            for target_key, destination in destination_children.items()
+            if target_key not in source_children
         )
         if not destination_existed and source_children:
             missing_owned_directories.append(published / directory)
@@ -263,6 +280,7 @@ def publish_domains(
         *(destination for _, destination in changed_promotions),
         *directory_deletions,
     ]
+    _validate_unique_mutation_targets(changed_destinations)
     if not changed_destinations:
         if finalize is not None:
             finalize([])

@@ -765,6 +765,36 @@ def test_owned_directory_rejects_casefold_child_aliases_when_filesystem_allows(
         )
 
 
+@pytest.mark.parametrize(
+    ("source_name", "destination_name"),
+    [("Club.ics", "club.ics"), ("club.ics", "Club.ics")],
+)
+def test_owned_directory_reconciles_source_and_destination_by_target_key(
+    tmp_path: Path, source_name: str, destination_name: str
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {source_name: b"new-calendar"})
+    write_files(published / "calendars", {destination_name: b"old-calendar"})
+    finalized: list[list[Path]] = []
+
+    changed = publish_domains(
+        staging,
+        published,
+        [],
+        additional_directories=("calendars",),
+        finalize=finalized.append,
+    )
+
+    expected = published / "calendars" / destination_name
+    assert changed == [expected]
+    assert finalized == [[expected]]
+    assert expected.read_bytes() == b"new-calendar"
+    assert sorted(child.name for child in (published / "calendars").iterdir()) == [
+        destination_name
+    ]
+
+
 def test_owned_directory_destination_must_be_a_directory(tmp_path: Path) -> None:
     staging = tmp_path / "staging"
     published = tmp_path / "published"
