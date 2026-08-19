@@ -7,6 +7,7 @@ import pytest
 from pipeline.calendar_feeds import (
     CalendarSourceError,
     build_club_catalog,
+    classify_regular_league_source_lines,
     normalize_team_name,
     parse_regular_league_games,
 )
@@ -55,6 +56,8 @@ LEAGUES = {
 def test_normalization_matches_the_cross_runtime_contract() -> None:
     assert normalize_team_name("  DĆ  Straße!  ") == "dc strasse"
     assert normalize_team_name("ẞtraße") == "sstrasse"
+    assert normalize_team_name("AB️CD") == "abcd"
+    assert normalize_team_name("AŁBøC") == "a b c"
 
 
 def test_build_catalog_resolves_explicit_legal_form_alias_and_team_slot() -> None:
@@ -66,6 +69,28 @@ def test_build_catalog_resolves_explicit_legal_form_alias_and_team_slot() -> Non
     assert team.team_id == "club-101-team-2"
     assert team.club_name == "DC Heim e.V."
     assert catalog.resolve_team("DC Heimer 2") is None
+
+
+def test_catalog_rejects_duplicate_club_numbers_before_building_indexes() -> None:
+    clubs = {"clubs": [CLUBS["clubs"][0], {**CLUBS["clubs"][1], "number": "101"}]}
+
+    with pytest.raises(CalendarSourceError, match=r"101.*DC Heim.*DC Gast"):
+        build_club_catalog(clubs)
+
+
+@pytest.mark.parametrize("number", ["../7", "١٠١", 7])
+def test_catalog_rejects_non_ascii_club_numbers(number: object) -> None:
+    clubs = {"clubs": [{**CLUBS["clubs"][0], "number": number}]}
+
+    with pytest.raises(CalendarSourceError, match="Vereinsnummer"):
+        build_club_catalog(clubs)
+
+
+def test_catalog_indexes_are_immutable() -> None:
+    catalog = build_club_catalog(CLUBS)
+
+    with pytest.raises(TypeError):
+        catalog.clubs_by_number["999"] = catalog.clubs_by_number["101"]
 
 
 def test_parse_regular_games_excludes_cup_byes_and_missing_times() -> None:
@@ -155,6 +180,36 @@ def test_null_address_parts_are_not_stringified_or_treated_as_complete() -> None
     assert game.location.incomplete is True
 
 
+def test_address_placeholder_is_omitted_and_marks_location_incomplete() -> None:
+    clubs = {
+        "clubs": [
+            {**CLUBS["clubs"][0], "street": "-"},
+            CLUBS["clubs"][1],
+        ]
+    }
+
+    game = parse_regular_league_games(LEAGUES, clubs)[0]
+
+    assert game.location is not None
+    assert game.location.address == "Heimspielstätte, 75172 Pforzheim"
+    assert game.location.incomplete is True
+    assert game.location_status == "Austragungsort unvollständig"
+
+
+def test_all_missing_or_placeholder_address_values_create_no_location() -> None:
+    clubs = {
+        "clubs": [
+            {**CLUBS["clubs"][0], "venue": "-", "street": "   ", "city": None},
+            CLUBS["clubs"][1],
+        ]
+    }
+
+    game = parse_regular_league_games(LEAGUES, clubs)[0]
+
+    assert game.location is None
+    assert game.location_status == "Austragungsort unvollständig"
+
+
 def test_unresolved_home_never_uses_guest_address_and_has_deterministic_fallback() -> None:
     leagues = {
         "leagues": {
@@ -214,6 +269,48 @@ def test_missing_league_season_is_rejected_diagnostically() -> None:
         parse_regular_league_games(leagues, CLUBS)
 
 
+def test_missing_or_non_mapping_match_days_are_rejected_with_league_context() -> None:
+    missing = {"leagues": {"A-Klasse 2026-2027": {}}}
+    malformed = {"leagues": {"A-Klasse 2026-2027": {"match_days": "ungültig"}}}
+
+    with pytest.raises(CalendarSourceError, match="A-Klasse 2026-2027"):
+        parse_regular_league_games(missing, CLUBS)
+    with pytest.raises(CalendarSourceError, match="A-Klasse 2026-2027"):
+        parse_regular_league_games(malformed, CLUBS)
+
+
+def test_non_mapping_league_and_non_string_fixture_text_are_rejected() -> None:
+    non_mapping_league = {"leagues": {"A-Klasse 2026-2027": []}}
+    non_string_fixture = {
+        "leagues": {"A-Klasse 2026-2027": {"match_days": {"2. Spieltag": ["kein Text"]}}}
+    }
+
+    with pytest.raises(CalendarSourceError, match="A-Klasse 2026-2027"):
+        parse_regular_league_games(non_mapping_league, CLUBS)
+    with pytest.raises(CalendarSourceError, match=r"A-Klasse.*2\. Spieltag"):
+        parse_regular_league_games(non_string_fixture, CLUBS)
+
+
+def test_empty_fixture_text_is_rejected_with_league_and_round() -> None:
+    leagues = {
+        "leagues": {"A-Klasse 2026-2027": {"match_days": {"2. Spieltag": "   \n"}}}
+    }
+
+    with pytest.raises(CalendarSourceError, match=r"A-Klasse.*2\. Spieltag"):
+        parse_regular_league_games(leagues, CLUBS)
+
+
+def test_unparseable_regular_fixture_line_is_rejected_with_league_and_round() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {"match_days": {"2. Spieltag": "kein Spielplantext\n"}}
+        }
+    }
+
+    with pytest.raises(CalendarSourceError, match=r"A-Klasse.*2\. Spieltag"):
+        parse_regular_league_games(leagues, CLUBS)
+
+
 def test_duplicate_target_team_in_league_round_is_rejected_diagnostically() -> None:
     leagues = {
         "leagues": {
@@ -264,3 +361,20 @@ def test_repository_calendar_data_is_a_complete_resolved_regular_fixture_set() -
     assert all(game.home.team_id.startswith("club-") for game in games)
     assert all(game.away.team_id.startswith("club-") for game in games)
     assert all(game.starts_at_utc.tzinfo == timezone.utc for game in games)
+
+    classifications = classify_regular_league_source_lines(leagues)
+    source_line_count = sum(
+        1
+        for league_name, league in leagues["leagues"].items()
+        if "ligapokal" not in league_name.casefold()
+        for fixture_text in league["match_days"].values()
+        for line in fixture_text.splitlines()
+        if line.strip()
+    )
+    assert len(classifications) == source_line_count
+    assert {item.classification for item in classifications} <= {
+        "game",
+        "bye",
+        "missing_time",
+        "invalid_time",
+    }
