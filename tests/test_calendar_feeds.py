@@ -632,6 +632,21 @@ def test_writer_removes_a_stale_unresolved_hash_feed_without_touching_expected_f
             assert (calendars / f"{team_id}.ics").read_bytes() == expected_bytes
 
 
+def test_writer_preflights_all_targets_before_overwriting_any_artifact() -> None:
+    publication = _publication(_one_fixture())
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        output.mkdir()
+        sentinel = output / "calendar_index.json"
+        sentinel.write_bytes(b"OLD")
+        (output / "calendar_index.js").mkdir()
+
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(publication, output)
+
+        assert sentinel.read_bytes() == b"OLD"
+
+
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
     leagues = {
         "leagues": {

@@ -557,14 +557,22 @@ def write_calendar_publication(publication: CalendarPublication, output_dir: str
     for team_id in publication.calendars:
         _validate_team_id(team_id)
     root = Path(output_dir)
-    if root.exists() and _is_reparse_point(root):
-        raise CalendarSourceError("Output-Verzeichnis darf kein Symlink sein")
-    root.mkdir(parents=True, exist_ok=True)
+    if root.exists() and (_is_reparse_point(root) or not root.is_dir()):
+        raise CalendarSourceError("Output-Verzeichnis muss ein sicheres Verzeichnis sein")
+    try:
+        root.mkdir(parents=True, exist_ok=True)
+    except OSError as error:
+        raise CalendarSourceError("Output-Verzeichnis kann nicht angelegt werden") from error
     root = root.resolve(strict=True)
     calendars_dir = root / "calendars"
-    if calendars_dir.exists() and _is_reparse_point(calendars_dir):
-        raise CalendarSourceError("Kalender-Verzeichnis darf kein Symlink sein")
-    calendars_dir.mkdir(exist_ok=True)
+    if calendars_dir.exists() and (
+        _is_reparse_point(calendars_dir) or not calendars_dir.is_dir()
+    ):
+        raise CalendarSourceError("Kalender-Verzeichnis muss ein sicheres Verzeichnis sein")
+    try:
+        calendars_dir.mkdir(exist_ok=True)
+    except OSError as error:
+        raise CalendarSourceError("Kalender-Verzeichnis kann nicht angelegt werden") from error
     calendars_dir = calendars_dir.resolve(strict=True)
     _ensure_within(root, calendars_dir)
 
@@ -581,10 +589,10 @@ def write_calendar_publication(publication: CalendarPublication, output_dir: str
     existing_feeds = list(calendars_dir.glob("*.ics"))
     for existing in existing_feeds:
         _preflight_calendar_file(calendars_dir, existing)
+    for path in artifacts:
+        _preflight_artifact_target(root, path)
+
     for path, contents in artifacts.items():
-        _ensure_within(root, path)
-        if path.exists() and _is_reparse_point(path):
-            raise CalendarSourceError("Kalenderdatei darf kein Symlink sein")
         _write_bytes_safely(path, contents)
 
     for existing in existing_feeds:
@@ -936,6 +944,27 @@ def _preflight_calendar_file(calendars_dir: Path, path: Path) -> None:
     except OSError as error:
         raise CalendarSourceError("Bestehender Kalender ist nicht sicher lesbar") from error
     _ensure_within(calendars_dir, resolved)
+
+
+def _preflight_artifact_target(root: Path, path: Path) -> None:
+    _ensure_within(root, path)
+    parent = path.parent
+    if not parent.is_dir() or _is_reparse_point(parent):
+        raise CalendarSourceError("Kalenderziel hat ein unsicheres Elternverzeichnis")
+    try:
+        resolved_parent = parent.resolve(strict=True)
+    except OSError as error:
+        raise CalendarSourceError("Kalenderziel hat kein sicheres Elternverzeichnis") from error
+    _ensure_within(root, resolved_parent)
+    if not os.path.lexists(path):
+        return
+    if _is_reparse_point(path) or not path.is_file():
+        raise CalendarSourceError("Kalenderziel muss eine reguläre Datei sein")
+    try:
+        resolved = path.resolve(strict=True)
+    except OSError as error:
+        raise CalendarSourceError("Kalenderziel ist nicht sicher prüfbar") from error
+    _ensure_within(root, resolved)
 
 
 def _is_reparse_point(path: Path) -> bool:
