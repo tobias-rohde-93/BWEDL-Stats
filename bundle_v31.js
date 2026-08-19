@@ -2010,8 +2010,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const existing = document.getElementById('fav-section');
         if (existing) existing.remove();
 
-        const nonClubFavorites = favorites.filter((favorite) => favorite.type !== 'club');
-        if (nonClubFavorites.length === 0) return;
+        const supportedFavoriteTypes = new Set(['league', 'ranking', 'ligapokalArchive', 'club']);
+        const visibleFavorites = favorites.filter((favorite) => {
+            try {
+                if (!favorite || typeof favorite !== 'object' || Array.isArray(favorite)) return false;
+                const prototype = Object.getPrototypeOf(favorite);
+                if (prototype !== Object.prototype && prototype !== null) return false;
+                const typeDescriptor = Object.getOwnPropertyDescriptor(favorite, 'type');
+                const idDescriptor = Object.getOwnPropertyDescriptor(favorite, 'id');
+                const nameDescriptor = Object.getOwnPropertyDescriptor(favorite, 'name');
+                if (!typeDescriptor || !idDescriptor || !nameDescriptor ||
+                    typeDescriptor.get || typeDescriptor.set ||
+                    idDescriptor.get || idDescriptor.set ||
+                    nameDescriptor.get || nameDescriptor.set) return false;
+                const { type, id, name } = {
+                    type: typeDescriptor.value,
+                    id: idDescriptor.value,
+                    name: nameDescriptor.value,
+                };
+                if (!supportedFavoriteTypes.has(type) || typeof name !== 'string' || !name.trim()) return false;
+                if (type === 'club') {
+                    if (!Number.isSafeInteger(id) || id < 0) return false;
+                } else if (typeof id !== 'string' || !id.trim()) {
+                    return false;
+                }
+                return typeof routeExists !== 'function' || routeExists(type, id);
+            } catch (_error) {
+                return false;
+            }
+        });
+        if (visibleFavorites.length === 0) return;
 
         const container = document.createElement('div');
         container.id = 'fav-section';
@@ -2028,7 +2056,7 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.fontWeight = "bold";
         container.appendChild(header);
 
-        nonClubFavorites.forEach(fav => {
+        visibleFavorites.forEach(fav => {
             const el = document.createElement('button');
             el.type = 'button';
             el.className = 'league-item';

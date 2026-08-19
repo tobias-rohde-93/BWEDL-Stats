@@ -103,6 +103,20 @@ function createDocument() {
         appendChild(child) { this.children.push(child); child.parentElement = this; return child; }
         append(...children) { children.forEach((child) => this.appendChild(child)); }
         replaceChildren(...children) { this.children = []; this.append(...children); }
+        get firstChild() { return this.children[0] || null; }
+        insertBefore(child, reference) {
+            const index = this.children.indexOf(reference);
+            if (index === -1) return this.appendChild(child);
+            this.children.splice(index, 0, child);
+            child.parentElement = this;
+            return child;
+        }
+        remove() {
+            if (!this.parentElement) return;
+            const index = this.parentElement.children.indexOf(this);
+            if (index !== -1) this.parentElement.children.splice(index, 1);
+            this.parentElement = null;
+        }
         setAttribute(name, value) { this.attributes[name] = String(value); }
         getAttribute(name) { return this.attributes[name] ?? null; }
         querySelectorAll(selector) {
@@ -435,12 +449,17 @@ assert.equal(contentArea.children.length, 1, 'rerender leaves a single overview 
 
 const appendClubSidebarLink = compileFunction('appendClubSidebarLink', { document });
 const clubSidebarContainer = document.createElement('div');
+const favoritesForViews = [{ type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' }, {
+    type: 'club',
+    id: 1,
+    name: clubs[1].name,
+}];
 const renderClubSidebarShortcuts = compileFunction('renderClubSidebarShortcuts', {
     clubSidebarContainer,
     appendClubSidebarLink,
     navigateTo,
     document,
-    favorites: [{ type: 'club', id: 1, name: clubs[1].name }],
+    favorites: favoritesForViews,
     clubData,
     recentClubIds: [2],
 });
@@ -452,6 +471,74 @@ assert.deepEqual(sidebarButtons.map((button) => button.textContent), [
 assert.ok(sidebarButtons.length < clubs.length, 'sidebar does not reproduce the complete catalogue');
 sidebarButtons[0].dispatch('click');
 assert.deepEqual(navigationCalls.pop(), ['clubList', null]);
+
+const favoriteNav = document.createElement('nav');
+favoriteNav.id = 'league-nav';
+const favoriteRouteExists = (type, id) => (
+    (type === 'league' && id === 'A-Klasse 2026-2027') ||
+    (type === 'club' && Number.isSafeInteger(id) && id >= 0 && id < clubs.length)
+);
+const replaceWithIconLabel = compileFunction('replaceWithIconLabel', { document });
+const renderFavoritesSidebar = compileFunction('renderFavoritesSidebar', {
+    document,
+    nav: favoriteNav,
+    favorites: favoritesForViews,
+    replaceWithIconLabel,
+    navigateTo,
+    routeExists: favoriteRouteExists,
+});
+renderFavoritesSidebar();
+const globalFavoritesSection = favoriteNav.children[0];
+assert.equal(globalFavoritesSection.id, 'fav-section');
+assert.equal(globalFavoritesSection.children[0].textContent, 'FAVORITEN');
+assert.deepEqual(
+    descendants(globalFavoritesSection).filter((element) => element.tagName === 'SPAN').map((element) => element.textContent),
+    ['★', 'A-Klasse 2026-2027', '★', clubs[1].name],
+    'global FAVORITEN renders league and club labels in stable order',
+);
+const globalClubButton = descendants(globalFavoritesSection).find((element) => (
+    element.tagName === 'BUTTON' && element.textContent === `★${clubs[1].name}`
+));
+assert.ok(globalClubButton, 'global FAVORITEN exposes the club action');
+globalClubButton.dispatch('click');
+assert.deepEqual(navigationCalls.pop(), ['club', 1]);
+
+renderClubSidebarShortcuts();
+const clubSidebarFavoriteHeading = descendants(clubSidebarContainer).find((element) => (
+    element.classList.contains('club-sidebar-group-title') && element.textContent === 'Favoriten'
+));
+assert.ok(clubSidebarFavoriteHeading, 'VEREINE keeps its Favoriten heading');
+assert.equal(
+    clubSidebarContainer.children.indexOf(clubSidebarFavoriteHeading) < clubSidebarContainer.children.length,
+    true,
+);
+assert.equal(
+    descendants(clubSidebarContainer).some((element) => element.tagName === 'BUTTON' && element.textContent === clubs[1].name),
+    true,
+    'the same club remains under VEREINE → Favoriten',
+);
+
+favoritesForViews.splice(0, favoritesForViews.length,
+    null,
+    { type: 'dashboard', id: null, name: 'Dashboard' },
+    { type: 'league', id: 'missing', name: 'Missing league' },
+    { type: 'league', id: 'A-Klasse 2026-2027', name: '   ' },
+);
+renderFavoritesSidebar();
+assert.equal(favoriteNav.children.length, 0, 'invalid favorites leave the global empty state unchanged');
+
+favoritesForViews.splice(0, favoritesForViews.length, {
+    type: 'club',
+    id: 2,
+    name: clubs[2].name,
+});
+renderFavoritesSidebar();
+const maliciousGlobalFavorite = descendants(favoriteNav).find((element) => (
+    element.tagName === 'BUTTON' && element.textContent === `★${clubs[2].name}`
+));
+assert.ok(maliciousGlobalFavorite, 'markup-like club names remain visible as text');
+assert.equal(descendants(maliciousGlobalFavorite).some((element) => element.usedInnerHTML), false);
+assert.equal(descendants(maliciousGlobalFavorite).some((element) => element.tagName === 'IMG'), false);
 
 const createDisclosureButton = compileFunction('createDisclosureButton', { document });
 const sidebarDisclosureContent = document.createElement('div');
