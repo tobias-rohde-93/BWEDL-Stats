@@ -583,13 +583,19 @@ def write_calendar_publication(publication: CalendarPublication, output_dir: str
         root.mkdir(parents=True, exist_ok=True)
     except OSError as error:
         raise CalendarSourceError("Output-Verzeichnis kann nicht angelegt werden") from error
-    root = root.resolve(strict=True)
+    try:
+        root = root.resolve(strict=True)
+    except OSError as error:
+        raise CalendarSourceError("Output-Verzeichnis ist nicht sicher auflösbar") from error
     calendars_dir = root / "calendars"
     try:
         calendars_dir.mkdir(exist_ok=True)
     except OSError as error:
         raise CalendarSourceError("Kalender-Verzeichnis kann nicht angelegt werden") from error
-    calendars_dir = calendars_dir.resolve(strict=True)
+    try:
+        calendars_dir = calendars_dir.resolve(strict=True)
+    except OSError as error:
+        raise CalendarSourceError("Kalender-Verzeichnis ist nicht sicher auflösbar") from error
     _ensure_within(root, calendars_dir)
 
     for path, contents in artifacts.items():
@@ -908,22 +914,16 @@ def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
         raise CalendarSourceError("State muss ein Objekt sein")
     version = value.get("schema_version")
     expected = {"schema_version", "season", "updated_at", "events", "index_fingerprint"}
-    legacy_expected = expected - {"index_fingerprint"}
     if (
         not isinstance(version, int)
         or isinstance(version, bool)
-        or version not in {1, _STATE_SCHEMA_VERSION}
-        or (
-        set(value) != expected and set(value) != legacy_expected
-        )
+        or version != _STATE_SCHEMA_VERSION
+        or set(value) != expected
     ):
         raise CalendarSourceError("State-Schema ist inkompatibel")
     index_fingerprint = value.get("index_fingerprint")
-    if version == _STATE_SCHEMA_VERSION:
-        if set(value) != expected or not isinstance(index_fingerprint, str) or not re.fullmatch(r"[0-9a-f]{64}", index_fingerprint):
-            raise CalendarSourceError("State Indexidentität ist ungültig")
-    elif set(value) != legacy_expected:
-        raise CalendarSourceError("Legacy-State-Schema ist inkompatibel")
+    if not isinstance(index_fingerprint, str) or not re.fullmatch(r"[0-9a-f]{64}", index_fingerprint):
+        raise CalendarSourceError("State Indexidentität ist ungültig")
     season = value["season"]
     if season is not None and not isinstance(season, str):
         raise CalendarSourceError("State season ist ungültig")
@@ -985,7 +985,7 @@ def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
         "season": season,
         "updated_at": value["updated_at"],
         "events": normalized,
-        "index_fingerprint": index_fingerprint if version == _STATE_SCHEMA_VERSION else None,
+        "index_fingerprint": index_fingerprint,
     }
 
 
@@ -999,9 +999,10 @@ def _validate_calendar_publication(publication: CalendarPublication) -> None:
         raise CalendarSourceError("Kalenderpublikation ist ungültig")
     index = _decode_json_object(publication.calendar_index_json, "Kalenderindex")
     state = _decode_json_object(publication.calendar_state_json, "Kalenderstate")
-    _validate_previous_state(state)
+    validated_state = _validate_previous_state(state)
     if not isinstance(index.get("teams"), Mapping) or index.get("schema_version") != _INDEX_SCHEMA_VERSION:
         raise CalendarSourceError("Kalenderindex ist inkompatibel")
+    index_team_ids: set[str] = set()
     for key, entry in index["teams"].items():
         if not isinstance(key, str) or normalize_team_name(key) != key or not isinstance(entry, Mapping):
             raise CalendarSourceError("Kalenderindex enthält einen ungültigen Team-Schlüssel")
@@ -1011,14 +1012,32 @@ def _validate_calendar_publication(publication: CalendarPublication) -> None:
         if entry.get("path") != expected_path:
             raise CalendarSourceError("Kalenderindex enthält einen unsicheren Feedpfad")
         _validate_team_id(entry.get("team_id"))
+        index_team_ids.add(entry["team_id"])
+    if index.get("season") != validated_state["season"] or index.get("updated_at") != validated_state["updated_at"]:
+        raise CalendarSourceError("Kalenderindex und State sind zeitlich oder saisonal inkonsistent")
+    if validated_state["index_fingerprint"] != _index_fingerprint(index):
+        raise CalendarSourceError("Kalenderindex-Fingerprint stimmt nicht")
     expected_js = b"window.BWEDL_CALENDAR_INDEX = " + publication.calendar_index_json.rstrip(b"\n") + b";\n"
     if publication.calendar_index_js != expected_js:
         raise CalendarSourceError("Kalenderindex-JavaScript ist nicht inert oder inkonsistent")
     if not isinstance(publication.calendars, Mapping):
         raise CalendarSourceError("Kalenderfeeds müssen ein Mapping sein")
+    feed_events: dict[str, dict[str, str]] = {}
     for team_id, contents in publication.calendars.items():
         _validate_team_id(team_id)
-        _validate_ics_feed(contents)
+        feed_events[team_id] = _validate_ics_feed(contents)
+    state_team_ids = {event["team_id"] for event in validated_state["events"]}
+    feed_team_ids = set(publication.calendars)
+    if index_team_ids != feed_team_ids or state_team_ids != feed_team_ids:
+        raise CalendarSourceError("Index, State und Feedmenge sind inkonsistent")
+    for team_id in feed_team_ids:
+        expected_events = {
+            event["uid"]: event["status"]
+            for event in validated_state["events"]
+            if event["team_id"] == team_id
+        }
+        if feed_events[team_id] != expected_events:
+            raise CalendarSourceError("Kalenderfeed stimmt nicht mit dem State überein")
 
 
 def _decode_json_object(contents: Any, label: str) -> Mapping[str, Any]:
@@ -1033,7 +1052,7 @@ def _decode_json_object(contents: Any, label: str) -> Mapping[str, Any]:
     return value
 
 
-def _validate_ics_feed(contents: Any) -> None:
+def _validate_ics_feed(contents: Any) -> dict[str, str]:
     if not isinstance(contents, bytes):
         raise CalendarSourceError("Kalenderfeed muss UTF-8-Bytes sein")
     try:
@@ -1060,23 +1079,62 @@ def _validate_ics_feed(contents: Any) -> None:
             logical_lines[-1] += line[1:]
         else:
             logical_lines.append(line)
-    if not logical_lines or logical_lines[0] != "BEGIN:VCALENDAR" or logical_lines[-1] != "END:VCALENDAR":
+    if not logical_lines:
         raise CalendarSourceError("Kalenderfeed hat keine gültigen VCALENDAR-Grenzen")
-    uids = []
+    components: list[str] = []
+    events: list[dict[str, str]] = []
+    current_event: dict[str, str] | None = None
+    outer_components = 0
     for line in logical_lines:
         if ":" not in line:
-            continue
+            raise CalendarSourceError("Kalenderfeed enthält eine unvollständige Content-Line")
         name_and_params, value = line.split(":", 1)
-        if name_and_params.split(";", 1)[0].casefold() == "uid":
-            uids.append(value)
-    if len(uids) != len(set(uids)):
+        name = name_and_params.split(";", 1)[0]
+        if re.fullmatch(r"[A-Za-z0-9-]+", name) is None:
+            raise CalendarSourceError("Kalenderfeed enthält einen ungültigen Propertynamen")
+        folded_name = name.casefold()
+        if folded_name == "begin":
+            component = value.casefold()
+            if component not in {"vcalendar", "vevent"} or (
+                component == "vcalendar" and components
+            ) or (component == "vevent" and components != ["vcalendar"]):
+                raise CalendarSourceError("Kalenderfeed hat eine ungültige Component-Struktur")
+            components.append(component)
+            if component == "vcalendar":
+                outer_components += 1
+            if component == "vevent":
+                current_event = {}
+            continue
+        if folded_name == "end":
+            component = value.casefold()
+            if not components or components[-1] != component:
+                raise CalendarSourceError("Kalenderfeed hat unausgeglichene Components")
+            ended = components.pop()
+            if ended == "vevent":
+                assert current_event is not None
+                if "uid" not in current_event or "status" not in current_event:
+                    raise CalendarSourceError("Kalenderfeed enthält ein unvollständiges Event")
+                events.append(current_event)
+                current_event = None
+            continue
+        if not components:
+            raise CalendarSourceError("Kalenderfeed enthält Properties außerhalb einer Component")
+        if components[-1] == "vevent" and folded_name in {"uid", "status"}:
+            assert current_event is not None
+            if folded_name in current_event:
+                raise CalendarSourceError("Kalenderfeed enthält doppelte UID")
+            current_event[folded_name] = value
+    if components or outer_components != 1:
+        raise CalendarSourceError("Kalenderfeed hat keine gültigen VCALENDAR-Grenzen")
+    if len(events) != len({event["uid"] for event in events}):
         raise CalendarSourceError("Kalenderfeed enthält doppelte UID")
+    return {event["uid"]: event["status"] for event in events}
 
 
 def _ensure_within(root: Path, path: Path) -> None:
     try:
         path.resolve(strict=False).relative_to(root)
-    except ValueError as error:
+    except (OSError, ValueError) as error:
         raise CalendarSourceError("Kalenderpfad verlässt das Output-Verzeichnis") from error
 
 

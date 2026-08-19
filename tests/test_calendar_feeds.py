@@ -888,17 +888,49 @@ def test_previous_state_rejects_non_integer_schema_versions(invalid_version: obj
         _publication(_one_fixture(), previous_state=state)
 
 
-def test_integer_v1_state_migrates_while_integer_v2_remains_a_noop() -> None:
+def test_v1_state_is_rejected_while_integer_v2_remains_a_noop() -> None:
     publication = _publication(_one_fixture())
     legacy = _state(publication)
     legacy["schema_version"] = 1
     del legacy["index_fingerprint"]
 
-    migrated = _publication(_one_fixture(), previous_state=legacy)
-    assert _state(migrated)["schema_version"] == 2
+    with pytest.raises(CalendarSourceError, match="State-Schema"):
+        _publication(_one_fixture(), previous_state=legacy)
 
     repeated = _publication(_one_fixture(), previous_state=_state(publication))
     assert repeated.calendar_state_json == publication.calendar_state_json
+
+
+@pytest.mark.parametrize("mutation", ["missing", "extra", "state_feed_mismatch"])
+def test_writer_rejects_cross_artifact_feed_inconsistency_before_output(mutation: str) -> None:
+    publication = _publication(_one_fixture())
+    feeds = dict(publication.calendars)
+    if mutation == "missing":
+        feeds.pop("club-202-team-1")
+    elif mutation == "extra":
+        feeds["club-999-team-1"] = feeds["club-101-team-1"]
+    else:
+        feeds["club-101-team-1"] = feeds["club-202-team-1"]
+    invalid = replace(publication, calendars=feeds)
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(invalid, output)
+        assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    "feed",
+    [
+        b"BEGIN:VCALENDAR\r\nGARBAGE\r\nEND:VCALENDAR\r\n",
+        b"BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nUID:a\r\nSTATUS:CONFIRMED\r\nEND:VCALENDAR\r\n",
+    ],
+)
+def test_writer_rejects_invalid_ics_logical_component_grammar(feed: bytes) -> None:
+    invalid = replace(_publication(_one_fixture()), calendars={"club-101-team-1": feed})
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(invalid, Path(temporary_directory) / "output")
 
 
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
