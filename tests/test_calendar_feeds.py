@@ -481,6 +481,24 @@ def test_ics_text_escaping_folding_and_crlf_are_rfc_safe() -> None:
     assert "\r\n BEGIN" not in feed
 
 
+def test_folding_moves_boundary_whitespace_to_the_continuation_losslessly() -> None:
+    clubs = {"clubs": [{**CLUBS["clubs"][0], "venue": ("A" * 65) + " B"}, CLUBS["clubs"][1]]}
+    feed = _feed(_publication(_one_fixture(), clubs), "club-101-team-1")
+    physical = feed.split("\r\n")
+    location_start = next(index for index, line in enumerate(physical) if line.startswith("LOCATION:"))
+    location_lines = [physical[location_start]]
+    for line in physical[location_start + 1 :]:
+        if not line.startswith(" "):
+            break
+        location_lines.append(line)
+
+    assert all(len(line.encode("utf-8")) <= 75 for line in location_lines)
+    assert all(not line.endswith((" ", "\t")) for line in location_lines)
+    assert "".join([location_lines[0], *[line[1:] for line in location_lines[1:]]]) == (
+        "LOCATION:" + ("A" * 65) + " B\\, Dartweg 7\\, 75172 Pforzheim"
+    )
+
+
 def test_uid_is_stable_and_only_the_changed_event_gets_a_sequence_bump() -> None:
     original_leagues = {
         "leagues": {

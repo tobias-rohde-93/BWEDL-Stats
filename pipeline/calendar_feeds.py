@@ -838,6 +838,9 @@ def _escape_text(value: str) -> str:
         for character in value
         if character in "\r\n" or not (ord(character) < 32 or 127 <= ord(character) <= 159)
     )
+    # Dynamic display values do not distinguish horizontal whitespace runs;
+    # normalize them so lossless folding never needs EOL whitespace.
+    value = re.sub(r"[ \t]+", " ", value)
     value = value.replace("\r\n", "\n").replace("\r", "\n")
     return value.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
@@ -862,8 +865,16 @@ def _fold_ical_lines(lines: list[str]) -> str:
                 index = len(remaining)
             if not current:
                 raise CalendarSourceError("ICS-Zeile enthält ein nicht faltbares Zeichen")
+            if index < len(remaining) and current[-1] in {" ", "\t"}:
+                trailing: list[str] = []
+                while current and current[-1] in {" ", "\t"}:
+                    trailing.append(current.pop())
+                if not current:
+                    raise CalendarSourceError("ICS-Zeile enthält nicht faltbares Leerzeichen")
+                remaining = "".join(reversed(trailing)) + remaining[index:]
+            else:
+                remaining = remaining[index:]
             physical_lines.append(("" if first else " ") + "".join(current))
-            remaining = remaining[index:]
             first = False
     return "\r\n".join(physical_lines) + "\r\n"
 
@@ -1068,6 +1079,8 @@ def _validate_ics_feed(contents: Any) -> dict[str, str]:
     physical_lines = decoded.split("\r\n")
     if physical_lines[-1] != "" or any(len(line.encode("utf-8")) > 75 for line in physical_lines[:-1]):
         raise CalendarSourceError("Kalenderfeed enthält ungültige Faltung")
+    if any(line.endswith((" ", "\t")) for line in physical_lines[:-1]):
+        raise CalendarSourceError("Kalenderfeed enthält Zeilenend-Leerzeichen")
     if any(
         ord(character) < 32 and character not in "\r\n"
         or 127 <= ord(character) <= 159
