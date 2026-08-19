@@ -349,8 +349,8 @@ reviewCheck('service worker cache contract is exact', () => {
     const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
     const appUtilsUrl = html.match(/<script src="(app_utils\.js\?v=[^"]+)"><\/script>/);
     assert.ok(appUtilsUrl, 'index uses a versioned app_utils request');
-    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v39';$/m);
-    assert.doesNotMatch(worker, /bwedl-dashboard-v38/);
+    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v40';$/m);
+    assert.doesNotMatch(worker, /bwedl-dashboard-v39/);
     assert.match(worker, new RegExp(`^\\s*'\\./${appUtilsUrl[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}',$`, 'm'));
 });
 

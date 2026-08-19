@@ -315,9 +315,9 @@ const requestedShellUrls = versionedShellUrls(html);
 const requestedLocalAssets = localAssetUrls(html);
 const cachedAssets = serviceWorkerAssets(worker);
 assert.deepEqual(requestedShellUrls, [
-    './style.css?v=6',
-    './app_utils.js?v=3',
-    './bundle_v31.js?v=3.6',
+    './style.css?v=7',
+    './app_utils.js?v=4',
+    './bundle_v31.js?v=3.7',
 ]);
 assert.deepEqual(
     cachedAssets.filter((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)/.test(asset)),
