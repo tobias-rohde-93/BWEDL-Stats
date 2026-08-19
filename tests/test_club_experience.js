@@ -377,17 +377,34 @@ assert.deepEqual(
     [2, 0],
 );
 const normalizeFavorites = compileFunction('normalizeFavorites', { canonicalClubId });
+const normalizationRouteExists = (type, id) => (
+    (type === 'league' && id === 'A-Klasse') ||
+    (type === 'ranking' && id === 'Rangliste') ||
+    (type === 'ligapokalArchive' && id === 'Ligapokal 2025-2026') ||
+    (type === 'club' && Number.isSafeInteger(id) && id >= 0 && id < 3)
+);
 const normalizedFavorites = normalizeFavorites([
     { type: 'league', id: 'A-Klasse', name: 'A-Klasse' },
+    { type: 'ranking', id: 'Rangliste', name: 'Rangliste' },
+    { type: 'ligapokalArchive', id: 'Ligapokal 2025-2026', name: 'Ligapokal' },
     { type: 'club', id: null, name: 'bad null' },
     { type: 'club', id: '2', name: 'Club 2' },
     { type: 'club', id: 2, name: 'duplicate' },
     { type: 'club', id: 5, name: 'out of range' },
-], 3);
+    { type: 'dashboard', id: null, name: 'unsupported' },
+    { type: 'league', id: 'A-Klasse', name: '   ' },
+], 3, normalizationRouteExists);
 assert.deepEqual(normalizedFavorites.map(({ type, id }) => [type, id]), [
     ['league', 'A-Klasse'],
+    ['ranking', 'Rangliste'],
+    ['ligapokalArchive', 'Ligapokal 2025-2026'],
     ['club', 2],
 ]);
+assert.equal(normalizedFavorites.every((favorite) => Object.isFrozen(favorite)), true);
+const throwingDescriptorFavorite = new Proxy({ type: 'club', id: 1, name: clubs[1].name }, {
+    getOwnPropertyDescriptor() { throw new Error('descriptor trap'); },
+});
+assert.deepEqual(normalizeFavorites([throwingDescriptorFavorite], 3, normalizationRouteExists), []);
 const readLocalArray = compileFunction('readLocalArray');
 assert.deepEqual(readLocalArray({ getItem() { throw new Error('SecurityError'); } }, 'key'), []);
 assert.deepEqual(readLocalArray({ getItem() { return '{bad'; } }, 'key'), []);
@@ -447,6 +464,12 @@ renderClubList();
 assert.notEqual(document.getElementById('club-search'), originalSearch, 'rerender replaces the complete overview');
 assert.equal(contentArea.children.length, 1, 'rerender leaves a single overview root');
 
+const favoriteRouteExists = (type, id) => (
+    (type === 'league' && ['A-Klasse 2026-2027', 'shared'].includes(id)) ||
+    (type === 'ranking' && id === 'shared') ||
+    (type === 'ligapokalArchive' && id === 'Ligapokal 2025-2026') ||
+    (type === 'club' && Number.isSafeInteger(id) && id >= 0 && id < clubs.length)
+);
 const appendClubSidebarLink = compileFunction('appendClubSidebarLink', { document });
 const clubSidebarContainer = document.createElement('div');
 const favoritesForViews = [{ type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' }, {
@@ -462,6 +485,8 @@ const renderClubSidebarShortcuts = compileFunction('renderClubSidebarShortcuts',
     favorites: favoritesForViews,
     clubData,
     recentClubIds: [2],
+    normalizeFavorites,
+    routeExists: favoriteRouteExists,
 });
 renderClubSidebarShortcuts();
 const sidebarButtons = descendants(clubSidebarContainer).filter((element) => element.tagName === 'BUTTON');
@@ -474,16 +499,12 @@ assert.deepEqual(navigationCalls.pop(), ['clubList', null]);
 
 const favoriteNav = document.createElement('nav');
 favoriteNav.id = 'league-nav';
-const favoriteRouteExists = (type, id) => (
-    (type === 'league' && ['A-Klasse 2026-2027', 'shared'].includes(id)) ||
-    (type === 'ranking' && id === 'shared') ||
-    (type === 'club' && Number.isSafeInteger(id) && id >= 0 && id < clubs.length)
-);
 const globalFavorites = [
     { type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' },
     { type: 'league', id: 'A-Klasse 2026-2027', name: 'duplicate league label' },
     { type: 'club', id: 1, name: clubs[1].name },
     { type: 'club', id: '1', name: 'duplicate club label' },
+    { type: 'ligapokalArchive', id: 'Ligapokal 2025-2026', name: 'Ligapokal' },
     { type: 'ranking', id: 'shared', name: 'shared ranking' },
     { type: 'league', id: 'shared', name: 'shared league' },
 ];
@@ -497,6 +518,7 @@ const renderFavoritesSidebar = compileFunction('renderFavoritesSidebar', {
     routeExists: favoriteRouteExists,
     canonicalClubId,
     clubCount: clubs.length,
+    normalizeFavorites,
 });
 renderFavoritesSidebar();
 const globalFavoritesSection = favoriteNav.children[0];
@@ -505,7 +527,7 @@ assert.equal(globalFavoritesSection.children[0].textContent, 'FAVORITEN');
 const globalFavoriteButtons = descendants(globalFavoritesSection).filter((element) => element.tagName === 'BUTTON');
 assert.deepEqual(
     globalFavoriteButtons.map((button) => button.textContent),
-    [`★A-Klasse 2026-2027`, `★${clubs[1].name}`, '★shared ranking', '★shared league'],
+    [`★A-Klasse 2026-2027`, `★${clubs[1].name}`, '★Ligapokal', '★shared ranking', '★shared league'],
     'global FAVORITEN keeps stable first-seen route snapshots and deduplicates exact routes',
 );
 const globalClubButton = descendants(globalFavoritesSection).find((element) => (
@@ -519,6 +541,10 @@ const globalLeagueButton = descendants(globalFavoritesSection).find((element) =>
 ));
 globalLeagueButton.dispatch('click');
 assert.deepEqual(navigationCalls.pop(), ['league', 'A-Klasse 2026-2027']);
+descendants(globalFavoritesSection).find((element) => element.tagName === 'BUTTON' && element.textContent === '★Ligapokal').dispatch('click');
+assert.deepEqual(navigationCalls.pop(), ['ligapokalArchive', 'Ligapokal 2025-2026']);
+descendants(globalFavoritesSection).find((element) => element.tagName === 'BUTTON' && element.textContent === '★shared ranking').dispatch('click');
+assert.deepEqual(navigationCalls.pop(), ['ranking', 'shared']);
 
 renderClubSidebarShortcuts();
 const clubSidebarFavoriteHeading = descendants(clubSidebarContainer).find((element) => (
@@ -583,6 +609,70 @@ const maliciousGlobalFavorite = descendants(favoriteNav).find((element) => (
 assert.ok(maliciousGlobalFavorite, 'markup-like club names remain visible as text');
 assert.equal(descendants(maliciousGlobalFavorite).some((element) => element.usedInnerHTML), false);
 assert.equal(descendants(maliciousGlobalFavorite).some((element) => element.tagName === 'IMG'), false);
+
+const canonicalFavoriteRoute = compileFunction('canonicalFavoriteRoute', {
+    canonicalClubId,
+    FAVORITE_ROUTE_TYPES: ['league', 'ranking', 'ligapokalArchive', 'club'],
+});
+const favoriteRouteKey = compileFunction('favoriteRouteKey');
+const toggleFavorites = [
+    { type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' },
+    { type: 'league', id: 'A-Klasse 2026-2027', name: 'duplicate league' },
+    { type: 'ranking', id: 'shared', name: 'shared ranking' },
+    { type: 'ranking', id: 'shared', name: 'duplicate ranking' },
+    { type: 'ligapokalArchive', id: 'Ligapokal 2025-2026', name: 'Ligapokal' },
+    { type: 'ligapokalArchive', id: 'Ligapokal 2025-2026', name: 'duplicate cup' },
+    { type: 'club', id: 1, name: clubs[1].name },
+    { type: 'club', id: '1', name: 'duplicate club' },
+];
+const toggleStorageWrites = [];
+const toggleStorage = {
+    setItem(key, value) { toggleStorageWrites.push([key, JSON.parse(value)]); },
+};
+const toggleSaveFavorites = compileFunction('saveFavorites', {
+    favorites: toggleFavorites,
+    normalizeFavorites,
+    clubCount: clubs.length,
+    routeExists: favoriteRouteExists,
+    persistLocalValue,
+    localStorage: toggleStorage,
+    renderFavoritesSidebar() {},
+    renderClubSidebarShortcuts() {},
+});
+const toggleFavorite = compileFunction('toggleFavorite', {
+    favorites: toggleFavorites,
+    canonicalFavoriteRoute,
+    favoriteRouteKey,
+    normalizeFavorites,
+    clubCount: clubs.length,
+    routeExists: favoriteRouteExists,
+    saveFavorites: toggleSaveFavorites,
+    document,
+    updateFavBtnState() {},
+});
+const isFavorite = compileFunction('isFavorite', {
+    favorites: toggleFavorites,
+    canonicalFavoriteRoute,
+    favoriteRouteKey,
+    normalizeFavorites,
+    clubCount: clubs.length,
+    routeExists: favoriteRouteExists,
+});
+for (const [type, id, name] of [
+    ['league', 'A-Klasse 2026-2027', 'A-Klasse 2026-2027'],
+    ['ranking', 'shared', 'shared ranking'],
+    ['ligapokalArchive', 'Ligapokal 2025-2026', 'Ligapokal'],
+    ['club', 1, clubs[1].name],
+]) {
+    toggleFavorite(type, id, name);
+    assert.equal(isFavorite(type, id), false, `${type} duplicate route is removed by one toggle`);
+    assert.equal(toggleFavorites.some((favorite) => favoriteRouteKey(favorite.type, favorite.id) === favoriteRouteKey(type, id)), false);
+}
+toggleFavorite('league', 'A-Klasse 2026-2027', 'A-Klasse 2026-2027');
+assert.equal(isFavorite('league', 'A-Klasse 2026-2027'), true);
+assert.deepEqual(toggleStorageWrites.at(-1)[1], [{ type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' }]);
+toggleFavorite('unsupported', 'bad', 'Bad');
+assert.deepEqual(toggleFavorites, [{ type: 'league', id: 'A-Klasse 2026-2027', name: 'A-Klasse 2026-2027' }]);
 
 const createDisclosureButton = compileFunction('createDisclosureButton', { document });
 const sidebarDisclosureContent = document.createElement('div');

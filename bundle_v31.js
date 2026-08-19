@@ -524,22 +524,80 @@ function normalizeClubIdList(values, clubCount, limit = 5) {
     return normalized;
 }
 
+const FAVORITE_ROUTE_TYPES = Object.freeze(['league', 'ranking', 'ligapokalArchive', 'club']);
+
+function readFavoriteOwnData(value) {
+    try {
+        if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+        const typeDescriptor = Object.getOwnPropertyDescriptor(value, 'type');
+        const idDescriptor = Object.getOwnPropertyDescriptor(value, 'id');
+        const nameDescriptor = Object.getOwnPropertyDescriptor(value, 'name');
+        if (!typeDescriptor || !idDescriptor || !nameDescriptor ||
+            typeDescriptor.get || typeDescriptor.set ||
+            idDescriptor.get || idDescriptor.set ||
+            nameDescriptor.get || nameDescriptor.set) return null;
+        return {
+            type: typeDescriptor.value,
+            id: idDescriptor.value,
+            name: nameDescriptor.value,
+        };
+    } catch (_error) {
+        return null;
+    }
+}
+
+function canonicalFavoriteRoute(type, id, clubCount) {
+    if (!FAVORITE_ROUTE_TYPES.includes(type)) return null;
+    if (type === 'club') {
+        const normalizedId = canonicalClubId(id, clubCount);
+        return normalizedId === null ? null : { type, id: normalizedId };
+    }
+    return typeof id === 'string' && id.trim() ? { type, id } : null;
+}
+
+function favoriteRouteKey(type, id) {
+    return JSON.stringify([type, id]);
+}
+
 function normalizeFavorites(values, clubCount, favoriteRouteExists) {
     if (!Array.isArray(values)) return [];
-    const seenClubIds = new Set();
-    return values.flatMap((favorite) => {
-        if (!favorite || typeof favorite !== 'object') return [];
-        if (favorite.type !== 'club') {
-            if (typeof favoriteRouteExists === 'function' && !favoriteRouteExists(favorite.type, favorite.id)) {
-                return [];
-            }
-            return [favorite];
+    const normalized = [];
+    const seenRoutes = new Set();
+    values.forEach((favorite) => {
+        let data;
+        try {
+            if (!favorite || typeof favorite !== 'object' || Array.isArray(favorite)) return;
+            const typeDescriptor = Object.getOwnPropertyDescriptor(favorite, 'type');
+            const idDescriptor = Object.getOwnPropertyDescriptor(favorite, 'id');
+            const nameDescriptor = Object.getOwnPropertyDescriptor(favorite, 'name');
+            if (!typeDescriptor || !idDescriptor || !nameDescriptor ||
+                typeDescriptor.get || typeDescriptor.set ||
+                idDescriptor.get || idDescriptor.set ||
+                nameDescriptor.get || nameDescriptor.set) return;
+            data = {
+                type: typeDescriptor.value,
+                id: idDescriptor.value,
+                name: nameDescriptor.value,
+            };
+        } catch (_error) {
+            return;
         }
-        const id = canonicalClubId(favorite.id, clubCount);
-        if (id === null || seenClubIds.has(id)) return [];
-        seenClubIds.add(id);
-        return [{ ...favorite, id }];
+        if (!['league', 'ranking', 'ligapokalArchive', 'club'].includes(data.type) ||
+            typeof data.name !== 'string' || !data.name.trim()) return;
+        const route = data.type === 'club'
+            ? { type: data.type, id: canonicalClubId(data.id, clubCount) }
+            : typeof data.id === 'string' && data.id.trim()
+                ? { type: data.type, id: data.id }
+                : null;
+        if (!route || route.id === null || route.id === undefined) return;
+        if (typeof favoriteRouteExists === 'function' &&
+            route.type !== 'club' && !favoriteRouteExists(route.type, route.id)) return;
+        const routeKey = JSON.stringify([route.type, route.id]);
+        if (seenRoutes.has(routeKey)) return;
+        seenRoutes.add(routeKey);
+        normalized.push(Object.freeze({ type: route.type, id: route.id, name: data.name }));
     });
+    return normalized;
 }
 
 function readLocalArray(storage, key) {
@@ -1952,7 +2010,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        const favoriteClubs = favorites
+        const visibleFavorites = Object.freeze(normalizeFavorites(favorites, clubData.clubs.length, routeExists));
+        const favoriteClubs = visibleFavorites
             .filter((favorite) => favorite.type === 'club')
             .map((favorite) => ({ club: clubData.clubs[Number(favorite.id)], index: Number(favorite.id) }))
             .filter(({ club, index }) => club && Number.isSafeInteger(index))
@@ -1975,28 +2034,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function saveFavorites() {
+        const normalizedFavorites = normalizeFavorites(favorites, clubCount, routeExists);
+        favorites.splice(0, favorites.length, ...normalizedFavorites);
         persistLocalValue(localStorage, 'bwedl_favorites', favorites);
         renderFavoritesSidebar();
         renderClubSidebarShortcuts();
     }
 
     function toggleFavorite(type, id, name) {
-        const index = favorites.findIndex(f => f.type === type && f.id === id);
-        if (index === -1) {
-            favorites.push({ type, id, name });
-        } else {
-            favorites.splice(index, 1);
-        }
+        const route = canonicalFavoriteRoute(type, id, clubCount);
+        if (!route || typeof name !== 'string' || !name.trim() ||
+            typeof routeExists !== 'function' || !routeExists(route.type, route.id)) return;
+        const normalizedFavorites = normalizeFavorites(favorites, clubCount, routeExists);
+        const routeKey = favoriteRouteKey(route.type, route.id);
+        const isAlreadyFavorite = normalizedFavorites.some((favorite) => (
+            favoriteRouteKey(favorite.type, favorite.id) === routeKey
+        ));
+        const nextFavorites = isAlreadyFavorite
+            ? normalizedFavorites.filter((favorite) => favoriteRouteKey(favorite.type, favorite.id) !== routeKey)
+            : [...normalizedFavorites, Object.freeze({ type: route.type, id: route.id, name })];
+        favorites.splice(0, favorites.length, ...nextFavorites);
         saveFavorites();
 
         const btn = document.getElementById('fav-btn');
         if (btn) {
-            updateFavBtnState(btn, type, id);
+            updateFavBtnState(btn, route.type, route.id);
         }
     }
 
     function isFavorite(type, id) {
-        return favorites.some(f => f.type === type && f.id === id);
+        const route = canonicalFavoriteRoute(type, id, clubCount);
+        if (!route || typeof routeExists !== 'function' || !routeExists(route.type, route.id)) return false;
+        const routeKey = favoriteRouteKey(route.type, route.id);
+        return normalizeFavorites(favorites, clubCount, routeExists).some((favorite) => (
+            favoriteRouteKey(favorite.type, favorite.id) === routeKey
+        ));
     }
 
     function updateFavBtnState(btn, type, id) {
@@ -2010,49 +2082,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const existing = document.getElementById('fav-section');
         if (existing) existing.remove();
 
-        const supportedFavoriteTypes = new Set(['league', 'ranking', 'ligapokalArchive', 'club']);
-        const snapshotFavorite = (favorite) => {
-            try {
-                if (!favorite || typeof favorite !== 'object' || Array.isArray(favorite)) return null;
-                const prototype = Object.getPrototypeOf(favorite);
-                if (prototype !== Object.prototype && prototype !== null) return null;
-                const typeDescriptor = Object.getOwnPropertyDescriptor(favorite, 'type');
-                const idDescriptor = Object.getOwnPropertyDescriptor(favorite, 'id');
-                const nameDescriptor = Object.getOwnPropertyDescriptor(favorite, 'name');
-                if (!typeDescriptor || !idDescriptor || !nameDescriptor ||
-                    typeDescriptor.get || typeDescriptor.set ||
-                    idDescriptor.get || idDescriptor.set ||
-                    nameDescriptor.get || nameDescriptor.set) return null;
-                const { type, id, name } = {
-                    type: typeDescriptor.value,
-                    id: idDescriptor.value,
-                    name: nameDescriptor.value,
-                };
-                if (!supportedFavoriteTypes.has(type) || typeof name !== 'string' || !name.trim()) return null;
-                let normalizedId = id;
-                if (type === 'club') {
-                    normalizedId = canonicalClubId(id, clubCount);
-                    if (normalizedId === null) return null;
-                } else if (typeof id !== 'string' || !id.trim()) {
-                    return null;
-                }
-                if (typeof routeExists !== 'function' || !routeExists(type, normalizedId)) return null;
-                return Object.freeze({ type, id: normalizedId, name });
-            } catch (_error) {
-                return null;
-            }
-        };
-        const seenRoutes = new Set();
-        const visibleFavorites = [];
-        favorites.forEach((favorite) => {
-            const snapshot = snapshotFavorite(favorite);
-            if (!snapshot) return;
-            const routeKey = JSON.stringify([snapshot.type, snapshot.id]);
-            if (seenRoutes.has(routeKey)) return;
-            seenRoutes.add(routeKey);
-            visibleFavorites.push(snapshot);
-        });
-        Object.freeze(visibleFavorites);
+        const visibleFavorites = Object.freeze(normalizeFavorites(favorites, clubCount, routeExists));
         if (visibleFavorites.length === 0) return;
 
         const container = document.createElement('div');
