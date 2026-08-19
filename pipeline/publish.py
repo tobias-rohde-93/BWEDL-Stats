@@ -4,6 +4,7 @@ import os
 import stat
 import tempfile
 from collections.abc import Callable
+from dataclasses import dataclass
 from pathlib import Path, PureWindowsPath
 
 from pipeline.files import content_changed, promote_file, validate_promotion_paths
@@ -20,6 +21,20 @@ DOMAIN_FILES = {
 
 class PublicationError(RuntimeError):
     """Raised when publication fails and the prior state cannot be restored."""
+
+
+@dataclass(frozen=True)
+class _PathState:
+    exists: bool
+    contents: bytes | None
+    identity: tuple[int, int, int, int, int] | None
+
+
+@dataclass(frozen=True)
+class _JournalEntry:
+    destination: Path
+    before: _PathState
+    after: _PathState
 
 
 def _restore_destination_original(destination: Path, previous: bytes | None) -> None:
@@ -105,6 +120,10 @@ def _safe_basename(name: object, label: str) -> str:
         or Path(name).name != name
         or windows_name is not None and bool(windows_name.drive or windows_name.root)
         or name.endswith((".", " "))
+        or ":" in name
+        or any(ord(character) < 32 or ord(character) == 127 for character in name)
+        or name.split(".", 1)[0].casefold()
+        in {"con", "prn", "aux", "nul", *(f"com{number}" for number in range(1, 10)), *(f"lpt{number}" for number in range(1, 10))}
     ):
         raise ValueError(f"invalid {label}: {name!r}")
     return name
@@ -112,6 +131,55 @@ def _safe_basename(name: object, label: str) -> str:
 
 def _target_key(name: str) -> str:
     return name.casefold()
+
+
+def _identity(path_stat: os.stat_result) -> tuple[int, int, int, int, int]:
+    return (
+        path_stat.st_dev,
+        path_stat.st_ino,
+        stat.S_IFMT(path_stat.st_mode),
+        path_stat.st_size,
+        path_stat.st_mtime_ns,
+    )
+
+
+def _target_state(path: Path) -> _PathState:
+    try:
+        path_stat = path.lstat()
+    except FileNotFoundError:
+        return _PathState(False, None, None)
+    if _has_reparse_point(path) or not stat.S_ISREG(path_stat.st_mode):
+        raise ValueError(f"publication target must be a regular non-reparse file: {path}")
+    return _PathState(True, path.read_bytes(), _identity(path_stat))
+
+
+def _directory_state(path: Path) -> tuple[int, int, int] | None:
+    try:
+        path_stat = path.lstat()
+    except FileNotFoundError:
+        return None
+    if _has_reparse_point(path) or not stat.S_ISDIR(path_stat.st_mode):
+        raise ValueError(f"publication parent must be a real directory: {path}")
+    return (path_stat.st_dev, path_stat.st_ino, stat.S_IFMT(path_stat.st_mode))
+
+
+def _assert_state(path: Path, expected: _PathState) -> None:
+    if _target_state(path) != expected:
+        raise ValueError(f"publication target changed since preflight: {path}")
+
+
+def _assert_parent_states(states: dict[Path, tuple[int, int, int] | None]) -> None:
+    for parent, expected in states.items():
+        if _directory_state(parent) != expected:
+            raise ValueError(f"publication parent changed since preflight: {parent}")
+
+
+def _refresh_created_parent_states(
+    states: dict[Path, tuple[int, int, int] | None]
+) -> None:
+    for parent, expected in states.items():
+        if expected is None and parent.exists():
+            states[parent] = _directory_state(parent)
 
 
 def _owned_regular_children(directory: Path, root: Path, label: str) -> dict[str, Path]:
@@ -186,6 +254,48 @@ def _rollback_created_directories(directories: list[Path]) -> list[str]:
     return failures
 
 
+def _rollback_journal(
+    journal: list[_JournalEntry],
+    parent_states: dict[Path, tuple[int, int, int] | None],
+    published: Path,
+) -> list[str]:
+    failures: list[str] = []
+    for entry in reversed(journal):
+        try:
+            _assert_parent_states(parent_states)
+            if _target_state(entry.destination) != entry.after:
+                raise ValueError("target was replaced after publisher mutation")
+            _restore_destination(entry.destination, entry.before.contents)
+        except Exception as restore_error:
+            try:
+                relative = entry.destination.relative_to(published)
+            except ValueError:
+                relative = entry.destination
+            failures.append(f"{relative}: {restore_error}")
+    return failures
+
+
+def _freeze_sources(changed: list[tuple[Path, Path]]) -> tuple[list[tuple[Path, Path]], list[Path]]:
+    frozen: list[tuple[Path, Path]] = []
+    temporary_paths: list[Path] = []
+    try:
+        for source, destination in changed:
+            state = _target_state(source)
+            if not state.exists or state.contents is None:
+                raise ValueError(f"publication source changed during preflight: {source}")
+            descriptor, temporary_name = tempfile.mkstemp(prefix="publisher-source-")
+            temporary = Path(temporary_name)
+            with os.fdopen(descriptor, "wb") as temporary_file:
+                temporary_file.write(state.contents)
+            temporary_paths.append(temporary)
+            frozen.append((temporary, destination))
+    except Exception:
+        for temporary in temporary_paths:
+            temporary.unlink(missing_ok=True)
+        raise
+    return frozen, temporary_paths
+
+
 def publish_domains(
     staging: Path,
     published: Path,
@@ -224,6 +334,15 @@ def publish_domains(
         if result.domain in indexed_results:
             raise ValueError(f"duplicate publication domain: {result.domain}")
         indexed_results[result.domain] = result
+
+    if (
+        not additional_files
+        and not additional_directories
+        and not any(result.decision is Decision.PUBLISH for result in indexed_results.values())
+    ):
+        if finalize is not None:
+            finalize([])
+        return []
 
     _validate_directory(staging, "staging root", allow_missing=False)
     _validate_directory(published, "published root", allow_missing=True)
@@ -286,25 +405,56 @@ def publish_domains(
             finalize([])
         return []
 
-    snapshots = {
-        destination: destination.read_bytes() if destination.exists() else None
-        for destination in changed_destinations
+    snapshots = {destination: _target_state(destination) for destination in changed_destinations}
+    parent_states = {
+        parent: _directory_state(parent)
+        for parent in {
+            staging,
+            published,
+            *(source.parent for source, _ in changed_promotions),
+            *(destination.parent for _, destination in changed_promotions),
+            *(destination.parent for destination in directory_deletions),
+        }
     }
+    frozen_promotions, temporary_sources = _freeze_sources(changed_promotions)
     created_directories = [
         directory
         for directory in missing_owned_directories
         if any(destination.parent == directory for _, destination in changed_promotions)
     ]
 
+    journal: list[_JournalEntry] = []
     try:
-        for source, destination in changed_promotions:
-            promote_file(source, destination)
+        for source, destination in frozen_promotions:
+            _assert_parent_states(parent_states)
+            before = snapshots[destination]
+            _assert_state(destination, before)
+            try:
+                promote_file(source, destination)
+            except Exception:
+                after = _target_state(destination)
+                if after != before:
+                    journal.append(_JournalEntry(destination, before, after))
+                raise
+            after = _target_state(destination)
+            journal.append(_JournalEntry(destination, before, after))
+            _refresh_created_parent_states(parent_states)
         for destination in directory_deletions:
-            destination.unlink()
+            _assert_parent_states(parent_states)
+            before = snapshots[destination]
+            _assert_state(destination, before)
+            try:
+                destination.unlink()
+            except Exception:
+                after = _target_state(destination)
+                if after != before:
+                    journal.append(_JournalEntry(destination, before, after))
+                raise
+            journal.append(_JournalEntry(destination, before, _target_state(destination)))
         if finalize is not None:
-            finalize(changed_destinations)
+            finalize(list(changed_destinations))
     except Exception as original_error:
-        restoration_failures = _rollback_transaction(changed_destinations, snapshots)
+        restoration_failures = _rollback_journal(journal, parent_states, published)
         restoration_failures.extend(_rollback_created_directories(created_directories))
         if restoration_failures:
             details = "; ".join(restoration_failures)
@@ -312,5 +462,8 @@ def publish_domains(
                 f"publication failed and rollback was incomplete: {details}"
             ) from original_error
         raise
+    finally:
+        for temporary_source in temporary_sources:
+            temporary_source.unlink(missing_ok=True)
 
-    return changed_destinations
+    return list(changed_destinations)

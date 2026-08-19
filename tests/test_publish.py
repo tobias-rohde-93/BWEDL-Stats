@@ -795,6 +795,144 @@ def test_owned_directory_reconciles_source_and_destination_by_target_key(
     ]
 
 
+@pytest.mark.parametrize("decision", [Decision.RETAIN, Decision.BLOCKED, Decision.FAILED])
+def test_noop_keeps_missing_roots_and_calls_finalize_after_result_validation(
+    tmp_path: Path, decision: Decision
+) -> None:
+    observed: list[list[Path]] = []
+
+    changed = publish_domains(
+        tmp_path / "missing-staging",
+        tmp_path / "missing-published",
+        [result("clubs", decision)],
+        finalize=observed.append,
+    )
+
+    assert changed == []
+    assert observed == [[]]
+
+
+@pytest.mark.parametrize("name", ["CON", "con.txt", "NUL", "COM1", "LPT9", "calendar.ics:payload", "bad\x00name", "bad\x1fname", "bad\x7fname"])
+def test_windows_unsafe_basenames_are_rejected_for_extra_files_and_directories(
+    tmp_path: Path, name: str
+) -> None:
+    staging = tmp_path / "staging"
+    staging.mkdir()
+    for keyword in ("additional_files", "additional_directories"):
+        with pytest.raises(ValueError):
+            publish_domains(
+                staging,
+                tmp_path / "published",
+                [],
+                **{keyword: (name,)},
+            )
+
+
+@pytest.mark.parametrize("name", ["CON", "con.txt", "NUL", "COM1", "LPT9", "calendar.ics:payload", "bad\x1fname"])
+def test_windows_unsafe_owned_child_basenames_are_rejected(
+    tmp_path: Path, name: str
+) -> None:
+    with pytest.raises(ValueError):
+        publication._safe_basename(name, "owned directory source child")
+
+
+def test_concurrent_second_promotion_target_is_not_overwritten_or_rolled_back(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"})
+    write_files(published, {"club_data.json": b"old-json"})
+    real_promote = publication.promote_file
+    calls = 0
+
+    def inject_foreign(source: Path, destination: Path) -> None:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            real_promote(source, destination)
+            (published / "club_data.js").write_bytes(b"foreign")
+            return
+        real_promote(source, destination)
+
+    monkeypatch.setattr(publication, "promote_file", inject_foreign)
+
+    with pytest.raises(ValueError, match="changed since preflight"):
+        publish_domains(staging, published, [result("clubs", Decision.PUBLISH)])
+
+    assert (published / "club_data.json").read_bytes() == b"old-json"
+    assert (published / "club_data.js").read_bytes() == b"foreign"
+
+
+def test_concurrent_stale_replacement_is_not_deleted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {"current.ics": b"new"})
+    write_files(published / "calendars", {"current.ics": b"old", "stale.ics": b"old-stale"})
+    real_promote = publication.promote_file
+
+    def replace_stale(source: Path, destination: Path) -> None:
+        real_promote(source, destination)
+        (published / "calendars" / "stale.ics").write_bytes(b"foreign-stale")
+
+    monkeypatch.setattr(publication, "promote_file", replace_stale)
+
+    with pytest.raises(ValueError, match="changed since preflight"):
+        publish_domains(staging, published, [], additional_directories=("calendars",))
+
+    assert (published / "calendars" / "current.ics").read_bytes() == b"old"
+    assert (published / "calendars" / "stale.ics").read_bytes() == b"foreign-stale"
+
+
+def test_finalize_cannot_mutate_transaction_changed_list_or_clobber_concurrent_replacement(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"})
+    write_files(published, {"club_data.json": b"old-json", "club_data.js": b"old-js"})
+    original = RuntimeError("finalize failed")
+
+    def replace_and_fail(changed: list[Path]) -> None:
+        changed.clear()
+        changed.append(published / "foreign")
+        (published / "club_data.json").write_bytes(b"foreign")
+        raise original
+
+    with pytest.raises(PublicationError, match="rollback") as caught:
+        publish_domains(
+            staging,
+            published,
+            [result("clubs", Decision.PUBLISH)],
+            finalize=replace_and_fail,
+        )
+
+    assert caught.value.__cause__ is original
+    assert (published / "club_data.json").read_bytes() == b"foreign"
+    assert (published / "club_data.js").read_bytes() == b"old-js"
+
+
+def test_successful_finalize_mutation_does_not_change_return_value(tmp_path: Path) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"})
+
+    def mutate(changed: list[Path]) -> None:
+        changed.reverse()
+        changed.clear()
+
+    changed = publish_domains(
+        staging,
+        published,
+        [result("clubs", Decision.PUBLISH)],
+        finalize=mutate,
+    )
+
+    assert changed == [published / "club_data.json", published / "club_data.js"]
+
+
 def test_owned_directory_destination_must_be_a_directory(tmp_path: Path) -> None:
     staging = tmp_path / "staging"
     published = tmp_path / "published"
