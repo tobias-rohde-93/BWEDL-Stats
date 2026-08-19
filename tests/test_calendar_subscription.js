@@ -52,6 +52,7 @@ function createDocument() {
             this.href = '';
             this.id = '';
             this.open = false;
+            this.disabled = false;
             this.focused = false;
             this.removeCount = 0;
             this.classList = {
@@ -62,11 +63,17 @@ function createDocument() {
             };
         }
         get isConnected() { return Boolean(this.parentElement); }
+        get firstChild() { return this.children[0] || null; }
         appendChild(child) { this.children.push(child); child.parentElement = this; if (child.id) ids.set(child.id, child); return child; }
         append(...children) { children.forEach((child) => this.appendChild(child)); }
         insertBefore(child, reference) {
             const index = this.children.indexOf(reference);
-            if (index < 0) return this.appendChild(child);
+            if (reference === null) return this.appendChild(child);
+            if (index < 0) {
+                const error = new Error('NotFoundError: reference is not a child of this element');
+                error.name = 'NotFoundError';
+                throw error;
+            }
             this.children.splice(index, 0, child); child.parentElement = this; return child;
         }
         remove() { this.removeCount += 1; if (!this.parentElement) return; const index = this.parentElement.children.indexOf(this); if (index >= 0) this.parentElement.children.splice(index, 1); this.parentElement = null; }
@@ -106,6 +113,15 @@ function createDocument() {
         querySelectorAll: (selector) => document.body.querySelectorAll(selector),
     };
     return document;
+}
+
+{
+    const document = createDocument();
+    const parent = document.createElement('div');
+    const child = document.createElement('span');
+    const foreignReference = document.createElement('span');
+    assert.throws(() => parent.insertBefore(child, foreignReference), { name: 'NotFoundError' });
+    assert.equal(parent.insertBefore(child, null), child);
 }
 
 const calendarIndex = {
@@ -262,6 +278,87 @@ async function dialogContract() {
     preventedDialog.close();
     preventedDialog.remove();
 
+    const deferred = () => {
+        let resolve;
+        let reject;
+        const promise = new Promise((resolvePromise, rejectPromise) => {
+            resolve = resolvePromise;
+            reject = rejectPromise;
+        });
+        return { promise, resolve, reject };
+    };
+    const concurrencyDocument = createDocument();
+    const concurrencyTrigger = concurrencyDocument.createElement('button');
+    concurrencyDocument.body.appendChild(concurrencyTrigger);
+    const concurrencyStatuses = [];
+    const firstCopy = deferred();
+    const secondCopy = deferred();
+    let clipboardWrites = 0;
+    const concurrencyDialog = compile('openCalendarSubscriptionDialog', {
+        document: concurrencyDocument,
+        navigator: {
+            onLine: true,
+            clipboard: {
+                writeText: () => {
+                    clipboardWrites += 1;
+                    return clipboardWrites === 1 ? firstCopy.promise : secondCopy.promise;
+                },
+            },
+        },
+        setAppStatus: (message) => concurrencyStatuses.push(message),
+    })(concurrencyTrigger, resolvedSubscription);
+    const concurrencyButton = concurrencyDialog.querySelectorAll('button')
+        .find((button) => button.textContent === 'HTTPS-Link kopieren');
+    concurrencyButton.dispatchEvent({ type: 'click' });
+    assert.equal(concurrencyButton.disabled, true);
+    concurrencyButton.dispatchEvent({ type: 'click' });
+    assert.equal(clipboardWrites, 1, 'a pending clipboard write ignores repeated clicks');
+    assert.equal(concurrencyStatuses.length, 0);
+    firstCopy.resolve();
+    await Promise.resolve(); await Promise.resolve();
+    assert.equal(concurrencyButton.disabled, false);
+    assert.equal(concurrencyStatuses.at(-1), 'Abo-Link wurde kopiert.');
+    concurrencyButton.dispatchEvent({ type: 'click' });
+    assert.equal(clipboardWrites, 2);
+    assert.equal(concurrencyButton.disabled, true);
+    secondCopy.reject(new Error('denied'));
+    await Promise.resolve(); await Promise.resolve();
+    assert.equal(concurrencyButton.disabled, false);
+    assert.equal(concurrencyDialog.querySelector('.calendar-subscription-dialog__status').textContent, 'Abo-Link konnte nicht kopiert werden.');
+    assert.equal(concurrencyStatuses.at(-1), 'Abo-Link konnte nicht kopiert werden.');
+
+    const closePendingDocument = createDocument();
+    const closePendingTrigger = closePendingDocument.createElement('button');
+    closePendingDocument.body.appendChild(closePendingTrigger);
+    const closePendingCopy = deferred();
+    const closePendingStatuses = [];
+    const closePendingDialog = compile('openCalendarSubscriptionDialog', {
+        document: closePendingDocument,
+        navigator: { onLine: true, clipboard: { writeText: () => closePendingCopy.promise } },
+        setAppStatus: (message) => closePendingStatuses.push(message),
+    })(closePendingTrigger, resolvedSubscription);
+    closePendingDialog.querySelectorAll('button').find((button) => button.textContent === 'HTTPS-Link kopieren')
+        .dispatchEvent({ type: 'click' });
+    closePendingDialog.close();
+    closePendingCopy.reject(new Error('closed'));
+    await Promise.resolve(); await Promise.resolve();
+    assert.deepEqual(closePendingStatuses, [], 'a settled copy after close must not update stale UI or app status');
+
+    const missingClipboardDocument = createDocument();
+    const missingClipboardStatuses = [];
+    const missingClipboardDialog = compile('openCalendarSubscriptionDialog', {
+        document: missingClipboardDocument,
+        navigator: { onLine: true },
+        setAppStatus: (message) => missingClipboardStatuses.push(message),
+    })(missingClipboardDocument.createElement('button'), resolvedSubscription);
+    const missingClipboardButton = missingClipboardDialog.querySelectorAll('button')
+        .find((button) => button.textContent === 'HTTPS-Link kopieren');
+    missingClipboardButton.dispatchEvent({ type: 'click' });
+    await Promise.resolve(); await Promise.resolve();
+    assert.equal(missingClipboardButton.disabled, false);
+    assert.equal(missingClipboardDialog.querySelector('.calendar-subscription-dialog__status').textContent, 'Abo-Link konnte nicht kopiert werden.');
+    assert.equal(missingClipboardStatuses.at(-1), 'Abo-Link konnte nicht kopiert werden.');
+
     const failedDocument = createDocument();
     const failedStatuses = [];
     const failedDialog = compile('openCalendarSubscriptionDialog', {
@@ -274,13 +371,14 @@ async function dialogContract() {
     await Promise.resolve(); await Promise.resolve();
     assert.equal(failedDialog.querySelector('.calendar-subscription-dialog__status').textContent, 'Abo-Link konnte nicht kopiert werden.');
     assert.equal(failedStatuses.at(-1), 'Abo-Link konnte nicht kopiert werden.');
+    assert.equal(failedDialog.querySelectorAll('button').find((button) => button.textContent === 'HTTPS-Link kopieren').disabled, false);
 }
 
 dialogContract().then(() => {
     for (const name of ['resolveMyCalendarSubscription', 'createCalendarSubscriptionCard', 'openCalendarSubscriptionDialog']) {
         assert.doesNotMatch(extract(name), /\.innerHTML\b|insertAdjacentHTML/);
     }
-    assert.match(source, /insertBefore\(createCalendarSubscriptionCard\('dashboard'\),\s*actionCard\)/);
+    assert.match(source, /appendChild\(createCalendarSubscriptionCard\('dashboard'\)\);\s*grid\.appendChild\(actionCard\)/);
     assert.match(source, /card\.after\(createCalendarSubscriptionCard\('profile'\)\)/);
     assert.doesNotMatch(source, /function calendarFilename\(/);
     assert.doesNotMatch(source, /function downloadGameCalendar\(/);

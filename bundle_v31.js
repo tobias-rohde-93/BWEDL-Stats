@@ -860,9 +860,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const uniqueId = `calendar-subscription-title-${Date.now()}-${Math.random().toString(36).slice(2)}`;
         const descriptionId = uniqueId.replace('-title-', '-description-');
         let removed = false;
+        let copyInFlight = false;
+        let copyOperation = 0;
         const removeOnce = () => {
             if (removed) return;
             removed = true;
+            copyOperation += 1;
             dialog.remove();
             if (trigger && trigger.isConnected && typeof trigger.focus === 'function') trigger.focus();
         };
@@ -890,14 +893,25 @@ document.addEventListener('DOMContentLoaded', () => {
         status.setAttribute('role', 'status');
         status.setAttribute('aria-live', 'polite');
         copyButton.addEventListener('click', async () => {
+            if (removed || copyInFlight || copyButton.disabled) return;
+            copyInFlight = true;
+            copyButton.disabled = true;
+            const operation = ++copyOperation;
+            const canUpdate = () => !removed && dialog.isConnected && operation === copyOperation;
             try {
                 if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') throw new Error('clipboard unavailable');
                 await navigator.clipboard.writeText(subscription.https);
+                if (!canUpdate()) return;
                 status.textContent = 'Abo-Link wurde kopiert.';
                 setAppStatus('Abo-Link wurde kopiert.');
             } catch (_error) {
+                if (!canUpdate()) return;
                 status.textContent = 'Abo-Link konnte nicht kopiert werden.';
                 setAppStatus('Abo-Link konnte nicht kopiert werden.');
+            } finally {
+                if (operation !== copyOperation) return;
+                copyInFlight = false;
+                if (!removed && dialog.isConnected) copyButton.disabled = false;
             }
         });
         closeButton.addEventListener('click', () => dialog.close());
@@ -3166,7 +3180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 actionCard.appendChild(previewTeaser);
 
-                grid.insertBefore(createCalendarSubscriptionCard('dashboard'), actionCard);
+                grid.appendChild(createCalendarSubscriptionCard('dashboard'));
                 grid.appendChild(actionCard);
                 const profileSeasonNotice = createSeasonNotice('dashboard-profile');
                 if (profileSeasonNotice) container.appendChild(profileSeasonNotice);

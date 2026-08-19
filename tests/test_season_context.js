@@ -100,6 +100,8 @@ function createDocument() {
             };
         }
 
+        get firstChild() { return this.children[0] || null; }
+
         appendChild(child) {
             this.children.push(child);
             child.parentElement = this;
@@ -112,7 +114,12 @@ function createDocument() {
 
         insertBefore(child, reference) {
             const referenceIndex = this.children.indexOf(reference);
-            if (referenceIndex === -1) return this.appendChild(child);
+            if (reference === null) return this.appendChild(child);
+            if (referenceIndex === -1) {
+                const error = new Error('NotFoundError: reference is not a child of this element');
+                error.name = 'NotFoundError';
+                throw error;
+            }
             this.children.splice(referenceIndex, 0, child);
             child.parentElement = this;
             return child;
@@ -275,6 +282,7 @@ function runDashboard(status, playerName) {
     const contentArea = document.createElement('main');
     const topBarTitle = document.createElement('div');
     const navigationCalls = [];
+    const calendarCards = [];
     const createSeasonNotice = makeSeasonNotice(document, status);
     const createProfileOnboardingCard = new Function(
         'document',
@@ -304,17 +312,33 @@ function runDashboard(status, playerName) {
         navigateTo: (...args) => navigationCalls.push(args),
         createSeasonNotice,
         createProfileOnboardingCard,
-        createCalendarSubscriptionCard: () => document.createElement('section'),
+        createCalendarSubscriptionCard: () => {
+            const card = document.createElement('section');
+            card.className = 'calendar-subscription-card';
+            calendarCards.push(card);
+            return card;
+        },
     });
 
     renderDashboard();
-    return { contentArea, navigationCalls };
+    return { contentArea, navigationCalls, renderDashboard, calendarCards };
 }
 
 {
-    const { contentArea } = runDashboard(retainedStatus, 'Public Player');
+    const dashboard = runDashboard(retainedStatus, 'Public Player');
+    const { contentArea } = dashboard;
     assert.deepEqual(seasonContexts(contentArea).sort(), ['dashboard-profile', 'top-20']);
     assert.equal(contentArea.querySelectorAll('.profile-onboarding-card').length, 0);
+    const renderedCards = contentArea.querySelectorAll('.calendar-subscription-card');
+    assert.equal(renderedCards.length, 1);
+    const calendarCard = renderedCards[0];
+    const grid = calendarCard.parentElement;
+    const calendarIndex = grid.children.indexOf(calendarCard);
+    const actionCard = grid.children[calendarIndex + 1];
+    assert.ok(actionCard, 'Expected the next-game action area immediately after the calendar card');
+    assert.equal(actionCard.parentElement, grid);
+    dashboard.renderDashboard();
+    assert.equal(contentArea.querySelectorAll('.calendar-subscription-card').length, 1);
 }
 
 {
