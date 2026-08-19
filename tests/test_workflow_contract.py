@@ -103,18 +103,26 @@ def test_live_update_step_has_transactional_timeout_before_always_evidence_steps
 def test_commit_uses_explicit_generated_file_allowlist_only():
     text = workflow_text()
     commit = step_block(text, "Commit and push generated data")
-    allowed = {
+    fixed_artifacts = {
         "league_data.json", "league_data.js",
         "ranking_data.json", "ranking_data.js",
         "club_data.json", "club_data.js",
         "archive_data.js", "archive_tables.js",
         "data_status.json", "data_status.js",
-        "calendar_index.json", "calendar_index.js", "calendar_state.json", "calendars",
+        "calendar_index.json", "calendar_index.js", "calendar_state.json",
     }
 
     assert "git add ." not in commit
-    add_line = next(line.strip() for line in commit.splitlines() if line.strip().startswith("git add --"))
-    assert set(add_line.removeprefix("git add -- ").split()) == allowed
+    add_lines = [line.strip() for line in commit.splitlines() if line.strip().startswith("git add")]
+    assert len(add_lines) == 2
+    assert add_lines[0].startswith("git add -- ")
+    assert add_lines[1] == "git add -A -- calendars"
+    fixed_line = add_lines[0]
+    assert set(fixed_line.removeprefix("git add -- ").split()) == fixed_artifacts
+    assert "calendars" not in fixed_line.split()
+    assert "if [ -d calendars ] || git ls-files --error-unmatch -- calendars > /dev/null 2>&1; then" in commit
+    assert "git add -A -- calendars" in commit
+    assert "*" not in "\n".join(add_lines)
     assert "git diff --staged --quiet" in commit
     assert "git commit" in commit
     assert "git push" in commit

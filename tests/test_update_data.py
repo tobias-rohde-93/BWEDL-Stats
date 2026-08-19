@@ -765,6 +765,48 @@ def test_corrupt_prior_calendar_state_blocks_without_resetting_public_files(
     assert "line 1" in " ".join(report["domains"][0]["reasons"]).lower()
 
 
+@pytest.mark.parametrize("prior_artifact", ["calendar_index.json", "calendar_index.js", "feed"])
+def test_missing_calendar_state_with_prior_publication_evidence_fails_closed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, prior_artifact: str
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    if prior_artifact == "feed":
+        (root / "calendars").mkdir()
+        (root / "calendars" / "club-1-team-1.ics").write_bytes(b"previous feed")
+    else:
+        (root / prior_artifact).write_text("previous calendar metadata", encoding="utf-8")
+    before = publication_snapshot(root)
+    base_runner = fake_runner(rankings())
+
+    def changed_runner(script: Path, output_dir: Path, artifacts_dir: Path) -> int:
+        code = base_runner(script, output_dir, artifacts_dir)
+        if script.name == "league_scraper.py":
+            changed = leagues()
+            changed["fixture_revision"] = "changed"
+            write_json_pair(output_dir, "league_data", "LEAGUE_DATA", changed)
+        return code
+
+    monkeypatch.setattr(
+        update_data,
+        "build_calendar_publication",
+        lambda *args, **kwargs: pytest.fail("missing state must fail before calendar build"),
+    )
+    monkeypatch.setattr(
+        update_data,
+        "publish_domains",
+        lambda *args, **kwargs: pytest.fail("missing state must fail before publication"),
+    )
+
+    assert update_data.run_update(
+        root, staging, artifacts, scraper_runner=changed_runner, clock=lambda: NOW
+    ) == 1
+    assert publication_snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    assert report["success"] is False
+    assert "calendar state" in " ".join(report["domains"][0]["reasons"]).lower()
+
+
 def test_calendar_generated_at_is_always_the_effective_league_status_timestamp() -> None:
     status = status_payload()
     status["domains"]["leagues"]["updated_at"] = "2026-07-30T09:10:11Z"

@@ -72,7 +72,10 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- league_data.json league_data.js ranking_data.json ranking_data.js club_data.json club_data.js archive_data.js archive_tables.js data_status.json data_status.js calendar_index.json calendar_index.js calendar_state.json calendars
+          git add -- league_data.json league_data.js ranking_data.json ranking_data.js club_data.json club_data.js archive_data.js archive_tables.js data_status.json data_status.js calendar_index.json calendar_index.js calendar_state.json
+          if [ -d calendars ] || git ls-files --error-unmatch -- calendars > /dev/null 2>&1; then
+            git add -A -- calendars
+          fi
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

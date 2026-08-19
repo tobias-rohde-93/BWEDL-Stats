@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
+import stat
 import subprocess
 import sys
 import uuid
@@ -141,9 +143,62 @@ def _effective_payload(
         raise ValueError(f"calendar {source} {domain} payload is missing") from error
 
 
+def _calendar_lstat(path: Path, label: str) -> os.stat_result | None:
+    try:
+        path_stat = path.lstat()
+    except FileNotFoundError:
+        return None
+    except OSError as error:
+        raise ValueError(f"calendar {label} cannot be inspected") from error
+    if stat.S_ISLNK(path_stat.st_mode) or bool(
+        getattr(path_stat, "st_file_attributes", 0) & 0x400
+    ):
+        raise ValueError(f"calendar {label} must not be a symlink or reparse point")
+    return path_stat
+
+
+def _calendar_root_file_exists(root: Path, name: str) -> bool:
+    path_stat = _calendar_lstat(root / name, name)
+    if path_stat is None:
+        return False
+    if not stat.S_ISREG(path_stat.st_mode):
+        raise ValueError(f"calendar {name} must be a regular file")
+    return True
+
+
+def _calendar_feed_exists(root: Path) -> bool:
+    calendars = root / "calendars"
+    directory_stat = _calendar_lstat(calendars, "directory")
+    if directory_stat is None:
+        return False
+    if not stat.S_ISDIR(directory_stat.st_mode):
+        raise ValueError("calendar directory must be a real directory")
+    try:
+        entries = list(os.scandir(calendars))
+    except OSError as error:
+        raise ValueError("calendar directory cannot be inspected") from error
+    has_feed = False
+    for entry in entries:
+        path_stat = _calendar_lstat(Path(entry.path), "directory entry")
+        if path_stat is None:
+            raise ValueError("calendar directory changed during inspection")
+        if not entry.name.endswith(".ics") or not stat.S_ISREG(path_stat.st_mode):
+            raise ValueError("calendar directory is inconsistent")
+        has_feed = True
+    return has_feed
+
+
 def _load_calendar_state(root: Path) -> dict[str, Any] | None:
     path = root / "calendar_state.json"
-    if not path.exists():
+    state_exists = _calendar_root_file_exists(root, path.name)
+    index_exists = _calendar_root_file_exists(root, "calendar_index.json")
+    index_js_exists = _calendar_root_file_exists(root, "calendar_index.js")
+    feed_exists = _calendar_feed_exists(root)
+    if not state_exists:
+        if index_exists or index_js_exists or feed_exists:
+            raise ValueError(
+                "calendar state is missing although prior calendar artifacts exist"
+            )
         return None
     payload = _strict_json(path)
     if not isinstance(payload, dict):
