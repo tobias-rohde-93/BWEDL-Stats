@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_PREFIX = "/BWEDL-Stats/"
 PLAYER_SENTINEL = '<img data-bwedl-injected onerror="document.body.dataset.xss=1">PLAYER_SENTINEL'
 LEGACY_SENTINEL = "LEGACY_AMBIGUOUS_SENTINEL"
+TEST_CALENDAR_PATH = "calendars/club-999-team-1.ics"
 
 
 def javascript_assignment(name: str, value: object) -> bytes:
@@ -105,6 +106,43 @@ TEST_ASSETS = {
             ]
         },
     ),
+    "calendar_index.js": javascript_assignment(
+        "BWEDL_CALENDAR_INDEX",
+        {
+            "schema_version": 1,
+            "season": "2026-2027",
+            "updated_at": "2026-08-19T01:05:38Z",
+            "teams": {
+                "malicious club": {
+                    "club_number": "999",
+                    "name": "Malicious Club",
+                    "path": TEST_CALENDAR_PATH,
+                    "team_id": "club-999-team-1",
+                    "team_slot": 1,
+                    "warning_count": 0,
+                }
+            },
+        },
+    ),
+    TEST_CALENDAR_PATH: (
+        "BEGIN:VCALENDAR\r\n"
+        "VERSION:2.0\r\n"
+        "PRODID:-//BWEDL//Browser Fixture//DE\r\n"
+        "CALSCALE:GREGORIAN\r\n"
+        "METHOD:PUBLISH\r\n"
+        "BEGIN:VEVENT\r\n"
+        "UID:browser-fixture@calendar.bwedl.invalid\r\n"
+        "DTSTAMP:20260819T010538Z\r\n"
+        "DTSTART:20260824T180000Z\r\n"
+        "DTEND:20260824T210000Z\r\n"
+        "SUMMARY:Heimspiel gegen Safe Team\r\n"
+        "DESCRIPTION:Gegner: Safe Team\\nHeimspiel\\nTermin: 20:00 Uhr\r\n"
+        "LOCATION:Testlokal\\, Teststraße 1\\, Teststadt\r\n"
+        "SEQUENCE:0\r\n"
+        "STATUS:CONFIRMED\r\n"
+        "END:VEVENT\r\n"
+        "END:VCALENDAR\r\n"
+    ).encode("utf-8"),
 }
 
 
@@ -130,7 +168,11 @@ class GitHubPagesTestHandler(BaseHTTPRequestHandler):
         relative = request_path[len(PAGES_PREFIX) :] or "index.html"
         if relative in TEST_ASSETS:
             payload = TEST_ASSETS[relative]
-            content_type = "text/javascript; charset=utf-8"
+            content_type = (
+                "text/calendar; charset=utf-8"
+                if relative.endswith(".ics")
+                else "text/javascript; charset=utf-8"
+            )
         else:
             target = (ROOT / relative).resolve()
             try:
@@ -231,6 +273,12 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(primary_class).to_be_visible()
         expect(primary_class.locator("option")).to_have_count(3)
         primary_class.select_option("A-Klasse|9001")
+        page.evaluate(
+            """() => Object.defineProperty(document, 'baseURI', {
+                configurable: true,
+                value: 'https://stats.example.test/BWEDL-Stats/',
+            })"""
+        )
         page.get_by_role("button", name="Speichern").click()
         expect(page.locator("#my-profile-link")).to_contain_text("PLAYER_SENTINEL")
         stored_profile = page.evaluate(
@@ -238,6 +286,73 @@ def test_published_data_stays_inert_online_and_offline() -> None:
             "bwedl_player_profile",
         )
         assert stored_profile["recordKey"] == "A-Klasse|9001"
+
+        page.set_viewport_size({"width": 390, "height": 844})
+        dashboard_calendar = page.locator(".calendar-subscription-card--dashboard")
+        expect(dashboard_calendar).to_contain_text("Malicious Club")
+        dashboard_action = dashboard_calendar.get_by_role("button", name="Kalender abonnieren")
+        dashboard_action.focus()
+        page.keyboard.press("Enter")
+        dialog = page.get_by_role("dialog", name="Teamkalender abonnieren")
+        expect(dialog).to_be_visible()
+        dashboard_webcal = dialog.get_by_role("link", name="In Kalender-App öffnen").get_attribute("href")
+        assert dashboard_webcal == (
+            "webcal://stats.example.test/BWEDL-Stats/calendars/club-999-team-1.ics"
+        )
+        copy_action = dialog.get_by_role("button", name="HTTPS-Link kopieren")
+        expect(copy_action).to_be_focused()
+        page.evaluate(
+            """() => Object.defineProperty(navigator, 'clipboard', {
+                configurable: true,
+                value: { writeText: async value => { window.__copiedCalendarUrl = value; } },
+            })"""
+        )
+        copy_action.click()
+        page.wait_for_function("window.__copiedCalendarUrl")
+        assert page.evaluate("window.__copiedCalendarUrl") == (
+            "https://stats.example.test/BWEDL-Stats/calendars/club-999-team-1.ics"
+        )
+        page.keyboard.press("Tab")
+        expect(dialog.get_by_role("button", name="Schließen")).to_be_focused()
+        page.keyboard.press("Escape")
+        expect(dialog).to_be_hidden()
+        expect(dashboard_action).to_be_focused()
+
+        page.evaluate("location.hash = '#profile'")
+        profile_calendar = page.locator(".calendar-subscription-card--profile")
+        expect(profile_calendar).to_contain_text("Malicious Club")
+        profile_action = profile_calendar.get_by_role("button", name="Kalender abonnieren")
+        profile_action.click()
+        dialog = page.get_by_role("dialog", name="Teamkalender abonnieren")
+        profile_webcal = dialog.get_by_role("link", name="In Kalender-App öffnen").get_attribute("href")
+        assert profile_webcal == dashboard_webcal
+        page.keyboard.press("Escape")
+
+        malicious_club_index = page.evaluate(
+            "() => window.CLUB_DATA.clubs.findIndex(club => club.name === 'Malicious Club')"
+        )
+        assert malicious_club_index >= 0
+        page.evaluate("index => { location.hash = `#club/${index}`; }", malicious_club_index)
+        expect(page.locator("#current-league-title")).to_contain_text("Malicious Club")
+        page.locator("#fav-btn").click()
+        expect(page.locator("#fav-section")).to_contain_text("Malicious Club")
+        page.get_by_role("button", name="Navigation öffnen").click()
+        clubs_disclosure = page.get_by_role("button", name="VEREINE")
+        clubs_disclosure.click()
+        club_shortcuts = page.locator("#club-sidebar-shortcuts")
+        expect(club_shortcuts).to_contain_text("Favoriten")
+        expect(club_shortcuts).to_contain_text("Malicious Club")
+
+        assert page.get_by_role("button", name="Kalender", exact=True).count() == 0
+        assert page.locator("a[download]").count() == 0
+
+        feed_response = page.request.get(
+            f"{base_url}calendars/club-999-team-1.ics",
+            headers={"Cache-Control": "no-cache"},
+        )
+        assert feed_response.ok
+        assert feed_response.body().startswith(b"BEGIN:VCALENDAR\r\n")
+        assert "Ligapokal" not in feed_response.text()
 
         page.evaluate("location.hash = '#tools'")
         expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
@@ -261,6 +376,23 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(page.locator("#my-profile-link")).to_contain_text("PLAYER_SENTINEL")
         assert page.locator("[data-bwedl-injected]").count() == 0
         assert page.evaluate("document.body.dataset.xss || null") is None
+        page.evaluate(
+            """() => {
+                Object.defineProperty(document, 'baseURI', {
+                    configurable: true,
+                    value: 'https://stats.example.test/BWEDL-Stats/',
+                });
+                location.hash = '#dashboard';
+            }"""
+        )
+        offline_calendar_action = page.locator(
+            ".calendar-subscription-card--dashboard"
+        ).get_by_role("button", name="Kalender abonnieren")
+        offline_calendar_action.click()
+        expect(page.locator("#app-status")).to_have_text(
+            "Für das Kalender-Abo ist eine Internetverbindung erforderlich."
+        )
+        assert page.locator(".calendar-subscription-dialog").count() == 0
         context.set_offline(False)
 
         context.close()

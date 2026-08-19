@@ -13,7 +13,7 @@ Dieses Handbuch erklärt dir **jede Funktion**, **jede Statistik** und **jeden K
 
 ### Navigation und Tastatur
 
-Die Seitenleiste fasst die vielen Einträge in aufklappbaren Bereichen zusammen. Unter **Vereine** findest du die Vereinsübersicht, die Vereinssuche sowie kompakte Favoriten und zuletzt besuchte Vereine. Mit `Tab` erreichst du alle Schalter und Links, mit `Enter` oder der Leertaste öffnest du sie. `Esc` schließt Suchtreffer beziehungsweise auf kleinen Bildschirmen die geöffnete Navigation.
+Die Seitenleiste fasst die vielen Einträge in aufklappbaren Bereichen zusammen. Ein gespeicherter Verein erscheint wie ein Liga-Favorit im globalen Bereich **FAVORITEN** und zusätzlich unter **VEREINE → Favoriten**; dort findest du außerdem die Vereinsübersicht, die Vereinssuche und zuletzt besuchte Vereine. Mit `Tab` erreichst du alle Schalter und Links, mit `Enter` oder der Leertaste öffnest du sie. `Esc` schließt Suchtreffer beziehungsweise auf kleinen Bildschirmen die geöffnete Navigation.
 
 ---
 
@@ -23,6 +23,14 @@ Das Dashboard wird aktiviert, sobald du oben links deinen **Namen eingibst** und
 Die Profilauswahl wird nur lokal im Speicher dieses Browsers abgelegt. Sie wird nicht als Benutzerkonto an einen Server übertragen; beim Löschen der Browserdaten oder in einem anderen Browser muss sie erneut gewählt werden.
 
 Nach einem erneuten Besuch kann eine Karte **„Seit deinem letzten Besuch“** auf neue Daten sowie – bei vergleichbarer Ranglistenbasis – auf Änderungen an Rang, Punkten oder dem nächsten Spiel hinweisen. Die Karte ist eine Zusammenfassung und ersetzt nicht die Detailansichten.
+
+### Teamkalender abonnieren
+
+Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **Profilteam**. Es enthält alle vergangenen und zukünftigen regulären Ligaspiele der gesamten aktuellen Saison; **Ligapokal** und **Einzelspiel-Download** sind ausgeschlossen. Jeder Termin nennt Gegner, **Heim/Auswärts**, Uhrzeit und die bestverfügbare Adresse des Heimvereins. Eine unvollständige Adresse wird markiert; ein nicht aufgelöster Spielort wird ebenfalls klar gekennzeichnet.
+
+Die Abo-Karte steht im **Dashboard** und unter **Mein Profil**. **In Kalender-App öffnen** öffnet den `webcal`-Link in einer unterstützten Kalender-App; **HTTPS-Link kopieren** kopiert dieselbe dauerhafte Abonnementadresse zum manuellen Einfügen. Für das Kalender-Abo ist eine Internetverbindung erforderlich. Es wird keine einzelne ICS-Datei pro Begegnung heruntergeladen.
+
+Die statischen Kalenderdateien werden über GitHub Pages ohne API oder Server mit dem validierten Lauf alle sechs Stunden veröffentlicht. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Deshalb kann ein auf GitHub Pages bereits korrigierter Termin in Apple Calendar, Google Calendar oder Outlook noch unverändert erscheinen.
 
 ### 1. Die "Hero Card" (Profilkarte)
 Ganz oben siehst du dein Spielerprofil mit den wichtigsten Kennzahlen auf einen Blick.
@@ -94,7 +102,7 @@ In Ranglisten kannst du nach Spieler oder Verein suchen, eine Mindestzahl an Spi
 
 ### Spielaktionen und Vereinsadressen
 
-Bei passenden Begegnungen stehen direkte Aktionen bereit: **Kalender** lädt einen Kalendereintrag, **Teilen** nutzt – soweit verfügbar – den Teilen-Dialog und sonst eine Kopiermöglichkeit, und **Route** öffnet die hinterlegte Adresse in Google Maps. Fehlen Termin oder Adresse, wird die jeweilige Aktion nicht angeboten. Prüfe vor der Fahrt weiterhin die offiziellen Angaben.
+Bei passenden Begegnungen stehen direkte Aktionen bereit: **Teilen** nutzt – soweit verfügbar – den Teilen-Dialog und sonst eine Kopiermöglichkeit, und **Route** öffnet die hinterlegte Adresse in Google Maps. Einen Einzelspiel-Download für den Kalender gibt es nicht mehr; verwende stattdessen das Teamkalender-Abo auf dem Dashboard oder unter Mein Profil. Fehlen Termin oder Adresse, wird die jeweilige Aktion nicht angeboten. Prüfe vor der Fahrt weiterhin die offiziellen Angaben.
 
 ---
 
@@ -140,6 +148,9 @@ A: Die Ranglisten der neuen Saison sind noch nicht in allen vier Klassen vollst�
 **Q: Wann werden neue Ranglisten angezeigt?**
 A: Erst wenn Bezirksliga, A-Klasse, B-Klasse und C-Klasse jeweils mindestens einen gültigen Spieler liefern. So ersetzt ein leerer oder nur teilweiser Zwischenstand keine funktionierenden Daten.
 
+**Q: Wann erscheint eine Terminänderung im abonnierten Kalender?**
+A: Der validierte GitHub-Workflow veröffentlicht statische Kalenderdateien alle sechs Stunden. Dein Kalenderanbieter entscheidet danach selbst, wann er den Link erneut abruft; die sichtbare Änderung kann deshalb später eintreffen. Offline kann kein neuer Stand geladen werden.
+
 ---
 
 ## Technische Prüfung für Betreibende
@@ -156,7 +167,7 @@ python update_data.py --dry-run --staging-dir .staging/manual-check --artifacts-
 
 Der Dry-Run schreibt `update_report.json`, `update_status.json` und gegebenenfalls HTML-, PNG- oder Trace-Diagnosen unter `artifacts/`, lässt aber die öffentlichen Datendateien unverändert. GitHub Pages ist die einzige produktive Laufzeit. Für eine reine Entwicklungs-Vorschau kann `python -m http.server 8000 --bind 127.0.0.1` gestartet und `http://127.0.0.1:8000/` geöffnet werden; dieser statische Testserver besitzt keine Aktualisierungslogik.
 
-Bei einem Incident zuerst Bericht und Fehlerartefakte prüfen, dann mit frischen Staging-/Artefaktpfaden reproduzieren. Veröffentlicht werden dürfen nur `league_data.{json,js}`, `ranking_data.{json,js}`, `club_data.{json,js}`, `archive_data.js`, `archive_tables.js` und `data_status.{json,js}`. Der GitHub-Workflow läuft alle sechs Stunden, ist manuell startbar und eröffnet erst nach zwei aufeinanderfolgenden geplanten Fehlern ein Issue; ein erfolgreicher geplanter Lauf schließt es nach einem Recovery-Kommentar.
+Bei einem Incident zuerst Bericht und Fehlerartefakte prüfen, dann mit frischen Staging-/Artefaktpfaden reproduzieren. Veröffentlicht werden dürfen nur `league_data.{json,js}`, `ranking_data.{json,js}`, `club_data.{json,js}`, `archive_data.js`, `archive_tables.js`, `data_status.{json,js}`, `calendar_index.{json,js}`, `calendar_state.json` und `calendars/*.ics`. Der GitHub-Workflow läuft alle sechs Stunden, ist manuell startbar und eröffnet erst nach zwei aufeinanderfolgenden geplanten Fehlern ein Issue; ein erfolgreicher geplanter Lauf schließt es nach einem Recovery-Kommentar. Lokale Tests, GitHub Actions, die Live-Dateien auf GitHub Pages und die spätere Aktualisierung durch einen externen Kalenderanbieter bleiben getrennte Nachweise.
 
 ---
 *Erstellt mit ❤️ für den Dartsport.*

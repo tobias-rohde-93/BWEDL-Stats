@@ -17,7 +17,7 @@ Ansichten für Ligen, Vereine, Ranglisten und Werkzeuge besitzen direkte Links. 
 
 ### 1. Dashboard
 Hier landest du beim Start.
--   **Favoriten**: Markiere Spieler (⭐), um ihre Statistiken sofort zu sehen.
+-   **Favoriten**: Gespeicherte Vereine erscheinen wie Liga-Favoriten im globalen Bereich **FAVORITEN** und zusätzlich unter **VEREINE → Favoriten**.
 -   **Suche**: Nutze die Suchleiste oben links, um schnell nach *Spielern* oder *Vereinen* zu suchen.
 -   **Status**: Oben links siehst du, wann die Daten zuletzt aktualisiert wurden.
 -   **Profil & Datenschutz**: Die gewählte Spieler- und Mannschaftszuordnung bleibt lokal in diesem Browser und ist kein serverseitiges Benutzerkonto.
@@ -37,7 +37,7 @@ Suche nach einem Verein oder klicke in einer Tabelle auf den Vereinsnamen.
 -   **Details**: Adresse, Kontaktinfos und Link zum Spielort (Google Maps).
 -   **Kader**: Liste aller Spieler mit aktueller Liga und Rang.
 -   **Archiv**: Historie des Vereins aus vergangenen Saisons.
--   **Spielaktionen**: Wo Termin und Adresse vorhanden sind, kannst du einen Kalendereintrag laden, die Begegnung teilen beziehungsweise den Link kopieren und die Route in Google Maps öffnen.
+-   **Spielaktionen**: Wo Termin und Adresse vorhanden sind, kannst du die Begegnung teilen beziehungsweise den Link kopieren und die Route in Google Maps öffnen. Einen Einzelspiel-Download für den Kalender gibt es nicht mehr.
 
 ### 4. Spieler-Profile
 Unter **Mein Profil** wählst du einen exakten Spielervorschlag aus; frei eingegebener Text allein wird nicht gespeichert. Der Vorschlag zeigt Verein und zugehörige Ranglistenklassen, damit gleichnamige Personen unterscheidbar bleiben. Wenn dein Datensatz in mehreren Klassen vorkommt, bestätigst du zusätzlich eine **primäre Klasse**.
@@ -48,10 +48,19 @@ Mit dem ausgewählten Profil erhältst du:
 -   **Formkurve**: Die letzten Spiele und Trend.
 -   **Saisonverlauf**: Detaillierte Liste aller gespielten Runden und Ergebnisse.
 -   **Head-to-Head**: Vergleiche diesen Spieler direkt mit einem anderen.
+-   **Teamkalender**: Abonniere die regulären Saisonspiele deines Profilteams.
 
-### 5. Kompakte Navigation und Tastatur
+### 5. Teamkalender abonnieren
 
-Die Seitenleiste verwendet aufklappbare Bereiche. **Vereine** bietet zuerst die Vereinsübersicht und Suche, danach kompakte Favoriten und zuletzt besuchte Vereine statt einer langen Gesamtliste. Mit `Tab` wechselst du zwischen den Bedienelementen; `Enter` oder die Leertaste aktiviert sie. `Esc` schließt Suchtreffer und auf kleinen Bildschirmen die Navigation.
+Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **Profilteam**. Es enthält alle vergangenen und zukünftigen regulären Ligaspiele der gesamten aktuellen Saison; **Ligapokal** und **Einzelspiel-Download** sind ausgeschlossen. Jeder Termin nennt Gegner, **Heim/Auswärts**, Uhrzeit und die bestverfügbare Adresse des Heimvereins. Eine unvollständige Adresse wird markiert; ein nicht aufgelöster Spielort wird ebenfalls klar gekennzeichnet.
+
+Die Abo-Karte steht im **Dashboard** und unter **Mein Profil**. **In Kalender-App öffnen** öffnet den `webcal`-Link; **HTTPS-Link kopieren** kopiert dieselbe Abonnementadresse zum manuellen Einfügen. Für das Kalender-Abo ist eine Internetverbindung erforderlich.
+
+Die statischen Kalenderdateien werden über GitHub Pages ohne API oder Server mit dem validierten Lauf alle sechs Stunden veröffentlicht. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Lokale Tests, GitHub Actions, erreichbare Live-Dateien und der tatsächliche externe Kalenderabruf sind daher getrennte Nachweise.
+
+### 6. Kompakte Navigation und Tastatur
+
+Die Seitenleiste verwendet aufklappbare Bereiche. **Vereine** bietet zuerst die Vereinsübersicht und Suche, danach kompakte Favoriten und zuletzt besuchte Vereine statt einer langen Gesamtliste. Derselbe Vereinsfavorit bleibt zugleich im globalen Bereich **FAVORITEN** und unter **VEREINE → Favoriten** sichtbar. Mit `Tab` wechselst du zwischen den Bedienelementen; `Enter` oder die Leertaste aktiviert sie. `Esc` schließt Suchtreffer und auf kleinen Bildschirmen die Navigation.
 
 ---
 
@@ -75,14 +84,14 @@ Ein Tool, um deine eigenen Darts-Matches zu tracken und zu scoren.
 Diese Seite ist eine **PWA (Progressive Web App)**.
 -   **Android (Chrome)**: Klicke auf das Menü (3 Punkte) -> "Zum Startbildschirm hinzufügen" oder "App installieren".
 -   **iOS (Safari)**: Klicke auf den "Teilen"-Button -> "Zum Home-Bildschirm".
-    So hast du die Stats immer als App auf dem Handy – auch offline!
+    So hast du die Stats immer als App auf dem Handy – auch offline! Ein Kalender-Abo oder dessen Aktualisierung benötigt weiterhin eine Internetverbindung.
 
 ---
 
 ## ❓ Häufige Fragen (FAQ)
 
 **Wie oft werden die Daten aktualisiert?**
-Die Daten werden über GitHub Actions regelmäßig neu veröffentlicht. Der **Aktualisieren**-Button prüft den auf GitHub Pages bereitgestellten Datenstand und lädt die veröffentlichten Dateien neu; einen lokalen Produktserver gibt es nicht.
+Die Daten und Teamkalender werden über GitHub Actions alle sechs Stunden validiert und statisch neu veröffentlicht. Der **Aktualisieren**-Button prüft den auf GitHub Pages bereitgestellten Datenstand und lädt die veröffentlichten Dateien neu; einen lokalen Produktserver gibt es nicht. Ein Kalenderanbieter kann seinen abonnierten Link später erneut abrufen.
 
 **Stimmen die Daten immer zu 100%?**
 Wir geben unser Bestes! Da Daten aus verschiedenen Quellen (PDFs, HTML) zusammengeführt werden, kann es in seltenen Fällen zu Abweichungen kommen. Melde Fehler gerne!

@@ -7,13 +7,25 @@ Die Web-Version ist hier verfügbar: **[BWEDL Stats öffnen](https://tobias-rohd
 - **Aktuelle Tabellen & Ergebnisse** aller Ligen
 - **Persönliche Statistiken**: Suche nach deinem Namen, um Durchschnitt, Trend und Saisonverlauf zu sehen.
 - **Match-Preview**: Plane dein nächstes Spiel mit Team-Aufstellungen.
+- **Teamkalender-Abo**: Abonniere den regulären Saisonspielplan deines Profilteams.
+- **Vereinsfavoriten**: Gespeicherte Vereine stehen im globalen Bereich **FAVORITEN** und unter **VEREINE → Favoriten**.
 - **Offline-Modus**: Installierbar als App (PWA) auf Android und iOS.
+
+---
+
+## Teamkalender und Favoriten
+
+Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **Profilteam**. Es enthält alle vergangenen und zukünftigen regulären Ligaspiele der gesamten aktuellen Saison; **Ligapokal** und **Einzelspiel-Download** sind ausgeschlossen. Jeder Termin nennt Gegner, **Heim/Auswärts**, Uhrzeit und die bestverfügbare Adresse des Heimvereins. Eine unvollständige Adresse wird markiert; ein nicht aufgelöster Spielort wird ebenfalls klar gekennzeichnet.
+
+Im **Dashboard** und unter **Mein Profil** öffnet **In Kalender-App öffnen** den `webcal`-Link; **HTTPS-Link kopieren** kopiert die Abonnementadresse. Für das Kalender-Abo ist eine Internetverbindung erforderlich. Die statischen Kalenderdateien werden über GitHub Pages ohne API oder Server mit dem validierten Lauf alle sechs Stunden veröffentlicht. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen als GitHub Pages.
+
+Vereinsfavoriten erscheinen im globalen **FAVORITEN**-Bereich und zusätzlich unter **VEREINE → Favoriten**.
 
 ---
 
 ## Betrieb und Datenaktualisierung
 
-GitHub Pages ist die einzige produktive Laufzeit der Anwendung. Der Button **Aktualisieren** prüft den neuesten dort veröffentlichten Datenstand und lädt die statischen Datendateien neu. Er startet weder lokal noch auf GitHub einen Scraper.
+GitHub Pages ist die einzige produktive Laufzeit der Anwendung. Sie läuft statisch ohne API oder Server. Der Button **Aktualisieren** prüft den neuesten dort veröffentlichten Datenstand und lädt die statischen Datendateien neu. Er startet weder lokal noch auf GitHub einen Scraper.
 
 Die BWEDL-Daten werden ausschließlich durch den GitHub-Actions-Workflow `Update Data` aufbereitet. Der geplante Lauf prüft und validiert neue Kandidaten alle sechs Stunden, bevor geänderte öffentliche Datendateien nach `main` übernommen und über GitHub Pages bereitgestellt werden.
 
@@ -65,7 +77,11 @@ ranking_data.json ranking_data.js
 club_data.json    club_data.js
 archive_data.js   archive_tables.js
 data_status.json  data_status.js
+calendar_index.json calendar_index.js
+calendar_state.json calendars/
 ```
+
+Lokale Tests, das Ergebnis von GitHub Actions, die Erreichbarkeit auf GitHub Pages und der tatsächliche Abruf durch einen externen Kalenderanbieter sind getrennte Nachweise. Ein grüner Test oder eine erreichbare ICS-Datei beweist noch nicht, wann Apple Calendar, Google Calendar oder Outlook eine Änderung übernimmt.
 
 ### Incident prüfen und beheben
 
@@ -77,7 +93,7 @@ data_status.json  data_status.js
 
 ### Automatischer Browser-Sicherheitstest
 
-GitHub Actions startet nach der Chromium-Installation einen Browser-Smoke-Test unter dem echten Pages-Unterpfad `/BWEDL-Stats/`. Er prüft, dass veröffentlichte Tabellen und Spielernamen nur als Text erscheinen, keine `/api/`-Abhängigkeit entsteht und Profil sowie Match Setup auch aus dem Service-Worker-Cache funktionieren.
+GitHub Actions startet nach der Chromium-Installation einen Browser-Smoke-Test unter dem echten Pages-Unterpfad `/BWEDL-Stats/`. Er prüft, dass veröffentlichte Tabellen und Spielernamen nur als Text erscheinen, keine `/api/`-Abhängigkeit entsteht, Teamkalender-Links den Unterpfad behalten, Vereinsfavoriten an beiden vorgesehenen Stellen erscheinen und Profil sowie Match Setup auch aus dem Service-Worker-Cache funktionieren.
 
 Zur optionalen Reproduktion in einer Entwicklungsumgebung:
 
