@@ -15,6 +15,7 @@ import club_scraper
 import league_scraper
 import ranking_scraper
 from pipeline.diagnostics import AsyncDiagnosticSession, SyncDiagnosticSession
+from pipeline.html_sanitizer import safe_table_fragment_issue
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
@@ -701,3 +702,202 @@ def test_json_scraper_save_data_writes_only_to_output_directory(
     )
     assert not (tmp_path / f"{stem}.json").exists()
     assert not (tmp_path / f"{stem}.js").exists()
+
+
+class _UnsafeTableLocator:
+    def __init__(self, html: str):
+        self.html = html
+
+    @property
+    def first(self):
+        return self
+
+    def count(self):
+        return 1
+
+    def evaluate(self, script: str):
+        assert "outerHTML" in script
+        return self.html
+
+
+class _SingleOption:
+    def get_attribute(self, attribute: str):
+        assert attribute == "value"
+        return "1"
+
+    def inner_text(self):
+        return "1. Spieltag"
+
+
+class _OptionCollection:
+    def all(self):
+        return [_SingleOption()]
+
+
+class _StandardLeagueSelect:
+    def count(self):
+        return 1
+
+    def locator(self, selector: str):
+        assert selector == "option"
+        return _OptionCollection()
+
+    def select_option(self, value: str):
+        assert value == "1"
+
+
+class _TextareaLocator:
+    def count(self):
+        return 1
+
+
+class _UnsafeStandardLeaguePage(_Page):
+    def __init__(self):
+        self.table = _UnsafeTableLocator(
+            "<table class='source'><tr><td onclick='run()'>"
+            "Team<script>run()</script></td></tr></table>"
+        )
+
+    def locator(self, selector: str):
+        if selector == 'select[name="wtWahl"]':
+            return _StandardLeagueSelect()
+        if selector == "xpath=//table[contains(., 'Pl.')]":
+            return self.table
+        if selector == "textarea":
+            return _TextareaLocator()
+        raise AssertionError(selector)
+
+    def evaluate(self, script: str, *args):
+        assert "querySelector('textarea').value" in script
+        return "---"
+
+    def wait_for_timeout(self, milliseconds: int):
+        assert milliseconds == 2000
+
+
+def test_standard_league_table_is_sanitized_immediately_after_capture() -> None:
+    data = {"leagues": {}}
+
+    league_scraper.scrape_league(
+        _UnsafeStandardLeaguePage(),
+        "https://www.bwedl.de/tabellen/test/",
+        "Testliga 2026-2027",
+        data,
+    )
+
+    table = data["leagues"]["Testliga 2026-2027"]["table"]
+    assert safe_table_fragment_issue(table) is None
+    assert table == "<table><tr><td>Team</td></tr></table>"
+
+
+class _NoLeagueSelect:
+    def count(self):
+        return 0
+
+
+class _NoTables:
+    def all(self):
+        return []
+
+
+class _UnsafeCupPage(_Page):
+    def locator(self, selector: str):
+        if selector == 'select[name="wtWahl"]':
+            return _NoLeagueSelect()
+        if selector == "table":
+            return _NoTables()
+        raise AssertionError(selector)
+
+    def evaluate(self, script: str, *args):
+        assert "fullHtmlParts" in script
+        return {
+            "html": (
+                "<h3>Runde 1</h3><table onclick='run()'><tr><td>Eins</td></tr></table>"
+                "<script>run()</script><h3>Finale</h3>"
+                "<table><tr><td><img src=x onerror='run()'>Zwei</td></tr></table>"
+            ),
+            "rounds": [
+                {"name": "Runde 1", "text": "Mo. 24. 8.2026 Team A - Team B 0:0"},
+                {"name": "Finale", "text": "Mo. 31. 8.2026 Team C - Team D 0:0"},
+            ],
+        }
+
+
+def test_ligapokal_multi_table_fragment_is_sanitized_without_source_headings() -> None:
+    data = {"leagues": {}}
+
+    league_scraper.scrape_league(
+        _UnsafeCupPage(),
+        "https://www.bwedl.de/tabellen/ligapokal/",
+        "Ligapokal 2026-2027",
+        data,
+    )
+
+    league = data["leagues"]["Ligapokal 2026-2027"]
+    assert safe_table_fragment_issue(league["table"]) is None
+    assert league["table"] == (
+        "<table><tr><td>Eins</td></tr></table>"
+        "<table><tr><td>Zwei</td></tr></table>"
+    )
+    assert list(league["match_days"]) == ["Runde 1", "Finale"]
+
+
+class _OneRankingLink(_RankingCategoryLink):
+    pass
+
+
+class _OneRankingLinks:
+    def all(self):
+        return [_OneRankingLink("Bezirksliga")]
+
+
+class _UnsafeRankingPage(_Page):
+    def __init__(self):
+        self.table = _UnsafeTableLocator(
+            "<table style='color:red'><tr><td onerror='run()'>"
+            "Spieler<script>run()</script></td></tr></table>"
+        )
+
+    def locator(self, selector: str):
+        if selector == "a[href*='/ranglisten/']":
+            return _OneRankingLinks()
+        if selector == "div.table-responsive table":
+            return self.table
+        raise AssertionError(selector)
+
+    def evaluate(self, script: str, league_name: str):
+        assert league_name == "Bezirksliga"
+        assert "category_players" not in script
+        return [
+            {
+                "v_nr": "001",
+                "id": "1",
+                "name": "Spieler Eins",
+                "rank": "1",
+                "points": "10",
+                "league": league_name,
+                "rounds": {},
+            }
+        ]
+
+
+def test_ranking_table_is_sanitized_before_candidate_save(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    playwright = _Playwright()
+    playwright.browser.context.page = _UnsafeRankingPage()
+    saved = []
+    monkeypatch.setattr(ranking_scraper, "sync_playwright", lambda: playwright)
+    monkeypatch.setattr(
+        ranking_scraper,
+        "save_data",
+        lambda data, output: saved.append((data, output)),
+    )
+
+    assert ranking_scraper.run_scrape(tmp_path / "candidate", tmp_path / "artifacts") == 0
+
+    candidate = saved[0][0]
+    table = candidate["rankings"]["Bezirksliga"]
+    assert safe_table_fragment_issue(table) is None
+    assert table == "<table><tr><td>Spieler</td></tr></table>"

@@ -59,7 +59,10 @@ def leagues() -> dict[str, Any]:
 
 def rankings(categories: tuple[str, ...] = REQUIRED_RANKING_CATEGORIES) -> dict[str, Any]:
     return {
-        "rankings": {category: f"<table>{category}</table>" for category in categories},
+        "rankings": {
+            category: f"<table><tr><td>{category}</td></tr></table>"
+            for category in categories
+        },
         "players": [
             {"id": str(index), "name": f"Player {index}", "league": category}
             for index, category in enumerate(categories, 1)

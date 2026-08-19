@@ -93,6 +93,7 @@ function createDocument() {
             if (value) byId.set(value, this);
         }
         get id() { return this._id; }
+        get firstElementChild() { return this.children[0] || null; }
         set textContent(value) { this._textContent = String(value); }
         get textContent() {
             return this._textContent + this.children.map((child) => child.textContent).join('');
@@ -104,6 +105,10 @@ function createDocument() {
         replaceChildren(...children) { this.children = []; this.append(...children); }
         setAttribute(name, value) { this.attributes[name] = String(value); }
         getAttribute(name) { return this.attributes[name] ?? null; }
+        querySelectorAll(selector) {
+            const tagName = selector.trim().split(/\s+/).at(-1).toUpperCase();
+            return descendants(this).slice(1).filter((element) => element.tagName === tagName);
+        }
         addEventListener(type, listener) { (this.listeners[type] ||= []).push(listener); }
         dispatch(type, init = {}) {
             const event = {
@@ -122,6 +127,7 @@ function createDocument() {
     return {
         createElement: (tagName) => new Element(tagName),
         createElementNS: (_namespace, tagName) => new Element(tagName),
+        createDocumentFragment: () => new Element('#fragment'),
         getElementById: (id) => byId.get(id) || null,
     };
 }
@@ -209,19 +215,34 @@ class SafeTableDOMParser {
     parseFromString(value, type) {
         assert.equal(value, maliciousTableHtml);
         assert.equal(type, 'text/html');
-        return {
+        const thead = { tagName: 'THEAD' };
+        const tbody = { tagName: 'TBODY' };
+        const cell = (tagName, textContent, attributes = {}) => ({
+            tagName,
+            textContent,
+            getAttribute(name) { return attributes[name] ?? null; },
+        });
+        const rows = [
+            { parentElement: thead, children: [
+                cell('TH', 'Team<script>alert(1)</script>'),
+                cell('TH', 'Punkte'),
+            ] },
+            { parentElement: tbody, children: [
+                cell('TD', 'DC Nord <img src=x onerror=alert(2)>', { onmouseover: 'alert(5)' }),
+                cell('TD', '42'),
+            ] },
+        ];
+        const table = {
             querySelectorAll(selector) {
                 assert.equal(selector, 'tr');
-                return [
-                    { children: [
-                        { tagName: 'TH', textContent: 'Team<script>alert(1)</script>' },
-                        { tagName: 'TH', textContent: 'Punkte' },
-                    ] },
-                    { children: [
-                        { tagName: 'TD', textContent: 'DC Nord <img src=x onerror=alert(2)>' },
-                        { tagName: 'TD', textContent: '42' },
-                    ] },
-                ];
+                return rows;
+            },
+        };
+        rows.forEach((row) => { row.closest = () => table; });
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'table');
+                return [table];
             },
         };
     }
@@ -231,9 +252,24 @@ const maliciousTableHtml = '<table onclick="alert(4)"><tr><th>Team<script>alert(
 const parseInertHtmlDocument = compileFunction('parseInertHtmlDocument', {
     DOMParser: SafeTableDOMParser,
 });
+const safePublishedSpan = compileFunction('safePublishedSpan');
+const safeTableModelsFromHtml = compileFunction('safeTableModelsFromHtml', {
+    parseInertHtmlDocument,
+    safePublishedSpan,
+});
+const createSafeTableFromModel = compileFunction('createSafeTableFromModel', { document });
+const createSafeTablesFromHtml = compileFunction('createSafeTablesFromHtml', {
+    document,
+    safeTableModelsFromHtml,
+    createSafeTableFromModel,
+});
+const createSafeTableFromHtml = compileFunction('createSafeTableFromHtml', {
+    document,
+    createSafeTablesFromHtml,
+});
 const createSafeLeagueTableSection = compileFunction('createSafeLeagueTableSection', {
     document,
-    parseInertHtmlDocument,
+    createSafeTableFromHtml,
 });
 const safeLeagueTable = createSafeLeagueTableSection(
     maliciousLeagueName,
@@ -254,20 +290,30 @@ class WithdrawnDOMParser {
     parseFromString(value, type) {
         assert.match(value, /<img src="https:\/\/attacker\.invalid\/pixel" onerror="alert\(11\)">/);
         assert.equal(type, 'text/html');
-        const row = (textContent, cells) => ({
-            textContent,
-            querySelectorAll(selector) {
-                assert.equal(selector, 'td');
-                return cells.map((cellText) => ({ textContent: cellText }));
-            },
+        const tbody = { tagName: 'TBODY' };
+        const row = (cells) => ({
+            parentElement: tbody,
+            children: cells.map((textContent) => ({
+                tagName: 'TD',
+                textContent,
+                getAttribute() { return null; },
+            })),
         });
-        return {
+        const rows = [
+            row(['1', 'DC Nord', 'zurückgezogen']),
+            row(['2', 'Flying Arrows', 'aktiv']),
+        ];
+        const table = {
             querySelectorAll(selector) {
                 assert.equal(selector, 'tr');
-                return [
-                    row('1 DC Nord zurückgezogen', ['1', 'DC Nord']),
-                    row('2 Flying Arrows aktiv', ['2', 'Flying Arrows']),
-                ];
+                return rows;
+            },
+        };
+        rows.forEach((item) => { item.closest = () => table; });
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'table');
+                return [table];
             },
         };
     }
@@ -275,8 +321,15 @@ class WithdrawnDOMParser {
 const parseWithdrawnDocument = compileFunction('parseInertHtmlDocument', {
     DOMParser: WithdrawnDOMParser,
 });
-const findWithdrawnTeams = compileFunction('findWithdrawnTeams', {
+const withdrawnTableModels = compileFunction('safeTableModelsFromHtml', {
     parseInertHtmlDocument: parseWithdrawnDocument,
+    safePublishedSpan,
+});
+const withdrawnRows = compileFunction('safeTableRowsFromHtml', {
+    safeTableModelsFromHtml: withdrawnTableModels,
+});
+const findWithdrawnTeams = compileFunction('findWithdrawnTeams', {
+    safeTableRowsFromHtml: withdrawnRows,
 });
 const withdrawnTeams = findWithdrawnTeams('<table><tr><td>1</td><td><img src="https://attacker.invalid/pixel" onerror="alert(11)">DC Nord</td><td>zurückgezogen</td></tr><tr><td>2</td><td>Flying Arrows</td><td>aktiv</td></tr></table>');
 assert.deepEqual(withdrawnTeams, ['DC Nord']);

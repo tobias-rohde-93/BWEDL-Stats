@@ -49,6 +49,17 @@ def test_offline_tests_run_before_browser_install_and_live_update():
     assert "cache: 'pip'" in text
 
 
+def test_browser_security_smoke_runs_after_chromium_and_before_live_update():
+    text = workflow_text()
+    browser_install_index = text.index("python -m playwright install --with-deps chromium")
+    browser_smoke_index = text.index("python -m pytest tests/test_browser_security.py -q")
+    update_index = text.index("python update_data.py")
+    smoke = step_block(text, "Run browser security smoke")
+
+    assert browser_install_index < browser_smoke_index < update_index
+    assert 'BWEDL_BROWSER_TESTS: "1"' in smoke
+
+
 def test_action_versions_and_checkout_history_are_maintained():
     text = workflow_text()
 

@@ -154,7 +154,7 @@ python -m pytest
 python update_data.py --dry-run --staging-dir .staging/manual-check --artifacts-dir artifacts/manual-check
 ```
 
-Der Dry-Run schreibt `update_report.json`, `update_status.json` und gegebenenfalls HTML-, PNG- oder Trace-Diagnosen unter `artifacts/`, lässt aber die öffentlichen Datendateien unverändert. Für eine Browserprüfung `python server.py` starten und `http://localhost:8000/` öffnen.
+Der Dry-Run schreibt `update_report.json`, `update_status.json` und gegebenenfalls HTML-, PNG- oder Trace-Diagnosen unter `artifacts/`, lässt aber die öffentlichen Datendateien unverändert. GitHub Pages ist die einzige produktive Laufzeit. Für eine reine Entwicklungs-Vorschau kann `python -m http.server 8000 --bind 127.0.0.1` gestartet und `http://127.0.0.1:8000/` geöffnet werden; dieser statische Testserver besitzt keine Aktualisierungslogik.
 
 Bei einem Incident zuerst Bericht und Fehlerartefakte prüfen, dann mit frischen Staging-/Artefaktpfaden reproduzieren. Veröffentlicht werden dürfen nur `league_data.{json,js}`, `ranking_data.{json,js}`, `club_data.{json,js}`, `archive_data.js`, `archive_tables.js` und `data_status.{json,js}`. Der GitHub-Workflow läuft alle sechs Stunden, ist manuell startbar und eröffnet erst nach zwei aufeinanderfolgenden geplanten Fehlern ein Issue; ein erfolgreicher geplanter Lauf schließt es nach einem Recovery-Kommentar.
 

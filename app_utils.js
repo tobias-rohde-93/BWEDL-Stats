@@ -18,6 +18,8 @@
         'wiki',
     ]);
     const ROUTES_WITH_ID = new Set(['league', 'ligapokalArchive', 'ranking', 'club']);
+    const PLAYER_PROFILE_VERSION = 2;
+    const PLAYER_PROFILE_STORAGE_KEY = 'bwedl_player_profile';
     const BERLIN_DATE_FORMATTER = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Europe/Berlin',
         year: 'numeric',
@@ -28,6 +30,43 @@
         second: '2-digit',
         hourCycle: 'h23',
     });
+
+    function escapeHtmlText(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    async function probePublishedData(fetchImpl, baseUri, nowValue) {
+        if (typeof fetchImpl !== 'function') {
+            throw new TypeError('A fetch implementation is required');
+        }
+        const statusUrl = new URL('data_status.json', baseUri);
+        statusUrl.searchParams.set('t', String(nowValue));
+        const response = await fetchImpl(statusUrl.toString(), {
+            cache: 'no-store',
+            credentials: 'omit',
+            headers: { Accept: 'application/json' },
+        });
+        if (!response || response.ok !== true) {
+            const status = response && Number.isFinite(response.status)
+                ? response.status
+                : 'unbekannt';
+            throw new Error(`Öffentlicher Datenstand nicht erreichbar (${status})`);
+        }
+        const payload = await response.json();
+        if (
+            !payload || typeof payload !== 'object' || Array.isArray(payload) ||
+            !payload.domains || typeof payload.domains !== 'object' ||
+            Array.isArray(payload.domains)
+        ) {
+            throw new Error('Öffentlicher Datenstatus ist ungültig');
+        }
+        return payload;
+    }
 
     function isByeOpponent(value) {
         if (typeof value !== 'string') return false;
@@ -372,6 +411,190 @@
             .replace(/\s+/gu, ' ')
             .trim()
             .toLocaleLowerCase('de-DE');
+    }
+
+    function canonicalRankingCategory(value) {
+        const normalized = String(value == null ? '' : value)
+            .normalize('NFKC')
+            .replace(/\s+/gu, ' ')
+            .trim()
+            .toLocaleLowerCase('de-DE');
+        if (!normalized) return null;
+        if (/(^|[^a-z])bezirksliga(?=$|[^a-z])/.test(normalized)) return 'Bezirksliga';
+        const classMatch = normalized.match(/(^|[^a-z])([abc])[\s-]*klasse(?=$|[^a-z])/);
+        return classMatch ? `${classMatch[2].toUpperCase()}-Klasse` : null;
+    }
+
+    function rankingPlayerCategory(player) {
+        if (!player || typeof player !== 'object') return null;
+        return canonicalRankingCategory(player.league || player.category || player.ranking);
+    }
+
+    function rankingRecordKey(player) {
+        if (!player || typeof player !== 'object') return null;
+        const category = rankingPlayerCategory(player);
+        const id = String(player.id == null ? '' : player.id).trim();
+        return category && id ? `${category}|${id}` : null;
+    }
+
+    function normalizedRankingClubNumber(value) {
+        const normalized = String(value == null ? '' : value).trim();
+        if (!normalized) return '';
+        return /^\d+$/.test(normalized)
+            ? normalized.replace(/^0+(?=\d)/, '')
+            : normalized.toLocaleLowerCase('de-DE');
+    }
+
+    function rankingPersonKey(player) {
+        if (!player || typeof player !== 'object') return null;
+        const vNr = normalizedRankingClubNumber(player.v_nr ?? player.vNr);
+        const id = String(player.id == null ? '' : player.id).trim();
+        const name = canonicalRankingPlayerName(player.name);
+        return vNr && id && name ? `${vNr}|${id}|${name}` : null;
+    }
+
+    function groupRankingPeople(players) {
+        if (!Array.isArray(players)) return [];
+        const categoryOrder = new Map([
+            ['Bezirksliga', 0],
+            ['A-Klasse', 1],
+            ['B-Klasse', 2],
+            ['C-Klasse', 3],
+        ]);
+        const groups = new Map();
+        players.forEach((player) => {
+            const recordKey = rankingRecordKey(player);
+            const personKey = rankingPersonKey(player);
+            if (!recordKey || !personKey) return;
+            const category = rankingPlayerCategory(player);
+            const record = { ...player, category, recordKey, personKey };
+            if (!groups.has(personKey)) groups.set(personKey, []);
+            groups.get(personKey).push(record);
+        });
+        return Array.from(groups, ([personKey, unsortedRecords]) => {
+            const records = [...unsortedRecords].sort((left, right) => (
+                (categoryOrder.get(left.category) ?? 99) - (categoryOrder.get(right.category) ?? 99) ||
+                left.recordKey.localeCompare(right.recordKey, 'de-DE')
+            ));
+            const first = records[0];
+            return {
+                personKey,
+                name: String(first.name ?? '').trim(),
+                vNr: normalizedRankingClubNumber(first.v_nr ?? first.vNr),
+                id: String(first.id).trim(),
+                records,
+                recordKeys: records.map((record) => record.recordKey),
+                categories: records.map((record) => record.category),
+            };
+        }).sort((left, right) => left.personKey.localeCompare(right.personKey, 'de-DE'));
+    }
+
+    function createPlayerProfile(group, primaryRecordKey, teamName) {
+        if (!group || typeof group !== 'object' || !Array.isArray(group.records)) return null;
+        const requestedKey = String(primaryRecordKey == null ? '' : primaryRecordKey).trim();
+        const matches = group.records.filter((record) => record.recordKey === requestedKey);
+        if (!requestedKey || matches.length !== 1) return null;
+        const primary = matches[0];
+        if (rankingPersonKey(primary) !== group.personKey) return null;
+        const profile = {
+            version: PLAYER_PROFILE_VERSION,
+            recordKey: requestedKey,
+            personKey: group.personKey,
+            id: String(primary.id).trim(),
+            vNr: normalizedRankingClubNumber(primary.v_nr ?? primary.vNr),
+            name: String(group.name || primary.name || '').trim(),
+            primaryLeague: rankingPlayerCategory(primary),
+        };
+        const normalizedTeamName = String(teamName == null ? '' : teamName).trim();
+        if (normalizedTeamName) profile.teamName = normalizedTeamName;
+        return validatePlayerProfile(profile).status === 'valid' ? profile : null;
+    }
+
+    function validatePlayerProfile(value) {
+        const invalid = { status: 'invalid', profile: null };
+        if (!value || typeof value !== 'object' || Array.isArray(value)) return invalid;
+        if (value.version !== PLAYER_PROFILE_VERSION) return invalid;
+        const stringFields = ['recordKey', 'personKey', 'id', 'vNr', 'name', 'primaryLeague'];
+        if (stringFields.some((field) => (
+            typeof value[field] !== 'string' || !value[field].trim() || value[field] !== value[field].trim()
+        ))) return invalid;
+        if (value.teamName !== undefined && (
+            typeof value.teamName !== 'string' || !value.teamName.trim() || value.teamName !== value.teamName.trim()
+        )) return invalid;
+        const primaryLeague = canonicalRankingCategory(value.primaryLeague);
+        if (!primaryLeague || primaryLeague !== value.primaryLeague) return invalid;
+        if (rankingRecordKey({ league: primaryLeague, id: value.id }) !== value.recordKey) return invalid;
+        if (rankingPersonKey({ v_nr: value.vNr, id: value.id, name: value.name }) !== value.personKey) {
+            return invalid;
+        }
+        const profile = {
+            version: PLAYER_PROFILE_VERSION,
+            recordKey: value.recordKey,
+            personKey: value.personKey,
+            id: value.id,
+            vNr: value.vNr,
+            name: value.name,
+            primaryLeague,
+        };
+        if (value.teamName !== undefined) profile.teamName = value.teamName;
+        return { status: 'valid', profile };
+    }
+
+    function resolvePlayerProfile(players, storedProfile) {
+        const validated = validatePlayerProfile(storedProfile);
+        if (validated.status !== 'valid') {
+            return { status: 'invalid', profile: null, group: null, player: null, records: [] };
+        }
+        const profile = validated.profile;
+        const matchingGroups = groupRankingPeople(players)
+            .filter((group) => group.personKey === profile.personKey);
+        if (matchingGroups.length === 0) {
+            return { status: 'missing', profile, group: null, player: null, records: [] };
+        }
+        if (matchingGroups.length !== 1) {
+            return { status: 'ambiguous', profile, group: null, player: null, records: [] };
+        }
+        const group = matchingGroups[0];
+        const primaryMatches = group.records.filter((record) => record.recordKey === profile.recordKey);
+        if (primaryMatches.length === 0) {
+            return { status: 'missing', profile, group, player: null, records: group.records };
+        }
+        if (primaryMatches.length !== 1) {
+            return { status: 'ambiguous', profile, group, player: null, records: group.records };
+        }
+        const player = primaryMatches[0];
+        if (
+            String(player.id).trim() !== profile.id ||
+            normalizedRankingClubNumber(player.v_nr ?? player.vNr) !== profile.vNr ||
+            canonicalRankingPlayerName(player.name) !== canonicalRankingPlayerName(profile.name) ||
+            rankingPlayerCategory(player) !== profile.primaryLeague
+        ) {
+            return { status: 'invalid', profile: null, group: null, player: null, records: [] };
+        }
+        return { status: 'resolved', profile, group, player, records: group.records };
+    }
+
+    function migrateLegacyPlayerProfile(players, legacyName, legacyTeam) {
+        const canonicalName = canonicalRankingPlayerName(legacyName);
+        if (!canonicalName || !Array.isArray(players)) {
+            return { status: 'missing', profile: null, group: null, player: null, records: [] };
+        }
+        const candidateGroups = groupRankingPeople(players).filter((group) => (
+            canonicalRankingPlayerName(group.name) === canonicalName
+        ));
+        if (candidateGroups.length === 0) {
+            return { status: 'missing', profile: null, group: null, player: null, records: [] };
+        }
+        if (candidateGroups.length !== 1 || candidateGroups[0].records.length !== 1) {
+            return { status: 'ambiguous', profile: null, group: null, player: null, records: [] };
+        }
+        const group = candidateGroups[0];
+        const player = group.records[0];
+        const profile = createPlayerProfile(group, player.recordKey, legacyTeam);
+        if (!profile) {
+            return { status: 'invalid', profile: null, group: null, player: null, records: [] };
+        }
+        return { status: 'resolved', profile, group, player, records: group.records };
     }
 
     function matchRankingPlayer(players, savedName) {
@@ -953,6 +1176,10 @@
 
     return {
         VISIT_SNAPSHOT_VERSION,
+        PLAYER_PROFILE_VERSION,
+        PLAYER_PROFILE_STORAGE_KEY,
+        escapeHtmlText,
+        probePublishedData,
         buildVisitSnapshot,
         buildTeamResultsFingerprint,
         readVisitSnapshot,
@@ -967,6 +1194,14 @@
         buildSeasonNotice,
         enrichRankingPlayersWithClubs,
         canonicalRankingPlayerName,
+        canonicalRankingCategory,
+        rankingRecordKey,
+        rankingPersonKey,
+        groupRankingPeople,
+        createPlayerProfile,
+        validatePlayerProfile,
+        resolvePlayerProfile,
+        migrateLegacyPlayerProfile,
         matchRankingPlayer,
         filterAndSortRanking,
         buildIcsContent,

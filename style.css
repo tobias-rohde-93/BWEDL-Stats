@@ -1602,6 +1602,38 @@ a.club-contact-field__value {
         transition-duration: 0.01ms !important;
     }
 }
+.profile-selection-status {
+    min-height: 1.5em;
+    margin: -12px 0 18px;
+    color: #93c5fd;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.profile-selection-status--warning {
+    color: #fbbf24;
+}
+
+.profile-selection-status--error {
+    color: #fca5a5;
+}
+
+.profile-primary-class {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: #e2e8f0;
+}
+
+.profile-primary-class__select {
+    width: 100%;
+    padding: 12px;
+    color: #ffffff;
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-radius: 6px;
+}
+
 .visit-changes-card {
     margin-bottom: 20px;
     padding: 18px 20px;

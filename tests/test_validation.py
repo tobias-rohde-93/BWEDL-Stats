@@ -87,7 +87,10 @@ def player(player_id: Any, name: str, league: str) -> dict[str, Any]:
 
 def candidate_for(categories: tuple[str, ...], season: str | None = "2026/27") -> dict:
     candidate = {
-        "rankings": {category: f"<table>{category}</table>" for category in categories},
+        "rankings": {
+            category: f"<table><tr><td>{category}</td></tr></table>"
+            for category in categories
+        },
         "players": [
             player(str(index), f"Player {index}", category)
             for index, category in enumerate(categories, 1)
@@ -213,6 +216,33 @@ def test_present_malformed_ranking_table_blocks_candidate(
 
 
 @pytest.mark.parametrize(
+    "unsafe_table",
+    [
+        "<table><tr><td onclick='run()'>Bezirksliga</td></tr></table>",
+        "<table class='source'><tr><td>Bezirksliga</td></tr></table>",
+        "<table><tr><td><script>run()</script>Bezirksliga</td></tr></table>",
+        "<table><tr><td><svg onload='run()'></svg>Bezirksliga</td></tr></table>",
+    ],
+)
+def test_unsafe_ranking_table_blocks_candidate(
+    unsafe_table: str,
+    prior_rankings: dict,
+) -> None:
+    candidate = candidate_for(REQUIRED_CATEGORIES)
+    candidate["rankings"] = {
+        category: "<table><tr><td>Safe</td></tr></table>"
+        for category in REQUIRED_CATEGORIES
+    }
+    candidate["rankings"]["Bezirksliga"] = unsafe_table
+
+    result = validate_rankings(candidate, prior_rankings)
+
+    assert result.decision is Decision.BLOCKED
+    assert "unsafe" in " ".join(result.reasons).lower()
+    assert "run()" not in " ".join(result.reasons)
+
+
+@pytest.mark.parametrize(
     "malformed_table",
     [
         "</table><table>",
@@ -246,7 +276,8 @@ def test_empty_ranking_table_retains_previous_season(prior_rankings: dict) -> No
 def test_ranking_table_tags_are_case_insensitive(prior_rankings: dict) -> None:
     candidate = candidate_for(REQUIRED_CATEGORIES)
     candidate["rankings"] = {
-        category: f"<TABLE>{category}</TABLE>" for category in REQUIRED_CATEGORIES
+        category: f"<TABLE><TR><TD>{category}</TD></TR></TABLE>"
+        for category in REQUIRED_CATEGORIES
     }
 
     result = validate_rankings(candidate, prior_rankings)
@@ -476,6 +507,26 @@ def test_complete_current_leagues_publish_with_zero_standings() -> None:
     assert result.effective_season == "2026/27"
     assert result.metrics["regular_leagues"] == 13
     assert result.reasons == ()
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda table: table.replace("<table>", "<table class='source'>", 1),
+        lambda table: table.replace("<tr>", "<tr onclick='run()'>", 1),
+        lambda table: table.replace("Bezirksliga Team", "<script>run()</script>Bezirksliga Team", 1),
+    ],
+)
+def test_unsafe_current_league_table_blocks_without_echoing_payload(mutation) -> None:
+    candidate = league_candidate()
+    league = candidate["leagues"]["Bezirksliga 2026-2027"]
+    league["table"] = mutation(league["table"])
+
+    result = validation.validate_leagues(candidate, {"season": "2025/26"})
+
+    assert result.decision is Decision.BLOCKED
+    assert "unsafe" in " ".join(result.reasons).lower()
+    assert "run()" not in " ".join(result.reasons)
 
 
 def test_league_season_is_inferred_from_newest_regular_key_suffix() -> None:

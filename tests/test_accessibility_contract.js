@@ -151,11 +151,18 @@ function createFocusDocument() {
     const activateSearchResult = new Function(
         'closeSearchResults', `${activateSearchSource}; return activateSearchResult;`,
     )(closeSearchResults);
+    const searchLabelSource = extractFunction(bundle, 'replaceWithSearchResultLabel');
+    const replaceWithSearchResultLabel = new Function(
+        'document', `${searchLabelSource}; return replaceWithSearchResultLabel;`,
+    )(document);
     const handleSearch = new Function(
         'document', 'window', 'searchResults', 'searchInput', 'navigateTo',
-        'closeSearchResults', 'activateSearchResult',
+        'closeSearchResults', 'activateSearchResult', 'replaceWithSearchResultLabel',
         `${source}; return handleSearch;`,
-    )(document, window, searchResults, searchInput, navigateTo, closeSearchResults, activateSearchResult);
+    )(
+        document, window, searchResults, searchInput, navigateTo,
+        closeSearchResults, activateSearchResult, replaceWithSearchResultLabel,
+    );
 
     handleSearch({ target: searchInput });
     assert.equal(searchResults.children.length, 1);
@@ -308,9 +315,9 @@ const requestedShellUrls = versionedShellUrls(html);
 const requestedLocalAssets = localAssetUrls(html);
 const cachedAssets = serviceWorkerAssets(worker);
 assert.deepEqual(requestedShellUrls, [
-    './style.css?v=5',
-    './app_utils.js?v=2',
-    './bundle_v31.js?v=3.5',
+    './style.css?v=6',
+    './app_utils.js?v=3',
+    './bundle_v31.js?v=3.6',
 ]);
 assert.deepEqual(
     cachedAssets.filter((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)/.test(asset)),

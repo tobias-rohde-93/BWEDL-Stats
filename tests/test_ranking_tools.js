@@ -129,6 +129,7 @@ function createDocument() {
         set innerHTML(value) { this.usedInnerHTML = true; this._textContent = String(value); this.children = []; }
         get innerHTML() { return this._textContent; }
         get firstChild() { return this.children[0] || null; }
+        get firstElementChild() { return this.children[0] || null; }
         appendChild(child) { this.children.push(child); child.parentElement = this; return child; }
         append(...children) { children.forEach((child) => this.appendChild(child)); }
         replaceChildren(...children) { this.children.forEach((child) => { child.parentElement = null; }); this.children = []; this.append(...children); }
@@ -140,7 +141,11 @@ function createDocument() {
         focus() { this.focused = true; }
         scrollIntoView(options) { this.scrolledWith = options; }
     }
-    return { createElement: (tagName) => new Element(tagName), getElementById: (id) => byId.get(id) || null };
+    return {
+        createElement: (tagName) => new Element(tagName),
+        createDocumentFragment: () => new Element('#fragment'),
+        getElementById: (id) => byId.get(id) || null,
+    };
 }
 
 function descendants(root) { return [root, ...root.children.flatMap(descendants)]; }
@@ -149,9 +154,9 @@ const document = createDocument();
 const contentArea = document.createElement('main');
 const topBarTitle = document.createElement('h1');
 const rankingData = { players: [
-    { name: '<img src=x onerror=alert(1)>', league: 'A-Klasse', rank: '3a', points: '30', company: 'DC Drei', v_nr: '003', rounds: { R1: 10, R2: 10, R3: 10 } },
-    { name: 'Café Spieler', league: 'A-Klasse', rank: '1', points: '20', company: 'DC Eins', v_nr: '001', rounds: { R1: 10, R2: 10 } },
-    { name: 'Bob', league: 'A-Klasse', rank: '2', points: '30', company: 'DC Zwei', v_nr: '002', rounds: { R1: 15, R2: 15 } },
+    { id: '3', name: '<img src=x onerror=alert(1)>', league: 'A-Klasse', rank: '3a', points: '30', company: 'DC Drei', v_nr: '003', rounds: { R1: 10, R2: 10, R3: 10 } },
+    { id: '1', name: 'Café Spieler', league: 'A-Klasse', rank: '1', points: '20', company: 'DC Eins', v_nr: '001', rounds: { R1: 10, R2: 10 } },
+    { id: '2', name: 'Bob', league: 'A-Klasse', rank: '2', points: '30', company: 'DC Zwei', v_nr: '002', rounds: { R1: 15, R2: 15 } },
 ] };
 const clubData = { clubs: [
     { number: '001', name: 'DC Eins' },
@@ -167,7 +172,8 @@ const renderRanking = compileFunction('renderRanking', {
     document,
     rankingData,
     clubData,
-    myPlayerName: '  CAFE\u0301   SPIELER ',
+    myPlayerProfile: { recordKey: 'A-Klasse|1' },
+    isMyPlayerRecord: (player) => BwedlAppUtils.rankingRecordKey(player) === 'A-Klasse|1',
     createSeasonNotice: () => seasonNotice,
     calculateTotalPoints: (player) => Number(player.points),
     calculatePlayerStats: (player) => {
@@ -230,8 +236,8 @@ assert.match(document.getElementById('ranking-tools-status').textContent, /nicht
 assert.equal(typeof global.alert, 'undefined', 'missing saved players use live feedback, not alerts');
 
 const collisionData = { players: [
-    { name: 'Anna  Müller', league: 'A-Klasse', rank: '1', points: '10', rounds: { R1: 10 } },
-    { name: 'anna müller', league: 'A-Klasse', rank: '2', points: '9', rounds: { R1: 9 } },
+    { id: '11', v_nr: '001', name: 'Anna  Müller', league: 'A-Klasse', rank: '1', points: '10', rounds: { R1: 10 } },
+    { id: '12', v_nr: '002', name: 'anna müller', league: 'A-Klasse', rank: '2', points: '9', rounds: { R1: 9 } },
 ] };
 const collisionRender = compileFunction('renderRanking', {
     topBarTitle,
@@ -239,7 +245,8 @@ const collisionRender = compileFunction('renderRanking', {
     document,
     rankingData: collisionData,
     clubData: { clubs: [] },
-    myPlayerName: 'ANNA MÜLLER',
+    myPlayerProfile: { recordKey: 'A-Klasse|999' },
+    isMyPlayerRecord: () => false,
     createSeasonNotice: () => null,
     calculateTotalPoints: (player) => Number(player.points),
     calculatePlayerStats: (player) => ({ count: 1, avg: Number(player.points) }),
@@ -248,35 +255,62 @@ const collisionRender = compileFunction('renderRanking', {
 });
 collisionRender('A-Klasse');
 const collisionRows = descendants(contentArea.firstChild).find((element) => element.tagName === 'TBODY').children;
-assert.equal(collisionRows.some((row) => row.classList.contains('my-player-row')), false, 'ambiguous canonical names highlight no row');
+assert.equal(collisionRows.some((row) => row.classList.contains('my-player-row')), false, 'same names cannot hijack an exact profile');
 document.getElementById('ranking-my-position').dispatch('click');
-assert.match(document.getElementById('ranking-tools-status').textContent, /nicht eindeutig/i);
+assert.match(document.getElementById('ranking-tools-status').textContent, /nicht in dieser Rangliste/i);
 
 class MaliciousRankingDOMParser {
     parseFromString(value, type) {
         assert.match(value, /onerror/);
         assert.equal(type, 'text/html');
-        return {
+        const thead = { tagName: 'THEAD' };
+        const tbody = { tagName: 'TBODY' };
+        const cell = (tagName, textContent) => ({
+            tagName,
+            textContent,
+            getAttribute() { return null; },
+        });
+        const rows = [
+            { parentElement: thead, children: [
+                cell('TH', 'Rang<script>alert(1)</script>'),
+                cell('TH', 'Name'),
+            ] },
+            { parentElement: tbody, children: [
+                cell('TD', '1'),
+                cell('TD', 'Spieler <img src=x onerror=alert(2)>'),
+            ] },
+        ];
+        const table = {
             querySelectorAll(selector) {
                 assert.equal(selector, 'tr');
-                return [
-                    { children: [
-                        { tagName: 'TH', textContent: 'Rang<script>alert(1)</script>' },
-                        { tagName: 'TH', textContent: 'Name' },
-                    ] },
-                    { children: [
-                        { tagName: 'TD', textContent: '1' },
-                        { tagName: 'TD', textContent: 'Spieler <img src=x onerror=alert(2)>' },
-                    ] },
-                ];
+                return rows;
+            },
+        };
+        rows.forEach((row) => { row.closest = () => table; });
+        return {
+            querySelectorAll(selector) {
+                assert.equal(selector, 'table');
+                return [table];
             },
         };
     }
 }
 const fallbackDocument = createDocument();
+const fallbackParser = compileFunction('parseInertHtmlDocument', { DOMParser: MaliciousRankingDOMParser });
+const fallbackSpan = compileFunction('safePublishedSpan');
+const fallbackModels = compileFunction('safeTableModelsFromHtml', {
+    parseInertHtmlDocument: fallbackParser,
+    safePublishedSpan: fallbackSpan,
+});
+const fallbackModelTable = compileFunction('createSafeTableFromModel', { document: fallbackDocument });
+const fallbackTables = compileFunction('createSafeTablesFromHtml', {
+    document: fallbackDocument,
+    safeTableModelsFromHtml: fallbackModels,
+    createSafeTableFromModel: fallbackModelTable,
+});
 const safeFallbackTable = compileFunction('createSafeTableFromHtml', {
     document: fallbackDocument,
-    parseInertHtmlDocument: compileFunction('parseInertHtmlDocument', { DOMParser: MaliciousRankingDOMParser }),
+    createSafeTablesFromHtml: fallbackTables,
 });
 const fallbackContent = fallbackDocument.createElement('main');
 const fallbackNotice = fallbackDocument.createElement('aside');
@@ -290,7 +324,8 @@ const fallbackRender = compileFunction('renderRanking', {
         rankings: { 'A-Klasse': '<table onclick="alert(3)"><tr><th>Rang<script>alert(1)</script></th><th>Name</th></tr><tr><td>1</td><td><img src=x onerror=alert(2)>Spieler</td></tr></table>' },
     },
     clubData: { clubs: [] },
-    myPlayerName: null,
+    myPlayerProfile: null,
+    isMyPlayerRecord: () => false,
     createSeasonNotice: () => fallbackNotice,
     calculateTotalPoints() {},
     calculatePlayerStats() {},

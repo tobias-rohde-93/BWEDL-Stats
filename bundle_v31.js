@@ -125,6 +125,107 @@ function escapeHtmlText(value) {
         .replace(new RegExp(String.fromCharCode(39), 'g'), '&#39;');
 }
 
+function replaceWithIconLabel(element, icon, label) {
+    const iconElement = document.createElement('span');
+    iconElement.setAttribute('aria-hidden', 'true');
+    iconElement.textContent = String(icon ?? '');
+    iconElement.style.marginRight = '6px';
+    const labelElement = document.createElement('span');
+    labelElement.textContent = String(label ?? '');
+    element.replaceChildren(iconElement, labelElement);
+}
+
+function replaceWithSearchResultLabel(element, type, label, context) {
+    const typeElement = document.createElement('span');
+    typeElement.style.cssText = 'display:inline-block; width:60px; color:#64748b; font-size:0.8em; font-weight:bold;';
+    typeElement.textContent = String(type ?? '');
+    const labelElement = document.createElement('span');
+    if (!type) {
+        typeElement.style.display = 'none';
+        labelElement.style.cssText = 'display:block; color:#f8fafc; font-weight:bold;';
+    }
+    labelElement.textContent = String(label ?? '');
+    element.replaceChildren(typeElement, labelElement);
+    if (context) {
+        const contextElement = document.createElement('span');
+        contextElement.style.cssText = 'color:#94a3b8; font-size:0.8em;';
+        if (!type) contextElement.style.display = 'block';
+        contextElement.textContent = `(${String(context)})`;
+        element.appendChild(contextElement);
+    }
+}
+
+function createPlayerProfileDraft(appUtils, initialResolution = null) {
+    let selectedGroup = null;
+    let selectedRecordKey = null;
+    let selectedLabel = '';
+
+    const selectGroup = (group, preferredRecordKey = null) => {
+        selectedGroup = group && Array.isArray(group.records) ? group : null;
+        selectedLabel = selectedGroup ? String(selectedGroup.name || '') : '';
+        const requestedKey = String(preferredRecordKey == null ? '' : preferredRecordKey);
+        const requestedIsValid = Boolean(selectedGroup && selectedGroup.records.some((record) => (
+            record.recordKey === requestedKey
+        )));
+        selectedRecordKey = requestedIsValid
+            ? requestedKey
+            : selectedGroup && selectedGroup.records.length === 1
+                ? selectedGroup.records[0].recordKey
+                : null;
+        return selectedGroup;
+    };
+
+    if (initialResolution && initialResolution.status === 'resolved') {
+        selectGroup(initialResolution.group, initialResolution.profile.recordKey);
+    }
+
+    return {
+        selectGroup,
+        selectRecord(recordKey) {
+            const requestedKey = String(recordKey == null ? '' : recordKey);
+            selectedRecordKey = selectedGroup && selectedGroup.records.some((record) => (
+                record.recordKey === requestedKey
+            )) ? requestedKey : null;
+            return selectedRecordKey;
+        },
+        updateInput(value) {
+            const inputValue = String(value == null ? '' : value);
+            if (selectedGroup && inputValue !== selectedLabel) {
+                selectedGroup = null;
+                selectedRecordKey = null;
+                selectedLabel = '';
+            }
+        },
+        createProfile(teamName) {
+            if (!selectedGroup || !selectedRecordKey) return null;
+            return appUtils.createPlayerProfile(selectedGroup, selectedRecordKey, teamName);
+        },
+        getSelection() {
+            return { group: selectedGroup, recordKey: selectedRecordKey, label: selectedLabel };
+        },
+    };
+}
+
+function storeResolvedPlayerProfile(storage, appUtils, players, profile) {
+    const resolution = appUtils.resolvePlayerProfile(players, profile);
+    if (resolution.status !== 'resolved') return resolution;
+    try {
+        storage.setItem(appUtils.PLAYER_PROFILE_STORAGE_KEY, JSON.stringify(resolution.profile));
+    } catch (_error) {
+        return { status: 'write-failed', profile: null, group: null, player: null, records: [] };
+    }
+    ['myPlayerName', 'myTeamName'].forEach((key) => {
+        try { storage.removeItem(key); } catch (_error) { /* new profile is already durable */ }
+    });
+    return resolution;
+}
+
+function clearStoredPlayerProfile(storage, appUtils) {
+    [appUtils.PLAYER_PROFILE_STORAGE_KEY, 'myPlayerName', 'myTeamName'].forEach((key) => {
+        try { storage.removeItem(key); } catch (_error) { /* reset remains best effort */ }
+    });
+}
+
 function clubRankingSeasonLabel(status) {
     const season = status && typeof status.season === 'string' ? status.season.trim() : '';
     if (status && status.state === 'retained' && season) {
@@ -181,38 +282,124 @@ function parseInertHtmlDocument(html) {
     return new DOMParser().parseFromString(String(html ?? ''), 'text/html');
 }
 
-function createSafeTableFromHtml(tableHtml) {
-    const table = document.createElement('table');
-    const tableHead = document.createElement('thead');
-    const tableBody = document.createElement('tbody');
+function safePublishedSpan(value) {
+    const normalized = String(value ?? '').trim();
+    if (!/^[1-9]\d*$/.test(normalized)) return null;
+    const parsed = Number(normalized);
+    return parsed <= 100 ? normalized : null;
+}
+
+function safeTableModelsFromHtml(tableHtml) {
     const parsedDocument = parseInertHtmlDocument(tableHtml);
-    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
-        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
-            cell.tagName === 'TH' || cell.tagName === 'TD'
-        ));
-        if (sourceCells.length === 0) return;
+    return Array.from(parsedDocument.querySelectorAll('table'))
+        .filter((sourceTable) => !(
+            sourceTable.parentElement &&
+            typeof sourceTable.parentElement.closest === 'function' &&
+            sourceTable.parentElement.closest('table')
+        ))
+        .map((sourceTable) => {
+            const rows = Array.from(sourceTable.querySelectorAll('tr'))
+                .filter((sourceRow) => (
+                    typeof sourceRow.closest !== 'function' ||
+                    sourceRow.closest('table') === sourceTable
+                ))
+                .map((sourceRow, rowIndex) => {
+                    const cells = Array.from(sourceRow.children)
+                        .filter((cell) => cell.tagName === 'TH' || cell.tagName === 'TD')
+                        .map((cell) => ({
+                            tagName: cell.tagName.toLowerCase(),
+                            text: String(cell.textContent ?? ''),
+                            rowspan: safePublishedSpan(cell.getAttribute('rowspan')),
+                            colspan: safePublishedSpan(cell.getAttribute('colspan')),
+                        }));
+                    if (cells.length === 0) return null;
+                    const sourceSection = String(
+                        sourceRow.parentElement && sourceRow.parentElement.tagName || '',
+                    ).toLowerCase();
+                    const section = ['thead', 'tbody', 'tfoot'].includes(sourceSection)
+                        ? sourceSection
+                        : (rowIndex === 0 && cells.every((cell) => cell.tagName === 'th')
+                            ? 'thead'
+                            : 'tbody');
+                    return { section, cells };
+                })
+                .filter(Boolean);
+            return { rows };
+        })
+        .filter((model) => model.rows.length > 0);
+}
+
+function safeTableRowsFromHtml(tableHtml) {
+    return safeTableModelsFromHtml(tableHtml).flatMap((model) => (
+        model.rows.map((row) => row.cells.map((cell) => cell.text))
+    ));
+}
+
+function createSafeTableFromModel(model) {
+    const table = document.createElement('table');
+    let activeSectionName = null;
+    let activeSection = null;
+    model.rows.forEach((sourceRow) => {
+        if (sourceRow.section !== activeSectionName) {
+            activeSectionName = sourceRow.section;
+            activeSection = document.createElement(activeSectionName);
+            table.appendChild(activeSection);
+        }
         const row = document.createElement('tr');
-        sourceCells.forEach((sourceCell) => {
-            const cell = document.createElement(sourceCell.tagName.toLowerCase());
-            cell.textContent = String(sourceCell.textContent ?? '');
+        sourceRow.cells.forEach((sourceCell) => {
+            const cell = document.createElement(sourceCell.tagName);
+            cell.textContent = sourceCell.text;
+            if (sourceCell.rowspan !== null) cell.setAttribute('rowspan', sourceCell.rowspan);
+            if (sourceCell.colspan !== null) cell.setAttribute('colspan', sourceCell.colspan);
             row.appendChild(cell);
         });
-        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
-        (isHeaderRow ? tableHead : tableBody).appendChild(row);
+        activeSection.appendChild(row);
     });
-    if (tableHead.children.length > 0) table.appendChild(tableHead);
-    if (tableBody.children.length > 0) table.appendChild(tableBody);
     return table;
+}
+
+function createSafeTablesFromHtml(tableHtml) {
+    const fragment = document.createDocumentFragment();
+    safeTableModelsFromHtml(tableHtml).forEach((model) => {
+        fragment.appendChild(createSafeTableFromModel(model));
+    });
+    return fragment;
+}
+
+function createSafeTableFromHtml(tableHtml) {
+    const fragment = createSafeTablesFromHtml(tableHtml);
+    return fragment.firstElementChild || document.createElement('table');
+}
+
+function replaceWithSafeTables(container, tableHtml) {
+    const fragment = createSafeTablesFromHtml(tableHtml);
+    const tableCount = fragment.children.length;
+    container.replaceChildren(fragment);
+    return tableCount;
+}
+
+function replaceWithSafeCupTables(container, tableHtml, matchDays) {
+    const safeTables = Array.from(createSafeTablesFromHtml(tableHtml).children);
+    const roundNames = Object.keys(matchDays || {});
+    const fragment = document.createDocumentFragment();
+    safeTables.forEach((table, index) => {
+        if (roundNames[index]) {
+            const heading = document.createElement('h3');
+            heading.textContent = roundNames[index];
+            fragment.appendChild(heading);
+        }
+        fragment.appendChild(table);
+    });
+    container.replaceChildren(fragment);
+    return safeTables.length;
 }
 
 function findWithdrawnTeams(tableHtml) {
     const withdrawnTeams = [];
-    const parsedDocument = parseInertHtmlDocument(tableHtml);
-    Array.from(parsedDocument.querySelectorAll('tr')).forEach((row) => {
-        if (!String(row.textContent || '').toLowerCase().includes('zurückgezogen')) return;
-        const cells = Array.from(row.querySelectorAll('td'));
+    safeTableRowsFromHtml(tableHtml).forEach((cells) => {
+        if (!cells.join(' ').toLowerCase().includes('zurückgezogen')) return;
         if (cells.length < 2) return;
-        const teamName = String(cells[1].textContent || '').replace(/\u00a0/g, ' ').trim();
+        const teamName = String(cells[1] || '').replace(/\u00a0/g, ' ').trim();
         if (teamName) withdrawnTeams.push(teamName);
     });
     return withdrawnTeams;
@@ -228,31 +415,14 @@ function createSafeLeagueTableSection(leagueName, tableHtml, clubName, matchesCl
     const tableContainer = document.createElement('div');
     tableContainer.className = 'table-container table-scroll';
     tableContainer.style.cssText = 'padding: 0; border: none;';
-    const table = document.createElement('table');
-    const tableHead = document.createElement('thead');
-    const tableBody = document.createElement('tbody');
-    const parsedDocument = parseInertHtmlDocument(tableHtml);
-    Array.from(parsedDocument.querySelectorAll('tr')).forEach((sourceRow, rowIndex) => {
-        const sourceCells = Array.from(sourceRow.children).filter((cell) => (
-            cell.tagName === 'TH' || cell.tagName === 'TD'
-        ));
-        if (sourceCells.length === 0) return;
-        const row = document.createElement('tr');
-        sourceCells.forEach((sourceCell) => {
-            const cell = document.createElement(sourceCell.tagName.toLowerCase());
-            cell.textContent = String(sourceCell.textContent ?? '');
-            row.appendChild(cell);
-        });
+    const table = createSafeTableFromHtml(tableHtml);
+    Array.from(table.querySelectorAll('tbody tr')).forEach((row) => {
         if (typeof matchesClub === 'function' && matchesClub(clubName, row.textContent)) {
             row.style.background = 'rgba(59, 130, 246, 0.2)';
             row.style.fontWeight = 'bold';
             row.style.color = '#60a5fa';
         }
-        const isHeaderRow = rowIndex === 0 && sourceCells.every((cell) => cell.tagName === 'TH');
-        (isHeaderRow ? tableHead : tableBody).appendChild(row);
     });
-    if (tableHead.children.length > 0) table.appendChild(tableHead);
-    if (tableBody.children.length > 0) table.appendChild(tableBody);
     tableContainer.appendChild(table);
     section.append(heading, tableContainer);
     return section;
@@ -557,8 +727,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- My Profile State ---
+    let myPlayerProfile = null;
+    let myPlayerResolution = { status: 'missing', profile: null, group: null, player: null, records: [] };
     let myPlayerName = localStorage.getItem('myPlayerName');
     let myTeamName = localStorage.getItem('myTeamName');
+    let legacyProfileNeedsConfirmation = false;
+
+    function applyPlayerResolution(resolution) {
+        myPlayerResolution = resolution && resolution.status === 'resolved'
+            ? resolution
+            : { status: 'missing', profile: null, group: null, player: null, records: [] };
+        myPlayerProfile = myPlayerResolution.profile;
+        myPlayerName = myPlayerProfile ? myPlayerProfile.name : null;
+        myTeamName = myPlayerProfile
+            ? (myPlayerProfile.teamName || myPlayerResolution.player.company || null)
+            : null;
+    }
+
+    function getMyPrimaryPlayer() {
+        return myPlayerResolution.status === 'resolved' ? myPlayerResolution.player : null;
+    }
+
+    function getMyPlayerRecords() {
+        return myPlayerResolution.status === 'resolved' ? [...myPlayerResolution.records] : [];
+    }
+
+    function isMyPlayerRecord(player) {
+        if (!myPlayerProfile || !player) return false;
+        const personKey = window.BwedlAppUtils.rankingPersonKey(player);
+        const recordKey = window.BwedlAppUtils.rankingRecordKey(player);
+        return personKey === myPlayerProfile.personKey && getMyPlayerRecords().some((record) => (
+            record.recordKey === recordKey
+        ));
+    }
+
+    function initializePlayerProfile() {
+        let storedProfile = null;
+        try {
+            const rawProfile = localStorage.getItem(window.BwedlAppUtils.PLAYER_PROFILE_STORAGE_KEY);
+            storedProfile = rawProfile ? JSON.parse(rawProfile) : null;
+        } catch (_error) {
+            storedProfile = null;
+        }
+
+        const storedResolution = window.BwedlAppUtils.resolvePlayerProfile(
+            rankingData.players || [],
+            storedProfile,
+        );
+        if (storedResolution.status === 'resolved') {
+            applyPlayerResolution(storedResolution);
+            return;
+        }
+
+        const legacyName = localStorage.getItem('myPlayerName');
+        const legacyTeam = localStorage.getItem('myTeamName');
+        const migration = window.BwedlAppUtils.migrateLegacyPlayerProfile(
+            rankingData.players || [],
+            legacyName,
+            legacyTeam,
+        );
+        if (migration.status === 'resolved') {
+            const storedMigration = storeResolvedPlayerProfile(
+                localStorage,
+                window.BwedlAppUtils,
+                rankingData.players || [],
+                migration.profile,
+            );
+            if (storedMigration.status === 'resolved') {
+                applyPlayerResolution(storedMigration);
+                return;
+            }
+        }
+
+        applyPlayerResolution(null);
+        if (legacyName) {
+            myPlayerName = legacyName;
+            myTeamName = legacyTeam;
+            legacyProfileNeedsConfirmation = migration.status === 'ambiguous';
+        }
+    }
 
     function createProfileOnboardingCard() {
         const card = document.createElement('section');
@@ -588,19 +835,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
 
-    const setMyPlayer = (name) => {
-        if (name) {
-            localStorage.setItem('myPlayerName', name);
-            myPlayerName = name;
+    const setMyPlayer = (profile) => {
+        if (profile) {
+            const stored = storeResolvedPlayerProfile(
+                localStorage,
+                window.BwedlAppUtils,
+                rankingData.players || [],
+                profile,
+            );
+            if (stored.status !== 'resolved') return false;
+            applyPlayerResolution(stored);
+            legacyProfileNeedsConfirmation = false;
         } else {
-            localStorage.removeItem('myPlayerName');
-            myPlayerName = null;
+            clearStoredPlayerProfile(localStorage, window.BwedlAppUtils);
+            applyPlayerResolution(null);
+            legacyProfileNeedsConfirmation = false;
         }
         // Update Sidebar Link
         const link = document.getElementById('my-profile-link');
         if (link) {
-            link.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
-            link.style.color = myPlayerName ? "#f8fafc" : "#94a3b8";
+            replaceWithIconLabel(link, '👤', myPlayerProfile ? myPlayerProfile.name : 'Mein Profil');
+            link.style.color = myPlayerProfile ? "#f8fafc" : "#94a3b8";
         }
         if (typeof refreshVisitSnapshotBaseline === 'function') {
             refreshVisitSnapshotBaseline(false);
@@ -608,6 +863,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dashboardState = { type: 'dashboard', id: null };
         history.replaceState(dashboardState, "", "#dashboard");
         navigateTo('dashboard', null, false);
+        return true;
     };
 
     const mobileOverlay = document.getElementById('mobile-overlay');
@@ -704,6 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const derivedLigapokalArchive = window.BwedlAppUtils.buildLigapokalArchiveEntries(window.ARCHIVE_TABLES);
         ligapokalArchive = { ...derivedLigapokalArchive, ...ligapokalArchive };
     }
+    initializePlayerProfile();
 
     function routeExists(type, id) {
         if (type === 'league') {
@@ -1095,7 +1352,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 init();
             });
     } else {
-        init();
+        // Let the DOMContentLoaded callback finish defining route-specific classes
+        // before a deep link can render one of them (for example #tools).
+        queueMicrotask(init);
     }
 
     function init() {
@@ -1168,7 +1427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             profileLink.type = 'button';
             profileLink.id = 'my-profile-link';
             profileLink.className = 'nav-section-header';
-            profileLink.innerHTML = myPlayerName ? `👤 ${myPlayerName}` : `👤 Mein Profil`;
+            replaceWithIconLabel(profileLink, '👤', myPlayerProfile ? myPlayerProfile.name : 'Mein Profil');
             profileLink.style.padding = "10px 15px";
             profileLink.style.cursor = "pointer";
             profileLink.style.color = "#94a3b8";
@@ -1495,7 +1754,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // 3. Players (from Ranking Data)
+        // 3. Players (grouped by exact person identity)
         if (rankingData.players) {
             // Pre-build club lookup maps for O(1) access instead of O(n) per player
             const clubNameMap = new Map();
@@ -1507,24 +1766,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Deduplicate players by ID or Name+Club
-            const seenPlayers = new Set();
-            rankingData.players.forEach(p => {
-                const uniqueKey = p.id ? p.id : (p.name + p.v_nr);
-                if (!seenPlayers.has(uniqueKey)) {
-                    seenPlayers.add(uniqueKey);
-
-                    const clubIdx = clubIdxMap.get(p.v_nr);
-                    if (clubIdx !== undefined) {
-                        searchIndex.push({
-                            label: p.name,
-                            type: "Spieler",
-                            context: clubNameMap.get(p.v_nr) || "",
-                            category: 'club',
-                            id: clubIdx
-                        });
-                    }
-                }
+            window.BwedlAppUtils.groupRankingPeople(rankingData.players).forEach((group) => {
+                const representative = group.records[0];
+                const clubIdx = clubIdxMap.get(representative.v_nr);
+                const clubName = clubNameMap.get(representative.v_nr) || representative.company || 'Vereinslos';
+                searchIndex.push({
+                    label: group.name,
+                    type: "Spieler",
+                    context: `${clubName} · ${group.categories.join(', ')}`,
+                    category: clubIdx === undefined ? 'player' : 'club',
+                    id: clubIdx === undefined ? group.personKey : clubIdx,
+                    profileGroup: group,
+                });
             });
         }
 
@@ -1662,7 +1915,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const el = document.createElement('button');
             el.type = 'button';
             el.className = 'league-item';
-            el.innerHTML = `<span style="color: #fbbf24; margin-right: 6px;">★</span> ${fav.name}`;
+            replaceWithIconLabel(el, '★', fav.name);
+            el.firstElementChild.style.color = '#fbbf24';
             el.addEventListener('click', () => {
                 navigateTo(fav.type, fav.id);
             });
@@ -1696,15 +1950,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function extractLeagueLeader(tableHtml) {
-        const temp = document.createElement('div');
-        temp.innerHTML = tableHtml;
-        const rows = temp.querySelectorAll('tr');
-        for (let row of rows) {
-            const cells = row.querySelectorAll('td');
+        const rows = safeTableRowsFromHtml(tableHtml);
+        for (const cells of rows) {
             if (cells.length > 2) {
-                const rankText = cells[0].textContent.trim().replace('.', '');
+                const rankText = cells[0].trim().replace('.', '');
                 if (rankText === '1') {
-                    return cells[1].textContent.trim();
+                    return cells[1].trim();
                 }
             }
         }
@@ -1845,8 +2096,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let team = null;
         let nextGame = null;
 
-        if (myPlayerName && Array.isArray(rankingData.players)) {
-            const selected = rankingData.players.find((entry) => entry.name === myPlayerName);
+        if (myPlayerProfile && Array.isArray(rankingData.players)) {
+            const selected = getMyPrimaryPlayer();
             if (selected) {
                 const canonicalName = window.BwedlAppUtils.canonicalRankingPlayerName(selected.name);
                 player = {
@@ -2001,6 +2252,12 @@ document.addEventListener('DOMContentLoaded', () => {
         topBarTitle.textContent = "Mein Profil";
         contentArea.innerHTML = '';
 
+        const profileGroups = window.BwedlAppUtils.groupRankingPeople(rankingData.players || []);
+        const draft = createPlayerProfileDraft(
+            window.BwedlAppUtils,
+            myPlayerResolution.status === 'resolved' ? myPlayerResolution : null,
+        );
+
         const container = document.createElement('div');
         container.className = "fade-in";
         container.style.padding = "20px";
@@ -2027,6 +2284,16 @@ document.addEventListener('DOMContentLoaded', () => {
         desc.style.textAlign = "center";
         desc.style.marginBottom = "30px";
         card.appendChild(desc);
+
+        const profileStatus = document.createElement('p');
+        profileStatus.className = 'profile-selection-status';
+        profileStatus.setAttribute('role', 'status');
+        profileStatus.setAttribute('aria-live', 'polite');
+        if (legacyProfileNeedsConfirmation) {
+            profileStatus.textContent = 'Der bisher gespeicherte Name ist nicht eindeutig. Bitte wähle den exakten Spielervorschlag und bestätige die primäre Klasse.';
+            profileStatus.classList.add('profile-selection-status--warning');
+        }
+        card.appendChild(profileStatus);
 
         // --- Name Input Group ---
         const inputGroup = document.createElement('div');
@@ -2072,6 +2339,18 @@ document.addEventListener('DOMContentLoaded', () => {
         suggestionsBox.style.overflowY = "auto";
         suggestionsBox.style.display = "none";
 
+        // --- Primary ranking class (shown only for real multi-class people) ---
+        const classGroup = document.createElement('div');
+        classGroup.className = 'profile-primary-class';
+        classGroup.style.display = 'none';
+        const classLabel = document.createElement('label');
+        classLabel.textContent = 'Primäre Klasse';
+        const classSelect = document.createElement('select');
+        classSelect.id = 'profile-primary-class-select';
+        classSelect.className = 'profile-primary-class__select';
+        classLabel.setAttribute('for', classSelect.id);
+        classGroup.append(classLabel, classSelect);
+
         // --- Team Select Group (Hidden initially) ---
         const teamGroup = document.createElement('div');
         teamGroup.style.marginBottom = "30px";
@@ -2085,12 +2364,14 @@ document.addEventListener('DOMContentLoaded', () => {
         teamGroup.appendChild(teamLabel);
 
         const teamSelect = document.createElement('select');
+        teamSelect.id = 'profile-team-select';
         teamSelect.style.width = "100%";
         teamSelect.style.padding = "12px";
         teamSelect.style.borderRadius = "6px";
         teamSelect.style.border = "1px solid #475569";
         teamSelect.style.background = "#0f172a";
         teamSelect.style.color = "white";
+        teamLabel.setAttribute('for', teamSelect.id);
         teamGroup.appendChild(teamSelect);
 
         // Logic
@@ -2114,23 +2395,49 @@ document.addEventListener('DOMContentLoaded', () => {
             teamGroup.style.display = 'block';
         };
 
+        const clubNameForGroup = (group) => {
+            const representative = group && group.records && group.records[0];
+            if (!representative) return '';
+            const club = clubData.clubs && clubData.clubs.find((candidate) => (
+                String(candidate.number) === String(representative.v_nr)
+            ));
+            return club ? club.name : (representative.company || 'Unbekannt');
+        };
 
-        // Auto-show team if player already selected
-        if (myPlayerName) {
-            // Try to restore saved team or find context
-            const savedTeam = localStorage.getItem('myTeamName');
-            if (rankingData && rankingData.players) {
-                const p = rankingData.players.find(rp => rp.name === myPlayerName);
-                if (p) {
-                    if (p.v_nr && typeof CLUB_DATA !== 'undefined' && CLUB_DATA.clubs) {
-                        const club = CLUB_DATA.clubs.find(c => c.number == p.v_nr);
-                        if (club) {
-                            populateTeams(club.name);
-                        }
-                    }
-                    if (savedTeam) teamSelect.value = savedTeam;
-                }
+        const populatePrimaryClasses = (group, preferredRecordKey = null) => {
+            classSelect.replaceChildren();
+            if (!group || group.records.length <= 1) {
+                classGroup.style.display = 'none';
+                return;
             }
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = '-- Primäre Klasse wählen --';
+            classSelect.appendChild(placeholder);
+            group.records.forEach((record) => {
+                const option = document.createElement('option');
+                option.value = record.recordKey;
+                option.textContent = record.category;
+                classSelect.appendChild(option);
+            });
+            classSelect.value = preferredRecordKey || '';
+            classGroup.style.display = 'block';
+        };
+
+        const showSelectedGroup = (group, preferredRecordKey = null) => {
+            draft.selectGroup(group, preferredRecordKey);
+            const selection = draft.getSelection();
+            populatePrimaryClasses(group, selection.recordKey);
+            populateTeams(clubNameForGroup(group));
+            if (myTeamName) teamSelect.value = myTeamName;
+            profileStatus.textContent = group.records.length > 1
+                ? 'Mehrere Klassen gefunden. Bitte bestätige deine primäre Klasse.'
+                : `${group.name} wurde eindeutig ausgewählt.`;
+            profileStatus.classList.remove('profile-selection-status--error');
+        };
+
+        if (myPlayerResolution.status === 'resolved') {
+            showSelectedGroup(myPlayerResolution.group, myPlayerProfile.recordKey);
         }
 
         const closeSuggestions = (restoreFocus = false) => (
@@ -2139,17 +2446,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const selectSuggestion = (match) => {
             selectProfileSuggestion(match, input, suggestionsBox, (selectedMatch) => {
-                if (rankingData && rankingData.players) {
-                    const player = rankingData.players.find(rp => rp.name === selectedMatch.label);
-                    if (player && player.v_nr && typeof CLUB_DATA !== 'undefined') {
-                        const club = CLUB_DATA.clubs.find(c => c.number == player.v_nr);
-                        populateTeams(club ? club.name : (player.company || 'Unbekannt'));
-                    } else if (player && player.company) {
-                        populateTeams(player.company);
-                    }
-                }
+                showSelectedGroup(selectedMatch.profileGroup);
             });
         };
+
+        classSelect.addEventListener('change', () => {
+            draft.selectRecord(classSelect.value);
+            profileStatus.textContent = classSelect.value
+                ? `Primäre Klasse: ${classSelect.options[classSelect.selectedIndex].textContent}`
+                : 'Bitte wähle deine primäre Klasse.';
+        });
 
         input.addEventListener('keydown', (event) => {
             if (event.key !== 'Escape') return;
@@ -2159,18 +2465,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         input.addEventListener('input', () => {
             const val = input.value.toLowerCase().trim();
+            draft.updateInput(input.value);
             suggestionsBox.replaceChildren();
             teamGroup.style.display = 'none';
+            classGroup.style.display = 'none';
+            profileStatus.textContent = '';
 
             if (val.length < 2) {
                 closeSuggestions(false);
                 return;
             }
 
-            if (window.searchIndex && window.searchIndex.length > 0) {
-                const matches = window.searchIndex.filter(item =>
-                    item.type === "Spieler" && item.label.toLowerCase().includes(val)
-                ).slice(0, 10);
+            if (profileGroups.length > 0) {
+                const matches = profileGroups.filter((group) => {
+                    const clubName = clubNameForGroup(group);
+                    return [group.name, clubName, ...group.categories]
+                        .some((value) => String(value).toLowerCase().includes(val));
+                }).slice(0, 10).map((group) => ({
+                    label: group.name,
+                    context: `${clubNameForGroup(group)} · ${group.categories.join(', ')}`,
+                    profileGroup: group,
+                }));
 
                 if (matches.length > 0) {
                     suggestionsBox.style.display = 'block';
@@ -2194,8 +2509,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        document.addEventListener('click', (e) => {
-            if (!inputGroup.contains(e.target)) {
+        inputGroup.addEventListener('focusout', (event) => {
+            if (!inputGroup.contains(event.relatedTarget)) {
                 closeSuggestions(false);
             }
         });
@@ -2203,6 +2518,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputGroup.appendChild(input);
         inputGroup.appendChild(suggestionsBox);
         card.appendChild(inputGroup);
+        card.appendChild(classGroup);
         card.appendChild(teamGroup);
 
         const btnRow = document.createElement('div');
@@ -2220,22 +2536,19 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.style.cursor = "pointer";
         saveBtn.style.fontWeight = "bold";
         saveBtn.onclick = () => {
-            const name = input.value.trim();
-            if (name) {
-                if (teamGroup.style.display !== 'none' && teamSelect.value) {
-                    myTeamName = teamSelect.value;
-                    localStorage.setItem('myTeamName', myTeamName);
-                } else {
-                    if (rankingData && rankingData.players) {
-                        const p = rankingData.players.find(rp => rp.name === name);
-                        if (p && p.company) {
-                            myTeamName = p.company;
-                            localStorage.setItem('myTeamName', myTeamName);
-                        }
-                    }
-                }
-                setMyPlayer(name);
-                setAppStatus(`Profil gespeichert: ${name}`);
+            const profile = draft.createProfile(teamSelect.value);
+            if (!profile) {
+                profileStatus.textContent = draft.getSelection().group
+                    ? 'Bitte wähle zuerst deine primäre Klasse.'
+                    : 'Bitte wähle einen exakten Spielervorschlag aus der Liste.';
+                profileStatus.classList.add('profile-selection-status--error');
+                return;
+            }
+            if (setMyPlayer(profile)) {
+                setAppStatus(`Profil gespeichert: ${profile.name}`);
+            } else {
+                profileStatus.textContent = 'Das Profil konnte in diesem Browser nicht gespeichert werden.';
+                profileStatus.classList.add('profile-selection-status--error');
             }
         };
 
@@ -2248,16 +2561,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resetBtn.style.borderRadius = "6px";
         resetBtn.style.cursor = "pointer";
         resetBtn.onclick = () => {
-            myPlayerName = null;
-            myTeamName = null;
-            localStorage.removeItem('myTeamName');
-            setMyPlayer(null); // Clears local storage and name
+            setMyPlayer(null);
             input.value = "";
             teamGroup.style.display = 'none';
+            classGroup.style.display = 'none';
         };
 
         btnRow.appendChild(saveBtn);
-        if (myPlayerName) btnRow.appendChild(resetBtn);
+        if (myPlayerProfile || myPlayerName) btnRow.appendChild(resetBtn);
         card.appendChild(btnRow);
 
         container.appendChild(card);
@@ -2277,13 +2588,14 @@ document.addEventListener('DOMContentLoaded', () => {
             visitChangesLifecycle.render(document, container);
         }
 
-        if (!myPlayerName) {
+        const primaryPlayer = getMyPrimaryPlayer();
+        if (!primaryPlayer) {
             container.appendChild(createProfileOnboardingCard());
         }
 
         let myStats = null;
         // --- My Profile Section ---
-        if (myPlayerName) {
+        if (primaryPlayer) {
             // myStats is now outer scope
             let myLeagueKey = null;
             let mySchedule = [];
@@ -2291,7 +2603,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let searchTeam = null;
 
             if (typeof rankingData !== 'undefined' && rankingData.players) {
-                const p = rankingData.players.find(p => p.name === myPlayerName);
+                const p = primaryPlayer;
                 if (p) {
                     const stats = calculatePlayerStats(p);
                     myStats = { ...p, ...stats };
@@ -2371,25 +2683,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     matchingLeagues.forEach(lKey => {
                         const lData = leagueData.leagues[lKey];
                         if (lData && lData.table) {
-                            const temp = document.createElement('div');
-                            temp.innerHTML = lData.table;
-                            const rows = temp.querySelectorAll('tr');
+                            const rows = safeTableRowsFromHtml(lData.table);
 
-                            rows.forEach(row => {
-                                const cells = row.querySelectorAll('td');
+                            rows.forEach(cells => {
                                 if (cells.length > 8) {
                                     // Extract Data
                                     // FIXED: Table usually has 10 columns (0-9).
                                     // Index 8 = Points. Index 7 = Diff. Index 2 = Games.
                                     // Last column (Index 9) is for penalties/notes (e.g. "(-1)" or "&nbsp;").
 
-                                    const teamName = cells[1].textContent.trim();
+                                    const teamName = cells[1].trim();
 
                                     // Robust parsing
-                                    const pointsText = cells[8].textContent.replace(/&nbsp;/g, '').trim();
+                                    const pointsText = cells[8].replace(/&nbsp;/g, '').trim();
                                     const points = parseInt(pointsText) || 0;
 
-                                    const diffText = cells[7].textContent.replace(/&nbsp;/g, '').trim();
+                                    const diffText = cells[7].replace(/&nbsp;/g, '').trim();
                                     const diff = parseInt(diffText) || 0;
 
                                     allTeams.push({
@@ -2439,15 +2748,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
                             <div>
                                 <div style="color: #60a5fa; font-weight: bold; letter-spacing: 1px; font-size: 0.8em; text-transform: uppercase; margin-bottom: 5px;">Dein Profil</div>
-                                <h1 style="margin: 0; font-size: 2.2em; color: white;">${myStats.name}</h1>
+                                <h1 style="margin: 0; font-size: 2.2em; color: white;">${escapeHtmlText(myStats.name)}</h1>
                                 <div style="color: #94a3b8; font-size: 1.1em; margin-top: 5px;">
-                                    ${myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a")} | ${searchTeam || "Vereinslos"}
+                                    ${escapeHtmlText(myLeagueKey ? myLeagueKey.split('202')[0] : (myStats.league || "Liga n/a"))} | ${escapeHtmlText(searchTeam || "Vereinslos")}
                                     ${teamRank ? `<span style="color: #fbbf24; margin-left: 10px; font-weight: bold; white-space: nowrap;">(Team-Platz: ${teamRank} <span style="font-size:0.7em; font-weight:normal; color:#64748b;">/ ${totalTeamsInClass}</span>)</span>` : ''}
                                 </div>
                             </div>
                             <div style="text-align: right;">
                                 <div style="background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; display: inline-block; white-space: nowrap;">
-                                    Rang ${myStats.rank}
+                                    Rang ${escapeHtmlText(myStats.rank)}
                                 </div>
                             </div>
                         </div>
@@ -2545,9 +2854,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Helper for items
                     const createItem = (label, val, sub) => `
                         <div style="display:flex; flex-direction:column; align-items:center;">
-                            <div style="color:#94a3b8; font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px;">${label}</div>
-                            <div style="color:white; font-size:1.4em; font-weight:bold;">${val}</div>
-                            ${sub ? `<div style="color:#64748b; font-size:0.7em;">${sub}</div>` : ''}
+                            <div style="color:#94a3b8; font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px;">${escapeHtmlText(label)}</div>
+                            <div style="color:white; font-size:1.4em; font-weight:bold;">${escapeHtmlText(val)}</div>
+                            ${sub ? `<div style="color:#64748b; font-size:0.7em;">${escapeHtmlText(sub)}</div>` : ''}
                         </div>
                      `;
 
@@ -2705,13 +3014,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div style="color: ${isPrimary ? '#60a5fa' : '#94a3b8'}; font-weight: bold; font-size: ${isPrimary ? '0.9em' : '0.7em'}; text-transform: uppercase; letter-spacing: 1px;">
                                     ${isPrimary ? '🚀 NÄCHSTES SPIEL' : `📅 SPIEL ${idx + 1}`}
                                 </div>
-                                <div style="color: #64748b; font-size: 0.7em;">${game.leagueKey ? game.leagueKey.split('202')[0].trim() : ''}</div>
+                                <div style="color: #64748b; font-size: 0.7em;">${escapeHtmlText(game.leagueKey ? game.leagueKey.split('202')[0].trim() : '')}</div>
                             </div>
                             <div style="font-size: ${isPrimary ? '1.15em' : '1em'}; color: white; margin-bottom: 4px;">
-                                Gegen <strong>${game.opponent}</strong>
+                                Gegen <strong>${escapeHtmlText(game.opponent)}</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; color: #94a3b8; font-size: 0.85em;">
-                                <span>${dateStr}</span>
+                                <span>${escapeHtmlText(dateStr)}</span>
                                 <span>${game.isHome ? '(Heim)' : '(Auswärts)'}</span>
                             </div>
                         `;
@@ -2813,18 +3122,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         row.innerHTML = `
-                            <td style="padding: 12px 10px; color: #cbd5e1;">Runde ${game.round} <span style="font-size:0.7em; color:#64748b">(${game.leagueKey ? game.leagueKey.split(' ')[0] : ''})</span></td>
+                            <td style="padding: 12px 10px; color: #cbd5e1;">Runde ${escapeHtmlText(game.round)} <span style="font-size:0.7em; color:#64748b">(${escapeHtmlText(game.leagueKey ? game.leagueKey.split(' ')[0] : '')})</span></td>
                             <td style="padding: 12px 10px;">
-                                <div style="color: white; font-weight: 500;">${game.opponent}</div>
+                                <div style="color: white; font-weight: 500;">${escapeHtmlText(game.opponent)}</div>
                                 <div style="color: #64748b; font-size: 0.8em;">${game.date ? game.date.toLocaleDateString('de-DE') : ''} ${game.isHome ? '(H)' : '(A)'}</div>
                             </td>
                             <td style="padding: 12px 10px; text-align: center;">
                                 <span style="color: ${resColor}; font-weight: bold; background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">
-                                    ${game.score}
+                                    ${escapeHtmlText(game.score)}
                                 </span>
                             </td>
                             <td style="padding: 12px 10px; text-align: center; ${pScoreStyle}">
-                                ${personalScore || '-'}
+                                ${escapeHtmlText(personalScore || '-')}
                             </td>
                          `;
                         tbody.appendChild(row);
@@ -2908,7 +3217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let lastRank = 0;
 
                     return list.map((p, idx) => {
-                        const isMyPlayer = p.name === myPlayerName;
+                        const isMyPlayer = isMyPlayerRecord(p);
                         const rowBg = isMyPlayer ? 'rgba(59, 130, 246, 0.1)' : (idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)');
 
                         // Rank Logic
@@ -2933,8 +3242,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         return `
                                 <tr style="background: ${rowBg}; border-bottom: 1px solid #334155;">
                                     <td style="padding: 10px 15px; font-weight: bold; color: ${rankColor};">${displayRank}.</td>
-                                    <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${p.name}</td>
-                                    <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${clubName}</td>
+                                    <td style="padding: 10px 15px; font-weight: 600; color: ${isMyPlayer ? '#60a5fa' : '#f8fafc'};">${escapeHtmlText(p.name)}</td>
+                                    <td style="padding: 10px 15px; color: #94a3b8; font-size: 0.9em;">${escapeHtmlText(clubName)}</td>
                                     <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: ${scoreColor}; font-size: 1.1em;">${p.currentScore}</td>
                                 </tr>
                                 `;
@@ -3039,10 +3348,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.style.backgroundColor = "#1e293b";
                 button.style.zIndex = "2000";
 
-                let subtext = "";
-                if (m.context) subtext = ` <span style='color: #94a3b8; font-size: 0.8em;'>(${m.context})</span>`;
-
-                button.innerHTML = `<span style="display:inline-block; width: 60px; color: #64748b; font-size: 0.8em; font-weight:bold;">${m.type}</span> ${m.label}${subtext}`;
+                replaceWithSearchResultLabel(button, m.type, m.label, m.context);
 
                 button.addEventListener('click', () => {
                     if (m.category === 'league') navigateTo('league', m.id);
@@ -3187,7 +3493,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 div.style.padding = "8px";
                 div.style.borderBottom = "1px solid #334155";
                 div.style.cursor = "pointer";
-                div.innerHTML = `<span style="color: #f8fafc; font-weight: bold;">${m.label}</span><br><span style="font-size:0.8em; color:#64748b;">${m.context || ''}</span>`;
+                replaceWithSearchResultLabel(div, '', m.label, m.context);
                 div.onmouseover = () => div.style.backgroundColor = "#334155";
                 div.onmouseout = () => div.style.backgroundColor = "transparent";
                 div.onclick = () => {
@@ -3203,11 +3509,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const selEl = document.getElementById(`selected-${sideId}`);
             if (player) {
                 selEl.style.display = "block";
-                selEl.innerHTML = `
-                    <div style="background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; padding: 10px; border-radius: 4px; align-items: center; display: flex; justify-content: space-between;">
-                        <span style="font-weight: bold; color: #60a5fa">${player.label}</span>
-                        <button onclick="this.parentElement.parentElement.style.display='none';" style="background:none; border:none; color: #94a3b8; cursor: pointer;">✕</button>
-                    </div>`;
+                const selectedCard = document.createElement('div');
+                selectedCard.style.cssText = 'background:rgba(59, 130, 246, 0.2); border:1px solid #3b82f6; padding:10px; border-radius:4px; align-items:center; display:flex; justify-content:space-between;';
+                const selectedName = document.createElement('span');
+                selectedName.style.cssText = 'font-weight:bold; color:#60a5fa;';
+                selectedName.textContent = String(player.label ?? '');
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.style.cssText = 'background:none; border:none; color:#94a3b8; cursor:pointer;';
+                removeButton.textContent = '✕';
+                removeButton.addEventListener('click', () => { selEl.style.display = 'none'; });
+                selectedCard.append(selectedName, removeButton);
+                selEl.replaceChildren(selectedCard);
             } else {
                 selEl.style.display = "none";
             }
@@ -3298,6 +3611,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = (val1, val2, label, subLabel, detail1 = "", detail2 = "", isFloat = false, invertWin = false) => {
                 const v1 = isFloat ? val1.toFixed(2) : val1;
                 const v2 = isFloat ? val2.toFixed(2) : val2;
+                const safeDetail1 = escapeHtmlText(detail1);
+                const safeDetail2 = escapeHtmlText(detail2);
 
                 // Winner color logic
                 let c1 = '#94a3b8';
@@ -3317,18 +3632,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `
                  <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
                     <div style="display: flex; flex-direction: column; align-items: center; width: 90px;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: ${c1};">${v1}</div>
-                        ${detail1 ? `<div style="${detailStyle}" title="${detail1}">${detail1}</div>` : ''}
+                        <div style="font-size: 1.2em; font-weight: bold; color: ${c1};">${escapeHtmlText(v1)}</div>
+                        ${detail1 ? `<div style="${detailStyle}" title="${safeDetail1}">${safeDetail1}</div>` : ''}
                     </div>
                     
                     <div style="flex: 1; text-align: center; padding: 0 10px;">
-                        <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${label}</div>
-                        <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">${subLabel}</div>
+                        <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">${escapeHtmlText(label)}</div>
+                        <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">${escapeHtmlText(subLabel)}</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; align-items: center; width: 90px;">
-                         <div style="font-size: 1.2em; font-weight: bold; color: ${c2};">${v2}</div>
-                         ${detail2 ? `<div style="${detailStyle}" title="${detail2}">${detail2}</div>` : ''}
+                         <div style="font-size: 1.2em; font-weight: bold; color: ${c2};">${escapeHtmlText(v2)}</div>
+                         ${detail2 ? `<div style="${detailStyle}" title="${safeDetail2}">${safeDetail2}</div>` : ''}
                     </div>
                  </div>`;
             };
@@ -3338,16 +3653,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     DIREKTER VERGLEICH
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #334155; background: rgba(15, 23, 42, 0.5); font-size: 0.9em; color: #f8fafc;">
-                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d1.name}</div>
+                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${escapeHtmlText(d1.name)}</div>
                      <div style="width: 20%; text-align: center; color: #64748b; font-size: 0.8em;">vs</div>
-                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${d2.name}</div>
+                     <div style="width: 40%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;">${escapeHtmlText(d2.name)}</div>
                 </div>
                 ${card(avg1, avg2, "Ø Aktuell", "Durchschnitt dieser Saison", "", "", true)}
                 
                 <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
-                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${d1.searchItem.context || '-'}</div>
+                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(d1.searchItem.context || '-')}</div>
                    <div style="width: 10%; text-align: center; color: #64748b; font-size: 0.8em;">Team</div>
-                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${d2.searchItem.context || '-'}</div>
+                   <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(d2.searchItem.context || '-')}</div>
                 </div>
 
                 ${card(h1.length, h2.length, "Erfahrung", "Anzahl gespielter Saisons im Archiv", seasons1, seasons2)}
@@ -3396,12 +3711,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     return `
                      <div style="display: flex; justify-content: space-between; align-items: start; padding: 15px; border-bottom: 1px solid #334155;">
-                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c1}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${l1}</div>
+                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c1}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(l1)}</div>
                         <div style="flex: 1; text-align: center; padding: 0 5px;">
                             <div style="color: #cbd5e1; font-size: 0.9em; text-transform: uppercase;">Höchste Klasse</div>
                             <div style="color: #64748b; font-size: 0.75em; margin-top: 2px;">Bisher gespielt</div>
                         </div>
-                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c2}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${l2}</div>
+                        <div style="width: 45%; text-align: center; font-size: 0.9em; font-weight: bold; color: ${c2}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(l2)}</div>
                       </div>`;
                 })()}
 
@@ -3462,8 +3777,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Text Prediction
                     let predictionText = "Ausgeglichenes Match";
                     let winnerName = "";
-                    if (winProb1 > 0.6) { winnerName = d1.name; predictionText = `Vorteil für <strong>${d1.name}</strong>`; }
-                    else if (winProb2 > 0.6) { winnerName = d2.name; predictionText = `Vorteil für <strong>${d2.name}</strong>`; }
+                    if (winProb1 > 0.6) { winnerName = d1.name; predictionText = `Vorteil für <strong>${escapeHtmlText(d1.name)}</strong>`; }
+                    else if (winProb2 > 0.6) { winnerName = d2.name; predictionText = `Vorteil für <strong>${escapeHtmlText(d2.name)}</strong>`; }
                     else {
                         if (winProb1 >= 0.5) predictionText = "Knappes Ding (Leichter Vorteil Links)";
                         else predictionText = "Knappes Ding (Leichter Vorteil Rechts)";
@@ -3865,11 +4180,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="width: 36px; text-align: center; font-weight: bold; color: ${rankColor}; font-size: 0.95em;">${medal}</div>
                     <div style="flex: 1; padding-left: 8px; min-width: 0;">
                         <div style="display: flex; align-items: center; gap: 8px;">
-                            <span style="font-weight: 600; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.name}</span>
+                            <span style="font-weight: 600; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtmlText(p.name)}</span>
                             ${tierBadge ? `<span style="font-size: 0.65em; font-weight: bold; color: ${tierColor}; border: 1px solid ${tierColor}; padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">${tierBadge}</span>` : ''}
                         </div>
                         <div style="font-size: 0.7em; color: #64748b; margin-top: 2px;">
-                            Bester Rang: ${p.bestSeasonRankDisplay} (${p.bestSeasonYearRank}) • Max: ${p.maxPoints} Pkt (${p.maxPointsYear})
+                            Bester Rang: ${p.bestSeasonRankDisplay} (${escapeHtmlText(p.bestSeasonYearRank)}) • Max: ${p.maxPoints} Pkt (${escapeHtmlText(p.maxPointsYear)})
                         </div>
                     </div>
                     <div style="width: 40px; text-align: center; font-size: 0.9em;" title="${p.trend === 'up' ? 'Aufwärtstrend' : p.trend === 'down' ? 'Abwärtstrend' : 'Stabil'}">${trendIcon}</div>
@@ -3899,13 +4214,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         const isCur = s.isCurrent;
                         const rowBg = isCur ? 'background: rgba(74, 222, 128, 0.07);' : '';
                         return `<tr style="color: #e2e8f0; ${rowBg}">
-                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">${s.season}${isCur ? ' ⚡' : ''}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">${escapeHtmlText(s.season)}${isCur ? ' ⚡' : ''}</td>
                                         <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b;">
-                                            <span style="color: ${sc}; font-weight: 500;">${s.league || '-'}</span>
+                                            <span style="color: ${sc}; font-weight: 500;">${escapeHtmlText(s.league || '-')}</span>
                                             ${sl ? `<span style="font-size: 0.75em; color: ${sc}; margin-left: 4px; border: 1px solid ${sc}; padding: 0 3px; border-radius: 2px;">${sl}</span>` : ''}
                                         </td>
-                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: center;">${s.rank || '-'}</td>
-                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: right; font-weight: bold; color: #4ade80;">${s.points || 0}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: center;">${escapeHtmlText(s.rank || '-')}</td>
+                                        <td style="padding: 5px 8px; border-bottom: 1px solid #1e293b; text-align: right; font-weight: bold; color: #4ade80;">${escapeHtmlText(s.points || 0)}</td>
                                     </tr>`;
                     }).join('')}
                             </tbody>
@@ -4190,7 +4505,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.players.forEach((p, i) => {
                     const div = document.createElement('div');
                     div.style.cssText = "display:flex; justify-content:space-between; align-items:center; background:#334155; padding:8px 12px; border-radius:6px;";
-                    div.innerHTML = `<span style="color:white;">${p.name}</span> <button data-idx="${i}" class="remove-p-btn" style="background:transparent; color:#ef4444; border:none; cursor:pointer;">✕</button>`;
+                    const playerName = document.createElement('span');
+                    playerName.style.color = 'white';
+                    playerName.textContent = String(p.name ?? '');
+                    const removeButton = document.createElement('button');
+                    removeButton.type = 'button';
+                    removeButton.dataset.idx = String(i);
+                    removeButton.className = 'remove-p-btn';
+                    removeButton.style.cssText = 'background:transparent; color:#ef4444; border:none; cursor:pointer;';
+                    removeButton.textContent = '✕';
+                    div.append(playerName, removeButton);
                     playerList.appendChild(div);
                 });
 
@@ -4204,8 +4528,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Pre-fill with "Ich" if empty
-            if (this.players.length === 0 && myPlayerName) {
-                this.players.push({ name: myPlayerName, score: 501, history: [], legs: 0 });
+            if (this.players.length === 0 && myPlayerProfile) {
+                this.players.push({ name: myPlayerProfile.name, score: 501, history: [], legs: 0 });
                 renderPlayers();
                 updateStartBtn();
             } else {
@@ -4429,7 +4753,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `
                                 <div class="player-card" style="min-width:100px; background:${i === this.activePlayerIndex ? '#3b82f6' : '#1e293b'}; padding:10px; border-radius:10px; text-align:center; transition:all 0.3s ease; transform:${i === this.activePlayerIndex ? 'scale(1.05)' : 'scale(1)'}; border:2px solid ${i === this.activePlayerIndex ? '#60a5fa' : '#334155'}; position: relative;">
                                     ${teamBadge}
-                                    <div style="font-size:0.8em; color:${i === this.activePlayerIndex ? 'white' : '#94a3b8'}">${p.name}</div>
+                                    <div style="font-size:0.8em; color:${i === this.activePlayerIndex ? 'white' : '#94a3b8'}">${escapeHtmlText(p.name)}</div>
                                     <div style="font-size:2em; font-weight:bold; color:white;">
                                         ${i === this.activePlayerIndex ? (p.score - currentTurnTotal) : p.score}
                                     </div>
@@ -4441,7 +4765,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         <!-- Active Turn Input -->
                         <div style="background:#1e293b; padding:15px; border-radius:12px; margin-bottom:15px; text-align:center; position: relative;">
-                            <div style="color:#94a3b8; font-size: 0.9em; margin-bottom:5px;">Aufnahme für <strong>${activePlayer.name}</strong></div>
+                            <div style="color:#94a3b8; font-size: 0.9em; margin-bottom:5px;">Aufnahme für <strong>${escapeHtmlText(activePlayer.name)}</strong></div>
                             
                             <!-- 3-Dart Display -->
                             <div style="display:flex; justify-content:center; gap:10px; margin-bottom:10px;">
@@ -4991,7 +5315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Render results using the pre-formatted HTML table ---
         const resultsContainer = document.getElementById('league-results-container');
         if (data.table) {
-            resultsContainer.innerHTML = data.table;
+            replaceWithSafeCupTables(resultsContainer, data.table, data.match_days);
             cleanTable(resultsContainer);
             // Make team names clickable
             if (typeof CLUB_DATA !== 'undefined' && CLUB_DATA.clubs) {
@@ -5145,7 +5469,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ligapokal: render table HTML directly into results container
             const resultsContainer = document.getElementById('league-results-container');
             if (data.table) {
-                resultsContainer.innerHTML = data.table;
+                replaceWithSafeCupTables(resultsContainer, data.table, data.match_days);
                 cleanTable(resultsContainer);
                 makeTeamsClickable(resultsContainer);
             } else {
@@ -5155,7 +5479,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Standard leagues: render table tab
             const tableContainer = document.getElementById('league-table-container');
             if (data.table) {
-                tableContainer.innerHTML = data.table;
+                replaceWithSafeTables(tableContainer, data.table);
                 cleanTable(tableContainer);
                 makeTeamsClickable(tableContainer);
             } else {
@@ -5346,125 +5670,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return sum + (avg * dCount);
     }
 
-    function renderRankingLegacy(rankName) {
-        topBarTitle.textContent = rankName;
-        contentArea.innerHTML = '';
-
-        const container = document.createElement('div');
-        container.style.padding = "20px";
-        container.className = "fade-in";
-        const rankingSeasonNotice = createSeasonNotice('ranking');
-
-        // Logic to get players for this ranking
-        // We match p.league with rankName
-        let players = [];
-        if (rankingData && rankingData.players) {
-            players = rankingData.players.filter(p => p.league === rankName);
-        }
-
-        if (players.length === 0) {
-            // Fallback to existing static HTML if no players found (compatibility)
-            if (rankingData.rankings && rankingData.rankings[rankName]) {
-                const div = document.createElement('div');
-                div.innerHTML = rankingData.rankings[rankName];
-                cleanTable(div);
-                container.appendChild(div);
-            } else {
-                container.innerHTML = '<div style="color: #94a3b8;">Keine Daten verfügbar.</div>';
-            }
-            if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
-            contentArea.appendChild(container);
-            return;
-        }
-
-        // Calculate and Sort
-        players = players.map(p => {
-            const total = calculateTotalPoints(p);
-            const stats = calculatePlayerStats(p);
-            return { ...p, _totalPoints: total, _stats: stats };
-        }).sort((a, b) => {
-            // Sort by Points Desc, then Avg Desc
-            if (b._totalPoints !== a._totalPoints) return b._totalPoints - a._totalPoints;
-            return b._stats.avg - a._stats.avg;
-        });
-
-        // Build Table
-        let html = `
-        <div style="background: #1e293b; border-radius: 8px; border: 1px solid #334155; overflow: hidden;">
-            <div class="table-scroll">
-                <table style="width: 100%; border-collapse: collapse; color: #e2e8f0; font-size: 0.9em; min-width: 600px;">
-                    <thead>
-                        <tr style="background: #0f172a; border-bottom: 1px solid #334155; text-align: left;">
-                            <th style="padding: 12px 15px; width: 50px;">#</th>
-                            <th style="padding: 12px 15px;">Name</th>
-                            <th style="padding: 12px 15px;">Verein</th>
-                            <th style="padding: 12px 15px; text-align: center;">Spiele</th>
-                            <th style="padding: 12px 15px; text-align: right;">Ø</th>
-                            <th style="padding: 12px 15px; text-align: right;">Punkte</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        `;
-
-        players.forEach((p, idx) => {
-            const isTop3 = idx < 3;
-            const rankEmoji = idx === 0 ? '🥇 ' : (idx === 1 ? '🥈 ' : (idx === 2 ? '🥉 ' : ''));
-            const rowStyle = idx % 2 === 0 ? 'background: transparent;' : 'background: rgba(255,255,255,0.02);';
-            const rankStyle = isTop3 ? 'color: #fbbf24; font-weight: bold;' : 'color: #94a3b8;';
-            const highlightStyle = isTop3 ? 'color: #f8fafc; font-weight: 600;' : 'color: #e2e8f0;';
-
-            // Find Club Index for link
-            let clubIdx = -1;
-            let clubName = p.company;
-
-            if (clubData.clubs) {
-                clubIdx = clubData.clubs.findIndex(c => c.number === p.v_nr);
-                if (clubIdx !== -1) {
-                    // Use club name from master data if missing on player object
-                    if (!clubName) clubName = clubData.clubs[clubIdx].name;
-                }
-            }
-            // Fallback
-            if (!clubName) clubName = "Unbekannt";
-
-            const isMyPlayer = p.name === myPlayerName;
-            const extraClass = isMyPlayer ? 'my-player-row' : '';
-            // const rowStyle already defined above, reuse/override background in class
-            // If my player, override background in inline style or rely on class !important
-
-            html += `
-            <tr class="${extraClass}" style="${rowStyle} border-bottom: 1px solid #334155; transition: background 0.15s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'" onmouseout="this.style.background='${idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)'}'">
-                <td style="padding: 10px 15px; ${rankStyle}">${rankEmoji}${idx + 1}.</td>
-                <td style="padding: 10px 15px; ${highlightStyle}">
-                    ${p.name}
-                    ${p.team ? `<div style="font-size: 0.8em; color: #64748b;">${p.team}</div>` : ''}
-                </td>
-                <td style="padding: 10px 15px; color: #60a5fa; cursor: pointer;" onclick="navigateTo('club', ${clubIdx})">
-                    ${clubName}
-                </td>
-                <td style="padding: 10px 15px; text-align: center; color: #94a3b8;">${p._stats.count}</td>
-                <td style="padding: 10px 15px; text-align: right; color: #4ade80;">${p._stats.avg.toFixed(2)}</td>
-                <td style="padding: 10px 15px; text-align: right; font-weight: bold; color: #f8fafc; font-size: 1.1em;">
-                    ${parseFloat(p._totalPoints.toFixed(2)) /* Remove trailing zeros */}
-                </td>
-            </tr>
-            `;
-        });
-
-        html += `</tbody></table></div></div>`;
-
-        // Add info about calculation
-        html += `<div style="margin-top: 10px; font-size: 0.8em; color: #64748b; font-style: italic;">
-            * 'D' wertet als Durchschnitt der gespielten Spiele (Spielfrei-Ausgleich).
-        </div>`;
-
-        container.innerHTML = html;
-        if (rankingSeasonNotice) container.insertBefore(rankingSeasonNotice, container.firstChild);
-        contentArea.appendChild(container);
-    }
-
-
-
     function renderRanking(rankName) {
         topBarTitle.textContent = rankName;
         contentArea.innerHTML = '';
@@ -5511,7 +5716,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 games: stats.count,
             };
         });
-        const savedPlayerMatch = window.BwedlAppUtils.matchRankingPlayer(viewModels, myPlayerName);
+        const exactSavedPlayer = viewModels.find((player) => isMyPlayerRecord(player)) || null;
+        const savedPlayerMatch = exactSavedPlayer
+            ? { status: 'found', player: exactSavedPlayer }
+            : { status: 'missing', player: null };
 
         const toolbar = document.createElement('div');
         toolbar.className = 'ranking-toolbar';
@@ -5565,7 +5773,7 @@ document.addEventListener('DOMContentLoaded', () => {
         actions.appendChild(reset);
 
         let myPosition = null;
-        if (myPlayerName) {
+        if (myPlayerProfile) {
             myPosition = document.createElement('button');
             myPosition.id = 'ranking-my-position';
             myPosition.type = 'button';
@@ -5675,10 +5883,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (myPosition) {
             myPosition.addEventListener('click', () => {
-                if (savedPlayerMatch.status === 'ambiguous') {
-                    status.textContent = 'Der gespeicherte Spielername ist in dieser Rangliste nicht eindeutig.';
-                    return;
-                }
                 if (savedPlayerMatch.status !== 'found') {
                     status.textContent = 'Dein gespeicherter Spieler ist nicht in dieser Rangliste enthalten.';
                     return;
@@ -6446,13 +6650,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // (Rules removed: Duplicate setupTabs definition was here)
 
     function cleanTable(container) {
-        const table = container.querySelector('table');
-        if (table) {
+        container.querySelectorAll('table').forEach((table) => {
             table.removeAttribute('style');
             table.removeAttribute('border');
             table.removeAttribute('cellpadding');
             table.removeAttribute('cellspacing');
-        }
+        });
     }
 
     // =============================================
@@ -6675,10 +6878,10 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function detectNextMatch() {
         // 1. Find the user's team name from the profile
-        console.log('[AutoDetect] myPlayerName:', myPlayerName);
-        const myProfile = rankingData.players.find(p => p.name === myPlayerName);
+        console.log('[AutoDetect] profile record:', myPlayerProfile && myPlayerProfile.recordKey);
+        const myProfile = getMyPrimaryPlayer();
         if (!myProfile) {
-            console.log('[AutoDetect] No profile found for', myPlayerName);
+            console.log('[AutoDetect] No exact profile found');
             return null;
         }
 
@@ -6934,10 +7137,16 @@ document.addEventListener('DOMContentLoaded', () => {
         leagueSelect.style.border = "1px solid #475569";
         leagueSelect.style.borderRadius = "4px";
 
-        leagueSelect.innerHTML = '<option value="">-- Bitte Liga wählen --</option>';
+        const leaguePlaceholder = document.createElement('option');
+        leaguePlaceholder.value = '';
+        leaguePlaceholder.textContent = '-- Bitte Liga wählen --';
+        leagueSelect.appendChild(leaguePlaceholder);
         const sortedLeagues = Object.keys(leagueData.leagues || {}).sort();
         sortedLeagues.forEach(l => {
-            leagueSelect.innerHTML += `<option value="${l}">${l}</option>`;
+            const option = document.createElement('option');
+            option.value = l;
+            option.textContent = l;
+            leagueSelect.appendChild(option);
         });
         leagueGroup.appendChild(leagueLabel);
         leagueGroup.appendChild(leagueSelect);
@@ -7075,16 +7284,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     cardWrap.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                             <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); text-transform: uppercase;">${m.league.split('202')[0]}</span>
-                             <span style="color: #94a3b8; font-size: 0.75em; font-weight: 500;">${m.dateStr || 'Termin offen'}</span>
+                             <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); text-transform: uppercase;">${escapeHtmlText(m.league.split('202')[0])}</span>
+                             <span style="color: #94a3b8; font-size: 0.75em; font-weight: 500;">${escapeHtmlText(m.dateStr || 'Termin offen')}</span>
                         </div>
                         <div style="margin: 5px 0;">
-                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${m.home}</div>
+                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${escapeHtmlText(m.home)}</div>
                             <div style="color: #475569; font-size: 0.75em; font-weight: bold; margin: 4px 0; letter-spacing: 1px;">VERSUS</div>
-                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${m.away}</div>
+                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${escapeHtmlText(m.away)}</div>
                         </div>
                         <div style="margin-top: 5px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
-                             <span style="color: #64748b; font-size: 0.75em;">${m.spieltag}</span>
+                             <span style="color: #64748b; font-size: 0.75em;">${escapeHtmlText(m.spieltag)}</span>
                              <button type="button" class="load-btn" style="background: #3b82f6; color: white; border: 0; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold; transition: all 0.2s; cursor: pointer;">Partie auswählen</button>
                         </div>
                     `;
@@ -7160,7 +7369,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const similar = allLeagues.filter(l => keywords.some(k => l.includes(k))).slice(0, 5);
                 const debugDiv = document.createElement('div');
                 debugDiv.style.color = "#ef4444";
-                debugDiv.innerHTML = `⚠️ Keine Teams gefunden.<br>Similar: ${similar.join(', ')}`;
+                debugDiv.textContent = `⚠️ Keine Teams gefunden. Similar: ${similar.join(', ')}`;
                 leagueGroup.appendChild(debugDiv);
             } else {
                 const old = leagueGroup.querySelector('div[style*="#ef4444"]');
@@ -7170,13 +7379,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Extract real team names from league table
             let tableTeams = [];
             if (leagueData.leagues[league] && leagueData.leagues[league].table) {
-                const temp = document.createElement('div');
-                temp.innerHTML = leagueData.leagues[league].table;
-                const rows = temp.querySelectorAll('tr');
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
+                const rows = safeTableRowsFromHtml(leagueData.leagues[league].table);
+                rows.forEach(cells => {
                     if (cells.length > 2) {
-                        tableTeams.push(cells[1].textContent.trim());
+                        tableTeams.push(cells[1].trim());
                     }
                 });
             }
@@ -7232,7 +7438,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const renderPlayerList = (players, containerId, selectedSet, headerText) => {
             const el = document.getElementById(containerId);
-            let html = `<h4 style="color: #94a3b8; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">${headerText} <span id="count-${containerId}" style="float: right; font-size: 0.8em; color: #60a5fa">${selectedSet.size} gewählt</span></h4>`;
+            let html = `<h4 style="color: #94a3b8; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">${escapeHtmlText(headerText)} <span id="count-${containerId}" style="float: right; font-size: 0.8em; color: #60a5fa">${selectedSet.size} gewählt</span></h4>`;
 
             html += `<div style="max-height: 400px; overflow-y: auto; padding-right: 5px;">`;
             if (players.length === 0) {
@@ -7248,7 +7454,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px solid #1e293b; font-size: 0.9em;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; flex: 1;">
                             <input type="checkbox" value="${idx}" data-list="${containerId}" ${isChecked} style="transform: scale(1.2);">
-                            <span style="color: ${color};" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span style="color: ${color};" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         </label>
                         <div style="text-align: right;">
                              <div style="font-weight: bold; color: #4ade80;">${p._avg.toFixed(2)}</div>
@@ -7336,7 +7542,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (history.matches.length > 0) {
                         let hHtml = `
                         <div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
-                            <h4 style="color: #f59e0b; margin-bottom: 15px;">📜 Historische Ergebnisse (${nameA} vs ${nameB})</h4>
+                            <h4 style="color: #f59e0b; margin-bottom: 15px;">📜 Historische Ergebnisse (${escapeHtmlText(nameA)} vs ${escapeHtmlText(nameB)})</h4>
                             <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
                                 <div style="background: #22c55e22; color: #4ade80; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.wins} Sieg${history.wins !== 1 ? 'e' : ''}</div>
                                 <div style="background: #64748b22; color: #94a3b8; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.draws} Unentschieden</div>
@@ -7348,8 +7554,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             const isDraw = m.teamAScore === m.teamBScore;
                             const icon = isWin ? '🟢' : isDraw ? '🟡' : '🔴';
                             hHtml += `<div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1e293b40; color: #cbd5e1;">
-                                <span>${icon} ${m.spieltag} · ${m.dateStr || ''}</span>
-                                <span style="font-weight: bold;">${m.home} ${m.scoreHome}:${m.scoreAway} ${m.away}</span>
+                                <span>${icon} ${escapeHtmlText(m.spieltag)} · ${escapeHtmlText(m.dateStr || '')}</span>
+                                <span style="font-weight: bold;">${escapeHtmlText(m.home)} ${escapeHtmlText(m.scoreHome)}:${escapeHtmlText(m.scoreAway)} ${escapeHtmlText(m.away)}</span>
                             </div>`;
                         });
                         hHtml += `</div></div>`;
@@ -7412,13 +7618,13 @@ document.addEventListener('DOMContentLoaded', () => {
              <div class="fade-in" style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 30px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
                     <div style="text-align: center; flex: 1;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${nameA}</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${escapeHtmlText(nameA)}</div>
                         <div style="font-size: 2.5em; font-weight: bold; color: #4ade80; text-shadow: 0 0 20px rgba(74, 222, 128, 0.2);">${strengthA.toFixed(1)}</div>
                         <div style="font-size: 0.8em; color: #94a3b8;">Team-Score</div>
                     </div>
                     <div style="font-weight: bold; color: #64748b; font-size: 1.5em; opacity: 0.5;">VS</div>
                     <div style="text-align: center; flex: 1;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${nameB}</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${escapeHtmlText(nameB)}</div>
                         <div style="font-size: 2.5em; font-weight: bold; color: #60a5fa; text-shadow: 0 0 20px rgba(96, 165, 250, 0.2);">${strengthB.toFixed(1)}</div>
                          <div style="font-size: 0.8em; color: #94a3b8;">Team-Score</div>
                     </div>
@@ -7450,13 +7656,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
 
                 // Team A form
-                html += `<div><h5 style="color: #4ade80; margin-bottom: 10px;">${nameA}</h5>`;
+                html += `<div><h5 style="color: #4ade80; margin-bottom: 10px;">${escapeHtmlText(nameA)}</h5>`;
                 listA.forEach(p => {
                     const form = getPlayerFormTrend(p);
                     const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
                     const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
                     html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         ${renderMatchSparkline(form.values, trendColor)}
                         <span style="font-size: 0.9em;">${trendIcon}</span>
                         <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
@@ -7465,13 +7671,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 html += '</div>';
 
                 // Team B form
-                html += `<div><h5 style="color: #60a5fa; margin-bottom: 10px;">${nameB}</h5>`;
+                html += `<div><h5 style="color: #60a5fa; margin-bottom: 10px;">${escapeHtmlText(nameB)}</h5>`;
                 listB.forEach(p => {
                     const form = getPlayerFormTrend(p);
                     const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
                     const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
                     html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                         ${renderMatchSparkline(form.values, trendColor)}
                         <span style="font-size: 0.9em;">${trendIcon}</span>
                         <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
@@ -7490,14 +7696,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 listB.forEach(pb => {
                     const parts = pb.name.split(' ');
                     const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pb.name;
-                    html += `<th style="padding: 8px; color: #60a5fa; text-align: center; border-bottom: 2px solid #334155; white-space: nowrap;">${shortName}</th>`;
+                    html += `<th style="padding: 8px; color: #60a5fa; text-align: center; border-bottom: 2px solid #334155; white-space: nowrap;">${escapeHtmlText(shortName)}</th>`;
                 });
                 html += '</tr>';
 
                 listA.forEach(pa => {
                     const parts = pa.name.split(' ');
                     const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pa.name;
-                    html += `<tr><td style="padding: 8px; color: #4ade80; font-weight: bold; border-bottom: 1px solid #33415544; white-space: nowrap;">${shortName}</td>`;
+                    html += `<tr><td style="padding: 8px; color: #4ade80; font-weight: bold; border-bottom: 1px solid #33415544; white-space: nowrap;">${escapeHtmlText(shortName)}</td>`;
                     listB.forEach(pb => {
                         const totalAvg = pa._avg + pb._avg;
                         const winProb = totalAvg > 0 ? (pa._avg / totalAvg) * 100 : 50;
@@ -7530,10 +7736,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (playersA.length > 4) {
                     const optA = calculateOptimalLineup(playersA, 4);
                     html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
-                        <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${nameA} – Empfehlung</div>`;
+                        <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameA)} – Empfehlung</div>`;
                     optA.players.forEach(p => {
                         html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                             <span style="color: #4ade80; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
                         </div>`;
                     });
@@ -7544,10 +7750,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (playersB.length > 4) {
                     const optB = calculateOptimalLineup(playersB, 4);
                     html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
-                        <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${nameB} – Empfehlung</div>`;
+                        <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameB)} – Empfehlung</div>`;
                     optB.players.forEach(p => {
                         html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${p.name === myPlayerName ? 'my-player-text' : ''}">${p.name}</span>
+                            <span class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
                             <span style="color: #60a5fa; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
                         </div>`;
                     });
@@ -7563,90 +7769,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Expose triggerUpdate globally so the button onclick works
-    window.triggerUpdate = function () {
-        console.log('[Update] triggerUpdate called');
-        const btn = document.getElementById('update-btn');
+    // GitHub Pages is the only product runtime. This action checks the latest
+    // published status and then reloads the network-first data files.
+    window.triggerUpdate = async function () {
+        const controls = ['update-btn', 'mobile-refresh']
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
+        const originalLabels = controls.map((control) => control.textContent);
         const updateStatus = document.getElementById('update-status');
-        const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-        console.log('[Update] hostname:', window.location.hostname, 'isLocalhost:', isLocalhost);
 
-        if (!isLocalhost) {
-            console.log('[Update] Not localhost, reloading page...');
-            // On static hosting (GitHub Pages), we can't trigger the python scraper.
-            // But we CAN reload the page to fetch the latest data files (handled by Network-First SW).
-            if (btn) {
-                btn.innerHTML = "⏳ Lädt...";
-                btn.disabled = true;
-            }
-
-            // Force reload after short delay to show feedback
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-            return;
+        controls.forEach((control) => {
+            control.disabled = true;
+            control.textContent = '⏳ Lädt...';
+        });
+        if (updateStatus) {
+            updateStatus.textContent = 'Veröffentlichte Daten werden geprüft...';
+            updateStatus.classList.remove('hidden');
+            updateStatus.style.color = '#94a3b8';
+            updateStatus.setAttribute('role', 'status');
+            updateStatus.setAttribute('aria-live', 'polite');
         }
 
-        console.log('[Update] Localhost detected, starting update...');
-
-        if (btn) {
-            btn.disabled = true;
-            btn.innerHTML = "⏳ läuft...";
-        }
-        // Snapshot current stats before update
         try {
             const stats = calculateDataStats();
             localStorage.setItem('update_snapshot', JSON.stringify(stats));
-        } catch (e) { console.error("Snapshot failed", e); }
-
-        let pollInterval;
-
-        if (updateStatus) {
-            updateStatus.textContent = "Starten...";
-            updateStatus.classList.remove('hidden');
-            updateStatus.style.color = "#94a3b8"; // reset color
-
-            // Poll for status
-            pollInterval = setInterval(() => {
-                fetch('update_status.json?t=' + Date.now())
-                    .then(r => r.json())
-                    .then(data => {
-                        if (data && data.status) {
-                            if (data.status === 'running') {
-                                updateStatus.innerHTML = `Update läuft... ${data.progress}%<br><span style="font-size:0.8em; color:#64748b">${data.current_script || ''}</span>`;
-                            } else if (data.status === 'error') {
-                                updateStatus.textContent = `Fehler bei: ${data.current_script}`;
-                                updateStatus.style.color = "#f87171"; // red
-                            }
-                        }
-                    })
-                    .catch(() => { /* ignore poll errors (file might not exist yet) */ });
-            }, 1000);
+        } catch (error) {
+            console.error('Snapshot failed', error);
         }
 
-        fetch('/api/update', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                if (pollInterval) clearInterval(pollInterval);
-
-                if (data.status === 'success') {
-                    if (updateStatus) {
-                        updateStatus.textContent = "Erfolg! 100% - Seite wird neu geladen...";
-                        updateStatus.style.color = "#4ade80"; // green
-                    }
-                    setTimeout(() => location.reload(), 1500);
-                } else {
-                    throw new Error(data.message || "Unknown error");
-                }
-            })
-            .catch(e => {
-                if (pollInterval) clearInterval(pollInterval);
-                if (updateStatus) {
-                    updateStatus.textContent = "Fehler: " + e.message;
-                    updateStatus.style.color = "#f87171"; // red
-                }
-                if (btn) btn.disabled = false;
+        try {
+            await window.BwedlAppUtils.probePublishedData(
+                window.fetch.bind(window),
+                document.baseURI,
+                Date.now(),
+            );
+            if (updateStatus) {
+                updateStatus.textContent = 'Veröffentlichter Datenstand wird geladen...';
+                updateStatus.style.color = '#4ade80';
+            }
+            window.location.reload();
+        } catch (error) {
+            if (updateStatus) {
+                updateStatus.textContent = 'Keine Verbindung – gespeicherter Datenstand bleibt verfügbar.';
+                updateStatus.style.color = '#f87171';
+            }
+            controls.forEach((control, index) => {
+                control.disabled = false;
+                control.textContent = originalLabels[index];
             });
+        }
     };
 
 
@@ -7707,9 +7878,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const statusEl = document.getElementById('update-status');
                     if (statusEl) {
-                        // Show message
-                        const msg = "Update erfolgreich!";
-                        statusEl.innerHTML = `<strong>${msg}</strong><br><span style="font-size:0.9em">${changes.join(', ')}</span>`;
+                        const heading = document.createElement('strong');
+                        heading.textContent = 'Update erfolgreich!';
+                        const detail = document.createElement('span');
+                        detail.style.fontSize = '0.9em';
+                        detail.textContent = changes.join(', ');
+                        statusEl.replaceChildren(heading, document.createElement('br'), detail);
                         statusEl.classList.remove('hidden');
                         statusEl.style.color = "#4ade80";
 
@@ -7808,7 +7982,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 style="color: #f8fafc;">❓ FAQ</h3>
                 <p><strong>Wie oft werden die Daten aktualisiert?</strong><br>
                 Die Webseite und App werden automatisch <strong>alle 6 Stunden</strong> aktualisiert. Der "Aktualisieren"-Button im Menü prüft nur, ob neue Daten auf dem Server bereitliegen.</p>
-                <p><em>Hinweis: Ein komplett manuelles Anstoßen des Updates ist nur möglich, wenn das Programm direkt auf dem PC ausgeführt wird.</em></p>
+                <p><em>Ein manuelles Datenupdate kann nur von den Repository-Verantwortlichen über den GitHub-Actions-Workflow ausgelöst werden, nicht aus der App.</em></p>
 
                 <p><strong>Kann ich alte Saisons sehen?</strong><br>
                 Ja, im "Archiv" auf den Vereins- und Spielerseiten.</p>

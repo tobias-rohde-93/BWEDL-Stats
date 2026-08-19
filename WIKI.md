@@ -40,7 +40,11 @@ Suche nach einem Verein oder klicke in einer Tabelle auf den Vereinsnamen.
 -   **Spielaktionen**: Wo Termin und Adresse vorhanden sind, kannst du einen Kalendereintrag laden, die Begegnung teilen beziehungsweise den Link kopieren und die Route in Google Maps öffnen.
 
 ### 4. Spieler-Profile
-Klicke auf einen Spielernamen (z.B. in der Tabelle oder Suche).
+Unter **Mein Profil** wählst du einen exakten Spielervorschlag aus; frei eingegebener Text allein wird nicht gespeichert. Der Vorschlag zeigt Verein und zugehörige Ranglistenklassen, damit gleichnamige Personen unterscheidbar bleiben. Wenn dein Datensatz in mehreren Klassen vorkommt, bestätigst du zusätzlich eine **primäre Klasse**.
+
+Das versionierte Profil bleibt ausschließlich lokal in diesem Browser. Ein vorhandenes altes Namensprofil wird nur bei eindeutiger Zuordnung automatisch übernommen; bei mehreren Treffern fordert die App einmalig zur Bestätigung auf.
+
+Mit dem ausgewählten Profil erhältst du:
 -   **Formkurve**: Die letzten Spiele und Trend.
 -   **Saisonverlauf**: Detaillierte Liste aller gespielten Runden und Ergebnisse.
 -   **Head-to-Head**: Vergleiche diesen Spieler direkt mit einem anderen.
@@ -78,8 +82,7 @@ Diese Seite ist eine **PWA (Progressive Web App)**.
 ## ❓ Häufige Fragen (FAQ)
 
 **Wie oft werden die Daten aktualisiert?**
-Die Webseite und App werden automatisch **alle 6 Stunden** aktualisiert. Der "Aktualisieren"-Button im Menü prüft nur, ob neue Daten auf dem Server bereitliegen.
-*Hinweis: Ein komplett manuelles Anstoßen des Updates ist nur möglich, wenn das Programm direkt auf dem PC ausgeführt wird.*
+Die Daten werden über GitHub Actions regelmäßig neu veröffentlicht. Der **Aktualisieren**-Button prüft den auf GitHub Pages bereitgestellten Datenstand und lädt die veröffentlichten Dateien neu; einen lokalen Produktserver gibt es nicht.
 
 **Stimmen die Daten immer zu 100%?**
 Wir geben unser Bestes! Da Daten aus verschiedenen Quellen (PDFs, HTML) zusammengeführt werden, kann es in seltenen Fällen zu Abweichungen kommen. Melde Fehler gerne!
