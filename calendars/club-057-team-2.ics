@@ -169,17 +169,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:898e63439b797c36a1fc5f6665bf08d5c52704369eed3aefd2a26890d60c690e@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20270128T183000Z
-DTEND:20270128T213000Z
-SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
-DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Ungültig 2\nAuswärtsspiel\
- nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 28.01.
- 2027 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerl
- e 1\, Königsbach
-LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+DTSTAMP:20260819T124447Z
+DTSTART:20270126T183000Z
+DTEND:20270126T213000Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Ungültig 2 - DC Irish 26 e.V. 2\nHeimspiel\nLiga
+ : A-Klasse Gruppe 1 2026-2027\nSpieltag: 11. Spieltag\nTermin: 26.01.2027
+  18:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:1
+LAST-MODIFIED:20260819T124447Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -280,17 +280,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ddd4074f0711a226354c550a9699db5e80a68c0b116c413d974a70e40ff6ebd4@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260908T173000Z
-DTEND:20260908T203000Z
-SUMMARY:Heimspiel gegen DC Irish 26 e.V. 2
-DESCRIPTION:Begegnung: DC Ungültig 2 - DC Irish 26 e.V. 2\nHeimspiel\nLiga
- : A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 08.09.2026 1
- 7:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schöm
- berg/Schwarzenberg
-LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+DTSTAMP:20260819T124447Z
+DTSTART:20260910T173000Z
+DTEND:20260910T203000Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 2
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 2 - DC Ungültig 2\nAuswärtsspiel\
+ nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2
+ 026 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle
+  1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:1
+LAST-MODIFIED:20260819T124447Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

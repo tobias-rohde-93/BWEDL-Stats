@@ -57,17 +57,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:36743c32599ee900d01d80b22754d6aa95e8896275cd1fe91951fdbfb39a1e78@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260828T170000Z
-DTEND:20260828T200000Z
+DTSTAMP:20260819T124447Z
+DTSTART:20260918T173000Z
+DTEND:20260918T203000Z
 SUMMARY:Auswärtsspiel bei DC Mephisto's
 DESCRIPTION:Begegnung: DC Mephisto's - Odins Knechte\nAuswärtsspiel\nLiga:
-  A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 17
- :00 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\,
+  A-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 18.09.2026 17
+ :30 UTC\nAustragungsort: VdH Knittlingen e.V.\, Freudensteinerstrasse 92\,
   Knittlingen
 LOCATION:VdH Knittlingen e.V.\, Freudensteinerstrasse 92\, Knittlingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260819T124447Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
