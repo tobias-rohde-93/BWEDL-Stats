@@ -37,6 +37,19 @@ def write_files(directory: Path, files: dict[str, bytes]) -> None:
         (directory / name).write_bytes(contents)
 
 
+def _skip_if_filesystem_capability_is_unavailable(error: OSError, label: str) -> None:
+    unsupported = {
+        errno.EACCES,
+        errno.EPERM,
+        errno.ENOSYS,
+        errno.ENOTSUP,
+        errno.EOPNOTSUPP,
+    }
+    if getattr(error, "winerror", None) == 1314 or error.errno in unsupported:
+        pytest.skip(f"{label} unavailable: {error}")
+    raise error
+
+
 def valid_report_dict() -> dict[str, object]:
     return {
         "started_at": "2026-08-01T08:30:00Z",
@@ -259,7 +272,7 @@ def test_symlink_candidate_is_rejected_before_any_destination_changes(
     try:
         link.symlink_to(target)
     except OSError as error:
-        pytest.skip(f"symlinks unavailable: {error}")
+        _skip_if_filesystem_capability_is_unavailable(error, "symlink")
 
     with pytest.raises(ValueError, match=link_kind):
         publish_domains(
@@ -492,6 +505,67 @@ def test_additional_directories_must_be_unique_safe_basenames(
         )
 
 
+@pytest.mark.parametrize("directory", ["calendars.", "calendars "])
+def test_additional_directories_reject_windows_trailing_name_aliases(
+    tmp_path: Path, directory: str
+) -> None:
+    staging = tmp_path / "staging"
+    staging.mkdir()
+    with pytest.raises(ValueError, match="directory"):
+        publish_domains(
+            staging,
+            tmp_path / "published",
+            [],
+            additional_directories=(directory,),
+        )
+
+
+def test_additional_directories_reject_casefold_aliases_before_mutation(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    staging.mkdir()
+    with pytest.raises(ValueError, match="directory"):
+        publish_domains(
+            staging,
+            tmp_path / "published",
+            [],
+            additional_directories=("calendars", "CALENDARS"),
+        )
+    assert not (tmp_path / "published").exists()
+
+
+def test_additional_directory_rejects_casefold_file_collision_before_mutation(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    staging.mkdir()
+    with pytest.raises(ValueError, match="collision"):
+        publish_domains(
+            staging,
+            tmp_path / "published",
+            [],
+            additional_files=("CALENDARS",),
+            additional_directories=("calendars",),
+        )
+    assert not (tmp_path / "published").exists()
+
+
+def test_additional_directory_rejects_casefold_domain_collision_before_mutation(
+    tmp_path: Path,
+) -> None:
+    staging = tmp_path / "staging"
+    staging.mkdir()
+    with pytest.raises(ValueError, match="collision"):
+        publish_domains(
+            staging,
+            tmp_path / "published",
+            [],
+            additional_directories=("LEAGUE_DATA.JSON",),
+        )
+    assert not (tmp_path / "published").exists()
+
+
 def test_additional_directories_reject_drive_relative_names(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="directory"):
         publish_domains(
@@ -524,12 +598,7 @@ def _directory_symlink_or_skip(link: Path, target: Path) -> None:
     try:
         link.symlink_to(target, target_is_directory=True)
     except OSError as error:
-        if getattr(error, "winerror", None) == 1314 or error.errno in {
-            errno.EACCES,
-            errno.EPERM,
-        }:
-            pytest.skip(f"symlink permission unavailable: {error}")
-        raise
+        _skip_if_filesystem_capability_is_unavailable(error, "symlink")
 
 
 @pytest.mark.parametrize("link_kind", ["source", "destination"])
@@ -598,12 +667,99 @@ def test_owned_directory_rejects_non_regular_child_when_supported(tmp_path: Path
     try:
         os.mkfifo(fifo)
     except OSError as error:
-        pytest.skip(f"FIFOs unavailable: {error}")
+        _skip_if_filesystem_capability_is_unavailable(error, "FIFO")
 
     with pytest.raises(ValueError, match="regular"):
         publish_domains(
             staging,
             tmp_path / "published",
+            [],
+            additional_directories=("calendars",),
+        )
+
+
+@pytest.mark.parametrize("link_kind", ["source", "destination"])
+def test_owned_directory_rejects_direct_child_symlinks_before_any_mutation(
+    tmp_path: Path, link_kind: str
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"league_data.json": b"new", "league_data.js": b"new"})
+    write_files(published, {"league_data.json": b"old", "league_data.js": b"old"})
+    target = tmp_path / "child-target.ics"
+    target.write_bytes(b"sentinel")
+    child = (
+        staging / "calendars" / "club.ics"
+        if link_kind == "source"
+        else published / "calendars" / "club.ics"
+    )
+    child.parent.mkdir(parents=True)
+    if link_kind == "destination":
+        write_files(staging / "calendars", {"club.ics": b"new-calendar"})
+    try:
+        child.symlink_to(target)
+    except OSError as error:
+        _skip_if_filesystem_capability_is_unavailable(error, "symlink")
+
+    with pytest.raises(ValueError, match="(symlink|reparse|regular)"):
+        publish_domains(
+            staging,
+            published,
+            [result("leagues", Decision.PUBLISH)],
+            additional_directories=("calendars",),
+        )
+
+    assert (published / "league_data.json").read_bytes() == b"old"
+    assert (published / "league_data.js").read_bytes() == b"old"
+    assert target.read_bytes() == b"sentinel"
+
+
+@pytest.mark.parametrize("tree_kind", ["source", "destination"])
+def test_owned_directory_rejects_fifo_children_when_supported(
+    tmp_path: Path, tree_kind: str
+) -> None:
+    import os
+
+    if not hasattr(os, "mkfifo"):
+        pytest.skip("FIFOs are unavailable on this platform")
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    calendar = staging / "calendars" if tree_kind == "source" else published / "calendars"
+    calendar.mkdir(parents=True)
+    if tree_kind == "destination":
+        write_files(staging / "calendars", {"club.ics": b"new-calendar"})
+    try:
+        os.mkfifo(calendar / "club.ics")
+    except OSError as error:
+        _skip_if_filesystem_capability_is_unavailable(error, "FIFO")
+
+    with pytest.raises(ValueError, match="regular"):
+        publish_domains(
+            staging,
+            published,
+            [],
+            additional_directories=("calendars",),
+        )
+
+
+@pytest.mark.parametrize("tree_kind", ["source", "destination"])
+def test_owned_directory_rejects_casefold_child_aliases_when_filesystem_allows(
+    tmp_path: Path, tree_kind: str
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    calendar = staging / "calendars" if tree_kind == "source" else published / "calendars"
+    write_files(calendar, {"club.ics": b"first", "CLUB.ICS": b"second"})
+    children = list(calendar.iterdir())
+    if len(children) != 2:
+        pytest.skip("filesystem canonicalizes casefold aliases")
+    if tree_kind == "destination":
+        write_files(staging / "calendars", {"other.ics": b"new-calendar"})
+
+    with pytest.raises(ValueError, match="alias"):
+        publish_domains(
+            staging,
+            published,
             [],
             additional_directories=("calendars",),
         )

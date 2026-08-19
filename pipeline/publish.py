@@ -104,9 +104,14 @@ def _safe_basename(name: object, label: str) -> str:
         or Path(name).is_absolute()
         or Path(name).name != name
         or windows_name is not None and bool(windows_name.drive or windows_name.root)
+        or name.endswith((".", " "))
     ):
         raise ValueError(f"invalid {label}: {name!r}")
     return name
+
+
+def _target_key(name: str) -> str:
+    return name.casefold()
 
 
 def _owned_regular_children(directory: Path, root: Path, label: str) -> list[Path]:
@@ -115,9 +120,15 @@ def _owned_regular_children(directory: Path, root: Path, label: str) -> list[Pat
     except OSError as error:
         raise ValueError(f"could not inspect {label}: {directory}") from error
 
+    seen_target_keys: set[str] = set()
     for child in children:
         _validate_direct_child(root, child, label)
         _validate_safe_path_components(child, label)
+        child_name = _safe_basename(child.name, f"{label} child")
+        target_key = _target_key(child_name)
+        if target_key in seen_target_keys:
+            raise ValueError(f"{label} contains colliding child aliases: {child}")
+        seen_target_keys.add(target_key)
         try:
             child_stat = child.lstat()
         except FileNotFoundError as error:
@@ -169,21 +180,26 @@ def publish_domains(
     finalize: Callable[[list[Path]], None] | None = None,
 ) -> list[Path]:
     domain_filenames = {name for names in DOMAIN_FILES.values() for name in names}
-    seen_additional: set[str] = set()
+    domain_target_keys = {_target_key(name) for name in domain_filenames}
+    seen_additional_target_keys: set[str] = set()
     for filename in additional_files:
         _safe_basename(filename, "additional publication file")
-        if filename in seen_additional or filename in domain_filenames:
+        target_key = _target_key(filename)
+        if target_key in seen_additional_target_keys or target_key in domain_target_keys:
             raise ValueError(f"invalid additional publication file: {filename!r}")
-        seen_additional.add(filename)
+        seen_additional_target_keys.add(target_key)
 
     seen_directories: set[str] = set()
+    seen_directory_target_keys: set[str] = set()
     for directory in additional_directories:
         _safe_basename(directory, "additional publication directory")
-        if directory in seen_directories:
+        target_key = _target_key(directory)
+        if target_key in seen_directory_target_keys:
             raise ValueError(f"invalid additional publication directory: {directory!r}")
-        if directory in domain_filenames or directory in seen_additional:
+        if target_key in domain_target_keys or target_key in seen_additional_target_keys:
             raise ValueError(f"additional publication directory collision: {directory!r}")
         seen_directories.add(directory)
+        seen_directory_target_keys.add(target_key)
 
     indexed_results: dict[str, ValidationResult] = {}
     for result in results:
