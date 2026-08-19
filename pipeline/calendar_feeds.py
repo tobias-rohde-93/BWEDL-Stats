@@ -1,7 +1,6 @@
-"""Pure parsing helpers for regular BWEDL league fixtures.
+"""Parse regular BWEDL fixtures and publish validated stateful team calendars.
 
-The calendar generator consumes these value objects later; this module deliberately
-does not read files or perform network I/O.
+The parser remains pure; the explicit writer and CLI own the only file I/O.
 """
 
 from __future__ import annotations
@@ -474,6 +473,7 @@ def build_calendar_publication(
     prior = _validate_previous_state(previous_state) if previous_state is not None else None
     source_lines = classify_regular_league_source_lines(league_data)
     season = _single_current_season(league_data, source_lines)
+    catalog = build_club_catalog(club_data)
     games = parse_regular_league_games(league_data, club_data)
     if season is not None and any(game.season != season for game in games):
         raise CalendarSourceError("Spielplandaten enthalten keine eindeutige aktuelle Saison")
@@ -539,7 +539,9 @@ def build_calendar_publication(
         "updated_at": _canonical_timestamp(publication_updated_at),
         "events": state_events,
     }
-    index = _build_calendar_index(season, publication_updated_at, state_events)
+    index = _build_calendar_index(
+        season, publication_updated_at, state_events, catalog
+    )
     calendars = _render_calendars(state_events)
     index_json = _json_bytes(index)
     return CalendarPublication(
@@ -554,21 +556,26 @@ def build_calendar_publication(
 
 def write_calendar_publication(publication: CalendarPublication, output_dir: str | Path) -> None:
     """Write only validated, publication-owned paths below an explicit directory."""
-    for team_id in publication.calendars:
-        _validate_team_id(team_id)
-    root = Path(output_dir)
-    if root.exists() and (_is_reparse_point(root) or not root.is_dir()):
-        raise CalendarSourceError("Output-Verzeichnis muss ein sicheres Verzeichnis sein")
+    _validate_calendar_publication(publication)
+    root = _preflight_output_root(Path(output_dir))
+    calendars_dir = root / "calendars"
+    artifacts = {
+        root / "calendar_index.json": publication.calendar_index_json,
+        root / "calendar_index.js": publication.calendar_index_js,
+        root / "calendar_state.json": publication.calendar_state_json,
+    }
+    expected_names = {f"{team_id}.ics" for team_id in publication.calendars}
+    artifacts.update(
+        {calendars_dir / f"{team_id}.ics": contents for team_id, contents in publication.calendars.items()}
+    )
+    existing_feeds = _preflight_existing_output(root, calendars_dir, artifacts)
+
     try:
         root.mkdir(parents=True, exist_ok=True)
     except OSError as error:
         raise CalendarSourceError("Output-Verzeichnis kann nicht angelegt werden") from error
     root = root.resolve(strict=True)
     calendars_dir = root / "calendars"
-    if calendars_dir.exists() and (
-        _is_reparse_point(calendars_dir) or not calendars_dir.is_dir()
-    ):
-        raise CalendarSourceError("Kalender-Verzeichnis muss ein sicheres Verzeichnis sein")
     try:
         calendars_dir.mkdir(exist_ok=True)
     except OSError as error:
@@ -576,29 +583,16 @@ def write_calendar_publication(publication: CalendarPublication, output_dir: str
     calendars_dir = calendars_dir.resolve(strict=True)
     _ensure_within(root, calendars_dir)
 
-    artifacts = {
-        root / "calendar_index.json": publication.calendar_index_json,
-        root / "calendar_index.js": publication.calendar_index_js,
-        root / "calendar_state.json": publication.calendar_state_json,
-    }
-    expected_names: set[str] = set()
-    for team_id, contents in publication.calendars.items():
-        file_name = f"{team_id}.ics"
-        expected_names.add(file_name)
-        artifacts[calendars_dir / file_name] = contents
-    existing_feeds = list(calendars_dir.glob("*.ics"))
-    for existing in existing_feeds:
-        _preflight_calendar_file(calendars_dir, existing)
-    for path in artifacts:
-        _preflight_artifact_target(root, path)
-
     for path, contents in artifacts.items():
         _write_bytes_safely(path, contents)
 
     for existing in existing_feeds:
         if existing.name in expected_names:
             continue
-        existing.unlink()
+        try:
+            existing.unlink()
+        except OSError as error:
+            raise CalendarSourceError("Veralteter Kalender kann nicht entfernt werden") from error
 
 
 def _single_current_season(
@@ -637,6 +631,8 @@ def _active_event_record(
         "team_id": team.team_id,
         "team_name": team.name,
         "opponent": opponent.name,
+        "home_team": game.home.name,
+        "away_team": game.away.name,
         "is_home": is_home,
         "starts_at": _canonical_timestamp(game.starts_at_utc),
         "location": location,
@@ -663,6 +659,8 @@ def _event_fingerprint(event: Mapping[str, Any]) -> str:
             "team_id",
             "team_name",
             "opponent",
+            "home_team",
+            "away_team",
             "is_home",
             "starts_at",
             "location",
@@ -674,34 +672,60 @@ def _event_fingerprint(event: Mapping[str, Any]) -> str:
 
 
 def _build_calendar_index(
-    season: str | None, updated_at: datetime, events: list[dict[str, Any]]
+    season: str | None,
+    updated_at: datetime,
+    events: list[dict[str, Any]],
+    catalog: ClubCatalog,
 ) -> dict[str, Any]:
-    teams: dict[str, dict[str, Any]] = {}
+    by_team: dict[str, list[dict[str, Any]]] = {}
     for event in events:
-        if event["status"] != "CONFIRMED":
-            continue
-        match = _SAFE_TEAM_ID_RE.fullmatch(event["team_id"])
+        by_team.setdefault(event["team_id"], []).append(event)
+    teams: dict[str, dict[str, Any]] = {}
+    for team_id, team_events in sorted(by_team.items()):
+        match = _SAFE_TEAM_ID_RE.fullmatch(team_id)
         if match is None:
-            raise CalendarSourceError(f"Ungültige Team-ID im Kalender: {event['team_id']!r}")
-        team = teams.setdefault(
-            event["team_id"],
-            {
-                "team_id": event["team_id"],
-                "name": event["team_name"],
-                "club_number": match.group(1),
-                "team_slot": int(match.group(2)),
-                "ics_path": f"calendars/{event['team_id']}.ics",
-                "warning_count": 0,
-            },
+            raise CalendarSourceError(f"Ungültige Team-ID im Kalender: {team_id!r}")
+        preferred = next(
+            (event for event in team_events if event["status"] == "CONFIRMED"),
+            team_events[0],
         )
-        if event["location_warning"] is not None:
-            team["warning_count"] += 1
+        entry = {
+            "name": preferred["team_name"],
+            "path": f"calendars/{team_id}.ics",
+            "team_id": team_id,
+            "club_number": match.group(1),
+            "team_slot": int(match.group(2)),
+            "warning_count": sum(
+                event["location_warning"] is not None for event in team_events
+            ),
+        }
+        for key in _team_index_keys(preferred, catalog):
+            existing = teams.get(key)
+            if existing is not None and existing["team_id"] != team_id:
+                raise CalendarSourceError(
+                    f"Mehrdeutiger Kalenderindex für {key}: "
+                    f"{existing['team_id']} und {team_id}"
+                )
+            teams[key] = entry
     return {
         "schema_version": _INDEX_SCHEMA_VERSION,
         "season": season,
         "updated_at": _canonical_timestamp(updated_at),
-        "teams": [teams[team_id] for team_id in sorted(teams)],
+        "teams": {key: teams[key] for key in sorted(teams)},
     }
+
+
+def _team_index_keys(event: Mapping[str, Any], catalog: ClubCatalog) -> set[str]:
+    keys = {normalize_team_name(event["team_name"])}
+    match = _SAFE_TEAM_ID_RE.fullmatch(event["team_id"])
+    assert match is not None
+    club = catalog.clubs_by_number.get(match.group(1))
+    if club is None:
+        return keys
+    slot = int(match.group(2))
+    for alias in _club_aliases(club):
+        keys.add(alias if slot == 1 else f"{alias} {slot}")
+    return keys
 
 
 def _render_calendars(events: list[dict[str, Any]]) -> dict[str, bytes]:
@@ -737,10 +761,16 @@ def _render_event(event: Mapping[str, Any]) -> list[str]:
     ends_at = starts_at + timedelta(hours=3)
     last_modified = _parse_state_timestamp(event["last_modified"], "Event last_modified")
     home_or_away = "Heimspiel" if event["is_home"] else "Auswärtsspiel"
-    summary = f"Dart: {event['team_name']} – {event['opponent']} ({home_or_away})"
+    summary = (
+        f"Heimspiel gegen {event['opponent']}"
+        if event["is_home"]
+        else f"Auswärtsspiel bei {event['opponent']}"
+    )
     description = [
-        f"Gegner: {event['opponent']}",
+        f"Begegnung: {event['home_team']} - {event['away_team']}",
         home_or_away,
+        f"Liga: {event['league']}",
+        f"Spieltag: {event['round_name']}",
         f"Termin: {starts_at.strftime('%d.%m.%Y %H:%M UTC')}",
     ]
     if event["location"] is not None:
@@ -764,8 +794,7 @@ def _render_event(event: Mapping[str, Any]) -> list[str]:
             _content_line("LAST-MODIFIED", _ical_timestamp(last_modified)),
         )
     )
-    if event["status"] == "CANCELLED":
-        lines.append("STATUS:CANCELLED")
+    lines.append(f"STATUS:{event['status']}")
     lines.append("END:VEVENT")
     return lines
 
@@ -775,6 +804,11 @@ def _content_line(name: str, value: str, *, text: bool = False) -> str:
 
 
 def _escape_text(value: str) -> str:
+    value = "".join(
+        character
+        for character in value
+        if character in "\r\n" or not (ord(character) < 32 or 127 <= ord(character) <= 159)
+    )
     value = value.replace("\r\n", "\n").replace("\r", "\n")
     return value.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
@@ -862,6 +896,7 @@ def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
     normalized: list[dict[str, Any]] = []
     event_keys = {
         "uid", "season", "league", "round_name", "team_id", "team_name", "opponent", "is_home",
+        "home_team", "away_team",
         "starts_at", "location", "location_warning", "status", "fingerprint", "sequence", "last_modified",
     }
     seen: set[str] = set()
@@ -869,7 +904,7 @@ def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(event, Mapping) or set(event) != event_keys:
             raise CalendarSourceError("State Event-Schema ist inkompatibel")
         item = dict(event)
-        string_keys = ("uid", "season", "league", "round_name", "team_id", "team_name", "opponent", "fingerprint", "last_modified", "starts_at")
+        string_keys = ("uid", "season", "league", "round_name", "team_id", "team_name", "opponent", "home_team", "away_team", "fingerprint", "last_modified", "starts_at")
         if any(not isinstance(item[key], str) or not item[key] for key in string_keys):
             raise CalendarSourceError("State Event enthält ungültigen Text")
         if _SAFE_TEAM_ID_RE.fullmatch(item["team_id"]) is None:
@@ -915,6 +950,78 @@ def _validate_team_id(team_id: Any) -> None:
         raise CalendarSourceError(f"Ungültige Team-ID für Feedpfad: {team_id!r}")
 
 
+def _validate_calendar_publication(publication: CalendarPublication) -> None:
+    if not isinstance(publication, CalendarPublication):
+        raise CalendarSourceError("Kalenderpublikation ist ungültig")
+    index = _decode_json_object(publication.calendar_index_json, "Kalenderindex")
+    state = _decode_json_object(publication.calendar_state_json, "Kalenderstate")
+    _validate_previous_state(state)
+    if not isinstance(index.get("teams"), Mapping) or index.get("schema_version") != _INDEX_SCHEMA_VERSION:
+        raise CalendarSourceError("Kalenderindex ist inkompatibel")
+    for key, entry in index["teams"].items():
+        if not isinstance(key, str) or normalize_team_name(key) != key or not isinstance(entry, Mapping):
+            raise CalendarSourceError("Kalenderindex enthält einen ungültigen Team-Schlüssel")
+        if not isinstance(entry.get("name"), str) or not isinstance(entry.get("path"), str):
+            raise CalendarSourceError("Kalenderindex enthält ungültige Teamdaten")
+        expected_path = f"calendars/{entry.get('team_id')}.ics"
+        if entry.get("path") != expected_path:
+            raise CalendarSourceError("Kalenderindex enthält einen unsicheren Feedpfad")
+        _validate_team_id(entry.get("team_id"))
+    expected_js = b"window.BWEDL_CALENDAR_INDEX = " + publication.calendar_index_json.rstrip(b"\n") + b";\n"
+    if publication.calendar_index_js != expected_js:
+        raise CalendarSourceError("Kalenderindex-JavaScript ist nicht inert oder inkonsistent")
+    if not isinstance(publication.calendars, Mapping):
+        raise CalendarSourceError("Kalenderfeeds müssen ein Mapping sein")
+    for team_id, contents in publication.calendars.items():
+        _validate_team_id(team_id)
+        _validate_ics_feed(contents)
+
+
+def _decode_json_object(contents: Any, label: str) -> Mapping[str, Any]:
+    if not isinstance(contents, bytes):
+        raise CalendarSourceError(f"{label} muss UTF-8-Bytes sein")
+    try:
+        value = json.loads(contents.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise CalendarSourceError(f"{label} ist kein gültiges JSON") from error
+    if not isinstance(value, Mapping):
+        raise CalendarSourceError(f"{label} muss ein Objekt sein")
+    return value
+
+
+def _validate_ics_feed(contents: Any) -> None:
+    if not isinstance(contents, bytes):
+        raise CalendarSourceError("Kalenderfeed muss UTF-8-Bytes sein")
+    try:
+        decoded = contents.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise CalendarSourceError("Kalenderfeed ist nicht UTF-8") from error
+    if "\n" in decoded.replace("\r\n", "") or not decoded.endswith("\r\n"):
+        raise CalendarSourceError("Kalenderfeed muss ausschließlich CRLF verwenden")
+    physical_lines = decoded.split("\r\n")
+    if physical_lines[-1] != "" or any(len(line.encode("utf-8")) > 75 for line in physical_lines[:-1]):
+        raise CalendarSourceError("Kalenderfeed enthält ungültige Faltung")
+    if any(
+        ord(character) < 32 and character not in "\r\n"
+        or 127 <= ord(character) <= 159
+        for character in decoded
+    ):
+        raise CalendarSourceError("Kalenderfeed enthält unzulässige Steuerzeichen")
+    logical_lines: list[str] = []
+    for line in physical_lines[:-1]:
+        if line.startswith(" "):
+            if not logical_lines:
+                raise CalendarSourceError("Kalenderfeed beginnt mit einer Faltungszeile")
+            logical_lines[-1] += line[1:]
+        else:
+            logical_lines.append(line)
+    if not logical_lines or logical_lines[0] != "BEGIN:VCALENDAR" or logical_lines[-1] != "END:VCALENDAR":
+        raise CalendarSourceError("Kalenderfeed hat keine gültigen VCALENDAR-Grenzen")
+    uids = [line[4:] for line in logical_lines if line.startswith("UID:")]
+    if len(uids) != len(set(uids)):
+        raise CalendarSourceError("Kalenderfeed enthält doppelte UID")
+
+
 def _ensure_within(root: Path, path: Path) -> None:
     try:
         path.resolve(strict=False).relative_to(root)
@@ -925,14 +1032,21 @@ def _ensure_within(root: Path, path: Path) -> None:
 def _write_bytes_safely(path: Path, contents: bytes) -> None:
     if path.exists() and _is_reparse_point(path):
         raise CalendarSourceError("Kalenderdatei darf kein Symlink sein")
-    with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as temporary:
-        temporary.write(contents)
-        temporary_path = Path(temporary.name)
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as temporary:
+            temporary.write(contents)
+            temporary_path = Path(temporary.name)
+    except (OSError, TypeError) as error:
+        raise CalendarSourceError("Kalenderdatei kann nicht vorbereitet werden") from error
     try:
         os.replace(temporary_path, path)
-    finally:
-        if temporary_path.exists():
-            temporary_path.unlink()
+    except OSError as error:
+        try:
+            if temporary_path.exists():
+                temporary_path.unlink()
+        except OSError:
+            pass
+        raise CalendarSourceError("Kalenderdatei kann nicht geschrieben werden") from error
 
 
 def _preflight_calendar_file(calendars_dir: Path, path: Path) -> None:
@@ -965,6 +1079,38 @@ def _preflight_artifact_target(root: Path, path: Path) -> None:
     except OSError as error:
         raise CalendarSourceError("Kalenderziel ist nicht sicher prüfbar") from error
     _ensure_within(root, resolved)
+
+
+def _preflight_output_root(output_dir: Path) -> Path:
+    root = output_dir.absolute()
+    chain = [root, *root.parents]
+    for node in reversed(chain):
+        if not os.path.lexists(node):
+            continue
+        if _is_reparse_point(node) or not node.is_dir():
+            raise CalendarSourceError("Output-Pfad enthält kein sicheres Verzeichnis")
+    return root
+
+
+def _preflight_existing_output(
+    root: Path, calendars_dir: Path, artifacts: Mapping[Path, bytes]
+) -> list[Path]:
+    if not root.exists():
+        return []
+    _ensure_within(root, root)
+    if calendars_dir.exists():
+        if _is_reparse_point(calendars_dir) or not calendars_dir.is_dir():
+            raise CalendarSourceError("Kalender-Verzeichnis muss ein sicheres Verzeichnis sein")
+        _ensure_within(root, calendars_dir.resolve(strict=True))
+        existing_feeds = list(calendars_dir.glob("*.ics"))
+        for existing in existing_feeds:
+            _preflight_calendar_file(calendars_dir, existing)
+    else:
+        existing_feeds = []
+    for path in artifacts:
+        if path.parent.exists():
+            _preflight_artifact_target(root, path)
+    return existing_feeds
 
 
 def _is_reparse_point(path: Path) -> bool:

@@ -4,7 +4,7 @@ import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 from pathlib import Path
 
 import pytest
@@ -437,8 +437,8 @@ def test_publication_has_immutable_artifacts_and_perspective_specific_events() -
 
     home = _feed(publication, "club-101-team-1")
     away = _feed(publication, "club-202-team-1")
-    assert "SUMMARY:Dart: DC Heim – DC Gast (Heimspiel)" in home
-    assert "SUMMARY:Dart: DC Gast – DC Heim (Ausw\u00e4rtsspiel)" in away
+    assert "SUMMARY:Heimspiel gegen DC Gast" in home
+    assert "SUMMARY:Ausw\u00e4rtsspiel bei DC Heim" in away
     assert "DTSTART:20261030T190000Z" in home
     assert "DTEND:20261030T220000Z" in home
     assert "LOCATION:Heimspielst\u00e4tte\\, Dartweg 7\\, 75172 Pforzheim" in home
@@ -455,7 +455,7 @@ def test_publication_keeps_partial_location_and_warns_when_home_is_unresolved() 
     unresolved = _one_fixture("Fr. 30. 10.2026 20:00 Fremdes Team - DC Gast ---\n")
     guest_feed = _feed(_publication(unresolved), "club-202-team-1")
     assert "LOCATION:" not in guest_feed
-    assert "Austragungsort nicht aufl\u00f6sbar" in guest_feed
+    assert "Austragungsort nicht aufl\u00f6sbar" in guest_feed.replace("\r\n ", "")
     assert "Ausw\u00e4rtsweg" not in guest_feed
 
 
@@ -586,12 +586,8 @@ def test_state_schema_and_feed_paths_are_strictly_validated() -> None:
 
     with pytest.raises(CalendarSourceError, match="Team-ID"):
         write_calendar_publication(
-            CalendarPublication(
-                season="2026-2027",
-                updated_at=UPDATED_AT,
-                calendar_index_json=b"{}\n",
-                calendar_index_js=b"window.BWEDL_CALENDAR_INDEX = {};\n",
-                calendar_state_json=b"{}\n",
+            replace(
+                _publication(_one_fixture()),
                 calendars={"../outside": b"BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n"},
             ),
             Path.cwd(),
@@ -645,6 +641,181 @@ def test_writer_preflights_all_targets_before_overwriting_any_artifact() -> None
             write_calendar_publication(publication, output)
 
         assert sentinel.read_bytes() == b"OLD"
+        assert not (output / "calendars").exists()
+
+
+def test_index_maps_canonical_observed_and_known_alias_names_through_cancellation() -> None:
+    clubs = {
+        "clubs": [
+            {**CLUBS["clubs"][0], "name": "DC Striker´s"},
+            CLUBS["clubs"][1],
+        ]
+    }
+    leagues = _one_fixture("Fr. 30. 10.2026 20:00 DC Strikers - DC Gast ---\n")
+    active = _publication(leagues, clubs)
+    active_index = json.loads(active.calendar_index_json)
+    teams = active_index["teams"]
+    assert isinstance(teams, dict)
+    assert teams[normalize_team_name("DC Strikers")]["path"] == "calendars/club-101-team-1.ics"
+    assert teams[normalize_team_name("DC Striker´s")]["path"] == "calendars/club-101-team-1.ics"
+
+    cancelled = _publication(
+        {"leagues": {"A-Klasse 2026-2027": {"match_days": {}}}},
+        clubs,
+        previous_state=_state(active),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    cancelled_index = json.loads(cancelled.calendar_index_json)
+    assert cancelled_index["teams"][normalize_team_name("DC Strikers")]["path"] == (
+        "calendars/club-101-team-1.ics"
+    )
+
+    slot_two = _publication(
+        _one_fixture("Fr. 30. 10.2026 20:00 DC Strikers 2 - DC Gast ---\n"), clubs
+    )
+    slot_two_index = json.loads(slot_two.calendar_index_json)
+    assert slot_two_index["teams"][normalize_team_name("DC Strikers 2")]["path"] == (
+        "calendars/club-101-team-2.ics"
+    )
+    assert list(active_index["teams"]) == sorted(active_index["teams"])
+
+
+def test_event_content_uses_design_summary_description_and_explicit_status() -> None:
+    publication = _publication(_one_fixture())
+    home = _feed(publication, "club-101-team-1").replace("\r\n ", "")
+    away = _feed(publication, "club-202-team-1").replace("\r\n ", "")
+
+    assert "SUMMARY:Heimspiel gegen DC Gast" in home
+    assert "SUMMARY:Auswärtsspiel bei DC Heim" in away
+    assert "DESCRIPTION:Begegnung: DC Heim - DC Gast\\nHeimspiel\\nLiga: A-Klasse 2026-2027\\nSpieltag: 2. Spieltag\\nTermin:" in home
+    assert "STATUS:CONFIRMED" in home
+
+    cancelled = _publication(
+        {"leagues": {"A-Klasse 2026-2027": {"match_days": {}}}},
+        previous_state=_state(publication),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    restored = _publication(
+        _one_fixture(), previous_state=_state(cancelled), updated_at=datetime(2026, 8, 21, tzinfo=timezone.utc)
+    )
+    assert "STATUS:CONFIRMED" in _feed(restored, "club-101-team-1")
+
+
+def test_ics_text_filters_non_rfc_control_characters() -> None:
+    clubs = {"clubs": [{**CLUBS["clubs"][0], "venue": "Halle\x00\x07\x7f"}, CLUBS["clubs"][1]]}
+    feed = _feed(_publication(_one_fixture(), clubs), "club-101-team-1").encode("utf-8")
+    assert b"\x00" not in feed
+    assert b"\x07" not in feed
+    assert b"\x7f" not in feed
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda publication: replace(publication, calendar_index_json=b"not json\n"),
+        lambda publication: replace(publication, calendar_state_json=b"not json\n"),
+        lambda publication: replace(publication, calendars={"club-101-team-1": b"bad\r\n"}),
+        lambda publication: replace(publication, calendars={"club-101-team-1": b"BEGIN:VCALENDAR\nEND:VCALENDAR\n"}),
+        lambda publication: replace(publication, calendars={"club-101-team-1": b"BEGIN:VCALENDAR\r\nUID:a\r\nUID:a\r\nEND:VCALENDAR\r\n"}),
+        lambda publication: replace(publication, calendars={"club-101-team-1": b"BEGIN:VCALENDAR\r\n" + (b"A" * 76) + b"\r\nEND:VCALENDAR\r\n"}),
+        lambda publication: replace(publication, calendars={"club-101-team-1": b"\xff"}),
+        lambda publication: replace(publication, calendars={"club-101-team-1": "not bytes"}),
+    ],
+)
+def test_writer_rejects_invalid_publication_before_creating_output(mutation: object) -> None:
+    publication = mutation(_publication(_one_fixture()))
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(publication, output)
+        assert not output.exists()
+
+
+def test_writer_rejects_a_missing_output_child_below_a_symlink_ancestor() -> None:
+    publication = _publication(_one_fixture())
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        root = Path(temporary_directory)
+        outside = root / "outside"
+        outside.mkdir()
+        link = root / "linked"
+        try:
+            os.symlink(outside, link, target_is_directory=True)
+        except OSError as error:
+            pytest.skip(f"Symlinks are unavailable for this test user: {error}")
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(publication, link / "new-output")
+        assert list(outside.iterdir()) == []
+
+
+def test_index_rejects_alias_collisions_between_different_prior_team_feeds() -> None:
+    initial_clubs = {
+        "clubs": [
+            {**CLUBS["clubs"][0], "name": "DC Striker´s"},
+            {**CLUBS["clubs"][1], "name": "DC Andere"},
+        ]
+    }
+    initial_leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "1. Spieltag": "Fr. 30. 10.2026 20:00 DC Strikers - DC Andere ---\n",
+                }
+            }
+        }
+    }
+    original = _publication(initial_leagues, initial_clubs)
+    colliding_clubs = {"clubs": [{**initial_clubs["clubs"][0]}, {**initial_clubs["clubs"][1], "name": "DC Strikers"}]}
+
+    with pytest.raises(CalendarSourceError, match="Mehrdeutiger Kalenderindex"):
+        _publication(
+            {"leagues": {"A-Klasse 2026-2027": {"match_days": {}}}},
+            colliding_clubs,
+            previous_state=_state(original),
+            updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+        )
+
+
+def test_writer_wraps_replace_errors_as_calendar_source_errors(monkeypatch: pytest.MonkeyPatch) -> None:
+    publication = _publication(_one_fixture())
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+
+        def fail_replace(_: object, __: object) -> None:
+            raise OSError("disk blocked")
+
+        monkeypatch.setattr("pipeline.calendar_feeds.os.replace", fail_replace)
+        with pytest.raises(CalendarSourceError, match="kann nicht geschrieben"):
+            write_calendar_publication(publication, output)
+
+
+def test_cli_reports_source_errors_without_a_traceback() -> None:
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        root = Path(temporary_directory)
+        league_path = root / "invalid.json"
+        club_path = root / "clubs.json"
+        league_path.write_text("{", encoding="utf-8")
+        club_path.write_text(json.dumps(CLUBS), encoding="utf-8")
+        result = subprocess.run(
+            [
+                sys.executable,
+                "pipeline/calendar_feeds.py",
+                "--league-json",
+                str(league_path),
+                "--club-json",
+                str(club_path),
+                "--output-dir",
+                str(root / "output"),
+                "--updated-at",
+                "2026-08-19T10:15:00Z",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        assert result.returncode != 0
+        assert "Traceback" not in result.stderr
+        assert "JSON-Datei nicht lesbar" in result.stderr
 
 
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
@@ -663,9 +834,7 @@ def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
     )
     index = json.loads(publication.calendar_index_json)
     assert index["schema_version"] == 1
-    assert [team["team_id"] for team in index["teams"]] == sorted(
-        team["team_id"] for team in index["teams"]
-    )
+    assert list(index["teams"]) == sorted(index["teams"])
     assert publication.calendar_index_js.startswith(b"window.BWEDL_CALENDAR_INDEX = ")
     assert b"function" not in publication.calendar_index_js
     assert json.loads(publication.calendar_index_js.split(b"= ", 1)[1].rstrip(b";\n")) == index
