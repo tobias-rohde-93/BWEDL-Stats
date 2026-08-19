@@ -1038,6 +1038,9 @@ def _validate_calendar_publication(publication: CalendarPublication) -> None:
         }
         if feed_events[team_id] != expected_events:
             raise CalendarSourceError("Kalenderfeed stimmt nicht mit dem State überein")
+    expected_calendars = _render_calendars(validated_state["events"])
+    if dict(publication.calendars) != expected_calendars:
+        raise CalendarSourceError("Kalenderfeedinhalte stimmen nicht exakt mit dem State überein")
 
 
 def _decode_json_object(contents: Any, label: str) -> Mapping[str, Any]:
@@ -1089,9 +1092,19 @@ def _validate_ics_feed(contents: Any) -> dict[str, str]:
         if ":" not in line:
             raise CalendarSourceError("Kalenderfeed enthält eine unvollständige Content-Line")
         name_and_params, value = line.split(":", 1)
-        name = name_and_params.split(";", 1)[0]
+        parameter_parts = name_and_params.split(";")
+        name = parameter_parts[0]
         if re.fullmatch(r"[A-Za-z0-9-]+", name) is None:
             raise CalendarSourceError("Kalenderfeed enthält einen ungültigen Propertynamen")
+        for parameter in parameter_parts[1:]:
+            if parameter.count("=") != 1:
+                raise CalendarSourceError("Kalenderfeed enthält einen ungültigen Parameter")
+            parameter_name, parameter_value = parameter.split("=", 1)
+            if (
+                re.fullmatch(r"[A-Za-z0-9-]+", parameter_name) is None
+                or re.fullmatch(r"[A-Za-z0-9-]+", parameter_value) is None
+            ):
+                raise CalendarSourceError("Kalenderfeed enthält einen ungültigen Parameter")
         folded_name = name.casefold()
         if folded_name == "begin":
             component = value.casefold()
@@ -1210,8 +1223,12 @@ def _preflight_existing_output(
     if calendars_dir.exists():
         if _is_reparse_point(calendars_dir) or not calendars_dir.is_dir():
             raise CalendarSourceError("Kalender-Verzeichnis muss ein sicheres Verzeichnis sein")
-        _ensure_within(root, calendars_dir.resolve(strict=True))
-        existing_feeds = list(calendars_dir.glob("*.ics"))
+        try:
+            resolved_calendars_dir = calendars_dir.resolve(strict=True)
+            existing_feeds = list(calendars_dir.glob("*.ics"))
+        except OSError as error:
+            raise CalendarSourceError("Kalender-Verzeichnis kann nicht sicher gelesen werden") from error
+        _ensure_within(root, resolved_calendars_dir)
         for existing in existing_feeds:
             _preflight_calendar_file(calendars_dir, existing)
     else:

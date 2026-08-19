@@ -933,6 +933,61 @@ def test_writer_rejects_invalid_ics_logical_component_grammar(feed: bytes) -> No
             write_calendar_publication(invalid, Path(temporary_directory) / "output")
 
 
+@pytest.mark.parametrize(
+    "old,new",
+    [
+        (b"DTSTART:20261030T190000Z", b"DTSTART:20261030T190100Z"),
+        (b"SEQUENCE:0", b"SEQUENCE:9"),
+        (b"SUMMARY:Heimspiel gegen DC Gast", b"SUMMARY:Manipuliert"),
+        (b"LOCATION:Heimspielst", b"LOCATION:Fremdspielst"),
+    ],
+)
+def test_writer_rejects_any_state_feed_content_drift_before_output(old: bytes, new: bytes) -> None:
+    publication = _publication(_one_fixture())
+    feeds = dict(publication.calendars)
+    feeds["club-101-team-1"] = feeds["club-101-team-1"].replace(old, new, 1)
+    invalid = replace(publication, calendars=feeds)
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(invalid, output)
+        assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        b"X;BAD PARAM=value:test",
+        b"X;=value:test",
+        b"X;P=:test",
+        b"X;;P=value:test",
+    ],
+)
+def test_writer_rejects_invalid_content_line_parameter_grammar(line: bytes) -> None:
+    feed = b"BEGIN:VCALENDAR\r\n" + line + b"\r\nEND:VCALENDAR\r\n"
+    invalid = replace(_publication(_one_fixture()), calendars={"club-101-team-1": feed})
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(invalid, Path(temporary_directory) / "output")
+
+
+def test_writer_wraps_preflight_resolve_oserror(monkeypatch: pytest.MonkeyPatch) -> None:
+    publication = _publication(_one_fixture())
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        (output / "calendars").mkdir(parents=True)
+        original_resolve = Path.resolve
+
+        def fail_calendar_resolve(path: Path, *args: object, **kwargs: object) -> Path:
+            if path.name == "calendars":
+                raise OSError("blocked")
+            return original_resolve(path, *args, **kwargs)
+
+        monkeypatch.setattr(Path, "resolve", fail_calendar_resolve)
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(publication, output)
+
+
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
     leagues = {
         "leagues": {
