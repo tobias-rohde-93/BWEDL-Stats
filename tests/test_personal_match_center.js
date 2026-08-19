@@ -89,20 +89,17 @@ const resolveHomeClub = compileFunction('resolveHomeClub', {
 });
 const gameAddress = compileFunction('gameAddress', { resolveHomeClub });
 const gameCompetition = compileFunction('gameCompetition');
-const calendarGame = compileFunction('calendarGame', { gameAddress, gameCompetition });
 const gameShareText = compileFunction('gameShareText', { gameAddress, gameCompetition });
 const bestShareRoute = compileFunction('bestShareRoute', { resolveHomeClub, clubData });
 const buildGameActions = compileFunction('buildGameActions', {
     rememberMatchPreviewGame,
     navigateTo: (route) => calls.push(`navigate:${route}`),
-    downloadGameCalendar: () => calls.push('calendar'),
     shareCurrentView: (text, route) => calls.push({ text, route }),
     buildMapsUrl: (game) => gameAddress(game)
         ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(gameAddress(game))}`
         : '',
     gameShareText,
     bestShareRoute,
-    calendarGame,
     window: { BwedlAppUtils },
 });
 
@@ -114,10 +111,10 @@ const completeGame = {
     address: 'Hauptstraße 1, Pforzheim',
 };
 const actions = buildGameActions(completeGame);
-assert.deepEqual(actions.map((action) => action.key), ['league', 'preview', 'calendar', 'share', 'maps']);
+assert.deepEqual(actions.map((action) => action.key), ['league', 'preview', 'share', 'maps']);
 assert.equal(actions.every((action) => action.label && action.ariaLabel), true);
 assert.deepEqual(
-    { target: actions[4].target, rel: actions[4].rel },
+    { target: actions[3].target, rel: actions[3].rel },
     { target: '_blank', rel: 'noopener noreferrer' },
 );
 
@@ -127,21 +124,19 @@ actions[1].activate();
 assert.deepEqual(calls.slice(-2), ['store:bwedl_match_preview_game', 'navigate:matchPreview']);
 assert.deepEqual(JSON.parse(sessionStorage.value), completeGame);
 actions[2].activate();
-actions[3].activate();
-assert.equal(calls.includes('calendar'), true);
 assert.equal(calls.some((call) => call && call.text && call.text.includes('DC Heim gegen DC Gast')), true);
 
 assert.deepEqual(
     buildGameActions({ leagueName: 'A-Klasse', home: 'DC Heim', away: 'DC Gast', dateStr: '28.08.2026' })
         .map((action) => action.key),
-    ['league', 'preview', 'calendar', 'share'],
+    ['league', 'preview', 'share'],
     'missing address only removes the maps action',
 );
 assert.deepEqual(
     buildGameActions({ leagueName: 'A-Klasse', home: 'DC Heim', away: 'DC Gast', address: 'Pforzheim' })
         .map((action) => action.key),
     ['league', 'preview', 'share', 'maps'],
-    'missing date only removes the calendar action',
+    'missing date keeps the non-calendar actions available',
 );
 assert.equal(
     buildGameActions({ home: 'DC Heim', away: 'DC Gast' }).some((action) => action.key === 'league'),
@@ -161,18 +156,6 @@ const realisticClubGame = {
     away: 'DC Gast',
     dateStr: '29.08.2026',
 };
-for (const [game, expectedCompetition] of [
-    [realisticDashboardGame, realisticDashboardGame.leagueKey],
-    [realisticClubGame, realisticClubGame.leagueName],
-]) {
-    const enriched = calendarGame(game);
-    const ics = BwedlAppUtils.buildIcsContent(enriched);
-    assert.equal(enriched.competition, expectedCompetition);
-    assert.ok(enriched.location.includes('Pforzheim'));
-    assert.match(ics, new RegExp(`DESCRIPTION:${expectedCompetition.replace('/', '\\/')}`));
-    assert.match(ics, /LOCATION:/);
-}
-
 for (const alias of [
     "DC Underground Fool's 2",
     'Alla Häeeehr',
@@ -255,64 +238,6 @@ assert.match(shareCall.text, /A-Klasse Gruppe 1 2026\/27/);
 assert.match(shareCall.text, /Pforzheim/);
 assert.deepEqual(shareCall.route, bestShareRoute(realisticDashboardGame));
 assert.equal(shareCall.route.type, 'club');
-
-const downloadEvents = [];
-const queuedTimers = [];
-const statuses = [];
-const fakeLink = {
-    click: () => downloadEvents.push('click'),
-    parentElement: null,
-};
-const fakeDocument = {
-    body: {
-        appendChild: (link) => {
-            downloadEvents.push('append');
-            link.parentElement = fakeDocument.body;
-        },
-        removeChild: (link) => {
-            downloadEvents.push('remove');
-            link.parentElement = null;
-        },
-    },
-    createElement: () => fakeLink,
-};
-const fakeUrl = {
-    createObjectURL: () => {
-        downloadEvents.push('create');
-        return 'blob:calendar';
-    },
-    revokeObjectURL: (url) => downloadEvents.push(`revoke:${url}`),
-};
-const downloadGameCalendar = compileFunction('downloadGameCalendar', {
-    window: { BwedlAppUtils },
-    document: fakeDocument,
-    URL: fakeUrl,
-    Blob: class Blob {},
-    calendarGame,
-    calendarFilename: () => 'dc-heim-dc-gast-2026-08-28.ics',
-    setAppStatus: (status) => statuses.push(status),
-    setTimeout: (callback) => queuedTimers.push(callback),
-});
-assert.equal(downloadGameCalendar(completeGame), true);
-assert.deepEqual(downloadEvents, ['create', 'append', 'click']);
-assert.equal(queuedTimers.length, 1);
-assert.match(statuses.at(-1), /erstellt/i);
-queuedTimers.shift()();
-assert.deepEqual(downloadEvents, ['create', 'append', 'click', 'remove', 'revoke:blob:calendar']);
-
-const failedStatuses = [];
-const failedDownload = compileFunction('downloadGameCalendar', {
-    window: { BwedlAppUtils },
-    document: { createElement: () => { throw new Error('blocked'); } },
-    URL: fakeUrl,
-    Blob: class Blob {},
-    calendarGame,
-    calendarFilename: () => 'game.ics',
-    setAppStatus: (status) => failedStatuses.push(status),
-    setTimeout: () => assert.fail('failed download must not schedule success cleanup'),
-});
-assert.equal(failedDownload(completeGame), false);
-assert.match(failedStatuses.at(-1), /nicht/i);
 
 assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(mySchedule/);
 assert.match(source, /BwedlAppUtils\.selectUpcomingGames\(upcomingLeagueMatches/);

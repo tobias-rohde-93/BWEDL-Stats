@@ -1677,3 +1677,150 @@ a.club-contact-field__value {
     border-color: #93c5fd;
     outline: 2px solid transparent;
 }
+
+.calendar-subscription-card {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0 0 1.25rem;
+    padding: 1rem 1.05rem 1.05rem;
+    color: #e2e8f0;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-left: 3px solid #fbbf24;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.22);
+}
+
+.calendar-subscription-card--dashboard {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+.calendar-subscription-card__title {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+}
+
+.calendar-subscription-card__meta {
+    margin: 0;
+    color: #bfdbfe;
+    font-weight: 700;
+}
+
+.calendar-subscription-card__detail,
+.calendar-subscription-card__status {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.calendar-subscription-card__action,
+.calendar-subscription-dialog__actions button,
+.calendar-subscription-dialog__open-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.65rem 0.9rem;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    background: #2563eb;
+    border: 1px solid #60a5fa;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.calendar-subscription-card__action {
+    justify-self: start;
+    margin-top: 0.2rem;
+}
+
+.calendar-subscription-card__action:hover,
+.calendar-subscription-dialog__actions button:hover,
+.calendar-subscription-dialog__open-link:hover {
+    background: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.calendar-subscription-card__action:focus-visible,
+.calendar-subscription-dialog__actions button:focus-visible,
+.calendar-subscription-dialog__open-link:focus-visible {
+    outline: 3px solid #fbbf24;
+    outline-offset: 3px;
+}
+
+.calendar-subscription-dialog {
+    width: min(32rem, calc(100vw - 2rem));
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
+    padding: 1.25rem;
+    color: #e2e8f0;
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-top: 3px solid #fbbf24;
+    border-radius: 10px;
+    box-shadow: 0 24px 56px rgba(2, 6, 23, 0.72);
+}
+
+.calendar-subscription-dialog::backdrop {
+    background: rgba(2, 6, 23, 0.76);
+}
+
+.calendar-subscription-dialog h2 {
+    margin: 0 0 0.6rem;
+    color: #f8fafc;
+    font-size: 1.15rem;
+}
+
+.calendar-subscription-dialog p {
+    margin: 0 0 0.65rem;
+    line-height: 1.5;
+}
+
+.calendar-subscription-dialog__season,
+.calendar-subscription-dialog__status {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.calendar-subscription-dialog__open-link {
+    margin-top: 0.35rem;
+}
+
+.calendar-subscription-dialog__actions {
+    display: flex;
+    gap: 0.65rem;
+    margin-top: 0.8rem;
+}
+
+.calendar-subscription-dialog__actions button:last-child {
+    color: #cbd5e1;
+    background: transparent;
+    border-color: #64748b;
+}
+
+@media (max-width: 480px) {
+    .calendar-subscription-dialog__actions {
+        flex-direction: column;
+    }
+
+    .calendar-subscription-card__action,
+    .calendar-subscription-dialog__actions button,
+    .calendar-subscription-dialog__open-link {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .calendar-subscription-card__action,
+    .calendar-subscription-dialog__actions button,
+    .calendar-subscription-dialog__open-link {
+        transition: none;
+    }
+}

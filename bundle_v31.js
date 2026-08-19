@@ -744,6 +744,174 @@ document.addEventListener('DOMContentLoaded', () => {
             : null;
     }
 
+    function resolveMyCalendarSubscription() {
+        try {
+            if (!myPlayerProfile || typeof myTeamName !== 'string' || !myTeamName.trim()) return null;
+            const index = window.BWEDL_CALENDAR_INDEX;
+            const appUtils = window.BwedlAppUtils;
+            if (!index || !appUtils || typeof appUtils.resolveCalendarFeed !== 'function' ||
+                typeof appUtils.buildCalendarSubscriptionUrls !== 'function') return null;
+            const feed = appUtils.resolveCalendarFeed(index, myTeamName);
+            if (!feed || typeof feed.name !== 'string' || !feed.name.trim() ||
+                typeof feed.path !== 'string' || !feed.path.trim()) return null;
+            const urls = appUtils.buildCalendarSubscriptionUrls(feed.path, document.baseURI);
+            if (!urls || typeof urls.https !== 'string' || typeof urls.webcal !== 'string' ||
+                !urls.https || !urls.webcal) return null;
+            const httpsUrl = new URL(urls.https);
+            const webcalUrl = new URL(urls.webcal);
+            if (httpsUrl.protocol !== 'https:' || webcalUrl.protocol !== 'webcal:' ||
+                httpsUrl.host !== webcalUrl.host || httpsUrl.pathname !== webcalUrl.pathname) return null;
+            const rawSeason = typeof index.season === 'string' ? index.season.trim() : '';
+            const seasonMatch = rawSeason.match(/^(20\d{2})[-/](20\d{2})$/);
+            return {
+                name: feed.name.trim(),
+                path: feed.path.trim(),
+                https: urls.https,
+                webcal: urls.webcal,
+                season: seasonMatch ? `${seasonMatch[1]}/${seasonMatch[2]}` : null,
+            };
+        } catch (_error) {
+            return null;
+        }
+    }
+
+    function createCalendarSubscriptionCard(context = 'dashboard') {
+        const safeContext = context === 'profile' ? 'profile' : 'dashboard';
+        const card = document.createElement('section');
+        const title = document.createElement('h2');
+        const meta = document.createElement('p');
+        const detail = document.createElement('p');
+        card.className = 'calendar-subscription-card';
+        card.classList.add(`calendar-subscription-card--${safeContext}`);
+        card.setAttribute('aria-labelledby', `calendar-subscription-${safeContext}-title`);
+        title.id = `calendar-subscription-${safeContext}-title`;
+        title.className = 'calendar-subscription-card__title';
+        meta.className = 'calendar-subscription-card__meta';
+        detail.className = 'calendar-subscription-card__detail';
+        title.textContent = safeContext === 'profile' ? 'Kalender-Abo' : 'Teamkalender';
+        const subscription = resolveMyCalendarSubscription();
+
+        if (!myPlayerProfile || typeof myTeamName !== 'string' || !myTeamName.trim()) {
+            const action = document.createElement('button');
+            meta.textContent = 'Richte dein Profil ein, um den Spielplan deiner Mannschaft zu abonnieren.';
+            action.type = 'button';
+            action.className = 'calendar-subscription-card__action';
+            action.textContent = 'Mein Profil einrichten';
+            action.addEventListener('click', () => navigateTo('profile'));
+            card.append(title, meta, action);
+            return card;
+        }
+
+        meta.textContent = myTeamName.trim();
+        detail.textContent = 'Ligaspiele · aktuelle Saison';
+        card.append(title, meta, detail);
+        if (!subscription) {
+            const status = document.createElement('p');
+            status.className = 'calendar-subscription-card__status';
+            status.setAttribute('role', 'status');
+            status.textContent = 'Für diese Mannschaft ist aktuell kein Kalender verfügbar.';
+            card.appendChild(status);
+            return card;
+        }
+
+        const action = document.createElement('button');
+        action.type = 'button';
+        action.className = 'calendar-subscription-card__action';
+        action.textContent = 'Kalender abonnieren';
+        action.addEventListener('click', () => {
+            if (navigator.onLine === false) {
+                setAppStatus('Für das Kalender-Abo ist eine Internetverbindung erforderlich.');
+                return;
+            }
+            openCalendarSubscriptionDialog(action, subscription);
+        });
+        card.appendChild(action);
+        return card;
+    }
+
+    function openCalendarSubscriptionDialog(trigger, subscription) {
+        if (navigator.onLine === false) {
+            setAppStatus('Für das Kalender-Abo ist eine Internetverbindung erforderlich.');
+            return null;
+        }
+        try {
+            if (!subscription || typeof subscription.name !== 'string' || !subscription.name.trim() ||
+                typeof subscription.path !== 'string' || !subscription.path.trim() ||
+                typeof subscription.https !== 'string' || typeof subscription.webcal !== 'string') return null;
+            const httpsUrl = new URL(subscription.https);
+            const webcalUrl = new URL(subscription.webcal);
+            if (httpsUrl.protocol !== 'https:' || webcalUrl.protocol !== 'webcal:' ||
+                httpsUrl.host !== webcalUrl.host || httpsUrl.pathname !== webcalUrl.pathname) return null;
+        } catch (_error) {
+            return null;
+        }
+
+        const existing = document.querySelector('.calendar-subscription-dialog');
+        if (existing) return existing;
+        const dialog = document.createElement('dialog');
+        const heading = document.createElement('h2');
+        const description = document.createElement('p');
+        const season = document.createElement('p');
+        const openLink = document.createElement('a');
+        const actions = document.createElement('div');
+        const copyButton = document.createElement('button');
+        const closeButton = document.createElement('button');
+        const status = document.createElement('p');
+        const uniqueId = `calendar-subscription-title-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        const descriptionId = uniqueId.replace('-title-', '-description-');
+        let removed = false;
+        const removeOnce = () => {
+            if (removed) return;
+            removed = true;
+            dialog.remove();
+            if (trigger && trigger.isConnected && typeof trigger.focus === 'function') trigger.focus();
+        };
+
+        dialog.className = 'calendar-subscription-dialog';
+        dialog.setAttribute('aria-labelledby', uniqueId);
+        dialog.setAttribute('aria-describedby', descriptionId);
+        heading.id = uniqueId;
+        heading.textContent = 'Teamkalender abonnieren';
+        description.id = descriptionId;
+        description.textContent = `${subscription.name.trim()} · Ligaspiele · aktuelle Saison`;
+        season.className = 'calendar-subscription-dialog__season';
+        if (typeof subscription.season === 'string' && /^(20\d{2})\/(20\d{2})$/.test(subscription.season)) {
+            season.textContent = `Saison ${subscription.season}`;
+        }
+        openLink.className = 'calendar-subscription-dialog__open-link';
+        openLink.href = subscription.webcal;
+        openLink.textContent = 'In Kalender-App öffnen';
+        actions.className = 'calendar-subscription-dialog__actions';
+        copyButton.type = 'button';
+        copyButton.textContent = 'HTTPS-Link kopieren';
+        closeButton.type = 'button';
+        closeButton.textContent = 'Schließen';
+        status.className = 'calendar-subscription-dialog__status';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        copyButton.addEventListener('click', async () => {
+            try {
+                if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') throw new Error('clipboard unavailable');
+                await navigator.clipboard.writeText(subscription.https);
+                status.textContent = 'Abo-Link wurde kopiert.';
+                setAppStatus('Abo-Link wurde kopiert.');
+            } catch (_error) {
+                status.textContent = 'Abo-Link konnte nicht kopiert werden.';
+                setAppStatus('Abo-Link konnte nicht kopiert werden.');
+            }
+        });
+        closeButton.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('close', removeOnce);
+        actions.append(copyButton, closeButton);
+        dialog.append(heading, description);
+        if (season.textContent) dialog.appendChild(season);
+        dialog.append(openLink, actions, status);
+        document.body.appendChild(dialog);
+        dialog.showModal();
+        copyButton.focus();
+        return dialog;
+    }
+
     function getMyPrimaryPlayer() {
         return myPlayerResolution.status === 'resolved' ? myPlayerResolution.player : null;
     }
@@ -1172,17 +1340,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .find((value) => typeof value === 'string' && value.trim())?.trim() || '';
     }
 
-    function calendarGame(game) {
-        if (!game || typeof game !== 'object') return game;
-        const location = gameAddress(game);
-        const competition = gameCompetition(game);
-        return {
-            ...game,
-            ...(competition ? { competition } : {}),
-            ...(location ? { location } : {}),
-        };
-    }
-
     function buildMapsUrl(game) {
         const address = gameAddress(game);
         return address
@@ -1207,52 +1364,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return resolved ? { type: 'club', id: resolved.index } : null;
     }
 
-    function calendarFilename(game) {
-        const name = [game && game.home, game && game.away]
-            .filter((value) => typeof value === 'string' && value.trim())
-            .join('-')
-            .normalize('NFKD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-|-$/g, '') || 'bwedl-spiel';
-        const date = game && typeof game.dateStr === 'string'
-            ? game.dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})/)
-            : null;
-        const dateSuffix = date
-            ? `-${date[3]}-${date[2].padStart(2, '0')}-${date[1].padStart(2, '0')}`
-            : '';
-        return `${name}${dateSuffix}.ics`;
-    }
-
-    function downloadGameCalendar(game) {
-        let objectUrl = '';
-        let link = null;
-        const cleanup = () => {
-            if (link && link.parentElement) link.parentElement.removeChild(link);
-            if (objectUrl) URL.revokeObjectURL(objectUrl);
-        };
-        try {
-            const content = window.BwedlAppUtils.buildIcsContent(calendarGame(game));
-            if (!content) throw new Error('calendar data unavailable');
-            const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
-            objectUrl = URL.createObjectURL(blob);
-            link = document.createElement('a');
-            link.href = objectUrl;
-            link.download = calendarFilename(game);
-            link.hidden = true;
-            document.body.appendChild(link);
-            link.click();
-            setAppStatus('Kalenderdatei wurde erstellt.');
-            setTimeout(cleanup, 1000);
-            return true;
-        } catch (_error) {
-            cleanup();
-            setAppStatus('Kalenderdatei konnte nicht erstellt werden.');
-            return false;
-        }
-    }
-
     function buildGameActions(game) {
         if (!game || typeof game !== 'object') return [];
         const league = game.leagueKey || game.leagueName || game.league;
@@ -1271,14 +1382,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 label: 'Liga öffnen',
                 ariaLabel: `${league} öffnen`,
                 activate: () => navigateTo('league', league),
-            });
-        }
-        if (window.BwedlAppUtils.buildIcsContent(calendarGame(game))) {
-            actions.push({
-                key: 'calendar',
-                label: 'Kalender',
-                ariaLabel: `Kalendereintrag für ${gameShareText(game)} herunterladen`,
-                activate: () => downloadGameCalendar(game),
             });
         }
         actions.push({
@@ -2572,6 +2675,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(btnRow);
 
         container.appendChild(card);
+        card.after(createCalendarSubscriptionCard('profile'));
         contentArea.appendChild(container); // Corrected
     }
 
@@ -2591,6 +2695,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const primaryPlayer = getMyPrimaryPlayer();
         if (!primaryPlayer) {
             container.appendChild(createProfileOnboardingCard());
+            container.appendChild(createCalendarSubscriptionCard('dashboard'));
         }
 
         let myStats = null;
@@ -3061,6 +3166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 actionCard.appendChild(previewTeaser);
 
+                grid.insertBefore(createCalendarSubscriptionCard('dashboard'), actionCard);
                 grid.appendChild(actionCard);
                 const profileSeasonNotice = createSeasonNotice('dashboard-profile');
                 if (profileSeasonNotice) container.appendChild(profileSeasonNotice);

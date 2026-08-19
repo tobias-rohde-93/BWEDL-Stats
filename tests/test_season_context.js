@@ -304,6 +304,7 @@ function runDashboard(status, playerName) {
         navigateTo: (...args) => navigationCalls.push(args),
         createSeasonNotice,
         createProfileOnboardingCard,
+        createCalendarSubscriptionCard: () => document.createElement('section'),
     });
 
     renderDashboard();

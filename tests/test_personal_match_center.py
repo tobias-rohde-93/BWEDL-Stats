@@ -15,10 +15,12 @@ def test_dashboard_and_club_use_reviewed_upcoming_selector() -> None:
 
 def test_match_actions_keep_independent_capabilities() -> None:
     assert "function buildGameActions(game)" in SOURCE
-    assert "function calendarGame(game)" in SOURCE
-    assert "buildIcsContent(calendarGame(game))" in SOURCE
-    assert "new Blob([content], { type: 'text/calendar;charset=utf-8' })" in SOURCE
-    assert "setTimeout(cleanup" in SOURCE
+    assert "function calendarGame(game)" not in SOURCE
+    assert "function calendarFilename(game)" not in SOURCE
+    assert "function downloadGameCalendar(game)" not in SOURCE
+    assert "URL.createObjectURL" not in SOURCE
+    assert "link.download" not in SOURCE
+    assert "key: 'calendar'" not in SOURCE
     assert "shareCurrentView(gameShareText(game), bestShareRoute(game))" in SOURCE
     assert "target: '_blank'" in SOURCE
     assert "rel: 'noopener noreferrer'" in SOURCE
