@@ -306,6 +306,7 @@
             'PRODID:-//BWEDL Stats//Static Team Calendar//DE',
             'CALSCALE:GREGORIAN',
             'METHOD:PUBLISH',
+            'X-WR-CALNAME:BWEDL – einmalige Kopie',
             ...selectedRawEvents.flat(),
             'END:VCALENDAR',
             '',

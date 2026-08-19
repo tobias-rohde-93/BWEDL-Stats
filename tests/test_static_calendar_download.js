@@ -76,6 +76,7 @@ assert.equal(Object.isFrozen(snapshot), true);
 assert.match(snapshot.content, /UID:boundary@calendar\.bwedl\.invalid/);
 assert.doesNotMatch(snapshot.content, /UID:(?:past|cancelled)@/);
 assert.doesNotMatch(snapshot.content, /REFRESH-INTERVAL|X-PUBLISHED-TTL/);
+assert.match(snapshot.content, /X-WR-CALNAME:BWEDL – einmalige Kopie\r\n/u);
 assert.equal(snapshot.content.includes(boundaryEvent), true, 'the canonical folded event block stays byte-equivalent');
 assert.equal(snapshot.content.replaceAll('\r\n', '').includes('\n'), false);
 assert.equal(snapshot.content.endsWith('\r\n'), true);
