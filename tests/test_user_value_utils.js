@@ -35,6 +35,20 @@ assert.equal(normalizeCalendarTeamName('  DC---Team\t\n2  '), 'dc team 2');
 assert.equal(normalizeCalendarTeamName(null), '');
 assert.equal(normalizeCalendarTeamName({ value: 'DC Team' }), '');
 
+const publishedCalendarIndex = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '..', 'calendar_index.json'), 'utf8'),
+);
+const publishedCalendarEntries = Object.entries(publishedCalendarIndex.teams);
+assert.ok(publishedCalendarEntries.length > 100, 'current generated index contains the published team catalog');
+for (const [key, entry] of publishedCalendarEntries) {
+    assert.equal(key, normalizeCalendarTeamName(key), `published key ${key} is canonical`);
+    assert.deepEqual(resolveCalendarFeed(publishedCalendarIndex, key), {
+        name: entry.name,
+        path: entry.path,
+    });
+    assert.equal(resolveCalendarFeed(publishedCalendarIndex, entry.name).path, entry.path);
+}
+
 const calendarIndex = {
     schema_version: 1,
     teams: {

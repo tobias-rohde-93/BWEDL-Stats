@@ -41,7 +41,7 @@ self.addEventListener('fetch', event => {
     const isCalendarState = url.pathname.endsWith('calendar_state.json');
     if (isCalendarFeed || isCalendarState) {
         // Subscriptions and publication state must never become stale Cache Storage entries.
-        event.respondWith(fetch(event.request));
+        event.respondWith(fetch(new Request(event.request, { cache: 'no-store' })));
         return;
     }
 

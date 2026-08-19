@@ -44,6 +44,8 @@
 
     function normalizeCalendarTeamName(value) {
         if (typeof value !== 'string') return '';
+        // Canonical publication keys are authoritative and the generated index is cross-audited;
+        // exotic Unicode parity remains bounded by the runtime Unicode tables.
         return value
             .normalize('NFKD')
             .replace(/\p{M}/gu, '')

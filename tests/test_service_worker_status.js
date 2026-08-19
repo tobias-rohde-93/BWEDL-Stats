@@ -21,6 +21,7 @@ let putImpl = () => Promise.resolve();
 const cachedResponse = { source: 'cache' };
 const sandbox = {
     URL,
+    Request,
     Promise,
     self: {
         addEventListener(type, handler) { listeners[type] = handler; },
@@ -42,7 +43,7 @@ const sandbox = {
         delete(name) { deletedCaches.push(name); return Promise.resolve(true); }
     },
     fetch(request) {
-        calls.push({ type: 'fetch', url: request.url });
+        calls.push({ type: 'fetch', url: request.url, cache: request.cache });
         return fetchImpl(request);
     }
 };
@@ -131,22 +132,54 @@ vm.runInContext(worker, sandbox);
     }
 
     for (const url of [
-        'https://example.test/calendars/club-010-team-2.ics',
-        'https://example.test/calendar_state.json',
+        'https://example.test/calendars/club-010-team-2.ics?download=1',
+        'https://example.test/calendar_state.json?revision=2',
     ]) {
         calls.length = 0;
         const networkOnlyResponse = { status: 200, type: 'basic', clone: () => ({ source: 'network-clone' }) };
+        let forwardedRequest;
         fetchImpl = () => Promise.resolve(networkOnlyResponse);
         putImpl = () => { throw new Error(`${url} must not be cached`); };
         let calendarResponsePromise;
+        const originalRequest = new Request(url, {
+            method: 'GET',
+            headers: { 'X-Calendar-Test': 'preserved' },
+            credentials: 'include',
+            mode: 'same-origin',
+            redirect: 'manual',
+        });
+        fetchImpl = (request) => {
+            forwardedRequest = request;
+            return Promise.resolve(networkOnlyResponse);
+        };
         listeners.fetch({
-            request: { method: 'GET', url, clone() { return this; } },
+            request: originalRequest,
             respondWith(promise) { calendarResponsePromise = promise; },
             waitUntil() {},
         });
         assert.equal(await calendarResponsePromise, networkOnlyResponse, `${url} stays network-only`);
         assert.deepEqual(calls.map(call => call.type), ['fetch']);
+        assert.equal(forwardedRequest.url, originalRequest.url);
+        assert.equal(forwardedRequest.cache, 'no-store');
+        assert.equal(forwardedRequest.method, originalRequest.method);
+        assert.equal(forwardedRequest.headers.get('X-Calendar-Test'), 'preserved');
+        assert.equal(forwardedRequest.credentials, originalRequest.credentials);
+        assert.equal(forwardedRequest.mode, originalRequest.mode);
+        assert.equal(forwardedRequest.redirect, originalRequest.redirect);
     }
+
+    calls.length = 0;
+    const offlineError = new Error('calendar offline');
+    fetchImpl = () => Promise.reject(offlineError);
+    let offlineResponsePromise;
+    listeners.fetch({
+        request: new Request('https://example.test/calendars/club-010-team-2.ics?offline=1'),
+        respondWith(promise) { offlineResponsePromise = promise; },
+        waitUntil() {},
+    });
+    await assert.rejects(offlineResponsePromise, offlineError);
+    assert.deepEqual(calls.map(call => call.type), ['fetch']);
+    assert.equal(calls[0].cache, 'no-store');
     console.log('service worker status fallback: ok');
 })().catch(error => {
     console.error(error);
