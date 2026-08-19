@@ -879,6 +879,28 @@ def test_writer_rejects_bare_cr_and_parameterized_case_variant_duplicate_uids(fe
         assert not output.exists()
 
 
+@pytest.mark.parametrize("invalid_version", [True, 1.0, 2.0, "2"])
+def test_previous_state_rejects_non_integer_schema_versions(invalid_version: object) -> None:
+    state = _state(_publication(_one_fixture()))
+    state["schema_version"] = invalid_version
+
+    with pytest.raises(CalendarSourceError, match="State-Schema"):
+        _publication(_one_fixture(), previous_state=state)
+
+
+def test_integer_v1_state_migrates_while_integer_v2_remains_a_noop() -> None:
+    publication = _publication(_one_fixture())
+    legacy = _state(publication)
+    legacy["schema_version"] = 1
+    del legacy["index_fingerprint"]
+
+    migrated = _publication(_one_fixture(), previous_state=legacy)
+    assert _state(migrated)["schema_version"] == 2
+
+    repeated = _publication(_one_fixture(), previous_state=_state(publication))
+    assert repeated.calendar_state_json == publication.calendar_state_json
+
+
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
     leagues = {
         "leagues": {

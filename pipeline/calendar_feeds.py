@@ -909,8 +909,13 @@ def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
     version = value.get("schema_version")
     expected = {"schema_version", "season", "updated_at", "events", "index_fingerprint"}
     legacy_expected = expected - {"index_fingerprint"}
-    if version not in {1, _STATE_SCHEMA_VERSION} or (
+    if (
+        not isinstance(version, int)
+        or isinstance(version, bool)
+        or version not in {1, _STATE_SCHEMA_VERSION}
+        or (
         set(value) != expected and set(value) != legacy_expected
+        )
     ):
         raise CalendarSourceError("State-Schema ist inkompatibel")
     index_fingerprint = value.get("index_fingerprint")
