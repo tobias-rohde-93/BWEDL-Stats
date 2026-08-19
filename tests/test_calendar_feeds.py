@@ -818,6 +818,67 @@ def test_cli_reports_source_errors_without_a_traceback() -> None:
         assert "JSON-Datei nicht lesbar" in result.stderr
 
 
+def test_index_keeps_all_observed_slot_one_fixture_name_variants() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "1. Spieltag": "Fr. 30. 10.2026 20:00 DC Heim - DC Gast ---\n",
+                    "3. Spieltag": "Sa. 31. 10.2026 20:00 DC Heim 1 - DC Gast ---\n",
+                }
+            }
+        }
+    }
+    index = json.loads(_publication(leagues).calendar_index_json)["teams"]
+    assert index[normalize_team_name("DC Heim")]["team_id"] == "club-101-team-1"
+    assert index[normalize_team_name("DC Heim 1")]["team_id"] == "club-101-team-1"
+
+
+def test_alias_only_index_change_updates_publication_without_event_sequence_bump() -> None:
+    initial_clubs = CLUBS
+    leagues = _one_fixture("Fr. 30. 10.2026 20:00 DC Heim e.V. - DC Gast ---\n")
+    original = _publication(leagues, initial_clubs)
+    renamed_clubs = {"clubs": [{**initial_clubs["clubs"][0], "name": "DC Heim e.V. e.V."}, CLUBS["clubs"][1]]}
+    changed = _publication(
+        leagues,
+        renamed_clubs,
+        previous_state=_state(original),
+        updated_at=datetime(2026, 8, 20, tzinfo=timezone.utc),
+    )
+    original_state = _state(original)
+    changed_state = _state(changed)
+    assert changed.updated_at == datetime(2026, 8, 20, tzinfo=timezone.utc)
+    assert changed_state["index_fingerprint"] != original_state["index_fingerprint"]
+    assert [event["sequence"] for event in changed_state["events"]] == [
+        event["sequence"] for event in original_state["events"]
+    ]
+
+    repeated = _publication(
+        leagues,
+        renamed_clubs,
+        previous_state=changed_state,
+        updated_at=datetime(2026, 9, 1, tzinfo=timezone.utc),
+    )
+    assert repeated.calendar_index_json == changed.calendar_index_json
+    assert repeated.calendar_state_json == changed.calendar_state_json
+
+
+@pytest.mark.parametrize(
+    "feed",
+    [
+        b"BEGIN:VCALENDAR\r\nX:A\rB\r\nEND:VCALENDAR\r\n",
+        b"BEGIN:VCALENDAR\r\nUID;VALUE=TEXT:a\r\nuid:a\r\nEND:VCALENDAR\r\n",
+    ],
+)
+def test_writer_rejects_bare_cr_and_parameterized_case_variant_duplicate_uids(feed: bytes) -> None:
+    publication = replace(_publication(_one_fixture()), calendars={"club-101-team-1": feed})
+    with tempfile.TemporaryDirectory() as temporary_directory:
+        output = Path(temporary_directory) / "output"
+        with pytest.raises(CalendarSourceError):
+            write_calendar_publication(publication, output)
+        assert not output.exists()
+
+
 def test_index_js_writer_and_cli_are_deterministic_and_explicit() -> None:
     leagues = {
         "leagues": {

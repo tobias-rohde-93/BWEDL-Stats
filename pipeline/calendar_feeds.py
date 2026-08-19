@@ -35,7 +35,7 @@ _DATE_PREFIX_RE = re.compile(
 _SCORE_SUFFIX_RE = re.compile(r"\s+(?:---|\d+\s*:\s*\d+|:)\s*$")
 _TEAM_SEPARATOR_RE = re.compile(r"^(?P<home>.+?)\s+-\s+(?P<away>.+?)\s*$")
 _SAFE_TEAM_ID_RE = re.compile(r"club-([0-9]+)-team-([0-9]+)\Z")
-_STATE_SCHEMA_VERSION = 1
+_STATE_SCHEMA_VERSION = 2
 _INDEX_SCHEMA_VERSION = 1
 _UID_DOMAIN = "calendar.bwedl.invalid"
 
@@ -528,7 +528,15 @@ def build_calendar_publication(
             state_events.append(cancelled)
 
     state_events.sort(key=lambda event: event["uid"])
-    if prior is not None and state_events == prior["events"]:
+    provisional_index = _build_calendar_index(
+        season, authoritative_updated_at, state_events, catalog
+    )
+    index_fingerprint = _index_fingerprint(provisional_index)
+    if (
+        prior is not None
+        and state_events == prior["events"]
+        and prior["index_fingerprint"] == index_fingerprint
+    ):
         publication_updated_at = _parse_state_timestamp(prior["updated_at"], "State updated_at")
     else:
         publication_updated_at = authoritative_updated_at
@@ -538,6 +546,7 @@ def build_calendar_publication(
         "season": season,
         "updated_at": _canonical_timestamp(publication_updated_at),
         "events": state_events,
+        "index_fingerprint": index_fingerprint,
     }
     index = _build_calendar_index(
         season, publication_updated_at, state_events, catalog
@@ -699,7 +708,7 @@ def _build_calendar_index(
                 event["location_warning"] is not None for event in team_events
             ),
         }
-        for key in _team_index_keys(preferred, catalog):
+        for key in _team_index_keys_for_events(tuple(team_events), catalog):
             existing = teams.get(key)
             if existing is not None and existing["team_id"] != team_id:
                 raise CalendarSourceError(
@@ -716,7 +725,14 @@ def _build_calendar_index(
 
 
 def _team_index_keys(event: Mapping[str, Any], catalog: ClubCatalog) -> set[str]:
-    keys = {normalize_team_name(event["team_name"])}
+    return _team_index_keys_for_events((event,), catalog)
+
+
+def _team_index_keys_for_events(
+    events: tuple[Mapping[str, Any], ...], catalog: ClubCatalog
+) -> set[str]:
+    keys = {normalize_team_name(event["team_name"]) for event in events}
+    event = events[0]
     match = _SAFE_TEAM_ID_RE.fullmatch(event["team_id"])
     assert match is not None
     club = catalog.clubs_by_number.get(match.group(1))
@@ -724,8 +740,15 @@ def _team_index_keys(event: Mapping[str, Any], catalog: ClubCatalog) -> set[str]
         return keys
     slot = int(match.group(2))
     for alias in _club_aliases(club):
-        keys.add(alias if slot == 1 else f"{alias} {slot}")
+        keys.add(f"{alias} {slot}")
+        if slot == 1:
+            keys.add(alias)
     return keys
+
+
+def _index_fingerprint(index: Mapping[str, Any]) -> str:
+    identity = {key: value for key, value in index.items() if key != "updated_at"}
+    return hashlib.sha256(_json_bytes(identity)).hexdigest()
 
 
 def _render_calendars(events: list[dict[str, Any]]) -> dict[str, bytes]:
@@ -883,9 +906,19 @@ def _parse_authoritative_timestamp(value: Any, label: str) -> datetime:
 def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(value, Mapping):
         raise CalendarSourceError("State muss ein Objekt sein")
-    expected = {"schema_version", "season", "updated_at", "events"}
-    if set(value) != expected or value.get("schema_version") != _STATE_SCHEMA_VERSION:
+    version = value.get("schema_version")
+    expected = {"schema_version", "season", "updated_at", "events", "index_fingerprint"}
+    legacy_expected = expected - {"index_fingerprint"}
+    if version not in {1, _STATE_SCHEMA_VERSION} or (
+        set(value) != expected and set(value) != legacy_expected
+    ):
         raise CalendarSourceError("State-Schema ist inkompatibel")
+    index_fingerprint = value.get("index_fingerprint")
+    if version == _STATE_SCHEMA_VERSION:
+        if set(value) != expected or not isinstance(index_fingerprint, str) or not re.fullmatch(r"[0-9a-f]{64}", index_fingerprint):
+            raise CalendarSourceError("State Indexidentität ist ungültig")
+    elif set(value) != legacy_expected:
+        raise CalendarSourceError("Legacy-State-Schema ist inkompatibel")
     season = value["season"]
     if season is not None and not isinstance(season, str):
         raise CalendarSourceError("State season ist ungültig")
@@ -942,7 +975,13 @@ def _validate_previous_state(value: Mapping[str, Any]) -> dict[str, Any]:
         raise CalendarSourceError("State ohne Saison darf keine Events enthalten")
     if season is not None and any(event["season"] != season for event in normalized):
         raise CalendarSourceError("State Event-Saison stimmt nicht")
-    return {"schema_version": _STATE_SCHEMA_VERSION, "season": season, "updated_at": value["updated_at"], "events": normalized}
+    return {
+        "schema_version": _STATE_SCHEMA_VERSION,
+        "season": season,
+        "updated_at": value["updated_at"],
+        "events": normalized,
+        "index_fingerprint": index_fingerprint if version == _STATE_SCHEMA_VERSION else None,
+    }
 
 
 def _validate_team_id(team_id: Any) -> None:
@@ -996,7 +1035,8 @@ def _validate_ics_feed(contents: Any) -> None:
         decoded = contents.decode("utf-8")
     except UnicodeDecodeError as error:
         raise CalendarSourceError("Kalenderfeed ist nicht UTF-8") from error
-    if "\n" in decoded.replace("\r\n", "") or not decoded.endswith("\r\n"):
+    remaining_linebreaks = decoded.replace("\r\n", "")
+    if "\n" in remaining_linebreaks or "\r" in remaining_linebreaks or not decoded.endswith("\r\n"):
         raise CalendarSourceError("Kalenderfeed muss ausschließlich CRLF verwenden")
     physical_lines = decoded.split("\r\n")
     if physical_lines[-1] != "" or any(len(line.encode("utf-8")) > 75 for line in physical_lines[:-1]):
@@ -1017,7 +1057,13 @@ def _validate_ics_feed(contents: Any) -> None:
             logical_lines.append(line)
     if not logical_lines or logical_lines[0] != "BEGIN:VCALENDAR" or logical_lines[-1] != "END:VCALENDAR":
         raise CalendarSourceError("Kalenderfeed hat keine gültigen VCALENDAR-Grenzen")
-    uids = [line[4:] for line in logical_lines if line.startswith("UID:")]
+    uids = []
+    for line in logical_lines:
+        if ":" not in line:
+            continue
+        name_and_params, value = line.split(":", 1)
+        if name_and_params.split(";", 1)[0].casefold() == "uid":
+            uids.append(value)
     if len(uids) != len(set(uids)):
         raise CalendarSourceError("Kalenderfeed enthält doppelte UID")
 
