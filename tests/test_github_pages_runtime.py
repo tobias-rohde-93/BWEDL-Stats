@@ -70,7 +70,16 @@ def test_user_documentation_explains_the_complete_calendar_and_favorites_contrac
         "Dashboard",
         "Mein Profil",
         "In Kalender-App öffnen",
-        "HTTPS-Link kopieren",
+        "Abo-Link kopieren",
+        "Automatisch aktuell bleiben",
+        "Termine einmalig übernehmen",
+        "ICS-Datei herunterladen",
+        "bestehenden oder gemeinsamen Kalender",
+        "Keine automatische Aktualisierung",
+        "doppelten Terminen",
+        "Anleitung für iPhone",
+        "Anleitung für Android / Google Kalender",
+        "am Computer",
         "webcal",
         "Kalenderanbieter",
         "später",
@@ -139,7 +148,7 @@ def test_calendar_index_shell_order_and_pages_subpath_contract() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     data_status = '<script src="data_status.js?v=1"></script>'
     calendar_index = '<script src="calendar_index.js?v=1"></script>'
-    app_utils = '<script src="app_utils.js?v=3"></script>'
+    app_utils = '<script src="app_utils.js?v=4"></script>'
 
     assert html.count(calendar_index) == 1
     assert html.index(data_status) < html.index(calendar_index) < html.index(app_utils)

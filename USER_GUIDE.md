@@ -24,11 +24,26 @@ Die Profilauswahl wird nur lokal im Speicher dieses Browsers abgelegt. Sie wird 
 
 Nach einem erneuten Besuch kann eine Karte **„Seit deinem letzten Besuch“** auf neue Daten sowie – bei vergleichbarer Ranglistenbasis – auf Änderungen an Rang, Punkten oder dem nächsten Spiel hinweisen. Die Karte ist eine Zusammenfassung und ersetzt nicht die Detailansichten.
 
-### Teamkalender abonnieren
+### Teamkalender hinzufügen
 
 Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **Profilteam**. Es enthält alle vergangenen und zukünftigen regulären Ligaspiele der gesamten aktuellen Saison; **Ligapokal** und **Einzelspiel-Download** sind ausgeschlossen. Jeder Termin nennt Gegner, **Heim/Auswärts**, Uhrzeit und die bestverfügbare Adresse des Heimvereins. Eine unvollständige Adresse wird markiert; ein nicht aufgelöster Spielort wird ebenfalls klar gekennzeichnet.
 
-Die Abo-Karte steht im **Dashboard** und unter **Mein Profil**. **In Kalender-App öffnen** öffnet den `webcal`-Link in einer unterstützten Kalender-App; **HTTPS-Link kopieren** kopiert dieselbe dauerhafte Abonnementadresse zum manuellen Einfügen. Für das Kalender-Abo ist eine Internetverbindung erforderlich. Es wird keine einzelne ICS-Datei pro Begegnung heruntergeladen.
+Die Kalenderkarte steht im **Dashboard** und unter **Mein Profil**. **Kalender hinzufügen** öffnet einen gemeinsamen Dialog:
+
+1. **Automatisch aktuell bleiben** ist die empfohlene Wahl. **In Kalender-App öffnen** startet den `webcal`-Link; **Abo-Link kopieren** kopiert dieselbe dauerhafte Abonnementadresse. Der Kalender wird separat und schreibgeschützt eingebunden. Kalenderanbieter können Terminänderungen und Absagen automatisch übernehmen, allerdings möglicherweise später. Für das Kalender-Abo ist eine Internetverbindung erforderlich.
+2. **Termine einmalig übernehmen** lädt über **ICS-Datei herunterladen** genau eine gemeinsame Datei mit allen zukünftigen, bereits terminierten Ligaspielen. Diese lässt sich in einen bestehenden oder gemeinsamen Kalender importieren. **Keine automatische Aktualisierung**: Spätere Verschiebungen und Absagen musst du im Zielkalender selbst ändern. Ein erneuter Import kann zu doppelten Terminen führen.
+
+#### Anleitung für iPhone
+
+- **Abo:** Tippe auf **In Kalender-App öffnen**, bestätige das Abonnement in Apple Kalender und wähle bei Bedarf Name und Farbe. Falls keine App startet, kopiere den Abo-Link und füge ihn als Kalenderabonnement ein.
+- **Einmalige Kopie:** Tippe auf **ICS-Datei herunterladen** und öffne die Datei über „Dateien“ oder als Anhang. Prüfe vor dem Import den beschreibbaren Zielkalender. Bei einem gemeinsam gepflegten Google-Kalender ist der Import am Computer zuverlässiger.
+
+#### Anleitung für Android / Google Kalender
+
+- **Abo:** Tippe auf **Abo-Link kopieren**. Öffne Google Kalender **am Computer**, wähle „Weitere Kalender → + → Per URL“ und füge den Link ein. Der separate abonnierte Kalender erscheint anschließend in der Android-App.
+- **Einmalige Kopie:** Lade die ICS-Datei herunter. Öffne Google Kalender am Computer, wähle „Einstellungen → Importieren & Exportieren“, dann die Datei und den gewünschten bestehenden oder gemeinsamen Kalender. Der Import ist eine einmalige Kopie und wird nicht automatisch aktualisiert.
+
+Es wird weiterhin kein Einzelspiel-Download angeboten; die statische Option bündelt alle passenden zukünftigen Termine des Profilteams in einer Datei.
 
 Der Workflow prüft und validiert die Daten alle sechs Stunden. Nur ein erfolgreicher Lauf mit geänderten Daten veröffentlicht neue statische Kalenderdateien über GitHub Pages ohne API oder Server. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Deshalb kann ein auf GitHub Pages bereits korrigierter Termin in Apple Calendar, Google Calendar oder Outlook noch unverändert erscheinen.
 

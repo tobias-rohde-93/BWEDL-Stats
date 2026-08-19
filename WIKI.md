@@ -50,11 +50,22 @@ Mit dem ausgewählten Profil erhältst du:
 -   **Head-to-Head**: Vergleiche diesen Spieler direkt mit einem anderen.
 -   **Teamkalender**: Abonniere die regulären Saisonspiele deines Profilteams.
 
-### 5. Teamkalender abonnieren
+### 5. Teamkalender hinzufügen
 
 Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **Profilteam**. Es enthält alle vergangenen und zukünftigen regulären Ligaspiele der gesamten aktuellen Saison; **Ligapokal** und **Einzelspiel-Download** sind ausgeschlossen. Jeder Termin nennt Gegner, **Heim/Auswärts**, Uhrzeit und die bestverfügbare Adresse des Heimvereins. Eine unvollständige Adresse wird markiert; ein nicht aufgelöster Spielort wird ebenfalls klar gekennzeichnet.
 
-Die Abo-Karte steht im **Dashboard** und unter **Mein Profil**. **In Kalender-App öffnen** öffnet den `webcal`-Link; **HTTPS-Link kopieren** kopiert dieselbe Abonnementadresse zum manuellen Einfügen. Für das Kalender-Abo ist eine Internetverbindung erforderlich.
+Die Kalenderkarte steht im **Dashboard** und unter **Mein Profil**. **Kalender hinzufügen** öffnet einen gemeinsamen Dialog mit zwei Optionen:
+
+- **Automatisch aktuell bleiben**: **In Kalender-App öffnen** startet das `webcal`-Abo, **Abo-Link kopieren** kopiert die dauerhafte Adresse. Der eigene schreibgeschützte Teamkalender kann Terminänderungen und Absagen automatisch übernehmen. Für das Kalender-Abo ist eine Internetverbindung erforderlich; Kalenderanbieter können Aktualisierungen später anzeigen.
+- **Termine einmalig übernehmen**: **ICS-Datei herunterladen** bündelt alle zukünftigen, bereits terminierten Ligaspiele in einer Datei für einen bestehenden oder gemeinsamen Kalender. **Keine automatische Aktualisierung**: Danach musst du Verschiebungen und Absagen selbst ändern. Wiederholtes Importieren kann zu doppelten Terminen führen.
+
+#### Anleitung für iPhone
+
+Für das Abo den Link öffnen, in Apple Kalender bestätigen und Name oder Farbe wählen. Für die einmalige Kopie die ICS-Datei laden, öffnen und vor dem Import den beschreibbaren Zielkalender prüfen. Für einen gemeinsam gepflegten Google-Kalender ist der Import am Computer zuverlässiger.
+
+#### Anleitung für Android / Google Kalender
+
+Für das Abo den **Abo-Link kopieren** und Google Kalender **am Computer** über „Weitere Kalender → Per URL“ einrichten; danach ist der separate Kalender in der Android-App sichtbar. Für die einmalige Kopie am Computer „Einstellungen → Importieren & Exportieren“ öffnen, die ICS-Datei und den gewünschten bestehenden oder gemeinsamen Kalender auswählen. Der Import ist nur eine Kopie.
 
 Der Workflow prüft und validiert die Daten alle sechs Stunden. Nur ein erfolgreicher Lauf mit geänderten Daten veröffentlicht neue statische Kalenderdateien über GitHub Pages ohne API oder Server. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Lokale Tests, GitHub Actions, erreichbare Live-Dateien und der tatsächliche externe Kalenderabruf sind daher getrennte Nachweise.
 

@@ -130,16 +130,42 @@ TEST_ASSETS = {
         "PRODID:-//BWEDL//Browser Fixture//DE\r\n"
         "CALSCALE:GREGORIAN\r\n"
         "METHOD:PUBLISH\r\n"
+        "X-WR-CALNAME:Malicious Club Spieltermine\r\n"
         "BEGIN:VEVENT\r\n"
-        "UID:browser-fixture@calendar.bwedl.invalid\r\n"
+        "UID:browser-past@calendar.bwedl.invalid\r\n"
         "DTSTAMP:20260819T010538Z\r\n"
-        "DTSTART:20260824T180000Z\r\n"
-        "DTEND:20260824T210000Z\r\n"
+        "DTSTART:20000824T180000Z\r\n"
+        "DTEND:20000824T210000Z\r\n"
+        "SUMMARY:Früheres Heimspiel gegen Safe Team\r\n"
+        "DESCRIPTION:Gegner: Safe Team\\nHeimspiel\\nTermin: 20:00 Uhr\r\n"
+        "LOCATION:Testlokal\\, Teststraße 1\\, Teststadt\r\n"
+        "SEQUENCE:0\r\n"
+        "LAST-MODIFIED:20260819T010538Z\r\n"
+        "STATUS:CONFIRMED\r\n"
+        "END:VEVENT\r\n"
+        "BEGIN:VEVENT\r\n"
+        "UID:browser-future@calendar.bwedl.invalid\r\n"
+        "DTSTAMP:20260819T010538Z\r\n"
+        "DTSTART:20990824T180000Z\r\n"
+        "DTEND:20990824T210000Z\r\n"
         "SUMMARY:Heimspiel gegen Safe Team\r\n"
         "DESCRIPTION:Gegner: Safe Team\\nHeimspiel\\nTermin: 20:00 Uhr\r\n"
         "LOCATION:Testlokal\\, Teststraße 1\\, Teststadt\r\n"
         "SEQUENCE:0\r\n"
+        "LAST-MODIFIED:20260819T010538Z\r\n"
         "STATUS:CONFIRMED\r\n"
+        "END:VEVENT\r\n"
+        "BEGIN:VEVENT\r\n"
+        "UID:browser-cancelled@calendar.bwedl.invalid\r\n"
+        "DTSTAMP:20260819T010538Z\r\n"
+        "DTSTART:20990924T180000Z\r\n"
+        "DTEND:20990924T210000Z\r\n"
+        "SUMMARY:Abgesagtes Auswärtsspiel gegen Safe Team\r\n"
+        "DESCRIPTION:Gegner: Safe Team\\nAuswärtsspiel\\nTermin: 20:00 Uhr\r\n"
+        "LOCATION:Safe Lokal\\, Teststraße 2\\, Teststadt\r\n"
+        "SEQUENCE:1\r\n"
+        "LAST-MODIFIED:20260819T010538Z\r\n"
+        "STATUS:CANCELLED\r\n"
         "END:VEVENT\r\n"
         "END:VCALENDAR\r\n"
     ).encode("utf-8"),
@@ -227,7 +253,7 @@ def test_published_data_stays_inert_online_and_offline() -> None:
 
     with github_pages_server() as (server, base_url), sync_playwright() as playwright:
         browser = playwright.chromium.launch()
-        context = browser.new_context(service_workers="allow")
+        context = browser.new_context(service_workers="allow", accept_downloads=True)
         page = context.new_page()
         page.on("request", lambda request: requested_urls.append(request.url))
         page.on("pageerror", lambda error: page_errors.append(str(error)))
@@ -290,16 +316,21 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         page.set_viewport_size({"width": 390, "height": 844})
         dashboard_calendar = page.locator(".calendar-subscription-card--dashboard")
         expect(dashboard_calendar).to_contain_text("Malicious Club")
-        dashboard_action = dashboard_calendar.get_by_role("button", name="Kalender abonnieren")
+        dashboard_action = dashboard_calendar.get_by_role("button", name="Kalender hinzufügen")
         dashboard_action.focus()
         page.keyboard.press("Enter")
-        dialog = page.get_by_role("dialog", name="Teamkalender abonnieren")
+        dialog = page.get_by_role("dialog", name="Teamkalender hinzufügen")
         expect(dialog).to_be_visible()
+        expect(dialog.get_by_text("Automatisch aktuell bleiben", exact=True)).to_be_visible()
+        expect(dialog.get_by_text("Termine einmalig übernehmen", exact=True)).to_be_visible()
+        expect(dialog.get_by_text("Keine automatische Aktualisierung", exact=False)).to_be_visible()
+        assert dialog.locator("details").count() == 4
+        assert dialog.evaluate("element => element.scrollWidth <= element.clientWidth")
         dashboard_webcal = dialog.get_by_role("link", name="In Kalender-App öffnen").get_attribute("href")
         assert dashboard_webcal == (
             "webcal://stats.example.test/BWEDL-Stats/calendars/club-999-team-1.ics"
         )
-        copy_action = dialog.get_by_role("button", name="HTTPS-Link kopieren")
+        copy_action = dialog.get_by_role("button", name="Abo-Link kopieren")
         expect(copy_action).to_be_focused()
         page.evaluate(
             """() => Object.defineProperty(navigator, 'clipboard', {
@@ -312,8 +343,59 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert page.evaluate("window.__copiedCalendarUrl") == (
             "https://stats.example.test/BWEDL-Stats/calendars/club-999-team-1.ics"
         )
-        page.keyboard.press("Tab")
-        expect(dialog.get_by_role("button", name="Schließen")).to_be_focused()
+        page.evaluate(
+            """fixture => {
+                const nativeFetch = window.fetch.bind(window);
+                window.fetch = (input, options = {}) => {
+                    const url = input instanceof Request ? input.url : String(input);
+                    if (url !== fixture.url) return nativeFetch(input, options);
+                    window.__calendarFetchOptions = {
+                        cache: options.cache,
+                        hasSignal: options.signal instanceof AbortSignal,
+                    };
+                    const response = new Response(fixture.content, {
+                        status: 200,
+                        headers: { 'Content-Type': 'text/calendar; charset=utf-8' },
+                    });
+                    Object.defineProperty(response, 'url', {
+                        configurable: true,
+                        value: fixture.url,
+                    });
+                    return Promise.resolve(response);
+                };
+            }""",
+            {
+                "url": "https://stats.example.test/BWEDL-Stats/calendars/club-999-team-1.ics",
+                "content": TEST_ASSETS[TEST_CALENDAR_PATH].decode("utf-8"),
+            },
+        )
+        download_action = dialog.get_by_role("button", name="ICS-Datei herunterladen")
+        assert download_action.evaluate("element => element.getBoundingClientRect().height >= 48")
+        with page.expect_download() as download_info:
+            download_action.click()
+        download = download_info.value
+        assert page.evaluate("window.__calendarFetchOptions") == {
+            "cache": "no-store",
+            "hasSignal": True,
+        }
+        assert download.suggested_filename == "bwedl-malicious-club-zukuenftige-spiele.ics"
+        download_bytes = Path(download.path()).read_bytes()
+        assert download_bytes.count(b"BEGIN:VEVENT\r\n") == 1
+        assert b"UID:browser-future@calendar.bwedl.invalid\r\n" in download_bytes
+        assert b"UID:browser-past@calendar.bwedl.invalid\r\n" not in download_bytes
+        assert b"UID:browser-cancelled@calendar.bwedl.invalid\r\n" not in download_bytes
+        assert b"STATUS:CONFIRMED\r\n" in download_bytes
+        expect(dialog.locator(".calendar-subscription-dialog__status")).to_have_text(
+            "ICS-Datei wurde heruntergeladen."
+        )
+        iphone_instructions = dialog.get_by_text("Anleitung für iPhone", exact=True).first
+        iphone_instructions.focus()
+        page.keyboard.press("Enter")
+        assert iphone_instructions.locator("xpath=..").evaluate("element => element.open")
+        close_action = dialog.get_by_role("button", name="Schließen")
+        close_action.scroll_into_view_if_needed()
+        close_action.focus()
+        expect(close_action).to_be_focused()
         page.keyboard.press("Escape")
         expect(dialog).to_be_hidden()
         expect(dashboard_action).to_be_focused()
@@ -321,9 +403,9 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         page.evaluate("location.hash = '#profile'")
         profile_calendar = page.locator(".calendar-subscription-card--profile")
         expect(profile_calendar).to_contain_text("Malicious Club")
-        profile_action = profile_calendar.get_by_role("button", name="Kalender abonnieren")
+        profile_action = profile_calendar.get_by_role("button", name="Kalender hinzufügen")
         profile_action.click()
-        dialog = page.get_by_role("dialog", name="Teamkalender abonnieren")
+        dialog = page.get_by_role("dialog", name="Teamkalender hinzufügen")
         profile_webcal = dialog.get_by_role("link", name="In Kalender-App öffnen").get_attribute("href")
         assert profile_webcal == dashboard_webcal
         page.keyboard.press("Escape")
@@ -387,7 +469,7 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         )
         offline_calendar_action = page.locator(
             ".calendar-subscription-card--dashboard"
-        ).get_by_role("button", name="Kalender abonnieren")
+        ).get_by_role("button", name="Kalender hinzufügen")
         offline_calendar_action.click()
         expect(page.locator("#app-status")).to_have_text(
             "Für das Kalender-Abo ist eine Internetverbindung erforderlich."
