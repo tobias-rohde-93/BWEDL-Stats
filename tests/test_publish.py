@@ -933,6 +933,46 @@ def test_successful_finalize_mutation_does_not_change_return_value(tmp_path: Pat
     assert changed == [published / "club_data.json", published / "club_data.js"]
 
 
+def test_first_promotion_failure_removes_publisher_created_owned_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {"club.ics": b"new"})
+    real_promote = publication.promote_file
+
+    def promote_then_fail(source: Path, destination: Path) -> None:
+        real_promote(source, destination)
+        raise RuntimeError("after promote")
+
+    monkeypatch.setattr(publication, "promote_file", promote_then_fail)
+    with pytest.raises(RuntimeError, match="after promote"):
+        publish_domains(staging, published, [], additional_directories=("calendars",))
+    assert not published.exists()
+
+
+def test_finalize_staging_change_does_not_block_destination_rollback(tmp_path: Path) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"})
+    write_files(published, {"club_data.json": b"old-json", "club_data.js": b"old-js"})
+
+    def fail_finalize(_changed: list[Path]) -> None:
+        (staging / "club_data.json").unlink()
+        raise RuntimeError("finalize failed")
+
+    with pytest.raises(RuntimeError, match="finalize failed"):
+        publish_domains(staging, published, [result("clubs", Decision.PUBLISH)], finalize=fail_finalize)
+    assert (published / "club_data.json").read_bytes() == b"old-json"
+    assert (published / "club_data.js").read_bytes() == b"old-js"
+
+
+@pytest.mark.parametrize("name", ["COM¹", "com².txt", "LPT³", "lpt¹.log"])
+def test_windows_superscript_device_aliases_are_rejected(name: str) -> None:
+    with pytest.raises(ValueError):
+        publication._safe_basename(name, "test")
+
+
 def test_owned_directory_destination_must_be_a_directory(tmp_path: Path) -> None:
     staging = tmp_path / "staging"
     published = tmp_path / "published"

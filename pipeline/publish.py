@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import stat
 import tempfile
+import warnings
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path, PureWindowsPath
@@ -122,7 +123,7 @@ def _safe_basename(name: object, label: str) -> str:
         or name.endswith((".", " "))
         or ":" in name
         or any(ord(character) < 32 or ord(character) == 127 for character in name)
-        or name.split(".", 1)[0].casefold()
+        or name.split(".", 1)[0].casefold().translate(str.maketrans("¹²³", "123"))
         in {"con", "prn", "aux", "nul", *(f"com{number}" for number in range(1, 10)), *(f"lpt{number}" for number in range(1, 10))}
     ):
         raise ValueError(f"invalid {label}: {name!r}")
@@ -164,6 +165,8 @@ def _directory_state(path: Path) -> tuple[int, int, int] | None:
 
 
 def _assert_state(path: Path, expected: _PathState) -> None:
+    # Trusted, serialized publishers use these identity gates plus frozen sources;
+    # they detect ordinary races but are not a kernel-enforced adversarial swap guard.
     if _target_state(path) != expected:
         raise ValueError(f"publication target changed since preflight: {path}")
 
@@ -242,15 +245,41 @@ def _validate_unique_mutation_targets(destinations: list[Path]) -> None:
         seen_targets[target_key] = destination
 
 
-def _rollback_created_directories(directories: list[Path]) -> list[str]:
-    failures: list[str] = []
-    for directory in reversed(directories):
+def _create_destination_directories(
+    directories: list[Path],
+    parent_states: dict[Path, tuple[int, int, int] | None],
+) -> list[tuple[Path, tuple[int, int, int]]]:
+    created: list[tuple[Path, tuple[int, int, int]]] = []
+    for directory in sorted(directories, key=lambda path: len(path.parts)):
+        if _directory_state(directory) is not None:
+            continue
+        parent = directory.parent
+        if parent in parent_states and parent_states[parent] != _directory_state(parent):
+            raise ValueError(f"publication parent changed since preflight: {parent}")
         try:
+            directory.mkdir(exist_ok=False)
+        except FileExistsError as error:
+            raise ValueError(f"publication directory appeared since preflight: {directory}") from error
+        identity = _directory_state(directory)
+        assert identity is not None
+        parent_states[directory] = identity
+        created.append((directory, identity))
+    return created
+
+
+def _rollback_created_directories(
+    directories: list[tuple[Path, tuple[int, int, int]]]
+) -> list[str]:
+    failures: list[str] = []
+    for directory, identity in reversed(directories):
+        try:
+            if _directory_state(directory) != identity:
+                raise ValueError("directory was replaced after publisher creation")
             directory.rmdir()
         except FileNotFoundError:
             continue
         except OSError as error:
-            failures.append(f"{directory.name}: {error}")
+            failures.append(f"{directory}: {error}")
     return failures
 
 
@@ -262,7 +291,9 @@ def _rollback_journal(
     failures: list[str] = []
     for entry in reversed(journal):
         try:
-            _assert_parent_states(parent_states)
+            parent = entry.destination.parent
+            if _directory_state(parent) != parent_states[parent]:
+                raise ValueError(f"publication parent changed since preflight: {parent}")
             if _target_state(entry.destination) != entry.after:
                 raise ValueError("target was replaced after publisher mutation")
             _restore_destination(entry.destination, entry.before.contents)
@@ -275,13 +306,15 @@ def _rollback_journal(
     return failures
 
 
-def _freeze_sources(changed: list[tuple[Path, Path]]) -> tuple[list[tuple[Path, Path]], list[Path]]:
+def _freeze_sources(
+    changed: list[tuple[Path, Path]], source_states: dict[Path, _PathState]
+) -> tuple[list[tuple[Path, Path]], list[Path]]:
     frozen: list[tuple[Path, Path]] = []
     temporary_paths: list[Path] = []
     try:
         for source, destination in changed:
-            state = _target_state(source)
-            if not state.exists or state.contents is None:
+            state = source_states[source]
+            if _target_state(source) != state or not state.exists or state.contents is None:
                 raise ValueError(f"publication source changed during preflight: {source}")
             descriptor, temporary_name = tempfile.mkstemp(prefix="publisher-source-")
             temporary = Path(temporary_name)
@@ -294,6 +327,21 @@ def _freeze_sources(changed: list[tuple[Path, Path]]) -> tuple[list[tuple[Path, 
             temporary.unlink(missing_ok=True)
         raise
     return frozen, temporary_paths
+
+
+def _cleanup_frozen_sources(temporary_sources: list[Path]) -> None:
+    failures: list[str] = []
+    for temporary_source in temporary_sources:
+        try:
+            temporary_source.unlink(missing_ok=True)
+        except OSError as error:
+            failures.append(str(error))
+    if failures:
+        warnings.warn(
+            f"publication committed/rolled back but frozen source cleanup failed: {'; '.join(failures)}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
 
 
 def publish_domains(
@@ -409,22 +457,21 @@ def publish_domains(
     parent_states = {
         parent: _directory_state(parent)
         for parent in {
-            staging,
             published,
-            *(source.parent for source, _ in changed_promotions),
             *(destination.parent for _, destination in changed_promotions),
             *(destination.parent for destination in directory_deletions),
         }
     }
-    frozen_promotions, temporary_sources = _freeze_sources(changed_promotions)
-    created_directories = [
-        directory
-        for directory in missing_owned_directories
-        if any(destination.parent == directory for _, destination in changed_promotions)
-    ]
+    source_states = {source: _target_state(source) for source, _ in changed_promotions}
+    frozen_promotions, temporary_sources = _freeze_sources(changed_promotions, source_states)
+    created_directories: list[tuple[Path, tuple[int, int, int]]] = []
 
     journal: list[_JournalEntry] = []
     try:
+        created_directories = _create_destination_directories(
+            [parent for parent, identity in parent_states.items() if identity is None],
+            parent_states,
+        )
         for source, destination in frozen_promotions:
             _assert_parent_states(parent_states)
             before = snapshots[destination]
@@ -463,7 +510,6 @@ def publish_domains(
             ) from original_error
         raise
     finally:
-        for temporary_source in temporary_sources:
-            temporary_source.unlink(missing_ok=True)
+        _cleanup_frozen_sources(temporary_sources)
 
     return list(changed_destinations)
