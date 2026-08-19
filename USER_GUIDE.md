@@ -30,7 +30,7 @@ Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **
 
 Die Abo-Karte steht im **Dashboard** und unter **Mein Profil**. **In Kalender-App öffnen** öffnet den `webcal`-Link in einer unterstützten Kalender-App; **HTTPS-Link kopieren** kopiert dieselbe dauerhafte Abonnementadresse zum manuellen Einfügen. Für das Kalender-Abo ist eine Internetverbindung erforderlich. Es wird keine einzelne ICS-Datei pro Begegnung heruntergeladen.
 
-Die statischen Kalenderdateien werden über GitHub Pages ohne API oder Server mit dem validierten Lauf alle sechs Stunden veröffentlicht. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Deshalb kann ein auf GitHub Pages bereits korrigierter Termin in Apple Calendar, Google Calendar oder Outlook noch unverändert erscheinen.
+Der Workflow prüft und validiert die Daten alle sechs Stunden. Nur ein erfolgreicher Lauf mit geänderten Daten veröffentlicht neue statische Kalenderdateien über GitHub Pages ohne API oder Server. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Deshalb kann ein auf GitHub Pages bereits korrigierter Termin in Apple Calendar, Google Calendar oder Outlook noch unverändert erscheinen.
 
 ### 1. Die "Hero Card" (Profilkarte)
 Ganz oben siehst du dein Spielerprofil mit den wichtigsten Kennzahlen auf einen Blick.
@@ -149,7 +149,7 @@ A: Die Ranglisten der neuen Saison sind noch nicht in allen vier Klassen vollst�
 A: Erst wenn Bezirksliga, A-Klasse, B-Klasse und C-Klasse jeweils mindestens einen gültigen Spieler liefern. So ersetzt ein leerer oder nur teilweiser Zwischenstand keine funktionierenden Daten.
 
 **Q: Wann erscheint eine Terminänderung im abonnierten Kalender?**
-A: Der validierte GitHub-Workflow veröffentlicht statische Kalenderdateien alle sechs Stunden. Dein Kalenderanbieter entscheidet danach selbst, wann er den Link erneut abruft; die sichtbare Änderung kann deshalb später eintreffen. Offline kann kein neuer Stand geladen werden.
+A: Der validierte GitHub-Workflow prüft den Datenstand alle sechs Stunden und veröffentlicht nur erfolgreiche Änderungen. Dein Kalenderanbieter entscheidet danach selbst, wann er den Link erneut abruft; die sichtbare Änderung kann deshalb später eintreffen. Offline kann kein neuer Stand geladen werden.
 
 ---
 

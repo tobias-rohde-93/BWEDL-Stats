@@ -56,7 +56,7 @@ Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **
 
 Die Abo-Karte steht im **Dashboard** und unter **Mein Profil**. **In Kalender-App öffnen** öffnet den `webcal`-Link; **HTTPS-Link kopieren** kopiert dieselbe Abonnementadresse zum manuellen Einfügen. Für das Kalender-Abo ist eine Internetverbindung erforderlich.
 
-Die statischen Kalenderdateien werden über GitHub Pages ohne API oder Server mit dem validierten Lauf alle sechs Stunden veröffentlicht. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Lokale Tests, GitHub Actions, erreichbare Live-Dateien und der tatsächliche externe Kalenderabruf sind daher getrennte Nachweise.
+Der Workflow prüft und validiert die Daten alle sechs Stunden. Nur ein erfolgreicher Lauf mit geänderten Daten veröffentlicht neue statische Kalenderdateien über GitHub Pages ohne API oder Server. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen. Lokale Tests, GitHub Actions, erreichbare Live-Dateien und der tatsächliche externe Kalenderabruf sind daher getrennte Nachweise.
 
 ### 6. Kompakte Navigation und Tastatur
 
@@ -91,7 +91,7 @@ Diese Seite ist eine **PWA (Progressive Web App)**.
 ## ❓ Häufige Fragen (FAQ)
 
 **Wie oft werden die Daten aktualisiert?**
-Die Daten und Teamkalender werden über GitHub Actions alle sechs Stunden validiert und statisch neu veröffentlicht. Der **Aktualisieren**-Button prüft den auf GitHub Pages bereitgestellten Datenstand und lädt die veröffentlichten Dateien neu; einen lokalen Produktserver gibt es nicht. Ein Kalenderanbieter kann seinen abonnierten Link später erneut abrufen.
+GitHub Actions prüft den Datenstand alle sechs Stunden; neue statische Dateien gibt es nur nach einem erfolgreichen Lauf mit Änderungen. Der **Aktualisieren**-Button prüft den auf GitHub Pages bereitgestellten Datenstand und lädt die veröffentlichten Dateien neu; einen lokalen Produktserver gibt es nicht. Ein Kalenderanbieter kann seinen abonnierten Link später erneut abrufen.
 
 **Stimmen die Daten immer zu 100%?**
 Wir geben unser Bestes! Da Daten aus verschiedenen Quellen (PDFs, HTML) zusammengeführt werden, kann es in seltenen Fällen zu Abweichungen kommen. Melde Fehler gerne!

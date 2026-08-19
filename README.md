@@ -17,7 +17,7 @@ Die Web-Version ist hier verfügbar: **[BWEDL Stats öffnen](https://tobias-rohd
 
 Das Kalender-Abo gilt ausschließlich für das im lokalen Profil gespeicherte **Profilteam**. Es enthält alle vergangenen und zukünftigen regulären Ligaspiele der gesamten aktuellen Saison; **Ligapokal** und **Einzelspiel-Download** sind ausgeschlossen. Jeder Termin nennt Gegner, **Heim/Auswärts**, Uhrzeit und die bestverfügbare Adresse des Heimvereins. Eine unvollständige Adresse wird markiert; ein nicht aufgelöster Spielort wird ebenfalls klar gekennzeichnet.
 
-Im **Dashboard** und unter **Mein Profil** öffnet **In Kalender-App öffnen** den `webcal`-Link; **HTTPS-Link kopieren** kopiert die Abonnementadresse. Für das Kalender-Abo ist eine Internetverbindung erforderlich. Die statischen Kalenderdateien werden über GitHub Pages ohne API oder Server mit dem validierten Lauf alle sechs Stunden veröffentlicht. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen als GitHub Pages.
+Im **Dashboard** und unter **Mein Profil** öffnet **In Kalender-App öffnen** den `webcal`-Link; **HTTPS-Link kopieren** kopiert die Abonnementadresse. Für das Kalender-Abo ist eine Internetverbindung erforderlich. Der Workflow prüft und validiert die Daten alle sechs Stunden. Nur ein erfolgreicher Lauf mit geänderten Daten veröffentlicht neue statische Kalenderdateien über GitHub Pages ohne API oder Server. Kalenderanbieter bestimmen selbst ihren Abrufrhythmus und können Änderungen später übernehmen als GitHub Pages.
 
 Vereinsfavoriten erscheinen im globalen **FAVORITEN**-Bereich und zusätzlich unter **VEREINE → Favoriten**.
 
