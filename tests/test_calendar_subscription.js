@@ -597,7 +597,15 @@ dialogContract().then(() => {
     for (const selector of [
         '.calendar-subscription-card', '.calendar-subscription-card__title', '.calendar-subscription-card__meta',
         '.calendar-subscription-card__action', '.calendar-subscription-dialog', '.calendar-subscription-dialog::backdrop',
-        '.calendar-subscription-dialog__actions', '.calendar-subscription-dialog__status',
+        '.calendar-subscription-dialog__options', '.calendar-subscription-dialog__option',
+        '.calendar-subscription-dialog__badge', '.calendar-subscription-dialog__warning',
+        '.calendar-subscription-dialog__option-actions', '.calendar-subscription-dialog__instructions',
+        '.calendar-subscription-dialog__download', '.calendar-subscription-dialog__actions',
+        '.calendar-subscription-dialog__status',
     ]) assert.match(styles, new RegExp(selector.replaceAll('.', '\\.').replace('::', '::') + '\\s*\\{'));
+    assert.match(styles, /\.calendar-subscription-dialog__option-actions (?:button|a)[\s\S]*?min-height:\s*48px/);
+    assert.match(styles, /\.calendar-subscription-dialog__instructions summary:focus-visible[\s\S]*?outline:/);
+    assert.match(styles, /@media \(max-width: 640px\)[\s\S]*?\.calendar-subscription-dialog\s*\{[\s\S]*?100dvh/);
+    assert.match(styles, /@media \(max-width: 640px\)[\s\S]*?\.calendar-subscription-dialog__option-actions[\s\S]*?width:\s*100%/);
     console.log('team calendar subscription UI: ok');
 }).catch((error) => { console.error(error); process.exitCode = 1; });
