@@ -973,6 +973,53 @@ def test_windows_superscript_device_aliases_are_rejected(name: str) -> None:
         publication._safe_basename(name, "test")
 
 
+def test_second_directory_creation_failure_removes_first_publisher_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging / "calendars", {"club.ics": b"new"})
+    write_files(staging / "exports", {"feed.ics": b"new"})
+    real_mkdir = Path.mkdir
+
+    def fail_exports(path: Path, *args: object, **kwargs: object) -> None:
+        if path.name == "exports":
+            raise OSError("second mkdir failed")
+        real_mkdir(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "mkdir", fail_exports)
+    with pytest.raises(OSError, match="second mkdir failed"):
+        publish_domains(
+            staging,
+            published,
+            [],
+            additional_directories=("calendars", "exports"),
+        )
+    assert not published.exists()
+
+
+def test_frozen_source_cleanup_failure_does_not_turn_success_into_warning_error(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import warnings
+
+    staging = tmp_path / "staging"
+    published = tmp_path / "published"
+    write_files(staging, {"club_data.json": b"new-json", "club_data.js": b"new-js"})
+    real_cleanup = publication._cleanup_frozen_sources
+
+    def cleanup_failure(_paths: list[Path]) -> None:
+        raise AssertionError("cleanup diagnostics must not raise")
+
+    monkeypatch.setattr(publication, "_cleanup_frozen_sources", cleanup_failure)
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        changed = publish_domains(staging, published, [result("clubs", Decision.PUBLISH)])
+    assert changed == [published / "club_data.json", published / "club_data.js"]
+    assert (published / "club_data.json").read_bytes() == b"new-json"
+    monkeypatch.setattr(publication, "_cleanup_frozen_sources", real_cleanup)
+
+
 def test_owned_directory_destination_must_be_a_directory(tmp_path: Path) -> None:
     staging = tmp_path / "staging"
     published = tmp_path / "published"

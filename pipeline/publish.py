@@ -3,13 +3,16 @@ from __future__ import annotations
 import os
 import stat
 import tempfile
-import warnings
+import logging
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path, PureWindowsPath
 
 from pipeline.files import content_changed, promote_file, validate_promotion_paths
 from pipeline.validation import Decision, ValidationResult
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 DOMAIN_FILES = {
@@ -248,8 +251,8 @@ def _validate_unique_mutation_targets(destinations: list[Path]) -> None:
 def _create_destination_directories(
     directories: list[Path],
     parent_states: dict[Path, tuple[int, int, int] | None],
-) -> list[tuple[Path, tuple[int, int, int]]]:
-    created: list[tuple[Path, tuple[int, int, int]]] = []
+    created: list[tuple[Path, tuple[int, int, int]]],
+) -> None:
     for directory in sorted(directories, key=lambda path: len(path.parts)):
         if _directory_state(directory) is not None:
             continue
@@ -264,7 +267,6 @@ def _create_destination_directories(
         assert identity is not None
         parent_states[directory] = identity
         created.append((directory, identity))
-    return created
 
 
 def _rollback_created_directories(
@@ -323,8 +325,7 @@ def _freeze_sources(
             temporary_paths.append(temporary)
             frozen.append((temporary, destination))
     except Exception:
-        for temporary in temporary_paths:
-            temporary.unlink(missing_ok=True)
+        _cleanup_frozen_sources(temporary_paths)
         raise
     return frozen, temporary_paths
 
@@ -337,11 +338,13 @@ def _cleanup_frozen_sources(temporary_sources: list[Path]) -> None:
         except OSError as error:
             failures.append(str(error))
     if failures:
-        warnings.warn(
-            f"publication committed/rolled back but frozen source cleanup failed: {'; '.join(failures)}",
-            RuntimeWarning,
-            stacklevel=2,
-        )
+        try:
+            LOGGER.warning(
+                "publication committed/rolled back but frozen source cleanup failed: %s",
+                "; ".join(failures),
+            )
+        except Exception:
+            pass
 
 
 def publish_domains(
@@ -468,9 +471,10 @@ def publish_domains(
 
     journal: list[_JournalEntry] = []
     try:
-        created_directories = _create_destination_directories(
+        _create_destination_directories(
             [parent for parent, identity in parent_states.items() if identity is None],
             parent_states,
+            created_directories,
         )
         for source, destination in frozen_promotions:
             _assert_parent_states(parent_states)
@@ -510,6 +514,12 @@ def publish_domains(
             ) from original_error
         raise
     finally:
-        _cleanup_frozen_sources(temporary_sources)
+        try:
+            _cleanup_frozen_sources(temporary_sources)
+        except Exception:
+            try:
+                LOGGER.warning("publication frozen source cleanup helper failed", exc_info=True)
+            except Exception:
+                pass
 
     return list(changed_destinations)
