@@ -53,6 +53,7 @@ function createDocument() {
             this.id = '';
             this.open = false;
             this.focused = false;
+            this.removeCount = 0;
             this.classList = {
                 add: (...names) => {
                     this.className = [...new Set(this.className.split(/\s+/).filter(Boolean).concat(names))].join(' ');
@@ -68,10 +69,22 @@ function createDocument() {
             if (index < 0) return this.appendChild(child);
             this.children.splice(index, 0, child); child.parentElement = this; return child;
         }
-        remove() { if (!this.parentElement) return; const index = this.parentElement.children.indexOf(this); if (index >= 0) this.parentElement.children.splice(index, 1); this.parentElement = null; }
+        remove() { this.removeCount += 1; if (!this.parentElement) return; const index = this.parentElement.children.indexOf(this); if (index >= 0) this.parentElement.children.splice(index, 1); this.parentElement = null; }
         setAttribute(name, value) { this.attributes[name] = String(value); if (name === 'id') { this.id = String(value); ids.set(this.id, this); } }
         addEventListener(name, handler) { (this.listeners[name] ||= []).push(handler); }
-        dispatchEvent(event) { (this.listeners[event.type] || []).forEach((handler) => handler(event)); return true; }
+        dispatchEvent(event) {
+            const dispatched = event && typeof event === 'object' ? event : { type: String(event) };
+            dispatched.cancelable = Boolean(dispatched.cancelable);
+            dispatched.defaultPrevented = Boolean(dispatched.defaultPrevented);
+            dispatched.preventDefault = () => {
+                if (dispatched.cancelable) dispatched.defaultPrevented = true;
+            };
+            (this.listeners[dispatched.type] || []).forEach((handler) => handler(dispatched));
+            if (this.tagName === 'DIALOG' && dispatched.type === 'cancel' && !dispatched.defaultPrevented) {
+                this.close();
+            }
+            return !dispatched.defaultPrevented;
+        }
         focus() { this.focused = true; document.activeElement = this; }
         showModal() { this.open = true; }
         close() { if (!this.open) return; this.open = false; this.dispatchEvent({ type: 'close' }); }
@@ -209,10 +222,45 @@ async function dialogContract() {
     assert.deepEqual(copied, [resolvedSubscription.https]);
     assert.match(dialog.querySelector('.calendar-subscription-dialog__status').textContent, /kopiert/i);
     assert.equal(openDialog(trigger, resolvedSubscription), dialog, 'duplicate opening is prevented');
-    dialog.dispatchEvent({ type: 'cancel' });
-    dialog.querySelectorAll('button').find((button) => button.textContent === 'Schließen').dispatchEvent({ type: 'click' });
-    assert.equal(document.querySelector('.calendar-subscription-dialog'), null);
-    assert.equal(document.activeElement, trigger);
+    dialog.close();
+
+    const assertClosedOnce = (targetDialog, targetTrigger) => {
+        assert.equal(targetDialog.open, false);
+        assert.equal(targetDialog.parentElement, null);
+        assert.equal(document.querySelector('.calendar-subscription-dialog'), null);
+        assert.equal(targetDialog.removeCount, 1);
+        assert.equal(document.activeElement, targetTrigger);
+        targetDialog.close();
+        targetDialog.dispatchEvent({ type: 'cancel', cancelable: true });
+        assert.equal(targetDialog.removeCount, 1, 'later native events must not run cleanup twice');
+    };
+
+    const cancelTrigger = document.createElement('button');
+    document.body.appendChild(cancelTrigger);
+    const cancelDialog = openDialog(cancelTrigger, resolvedSubscription);
+    const cancelEvent = { type: 'cancel', cancelable: true };
+    assert.equal(cancelDialog.dispatchEvent(cancelEvent), true);
+    assertClosedOnce(cancelDialog, cancelTrigger);
+    assert.equal(cancelEvent.defaultPrevented, false);
+
+    const closeTrigger = document.createElement('button');
+    document.body.appendChild(closeTrigger);
+    const closeDialog = openDialog(closeTrigger, resolvedSubscription);
+    closeDialog.querySelectorAll('button').find((button) => button.textContent === 'Schließen')
+        .dispatchEvent({ type: 'click' });
+    assertClosedOnce(closeDialog, closeTrigger);
+
+    const preventedDialog = document.createElement('dialog');
+    document.body.appendChild(preventedDialog);
+    preventedDialog.showModal();
+    preventedDialog.addEventListener('cancel', (event) => event.preventDefault());
+    const preventedEvent = { type: 'cancel', cancelable: true };
+    assert.equal(preventedDialog.dispatchEvent(preventedEvent), false);
+    assert.equal(preventedEvent.defaultPrevented, true);
+    assert.equal(preventedDialog.open, true);
+    assert.equal(preventedDialog.removeCount, 0);
+    preventedDialog.close();
+    preventedDialog.remove();
 
     const failedDocument = createDocument();
     const failedStatuses = [];
