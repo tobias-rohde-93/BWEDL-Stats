@@ -838,9 +838,6 @@ def _escape_text(value: str) -> str:
         for character in value
         if character in "\r\n" or not (ord(character) < 32 or 127 <= ord(character) <= 159)
     )
-    # Dynamic display values do not distinguish horizontal whitespace runs;
-    # normalize them so lossless folding never needs EOL whitespace.
-    value = re.sub(r"[ \t]+", " ", value)
     value = value.replace("\r\n", "\n").replace("\r", "\n")
     return value.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
@@ -872,6 +869,8 @@ def _fold_ical_lines(lines: list[str]) -> str:
                 if not current:
                     raise CalendarSourceError("ICS-Zeile enthält nicht faltbares Leerzeichen")
                 remaining = "".join(reversed(trailing)) + remaining[index:]
+            elif index == len(remaining) and current[-1] in {" ", "\t"}:
+                raise CalendarSourceError("ICS-Zeile endet mit nicht darstellbarem Leerzeichen")
             else:
                 remaining = remaining[index:]
             physical_lines.append(("" if first else " ") + "".join(current))

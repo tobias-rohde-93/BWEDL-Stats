@@ -15,6 +15,7 @@ from pipeline.calendar_feeds import (
     build_club_catalog,
     build_calendar_publication,
     classify_regular_league_source_lines,
+    _fold_ical_lines,
     main,
     normalize_team_name,
     parse_regular_league_games,
@@ -482,7 +483,7 @@ def test_ics_text_escaping_folding_and_crlf_are_rfc_safe() -> None:
 
 
 def test_folding_moves_boundary_whitespace_to_the_continuation_losslessly() -> None:
-    clubs = {"clubs": [{**CLUBS["clubs"][0], "venue": ("A" * 65) + " B"}, CLUBS["clubs"][1]]}
+    clubs = {"clubs": [{**CLUBS["clubs"][0], "venue": ("A" * 65) + "  B"}, CLUBS["clubs"][1]]}
     feed = _feed(_publication(_one_fixture(), clubs), "club-101-team-1")
     physical = feed.split("\r\n")
     location_start = next(index for index, line in enumerate(physical) if line.startswith("LOCATION:"))
@@ -495,8 +496,24 @@ def test_folding_moves_boundary_whitespace_to_the_continuation_losslessly() -> N
     assert all(len(line.encode("utf-8")) <= 75 for line in location_lines)
     assert all(not line.endswith((" ", "\t")) for line in location_lines)
     assert "".join([location_lines[0], *[line[1:] for line in location_lines[1:]]]) == (
-        "LOCATION:" + ("A" * 65) + " B\\, Dartweg 7\\, 75172 Pforzheim"
+        "LOCATION:" + ("A" * 65) + "  B\\, Dartweg 7\\, 75172 Pforzheim"
     )
+
+
+def test_folding_preserves_unicode_and_rejects_unrenderable_trailing_whitespace() -> None:
+    logical = "LOCATION:" + ("Ä" * 32) + "  B"
+    folded = _fold_ical_lines([logical])
+    physical = folded.rstrip("\r\n").split("\r\n")
+    assert all(len(line.encode("utf-8")) <= 75 for line in physical)
+    assert all(not line.endswith((" ", "\t")) for line in physical)
+    assert "".join([physical[0], *[line[1:] for line in physical[1:]]]) == logical
+
+    with pytest.raises(CalendarSourceError):
+        _fold_ical_lines(["X:A "])
+    with pytest.raises(CalendarSourceError):
+        _fold_ical_lines(["X:A\t"])
+    with pytest.raises(CalendarSourceError):
+        _fold_ical_lines(["X:" + ("A" * 73) + (" " * 74) + "B"])
 
 
 def test_uid_is_stable_and_only_the_changed_event_gets_a_sequence_bump() -> None:
