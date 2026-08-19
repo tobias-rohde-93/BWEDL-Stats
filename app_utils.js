@@ -40,6 +40,92 @@
             .replace(/'/g, '&#39;');
     }
 
+    const SAFE_CALENDAR_FEED_PATH = /^calendars\/club-[0-9]+-team-[0-9]+\.ics$/;
+
+    function normalizeCalendarTeamName(value) {
+        if (typeof value !== 'string') return '';
+        return value
+            .normalize('NFKD')
+            .replace(/\p{M}/gu, '')
+            .toLocaleLowerCase('de-DE')
+            .replace(/ß/g, 'ss')
+            .replace(/[^a-z0-9]+/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function isSafeCalendarFeedPath(value) {
+        return typeof value === 'string' && SAFE_CALENDAR_FEED_PATH.test(value);
+    }
+
+    function readOwnValue(value, key) {
+        try {
+            if (!Object.prototype.hasOwnProperty.call(value, key)) return undefined;
+            return value[key];
+        } catch (_error) {
+            return undefined;
+        }
+    }
+
+    function resolveCalendarFeed(index, teamName) {
+        try {
+            if (!index || typeof index !== 'object' || Array.isArray(index)) return null;
+            const schemaVersion = readOwnValue(index, 'schema_version');
+            const teams = readOwnValue(index, 'teams');
+            if (schemaVersion !== 1 || !Number.isInteger(schemaVersion) || !teams ||
+                typeof teams !== 'object' || Array.isArray(teams)) return null;
+
+            const key = normalizeCalendarTeamName(teamName);
+            if (!key) return null;
+            const entry = readOwnValue(teams, key);
+            if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return null;
+
+            const name = readOwnValue(entry, 'name');
+            const path = readOwnValue(entry, 'path');
+            if (typeof name !== 'string' || !name.trim() || !isSafeCalendarFeedPath(path)) return null;
+            return { name, path };
+        } catch (_error) {
+            return null;
+        }
+    }
+
+    function buildCalendarSubscriptionUrls(path, baseUri) {
+        if (!isSafeCalendarFeedPath(path)) return null;
+        try {
+            const source = baseUri instanceof URL ? baseUri.href : baseUri;
+            if (typeof source !== 'string' || /[\\\u0000-\u001f]/.test(source)) return null;
+            const base = new URL(source);
+            if (base.protocol !== 'https:' || base.username || base.password) return null;
+
+            const pathName = base.pathname;
+            if (/\/{2,}|%(?:2f|5c)/i.test(pathName)) return null;
+            let directoryPath;
+            if (pathName.endsWith('/')) {
+                directoryPath = pathName;
+            } else {
+                const slashIndex = pathName.lastIndexOf('/');
+                const documentName = pathName.slice(slashIndex + 1);
+                if (!/^[^/]+\.[a-z0-9]+$/i.test(documentName)) return null;
+                directoryPath = pathName.slice(0, slashIndex + 1);
+            }
+
+            const documentBase = new URL(base.href);
+            documentBase.pathname = directoryPath;
+            documentBase.search = '';
+            documentBase.hash = '';
+            const httpsUrl = new URL(path, documentBase);
+            if (httpsUrl.protocol !== 'https:' || httpsUrl.origin !== base.origin) return null;
+            httpsUrl.search = '';
+            httpsUrl.hash = '';
+            return {
+                https: httpsUrl.href,
+                webcal: `webcal://${httpsUrl.host}${httpsUrl.pathname}`,
+            };
+        } catch (_error) {
+            return null;
+        }
+    }
+
     async function probePublishedData(fetchImpl, baseUri, nowValue) {
         if (typeof fetchImpl !== 'function') {
             throw new TypeError('A fetch implementation is required');
@@ -1179,6 +1265,9 @@
         PLAYER_PROFILE_VERSION,
         PLAYER_PROFILE_STORAGE_KEY,
         escapeHtmlText,
+        normalizeCalendarTeamName,
+        resolveCalendarFeed,
+        buildCalendarSubscriptionUrls,
         probePublishedData,
         buildVisitSnapshot,
         buildTeamResultsFingerprint,

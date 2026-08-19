@@ -9,6 +9,9 @@ const {
     buildIcsContent,
     parseAppHash,
     diffVisitSnapshots,
+    normalizeCalendarTeamName,
+    resolveCalendarFeed,
+    buildCalendarSubscriptionUrls,
 } = require(path.join(__dirname, '..', 'app_utils.js'));
 
 const reviewFailures = [];
@@ -23,6 +26,85 @@ function reviewCheck(name, check) {
 assert.equal(isByeOpponent('Spielfrei (DC Beispiel)'), true);
 assert.equal(isByeOpponent('*** Freilos ***'), true);
 assert.equal(isByeOpponent('DC Spielfreunde'), false);
+
+assert.equal(normalizeCalendarTeamName('  DĆ  Straße!  '), 'dc strasse');
+assert.equal(normalizeCalendarTeamName('ẞtraße'), 'sstrasse');
+assert.equal(normalizeCalendarTeamName('AB\uFE0FCD'), 'abcd');
+assert.equal(normalizeCalendarTeamName('AŁBøC'), 'a b c');
+assert.equal(normalizeCalendarTeamName('  DC---Team\t\n2  '), 'dc team 2');
+assert.equal(normalizeCalendarTeamName(null), '');
+assert.equal(normalizeCalendarTeamName({ value: 'DC Team' }), '');
+
+const calendarIndex = {
+    schema_version: 1,
+    teams: {
+        'dc schomberg': {
+            name: 'DC Schömberg',
+            path: 'calendars/club-010-team-2.ics',
+        },
+        'dc schomberg 2': {
+            name: 'DC Schömberg 2',
+            path: 'calendars/club-010-team-2.ics',
+        },
+    },
+};
+assert.deepEqual(resolveCalendarFeed(calendarIndex, 'DC Schömberg'), {
+    name: 'DC Schömberg',
+    path: 'calendars/club-010-team-2.ics',
+});
+assert.deepEqual(resolveCalendarFeed(calendarIndex, 'DC Schömberg 2'), {
+    name: 'DC Schömberg 2',
+    path: 'calendars/club-010-team-2.ics',
+});
+const resolvedFeed = resolveCalendarFeed(calendarIndex, 'DC Schömberg');
+resolvedFeed.name = 'mutated';
+assert.equal(resolveCalendarFeed(calendarIndex, 'DC Schömberg').name, 'DC Schömberg');
+assert.equal(resolveCalendarFeed({ schema_version: 2, teams: calendarIndex.teams }, 'DC Schömberg'), null);
+assert.equal(resolveCalendarFeed({ schema_version: 1, teams: [] }, 'DC Schömberg'), null);
+assert.equal(resolveCalendarFeed({ schema_version: 1, teams: { 'dc schomberg': { name: '', path: 'calendars/club-010-team-2.ics' } } }, 'DC Schömberg'), null);
+for (const unsafePath of [
+    'calendars/club-10-team-2.ics/extra',
+    'calendars/club-10-team-2.ics?query',
+    'calendars/club-10-team-2.ics#fragment',
+    'calendars\\club-10-team-2.ics',
+    'calendars/../club-10-team-2.ics',
+    'calendars/club-%31-team-2.ics',
+    'calendars/club-10-team-2.ics\n',
+]) {
+    assert.equal(resolveCalendarFeed({ schema_version: 1, teams: { safe: { name: 'Safe', path: unsafePath } } }, 'safe'), null);
+}
+const inheritedTeams = Object.create({ inherited: { name: 'Inherited', path: 'calendars/club-010-team-2.ics' } });
+assert.equal(resolveCalendarFeed({ schema_version: 1, teams: inheritedTeams }, 'inherited'), null);
+const throwingTeams = {};
+Object.defineProperty(throwingTeams, 'throwing', { get() { throw new Error('blocked'); } });
+assert.equal(resolveCalendarFeed({ schema_version: 1, teams: throwingTeams }, 'throwing'), null);
+
+assert.deepEqual(
+    buildCalendarSubscriptionUrls('calendars/club-010-team-2.ics', 'https://tobias-rohde-93.github.io/BWEDL-Stats/#profile'),
+    {
+        https: 'https://tobias-rohde-93.github.io/BWEDL-Stats/calendars/club-010-team-2.ics',
+        webcal: 'webcal://tobias-rohde-93.github.io/BWEDL-Stats/calendars/club-010-team-2.ics',
+    },
+);
+assert.deepEqual(
+    buildCalendarSubscriptionUrls('calendars/club-010-team-2.ics', 'https://tobias-rohde-93.github.io/BWEDL-Stats/index.html?x=1#profile'),
+    {
+        https: 'https://tobias-rohde-93.github.io/BWEDL-Stats/calendars/club-010-team-2.ics',
+        webcal: 'webcal://tobias-rohde-93.github.io/BWEDL-Stats/calendars/club-010-team-2.ics',
+    },
+);
+for (const baseUri of [
+    'http://tobias-rohde-93.github.io/BWEDL-Stats/',
+    'file:///BWEDL-Stats/',
+    'javascript:alert(1)',
+    'data:text/plain,calendar',
+    'https://user:pass@tobias-rohde-93.github.io/BWEDL-Stats/',
+    'https://tobias-rohde-93.github.io/BWEDL-Stats',
+    'not a URL',
+]) {
+    assert.equal(buildCalendarSubscriptionUrls('calendars/club-010-team-2.ics', baseUri), null);
+}
+assert.equal(buildCalendarSubscriptionUrls('calendars/../club-010-team-2.ics', 'https://tobias-rohde-93.github.io/BWEDL-Stats/'), null);
 
 const schedule = [
     { id: 'open', opponent: 'DC Offen', isPending: true, date: null },
@@ -202,8 +284,8 @@ reviewCheck('service worker cache contract is exact', () => {
     const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
     const appUtilsUrl = html.match(/<script src="(app_utils\.js\?v=[^"]+)"><\/script>/);
     assert.ok(appUtilsUrl, 'index uses a versioned app_utils request');
-    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v38';$/m);
-    assert.doesNotMatch(worker, /bwedl-dashboard-v37/);
+    assert.match(worker, /^const CACHE_NAME = 'bwedl-dashboard-v39';$/m);
+    assert.doesNotMatch(worker, /bwedl-dashboard-v38/);
     assert.match(worker, new RegExp(`^\\s*'\\./${appUtilsUrl[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}',$`, 'm'));
 });
 

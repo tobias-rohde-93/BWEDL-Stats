@@ -1,5 +1,5 @@
 // Increment this cache name whenever the static asset list or cache keys change.
-const CACHE_NAME = 'bwedl-dashboard-v38';
+const CACHE_NAME = 'bwedl-dashboard-v39';
 const urlsToCache = [
     './',
     './index.html',
@@ -14,6 +14,7 @@ const urlsToCache = [
     './archive_tables.js?v=5',
     './ligapokal_archive.js?v=3',
     './data_status.js?v=1',
+    './calendar_index.js?v=1',
     './app_utils.js?v=3',
     './bundle_v31.js?v=3.6',
     './pwa-icon-192.png',
@@ -36,11 +37,21 @@ self.addEventListener('fetch', event => {
     if (event.request.method !== 'GET') return;
 
     const url = new URL(event.request.url);
-    const isDataFile = url.pathname.endsWith('_data.js') || 
+    const isCalendarFeed = /(?:^|\/)calendars\/[^/]+\.ics$/i.test(url.pathname);
+    const isCalendarState = url.pathname.endsWith('calendar_state.json');
+    if (isCalendarFeed || isCalendarState) {
+        // Subscriptions and publication state must never become stale Cache Storage entries.
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
+    const isDataFile = url.pathname.endsWith('_data.js') ||
                        url.pathname.endsWith('data_status.json') ||
                        url.pathname.endsWith('data_status.js') ||
                        url.pathname.endsWith('archive_tables.js') ||
-                       url.pathname.endsWith('ligapokal_archive.js');
+                       url.pathname.endsWith('ligapokal_archive.js') ||
+                       url.pathname.endsWith('calendar_index.js') ||
+                       url.pathname.endsWith('calendar_index.json');
 
     if (isDataFile) {
         // Network-First Strategy for Data Files

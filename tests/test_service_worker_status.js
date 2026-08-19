@@ -8,7 +8,7 @@ const cacheNameMatch = worker.match(/^const CACHE_NAME = '([^']+)';$/m);
 assert.ok(cacheNameMatch, 'service worker declares one active cache name');
 const currentCacheName = cacheNameMatch[1];
 const previousCacheName = 'bwedl-dashboard-v37';
-assert.equal(currentCacheName, 'bwedl-dashboard-v38');
+assert.equal(currentCacheName, 'bwedl-dashboard-v39');
 assert.notEqual(currentCacheName, previousCacheName);
 assert.doesNotMatch(worker, /bwedl-dashboard-v36/);
 
@@ -56,6 +56,7 @@ vm.runInContext(worker, sandbox);
     await installPromise;
     assert.ok(installedAssets.includes('./style.css?v=6'));
     assert.ok(installedAssets.includes('./app_utils.js?v=3'));
+    assert.ok(installedAssets.includes('./calendar_index.js?v=1'));
     assert.ok(installedAssets.includes('./bundle_v31.js?v=3.6'));
 
     let activatePromise;
@@ -111,6 +112,41 @@ vm.runInContext(worker, sandbox);
     assert.equal(calls[1].url, request.url);
     assert.equal(calls[1].options.ignoreSearch, true);
     assert.deepEqual(Object.keys(calls[1].options), ['ignoreSearch']);
+
+    for (const url of [
+        'https://example.test/calendar_index.js?v=1',
+        'https://example.test/calendar_index.json?v=1',
+    ]) {
+        calls.length = 0;
+        fetchImpl = () => Promise.reject(new Error('offline'));
+        let indexResponsePromise;
+        listeners.fetch({
+            request: { method: 'GET', url },
+            respondWith(promise) { indexResponsePromise = promise; },
+            waitUntil() {},
+        });
+        assert.equal(await indexResponsePromise, cachedResponse, `${url} uses network-first cached fallback`);
+        assert.deepEqual(calls.map(call => call.type), ['fetch', 'cache']);
+        assert.equal(calls[1].options.ignoreSearch, true);
+    }
+
+    for (const url of [
+        'https://example.test/calendars/club-010-team-2.ics',
+        'https://example.test/calendar_state.json',
+    ]) {
+        calls.length = 0;
+        const networkOnlyResponse = { status: 200, type: 'basic', clone: () => ({ source: 'network-clone' }) };
+        fetchImpl = () => Promise.resolve(networkOnlyResponse);
+        putImpl = () => { throw new Error(`${url} must not be cached`); };
+        let calendarResponsePromise;
+        listeners.fetch({
+            request: { method: 'GET', url, clone() { return this; } },
+            respondWith(promise) { calendarResponsePromise = promise; },
+            waitUntil() {},
+        });
+        assert.equal(await calendarResponsePromise, networkOnlyResponse, `${url} stays network-only`);
+        assert.deepEqual(calls.map(call => call.type), ['fetch']);
+    }
     console.log('service worker status fallback: ok');
 })().catch(error => {
     console.error(error);

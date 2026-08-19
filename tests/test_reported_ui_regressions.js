@@ -255,5 +255,5 @@ test('changed static assets use coherent cache keys', () => {
         assert.ok(index.includes(asset), `index must load ${asset}`);
         assert.ok(worker.includes(`'./${asset}'`), `service worker must cache ${asset}`);
     }
-    assert.match(worker, /bwedl-dashboard-v38/);
+    assert.match(worker, /bwedl-dashboard-v39/);
 });

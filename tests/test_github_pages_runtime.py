@@ -47,6 +47,19 @@ def test_service_worker_has_no_local_api_runtime_contract() -> None:
     assert "localhost" not in worker
     assert "127.0.0.1" not in worker
     assert "'./data_status.json'" in worker
+    assert "'./calendar_index.js?v=1'" in worker
+    assert "calendar_state.json" not in worker.split("const urlsToCache = [", 1)[1].split("];", 1)[0]
+    assert "calendars/" not in worker.split("const urlsToCache = [", 1)[1].split("];", 1)[0]
+
+
+def test_calendar_index_shell_order_and_pages_subpath_contract() -> None:
+    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    data_status = '<script src="data_status.js?v=1"></script>'
+    calendar_index = '<script src="calendar_index.js?v=1"></script>'
+    app_utils = '<script src="app_utils.js?v=3"></script>'
+
+    assert html.count(calendar_index) == 1
+    assert html.index(data_status) < html.index(calendar_index) < html.index(app_utils)
 
 
 def test_public_refresh_contract_in_node() -> None:
