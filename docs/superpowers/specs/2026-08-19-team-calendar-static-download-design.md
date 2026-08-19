@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-19
 
-**Status:** Design approved; written specification pending user review
+**Status:** Approved for implementation
 
 ## Context
 
@@ -37,6 +37,8 @@ The product will therefore retain the automatic subscription and add a clearly d
 The existing action card remains available on the Dashboard and under My Profile. Its action opens one native dialog titled **Teamkalender hinzufügen**. The introductory copy is:
 
 > Wähle zwischen automatischer Aktualisierung und einer einmaligen Kopie.
+
+Because the dialog now offers more than a subscription, the action-card button changes from **Kalender abonnieren** to **Kalender hinzufügen**.
 
 The dialog contains two vertically ordered option cards.
 
@@ -161,7 +163,8 @@ No generated snapshot is written to local storage, Cache Storage, the service-wo
 
 - `app_utils.js` owns pure, DOM-free parsing, filtering, calendar rendering, filename sanitization, and validation helpers.
 - `bundle_v31.js` owns the dialog, fetch lifecycle, Blob download, platform instructions, user-visible status, and focus handling.
-- `styles_v31.css` owns the responsive option-card, warning, accordion, and dialog layout.
+- `style.css` owns the responsive option-card, warning, accordion, and dialog layout.
+- `index.html` and `sw_v31.js` advance the changed asset query versions and service-worker cache name so existing installed PWAs receive the new JavaScript and CSS. The calendar feed remains network-only and is never written to Cache Storage.
 - The existing calendar index and subscription resolver remain the only source of a team feed URL.
 - The Python publication pipeline, public calendar state, calendar index schema, and generated subscription files do not change for this feature.
 - README, USER_GUIDE, and WIKI describe both options and reproduce the automatic-versus-static warning.
