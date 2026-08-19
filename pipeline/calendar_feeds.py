@@ -46,7 +46,7 @@ class CalendarSourceError(ValueError):
 
 def normalize_team_name(value: str) -> str:
     """Return the JavaScript-compatible key used for exact team resolution."""
-    decomposed = unicodedata.normalize("NFKD", value).replace("ß", "ss")
+    decomposed = unicodedata.normalize("NFKD", value)
     without_marks = "".join(
         character for character in decomposed if not unicodedata.combining(character)
     )
@@ -54,7 +54,7 @@ def normalize_team_name(value: str) -> str:
         character.lower() if character.isalnum() else " "
         for character in without_marks
     )
-    return " ".join(words.split())
+    return " ".join(words.replace("ß", "ss").split())
 
 
 @dataclass(frozen=True)
@@ -137,16 +137,16 @@ def build_club_catalog(club_data: Mapping[str, Any]) -> ClubCatalog:
     aliases: dict[str, list[Club]] = {}
 
     for record in club_data.get("clubs", []):
-        number = str(record.get("number", "")).strip()
-        name = str(record.get("name", "")).strip()
+        number = _source_text(record.get("number"))
+        name = _source_text(record.get("name"))
         if not number or not name:
             continue
         club = Club(
             number=number,
             name=name,
-            venue=str(record.get("venue", "")).strip(),
-            street=str(record.get("street", "")).strip(),
-            city=str(record.get("city", "")).strip(),
+            venue=_source_text(record.get("venue")),
+            street=_source_text(record.get("street")),
+            city=_source_text(record.get("city")),
         )
         clubs_by_number[number] = club
         for alias in _club_aliases(club):
@@ -232,7 +232,9 @@ def _club_aliases(club: Club) -> set[str]:
 
 def _season_for(league: str) -> str:
     match = _SEASON_RE.search(league)
-    return match.group("season") if match else ""
+    if match is None:
+        raise CalendarSourceError(f"Saison nicht aus Liga ableitbar: {league}")
+    return match.group("season")
 
 
 def _parse_fixture_line(line: str) -> tuple[datetime, str, str] | None:
@@ -246,15 +248,16 @@ def _parse_fixture_line(line: str) -> tuple[datetime, str, str] | None:
     year = int(match.group("year"))
     if year < 100:
         year += 2000
-    local = datetime(
+    starts_at_utc = _unambiguous_berlin_time_or_none(
         year,
         int(match.group("month")),
         int(match.group("day")),
         int(match.group("hour")),
         int(match.group("minute")),
-        tzinfo=BERLIN,
     )
-    return local.astimezone(timezone.utc), team_match.group("home").strip(), team_match.group("away").strip()
+    if starts_at_utc is None:
+        return None
+    return starts_at_utc, team_match.group("home").strip(), team_match.group("away").strip()
 
 
 def _is_bye(team_name: str) -> bool:
@@ -295,3 +298,29 @@ def _home_location(
         if all((club.venue, club.street, club.city))
         else "Austragungsort unvollständig",
     )
+
+
+def _source_text(value: Any) -> str:
+    """Keep only actual source text; JSON null and missing values stay empty."""
+    return value.strip() if isinstance(value, str) else ""
+
+
+def _unambiguous_berlin_time_or_none(
+    year: int, month: int, day: int, hour: int, minute: int
+) -> datetime | None:
+    """Return UTC only when both local folds round-trip to one instant."""
+    try:
+        wall_time = datetime(year, month, day, hour, minute)
+    except ValueError:
+        return None
+    utc_instants = []
+    for fold in (0, 1):
+        local = wall_time.replace(tzinfo=BERLIN, fold=fold)
+        utc_value = local.astimezone(timezone.utc)
+        round_trip = utc_value.astimezone(BERLIN).replace(tzinfo=None)
+        if round_trip != wall_time:
+            return None
+        utc_instants.append(utc_value)
+    if utc_instants[0] != utc_instants[1]:
+        return None
+    return utc_instants[0]

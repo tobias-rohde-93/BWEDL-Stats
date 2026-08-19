@@ -54,6 +54,7 @@ LEAGUES = {
 
 def test_normalization_matches_the_cross_runtime_contract() -> None:
     assert normalize_team_name("  DĆ  Straße!  ") == "dc strasse"
+    assert normalize_team_name("ẞtraße") == "sstrasse"
 
 
 def test_build_catalog_resolves_explicit_legal_form_alias_and_team_slot() -> None:
@@ -84,6 +85,48 @@ def test_parse_regular_games_excludes_cup_byes_and_missing_times() -> None:
     assert game.location.incomplete is False
 
 
+def test_regular_game_without_time_is_skipped_independently_of_bye_filter() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "2. Spieltag": "Fr. 30. 10.2026 DC Heim - DC Gast ---\n"
+                }
+            }
+        }
+    }
+
+    assert parse_regular_league_games(leagues, CLUBS) == []
+
+
+def test_nonexistent_berlin_spring_dst_time_is_skipped() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "2. Spieltag": "So. 29. 3.2026 02:30 DC Heim - DC Gast ---\n"
+                }
+            }
+        }
+    }
+
+    assert parse_regular_league_games(leagues, CLUBS) == []
+
+
+def test_ambiguous_berlin_autumn_dst_time_is_skipped() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "2. Spieltag": "So. 25. 10.2026 02:30 DC Heim - DC Gast ---\n"
+                }
+            }
+        }
+    }
+
+    assert parse_regular_league_games(leagues, CLUBS) == []
+
+
 def test_parse_regular_games_keeps_partial_home_address_and_marks_it_incomplete() -> None:
     clubs = {"clubs": [{**CLUBS["clubs"][0], "street": "", "city": ""}, CLUBS["clubs"][1]]}
 
@@ -91,6 +134,24 @@ def test_parse_regular_games_keeps_partial_home_address_and_marks_it_incomplete(
 
     assert game.location is not None
     assert game.location.address == "Heimspielstätte"
+    assert game.location.incomplete is True
+
+
+def test_null_address_parts_are_not_stringified_or_treated_as_complete() -> None:
+    clubs = {
+        "clubs": [
+            {**CLUBS["clubs"][0], "venue": None, "street": "Dartweg 7", "city": None},
+            CLUBS["clubs"][1],
+        ]
+    }
+
+    game = parse_regular_league_games(LEAGUES, clubs)[0]
+
+    assert game.location is not None
+    assert game.location.venue == ""
+    assert game.location.street == "Dartweg 7"
+    assert game.location.city == ""
+    assert game.location.address == "Dartweg 7"
     assert game.location.incomplete is True
 
 
@@ -110,6 +171,47 @@ def test_unresolved_home_never_uses_guest_address_and_has_deterministic_fallback
     assert game.home.team_id == "team-fdce66b80ba5e109"
     assert game.location is None
     assert game.location_status == "Austragungsort nicht auflösbar"
+
+
+def test_ambiguous_catalog_alias_uses_fallback_without_home_location() -> None:
+    clubs = {
+        "clubs": [
+            {"name": "DC Kollidiert", "number": "303", "venue": "Eins", "street": "A", "city": "B"},
+            {"name": "DC Kollidiert", "number": "404", "venue": "Zwei", "street": "C", "city": "D"},
+            CLUBS["clubs"][1],
+        ]
+    }
+    leagues = {
+        "leagues": {
+            "A-Klasse 2026-2027": {
+                "match_days": {
+                    "2. Spieltag": "Fr. 30. 10.2026 20:00 DC Kollidiert - DC Gast ---\n"
+                }
+            }
+        }
+    }
+
+    game = parse_regular_league_games(leagues, clubs)[0]
+
+    assert game.home.team_id == "team-07c185a543a08082"
+    assert game.home.club_number is None
+    assert game.location is None
+    assert game.location_status == "Austragungsort nicht auflösbar"
+
+
+def test_missing_league_season_is_rejected_diagnostically() -> None:
+    leagues = {
+        "leagues": {
+            "A-Klasse ohne Saison": {
+                "match_days": {
+                    "2. Spieltag": "Fr. 30. 10.2026 20:00 DC Heim - DC Gast ---\n"
+                }
+            }
+        }
+    }
+
+    with pytest.raises(CalendarSourceError, match="A-Klasse ohne Saison"):
+        parse_regular_league_games(leagues, CLUBS)
 
 
 def test_duplicate_target_team_in_league_round_is_rejected_diagnostically() -> None:
