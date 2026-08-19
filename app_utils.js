@@ -129,6 +129,195 @@
         }
     }
 
+    const MAX_STATIC_CALENDAR_BYTES = 512 * 1024;
+    const STATIC_EVENT_REQUIRED = new Set([
+        'UID',
+        'DTSTAMP',
+        'DTSTART',
+        'DTEND',
+        'SUMMARY',
+        'DESCRIPTION',
+        'SEQUENCE',
+        'LAST-MODIFIED',
+        'STATUS',
+    ]);
+    const STATIC_EVENT_ALLOWED = new Set([...STATIC_EVENT_REQUIRED, 'LOCATION']);
+    const STATIC_TOP_LEVEL_ALLOWED = new Set([
+        'VERSION',
+        'PRODID',
+        'CALSCALE',
+        'METHOD',
+        'X-WR-CALNAME',
+        'REFRESH-INTERVAL;VALUE=DURATION',
+        'X-PUBLISHED-TTL',
+        'X-BWEDL-EMPTY-FEED',
+        'X-WR-CALDESC',
+    ]);
+    const STATIC_UNSAFE_CONTROL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/u;
+
+    function staticUtf8Length(value) {
+        return new TextEncoder().encode(value).byteLength;
+    }
+
+    function decodeStaticCalendarBytes(value) {
+        try {
+            return new TextDecoder('utf-8', { fatal: true }).decode(value);
+        } catch (_error) {
+            return null;
+        }
+    }
+
+    function unfoldStaticCalendarLines(text) {
+        if (typeof text !== 'string' || !text.endsWith('\r\n') ||
+            /(^|[^\r])\n/u.test(text) || /\r(?!\n)/u.test(text) || STATIC_UNSAFE_CONTROL.test(text)) return null;
+
+        const physicalLines = text.slice(0, -2).split('\r\n');
+        const logicalLines = [];
+        for (const line of physicalLines) {
+            if (!line || staticUtf8Length(line) > 75 || /[ \t]$/u.test(line)) return null;
+            if (/^[ \t]/u.test(line)) {
+                if (!logicalLines.length) return null;
+                logicalLines.at(-1).value += line.slice(1);
+                logicalLines.at(-1).raw.push(line);
+            } else {
+                logicalLines.push({ value: line, raw: [line] });
+            }
+        }
+        return logicalLines;
+    }
+
+    function parseStaticUtcTimestamp(value) {
+        const match = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/u.exec(value);
+        if (!match) return null;
+        const parts = match.slice(1).map(Number);
+        const milliseconds = Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+        if (!Number.isFinite(milliseconds)) return null;
+        const roundTrip = new Date(milliseconds)
+            .toISOString()
+            .replace(/[-:]/gu, '')
+            .replace(/\.000Z$/u, 'Z');
+        return roundTrip === value ? milliseconds : null;
+    }
+
+    function staticCalendarFilename(teamName, feedPath) {
+        if (!isSafeCalendarFeedPath(feedPath)) return null;
+        const fallback = feedPath.slice('calendars/'.length, -'.ics'.length);
+        const normalized = normalizeCalendarTeamName(teamName);
+        const slug = normalized
+            .replace(/\s+/gu, '-')
+            .replace(/^-+|-+$/gu, '')
+            .slice(0, 64)
+            .replace(/-+$/u, '');
+        return `bwedl-${slug || fallback}-zukuenftige-spiele.ics`;
+    }
+
+    function parseStaticEvent(entries) {
+        if (entries.length < 3 || entries[0].value !== 'BEGIN:VEVENT' ||
+            entries.at(-1).value !== 'END:VEVENT') return null;
+
+        const properties = new Map();
+        for (const entry of entries.slice(1, -1)) {
+            if (/^(?:BEGIN|END):/u.test(entry.value)) return null;
+            const separator = entry.value.indexOf(':');
+            if (separator < 1) return null;
+            const name = entry.value.slice(0, separator);
+            const value = entry.value.slice(separator + 1);
+            if (!STATIC_EVENT_ALLOWED.has(name) || properties.has(name) || !value) return null;
+            properties.set(name, value);
+        }
+        if ([...STATIC_EVENT_REQUIRED].some((name) => !properties.has(name))) return null;
+        if (!/^\d+$/u.test(properties.get('SEQUENCE'))) return null;
+        if (!['CONFIRMED', 'CANCELLED'].includes(properties.get('STATUS'))) return null;
+        if (/\s/u.test(properties.get('UID'))) return null;
+
+        const timestamps = new Map();
+        for (const name of ['DTSTAMP', 'DTSTART', 'DTEND', 'LAST-MODIFIED']) {
+            const parsed = parseStaticUtcTimestamp(properties.get(name));
+            if (parsed === null) return null;
+            timestamps.set(name, parsed);
+        }
+        if (timestamps.get('DTEND') <= timestamps.get('DTSTART')) return null;
+
+        return {
+            uid: properties.get('UID'),
+            startsAt: timestamps.get('DTSTART'),
+            status: properties.get('STATUS'),
+            raw: entries.flatMap((entry) => entry.raw),
+        };
+    }
+
+    function buildStaticCalendarDownload(feedBytes, { now, teamName, feedPath } = {}) {
+        if (!(feedBytes instanceof Uint8Array)) return { ok: false, reason: 'invalid' };
+        if (feedBytes.byteLength > MAX_STATIC_CALENDAR_BYTES) return { ok: false, reason: 'oversized' };
+        if (!(now instanceof Date) || !Number.isFinite(now.getTime())) return { ok: false, reason: 'invalid' };
+
+        const filename = staticCalendarFilename(teamName, feedPath);
+        const text = decodeStaticCalendarBytes(feedBytes);
+        const logicalLines = text === null ? null : unfoldStaticCalendarLines(text);
+        if (!filename || !logicalLines || logicalLines.length < 2 ||
+            logicalLines[0].value !== 'BEGIN:VCALENDAR' ||
+            logicalLines.at(-1).value !== 'END:VCALENDAR') return { ok: false, reason: 'invalid' };
+
+        const topLevelValues = new Map();
+        const eventUids = new Set();
+        const selectedRawEvents = [];
+        for (let index = 1; index < logicalLines.length - 1; index += 1) {
+            const entry = logicalLines[index];
+            if (entry.value === 'BEGIN:VEVENT') {
+                let eventEnd = -1;
+                for (let candidate = index + 1; candidate < logicalLines.length - 1; candidate += 1) {
+                    if (logicalLines[candidate].value === 'END:VEVENT') {
+                        eventEnd = candidate;
+                        break;
+                    }
+                }
+                if (eventEnd < 0) return { ok: false, reason: 'invalid' };
+                const parsed = parseStaticEvent(logicalLines.slice(index, eventEnd + 1));
+                if (!parsed || eventUids.has(parsed.uid)) return { ok: false, reason: 'invalid' };
+                eventUids.add(parsed.uid);
+                if (parsed.status === 'CONFIRMED' && parsed.startsAt >= now.getTime()) {
+                    selectedRawEvents.push(parsed.raw);
+                }
+                index = eventEnd;
+                continue;
+            }
+
+            if (/^(?:BEGIN|END):/u.test(entry.value)) return { ok: false, reason: 'invalid' };
+            const separator = entry.value.indexOf(':');
+            if (separator < 1) return { ok: false, reason: 'invalid' };
+            const name = entry.value.slice(0, separator);
+            const value = entry.value.slice(separator + 1);
+            if (!STATIC_TOP_LEVEL_ALLOWED.has(name) || topLevelValues.has(name) || !value) {
+                return { ok: false, reason: 'invalid' };
+            }
+            topLevelValues.set(name, value);
+        }
+
+        if (topLevelValues.get('VERSION') !== '2.0' || !topLevelValues.get('PRODID') ||
+            topLevelValues.get('CALSCALE') !== 'GREGORIAN' ||
+            topLevelValues.get('METHOD') !== 'PUBLISH' || !topLevelValues.get('X-WR-CALNAME')) {
+            return { ok: false, reason: 'invalid' };
+        }
+        if (!selectedRawEvents.length) return { ok: false, reason: 'empty' };
+
+        const content = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//BWEDL Stats//Static Team Calendar//DE',
+            'CALSCALE:GREGORIAN',
+            'METHOD:PUBLISH',
+            ...selectedRawEvents.flat(),
+            'END:VCALENDAR',
+            '',
+        ].join('\r\n');
+        return Object.freeze({
+            ok: true,
+            content,
+            filename,
+            eventCount: selectedRawEvents.length,
+        });
+    }
+
     async function probePublishedData(fetchImpl, baseUri, nowValue) {
         if (typeof fetchImpl !== 'function') {
             throw new TypeError('A fetch implementation is required');
@@ -1271,6 +1460,7 @@
         normalizeCalendarTeamName,
         resolveCalendarFeed,
         buildCalendarSubscriptionUrls,
+        buildStaticCalendarDownload,
         probePublishedData,
         buildVisitSnapshot,
         buildTeamResultsFingerprint,
