@@ -34,5 +34,29 @@
     "league": "A-Klasse",
     "headers": ["Rang", "V-Nr.", "Nr.", "Vorname", "Name", "Runde", "Gesamt"],
     "rows": [["35", "018", "4711", "Mario", "Ackermann", "12", "12"]]
+  },
+  "multi_class_bezirksliga": {
+    "season": "2025/2026",
+    "league": "Bezirksliga",
+    "headers": ["Pl.", "V-Nr.", "ID", "Name", "R1", "R2", "R3", "Gesamt"],
+    "rows": [["11", "043", "1416", "Ingo Eichenhofer", "VW", "5", "6", "11"]]
+  },
+  "multi_class_a": {
+    "season": "2025/2026",
+    "league": "A-Klasse",
+    "headers": ["Pl.", "V-Nr.", "ID", "Name", "R1", "R2", "R3", "R4", "R5", "Gesamt"],
+    "rows": [["44", "043", "1416", "Ingo Eichenhofer", "7", "8", "9", "10", "10", "44"]]
+  },
+  "administrative_markers": {
+    "season": "2022/2023",
+    "league": "B-Klasse",
+    "headers": ["Pl.", "V-Nr.", "ID", "Name", "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "Gesamt"],
+    "rows": [["9", "035", "9001", "Marker Spieler", "x", "VW", "Vw", "D", "d", "kp", "*", "0", "", "0"]]
+  },
+  "unknown_marker": {
+    "season": "2022/2023",
+    "league": "B-Klasse",
+    "headers": ["Pl.", "V-Nr.", "ID", "Name", "R1", "Gesamt"],
+    "rows": [["9", "035", "9001", "Marker Spieler", "?", "0"]]
   }
 }

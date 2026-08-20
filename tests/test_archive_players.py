@@ -142,16 +142,46 @@ def test_round_like_header_without_valid_number_is_rejected(
     [
         (None, ""),
         ("", ""),
-        (" X ", "x"),
+        (" X ", "X"),
+        (" VW ", "VW"),
+        ("Vw", "Vw"),
+        ("D", "D"),
+        ("d", "d"),
+        ("kp", "kp"),
+        ("*", "*"),
         (0, 0),
         ("0", 0),
         ("12", 12),
-        ("-1", ""),
-        ("not played", ""),
     ],
 )
-def test_round_values_only_keep_nonnegative_numbers_and_x(source, expected) -> None:
+def test_round_values_preserve_observed_marker_spelling(source, expected) -> None:
     assert parse_round_value(source) == expected
+
+
+@pytest.mark.parametrize("source", ["?", "-1", "not played"])
+def test_unknown_round_markers_are_rejected_with_source_value(source: str) -> None:
+    with pytest.raises(ArchivePlayerParseError, match="invalid round value") as error:
+        parse_round_value(source)
+
+    assert repr(source.strip()) in str(error.value)
+
+
+def test_observed_markers_do_not_count_but_numeric_zero_is_an_appearance(
+    fixture: dict,
+) -> None:
+    record = parse_archive_ranking_table(**fixture["administrative_markers"])[0]
+
+    assert record["rounds"] == {
+        "R1": "x", "R2": "VW", "R3": "Vw", "R4": "D", "R5": "d",
+        "R6": "kp", "R7": "*", "R8": 0, "R9": "",
+    }
+    assert record["appearances"] == 1
+    assert record["points_per_appearance"] == 0.0
+
+
+def test_unknown_marker_error_identifies_the_round(fixture: dict) -> None:
+    with pytest.raises(ArchivePlayerParseError, match=r"round R1:.*'\?'"):
+        parse_archive_ranking_table(**fixture["unknown_marker"])
 
 
 def test_header_aliases_drive_combined_name_and_canonical_rounds() -> None:
@@ -182,9 +212,12 @@ def test_header_aliases_drive_combined_name_and_canonical_rounds() -> None:
 
 def test_merge_archive_entries_is_sorted_and_does_not_mutate_inputs() -> None:
     entries = [
-        {"id": "20", "season": "2023/2024", "league": "B-Klasse"},
-        {"id": "100", "season": "2025/2026", "league": "A-Klasse"},
-        {"id": "20", "season": "2025/2026", "league": "A-Klasse"},
+        {"id": "20", "season": "2023/2024", "rank": 2, "points": 4,
+         "league": "B-Klasse", "name": "Twenty"},
+        {"id": "100", "season": "2025/2026", "rank": 1, "points": 8,
+         "league": "A-Klasse", "name": "Hundred"},
+        {"id": "20", "season": "2025/2026", "rank": 3, "points": 6,
+         "league": "A-Klasse", "name": "Twenty"},
     ]
     original = deepcopy(entries)
 
@@ -195,15 +228,125 @@ def test_merge_archive_entries_is_sorted_and_does_not_mutate_inputs() -> None:
         "2025/2026",
         "2023/2024",
     ]
+    assert all(len(entry["segments"]) == 1 for history in merged.values() for entry in history)
+    assert all(entry["primary_segment_id"].startswith("sha256:")
+               for history in merged.values() for entry in history)
     assert all("id" not in entry for history in merged.values() for entry in history)
     assert entries == original
 
 
-def test_duplicate_player_season_is_rejected() -> None:
-    entry = {"id": "4711", "season": "2025/2026", "league": "A-Klasse"}
+def test_same_season_class_segments_are_preserved_in_one_container(
+    fixture: dict,
+) -> None:
+    entries = [
+        *parse_archive_ranking_table(**fixture["multi_class_bezirksliga"]),
+        *parse_archive_ranking_table(**fixture["multi_class_a"]),
+    ]
 
-    with pytest.raises(ArchivePlayerParseError, match="duplicate"):
+    result = merge_archive_entries(entries)
+    container = result["1416"][0]
+
+    assert container["season"] == "2025/2026"
+    assert container["points"] == 55
+    assert container["rank"] == 11
+    assert container["league"] == "A-Klasse"
+    assert container["name"] == "Ingo Eichenhofer"
+    assert len(container["segments"]) == 2
+    assert {segment["league"] for segment in container["segments"]} == {
+        "Bezirksliga", "A-Klasse",
+    }
+    assert all(segment["segment_id"].startswith("sha256:")
+               for segment in container["segments"])
+    assert not {"v_nr", "rounds", "appearances", "points_per_appearance"} & container.keys()
+
+
+def test_segment_order_and_ids_are_deterministic_and_inputs_are_not_mutated(
+    fixture: dict,
+) -> None:
+    entries = [
+        *parse_archive_ranking_table(**fixture["multi_class_bezirksliga"]),
+        *parse_archive_ranking_table(**fixture["multi_class_a"]),
+    ]
+    original = deepcopy(entries)
+
+    forward = merge_archive_entries(entries)
+    reverse = merge_archive_entries(reversed(entries))
+
+    assert forward == reverse
+    assert entries == original
+
+
+def test_exact_semantic_segment_collision_is_rejected() -> None:
+    entry = {
+        "id": "4711", "season": "2025/2026", "rank": 2, "points": 4,
+        "league": "A-Klasse", "name": "Same Segment",
+    }
+
+    with pytest.raises(ArchivePlayerParseError, match="segment.*collision"):
         merge_archive_entries([entry, dict(entry)])
+
+
+def test_name_conflict_preserves_segments_and_marks_only_the_season_ambiguous() -> None:
+    entries = [
+        {"id": "9", "season": "2025/2026", "rank": 1, "points": 5,
+         "league": "A-Klasse", "name": "Alpha Name"},
+        {"id": "9", "season": "2025/2026", "rank": 2, "points": 4,
+         "league": "B-Klasse", "name": "Beta Name"},
+        {"id": "9", "season": "2024/2025", "rank": 3, "points": 3,
+         "league": "B-Klasse", "name": "Alpha Name"},
+    ]
+
+    history = merge_archive_entries(entries)["9"]
+
+    assert history[0]["identity_ambiguous"] is True
+    assert {segment["name"] for segment in history[0]["segments"]} == {
+        "Alpha Name", "Beta Name",
+    }
+    assert "identity_ambiguous" not in history[1]
+
+
+def test_same_class_club_conflicting_rounds_are_marked_without_data_loss() -> None:
+    base = {
+        "id": "10", "season": "2025/2026", "league": "A-Klasse",
+        "name": "Transfer Player", "v_nr": "035",
+    }
+    first = {**base, "rank": 3, "points": 3, "rounds": {"R1": 3},
+             "appearances": 1, "points_per_appearance": 3.0}
+    second = {**base, "rank": 4, "points": 4, "rounds": {"R1": 4},
+              "appearances": 1, "points_per_appearance": 4.0}
+
+    container = merge_archive_entries([first, second])["10"][0]
+
+    assert container["round_overlap_ambiguous"] is True
+    assert len(container["segments"]) == 2
+
+
+def test_same_class_transfer_keeps_both_clubs_without_round_overlap() -> None:
+    entries = [
+        {"id": "11", "season": "2025/2026", "rank": 3, "points": 3,
+         "league": "A-Klasse", "name": "Moved Player", "v_nr": "035",
+         "rounds": {"R1": 3}, "appearances": 1, "points_per_appearance": 3.0},
+        {"id": "11", "season": "2025/2026", "rank": 4, "points": 4,
+         "league": "A-Klasse", "name": "Moved Player", "v_nr": "043",
+         "rounds": {"R1": 4}, "appearances": 1, "points_per_appearance": 4.0},
+    ]
+
+    container = merge_archive_entries(entries)["11"][0]
+
+    assert {segment["v_nr"] for segment in container["segments"]} == {"035", "043"}
+    assert "round_overlap_ambiguous" not in container
+
+
+def test_container_point_sum_must_remain_javascript_safe() -> None:
+    entries = [
+        {"id": "12", "season": "2025/2026", "rank": 1,
+         "points": 2**53 - 1, "league": "A-Klasse", "name": "Huge"},
+        {"id": "12", "season": "2025/2026", "rank": 2,
+         "points": 1, "league": "B-Klasse", "name": "Huge"},
+    ]
+
+    with pytest.raises(ArchivePlayerParseError, match="safe integer"):
+        merge_archive_entries(entries)
 
 
 @pytest.mark.parametrize(
