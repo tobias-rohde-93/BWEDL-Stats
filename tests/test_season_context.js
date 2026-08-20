@@ -386,10 +386,42 @@ function runRenderer(name, context, status) {
             archiveData: {},
         };
     } else {
+        const neutralLineup = () => Array.from({ length: 4 }, (_unused, index) => ({
+            id: `neutral-${index + 1}`,
+            name: 'Unbekannter Spieler (Klassenwert)',
+            adjustedRating: 35,
+            rating: 35,
+            evidence: 'neutral',
+            confidence: 'very-low',
+            currentAppearances: 0,
+            sourceSeasons: [],
+            rounds: {},
+            rosterUnconfirmed: true,
+        }));
+        const previewModel = {
+            buildClassCalibration: () => ({}),
+            buildOutcomeTrainingExamples: () => [],
+            calibrateOutcomeModel: () => ({ calibrated: false }),
+            buildTeamRoster: () => ({
+                players: [], classMean: 35, classMeanAvailable: false,
+                teamConfidence: 'very-low', diagnostics: {},
+            }),
+            completeLineup: neutralLineup,
+            forecastMatch: () => ({
+                mode: 'relative', homeScore: 35, awayScore: 35,
+                relative: { homeShare: 0.5, awayShare: 0.5 },
+                teamConfidence: 'very-low',
+                uncertaintyText: 'Relative Aufstellungsstärke mit unsicherer Datenbasis',
+            }),
+        };
         bindings = {
             ...common,
+            window: { BwedlMatchPreviewModel: previewModel, ARCHIVE_TABLES: [] },
             leagueData: { leagues: {} },
             rankingData: { players: [] },
+            archiveData: {},
+            clubData: { clubs: [] },
+            dataStatus: status,
             detectNextMatch: () => [],
             myPlayerName: null,
             isMyPlayerRecord: () => false,
@@ -415,9 +447,11 @@ const matchPreviewRoot = runRenderer('renderMatchPreview', 'match-preview', reta
 const matchPreviewNotice = matchPreviewRoot.querySelector('.season-notice');
 const playerSelectionArea = findById(matchPreviewRoot, 'player-selection-area');
 assert.ok(playerSelectionArea, 'Expected Match Preview renderer to attach its player selection area');
-const playerListGrid = playerSelectionArea.children.find((child) => (
-    child.innerHTML.includes('id="list-a"') && child.innerHTML.includes('id="list-b"')
-));
+const listA = findById(playerSelectionArea, 'list-a');
+const listB = findById(playerSelectionArea, 'list-b');
+const playerListGrid = listA && listA.parentElement === listB.parentElement
+    ? listA.parentElement
+    : null;
 assert.ok(playerListGrid, 'Expected player selection area to contain the ranking-derived player lists');
 assert.equal(matchPreviewNotice.parentElement, playerSelectionArea);
 assert.equal(

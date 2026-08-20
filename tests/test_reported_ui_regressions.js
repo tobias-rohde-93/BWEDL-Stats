@@ -123,10 +123,27 @@ const previewSource = source.slice(
     source.indexOf('// Logic', source.indexOf('function renderMatchPreview(')),
 );
 test('match preview cards expose a dedicated native selection button', () => {
-    assert.match(previewSource, /<button type="button" class="load-btn"[^>]*>Partie ausw\u00e4hlen<\/button>/);
+    assert.match(previewSource, /const loadButton = document\.createElement\('button'\)/);
+    assert.match(previewSource, /loadButton\.type = 'button'/);
+    assert.match(previewSource, /loadButton\.className = 'load-btn'/);
+    assert.match(previewSource, /loadButton\.textContent = 'Partie ausw\u00e4hlen'/);
     assert.match(previewSource, /loadButton\.addEventListener\('click'/);
     assert.doesNotMatch(previewSource, /cardWrap\.onclick\s*=/);
     assert.match(previewSource, /mergeMatchPreviewGames\(selectedMatch, detectedMatches\)/);
+});
+
+test('historical match preview preserves global affiliation evidence and ranking season', () => {
+    const renderer = source.slice(
+        source.indexOf('function renderMatchPreview('),
+        source.indexOf('window.triggerUpdate'),
+    );
+    assert.match(renderer, /currentPlayers:\s*rankingData\.players \|\| \[\]/);
+    assert.match(renderer, /dataStatus\.domains\.rankings/);
+    assert.match(renderer, /currentDatasetSeason,/);
+    assert.doesNotMatch(renderer, /currentDatasetSeason:\s*league/);
+    assert.match(renderer, /manual:\s*true/);
+    assert.match(renderer, /previewModel\.completeLineup\(Array\.from\(selectedA\)/);
+    assert.match(renderer, /selectedA = new Set\(playersA\.slice\(0, 4\)\)/);
 });
 
 test('match preview offers current table teams without ranking rows', () => {
@@ -236,12 +253,12 @@ test('match preview rejects an auto-fill that resolves both teams to the same op
 });
 
 test('match preview creates team options with safe DOM text APIs', () => {
-    const populateStart = source.indexOf('const populate = (sel) =>');
+    const populateStart = source.indexOf('const populate = (select) =>');
     const populateSource = source.slice(populateStart, source.indexOf('populate(teamASelect)', populateStart));
-    assert.doesNotMatch(populateSource, /sel\.innerHTML\s*\+=/);
+    assert.doesNotMatch(populateSource, /select\.innerHTML\s*\+=/);
     assert.match(populateSource, /document\.createElement\('option'\)/);
-    assert.match(populateSource, /option\.value\s*=\s*t\.id/);
-    assert.match(populateSource, /option\.textContent\s*=\s*t\.name/);
+    assert.match(populateSource, /option\.value\s*=\s*team\.id/);
+    assert.match(populateSource, /option\.textContent\s*=\s*team\.name/);
 });
 
 test('Vereine disclosure groups indicator and peer-sized label on the left', () => {

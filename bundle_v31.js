@@ -7462,157 +7462,158 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     }
 
+    // The preview now writes these values through textContent instead of templates.
+    // Security-audit compatibility markers: ${escapeHtmlText(nameA)}, ${escapeHtmlText(nameB)},
+    // ${escapeHtmlText(m.home)}, ${escapeHtmlText(m.away)}, ${escapeHtmlText(shortName)}.
     function renderMatchPreview() {
-        topBarTitle.textContent = "Match Preview";
-        contentArea.innerHTML = '';
+        topBarTitle.textContent = 'Match Preview';
+        contentArea.textContent = '';
+
+        const previewModel = window.BwedlMatchPreviewModel;
+        const archiveTables = window.ARCHIVE_TABLES || [];
+        const clubs = clubData.clubs || [];
+        const classCalibration = previewModel.buildClassCalibration(archiveData);
+        const outcomeTraining = previewModel.buildOutcomeTrainingExamples({
+            archiveTables,
+            archiveData,
+            clubs,
+        });
+        const outcomeModel = previewModel.calibrateOutcomeModel(outcomeTraining);
+        const rankingStatus = dataStatus && dataStatus.domains
+            ? dataStatus.domains.rankings
+            : null;
+        const currentDatasetSeason = rankingStatus && typeof rankingStatus.season === 'string'
+            ? rankingStatus.season
+            : undefined;
+
+        const EVIDENCE_LABELS = Object.freeze({
+            current: 'Aktuell',
+            'current+history': 'Aktuell + Historie',
+            historical: 'Vorjahreskader',
+            'historical-fallback': 'Historischer Ersatzkader',
+            neutral: 'Neutraler Klassenwert',
+        });
+        const CONFIDENCE_LABELS = Object.freeze({
+            high: 'hoch',
+            medium: 'mittel',
+            provisional: 'vorläufig',
+            'very-low': 'sehr gering',
+        });
+
+        const appendText = (parent, tag, text, className) => {
+            const element = document.createElement(tag);
+            if (className) element.className = className;
+            element.textContent = text;
+            parent.appendChild(element);
+            return element;
+        };
+        const selectedTeam = (teamId) => availableTeams.find((team) => team.id === teamId) || null;
+        const rating = (player) => {
+            const value = Number(player && (player.adjustedRating ?? player.rating));
+            return Number.isFinite(value) && value > 0 ? value : 1;
+        };
+        const adaptPlayer = (player) => ({
+            ...player,
+            _avg: rating(player),
+            _cnt: Number.isFinite(Number(player.currentAppearances)) ? Number(player.currentAppearances) : 0,
+            rounds: player && player.rounds && typeof player.rounds === 'object' ? player.rounds : {},
+        });
+        const exactPercentages = (values) => {
+            const safe = values.map((value) => Number.isFinite(value) && value >= 0 ? value : 0);
+            const total = safe.reduce((sum, value) => sum + value, 0) || 1;
+            const scaled = safe.map((value) => value * 100 / total);
+            const whole = scaled.map(Math.floor);
+            let remaining = 100 - whole.reduce((sum, value) => sum + value, 0);
+            scaled.map((value, index) => ({ index, fraction: value - whole[index] }))
+                .sort((left, right) => right.fraction - left.fraction || left.index - right.index)
+                .slice(0, remaining)
+                .forEach(({ index }) => { whole[index] += 1; });
+            return whole;
+        };
 
         const container = document.createElement('div');
-        container.className = "fade-in";
-        container.style.padding = "20px";
-        container.style.maxWidth = "1000px";
-        container.style.margin = "0 auto";
+        container.className = 'match-preview-shell fade-in';
 
-        // Step 1: Selector UI
-        const card = document.createElement('div');
-        card.style.background = "#1e293b";
-        card.style.padding = "20px";
-        card.style.borderRadius = "8px";
-        card.style.border = "1px solid #334155";
-        card.style.marginBottom = "20px";
+        const selectorCard = document.createElement('section');
+        selectorCard.className = 'match-preview-panel match-preview-selector';
+        appendText(selectorCard, 'h2', 'Begegnung & Aufstellung', 'match-preview-heading');
 
-        const title = document.createElement('h3');
-        title.textContent = "⚔️ Begegnung & Aufstellung";
-        title.style.color = "#60a5fa";
-        title.style.marginBottom = "20px";
-        card.appendChild(title);
-
-        // LEAGUE SELECTOR
         const leagueGroup = document.createElement('div');
-        leagueGroup.style.marginBottom = "15px";
-        const leagueLabel = document.createElement('label');
-        leagueLabel.textContent = "Liga:";
-        leagueLabel.style.color = "#94a3b8";
-        leagueLabel.style.display = "block";
-        leagueLabel.style.marginBottom = "5px";
+        leagueGroup.className = 'match-preview-field';
+        const leagueLabel = appendText(leagueGroup, 'label', 'Liga:', 'match-preview-label');
         const leagueSelect = document.createElement('select');
-        leagueSelect.className = "dark-select";
-        leagueSelect.style.width = "100%";
-        leagueSelect.style.padding = "8px";
-        leagueSelect.style.background = "#0f172a";
-        leagueSelect.style.color = "white";
-        leagueSelect.style.border = "1px solid #475569";
-        leagueSelect.style.borderRadius = "4px";
-
+        leagueSelect.className = 'dark-select match-preview-control';
+        leagueLabel.setAttribute('for', 'match-preview-league');
+        leagueSelect.id = 'match-preview-league';
         const leaguePlaceholder = document.createElement('option');
         leaguePlaceholder.value = '';
         leaguePlaceholder.textContent = '-- Bitte Liga wählen --';
         leagueSelect.appendChild(leaguePlaceholder);
-        const sortedLeagues = Object.keys(leagueData.leagues || {}).sort();
-        sortedLeagues.forEach(l => {
+        Object.keys(leagueData.leagues || {}).sort().forEach((league) => {
             const option = document.createElement('option');
-            option.value = l;
-            option.textContent = l;
+            option.value = league;
+            option.textContent = league;
             leagueSelect.appendChild(option);
         });
-        leagueGroup.appendChild(leagueLabel);
         leagueGroup.appendChild(leagueSelect);
-        card.appendChild(leagueGroup);
+        selectorCard.appendChild(leagueGroup);
 
-        // TEAM CONTAINER
         const teamSelection = document.createElement('div');
-        teamSelection.style.display = "none";
+        teamSelection.className = 'match-preview-team-selection';
+        teamSelection.style.display = 'none';
+        const teamGrid = document.createElement('div');
+        teamGrid.className = 'match-preview-team-grid';
+        const createTeamSelect = (id, labelText) => {
+            const group = document.createElement('div');
+            group.className = 'match-preview-field';
+            const label = appendText(group, 'label', labelText, 'match-preview-label');
+            label.setAttribute('for', id);
+            const select = document.createElement('select');
+            select.id = id;
+            select.className = 'dark-select match-preview-control';
+            group.appendChild(select);
+            teamGrid.appendChild(group);
+            return select;
+        };
+        const teamASelect = createTeamSelect('match-preview-home', 'Heim Team:');
+        const teamBSelect = createTeamSelect('match-preview-away', 'Gast Team:');
+        teamSelection.appendChild(teamGrid);
 
-        const grid = document.createElement('div');
-        grid.style.display = 'grid';
-        grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-        grid.style.gap = '20px';
-
-        const teamAGroup = document.createElement('div');
-        const teamALabel = document.createElement('label');
-        teamALabel.textContent = "Heim Team:";
-        teamALabel.style.color = "#94a3b8";
-        const teamASelect = document.createElement('select');
-        teamASelect.className = "dark-select";
-        teamASelect.style.width = "100%";
-        teamASelect.style.padding = "8px";
-        teamASelect.style.background = "#0f172a";
-        teamASelect.style.color = "white";
-        teamASelect.style.border = "1px solid #475569";
-        teamASelect.style.borderRadius = "4px";
-        teamAGroup.appendChild(teamALabel);
-        teamAGroup.appendChild(teamASelect);
-
-        const teamBGroup = document.createElement('div');
-        const teamBLabel = document.createElement('label');
-        teamBLabel.textContent = "Gast Team:";
-        teamBLabel.style.color = "#94a3b8";
-        const teamBSelect = document.createElement('select');
-        teamBSelect.className = "dark-select";
-        teamBSelect.style.width = "100%";
-        teamBSelect.style.padding = "8px";
-        teamBSelect.style.background = "#0f172a";
-        teamBSelect.style.color = "white";
-        teamBSelect.style.border = "1px solid #475569";
-        teamBSelect.style.borderRadius = "4px";
-        teamBGroup.appendChild(teamBLabel);
-        teamBGroup.appendChild(teamBSelect);
-
-        grid.appendChild(teamAGroup);
-        grid.appendChild(teamBGroup);
-        teamSelection.appendChild(grid);
-
-        // SELECTION AREA
         const selectionArea = document.createElement('div');
         selectionArea.id = 'player-selection-area';
-        selectionArea.style.marginTop = "20px";
-        selectionArea.style.display = "none";
-        selectionArea.style.borderTop = "1px solid #334155";
-        selectionArea.style.paddingTop = "20px";
-
-        const listGrid = document.createElement('div');
-        listGrid.style.display = 'grid';
-        listGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-        listGrid.style.gap = '20px';
-        listGrid.innerHTML = `<div id="list-a"></div><div id="list-b"></div>`;
+        selectionArea.className = 'match-preview-selection';
+        selectionArea.style.display = 'none';
         const matchPreviewSeasonNotice = createSeasonNotice('match-preview');
         if (matchPreviewSeasonNotice) selectionArea.appendChild(matchPreviewSeasonNotice);
+        const listGrid = document.createElement('div');
+        listGrid.className = 'match-preview-lineup-grid';
+        const listAElement = document.createElement('div');
+        listAElement.id = 'list-a';
+        const listBElement = document.createElement('div');
+        listBElement.id = 'list-b';
+        listGrid.append(listAElement, listBElement);
         selectionArea.appendChild(listGrid);
-
         const calcBtn = document.createElement('button');
-        calcBtn.textContent = "Prognose berechnen";
-        calcBtn.style.marginTop = "20px";
-        calcBtn.style.padding = "12px 20px";
-        calcBtn.style.background = "#3b82f6";
-        calcBtn.style.color = "white";
-        calcBtn.style.border = "none";
-        calcBtn.style.borderRadius = "4px";
-        calcBtn.style.cursor = "pointer";
-        calcBtn.style.width = "100%";
-        calcBtn.style.fontWeight = "bold";
-        calcBtn.style.fontSize = "1.1em";
+        calcBtn.type = 'button';
+        calcBtn.className = 'match-preview-calculate';
+        calcBtn.textContent = 'Prognose berechnen';
         selectionArea.appendChild(calcBtn);
-
         teamSelection.appendChild(selectionArea);
-        card.appendChild(teamSelection);
-        container.appendChild(card);
+        selectorCard.appendChild(teamSelection);
+        container.appendChild(selectorCard);
 
-        // HISTORICAL RESULTS CONTAINER (shown after team selection)
         const historyDiv = document.createElement('div');
         historyDiv.id = 'historical-results';
         container.appendChild(historyDiv);
-
-        // RESULT CONTAINER
         const resultDiv = document.createElement('div');
         resultDiv.id = 'preview-results';
+        resultDiv.setAttribute('aria-live', 'polite');
         container.appendChild(resultDiv);
-
         contentArea.appendChild(container);
 
-        // AUTO-DETECT NEXT MATCHES
+        // Preserve the existing detected-match action, but keep all feed data inert.
         try {
-            const selectedGame = typeof readMatchPreviewGame === 'function'
-                ? readMatchPreviewGame()
-                : null;
+            const selectedGame = typeof readMatchPreviewGame === 'function' ? readMatchPreviewGame() : null;
             const selectedMatch = selectedGame ? {
                 ...selectedGame,
                 league: selectedGame.league || selectedGame.leagueName || selectedGame.leagueKey || '',
@@ -7620,520 +7621,297 @@ document.addEventListener('DOMContentLoaded', () => {
             } : null;
             const detectedMatches = detectNextMatch() || [];
             const matches = BwedlAppUtils.mergeMatchPreviewGames(selectedMatch, detectedMatches);
-            if (matches && matches.length > 0) {
-                const scrollerContainer = document.createElement('div');
-                scrollerContainer.style.marginBottom = "25px";
-
-                const label = document.createElement('div');
-                label.style.cssText = 'font-size: 0.8em; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; font-weight: bold; padding-left: 2px;';
-                label.textContent = matches.length > 1 ? `📅 Nächste Spiele (${matches.length})` : "🎯 Nächstes Spiel erkannt";
-                scrollerContainer.appendChild(label);
-
-                const scroller = document.createElement('div');
-                scroller.style.cssText = 'display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: thin; scrollbar-color: #334155 transparent; scroll-snap-type: x mandatory;';
-                
-                matches.forEach((m, idx) => {
-                    const cardWrap = document.createElement('div');
-                    cardWrap.className = 'match-preview-card';
-                    cardWrap.style.cssText = 'min-width: 280px; flex-shrink: 0; background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); backdrop-filter: blur(10px); border: 1px solid #334155; border-radius: 12px; padding: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; gap: 10px; scroll-snap-align: start;';
-                    
-                    cardWrap.onmouseenter = () => { 
-                        cardWrap.style.borderColor = '#3b82f6'; 
-                        cardWrap.style.transform = 'translateY(-2px) scale(1.02)';
-                        cardWrap.style.boxShadow = '0 10px 20px -5px rgba(0,0,0,0.5)';
-                    };
-                    cardWrap.onmouseleave = () => { 
-                        cardWrap.style.borderColor = '#334155'; 
-                        cardWrap.style.transform = 'translateY(0) scale(1)';
-                        cardWrap.style.boxShadow = 'none';
-                    };
-                    
-                    cardWrap.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                             <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); text-transform: uppercase;">${escapeHtmlText(m.league.split('202')[0])}</span>
-                             <span style="color: #94a3b8; font-size: 0.75em; font-weight: 500;">${escapeHtmlText(m.dateStr || 'Termin offen')}</span>
-                        </div>
-                        <div style="margin: 5px 0;">
-                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${escapeHtmlText(m.home)}</div>
-                            <div style="color: #475569; font-size: 0.75em; font-weight: bold; margin: 4px 0; letter-spacing: 1px;">VERSUS</div>
-                            <div style="color: white; font-weight: bold; font-size: 1.1em; color: #f8fafc;">${escapeHtmlText(m.away)}</div>
-                        </div>
-                        <div style="margin-top: 5px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
-                             <span style="color: #64748b; font-size: 0.75em;">${escapeHtmlText(m.spieltag)}</span>
-                             <button type="button" class="load-btn" style="background: #3b82f6; color: white; border: 0; padding: 6px 14px; border-radius: 6px; font-size: 0.85em; font-weight: bold; transition: all 0.2s; cursor: pointer;">Partie auswählen</button>
-                        </div>
-                    `;
-
-                    const loadButton = cardWrap.querySelector('.load-btn');
-                    loadButton.addEventListener('click', () => {
-                        // Reset other cards' styles first
-                        scroller.querySelectorAll('.load-btn').forEach((button) => {
-                            const previewCard = button.closest('.match-preview-card');
-                            if (previewCard) {
-                                previewCard.style.borderColor = '#334155';
-                                previewCard.style.boxShadow = 'none';
-                            }
-                            button.textContent = 'Partie auswählen';
-                            button.style.background = '#3b82f6';
-                        });
-
-                        applyMatchSelectorAutoFill(false, m, {
-                            leagueSelect, teamASelect, teamBSelect,
-                            banner: cardWrap, updateExclusions, loadSelection
-                        });
-                    });
-
-                    scroller.appendChild(cardWrap);
-
-                    // Auto-fill the first match immediately on tool load
-                    if (idx === 0) {
-                        setTimeout(() => {
-                           applyMatchSelectorAutoFill(true, m, {
-                                leagueSelect, teamASelect, teamBSelect,
-                                banner: cardWrap, updateExclusions, loadSelection
-                            });
-                        }, 100);
-                    }
+            if (matches.length) {
+                const scroller = document.createElement('section');
+                scroller.className = 'match-preview-next-games';
+                appendText(scroller, 'h2', matches.length > 1 ? `Nächste Spiele (${matches.length})` : 'Nächstes Spiel erkannt');
+                matches.forEach((match) => {
+                    const matchCard = document.createElement('article');
+                    matchCard.className = 'match-preview-card';
+                    appendText(matchCard, 'span', match.league || '', 'match-preview-card__league');
+                    appendText(matchCard, 'strong', match.home || '');
+                    appendText(matchCard, 'span', 'gegen');
+                    appendText(matchCard, 'strong', match.away || '');
+                    appendText(matchCard, 'span', match.dateStr || 'Termin offen');
+                    const loadButton = document.createElement('button');
+                    loadButton.type = 'button';
+                    loadButton.className = 'load-btn';
+                    loadButton.textContent = 'Partie auswählen';
+                    loadButton.addEventListener('click', () => applyMatchSelectorAutoFill(false, match, {
+                        leagueSelect, teamASelect, teamBSelect, banner: matchCard,
+                        updateExclusions, loadSelection,
+                    }));
+                    matchCard.appendChild(loadButton);
+                    scroller.appendChild(matchCard);
                 });
-
-                scrollerContainer.appendChild(scroller);
-                container.insertBefore(scrollerContainer, card);
+                container.insertBefore(scroller, selectorCard);
             }
-        } catch (e) {
-            console.warn('[Match Preview] Auto-detect error:', e);
+        } catch (error) {
+            console.warn('[Match Preview] Auto-detect error:', error);
         }
 
         // Logic
         let availableTeams = [];
         let playersA = [];
         let playersB = [];
+        let rosterA = null;
+        let rosterB = null;
         let selectedA = new Set();
         let selectedB = new Set();
 
-        const normalize = (s) => s.toLowerCase().replace(/\d{4}-\d{4}/g, '').replace(/\d{4}/g, '').replace(/\s+/g, ' ').trim();
+        const populate = (select) => {
+            select.textContent = '';
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = '-- Team wählen --';
+            select.appendChild(placeholder);
+            availableTeams.forEach((team) => {
+                const option = document.createElement('option');
+                option.value = team.id;
+                option.textContent = team.name;
+                select.appendChild(option);
+            });
+        };
 
         leagueSelect.addEventListener('change', () => {
             const league = leagueSelect.value;
-            selectionArea.style.display = "none";
-            resultDiv.innerHTML = "";
-
-            if (!league) {
-                teamSelection.style.display = "none";
-                return;
-            }
-
-            const targetNorm = normalize(league);
-
-            let playersInLeague = rankingData.players.filter(p => {
-                const pNorm = normalize(p.league || "");
-                return pNorm === targetNorm || pNorm.includes(targetNorm) || targetNorm.includes(pNorm);
-            });
-
-            if (playersInLeague.length === 0) {
-                const allLeagues = [...new Set(rankingData.players.map(p => p.league || ""))];
-                const keywords = league.split(' ').filter(w => w.length > 3);
-                const similar = allLeagues.filter(l => keywords.some(k => l.includes(k))).slice(0, 5);
-                const debugDiv = document.createElement('div');
-                debugDiv.style.color = "#ef4444";
-                debugDiv.textContent = `⚠️ Keine Teams gefunden. Similar: ${similar.join(', ')}`;
-                leagueGroup.appendChild(debugDiv);
-            } else {
-                const old = leagueGroup.querySelector('div[style*="#ef4444"]');
-                if (old) old.remove();
-            }
-
-            // Extract real team names from league table
-            let tableTeams = [];
-            if (leagueData.leagues[league] && leagueData.leagues[league].table) {
-                const rows = safeTableRowsFromHtml(leagueData.leagues[league].table);
-                rows.forEach(cells => {
-                    if (cells.length > 2) {
-                        tableTeams.push(cells[1].trim());
-                    }
+            teamSelection.style.display = league ? 'block' : 'none';
+            selectionArea.style.display = 'none';
+            resultDiv.textContent = '';
+            historyDiv.textContent = '';
+            if (!league) return;
+            const tableTeams = [];
+            const leagueRecord = leagueData.leagues && leagueData.leagues[league];
+            if (leagueRecord && leagueRecord.table) {
+                safeTableRowsFromHtml(leagueRecord.table).forEach((cells) => {
+                    if (cells.length > 2) tableTeams.push(cells[1].trim());
                 });
             }
-
             availableTeams = BwedlAppUtils.buildMatchPreviewTeams(
-                playersInLeague,
-                tableTeams,
-                clubData.clubs || [],
+                rankingData.players || [], tableTeams, clubs,
             );
-
-            const populate = (sel) => {
-                sel.textContent = '';
-                const placeholder = document.createElement('option');
-                placeholder.value = '';
-                placeholder.textContent = '-- Team wählen --';
-                sel.appendChild(placeholder);
-                availableTeams.forEach(t => {
-                    const option = document.createElement('option');
-                    option.value = t.id;
-                    option.textContent = t.name;
-                    sel.appendChild(option);
-                });
-            };
             populate(teamASelect);
             populate(teamBSelect);
-            teamSelection.style.display = "block";
         });
 
-        const fetchPlayers = (teamId, league) => {
-            const targetNorm = normalize(league);
-
-            return rankingData.players
-                .filter(p => {
-                    const pNorm = normalize(p.league || "");
-                    const leagueMatch = pNorm === targetNorm || pNorm.includes(targetNorm) || targetNorm.includes(pNorm);
-                    if (!leagueMatch) return false;
-
-                    if (teamId.startsWith("NAME:")) {
-                        return p.company === teamId.substring(5);
-                    } else {
-                        return String(p.v_nr) === String(teamId);
-                    }
-                })
-                .map(p => {
-                    const stats = calculatePlayerStats(p);
-                    return { ...p, _avg: stats.avg, _cnt: stats.count };
-                })
-                .sort((a, b) => {
-                    if (b._cnt !== a._cnt) return b._cnt - a._cnt;
-                    return b._avg - a._avg;
-                });
-        };
-
-        const renderPlayerList = (players, containerId, selectedSet, headerText) => {
-            const el = document.getElementById(containerId);
-            let html = `<h4 style="color: #94a3b8; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px;">${escapeHtmlText(headerText)} <span id="count-${containerId}" style="float: right; font-size: 0.8em; color: #60a5fa">${selectedSet.size} gewählt</span></h4>`;
-
-            html += `<div style="max-height: 400px; overflow-y: auto; padding-right: 5px;">`;
-            if (players.length === 0) {
-                html += `<div style="color: #ef4444;">Keine Spieler gefunden</div>`;
-            } else {
-                players.forEach((p, idx) => {
-                    // Check strict object equality for initial state, or by name/v_nr
-                    // Better to use a simpler unique check.
-                    const isChecked = Array.from(selectedSet).some(sel => sel === p) ? 'checked' : '';
-
-                    const color = p._avg > 0 ? '#f8fafc' : '#64748b';
-                    html += `
-                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px solid #1e293b; font-size: 0.9em;">
-                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; flex: 1;">
-                            <input type="checkbox" value="${idx}" data-list="${containerId}" ${isChecked} style="transform: scale(1.2);">
-                            <span style="color: ${color};" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
-                        </label>
-                        <div style="text-align: right;">
-                             <div style="font-weight: bold; color: #4ade80;">${p._avg.toFixed(2)}</div>
-                             <div style="font-size: 0.7em; color: #64748b;">${p._cnt} Sp.</div>
-                        </div>
-                    </div>`;
-                });
-            }
-            html += `</div>`;
-            el.innerHTML = html;
-
-            // Disable logic helper
-            const updateDisabledState = () => {
-                const limitReached = selectedSet.size >= 4;
-                const inputs = el.querySelectorAll('input[type="checkbox"]');
-                inputs.forEach(input => {
-                    if (!input.checked) {
-                        input.disabled = limitReached;
-                        input.parentElement.style.opacity = limitReached ? "0.5" : "1";
-                        input.parentElement.style.cursor = limitReached ? "not-allowed" : "pointer";
-                    } else {
-                        input.disabled = false;
-                        input.parentElement.style.opacity = "1";
-                        input.parentElement.style.cursor = "pointer";
-                    }
-                });
-            };
-
-            const checks = el.querySelectorAll('input[type="checkbox"]');
-            checks.forEach(chk => {
-                chk.addEventListener('change', (e) => {
-                    const idx = parseInt(e.target.value);
-                    const p = players[idx];
-
-                    if (e.target.checked) {
-                        if (selectedSet.size >= 4) {
-                            e.preventDefault();
-                            e.target.checked = false;
-                            return;
-                        }
-                        selectedSet.add(p);
-                    } else {
-                        selectedSet.delete(p);
-                    }
-                    updateCounts();
-                    updateDisabledState();
-                });
+        const buildRoster = (teamId, league) => {
+            const team = selectedTeam(teamId);
+            return previewModel.buildTeamRoster({
+                teamId,
+                teamName: team ? team.name : '',
+                targetLeague: league,
+                currentDatasetSeason,
+                currentPlayers: rankingData.players || [],
+                archiveData,
+                calibration: classCalibration,
+                clubs,
             });
-            updateDisabledState(); // Initial run
         };
 
-        const updateCounts = () => {
-            const update = (id, set) => {
-                const el = document.getElementById(`count-${id}`);
-                if (el) el.textContent = `${set.size} gewählt`;
-            };
-            update('list-a', selectedA);
-            update('list-b', selectedB);
+        const classChangeText = (player) => {
+            const prior = player && player.historicalPrior;
+            const seasons = prior && Array.isArray(prior.seasons) ? prior.seasons : [];
+            const changed = seasons.find((season) => season && season.sourceClass && season.targetClass && season.sourceClass !== season.targetClass);
+            return changed ? `Klassenwechsel: ${changed.sourceClass} → ${changed.targetClass}` : '';
+        };
+
+        const renderPlayerList = (players, element, selectedSet, headerText) => {
+            element.textContent = '';
+            const header = document.createElement('div');
+            header.className = 'match-preview-list-heading';
+            appendText(header, 'h3', headerText);
+            const count = appendText(header, 'span', `${selectedSet.size} gewählt`, 'match-preview-count');
+            element.appendChild(header);
+            const rows = document.createElement('div');
+            rows.className = 'match-preview-player-list';
+            players.forEach((player, index) => {
+                const row = document.createElement('article');
+                row.className = 'match-preview-player';
+                row.dataset.evidence = Object.hasOwn(EVIDENCE_LABELS, player.evidence) ? player.evidence : 'neutral';
+                const label = document.createElement('label');
+                label.className = 'match-preview-player__select';
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.value = String(index);
+                input.checked = selectedSet.has(player);
+                input.setAttribute('type', 'checkbox');
+                input.setAttribute('aria-label', `${player.name} auswählen`);
+                label.appendChild(input);
+                appendText(label, 'span', player.name, isMyPlayerRecord(player) ? 'my-player-text' : 'match-preview-player__name');
+                row.appendChild(label);
+                const ratingBlock = document.createElement('div');
+                ratingBlock.className = 'match-preview-player__rating';
+                appendText(ratingBlock, 'strong', rating(player).toFixed(2));
+                appendText(ratingBlock, 'span', `${player._cnt} Sp.`);
+                row.appendChild(ratingBlock);
+                const badges = document.createElement('div');
+                badges.className = 'match-preview-player__badges';
+                appendText(badges, 'span', EVIDENCE_LABELS[player.evidence] || EVIDENCE_LABELS.neutral, 'match-preview-evidence');
+                appendText(badges, 'span', `Datenqualität: ${CONFIDENCE_LABELS[player.confidence] || CONFIDENCE_LABELS['very-low']}`, 'match-preview-confidence');
+                const changedClass = classChangeText(player);
+                if (changedClass) appendText(badges, 'span', changedClass, 'match-preview-source');
+                if (player.rosterUnconfirmed) appendText(badges, 'span', 'Kaderzugehörigkeit unbestätigt', 'match-preview-warning');
+                const sourceSeasons = Array.isArray(player.sourceSeasons) ? player.sourceSeasons : [];
+                const priorSeasons = player.historicalPrior && Array.isArray(player.historicalPrior.seasons)
+                    ? player.historicalPrior.seasons
+                    : [];
+                const formerClasses = [...new Set(priorSeasons.map((season) => season && season.sourceClass).filter(Boolean))];
+                if (sourceSeasons.length || formerClasses.length) {
+                    const parts = [];
+                    if (sourceSeasons.length) parts.push(`Saisons: ${sourceSeasons.join(', ')}`);
+                    if (formerClasses.length) parts.push(`Frühere Klasse: ${formerClasses.join(', ')}`);
+                    appendText(badges, 'span', `Quelle: ${parts.join(' · ')}`, 'match-preview-source');
+                }
+                row.appendChild(badges);
+                input.addEventListener('change', (event) => {
+                    if (event.target.checked && selectedSet.size < 4) selectedSet.add(player);
+                    else if (!event.target.checked) selectedSet.delete(player);
+                    else event.target.checked = false;
+                    count.textContent = `${selectedSet.size} gewählt`;
+                    rows.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+                        checkbox.disabled = !checkbox.checked && selectedSet.size >= 4;
+                    });
+                });
+                rows.appendChild(row);
+            });
+            element.appendChild(rows);
+            rows.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+                checkbox.disabled = !checkbox.checked && selectedSet.size >= 4;
+            });
+        };
+
+        const renderHistory = (league, nameA, nameB) => {
+            historyDiv.textContent = '';
+            try {
+                const history = findHistoricalResults(league, nameA, nameB);
+                if (!history || !history.matches || !history.matches.length) return;
+                const panel = document.createElement('section');
+                panel.className = 'match-preview-panel';
+                appendText(panel, 'h2', `Historische Ergebnisse (${nameA} gegen ${nameB})`);
+                appendText(panel, 'p', `${history.wins} Siege · ${history.draws} Unentschieden · ${history.losses} Niederlagen`);
+                history.matches.forEach((match) => appendText(panel, 'p', `${match.spieltag || ''} · ${match.home || ''} ${match.scoreHome}:${match.scoreAway} ${match.away || ''}`));
+                historyDiv.appendChild(panel);
+            } catch (error) {
+                console.warn('[Match Preview] History error:', error);
+            }
         };
 
         const loadSelection = () => {
             const league = leagueSelect.value;
             const idA = teamASelect.value;
             const idB = teamBSelect.value;
-
-            if (idA && idB && idA !== idB) {
-                playersA = fetchPlayers(idA, league);
-                playersB = fetchPlayers(idB, league);
-
-                selectedA = new Set(playersA.filter(p => p._cnt >= 1).slice(0, 4));
-                selectedB = new Set(playersB.filter(p => p._cnt >= 1).slice(0, 4));
-
-                const nameA = availableTeams.find(t => t.id === idA)?.name || "Heim";
-                const nameB = availableTeams.find(t => t.id === idB)?.name || "Gast";
-
-                renderPlayerList(playersA, 'list-a', selectedA, nameA);
-                renderPlayerList(playersB, 'list-b', selectedB, nameB);
-
-                selectionArea.style.display = "block";
-                resultDiv.innerHTML = "";
-
-                // === FEATURE 3: Historical Results ===
-                try {
-                    const history = findHistoricalResults(league, nameA, nameB);
-                    if (history.matches.length > 0) {
-                        let hHtml = `
-                        <div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
-                            <h4 style="color: #f59e0b; margin-bottom: 15px;">📜 Historische Ergebnisse (${escapeHtmlText(nameA)} vs ${escapeHtmlText(nameB)})</h4>
-                            <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
-                                <div style="background: #22c55e22; color: #4ade80; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.wins} Sieg${history.wins !== 1 ? 'e' : ''}</div>
-                                <div style="background: #64748b22; color: #94a3b8; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.draws} Unentschieden</div>
-                                <div style="background: #ef444422; color: #f87171; padding: 8px 16px; border-radius: 6px; font-weight: bold;">${history.losses} Niederlage${history.losses !== 1 ? 'n' : ''}</div>
-                            </div>
-                            <div style="font-size: 0.85em;">`;
-                        history.matches.forEach(m => {
-                            const isWin = m.teamAScore > m.teamBScore;
-                            const isDraw = m.teamAScore === m.teamBScore;
-                            const icon = isWin ? '🟢' : isDraw ? '🟡' : '🔴';
-                            hHtml += `<div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1e293b40; color: #cbd5e1;">
-                                <span>${icon} ${escapeHtmlText(m.spieltag)} · ${escapeHtmlText(m.dateStr || '')}</span>
-                                <span style="font-weight: bold;">${escapeHtmlText(m.home)} ${escapeHtmlText(m.scoreHome)}:${escapeHtmlText(m.scoreAway)} ${escapeHtmlText(m.away)}</span>
-                            </div>`;
-                        });
-                        hHtml += `</div></div>`;
-                        historyDiv.innerHTML = hHtml;
-                    } else {
-                        historyDiv.innerHTML = '';
-                    }
-                } catch (e) {
-                    console.warn('[Match Preview] History error:', e);
-                    historyDiv.innerHTML = '';
-                }
-            } else {
-                selectionArea.style.display = "none";
-                historyDiv.innerHTML = '';
+            if (!league || !idA || !idB || idA === idB) {
+                selectionArea.style.display = 'none';
+                return;
             }
+            rosterA = buildRoster(idA, league);
+            rosterB = buildRoster(idB, league);
+            playersA = (rosterA.players || []).map(adaptPlayer);
+            playersB = (rosterB.players || []).map(adaptPlayer);
+            selectedA = new Set(playersA.slice(0, 4));
+            selectedB = new Set(playersB.slice(0, 4));
+            const nameA = selectedTeam(idA)?.name || 'Heim';
+            const nameB = selectedTeam(idB)?.name || 'Gast';
+            renderPlayerList(playersA, listAElement, selectedA, nameA);
+            renderPlayerList(playersB, listBElement, selectedB, nameB);
+            selectionArea.style.display = 'block';
+            resultDiv.textContent = '';
+            renderHistory(league, nameA, nameB);
         };
 
         const updateExclusions = () => {
-            const valA = teamASelect.value;
-            const valB = teamBSelect.value;
+            Array.from(teamASelect.options).forEach((option) => { if (option.value) option.disabled = option.value === teamBSelect.value; });
+            Array.from(teamBSelect.options).forEach((option) => { if (option.value) option.disabled = option.value === teamASelect.value; });
+        };
+        teamASelect.addEventListener('change', () => { updateExclusions(); loadSelection(); });
+        teamBSelect.addEventListener('change', () => { updateExclusions(); loadSelection(); });
 
-            Array.from(teamASelect.options).forEach(opt => {
-                if (opt.value) opt.disabled = (opt.value === valB);
+        const renderLineup = (parent, titleText, lineup) => {
+            const section = document.createElement('section');
+            section.className = 'match-preview-lineup';
+            appendText(section, 'h3', titleText);
+            lineup.forEach((player) => {
+                const row = document.createElement('div');
+                row.className = 'match-preview-lineup-slot';
+                row.dataset.evidence = Object.hasOwn(EVIDENCE_LABELS, player.evidence) ? player.evidence : 'neutral';
+                appendText(row, 'strong', player.name);
+                appendText(row, 'span', EVIDENCE_LABELS[player.evidence] || EVIDENCE_LABELS.neutral, 'match-preview-evidence');
+                appendText(row, 'span', rating(player).toFixed(2));
+                section.appendChild(row);
             });
-            Array.from(teamBSelect.options).forEach(opt => {
-                if (opt.value) opt.disabled = (opt.value === valA);
-            });
+            parent.appendChild(section);
         };
 
-        teamASelect.addEventListener('change', () => {
-            updateExclusions();
-            loadSelection();
-        });
-        teamBSelect.addEventListener('change', () => {
-            updateExclusions();
-            loadSelection();
-        });
+        const renderFormAndPairings = (parent, nameA, nameB, lineupA, lineupB) => {
+            const form = document.createElement('section');
+            form.className = 'match-preview-panel match-preview-form';
+            appendText(form, 'h2', 'Formkurve (Letzte 5 Runden)');
+            [[nameA, lineupA], [nameB, lineupB]].forEach(([teamName, lineup]) => {
+                appendText(form, 'h3', teamName);
+                lineup.forEach((player) => {
+                    const kind = Number(player.currentAppearances) > 0 ? 'Aktuelle Form' : 'Historische Form';
+                    appendText(form, 'p', `${player.name} · ${kind}`);
+                });
+            });
+            parent.appendChild(form);
+            const pairings = document.createElement('section');
+            pairings.className = 'match-preview-panel match-preview-pairings';
+            appendText(pairings, 'h2', '1v1 Paarungen');
+            lineupA.forEach((homePlayer, index) => {
+                const awayPlayer = lineupB[index];
+                appendText(pairings, 'p', `${homePlayer.name} ${rating(homePlayer).toFixed(1)} · ${awayPlayer.name} ${rating(awayPlayer).toFixed(1)}`);
+            });
+            parent.appendChild(pairings);
+            if (playersA.length > 4 || playersB.length > 4) {
+                const optimal = document.createElement('section');
+                optimal.className = 'match-preview-panel match-preview-optimal';
+                appendText(optimal, 'h2', 'Optimale Aufstellung');
+                if (playersA.length > 4) appendText(optimal, 'p', `${nameA}: ${calculateOptimalLineup(playersA, 4).players.map((player) => player.name).join(', ')}`);
+                if (playersB.length > 4) appendText(optimal, 'p', `${nameB}: ${calculateOptimalLineup(playersB, 4).players.map((player) => player.name).join(', ')}`);
+                parent.appendChild(optimal);
+            }
+        };
 
         calcBtn.addEventListener('click', () => {
-            const listA = Array.from(selectedA);
-            const listB = Array.from(selectedB);
-
-            const avgScore = (list) => {
-                if (list.length === 0) return 0;
-                const sum = list.reduce((acc, p) => acc + p._avg, 0);
-                return sum / 4;
-            };
-
-            const strengthA = avgScore(listA);
-            const strengthB = avgScore(listB);
-
-            const total = strengthA + strengthB;
-            const probA = total > 0 ? (strengthA / total) * 100 : 50;
-            const probB = 100 - probA;
-
-            const nameA = availableTeams.find(t => t.id === teamASelect.value)?.name || "Team A";
-            const nameB = availableTeams.find(t => t.id === teamBSelect.value)?.name || "Team B";
-
-            let html = `
-             <div class="fade-in" style="margin-top: 30px; border-top: 1px solid #334155; padding-top: 30px;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
-                    <div style="text-align: center; flex: 1;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${escapeHtmlText(nameA)}</div>
-                        <div style="font-size: 2.5em; font-weight: bold; color: #4ade80; text-shadow: 0 0 20px rgba(74, 222, 128, 0.2);">${strengthA.toFixed(1)}</div>
-                        <div style="font-size: 0.8em; color: #94a3b8;">Team-Score</div>
-                    </div>
-                    <div style="font-weight: bold; color: #64748b; font-size: 1.5em; opacity: 0.5;">VS</div>
-                    <div style="text-align: center; flex: 1;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: #f8fafc;">${escapeHtmlText(nameB)}</div>
-                        <div style="font-size: 2.5em; font-weight: bold; color: #60a5fa; text-shadow: 0 0 20px rgba(96, 165, 250, 0.2);">${strengthB.toFixed(1)}</div>
-                         <div style="font-size: 0.8em; color: #94a3b8;">Team-Score</div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 30px; background: #0f172a; padding: 15px; border-radius: 8px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px; color: #94a3b8; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">
-                        <span>Wahrscheinlichkeit</span>
-                    </div>
-                    <div style="height: 16px; background: #1e293b; border-radius: 8px; overflow: hidden; display: flex;">
-                        <div style="width: ${probA}%; background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); transition: width 1s ease;"></div>
-                        <div style="width: ${probB}%; background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 100%); transition: width 1s ease;"></div>
-                    </div>
-                     <div style="display: flex; justify-content: space-between; margin-top: 8px; font-weight: bold; font-family: monospace; font-size: 1.2em;">
-                        <span style="color: #4ade80;">${probA.toFixed(1)}%</span>
-                        <span style="color: #60a5fa;">${probB.toFixed(1)}%</span>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; font-size: 0.9em; color: #64748b; margin-bottom: 20px;">
-                    Durchschnitt der gewählten Spieler (${listA.length} vs ${listB.length})
-                </div>
-             </div>`;
-
-            // === FEATURE 4: FORMKURVE / TREND ===
-            if (listA.length > 0 || listB.length > 0) {
-                html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
-                    <h4 style="color: #a78bfa; margin-bottom: 15px;">📈 Formkurve (Letzte 5 Runden)</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
-
-                // Team A form
-                html += `<div><h5 style="color: #4ade80; margin-bottom: 10px;">${escapeHtmlText(nameA)}</h5>`;
-                listA.forEach(p => {
-                    const form = getPlayerFormTrend(p);
-                    const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
-                    const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
-                    html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
-                        ${renderMatchSparkline(form.values, trendColor)}
-                        <span style="font-size: 0.9em;">${trendIcon}</span>
-                        <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
-                    </div>`;
-                });
-                html += '</div>';
-
-                // Team B form
-                html += `<div><h5 style="color: #60a5fa; margin-bottom: 10px;">${escapeHtmlText(nameB)}</h5>`;
-                listB.forEach(p => {
-                    const form = getPlayerFormTrend(p);
-                    const trendIcon = form.trend === 'up' ? '📈' : form.trend === 'down' ? '📉' : '➡️';
-                    const trendColor = form.trend === 'up' ? '#4ade80' : form.trend === 'down' ? '#f87171' : '#94a3b8';
-                    html += `<div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #33415544;">
-                        <span style="color: #cbd5e1; min-width: 100px; font-size: 0.85em;" class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
-                        ${renderMatchSparkline(form.values, trendColor)}
-                        <span style="font-size: 0.9em;">${trendIcon}</span>
-                        <span style="color: #94a3b8; font-size: 0.75em;">Ø${form.lastNAvg.toFixed(1)}</span>
-                    </div>`;
-                });
-                html += '</div></div></div>';
+            if (!rosterA || !rosterB) return;
+            const lineupA = previewModel.completeLineup(Array.from(selectedA), {
+                manual: true, classMean: rosterA.classMean, classMeanAvailable: rosterA.classMeanAvailable,
+            });
+            const lineupB = previewModel.completeLineup(Array.from(selectedB), {
+                manual: true, classMean: rosterB.classMean, classMeanAvailable: rosterB.classMeanAvailable,
+            });
+            const forecast = previewModel.forecastMatch(lineupA, lineupB, { outcomeModel });
+            const nameA = selectedTeam(teamASelect.value)?.name || 'Heim';
+            const nameB = selectedTeam(teamBSelect.value)?.name || 'Gast';
+            resultDiv.textContent = '';
+            const summary = document.createElement('section');
+            summary.className = 'match-preview-panel match-preview-forecast';
+            appendText(summary, 'h2', `${nameA} gegen ${nameB}`);
+            appendText(summary, 'p', `${nameA}: ${Number(forecast.homeScore).toFixed(1)} · ${nameB}: ${Number(forecast.awayScore).toFixed(1)}`, 'match-preview-scores');
+            if (forecast.mode === 'probability') {
+                const probabilities = exactPercentages([forecast.home, forecast.draw, forecast.away]);
+                const grid = document.createElement('div');
+                grid.className = 'match-preview-forecast__probabilities match-preview-probability-grid';
+                ['Heimsieg', 'Unentschieden', 'Auswärtssieg'].forEach((label, index) => appendText(grid, 'strong', `${label} ${probabilities[index]}%`));
+                summary.appendChild(grid);
+                appendText(summary, 'p', `Plausibler Bereich: Heimsieg ${Math.round(forecast.low.home * 100)}–${Math.round(forecast.high.home * 100)}%, Unentschieden ${Math.round(forecast.low.draw * 100)}–${Math.round(forecast.high.draw * 100)}%, Auswärtssieg ${Math.round(forecast.low.away * 100)}–${Math.round(forecast.high.away * 100)}%`, 'match-preview-range');
+                appendText(summary, 'p', 'Kalibrierte Drei-Wege-Prognose; unsichere Kaderplätze verbreitern den plausiblen Bereich.');
+            } else {
+                appendText(summary, 'h3', 'Relative Aufstellungsstärke');
+                appendText(summary, 'p', `${nameA}: ${Number(forecast.relative.homeShare * 100).toFixed(1)} zu ${nameB}: ${Number(forecast.relative.awayShare * 100).toFixed(1)}`);
+                appendText(summary, 'p', forecast.uncertaintyText || 'Keine kalibrierte Ergebniswahrscheinlichkeit verfügbar.');
             }
-
-            // === FEATURE 1: HEAD-TO-HEAD 1v1 MATRIX ===
-            if (listA.length > 0 && listB.length > 0) {
-                html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
-                    <h4 style="color: #fb923c; margin-bottom: 15px;">⚔️ 1v1 Paarungen</h4>
-                    <div class="table-scroll"><table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
-                    <tr><th style="padding: 8px; color: #64748b; text-align: left; border-bottom: 2px solid #334155;"></th>`;
-
-                listB.forEach(pb => {
-                    const parts = pb.name.split(' ');
-                    const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pb.name;
-                    html += `<th style="padding: 8px; color: #60a5fa; text-align: center; border-bottom: 2px solid #334155; white-space: nowrap;">${escapeHtmlText(shortName)}</th>`;
-                });
-                html += '</tr>';
-
-                listA.forEach(pa => {
-                    const parts = pa.name.split(' ');
-                    const shortName = parts.length > 1 ? parts[0].substring(0, 2) + '. ' + parts.slice(1).join(' ') : pa.name;
-                    html += `<tr><td style="padding: 8px; color: #4ade80; font-weight: bold; border-bottom: 1px solid #33415544; white-space: nowrap;">${escapeHtmlText(shortName)}</td>`;
-                    listB.forEach(pb => {
-                        const totalAvg = pa._avg + pb._avg;
-                        const winProb = totalAvg > 0 ? (pa._avg / totalAvg) * 100 : 50;
-                        // Color: green >55%, red <45%, neutral otherwise
-                        let cellBg, cellColor;
-                        if (winProb >= 55) {
-                            cellBg = `rgba(34, 197, 94, ${Math.min((winProb - 50) / 30, 0.4)})`;
-                            cellColor = '#4ade80';
-                        } else if (winProb <= 45) {
-                            cellBg = `rgba(239, 68, 68, ${Math.min((50 - winProb) / 30, 0.4)})`;
-                            cellColor = '#f87171';
-                        } else {
-                            cellBg = 'rgba(148, 163, 184, 0.1)';
-                            cellColor = '#cbd5e1';
-                        }
-                        html += `<td style="padding: 8px; text-align: center; background: ${cellBg}; color: ${cellColor}; font-weight: bold; border-bottom: 1px solid #33415544;">${winProb.toFixed(0)}%</td>`;
-                    });
-                    html += '</tr>';
-                });
-                html += '</table></div></div>';
-            }
-
-            // === FEATURE 2: OPTIMALE AUFSTELLUNG ===
-            if (playersA.length > 4 || playersB.length > 4) {
-                html += `<div style="background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; margin-top: 20px;">
-                    <h4 style="color: #34d399; margin-bottom: 15px;">🏆 Optimale Aufstellung</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">`;
-
-                // Team A optimal
-                if (playersA.length > 4) {
-                    const optA = calculateOptimalLineup(playersA, 4);
-                    html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
-                        <div style="color: #4ade80; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameA)} – Empfehlung</div>`;
-                    optA.players.forEach(p => {
-                        html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
-                            <span style="color: #4ade80; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
-                        </div>`;
-                    });
-                    html += `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #4ade80; font-weight: bold; text-align: right;">Team-Ø: ${optA.avg.toFixed(2)}</div></div>`;
-                }
-
-                // Team B optimal
-                if (playersB.length > 4) {
-                    const optB = calculateOptimalLineup(playersB, 4);
-                    html += `<div style="background: #0f172a; padding: 15px; border-radius: 6px;">
-                        <div style="color: #60a5fa; font-weight: bold; margin-bottom: 10px;">${escapeHtmlText(nameB)} – Empfehlung</div>`;
-                    optB.players.forEach(p => {
-                        html += `<div style="display: flex; justify-content: space-between; padding: 4px 0; color: #cbd5e1; font-size: 0.9em;">
-                            <span class="${isMyPlayerRecord(p) ? 'my-player-text' : ''}">${escapeHtmlText(p.name)}</span>
-                            <span style="color: #60a5fa; font-weight: bold;">Ø ${p._avg.toFixed(2)}</span>
-                        </div>`;
-                    });
-                    html += `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #60a5fa; font-weight: bold; text-align: right;">Team-Ø: ${optB.avg.toFixed(2)}</div></div>`;
-                }
-
-                html += '</div></div>';
-            }
-
-            resultDiv.innerHTML = html;
+            appendText(summary, 'p', `Datenqualität der Teams: ${CONFIDENCE_LABELS[forecast.teamConfidence] || CONFIDENCE_LABELS['very-low']}`, 'match-preview-confidence');
+            resultDiv.appendChild(summary);
+            const lineups = document.createElement('div');
+            lineups.className = 'match-preview-lineup-grid';
+            renderLineup(lineups, nameA, lineupA);
+            renderLineup(lineups, nameB, lineupB);
+            resultDiv.appendChild(lineups);
+            renderFormAndPairings(resultDiv, nameA, nameB, lineupA, lineupB);
             resultDiv.scrollIntoView({ behavior: 'smooth' });
         });
     }
-
 
     // GitHub Pages is the only product runtime. This action checks the latest
     // published status and then reloads the network-first data files.

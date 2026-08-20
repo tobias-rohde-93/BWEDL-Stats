@@ -39,6 +39,7 @@ TEST_ASSETS = {
                         "<tr><td>1</td><td><img data-bwedl-injected "
                         "onerror=\"document.body.dataset.xss=2\">LEAGUE_SENTINEL</td>"
                         "<td>1</td><td>2</td></tr>"
+                        "<tr><td>2</td><td>Safe Team</td><td>1</td><td>0</td></tr>"
                         "</tbody></table>"
                     ),
                 },
@@ -136,6 +137,43 @@ TEST_ASSETS = {
             },
         },
     ),
+    "archive_data.js": javascript_assignment(
+        "ARCHIVE_DATA",
+        {
+            **{
+                f"91{index:02d}": [
+                    {
+                        "id": f"91{index:02d}",
+                        "season": "2025/2026",
+                        "name": f"Historische Heimspielerin {index + 1}",
+                        "league": "A-Klasse",
+                        "v_nr": "999",
+                        "points": (60 - index * 6) * 4,
+                        "appearances": 4,
+                        "points_per_appearance": 60 - index * 6,
+                        "rounds": {f"R{round_index + 1}": 60 - index * 6 for round_index in range(4)},
+                    }
+                ]
+                for index in range(4)
+            },
+            **{
+                f"92{index:02d}": [
+                    {
+                        "id": f"92{index:02d}",
+                        "season": "2025/2026",
+                        "name": f"Historischer Gastspieler {index + 1}",
+                        "league": "A-Klasse",
+                        "v_nr": "996",
+                        "points": (38 - index * 3) * 4,
+                        "appearances": 4,
+                        "points_per_appearance": 38 - index * 3,
+                        "rounds": {f"R{round_index + 1}": 38 - index * 3 for round_index in range(4)},
+                    }
+                ]
+                for index in range(4)
+            },
+        },
+    ),
     "club_data.js": javascript_assignment(
         "CLUB_DATA",
         {
@@ -143,6 +181,7 @@ TEST_ASSETS = {
                 {"number": "999", "name": "Malicious Club", "city": "Teststadt"},
                 {"number": "998", "name": "Legacy Club One", "city": "Teststadt"},
                 {"number": "997", "name": "Legacy Club Two", "city": "Teststadt"},
+                {"number": "996", "name": "Safe Team", "city": "Teststadt"},
             ]
         },
     ),
@@ -295,6 +334,7 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         browser = playwright.chromium.launch()
         context = browser.new_context(service_workers="allow", accept_downloads=True)
         page = context.new_page()
+        page.add_init_script(path=str(ROOT / "match_preview_model.js"))
         page.on("request", lambda request: requested_urls.append(request.url))
         page.on("pageerror", lambda error: page_errors.append(str(error)))
         page.on(
@@ -509,10 +549,36 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
         expect(page.locator("#player-list")).to_contain_text("PLAYER_SENTINEL")
 
+        page.evaluate("location.hash = '#matchPreview'")
+        expect(page.locator("#current-league-title")).to_have_text("Match Preview")
+        page.locator("#match-preview-league").select_option("A-Klasse 2026-2027")
+        page.locator("#match-preview-home").select_option("999")
+        page.locator("#match-preview-away").select_option("996")
+        expect(page.locator("#list-a .match-preview-player")).to_have_count(4)
+        expect(page.locator("#list-b .match-preview-player")).to_have_count(4)
+        expect(page.locator(".match-preview-evidence").first).to_contain_text("Vorjahreskader")
+        page.locator(".match-preview-calculate").click()
+        expect(page.locator(".match-preview-lineup")).to_have_count(2)
+        for lineup in page.locator(".match-preview-lineup").all():
+            expect(lineup.locator(".match-preview-lineup-slot")).to_have_count(4)
+        first_forecast = page.locator(".match-preview-scores").inner_text()
+        first_home_checkbox = page.locator("#list-a input[type=checkbox]").first
+        first_home_checkbox.uncheck()
+        page.locator(".match-preview-calculate").click()
+        expect(page.locator("#preview-results")).to_contain_text(
+            "Unbekannter Spieler (Klassenwert)"
+        )
+        assert page.locator(".match-preview-scores").inner_text() != first_forecast
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.set_viewport_size({"width": 320, "height": 844})
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.set_viewport_size({"width": 390, "height": 844})
+
         assert page.locator("[data-bwedl-injected]").count() == 0
         assert page.evaluate("document.body.dataset.xss || null") is None
         assert page.get_by_text("JS Error:", exact=False).count() == 0
 
+        page.evaluate("location.hash = '#tools'")
         page.wait_for_function("navigator.serviceWorker && navigator.serviceWorker.controller")
         page.reload(wait_until="domcontentloaded")
         expect(page.locator("#current-league-title")).to_have_text("Match Center")

@@ -1426,6 +1426,367 @@ a.club-contact-field__value {
     }
 }
 
+/* Historical Match Preview: compact evidence cards inside the existing slate shell. */
+.match-preview-shell {
+    --match-preview-evidence-border: #f59e0b;
+    width: min(100%, 1000px);
+    min-width: 0;
+    margin: 0 auto;
+    padding: 1.25rem;
+    overflow-x: clip;
+}
+
+.match-preview-panel {
+    min-width: 0;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
+    border: 1px solid #334155;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.match-preview-heading {
+    margin-bottom: 1rem;
+    color: #60a5fa;
+}
+
+.match-preview-field {
+    min-width: 0;
+    margin-bottom: 0.9rem;
+}
+
+.match-preview-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #cbd5e1;
+    font-weight: 650;
+}
+
+.match-preview-control {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
+    color: #f8fafc;
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-radius: var(--radius-sm);
+}
+
+.match-preview-team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.match-preview-selection {
+    min-width: 0;
+    padding-top: 1rem;
+    border-top: 1px solid #334155;
+}
+
+.match-preview-lineup-grid {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.match-preview-list-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #334155;
+}
+
+.match-preview-list-heading h3 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.match-preview-count {
+    flex: 0 0 auto;
+    color: #60a5fa;
+    font-size: 0.8rem;
+}
+
+.match-preview-player-list {
+    display: grid;
+    gap: 0.5rem;
+    min-width: 0;
+    max-height: 32rem;
+    overflow-y: auto;
+}
+
+.match-preview-player {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 0.75rem;
+    padding: 0.7rem;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid #334155;
+    border-left: 3px solid var(--match-preview-evidence-border);
+    border-radius: var(--radius-sm);
+}
+
+.match-preview-player[data-evidence="current"] {
+    border-left-color: #3b82f6;
+}
+
+.match-preview-player[data-evidence="current+history"] {
+    border-left-color: #22c55e;
+}
+
+.match-preview-player[data-evidence="neutral"] {
+    border-left-color: #64748b;
+}
+
+.match-preview-player__select {
+    display: flex;
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+}
+
+.match-preview-player__select input {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 auto;
+    accent-color: #3b82f6;
+}
+
+.match-preview-player__name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.match-preview-player__rating {
+    display: grid;
+    align-content: center;
+    color: #4ade80;
+    text-align: right;
+}
+
+.match-preview-player__rating span,
+.match-preview-source,
+.match-preview-confidence,
+.match-preview-warning {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.match-preview-evidence {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.15rem 0.5rem;
+    color: #fef3c7;
+    background: rgba(180, 83, 9, 0.28);
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 750;
+    overflow-wrap: anywhere;
+}
+
+.match-preview-player__badges {
+    display: flex;
+    grid-column: 1 / -1;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+.match-preview-confidence,
+.match-preview-source,
+.match-preview-warning,
+.match-preview-evidence {
+    max-width: 100%;
+}
+
+.match-preview-warning {
+    color: #fde68a;
+}
+
+.match-preview-calculate,
+.match-preview-card .load-btn {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 1rem;
+    padding: 0.65rem 1rem;
+    color: #fff;
+    background: #2563eb;
+    border: 1px solid #60a5fa;
+    border-radius: var(--radius-sm);
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.match-preview-calculate:hover,
+.match-preview-card .load-btn:hover {
+    background: #1d4ed8;
+}
+
+.match-preview-next-games {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.match-preview-card {
+    display: grid;
+    min-width: 0;
+    gap: 0.35rem;
+    padding: 1rem;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: var(--radius-md);
+}
+
+.match-preview-card__league {
+    color: #60a5fa;
+    font-size: 0.75rem;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+.match-preview-forecast {
+    margin-top: 1.5rem;
+}
+
+.match-preview-scores {
+    margin: 0.75rem 0;
+    color: #cbd5e1;
+    font-variant-numeric: tabular-nums;
+}
+
+.match-preview-probability-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.match-preview-forecast__probabilities {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.match-preview-probability-grid strong {
+    min-width: 0;
+    padding: 0.65rem;
+    color: #dbeafe;
+    background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.match-preview-range {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.match-preview-lineup {
+    display: grid;
+    min-width: 0;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+}
+
+.match-preview-lineup-slot {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 0.65rem;
+    align-items: center;
+    padding: 0.65rem;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: var(--radius-sm);
+}
+
+.match-preview-lineup-slot strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.match-preview-lineup-slot .match-preview-evidence {
+    grid-column: 1 / 2;
+}
+
+.match-preview-form p,
+.match-preview-pairings p,
+.match-preview-optimal p {
+    padding: 0.45rem 0;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.55);
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+    .match-preview-shell {
+        padding: 0.75rem;
+    }
+
+    .match-preview-panel {
+        padding: 1rem;
+    }
+
+    .match-preview-team-grid,
+    .match-preview-lineup-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 390px) {
+    .match-preview-shell {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .match-preview-probability-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .match-preview-player {
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 0.6rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .match-preview-shell,
+    .match-preview-panel {
+        padding-inline: 0.45rem;
+    }
+
+    .match-preview-player__rating {
+        font-size: 0.85rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .match-preview-shell,
+    .match-preview-calculate,
+    .match-preview-card,
+    .match-preview-card .load-btn {
+        animation: none;
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
+
 /* Ranking tools: compact, utilitarian controls for quick league analysis. */
 .ranking-toolbar {
     display: grid;
