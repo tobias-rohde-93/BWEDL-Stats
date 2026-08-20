@@ -7462,9 +7462,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     }
 
-    // The preview now writes these values through textContent instead of templates.
-    // Security-audit compatibility markers: ${escapeHtmlText(nameA)}, ${escapeHtmlText(nameB)},
-    // ${escapeHtmlText(m.home)}, ${escapeHtmlText(m.away)}, ${escapeHtmlText(shortName)}.
     function renderMatchPreview() {
         topBarTitle.textContent = 'Match Preview';
         contentArea.textContent = '';

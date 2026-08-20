@@ -79,7 +79,16 @@ function createDocument() {
         }
         set textContent(value) { this._text = String(value ?? ''); this.children = []; }
         get textContent() { return this._text + this.children.map((child) => child.textContent).join(''); }
-        set innerHTML(value) { this._innerHTML = String(value); this._text = ''; this.children = []; }
+        set innerHTML(value) {
+            this._innerHTML = String(value);
+            this._text = '';
+            this.children = [];
+            const hostileTags = [...this._innerHTML.matchAll(/<(img|svg|script)\b/giu)];
+            if (hostileTags.length) {
+                this.ownerDocument.usedUnsafePlayerHtml = true;
+                hostileTags.forEach((match) => this.appendChild(new Element(match[1], this.ownerDocument)));
+            }
+        }
         get innerHTML() { return this._innerHTML || ''; }
         get firstChild() { return this.children[0] || null; }
         get options() { return this.children.filter((child) => child.tagName === 'OPTION'); }
@@ -103,6 +112,7 @@ function createDocument() {
     }
     const document = {
         root: null,
+        usedUnsafePlayerHtml: false,
         createElement(tagName) { return new Element(tagName, document); },
         getElementById(id) { return document.root && (document.root.id === id ? document.root : document.root.querySelector(`#${id}`)); },
         querySelectorAll(selector) { return document.root ? document.root.querySelectorAll(selector) : []; },
@@ -123,7 +133,7 @@ function makeModel(calibrated) {
     const calls = { calibration: 0, training: 0, outcome: 0, roster: 0, rosterOptions: [], complete: [], forecast: 0 };
     const rosters = {
         '035': [
-            player('h1', '<img src=x onerror=alert(1)>', 'current+history', 'medium', 48, { historicalPrior: { seasons: [{ sourceClass: 'A', targetClass: 'B' }] } }),
+            player('h1', '<img src=x onerror=alert(1)>', 'current+history', 'medium', 48, { sourceSeasons: ['2025/26<script>alert(1)</script>'], historicalPrior: { seasons: [{ sourceClass: 'A', targetClass: 'B' }] } }),
             player('h2', 'Historische Hanne', 'historical', 'provisional', 46),
             player('h3', 'Ersatz Eva', 'historical-fallback', 'very-low', 44),
             player('h4', 'Aktuelle Anna', 'current', 'high', 42),
@@ -162,7 +172,7 @@ function makeModel(calibrated) {
     };
 }
 
-function renderScenario(calibrated = true) {
+function renderScenario(calibrated = true, rendererDeclaration = extractFunction('renderMatchPreview')) {
     const document = createDocument();
     const contentArea = document.createElement('main');
     document.root = contentArea;
@@ -174,10 +184,10 @@ function renderScenario(calibrated = true) {
         document, contentArea, topBarTitle, window,
         leagueData: { leagues: { 'B-Klasse 2026-2027': { table: '<table></table>' } } },
         rankingData: { players: rankingPlayers }, archiveData: {},
-        clubData: { clubs: [{ number: '035', name: 'Alpha' }, { number: '036', name: 'Bravo' }] },
+        clubData: { clubs: [{ number: '035', name: '<svg onload=alert(1)>Alpha' }, { number: '036', name: '<script>alert(1)</script>Bravo' }] },
         dataStatus: { domains: { rankings: { season: '2025/26', state: 'retained' } } },
         detectNextMatch: () => [], readMatchPreviewGame: () => null,
-        BwedlAppUtils: { ...BwedlAppUtils, mergeMatchPreviewGames: () => [], buildMatchPreviewTeams: () => [{ id: '035', name: 'Alpha' }, { id: '036', name: 'Bravo' }] },
+        BwedlAppUtils: { ...BwedlAppUtils, mergeMatchPreviewGames: () => [], buildMatchPreviewTeams: () => [{ id: '035', name: '<svg onload=alert(1)>Alpha' }, { id: '036', name: '<script>alert(1)</script>Bravo' }] },
         createSeasonNotice: () => null,
         safeTableRowsFromHtml: () => [['1', 'Alpha', '0'], ['2', 'Bravo', '0']],
         findHistoricalResults: () => ({ matches: [] }),
@@ -186,7 +196,7 @@ function renderScenario(calibrated = true) {
         escapeHtmlText: BwedlAppUtils.escapeHtmlText,
         setTimeout: (callback) => callback(), setAppStatus() {}, Event: class Event { constructor(type) { this.type = type; } },
     };
-    const render = Function(...Object.keys(bindings), `${extractFunction('renderMatchPreview')}; return renderMatchPreview;`)(...Object.values(bindings));
+    const render = Function(...Object.keys(bindings), `${rendererDeclaration}; return renderMatchPreview;`)(...Object.values(bindings));
     render();
     const selects = contentArea.querySelectorAll('SELECT');
     assert.equal(selects.length, 3);
@@ -209,6 +219,9 @@ function renderScenario(calibrated = true) {
     assert.equal(scenario.document.getElementById('list-b').querySelectorAll('INPUT').filter((input) => input.checked).length, 4);
     assert.equal(scenario.contentArea.querySelectorAll('[data-evidence]').length, 8);
     assert.equal(scenario.contentArea.querySelectorAll('IMG').length, 0, 'player names must stay inert text');
+    assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0, 'team names must stay inert text');
+    assert.equal(scenario.contentArea.querySelectorAll('SCRIPT').length, 0, 'source seasons must stay inert text');
+    assert.equal(scenario.document.usedUnsafePlayerHtml, false, 'hostile external values must never reach innerHTML');
     const homeChecks = scenario.document.getElementById('list-a').querySelectorAll('INPUT');
     homeChecks[0].checked = false;
     homeChecks[0].dispatchEvent({ type: 'change', target: homeChecks[0], preventDefault() {} });
@@ -224,6 +237,19 @@ function renderScenario(calibrated = true) {
     assert.match(result, /Historische Form/);
     scenario.render();
     assert.equal(scenario.contentArea.querySelectorAll('.match-preview-shell').length, 1, 'rerender must replace rather than duplicate preview DOM');
+}
+
+{
+    const unsafeRenderer = extractFunction('renderMatchPreview').replace(
+        'element.textContent = text;',
+        'element.innerHTML = text;',
+    );
+    const scenario = renderScenario(true, unsafeRenderer);
+    assert.equal(scenario.document.usedUnsafePlayerHtml, true,
+        'the strict DOM harness must detect an unsafe external-value innerHTML regression');
+    assert.ok(scenario.contentArea.querySelectorAll('IMG').length
+        + scenario.contentArea.querySelectorAll('SVG').length
+        + scenario.contentArea.querySelectorAll('SCRIPT').length > 0);
 }
 
 {

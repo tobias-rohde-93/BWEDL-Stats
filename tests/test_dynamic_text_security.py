@@ -34,11 +34,6 @@ def test_complex_templates_escape_external_text_values() -> None:
         "${escapeHtmlText(d2.name)}",
         "${escapeHtmlText(d1.searchItem.context || '-')}" ,
         "${escapeHtmlText(d2.searchItem.context || '-')}" ,
-        "${escapeHtmlText(nameA)}",
-        "${escapeHtmlText(nameB)}",
-        "${escapeHtmlText(m.home)}",
-        "${escapeHtmlText(m.away)}",
-        "${escapeHtmlText(shortName)}",
         "${escapeHtmlText(myStats.rank)}",
         "${escapeHtmlText(p.bestSeasonYearRank)}",
         "${escapeHtmlText(p.maxPointsYear)}",
@@ -49,6 +44,21 @@ def test_complex_templates_escape_external_text_values() -> None:
         assert fragment in source, fragment
 
     assert "escapeHtmlText," in (ROOT / "app_utils.js").read_text(encoding="utf-8")
+
+
+def test_match_preview_external_values_use_safe_dom_nodes() -> None:
+    source = (ROOT / "bundle_v31.js").read_text(encoding="utf-8")
+    start = source.index("function renderMatchPreview(")
+    end = source.index("window.triggerUpdate", start)
+    renderer = source[start:end]
+
+    assert "Security-audit compatibility markers" not in source
+    assert "element.textContent = text" in renderer
+    assert "document.createElement('option')" in renderer
+    assert "document.createElement('article')" in renderer
+    assert "document.createElement('input')" in renderer
+    assert "innerHTML" not in renderer
+    assert "/api/" not in renderer
 
 
 def test_dynamic_text_contract_in_node() -> None:
