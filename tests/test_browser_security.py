@@ -614,7 +614,14 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         page.evaluate(
             """() => {
                 window.__realMatchPreviewModel = window.BwedlMatchPreviewModel;
-                window.BwedlMatchPreviewModel = undefined;
+                window.__rootModelGetterCalls = 0;
+                Object.defineProperty(window, 'BwedlMatchPreviewModel', {
+                    configurable: true,
+                    get() {
+                        window.__rootModelGetterCalls += 1;
+                        throw new Error('root model getter must stay inert');
+                    },
+                });
                 location.hash = '#tools';
             }"""
         )
@@ -624,12 +631,38 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(missing_model_alert).to_contain_text(
             "Match-Preview ist derzeit nicht verfügbar"
         )
+        assert page.evaluate("window.__rootModelGetterCalls") == 0
+        page.evaluate(
+            """() => {
+                window.__proxyModelGetCalls = 0;
+                Object.defineProperty(window, 'BwedlMatchPreviewModel', {
+                    configurable: true,
+                    writable: true,
+                    value: new Proxy(window.__realMatchPreviewModel, {
+                        get() {
+                            window.__proxyModelGetCalls += 1;
+                            throw new Error('validated model properties must not be reread');
+                        },
+                    }),
+                });
+                location.hash = '#tools';
+            }"""
+        )
+        expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
+        page.evaluate("location.hash = '#matchPreview'")
+        expect(page.locator("#match-preview-league")).to_be_visible()
+        assert page.evaluate("window.__proxyModelGetCalls") == 0
+        assert page.get_by_role("alert").count() == 0
         page.evaluate(
             """() => {
                 window.__partialModelCalls = 0;
-                window.BwedlMatchPreviewModel = {
-                    buildClassCalibration() { window.__partialModelCalls += 1; },
-                };
+                Object.defineProperty(window, 'BwedlMatchPreviewModel', {
+                    configurable: true,
+                    writable: true,
+                    value: {
+                        buildClassCalibration() { window.__partialModelCalls += 1; },
+                    },
+                });
                 location.hash = '#tools';
             }"""
         )
@@ -641,7 +674,11 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert page.evaluate("window.__partialModelCalls") == 0
         page.evaluate(
             """() => {
-                window.BwedlMatchPreviewModel = window.__realMatchPreviewModel;
+                Object.defineProperty(window, 'BwedlMatchPreviewModel', {
+                    configurable: true,
+                    writable: true,
+                    value: window.__realMatchPreviewModel,
+                });
                 location.hash = '#tools';
             }"""
         )

@@ -7503,7 +7503,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resetMatchCardStatus();
         };
 
-        const previewModel = window.BwedlMatchPreviewModel;
         const requiredModelMethods = [
             'buildClassCalibration',
             'buildOutcomeTrainingExamples',
@@ -7512,20 +7511,32 @@ document.addEventListener('DOMContentLoaded', () => {
             'completeLineup',
             'forecastMatch',
         ];
-        let previewModelAvailable = false;
+        let previewModel;
+        let previewModelApi;
         try {
-            previewModelAvailable = Boolean(previewModel)
-                && (typeof previewModel === 'object' || typeof previewModel === 'function')
-                && requiredModelMethods.every((name) => {
-                    const descriptor = Object.getOwnPropertyDescriptor(previewModel, name);
-                    return Boolean(descriptor)
-                        && Object.prototype.hasOwnProperty.call(descriptor, 'value')
-                        && typeof descriptor.value === 'function';
-                });
+            const rootDescriptor = Object.getOwnPropertyDescriptor(window, 'BwedlMatchPreviewModel');
+            previewModel = rootDescriptor
+                && Object.prototype.hasOwnProperty.call(rootDescriptor, 'value')
+                ? rootDescriptor.value
+                : undefined;
+            if (!previewModel || (typeof previewModel !== 'object' && typeof previewModel !== 'function')) {
+                throw new TypeError('Match preview model root is unavailable');
+            }
+            const validatedApi = {};
+            requiredModelMethods.forEach((name) => {
+                const descriptor = Object.getOwnPropertyDescriptor(previewModel, name);
+                if (!descriptor
+                    || !Object.prototype.hasOwnProperty.call(descriptor, 'value')
+                    || typeof descriptor.value !== 'function') {
+                    throw new TypeError(`Match preview model method is unavailable: ${name}`);
+                }
+                validatedApi[name] = Function.prototype.bind.call(descriptor.value, previewModel);
+            });
+            previewModelApi = Object.freeze(validatedApi);
         } catch (_error) {
-            previewModelAvailable = false;
+            previewModelApi = undefined;
         }
-        if (!previewModelAvailable) {
+        if (!previewModelApi) {
             const errorPanel = document.createElement('section');
             errorPanel.className = 'match-preview-panel match-preview-error';
             errorPanel.setAttribute('role', 'alert');
@@ -7542,13 +7553,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const archiveTables = window.ARCHIVE_TABLES || [];
         const clubs = clubData.clubs || [];
-        const classCalibration = previewModel.buildClassCalibration(archiveData);
-        const outcomeTraining = previewModel.buildOutcomeTrainingExamples({
+        const classCalibration = previewModelApi.buildClassCalibration(archiveData);
+        const outcomeTraining = previewModelApi.buildOutcomeTrainingExamples({
             archiveTables,
             archiveData,
             clubs,
         });
-        const outcomeModel = previewModel.calibrateOutcomeModel(outcomeTraining);
+        const outcomeModel = previewModelApi.calibrateOutcomeModel(outcomeTraining);
         const rankingStatus = dataStatus && dataStatus.domains
             ? dataStatus.domains.rankings
             : null;
@@ -7795,7 +7806,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const buildRoster = (teamId, league) => {
             const team = selectedTeam(teamId);
-            return previewModel.buildTeamRoster({
+            return previewModelApi.buildTeamRoster({
                 teamId,
                 teamName: team ? team.name : '',
                 targetLeague: league,
@@ -8037,13 +8048,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         calcBtn.addEventListener('click', () => {
             if (!rosterA || !rosterB) return;
-            const lineupA = previewModel.completeLineup(Array.from(selectedA), {
+            const lineupA = previewModelApi.completeLineup(Array.from(selectedA), {
                 manual: true, classMean: rosterA.classMean, classMeanAvailable: rosterA.classMeanAvailable,
             });
-            const lineupB = previewModel.completeLineup(Array.from(selectedB), {
+            const lineupB = previewModelApi.completeLineup(Array.from(selectedB), {
                 manual: true, classMean: rosterB.classMean, classMeanAvailable: rosterB.classMeanAvailable,
             });
-            const forecast = previewModel.forecastMatch(lineupA, lineupB, { outcomeModel });
+            const forecast = previewModelApi.forecastMatch(lineupA, lineupB, { outcomeModel });
             const nameA = selectedTeam(teamASelect.value)?.name || 'Heim';
             const nameB = selectedTeam(teamBSelect.value)?.name || 'Gast';
             resultDiv.textContent = '';

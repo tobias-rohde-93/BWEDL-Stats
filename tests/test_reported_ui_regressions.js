@@ -142,7 +142,7 @@ test('historical match preview preserves global affiliation evidence and ranking
     assert.match(renderer, /currentDatasetSeason,/);
     assert.doesNotMatch(renderer, /currentDatasetSeason:\s*league/);
     assert.match(renderer, /manual:\s*true/);
-    assert.match(renderer, /previewModel\.completeLineup\(Array\.from\(selectedA\)/);
+    assert.match(renderer, /previewModelApi\.completeLineup\(Array\.from\(selectedA\)/);
     assert.match(renderer, /selectedA = new Set\(playersA\.slice\(0, 4\)\)/);
 });
 

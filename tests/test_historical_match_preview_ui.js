@@ -179,8 +179,11 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     document.root = contentArea;
     const topBarTitle = document.createElement('div');
     const model = makeModel(calibrated);
+    const exposedModel = typeof scenarioOptions.wrapModel === 'function'
+        ? scenarioOptions.wrapModel(model)
+        : model;
     const window = {
-        BwedlMatchPreviewModel: model,
+        BwedlMatchPreviewModel: exposedModel,
         ARCHIVE_TABLES: [],
         matchMedia: () => ({ matches: scenarioOptions.reducedMotion === true }),
     };
@@ -273,12 +276,14 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     };
 }
 
-function renderUnavailableModelScenario(model) {
+function renderUnavailableModelScenario(model, configureWindow) {
     const document = createDocument();
     const contentArea = document.createElement('main');
     document.root = contentArea;
     const topBarTitle = document.createElement('div');
-    const window = model === undefined ? {} : { BwedlMatchPreviewModel: model };
+    const window = {};
+    if (typeof configureWindow === 'function') configureWindow(window);
+    else if (model !== undefined) window.BwedlMatchPreviewModel = model;
     const clubData = { clubs: [] };
     const archiveData = {};
     const rendererDeclaration = extractFunction('renderMatchPreview');
@@ -289,6 +294,21 @@ function renderUnavailableModelScenario(model) {
 
     assert.doesNotThrow(() => render());
     return { document, contentArea, topBarTitle };
+}
+
+{
+    let rootGetterCalls = 0;
+    const scenario = renderUnavailableModelScenario(undefined, (window) => {
+        Object.defineProperty(window, 'BwedlMatchPreviewModel', {
+            configurable: true,
+            get() {
+                rootGetterCalls += 1;
+                throw new Error('root model getter must stay inert');
+            },
+        });
+    });
+    assert.ok(scenario.contentArea.querySelector('[role="alert"]'));
+    assert.equal(rootGetterCalls, 0, 'the model root must be read from its own data descriptor');
 }
 
 {
@@ -308,6 +328,44 @@ function renderUnavailableModelScenario(model) {
     });
     assert.ok(scenario.contentArea.querySelector('[role="alert"]'));
     assert.equal(partialMethodCalls, 0, 'partial APIs must fail closed before any model method runs');
+}
+
+{
+    let proxyGetCalls = 0;
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        wrapModel: (model) => new Proxy(model, {
+            get() {
+                proxyGetCalls += 1;
+                throw new Error('validated model properties must not be reread');
+            },
+        }),
+    });
+    assert.equal(proxyGetCalls, 0);
+    assert.deepEqual(
+        { calibration: scenario.model.calls.calibration, training: scenario.model.calls.training, outcome: scenario.model.calls.outcome },
+        { calibration: 1, training: 1, outcome: 1 },
+    );
+    assert.equal(scenario.contentArea.querySelector('[role="alert"]'), null);
+}
+
+{
+    let thisAwareModel;
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        wrapModel: (model) => {
+            thisAwareModel = {};
+            for (const name of ['buildClassCalibration', 'buildOutcomeTrainingExamples', 'calibrateOutcomeModel', 'buildTeamRoster', 'completeLineup', 'forecastMatch']) {
+                Object.defineProperty(thisAwareModel, name, {
+                    enumerable: true,
+                    value: function (...args) {
+                        assert.equal(this, thisAwareModel, `${name} keeps the validated model as this`);
+                        return Reflect.apply(model[name], model, args);
+                    },
+                });
+            }
+            return thisAwareModel;
+        },
+    });
+    assert.equal(scenario.contentArea.querySelector('[role="alert"]'), null);
 }
 
 {
