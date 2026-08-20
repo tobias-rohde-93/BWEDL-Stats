@@ -44,7 +44,8 @@ function inspectOwn(object, key) {
 
 function scanEnrichment(archive) {
     assert.ok(archive && typeof archive === 'object', 'archive data must be an object');
-    let enrichedRecords = 0;
+    let enrichedSegments = 0;
+    let schemaSignals = 0;
     for (const playerId of Object.getOwnPropertyNames(archive)) {
         const historyInspection = inspectOwn(archive, playerId);
         assert.ok(historyInspection.safe && historyInspection.isData,
@@ -53,45 +54,58 @@ function scanEnrichment(archive) {
         assert.ok(Array.isArray(history), 'archive histories must be arrays');
         for (const record of history) {
             if (!record || typeof record !== 'object') continue;
+            const schemaInspections = [
+                'segments', 'primary_segment_id', 'identity_ambiguous',
+                'round_overlap_ambiguous',
+            ].map((field) => inspectOwn(record, field));
+            assert.equal(schemaInspections.every((inspection) => inspection.safe), true,
+                'v2 schema signals must be descriptor-safe');
             const segmentsInspection = inspectOwn(record, 'segments');
-            let evidenceObjects = [record];
-            let segmented = false;
-            if (segmentsInspection.exists) {
-                assert.equal(segmentsInspection.safe && segmentsInspection.isData
-                    && Array.isArray(segmentsInspection.value), true,
-                'segment containers must expose an own data array');
-                evidenceObjects = segmentsInspection.value;
-                segmented = true;
-            }
-            let recordEvidence = 0;
-            for (const evidenceObject of evidenceObjects) {
+            const hasSchemaSignal = schemaInspections.some((inspection) => inspection.exists);
+            if (hasSchemaSignal) schemaSignals += 1;
+            const inspectEvidence = (evidenceObject) => {
                 assert.ok(evidenceObject && typeof evidenceObject === 'object',
                     'archive evidence entries must be objects');
                 const inspections = ['rounds', 'appearances', 'points_per_appearance']
                     .map((field) => inspectOwn(evidenceObject, field));
+                assert.equal(inspections.every((inspection) => inspection.safe), true,
+                    'round-derived evidence inspection must be descriptor-safe');
                 const present = inspections.filter((inspection) => inspection.exists).length;
-                if (present === 0) continue;
-                recordEvidence += 1;
+                if (present === 0) return false;
                 assert.equal(present, inspections.length,
                     'round-derived evidence must contain rounds, appearances, and points_per_appearance');
-                assert.equal(inspections.every((inspection) => inspection.safe && inspection.isData), true,
+                assert.equal(inspections.every((inspection) => inspection.isData), true,
                     'round-derived evidence must use own data properties');
+                return true;
+            };
+            const flatEvidence = inspectEvidence(record);
+            let recordEvidence = 0;
+            if (segmentsInspection.exists) {
+                assert.equal(segmentsInspection.safe && segmentsInspection.isData
+                    && Array.isArray(segmentsInspection.value)
+                    && segmentsInspection.value.length > 0, true,
+                'segment containers must expose an own data array');
+                for (const evidenceObject of segmentsInspection.value) {
+                    if (inspectEvidence(evidenceObject)) recordEvidence += 1;
+                }
+            } else if (flatEvidence) {
+                recordEvidence = 1;
             }
-            if (recordEvidence === 0) continue;
-            enrichedRecords += recordEvidence;
+            enrichedSegments += recordEvidence;
+            if (!hasSchemaSignal && !flatEvidence) continue;
             const isolatedArchive = {};
             isolatedArchive[playerId] = [record];
             const isolatedIndex = Model.buildArchiveIndex(isolatedArchive);
             const normalized = isolatedIndex.histories[playerId];
             assert.equal(Array.isArray(normalized) && normalized.length === 1, true,
                 `round-derived evidence must be structurally valid and internally consistent (${playerId} ${ownValue(record, 'season')})`);
-            if (!segmented) {
+            if (!segmentsInspection.exists && flatEvidence) {
                 assert.equal(normalized[0].completeEvidence, true,
                     'legacy round-derived evidence must be complete');
             }
         }
     }
-    return enrichedRecords;
+    return { enrichedSegments, schemaSignals };
 }
 
 let syntheticSegmentSequence = 1;
@@ -203,11 +217,27 @@ function buildSegmentBacktestFixture() {
             rounds: seasonRounds(1, [45, 45, 45, 45]),
         })]),
     ];
+    archive['203'] = [
+        syntheticSeason('2024/2025', [
+            syntheticSegment({ league: 'B-Klasse', name: 'Unrelated Ambiguous', vNr: '037', rounds: seasonRounds(1, [43, 43, 43, 43]) }),
+            syntheticSegment({ league: 'B-Klasse', name: 'Unrelated Ambiguous', vNr: '037', rounds: seasonRounds(3, [47, 47, 47, 47]) }),
+        ], { roundOverlapAmbiguous: true }),
+    ];
+    archive['204'] = [
+        syntheticSeason('2024/2025', [syntheticSegment({
+            league: 'B-Klasse', name: 'Ambiguous Target', vNr: '038',
+            rounds: seasonRounds(1, [45, 45, 45, 45]),
+        })]),
+        syntheticSeason('2025/2026', [
+            syntheticSegment({ league: 'B-Klasse', name: 'Ambiguous Target', vNr: '038', rounds: seasonRounds(1, [44, 44, 44, 44]) }),
+            syntheticSegment({ league: 'B-Klasse', name: 'Ambiguous Target', vNr: '038', rounds: seasonRounds(3, [46, 46, 46, 46]) }),
+        ], { roundOverlapAmbiguous: true }),
+    ];
     return archive;
 }
 
 const segmentFixture = buildSegmentBacktestFixture();
-assert.equal(scanEnrichment(segmentFixture), 25,
+assert.equal(scanEnrichment(segmentFixture).enrichedSegments, 30,
     'segment enrichment is counted without compatibility analytics');
 
 function segmentPerformance(record, requireSingleClass = true) {
@@ -229,30 +259,60 @@ function meanAbsoluteError(samples, field) {
     ) / samples.length;
 }
 
-function runSegmentFixtureBacktest(fixture) {
-    const index = Model.buildArchiveIndex(fixture);
-    assert.equal(index.unusablePlayerIds.length, 0, 'valid segment fixtures remain indexable');
+function isAmbiguousRecord(record) {
+    return Boolean(record && (record.identityAmbiguous || record.roundOverlapAmbiguous));
+}
+
+function deterministicCoverage(samples, field) {
+    const counts = new Map();
+    for (const sample of samples) {
+        const key = sample[field];
+        counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    return Object.fromEntries(
+        Array.from(counts.entries()).sort(([left], [right]) => (
+            left === right ? 0 : left < right ? -1 : 1
+        )),
+    );
+}
+
+function collectChronologicalSamples(index, playerIds = Object.keys(index.histories)) {
     const samples = [];
-    for (const playerId of ['200', '201']) {
+    let eligibleTargets = 0;
+    const ambiguityExclusions = { target: 0, window: 0, sample: 0 };
+    for (const playerId of playerIds.slice().sort()) {
         const history = index.histories[playerId];
+        if (!Array.isArray(history) || history.length < 2) continue;
         const target = history[0];
+        if (isAmbiguousRecord(target)) {
+            ambiguityExclusions.target += 1;
+            continue;
+        }
         const targetPerformance = segmentPerformance(target);
-        const earlier = history.slice(1).map((record) => ({
-            record,
-            performance: segmentPerformance(record, false),
-        })).filter((entry) => entry.performance);
+        if (!targetPerformance) continue;
+        eligibleTargets += 1;
+        const precedingRecords = history.slice(1, 3);
+        const precedingWindow = precedingRecords.map((record) => {
+            if (isAmbiguousRecord(record)) {
+                ambiguityExclusions.window += 1;
+                return null;
+            }
+            return segmentPerformance(record, false);
+        });
+        if (!precedingWindow[0]) {
+            if (isAmbiguousRecord(precedingRecords[0])) ambiguityExclusions.sample += 1;
+            continue;
+        }
         const prior = Model.buildHistoricalPrior({
             playerId,
             targetClass: targetPerformance.leagueClass,
             archiveIndex: index,
             beforeSeason: target.season,
         });
-        assert.equal(prior.sourceSeasons.every((season) => season < target.season), true,
-            'the public cutoff excludes the held-out season');
-        assert.equal(prior.sourceSeasons.includes(target.season), false,
-            'target evidence never enters its own prior');
-        assert.equal(prior.classCalibrated, true);
-        const previousRatings = earlier.slice(0, 2).map((entry) => entry.performance.rating);
+        if (!prior.seasons.length
+            || prior.sourceSeasons.some((season) => season >= target.season)) continue;
+        const previousRatings = precedingWindow.filter(Boolean)
+            .map((performance) => performance.rating);
         const unadjusted = previousRatings.length === 2
             ? 0.7 * previousRatings[0] + 0.3 * previousRatings[1]
             : previousRatings[0];
@@ -264,12 +324,35 @@ function runSegmentFixtureBacktest(fixture) {
             unadjusted,
             sourceClasses: prior.sourceClasses.slice(),
             sourceSeasons: prior.sourceSeasons.slice(),
+            classCalibrated: prior.classCalibrated,
             targetSeason: target.season,
             targetClass: targetPerformance.leagueClass,
             classChanger: prior.sourceClasses.some(
                 (sourceClass) => sourceClass !== targetPerformance.leagueClass,
             ),
         });
+    }
+    return {
+        samples,
+        eligibleTargets,
+        ambiguityExclusions,
+        samplesByTargetSeason: deterministicCoverage(samples, 'targetSeason'),
+        samplesByTargetClass: deterministicCoverage(samples, 'targetClass'),
+    };
+}
+
+function runSegmentFixtureBacktest(fixture) {
+    const index = Model.buildArchiveIndex(fixture);
+    assert.equal(index.unusablePlayerIds.length, 0, 'valid segment fixtures remain indexable');
+    const backtest = collectChronologicalSamples(index, ['200', '201', '202', '203', '204']);
+    const { samples } = backtest;
+    for (const sample of samples) {
+        assert.equal(sample.sourceSeasons.every((season) => season < sample.targetSeason), true,
+            'the public cutoff excludes the held-out season');
+        assert.equal(sample.sourceSeasons.includes(sample.targetSeason), false,
+            'target evidence never enters its own prior');
+        assert.equal(sample.classCalibrated, true,
+            'the synthetic class transition remains calibrated');
     }
     const multiPrior = samples.find((sample) => sample.playerId === '200');
     const transferPrior = samples.find((sample) => sample.playerId === '201');
@@ -304,7 +387,7 @@ function runSegmentFixtureBacktest(fixture) {
     assert.ok(metrics.hybridMae <= metrics.previousMae + 1e-9);
     assert.ok(metrics.hybridMae <= metrics.unadjustedMae + 1e-9);
     assert.deepEqual({
-        enrichedSegments: scanEnrichment(fixture),
+        enrichedSegments: scanEnrichment(fixture).enrichedSegments,
         eligibleTargets: samples.length,
         classChangers: metrics.classChangers,
         multiClassSeasons: index.histories['200'][1].segments.length > 1 ? 1 : 0,
@@ -315,7 +398,7 @@ function runSegmentFixtureBacktest(fixture) {
             0,
         ),
     }, {
-        enrichedSegments: 25,
+        enrichedSegments: 30,
         eligibleTargets: 2,
         classChangers: 1,
         multiClassSeasons: 1,
@@ -323,13 +406,28 @@ function runSegmentFixtureBacktest(fixture) {
         overlapAmbiguousExcluded: 1,
         administrativeMarkers: 1,
     }, 'synthetic coverage remains exact');
-    return metrics;
+    return {
+        ...metrics,
+        samplesByTargetSeason: backtest.samplesByTargetSeason,
+        samplesByTargetClass: backtest.samplesByTargetClass,
+        ambiguityExclusions: backtest.ambiguityExclusions,
+    };
 }
 
-runSegmentFixtureBacktest(segmentFixture);
+const segmentFixtureMetrics = runSegmentFixtureBacktest(segmentFixture);
+assert.deepEqual(segmentFixtureMetrics.samplesByTargetSeason, { '2025/26': 2 },
+    'sample coverage is deterministic per held-out season');
+assert.deepEqual(segmentFixtureMetrics.samplesByTargetClass, { 'B-Klasse': 2 },
+    'sample coverage is deterministic per held-out class');
+assert.deepEqual(segmentFixtureMetrics.ambiguityExclusions, {
+    target: 1,
+    window: 1,
+    sample: 1,
+}, 'only ambiguity that rejects an evaluated target or window is counted');
 
-const enrichedRecords = scanEnrichment(archiveData);
-if (enrichedRecords === 0) {
+const enrichmentScan = scanEnrichment(archiveData);
+const enrichedRecords = enrichmentScan.enrichedSegments;
+if (enrichedRecords === 0 && enrichmentScan.schemaSignals === 0) {
     console.log(MARKER);
     process.exit(0);
 }
@@ -347,43 +445,8 @@ const indexedEvidenceSegments = Object.keys(index.histories).reduce(
 assert.equal(indexedEvidenceSegments, enrichedRecords,
     'globally ambiguous or duplicate round-derived evidence is invalid');
 const samples = [];
-let eligibleTargets = 0;
-for (const playerId of Object.keys(index.histories).sort()) {
-    const history = index.histories[playerId];
-    if (history.length < 2) continue;
-    const target = history[0];
-    const targetPerformance = segmentPerformance(target);
-    if (!targetPerformance) continue;
-    eligibleTargets += 1;
-    const precedingWindow = history.slice(1, 3).map(
-        (record) => segmentPerformance(record, false),
-    );
-    if (!precedingWindow[0]) continue;
-    const prior = Model.buildHistoricalPrior({
-        playerId,
-        targetClass: targetPerformance.leagueClass,
-        archiveIndex: index,
-        beforeSeason: target.season,
-    });
-    if (!prior.seasons.length || prior.sourceSeasons.some((season) => season >= target.season)) continue;
-    const actual = targetPerformance.rating;
-    const previous = precedingWindow[0].rating;
-    const previousTwo = precedingWindow.filter(Boolean).map((performance) => performance.rating);
-    const unadjusted = previousTwo.length === 2
-        ? 0.7 * previousTwo[0] + 0.3 * previousTwo[1]
-        : previousTwo[0];
-    samples.push({
-        actual,
-        hybrid: prior.rating,
-        previous,
-        unadjusted,
-        classChanger: prior.sourceClasses.some(
-            (sourceClass) => sourceClass !== targetPerformance.leagueClass,
-        ),
-        targetSeason: target.season,
-        sourceSeasons: prior.sourceSeasons.slice(),
-    });
-}
+const chronologicalBacktest = collectChronologicalSamples(index);
+samples.push(...chronologicalBacktest.samples);
 
 assert.ok(samples.length > 0, 'chronological backtest needs overall samples');
 assert.ok(samples.some((sample) => sample.classChanger), 'chronological backtest needs class changers');
@@ -406,10 +469,10 @@ const metrics = {
     previousMae: mae('previous'),
     unadjustedMae: mae('unadjusted'),
     enrichedSegments: enrichedRecords,
-    eligibleTargets,
-    ambiguousSeasonsExcluded: indexedRecords.filter(
-        (record) => record.identityAmbiguous || record.roundOverlapAmbiguous,
-    ).length,
+    eligibleTargets: chronologicalBacktest.eligibleTargets,
+    samplesByTargetSeason: chronologicalBacktest.samplesByTargetSeason,
+    samplesByTargetClass: chronologicalBacktest.samplesByTargetClass,
+    ambiguityExclusions: chronologicalBacktest.ambiguityExclusions,
     multiClassSeasons: indexedRecords.filter((record) => new Set(
         record.segments.filter((segment) => segment.previewEligible)
             .map((segment) => segment.leagueClass),
@@ -423,7 +486,16 @@ const metrics = {
         0,
     ),
 };
-assert.equal(Object.values(metrics).every(Number.isFinite), true);
+assert.equal([
+    metrics.samples, metrics.classChangers, metrics.hybridMae, metrics.previousMae,
+    metrics.unadjustedMae, metrics.enrichedSegments, metrics.eligibleTargets,
+    metrics.multiClassSeasons, metrics.transferSeasons, metrics.administrativeMarkers,
+].every(Number.isFinite), true);
+assert.equal([
+    ...Object.values(metrics.samplesByTargetSeason),
+    ...Object.values(metrics.samplesByTargetClass),
+    ...Object.values(metrics.ambiguityExclusions),
+].every((count) => Number.isSafeInteger(count) && count >= 0), true);
 assert.ok(metrics.hybridMae <= metrics.previousMae + 1e-9);
 assert.ok(metrics.hybridMae <= metrics.unadjustedMae + 1e-9);
 console.log(`historical match preview backtest: ${JSON.stringify(metrics)}`);

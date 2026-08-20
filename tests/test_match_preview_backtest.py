@@ -24,11 +24,17 @@ def test_match_preview_backtest_in_node() -> None:
     metrics = json.loads(completed.stdout.split("historical match preview backtest: ", 1)[1])
     assert {
         "samples", "classChangers", "hybridMae", "previousMae", "unadjustedMae",
-        "enrichedSegments", "eligibleTargets", "ambiguousSeasonsExcluded",
+        "enrichedSegments", "eligibleTargets", "samplesByTargetSeason",
+        "samplesByTargetClass", "ambiguityExclusions",
         "multiClassSeasons", "transferSeasons", "administrativeMarkers",
     } == set(metrics)
     assert metrics["samples"] > 0
     assert metrics["classChangers"] > 0
+    assert sum(metrics["samplesByTargetSeason"].values()) == metrics["samples"]
+    assert sum(metrics["samplesByTargetClass"].values()) == metrics["samples"]
+    assert list(metrics["samplesByTargetSeason"]) == sorted(metrics["samplesByTargetSeason"])
+    assert list(metrics["samplesByTargetClass"]) == sorted(metrics["samplesByTargetClass"])
+    assert set(metrics["ambiguityExclusions"]) == {"target", "window", "sample"}
 
 
 def run_backtest_with_archive(tmp_path: Path, archive: object) -> subprocess.CompletedProcess[str]:
@@ -78,6 +84,75 @@ def test_enriched_archive_with_zero_appearances_is_not_skipped(tmp_path: Path) -
             "points_per_appearance": 0,
         }],
     })
+    combined = completed.stdout + completed.stderr
+    assert completed.returncode != 0
+    assert MARKER not in combined
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Empty Segments", "points": 0,
+            "primary_segment_id": "sha256:" + "0" * 64, "segments": [],
+        },
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Malformed Segment", "points": 0,
+            "primary_segment_id": "sha256:" + "1" * 64, "segments": [{}],
+        },
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Missing Segments", "points": 0,
+            "primary_segment_id": "sha256:" + "2" * 64,
+        },
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Flat Poison", "points": 4, "v_nr": "001",
+            "rounds": {"R1": 4}, "appearances": 1,
+            "points_per_appearance": 4,
+            "primary_segment_id": "sha256:" + "3" * 64, "segments": [],
+        },
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Non-array Segments", "points": 0,
+            "primary_segment_id": "sha256:" + "4" * 64, "segments": {},
+        },
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Totals Only", "points": 4, "v_nr": "001",
+            "primary_segment_id": "sha256:" + "5" * 64,
+            "segments": [{
+                "segment_id": "sha256:" + "5" * 64,
+                "league": "A-Klasse", "rank": 1, "name": "Totals Only",
+                "v_nr": "001", "points": 4,
+            }],
+        },
+        {
+            "season": "2024/2025", "league": "A-Klasse", "rank": 1,
+            "name": "Poisoned Projection", "points": 4, "v_nr": "001",
+            "rounds": {"R1": 4}, "appearances": 2,
+            "points_per_appearance": 4,
+            "primary_segment_id": "sha256:" + "6" * 64,
+            "segments": [{
+                "segment_id": "sha256:" + "6" * 64,
+                "league": "A-Klasse", "rank": 1,
+                "name": "Poisoned Projection", "v_nr": "001", "points": 4,
+                "rounds": {"R1": 4}, "appearances": 1,
+                "points_per_appearance": 4,
+            }],
+        },
+    ],
+    ids=[
+        "empty", "malformed", "missing", "flat-poison", "non-array",
+        "valid-totals-only", "poisoned-flat-projection",
+    ],
+)
+def test_v2_schema_signals_are_never_hidden_by_no_evidence_skip(
+    tmp_path: Path, record: dict[str, object],
+) -> None:
+    completed = run_backtest_with_archive(tmp_path, {"1": [record]})
     combined = completed.stdout + completed.stderr
     assert completed.returncode != 0
     assert MARKER not in combined
