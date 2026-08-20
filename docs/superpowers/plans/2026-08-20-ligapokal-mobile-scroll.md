@@ -141,7 +141,10 @@ Expected: the Node contract prints `safe published table rendering contract: ok`
 - Modify: `index.html:124`
 - Modify: `sw_v31.js:1-25`
 - Modify: `tests/test_accessibility_contract.js:317-321`
+- Modify: `tests/test_public_status.py:10-16,43-50`
 - Modify: `tests/test_reported_ui_regressions.js:254-258`
+- Modify: `tests/test_service_worker_status.js:7-13,54-62`
+- Modify: `tests/test_user_value_utils.js:347-355`
 
 - [ ] **Step 1: Advance the bundle query key and service-worker cache**
 
@@ -161,6 +164,8 @@ assert.match(worker, /bwedl-dashboard-v41/);
 
 Change the requested bundle expectation in `tests/test_accessibility_contract.js` from `./bundle_v31.js?v=3.7` to `./bundle_v31.js?v=3.8` so both cache-contract suites describe the same application shell.
 
+Update the exact bundle/cache expectations in `tests/test_public_status.py`, `tests/test_service_worker_status.js`, and `tests/test_user_value_utils.js` to `v3.8`/`v41`. In the service-worker lifecycle harness, treat `v40` as the previous cache and assert that activation deletes it.
+
 - [ ] **Step 3: Run the cache and real-browser contracts**
 
 Run:
@@ -175,7 +180,7 @@ Expected: every Node subtest passes and the real Chromium test passes for both L
 - [ ] **Step 4: Commit the implementation and cache refresh**
 
 ```powershell
-git add -- bundle_v31.js index.html sw_v31.js tests/test_reported_ui_regressions.js
+git add -- bundle_v31.js index.html sw_v31.js tests/test_accessibility_contract.js tests/test_public_status.py tests/test_reported_ui_regressions.js tests/test_service_worker_status.js tests/test_user_value_utils.js
 git commit -m "fix: scroll Ligapokal tables on small screens"
 ```
 
