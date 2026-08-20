@@ -2008,6 +2008,77 @@ def test_archive_payload_accepts_strict_v2_segments_and_reports_metrics() -> Non
     assert result.metrics["round_overlap_ambiguities"] == 0
 
 
+def test_archive_payload_accepts_segment_affiliation_marker_as_performance_only() -> None:
+    record = segmented_archive_record(player_id="746", segments=[{
+        "league": "Bezirksliga", "rank": 59, "name": "Tarkan Arik",
+        "points": 3, "affiliation_marker": "Vw",
+        "rounds": {"R1": "x", "R2": 3}, "appearances": 1,
+        "points_per_appearance": 3.0,
+    }])
+    data = {"746": [record]}
+    tables = [archive_table("2024/2025", league="Bezirksliga")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+    assert result.metrics["segments"] == 1
+    assert result.metrics["preview_eligible_segments"] == 1
+    assert record["segments"][0]["affiliation_marker"] == "Vw"
+    assert "affiliation_marker" not in record
+
+
+@pytest.mark.parametrize("marker", [" VW ", "Ｖｗ", "ZZ", "", 7])
+def test_archive_payload_rejects_noncanonical_or_unknown_affiliation_marker(
+    marker: Any,
+) -> None:
+    record = segmented_archive_record(player_id="746", segments=[{
+        "league": "Bezirksliga", "rank": 59, "name": "Tarkan Arik",
+        "points": 3, "affiliation_marker": "Vw",
+        "rounds": {"R1": 3}, "appearances": 1,
+        "points_per_appearance": 3.0,
+    }])
+    record["segments"][0]["affiliation_marker"] = marker
+    data = {"746": [record]}
+    tables = [archive_table("2024/2025", league="Bezirksliga")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "affiliation marker" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_rejects_affiliation_marker_with_numeric_club() -> None:
+    record = segmented_archive_record(player_id="746", segments=[{
+        "league": "Bezirksliga", "rank": 59, "name": "Tarkan Arik",
+        "points": 3, "affiliation_marker": "Vw",
+        "rounds": {"R1": 3}, "appearances": 1,
+        "points_per_appearance": 3.0,
+    }])
+    record["segments"][0]["v_nr"] = "035"
+    data = {"746": [record]}
+    tables = [archive_table("2024/2025", league="Bezirksliga")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "mutually exclusive" in " ".join(result.reasons).lower()
+
+
+def test_legacy_archive_schema_does_not_gain_affiliation_marker() -> None:
+    record = enriched_archive_record()
+    record.pop("v_nr")
+    record["affiliation_marker"] = "Vw"
+    data = {"746": [record]}
+    previous = deepcopy(record)
+    previous.pop("affiliation_marker")
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, {"746": [previous]}, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "schema drift" in " ".join(result.reasons).lower()
+
+
 def _two_segment_archive_record() -> dict[str, Any]:
     return segmented_archive_record(segments=[
         {

@@ -40,13 +40,14 @@
     const LEAGUE_CLASS_GRAMMAR = /^(bezirksliga|([abc])\s*(?:[-\u2010-\u2015]\s*)?klasse)(?:\s+gruppe\s+([a-z0-9]+))?(?:\s+(?:(?:\/\s+)?saison\s+)?((?:\d{4}\s*[/\-]\s*\d{4})|(?:\d{4}\s*[/\-]\s*\d{2})|(?:\d{2}\s*[/\-]\s*\d{2})))?$/u;
     const RESERVED_GROUP_TOKEN = /^(?:mix(?:ed)?(?:klasse|gruppe)?|(?:liga|super|world|euro)?cup(?:runde|finale|halbfinale|spiel)?|(?:liga)?pokal(?:runde|finale|halbfinale|spiel)?|freundschaft)$/u;
     const ARCHIVE_ADMIN_MARKERS = Object.freeze(new Set(['x', 'vw', 'd', 'kp', '*']));
+    const ARCHIVE_AFFILIATION_MARKERS = Object.freeze(new Set(['vw']));
     const V2_CONTAINER_FIELDS = Object.freeze(new Set([
         'season', 'league', 'rank', 'name', 'points', 'primary_segment_id',
         'segments', 'v_nr', 'rounds', 'appearances', 'points_per_appearance',
         'identity_ambiguous', 'round_overlap_ambiguous',
     ]));
     const V2_SEGMENT_FIELDS = Object.freeze(new Set([
-        'segment_id', 'league', 'rank', 'name', 'points', 'v_nr',
+        'segment_id', 'league', 'rank', 'name', 'points', 'v_nr', 'affiliation_marker',
         'rounds', 'appearances', 'points_per_appearance',
     ]));
 
@@ -327,6 +328,21 @@
             ? safeIdentifier(clubInspection.descriptor.value)
             : null;
         if (clubInspection.exists && !clubId) return null;
+        const affiliationInspection = inspectOwn(clone, 'affiliation_marker');
+        if (!affiliationInspection.ok || (affiliationInspection.exists
+            && (!affiliationInspection.isData || virtual))) return null;
+        let affiliationMarker = null;
+        if (affiliationInspection.exists) {
+            const sourceMarker = affiliationInspection.descriptor.value;
+            if (typeof sourceMarker !== 'string'
+                || sourceMarker !== sourceMarker.normalize('NFKC').trim()
+                || !sourceMarker
+                || !ARCHIVE_AFFILIATION_MARKERS.has(
+                    sourceMarker.toLocaleLowerCase('de-DE'),
+                )) return null;
+            affiliationMarker = sourceMarker;
+        }
+        if (clubId && affiliationMarker) return null;
 
         const result = clone;
         result.segment_id = segmentId;
@@ -338,6 +354,7 @@
         result.rank = rank;
         result.points = points;
         if (clubId) result.v_nr = clubId;
+        if (affiliationMarker) result.affiliation_marker = affiliationMarker;
         result.completeEvidence = false;
         result.previewEligible = false;
         const preview = ['rounds', 'appearances', 'points_per_appearance']
@@ -346,7 +363,7 @@
         const presentPreviewFields = preview.filter((item) => item.exists).length;
         if (presentPreviewFields !== 0 && presentPreviewFields !== preview.length) return null;
         if (presentPreviewFields === preview.length) {
-            if (!clubId) return null;
+            if (!clubId && !affiliationMarker) return null;
             const stats = validateRoundSequence(preview[0].descriptor.value, !virtual);
             const appearances = Object.is(preview[1].descriptor.value, -0)
                 ? 0 : preview[1].descriptor.value;

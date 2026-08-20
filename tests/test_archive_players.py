@@ -87,6 +87,50 @@ def test_archive_club_number_requires_ascii_digits(fixture: dict) -> None:
         parse_archive_ranking_table(**table)
 
 
+def test_live_affiliation_marker_preserves_performance_without_club_guess() -> None:
+    headers = [
+        "Rang", "V-Nr.", "Nr.", "Vorname", "Nachname",
+        *[f"R{number}" for number in range(1, 19)], "Gesamt",
+    ]
+    row = [
+        "59", "Vw", "746", "Tarkan", "Arik", "x", "3",
+        *(["x"] * 16), "3",
+    ]
+
+    record = parse_archive_ranking_table(
+        season="2020/2022", league="Bezirksliga", headers=headers, rows=[row]
+    )[0]
+
+    assert record["id"] == "746"
+    assert record["affiliation_marker"] == "Vw"
+    assert "v_nr" not in record
+    assert record["points"] == 3
+    assert record["appearances"] == 1
+    assert record["points_per_appearance"] == 3.0
+
+
+def test_affiliation_marker_is_nfkc_trimmed_but_preserves_observed_case() -> None:
+    headers = ["Rang", "V-Nr.", "Nr.", "Name", "R1", "Gesamt"]
+
+    record = parse_archive_ranking_table(
+        season="2020/2022", league="Bezirksliga", headers=headers,
+        rows=[["59", " Ｖｗ ", "746", "Tarkan Arik", "3", "3"]],
+    )[0]
+
+    assert record["affiliation_marker"] == "Vw"
+    assert "v_nr" not in record
+
+
+def test_unknown_affiliation_marker_is_rejected_with_source_value() -> None:
+    headers = ["Rang", "V-Nr.", "Nr.", "Name", "R1", "Gesamt"]
+
+    with pytest.raises(ArchivePlayerParseError, match=r"club number.*'ZZ'"):
+        parse_archive_ranking_table(
+            season="2020/2022", league="Bezirksliga", headers=headers,
+            rows=[["59", "ZZ", "746", "Tarkan Arik", "3", "3"]],
+        )
+
+
 def test_archive_player_name_requires_a_unicode_letter(fixture: dict) -> None:
     table = deepcopy(fixture["totals_only"])
     table["rows"][0][2] = "123 456"
@@ -284,6 +328,35 @@ def test_exact_semantic_segment_collision_is_rejected() -> None:
 
     with pytest.raises(ArchivePlayerParseError, match="segment.*collision"):
         merge_archive_entries([entry, dict(entry)])
+
+
+def test_affiliation_marker_is_segment_only_and_part_of_stable_identity() -> None:
+    base = {
+        "id": "746", "season": "2020/2022", "rank": 59, "points": 3,
+        "league": "Bezirksliga", "name": "Tarkan Arik",
+        "rounds": {"R1": "x", "R2": 3}, "appearances": 1,
+        "points_per_appearance": 3.0,
+    }
+
+    upper = merge_archive_entries([{**base, "affiliation_marker": "Vw"}])["746"][0]
+    lower = merge_archive_entries([{**base, "affiliation_marker": "vw"}])["746"][0]
+
+    assert upper["segments"][0]["affiliation_marker"] == "Vw"
+    assert "affiliation_marker" not in upper
+    assert "v_nr" not in upper["segments"][0]
+    assert upper["segments"][0]["segment_id"] != lower["segments"][0]["segment_id"]
+
+
+def test_affiliation_marker_and_numeric_club_are_mutually_exclusive() -> None:
+    entry = {
+        "id": "746", "season": "2020/2022", "rank": 59, "points": 3,
+        "league": "Bezirksliga", "name": "Tarkan Arik", "v_nr": "035",
+        "affiliation_marker": "Vw", "rounds": {"R1": 3},
+        "appearances": 1, "points_per_appearance": 3.0,
+    }
+
+    with pytest.raises(ArchivePlayerParseError, match="mutually exclusive"):
+        merge_archive_entries([entry])
 
 
 def test_name_conflict_preserves_segments_and_marks_only_the_season_ambiguous() -> None:

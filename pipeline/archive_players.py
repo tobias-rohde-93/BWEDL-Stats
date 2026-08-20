@@ -17,6 +17,7 @@ class ArchivePlayerParseError(ValueError):
 ROUND_HEADER = re.compile(r"^(?:r(?:unde)?\s*)?(\d{1,2})$", re.I)
 _ROUND_LIKE_HEADER = re.compile(r"^r(?:unde)?(?=$|[\s:._-]|\d)", re.I)
 ADMIN_ROUND_MARKERS = frozenset({"x", "vw", "d", "kp", "*"})
+AFFILIATION_MARKERS = frozenset({"vw"})
 MAX_JAVASCRIPT_SAFE_INTEGER = 2**53 - 1
 _REGULAR_CLASS_ORDER = {
     "bezirksliga": 0,
@@ -104,6 +105,19 @@ def parse_round_value(value: Any) -> int | str:
     if text.casefold() in ADMIN_ROUND_MARKERS:
         return text
     raise ArchivePlayerParseError(f"invalid round value: {text!r}")
+
+
+def _parse_affiliation_value(value: Any) -> tuple[str | None, str | None]:
+    """Return an exact numeric club or a source-preserving affiliation marker."""
+
+    text = _text(value)
+    if not text:
+        return None, None
+    if re.fullmatch(r"[0-9]+", text):
+        return text, None
+    if text.casefold() in AFFILIATION_MARKERS:
+        return None, text
+    raise ArchivePlayerParseError(f"invalid archive club number: {text!r}")
 
 
 def _is_suspicious_round_header(value: Any) -> bool:
@@ -225,14 +239,16 @@ def parse_archive_player_row(
     }
 
     round_columns: list[tuple[int, int]] = columns["rounds"]
-    v_nr = _cell(row, columns["v_nr"])
-    if v_nr and re.fullmatch(r"[0-9]+", v_nr) is None:
-        raise ArchivePlayerParseError("invalid archive club number")
+    v_nr, affiliation_marker = _parse_affiliation_value(
+        _cell(row, columns["v_nr"])
+    )
     if v_nr:
         record["v_nr"] = v_nr
+    if affiliation_marker:
+        record["affiliation_marker"] = affiliation_marker
     if not round_columns:
         return record
-    if not v_nr:
+    if not v_nr and not affiliation_marker:
         raise ArchivePlayerParseError("blank archive club number")
 
     rounds: dict[str, int | str] = {}
@@ -378,6 +394,18 @@ def _semantic_segment(source: Mapping[str, Any]) -> dict[str, Any]:
         or re.fullmatch(r"[0-9]+", segment["v_nr"]) is None
     ):
         raise ArchivePlayerParseError("invalid archive club number")
+    if "affiliation_marker" in segment:
+        marker = segment["affiliation_marker"]
+        if (
+            not isinstance(marker, str)
+            or marker != _text(marker)
+            or marker.casefold() not in AFFILIATION_MARKERS
+        ):
+            raise ArchivePlayerParseError("invalid archive affiliation marker")
+    if "v_nr" in segment and "affiliation_marker" in segment:
+        raise ArchivePlayerParseError(
+            "archive club number and affiliation marker are mutually exclusive"
+        )
     return segment
 
 

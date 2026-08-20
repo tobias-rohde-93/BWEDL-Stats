@@ -56,6 +56,7 @@ function segment({
     totalsOnly = false,
     points,
     segmentId,
+    affiliationMarker = null,
 }) {
     const roundsValue = {
         ...Object.fromEntries(values.map((value, index) => [`R${index + 1}`, value])),
@@ -82,6 +83,7 @@ function segment({
         points: segmentPoints,
     };
     if (vNr !== null) result.v_nr = vNr;
+    if (affiliationMarker !== null) result.affiliation_marker = affiliationMarker;
     if (!totalsOnly) {
         result.rounds = roundsValue;
         result.appearances = numericValues.length;
@@ -418,6 +420,71 @@ const canonicalMarkerIndex = Model.buildArchiveIndex({
 assert.deepEqual(Model.roundStats(canonicalMarkerIndex.histories['423'][0].segments[0].rounds), {
     values: [0], points: 0, appearances: 1, mean: 0,
 });
+const affiliationMarkerArchive = {
+    746: [v2Record({
+        season: '2020/2022',
+        segments: [segment({
+            league: 'Bezirksliga', name: 'Tarkan Arik', values: [3],
+            markers: { R2: 'x' }, vNr: null, affiliationMarker: 'Vw', rank: 59,
+        })],
+    })],
+};
+const affiliationMarkerIndex = Model.buildArchiveIndex(affiliationMarkerArchive);
+assert.equal(affiliationMarkerIndex.histories['746'][0].segments[0].affiliation_marker, 'Vw');
+assert.equal(affiliationMarkerIndex.histories['746'][0].segments[0].previewEligible, true,
+    'an affiliation marker preserves segment performance eligibility');
+assert.equal(affiliationMarkerIndex.histories['746'][0].segments[0].v_nr, undefined,
+    'an affiliation marker is never interpreted as a numeric club');
+const affiliationMarkerPrior = Model.buildHistoricalPrior({
+    playerId: '746', targetClass: 'Bezirksliga', archiveIndex: affiliationMarkerIndex,
+    calibration: Model.buildClassCalibration(affiliationMarkerIndex), classMean: 3,
+});
+assert.deepEqual(affiliationMarkerPrior.sourceSeasons, ['2020/22']);
+assert.equal(affiliationMarkerPrior.rating, 3);
+for (const [id, marker] of [['425', ' VW '], ['426', 'Ｖｗ'], ['427', 'ZZ'], ['428', '']]) {
+    const invalidMarkerIndex = Model.buildArchiveIndex({
+        [id]: [v2Record({
+            season: '2020/2022',
+            segments: [segment({
+                league: 'Bezirksliga', name: `Invalid Affiliation ${id}`, values: [3],
+                vNr: null, affiliationMarker: marker,
+            })],
+        })],
+    });
+    assert.equal(invalidMarkerIndex.histories[id], undefined,
+        'v2 affiliation markers must be exact canonical allowlisted values');
+    assert.deepEqual(invalidMarkerIndex.unusablePlayerIds, [id]);
+}
+const mutuallyExclusiveAffiliationIndex = Model.buildArchiveIndex({
+    429: [v2Record({
+        season: '2020/2022',
+        segments: [segment({
+            league: 'Bezirksliga', name: 'Mutually Exclusive', values: [3],
+            vNr: '035', affiliationMarker: 'Vw',
+        })],
+    })],
+});
+assert.equal(mutuallyExclusiveAffiliationIndex.histories['429'], undefined);
+let affiliationGetterCalls = 0;
+const unsafeAffiliationContainer = v2Record({
+    season: '2020/2022',
+    segments: [segment({
+        league: 'Bezirksliga', name: 'Unsafe Affiliation', values: [3], vNr: null,
+    })],
+});
+Object.defineProperty(unsafeAffiliationContainer.segments[0], 'affiliation_marker', {
+    enumerable: true,
+    get() { affiliationGetterCalls += 1; throw new Error('must not run'); },
+});
+assert.equal(Model.buildArchiveIndex({ 431: [unsafeAffiliationContainer] }).histories['431'], undefined);
+assert.equal(affiliationGetterCalls, 0, 'affiliation marker accessors are never invoked');
+const legacyAffiliationMarker = record({
+    id: '430', season: '2020/2022', name: 'Legacy Marker Field',
+    league: 'Bezirksliga', mean: 3,
+});
+legacyAffiliationMarker.affiliation_marker = 'Vw';
+assert.equal(Model.buildArchiveIndex({ 430: [legacyAffiliationMarker] }).histories['430'], undefined,
+    'legacy v1 does not gain the segment-only affiliation marker field');
 const legacyMarkerIndex = Model.buildArchiveIndex({
     424: [{
         id: '424', season: '2025/2026', league: 'A-Klasse', name: 'Legacy Marker',
@@ -1235,6 +1302,25 @@ assert.equal(JSON.stringify(currentPlayers), currentBefore);
 assert.equal(JSON.stringify(rosterArchive), rosterBefore);
 assert.equal(roster.players.find((player) => player.id === '13'), undefined,
     'preceding-season candidates are unnecessary once four identifiable candidates exist');
+
+const unresolvedAffiliationRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Club Alpha', targetLeague: 'Bezirksliga 2022/2023',
+    targetSeason: '2022/2023', currentDatasetSeason: '2022/2023', currentPlayers: [],
+    clubs: [{ number: '035', name: 'Club Alpha' }], classMean: 3,
+    archiveData: {
+        ...affiliationMarkerArchive,
+        747: [v2Record({
+            season: '2020/2022',
+            segments: [segment({
+                league: 'Bezirksliga', name: 'Known Club Player', values: [4], vNr: '035',
+            })],
+        })],
+    },
+});
+assert.equal(unresolvedAffiliationRoster.players.some((player) => player.id === '746'), false,
+    'an affiliation marker never guesses historical roster membership');
+assert.equal(unresolvedAffiliationRoster.players.some((player) => player.id === '747'), true,
+    'numeric historical affiliation remains eligible beside marker-only performance');
 
 const fallbackRoster = Model.buildTeamRoster({
     teamId: '035', targetLeague: 'B-Klasse', currentPlayers: [],
@@ -2204,6 +2290,25 @@ assert.equal(segmentedParticipantTraining.length, 1,
     'participant reconstruction reads segment-local rounds and dedupes stable IDs');
 assert.equal(segmentedParticipantTraining.diagnostics.performance.historyRecordsScanned, 16);
 assert.equal(segmentedParticipantTraining.diagnostics.performance.historySegmentsScanned, 24);
+
+const markerParticipantArchive = makeOutcomeArchive();
+markerParticipantArchive['200'][1] = v2Record({
+    season: '2025/2026',
+    segments: [segment({
+        league: 'A-Klasse', name: 'Outcome 200', values: [8],
+        vNr: null, affiliationMarker: 'Vw',
+    })],
+});
+const markerParticipantTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
+        { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7' },
+    ] }],
+    archiveData: markerParticipantArchive,
+    clubs: outcomeClubs,
+});
+assert.equal(markerParticipantTraining.length, 0,
+    'marker-only performance never supplies a club-affiliated match participant');
+assert.equal(markerParticipantTraining.diagnostics.excluded.participants, 1);
 
 const crossSideArchive = {};
 for (let index = 0; index < 7; index += 1) {

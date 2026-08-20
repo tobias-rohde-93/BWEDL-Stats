@@ -912,6 +912,40 @@ def test_archive_scraper_preserves_round_evidence_in_candidate_only(
     assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
 
 
+def test_archive_scraper_preserves_live_vw_affiliation_marker_in_segment(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    rows = [[
+        "59", "Vw", "746", "Tarkan", "Arik", "x", "3", "x", "3",
+    ]]
+    page = _ArchiveRankingPage(
+        season_tables={"2020/2022": [_archive_table(rows, "Bezirksliga")]},
+        season_links=[{
+            "href": "https://www.bwedl.de/archiv/2020-2022/",
+            "text": "Saison 2020/22",
+        }],
+    )
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, output_dir, tmp_path / "artifacts"
+    )
+
+    assert status == 0
+    payload = json.loads(
+        (output_dir / "archive_data.js").read_text(encoding="utf-8")
+        .removeprefix("window.ARCHIVE_DATA = ").removesuffix(";\n")
+    )
+    container = payload["746"][0]
+    assert container["season"] == "2020/2022"
+    assert container["points"] == 3
+    assert container["segments"][0]["affiliation_marker"] == "Vw"
+    assert container["segments"][0]["appearances"] == 1
+    assert "v_nr" not in container["segments"][0]
+    assert "affiliation_marker" not in container
+
+
 def test_archive_scraper_visits_every_unique_canonical_season_newest_first(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -1098,6 +1132,41 @@ def test_archive_scraper_unknown_marker_has_full_context_and_preserves_public_ro
     assert "row 0" in failure
     assert "round R1" in failure
     assert "'?'" in failure
+
+
+def test_archive_scraper_unknown_affiliation_token_has_full_context(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    (tmp_path / "archive_data.js").write_text(sentinel, encoding="utf-8")
+    rows = [[
+        "59", "ZZ", "746", "Tarkan", "Arik", "x", "3", "x", "3",
+    ]]
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage([_archive_table(rows, "Bezirksliga")]),
+        output_dir,
+        tmp_path / "artifacts",
+    )
+
+    assert status == 1
+    assert not (output_dir / "archive_data.js").exists()
+    assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "season 2025/2026" in failure
+    assert "table 0" in failure
+    assert "league Bezirksliga" in failure
+    assert "row 0" in failure
+    assert "invalid archive club number" in failure
+    assert "'ZZ'" in failure
 
 
 @pytest.mark.parametrize(

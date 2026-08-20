@@ -109,22 +109,24 @@ function scanEnrichment(archive) {
 }
 
 let syntheticSegmentSequence = 1;
-function syntheticSegment({ league, name, vNr, rounds, rank = 1 }) {
+function syntheticSegment({ league, name, vNr, affiliationMarker, rounds, rank = 1 }) {
     const numeric = Object.values(rounds).filter(
         (value) => Number.isSafeInteger(value) && value >= 0,
     );
     const points = numeric.reduce((sum, value) => sum + value, 0);
-    return {
+    const segment = {
         segment_id: `sha256:${(syntheticSegmentSequence++).toString(16).padStart(64, '0')}`,
         league,
         rank,
         name,
-        v_nr: vNr,
         points,
         rounds,
         appearances: numeric.length,
         points_per_appearance: numeric.length ? points / numeric.length : 0,
     };
+    if (vNr !== undefined) segment.v_nr = vNr;
+    if (affiliationMarker !== undefined) segment.affiliation_marker = affiliationMarker;
+    return segment;
 }
 
 function syntheticSeason(season, segments, flags = {}) {
@@ -233,11 +235,21 @@ function buildSegmentBacktestFixture() {
             syntheticSegment({ league: 'B-Klasse', name: 'Ambiguous Target', vNr: '038', rounds: seasonRounds(3, [46, 46, 46, 46]) }),
         ], { roundOverlapAmbiguous: true }),
     ];
+    archive['205'] = [
+        syntheticSeason('2024/2025', [syntheticSegment({
+            league: 'B-Klasse', name: 'Marker Performance', affiliationMarker: 'Vw',
+            rounds: seasonRounds(1, [45, 45, 45, 45]),
+        })]),
+        syntheticSeason('2025/2026', [syntheticSegment({
+            league: 'B-Klasse', name: 'Marker Performance', vNr: '039',
+            rounds: seasonRounds(1, [46, 46, 46, 46]),
+        })]),
+    ];
     return archive;
 }
 
 const segmentFixture = buildSegmentBacktestFixture();
-assert.equal(scanEnrichment(segmentFixture).enrichedSegments, 30,
+assert.equal(scanEnrichment(segmentFixture).enrichedSegments, 32,
     'segment enrichment is counted without compatibility analytics');
 
 function segmentPerformance(record, requireSingleClass = true) {
@@ -344,7 +356,7 @@ function collectChronologicalSamples(index, playerIds = Object.keys(index.histor
 function runSegmentFixtureBacktest(fixture) {
     const index = Model.buildArchiveIndex(fixture);
     assert.equal(index.unusablePlayerIds.length, 0, 'valid segment fixtures remain indexable');
-    const backtest = collectChronologicalSamples(index, ['200', '201', '202', '203', '204']);
+    const backtest = collectChronologicalSamples(index, ['200', '201', '202', '203', '204', '205']);
     const { samples } = backtest;
     for (const sample of samples) {
         assert.equal(sample.sourceSeasons.every((season) => season < sample.targetSeason), true,
@@ -356,10 +368,17 @@ function runSegmentFixtureBacktest(fixture) {
     }
     const multiPrior = samples.find((sample) => sample.playerId === '200');
     const transferPrior = samples.find((sample) => sample.playerId === '201');
+    const markerPrior = samples.find((sample) => sample.playerId === '205');
     assert.deepEqual(multiPrior.sourceClasses, ['A-Klasse', 'B-Klasse']);
     assert.deepEqual(transferPrior.sourceClasses, ['B-Klasse']);
     assert.equal(multiPrior.hybrid, 45, 'class groups convert before one season prior');
     assert.equal(transferPrior.hybrid, 45, 'same-class transfer segments aggregate once');
+    assert.equal(markerPrior.hybrid, 45,
+        'marker-only affiliation preserves performance in the chronological prior');
+    const markerSource = index.histories['205'][1].segments[0];
+    assert.equal(markerSource.affiliation_marker, 'Vw');
+    assert.equal(markerSource.v_nr, undefined,
+        'the backtest never invents a club from an affiliation marker');
     const transferSource = index.histories['201'][1];
     assert.equal(transferSource.segments.length, 2);
     assert.equal(transferSource.segments.reduce(
@@ -374,7 +393,7 @@ function runSegmentFixtureBacktest(fixture) {
     });
     assert.deepEqual(ambiguousPrior.sourceSeasons, [],
         'overlap-ambiguous evidence is excluded rather than guessed');
-    assert.equal(samples.length, 2);
+    assert.equal(samples.length, 3);
     assert.equal(samples.filter((sample) => sample.classChanger).length, 1);
     const metrics = {
         samples: samples.length,
@@ -397,14 +416,18 @@ function runSegmentFixtureBacktest(fixture) {
             (count, segment) => count + Object.values(segment.rounds).filter((value) => value === 'VW').length,
             0,
         ),
+        affiliationMarkers: index.histories['205'][1].segments.filter(
+            (segment) => segment.affiliation_marker === 'Vw' && !segment.v_nr,
+        ).length,
     }, {
-        enrichedSegments: 30,
-        eligibleTargets: 2,
+        enrichedSegments: 32,
+        eligibleTargets: 3,
         classChangers: 1,
         multiClassSeasons: 1,
         transferSeasons: 1,
         overlapAmbiguousExcluded: 1,
         administrativeMarkers: 1,
+        affiliationMarkers: 1,
     }, 'synthetic coverage remains exact');
     return {
         ...metrics,
@@ -415,9 +438,9 @@ function runSegmentFixtureBacktest(fixture) {
 }
 
 const segmentFixtureMetrics = runSegmentFixtureBacktest(segmentFixture);
-assert.deepEqual(segmentFixtureMetrics.samplesByTargetSeason, { '2025/26': 2 },
+assert.deepEqual(segmentFixtureMetrics.samplesByTargetSeason, { '2025/26': 3 },
     'sample coverage is deterministic per held-out season');
-assert.deepEqual(segmentFixtureMetrics.samplesByTargetClass, { 'B-Klasse': 2 },
+assert.deepEqual(segmentFixtureMetrics.samplesByTargetClass, { 'B-Klasse': 3 },
     'sample coverage is deterministic per held-out class');
 assert.deepEqual(segmentFixtureMetrics.ambiguityExclusions, {
     target: 1,

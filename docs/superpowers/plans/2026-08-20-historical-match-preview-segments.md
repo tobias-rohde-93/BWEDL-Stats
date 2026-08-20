@@ -99,6 +99,8 @@ def archive_segment_id(player_id: str, season: str, segment: Mapping[str, Any]) 
 
 `parse_archive_player_row` must retain allowed marker spelling, count only integers including zero, and keep the existing exact numeric-sum rule. It returns a source segment with the stable outer ID still present for merging.
 
+For the distinct `V-Nr.` source field, preserve the observed `Vw` value as segment-only `affiliation_marker` after NFKC+trim when case-folded to the exact initial allowlist `{vw}`. It is mutually exclusive with numeric `v_nr`, participates in the SHA-256 segment identity, and never supplies roster or participant affiliation. Reproduce live player `746` in `2020/2022` Bezirksliga with 3 points and one appearance; reject every unknown nonblank token with full scraper provenance.
+
 - [ ] **Step 4: Implement deterministic season containers**
 
 Change `merge_archive_entries` to group by `(player_id, canonical_season)`, construct immutable semantic segments, assign IDs, reject segment-ID collisions, sort segments deterministically, and publish one container per season. Use safe integer sums for container points. Publish flat preview fields only for one-segment containers. Mark `identity_ambiguous` and `round_overlap_ambiguous` without deleting source segments.
@@ -237,6 +239,8 @@ Refactor normalized season records to contain frozen validated segments. `buildC
 
 Roster and outcome participant resolution must use segment-local rounds and stable player IDs. They must never use `primary_segment_id` or compatibility `league`/`v_nr` for analytics.
 
+An allowlisted segment `affiliation_marker` keeps the segment eligible for class performance and priors, but latest-roster affiliation and outcome participant indexing must ignore it and require a real numeric club/team mapping.
+
 - [ ] **Step 4: Run GREEN, benchmarks, and commit**
 
 Run the Node model suite, its pytest wrapper, syntax check, existing 100/250/500 match counters, and a 5,000-segment benchmark proving no quadratic scan. Then:
@@ -330,6 +334,7 @@ git commit -m "chore(data): publish segmented player history"
 - Storage contains all discovered seasons; forecast depth remains exactly two completed seasons.
 - Source rows are never silently deduplicated or assigned by name.
 - Administrative markers are preserved and never treated as points or appearances.
+- The observed `V-Nr.` marker is preserved only as segment `affiliation_marker`; it is performance-only and never guessed as a club.
 - Compatibility fields are display-only; analytics use validated segments.
 - V1 migration is lossless, and subsequent v2 segment rewrites/removals block.
 - Multi-class seasons cannot contaminate transition calibration.

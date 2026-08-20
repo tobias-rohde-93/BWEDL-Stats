@@ -213,6 +213,15 @@ def segmented_archive_payload(*, include_second: bool = True) -> dict[str, Any]:
     return merge_archive_entries(segments)
 
 
+def segmented_affiliation_payload(marker: str = "Vw") -> dict[str, Any]:
+    return merge_archive_entries([{
+        "id": "746", "season": "2024/2025", "league": "Bezirksliga",
+        "rank": 59, "name": "Tarkan Arik", "points": 3,
+        "affiliation_marker": marker, "rounds": {"R1": "x", "R2": 3},
+        "appearances": 1, "points_per_appearance": 3.0,
+    }])
+
+
 NOW = datetime(2026, 8, 1, 15, 30, tzinfo=UTC)
 
 
@@ -388,6 +397,34 @@ def test_published_v2_segment_loss_or_rewrite_blocks_and_preserves_archive_bytes
         source_segments[0]["appearances"] = 4
         source_segments[0]["points_per_appearance"] = 3.0
     candidate = merge_archive_entries(source_segments)
+
+    code = update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_payload_runner(candidate),
+        clock=lambda: NOW,
+    )
+
+    assert code == 1
+    assert (root / "archive_data.js").read_bytes() == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    archives = next(item for item in report["domains"] if item["domain"] == "archives")
+    assert archives["decision"] == "blocked"
+    assert "segment" in " ".join(archives["reasons"]).lower()
+
+
+def test_published_affiliation_marker_segment_cannot_be_silently_rewritten(
+    tmp_path: Path,
+) -> None:
+    root, staging, artifacts = (
+        tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    )
+    seed_root(root)
+    previous = segmented_affiliation_payload("Vw")
+    write_js(root / "archive_data.js", "ARCHIVE_DATA", previous)
+    before = (root / "archive_data.js").read_bytes()
+    candidate = segmented_affiliation_payload("vw")
 
     code = update_data.run_update(
         root,

@@ -10,6 +10,8 @@ The real archive exposes four distinct ranking tables per discovered season. Acr
 
 Historical round cells also contain bounded administrative markers such as `x`, `VW`, `Vw`, `D`, `d`, `kp`, and `*`. These values are not points and are not appearances. Unknown nonblank markers remain a source-schema error and block publication.
 
+The live `2020/2022` Bezirksliga ranking also contains player `746` with `V-Nr. = Vw`, 3 points, and one numeric appearance. For this separate source field, a segment-only `affiliation_marker` preserves the NFKC-normalized, trimmed source spelling when its case-folded value is in the initial closed allowlist `{vw}`. It is mutually exclusive with numeric `v_nr`, is included in canonical segment identity, and never identifies a club or team. The segment's valid round performance remains analytically eligible; roster membership and match participation remain unresolved. Any other nonblank `V-Nr.` token blocks with full season/table/league/row context.
+
 The committed legacy artifact contains 1,229 players and 3,401 player-season records across five seasons, but all records are totals-only. The new publication must retain every legacy player-season and may add every older season that the live archive navigation exposes. A hard-coded start year is not permitted.
 
 ## Artifact schema
@@ -58,6 +60,8 @@ window.ARCHIVE_DATA = {
 Each stable outer player ID still owns one history array and at most one container per canonical season. Every source row becomes one immutable segment. `segment_id` is the lower-case SHA-256 of canonical JSON containing the outer ID, canonical season, and all semantic segment fields. Exact segment-ID collisions block publication rather than being silently dropped.
 
 The season container keeps compatibility fields for existing career views. `points` is the safe sum of all segment points and `rank` is the best numeric segment rank. `league`, `name`, and `primary_segment_id` come from a deterministic display segment: greatest last numeric round, then greatest appearances, then lexical segment ID. These compatibility fields are never used by Match Preview analytics. Flat `v_nr`, `rounds`, `appearances`, and `points_per_appearance` are published only when the container has exactly one segment.
+
+`affiliation_marker` remains segment-only even for a one-segment container. Validation recomputes it from source segments, requires exact canonical spelling and the closed allowlist, and rejects `v_nr` plus `affiliation_marker` on the same segment. Legacy v1 records do not gain this field.
 
 Segment order is deterministic: normalized regular-class order, normalized league label, club number with missing values last, rank, then segment ID. Season containers remain newest-first; player IDs remain lexical. JSON is finite, UTF-8, deterministic, and contains no host paths.
 

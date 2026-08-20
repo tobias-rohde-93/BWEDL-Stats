@@ -110,6 +110,7 @@ ARCHIVE_PREVIEW_FIELDS = frozenset(
     {"rounds", "appearances", "points_per_appearance"}
 )
 ARCHIVE_ADMIN_ROUND_MARKERS = frozenset({"x", "vw", "d", "kp", "*"})
+ARCHIVE_AFFILIATION_MARKERS = frozenset({"vw"})
 ARCHIVE_LEGACY_FIELDS = frozenset({
     "id", "season", "league", "rank", "name", "points", "v_nr",
     "rounds", "appearances", "points_per_appearance",
@@ -120,8 +121,8 @@ ARCHIVE_V2_CONTAINER_FIELDS = frozenset({
     "identity_ambiguous", "round_overlap_ambiguous",
 })
 ARCHIVE_V2_SEGMENT_FIELDS = frozenset({
-    "segment_id", "league", "rank", "name", "points", "v_nr", "rounds",
-    "appearances", "points_per_appearance",
+    "segment_id", "league", "rank", "name", "points", "v_nr",
+    "affiliation_marker", "rounds", "appearances", "points_per_appearance",
 })
 
 
@@ -817,11 +818,30 @@ def _validate_archive_player_core(
             or re.fullmatch(r"[0-9]+", club_number) is None
         ):
             issues.append("archive club number must contain ASCII digits")
+    if "affiliation_marker" in record:
+        marker = record["affiliation_marker"]
+        normalized_marker = (
+            unicodedata.normalize("NFKC", marker).strip()
+            if isinstance(marker, str) else None
+        )
+        if (
+            normalized_marker is None
+            or marker != normalized_marker
+            or not marker
+            or marker.casefold() not in ARCHIVE_AFFILIATION_MARKERS
+        ):
+            issues.append(
+                "archive affiliation marker must be normalized and allowed"
+            )
+    if "v_nr" in record and "affiliation_marker" in record:
+        issues.append(
+            "archive club number and affiliation marker are mutually exclusive"
+        )
     return tuple(issues)
 
 
 def _validate_archive_preview_evidence(
-    player_key: str, record: Mapping[str, Any]
+    player_key: str, record: Mapping[str, Any], *, require_affiliation: bool = True
 ) -> tuple[bool, tuple[str, ...]]:
     """Validate optional round evidence without making totals-only history unusable."""
 
@@ -835,8 +855,12 @@ def _validate_archive_preview_evidence(
     points = record.get("points")
     valid_points = _is_safe_nonnegative_integer(points)
 
-    if "v_nr" not in record:
-        issues.append("preview club number is required")
+    if (
+        require_affiliation
+        and "v_nr" not in record
+        and "affiliation_marker" not in record
+    ):
+        issues.append("preview club number or affiliation marker is required")
 
     rounds = record.get("rounds")
     numeric_rounds: list[int | float] = []
@@ -1279,7 +1303,9 @@ def validate_archive_payloads(
                     else ()
                 )
                 has_preview_evidence, preview_issues = (
-                    _validate_archive_preview_evidence(player_key, record)
+                    _validate_archive_preview_evidence(
+                        player_key, record, require_affiliation=not is_v2
+                    )
                 )
                 reasons.extend(
                     f"{label} archive player {player_key}: {issue}"
