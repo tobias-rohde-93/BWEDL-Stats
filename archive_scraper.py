@@ -287,6 +287,12 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                             headers=table['headers'],
                             rows=table['rows'],
                         )
+                        if not records:
+                            league = table.get('league') or 'unavailable'
+                            raise RuntimeError(
+                                f"league {league}: "
+                                "no recognized ranking records"
+                            )
                         merge_archive_entries([
                             *all_entries,
                             *season_entries,

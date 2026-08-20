@@ -838,9 +838,9 @@ def test_archive_save_writes_only_current_candidate_data(
     )
 
 
-def _archive_table(rows):
+def _archive_table(rows, league="A-Klasse"):
     return {
-        "league": "A-Klasse",
+        "league": league,
         "headers": [
             "Rang", "V-Nr.", "Nr.", "Vorname", "Name",
             "1", "2", "3", "Gesamt",
@@ -933,6 +933,73 @@ def test_archive_scraper_rejects_any_incomplete_requested_season(
     )
     assert "2024/2025" in failure
     assert "https://www.bwedl.de/archiv/2024-2025/" in failure
+
+
+def test_archive_scraper_rejects_empty_table_within_populated_season(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    (tmp_path / "archive_data.js").write_text(sentinel, encoding="utf-8")
+    valid_rows = [[
+        "35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12",
+    ]]
+    page = _ArchiveRankingPage([
+        _archive_table(valid_rows, "A-Klasse"),
+        _archive_table([], "B-Klasse"),
+    ])
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, output_dir, tmp_path / "artifacts"
+    )
+
+    assert status == 1
+    assert not (output_dir / "archive_data.js").exists()
+    assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "2025/2026" in failure
+    assert "https://www.bwedl.de/archiv/2025-2026/" in failure
+    assert "table 1" in failure
+    assert "B-Klasse" in failure
+    assert "no recognized ranking records" in failure
+
+
+def test_archive_scraper_accepts_multiple_populated_tables_in_one_season(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    tables = [
+        _archive_table([[
+            "35", "018", "4711", "Mario", "Ackermann",
+            "5", "x", "7", "12",
+        ]], "A-Klasse"),
+        _archive_table([[
+            "8", "035", "900", "José", "Müller",
+            "6", "4", "x", "10",
+        ]], "B-Klasse"),
+    ]
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage(tables),
+        output_dir,
+        tmp_path / "artifacts",
+    )
+
+    assert status == 0
+    candidate = (output_dir / "archive_data.js").read_text(encoding="utf-8")
+    payload = json.loads(
+        candidate.removeprefix("window.ARCHIVE_DATA = ").removesuffix(";\n")
+    )
+    assert payload["4711"][0]["league"] == "A-Klasse"
+    assert payload["900"][0]["league"] == "B-Klasse"
 
 
 def test_archive_scraper_ignores_expected_table_wait_timeout(
