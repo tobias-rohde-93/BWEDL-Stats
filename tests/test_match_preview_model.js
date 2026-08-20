@@ -1016,6 +1016,48 @@ assert.equal(realCurrent425.currentAppearances, 18);
 assert.equal(realCurrent425.adjustedRating, 8);
 assert.equal(realCurrent425.currentWeight, 18 / 22);
 
+const staleVetoArchive = {
+    370: [record({
+        id: '370', season: '2025/2026', name: 'Stale Ranking History',
+        league: 'B-Klasse', mean: 6, vNr: '035',
+    })],
+};
+const historicalWithoutCurrent = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: [], archiveData: staleVetoArchive,
+});
+const historicalWithStaleCurrent = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2025/2026',
+    currentPlayers: [{
+        id: '370', name: 'Stale Ranking History', v_nr: '999',
+        league: 'B-Klasse', rounds: { R1: 9 },
+    }],
+    archiveData: staleVetoArchive,
+});
+assert.deepEqual(historicalWithoutCurrent.players.map((player) => player.id), ['370']);
+assert.deepEqual(historicalWithStaleCurrent.players.map((player) => player.id), ['370'],
+    'an irrelevant stale current row cannot veto the same historical player ID');
+assert.equal(historicalWithStaleCurrent.players[0].evidence, 'historical');
+assert.deepEqual(historicalWithStaleCurrent.diagnostics.irrelevantCurrentIds, ['370']);
+assert.deepEqual(historicalWithStaleCurrent.diagnostics.ambiguousCurrentIds, []);
+
+const targetSeasonDedupRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2025/2026',
+    currentDatasetSeason: '2025/2026',
+    currentPlayers: [{
+        id: '371', name: 'Current Once', v_nr: '035', league: 'B-Klasse', rounds: { R1: 8 },
+    }],
+    archiveData: {
+        371: [record({
+            id: '371', season: '2024/2025', name: 'Current Once',
+            league: 'B-Klasse', mean: 6, vNr: '035',
+        })],
+    },
+});
+assert.equal(targetSeasonDedupRoster.players.filter((player) => player.id === '371').length, 1);
+assert.equal(targetSeasonDedupRoster.players[0].evidence, 'current+history');
+
 for (const invalidSeasonPlayer of [
     { id: '330', name: 'Invalid Explicit', v_nr: '035', league: 'B-Klasse', season: 'invalid', rounds: { R1: 4 } },
     { id: '331', name: 'Wrong Explicit', v_nr: '035', league: 'B-Klasse', season: '2025/2026', rounds: { R1: 4 } },
@@ -1038,8 +1080,8 @@ const explicitDatasetSeasonRoster = Model.buildTeamRoster({
 assert.equal(explicitDatasetSeasonRoster.players[0].id, '334');
 
 const authoritativeLeagueTeams = [
-    { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse', season: '2026/2027' },
-    { clubNumber: '035', teamName: 'Alpha Two', league: 'B-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamName: 'Alpha One', teamId: 'one', league: 'B-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamName: 'Alpha Two', teamId: 'two', league: 'B-Klasse', season: '2026/2027' },
     { clubNumber: '035', teamName: 'Alpha A', league: 'A-Klasse', season: '2026/2027' },
     { clubNumber: '035', teamName: 'Alpha Old', league: 'B-Klasse', season: '2025/2026' },
 ];
@@ -1087,6 +1129,51 @@ const conflictingCrossTypeAliasRoster = Model.buildTeamRoster({
 assert.deepEqual(conflictingCrossTypeAliasRoster.players, [],
     'a selected team label cannot conceal an authoritative different team ID');
 
+const unresolvedLabelOnlyIdRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: [
+        { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse', season: '2026/2027' },
+        { clubNumber: '035', teamName: 'Alpha Two', league: 'B-Klasse', season: '2026/2027' },
+    ],
+    currentPlayers: [{
+        id: '347', name: 'Unresolved Team ID', v_nr: '035', league: 'B-Klasse',
+        team: 'Alpha One', team_id: 'one', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(unresolvedLabelOnlyIdRoster.players, [],
+    'a label-only mapping cannot resolve a present team ID even when the label matches');
+
+const uniqueResolutionRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: [
+        { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse', season: '2026/2027' },
+    ],
+    currentPlayers: [
+        { id: '348', name: 'Unique No Alias', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+        { id: '349', name: 'Unique Exact Label', v_nr: '035', league: 'B-Klasse', team: 'Alpha One', rounds: { R1: 5 } },
+        { id: '354', name: 'Unique Wrong Label', v_nr: '035', league: 'B-Klasse', team: 'Bravo', rounds: { R1: 5 } },
+        { id: '355', name: 'Unique Unknown ID', v_nr: '035', league: 'B-Klasse', team_id: 'one', rounds: { R1: 5 } },
+    ],
+});
+assert.deepEqual(uniqueResolutionRoster.players.map((player) => player.id), ['348', '349'],
+    'unique v_nr fallback applies only when identity is absent; explicit identity must resolve');
+
+const unnamedUniqueResolutionRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: [
+        { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse', season: '2026/2027' },
+    ],
+    currentPlayers: [
+        { id: '359', name: 'Unnamed Unique No Alias', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+        { id: '360', name: 'Unnamed Unique Wrong Alias', v_nr: '035', league: 'B-Klasse', team: 'Bravo', rounds: { R1: 5 } },
+    ],
+});
+assert.deepEqual(unnamedUniqueResolutionRoster.players.map((player) => player.id), ['359'],
+    'a unique authoritative mapping also validates explicit identity without teamName input');
+
 let currentTeamAliasGetterCalls = 0;
 const accessorTeamAliasPlayer = {
     id: '345', name: 'Alias Accessor', v_nr: '035', league: 'B-Klasse',
@@ -1112,8 +1199,7 @@ const keyedMappingRoster = Model.buildTeamRoster({
     teamMappings: { '035': [
         { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse 2026/2027', season: '2026/2027' },
         { clubNumber: '035', teamName: 'Other Class', league: 'A-Klasse', season: '2026/2027' },
-        { clubNumber: '035', teamName: 'Invalid Season', league: 'B-Klasse', season: 'invalid' },
-        { clubNumber: '036', teamName: 'Conflicting Club', league: 'B-Klasse', season: '2026/2027' },
+        { clubNumber: '035', teamName: 'Older Team', league: 'B-Klasse', season: '2025/2026' },
     ] },
 });
 assert.deepEqual(keyedMappingRoster.players.map((player) => player.id), ['340'],
@@ -1154,6 +1240,46 @@ const unsafeMappedRoster = Model.buildTeamRoster({
 assert.deepEqual(unsafeMappedRoster.players, [],
     'unsafe authoritative mappings cannot conceal a second target team');
 assert.equal(mappingGetterCalls, 0);
+
+for (const malformedTargetMapping of [
+    {
+        teamMappings: { '035': {
+            clubNumber: '035', teamName: 'Alpha One',
+            league: 'B-Klasse', season: '2026/2027',
+        } },
+    },
+    {
+        teamMappings: { '035': [{
+            clubNumber: '035', v_nr: '036', teamName: 'Alpha One',
+            league: 'B-Klasse', season: '2026/2027',
+        }] },
+    },
+    {
+        teamMappings: [{
+            clubNumber: '035', teamName: 'Alpha One',
+            league: 'B-Klasse', season: 'invalid',
+        }],
+    },
+    {
+        leagueTeams: [{
+            clubNumber: '035', teamName: 'Alpha One',
+            league: 'B-Klasse 2025/2026', season: '2026/2027',
+        }],
+    },
+]) {
+    const malformedMappingRoster = Model.buildTeamRoster({
+        teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+        currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+        currentPlayers: [{
+            id: '356', name: 'Mapping Must Resolve', v_nr: '035',
+            league: 'B-Klasse', rounds: { R1: 5 },
+        }],
+        ...malformedTargetMapping,
+    });
+    assert.deepEqual(malformedMappingRoster.players, [],
+        'malformed target-club mappings cannot silently restore v_nr-only fallback');
+    assert.equal(malformedMappingRoster.diagnostics.invalidMapping, true);
+}
 const unsafeDirectMappedRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
     currentDatasetSeason: '2026/2027',
@@ -1185,6 +1311,34 @@ const mappedHistoricalRoster = Model.buildTeamRoster({
 });
 assert.deepEqual(mappedHistoricalRoster.players.map((player) => player.id), ['351'],
     'the same authoritative ambiguity rule applies to historical roster membership');
+
+for (const currentAffiliationRow of [
+    {
+        id: '357', name: 'Known Other Team', v_nr: '035', league: 'B-Klasse',
+        team: 'Alpha Two', team_id: 'two', rounds: { R1: 5 },
+    },
+    {
+        id: '358', name: 'Ambiguous Current Team', v_nr: '035', league: 'B-Klasse',
+        rounds: { R1: 5 },
+    },
+]) {
+    const affiliationVetoRoster = Model.buildTeamRoster({
+        teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+        currentDatasetSeason: '2026/2027', leagueTeams: authoritativeLeagueTeams,
+        currentPlayers: [currentAffiliationRow],
+        archiveData: {
+            [currentAffiliationRow.id]: [{
+                ...record({
+                    id: currentAffiliationRow.id, season: '2025/2026',
+                    name: currentAffiliationRow.name, league: 'B-Klasse', mean: 7, vNr: '035',
+                }),
+                team: 'Alpha One', team_id: 'one',
+            }],
+        },
+    });
+    assert.deepEqual(affiliationVetoRoster.players, [],
+        'known other-team and unresolved target-current affiliations both veto old roster membership');
+}
 
 const explicitAmbiguousClubRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
@@ -1340,6 +1494,36 @@ crossTypeParticipantArchive['200'][1].team_id = 'Alpha Two';
 assert.equal(Model.buildOutcomeTrainingExamples({
     archiveTables: multiTeamRows, archiveData: crossTypeParticipantArchive, clubs: multiTeamClubs,
 }).length, 0, 'a participant team label cannot conceal a different exact team ID');
+
+const unresolvedParticipantIdArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    unresolvedParticipantIdArchive[String(200 + index)][1].team = 'Alpha';
+    unresolvedParticipantIdArchive[String(200 + index)][1].team_id = 'Alpha';
+}
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows, archiveData: unresolvedParticipantIdArchive, clubs: multiTeamClubs,
+}).length, 0, 'label-only club mappings cannot resolve explicit participant team IDs');
+
+const publishedIdClubs = [
+    { number: '035', name: 'Club Alpha', teams: [
+        { id: 'one', name: 'Alpha' }, { id: 'two', name: 'Alpha Two' },
+    ] },
+    { number: '036', name: 'Bravo' },
+];
+const publishedParticipantIdArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    publishedParticipantIdArchive[String(200 + index)][1].team = 'Alpha';
+    publishedParticipantIdArchive[String(200 + index)][1].team_id = 'one';
+}
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows, archiveData: publishedParticipantIdArchive, clubs: publishedIdClubs,
+}).length, 1, 'matching participant IDs resolve only when the mapping publishes that ID');
+
+const wrongUniqueParticipantArchive = makeOutcomeArchive();
+wrongUniqueParticipantArchive['200'][1].team = 'Bravo';
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: wrongUniqueParticipantArchive, clubs: outcomeClubs,
+}).length, 0, 'explicit wrong participant identity is rejected even for a unique club mapping');
 
 for (const inconsistentScoreRow of [
     { round: 1, home: 'Alpha', away: 'Bravo', result: 'invalid', homeScore: 9, awayScore: 7 },
@@ -1662,10 +1846,6 @@ for (const conflictRows of [
         { id: '323', name: 'Conflict', v_nr: '035', company: 'Exact Team', league: 'A-Klasse', season: '2026/2027', rounds: { R1: 4 } },
     ],
     [
-        { id: '324', name: 'Conflict', v_nr: '035', company: 'Exact Team', league: 'B-Klasse', season: '2026/2027', rounds: { R1: 4 } },
-        { id: '324', name: 'Conflict', v_nr: '035', company: 'Exact Team', league: 'B-Klasse', season: '2025/2026', rounds: { R1: 4 } },
-    ],
-    [
         { id: '325', name: 'Conflict', v_nr: '035', company: 'Exact Team', league: 'B-Klasse', season: '2026/2027', rounds: { R1: 4 } },
         { id: '325', name: 'Conflict', v_nr: '035', company: 'Exact Team', league: 'B-Klasse', season: '2026/2027', rounds: { R1: 5 } },
     ],
@@ -1681,6 +1861,19 @@ for (const conflictRows of [
     assert.deepEqual(conflicted.players, []);
     assert.deepEqual(conflicted.diagnostics.ambiguousPlayerIds, [conflictRows[0].id]);
 }
+
+const targetPlusStaleRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Exact Team', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: [
+        { id: '324', name: 'Conflict', v_nr: '035', company: 'Exact Team', league: 'B-Klasse', season: '2026/2027', rounds: { R1: 4 } },
+        { id: '324', name: 'Stale Malformed', v_nr: '999', company: 'Other Team', league: 'B-Klasse', season: '2025/2026', rounds: { R1: Number.NaN } },
+    ],
+    archiveData: {}, classMean: 5,
+});
+assert.deepEqual(targetPlusStaleRoster.players.map((player) => player.id), ['324'],
+    'a stale duplicate is ignored wholesale and cannot poison a valid target-season row');
+assert.deepEqual(targetPlusStaleRoster.diagnostics.irrelevantCurrentIds, ['324']);
+assert.deepEqual(targetPlusStaleRoster.diagnostics.ambiguousCurrentIds, []);
 
 for (const badSeasonRow of [
     { id: '327', name: 'Past Season', v_nr: '035', league: 'B-Klasse', season: '2025/2026', rounds: { R1: 4 } },
