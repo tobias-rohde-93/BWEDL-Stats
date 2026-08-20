@@ -4,6 +4,8 @@
 
 Approved by the user on 2026-08-20. This document defines the product and data contract for making Match Preview useful before and during a season by combining current and historical BWEDL player data.
 
+The real archive later disproved the original one-record-per-player-season assumption. The approved multi-segment amendment in `2026-08-20-historical-match-preview-segments-design.md` governs archive storage, administrative round markers, transfers, multi-class seasons, and all-season retention.
+
 ## Problem
 
 Match Preview currently builds rosters and player strength exclusively from `ranking_data` for the selected current league. Before players have recorded results in the new season, a team can therefore have no selectable players. With only a few current appearances, a single unusually high or low result can also dominate the preview. The current percentage calculation compares two unadjusted lineup averages and does not account for the strength of the class in which earlier results were earned.

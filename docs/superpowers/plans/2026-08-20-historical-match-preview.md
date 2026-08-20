@@ -870,6 +870,8 @@ git commit -m "docs: explain historical match forecasts"
 
 ### Task 7: Generate and audit the real enriched archive artifact
 
+> **Superseded after real-source diagnosis.** The live archive contains legitimate multi-class and transfer segments for the same player and season, plus bounded administrative round markers. Execute `2026-08-20-historical-match-preview-segments.md` Tasks A-F instead. Resume this plan at Task 8 only after the segment plan publishes and validates the real all-season artifact.
+
 **Files:**
 - Modify: `archive_data.js`
 - Modify: `tests/test_match_preview_backtest.js` only if the real schema exposes a previously unrepresented valid layout; do not weaken statistical assertions.
