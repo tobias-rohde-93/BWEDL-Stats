@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const Model = require('../match_preview_model.js');
+const committedLeagueData = require('../league_data.json');
 
 function deepFreeze(value) {
     if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -112,6 +113,52 @@ assert.equal(Model.normalizeLeagueClass('Bezirksliga / A'), null);
 assert.equal(Model.normalizeLeagueClass('Pokalrunde A-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('Cupfinale B-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('Mixed C-Klasse'), null);
+for (const label of [
+    'Ligacup A-Klasse',
+    'Supercup B-Klasse',
+    'Mixgruppe C-Klasse',
+    'Mixedklasse A-Klasse',
+    'A bzw. B-Klasse',
+    'A oder B-Klasse',
+    'A,B-Klasse',
+    'A|B-Klasse',
+    'Oberliga A',
+    'Pokalhalbfinale C-Klasse',
+    'Ligapokalrunde A-Klasse',
+]) {
+    assert.equal(Model.normalizeLeagueClass(label), null, `${label} is not one regular class`);
+}
+
+const committedRegularLabels = new Map([
+    ['Bezirksliga 2026-2027', 'Bezirksliga'],
+    ['A-Klasse Gruppe 1 2026-2027', 'A-Klasse'],
+    ['A-Klasse Gruppe 2 2026-2027', 'A-Klasse'],
+    ['B-Klasse Gruppe 1 2026-2027', 'B-Klasse'],
+    ['B-Klasse Gruppe 2 2026-2027', 'B-Klasse'],
+    ['B-Klasse Gruppe 3 2026-2027', 'B-Klasse'],
+    ['C-Klasse Gruppe 1 2026-2027', 'C-Klasse'],
+    ['C-Klasse Gruppe 2 2026-2027', 'C-Klasse'],
+    ['C-Klasse Gruppe 3 2026-2027', 'C-Klasse'],
+    ['C-Klasse Gruppe 4 2026-2027', 'C-Klasse'],
+]);
+for (const [label, expectedClass] of committedRegularLabels) {
+    assert.equal(Object.hasOwn(committedLeagueData.leagues, label), true, `${label} is committed data`);
+    assert.equal(Model.normalizeLeagueClass(label), expectedClass);
+}
+
+const compactSeparators = [' / ', ',', ' | ', ' & ', ' + ', ' und ', ' oder ', ' bzw. ', ' bzw '];
+for (const left of ['A', 'B', 'C']) {
+    for (const right of ['A', 'B', 'C']) {
+        if (left === right) continue;
+        for (const separator of compactSeparators) {
+            assert.equal(
+                Model.normalizeLeagueClass(`${left}${separator}${right}-Klasse`),
+                null,
+                `${left}${separator}${right}-Klasse stays fail-closed`,
+            );
+        }
+    }
+}
 assert.equal(Model.canonicalSeason('20/22'), '2020/22');
 assert.equal(Model.canonicalSeason('22/23'), '2022/23');
 assert.equal(Model.canonicalSeason('1999/00'), '1999/00');
