@@ -5,6 +5,12 @@
     "headers": ["Pl.", "V-Nr.", "ID", "Vorname", "Nachname", "1", "2", "3", "Gesamt"],
     "rows": [["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"]]
   },
+  "live_2025_2026": {
+    "season": "2025/2026",
+    "league": "A-Klasse",
+    "headers": ["Rang", "V-Nr.", "Nr.", "Vorname", "Name", "1", "2", "3", "Gesamt"],
+    "rows": [["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"]]
+  },
   "combining_name": {
     "season": "2024/2025",
     "league": "B-Klasse",
@@ -22,5 +28,11 @@
     "league": "B-Klasse",
     "headers": ["Pl.", "V-Nr.", "ID", "Vorname", "Nachname", "1", "2", "Gesamt"],
     "rows": [["4", "035", "812", "Falsch", "Summe", "4", "5", "99"]]
+  },
+  "suspicious_round_header": {
+    "season": "2025/2026",
+    "league": "A-Klasse",
+    "headers": ["Rang", "V-Nr.", "Nr.", "Vorname", "Name", "Runde", "Gesamt"],
+    "rows": [["35", "018", "4711", "Mario", "Ackermann", "12", "12"]]
   }
 }

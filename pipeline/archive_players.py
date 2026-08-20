@@ -13,6 +13,7 @@ class ArchivePlayerParseError(ValueError):
 
 
 ROUND_HEADER = re.compile(r"^(?:r(?:unde)?\s*)?(\d{1,2})$", re.I)
+_ROUND_LIKE_HEADER = re.compile(r"^r(?:unde)?(?=$|[\s:._-]|\d)", re.I)
 
 
 def _text(value: Any) -> str:
@@ -68,6 +69,11 @@ def parse_round_value(value: Any) -> int | str:
     return "x" if text.casefold() == "x" else ""
 
 
+def _is_suspicious_round_header(value: Any) -> bool:
+    key = _header_key(value)
+    return ROUND_HEADER.fullmatch(key) is None and bool(_ROUND_LIKE_HEADER.match(key))
+
+
 def locate_archive_columns(headers: list[str]) -> dict[str, Any]:
     """Locate supported archive columns and canonicalize round positions."""
 
@@ -85,11 +91,11 @@ def locate_archive_columns(headers: list[str]) -> dict[str, Any]:
     for index, source in enumerate(headers):
         key = _header_key(source)
         plain_key = key.rstrip(".")
-        if plain_key in {"pl", "platz"}:
+        if plain_key in {"pl", "platz", "rang"}:
             columns["rank"] = index
         elif plain_key in {"v-nr", "vnr"}:
             columns["v_nr"] = index
-        elif plain_key == "id":
+        elif plain_key in {"id", "nr"}:
             columns["id"] = index
         elif plain_key == "vorname":
             columns["first_name"] = index
@@ -107,6 +113,16 @@ def locate_archive_columns(headers: list[str]) -> dict[str, Any]:
                     raise ArchivePlayerParseError("duplicate round column")
                 round_numbers.add(number)
                 columns["rounds"].append((number, index))
+            elif _is_suspicious_round_header(key):
+                raise ArchivePlayerParseError(f"invalid round header: {source!r}")
+
+    if (
+        columns["first_name"] is not None
+        and columns["last_name"] is None
+        and columns["name"] is not None
+    ):
+        columns["last_name"] = columns["name"]
+        columns["name"] = None
 
     required = ("rank", "id", "points")
     if any(columns[name] is None for name in required):

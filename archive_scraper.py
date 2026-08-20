@@ -185,7 +185,7 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                             .slice(0, 5)
                             .find((row) => (
                                 Array.from(row.querySelectorAll('th, td')).some((cell) =>
-                                    /^(?:Pl\\.?|Platz|V-Nr\\.?|ID|Gesamt)$/i.test(cell.innerText.trim())
+                                    /^(?:Pl\\.?|Platz|Rang|V-Nr\\.?|ID|Nr\\.?|Gesamt)$/i.test(cell.innerText.trim())
                                 )
                             ));
                         const headers = (

@@ -429,6 +429,8 @@ class _ArchiveRankingPage(_AsyncPage):
             return {"found": False}
         if self.evaluate_calls == 3:
             assert "thead th, thead td" in source
+            assert "|Rang|" in source
+            assert r"|Nr\.?|" in source
             assert "return { league, headers, rows };" in source
             return deepcopy(self.tables)
         raise AssertionError("unexpected archive page evaluation")
@@ -708,7 +710,7 @@ def _archive_table(rows):
     return {
         "league": "A-Klasse",
         "headers": [
-            "Pl.", "V-Nr.", "ID", "Vorname", "Nachname",
+            "Rang", "V-Nr.", "Nr.", "Vorname", "Name",
             "1", "2", "3", "Gesamt",
         ],
         "rows": rows,

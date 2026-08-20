@@ -42,6 +42,25 @@ def test_modern_archive_row_keeps_round_evidence(fixture: dict) -> None:
     assert fixture["modern"] == source
 
 
+def test_live_archive_headers_keep_stable_id_and_separate_surname(
+    fixture: dict,
+) -> None:
+    record = parse_archive_ranking_table(**fixture["live_2025_2026"])[0]
+
+    assert record == {
+        "id": "4711",
+        "season": "2025/2026",
+        "rank": 35,
+        "points": 12,
+        "league": "A-Klasse",
+        "name": "Mario Ackermann",
+        "v_nr": "018",
+        "rounds": {"R1": 5, "R2": "x", "R3": 7},
+        "appearances": 2,
+        "points_per_appearance": 6.0,
+    }
+
+
 def test_combining_archive_name_is_normalized_to_nfc(fixture: dict) -> None:
     record = parse_archive_ranking_table(**fixture["combining_name"])[0]
 
@@ -65,6 +84,18 @@ def test_total_only_archive_row_remains_career_only(fixture: dict) -> None:
 def test_complete_round_sequence_must_match_total(fixture: dict) -> None:
     with pytest.raises(ArchivePlayerParseError, match="round total"):
         parse_archive_ranking_table(**fixture["inconsistent"])
+
+
+@pytest.mark.parametrize("header", ["R", "Runde", "Runde X", "R1x"])
+def test_round_like_header_without_valid_number_is_rejected(
+    fixture: dict,
+    header: str,
+) -> None:
+    table = deepcopy(fixture["suspicious_round_header"])
+    table["headers"][5] = header
+
+    with pytest.raises(ArchivePlayerParseError, match="round header"):
+        parse_archive_ranking_table(**table)
 
 
 @pytest.mark.parametrize(
