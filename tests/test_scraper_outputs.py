@@ -1,5 +1,6 @@
 import ast
 import asyncio
+from copy import deepcopy
 import inspect
 import json
 import subprocess
@@ -405,6 +406,34 @@ class _AsyncPlaywright(_Playwright):
         return self.browser
 
 
+class _ArchiveRankingPage(_AsyncPage):
+    def __init__(self, tables):
+        self.tables = tables
+        self.evaluate_calls = 0
+        self.url = archive_scraper.ARCHIVE_URL
+
+    async def goto(self, url, **kwargs):
+        self.url = url
+
+    async def wait_for_selector(self, *args, **kwargs):
+        return None
+
+    async def evaluate(self, source, *args, **kwargs):
+        self.evaluate_calls += 1
+        if self.evaluate_calls == 1:
+            return [{
+                "href": "https://www.bwedl.de/archiv/2025-2026/",
+                "text": "Saison 2025/2026",
+            }]
+        if self.evaluate_calls == 2:
+            return {"found": False}
+        if self.evaluate_calls == 3:
+            assert "thead th, thead td" in source
+            assert "return { league, headers, rows };" in source
+            return deepcopy(self.tables)
+        raise AssertionError("unexpected archive page evaluation")
+
+
 @pytest.mark.parametrize(
     ("module", "save_name"),
     [
@@ -673,6 +702,126 @@ def test_archive_save_writes_only_current_candidate_data(
     assert json.loads(candidate_content.removeprefix(prefix).removesuffix(";\n")) == (
         current_payload
     )
+
+
+def _archive_table(rows):
+    return {
+        "league": "A-Klasse",
+        "headers": [
+            "Pl.", "V-Nr.", "ID", "Vorname", "Nachname",
+            "1", "2", "3", "Gesamt",
+        ],
+        "rows": rows,
+    }
+
+
+def _run_archive_candidate(monkeypatch, page, output_dir, artifacts_dir):
+    playwright = _AsyncPlaywright()
+    playwright.browser.context.page = page
+    monkeypatch.setattr(archive_scraper, "async_playwright", lambda: playwright)
+    status = archive_scraper.main([
+        "--output-dir", str(output_dir),
+        "--artifacts-dir", str(artifacts_dir),
+    ])
+    return status, playwright
+
+
+def test_archive_scraper_preserves_round_evidence_in_candidate_only(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    (tmp_path / "archive_data.js").write_text(sentinel, encoding="utf-8")
+    page = _ArchiveRankingPage([_archive_table([
+        ["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"]
+    ])])
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, output_dir, tmp_path / "artifacts"
+    )
+
+    assert status == 0
+    candidate = (output_dir / "archive_data.js").read_text(encoding="utf-8")
+    payload = json.loads(
+        candidate.removeprefix("window.ARCHIVE_DATA = ").removesuffix(";\n")
+    )
+    assert payload == {
+        "4711": [{
+            "season": "2025/2026",
+            "rank": 35,
+            "points": 12,
+            "league": "A-Klasse",
+            "name": "Mario Ackermann",
+            "v_nr": "018",
+            "rounds": {"R1": 5, "R2": "x", "R3": 7},
+            "appearances": 2,
+            "points_per_appearance": 6.0,
+        }]
+    }
+    assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+
+
+def test_archive_scraper_rejects_duplicate_player_season_with_diagnostics(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+) -> None:
+    duplicate = [
+        ["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"],
+        ["36", "018", "4711", "Mario", "Ackermann", "4", "x", "6", "10"],
+    ]
+    output_dir = tmp_path / "candidate"
+    artifacts_dir = tmp_path / "artifacts"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage([_archive_table(duplicate)]),
+        output_dir,
+        artifacts_dir,
+    )
+
+    assert status == 1
+    assert not (output_dir / "archive_data.js").exists()
+    assert (artifacts_dir / "archive_scraper.html").is_file()
+    assert (artifacts_dir / "archive_scraper.png").is_file()
+    assert (artifacts_dir / "archive_scraper-trace.zip").is_file()
+    failure_lines = [
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    ]
+    assert len(failure_lines) == 1
+
+
+def test_archive_scraper_candidate_serialization_is_deterministic(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    rows = [
+        ["2", "018", "20", "Grace", "Hopper", "4", "x", "6", "10"],
+        ["1", "035", "100", "Ada", "Lovelace", "5", "x", "7", "12"],
+    ]
+    first_dir = tmp_path / "first"
+    second_dir = tmp_path / "second"
+
+    first_status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage([_archive_table(rows)]),
+        first_dir,
+        tmp_path / "first-artifacts",
+    )
+    second_status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage([_archive_table(list(reversed(rows)))]),
+        second_dir,
+        tmp_path / "second-artifacts",
+    )
+
+    assert first_status == second_status == 0
+    assert (first_dir / "archive_data.js").read_bytes() == (
+        second_dir / "archive_data.js"
+    ).read_bytes()
 
 
 @pytest.mark.parametrize(

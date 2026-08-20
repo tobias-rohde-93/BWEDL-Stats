@@ -5,6 +5,10 @@ from playwright.async_api import async_playwright
 import json
 import re
 from pathlib import Path
+from pipeline.archive_players import (
+    merge_archive_entries,
+    parse_archive_ranking_table,
+)
 from pipeline.diagnostics import AsyncDiagnosticSession, scraper_status
 from pipeline.urls import normalize_bwedl_url
 
@@ -104,7 +108,7 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         
         print(f"DEBUG: Unique seasons to scrape: {unique_seasons}")
         
-        all_history = {} 
+        all_entries = []
 
         if not unique_seasons:
             raise RuntimeError("No unique archive seasons found")
@@ -176,13 +180,25 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                     const processedSet = new Set();
                     
                     function extractTableData(table, league) {
-                        const rows = Array.from(table.querySelectorAll('tbody tr'));
-                        const data = rows.map(tr => {
-                            const cells = Array.from(tr.querySelectorAll('td'));
-                            if (cells.length < 3) return null;
-                            return cells.map(c => c.innerText.trim());
-                        }).filter(r => r !== null);
-                        return { league: league, rows: data };
+                        const headerCells = Array.from(table.querySelectorAll('thead th, thead td'));
+                        const fallbackHeader = Array.from(table.querySelectorAll('tr'))
+                            .slice(0, 5)
+                            .find((row) => (
+                                Array.from(row.querySelectorAll('th, td')).some((cell) =>
+                                    /^(?:Pl\\.?|Platz|V-Nr\\.?|ID|Gesamt)$/i.test(cell.innerText.trim())
+                                )
+                            ));
+                        const headers = (
+                            headerCells.length
+                                ? headerCells
+                                : Array.from(fallbackHeader?.querySelectorAll('th, td') || [])
+                        ).map((cell) => cell.innerText.trim());
+                        const rows = Array.from(table.querySelectorAll('tbody tr, tr'))
+                            .filter((row) => row !== fallbackHeader)
+                            .map((row) => Array.from(row.querySelectorAll('td'))
+                                .map((cell) => cell.innerText.trim()))
+                            .filter((row) => row.length >= 3);
+                        return { league, headers, rows };
                     }
 
                     // Strategy 1: Forward Search from Headers
@@ -242,141 +258,16 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 }''')
                 
                 print(f"  Found {len(tables_data)} league tables on {page.url}.")
-                
+
+                clean_season = season_name.replace("Saison ", "").strip()
+                clean_season = clean_season.replace("Ranglisten ", "").strip()
                 for table in tables_data:
-                    league = table['league']
-                    
-                    for row in table['rows']:
-                        if len(row) < 3: continue
-
-                        # Parsing logic
-                        # Dynamic Column Detection
-                        # We expect: Rank | (Club) | Name | ID | ...  OR  Rank | Name | ID ...
-                        
-                        rank = 0
-                        try:
-                            rank = int(row[0].replace('.', ''))
-                        except:
-                            pass
-                            
-                        p_id = ""
-                        p_name = "Unbekannt"
-                        
-                        # Find the Player ID column (digits, usually > 99)
-                        id_idx = -1
-                        
-                        # Scan typical range for ID (indices 1 to 4)
-                        for i in range(1, min(len(row), 5)):
-                            val = row[i].strip()
-                            if val.isdigit() and int(val) > 0:
-                                # Found a candidate ID
-                                
-                                # Verification: Name should be adjacent and NOT a number
-                                # Check Left (i-1)
-                                if i > 0 and not row[i-1].strip().isdigit():
-                                    id_idx = i
-                                    break
-                                
-                                # Check Right (i+1) - e.g. Rank | ID | Name
-                                if i < len(row)-1 and not row[i+1].strip().isdigit():
-                                     # This could be the ID
-                                     # But let's verify if i-1 was maybe the Club ID (digits)
-                                     # If i-1 is digits (Club) and i is ID, then Name is i+1?
-                                     # Or Name is i-2?
-                                     id_idx = i
-                                     # Don't break yet, prefer standard (Name | ID) if found later?
-                                     # Actually Name|ID is most common.
-                        
-
-                        # Helper to check if a string is a likely name (contains letters)
-                        def is_valid_name(s):
-                            s = s.strip()
-                            if not s: return False
-                            if s.isdigit(): return False
-                            # Must contain at least one letter?
-                            if not re.search(r'[a-zA-Z]', s): return False
-                            return True
-
-                        if id_idx != -1:
-                            p_id = row[id_idx].strip()
-                            
-                            # Deduce Name Position relative to ID
-
-                        if id_idx != -1:
-                            p_id = row[id_idx].strip()
-                            
-                            # Deduce Name Position relative to ID
-                            
-                            # Pattern A: ID | First Name | Last Name (Common in 2022+ archives)
-                            # e.g. ['1', '030', '1560', 'Thomas', 'Köhnlein', ...]
-                            # ID is at id_idx. Name is id_idx+1 and id_idx+2
-                            if id_idx < len(row)-2 and is_valid_name(row[id_idx+1]):
-                                first = row[id_idx+1].strip()
-                                last = ""
-                                if is_valid_name(row[id_idx+2]):
-                                    last = row[id_idx+2].strip()
-                                
-                                if last:
-                                    p_name = f"{first} {last}"
-                                else:
-                                    p_name = first
-                            
-                            # Pattern B: Name | ID (Legacy?)
-                            # Check if left neighbor is text
-                            elif id_idx > 0 and is_valid_name(row[id_idx-1]):
-                                p_name = row[id_idx-1].strip()
-                            
-                            # Pattern C: ID | Name (Single column)
-                            elif id_idx < len(row)-1 and is_valid_name(row[id_idx+1]):
-                                p_name = row[id_idx+1].strip()
-
-                        # Fallback for very short rows or weird formats
-                        if p_name == "Unbekannt" or not is_valid_name(p_name):
-                             # Try to look for any valid name column
-                             # row[3] and row[4] seem likely candidates based on debug dump
-                             if len(row) > 4 and is_valid_name(row[3]) and is_valid_name(row[4]):
-                                 p_name = f"{row[3]} {row[4]}"
-                             elif len(row) > 3 and is_valid_name(row[3]):
-                                 p_name = row[3]
-
-                        # Clean Name (Flip "Last, First")
-                        if "," in p_name: 
-                            parts = p_name.split(",")
-                            if len(parts) >= 2:
-                                p_name = f"{parts[1].strip()} {parts[0].strip()}"
-
-
-                                
-                        # Points usually last column
-                        points = 0
-                        try:
-                            if row[-1].isdigit():
-                                points = int(row[-1])
-                        except:
-                            points = 0
-
-                        if p_id and p_name != "Unbekannt":
-                            clean_season = season_name.replace("Saison ", "").strip()
-                            clean_season = clean_season.replace("Ranglisten ", "").strip()
-                            if "2020" in clean_season and "2022" in clean_season: clean_season = "20/22"
-                            elif "2022" in clean_season and "2023" in clean_season: clean_season = "22/23"
-                            elif "2023" in clean_season and "2024" in clean_season: clean_season = "23/24"
-                            elif "2024" in clean_season and "2025" in clean_season: clean_season = "24/25"
-
-                            entry = {
-                                "season": clean_season,
-                                "rank": rank,
-                                "points": points,
-                                "league": league,
-                                "name": p_name
-                            }
-                            
-                            if p_id not in all_history:
-                                all_history[p_id] = []
-                            
-                            exists = any(e['season'] == clean_season for e in all_history[p_id])
-                            if not exists:
-                                all_history[p_id].append(entry)
+                    all_entries.extend(parse_archive_ranking_table(
+                        season=clean_season,
+                        league=table['league'],
+                        headers=table['headers'],
+                        rows=table['rows'],
+                    ))
 
             except Exception as e:
                 failures.append(e)
@@ -386,9 +277,10 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             raise RuntimeError(
                 f"archive scrape incomplete ({len(failures)} item failures)"
             ) from failures[0]
-        if not all_history or not any(all_history.values()):
+        if not all_entries:
             raise RuntimeError("No recognized archive history records found")
-        
+
+        all_history = merge_archive_entries(all_entries)
         output_path = save_archive_data(all_history, output_dir)
         print(f"Archive data saved to {output_path}.")
 

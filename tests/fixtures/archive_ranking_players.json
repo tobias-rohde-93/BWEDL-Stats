@@ -1,0 +1,26 @@
+{
+  "modern": {
+    "season": "2025/2026",
+    "league": "A-Klasse",
+    "headers": ["Pl.", "V-Nr.", "ID", "Vorname", "Nachname", "1", "2", "3", "Gesamt"],
+    "rows": [["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"]]
+  },
+  "combining_name": {
+    "season": "2024/2025",
+    "league": "B-Klasse",
+    "headers": ["Platz", "V-Nr.", "ID", "Vorname", "Nachname", "R1", "R2", "Gesamt"],
+    "rows": [["8", "035", "900", "Jose\u0301", "Mu\u0308ller", "6", "4", "10"]]
+  },
+  "totals_only": {
+    "season": "2020/2022",
+    "league": "C-Klasse",
+    "headers": ["Pl.", "ID", "Name", "Gesamt"],
+    "rows": [["9", "811", "Legacy Spieler", "21"]]
+  },
+  "inconsistent": {
+    "season": "2023/2024",
+    "league": "B-Klasse",
+    "headers": ["Pl.", "V-Nr.", "ID", "Vorname", "Nachname", "1", "2", "Gesamt"],
+    "rows": [["4", "035", "812", "Falsch", "Summe", "4", "5", "99"]]
+  }
+}
