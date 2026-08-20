@@ -19,12 +19,7 @@
     const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER;
     const INVALID_CLONE = Object.freeze({ invalid: true });
     const ARCHIVE_INDEXES = new WeakSet();
-    const COMPETITION_FAMILY_PATTERNS = Object.freeze([
-        /(?<![\p{L}\p{N}])(?:mix|mixed)(?:\s*[- ]?\s*(?:klasse|gruppe))?(?![\p{L}\p{N}])/u,
-        /(?<![\p{L}\p{N}])(?:liga\s*[- ]?\s*)?pokal(?:\s*[- ]?\s*(?:runde|finale|halbfinale))?(?![\p{L}\p{N}])/u,
-        /(?<![\p{L}\p{N}])(?:(?:super|liga|world|euro)\s*[- ]?\s*)?cup(?:\s*[- ]?\s*(?:runde|finale|halbfinale|spiel))?(?![\p{L}\p{N}])/u,
-    ]);
-    const INCOMPATIBLE_LEAGUE_FAMILY = /(?<![\p{L}\p{N}])(?:ober|bundes|verbands|landes|regional|kreis)liga(?![\p{L}\p{N}])/u;
+    const LEAGUE_CLASS_GRAMMAR = /^(bezirksliga|([abc])\s*(?:[-\u2010-\u2015]\s*)?klasse)(?:\s+gruppe\s+[a-z0-9]+)?(?:\s+(?:(?:\/\s+)?saison\s+)?((?:\d{4}\s*[/\-]\s*\d{4})|(?:\d{4}\s*[/\-]\s*\d{2})|(?:\d{2}\s*[/\-]\s*\d{2})))?$/u;
 
     function ownData(object, key) {
         if (!object || (typeof object !== 'object' && typeof object !== 'function')) return null;
@@ -149,30 +144,17 @@
 
     function normalizeLeagueClass(value) {
         if (typeof value !== 'string') return null;
-        const text = value.normalize('NFKC').toLocaleLowerCase('de-DE');
-        const token = (word) => new RegExp(`(?<![\\p{L}\\p{N}])${word}(?![\\p{L}\\p{N}])`, 'u');
-        if (COMPETITION_FAMILY_PATTERNS.some((pattern) => pattern.test(text))
-            || INCOMPATIBLE_LEAGUE_FAMILY.test(text)) return null;
-
-        const categories = new Set();
-        const addCategory = (category) => {
-            categories.add(category === 'bezirksliga'
-                ? 'Bezirksliga'
-                : `${category.toUpperCase()}-Klasse`);
-        };
-        if (token('bezirksliga').test(text)) categories.add('Bezirksliga');
-        for (const match of text.matchAll(
-            /(?<![\p{L}\p{N}])([abc])\s*[-\u2010-\u2015 ]?\s*klasse(?![\p{L}\p{N}])/gu,
-        )) {
-            categories.add(`${match[1].toUpperCase()}-Klasse`);
+        const text = value.normalize('NFKC').trim().replace(/\s+/gu, ' ')
+            .toLocaleLowerCase('de-DE');
+        const match = LEAGUE_CLASS_GRAMMAR.exec(text);
+        if (!match) return null;
+        if (match[3]) {
+            const season = parseSeason(match[3]);
+            if (!season || season.endYear !== season.startYear + 1) return null;
         }
-        for (const match of text.matchAll(
-            /(?<![\p{L}\p{N}])(bezirksliga|[abc])(?:\s*[-\u2010-\u2015]?\s*klasse)?\s*(?:[-\u2010-\u2015]\s*)?(?:\/|,|\||&|\+|und|oder|bzw\.?)\s*(bezirksliga|[abc])(?:\s*[-\u2010-\u2015]?\s*klasse)?(?![\p{L}\p{N}])/gu,
-        )) {
-            addCategory(match[1]);
-            addCategory(match[2]);
-        }
-        return categories.size === 1 ? categories.values().next().value : null;
+        return match[1] === 'bezirksliga'
+            ? 'Bezirksliga'
+            : `${match[2].toUpperCase()}-Klasse`;
     }
 
     function roundStats(rounds) {

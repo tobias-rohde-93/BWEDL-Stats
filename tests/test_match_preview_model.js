@@ -92,14 +92,19 @@ assert.equal(browserContext.BwedlMatchPreviewModel.normalizeLeagueClass('A-Klass
 
 assert.equal(Model.normalizeLeagueClass('B-Klasse Gruppe 2 2026-2027'), 'B-Klasse');
 assert.equal(Model.normalizeLeagueClass('  BEZIRKSLIGA / Saison 2025/26  '), 'Bezirksliga');
-assert.equal(Model.normalizeLeagueClass('C\u2011Klasse Staffel Süd'), 'C-Klasse');
+assert.equal(Model.normalizeLeagueClass('A Klasse 2026/2027'), 'A-Klasse');
+assert.equal(Model.normalizeLeagueClass('B\u2011Klasse Gruppe B 2026/27'), 'B-Klasse');
+assert.equal(Model.normalizeLeagueClass('C-Klasse Gruppe A2 26/27'), 'C-Klasse');
+assert.equal(Model.normalizeLeagueClass('A-Klasse Gruppe Mixdorf'), 'A-Klasse');
+assert.equal(Model.normalizeLeagueClass('B-Klasse Gruppe Cupertino'), 'B-Klasse');
 assert.equal(Model.normalizeLeagueClass('Mix-Klasse Gruppe B'), null);
 assert.equal(Model.normalizeLeagueClass('Ligapokal A-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('ÄBezirksliga'), null, 'Unicode letters form a real boundary');
 assert.equal(Model.normalizeLeagueClass('B-Klassenpokal'), null);
 assert.equal(Model.normalizeLeagueClass('Oberliga'), null);
-assert.equal(Model.normalizeLeagueClass('A-Klasse Mixdorf'), 'A-Klasse');
-assert.equal(Model.normalizeLeagueClass('B-Klasse Cupertino'), 'B-Klasse');
+assert.equal(Model.normalizeLeagueClass('C\u2011Klasse Staffel Süd'), null);
+assert.equal(Model.normalizeLeagueClass('A-Klasse Mixdorf'), null);
+assert.equal(Model.normalizeLeagueClass('B-Klasse Cupertino'), null);
 assert.equal(Model.normalizeLeagueClass('A/B'), null);
 assert.equal(Model.normalizeLeagueClass('A-/B-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('A-Klasse / B-Klasse'), null);
@@ -125,28 +130,41 @@ for (const label of [
     'Oberliga A',
     'Pokalhalbfinale C-Klasse',
     'Ligapokalrunde A-Klasse',
+    'A-Klasse; Freundschaft',
+    'A-Klasse: Freundschaft',
+    'A-Klasse \\ Freundschaft',
+    'A-Klasse, Freundschaft',
+    'A-Klasse gegen B-Klasse',
+    'A-Klasse vs. B-Klasse',
+    'A-Klasse u. B-Klasse',
+    'A-Klasse Pokalspiel',
+    'Ligapokalspiel A-Klasse',
+    'Freundschaft A-Klasse',
+    'A-Klasse 2025/2027',
+    'A-Klasse Gruppe Süd',
 ]) {
     assert.equal(Model.normalizeLeagueClass(label), null, `${label} is not one regular class`);
 }
 
-const committedRegularLabels = new Map([
-    ['Bezirksliga 2026-2027', 'Bezirksliga'],
-    ['A-Klasse Gruppe 1 2026-2027', 'A-Klasse'],
-    ['A-Klasse Gruppe 2 2026-2027', 'A-Klasse'],
-    ['B-Klasse Gruppe 1 2026-2027', 'B-Klasse'],
-    ['B-Klasse Gruppe 2 2026-2027', 'B-Klasse'],
-    ['B-Klasse Gruppe 3 2026-2027', 'B-Klasse'],
-    ['C-Klasse Gruppe 1 2026-2027', 'C-Klasse'],
-    ['C-Klasse Gruppe 2 2026-2027', 'C-Klasse'],
-    ['C-Klasse Gruppe 3 2026-2027', 'C-Klasse'],
-    ['C-Klasse Gruppe 4 2026-2027', 'C-Klasse'],
-]);
-for (const [label, expectedClass] of committedRegularLabels) {
-    assert.equal(Object.hasOwn(committedLeagueData.leagues, label), true, `${label} is committed data`);
-    assert.equal(Model.normalizeLeagueClass(label), expectedClass);
+for (const label of Object.keys(committedLeagueData.leagues)) {
+    let expectedClass = null;
+    if (/^Bezirksliga 20[0-9]{2}-20[0-9]{2}$/u.test(label)) {
+        expectedClass = 'Bezirksliga';
+    } else {
+        const regularMatch = /^([ABC])-Klasse Gruppe [A-Za-z0-9]+ 20[0-9]{2}-20[0-9]{2}$/u.exec(label);
+        if (regularMatch) expectedClass = `${regularMatch[1]}-Klasse`;
+    }
+    assert.equal(
+        Model.normalizeLeagueClass(label),
+        expectedClass,
+        `${label} follows the closed-world committed-label contract`,
+    );
 }
 
-const compactSeparators = [' / ', ',', ' | ', ' & ', ' + ', ' und ', ' oder ', ' bzw. ', ' bzw '];
+const compactSeparators = [
+    ' / ', ',', ' , ', ' | ', ' & ', ' + ', ' und ', ' oder ', ' bzw. ', ' bzw ',
+    '; ', ': ', ' \\ ', ' gegen ', ' vs. ', ' u. ',
+];
 for (const left of ['A', 'B', 'C']) {
     for (const right of ['A', 'B', 'C']) {
         if (left === right) continue;
