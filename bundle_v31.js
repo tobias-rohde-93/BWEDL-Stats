@@ -378,6 +378,13 @@ function replaceWithSafeTables(container, tableHtml) {
     return tableCount;
 }
 
+function createScrollableTableRegion(table) {
+    const region = document.createElement('div');
+    region.className = 'table-container table-scroll';
+    region.appendChild(table);
+    return region;
+}
+
 function replaceWithSafeCupTables(container, tableHtml, matchDays) {
     const safeTables = Array.from(createSafeTablesFromHtml(tableHtml).children);
     const roundNames = Object.keys(matchDays || {});
@@ -388,7 +395,7 @@ function replaceWithSafeCupTables(container, tableHtml, matchDays) {
             heading.textContent = roundNames[index];
             fragment.appendChild(heading);
         }
-        fragment.appendChild(table);
+        fragment.appendChild(createScrollableTableRegion(table));
     });
     container.replaceChildren(fragment);
     return safeTables.length;
@@ -5717,7 +5724,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     tableBody.appendChild(tableRow);
                 });
                 tableElement.appendChild(tableBody);
-                resultsContainer.appendChild(tableElement);
+                resultsContainer.appendChild(createScrollableTableRegion(tableElement));
             });
             cleanTable(resultsContainer);
         } else {
