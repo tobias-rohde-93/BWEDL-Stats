@@ -39,6 +39,16 @@
     });
     const LEAGUE_CLASS_GRAMMAR = /^(bezirksliga|([abc])\s*(?:[-\u2010-\u2015]\s*)?klasse)(?:\s+gruppe\s+([a-z0-9]+))?(?:\s+(?:(?:\/\s+)?saison\s+)?((?:\d{4}\s*[/\-]\s*\d{4})|(?:\d{4}\s*[/\-]\s*\d{2})|(?:\d{2}\s*[/\-]\s*\d{2})))?$/u;
     const RESERVED_GROUP_TOKEN = /^(?:mix(?:ed)?(?:klasse|gruppe)?|(?:liga|super|world|euro)?cup(?:runde|finale|halbfinale|spiel)?|(?:liga)?pokal(?:runde|finale|halbfinale|spiel)?|freundschaft)$/u;
+    const ARCHIVE_ADMIN_MARKERS = Object.freeze(new Set(['x', 'vw', 'd', 'kp', '*']));
+    const V2_CONTAINER_FIELDS = Object.freeze(new Set([
+        'season', 'league', 'rank', 'name', 'points', 'primary_segment_id',
+        'segments', 'v_nr', 'rounds', 'appearances', 'points_per_appearance',
+        'identity_ambiguous', 'round_overlap_ambiguous',
+    ]));
+    const V2_SEGMENT_FIELDS = Object.freeze(new Set([
+        'segment_id', 'league', 'rank', 'name', 'points', 'v_nr',
+        'rounds', 'appearances', 'points_per_appearance',
+    ]));
 
     function ownData(object, key) {
         if (!object || (typeof object !== 'object' && typeof object !== 'function')) return null;
@@ -244,18 +254,26 @@
     }
 
     function validateRoundSequence(rounds) {
-        if (!rounds || typeof rounds !== 'object' || Array.isArray(rounds)) return null;
+        if (!rounds || typeof rounds !== 'object') return null;
+        const arrayInspection = inspectArray(rounds);
+        const namesInspection = inspectNames(rounds);
+        if (!arrayInspection.ok || arrayInspection.isArray || !namesInspection.ok) return null;
         const numbers = [];
-        for (const key of ownNames(rounds)) {
-            const descriptor = ownData(rounds, key);
-            if (!descriptor || !descriptor.enumerable) continue;
+        for (const key of namesInspection.names) {
+            const inspection = inspectOwn(rounds, key);
+            if (!inspection.ok || !inspection.isData) return null;
+            const descriptor = inspection.descriptor;
+            if (!descriptor.enumerable) continue;
             const match = /^R([1-9][0-9]*)$/u.exec(key);
             if (!match) return null;
             const number = Number(match[1]);
             if (!Number.isSafeInteger(number)) return null;
             const value = descriptor.value;
             const numeric = parseCanonicalInteger(value);
-            if (numeric === null && !(typeof value === 'string' && (value === '' || value === 'x'))) {
+            const marker = typeof value === 'string'
+                ? value.normalize('NFKC').trim().toLocaleLowerCase('de-DE')
+                : null;
+            if (numeric === null && marker !== '' && !ARCHIVE_ADMIN_MARKERS.has(marker)) {
                 return null;
             }
             numbers.push(number);
@@ -264,6 +282,160 @@
         numbers.sort((left, right) => left - right);
         if (numbers.some((number, index) => number !== index + 1)) return null;
         return roundStats(rounds);
+    }
+
+    function normalizeArchiveText(value) {
+        return typeof value === 'string'
+            ? value.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC')
+            : '';
+    }
+
+    function normalizeArchiveSegment(source, playerId, seasonIdentity, virtual) {
+        if (!source || typeof source !== 'object') return null;
+        const arrayInspection = inspectArray(source);
+        const namesInspection = inspectNames(source);
+        if (!arrayInspection.ok || arrayInspection.isArray || !namesInspection.ok) return null;
+        if (!virtual && namesInspection.names.some((key) => !V2_SEGMENT_FIELDS.has(key))) return null;
+        for (const key of namesInspection.names) {
+            const inspection = inspectOwn(source, key);
+            if (!inspection.ok || !inspection.isData) return null;
+        }
+        const clone = cloneOwnData(source);
+        if (clone === INVALID_CLONE || !clone || typeof clone !== 'object') return null;
+        const segmentId = virtual ? `virtual:${playerId}:${seasonIdentity.season}` : ownValue(clone, 'segment_id');
+        if (!virtual && (typeof segmentId !== 'string'
+            || !/^sha256:[0-9a-f]{64}$/u.test(segmentId))) return null;
+        const league = normalizeArchiveText(ownValue(clone, 'league'));
+        const leagueClass = normalizeLeagueClass(league);
+        const name = displayPlayerName(ownValue(clone, 'name'));
+        const rankValue = ownValue(clone, 'rank');
+        const rank = virtual && rankValue === undefined ? 0 : rankValue;
+        const pointsValue = ownValue(clone, 'points');
+        const points = Object.is(pointsValue, -0) ? 0 : pointsValue;
+        if (!league || !name || !isSafeNonnegativeInteger(rank)
+            || !isSafeNonnegativeInteger(points)) return null;
+        const clubInspection = inspectOwn(clone, 'v_nr');
+        const clubId = clubInspection.exists && clubInspection.isData
+            ? safeIdentifier(clubInspection.descriptor.value)
+            : null;
+        if (clubInspection.exists && !clubId) return null;
+
+        const result = clone;
+        result.segment_id = segmentId;
+        result.virtual = Boolean(virtual);
+        result.league = league;
+        result.leagueClass = leagueClass;
+        result.name = name;
+        result.normalizedName = canonicalPlayerName(name);
+        result.rank = rank;
+        result.points = points;
+        if (clubId) result.v_nr = clubId;
+        result.completeEvidence = false;
+        result.previewEligible = false;
+        const preview = ['rounds', 'appearances', 'points_per_appearance']
+            .map((key) => inspectOwn(clone, key));
+        if (preview.some((item) => !item.ok || (item.exists && !item.isData))) return null;
+        const presentPreviewFields = preview.filter((item) => item.exists).length;
+        if (presentPreviewFields !== 0 && presentPreviewFields !== preview.length) return null;
+        if (presentPreviewFields === preview.length) {
+            if (!clubId) return null;
+            const stats = validateRoundSequence(preview[0].descriptor.value);
+            const appearances = Object.is(preview[1].descriptor.value, -0)
+                ? 0 : preview[1].descriptor.value;
+            const average = Object.is(preview[2].descriptor.value, -0)
+                ? 0 : preview[2].descriptor.value;
+            const expectedAverage = appearances ? points / appearances : 0;
+            if (!stats || !isSafeNonnegativeInteger(appearances)
+                || typeof average !== 'number' || !Number.isFinite(average) || average < 0
+                || stats.points !== points || stats.appearances !== appearances
+                || Math.abs(average - expectedAverage) > 1e-12) return null;
+            result.rounds = cloneCanonicalRounds(preview[0].descriptor.value);
+            result.appearances = appearances;
+            result.points_per_appearance = average;
+            result.completeEvidence = true;
+            result.previewEligible = appearances > 0 && leagueClass !== null;
+        }
+        return deepFreeze(result);
+    }
+
+    function segmentRoundOverlapAmbiguous(segments) {
+        const observations = new Map();
+        for (const segment of segments) {
+            const clubId = ownValue(segment, 'v_nr') || '';
+            const rounds = ownValue(segment, 'rounds');
+            if (!rounds || !segment.leagueClass) continue;
+            for (const key of ownNames(rounds)) {
+                const descriptor = ownData(rounds, key);
+                const value = descriptor ? parseCanonicalInteger(descriptor.value) : null;
+                if (value === null) continue;
+                const identity = `${segment.leagueClass}|${clubId}|${key}`;
+                if (!observations.has(identity)) observations.set(identity, new Set());
+                observations.get(identity).add(value);
+            }
+        }
+        return Array.from(observations.values()).some((values) => values.size > 1);
+    }
+
+    function greatestNumericRound(segment) {
+        let latest = -1;
+        const rounds = ownValue(segment, 'rounds');
+        for (const key of ownNames(rounds)) {
+            const match = /^R([1-9][0-9]*)$/u.exec(key);
+            const descriptor = ownData(rounds, key);
+            if (match && descriptor && parseCanonicalInteger(descriptor.value) !== null) {
+                latest = Math.max(latest, Number(match[1]));
+            }
+        }
+        return latest;
+    }
+
+    function compareCanonicalSegments(left, right) {
+        const leftClass = CLASS_ORDER.indexOf(left.leagueClass);
+        const rightClass = CLASS_ORDER.indexOf(right.leagueClass);
+        const leftClub = ownValue(left, 'v_nr');
+        const rightClub = ownValue(right, 'v_nr');
+        return (leftClass < 0 ? CLASS_ORDER.length : leftClass)
+            - (rightClass < 0 ? CLASS_ORDER.length : rightClass)
+            || left.league.toLocaleLowerCase('de-DE').localeCompare(
+                right.league.toLocaleLowerCase('de-DE'), 'de-DE', { sensitivity: 'base' },
+            )
+            || Number(!leftClub) - Number(!rightClub)
+            || String(leftClub || '').localeCompare(String(rightClub || ''), 'en')
+            || left.rank - right.rank
+            || left.segment_id.localeCompare(right.segment_id, 'en');
+    }
+
+    function sameRoundProjection(left, right) {
+        const leftNames = ownNames(left).filter((key) => /^R[1-9][0-9]*$/u.test(key)).sort();
+        const rightNames = ownNames(right).filter((key) => /^R[1-9][0-9]*$/u.test(key)).sort();
+        if (leftNames.length !== ownNames(left).length
+            || rightNames.length !== ownNames(right).length
+            || leftNames.length !== rightNames.length) return false;
+        return leftNames.every((key, index) => {
+            const leftDescriptor = ownData(left, key);
+            const rightDescriptor = ownData(right, rightNames[index]);
+            return key === rightNames[index] && leftDescriptor && rightDescriptor
+                && Object.is(leftDescriptor.value, rightDescriptor.value);
+        });
+    }
+
+    function validFlatSegmentProjection(container, segments) {
+        const fields = ['v_nr', 'rounds', 'appearances', 'points_per_appearance'];
+        if (segments.length !== 1) {
+            return fields.every((field) => !inspectOwn(container, field).exists);
+        }
+        const segment = segments[0];
+        return fields.every((field) => {
+            const containerField = inspectOwn(container, field);
+            const segmentField = inspectOwn(segment, field);
+            if (!containerField.ok || !segmentField.ok
+                || containerField.exists !== segmentField.exists
+                || (containerField.exists && (!containerField.isData || !segmentField.isData))) return false;
+            if (!containerField.exists) return true;
+            return field === 'rounds'
+                ? sameRoundProjection(containerField.descriptor.value, segmentField.descriptor.value)
+                : Object.is(containerField.descriptor.value, segmentField.descriptor.value);
+        });
     }
 
     function normalizedRecord(record, playerId) {
@@ -296,67 +468,127 @@
             normalizedName: canonicalPlayerName(name),
         };
 
-        const leagueDescriptor = ownData(record, 'league');
-        const pointsDescriptor = ownData(record, 'points');
-        if (!leagueDescriptor || !pointsDescriptor) return { identity, record: null };
-        const league = typeof leagueDescriptor.value === 'string'
-            ? leagueDescriptor.value.normalize('NFKC').replace(/\s+/gu, ' ').trim()
-            : '';
-        if (!league || !isSafeNonnegativeInteger(pointsDescriptor.value)) {
-            return { identity, record: null };
+        const namesInspection = inspectNames(record);
+        if (!namesInspection.ok) return { identityConflict: true };
+        const v2Keys = new Set([
+            'segments', 'primary_segment_id', 'identity_ambiguous', 'round_overlap_ambiguous',
+        ]);
+        const isV2 = namesInspection.names.some((key) => v2Keys.has(key));
+        let segments = [];
+        let result;
+        if (isV2) {
+            if (namesInspection.names.some((key) => !V2_CONTAINER_FIELDS.has(key))) {
+                return { identity, record: null, isV2: true };
+            }
+            for (const key of namesInspection.names) {
+                const inspection = inspectOwn(record, key);
+                if (!inspection.ok || !inspection.isData) return { identity, record: null, isV2: true };
+            }
+            const clone = cloneOwnData(record);
+            const segmentValues = arrayDataValues(ownValue(record, 'segments'));
+            if (clone === INVALID_CLONE || !segmentValues.ok || !segmentValues.values.length) {
+                return { identity, record: null, isV2: true };
+            }
+            const segmentIds = new Set();
+            for (const sourceSegment of segmentValues.values) {
+                const normalized = normalizeArchiveSegment(sourceSegment, playerId, identity, false);
+                if (!normalized || segmentIds.has(normalized.segment_id)) {
+                    return { identity, record: null, isV2: true };
+                }
+                segmentIds.add(normalized.segment_id);
+                segments.push(normalized);
+            }
+            const primaryId = ownValue(clone, 'primary_segment_id');
+            const primary = segments.find((segment) => segment.segment_id === primaryId);
+            const expectedPrimary = segments.slice().sort((left, right) => (
+                greatestNumericRound(right) - greatestNumericRound(left)
+                || (right.appearances || 0) - (left.appearances || 0)
+                || left.segment_id.localeCompare(right.segment_id, 'en')
+            ))[0];
+            const points = ownValue(clone, 'points');
+            const rank = ownValue(clone, 'rank');
+            let totalPoints = 0;
+            for (const segment of segments) {
+                totalPoints += segment.points;
+                if (!Number.isSafeInteger(totalPoints)) return { identity, record: null, isV2: true };
+            }
+            const identityAmbiguous = new Set(
+                segments.map((segment) => segment.normalizedName),
+            ).size !== 1;
+            const overlapAmbiguous = segmentRoundOverlapAmbiguous(segments);
+            const identityFlag = inspectOwn(clone, 'identity_ambiguous');
+            const overlapFlag = inspectOwn(clone, 'round_overlap_ambiguous');
+            const validIdentityFlag = !identityFlag.exists
+                ? !identityAmbiguous
+                : identityFlag.isData && identityFlag.descriptor.value === true && identityAmbiguous;
+            const validOverlapFlag = !overlapFlag.exists
+                ? !overlapAmbiguous
+                : overlapFlag.isData && overlapFlag.descriptor.value === true && overlapAmbiguous;
+            const canonicalSegments = segments.slice().sort(compareCanonicalSegments);
+            const canonicalOrder = canonicalSegments.every(
+                (segment, index) => segment === segments[index],
+            );
+            if (!primary || primary !== expectedPrimary || !canonicalOrder
+                || !isSafeNonnegativeInteger(points) || points !== totalPoints
+                || !isSafeNonnegativeInteger(rank)
+                || rank !== Math.min(...segments.map((segment) => segment.rank))
+                || normalizeArchiveText(ownValue(clone, 'league')) !== primary.league
+                || displayPlayerName(ownValue(clone, 'name')) !== primary.name
+                || !validIdentityFlag || !validOverlapFlag
+                || !validFlatSegmentProjection(clone, segments)) {
+                return { identity, record: null, isV2: true };
+            }
+            result = clone;
+            result.identityAmbiguous = identityAmbiguous;
+            result.roundOverlapAmbiguous = overlapAmbiguous;
+            result.archiveSchema = 'v2';
+        } else {
+            const clone = cloneOwnData(record);
+            if (clone === INVALID_CLONE || !clone || typeof clone !== 'object') {
+                return { identityConflict: true };
+            }
+            const segment = normalizeArchiveSegment(clone, playerId, identity, true);
+            if (!segment) return { identity, record: null };
+            segments = [segment];
+            result = clone;
+            result.identityAmbiguous = false;
+            result.roundOverlapAmbiguous = false;
+            result.archiveSchema = 'v1';
         }
-
-        const clone = cloneOwnData(record);
-        if (clone === INVALID_CLONE || !clone || typeof clone !== 'object') {
-            return { identityConflict: true };
-        }
-        const result = clone;
         result.id = playerId;
         result.season = identity.season;
         result.seasonStart = identity.seasonStart;
         result.seasonEnd = identity.seasonEnd;
         result.name = identity.name;
         result.normalizedName = identity.normalizedName;
-        result.league = league;
-        result.leagueClass = normalizeLeagueClass(league);
-        result.points = Object.is(pointsDescriptor.value, -0) ? 0 : pointsDescriptor.value;
-
-        const clubDescriptor = ownData(record, 'v_nr');
-        const validClub = Boolean(clubDescriptor
-            && typeof clubDescriptor.value === 'string'
-            && /^[0-9]+$/u.test(clubDescriptor.value));
-        if (clubDescriptor && validClub) result.v_nr = clubDescriptor.value;
-
-        const previewDescriptors = ['rounds', 'appearances', 'points_per_appearance']
-            .map((key) => ownData(result, key));
-        const presentPreviewFields = previewDescriptors.filter(Boolean).length;
-        result.completeEvidence = false;
-        result.previewEligible = false;
-        if (presentPreviewFields === previewDescriptors.length && validClub) {
-            const stats = validateRoundSequence(previewDescriptors[0].value);
-            const appearances = Object.is(previewDescriptors[1].value, -0)
-                ? 0
-                : previewDescriptors[1].value;
-            const average = Object.is(previewDescriptors[2].value, -0)
-                ? 0
-                : previewDescriptors[2].value;
-            const expectedAverage = appearances ? result.points / appearances : 0;
-            if (stats
-                && isSafeNonnegativeInteger(appearances)
-                && typeof average === 'number'
-                && Number.isFinite(average)
-                && average >= 0
-                && stats.points === result.points
-                && stats.appearances === appearances
-                && Math.abs(average - expectedAverage) <= 1e-12) {
-                result.rounds = cloneCanonicalRounds(previewDescriptors[0].value);
-                result.appearances = appearances;
-                result.points_per_appearance = average;
-                result.completeEvidence = true;
-                result.previewEligible = appearances > 0 && result.leagueClass !== null;
+        result.segments = segments.slice();
+        if (!isV2) {
+            const segment = segments[0];
+            result.league = segment.league;
+            result.leagueClass = segment.leagueClass;
+            result.points = segment.points;
+            if (segment.v_nr) result.v_nr = segment.v_nr;
+            if (segment.completeEvidence) {
+                result.rounds = cloneCanonicalRounds(segment.rounds);
+                result.appearances = segment.appearances;
+                result.points_per_appearance = segment.points_per_appearance;
             }
         }
-        return { identity, record: deepFreeze(result) };
+        const eligibleClasses = new Set(
+            segments.filter((segment) => segment.previewEligible)
+                .map((segment) => segment.leagueClass),
+        );
+        result.completeEvidence = segments.every((segment) => segment.completeEvidence);
+        result.previewEligible = !result.identityAmbiguous && !result.roundOverlapAmbiguous
+            && eligibleClasses.size === 1
+            && segments.some((segment) => segment.previewEligible);
+        if (!isV2 && eligibleClasses.size === 1) {
+            result.leagueClass = Array.from(eligibleClasses)[0];
+            const eligible = segments.filter((segment) => segment.previewEligible);
+            result.points = eligible.reduce((sum, segment) => sum + segment.points, 0);
+            result.appearances = eligible.reduce((sum, segment) => sum + segment.appearances, 0);
+        }
+        return { identity, record: deepFreeze(result), isV2 };
     }
 
     function arrayDataValues(value) {
@@ -410,12 +642,14 @@
             const records = [];
             const identities = [];
             let identityConflict = false;
+            let hasV2 = false;
             for (const sourceRecord of historyValues.values) {
                 const parsed = normalizedRecord(sourceRecord, playerId);
                 if (parsed.identityConflict) {
                     identityConflict = true;
                     break;
                 }
+                hasV2 = hasV2 || parsed.isV2 === true;
                 identities.push(parsed.identity);
                 if (parsed.record) records.push(parsed.record);
             }
@@ -430,7 +664,7 @@
                 seasons.add(item.season);
                 names.add(item.normalizedName);
             }
-            if (identityConflict || names.size !== 1) {
+            if (identityConflict || (!hasV2 && names.size !== 1)) {
                 unusable.add(playerId);
                 continue;
             }
@@ -462,15 +696,48 @@
     }
 
     function seasonalPerformance(record) {
-        if (!record || typeof record !== 'object') return null;
-        const eligible = ownData(record, 'previewEligible');
-        const points = ownData(record, 'points');
-        const appearances = ownData(record, 'appearances');
-        if (!eligible || eligible.value !== true || !points || !appearances
-            || !isSafeNonnegativeInteger(points.value)
-            || !isSafeNonnegativeInteger(appearances.value)
-            || appearances.value === 0) return null;
-        return points.value / appearances.value;
+        const groups = seasonClassGroups(record);
+        if (groups.length !== 1) return null;
+        return groups[0].points / groups[0].appearances;
+    }
+
+    function seasonClassGroups(record) {
+        if (!record || typeof record !== 'object'
+            || ownValue(record, 'identityAmbiguous') === true
+            || ownValue(record, 'roundOverlapAmbiguous') === true) return [];
+        const segments = arrayDataValues(ownValue(record, 'segments'));
+        if (!segments.ok) return [];
+        const grouped = new Map();
+        for (const segment of segments.values) {
+            if (ownValue(segment, 'previewEligible') !== true) continue;
+            const leagueClass = normalizeLeagueClass(ownValue(segment, 'leagueClass'));
+            const points = ownValue(segment, 'points');
+            const appearances = ownValue(segment, 'appearances');
+            if (!leagueClass || !isSafeNonnegativeInteger(points)
+                || !isSafeNonnegativeInteger(appearances) || appearances === 0) continue;
+            if (!grouped.has(leagueClass)) {
+                grouped.set(leagueClass, { leagueClass, points: 0, appearances: 0, segments: 0 });
+            }
+            const group = grouped.get(leagueClass);
+            group.points += points;
+            group.appearances += appearances;
+            group.segments += 1;
+            if (!Number.isSafeInteger(group.points) || !Number.isSafeInteger(group.appearances)) {
+                grouped.delete(leagueClass);
+            }
+        }
+        return Array.from(grouped.values())
+            .sort((left, right) => CLASS_ORDER.indexOf(left.leagueClass) - CLASS_ORDER.indexOf(right.leagueClass))
+            .map((group) => deepFreeze(group));
+    }
+
+    function observedSeasonClasses(record) {
+        const segments = arrayDataValues(ownValue(record, 'segments'));
+        if (!segments.ok) return [];
+        return Array.from(new Set(segments.values
+            .map((segment) => normalizeLeagueClass(ownValue(segment, 'leagueClass')))
+            .filter(Boolean)))
+            .sort((left, right) => CLASS_ORDER.indexOf(left) - CLASS_ORDER.indexOf(right));
     }
 
     function buildClassSeasonMeans(source) {
@@ -478,12 +745,13 @@
         const totals = {};
         for (const playerId of Object.keys(index.histories)) {
             for (const record of index.histories[playerId]) {
-                if (seasonalPerformance(record) === null) continue;
-                const key = `${record.leagueClass}|${record.season}`;
-                if (!totals[key]) totals[key] = { points: 0n, appearances: 0n, playerRecords: 0 };
-                totals[key].points += BigInt(record.points);
-                totals[key].appearances += BigInt(record.appearances);
-                totals[key].playerRecords += 1;
+                for (const group of seasonClassGroups(record)) {
+                    const key = `${group.leagueClass}|${record.season}`;
+                    if (!totals[key]) totals[key] = { points: 0n, appearances: 0n, playerRecords: 0 };
+                    totals[key].points += BigInt(group.points);
+                    totals[key].appearances += BigInt(group.appearances);
+                    totals[key].playerRecords += 1;
+                }
             }
         }
         const means = {};
@@ -506,19 +774,17 @@
     }
 
     function stabilizeSeasonRecord(record, classSeasonMeans) {
-        const raw = seasonalPerformance(record);
-        if (raw === null || !classSeasonMeans || typeof classSeasonMeans !== 'object') return null;
-        const leagueClass = ownData(record, 'leagueClass');
+        const groups = seasonClassGroups(record);
+        if (groups.length !== 1 || !classSeasonMeans || typeof classSeasonMeans !== 'object') return null;
+        const group = groups[0];
         const season = ownData(record, 'season');
-        const points = ownData(record, 'points');
-        const appearances = ownData(record, 'appearances');
-        if (!leagueClass || !season || !points || !appearances) return null;
-        const meanDescriptor = ownData(classSeasonMeans, `${leagueClass.value}|${season.value}`);
+        if (!season) return null;
+        const meanDescriptor = ownData(classSeasonMeans, `${group.leagueClass}|${season.value}`);
         if (!meanDescriptor || !meanDescriptor.value || typeof meanDescriptor.value !== 'object') return null;
         const mean = ownData(meanDescriptor.value, 'mean');
         if (!mean || typeof mean.value !== 'number' || !Number.isFinite(mean.value)) return null;
-        const stable = (points.value + PRIOR_APPEARANCES * mean.value)
-            / (appearances.value + PRIOR_APPEARANCES);
+        const stable = (group.points + PRIOR_APPEARANCES * mean.value)
+            / (group.appearances + PRIOR_APPEARANCES);
         return Number.isFinite(stable) ? stable : null;
     }
 
@@ -598,6 +864,7 @@
             nonAdjacentOrUnknownClass: 0,
             insufficientAppearances: 0,
             invalidPerformance: 0,
+            multiClass: 0,
         };
         for (let indexPosition = 0; indexPosition < CLASS_ORDER.length - 1; indexPosition += 1) {
             observationsByEdge[`${CLASS_ORDER[indexPosition]}>${CLASS_ORDER[indexPosition + 1]}`] = [];
@@ -612,13 +879,21 @@
                     excluded.nonconsecutive += 1;
                     continue;
                 }
-                if (!newer.completeEvidence || !older.completeEvidence
-                    || !newer.previewEligible || !older.previewEligible) {
+                if (observedSeasonClasses(newer).length > 1
+                    || observedSeasonClasses(older).length > 1) {
+                    excluded.multiClass += 1;
+                    continue;
+                }
+                const newerGroups = seasonClassGroups(newer);
+                const olderGroups = seasonClassGroups(older);
+                if (newerGroups.length !== 1 || olderGroups.length !== 1) {
                     excluded.incompleteEvidence += 1;
                     continue;
                 }
-                const newerClassIndex = CLASS_ORDER.indexOf(newer.leagueClass);
-                const olderClassIndex = CLASS_ORDER.indexOf(older.leagueClass);
+                const newerGroup = newerGroups[0];
+                const olderGroup = olderGroups[0];
+                const newerClassIndex = CLASS_ORDER.indexOf(newerGroup.leagueClass);
+                const olderClassIndex = CLASS_ORDER.indexOf(olderGroup.leagueClass);
                 if (newerClassIndex === olderClassIndex) {
                     excluded.sameClass += 1;
                     continue;
@@ -628,12 +903,12 @@
                     excluded.nonAdjacentOrUnknownClass += 1;
                     continue;
                 }
-                if (newer.appearances < 4 || older.appearances < 4) {
+                if (newerGroup.appearances < 4 || olderGroup.appearances < 4) {
                     excluded.insufficientAppearances += 1;
                     continue;
                 }
-                const newerRaw = seasonalPerformance(newer);
-                const olderRaw = seasonalPerformance(older);
+                const newerRaw = newerGroup.points / newerGroup.appearances;
+                const olderRaw = olderGroup.points / olderGroup.appearances;
                 if (newerRaw === null || olderRaw === null) {
                     excluded.invalidPerformance += 1;
                     continue;
@@ -647,7 +922,7 @@
                     olderSeason: older.season,
                     newerSeason: newer.season,
                     value: lowRaw - highRaw,
-                    rawWeight: Math.min(older.appearances, newer.appearances),
+                    rawWeight: Math.min(olderGroup.appearances, newerGroup.appearances),
                 });
             }
         }
@@ -784,16 +1059,21 @@
         if (!isArchiveIndex(index)) return buildArchiveIndex({});
         const parsedBefore = parseSeason(beforeSeason);
         if (!parsedBefore) return index;
-        const archive = {};
+        const histories = {};
         for (const playerId of ownNames(index.histories).sort((a, b) => a.localeCompare(b, 'en'))) {
             const historyDescriptor = ownData(index.histories, playerId);
             if (!historyDescriptor) continue;
             const records = historyDescriptor.value.filter(
                 (record) => record.seasonEnd <= parsedBefore.startYear,
             );
-            if (records.length) defineData(archive, playerId, records.slice());
+            if (records.length) defineData(histories, playerId, Object.freeze(records.slice()));
         }
-        return buildArchiveIndex(archive);
+        return finalizeArchiveIndex({
+            kind: 'archive-index-v2',
+            histories,
+            unusablePlayerIds: index.unusablePlayerIds.slice(),
+            diagnostics: { ...index.diagnostics, filteredBeforeSeason: parsedBefore.key },
+        });
     }
 
     function resolveTargetClassMean(calibration, targetClass, beforeSeason, explicitMean) {
@@ -837,6 +1117,7 @@
             targetClass,
             seasons: [],
             sourceSeasons: [],
+            sourceClasses: [],
             classCalibrated: false,
             confidence: 'very-low',
             provenance: 'neutral-target-class-mean',
@@ -888,25 +1169,49 @@
         const usable = [];
         const completedWindow = history.slice(0, 2);
         for (const record of completedWindow) {
-            if (seasonalPerformance(record) === null) continue;
-            const stable = stabilizeSeasonRecord(record, ownValue(calibration, 'classSeasonMeans'));
-            if (stable === null) continue;
-            const conversion = convertClassRating(
-                stable, ownValue(record, 'leagueClass'), targetClass, calibration,
-            );
-            const converted = safePositiveModelRating(conversion.rating);
-            if (converted === null) continue;
+            const groups = seasonClassGroups(record);
+            if (!groups.length) continue;
+            let totalAppearances = 0;
+            let totalPoints = 0;
+            let weightedConverted = 0;
+            let classCalibrated = true;
+            const conversionPath = [];
+            for (const group of groups) {
+                const raw = group.points / group.appearances;
+                const conversion = convertClassRating(
+                    raw, group.leagueClass, targetClass, calibration,
+                );
+                if (safeRating(conversion.rating) === null) {
+                    totalAppearances = 0;
+                    break;
+                }
+                totalAppearances += group.appearances;
+                totalPoints += group.points;
+                weightedConverted += conversion.rating * group.appearances;
+                classCalibrated = classCalibrated && conversion.calibrated;
+                conversionPath.push(...conversion.path);
+            }
+            if (!totalAppearances || !Number.isSafeInteger(totalAppearances)
+                || !Number.isSafeInteger(totalPoints)) continue;
+            const convertedRaw = weightedConverted / totalAppearances;
+            const rating = (weightedConverted + PRIOR_APPEARANCES * meanInfo.mean)
+                / (totalAppearances + PRIOR_APPEARANCES);
+            const safeSeasonRating = safePositiveModelRating(rating);
+            if (safeSeasonRating === null) continue;
             usable.push({
                 season: record.season,
-                sourceClass: record.leagueClass,
+                sourceClass: groups.length === 1 ? groups[0].leagueClass : null,
+                sourceClasses: groups.map((group) => group.leagueClass),
                 targetClass,
-                points: record.points,
-                appearances: record.appearances,
-                raw: record.points / record.appearances,
-                stable,
-                converted,
-                classCalibrated: conversion.calibrated,
-                conversionPath: conversion.path.slice(),
+                points: totalPoints,
+                appearances: totalAppearances,
+                raw: totalPoints / totalAppearances,
+                convertedRaw,
+                stable: safeSeasonRating,
+                converted: safeSeasonRating,
+                rating: safeSeasonRating,
+                classCalibrated,
+                conversionPath: Array.from(new Set(conversionPath)),
                 weight: 0,
             });
         }
@@ -917,7 +1222,7 @@
         let rating = 0;
         for (let indexPosition = 0; indexPosition < usable.length; indexPosition += 1) {
             usable[indexPosition].weight = weights[indexPosition];
-            rating += usable[indexPosition].converted * weights[indexPosition];
+            rating += usable[indexPosition].rating * weights[indexPosition];
         }
         const classCalibrated = usable.every((season) => season.classCalibrated);
         const solidTwoSeasons = usable.length === 2
@@ -931,6 +1236,7 @@
             targetClass,
             seasons: usable,
             sourceSeasons: usable.map((season) => season.season),
+            sourceClasses: Array.from(new Set(usable.flatMap((season) => season.sourceClasses))),
             classCalibrated,
             confidence: classCalibrated ? (solidTwoSeasons ? 'medium' : 'provisional') : 'very-low',
             provenance: usable.length === 2 ? 'historical-two-season' : 'historical-one-season',
@@ -1511,6 +1817,38 @@
         return mappingEntriesMatchingAliases(mapping, aliases).length === 1;
     }
 
+    function latestHistoricalAffiliation(record) {
+        const inspected = arrayDataValues(ownValue(record, 'segments'));
+        if (!inspected.ok) return { ambiguous: true, segments: [], clubId: null };
+        const candidates = [];
+        for (const segment of inspected.values) {
+            const clubId = safeIdentifier(ownValue(segment, 'v_nr'));
+            if (!clubId) continue;
+            let latestRound = -1;
+            const rounds = ownValue(segment, 'rounds');
+            for (const key of ownNames(rounds)) {
+                const match = /^R([1-9][0-9]*)$/u.exec(key);
+                const descriptor = ownData(rounds, key);
+                if (!match || !descriptor || parseCanonicalInteger(descriptor.value) === null) continue;
+                latestRound = Math.max(latestRound, Number(match[1]));
+            }
+            candidates.push({ segment, clubId, latestRound });
+        }
+        if (!candidates.length) return { ambiguous: true, segments: [], clubId: null };
+        const greatestRound = Math.max(...candidates.map((candidate) => candidate.latestRound));
+        const latest = candidates.filter((candidate) => candidate.latestRound === greatestRound);
+        const clubs = new Set(latest.map((candidate) => candidate.clubId));
+        if (clubs.size !== 1) return { ambiguous: true, segments: [], clubId: null };
+        latest.sort((left, right) => (
+            String(left.segment.segment_id).localeCompare(String(right.segment.segment_id), 'en')
+        ));
+        return {
+            ambiguous: false,
+            segments: latest.map((candidate) => candidate.segment),
+            clubId: latest[0].clubId,
+        };
+    }
+
     function buildTeamRoster(options) {
         const teamId = safeIdentifier(ownValue(options, 'teamId'));
         const targetLeague = ownValue(options, 'targetLeague');
@@ -1624,9 +1962,10 @@
         for (const current of selectedCurrent.sort((left, right) => left.id.localeCompare(right.id, 'en'))) {
             if (addedIds.has(current.id)) continue;
             const historicalRecord = ownValue(chronologicalIndex.histories, current.id);
-            const historyNameMatches = !historicalRecord || historicalRecord.every(
-                (record) => record.normalizedName === current.normalizedName,
-            );
+            const historyNameMatches = !historicalRecord || historicalRecord.every((record) => (
+                record.identityAmbiguous === true
+                || record.segments.every((segment) => segment.normalizedName === current.normalizedName)
+            ));
             const historicalPrior = historyNameMatches
                 ? buildHistoricalPrior({
                     playerId: current.id,
@@ -1663,6 +2002,7 @@
                 currentWeight,
                 historicalPrior,
                 sourceSeasons: historicalPrior.sourceSeasons.slice(),
+                sourceClasses: historicalPrior.sourceClasses.slice(),
                 rounds: cloneCanonicalRounds(current.rounds),
                 rosterUnconfirmed: false,
             });
@@ -1673,7 +2013,7 @@
         for (const playerId of ownNames(chronologicalIndex.histories)) {
             const history = ownValue(chronologicalIndex.histories, playerId) || [];
             for (const record of history) {
-                if (!record.v_nr) continue;
+                if (!record.segments.some((segment) => safeIdentifier(segment.v_nr))) continue;
                 seasonSet.set(record.season, record.seasonEnd);
             }
         }
@@ -1694,11 +2034,16 @@
                     && history.some((record) => record.season === historicalSeasons[0].season)) {
                     continue;
                 }
-                const sourceRecord = history.find((record) => (
-                    record.season === season && record.v_nr === teamId
-                    && rosterRecordMatchesSelectedTeam(record, rosterMapping, selectedRosterEntry)
+                const sourceRecord = history.find((record) => record.season === season);
+                if (!sourceRecord || sourceRecord.identityAmbiguous || sourceRecord.roundOverlapAmbiguous) continue;
+                const sourceAffiliation = latestHistoricalAffiliation(sourceRecord);
+                const sourceSegments = sourceAffiliation.segments.filter((segment) => (
+                    segment.leagueClass === targetClass
+                    && rosterRecordMatchesSelectedTeam(segment, rosterMapping, selectedRosterEntry)
                 ));
-                if (!sourceRecord) continue;
+                if (sourceAffiliation.ambiguous || sourceAffiliation.clubId !== teamId
+                    || !sourceSegments.length) continue;
+                const sourceSegment = sourceSegments[0];
                 const historicalPrior = buildHistoricalPrior({
                     playerId, targetClass, archiveIndex: chronologicalIndex, calibration, classMean,
                 });
@@ -1708,7 +2053,7 @@
                 else if (confidence === 'high' || confidence === 'medium') confidence = 'provisional';
                 candidates.push({
                     id: playerId,
-                    name: sourceRecord.name,
+                    name: sourceSegment.name,
                     rating: historicalPrior.rating,
                     adjustedRating: historicalPrior.rating,
                     evidence,
@@ -1718,7 +2063,8 @@
                     currentWeight: 0,
                     historicalPrior,
                     sourceSeasons: historicalPrior.sourceSeasons.slice(),
-                    rounds: cloneCanonicalRounds(sourceRecord.rounds),
+                    sourceClasses: historicalPrior.sourceClasses.slice(),
+                    rounds: cloneCanonicalRounds(sourceSegment.rounds || {}),
                     rosterUnconfirmed: true,
                 });
             }
@@ -2172,6 +2518,7 @@
         const buckets = {};
         function addParticipant(key, participant) {
             if (!ownValue(buckets, key)) defineData(buckets, key, []);
+            if (buckets[key].some((item) => item.playerId === participant.playerId)) return;
             buckets[key].push(participant);
         }
 
@@ -2179,30 +2526,36 @@
             const history = ownValue(archiveIndex.histories, playerId) || [];
             for (const record of history) {
                 performance.historyRecordsScanned += 1;
-                if (!record.previewEligible || !record.v_nr) continue;
-                const aliases = collectTeamAliases(record);
-                if (aliases.invalid || aliases.ambiguous) continue;
-                const clubMappings = ownValue(mappingsByClub, record.v_nr) || [];
-                const matchingMappings = aliases.present
-                    ? clubMappings.filter((mapping) => teamAliasesMatchMapping(aliases, mapping))
-                    : clubMappings;
-                const applicableMappings = matchingMappings.length === 1
-                    ? matchingMappings
-                    : [];
-                if (!applicableMappings.length) continue;
-                const rounds = ownValue(record, 'rounds');
-                for (const roundKey of ownNames(rounds).sort((left, right) => left.localeCompare(right, 'en'))) {
-                    const roundDescriptor = ownData(rounds, roundKey);
-                    const match = /^R([1-9][0-9]*)$/u.exec(roundKey);
-                    if (!roundDescriptor || !roundDescriptor.enumerable || !match) continue;
-                    const round = parseCanonicalInteger(match[1]);
-                    const value = parseCanonicalInteger(roundDescriptor.value);
-                    if (round === null || value === null) continue;
-                    for (const mapping of applicableMappings) {
-                        addParticipant(
-                            participantBucketKey(record.season, record.leagueClass, round, mapping),
-                            { playerId, record, value },
-                        );
+                const segments = arrayDataValues(ownValue(record, 'segments'));
+                if (!segments.ok) continue;
+                for (const segment of segments.values) {
+                    performance.historySegmentsScanned += 1;
+                    if (record.identityAmbiguous || record.roundOverlapAmbiguous
+                        || !segment.previewEligible || !segment.v_nr) continue;
+                    const aliases = collectTeamAliases(segment);
+                    if (aliases.invalid || aliases.ambiguous) continue;
+                    const clubMappings = ownValue(mappingsByClub, segment.v_nr) || [];
+                    const matchingMappings = aliases.present
+                        ? clubMappings.filter((mapping) => teamAliasesMatchMapping(aliases, mapping))
+                        : clubMappings;
+                    const applicableMappings = matchingMappings.length === 1
+                        ? matchingMappings
+                        : [];
+                    if (!applicableMappings.length) continue;
+                    const rounds = ownValue(segment, 'rounds');
+                    for (const roundKey of ownNames(rounds).sort((left, right) => left.localeCompare(right, 'en'))) {
+                        const roundDescriptor = ownData(rounds, roundKey);
+                        const match = /^R([1-9][0-9]*)$/u.exec(roundKey);
+                        if (!roundDescriptor || !roundDescriptor.enumerable || !match) continue;
+                        const round = parseCanonicalInteger(match[1]);
+                        const value = parseCanonicalInteger(roundDescriptor.value);
+                        if (round === null || value === null) continue;
+                        for (const mapping of applicableMappings) {
+                            addParticipant(
+                                participantBucketKey(record.season, segment.leagueClass, round, mapping),
+                                { playerId, segment, value },
+                            );
+                        }
                     }
                 }
             }
@@ -2267,6 +2620,7 @@
                 priorCalls: 0,
                 participantIndexBuilds: 0,
                 historyRecordsScanned: 0,
+                historySegmentsScanned: 0,
                 participantLookups: 0,
             },
             excluded: {

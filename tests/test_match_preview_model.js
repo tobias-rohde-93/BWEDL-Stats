@@ -45,6 +45,96 @@ function record({
     return result;
 }
 
+let segmentSequence = 1;
+function segment({
+    league,
+    name,
+    values = [],
+    markers = {},
+    vNr = '001',
+    rank = 1,
+    totalsOnly = false,
+    points,
+    segmentId,
+}) {
+    const roundsValue = {
+        ...Object.fromEntries(values.map((value, index) => [`R${index + 1}`, value])),
+        ...markers,
+    };
+    const greatestRound = Math.max(0, ...Object.keys(roundsValue).map((key) => {
+        const match = /^R([1-9][0-9]*)$/u.exec(key);
+        return match ? Number(match[1]) : 0;
+    }));
+    for (let round = 1; round <= greatestRound; round += 1) {
+        if (!Object.prototype.hasOwnProperty.call(roundsValue, `R${round}`)) roundsValue[`R${round}`] = '';
+    }
+    const numericValues = Object.values(roundsValue).filter(
+        (value) => Number.isSafeInteger(value) && value >= 0,
+    );
+    const segmentPoints = points === undefined
+        ? numericValues.reduce((sum, value) => sum + value, 0)
+        : points;
+    const result = {
+        segment_id: segmentId || `sha256:${String(segmentSequence++).padStart(64, '0')}`,
+        league,
+        rank,
+        name,
+        points: segmentPoints,
+    };
+    if (vNr !== null) result.v_nr = vNr;
+    if (!totalsOnly) {
+        result.rounds = roundsValue;
+        result.appearances = numericValues.length;
+        result.points_per_appearance = numericValues.length
+            ? segmentPoints / numericValues.length
+            : 0;
+    }
+    return result;
+}
+
+function segmentLastRound(value) {
+    let latest = -1;
+    for (const [key, roundValue] of Object.entries(value.rounds || {})) {
+        const match = /^R([1-9][0-9]*)$/u.exec(key);
+        if (match && Number.isSafeInteger(roundValue) && roundValue >= 0) {
+            latest = Math.max(latest, Number(match[1]));
+        }
+    }
+    return latest;
+}
+
+function v2Record({
+    season,
+    segments,
+    identityAmbiguous = false,
+    roundOverlapAmbiguous = false,
+    compatibility = {},
+}) {
+    const primary = segments.slice().sort((left, right) => (
+        segmentLastRound(right) - segmentLastRound(left)
+        || (right.appearances || 0) - (left.appearances || 0)
+        || left.segment_id.localeCompare(right.segment_id, 'en')
+    ))[0];
+    const result = {
+        season,
+        rank: Math.min(...segments.map((item) => item.rank)),
+        points: segments.reduce((sum, item) => sum + item.points, 0),
+        league: primary.league,
+        name: primary.name,
+        primary_segment_id: primary.segment_id,
+        segments,
+        ...compatibility,
+    };
+    if (segments.length === 1) {
+        for (const key of ['v_nr', 'rounds', 'appearances', 'points_per_appearance']) {
+            if (Object.prototype.hasOwnProperty.call(primary, key)) result[key] = primary[key];
+        }
+    }
+    if (identityAmbiguous) result.identity_ambiguous = true;
+    if (roundOverlapAmbiguous) result.round_overlap_ambiguous = true;
+    return result;
+}
+
 function makeTransitionArchive({
     pairCount = 8,
     from = 'A-Klasse',
@@ -253,6 +343,107 @@ assert.deepEqual(sortableIndex.unusablePlayerIds, []);
 assert.notEqual(sortableIndex.histories['0042'][0], sortableArchive['0042'][2]);
 assert.notEqual(sortableIndex.histories['0042'][0].rounds, sortableArchive['0042'][2].rounds);
 assert.equal(JSON.stringify(sortableArchive), sortableBefore, 'indexing never mutates input');
+
+// Supplemental Task D: the model owns a strict, immutable dual reader.
+const legacyVirtualIndex = Model.buildArchiveIndex({
+    41: [record({ id: '41', season: '2025/2026', name: 'Legacy Virtual', league: 'A-Klasse', mean: 5 })],
+});
+assert.equal(legacyVirtualIndex.histories['41'][0].segments.length, 1);
+assert.equal(legacyVirtualIndex.histories['41'][0].segments[0].virtual, true);
+assert.equal(legacyVirtualIndex.histories['41'][0].segments[0].leagueClass, 'A-Klasse');
+assert.equal(Object.isFrozen(legacyVirtualIndex.histories['41'][0].segments), true);
+assert.equal(Object.isFrozen(legacyVirtualIndex.histories['41'][0].segments[0]), true);
+
+const strictSegmentSource = deepFreeze({
+    42: [v2Record({
+        season: '2025/2026',
+        segments: [segment({
+            league: 'A-Klasse', name: 'Strict Segment', values: [0, 5],
+            markers: { R3: 'VW', R4: 'd', R5: 'kp', R6: '*', R7: 'x', R8: '' },
+            vNr: '035',
+        })],
+    })],
+});
+const strictSegmentBefore = JSON.stringify(strictSegmentSource);
+const strictSegmentIndex = Model.buildArchiveIndex(strictSegmentSource);
+const strictSegmentRecord = strictSegmentIndex.histories['42'][0];
+assert.equal(strictSegmentRecord.segments[0].leagueClass, 'A-Klasse',
+    'analytics expose the validated source segment');
+assert.deepEqual(Model.roundStats(strictSegmentRecord.segments[0].rounds), {
+    values: [0, 5], points: 5, appearances: 2, mean: 2.5,
+});
+assert.equal(JSON.stringify(strictSegmentSource), strictSegmentBefore);
+assert.equal(Object.isFrozen(strictSegmentRecord.segments[0].rounds), true);
+
+let strictSegmentGetterCalls = 0;
+const unsafeSegmentContainer = v2Record({
+    season: '2025/2026',
+    segments: [segment({ league: 'A-Klasse', name: 'Unsafe Segment', values: [5] })],
+});
+Object.defineProperty(unsafeSegmentContainer.segments[0], 'league', {
+    enumerable: true,
+    get() { strictSegmentGetterCalls += 1; throw new Error('segment getter must not run'); },
+});
+const unsafeSegmentIndex = Model.buildArchiveIndex({
+    44: [unsafeSegmentContainer],
+});
+assert.equal(unsafeSegmentIndex.histories['44'], undefined);
+assert.equal(strictSegmentGetterCalls, 0);
+for (const malformedV2Record of [
+    (() => {
+        const value = v2Record({
+            season: '2025/2026',
+            segments: [segment({ league: 'A-Klasse', name: 'Unknown Field', values: [5] })],
+        });
+        value.segments[0].unexpected = 1;
+        return value;
+    })(),
+    (() => {
+        const value = v2Record({
+            season: '2025/2026',
+            segments: [segment({ league: 'A-Klasse', name: 'Invalid Flag', values: [5] })],
+        });
+        value.identity_ambiguous = false;
+        return value;
+    })(),
+    (() => {
+        const first = segment({ league: 'A-Klasse', name: 'Duplicate Segment', values: [5] });
+        const second = segment({
+            league: 'A-Klasse', name: 'Duplicate Segment', values: [6],
+            segmentId: first.segment_id, vNr: '043',
+        });
+        return v2Record({ season: '2025/2026', segments: [first, second] });
+    })(),
+]) {
+    assert.equal(Model.buildArchiveIndex({ 45: [malformedV2Record] }).histories['45'], undefined,
+        'schema drift, noncanonical flags, and duplicate segment IDs fail closed');
+}
+const noncanonicalSegmentOrder = v2Record({
+    season: '2025/2026',
+    segments: [
+        segment({ league: 'B-Klasse', name: 'Canonical Order', values: [6] }),
+        segment({ league: 'A-Klasse', name: 'Canonical Order', values: [5] }),
+    ],
+});
+assert.equal(Model.buildArchiveIndex({ 46: [noncanonicalSegmentOrder] }).histories['46'], undefined,
+    'v2 segment order is part of the strict deterministic container contract');
+const invalidFlatProjection = v2Record({
+    season: '2025/2026',
+    segments: [segment({ league: 'A-Klasse', name: 'Flat Projection', values: [5] })],
+});
+invalidFlatProjection.rounds = { R1: 6 };
+assert.equal(Model.buildArchiveIndex({ 47: [invalidFlatProjection] }).histories['47'], undefined,
+    'single-segment compatibility evidence must exactly project its source segment');
+const invalidMultiProjection = v2Record({
+    season: '2025/2026',
+    segments: [
+        segment({ league: 'A-Klasse', name: 'No Flat Multi', values: [5], vNr: '035' }),
+        segment({ league: 'B-Klasse', name: 'No Flat Multi', values: [6], vNr: '035' }),
+    ],
+});
+invalidMultiProjection.v_nr = '035';
+assert.equal(Model.buildArchiveIndex({ 48: [invalidMultiProjection] }).histories['48'], undefined,
+    'multi-segment containers cannot publish flat analytic compatibility fields');
 
 const legacySeasonIndex = Model.buildArchiveIndex({
     43: [
@@ -677,6 +868,122 @@ assert.equal(excludedPairCalibration.transitions['A-Klasse>B-Klasse'], undefined
 assert.equal(excludedPairCalibration.diagnostics.excluded.sameClass, 1);
 assert.equal(excludedPairCalibration.diagnostics.excluded.insufficientAppearances, 1);
 
+const sameClassTransferArchive = {
+    50: [v2Record({
+        season: '2025/2026',
+        segments: [
+            segment({ league: 'A-Klasse', name: 'Same Class Transfer', values: [5, 5], vNr: '035' }),
+            segment({ league: 'A-Klasse', name: 'Same Class Transfer', values: [7, 7, 7, 7, 7, 7], vNr: '043' }),
+        ],
+    })],
+};
+const sameClassTransferIndex = Model.buildArchiveIndex(sameClassTransferArchive);
+const sameClassTransferPrior = Model.buildHistoricalPrior({
+    playerId: '50', targetClass: 'A-Klasse', archiveIndex: sameClassTransferIndex,
+    calibration: Model.buildClassCalibration(sameClassTransferIndex), classMean: 4,
+});
+assert.equal(sameClassTransferPrior.seasons[0].appearances, 8);
+assert.equal(sameClassTransferPrior.seasons[0].raw, 6.5);
+assert.equal(sameClassTransferPrior.seasons[0].rating, (52 + (4 * 4)) / 12,
+    'same-class transfers aggregate before the four-appearance prior is applied once');
+assert.deepEqual(sameClassTransferPrior.seasons[0].sourceClasses, ['A-Klasse']);
+
+const multiClassSeasonArchive = {
+    51: [v2Record({
+        season: '2025/2026',
+        segments: [
+            segment({ league: 'A-Klasse', name: 'Multi Class', values: [3, 3], vNr: '035' }),
+            segment({ league: 'B-Klasse', name: 'Multi Class', values: [7, 7, 7, 7, 7, 7], vNr: '035' }),
+        ],
+    })],
+};
+const multiClassSeasonIndex = Model.buildArchiveIndex(multiClassSeasonArchive);
+const multiClassMeans = Model.buildClassSeasonMeans(multiClassSeasonIndex);
+assert.equal(multiClassMeans['A-Klasse|2025/26'].playerRecords, 1);
+assert.equal(multiClassMeans['B-Klasse|2025/26'].playerRecords, 1);
+const multiClassPrior = Model.buildHistoricalPrior({
+    playerId: '51', targetClass: 'B-Klasse', archiveIndex: multiClassSeasonIndex,
+    calibration: {
+        classSeasonMeans: multiClassMeans,
+        transitions: { 'A-Klasse>B-Klasse': { offset: 2 } },
+    },
+    classMean: 4,
+});
+const converted = ((5 * 2) + (7 * 6)) / 8;
+const expected = (converted * 8 + 4 * 4) / 12;
+assert.equal(multiClassPrior.seasons[0].rating, expected);
+assert.equal(multiClassPrior.seasons[0].converted, expected);
+assert.deepEqual(multiClassPrior.seasons[0].sourceClasses, ['A-Klasse', 'B-Klasse']);
+
+const multiClassTransitionArchive = mergeArchives(makeTransitionArchive({ pairCount: 7 }), {
+    52: [
+        v2Record({
+            season: '2024/2025',
+            segments: [
+                segment({ league: 'A-Klasse', name: 'No Transition Leak', values: [5, 5, 5, 5] }),
+                segment({ league: 'B-Klasse', name: 'No Transition Leak', values: [6, 6, 6, 6] }),
+            ],
+        }),
+        v2Record({
+            season: '2025/2026',
+            segments: [segment({ league: 'B-Klasse', name: 'No Transition Leak', values: [7, 7, 7, 7] })],
+        }),
+    ],
+});
+const multiClassTransitionCalibration = Model.buildClassCalibration(multiClassTransitionArchive);
+assert.equal(multiClassTransitionCalibration.transitions['A-Klasse>B-Klasse'], undefined);
+assert.equal(multiClassTransitionCalibration.diagnostics.edges['A-Klasse>B-Klasse'].count, 7);
+assert.equal(multiClassTransitionCalibration.diagnostics.excluded.multiClass, 1);
+
+const seasonLocalAmbiguityArchive = {
+    53: [
+        v2Record({
+            season: '2025/2026', identityAmbiguous: true,
+            segments: [
+                segment({ league: 'A-Klasse', name: 'Identity One', values: [9, 9, 9, 9] }),
+                segment({ league: 'A-Klasse', name: 'Identity Two', values: [8, 8, 8, 8], vNr: '043' }),
+            ],
+        }),
+        v2Record({
+            season: '2024/2025',
+            segments: [segment({ league: 'A-Klasse', name: 'Identity One', values: [5, 5, 5, 5] })],
+        }),
+        v2Record({
+            season: '2023/2024',
+            segments: [segment({ league: 'A-Klasse', name: 'Identity One', values: [2, 2, 2, 2] })],
+        }),
+    ],
+    54: [
+        v2Record({
+            season: '2025/2026', roundOverlapAmbiguous: true,
+            segments: [
+                segment({ league: 'A-Klasse', name: 'Overlap', values: [9], vNr: '035' }),
+                segment({ league: 'A-Klasse', name: 'Overlap', values: [8], vNr: '035' }),
+            ],
+        }),
+        v2Record({
+            season: '2024/2025',
+            segments: [segment({ league: 'A-Klasse', name: 'Overlap', values: [4, 4, 4, 4] })],
+        }),
+    ],
+};
+const seasonLocalAmbiguityIndex = Model.buildArchiveIndex(seasonLocalAmbiguityArchive);
+assert.equal(seasonLocalAmbiguityIndex.histories['53'].length, 3,
+    'an identity-ambiguous container does not discard other seasons');
+assert.equal(seasonLocalAmbiguityIndex.histories['54'].length, 2,
+    'an overlap-conflicted container does not discard other seasons');
+const seasonLocalPrior = Model.buildHistoricalPrior({
+    playerId: '53', targetClass: 'A-Klasse', archiveIndex: seasonLocalAmbiguityIndex,
+    calibration: Model.buildClassCalibration(seasonLocalAmbiguityIndex), classMean: 4,
+});
+assert.deepEqual(seasonLocalPrior.sourceSeasons, ['2024/25'],
+    'only the newest two containers form the window; a third never replaces ambiguity');
+const overlapPrior = Model.buildHistoricalPrior({
+    playerId: '54', targetClass: 'A-Klasse', archiveIndex: seasonLocalAmbiguityIndex,
+    calibration: Model.buildClassCalibration(seasonLocalAmbiguityIndex), classMean: 4,
+});
+assert.deepEqual(overlapPrior.sourceSeasons, ['2024/25']);
+
 // Task 4: historical priors use only the two newest eligible completed seasons.
 const priorArchive = mergeArchives(makeTransitionArchive(), {
     7: [
@@ -744,9 +1051,9 @@ const uncalibratedPrior = Model.buildHistoricalPrior({
     playerId: '71', targetClass: 'B-Klasse', archiveIndex: uncalibratedIndex,
     calibration: uncalibratedCalibration, classMean: 5,
 });
-assert.equal(uncalibratedPrior.seasons[0].stable, 5);
-assert.equal(uncalibratedPrior.seasons[0].converted, 5,
-    'missing calibration never invents a factor');
+assert.equal(uncalibratedPrior.seasons[0].stable, 4.5);
+assert.equal(uncalibratedPrior.seasons[0].converted, 4.5,
+    'missing calibration keeps raw performance and applies only the explicit target mean prior');
 assert.equal(uncalibratedPrior.classCalibrated, false);
 assert.equal(uncalibratedPrior.confidence, 'very-low');
 
@@ -1672,6 +1979,48 @@ assert.equal(totalsMembershipRoster.players.some((player) => player.id === '361'
 assert.equal(totalsMembershipRoster.players.some((player) => player.id === '362'), false,
     'a third roster season is never pulled into the candidate list');
 
+const segmentedAffiliationArchive = {
+    363: [v2Record({
+        season: '2025/2026',
+        segments: [
+            segment({
+                league: 'B-Klasse', name: 'Latest Segment Club', values: [5],
+                markers: { R3: 5 }, vNr: '035',
+            }),
+            segment({
+                league: 'B-Klasse', name: 'Latest Segment Club', values: [6],
+                markers: { R5: 6 }, vNr: '043',
+            }),
+        ],
+    })],
+    364: [v2Record({
+        season: '2025/2026',
+        segments: [
+            segment({
+                league: 'B-Klasse', name: 'Tied Segment Club', values: [5],
+                markers: { R5: 5 }, vNr: '035',
+            }),
+            segment({
+                league: 'B-Klasse', name: 'Tied Segment Club', values: [6],
+                markers: { R5: 6 }, vNr: '043',
+            }),
+        ],
+    })],
+};
+function segmentedAffiliationRoster(teamId, teamName) {
+    return Model.buildTeamRoster({
+        teamId, teamName, targetLeague: 'B-Klasse 2026/2027', currentPlayers: [],
+        classMean: 5, archiveData: segmentedAffiliationArchive,
+        clubs: [{ number: teamId, name: teamName }],
+    });
+}
+assert.deepEqual(segmentedAffiliationRoster('043', 'Club 43').players.map((player) => player.id), ['363'],
+    'greatest numeric played round determines latest historical affiliation');
+assert.deepEqual(segmentedAffiliationRoster('035', 'Club 35').players.map((player) => player.id), [],
+    'an older segment club is not the latest affiliation');
+assert.equal(segmentedAffiliationRoster('043', 'Club 43').players.some((player) => player.id === '364'), false,
+    'ties at the greatest played round across clubs fail closed');
+
 const confidenceRoster = Model.buildTeamRoster({
     teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
     currentPlayers: [{
@@ -1736,6 +2085,33 @@ assert.equal(JSON.stringify(training), JSON.stringify(Model.buildOutcomeTraining
 assert.equal(Model.buildOutcomeTrainingExamples({
     archiveTables, archiveData: outcomeArchive, clubs: duplicateOutcomeClubs,
 }).length, 1, 'semantically duplicate outcome mappings form one canonical identity');
+
+const segmentedOutcomeArchive = makeOutcomeArchive();
+for (const [id, history] of Object.entries(segmentedOutcomeArchive)) {
+    const vNr = Number(id) < 204 ? '035' : '036';
+    const mean = Number(id) < 204 ? 8 : 4;
+    history[1] = v2Record({
+        season: '2025/2026',
+        segments: [
+            segment({ league: 'A-Klasse', name: `Outcome ${id}`, values: [mean], vNr }),
+            segment({
+                league: 'A-Klasse', name: `Outcome ${id}`, values: [],
+                markers: { R2: mean }, vNr,
+            }),
+        ],
+    });
+}
+const segmentedParticipantTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
+        { round: 2, home: 'Alpha', away: 'Bravo', result: '9:7' },
+    ] }],
+    archiveData: segmentedOutcomeArchive,
+    clubs: outcomeClubs,
+});
+assert.equal(segmentedParticipantTraining.length, 1,
+    'participant reconstruction reads segment-local rounds and dedupes stable IDs');
+assert.equal(segmentedParticipantTraining.diagnostics.performance.historyRecordsScanned, 16);
+assert.equal(segmentedParticipantTraining.diagnostics.performance.historySegmentsScanned, 24);
 
 const conflictingOutcomeClubIdentity = Model.buildOutcomeTrainingExamples({
     archiveTables, archiveData: outcomeArchive, clubs: [
@@ -2302,6 +2678,7 @@ assert.deepEqual(cachedTraining.diagnostics.performance, {
     priorCalls: 16,
     participantIndexBuilds: 1,
     historyRecordsScanned: 16,
+    historySegmentsScanned: 16,
     participantLookups: 4,
 });
 assert.equal(cachedTraining.every((example) => (
@@ -2357,6 +2734,7 @@ for (const matchCount of [100, 250, 500]) {
     assert.equal(scaledTraining.diagnostics.performance.participantIndexBuilds, 1);
     assert.equal(scaledTraining.diagnostics.performance.historyRecordsScanned, 16,
         'history scan count is independent of match count');
+    assert.equal(scaledTraining.diagnostics.performance.historySegmentsScanned, 16);
     assert.equal(scaledTraining.diagnostics.performance.participantLookups, 2 * matchCount,
         'each match performs exactly two direct participant lookups');
     assert.deepEqual(
@@ -2366,6 +2744,25 @@ for (const matchCount of [100, 250, 500]) {
     );
     previousScaledKeys = scaledTraining.map((example) => example.key);
 }
+
+const fiveThousandSegmentArchive = {};
+for (let index = 0; index < 5000; index += 1) {
+    const id = String(10000 + index);
+    fiveThousandSegmentArchive[id] = [v2Record({
+        season: '2025/2026',
+        segments: [segment({
+            league: 'A-Klasse', name: `Linear ${id}`, values: [index % 9], vNr: '035',
+        })],
+    })];
+}
+const fiveThousandSegmentTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables: [], archiveData: fiveThousandSegmentArchive,
+    clubs: [{ number: '035', name: 'Alpha' }],
+});
+assert.equal(fiveThousandSegmentTraining.diagnostics.performance.participantIndexBuilds, 1);
+assert.equal(fiveThousandSegmentTraining.diagnostics.performance.historyRecordsScanned, 5000);
+assert.equal(fiveThousandSegmentTraining.diagnostics.performance.historySegmentsScanned, 5000,
+    'the participant index visits each segment exactly once, independent of match count');
 
 const duplicateCurrentRoster = Model.buildTeamRoster({
     teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', archiveData: {},
