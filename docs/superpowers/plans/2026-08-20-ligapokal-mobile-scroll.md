@@ -140,6 +140,7 @@ Expected: the Node contract prints `safe published table rendering contract: ok`
 **Files:**
 - Modify: `index.html:124`
 - Modify: `sw_v31.js:1-25`
+- Modify: `tests/test_accessibility_contract.js:317-321`
 - Modify: `tests/test_reported_ui_regressions.js:254-258`
 
 - [ ] **Step 1: Advance the bundle query key and service-worker cache**
@@ -157,6 +158,8 @@ for (const asset of ['style.css?v=7', 'app_utils.js?v=4', 'bundle_v31.js?v=3.8']
 }
 assert.match(worker, /bwedl-dashboard-v41/);
 ```
+
+Change the requested bundle expectation in `tests/test_accessibility_contract.js` from `./bundle_v31.js?v=3.7` to `./bundle_v31.js?v=3.8` so both cache-contract suites describe the same application shell.
 
 - [ ] **Step 3: Run the cache and real-browser contracts**
 
