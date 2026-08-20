@@ -272,9 +272,15 @@
             const numeric = strictArchiveNumbers
                 ? (isSafeNonnegativeInteger(value) ? (Object.is(value, -0) ? 0 : value) : null)
                 : parseCanonicalInteger(value);
-            const marker = typeof value === 'string'
-                ? value.normalize('NFKC').trim().toLocaleLowerCase('de-DE')
+            const normalizedMarker = typeof value === 'string'
+                ? value.normalize('NFKC').trim()
                 : null;
+            if (strictArchiveNumbers && normalizedMarker !== null && normalizedMarker !== value) {
+                return null;
+            }
+            const marker = normalizedMarker === null
+                ? null
+                : normalizedMarker.toLocaleLowerCase('de-DE');
             if (numeric === null && marker !== '' && !ARCHIVE_ADMIN_MARKERS.has(marker)) {
                 return null;
             }

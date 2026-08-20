@@ -392,17 +392,41 @@ const strictNumericStringIndex = Model.buildArchiveIndex({
 });
 assert.equal(strictNumericStringIndex.histories['420'], undefined,
     'strict v2 rounds never coerce numeric strings into appearances');
-const trimmedMarkerIndex = Model.buildArchiveIndex({
-    421: [v2Record({
+for (const [id, unsafeMarker] of [['421', '  VW  '], ['422', 'ＶＷ']]) {
+    const unsafeMarkerIndex = Model.buildArchiveIndex({
+        [id]: [v2Record({
+            season: '2025/2026',
+            segments: [segment({
+                league: 'A-Klasse', name: `Unsafe Marker ${id}`, values: [0],
+                markers: { R2: unsafeMarker },
+            })],
+        })],
+    });
+    assert.equal(unsafeMarkerIndex.histories[id], undefined,
+        'strict v2 marker spelling must already be trimmed and NFKC canonical');
+    assert.deepEqual(unsafeMarkerIndex.unusablePlayerIds, [id]);
+}
+const canonicalMarkerIndex = Model.buildArchiveIndex({
+    423: [v2Record({
         season: '2025/2026',
         segments: [segment({
-            league: 'A-Klasse', name: 'Trimmed Marker', values: [0], markers: { R2: '  VW  ' },
+            league: 'A-Klasse', name: 'Canonical Markers', values: [0],
+            markers: { R2: 'VW', R3: 'Vw', R4: 'd', R5: 'D', R6: 'kp', R7: 'KP', R8: '*', R9: '' },
         })],
     })],
 });
-assert.deepEqual(Model.roundStats(trimmedMarkerIndex.histories['421'][0].segments[0].rounds), {
+assert.deepEqual(Model.roundStats(canonicalMarkerIndex.histories['423'][0].segments[0].rounds), {
     values: [0], points: 0, appearances: 1, mean: 0,
 });
+const legacyMarkerIndex = Model.buildArchiveIndex({
+    424: [{
+        id: '424', season: '2025/2026', league: 'A-Klasse', name: 'Legacy Marker',
+        v_nr: '001', points: 5, rounds: { R1: '5', R2: '  VW  ' },
+        appearances: 1, points_per_appearance: 5,
+    }],
+});
+assert.equal(legacyMarkerIndex.histories['424'][0].previewEligible, true,
+    'legacy v1 coercion and marker normalization remain unchanged');
 
 let strictSegmentGetterCalls = 0;
 const unsafeSegmentContainer = v2Record({
