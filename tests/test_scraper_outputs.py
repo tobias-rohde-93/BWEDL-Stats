@@ -9,6 +9,8 @@ import textwrap
 from pathlib import Path
 
 import pytest
+from playwright.async_api import TimeoutError as PlaywrightTimeoutError
+from playwright.sync_api import sync_playwright
 
 import archive_scraper
 import archive_tables_scraper
@@ -91,6 +93,130 @@ def test_archive_player_season_and_sub_links_require_same_origin() -> None:
         "https://www.bwedl.de/archiv/2025-2026/ranglisten/",
         "Ranglisten 2025-2026",
     )
+
+
+@pytest.fixture
+def archive_extractor_page():
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch()
+        page = browser.new_page()
+        yield page
+        browser.close()
+
+
+def _extract_archive_player_tables(page, html: str):
+    page.set_content(html)
+    return page.evaluate(archive_scraper.ARCHIVE_RANKING_TABLE_EXTRACTOR_JS)
+
+
+def _expected_extracted_archive_table(league: str = "A-Klasse") -> list[dict]:
+    return [{
+        "league": league,
+        "headers": [
+            "Rang", "V-Nr.", "Nr.", "Vorname", "Name",
+            "1", "2", "3", "Gesamt",
+        ],
+        "rows": [[
+            "35", "018", "4711", "Mario", "Ackermann",
+            "5", "x", "7", "12",
+        ]],
+    }]
+
+
+def test_archive_player_extractor_reads_single_thead_row(
+    archive_extractor_page,
+) -> None:
+    extracted = _extract_archive_player_tables(
+        archive_extractor_page,
+        """
+        <h2>A-Klasse</h2>
+        <table>
+          <thead><tr>
+            <th>Rang</th><th>V-Nr.</th><th>Nr.</th><th>Vorname</th>
+            <th>Name</th><th>1</th><th>2</th><th>3</th><th>Gesamt</th>
+          </tr></thead>
+          <tbody><tr>
+            <td>35</td><td>018</td><td>4711</td><td>Mario</td>
+            <td>Ackermann</td><td>5</td><td>x</td><td>7</td><td>12</td>
+          </tr></tbody>
+        </table>
+        """,
+    )
+
+    assert extracted == _expected_extracted_archive_table()
+
+
+def test_archive_player_extractor_uses_only_semantic_multirow_thead(
+    archive_extractor_page,
+) -> None:
+    extracted = _extract_archive_player_tables(
+        archive_extractor_page,
+        """
+        <h2>A-Klasse</h2>
+        <table>
+          <thead>
+            <tr><th colspan="9">Rangliste Saison 2025/2026</th></tr>
+            <tr>
+              <th>Rang</th><th>V-Nr.</th><th>Nr.</th><th>Vorname</th>
+              <th>Name</th><th>1</th><th>2</th><th>3</th><th>Gesamt</th>
+            </tr>
+          </thead>
+          <tbody><tr>
+            <td>35</td><td>018</td><td>4711</td><td>Mario</td>
+            <td>Ackermann</td><td>5</td><td>x</td><td>7</td><td>12</td>
+          </tr></tbody>
+        </table>
+        """,
+    )
+
+    assert extracted == _expected_extracted_archive_table()
+
+
+def test_archive_player_extractor_supports_no_thead_fallback(
+    archive_extractor_page,
+) -> None:
+    extracted = _extract_archive_player_tables(
+        archive_extractor_page,
+        """
+        <h3>B-Klasse</h3>
+        <table>
+          <tr>
+            <td>Rang</td><td>V-Nr.</td><td>Nr.</td><td>Vorname</td>
+            <td>Name</td><td>1</td><td>2</td><td>3</td><td>Gesamt</td>
+          </tr>
+          <tr>
+            <td>35</td><td>018</td><td>4711</td><td>Mario</td>
+            <td>Ackermann</td><td>5</td><td>x</td><td>7</td><td>12</td>
+          </tr>
+        </table>
+        """,
+    )
+
+    assert extracted == _expected_extracted_archive_table("B-Klasse")
+
+
+def test_archive_player_extractor_never_duplicates_body_rows(
+    archive_extractor_page,
+) -> None:
+    extracted = _extract_archive_player_tables(
+        archive_extractor_page,
+        """
+        <h2>A-Klasse</h2><div>Zwischenüberschrift</div>
+        <table>
+          <thead><tr>
+            <th>Rang</th><th>V-Nr.</th><th>Nr.</th><th>Vorname</th>
+            <th>Name</th><th>1</th><th>2</th><th>3</th><th>Gesamt</th>
+          </tr></thead>
+          <tbody><tr>
+            <td>35</td><td>018</td><td>4711</td><td>Mario</td>
+            <td>Ackermann</td><td>5</td><td>x</td><td>7</td><td>12</td>
+          </tr></tbody>
+        </table>
+        """,
+    )
+
+    assert len(extracted) == 1
+    assert len(extracted[0]["rows"]) == 1
 
 
 @pytest.mark.parametrize(
@@ -407,8 +533,9 @@ class _AsyncPlaywright(_Playwright):
 
 
 class _ArchiveRankingPage(_AsyncPage):
-    def __init__(self, tables):
-        self.tables = tables
+    def __init__(self, tables=None, *, season_tables=None, wait_error=None):
+        self.season_tables = season_tables or {"2025/2026": tables}
+        self.wait_error = wait_error
         self.evaluate_calls = 0
         self.url = archive_scraper.ARCHIVE_URL
 
@@ -416,24 +543,29 @@ class _ArchiveRankingPage(_AsyncPage):
         self.url = url
 
     async def wait_for_selector(self, *args, **kwargs):
+        if self.wait_error is not None:
+            raise self.wait_error
         return None
 
     async def evaluate(self, source, *args, **kwargs):
         self.evaluate_calls += 1
         if self.evaluate_calls == 1:
-            return [{
-                "href": "https://www.bwedl.de/archiv/2025-2026/",
-                "text": "Saison 2025/2026",
-            }]
-        if self.evaluate_calls == 2:
+            return [
+                {
+                    "href": (
+                        "https://www.bwedl.de/archiv/"
+                        f"{season.replace('/', '-')}/"
+                    ),
+                    "text": f"Saison {season}",
+                }
+                for season in self.season_tables
+            ]
+        if self.evaluate_calls % 2 == 0:
             return {"found": False}
-        if self.evaluate_calls == 3:
-            assert "thead th, thead td" in source
-            assert "|Rang|" in source
-            assert r"|Nr\.?|" in source
-            assert "return { league, headers, rows };" in source
-            return deepcopy(self.tables)
-        raise AssertionError("unexpected archive page evaluation")
+        for season, tables in self.season_tables.items():
+            if season.replace("/", "-") in self.url:
+                return deepcopy(tables)
+        raise AssertionError(f"no archive fixture for {self.url}")
 
 
 @pytest.mark.parametrize(
@@ -763,6 +895,116 @@ def test_archive_scraper_preserves_round_evidence_in_candidate_only(
         }]
     }
     assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+
+
+@pytest.mark.parametrize(
+    "empty_tables",
+    [[], [_archive_table([])]],
+    ids=["no-ranking-table", "ranking-table-without-records"],
+)
+def test_archive_scraper_rejects_any_incomplete_requested_season(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+    empty_tables,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    (tmp_path / "archive_data.js").write_text(sentinel, encoding="utf-8")
+    valid_rows = [[
+        "35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12",
+    ]]
+    page = _ArchiveRankingPage(season_tables={
+        "2025/2026": [_archive_table(valid_rows)],
+        "2024/2025": empty_tables,
+    })
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, output_dir, tmp_path / "artifacts"
+    )
+
+    assert status == 1
+    assert not (output_dir / "archive_data.js").exists()
+    assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "2024/2025" in failure
+    assert "https://www.bwedl.de/archiv/2024-2025/" in failure
+
+
+def test_archive_scraper_ignores_expected_table_wait_timeout(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    rows = [[
+        "35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12",
+    ]]
+    page = _ArchiveRankingPage(
+        [_archive_table(rows)],
+        wait_error=PlaywrightTimeoutError("table wait expired"),
+    )
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, tmp_path / "candidate", tmp_path / "artifacts"
+    )
+
+    assert status == 0
+
+
+def test_archive_scraper_reports_unexpected_table_wait_error(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+) -> None:
+    rows = [[
+        "35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12",
+    ]]
+    page = _ArchiveRankingPage(
+        [_archive_table(rows)],
+        wait_error=RuntimeError("selector engine failed"),
+    )
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, tmp_path / "candidate", tmp_path / "artifacts"
+    )
+
+    assert status == 1
+    assert not (tmp_path / "candidate" / "archive_data.js").exists()
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "selector engine failed" in failure
+
+
+def test_archive_scraper_reports_parser_context_for_structural_failure(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+) -> None:
+    inconsistent = [[
+        "35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "99",
+    ]]
+
+    status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage([_archive_table(inconsistent)]),
+        tmp_path / "candidate",
+        tmp_path / "artifacts",
+    )
+
+    assert status == 1
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "2025/2026" in failure
+    assert "https://www.bwedl.de/archiv/2025-2026/" in failure
+    assert "table 0" in failure
+    assert "round total" in failure
 
 
 def test_archive_scraper_rejects_duplicate_player_season_with_diagnostics(

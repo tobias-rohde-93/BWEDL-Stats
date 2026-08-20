@@ -67,6 +67,45 @@ def test_combining_archive_name_is_normalized_to_nfc(fixture: dict) -> None:
     assert record["name"] == "José Müller"
 
 
+@pytest.mark.parametrize("player_id", ["47A1", "٤٧١١"])
+def test_archive_player_id_requires_ascii_digits(
+    fixture: dict,
+    player_id: str,
+) -> None:
+    table = deepcopy(fixture["modern"])
+    table["rows"][0][2] = player_id
+
+    with pytest.raises(ArchivePlayerParseError, match="player id"):
+        parse_archive_ranking_table(**table)
+
+
+def test_archive_club_number_requires_ascii_digits(fixture: dict) -> None:
+    table = deepcopy(fixture["modern"])
+    table["rows"][0][1] = "01A"
+
+    with pytest.raises(ArchivePlayerParseError, match="club number"):
+        parse_archive_ranking_table(**table)
+
+
+def test_archive_player_name_requires_a_unicode_letter(fixture: dict) -> None:
+    table = deepcopy(fixture["totals_only"])
+    table["rows"][0][2] = "123 456"
+
+    with pytest.raises(ArchivePlayerParseError, match="player name"):
+        parse_archive_ranking_table(**table)
+
+
+def test_unicode_player_name_and_leading_zero_id_are_preserved(fixture: dict) -> None:
+    table = deepcopy(fixture["totals_only"])
+    table["rows"][0][1] = "00811"
+    table["rows"][0][2] = "李 雷"
+
+    record = parse_archive_ranking_table(**table)[0]
+
+    assert record["id"] == "00811"
+    assert record["name"] == "李 雷"
+
+
 def test_total_only_archive_row_remains_career_only(fixture: dict) -> None:
     record = parse_archive_ranking_table(**fixture["totals_only"])[0]
 

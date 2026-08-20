@@ -156,6 +156,8 @@ def parse_archive_player_row(
     normalized_league = _text(league)
     if not player_id or not normalized_season:
         raise ArchivePlayerParseError("blank player-season identity")
+    if re.fullmatch(r"[0-9]+", player_id) is None:
+        raise ArchivePlayerParseError("invalid archive player id")
     if not normalized_league:
         raise ArchivePlayerParseError("blank archive league")
 
@@ -172,6 +174,8 @@ def parse_archive_player_row(
         )
     if not name:
         raise ArchivePlayerParseError("blank archive player name")
+    if not any(unicodedata.category(character).startswith("L") for character in name):
+        raise ArchivePlayerParseError("invalid archive player name")
 
     points = _nonnegative_integer(_cell(row, columns["points"]), "points")
     record: dict[str, Any] = {
@@ -185,6 +189,8 @@ def parse_archive_player_row(
 
     round_columns: list[tuple[int, int]] = columns["rounds"]
     v_nr = _cell(row, columns["v_nr"])
+    if v_nr and re.fullmatch(r"[0-9]+", v_nr) is None:
+        raise ArchivePlayerParseError("invalid archive club number")
     if v_nr:
         record["v_nr"] = v_nr
     if not round_columns:

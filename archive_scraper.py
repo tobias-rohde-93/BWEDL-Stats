@@ -1,7 +1,10 @@
 
 import argparse
 import asyncio
-from playwright.async_api import async_playwright
+from playwright.async_api import (
+    TimeoutError as PlaywrightTimeoutError,
+    async_playwright,
+)
 import json
 import re
 from pathlib import Path
@@ -14,6 +17,94 @@ from pipeline.urls import normalize_bwedl_url
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
+
+ARCHIVE_RANKING_TABLE_EXTRACTOR_JS = r'''() => {
+    const extracted = [];
+    const processedSet = new Set();
+
+    function rowValues(row) {
+        return Array.from(row.cells).map((cell) => cell.innerText.trim());
+    }
+
+    function isSemanticHeaderRow(row) {
+        const values = rowValues(row);
+        return (
+            values.some((value) => /^(?:Pl\.?|Platz|Rang)$/i.test(value))
+            && values.some((value) => /^(?:ID|Nr\.?)$/i.test(value))
+            && values.some((value) => /^(?:Name|Vorname|Nachname)$/i.test(value))
+            && values.some((value) => /^Gesamt$/i.test(value))
+        );
+    }
+
+    function extractTableData(table, league) {
+        const theadRows = Array.from(table.querySelectorAll('thead tr'));
+        const headerRow = (
+            theadRows.find(isSemanticHeaderRow)
+            || Array.from(table.rows).slice(0, 5).find(isSemanticHeaderRow)
+        );
+        if (!headerRow) return null;
+
+        const rows = Array.from(table.tBodies)
+            .flatMap((body) => Array.from(body.rows))
+            .filter((row) => row !== headerRow)
+            .map((row) => Array.from(row.querySelectorAll('td'))
+                .map((cell) => cell.innerText.trim()))
+            .filter((row) => row.length >= 3);
+        return { league, headers: rowValues(headerRow), rows };
+    }
+
+    function addTable(table, league) {
+        if (processedSet.has(table)) return;
+        processedSet.add(table);
+        const data = extractTableData(table, league);
+        if (data) extracted.push(data);
+    }
+
+    function leagueFromText(source) {
+        const text = (source || '').trim();
+        if (text.includes('Bezirksoberliga')) return 'Bezirksoberliga';
+        if (text.includes('Bezirksliga')) return 'Bezirksliga';
+        if (text.includes('A-Klasse')) return 'A-Klasse';
+        if (text.includes('B-Klasse')) return 'B-Klasse';
+        if (text.includes('C-Klasse')) return 'C-Klasse';
+        return '';
+    }
+
+    const leagueHeadings = Array.from(
+        document.querySelectorAll('b, strong, h2, h3, h4, div')
+    );
+    leagueHeadings.forEach((heading) => {
+        const league = leagueFromText(heading.innerText);
+        if (!league) return;
+
+        let sibling = heading.nextElementSibling;
+        let count = 0;
+        while (sibling && count < 10) {
+            if (sibling.tagName === 'TABLE') {
+                addTable(sibling, league);
+                break;
+            }
+            sibling = sibling.nextElementSibling;
+            count += 1;
+        }
+    });
+
+    document.querySelectorAll('table').forEach((table) => {
+        if (processedSet.has(table)) return;
+
+        let sibling = table.previousElementSibling;
+        let league = '';
+        let count = 0;
+        while (sibling && count < 10 && !league) {
+            league = leagueFromText(sibling.innerText);
+            sibling = sibling.previousElementSibling;
+            count += 1;
+        }
+        if (league) addTable(table, league);
+    });
+
+    return extracted;
+}'''
 
 
 def is_archive_season_link(href: str, text: str) -> bool:
@@ -115,6 +206,8 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         
         failures = []
         for url, season_name in unique_seasons.items():
+            clean_season = season_name.replace("Saison ", "").strip()
+            clean_season = clean_season.replace("Ranglisten ", "").strip()
             print(f"--------------------------------------------------")
             print(f"Starting Scrape for Season: {season_name}")
             print(f"  Landing URL: {url}")
@@ -171,111 +264,67 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 # Wait for tables
                 try:
                     await page.wait_for_selector('table', timeout=5000)
-                except:
-                    pass # No tables found, continue to next season
+                except PlaywrightTimeoutError:
+                    pass
                 
-                # Extract Tables using Text Search (Robust Logic)
-                tables_data = await page.evaluate('''() => {
-                    const extracted = [];
-                    const processedSet = new Set();
-                    
-                    function extractTableData(table, league) {
-                        const headerCells = Array.from(table.querySelectorAll('thead th, thead td'));
-                        const fallbackHeader = Array.from(table.querySelectorAll('tr'))
-                            .slice(0, 5)
-                            .find((row) => (
-                                Array.from(row.querySelectorAll('th, td')).some((cell) =>
-                                    /^(?:Pl\\.?|Platz|Rang|V-Nr\\.?|ID|Nr\\.?|Gesamt)$/i.test(cell.innerText.trim())
-                                )
-                            ));
-                        const headers = (
-                            headerCells.length
-                                ? headerCells
-                                : Array.from(fallbackHeader?.querySelectorAll('th, td') || [])
-                        ).map((cell) => cell.innerText.trim());
-                        const rows = Array.from(table.querySelectorAll('tbody tr, tr'))
-                            .filter((row) => row !== fallbackHeader)
-                            .map((row) => Array.from(row.querySelectorAll('td'))
-                                .map((cell) => cell.innerText.trim()))
-                            .filter((row) => row.length >= 3);
-                        return { league, headers, rows };
-                    }
-
-                    // Strategy 1: Forward Search from Headers
-                    const headers = Array.from(document.querySelectorAll('b, strong, h2, h3, h4, div'));
-                    headers.forEach(h => {
-                        const txt = (h.innerText || "").trim();
-                        let league = "";
-                        if (txt.includes("Bezirksliga")) league = "Bezirksliga";
-                        else if (txt.includes("A-Klasse")) league = "A-Klasse";
-                        else if (txt.includes("B-Klasse")) league = "B-Klasse";
-                        else if (txt.includes("C-Klasse")) league = "C-Klasse";
-                        else if (txt.includes("Bezirksoberliga")) league = "Bezirksoberliga"; 
-
-                        if (league) {
-                            let sibling = h.nextElementSibling;
-                            let count = 0;
-                            while(sibling && count < 10) {
-                                if (sibling.tagName === 'TABLE') {
-                                    if (!processedSet.has(sibling)) {
-                                        processedSet.add(sibling);
-                                        extracted.push(extractTableData(sibling, league));
-                                    }
-                                    break; 
-                                }
-                                sibling = sibling.nextElementSibling;
-                                count++;
-                            }
-                        }
-                    });
-
-                    // Strategy 2: Backward Search from Tables
-                    const tables = document.querySelectorAll('table');
-                    tables.forEach(table => {
-                        if (processedSet.has(table)) return;
-
-                        let sibling = table.previousElementSibling;
-                        let foundLeague = "";
-                        let count = 0;
-                        while(sibling && count < 10 && !foundLeague) {
-                            const txt = (sibling.innerText || "").trim();
-                            if (txt.includes("Bezirksliga")) foundLeague = "Bezirksliga";
-                            else if (txt.includes("A-Klasse")) foundLeague = "A-Klasse";
-                            else if (txt.includes("B-Klasse")) foundLeague = "B-Klasse";
-                            else if (txt.includes("C-Klasse")) foundLeague = "C-Klasse";
-                            else if (txt.includes("Bezirksoberliga")) foundLeague = "Bezirksoberliga";
-                            
-                            sibling = sibling.previousElementSibling;
-                            count++;
-                        }
-                        if (foundLeague) {
-                            processedSet.add(table);
-                            extracted.push(extractTableData(table, foundLeague));
-                        }
-                    });
-                    
-                    return extracted;
-                }''')
+                tables_data = await page.evaluate(
+                    ARCHIVE_RANKING_TABLE_EXTRACTOR_JS
+                )
                 
                 print(f"  Found {len(tables_data)} league tables on {page.url}.")
 
-                clean_season = season_name.replace("Saison ", "").strip()
-                clean_season = clean_season.replace("Ranglisten ", "").strip()
-                for table in tables_data:
-                    all_entries.extend(parse_archive_ranking_table(
-                        season=clean_season,
-                        league=table['league'],
-                        headers=table['headers'],
-                        rows=table['rows'],
-                    ))
+                if not tables_data:
+                    raise RuntimeError(
+                        "table index unavailable: no recognized ranking tables"
+                    )
 
-            except Exception as e:
-                failures.append(e)
-                print(f"  Error processing {season_name}")
+                season_entries = []
+                for table_index, table in enumerate(tables_data):
+                    try:
+                        records = parse_archive_ranking_table(
+                            season=clean_season,
+                            league=table['league'],
+                            headers=table['headers'],
+                            rows=table['rows'],
+                        )
+                        merge_archive_entries([
+                            *all_entries,
+                            *season_entries,
+                            *records,
+                        ])
+                    except Exception as error:
+                        raise RuntimeError(
+                            f"table {table_index}: "
+                            f"{type(error).__name__}: {error}"
+                        ) from error
+                    season_entries.extend(records)
+
+                if not season_entries:
+                    raise RuntimeError(
+                        "table indexes "
+                        f"0-{len(tables_data) - 1}: "
+                        "no recognized ranking records"
+                    )
+
+                all_entries.extend(season_entries)
+
+            except Exception as error:
+                failure_url = getattr(page, "url", url) or url
+                contextual_error = RuntimeError(
+                    f"season {clean_season} url {failure_url}: "
+                    f"{type(error).__name__}: {error}"
+                )
+                failures.append(contextual_error)
+                print(
+                    f"  Error processing {clean_season} "
+                    f"at {failure_url}"
+                )
 
         if failures:
+            details = "; ".join(str(error) for error in failures)
             raise RuntimeError(
-                f"archive scrape incomplete ({len(failures)} item failures)"
+                "archive scrape incomplete "
+                f"({len(failures)} item failures): {details}"
             ) from failures[0]
         if not all_entries:
             raise RuntimeError("No recognized archive history records found")
