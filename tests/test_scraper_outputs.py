@@ -538,10 +538,12 @@ class _AsyncPlaywright(_Playwright):
 
 class _ArchiveRankingPage(_AsyncPage):
     def __init__(
-        self, tables=None, *, season_tables=None, season_links=None, wait_error=None
+        self, tables=None, *, season_tables=None, season_links=None,
+        sub_links=None, wait_error=None
     ):
         self.season_tables = season_tables or {"2025/2026": tables}
         self.season_links = season_links
+        self.sub_links = sub_links or {}
         self.wait_error = wait_error
         self.evaluate_calls = 0
         self.url = archive_scraper.ARCHIVE_URL
@@ -572,6 +574,9 @@ class _ArchiveRankingPage(_AsyncPage):
                 for season in self.season_tables
             ]
         if self.evaluate_calls % 2 == 0:
+            for season, sub_link in self.sub_links.items():
+                if season.replace("/", "-") in self.url:
+                    return deepcopy(sub_link)
             return {"found": False}
         for season, tables in self.season_tables.items():
             if season.replace("/", "-") in self.url:
@@ -1095,6 +1100,68 @@ def test_archive_scraper_unknown_marker_has_full_context_and_preserves_public_ro
     assert "'?'" in failure
 
 
+@pytest.mark.parametrize(
+    "sub_link",
+    [
+        {
+            "found": True,
+            "href": "https://www.bwedl.de/archiv/2024-2025/ranglisten/",
+            "text": "Ranglisten 2024/25",
+        },
+        {
+            "found": True,
+            "href": "https://www.bwedl.de/archiv/2025-2026/ranglisten/",
+            "text": "Ranglisten 2024/25",
+        },
+        {
+            "found": True,
+            "href": "https://www.bwedl.de/archiv/2025-2026/ranglisten/",
+            "text": "Ranglisten 2025/2027",
+        },
+    ],
+    ids=["cross-season-url", "conflicting-text", "malformed-text"],
+)
+def test_archive_scraper_rejects_unbound_ranking_sub_link_before_navigation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+    sub_link: dict,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    (tmp_path / "archive_data.js").write_text(sentinel, encoding="utf-8")
+    valid_rows = [[
+        "35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12",
+    ]]
+    page = _ArchiveRankingPage(
+        season_tables={
+            "2025/2026": [_archive_table(valid_rows)],
+            "2024/2025": [_archive_table(valid_rows)],
+        },
+        season_links=[{
+            "href": "https://www.bwedl.de/archiv/2025-2026/",
+            "text": "Saison 2025/26",
+        }],
+        sub_links={"2025/2026": sub_link},
+    )
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, output_dir, tmp_path / "artifacts"
+    )
+
+    assert status == 1
+    assert sub_link["href"] not in page.goto_urls
+    assert not (output_dir / "archive_data.js").exists()
+    assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "season 2025/2026" in failure
+    assert "ranking sub-link season mismatch or malformed" in failure
+
+
 def test_archive_scraper_ignores_expected_table_wait_timeout(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -1230,6 +1297,46 @@ def test_archive_scraper_candidate_serialization_is_deterministic(
     assert (first_dir / "archive_data.js").read_bytes() == (
         second_dir / "archive_data.js"
     ).read_bytes()
+
+
+def test_archive_scraper_merges_collected_segments_once_not_after_each_table(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    real_merge = archive_scraper.merge_archive_entries
+    merge_sizes = []
+
+    def counted_merge(entries):
+        materialized = list(entries)
+        merge_sizes.append(len(materialized))
+        return real_merge(materialized)
+
+    monkeypatch.setattr(archive_scraper, "merge_archive_entries", counted_merge)
+    season_tables = {}
+    next_player_id = 1000
+    for start in range(2018, 2026):
+        season = f"{start}/{start + 1}"
+        tables = []
+        for league in ("Bezirksliga", "A-Klasse", "B-Klasse", "C-Klasse"):
+            rows = []
+            for _ in range(5):
+                rows.append([
+                    "1", "035", str(next_player_id), "Scale", "Player",
+                    "1", "x", "2", "3",
+                ])
+                next_player_id += 1
+            tables.append(_archive_table(rows, league))
+        season_tables[season] = tables
+
+    status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage(season_tables=season_tables),
+        tmp_path / "candidate",
+        tmp_path / "artifacts",
+    )
+
+    assert status == 0
+    assert merge_sizes == [8 * 4 * 5]
 
 
 @pytest.mark.parametrize(

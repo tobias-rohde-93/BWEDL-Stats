@@ -110,12 +110,7 @@ ARCHIVE_RANKING_TABLE_EXTRACTOR_JS = r'''() => {
 }'''
 
 
-def _canonical_archive_season(value: object) -> str | None:
-    if not isinstance(value, str):
-        return None
-    match = ARCHIVE_SEASON_PATTERN.search(value)
-    if match is None:
-        return None
+def _canonical_archive_season_match(match: re.Match[str]) -> str | None:
     start = int(match.group(1))
     if len(match.group(1)) == 2:
         start += 1900 if start >= 70 else 2000
@@ -127,6 +122,23 @@ def _canonical_archive_season(value: object) -> str | None:
     if end - start not in {1, 2}:
         return None
     return f"{start:04d}/{end:04d}"
+
+
+def _archive_season_signal(value: object) -> tuple[bool, str | None]:
+    if not isinstance(value, str):
+        return False, None
+    matches = list(ARCHIVE_SEASON_PATTERN.finditer(value))
+    if not matches:
+        return False, None
+    seasons = [_canonical_archive_season_match(match) for match in matches]
+    unique = set(seasons)
+    if None in unique or len(unique) != 1:
+        return True, None
+    return True, seasons[0]
+
+
+def _canonical_archive_season(value: object) -> str | None:
+    return _archive_season_signal(value)[1]
 
 
 def _archive_season_link(href: str, text: str) -> tuple[str, str] | None:
@@ -177,6 +189,22 @@ def save_archive_data(data, output_dir=Path(".")) -> Path:
     )
     output_path.write_text(js_content, encoding="utf-8", newline="\n")
     return output_path
+
+
+def _archive_sub_link_for_season(
+    href: object, text: object, expected_season: str
+) -> str | None:
+    safe_url = normalize_bwedl_url(href, "/archiv/")
+    if safe_url is None or not isinstance(text, str):
+        return None
+    url_present, url_season = _archive_season_signal(safe_url)
+    text_present, text_season = _archive_season_signal(text)
+    if not url_present or url_season != expected_season:
+        return None
+    if text_present and text_season != expected_season:
+        return None
+    return safe_url
+
 
 async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
     print(f"Starting Archive Scrape from {ARCHIVE_URL}")
@@ -265,16 +293,14 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 }''')
                 
                 if sub_link['found']:
-                     target_url = normalize_bwedl_url(
-                         sub_link.get('href'), "/archiv/"
-                     )
-                     if (
-                         target_url
-                         and target_url != url
-                         and is_archive_sub_link(
-                             target_url, sub_link.get('text')
-                         )
-                     ):
+                    target_url = _archive_sub_link_for_season(
+                        sub_link.get('href'), sub_link.get('text'), clean_season
+                    )
+                    if target_url is None:
+                        raise RuntimeError(
+                            "ranking sub-link season mismatch or malformed"
+                        )
+                    if target_url != url:
                         print(f"  Found sub-link to Rankings: {sub_link['text']} -> {target_url}")
                         await page.goto(target_url, wait_until="networkidle")
 
@@ -318,11 +344,6 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                                 f"league {league}: "
                                 "no recognized ranking records"
                             )
-                        merge_archive_entries([
-                            *all_entries,
-                            *season_entries,
-                            *records,
-                        ])
                     except Exception as error:
                         raise RuntimeError(
                             f"table {table_index} league {league}: "
