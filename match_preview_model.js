@@ -969,9 +969,7 @@
             return label ? { target: labels, value: label } : null;
         });
         collect(['team_id', 'teamId', ...(includeGenericIdentity ? ['id'] : [])], (value) => {
-            if (typeof value !== 'string') return null;
-            const id = value.normalize('NFKC').replace(/\s+/gu, ' ').trim()
-                .normalize('NFC').toLocaleLowerCase('de-DE');
+            const id = normalizedTeamIdentityId(value);
             return id ? { target: ids, value: id } : null;
         });
         return {
@@ -1810,7 +1808,11 @@
 
     function exactTeamLabel(value) {
         if (typeof value !== 'string') return null;
-        const normalized = value.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC');
+        const compatibilityNormalized = value.normalize('NFKC');
+        if (/[\p{Default_Ignorable_Code_Point}\p{Cc}\p{Cf}\p{Cs}]/u.test(compatibilityNormalized)) {
+            return null;
+        }
+        const normalized = compatibilityNormalized.replace(/\s+/gu, ' ').trim().normalize('NFC');
         return normalized && /\p{L}/u.test(normalized)
             ? normalized.toLocaleLowerCase('de-DE')
             : null;
@@ -2112,7 +2114,11 @@
 
     function normalizedTeamIdentityId(value) {
         if (typeof value !== 'string') return null;
-        const normalized = value.normalize('NFKC').replace(/\s+/gu, ' ').trim()
+        const compatibilityNormalized = value.normalize('NFKC');
+        if (/[\p{Default_Ignorable_Code_Point}\p{Cc}\p{Cf}\p{Cs}]/u.test(compatibilityNormalized)) {
+            return null;
+        }
+        const normalized = compatibilityNormalized.replace(/\s+/gu, ' ').trim()
             .normalize('NFC').toLocaleLowerCase('de-DE');
         return normalized || null;
     }

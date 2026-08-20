@@ -1751,16 +1751,17 @@ for (const invalidName of ['1234', '... ---']) {
 
 const unicodeOutcomeClub = Model.buildOutcomeTrainingExamples({
     archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
-        { round: 1, home: 'Älpha', away: 'Bravo', result: '9:7' },
+        { round: 1, home: '  A\u0308LPHA  ', away: 'Bravo', result: '9:7' },
     ] }],
     archiveData: outcomeArchive,
     clubs: [
         { number: '035', clubNumber: '035', club_number: '035', v_nr: '035', clubId: '035', name: 'Älpha' },
+        { number: '035', name: ' A\u0308lpha ' },
         { clubNumber: '036', clubId: '036', name: 'Bravo' },
     ],
 });
 assert.equal(unicodeOutcomeClub.length, 1,
-    'Unicode-letter names and equivalent club ID aliases form valid canonical identities');
+    'NFC/NFD Unicode names, whitespace, case, semantic duplicates, and equivalent IDs coalesce');
 assert.equal(unicodeOutcomeClub.diagnostics.clubMapping.reason, null);
 
 for (const conflictingAlias of [
@@ -1908,6 +1909,62 @@ assert.equal(Model.buildOutcomeTrainingExamples({
     archiveData: publishedParticipantIdArchive,
     clubs: publishedAliasParticipantClubs,
 }).length, 1, 'participant mappings parse object aliases identically to roster mappings');
+
+for (const unsafeIdentity of [
+    'Al\u200Bpha',
+    'Al\u202Epha',
+    'Al\u0000pha',
+    'Al\uD800pha',
+]) {
+    const unsafeClubIdentity = Model.buildOutcomeTrainingExamples({
+        archiveTables, archiveData: outcomeArchive, clubs: [
+            { number: '035', name: unsafeIdentity },
+            { number: '036', name: 'Bravo' },
+        ],
+    });
+    assert.equal(unsafeClubIdentity.length, 0);
+    assert.deepEqual(unsafeClubIdentity.diagnostics.clubMapping.invalidClubIds, ['035'],
+        'unsafe Unicode code points invalidate club labels');
+
+    const unsafeTeamIdentity = Model.buildOutcomeTrainingExamples({
+        archiveTables: multiTeamRows, archiveData: outcomeArchive, clubs: [
+            { number: '035', name: 'Club Alpha', teams: [unsafeIdentity] },
+            { number: '036', name: 'Bravo' },
+        ],
+    });
+    assert.equal(unsafeTeamIdentity.length, 0);
+    assert.deepEqual(unsafeTeamIdentity.diagnostics.clubMapping.invalidClubIds, ['035'],
+        'unsafe Unicode code points invalidate team labels');
+
+    const unsafeMatchIdentity = Model.buildOutcomeTrainingExamples({
+        archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
+            { round: 1, home: unsafeIdentity, away: 'Bravo', result: '9:7' },
+        ] }],
+        archiveData: outcomeArchive, clubs: outcomeClubs,
+    });
+    assert.equal(unsafeMatchIdentity.length, 0);
+    assert.equal(unsafeMatchIdentity.diagnostics.excluded.malformed, 1,
+        'unsafe Unicode code points invalidate match labels before mapping');
+
+    const unsafeParticipantArchive = makeOutcomeArchive();
+    for (let index = 0; index < 4; index += 1) {
+        unsafeParticipantArchive[String(200 + index)][1].team = 'Alpha';
+        unsafeParticipantArchive[String(200 + index)][1].team_id = unsafeIdentity;
+    }
+    const unsafeParticipantIdentity = Model.buildOutcomeTrainingExamples({
+        archiveTables: multiTeamRows,
+        archiveData: unsafeParticipantArchive,
+        clubs: [
+            { number: '035', name: 'Club Alpha', teams: [
+                { id: unsafeIdentity, name: 'Alpha' },
+                { id: 'two', name: 'Alpha Two' },
+            ] },
+            { number: '036', name: 'Bravo' },
+        ],
+    });
+    assert.equal(unsafeParticipantIdentity.length, 0,
+        'unsafe Unicode team IDs cannot resolve a participant against an equally spoofed mapping');
+}
 
 const missingPublishedParticipantIdArchive = makeOutcomeArchive();
 for (let index = 0; index < 4; index += 1) {
