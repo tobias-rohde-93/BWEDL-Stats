@@ -1239,6 +1239,10 @@ def test_archive_scraper_rejects_exact_segment_collision_with_diagnostics(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture,
 ) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    public_path = tmp_path / "archive_data.js"
+    public_path.write_text(sentinel, encoding="utf-8")
     duplicate = [
         ["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"],
         ["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"],
@@ -1255,6 +1259,7 @@ def test_archive_scraper_rejects_exact_segment_collision_with_diagnostics(
 
     assert status == 1
     assert not (output_dir / "archive_data.js").exists()
+    assert public_path.read_text(encoding="utf-8") == sentinel
     assert (artifacts_dir / "archive_scraper.html").is_file()
     assert (artifacts_dir / "archive_scraper.png").is_file()
     assert (artifacts_dir / "archive_scraper-trace.zip").is_file()
@@ -1263,6 +1268,14 @@ def test_archive_scraper_rejects_exact_segment_collision_with_diagnostics(
         if line.startswith("SCRAPER_FAILURE ")
     ]
     assert len(failure_lines) == 1
+    failure = failure_lines[0]
+    assert "archive segment identity collision" in failure
+    assert "season 2025/2026" in failure
+    assert "https://www.bwedl.de/archiv/2025-2026/" in failure
+    assert "table 0" in failure
+    assert "league A-Klasse" in failure
+    assert "row 1" in failure
+    assert "row 0" in failure
 
 
 def test_archive_scraper_candidate_serialization_is_deterministic(

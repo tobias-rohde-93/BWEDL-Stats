@@ -9,6 +9,7 @@ import json
 import re
 from pathlib import Path
 from pipeline.archive_players import (
+    archive_segment_id,
     merge_archive_entries,
     parse_archive_ranking_table,
 )
@@ -20,6 +21,11 @@ ARCHIVE_URL = f"{BASE_URL}/archiv/"
 ARCHIVE_SEASON_PATTERN = re.compile(
     r"(?<!\d)(\d{4}|\d{2})\s*[/\-]\s*(\d{4}|\d{2})(?!\d)"
 )
+
+
+class ArchiveSegmentCollisionError(RuntimeError):
+    """Retain both source locations for a duplicate immutable segment."""
+
 
 ARCHIVE_RANKING_TABLE_EXTRACTOR_JS = r'''() => {
     const extracted = [];
@@ -246,6 +252,7 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         print(f"DEBUG: Unique seasons to scrape: {unique_seasons}")
         
         all_entries = []
+        segment_provenance = {}
 
         if not unique_seasons:
             raise RuntimeError("No unique archive seasons found")
@@ -328,12 +335,38 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                         records = []
                         for row_index, row in enumerate(table['rows']):
                             try:
-                                records.extend(parse_archive_ranking_table(
+                                parsed_records = parse_archive_ranking_table(
                                     season=clean_season,
                                     league=table['league'],
                                     headers=table['headers'],
                                     rows=[row],
-                                ))
+                                )
+                                for record in parsed_records:
+                                    player_id = record['id']
+                                    record_season = record['season']
+                                    segment = {
+                                        key: value for key, value in record.items()
+                                        if key not in {'id', 'season'}
+                                    }
+                                    segment_id = archive_segment_id(
+                                        player_id, record_season, segment
+                                    )
+                                    provenance = (
+                                        f"season {clean_season} url {page.url} "
+                                        f"table {table_index} league {league} "
+                                        f"row {row_index}"
+                                    )
+                                    previous = segment_provenance.get(segment_id)
+                                    if previous is not None:
+                                        raise ArchiveSegmentCollisionError(
+                                            "archive segment identity collision: "
+                                            f"current {provenance}; "
+                                            f"previous {previous}"
+                                        )
+                                    segment_provenance[segment_id] = provenance
+                                records.extend(parsed_records)
+                            except ArchiveSegmentCollisionError:
+                                raise
                             except Exception as error:
                                 raise RuntimeError(
                                     f"league {league} row {row_index}: "
@@ -344,6 +377,8 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                                 f"league {league}: "
                                 "no recognized ranking records"
                             )
+                    except ArchiveSegmentCollisionError:
+                        raise
                     except Exception as error:
                         raise RuntimeError(
                             f"table {table_index} league {league}: "
@@ -360,6 +395,8 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
 
                 all_entries.extend(season_entries)
 
+            except ArchiveSegmentCollisionError:
+                raise
             except Exception as error:
                 failure_url = getattr(page, "url", url) or url
                 contextual_error = RuntimeError(
