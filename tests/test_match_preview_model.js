@@ -1042,6 +1042,54 @@ assert.equal(historicalWithStaleCurrent.players[0].evidence, 'historical');
 assert.deepEqual(historicalWithStaleCurrent.diagnostics.irrelevantCurrentIds, ['370']);
 assert.deepEqual(historicalWithStaleCurrent.diagnostics.ambiguousCurrentIds, []);
 
+const consistentExplicitStaleRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2025/2026',
+    currentPlayers: [{
+        id: '372', name: 'Consistent Explicit Stale', v_nr: '999',
+        league: 'B-Klasse', season: '2025/2026', rounds: { R1: 9 },
+    }],
+    archiveData: {
+        372: [record({
+            id: '372', season: '2025/2026', name: 'Consistent Explicit Stale',
+            league: 'B-Klasse', mean: 6, vNr: '035',
+        })],
+    },
+});
+assert.deepEqual(consistentExplicitStaleRoster.players.map((player) => player.id), ['372']);
+assert.deepEqual(consistentExplicitStaleRoster.diagnostics.irrelevantCurrentIds, ['372']);
+assert.deepEqual(consistentExplicitStaleRoster.diagnostics.ambiguousCurrentIds, []);
+
+for (const conflictingStaleRow of [
+    {
+        id: '373', name: 'Target Row Conflicts Dataset', v_nr: '999',
+        league: 'B-Klasse', season: '2026/2027', rounds: { R1: 9 },
+    },
+    {
+        id: '374', name: 'Invalid Explicit Season', v_nr: '999',
+        league: 'B-Klasse', season: 'invalid', rounds: { R1: 9 },
+    },
+    {
+        id: '375', name: 'Target League Conflicts Dataset', v_nr: '999',
+        league: 'B-Klasse 2026/2027', rounds: { R1: 9 },
+    },
+]) {
+    const identityConflictRoster = Model.buildTeamRoster({
+        teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+        currentDatasetSeason: '2025/2026', currentPlayers: [conflictingStaleRow],
+        archiveData: {
+            [conflictingStaleRow.id]: [record({
+                id: conflictingStaleRow.id, season: '2025/2026', name: conflictingStaleRow.name,
+                league: 'B-Klasse', mean: 6, vNr: '035',
+            })],
+        },
+    });
+    assert.deepEqual(identityConflictRoster.players, [],
+        'invalid or dataset-conflicting row season signals veto historical identity');
+    assert.deepEqual(identityConflictRoster.diagnostics.ambiguousCurrentIds, [conflictingStaleRow.id]);
+    assert.deepEqual(identityConflictRoster.diagnostics.irrelevantCurrentIds, []);
+}
+
 const targetSeasonDedupRoster = Model.buildTeamRoster({
     teamId: '035', targetLeague: 'B-Klasse 2025/2026',
     currentDatasetSeason: '2025/2026',
@@ -1173,6 +1221,68 @@ const unnamedUniqueResolutionRoster = Model.buildTeamRoster({
 });
 assert.deepEqual(unnamedUniqueResolutionRoster.players.map((player) => player.id), ['359'],
     'a unique authoritative mapping also validates explicit identity without teamName input');
+
+const sharedLabelMapping = [
+    { clubNumber: '035', teamName: 'Shared Alpha', teamId: 'one', league: 'B-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamName: 'Shared Alpha', teamId: 'two', league: 'B-Klasse', season: '2026/2027' },
+];
+const sharedLabelSelectedRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Shared Alpha', team_id: 'one',
+    targetLeague: 'B-Klasse 2026/2027', currentDatasetSeason: '2026/2027',
+    classMean: 5, archiveData: {}, leagueTeams: sharedLabelMapping,
+    currentPlayers: [
+        { id: '376', name: 'Exact Published ID', v_nr: '035', league: 'B-Klasse', team_id: 'one', rounds: { R1: 5 } },
+        { id: '377', name: 'Other Published ID', v_nr: '035', league: 'B-Klasse', team_id: 'two', rounds: { R1: 5 } },
+        { id: '378', name: 'No Identity Shared Label', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+        { id: '379', name: 'Exact Label And ID', v_nr: '035', league: 'B-Klasse', team: 'Shared Alpha', team_id: 'one', rounds: { R1: 5 } },
+        { id: '380', name: 'Label Cannot Link ID', v_nr: '035', league: 'B-Klasse', team: 'Shared Alpha', rounds: { R1: 5 } },
+    ],
+});
+assert.deepEqual(sharedLabelSelectedRoster.players.map((player) => player.id), ['376', '379'],
+    'same label with different IDs is ambiguous; selected and player IDs must resolve one entry');
+
+const sharedLabelWithoutSelectedId = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Shared Alpha',
+    targetLeague: 'B-Klasse 2026/2027', currentDatasetSeason: '2026/2027',
+    classMean: 5, archiveData: {}, leagueTeams: sharedLabelMapping,
+    currentPlayers: [{
+        id: '381', name: 'Label Selection Is Not Unique', v_nr: '035',
+        league: 'B-Klasse', team_id: 'one', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(sharedLabelWithoutSelectedId.players, [],
+    'selected label alone cannot choose between two canonical mapping identities');
+
+const idOnlyMapping = [
+    { clubNumber: '035', teamId: 'one', league: 'B-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamId: 'two', league: 'B-Klasse', season: '2026/2027' },
+];
+const idOnlySelectedRoster = Model.buildTeamRoster({
+    teamId: '035', team_id: 'one', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: idOnlyMapping,
+    currentPlayers: [
+        { id: '382', name: 'Exact ID Only', v_nr: '035', league: 'B-Klasse', team_id: 'one', rounds: { R1: 5 } },
+        { id: '383', name: 'Other ID Only', v_nr: '035', league: 'B-Klasse', team_id: 'two', rounds: { R1: 5 } },
+        { id: '384', name: 'No ID For ID Mapping', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+    ],
+});
+assert.deepEqual(idOnlySelectedRoster.players.map((player) => player.id), ['382'],
+    'ID-only entries are authoritative and ambiguous until selected and player IDs agree');
+
+const duplicateCanonicalMappingRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    clubs: [
+        { number: '035', name: 'Alpha Club', teams: ['Alpha One'] },
+        { number: '035', name: 'Alpha Club Duplicate', teams: [' alpha  one '] },
+    ],
+    currentPlayers: [{
+        id: '385', name: 'Canonical Duplicate', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(duplicateCanonicalMappingRoster.players.map((player) => player.id), ['385'],
+    'semantically duplicate records form one canonical mapping identity');
 
 let currentTeamAliasGetterCalls = 0;
 const accessorTeamAliasPlayer = {
@@ -1346,7 +1456,8 @@ const explicitAmbiguousClubRoster = Model.buildTeamRoster({
     currentPlayers: ambiguousMappedCurrent.slice(0, 2), archiveData: {}, classMean: 5,
     ambiguousClubNumbers: ['035'],
 });
-assert.deepEqual(explicitAmbiguousClubRoster.players.map((player) => player.id), ['341']);
+assert.deepEqual(explicitAmbiguousClubRoster.players, [],
+    'an ambiguity flag without canonical mapping entries cannot be resolved by label coincidence');
 
 const totalsMembershipArchive = {
     360: [
@@ -1416,6 +1527,11 @@ const outcomeClubs = deepFreeze([
     { number: '035', name: 'Alpha' },
     { number: '036', name: 'Bravo' },
 ]);
+const duplicateOutcomeClubs = deepFreeze([
+    { number: '035', name: 'Alpha' },
+    { number: '035', name: ' alpha ' },
+    { number: '036', name: 'Bravo' },
+]);
 const training = Model.buildOutcomeTrainingExamples({
     archiveTables, archiveData: outcomeArchive, clubs: outcomeClubs,
 });
@@ -1430,6 +1546,9 @@ assert.equal(JSON.stringify(outcomeArchive), JSON.stringify(makeOutcomeArchive()
 assert.equal(JSON.stringify(training), JSON.stringify(Model.buildOutcomeTrainingExamples({
     archiveTables, archiveData: outcomeArchive, clubs: outcomeClubs,
 })));
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: duplicateOutcomeClubs,
+}).length, 1, 'semantically duplicate outcome mappings form one canonical identity');
 
 const ambiguousTraining = Model.buildOutcomeTrainingExamples({
     archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
@@ -1518,6 +1637,33 @@ for (let index = 0; index < 4; index += 1) {
 assert.equal(Model.buildOutcomeTrainingExamples({
     archiveTables: multiTeamRows, archiveData: publishedParticipantIdArchive, clubs: publishedIdClubs,
 }).length, 1, 'matching participant IDs resolve only when the mapping publishes that ID');
+
+const sharedParticipantIdClubs = [
+    { number: '035', name: 'Club Alpha', teams: [
+        { id: 'shared', name: 'Alpha' }, { id: 'shared', name: 'Alpha Two' },
+    ] },
+    { number: '036', name: 'Bravo' },
+];
+const ambiguousSharedParticipantIdArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    ambiguousSharedParticipantIdArchive[String(200 + index)][1].team_id = 'shared';
+}
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows,
+    archiveData: ambiguousSharedParticipantIdArchive,
+    clubs: sharedParticipantIdClubs,
+}).length, 0, 'a participant ID shared by two mapping identities cannot select either entry');
+
+const exactSharedParticipantIdArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    exactSharedParticipantIdArchive[String(200 + index)][1].team = 'Alpha';
+    exactSharedParticipantIdArchive[String(200 + index)][1].team_id = 'shared';
+}
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows,
+    archiveData: exactSharedParticipantIdArchive,
+    clubs: sharedParticipantIdClubs,
+}).length, 1, 'participant label and ID together resolve exactly one canonical mapping entry');
 
 const wrongUniqueParticipantArchive = makeOutcomeArchive();
 wrongUniqueParticipantArchive['200'][1].team = 'Bravo';

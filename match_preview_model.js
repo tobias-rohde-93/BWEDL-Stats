@@ -988,31 +988,39 @@
         const id = safeIdentifier(ownValue(source, 'id'));
         const name = displayPlayerName(ownValue(source, 'name'));
         const clubId = safeIdentifier(ownValue(source, 'v_nr'));
-        const league = ownValue(source, 'league');
+        const leagueInspection = inspectOwn(source, 'league');
+        const league = leagueInspection.isData ? leagueInspection.descriptor.value : undefined;
         const leagueClass = normalizeLeagueClass(league);
         const leagueSeason = seasonFromLeague(league);
         const seasonInspection = inspectOwn(source, 'season');
         const explicitSeason = seasonInspection.isData
             ? canonicalSeason(seasonInspection.descriptor.value)
             : null;
-        const staleDatasetSeason = currentDatasetSeason && targetSeason
-            && currentDatasetSeason !== targetSeason;
+        const hasLeagueSeasonSignal = typeof league === 'string'
+            && (/[0-9]/u.test(league) || /saison/iu.test(league));
+        const invalidExplicitSeason = !seasonInspection.ok
+            || (seasonInspection.exists && (!seasonInspection.isData || !explicitSeason));
+        const invalidLeagueSeason = !leagueInspection.ok
+            || (leagueInspection.exists && !leagueInspection.isData)
+            || (hasLeagueSeasonSignal && (!leagueClass || !leagueSeason));
         const conflictingRowSeasons = explicitSeason && leagueSeason
             && explicitSeason !== leagueSeason;
-        const staleExplicitSeason = explicitSeason && targetSeason
-            && explicitSeason !== targetSeason;
-        const staleLeagueSeason = !explicitSeason && leagueSeason && targetSeason
-            && leagueSeason !== targetSeason;
-        if (id && (staleDatasetSeason
-            || (!conflictingRowSeasons && (staleExplicitSeason || staleLeagueSeason))
-            || (!seasonInspection.exists && !currentDatasetSeason && !leagueSeason))) {
+        const rowSeasons = [explicitSeason, leagueSeason].filter(Boolean);
+        const datasetConflict = currentDatasetSeason
+            && rowSeasons.some((season) => season !== currentDatasetSeason);
+        if ((invalidExplicitSeason || invalidLeagueSeason
+            || conflictingRowSeasons || datasetConflict) && id) {
+            return { id, invalidSeason: true };
+        }
+        const staleDatasetSeason = currentDatasetSeason && targetSeason
+            && currentDatasetSeason !== targetSeason;
+        const staleRowSeason = !currentDatasetSeason && targetSeason
+            && rowSeasons.length && rowSeasons.every((season) => season !== targetSeason);
+        if (id && (staleDatasetSeason || staleRowSeason
+            || (!rowSeasons.length && !currentDatasetSeason))) {
             return { id, irrelevantSeason: true };
         }
         const invalidSeason = invalidDatasetSeason
-            || (seasonInspection.exists && !explicitSeason)
-            || conflictingRowSeasons
-            || (currentDatasetSeason && leagueSeason && leagueSeason !== currentDatasetSeason)
-            || (currentDatasetSeason && explicitSeason && explicitSeason !== currentDatasetSeason)
             || (targetSeason && leagueSeason && leagueSeason !== targetSeason)
             || (targetSeason && explicitSeason && explicitSeason !== targetSeason)
             || (targetSeason && !explicitSeason && currentDatasetSeason !== targetSeason);
@@ -1304,7 +1312,6 @@
         const clubs = arrayDataValues(ownValue(options, 'clubs'));
         if (!teamMappingsInspection.exists && !leagueTeamsInspection.exists && clubs.ok) {
             const matchingClubs = clubs.values.filter((club) => ownValue(club, 'number') === teamId);
-            if (matchingClubs.length > 1) explicitAmbiguity = true;
             for (const club of matchingClubs) {
                 const teams = arrayDataValues(ownValue(club, 'teams'));
                 if (!teams.ok) continue;
@@ -1313,43 +1320,112 @@
                 }
             }
         }
+        const canonicalEntries = [];
+        const seenIdentities = new Set();
+        for (const entry of entries) {
+            const ids = Array.from(entry.ids).sort((left, right) => left.localeCompare(right, 'en'));
+            const identity = JSON.stringify([entry.label || null, ids]);
+            if (seenIdentities.has(identity)) continue;
+            seenIdentities.add(identity);
+            canonicalEntries.push({ label: entry.label, ids: new Set(ids), identity });
+        }
+        canonicalEntries.sort((left, right) => left.identity.localeCompare(right.identity, 'en'));
+        const canonicalLabels = new Set(
+            canonicalEntries.map((entry) => entry.label).filter(Boolean),
+        );
         return {
-            labels,
-            entries,
-            authoritative: labels.size > 0 || explicitAmbiguity,
-            ambiguous: explicitAmbiguity || labels.size > 1,
+            labels: canonicalLabels,
+            entries: canonicalEntries,
+            authoritative: canonicalEntries.length > 0 || explicitAmbiguity,
+            ambiguous: explicitAmbiguity || canonicalEntries.length > 1,
             invalid: invalidMapping,
         };
     }
 
-    function rosterRecordMatchesSelectedTeam(record, mapping, selectedTeamLabel) {
-        const aliases = collectTeamAliases(record);
-        if (aliases.invalid || aliases.ambiguous) return false;
-        const selectedEntries = selectedTeamLabel
-            ? mapping.entries.filter((entry) => entry.label === selectedTeamLabel)
-            : mapping.entries;
-        let matchesSelectedEntry = selectedEntries.some((entry) => (
+    function mappingEntriesMatchingAliases(mapping, aliases) {
+        if (aliases.invalid || aliases.ambiguous || !aliases.present) return [];
+        return mapping.entries.filter((entry) => (
             (!aliases.labels.size || (entry.label && aliases.labels.has(entry.label)))
             && (!aliases.ids.size
                 || Array.from(aliases.ids).some((id) => entry.ids.has(id)))
         ));
-        if (!selectedEntries.length && selectedTeamLabel) {
-            matchesSelectedEntry = (!aliases.labels.size || aliases.labels.has(selectedTeamLabel))
-                && !aliases.ids.size;
+    }
+
+    function selectedRosterTeamAliases(options) {
+        const labels = new Set();
+        const ids = new Set();
+        let present = false;
+        let invalid = false;
+        const teamNameInspection = inspectOwn(options, 'teamName');
+        if (!teamNameInspection.ok || (teamNameInspection.exists && !teamNameInspection.isData)) {
+            invalid = true;
+        } else if (teamNameInspection.exists) {
+            present = true;
+            const label = exactTeamLabel(teamNameInspection.descriptor.value);
+            if (label) labels.add(label);
+            else invalid = true;
         }
-        if (mapping.ambiguous) return aliases.present && matchesSelectedEntry;
-        if (aliases.present) return matchesSelectedEntry;
-        return !mapping.authoritative || mapping.labels.size === 1;
+        for (const key of ['team_id', 'selectedTeamId', 'selected_team_id']) {
+            const inspection = inspectOwn(options, key);
+            if (!inspection.ok || (inspection.exists && !inspection.isData)) {
+                invalid = true;
+                continue;
+            }
+            if (!inspection.exists) continue;
+            present = true;
+            const id = normalizedTeamIdentityId(inspection.descriptor.value);
+            if (id) ids.add(id);
+            else invalid = true;
+        }
+        return {
+            labels,
+            ids,
+            present,
+            invalid,
+            ambiguous: labels.size > 1 || ids.size > 1,
+        };
+    }
+
+    function resolveSelectedRosterEntry(options, mapping) {
+        const aliases = selectedRosterTeamAliases(options);
+        if (aliases.invalid || aliases.ambiguous) return { valid: false, aliases, entry: null };
+        if (!mapping.authoritative) {
+            return {
+                valid: !aliases.ids.size,
+                aliases,
+                entry: null,
+            };
+        }
+        const matches = aliases.present
+            ? mappingEntriesMatchingAliases(mapping, aliases)
+            : mapping.entries.slice();
+        return {
+            valid: matches.length === 1 && !mapping.invalid,
+            aliases,
+            entry: matches.length === 1 ? matches[0] : null,
+        };
+    }
+
+    function rosterRecordMatchesSelectedTeam(record, mapping, selection) {
+        const aliases = collectTeamAliases(record);
+        if (aliases.invalid || aliases.ambiguous || !selection.valid) return false;
+        if (!mapping.authoritative) {
+            if (!aliases.present) return true;
+            if (aliases.ids.size || !selection.aliases.labels.size) return false;
+            return aliases.labels.size === 1
+                && aliases.labels.has(Array.from(selection.aliases.labels)[0]);
+        }
+        if (!aliases.present) return mapping.entries.length === 1 && !mapping.ambiguous;
+        const matches = mappingEntriesMatchingAliases(mapping, aliases);
+        return matches.length === 1 && selection.entry
+            && matches[0].identity === selection.entry.identity;
     }
 
     function rosterRecordResolvesMappedTeam(record, mapping) {
         const aliases = collectTeamAliases(record);
         if (aliases.invalid || aliases.ambiguous || !aliases.present) return false;
-        return mapping.entries.some((entry) => (
-            (!aliases.labels.size || (entry.label && aliases.labels.has(entry.label)))
-            && (!aliases.ids.size
-                || Array.from(aliases.ids).some((id) => entry.ids.has(id)))
-        ));
+        if (!mapping.authoritative) return aliases.labels.size === 1 && !aliases.ids.size;
+        return mappingEntriesMatchingAliases(mapping, aliases).length === 1;
     }
 
     function buildTeamRoster(options) {
@@ -1368,8 +1444,7 @@
         const invalidTargetSeason = (targetSeasonInspection.exists && !explicitTargetSeason)
             || (leagueSeason && explicitTargetSeason && explicitTargetSeason !== leagueSeason);
         const targetSeason = explicitTargetSeason || leagueSeason || currentDatasetSeason;
-        const invalidDatasetSeason = (datasetSeasonInspection.exists && !currentDatasetSeason)
-            || (targetSeason && currentDatasetSeason && currentDatasetSeason !== targetSeason);
+        const invalidDatasetSeason = datasetSeasonInspection.exists && !currentDatasetSeason;
         const archiveData = ownValue(options, 'archiveData');
         const archiveIndex = buildArchiveIndex(archiveData && typeof archiveData === 'object' ? archiveData : {});
         const chronologicalIndex = targetSeason
@@ -1400,6 +1475,7 @@
             options, teamId, targetClass, targetSeason,
         );
         diagnostics.invalidMapping = rosterMapping.invalid;
+        const selectedRosterEntry = resolveSelectedRosterEntry(options, rosterMapping);
 
         const groupedCurrent = groupCurrentPlayers(
             currentPlayerSources(ownValue(options, 'currentPlayers')),
@@ -1436,9 +1512,7 @@
             : '';
         const selectedTeamLabel = exactTeamLabel(teamName);
         const companies = new Set(targetCurrent.map((player) => exactTeamLabel(player.company)).filter(Boolean));
-        if ((rosterMapping.ambiguous && !selectedTeamLabel)
-            || (rosterMapping.labels.size && selectedTeamLabel
-                && !rosterMapping.labels.has(selectedTeamLabel))
+        if ((rosterMapping.authoritative && !selectedRosterEntry.valid)
             || (!rosterMapping.authoritative && teamName && companies.size
                 && !companies.has(selectedTeamLabel))
             || (!rosterMapping.authoritative && !teamName && companies.size > 1)) {
@@ -1446,9 +1520,7 @@
             return deepFreeze({ players: [], targetClass, classMean, teamConfidence: 'very-low', diagnostics });
         }
         const selectedCurrent = targetCurrent.filter((player) => (
-            rosterRecordMatchesSelectedTeam(player, rosterMapping, selectedTeamLabel)
-            && (!selectedTeamLabel || !player.company
-                || exactTeamLabel(player.company) === selectedTeamLabel)
+            rosterRecordMatchesSelectedTeam(player, rosterMapping, selectedRosterEntry)
         ));
         const selectedCurrentIds = new Set(selectedCurrent.map((player) => player.id));
         const currentAffiliationVetoIds = new Set();
@@ -1541,7 +1613,7 @@
                 }
                 const sourceRecord = history.find((record) => (
                     record.season === season && record.v_nr === teamId
-                    && rosterRecordMatchesSelectedTeam(record, rosterMapping, selectedTeamLabel)
+                    && rosterRecordMatchesSelectedTeam(record, rosterMapping, selectedRosterEntry)
                 ));
                 if (!sourceRecord) continue;
                 const historicalPrior = buildHistoricalPrior({
@@ -1670,14 +1742,27 @@
         if (!inspected.ok) return mappings;
         const prepared = [];
         const identitiesByClub = new Map();
-        function registerIdentity(clubId, teamId, teamLabel) {
-            if (!identitiesByClub.has(clubId)) identitiesByClub.set(clubId, new Set());
-            identitiesByClub.get(clubId).add(`${String(teamId)}|${teamLabel}`);
+        function canonicalOutcomeMappingIdentity(mapping) {
+            return JSON.stringify([
+                mapping.clubId,
+                mapping.teamLabel,
+                mapping.hasAuthoritativeId ? String(mapping.teamId) : null,
+            ]);
+        }
+        function registerIdentity(mapping) {
+            if (!identitiesByClub.has(mapping.clubId)) {
+                identitiesByClub.set(mapping.clubId, new Set());
+            }
+            identitiesByClub.get(mapping.clubId).add(canonicalOutcomeMappingIdentity(mapping));
         }
         function add(label, mapping) {
             const key = exactTeamLabel(label);
             if (!key) return;
             if (!mappings.has(key)) mappings.set(key, []);
+            const identity = canonicalOutcomeMappingIdentity(mapping);
+            if (mappings.get(key).some(
+                (candidate) => canonicalOutcomeMappingIdentity(candidate) === identity,
+            )) return;
             mappings.get(key).push(mapping);
         }
         for (const club of inspected.values) {
@@ -1706,7 +1791,7 @@
                         hasAuthoritativeId: explicitTeamId !== null,
                     };
                     prepared.push({ label: teamName, mapping });
-                    registerIdentity(number, mapping.teamId, mapping.teamLabel);
+                    registerIdentity(mapping);
                 }
             } else {
                 const mapping = {
@@ -1716,7 +1801,7 @@
                     hasAuthoritativeId: false,
                 };
                 prepared.push({ label: clubName, mapping });
-                registerIdentity(number, mapping.teamId, mapping.teamLabel);
+                registerIdentity(mapping);
             }
         }
         for (const item of prepared) {
@@ -1871,7 +1956,11 @@
 
     function participantBucketKey(season, leagueClass, round, mapping) {
         const identity = mapping.multiTeam
-            ? [mapping.clubId, String(mapping.teamId), mapping.teamLabel]
+            ? [
+                mapping.clubId,
+                mapping.teamLabel,
+                mapping.hasAuthoritativeId ? String(mapping.teamId) : null,
+            ]
             : [mapping.clubId];
         return JSON.stringify([season, leagueClass, round, identity]);
     }
@@ -1883,7 +1972,10 @@
         for (const mappingList of mappings.values()) {
             for (const mapping of mappingList) {
                 const identity = JSON.stringify([
-                    mapping.clubId, String(mapping.teamId), mapping.teamLabel, mapping.multiTeam,
+                    mapping.clubId,
+                    mapping.teamLabel,
+                    mapping.hasAuthoritativeId ? String(mapping.teamId) : null,
+                    mapping.multiTeam,
                 ]);
                 if (seenMappings.has(identity)) continue;
                 seenMappings.add(identity);
@@ -1908,11 +2000,12 @@
                 const aliases = collectTeamAliases(record);
                 if (aliases.invalid || aliases.ambiguous) continue;
                 const clubMappings = ownValue(mappingsByClub, record.v_nr) || [];
-                const applicableMappings = clubMappings.filter((mapping) => (
-                    aliases.present
-                        ? teamAliasesMatchMapping(aliases, mapping)
-                        : !mapping.multiTeam
-                ));
+                const matchingMappings = aliases.present
+                    ? clubMappings.filter((mapping) => teamAliasesMatchMapping(aliases, mapping))
+                    : clubMappings;
+                const applicableMappings = matchingMappings.length === 1
+                    ? matchingMappings
+                    : [];
                 if (!applicableMappings.length) continue;
                 const rounds = ownValue(record, 'rounds');
                 for (const roundKey of ownNames(rounds).sort((left, right) => left.localeCompare(right, 'en'))) {
