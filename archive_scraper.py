@@ -17,6 +17,9 @@ from pipeline.urls import normalize_bwedl_url
 
 BASE_URL = "https://www.bwedl.de"
 ARCHIVE_URL = f"{BASE_URL}/archiv/"
+ARCHIVE_SEASON_PATTERN = re.compile(
+    r"(?<!\d)(\d{4}|\d{2})\s*[/\-]\s*(\d{4}|\d{2})(?!\d)"
+)
 
 ARCHIVE_RANKING_TABLE_EXTRACTOR_JS = r'''() => {
     const extracted = [];
@@ -107,17 +110,39 @@ ARCHIVE_RANKING_TABLE_EXTRACTOR_JS = r'''() => {
 }'''
 
 
-def is_archive_season_link(href: str, text: str) -> bool:
+def _canonical_archive_season(value: object) -> str | None:
+    if not isinstance(value, str):
+        return None
+    match = ARCHIVE_SEASON_PATTERN.search(value)
+    if match is None:
+        return None
+    start = int(match.group(1))
+    if len(match.group(1)) == 2:
+        start += 1900 if start >= 70 else 2000
+    end = int(match.group(2))
+    if len(match.group(2)) == 2:
+        end += (start // 100) * 100
+        if end < start:
+            end += 100
+    if end - start not in {1, 2}:
+        return None
+    return f"{start:04d}/{end:04d}"
+
+
+def _archive_season_link(href: str, text: str) -> tuple[str, str] | None:
     safe_url = normalize_bwedl_url(href, "/archiv/")
     if not safe_url or not isinstance(text, str):
-        return False
-    match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(
-        r"(\d{4})[/-](\d{4})", safe_url
-    )
-    if not match:
-        return False
-    first_year, second_year = (int(year) for year in match.groups())
-    return first_year >= 2020 and 1 <= second_year - first_year <= 2
+        return None
+    text_season = _canonical_archive_season(text)
+    url_season = _canonical_archive_season(safe_url)
+    if text_season and url_season and text_season != url_season:
+        return None
+    season = text_season or url_season
+    return (season, safe_url) if season else None
+
+
+def is_archive_season_link(href: str, text: str) -> bool:
+    return _archive_season_link(href, text) is not None
 
 
 def is_archive_sub_link(href: str, text: str) -> bool:
@@ -146,7 +171,10 @@ def parse_args(argv=None) -> argparse.Namespace:
 def save_archive_data(data, output_dir=Path(".")) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "archive_data.js"
-    js_content = f"window.ARCHIVE_DATA = {json.dumps(data, indent=2)};\n"
+    js_content = (
+        "window.ARCHIVE_DATA = "
+        f"{json.dumps(data, indent=2, ensure_ascii=False, allow_nan=False)};\n"
+    )
     output_path.write_text(js_content, encoding="utf-8", newline="\n")
     return output_path
 
@@ -173,29 +201,19 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
         # Deduplicate and Filter
         unique_seasons = {}
         for s in season_links:
-            text = s['text']
-            href = normalize_bwedl_url(s.get('href'), "/archiv/")
-
-            if not href or not is_archive_season_link(href, text):
+            parsed_link = _archive_season_link(s.get("href"), s.get("text"))
+            if parsed_link is None:
                 continue
-            
-            # Identify if it's a season link
-            match = re.search(r"(\d{4})[/-](\d{4})", text) or re.search(r"(\d{4})[/-](\d{4})", href)
-            
-            if match:
-                # Normalize key
-                y1 = match.group(1)
-                y2 = match.group(2)
-                
-                # Check for plausible years (e.g. 2020+)
-                if int(y1) >= 2020:
-                    key = f"{y1}/{y2}"
-                    # Prefer text match if available, otherwise just use key
-                    clean_text = text if "Saison" in text or "/" in text else f"Saison {key}"
-                    
-                    # Avoid duplicates (use first found or prefer text with "Saison")
-                    if href not in unique_seasons:
-                         unique_seasons[href] = clean_text
+            season, href = parsed_link
+            current = unique_seasons.get(season)
+            if current is None or href < current:
+                unique_seasons[season] = href
+
+        ordered_seasons = sorted(
+            unique_seasons.items(),
+            key=lambda item: tuple(int(part) for part in item[0].split("/")),
+            reverse=True,
+        )
         
         print(f"DEBUG: Unique seasons to scrape: {unique_seasons}")
         
@@ -205,9 +223,8 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
             raise RuntimeError("No unique archive seasons found")
         
         failures = []
-        for url, season_name in unique_seasons.items():
-            clean_season = season_name.replace("Saison ", "").strip()
-            clean_season = clean_season.replace("Ranglisten ", "").strip()
+        for clean_season, url in ordered_seasons:
+            season_name = f"Saison {clean_season}"
             print(f"--------------------------------------------------")
             print(f"Starting Scrape for Season: {season_name}")
             print(f"  Landing URL: {url}")
@@ -280,15 +297,23 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
 
                 season_entries = []
                 for table_index, table in enumerate(tables_data):
+                    league = table.get('league') or 'unavailable'
                     try:
-                        records = parse_archive_ranking_table(
-                            season=clean_season,
-                            league=table['league'],
-                            headers=table['headers'],
-                            rows=table['rows'],
-                        )
+                        records = []
+                        for row_index, row in enumerate(table['rows']):
+                            try:
+                                records.extend(parse_archive_ranking_table(
+                                    season=clean_season,
+                                    league=table['league'],
+                                    headers=table['headers'],
+                                    rows=[row],
+                                ))
+                            except Exception as error:
+                                raise RuntimeError(
+                                    f"league {league} row {row_index}: "
+                                    f"{type(error).__name__}: {error}"
+                                ) from error
                         if not records:
-                            league = table.get('league') or 'unavailable'
                             raise RuntimeError(
                                 f"league {league}: "
                                 "no recognized ranking records"
@@ -300,7 +325,7 @@ async def scrape_archive(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                         ])
                     except Exception as error:
                         raise RuntimeError(
-                            f"table {table_index}: "
+                            f"table {table_index} league {league}: "
                             f"{type(error).__name__}: {error}"
                         ) from error
                     season_entries.extend(records)

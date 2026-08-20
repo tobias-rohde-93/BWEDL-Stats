@@ -85,6 +85,10 @@ def test_archive_player_season_and_sub_links_require_same_origin() -> None:
         "https://www.bwedl.de/archiv/2025-2026/",
         "Saison 2025/2026",
     )
+    assert archive_scraper.is_archive_season_link(
+        "https://www.bwedl.de/archiv/2018-2019/",
+        "Saison 2018/19",
+    )
     assert not archive_scraper.is_archive_sub_link(
         "https://external.example/archiv/2025-2026/ranglisten/",
         "Ranglisten 2025-2026",
@@ -533,14 +537,19 @@ class _AsyncPlaywright(_Playwright):
 
 
 class _ArchiveRankingPage(_AsyncPage):
-    def __init__(self, tables=None, *, season_tables=None, wait_error=None):
+    def __init__(
+        self, tables=None, *, season_tables=None, season_links=None, wait_error=None
+    ):
         self.season_tables = season_tables or {"2025/2026": tables}
+        self.season_links = season_links
         self.wait_error = wait_error
         self.evaluate_calls = 0
         self.url = archive_scraper.ARCHIVE_URL
+        self.goto_urls = []
 
     async def goto(self, url, **kwargs):
         self.url = url
+        self.goto_urls.append(url)
 
     async def wait_for_selector(self, *args, **kwargs):
         if self.wait_error is not None:
@@ -550,6 +559,8 @@ class _ArchiveRankingPage(_AsyncPage):
     async def evaluate(self, source, *args, **kwargs):
         self.evaluate_calls += 1
         if self.evaluate_calls == 1:
+            if self.season_links is not None:
+                return deepcopy(self.season_links)
             return [
                 {
                     "href": (
@@ -881,20 +892,63 @@ def test_archive_scraper_preserves_round_evidence_in_candidate_only(
     payload = json.loads(
         candidate.removeprefix("window.ARCHIVE_DATA = ").removesuffix(";\n")
     )
-    assert payload == {
-        "4711": [{
-            "season": "2025/2026",
-            "rank": 35,
-            "points": 12,
-            "league": "A-Klasse",
-            "name": "Mario Ackermann",
-            "v_nr": "018",
-            "rounds": {"R1": 5, "R2": "x", "R3": 7},
-            "appearances": 2,
-            "points_per_appearance": 6.0,
-        }]
-    }
+    container = payload["4711"][0]
+    assert container["season"] == "2025/2026"
+    assert container["rank"] == 35
+    assert container["points"] == 12
+    assert container["league"] == "A-Klasse"
+    assert container["name"] == "Mario Ackermann"
+    assert container["v_nr"] == "018"
+    assert container["rounds"] == {"R1": 5, "R2": "x", "R3": 7}
+    assert container["appearances"] == 2
+    assert container["points_per_appearance"] == 6.0
+    assert len(container["segments"]) == 1
+    assert container["primary_segment_id"] == container["segments"][0]["segment_id"]
     assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+
+
+def test_archive_scraper_visits_every_unique_canonical_season_newest_first(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    seasons = {
+        "2018/2019": [_archive_table([[
+            "3", "035", "700", "Older", "Player", "1", "x", "2", "3",
+        ]])],
+        "2020/2022": [_archive_table([[
+            "2", "035", "700", "Older", "Player", "2", "x", "2", "4",
+        ]])],
+        "2025/2026": [_archive_table([[
+            "1", "035", "700", "Older", "Player", "3", "x", "2", "5",
+        ]])],
+    }
+    links = [
+        {"href": "https://www.bwedl.de/archiv/2018-2019/", "text": "Saison 2018/19"},
+        {"href": "https://www.bwedl.de/archiv/2020-2022/", "text": "Saison 20/22"},
+        {"href": "https://www.bwedl.de/archiv/2025-2026/", "text": "Saison 25/26"},
+        {"href": "https://www.bwedl.de/archiv/2025-2026/?duplicate=1", "text": "Saison 2025/2026"},
+    ]
+    page = _ArchiveRankingPage(season_tables=seasons, season_links=links)
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch, page, output_dir, tmp_path / "artifacts"
+    )
+
+    assert status == 0
+    visited_seasons = [url for url in page.goto_urls if url != archive_scraper.ARCHIVE_URL]
+    assert visited_seasons == [
+        "https://www.bwedl.de/archiv/2025-2026/",
+        "https://www.bwedl.de/archiv/2020-2022/",
+        "https://www.bwedl.de/archiv/2018-2019/",
+    ]
+    payload = json.loads(
+        (output_dir / "archive_data.js").read_text(encoding="utf-8")
+        .removeprefix("window.ARCHIVE_DATA = ").removesuffix(";\n")
+    )
+    assert [container["season"] for container in payload["700"]] == [
+        "2025/2026", "2020/2022", "2018/2019",
+    ]
 
 
 @pytest.mark.parametrize(
@@ -980,7 +1034,7 @@ def test_archive_scraper_accepts_multiple_populated_tables_in_one_season(
             "5", "x", "7", "12",
         ]], "A-Klasse"),
         _archive_table([[
-            "8", "035", "900", "José", "Müller",
+            "8", "018", "4711", "Mario", "Ackermann",
             "6", "4", "x", "10",
         ]], "B-Klasse"),
     ]
@@ -998,8 +1052,47 @@ def test_archive_scraper_accepts_multiple_populated_tables_in_one_season(
     payload = json.loads(
         candidate.removeprefix("window.ARCHIVE_DATA = ").removesuffix(";\n")
     )
-    assert payload["4711"][0]["league"] == "A-Klasse"
-    assert payload["900"][0]["league"] == "B-Klasse"
+    assert list(payload) == ["4711"]
+    container = payload["4711"][0]
+    assert {segment["league"] for segment in container["segments"]} == {
+        "A-Klasse", "B-Klasse",
+    }
+    assert len(container["segments"]) == 2
+
+
+def test_archive_scraper_unknown_marker_has_full_context_and_preserves_public_root(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    sentinel = 'window.ARCHIVE_DATA = {"sentinel": true};\n'
+    (tmp_path / "archive_data.js").write_text(sentinel, encoding="utf-8")
+    unknown = [[
+        "35", "018", "4711", "Mario", "Ackermann", "?", "x", "7", "7",
+    ]]
+    output_dir = tmp_path / "candidate"
+
+    status, _ = _run_archive_candidate(
+        monkeypatch,
+        _ArchiveRankingPage([_archive_table(unknown, "A-Klasse")]),
+        output_dir,
+        tmp_path / "artifacts",
+    )
+
+    assert status == 1
+    assert not (output_dir / "archive_data.js").exists()
+    assert (tmp_path / "archive_data.js").read_text(encoding="utf-8") == sentinel
+    failure = next(
+        line for line in capsys.readouterr().out.splitlines()
+        if line.startswith("SCRAPER_FAILURE ")
+    )
+    assert "season 2025/2026" in failure
+    assert "table 0" in failure
+    assert "league A-Klasse" in failure
+    assert "row 0" in failure
+    assert "round R1" in failure
+    assert "'?'" in failure
 
 
 def test_archive_scraper_ignores_expected_table_wait_timeout(
@@ -1074,14 +1167,14 @@ def test_archive_scraper_reports_parser_context_for_structural_failure(
     assert "round total" in failure
 
 
-def test_archive_scraper_rejects_duplicate_player_season_with_diagnostics(
+def test_archive_scraper_rejects_exact_segment_collision_with_diagnostics(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture,
 ) -> None:
     duplicate = [
         ["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"],
-        ["36", "018", "4711", "Mario", "Ackermann", "4", "x", "6", "10"],
+        ["35", "018", "4711", "Mario", "Ackermann", "5", "x", "7", "12"],
     ]
     output_dir = tmp_path / "candidate"
     artifacts_dir = tmp_path / "artifacts"
@@ -1109,22 +1202,26 @@ def test_archive_scraper_candidate_serialization_is_deterministic(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    rows = [
-        ["2", "018", "20", "Grace", "Hopper", "4", "x", "6", "10"],
-        ["1", "035", "100", "Ada", "Lovelace", "5", "x", "7", "12"],
+    tables = [
+        _archive_table([[
+            "2", "018", "20", "Grace", "Hopper", "4", "x", "6", "10",
+        ]], "A-Klasse"),
+        _archive_table([[
+            "3", "018", "20", "Grace", "Hopper", "5", "x", "7", "12",
+        ]], "B-Klasse"),
     ]
     first_dir = tmp_path / "first"
     second_dir = tmp_path / "second"
 
     first_status, _ = _run_archive_candidate(
         monkeypatch,
-        _ArchiveRankingPage([_archive_table(rows)]),
+        _ArchiveRankingPage(tables),
         first_dir,
         tmp_path / "first-artifacts",
     )
     second_status, _ = _run_archive_candidate(
         monkeypatch,
-        _ArchiveRankingPage([_archive_table(list(reversed(rows)))]),
+        _ArchiveRankingPage(list(reversed(tables))),
         second_dir,
         tmp_path / "second-artifacts",
     )
