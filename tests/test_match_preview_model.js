@@ -74,6 +74,15 @@ assert.deepEqual(Model.CLASS_ORDER, ['Bezirksliga', 'A-Klasse', 'B-Klasse', 'C-K
 assert.equal(Model.PRIOR_APPEARANCES, 4);
 assert.equal(Model.MIN_TRANSITIONS, 8);
 
+const commonJsSentinel = Object.freeze({ owner: 'host' });
+globalThis.BwedlMatchPreviewModel = commonJsSentinel;
+delete require.cache[require.resolve('../match_preview_model.js')];
+const reloadedCommonJsModel = require('../match_preview_model.js');
+assert.equal(Object.isFrozen(reloadedCommonJsModel), true);
+assert.equal(globalThis.BwedlMatchPreviewModel, commonJsSentinel,
+    'CommonJS loading never creates or overwrites the browser global');
+delete globalThis.BwedlMatchPreviewModel;
+
 const browserSource = fs.readFileSync(path.join(__dirname, '..', 'match_preview_model.js'), 'utf8');
 const browserContext = vm.createContext({});
 vm.runInContext(browserSource, browserContext, { filename: 'match_preview_model.js' });
@@ -88,6 +97,16 @@ assert.equal(Model.normalizeLeagueClass('Ligapokal A-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('ÄBezirksliga'), null, 'Unicode letters form a real boundary');
 assert.equal(Model.normalizeLeagueClass('B-Klassenpokal'), null);
 assert.equal(Model.normalizeLeagueClass('Oberliga'), null);
+assert.equal(Model.normalizeLeagueClass('A-Klasse Mixdorf'), 'A-Klasse');
+assert.equal(Model.normalizeLeagueClass('B-Klasse Cupertino'), 'B-Klasse');
+assert.equal(Model.normalizeLeagueClass('A/B'), null);
+assert.equal(Model.normalizeLeagueClass('A-/B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('A-Klasse / B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('Bezirksliga A-Klasse'), null);
+assert.equal(Model.canonicalSeason('20/22'), '2020/22');
+assert.equal(Model.canonicalSeason('22/23'), '2022/23');
+assert.equal(Model.canonicalSeason('1999/00'), '1999/00');
+assert.equal(Model.canonicalSeason('99/00'), '1999/00');
 
 assert.deepEqual(Model.roundStats({ R2: 4, R1: '6', R3: 'x', R4: '', note: 99 }), {
     values: [6, 4],
@@ -106,6 +125,9 @@ assert.deepEqual(Model.roundStats({ R1: Number.MAX_SAFE_INTEGER, R2: 1 }), {
 assert.deepEqual(Model.roundStats({ R1: 'x', R2: '' }), {
     values: [], points: 0, appearances: 0, mean: 0,
 });
+const negativeZeroStats = Model.roundStats({ R1: -0 });
+assert.equal(Object.is(negativeZeroStats.values[0], -0), false);
+assert.equal(Object.is(negativeZeroStats.points, -0), false);
 
 let roundGetterCalls = 0;
 const inheritedRounds = Object.create({ R1: 99 });
@@ -127,12 +149,27 @@ const sortableArchive = deepFreeze({
 const sortableBefore = JSON.stringify(sortableArchive);
 const sortableIndex = Model.buildArchiveIndex(sortableArchive);
 assert.deepEqual(sortableIndex.histories['0042'].map((item) => item.season), [
-    '2025/2026', '2024/2025', '2023/2024',
+    '2025/26', '2024/25', '2023/24',
 ]);
 assert.deepEqual(sortableIndex.unusablePlayerIds, []);
 assert.notEqual(sortableIndex.histories['0042'][0], sortableArchive['0042'][2]);
 assert.notEqual(sortableIndex.histories['0042'][0].rounds, sortableArchive['0042'][2].rounds);
 assert.equal(JSON.stringify(sortableArchive), sortableBefore, 'indexing never mutates input');
+
+const legacySeasonIndex = Model.buildArchiveIndex({
+    43: [
+        record({ id: '43', season: '1999/00', name: 'Legacy Player', league: 'A-Klasse', mean: 2, totalsOnly: true }),
+        record({ id: '43', season: '20/22', name: 'Legacy Player', league: 'A-Klasse', mean: 3, totalsOnly: true }),
+        record({ id: '43', season: '22/23', name: 'Legacy Player', league: 'B-Klasse', mean: 4, totalsOnly: true }),
+    ],
+});
+assert.deepEqual(legacySeasonIndex.histories['43'].map((item) => [
+    item.season, item.seasonStart, item.seasonEnd,
+]), [
+    ['2022/23', 2022, 2023],
+    ['2020/22', 2020, 2022],
+    ['1999/00', 1999, 2000],
+]);
 
 let archiveGetterCalls = 0;
 const guardedArchive = Object.create({
@@ -150,7 +187,28 @@ Object.defineProperty(guardedRecord, 'name', {
 guardedArchive['7002'] = [guardedRecord];
 const guardedIndex = Model.buildArchiveIndex(guardedArchive);
 assert.deepEqual(Object.keys(guardedIndex.histories), []);
+assert.deepEqual(guardedIndex.unusablePlayerIds, ['7001', '7002']);
 assert.equal(archiveGetterCalls, 0, 'archive and record accessors are never invoked');
+
+const revokedArchiveHandle = Proxy.revocable({}, {});
+revokedArchiveHandle.revoke();
+const revokedArchiveIndex = Model.buildArchiveIndex(revokedArchiveHandle.proxy);
+assert.deepEqual(Object.keys(revokedArchiveIndex.histories), []);
+assert.equal(revokedArchiveIndex.diagnostics.invalidArchive, true);
+
+let spoofedHistoryTrapCalls = 0;
+const spoofedIndex = {
+    kind: 'archive-index-v1',
+    histories: new Proxy({}, {
+        ownKeys() {
+            spoofedHistoryTrapCalls += 1;
+            throw new Error('spoofed histories must not be trusted');
+        },
+    }),
+};
+assert.deepEqual(Model.buildClassSeasonMeans(spoofedIndex), {});
+assert.deepEqual(Model.buildClassCalibration(spoofedIndex).transitions, {});
+assert.equal(spoofedHistoryTrapCalls, 0, 'only closure-branded indexes bypass raw archive validation');
 
 const zeroId = '8000';
 const zeroArchive = {
@@ -177,10 +235,60 @@ const shrinkArchive = {
 };
 const shrinkIndex = Model.buildArchiveIndex(shrinkArchive);
 const shrinkMeans = Model.buildClassSeasonMeans(shrinkIndex);
-assert.deepEqual(shrinkMeans['A-Klasse|2025/2026'], {
+assert.deepEqual(shrinkMeans['A-Klasse|2025/26'], {
     points: 60, appearances: 8, playerRecords: 2, mean: 7.5,
 });
 assert.equal(Model.stabilizeSeasonRecord(shrinkIndex.histories['8100'][0], shrinkMeans), 5.25);
+let stabilizeGetterCalls = 0;
+const spoofedStableRecord = {
+    previewEligible: true,
+    points: 12,
+    appearances: 4,
+    season: '2025/26',
+};
+Object.defineProperty(spoofedStableRecord, 'leagueClass', {
+    enumerable: true,
+    get() { stabilizeGetterCalls += 1; throw new Error('stable getter must not run'); },
+});
+assert.equal(Model.stabilizeSeasonRecord(spoofedStableRecord, shrinkMeans), null);
+assert.equal(stabilizeGetterCalls, 0);
+
+const overflowRecord = (id, value) => ({
+    id,
+    season: '2025/2026',
+    name: `Overflow ${id}`,
+    league: 'A-Klasse',
+    v_nr: '001',
+    points: value,
+    rounds: { R1: value },
+    appearances: 1,
+    points_per_appearance: value,
+});
+const overflowFirst = {
+    '09000': [overflowRecord('09000', Number.MAX_SAFE_INTEGER)],
+    '09001': [overflowRecord('09001', 1)],
+};
+const overflowLast = {
+    '09001': [overflowRecord('09001', 1)],
+    '09000': [overflowRecord('09000', Number.MAX_SAFE_INTEGER)],
+};
+for (const archiveOrder of [overflowFirst, overflowLast]) {
+    const mean = Model.buildClassSeasonMeans(archiveOrder)['A-Klasse|2025/26'];
+    assert.equal(mean.mean, 4503599627370496);
+    assert.equal(mean.points, '9007199254740992');
+    assert.equal(mean.appearances, 2);
+}
+
+const negativeZeroIndex = Model.buildArchiveIndex({
+    9002: [{
+        id: '9002', season: '2025/2026', name: 'Negative Zero', league: 'A-Klasse', v_nr: '001',
+        points: -0, rounds: { R1: -0 }, appearances: 1, points_per_appearance: -0,
+    }],
+});
+const negativeZeroRecord = negativeZeroIndex.histories['9002'][0];
+assert.equal(Object.is(negativeZeroRecord.points, -0), false);
+assert.equal(Object.is(negativeZeroRecord.rounds.R1, -0), false);
+assert.equal(Object.is(negativeZeroRecord.points_per_appearance, -0), false);
 
 const baseArchive = deepFreeze(makeTransitionArchive());
 const baseBefore = JSON.stringify(baseArchive);
@@ -189,6 +297,7 @@ assert.equal(calibration.transitions['A-Klasse>B-Klasse'].count, 8);
 assert.equal(calibration.transitions['A-Klasse>B-Klasse'].offset, 1);
 assert.equal(calibration.transitions['A-Klasse>B-Klasse'].totalWeight, 32);
 assert.equal(calibration.transitions['A-Klasse>B-Klasse'].medianRule, 'lower-weighted');
+assert.equal(calibration.diagnostics.excluded.invalidPerformance, 0);
 assert.deepEqual(Model.convertClassRating(5.5, 'A-Klasse', 'B-Klasse', calibration), {
     rating: 6.5, calibrated: true, path: ['A-Klasse>B-Klasse'],
 });
@@ -208,6 +317,13 @@ assert.equal(reverseCalibration.transitions['A-Klasse>B-Klasse'].offset, 1);
 assert.deepEqual(Model.convertClassRating(6.5, 'B-Klasse', 'A-Klasse', reverseCalibration), {
     rating: 5.5, calibrated: true, path: ['A-Klasse>B-Klasse'],
 });
+
+const joinedLegacySpanCalibration = Model.buildClassCalibration(makeTransitionArchive({
+    fromSeason: '20/22',
+    toSeason: '22/23',
+}));
+assert.equal(joinedLegacySpanCalibration.transitions['A-Klasse>B-Klasse'].count, 8,
+    'a legacy two-year season can transition when its end meets the next start');
 
 const chainedCalibration = Model.buildClassCalibration(mergeArchives(
     makeTransitionArchive({
@@ -246,14 +362,11 @@ assert.deepEqual(Model.convertClassRating(5.5, 'Mix-Klasse', 'B-Klasse', calibra
 
 const outlierArchive = makeTransitionArchive();
 outlierArchive['1007'][1] = record({
-    id: '1007', season: '2025/2026', name: 'Spieler 1007', league: 'B-Klasse', mean: 105,
+    id: '1007', season: '2025/2026', name: 'Spieler 1007', league: 'B-Klasse', mean: 106,
 });
-outlierArchive['1999'] = [record({
-    id: '1999', season: '2025/2026', name: 'Mean anchor', league: 'B-Klasse', mean: 0, appearances: 66,
-})];
 const outlierCalibration = Model.buildClassCalibration(outlierArchive);
 assert.equal(outlierCalibration.transitions['A-Klasse>B-Klasse'].offset, 1);
-assert.deepEqual(outlierCalibration.diagnostics.edges['A-Klasse>B-Klasse'].observationRange, [1, 50.5]);
+assert.deepEqual(outlierCalibration.diagnostics.edges['A-Klasse>B-Klasse'].observationRange, [1, 101]);
 
 const tieArchive = makeTransitionArchive();
 for (let index = 4; index < 8; index += 1) {
@@ -263,8 +376,8 @@ for (let index = 4; index < 8; index += 1) {
     });
 }
 const tieCalibration = Model.buildClassCalibration(tieArchive);
-assert.deepEqual(tieCalibration.diagnostics.edges['A-Klasse>B-Klasse'].observationRange, [1.5, 2.5]);
-assert.equal(tieCalibration.transitions['A-Klasse>B-Klasse'].offset, 1.5,
+assert.deepEqual(tieCalibration.diagnostics.edges['A-Klasse>B-Klasse'].observationRange, [1, 3]);
+assert.equal(tieCalibration.transitions['A-Klasse>B-Klasse'].offset, 1,
     'an exact half-weight boundary selects the lower observation');
 
 const badIdentityArchive = mergeArchives(makeTransitionArchive(), {
@@ -286,9 +399,35 @@ const badIdentityArchive = mergeArchives(makeTransitionArchive(), {
     }],
     4003: [record({ id: '4003', season: '2024/2025', name: 'Shared Identity', league: 'A-Klasse', mean: 5 })],
     4004: [record({ id: '4004', season: '2025/2026', name: ' shared   identity ', league: 'B-Klasse', mean: 6 })],
+    4006: [
+        record({ id: '4006', season: '2024/2025', name: 'Duplicate Invalid', league: 'A-Klasse', mean: 5 }),
+        { ...record({ id: '4006', season: '2024-2025', name: 'Duplicate Invalid', league: 'B-Klasse', mean: 6 }), points: -1 },
+    ],
+    4007: [
+        record({ id: '4007', season: '2024/2025', name: 'Valid Name', league: 'A-Klasse', mean: 5 }),
+        { ...record({ id: '4007', season: '2025/2026', name: 'Contradictory Name', league: 'B-Klasse', mean: 6 }), points: -1 },
+    ],
 });
+const accessorIdentityRecord = record({
+    id: '4008', season: '2024/2025', name: 'Accessor Identity', league: 'A-Klasse', mean: 5,
+});
+Object.defineProperty(accessorIdentityRecord, 'id', {
+    enumerable: true,
+    get() { throw new Error('identity getter must not run'); },
+});
+badIdentityArchive['4008'] = [accessorIdentityRecord];
+const revokedRecordHandle = Proxy.revocable(record({
+    id: '4009', season: '2024/2025', name: 'Revoked Record', league: 'A-Klasse', mean: 5,
+}), {});
+revokedRecordHandle.revoke();
+badIdentityArchive['4009'] = [revokedRecordHandle.proxy];
+const revokedHistoryHandle = Proxy.revocable([], {});
+revokedHistoryHandle.revoke();
+badIdentityArchive['4010'] = revokedHistoryHandle.proxy;
 const badIdentityIndex = Model.buildArchiveIndex(badIdentityArchive);
-assert.deepEqual(badIdentityIndex.unusablePlayerIds, ['4000', '4001', '4002', '4005']);
+assert.deepEqual(badIdentityIndex.unusablePlayerIds, [
+    '4000', '4001', '4002', '4005', '4006', '4007', '4008', '4009', '4010',
+]);
 assert.equal(badIdentityIndex.histories['1000'].length, 2, 'valid players remain available');
 assert.equal(badIdentityIndex.histories['4000'], undefined);
 assert.equal(badIdentityIndex.histories['4003'].length, 1);

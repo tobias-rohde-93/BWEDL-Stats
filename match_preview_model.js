@@ -1,7 +1,10 @@
 (function (root, factory) {
     const api = Object.freeze(factory());
-    if (typeof module === 'object' && module.exports) module.exports = api;
-    root.BwedlMatchPreviewModel = api;
+    if (typeof module === 'object' && module.exports) {
+        module.exports = api;
+    } else {
+        root.BwedlMatchPreviewModel = api;
+    }
 })(typeof globalThis !== 'undefined' ? globalThis : window, function () {
     'use strict';
 
@@ -15,6 +18,7 @@
     const PRIOR_APPEARANCES = 4;
     const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER;
     const INVALID_CLONE = Object.freeze({ invalid: true });
+    const ARCHIVE_INDEXES = new WeakSet();
 
     function ownData(object, key) {
         if (!object || (typeof object !== 'object' && typeof object !== 'function')) return null;
@@ -33,6 +37,37 @@
             return Object.getOwnPropertyNames(object);
         } catch (_error) {
             return [];
+        }
+    }
+
+    function inspectOwn(object, key) {
+        try {
+            const descriptor = Object.getOwnPropertyDescriptor(object, key);
+            return {
+                ok: true,
+                exists: Boolean(descriptor),
+                isData: Boolean(descriptor
+                    && Object.prototype.hasOwnProperty.call(descriptor, 'value')),
+                descriptor: descriptor || null,
+            };
+        } catch (_error) {
+            return { ok: false, exists: false, isData: false, descriptor: null };
+        }
+    }
+
+    function inspectNames(object) {
+        try {
+            return { ok: true, names: Object.getOwnPropertyNames(object) };
+        } catch (_error) {
+            return { ok: false, names: [] };
+        }
+    }
+
+    function inspectArray(value) {
+        try {
+            return { ok: true, isArray: Array.isArray(value) };
+        } catch (_error) {
+            return { ok: false, isArray: false };
         }
     }
 
@@ -85,20 +120,43 @@
     }
 
     function parseCanonicalInteger(value) {
-        if (isSafeNonnegativeInteger(value)) return value;
+        if (isSafeNonnegativeInteger(value)) return Object.is(value, -0) ? 0 : value;
         if (typeof value !== 'string' || !/^(?:0|[1-9][0-9]*)$/u.test(value)) return null;
         const numeric = Number(value);
         return Number.isSafeInteger(numeric) ? numeric : null;
+    }
+
+    function cloneCanonicalRounds(rounds) {
+        const clone = {};
+        for (const key of ownNames(rounds)) {
+            const descriptor = ownData(rounds, key);
+            if (!descriptor || !descriptor.enumerable) continue;
+            const numeric = parseCanonicalInteger(descriptor.value);
+            defineData(clone, key, numeric === null ? descriptor.value : numeric);
+        }
+        return clone;
     }
 
     function normalizeLeagueClass(value) {
         if (typeof value !== 'string') return null;
         const text = value.normalize('NFKC').toLocaleLowerCase('de-DE');
         const token = (word) => new RegExp(`(?<![\\p{L}\\p{N}])${word}(?![\\p{L}\\p{N}])`, 'u');
-        if (/(?:mix|pokal|cup)/u.test(text)) return null;
-        if (token('bezirksliga').test(text)) return 'Bezirksliga';
-        const match = /(?<![\p{L}\p{N}])([abc])\s*[-\u2010-\u2015 ]?\s*klasse(?![\p{L}\p{N}])/u.exec(text);
-        return match ? `${match[1].toUpperCase()}-Klasse` : null;
+        if (['mix', 'pokal', 'cup', 'ligapokal'].some((word) => token(word).test(text))) return null;
+
+        const categories = new Set();
+        if (token('bezirksliga').test(text)) categories.add('Bezirksliga');
+        for (const match of text.matchAll(
+            /(?<![\p{L}\p{N}])([abc])\s*[-\u2010-\u2015 ]?\s*klasse(?![\p{L}\p{N}])/gu,
+        )) {
+            categories.add(`${match[1].toUpperCase()}-Klasse`);
+        }
+        for (const match of text.matchAll(
+            /(?<![\p{L}\p{N}])([abc])(?:\s*[-\u2010-\u2015]\s*)?\/\s*([abc])(?=\s*(?:[-\u2010-\u2015]\s*)?klasse(?![\p{L}\p{N}])|\s|$)/gu,
+        )) {
+            categories.add(`${match[1].toUpperCase()}-Klasse`);
+            categories.add(`${match[2].toUpperCase()}-Klasse`);
+        }
+        return categories.size === 1 ? categories.values().next().value : null;
     }
 
     function roundStats(rounds) {
@@ -132,21 +190,31 @@
         };
     }
 
-    function canonicalSeason(value) {
+    function parseSeason(value) {
         if (typeof value !== 'string') return null;
         const match = /^(\d{2}|\d{4})\s*[/\-]\s*(\d{2}|\d{4})$/u.exec(value.trim());
         if (!match) return null;
-        let start = Number(match[1]);
-        let end = Number(match[2]);
-        if (match[1].length === 2) start += 2000;
-        if (match[2].length === 2) end = Math.floor(start / 100) * 100 + end;
-        if (end !== start + 1) return null;
-        return `${start}/${end}`;
+        const shortStart = Number(match[1]);
+        const startYear = match[1].length === 4
+            ? shortStart
+            : (shortStart >= 70 ? 1900 + shortStart : 2000 + shortStart);
+        let endYear = Number(match[2]);
+        if (match[2].length === 2) {
+            endYear += Math.floor(startYear / 100) * 100;
+            if (endYear < startYear) endYear += 100;
+        }
+        const span = endYear - startYear;
+        if (span < 1 || span > 2) return null;
+        return {
+            key: `${startYear}/${String(endYear % 100).padStart(2, '0')}`,
+            startYear,
+            endYear,
+        };
     }
 
-    function seasonStart(value) {
-        const canonical = canonicalSeason(value);
-        return canonical ? Number(canonical.slice(0, 4)) : null;
+    function canonicalSeason(value) {
+        const parsed = parseSeason(value);
+        return parsed ? parsed.key : null;
     }
 
     function displayPlayerName(value) {
@@ -184,35 +252,56 @@
     }
 
     function normalizedRecord(record, playerId) {
-        if (!record || typeof record !== 'object' || Array.isArray(record)) return null;
-        const innerIdDescriptor = ownData(record, 'id');
-        if (innerIdDescriptor
-            && (typeof innerIdDescriptor.value !== 'string' || innerIdDescriptor.value !== playerId)) {
+        if (!record || typeof record !== 'object') return { identityConflict: true };
+        const recordArray = inspectArray(record);
+        if (!recordArray.ok || recordArray.isArray) return { identityConflict: true };
+
+        const innerIdInspection = inspectOwn(record, 'id');
+        const seasonInspection = inspectOwn(record, 'season');
+        const nameInspection = inspectOwn(record, 'name');
+        if (!innerIdInspection.ok || !seasonInspection.ok || !nameInspection.ok
+            || (innerIdInspection.exists && !innerIdInspection.isData)
+            || !seasonInspection.isData || !nameInspection.isData) {
             return { identityConflict: true };
         }
-        const seasonDescriptor = ownData(record, 'season');
-        const nameDescriptor = ownData(record, 'name');
+        if (innerIdInspection.exists
+            && (typeof innerIdInspection.descriptor.value !== 'string'
+                || innerIdInspection.descriptor.value !== playerId)) {
+            return { identityConflict: true };
+        }
+
+        const parsedSeason = parseSeason(seasonInspection.descriptor.value);
+        const name = displayPlayerName(nameInspection.descriptor.value);
+        if (!parsedSeason || !name) return { identityConflict: true };
+        const identity = {
+            season: parsedSeason.key,
+            seasonStart: parsedSeason.startYear,
+            seasonEnd: parsedSeason.endYear,
+            name,
+            normalizedName: canonicalPlayerName(name),
+        };
+
         const leagueDescriptor = ownData(record, 'league');
         const pointsDescriptor = ownData(record, 'points');
-        if (!seasonDescriptor || !nameDescriptor || !leagueDescriptor || !pointsDescriptor) return null;
-
-        const season = canonicalSeason(seasonDescriptor.value);
-        const name = displayPlayerName(nameDescriptor.value);
+        if (!leagueDescriptor || !pointsDescriptor) return { identity, record: null };
         const league = typeof leagueDescriptor.value === 'string'
             ? leagueDescriptor.value.normalize('NFKC').replace(/\s+/gu, ' ').trim()
             : '';
-        if (!season || !name || !league || !isSafeNonnegativeInteger(pointsDescriptor.value)) return null;
+        if (!league || !isSafeNonnegativeInteger(pointsDescriptor.value)) {
+            return { identity, record: null };
+        }
 
         const clone = cloneOwnData(record);
         const result = clone === INVALID_CLONE || !clone || typeof clone !== 'object' ? {} : clone;
         result.id = playerId;
-        result.season = season;
-        result.seasonStart = Number(season.slice(0, 4));
-        result.name = name;
-        result.normalizedName = canonicalPlayerName(name);
+        result.season = identity.season;
+        result.seasonStart = identity.seasonStart;
+        result.seasonEnd = identity.seasonEnd;
+        result.name = identity.name;
+        result.normalizedName = identity.normalizedName;
         result.league = league;
         result.leagueClass = normalizeLeagueClass(league);
-        result.points = pointsDescriptor.value;
+        result.points = Object.is(pointsDescriptor.value, -0) ? 0 : pointsDescriptor.value;
 
         const clubDescriptor = ownData(record, 'v_nr');
         const validClub = Boolean(clubDescriptor
@@ -227,8 +316,12 @@
         result.previewEligible = false;
         if (presentPreviewFields === previewDescriptors.length && validClub) {
             const stats = validateRoundSequence(previewDescriptors[0].value);
-            const appearances = previewDescriptors[1].value;
-            const average = previewDescriptors[2].value;
+            const appearances = Object.is(previewDescriptors[1].value, -0)
+                ? 0
+                : previewDescriptors[1].value;
+            const average = Object.is(previewDescriptors[2].value, -0)
+                ? 0
+                : previewDescriptors[2].value;
             const expectedAverage = appearances ? result.points / appearances : 0;
             if (stats
                 && isSafeNonnegativeInteger(appearances)
@@ -238,61 +331,83 @@
                 && stats.points === result.points
                 && stats.appearances === appearances
                 && Math.abs(average - expectedAverage) <= 1e-12) {
-                result.rounds = cloneOwnData(previewDescriptors[0].value);
+                result.rounds = cloneCanonicalRounds(previewDescriptors[0].value);
                 result.appearances = appearances;
                 result.points_per_appearance = average;
                 result.completeEvidence = true;
                 result.previewEligible = appearances > 0 && result.leagueClass !== null;
             }
         }
-        return deepFreeze(result);
+        return { identity, record: deepFreeze(result) };
     }
 
     function arrayDataValues(value) {
-        if (!Array.isArray(value)) return [];
+        const arrayInspection = inspectArray(value);
+        if (!arrayInspection.ok || !arrayInspection.isArray) return { ok: false, values: [] };
+        const namesInspection = inspectNames(value);
+        if (!namesInspection.ok) return { ok: false, values: [] };
         const entries = [];
-        for (const key of ownNames(value)) {
+        for (const key of namesInspection.names) {
             if (!/^(?:0|[1-9][0-9]*)$/u.test(key)) continue;
             const index = Number(key);
-            const descriptor = ownData(value, key);
-            if (descriptor && descriptor.enumerable && Number.isSafeInteger(index)) {
-                entries.push({ index, value: descriptor.value });
+            const inspection = inspectOwn(value, key);
+            if (!inspection.ok || !inspection.isData) return { ok: false, values: [] };
+            if (inspection.descriptor.enumerable && Number.isSafeInteger(index)) {
+                entries.push({ index, value: inspection.descriptor.value });
             }
         }
         entries.sort((left, right) => left.index - right.index);
-        return entries.map((entry) => entry.value);
+        return { ok: true, values: entries.map((entry) => entry.value) };
     }
 
     function buildArchiveIndex(archive) {
         const histories = {};
         const unusable = new Set();
-        if (!archive || typeof archive !== 'object' || Array.isArray(archive)) {
-            return deepFreeze({ kind: 'archive-index-v1', histories, unusablePlayerIds: [] });
+        const diagnostics = { invalidArchive: false };
+        if (!archive || typeof archive !== 'object') {
+            diagnostics.invalidArchive = true;
+            return finalizeArchiveIndex({ kind: 'archive-index-v1', histories, unusablePlayerIds: [], diagnostics });
+        }
+        const archiveArray = inspectArray(archive);
+        const archiveNames = inspectNames(archive);
+        if (!archiveArray.ok || archiveArray.isArray || !archiveNames.ok) {
+            diagnostics.invalidArchive = true;
+            return finalizeArchiveIndex({ kind: 'archive-index-v1', histories, unusablePlayerIds: [], diagnostics });
         }
 
         const candidates = [];
-        for (const playerId of ownNames(archive)) {
+        for (const playerId of archiveNames.names) {
             if (!/^[0-9]+$/u.test(playerId)) continue;
-            const descriptor = ownData(archive, playerId);
-            if (!descriptor || !descriptor.enumerable || !Array.isArray(descriptor.value)) continue;
+            const playerInspection = inspectOwn(archive, playerId);
+            if (!playerInspection.ok || !playerInspection.isData) {
+                unusable.add(playerId);
+                continue;
+            }
+            if (!playerInspection.descriptor.enumerable) continue;
+            const historyValues = arrayDataValues(playerInspection.descriptor.value);
+            if (!historyValues.ok) {
+                unusable.add(playerId);
+                continue;
+            }
             const records = [];
+            const identities = [];
             let identityConflict = false;
-            for (const sourceRecord of arrayDataValues(descriptor.value)) {
+            for (const sourceRecord of historyValues.values) {
                 const parsed = normalizedRecord(sourceRecord, playerId);
-                if (parsed && parsed.identityConflict) {
+                if (parsed.identityConflict) {
                     identityConflict = true;
                     break;
                 }
-                if (parsed) records.push(parsed);
+                identities.push(parsed.identity);
+                if (parsed.record) records.push(parsed.record);
             }
             if (identityConflict) {
                 unusable.add(playerId);
                 continue;
             }
-            if (!records.length) continue;
             const seasons = new Set();
             const names = new Set();
-            for (const item of records) {
+            for (const item of identities) {
                 if (seasons.has(item.season)) identityConflict = true;
                 seasons.add(item.season);
                 names.add(item.normalizedName);
@@ -301,21 +416,27 @@
                 unusable.add(playerId);
                 continue;
             }
-            records.sort((left, right) => right.seasonStart - left.seasonStart);
+            if (!records.length) continue;
+            records.sort((left, right) => (
+                right.seasonEnd - left.seasonEnd || right.seasonStart - left.seasonStart
+            ));
             candidates.push({ playerId, records: Object.freeze(records.slice()) });
         }
 
         candidates.sort((left, right) => left.playerId.localeCompare(right.playerId, 'en'));
         for (const candidate of candidates) defineData(histories, candidate.playerId, candidate.records);
         const unusablePlayerIds = Array.from(unusable).sort((left, right) => left.localeCompare(right, 'en'));
-        return deepFreeze({ kind: 'archive-index-v1', histories, unusablePlayerIds });
+        return finalizeArchiveIndex({ kind: 'archive-index-v1', histories, unusablePlayerIds, diagnostics });
+    }
+
+    function finalizeArchiveIndex(value) {
+        const index = deepFreeze(value);
+        ARCHIVE_INDEXES.add(index);
+        return index;
     }
 
     function isArchiveIndex(value) {
-        const kind = ownData(value, 'kind');
-        const histories = ownData(value, 'histories');
-        return Boolean(kind && kind.value === 'archive-index-v1'
-            && histories && histories.value && typeof histories.value === 'object');
+        return Boolean(value && typeof value === 'object' && ARCHIVE_INDEXES.has(value));
     }
 
     function asArchiveIndex(value) {
@@ -341,23 +462,26 @@
             for (const record of index.histories[playerId]) {
                 if (seasonalPerformance(record) === null) continue;
                 const key = `${record.leagueClass}|${record.season}`;
-                if (!totals[key]) totals[key] = { points: 0, appearances: 0, playerRecords: 0 };
-                const nextPoints = totals[key].points + record.points;
-                const nextAppearances = totals[key].appearances + record.appearances;
-                if (!Number.isSafeInteger(nextPoints) || !Number.isSafeInteger(nextAppearances)) continue;
-                totals[key].points = nextPoints;
-                totals[key].appearances = nextAppearances;
+                if (!totals[key]) totals[key] = { points: 0n, appearances: 0n, playerRecords: 0 };
+                totals[key].points += BigInt(record.points);
+                totals[key].appearances += BigInt(record.appearances);
                 totals[key].playerRecords += 1;
             }
         }
         const means = {};
         for (const key of Object.keys(totals).sort()) {
             const total = totals[key];
+            const numericPoints = Number(total.points);
+            const numericAppearances = Number(total.appearances);
             defineData(means, key, {
-                points: total.points,
-                appearances: total.appearances,
+                points: total.points <= BigInt(MAX_SAFE_INTEGER)
+                    ? numericPoints
+                    : total.points.toString(),
+                appearances: total.appearances <= BigInt(MAX_SAFE_INTEGER)
+                    ? numericAppearances
+                    : total.appearances.toString(),
                 playerRecords: total.playerRecords,
-                mean: total.points / total.appearances,
+                mean: numericPoints / numericAppearances,
             });
         }
         return deepFreeze(means);
@@ -366,11 +490,16 @@
     function stabilizeSeasonRecord(record, classSeasonMeans) {
         const raw = seasonalPerformance(record);
         if (raw === null || !classSeasonMeans || typeof classSeasonMeans !== 'object') return null;
-        const meanDescriptor = ownData(classSeasonMeans, `${record.leagueClass}|${record.season}`);
+        const leagueClass = ownData(record, 'leagueClass');
+        const season = ownData(record, 'season');
+        const points = ownData(record, 'points');
+        const appearances = ownData(record, 'appearances');
+        if (!leagueClass || !season || !points || !appearances) return null;
+        const meanDescriptor = ownData(classSeasonMeans, `${leagueClass.value}|${season.value}`);
         if (!meanDescriptor || !meanDescriptor.value || typeof meanDescriptor.value.mean !== 'number'
             || !Number.isFinite(meanDescriptor.value.mean)) return null;
-        const stable = (record.points + PRIOR_APPEARANCES * meanDescriptor.value.mean)
-            / (record.appearances + PRIOR_APPEARANCES);
+        const stable = (points.value + PRIOR_APPEARANCES * meanDescriptor.value.mean)
+            / (appearances.value + PRIOR_APPEARANCES);
         return Number.isFinite(stable) ? stable : null;
     }
 
@@ -407,7 +536,7 @@
             sameClass: 0,
             nonAdjacentOrUnknownClass: 0,
             insufficientAppearances: 0,
-            invalidStabilization: 0,
+            invalidPerformance: 0,
         };
         for (let indexPosition = 0; indexPosition < CLASS_ORDER.length - 1; indexPosition += 1) {
             observationsByEdge[`${CLASS_ORDER[indexPosition]}>${CLASS_ORDER[indexPosition + 1]}`] = [];
@@ -418,7 +547,7 @@
             for (let position = 0; position < history.length - 1; position += 1) {
                 const newer = history[position];
                 const older = history[position + 1];
-                if (newer.seasonStart !== older.seasonStart + 1) {
+                if (older.seasonEnd !== newer.seasonStart) {
                     excluded.nonconsecutive += 1;
                     continue;
                 }
@@ -442,21 +571,21 @@
                     excluded.insufficientAppearances += 1;
                     continue;
                 }
-                const newerStable = stabilizeSeasonRecord(newer, classSeasonMeans);
-                const olderStable = stabilizeSeasonRecord(older, classSeasonMeans);
-                if (newerStable === null || olderStable === null) {
-                    excluded.invalidStabilization += 1;
+                const newerRaw = seasonalPerformance(newer);
+                const olderRaw = seasonalPerformance(older);
+                if (newerRaw === null || olderRaw === null) {
+                    excluded.invalidPerformance += 1;
                     continue;
                 }
                 const highIndex = Math.min(newerClassIndex, olderClassIndex);
                 const edge = `${CLASS_ORDER[highIndex]}>${CLASS_ORDER[highIndex + 1]}`;
-                const highStable = newerClassIndex === highIndex ? newerStable : olderStable;
-                const lowStable = newerClassIndex === highIndex ? olderStable : newerStable;
+                const highRaw = newerClassIndex === highIndex ? newerRaw : olderRaw;
+                const lowRaw = newerClassIndex === highIndex ? olderRaw : newerRaw;
                 observationsByEdge[edge].push({
                     playerId,
                     olderSeason: older.season,
                     newerSeason: newer.season,
-                    value: lowStable - highStable,
+                    value: lowRaw - highRaw,
                     weight: Math.min(older.appearances, newer.appearances),
                 });
             }
