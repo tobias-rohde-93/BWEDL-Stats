@@ -1674,6 +1674,68 @@ assert.equal(Model.buildOutcomeTrainingExamples({
     archiveTables, archiveData: outcomeArchive, clubs: duplicateOutcomeClubs,
 }).length, 1, 'semantically duplicate outcome mappings form one canonical identity');
 
+const conflictingOutcomeClubIdentity = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: [
+        { number: '035', name: 'Alpha', teams: ['Alpha'] },
+        { number: '035', name: 'Different Alpha', teams: [{ id: 'two', name: 'Alpha Two' }] },
+        { number: '036', name: 'Bravo' },
+    ],
+});
+assert.equal(conflictingOutcomeClubIdentity.length, 0,
+    'different canonical club names under one number suppress all string/object team mappings');
+assert.deepEqual(conflictingOutcomeClubIdentity.diagnostics.clubMapping, {
+    globalInvalid: false,
+    invalidClubIds: ['035'],
+    reason: 'invalidClubIdentity',
+});
+
+let outcomeClubNameGetterCalls = 0;
+const accessorOutcomeClub = { number: '035' };
+Object.defineProperty(accessorOutcomeClub, 'name', {
+    enumerable: true,
+    get() { outcomeClubNameGetterCalls += 1; throw new Error('outcome club name getter must not run'); },
+});
+const accessorOutcomeClubIdentity = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: [
+        { number: '035', name: 'Alpha' }, accessorOutcomeClub,
+        { number: '036', name: 'Bravo' },
+    ],
+});
+assert.equal(accessorOutcomeClubIdentity.length, 0,
+    'a malformed duplicate invalidates the readable club number despite a valid record');
+assert.deepEqual(accessorOutcomeClubIdentity.diagnostics.clubMapping.invalidClubIds, ['035']);
+assert.equal(accessorOutcomeClubIdentity.diagnostics.clubMapping.reason, 'invalidClubIdentity');
+assert.equal(outcomeClubNameGetterCalls, 0);
+
+const unrelatedInvalidOutcomeClub = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive,
+    clubs: [...outcomeClubs, { number: '099', name: '   ' }],
+});
+assert.equal(unrelatedInvalidOutcomeClub.length, 1,
+    'a readable invalid club identity suppresses only that club number');
+assert.deepEqual(unrelatedInvalidOutcomeClub.diagnostics.clubMapping.invalidClubIds, ['099']);
+
+const globallyUnreadableOutcomeClub = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: [...outcomeClubs, 42],
+});
+assert.equal(globallyUnreadableOutcomeClub.length, 0,
+    'a nonobject club identity makes the complete outcome mapping fail closed');
+assert.deepEqual(globallyUnreadableOutcomeClub.diagnostics.clubMapping, {
+    globalInvalid: true,
+    invalidClubIds: [],
+    reason: 'unreadableClubIdentity',
+});
+
+const trappedOutcomeClub = new Proxy({}, {
+    getOwnPropertyDescriptor() { throw new Error('unreadable outcome club proxy'); },
+});
+const proxyUnreadableOutcomeClub = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: [...outcomeClubs, trappedOutcomeClub],
+});
+assert.equal(proxyUnreadableOutcomeClub.length, 0);
+assert.equal(proxyUnreadableOutcomeClub.diagnostics.clubMapping.globalInvalid, true);
+assert.equal(proxyUnreadableOutcomeClub.diagnostics.clubMapping.reason, 'unreadableClubIdentity');
+
 const ambiguousTraining = Model.buildOutcomeTrainingExamples({
     archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
         { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7' },
@@ -1686,7 +1748,7 @@ assert.equal(ambiguousTraining.diagnostics.excluded.teamMapping, 1);
 
 const multiTeamClubs = [
     { number: '035', name: 'Club Alpha', teams: ['Alpha'] },
-    { number: '035', name: 'Club Alpha Two', teams: ['Alpha Two'] },
+    { number: '035', name: ' club  alpha ', teams: ['Alpha Two'] },
     { number: '036', name: 'Bravo' },
 ];
 const multiTeamRows = [{ season: '2025/2026', league: 'A-Klasse', rows: [

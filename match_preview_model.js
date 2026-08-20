@@ -1818,10 +1818,13 @@
 
     function clubTeamMappings(clubs) {
         const mappings = new Map();
-        const inspected = arrayDataValues(clubs);
-        if (!inspected.ok) return mappings;
-        const prepared = [];
         const invalidClubIds = new Set();
+        let globalInvalid = false;
+        const inspected = arrayDataValues(clubs);
+        if (!inspected.ok) {
+            return { mappings, invalidClubIds, globalInvalid: clubs !== undefined };
+        }
+        const prepared = [];
         const identitiesByClub = new Map();
         function canonicalOutcomeMappingIdentity(mapping) {
             return JSON.stringify([
@@ -1846,10 +1849,42 @@
             )) return;
             mappings.get(key).push(mapping);
         }
+        const validatedClubs = [];
+        const namesByClub = new Map();
         for (const club of inspected.values) {
-            const number = safeIdentifier(ownValue(club, 'number'));
-            const clubName = ownValue(club, 'name');
-            if (!number || !exactTeamLabel(clubName)) continue;
+            if (!club || typeof club !== 'object' || Array.isArray(club)) {
+                globalInvalid = true;
+                continue;
+            }
+            const numberInspection = inspectOwn(club, 'number');
+            if (!numberInspection.ok || !numberInspection.exists || !numberInspection.isData) {
+                globalInvalid = true;
+                continue;
+            }
+            const number = safeIdentifier(numberInspection.descriptor.value);
+            if (!number) {
+                globalInvalid = true;
+                continue;
+            }
+            const nameInspection = inspectOwn(club, 'name');
+            if (!nameInspection.ok || !nameInspection.exists || !nameInspection.isData) {
+                invalidClubIds.add(number);
+                continue;
+            }
+            const clubName = normalizedTeamIdentityId(nameInspection.descriptor.value);
+            if (!clubName) {
+                invalidClubIds.add(number);
+                continue;
+            }
+            if (!namesByClub.has(number)) namesByClub.set(number, new Set());
+            namesByClub.get(number).add(clubName);
+            validatedClubs.push({ club, number, clubName });
+        }
+        for (const [number, names] of namesByClub) {
+            if (names.size > 1) invalidClubIds.add(number);
+        }
+        for (const { club, number, clubName } of validatedClubs) {
+            if (invalidClubIds.has(number)) continue;
             const teamsInspection = inspectOwn(club, 'teams');
             if (!teamsInspection.ok || (teamsInspection.exists && !teamsInspection.isData)) {
                 invalidClubIds.add(number);
@@ -1911,21 +1946,21 @@
                 const mapping = {
                     clubId: number,
                     teamId: number,
-                    teamLabel: exactTeamLabel(clubName),
+                    teamLabel: clubName,
                     hasAuthoritativeId: false,
                 };
                 prepared.push({ label: clubName, mapping });
                 registerIdentity(mapping);
             }
         }
-        for (const item of prepared) {
+        for (const item of globalInvalid ? [] : prepared) {
             if (invalidClubIds.has(item.mapping.clubId)) continue;
             add(item.label, {
                 ...item.mapping,
                 multiTeam: identitiesByClub.get(item.mapping.clubId).size > 1,
             });
         }
-        return mappings;
+        return { mappings, invalidClubIds, globalInvalid };
     }
 
     function firstOwnValue(object, keys) {
@@ -2169,7 +2204,8 @@
     function buildOutcomeTrainingExamples(options) {
         const tables = arrayDataValues(ownValue(options, 'archiveTables'));
         const archiveIndex = buildArchiveIndex(ownValue(options, 'archiveData'));
-        const mappings = clubTeamMappings(ownValue(options, 'clubs'));
+        const clubMapping = clubTeamMappings(ownValue(options, 'clubs'));
+        const mappings = clubMapping.mappings;
         const cutoffInspection = inspectOwn(options, 'beforeSeason');
         const cutoffProvided = cutoffInspection.exists;
         const beforeSeason = cutoffInspection.isData
@@ -2183,6 +2219,14 @@
                 provided: cutoffProvided,
                 invalid: invalidCutoff,
                 beforeSeason,
+            },
+            clubMapping: {
+                globalInvalid: clubMapping.globalInvalid,
+                invalidClubIds: Array.from(clubMapping.invalidClubIds)
+                    .sort((left, right) => left.localeCompare(right, 'en')),
+                reason: clubMapping.globalInvalid
+                    ? 'unreadableClubIdentity'
+                    : (clubMapping.invalidClubIds.size ? 'invalidClubIdentity' : null),
             },
             performance: {
                 cutoffSnapshots: 0,
