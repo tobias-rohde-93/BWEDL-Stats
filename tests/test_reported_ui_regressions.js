@@ -295,6 +295,33 @@ test('match preview auto-fill abandons delayed work after its generation is inva
     assert.equal(button.textContent, 'Partie auswählen');
 });
 
+test('match preview auto-fill scopes only its own selector mutations as internal', () => {
+    const select = (options = []) => ({ value: '', options, dispatchEvent() {} });
+    let internalRuns = 0;
+    let loadCalls = 0;
+    const applyMatchSelectorAutoFill = compileFunction('applyMatchSelectorAutoFill', {
+        findTeamOptionMatchPreview: (_select, name) => name === 'Alpha' ? '035' : '036',
+        setTimeout: (callback) => callback(),
+        Event: class Event {},
+        setAppStatus() {},
+    });
+    applyMatchSelectorAutoFill(true, {
+        league: 'B-Klasse 2026-2027',
+        home: 'Alpha',
+        away: 'Bravo',
+    }, {
+        leagueSelect: select(),
+        teamASelect: select([{ value: '035', textContent: 'Alpha' }]),
+        teamBSelect: select([{ value: '036', textContent: 'Bravo' }]),
+        banner: null,
+        runInternalChange(callback) { internalRuns += 1; callback(); },
+        updateExclusions() {},
+        loadSelection() { loadCalls += 1; },
+    });
+    assert.equal(internalRuns, 2);
+    assert.equal(loadCalls, 1);
+});
+
 test('match preview form keeps numeric zero rounds for current and historical evidence', () => {
     const getPlayerFormTrend = compileFunction('getPlayerFormTrend');
     assert.deepEqual(getPlayerFormTrend({

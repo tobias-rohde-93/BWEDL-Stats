@@ -218,13 +218,20 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
         applyMatchSelectorAutoFill: (isAuto, match, controls) => {
             if (typeof controls.canApply === 'function' && !controls.canApply()) return;
             autoFillCalls.push({ isAuto, match });
-            controls.leagueSelect.value = match.league;
-            controls.leagueSelect.dispatchEvent({ type: 'change', isTrusted: false });
+            const runInternalChange = typeof controls.runInternalChange === 'function'
+                ? controls.runInternalChange
+                : (callback) => callback();
+            runInternalChange(() => {
+                controls.leagueSelect.value = match.league;
+                controls.leagueSelect.dispatchEvent({ type: 'change', isTrusted: false });
+            });
             const complete = () => {
                 if (typeof controls.canApply === 'function' && !controls.canApply()) return;
                 const reversed = match.home === 'Bravo';
-                controls.teamASelect.value = reversed ? '036' : '035';
-                controls.teamBSelect.value = reversed ? '035' : '036';
+                runInternalChange(() => {
+                    controls.teamASelect.value = reversed ? '036' : '035';
+                    controls.teamBSelect.value = reversed ? '035' : '036';
+                });
                 controls.updateExclusions();
                 controls.loadSelection();
                 controls.banner.style.borderColor = '#22c55e';
@@ -451,10 +458,13 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
         skipManualSelection: true,
     });
     scenario.flushTimer(100);
-    scenario.selects[1].value = '035';
-    scenario.selects[1].dispatchEvent({ type: 'change', isTrusted: true });
+    scenario.selects[1].value = '999';
+    scenario.selects[1].dispatchEvent({ type: 'change', isTrusted: false });
+    scenario.selects[2].value = '996';
+    scenario.selects[2].dispatchEvent({ type: 'change', isTrusted: false });
     scenario.flushTimer(200);
     assert.equal(scenario.autoFillCompletions.length, 0, 'selector interaction must invalidate delayed auto-fill work');
+    assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '999', '996']);
     assert.notEqual(scenario.contentArea.querySelector('.match-preview-card').style.borderColor, '#22c55e');
 }
 
@@ -493,6 +503,8 @@ assert.match(styles, /@media\s*\(max-width:\s*390px\)/);
 assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-probability-grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)/);
 assert.match(styles, /min-height:\s*44px/);
 assert.match(styles, /prefers-reduced-motion:\s*reduce/);
-assert.doesNotMatch(source.slice(source.indexOf('function renderMatchPreview('), source.indexOf('window.triggerUpdate')), /\/api\//);
+const rendererSource = source.slice(source.indexOf('function renderMatchPreview('), source.indexOf('window.triggerUpdate'));
+assert.doesNotMatch(rendererSource, /\/api\//);
+assert.doesNotMatch(rendererSource, /\.isTrusted\b/);
 
 console.log('historical match preview UI contract: ok');

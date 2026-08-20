@@ -7421,11 +7421,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyMatchSelectorAutoFill(isAuto, nextMatch, elements) {
         const { leagueSelect, teamASelect, teamBSelect, banner, updateExclusions, loadSelection } = elements;
         const canApply = typeof elements.canApply === 'function' ? elements.canApply : () => true;
+        const runInternalChange = typeof elements.runInternalChange === 'function'
+            ? elements.runInternalChange
+            : (callback) => callback();
         if (!canApply()) return;
         
         // Step 1: Set league and trigger change to populate teams
-        leagueSelect.value = nextMatch.league;
-        leagueSelect.dispatchEvent(new Event('change'));
+        runInternalChange(() => {
+            leagueSelect.value = nextMatch.league;
+            leagueSelect.dispatchEvent(new Event('change'));
+        });
 
         // Step 2: Set teams after a delay to allow the dropdowns to populate
         setTimeout(() => {
@@ -7433,8 +7438,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const homeVal = findTeamOptionMatchPreview(teamASelect, nextMatch.home);
             const awayVal = findTeamOptionMatchPreview(teamBSelect, nextMatch.away);
 
-            if (homeVal) { teamASelect.value = homeVal; }
-            if (awayVal) { teamBSelect.value = awayVal; }
+            runInternalChange(() => {
+                if (homeVal) { teamASelect.value = homeVal; }
+                if (awayVal) { teamBSelect.value = awayVal; }
+            });
 
             const selectionComplete = Boolean(
                 leagueSelect.value && homeVal && awayVal && homeVal !== awayVal
@@ -7481,7 +7488,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderGeneration = previousGeneration + 1;
         renderMatchPreview._generation = renderGeneration;
         let manualInteractionGeneration = 0;
+        let internalChangeDepth = 0;
         let resetMatchCardStatus = () => {};
+        const runInternalChange = (callback) => {
+            internalChangeDepth += 1;
+            try {
+                return callback();
+            } finally {
+                internalChangeDepth -= 1;
+            }
+        };
         const markManualInteraction = () => {
             manualInteractionGeneration += 1;
             resetMatchCardStatus();
@@ -7678,6 +7694,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         applyMatchSelectorAutoFill(false, match, {
                             leagueSelect, teamASelect, teamBSelect, banner: matchCard,
                             updateExclusions, loadSelection, canApply: canApplyCardSelection,
+                            runInternalChange,
                         });
                     });
                     matchCard.appendChild(loadButton);
@@ -7719,7 +7736,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         leagueSelect.addEventListener('change', (event) => {
-            if (!event || event.isTrusted !== false) markManualInteraction();
+            if (internalChangeDepth === 0) markManualInteraction();
             const league = leagueSelect.value;
             teamSelection.style.display = league ? 'block' : 'none';
             selectionArea.style.display = 'none';
@@ -7870,12 +7887,12 @@ document.addEventListener('DOMContentLoaded', () => {
             Array.from(teamBSelect.options).forEach((option) => { if (option.value) option.disabled = option.value === teamASelect.value; });
         };
         teamASelect.addEventListener('change', (event) => {
-            if (!event || event.isTrusted !== false) markManualInteraction();
+            if (internalChangeDepth === 0) markManualInteraction();
             updateExclusions();
             loadSelection();
         });
         teamBSelect.addEventListener('change', (event) => {
-            if (!event || event.isTrusted !== false) markManualInteraction();
+            if (internalChangeDepth === 0) markManualInteraction();
             updateExclusions();
             loadSelection();
         });
@@ -7891,6 +7908,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyMatchSelectorAutoFill(true, initialMatchAutoFill.match, {
                     leagueSelect, teamASelect, teamBSelect, banner: initialMatchAutoFill.banner,
                     updateExclusions, loadSelection, canApply: canApplyInitialAutoFill,
+                    runInternalChange,
                 });
             }, 100);
         }
