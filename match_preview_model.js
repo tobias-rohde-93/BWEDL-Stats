@@ -17,8 +17,11 @@
     const MIN_TRANSITIONS = 8;
     const PRIOR_APPEARANCES = 4;
     const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER;
+    const MAX_MODEL_RATING = 1000;
+    const NEUTRAL_FALLBACK_RATING = 1;
     const INVALID_CLONE = Object.freeze({ invalid: true });
     const ARCHIVE_INDEXES = new WeakSet();
+    const OUTCOME_EXAMPLE_SETS = new WeakSet();
     const OUTCOME_MODELS = new WeakSet();
     const OUTCOME_PARAMETER_GRID = deepFreeze({
         scale: [0.5, 1, 2, 4],
@@ -757,6 +760,15 @@
         return rating !== null && rating <= MAX_SAFE_INTEGER ? rating : null;
     }
 
+    function safePositiveModelRating(value) {
+        return typeof value === 'number'
+            && Number.isFinite(value)
+            && value > 0
+            && value <= MAX_MODEL_RATING
+            ? value
+            : null;
+    }
+
     function safeIdentifier(value) {
         return typeof value === 'string' && /^[0-9]+$/u.test(value) ? value : null;
     }
@@ -785,37 +797,70 @@
     }
 
     function resolveTargetClassMean(calibration, targetClass, beforeSeason, explicitMean) {
-        const supplied = safeFinite(explicitMean, 0);
-        if (supplied !== null) return supplied;
+        const supplied = safePositiveModelRating(explicitMean);
+        if (supplied !== null) return { mean: supplied, available: true, source: 'explicit' };
         const normalizedClass = normalizeLeagueClass(targetClass);
         const means = ownValue(calibration, 'classSeasonMeans');
-        if (!normalizedClass || !means || typeof means !== 'object') return 1;
+        if (!normalizedClass || !means || typeof means !== 'object') {
+            return { mean: NEUTRAL_FALLBACK_RATING, available: false, source: 'fallback' };
+        }
         const parsedBefore = parseSeason(beforeSeason);
         const candidates = [];
         for (const key of ownNames(means)) {
-            const prefix = `${normalizedClass}|`;
-            if (!key.startsWith(prefix)) continue;
-            const season = parseSeason(key.slice(prefix.length));
+            const separator = key.lastIndexOf('|');
+            if (separator < 1) continue;
+            const keyClass = key.slice(0, separator);
+            const season = parseSeason(key.slice(separator + 1));
             const entry = ownValue(means, key);
             const mean = ownValue(entry, 'mean');
             if (!season || (parsedBefore && season.endYear > parsedBefore.startYear)) continue;
-            const numeric = safeFinite(mean, 0);
-            if (numeric !== null) candidates.push({ seasonEnd: season.endYear, mean: numeric });
+            const numeric = safePositiveModelRating(mean);
+            const appearancesValue = ownValue(entry, 'appearances');
+            const appearances = typeof appearancesValue === 'number'
+                && Number.isSafeInteger(appearancesValue) && appearancesValue > 0
+                ? appearancesValue
+                : 1;
+            if (numeric !== null) candidates.push({
+                seasonEnd: season.endYear,
+                mean: numeric,
+                appearances,
+                target: keyClass === normalizedClass,
+            });
         }
-        candidates.sort((left, right) => right.seasonEnd - left.seasonEnd || right.mean - left.mean);
-        return candidates.length ? candidates[0].mean : 1;
+        const targetCandidates = candidates.filter((candidate) => candidate.target)
+            .sort((left, right) => right.seasonEnd - left.seasonEnd || right.mean - left.mean);
+        if (targetCandidates.length) {
+            return { mean: targetCandidates[0].mean, available: true, source: 'target-class' };
+        }
+        if (candidates.length) {
+            const newestEnd = Math.max(...candidates.map((candidate) => candidate.seasonEnd));
+            const newest = candidates.filter((candidate) => candidate.seasonEnd === newestEnd);
+            const appearances = newest.reduce((sum, candidate) => sum + candidate.appearances, 0);
+            const weighted = newest.reduce(
+                (sum, candidate) => sum + candidate.mean * candidate.appearances,
+                0,
+            ) / appearances;
+            const safeWeighted = safePositiveModelRating(weighted);
+            if (safeWeighted !== null) {
+                return { mean: safeWeighted, available: true, source: 'global-class' };
+            }
+        }
+        return { mean: NEUTRAL_FALLBACK_RATING, available: false, source: 'fallback' };
     }
 
-    function neutralHistoricalPrior(targetClass, neutralMean) {
+    function neutralHistoricalPrior(targetClass, meanInfo, diagnostics) {
         return deepFreeze({
-            rating: neutralMean,
-            neutralMean,
+            rating: meanInfo.mean,
+            neutralMean: meanInfo.mean,
+            classMeanAvailable: meanInfo.available,
+            classMeanSource: meanInfo.source,
             targetClass,
             seasons: [],
             sourceSeasons: [],
             classCalibrated: false,
             confidence: 'very-low',
             provenance: 'neutral-target-class-mean',
+            diagnostics: diagnostics || { invalidBeforeSeason: false },
         });
     }
 
@@ -823,11 +868,26 @@
         const targetClass = normalizeLeagueClass(ownValue(options, 'targetClass'));
         const archiveIndex = ownValue(options, 'archiveIndex');
         const playerId = safeIdentifier(ownValue(options, 'playerId'));
-        const beforeSeason = canonicalSeason(ownValue(options, 'beforeSeason'));
+        const cutoffInspection = inspectOwn(options, 'beforeSeason');
+        const cutoffProvided = cutoffInspection.exists;
+        const beforeSeason = cutoffInspection.isData
+            ? canonicalSeason(cutoffInspection.descriptor.value)
+            : null;
         const explicitMean = ownValue(options, 'classMean');
+        const invalidBeforeSeason = cutoffProvided && beforeSeason === null;
         if (!targetClass || !isArchiveIndex(archiveIndex)) {
-            const neutralMean = safeFinite(explicitMean, 0) ?? 1;
-            return neutralHistoricalPrior(targetClass, neutralMean);
+            const supplied = safePositiveModelRating(explicitMean);
+            const meanInfo = supplied === null
+                ? { mean: NEUTRAL_FALLBACK_RATING, available: false, source: 'fallback' }
+                : { mean: supplied, available: true, source: 'explicit' };
+            return neutralHistoricalPrior(targetClass, meanInfo, { invalidBeforeSeason });
+        }
+        if (invalidBeforeSeason) {
+            const supplied = safePositiveModelRating(explicitMean);
+            const meanInfo = supplied === null
+                ? { mean: NEUTRAL_FALLBACK_RATING, available: false, source: 'fallback' }
+                : { mean: supplied, available: true, source: 'explicit' };
+            return neutralHistoricalPrior(targetClass, meanInfo, { invalidBeforeSeason: true });
         }
 
         const chronologicalIndex = beforeSeason
@@ -837,24 +897,24 @@
         const calibration = beforeSeason || !suppliedCalibration
             ? buildClassCalibration(chronologicalIndex)
             : suppliedCalibration;
-        const neutralMean = resolveTargetClassMean(
+        const meanInfo = resolveTargetClassMean(
             calibration, targetClass, beforeSeason, explicitMean,
         );
         const history = playerId ? ownValue(chronologicalIndex.histories, playerId) : null;
         if (!history || !Array.isArray(history)) {
-            return neutralHistoricalPrior(targetClass, neutralMean);
+            return neutralHistoricalPrior(targetClass, meanInfo, { invalidBeforeSeason: false });
         }
 
         const usable = [];
-        for (const record of history) {
-            if (usable.length === 2) break;
+        const completedWindow = history.slice(0, 2);
+        for (const record of completedWindow) {
             if (seasonalPerformance(record) === null) continue;
             const stable = stabilizeSeasonRecord(record, ownValue(calibration, 'classSeasonMeans'));
             if (stable === null) continue;
             const conversion = convertClassRating(
                 stable, ownValue(record, 'leagueClass'), targetClass, calibration,
             );
-            const converted = safeFinite(conversion.rating, 0);
+            const converted = safePositiveModelRating(conversion.rating);
             if (converted === null) continue;
             usable.push({
                 season: record.season,
@@ -870,7 +930,9 @@
                 weight: 0,
             });
         }
-        if (!usable.length) return neutralHistoricalPrior(targetClass, neutralMean);
+        if (!usable.length) {
+            return neutralHistoricalPrior(targetClass, meanInfo, { invalidBeforeSeason: false });
+        }
         const weights = usable.length === 2 ? [0.7, 0.3] : [1];
         let rating = 0;
         for (let indexPosition = 0; indexPosition < usable.length; indexPosition += 1) {
@@ -883,13 +945,16 @@
             && usable.every((season) => season.appearances >= PRIOR_APPEARANCES);
         return deepFreeze({
             rating,
-            neutralMean,
+            neutralMean: meanInfo.mean,
+            classMeanAvailable: meanInfo.available,
+            classMeanSource: meanInfo.source,
             targetClass,
             seasons: usable,
             sourceSeasons: usable.map((season) => season.season),
             classCalibrated,
             confidence: classCalibrated ? (solidTwoSeasons ? 'medium' : 'provisional') : 'very-low',
             provenance: usable.length === 2 ? 'historical-two-season' : 'historical-one-season',
+            diagnostics: { invalidBeforeSeason: false },
         });
     }
 
@@ -907,24 +972,81 @@
         const clubId = safeIdentifier(ownValue(source, 'v_nr'));
         const league = ownValue(source, 'league');
         const leagueClass = normalizeLeagueClass(league);
-        const companyValue = ownValue(source, 'company');
-        const company = typeof companyValue === 'string'
-            ? companyValue.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC')
+        const seasonValue = ownValue(source, 'season');
+        const season = canonicalSeason(seasonValue) || seasonFromLeague(league);
+        const teamIdentityValue = firstOwnValue(source, ['team', 'company', 'team_id']);
+        const company = typeof teamIdentityValue === 'string'
+            ? teamIdentityValue.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC')
             : '';
         const roundsDescriptor = ownData(source, 'rounds');
         if (!id || !name || !clubId) return null;
         const roundsClone = roundsDescriptor ? cloneOwnData(roundsDescriptor.value) : {};
         if (roundsClone === INVALID_CLONE) return null;
+        const canonicalRounds = {};
+        for (const key of ownNames(roundsClone).sort()) {
+            const descriptor = ownData(roundsClone, key);
+            if (!descriptor || !descriptor.enumerable || !/^R[1-9][0-9]*$/u.test(key)) continue;
+            const numeric = parseCanonicalInteger(descriptor.value);
+            if (numeric !== null) defineData(canonicalRounds, key, numeric);
+            else if (typeof descriptor.value === 'string'
+                && (descriptor.value === '' || descriptor.value === 'x')) {
+                defineData(canonicalRounds, key, descriptor.value);
+            } else return null;
+        }
+        const fingerprint = JSON.stringify({
+            id,
+            name: canonicalPlayerName(name),
+            clubId,
+            leagueClass,
+            season,
+            teamIdentity: company.toLocaleLowerCase('de-DE'),
+            rounds: canonicalRounds,
+        });
         return {
             id,
             name,
             normalizedName: canonicalPlayerName(name),
             clubId,
             leagueClass,
+            season,
             company,
-            rounds: roundsClone,
-            stats: roundStats(roundsClone),
+            rounds: canonicalRounds,
+            stats: roundStats(canonicalRounds),
+            fingerprint,
         };
+    }
+
+    function groupCurrentPlayers(sources, targetSeason) {
+        const groups = new Map();
+        const invalidIds = new Set();
+        for (const source of sources) {
+            const sourceId = safeIdentifier(ownValue(source, 'id'));
+            const player = parseCurrentPlayer(source);
+            if (!player) {
+                if (sourceId) invalidIds.add(sourceId);
+                continue;
+            }
+            if (!groups.has(player.id)) groups.set(player.id, []);
+            groups.get(player.id).push(player);
+        }
+        const players = [];
+        const ambiguousIds = new Set(invalidIds);
+        const excludedIds = new Set();
+        for (const id of Array.from(groups.keys()).sort((left, right) => left.localeCompare(right, 'en'))) {
+            const group = groups.get(id);
+            const fingerprints = new Set(group.map((player) => player.fingerprint));
+            if (fingerprints.size !== 1) {
+                ambiguousIds.add(id);
+                continue;
+            }
+            const player = group[0];
+            if (targetSeason && player.season !== targetSeason) {
+                excludedIds.add(id);
+                continue;
+            }
+            players.push(player);
+        }
+        return { players, ambiguousIds, excludedIds };
     }
 
     function weakestConfidence(values) {
@@ -960,7 +1082,14 @@
         const teamId = safeIdentifier(ownValue(options, 'teamId'));
         const targetLeague = ownValue(options, 'targetLeague');
         const targetClass = normalizeLeagueClass(targetLeague);
-        const targetSeason = seasonFromLeague(targetLeague);
+        const leagueSeason = seasonFromLeague(targetLeague);
+        const targetSeasonInspection = inspectOwn(options, 'targetSeason');
+        const explicitTargetSeason = targetSeasonInspection.isData
+            ? canonicalSeason(targetSeasonInspection.descriptor.value)
+            : null;
+        const invalidTargetSeason = targetSeasonInspection.exists
+            && (!explicitTargetSeason || (leagueSeason && explicitTargetSeason !== leagueSeason));
+        const targetSeason = explicitTargetSeason || leagueSeason;
         const archiveData = ownValue(options, 'archiveData');
         const archiveIndex = buildArchiveIndex(archiveData && typeof archiveData === 'object' ? archiveData : {});
         const chronologicalIndex = targetSeason
@@ -970,25 +1099,28 @@
         const calibration = targetSeason || !suppliedCalibration
             ? buildClassCalibration(chronologicalIndex)
             : suppliedCalibration;
-        const classMean = resolveTargetClassMean(
+        const meanInfo = resolveTargetClassMean(
             calibration, targetClass, targetSeason, ownValue(options, 'classMean'),
         );
+        const classMean = meanInfo.mean;
         const diagnostics = {
-            invalidTeam: !teamId || !targetClass,
+            invalidTeam: !teamId || !targetClass || invalidTargetSeason,
             ambiguousTeam: false,
             ambiguousPlayerIds: [],
             excludedCurrentIds: [],
             historicalSeasons: [],
         };
-        if (!teamId || !targetClass) {
+        if (!teamId || !targetClass || invalidTargetSeason) {
             return deepFreeze({ players: [], targetClass, classMean, teamConfidence: 'very-low', diagnostics });
         }
         const explicitMappingAmbiguous = explicitTeamMappingIsAmbiguous(options, teamId);
         if (explicitMappingAmbiguous) diagnostics.ambiguousTeam = true;
 
-        const parsedCurrent = currentPlayerSources(ownValue(options, 'currentPlayers'))
-            .map(parseCurrentPlayer)
-            .filter(Boolean);
+        const groupedCurrent = groupCurrentPlayers(
+            currentPlayerSources(ownValue(options, 'currentPlayers')),
+            targetSeason,
+        );
+        const parsedCurrent = groupedCurrent.players;
         const affiliations = new Map();
         const namesById = new Map();
         for (const player of parsedCurrent) {
@@ -997,11 +1129,13 @@
             if (!namesById.has(player.id)) namesById.set(player.id, new Set());
             namesById.get(player.id).add(player.normalizedName);
         }
-        const ambiguousIds = new Set();
+        const ambiguousIds = new Set(groupedCurrent.ambiguousIds);
         for (const [id, clubs] of affiliations) {
             if (clubs.size !== 1 || namesById.get(id).size !== 1) ambiguousIds.add(id);
         }
         diagnostics.ambiguousPlayerIds = Array.from(ambiguousIds).sort((a, b) => a.localeCompare(b, 'en'));
+        diagnostics.excludedCurrentIds = Array.from(groupedCurrent.excludedIds)
+            .sort((a, b) => a.localeCompare(b, 'en'));
 
         const targetCurrent = parsedCurrent.filter((player) => (
             player.clubId === teamId && player.leagueClass === targetClass && !ambiguousIds.has(player.id)
@@ -1038,19 +1172,22 @@
                     calibration,
                     classMean,
                 })
-                : neutralHistoricalPrior(targetClass, classMean);
+                : neutralHistoricalPrior(targetClass, meanInfo, { invalidBeforeSeason: false });
             const hasHistory = historicalPrior.seasons.length > 0;
             const stats = current.stats;
-            const rating = stats.appearances
+            const blendedRating = stats.appearances
                 ? (stats.points + PRIOR_APPEARANCES * historicalPrior.rating)
                     / (stats.appearances + PRIOR_APPEARANCES)
                 : historicalPrior.rating;
+            const safeBlendedRating = safePositiveModelRating(blendedRating);
+            const rating = safeBlendedRating === null ? classMean : safeBlendedRating;
             const currentWeight = stats.appearances / (stats.appearances + PRIOR_APPEARANCES);
             let confidence = 'very-low';
             if (stats.appearances >= 8) confidence = 'high';
             else if (stats.appearances >= 1 && hasHistory) confidence = 'medium';
             else if (stats.appearances >= 1 || hasHistory) confidence = 'provisional';
             if (hasHistory && !historicalPrior.classCalibrated) confidence = 'very-low';
+            if (safeBlendedRating === null) confidence = 'very-low';
             players.push({
                 id: current.id,
                 name: current.name,
@@ -1085,7 +1222,8 @@
         function addHistoricalSeason(season, evidence, limitToFour) {
             const candidates = [];
             for (const playerId of ownNames(chronologicalIndex.histories).sort((a, b) => a.localeCompare(b, 'en'))) {
-                if (addedIds.has(playerId) || ambiguousIds.has(playerId)) continue;
+                if (addedIds.has(playerId) || ambiguousIds.has(playerId)
+                    || groupedCurrent.excludedIds.has(playerId)) continue;
                 const affiliation = affiliations.get(playerId);
                 if (affiliation && (!affiliation.has(teamId) || affiliation.size !== 1)) continue;
                 const history = ownValue(chronologicalIndex.histories, playerId) || [];
@@ -1103,6 +1241,7 @@
                 if (!historicalPrior.seasons.length) continue;
                 let confidence = historicalPrior.confidence;
                 if (evidence === 'historical-fallback') confidence = 'very-low';
+                else if (confidence === 'high' || confidence === 'medium') confidence = 'provisional';
                 candidates.push({
                     id: playerId,
                     name: sourceRecord.name,
@@ -1134,31 +1273,38 @@
             addHistoricalSeason(historicalSeasons[1].season, 'historical-fallback', true);
         }
         players.sort(rosterSort);
+        const completedRoster = completeLineup(players, {
+            classMean,
+            classMeanAvailable: meanInfo.available,
+        });
         return deepFreeze({
             players,
             targetClass,
             classMean,
-            teamConfidence: players.length
-                ? weakestConfidence(players.slice(0, 4).map((player) => player.confidence))
-                : 'very-low',
+            classMeanAvailable: meanInfo.available,
+            classMeanSource: meanInfo.source,
+            teamConfidence: completedRoster.teamConfidence,
             diagnostics,
         });
     }
 
     function completeLineup(knownPlayers, options) {
-        const requestedSize = parseCanonicalInteger(ownValue(options, 'size'));
-        const size = requestedSize && requestedSize <= 32 ? requestedSize : 4;
+        const size = 4;
         const manual = ownValue(options, 'manual') === true;
-        const explicitMean = safeFinite(ownValue(options, 'classMean'), Number.MIN_VALUE);
-        const classMean = explicitMean === null ? 1 : explicitMean;
+        const explicitMean = safePositiveModelRating(ownValue(options, 'classMean'));
+        const classMean = explicitMean === null ? NEUTRAL_FALLBACK_RATING : explicitMean;
+        const availabilityValue = ownValue(options, 'classMeanAvailable');
+        const classMeanAvailable = explicitMean !== null && availabilityValue !== false;
         const inspected = arrayDataValues(knownPlayers);
         const known = [];
         if (inspected.ok) {
             for (const source of inspected.values) {
                 const clone = cloneOwnData(source);
                 if (clone === INVALID_CLONE || !clone || typeof clone !== 'object' || Array.isArray(clone)) continue;
-                const adjusted = safeFinite(ownValue(clone, 'adjustedRating'), 0);
-                const rating = adjusted === null ? safeFinite(ownValue(clone, 'rating'), 0) : adjusted;
+                const adjusted = safePositiveModelRating(ownValue(clone, 'adjustedRating'));
+                const rating = adjusted === null
+                    ? safePositiveModelRating(ownValue(clone, 'rating'))
+                    : adjusted;
                 const id = ownValue(clone, 'id');
                 const name = displayPlayerName(ownValue(clone, 'name'));
                 if (rating === null || typeof id !== 'string' || !id || !name) continue;
@@ -1195,6 +1341,9 @@
             ? 'very-low'
             : weakestConfidence(lineup.map((slot) => slot.confidence));
         defineData(lineup, 'teamConfidence', confidence);
+        defineData(lineup, 'classMean', classMean);
+        defineData(lineup, 'classMeanAvailable', classMeanAvailable);
+        defineData(lineup, 'classMeanSource', classMeanAvailable ? 'provided' : 'fallback');
         return deepFreeze(lineup);
     }
 
@@ -1210,6 +1359,12 @@
         const mappings = new Map();
         const inspected = arrayDataValues(clubs);
         if (!inspected.ok) return mappings;
+        const prepared = [];
+        const identitiesByClub = new Map();
+        function registerIdentity(clubId, teamId, teamLabel) {
+            if (!identitiesByClub.has(clubId)) identitiesByClub.set(clubId, new Set());
+            identitiesByClub.get(clubId).add(`${String(teamId)}|${teamLabel}`);
+        }
         function add(label, mapping) {
             const key = exactTeamLabel(label);
             if (!key) return;
@@ -1227,21 +1382,29 @@
                     const teamIdValue = typeof team === 'string' ? team : ownValue(team, 'id');
                     const label = exactTeamLabel(teamName);
                     if (!label) continue;
-                    add(teamName, {
+                    const mapping = {
                         clubId: number,
                         teamId: typeof teamIdValue === 'string' && teamIdValue ? teamIdValue : label,
                         teamLabel: label,
-                        multiTeam: teams.values.length > 1,
-                    });
+                    };
+                    prepared.push({ label: teamName, mapping });
+                    registerIdentity(number, mapping.teamId, mapping.teamLabel);
                 }
             } else {
-                add(clubName, {
+                const mapping = {
                     clubId: number,
                     teamId: number,
                     teamLabel: exactTeamLabel(clubName),
-                    multiTeam: false,
-                });
+                };
+                prepared.push({ label: clubName, mapping });
+                registerIdentity(number, mapping.teamId, mapping.teamLabel);
             }
+        }
+        for (const item of prepared) {
+            add(item.label, {
+                ...item.mapping,
+                multiTeam: identitiesByClub.get(item.mapping.clubId).size > 1,
+            });
         }
         return mappings;
     }
@@ -1264,18 +1427,46 @@
     }
 
     function parseMatchScore(row) {
-        const result = firstOwnValue(row, ['result', 'score', 'ergebnis']);
-        if (typeof result === 'string') {
+        function field(keys) {
+            for (const key of keys) {
+                const inspection = inspectOwn(row, key);
+                if (!inspection.ok) return { present: true, valid: false, value: undefined };
+                if (inspection.exists) return {
+                    present: true,
+                    valid: inspection.isData,
+                    value: inspection.isData ? inspection.descriptor.value : undefined,
+                };
+            }
+            return { present: false, valid: true, value: undefined };
+        }
+        const resultField = field(['result', 'score', 'ergebnis']);
+        const homeField = field(['homeScore', 'home_score']);
+        const awayField = field(['awayScore', 'away_score']);
+        if (!resultField.valid || !homeField.valid || !awayField.valid) return null;
+        let resultScore = null;
+        if (resultField.present && typeof resultField.value === 'string') {
+            const result = resultField.value;
             const match = /^\s*(0|[1-9][0-9]*)\s*:\s*(0|[1-9][0-9]*)\s*$/u.exec(result);
             if (match) {
                 const homeScore = parseCanonicalInteger(match[1]);
                 const awayScore = parseCanonicalInteger(match[2]);
-                if (homeScore !== null && awayScore !== null) return { homeScore, awayScore };
+                if (homeScore !== null && awayScore !== null) resultScore = { homeScore, awayScore };
             }
         }
-        const homeScore = parseCanonicalInteger(firstOwnValue(row, ['homeScore', 'home_score']));
-        const awayScore = parseCanonicalInteger(firstOwnValue(row, ['awayScore', 'away_score']));
-        return homeScore === null || awayScore === null ? null : { homeScore, awayScore };
+        if (resultField.present && !resultScore) return null;
+        const numericFieldsPresent = homeField.present || awayField.present;
+        if (numericFieldsPresent && (!homeField.present || !awayField.present)) return null;
+        let numericScore = null;
+        if (numericFieldsPresent) {
+            const homeScore = parseCanonicalInteger(homeField.value);
+            const awayScore = parseCanonicalInteger(awayField.value);
+            if (homeScore === null || awayScore === null) return null;
+            numericScore = { homeScore, awayScore };
+        }
+        if (resultScore && numericScore
+            && (resultScore.homeScore !== numericScore.homeScore
+                || resultScore.awayScore !== numericScore.awayScore)) return null;
+        return resultScore || numericScore;
     }
 
     function normalizeObjectMatchRow(row, tableSeason, tableLeague) {
@@ -1367,26 +1558,57 @@
         return participants;
     }
 
+    function finalizeOutcomeExamples(examples) {
+        const result = deepFreeze(examples);
+        OUTCOME_EXAMPLE_SETS.add(result);
+        return result;
+    }
+
+    function seasonIsStrictlyBefore(season, cutoff) {
+        const parsedSeason = parseSeason(season);
+        const parsedCutoff = parseSeason(cutoff);
+        return Boolean(parsedSeason && parsedCutoff && parsedSeason.endYear <= parsedCutoff.startYear);
+    }
+
     function buildOutcomeTrainingExamples(options) {
         const tables = arrayDataValues(ownValue(options, 'archiveTables'));
         const archiveIndex = buildArchiveIndex(ownValue(options, 'archiveData'));
         const mappings = clubTeamMappings(ownValue(options, 'clubs'));
+        const cutoffInspection = inspectOwn(options, 'beforeSeason');
+        const cutoffProvided = cutoffInspection.exists;
+        const beforeSeason = cutoffInspection.isData
+            ? canonicalSeason(cutoffInspection.descriptor.value)
+            : null;
+        const invalidCutoff = cutoffProvided && beforeSeason === null;
         const diagnostics = {
             rows: 0,
             accepted: 0,
+            cutoff: {
+                provided: cutoffProvided,
+                invalid: invalidCutoff,
+                beforeSeason,
+            },
+            performance: {
+                cutoffSnapshots: 0,
+                filteredIndexBuilds: 0,
+                calibrationBuilds: 0,
+                priorCalls: 0,
+            },
             excluded: {
                 malformed: 0,
                 teamMapping: 0,
                 participants: 0,
                 duplicate: 0,
+                conflictingDuplicate: 0,
                 chronology: 0,
+                cutoff: 0,
             },
         };
         const examples = [];
-        const seen = new Set();
-        if (!tables.ok) {
+        const groupedMatches = new Map();
+        if (!tables.ok || invalidCutoff) {
             defineData(examples, 'diagnostics', diagnostics);
-            return deepFreeze(examples);
+            return finalizeOutcomeExamples(examples);
         }
         for (const table of tables.values) {
             const tableSeason = ownValue(table, 'season');
@@ -1398,6 +1620,10 @@
                     diagnostics.excluded.malformed += 1;
                     continue;
                 }
+                if (beforeSeason && !seasonIsStrictlyBefore(match.season, beforeSeason)) {
+                    diagnostics.excluded.cutoff += 1;
+                    continue;
+                }
                 const homeMappings = mappings.get(exactTeamLabel(match.home)) || [];
                 const awayMappings = mappings.get(exactTeamLabel(match.away)) || [];
                 if (homeMappings.length !== 1 || awayMappings.length !== 1
@@ -1406,41 +1632,76 @@
                     diagnostics.excluded.teamMapping += 1;
                     continue;
                 }
-                const key = [
+                const identityKey = [
                     match.season, match.round, match.leagueClass,
                     `${homeMappings[0].clubId}:${homeMappings[0].teamId}`,
                     `${awayMappings[0].clubId}:${awayMappings[0].teamId}`,
-                    match.homeScore, match.awayScore,
                 ].join('|');
-                if (seen.has(key)) {
+                const scoreKey = `${match.homeScore}:${match.awayScore}`;
+                const existing = groupedMatches.get(identityKey);
+                if (existing && existing.scoreKey === scoreKey) {
                     diagnostics.excluded.duplicate += 1;
                     continue;
                 }
-                seen.add(key);
+                if (existing) {
+                    if (!existing.conflict) diagnostics.excluded.conflictingDuplicate += 1;
+                    existing.conflict = true;
+                    continue;
+                }
+                groupedMatches.set(identityKey, {
+                    identityKey,
+                    scoreKey,
+                    conflict: false,
+                    match,
+                    homeMapping: homeMappings[0],
+                    awayMapping: awayMappings[0],
+                });
+            }
+        }
+        const cutoffSnapshots = new Map();
+        function snapshotFor(targetSeason) {
+            if (cutoffSnapshots.has(targetSeason)) return cutoffSnapshots.get(targetSeason);
+            const earlierIndex = filteredArchiveIndexBefore(archiveIndex, targetSeason);
+            diagnostics.performance.filteredIndexBuilds += 1;
+            const calibration = buildClassCalibration(earlierIndex);
+            diagnostics.performance.calibrationBuilds += 1;
+            const snapshot = { archiveIndex: earlierIndex, calibration };
+            cutoffSnapshots.set(targetSeason, snapshot);
+            diagnostics.performance.cutoffSnapshots += 1;
+            return snapshot;
+        }
+        for (const group of Array.from(groupedMatches.values())
+            .sort((left, right) => left.identityKey.localeCompare(right.identityKey, 'en'))) {
+                if (group.conflict) continue;
+                const { match, homeMapping, awayMapping, identityKey: key } = group;
                 const homePlayers = roundParticipants(
-                    archiveIndex, match.season, match.leagueClass, match.round, homeMappings[0],
+                    archiveIndex, match.season, match.leagueClass, match.round, homeMapping,
                 );
                 const awayPlayers = roundParticipants(
-                    archiveIndex, match.season, match.leagueClass, match.round, awayMappings[0],
+                    archiveIndex, match.season, match.leagueClass, match.round, awayMapping,
                 );
                 if (homePlayers.length !== 4 || awayPlayers.length !== 4) {
                     diagnostics.excluded.participants += 1;
                     continue;
                 }
-                const earlierIndex = filteredArchiveIndexBefore(archiveIndex, match.season);
-                const earlierCalibration = buildClassCalibration(earlierIndex);
-                const targetMean = resolveTargetClassMean(
+                const snapshot = snapshotFor(match.season);
+                const earlierIndex = snapshot.archiveIndex;
+                const earlierCalibration = snapshot.calibration;
+                const targetMeanInfo = resolveTargetClassMean(
                     earlierCalibration, match.leagueClass, match.season, undefined,
                 );
+                const targetMean = targetMeanInfo.mean;
                 function scorePlayers(players) {
-                    const priors = players.map((player) => buildHistoricalPrior({
-                        playerId: player.playerId,
-                        targetClass: match.leagueClass,
-                        archiveIndex: earlierIndex,
-                        calibration: earlierCalibration,
-                        beforeSeason: match.season,
-                        classMean: targetMean,
-                    }));
+                    const priors = players.map((player) => {
+                        diagnostics.performance.priorCalls += 1;
+                        return buildHistoricalPrior({
+                            playerId: player.playerId,
+                            targetClass: match.leagueClass,
+                            archiveIndex: earlierIndex,
+                            calibration: earlierCalibration,
+                            classMean: targetMean,
+                        });
+                    });
                     const rating = priors.reduce((sum, prior) => sum + prior.rating, 0) / priors.length;
                     return { rating, priors };
                 }
@@ -1459,8 +1720,8 @@
                     season: match.season,
                     round: match.round,
                     leagueClass: match.leagueClass,
-                    homeTeamId: `${homeMappings[0].clubId}:${homeMappings[0].teamId}`,
-                    awayTeamId: `${awayMappings[0].clubId}:${awayMappings[0].teamId}`,
+                    homeTeamId: `${homeMapping.clubId}:${homeMapping.teamId}`,
+                    awayTeamId: `${awayMapping.clubId}:${awayMapping.teamId}`,
                     homeRating: home.rating,
                     awayRating: away.rating,
                     outcome: match.homeScore > match.awayScore
@@ -1468,9 +1729,12 @@
                         : (match.homeScore < match.awayScore ? 'away' : 'draw'),
                     sourceSeasons,
                     calibrationSeasons: sourceSeasons.slice(),
+                    cutoffProvenance: {
+                        targetSeason: match.season,
+                        strictlyEarlier: true,
+                    },
                 });
                 diagnostics.accepted += 1;
-            }
         }
         examples.sort((left, right) => (
             left.season.localeCompare(right.season, 'en')
@@ -1478,7 +1742,7 @@
             || left.key.localeCompare(right.key, 'en')
         ));
         defineData(examples, 'diagnostics', diagnostics);
-        return deepFreeze(examples);
+        return finalizeOutcomeExamples(examples);
     }
 
     function outcomeProbabilities(homeRating, awayRating, params) {
@@ -1496,27 +1760,49 @@
         return model;
     }
 
-    function calibrateOutcomeModel(sourceExamples) {
+    function calibrateOutcomeModel(sourceExamples, options) {
         const inspected = arrayDataValues(sourceExamples);
+        const synthetic = ownValue(options, 'synthetic') === true;
+        const brandedProductionInput = OUTCOME_EXAMPLE_SETS.has(sourceExamples);
+        const cutoffInspection = inspectOwn(options, 'beforeSeason');
+        const cutoffProvided = cutoffInspection.exists;
+        const beforeSeason = cutoffInspection.isData
+            ? canonicalSeason(cutoffInspection.descriptor.value)
+            : null;
+        const invalidCutoff = cutoffProvided && beforeSeason === null;
         const diagnostics = {
             received: inspected.ok ? inspected.values.length : 0,
             usable: 0,
             excludedUnsafe: 0,
             excludedDuplicate: 0,
+            excludedByCutoff: 0,
+            excludedKeyless: 0,
+            invalidCutoff,
+            unbrandedProductionInput: !synthetic && !brandedProductionInput,
             outcomeCounts: { home: 0, draw: 0, away: 0 },
         };
         const examples = [];
         const seen = new Set();
-        if (inspected.ok) {
+        if (inspected.ok && !invalidCutoff && !diagnostics.unbrandedProductionInput) {
             for (let indexPosition = 0; indexPosition < inspected.values.length; indexPosition += 1) {
                 const source = inspected.values[indexPosition];
                 const homeRating = safeRating(ownValue(source, 'homeRating'));
                 const awayRating = safeRating(ownValue(source, 'awayRating'));
                 const outcome = ownValue(source, 'outcome');
                 const keyValue = ownValue(source, 'key');
-                const key = typeof keyValue === 'string' && keyValue
-                    ? keyValue
-                    : `synthetic:${indexPosition}`;
+                const hasKey = typeof keyValue === 'string' && keyValue.length > 0;
+                const key = hasKey ? keyValue : `synthetic:${indexPosition}`;
+                if (!synthetic && !hasKey) {
+                    diagnostics.excludedKeyless += 1;
+                    continue;
+                }
+                if (beforeSeason) {
+                    const season = canonicalSeason(ownValue(source, 'season'));
+                    if (!season || !seasonIsStrictlyBefore(season, beforeSeason)) {
+                        diagnostics.excludedByCutoff += 1;
+                        continue;
+                    }
+                }
                 if (homeRating === null || awayRating === null
                     || !['home', 'draw', 'away'].includes(outcome)) {
                     diagnostics.excludedUnsafe += 1;
@@ -1676,6 +1962,8 @@
         CLASS_ORDER,
         MIN_TRANSITIONS,
         PRIOR_APPEARANCES,
+        MAX_MODEL_RATING,
+        NEUTRAL_FALLBACK_RATING,
         normalizeLeagueClass,
         roundStats,
         canonicalSeason,

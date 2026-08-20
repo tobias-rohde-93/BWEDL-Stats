@@ -7,9 +7,11 @@ const vm = require('node:vm');
 const Model = require('../match_preview_model.js');
 
 const MARKER = 'archive_data.js has no round-derived historical evidence';
-const source = fs.readFileSync(path.join(__dirname, '..', 'archive_data.js'), 'utf8');
+const archivePath = process.env.BWEDL_BACKTEST_ARCHIVE
+    || path.join(__dirname, '..', 'archive_data.js');
+const source = fs.readFileSync(archivePath, 'utf8');
 const context = vm.createContext({ window: {} });
-vm.runInContext(source, context, { filename: 'archive_data.js' });
+vm.runInContext(source, context, { filename: path.basename(archivePath) });
 const archiveData = context.ARCHIVE_DATA || context.window.ARCHIVE_DATA;
 
 function ownValue(object, key) {
@@ -23,29 +25,69 @@ function ownValue(object, key) {
     }
 }
 
-function hasRoundEvidence(archive) {
-    if (!archive || typeof archive !== 'object') return false;
+function inspectOwn(object, key) {
     try {
-        return Object.getOwnPropertyNames(archive).some((id) => {
-            const history = ownValue(archive, id);
-            return Array.isArray(history) && history.some((record) => (
-                record && typeof record === 'object'
-                && ownValue(record, 'rounds')
-                && Number.isSafeInteger(ownValue(record, 'appearances'))
-                && ownValue(record, 'appearances') > 0
-            ));
-        });
+        const descriptor = Object.getOwnPropertyDescriptor(object, key);
+        return {
+            safe: true,
+            exists: Boolean(descriptor),
+            isData: Boolean(descriptor
+                && Object.prototype.hasOwnProperty.call(descriptor, 'value')),
+            value: descriptor && Object.prototype.hasOwnProperty.call(descriptor, 'value')
+                ? descriptor.value
+                : undefined,
+        };
     } catch (_error) {
-        return false;
+        return { safe: false, exists: false, isData: false, value: undefined };
     }
 }
 
-if (!hasRoundEvidence(archiveData)) {
+function scanEnrichment(archive) {
+    assert.ok(archive && typeof archive === 'object', 'archive data must be an object');
+    let enrichedRecords = 0;
+    for (const playerId of Object.getOwnPropertyNames(archive)) {
+        const historyInspection = inspectOwn(archive, playerId);
+        assert.ok(historyInspection.safe && historyInspection.isData,
+            'archive histories must be own data properties');
+        const history = historyInspection.value;
+        assert.ok(Array.isArray(history), 'archive histories must be arrays');
+        for (const record of history) {
+            if (!record || typeof record !== 'object') continue;
+            const inspections = ['rounds', 'appearances', 'points_per_appearance']
+                .map((field) => inspectOwn(record, field));
+            const present = inspections.filter((inspection) => inspection.exists).length;
+            if (present === 0) continue;
+            enrichedRecords += 1;
+            assert.equal(present, inspections.length,
+                'round-derived evidence must contain rounds, appearances, and points_per_appearance');
+            assert.equal(inspections.every((inspection) => inspection.safe && inspection.isData), true,
+                'round-derived evidence must use own data properties');
+            const isolatedArchive = {};
+            isolatedArchive[playerId] = [record];
+            const isolatedIndex = Model.buildArchiveIndex(isolatedArchive);
+            const normalized = isolatedIndex.histories[playerId];
+            assert.equal(Array.isArray(normalized) && normalized.length === 1
+                && normalized[0].completeEvidence === true, true,
+            'round-derived evidence must be structurally valid and internally consistent');
+        }
+    }
+    return enrichedRecords;
+}
+
+const enrichedRecords = scanEnrichment(archiveData);
+if (enrichedRecords === 0) {
     console.log(MARKER);
     process.exit(0);
 }
 
 const index = Model.buildArchiveIndex(archiveData);
+const indexedEvidenceRecords = Object.keys(index.histories).reduce(
+    (count, playerId) => count + index.histories[playerId]
+        .filter((record) => record.completeEvidence).length,
+    0,
+);
+assert.equal(indexedEvidenceRecords, enrichedRecords,
+    'globally ambiguous or duplicate round-derived evidence is invalid');
 const samples = [];
 for (const playerId of Object.keys(index.histories).sort()) {
     const usable = index.histories[playerId].filter((record) => record.previewEligible);
