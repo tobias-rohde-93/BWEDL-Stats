@@ -1016,6 +1016,45 @@ assert.equal(realCurrent425.currentAppearances, 18);
 assert.equal(realCurrent425.adjustedRating, 8);
 assert.equal(realCurrent425.currentWeight, 18 / 22);
 
+for (const [id, league] of [
+    ['386', 'B-Klasse Gruppe 2'],
+    ['387', 'B-Klasse Gruppe 12'],
+    ['388', 'B-Klasse Gruppe A2'],
+]) {
+    const groupedLeagueRoster = Model.buildTeamRoster({
+        teamId: '035', targetLeague: `${league} 2026/2027`,
+        currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+        currentPlayers: [{
+            id, name: `Numeric Group ${id}`, v_nr: '035', league, rounds: { R1: 5 },
+        }],
+    });
+    assert.deepEqual(groupedLeagueRoster.players.map((player) => player.id), [id],
+        'numeric group tokens are class identity, not season signals');
+    assert.deepEqual(groupedLeagueRoster.diagnostics.ambiguousCurrentIds, []);
+}
+
+const invalidNumericClassRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    currentPlayers: [{
+        id: '389', name: 'Invalid Numeric Class', v_nr: '035',
+        league: 'B-Klasse 2', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(invalidNumericClassRoster.diagnostics.ambiguousCurrentIds, [],
+    'a bare group-like digit is not misdiagnosed as a season signal');
+
+const malformedSeasonSubstringRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    currentPlayers: [{
+        id: '390', name: 'Malformed Season Substring', v_nr: '035',
+        league: 'B-Klasse 2025/2027', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(malformedSeasonSubstringRoster.diagnostics.ambiguousCurrentIds, ['390'],
+    'a genuine but noncanonical season substring remains fail-closed');
+
 const staleVetoArchive = {
     370: [record({
         id: '370', season: '2025/2026', name: 'Stale Ranking History',
@@ -1275,7 +1314,7 @@ const duplicateCanonicalMappingRoster = Model.buildTeamRoster({
     currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
     clubs: [
         { number: '035', name: 'Alpha Club', teams: ['Alpha One'] },
-        { number: '035', name: 'Alpha Club Duplicate', teams: [' alpha  one '] },
+        { number: '035', name: ' alpha  club ', teams: [' alpha  one '] },
     ],
     currentPlayers: [{
         id: '385', name: 'Canonical Duplicate', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 },
@@ -1283,6 +1322,91 @@ const duplicateCanonicalMappingRoster = Model.buildTeamRoster({
 });
 assert.deepEqual(duplicateCanonicalMappingRoster.players.map((player) => player.id), ['385'],
     'semantically duplicate records form one canonical mapping identity');
+
+for (const conflictingClubs of [
+    [
+        { number: '035', name: 'Alpha Club' },
+        { number: '035', name: 'Different Club' },
+    ],
+    [
+        { number: '035', clubId: '036', name: 'Contradictory Club' },
+    ],
+]) {
+    const conflictingClubRoster = Model.buildTeamRoster({
+        teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+        currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+        clubs: conflictingClubs,
+        currentPlayers: [{
+            id: '391', name: 'Club Identity Conflict', v_nr: '035',
+            league: 'B-Klasse', rounds: { R1: 5 },
+        }],
+    });
+    assert.deepEqual(conflictingClubRoster.players, [],
+        'different or contradictory identities under the target club number fail closed');
+    assert.equal(conflictingClubRoster.diagnostics.invalidMapping, true);
+}
+
+const uniqueClubFallbackRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    clubs: [{ number: '035', name: 'Unique Club' }],
+    currentPlayers: [{
+        id: '392', name: 'Unique Club Fallback', v_nr: '035',
+        league: 'B-Klasse', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(uniqueClubFallbackRoster.players.map((player) => player.id), ['392']);
+
+let unsafeClubNumberReads = 0;
+const unsafeTargetClub = { name: 'Unsafe Club' };
+Object.defineProperty(unsafeTargetClub, 'number', {
+    enumerable: true,
+    get() { unsafeClubNumberReads += 1; throw new Error('club number getter must not run'); },
+});
+const unsafeClubFallbackRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    clubs: [unsafeTargetClub],
+    currentPlayers: [{
+        id: '398', name: 'Unsafe Club Fallback', v_nr: '035',
+        league: 'B-Klasse', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(unsafeClubFallbackRoster.players, []);
+assert.equal(unsafeClubFallbackRoster.diagnostics.invalidMapping, true);
+assert.equal(unsafeClubNumberReads, 0);
+
+const objectTeamClubs = [{
+    number: '035', name: 'Alpha Club', teams: [
+        { id: 'one', name: 'Alpha One' },
+        { id: 'two', name: 'Alpha Two' },
+        { id: ' one ', name: ' alpha  one ' },
+    ],
+}];
+const objectTeamRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', selectedTeamId: 'one',
+    targetLeague: 'B-Klasse 2026/2027', currentDatasetSeason: '2026/2027',
+    classMean: 5, archiveData: {}, clubs: objectTeamClubs,
+    currentPlayers: [
+        { id: '393', name: 'Exact Object Team', v_nr: '035', league: 'B-Klasse', team: 'Alpha One', team_id: 'one', rounds: { R1: 5 } },
+        { id: '394', name: 'Missing Object Team ID', v_nr: '035', league: 'B-Klasse', team: 'Alpha One', rounds: { R1: 5 } },
+        { id: '395', name: 'Wrong Object Team ID', v_nr: '035', league: 'B-Klasse', team: 'Alpha One', team_id: 'two', rounds: { R1: 5 } },
+        { id: '396', name: 'No Object Team Identity', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+    ],
+});
+assert.deepEqual(objectTeamRoster.players.map((player) => player.id), ['393'],
+    'object teams preserve label and published ID; multi-team players must match both');
+const objectTeamRosterWithoutSelectedId = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One',
+    targetLeague: 'B-Klasse 2026/2027', currentDatasetSeason: '2026/2027',
+    classMean: 5, archiveData: {}, clubs: objectTeamClubs,
+    currentPlayers: [{
+        id: '397', name: 'Selection Missing Object ID', v_nr: '035', league: 'B-Klasse',
+        team: 'Alpha One', team_id: 'one', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(objectTeamRosterWithoutSelectedId.players, [],
+    'a selected label alone cannot resolve one of several ID-publishing object teams');
 
 let currentTeamAliasGetterCalls = 0;
 const accessorTeamAliasPlayer = {
@@ -1637,6 +1761,41 @@ for (let index = 0; index < 4; index += 1) {
 assert.equal(Model.buildOutcomeTrainingExamples({
     archiveTables: multiTeamRows, archiveData: publishedParticipantIdArchive, clubs: publishedIdClubs,
 }).length, 1, 'matching participant IDs resolve only when the mapping publishes that ID');
+
+const publishedAliasParticipantClubs = [
+    { number: '035', name: 'Club Alpha', teams: [
+        { teamId: 'one', teamName: 'Alpha' },
+        { teamId: 'two', teamName: 'Alpha Two' },
+    ] },
+    { number: '036', name: 'Bravo' },
+];
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows,
+    archiveData: publishedParticipantIdArchive,
+    clubs: publishedAliasParticipantClubs,
+}).length, 1, 'participant mappings parse object aliases identically to roster mappings');
+
+const missingPublishedParticipantIdArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    missingPublishedParticipantIdArchive[String(200 + index)][1].team = 'Alpha';
+}
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows,
+    archiveData: missingPublishedParticipantIdArchive,
+    clubs: publishedIdClubs,
+}).length, 0, 'multi-team participants cannot omit a published team ID');
+
+const duplicatePublishedIdClubs = [
+    { number: '035', name: 'Club Alpha', teams: [
+        { id: 'one', name: 'Alpha' }, { id: ' one ', name: ' alpha ' },
+    ] },
+    { number: '036', name: 'Bravo' },
+];
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows,
+    archiveData: publishedParticipantIdArchive,
+    clubs: duplicatePublishedIdClubs,
+}).length, 1, 'semantically duplicate object teams form one participant mapping identity');
 
 const sharedParticipantIdClubs = [
     { number: '035', name: 'Club Alpha', teams: [
