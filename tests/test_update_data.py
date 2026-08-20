@@ -134,6 +134,42 @@ def fake_runner(candidate_rankings: dict[str, Any] | None = None, *, fail_script
     return run
 
 
+def legacy_archive_record() -> dict[str, Any]:
+    return {
+        "season": "24/25",
+        "league": "A-Klasse",
+        "rank": 1,
+        "name": "Player",
+        "points": 12,
+    }
+
+
+def enriched_archive_record() -> dict[str, Any]:
+    return {
+        **legacy_archive_record(),
+        "v_nr": "018",
+        "rounds": {"R1": 5, "R2": "x", "R3": 0, "R4": 7},
+        "appearances": 3,
+        "points_per_appearance": 4.0,
+    }
+
+
+def archive_candidate_runner(candidate_record: dict[str, Any]):
+    base_runner = fake_runner(rankings())
+
+    def run(script: Path, output_dir: Path, artifacts_dir: Path) -> int:
+        code = base_runner(script, output_dir, artifacts_dir)
+        if script.name == "archive_scraper.py":
+            write_js(
+                output_dir / "archive_data.js",
+                "ARCHIVE_DATA",
+                {"4711": [candidate_record]},
+            )
+        return code
+
+    return run
+
+
 NOW = datetime(2026, 8, 1, 15, 30, tzinfo=UTC)
 
 
@@ -181,6 +217,72 @@ def test_complete_rankings_publish_with_league_season(tmp_path: Path) -> None:
     assert status["domains"]["rankings"] == {"season": "2026/27", "state": "current", "updated_at": "2026-08-01T15:30:00Z"}
     published = json.loads((root / "ranking_data.json").read_text(encoding="utf-8"))
     assert "season" not in published
+
+
+def test_lossless_legacy_archive_enrichment_is_published(tmp_path: Path) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    write_js(
+        root / "archive_data.js",
+        "ARCHIVE_DATA",
+        {"4711": [legacy_archive_record()]},
+    )
+    candidate = enriched_archive_record()
+
+    assert update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_candidate_runner(candidate),
+        clock=lambda: NOW,
+    ) == 0
+
+    published = parse_javascript_assignment(
+        (root / "archive_data.js").read_text(encoding="utf-8"), "ARCHIVE_DATA"
+    )
+    assert published == {"4711": [candidate]}
+
+
+@pytest.mark.parametrize(
+    ("mutation", "reason"),
+    [
+        (lambda record: record.update({"appearances": 2}), "appearances"),
+        (
+            lambda record: record.update({"points_per_appearance": 4.5}),
+            "points per appearance",
+        ),
+        (lambda record: record.update({"points": 13}), "round sum"),
+        (lambda record: record.update({"v_nr": ""}), "club number"),
+        (lambda record: record.update({"name": "Other Player"}), "lost 1 record"),
+    ],
+)
+def test_invalid_archive_enrichment_blocks_and_preserves_public_bytes(
+    tmp_path: Path, mutation: Any, reason: str
+) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    write_js(
+        root / "archive_data.js",
+        "ARCHIVE_DATA",
+        {"4711": [legacy_archive_record()]},
+    )
+    before = snapshot(root)
+    candidate = enriched_archive_record()
+    mutation(candidate)
+
+    assert update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_candidate_runner(candidate),
+        clock=lambda: NOW,
+    ) == 1
+
+    assert snapshot(root) == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    archives = next(item for item in report["domains"] if item["domain"] == "archives")
+    assert archives["decision"] == "blocked"
+    assert reason in " ".join(archives["reasons"]).lower()
 
 
 def test_stale_explicit_ranking_season_blocks_whole_publication(tmp_path: Path) -> None:

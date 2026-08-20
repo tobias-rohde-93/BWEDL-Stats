@@ -53,6 +53,17 @@ class _ArchiveTableRecord:
     label: str
 
 
+@dataclass(frozen=True)
+class _ArchivePlayerRecord:
+    record: Mapping[str, Any]
+    fingerprint: str
+    identity: str | None
+    identity_with_v_nr: str | None
+    has_v_nr: bool
+    has_preview_evidence: bool
+    valid_preview_evidence: bool
+
+
 REQUIRED_RANKING_CATEGORIES = (
     "Bezirksliga",
     "A-Klasse",
@@ -687,6 +698,140 @@ def _archive_fingerprint(record: Any) -> str | None:
         return None
 
 
+def _archive_player_identity(
+    player_key: str, record: Mapping[str, Any], *, include_v_nr: bool = False
+) -> str | None:
+    """Return an exact core identity, using the archive key as the stored ID."""
+
+    core_fields = ("season", "league", "rank", "name", "points")
+    if any(field not in record for field in core_fields):
+        return None
+    player_id = record.get("id", player_key)
+    identity: dict[str, Any] = {
+        "season": record["season"],
+        "league": record["league"],
+        "rank": record["rank"],
+        "id": player_id,
+        "name": record["name"],
+        "points": record["points"],
+    }
+    if include_v_nr:
+        if "v_nr" not in record:
+            return None
+        identity["v_nr"] = record["v_nr"]
+    return _archive_fingerprint(identity)
+
+
+def _is_finite_nonnegative_number(value: Any) -> bool:
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(value)
+        and value >= 0
+    )
+
+
+def _archive_record_is_preserved(
+    previous: Mapping[str, Any], candidate: Mapping[str, Any]
+) -> bool:
+    if any(key not in candidate for key in previous):
+        return False
+    projection = {key: candidate[key] for key in previous}
+    return _archive_fingerprint(projection) == _archive_fingerprint(dict(previous))
+
+
+def _canonical_number(value: int | float) -> str:
+    return json.dumps(value, allow_nan=False, separators=(",", ":"))
+
+
+def _validate_archive_preview_evidence(
+    player_key: str, record: Mapping[str, Any]
+) -> tuple[bool, tuple[str, ...]]:
+    """Validate optional round evidence without making totals-only history unusable."""
+
+    evidence_fields = {"rounds", "appearances", "points_per_appearance"}
+    present_fields = evidence_fields.intersection(record)
+    if not present_fields:
+        return False, ()
+    if present_fields != evidence_fields:
+        return False, ("preview evidence fields must be all-or-none",)
+
+    issues: list[str] = []
+    player_id = record.get("id", player_key)
+    if not isinstance(player_id, str) or re.fullmatch(r"[0-9]+", player_id) is None:
+        issues.append("preview player id must contain ASCII digits")
+    elif player_id != player_key:
+        issues.append("preview player id must match the archive key")
+
+    for field in ("season", "league", "name"):
+        value = record.get(field)
+        if not isinstance(value, str) or not value.strip():
+            issues.append(f"preview {field} must be nonblank")
+
+    rank = record.get("rank")
+    if not isinstance(rank, int) or isinstance(rank, bool) or rank < 0:
+        issues.append("preview rank must be a nonnegative integer")
+
+    points = record.get("points")
+    valid_points = _is_finite_nonnegative_number(points)
+    if not valid_points:
+        issues.append("preview points must be a finite nonnegative number")
+
+    club_number = record.get("v_nr")
+    if (
+        not isinstance(club_number, str)
+        or re.fullmatch(r"[0-9]+", club_number) is None
+    ):
+        issues.append("preview club number must contain ASCII digits")
+
+    rounds = record.get("rounds")
+    numeric_rounds: list[int | float] = []
+    if not isinstance(rounds, Mapping):
+        issues.append("preview rounds must be a mapping")
+    elif not rounds:
+        issues.append("preview rounds must be nonempty")
+    else:
+        round_numbers: list[int] = []
+        for key, value in sorted(rounds.items(), key=lambda item: repr(item[0])):
+            match = re.fullmatch(r"R([1-9][0-9]?)", key) if isinstance(key, str) else None
+            if match is None:
+                issues.append(f"preview round key is invalid: {key!r}")
+            else:
+                round_numbers.append(int(match.group(1)))
+            if _is_finite_nonnegative_number(value):
+                numeric_rounds.append(value)
+            elif not isinstance(value, str) or value not in {"", "x"}:
+                issues.append(f"preview round value is invalid for {key!r}")
+        if round_numbers and sorted(round_numbers) != list(
+            range(1, max(round_numbers) + 1)
+        ):
+            issues.append("preview round keys must be a contiguous sequence from R1")
+
+    appearances = record.get("appearances")
+    valid_appearances = (
+        isinstance(appearances, int)
+        and not isinstance(appearances, bool)
+        and appearances >= 0
+    )
+    if not valid_appearances:
+        issues.append("preview appearances must be a nonnegative integer")
+    elif appearances != len(numeric_rounds):
+        issues.append("preview appearances do not match numeric round values")
+
+    if valid_points and sum(numeric_rounds) != points:
+        issues.append("preview round sum does not match points")
+
+    average = record.get("points_per_appearance")
+    if not _is_finite_nonnegative_number(average):
+        issues.append("preview points per appearance must be a finite nonnegative number")
+    elif valid_points and valid_appearances:
+        expected_average = points / appearances if appearances else 0.0
+        if _canonical_number(average) != _canonical_number(expected_average):
+            issues.append("preview points per appearance does not match points/appearances")
+
+    return True, tuple(issues)
+
+
 def _archive_rows_fingerprint(rows: Any) -> str | None:
     if not isinstance(rows, list) or not _is_strict_json(rows):
         return None
@@ -786,12 +931,16 @@ def validate_archive_payloads(
     candidate_seasons: set[Any] = set()
     previous_seasons: set[Any] = set()
 
-    def inspect_data(payload: Any, label: str, seasons: set[Any]) -> dict[str, set[str]]:
-        fingerprints: dict[str, set[str]] = {}
+    def inspect_data(
+        payload: Any, label: str, seasons: set[Any]
+    ) -> dict[str, list[_ArchivePlayerRecord]]:
+        players: dict[str, list[_ArchivePlayerRecord]] = {}
         if not isinstance(payload, dict) or not payload:
             reasons.append(f"{label} archive player data must be a nonempty object")
-            return fingerprints
-        for player_key, history in payload.items():
+            return players
+        for player_key, history in sorted(
+            payload.items(), key=lambda item: repr(item[0])
+        ):
             if not isinstance(player_key, str) or not player_key.strip():
                 reasons.append(f"{label} archive player key must be nonblank")
                 continue
@@ -799,11 +948,22 @@ def validate_archive_payloads(
                 reasons.append(f"{label} archive player history must be a nonempty list")
                 continue
             seen: set[str] = set()
-            for record in history:
+            seen_player_seasons: set[str] = set()
+            inspected_records: list[_ArchivePlayerRecord] = []
+            for record in sorted(
+                history, key=lambda item: _archive_fingerprint(item) or repr(item)
+            ):
                 fingerprint = _archive_fingerprint(record)
                 if fingerprint is None:
                     reasons.append(f"{label} archive history record is not strict JSON object")
                     continue
+                has_preview_evidence, preview_issues = (
+                    _validate_archive_preview_evidence(player_key, record)
+                )
+                reasons.extend(
+                    f"{label} archive player {player_key}: {issue}"
+                    for issue in preview_issues
+                )
                 season = record.get("season")
                 league = record.get("league")
                 canonical_season = _parse_archive_season(season)
@@ -811,13 +971,34 @@ def validate_archive_payloads(
                     reasons.append(f"{label} archive history record has invalid season")
                 else:
                     seasons.add(canonical_season)
+                    if canonical_season in seen_player_seasons:
+                        reasons.append(
+                            f"{label} archive player {player_key} has duplicate season: "
+                            f"{canonical_season}"
+                        )
+                    seen_player_seasons.add(canonical_season)
                 if not isinstance(league, str) or not league.strip():
                     reasons.append(f"{label} archive history record has blank league")
                 if fingerprint in seen:
                     reasons.append(f"{label} archive history has duplicate record")
                 seen.add(fingerprint)
-            fingerprints[player_key] = seen
-        return fingerprints
+                inspected_records.append(
+                    _ArchivePlayerRecord(
+                        record=record,
+                        fingerprint=fingerprint,
+                        identity=_archive_player_identity(player_key, record),
+                        identity_with_v_nr=_archive_player_identity(
+                            player_key, record, include_v_nr=True
+                        ),
+                        has_v_nr="v_nr" in record,
+                        has_preview_evidence=has_preview_evidence,
+                        valid_preview_evidence=(
+                            has_preview_evidence and not preview_issues
+                        ),
+                    )
+                )
+            players[player_key] = inspected_records
+        return players
 
     def inspect_tables(
         payload: Any, label: str, seasons: set[Any]
@@ -878,9 +1059,56 @@ def validate_archive_payloads(
         if player_key not in candidate_players:
             reasons.append(f"Candidate archive is missing previous player: {player_key}")
             continue
-        missing_records = previous_records - candidate_players[player_key]
-        if missing_records:
-            reasons.append(f"Candidate archive player {player_key} lost {len(missing_records)} record(s)")
+        candidate_records = candidate_players[player_key]
+        unmatched_candidates = set(range(len(candidate_records)))
+        unmatched_previous: list[_ArchivePlayerRecord] = []
+        for previous_record in previous_records:
+            exact_matches = sorted(
+                index
+                for index in unmatched_candidates
+                if candidate_records[index].fingerprint == previous_record.fingerprint
+            )
+            if exact_matches:
+                unmatched_candidates.remove(exact_matches[0])
+            else:
+                unmatched_previous.append(previous_record)
+
+        lost_records = 0
+        for previous_record in unmatched_previous:
+            if previous_record.has_preview_evidence or previous_record.identity is None:
+                lost_records += 1
+                continue
+            expected_identity = (
+                previous_record.identity_with_v_nr
+                if previous_record.has_v_nr
+                else previous_record.identity
+            )
+            migration_matches = sorted(
+                index
+                for index in unmatched_candidates
+                if candidate_records[index].valid_preview_evidence
+                and _archive_record_is_preserved(
+                    previous_record.record, candidate_records[index].record
+                )
+                and (
+                    candidate_records[index].identity_with_v_nr
+                    if previous_record.has_v_nr
+                    else candidate_records[index].identity
+                )
+                == expected_identity
+            )
+            if len(migration_matches) == 1:
+                unmatched_candidates.remove(migration_matches[0])
+            elif len(migration_matches) > 1:
+                reasons.append(
+                    f"Candidate archive player {player_key} has ambiguous legacy enrichment"
+                )
+            else:
+                lost_records += 1
+        if lost_records:
+            reasons.append(
+                f"Candidate archive player {player_key} lost {lost_records} record(s)"
+            )
     unmatched_previous = set(range(len(previous_table_records)))
     unmatched_candidate = set(range(len(candidate_table_records)))
     candidate_exact_matches: dict[tuple[str, str], list[int]] = {}

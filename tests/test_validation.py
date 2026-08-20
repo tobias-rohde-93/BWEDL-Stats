@@ -923,6 +923,29 @@ def archive_record(season: str, *, league: str = "A-Klasse", rank: int = 1) -> d
     return {"season": season, "league": league, "rank": rank, "points": 10, "name": "Player"}
 
 
+def enriched_archive_record(
+    season: str = "24/25", *, league: str = "A-Klasse"
+) -> dict[str, Any]:
+    return {
+        "season": season,
+        "league": league,
+        "rank": 1,
+        "name": "Player",
+        "points": 12,
+        "v_nr": "018",
+        "rounds": {"R1": 5, "R2": "x", "R3": 0, "R4": 7},
+        "appearances": 3,
+        "points_per_appearance": 4.0,
+    }
+
+
+def legacy_preview_record() -> dict[str, Any]:
+    record = enriched_archive_record()
+    for field in ("v_nr", "rounds", "appearances", "points_per_appearance"):
+        record.pop(field)
+    return record
+
+
 def archive_table(
     season: str,
     *,
@@ -1565,6 +1588,242 @@ def test_archive_payload_equal_or_superset_publishes() -> None:
 
     assert result.decision is Decision.PUBLISH
     assert result.effective_season == "2025/26"
+
+
+def test_archive_payload_accepts_consistent_preview_evidence_without_mutation() -> None:
+    data = {"4711": [enriched_archive_record()]}
+    tables = [archive_table("24/25")]
+    original_data = deepcopy(data)
+    original_tables = deepcopy(tables)
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+    assert result.reasons == ()
+    assert data == original_data
+    assert tables == original_tables
+
+
+def test_archive_payload_keeps_totals_only_legacy_records_valid() -> None:
+    data = {"4711": [archive_record("24/25")]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+
+
+@pytest.mark.parametrize(
+    ("mutation", "reason"),
+    [
+        (lambda record: record.pop("appearances"), "all-or-none"),
+        (lambda record: record.update({"v_nr": ""}), "club number"),
+        (lambda record: record.update({"v_nr": "01A"}), "club number"),
+        (lambda record: record.update({"rounds": {"round 1": 12}}), "round key"),
+        (lambda record: record.update({"rounds": {"R1": True, "R2": 12}}), "round value"),
+        (lambda record: record.update({"rounds": {"R1": -1, "R2": 13}}), "round value"),
+        (lambda record: record.update({"rounds": {"R1": []}}), "round value"),
+        (
+            lambda record: record.update(
+                {
+                    "rounds": {},
+                    "points": 0,
+                    "appearances": 0,
+                    "points_per_appearance": 0.0,
+                }
+            ),
+            "rounds",
+        ),
+        (lambda record: record.update({"appearances": 2}), "appearances"),
+        (lambda record: record.update({"points": 11}), "round sum"),
+        (lambda record: record.update({"points_per_appearance": 4.0000001}), "points per appearance"),
+        (lambda record: record.update({"name": "  "}), "name"),
+        (lambda record: record.update({"rank": True}), "rank"),
+        (lambda record: record.update({"points": True}), "points"),
+    ],
+)
+def test_archive_payload_rejects_inconsistent_preview_evidence(
+    mutation: Any, reason: str
+) -> None:
+    previous = {"4711": [legacy_preview_record()]}
+    candidate_record = enriched_archive_record()
+    mutation(candidate_record)
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]}, previous, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert reason in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize(
+    ("player_key", "record_id"),
+    [
+        ("47A1", None),
+        ("٤٧١١", None),
+        ("4711", "47A1"),
+        ("4711", "٤٧١١"),
+        ("4711", "9999"),
+    ],
+)
+def test_archive_preview_identity_requires_matching_ascii_digit_id(
+    player_key: str, record_id: str | None
+) -> None:
+    record = enriched_archive_record()
+    if record_id is not None:
+        record["id"] = record_id
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {player_key: [record]}, {player_key: [deepcopy(record)]}, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "player id" in " ".join(result.reasons).lower()
+
+
+def test_archive_preview_accepts_matching_explicit_player_id() -> None:
+    record = {**enriched_archive_record(), "id": "4711"}
+    data = {"4711": [record]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_preview_counts_numeric_zero_as_an_appearance() -> None:
+    record = enriched_archive_record()
+    record["rounds"] = {"R1": 0}
+    record["points"] = 0
+    record["appearances"] = 1
+    record["points_per_appearance"] = 0.0
+    data = {"4711": [record]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_allows_one_lossless_legacy_to_enriched_migration() -> None:
+    previous_record = legacy_preview_record()
+    candidate_record = enriched_archive_record()
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]}, {"4711": [previous_record]}, tables, tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+@pytest.mark.parametrize(
+    ("candidate_v_nr", "expected"),
+    [("018", Decision.PUBLISH), ("019", Decision.BLOCKED)],
+)
+def test_archive_payload_preserves_existing_legacy_club_number(
+    candidate_v_nr: str, expected: Decision
+) -> None:
+    previous_record = {**legacy_preview_record(), "v_nr": "018"}
+    candidate_record = {**enriched_archive_record(), "v_nr": candidate_v_nr}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]},
+        {"4711": [previous_record]},
+        tables,
+        tables,
+    )
+
+    assert result.decision is expected
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("season", "25/26"),
+        ("league", "B-Klasse"),
+        ("rank", 2),
+        ("name", "Other Player"),
+        ("points", 13),
+    ],
+)
+def test_archive_payload_blocks_lossy_core_change_during_enrichment(
+    field: str, value: Any
+) -> None:
+    previous_record = legacy_preview_record()
+    candidate_record = enriched_archive_record()
+    candidate_record[field] = value
+    candidate_tables = [archive_table(str(candidate_record["season"]))]
+    previous_tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]},
+        {"4711": [previous_record]},
+        candidate_tables,
+        previous_tables,
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "lost 1 record" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_blocks_ambiguous_legacy_enrichment_deterministically() -> None:
+    previous = {"4711": [legacy_preview_record()]}
+    first = enriched_archive_record()
+    second = deepcopy(first)
+    second["rounds"] = {"R1": 4, "R2": 8}
+    second["appearances"] = 2
+    second["points_per_appearance"] = 6.0
+    candidate = {"4711": [first, second]}
+    tables = [archive_table("24/25")]
+
+    forward = validation.validate_archive_payloads(candidate, previous, tables, tables)
+    reverse = validation.validate_archive_payloads(
+        {"4711": list(reversed(candidate["4711"]))}, previous, tables, tables
+    )
+
+    assert forward.decision is Decision.BLOCKED
+    assert forward.reasons == reverse.reasons
+    assert "ambiguous" in " ".join(forward.reasons).lower()
+
+
+def test_archive_payload_requires_migration_to_preserve_legacy_extra_fields() -> None:
+    previous_record = {**legacy_preview_record(), "source_label": "published"}
+    candidate_record = {**enriched_archive_record(), "source_label": "rewritten"}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]},
+        {"4711": [previous_record]},
+        tables,
+        tables,
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "lost 1 record" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_does_not_rewrite_published_preview_evidence() -> None:
+    previous_record = enriched_archive_record()
+    candidate_record = deepcopy(previous_record)
+    candidate_record["rounds"] = {"R1": 6, "R2": 6}
+    candidate_record["appearances"] = 2
+    candidate_record["points_per_appearance"] = 6.0
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]},
+        {"4711": [previous_record]},
+        tables,
+        tables,
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "lost 1 record" in " ".join(result.reasons).lower()
 
 
 def test_archive_payload_rejects_non_json_nested_types() -> None:
