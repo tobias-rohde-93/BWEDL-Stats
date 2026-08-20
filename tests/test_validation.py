@@ -5,6 +5,7 @@ from typing import Any
 import pytest
 
 import pipeline.validation as validation
+from pipeline.archive_players import merge_archive_entries
 from pipeline.validation import Decision, ValidationResult, validate_rankings
 
 
@@ -937,6 +938,33 @@ def enriched_archive_record(
         "appearances": 3,
         "points_per_appearance": 4.0,
     }
+
+
+def segmented_archive_record(
+    *,
+    player_id: str = "4711",
+    season: str = "2024/2025",
+    segments: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    source_segments = segments or [
+        {
+            "league": "A-Klasse",
+            "rank": 1,
+            "name": "Player",
+            "points": 12,
+            "v_nr": "018",
+            "rounds": {"R1": 5, "R2": "Vw", "R3": 0, "R4": 7},
+            "appearances": 3,
+            "points_per_appearance": 4.0,
+        }
+    ]
+    merged = merge_archive_entries(
+        [
+            {"id": player_id, "season": season, **deepcopy(segment)}
+            for segment in source_segments
+        ]
+    )
+    return merged[player_id][0]
 
 
 def legacy_preview_record() -> dict[str, Any]:
@@ -1949,6 +1977,268 @@ def test_archive_payload_rejects_non_json_nested_types() -> None:
 
     assert result.decision is Decision.BLOCKED
     assert "strict json" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_accepts_strict_v2_segments_and_reports_metrics() -> None:
+    record = segmented_archive_record(segments=[{
+        "league": "A-Klasse",
+        "rank": 1,
+        "name": "Player",
+        "points": 0,
+        "v_nr": "018",
+        "rounds": {
+            "R1": "x", "R2": "VW", "R3": "Vw", "R4": "D",
+            "R5": "d", "R6": "kp", "R7": "*", "R8": 0,
+        },
+        "appearances": 1,
+        "points_per_appearance": 0.0,
+    }])
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+    assert result.metrics["containers"] == 1
+    assert result.metrics["segments"] == 1
+    assert result.metrics["administrative_markers"] == 7
+    assert result.metrics["totals_only_segments"] == 0
+    assert result.metrics["preview_eligible_segments"] == 1
+    assert result.metrics["identity_ambiguities"] == 0
+    assert result.metrics["round_overlap_ambiguities"] == 0
+
+
+def _two_segment_archive_record() -> dict[str, Any]:
+    return segmented_archive_record(segments=[
+        {
+            "league": "A-Klasse", "rank": 1, "name": "Player", "points": 5,
+            "v_nr": "018", "rounds": {"R1": 5}, "appearances": 1,
+            "points_per_appearance": 5.0,
+        },
+        {
+            "league": "B-Klasse", "rank": 2, "name": "Player", "points": 7,
+            "v_nr": "019", "rounds": {"R1": 7}, "appearances": 1,
+            "points_per_appearance": 7.0,
+        },
+    ])
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda record: record.update({"points": record["points"] + 1}),
+        lambda record: record.update({"rank": record["rank"] + 1}),
+        lambda record: record.update({"league": "C-Klasse"}),
+        lambda record: record.update({"name": "Wrong projection"}),
+        lambda record: record.update({"primary_segment_id": "sha256:" + "0" * 64}),
+        lambda record: record["segments"].reverse(),
+        lambda record: record["segments"][0].update(
+            {"segment_id": "sha256:" + "0" * 64}
+        ),
+        lambda record: record["segments"][0].update({"appearances": 2}),
+        lambda record: record["segments"][0].update({"points_per_appearance": 5.5}),
+        lambda record: record["segments"][0]["rounds"].update({"R2": "?"}),
+        lambda record: record["segments"][0]["rounds"].update({"R2": " VW "}),
+        lambda record: record.update({"v_nr": "018"}),
+    ],
+)
+def test_archive_payload_recomputes_all_v2_ids_order_and_derived_fields(
+    mutation: Any,
+) -> None:
+    record = _two_segment_archive_record()
+    mutation(record)
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+
+
+def test_archive_payload_rejects_duplicate_v2_segment_identity() -> None:
+    record = _two_segment_archive_record()
+    record["segments"].append(deepcopy(record["segments"][0]))
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "segment" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda record: record["segments"][0].update({"rank": 2**53}),
+        lambda record: record["segments"][0].update({"points": 2**53}),
+        lambda record: record["segments"][0]["rounds"].update({"R1": 2**53}),
+        lambda record: record["segments"][0].update({"appearances": 2**53}),
+    ],
+)
+def test_archive_payload_rejects_unsafe_v2_segment_numbers(mutation: Any) -> None:
+    record = segmented_archive_record()
+    mutation(record)
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "safe integer" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_rejects_unsafe_v2_container_sum() -> None:
+    record = _two_segment_archive_record()
+    for index, segment in enumerate(record["segments"]):
+        segment["points"] = 2**53 - 1
+        segment["rounds"] = {"R1": 2**53 - 1}
+        segment["appearances"] = 1
+        segment["points_per_appearance"] = float(2**53 - 1)
+        segment["segment_id"] = f"sha256:{index + 1:064x}"
+    record["points"] = 2**53 - 1
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "safe integer" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_recomputes_identity_and_overlap_ambiguity_flags() -> None:
+    identity = segmented_archive_record(segments=[
+        {"league": "A-Klasse", "rank": 1, "name": "First Name", "points": 5},
+        {"league": "B-Klasse", "rank": 2, "name": "Other Name", "points": 7},
+    ])
+    overlap = segmented_archive_record(player_id="811", segments=[
+        {
+            "league": "A-Klasse", "rank": 1, "name": "Other", "points": 5,
+            "v_nr": "018", "rounds": {"R1": 5}, "appearances": 1,
+            "points_per_appearance": 5.0,
+        },
+        {
+            "league": "A-Klasse", "rank": 2, "name": "Other", "points": 7,
+            "v_nr": "018", "rounds": {"R1": 7}, "appearances": 1,
+            "points_per_appearance": 7.0,
+        },
+    ])
+    data = {"4711": [identity], "811": [overlap]}
+    tables = [archive_table("2024/2025")]
+
+    valid = validation.validate_archive_payloads(data, data, tables, tables)
+    assert valid.decision is Decision.PUBLISH
+    assert valid.metrics["identity_ambiguities"] == 1
+    assert valid.metrics["round_overlap_ambiguities"] == 1
+    assert valid.metrics["preview_eligible_segments"] == 0
+
+    missing_identity = deepcopy(data)
+    missing_identity["4711"][0].pop("identity_ambiguous")
+    missing_overlap = deepcopy(data)
+    missing_overlap["811"][0].pop("round_overlap_ambiguous")
+    false_positive = deepcopy(data)
+    false_positive["4711"] = [segmented_archive_record()]
+    false_positive["4711"][0]["identity_ambiguous"] = True
+
+    for candidate in (missing_identity, missing_overlap, false_positive):
+        result = validation.validate_archive_payloads(candidate, data, tables, tables)
+        assert result.decision is Decision.BLOCKED
+
+
+def test_archive_payload_migrates_legacy_to_exactly_one_normalized_v2_segment() -> None:
+    previous_record = archive_record("24/25")
+    matching = {
+        "league": " a-klasse ", "rank": 1, "name": " PLAYER ", "points": 10,
+    }
+    other = {"league": "B-Klasse", "rank": 3, "name": "Player", "points": 4}
+    candidate_record = segmented_archive_record(segments=[matching, other])
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]}, {"4711": [previous_record]}, tables, tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_blocks_ambiguous_legacy_to_v2_segment_migration() -> None:
+    previous_record = archive_record("24/25")
+    candidate_record = segmented_archive_record(segments=[
+        {"league": "A-Klasse", "rank": 1, "name": "Player", "points": 10,
+         "v_nr": "018"},
+        {"league": "A-Klasse", "rank": 1, "name": "Player", "points": 10,
+         "v_nr": "019"},
+    ])
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]}, {"4711": [previous_record]}, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "ambiguous" in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize("change", ["remove", "rewrite"])
+def test_archive_payload_blocks_published_v2_segment_loss_or_rewrite(change: str) -> None:
+    previous_record = _two_segment_archive_record()
+    source_segments = [
+        {key: deepcopy(value) for key, value in segment.items() if key != "segment_id"}
+        for segment in previous_record["segments"]
+    ]
+    if change == "remove":
+        source_segments.pop()
+    else:
+        source_segments[0]["rounds"] = {"R1": 4, "R2": 1}
+        source_segments[0]["appearances"] = 2
+        source_segments[0]["points_per_appearance"] = 2.5
+    candidate_record = segmented_archive_record(segments=source_segments)
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]}, {"4711": [previous_record]}, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "segment" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_allows_additive_v2_segment_and_older_season() -> None:
+    previous_record = segmented_archive_record()
+    existing = {
+        key: deepcopy(value)
+        for key, value in previous_record["segments"][0].items()
+        if key != "segment_id"
+    }
+    expanded = segmented_archive_record(segments=[
+        existing,
+        {"league": "B-Klasse", "rank": 2, "name": "Player", "points": 4},
+    ])
+    older = segmented_archive_record(season="2018/2019", segments=[
+        {"league": "C-Klasse", "rank": 4, "name": "Player", "points": 3}
+    ])
+    candidate = {"4711": [expanded, older]}
+    previous = {"4711": [previous_record]}
+    candidate_tables = [archive_table("2024/2025"), archive_table("2018/2019")]
+    previous_tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(
+        candidate, previous, candidate_tables, previous_tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_requires_v2_season_containers_newest_first() -> None:
+    newer = segmented_archive_record()
+    older = segmented_archive_record(season="2018/2019")
+    data = {"4711": [older, newer]}
+    tables = [archive_table("2024/2025"), archive_table("2018/2019")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "newest-first" in " ".join(result.reasons).lower()
 
 
 @pytest.mark.parametrize(

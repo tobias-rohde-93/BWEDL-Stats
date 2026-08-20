@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+from copy import deepcopy
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -10,6 +11,7 @@ from typing import Any
 import pytest
 
 import update_data
+from pipeline.archive_players import merge_archive_entries
 from pipeline.calendar_feeds import build_calendar_publication, write_calendar_publication
 from pipeline.files import write_json_pair
 from pipeline.validation import (
@@ -178,6 +180,39 @@ def archive_candidate_runner(candidate_record: dict[str, Any]):
     return run
 
 
+def archive_payload_runner(
+    candidate_data: dict[str, Any], candidate_tables: list[dict[str, Any]] | None = None
+):
+    base_runner = fake_runner(rankings())
+
+    def run(script: Path, output_dir: Path, artifacts_dir: Path) -> int:
+        code = base_runner(script, output_dir, artifacts_dir)
+        if script.name == "archive_scraper.py":
+            write_js(output_dir / "archive_data.js", "ARCHIVE_DATA", candidate_data)
+        elif script.name == "archive_tables_scraper.py" and candidate_tables is not None:
+            write_js(
+                output_dir / "archive_tables.js", "ARCHIVE_TABLES", candidate_tables
+            )
+        return code
+
+    return run
+
+
+def segmented_archive_payload(*, include_second: bool = True) -> dict[str, Any]:
+    segments = [{
+        "id": "4711", "season": "2024/2025", "league": "A-Klasse",
+        "rank": 1, "name": "Player", "points": 12, "v_nr": "018",
+        "rounds": {"R1": 5, "R2": "Vw", "R3": 0, "R4": 7},
+        "appearances": 3, "points_per_appearance": 4.0,
+    }]
+    if include_second:
+        segments.append({
+            "id": "4711", "season": "2024/2025", "league": "B-Klasse",
+            "rank": 2, "name": "Player", "points": 4,
+        })
+    return merge_archive_entries(segments)
+
+
 NOW = datetime(2026, 8, 1, 15, 30, tzinfo=UTC)
 
 
@@ -291,6 +326,87 @@ def test_invalid_archive_enrichment_blocks_and_preserves_public_bytes(
     archives = next(item for item in report["domains"] if item["domain"] == "archives")
     assert archives["decision"] == "blocked"
     assert reason in " ".join(archives["reasons"]).lower()
+
+
+@pytest.mark.parametrize("change", ["remove", "rewrite"])
+def test_published_v2_segment_loss_or_rewrite_blocks_and_preserves_archive_bytes(
+    tmp_path: Path, change: str
+) -> None:
+    root, staging, artifacts = (
+        tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    )
+    seed_root(root)
+    previous = segmented_archive_payload()
+    write_js(root / "archive_data.js", "ARCHIVE_DATA", previous)
+    before = (root / "archive_data.js").read_bytes()
+    source_segments = []
+    for segment in previous["4711"][0]["segments"]:
+        source_segments.append({
+            "id": "4711",
+            "season": previous["4711"][0]["season"],
+            **{
+                key: value for key, value in deepcopy(segment).items()
+                if key != "segment_id"
+            },
+        })
+    if change == "remove":
+        source_segments.pop()
+    else:
+        source_segments[0]["rounds"] = {"R1": 4, "R2": 1, "R3": 0, "R4": 7}
+        source_segments[0]["appearances"] = 4
+        source_segments[0]["points_per_appearance"] = 3.0
+    candidate = merge_archive_entries(source_segments)
+
+    code = update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_payload_runner(candidate),
+        clock=lambda: NOW,
+    )
+
+    assert code == 1
+    assert (root / "archive_data.js").read_bytes() == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    archives = next(item for item in report["domains"] if item["domain"] == "archives")
+    assert archives["decision"] == "blocked"
+    assert "segment" in " ".join(archives["reasons"]).lower()
+
+
+def test_additive_v2_segment_and_older_season_publish_exact_candidate_bytes(
+    tmp_path: Path,
+) -> None:
+    root, staging, artifacts = (
+        tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    )
+    seed_root(root)
+    previous = segmented_archive_payload(include_second=False)
+    write_js(root / "archive_data.js", "ARCHIVE_DATA", previous)
+    candidate = segmented_archive_payload(include_second=True)
+    older = merge_archive_entries([{
+        "id": "4711", "season": "2018/2019", "league": "C-Klasse",
+        "rank": 4, "name": "Player", "points": 3,
+    }])["4711"][0]
+    candidate["4711"].append(older)
+    candidate_tables = [
+        {"season": "2020/2022", "league": "A-Klasse", "rows": []},
+        {"season": "2024/25", "league": "A-Klasse", "rows": []},
+        {"season": "2018/2019", "league": "C-Klasse", "rows": []},
+    ]
+
+    code = update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_payload_runner(candidate, candidate_tables),
+        clock=lambda: NOW,
+    )
+
+    assert code == 0
+    published = parse_javascript_assignment(
+        (root / "archive_data.js").read_text(encoding="utf-8"), "ARCHIVE_DATA"
+    )
+    assert published == candidate
 
 
 def test_stale_explicit_ranking_season_blocks_whole_publication(tmp_path: Path) -> None:

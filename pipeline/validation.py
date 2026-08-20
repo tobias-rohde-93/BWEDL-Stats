@@ -12,6 +12,7 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 
+from pipeline.archive_players import ArchivePlayerParseError, merge_archive_entries
 from pipeline.html_sanitizer import safe_table_fragment_issue
 
 
@@ -54,6 +55,17 @@ class _ArchiveTableRecord:
 
 
 @dataclass(frozen=True)
+class _ArchiveSegmentRecord:
+    record: Mapping[str, Any]
+    fingerprint: str
+    segment_id: str | None
+    legacy_signature: tuple[Any, ...] | None
+    has_preview_evidence: bool
+    valid_preview_evidence: bool
+    administrative_markers: int
+
+
+@dataclass(frozen=True)
 class _ArchivePlayerRecord:
     record: Mapping[str, Any]
     fingerprint: str
@@ -62,6 +74,10 @@ class _ArchivePlayerRecord:
     has_v_nr: bool
     has_preview_evidence: bool
     valid_preview_evidence: bool
+    is_v2: bool
+    segments: tuple[_ArchiveSegmentRecord, ...]
+    identity_ambiguous: bool
+    round_overlap_ambiguous: bool
 
 
 REQUIRED_RANKING_CATEGORIES = (
@@ -92,6 +108,7 @@ MAX_JAVASCRIPT_SAFE_INTEGER = 2**53 - 1
 ARCHIVE_PREVIEW_FIELDS = frozenset(
     {"rounds", "appearances", "points_per_appearance"}
 )
+ARCHIVE_ADMIN_ROUND_MARKERS = frozenset({"x", "vw", "d", "kp", "*"})
 
 
 def _parse_season(value: Any) -> str | None:
@@ -826,7 +843,21 @@ def _validate_archive_preview_evidence(
                 round_numbers.append(int(match.group(1)))
             if _is_safe_nonnegative_integer(value):
                 numeric_rounds.append(value)
-            elif not isinstance(value, str) or value not in {"", "x"}:
+            elif isinstance(value, str):
+                normalized_marker = unicodedata.normalize("NFKC", value).strip()
+                if (
+                    value != normalized_marker
+                    or (
+                        normalized_marker
+                        and normalized_marker.casefold()
+                        not in ARCHIVE_ADMIN_ROUND_MARKERS
+                    )
+                ):
+                    issues.append(
+                        f"preview round value must be a normalized allowed marker "
+                        f"or nonnegative JavaScript safe integer for {key!r}"
+                    )
+            else:
                 issues.append(
                     f"preview round value must be a marker or nonnegative "
                     f"JavaScript safe integer for {key!r}"
@@ -859,6 +890,180 @@ def _validate_archive_preview_evidence(
             issues.append("preview points per appearance does not match points/appearances")
 
     return True, tuple(issues)
+
+
+def _normalized_archive_identity_text(value: Any) -> str | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    return " ".join(unicodedata.normalize("NFKC", value).split()).casefold()
+
+
+def _archive_legacy_signature(
+    player_key: str, record: Mapping[str, Any]
+) -> tuple[Any, ...] | None:
+    season = _parse_archive_season(record.get("season"))
+    name = _normalized_archive_identity_text(record.get("name"))
+    league = _normalized_archive_identity_text(record.get("league"))
+    rank = record.get("rank")
+    points = record.get("points")
+    if (
+        season is None
+        or name is None
+        or league is None
+        or not _is_safe_nonnegative_integer(rank)
+        or not _is_safe_nonnegative_integer(points)
+    ):
+        return None
+    return (player_key, season, name, league, rank, points)
+
+
+def _archive_marker_count(record: Mapping[str, Any]) -> int:
+    rounds = record.get("rounds")
+    if not isinstance(rounds, Mapping):
+        return 0
+    return sum(
+        1 for value in rounds.values()
+        if isinstance(value, str) and bool(value)
+    )
+
+
+def _archive_segments(
+    record: Mapping[str, Any], player_key: str
+) -> tuple[bool, tuple[_ArchiveSegmentRecord, ...], tuple[str, ...]]:
+    """Return validated legacy virtual segments or strict v2 source segments."""
+
+    v2_keys = {
+        "segments", "primary_segment_id", "identity_ambiguous",
+        "round_overlap_ambiguous",
+    }
+    is_v2 = bool(v2_keys.intersection(record))
+    if not is_v2:
+        fingerprint = _archive_fingerprint(dict(record))
+        has_preview, preview_issues = _validate_archive_preview_evidence(
+            player_key, record
+        )
+        if fingerprint is None:
+            return False, (), ("legacy archive segment is not strict JSON",)
+        return False, (
+            _ArchiveSegmentRecord(
+                record=record,
+                fingerprint=fingerprint,
+                segment_id=None,
+                legacy_signature=_archive_legacy_signature(player_key, record),
+                has_preview_evidence=has_preview,
+                valid_preview_evidence=has_preview and not preview_issues,
+                administrative_markers=_archive_marker_count(record),
+            ),
+        ), ()
+
+    issues: list[str] = []
+    raw_segments = record.get("segments")
+    if not isinstance(raw_segments, list) or not raw_segments:
+        return True, (), ("v2 segments must be a nonempty list",)
+
+    segments: list[_ArchiveSegmentRecord] = []
+    source_records: list[dict[str, Any]] = []
+    seen_segment_ids: set[str] = set()
+    for index, raw_segment in enumerate(raw_segments):
+        fingerprint = _archive_fingerprint(raw_segment)
+        if fingerprint is None:
+            issues.append(f"v2 segment {index} is not a strict JSON object")
+            continue
+        segment_id = raw_segment.get("segment_id")
+        if (
+            not isinstance(segment_id, str)
+            or re.fullmatch(r"sha256:[0-9a-f]{64}", segment_id) is None
+        ):
+            issues.append(f"v2 segment {index} has invalid segment id")
+            normalized_segment_id = None
+        else:
+            normalized_segment_id = segment_id
+            if segment_id in seen_segment_ids:
+                issues.append("v2 segment identity collision")
+            seen_segment_ids.add(segment_id)
+
+        semantic = {
+            key: value for key, value in raw_segment.items()
+            if key != "segment_id"
+        }
+        prohibited = {
+            "id", "season", "segments", "primary_segment_id",
+            "identity_ambiguous", "round_overlap_ambiguous",
+        }.intersection(semantic)
+        if prohibited:
+            issues.append(
+                f"v2 segment {index} contains derived identity fields"
+            )
+        virtual_record = {
+            **semantic,
+            "season": record.get("season"),
+        }
+        core_issues = _validate_archive_player_core(player_key, virtual_record)
+        has_preview, preview_issues = _validate_archive_preview_evidence(
+            player_key, virtual_record
+        )
+        issues.extend(f"v2 segment {index}: {issue}" for issue in core_issues)
+        issues.extend(f"v2 segment {index}: {issue}" for issue in preview_issues)
+        segments.append(
+            _ArchiveSegmentRecord(
+                record=virtual_record,
+                fingerprint=fingerprint,
+                segment_id=normalized_segment_id,
+                legacy_signature=_archive_legacy_signature(
+                    player_key, virtual_record
+                ),
+                has_preview_evidence=has_preview,
+                valid_preview_evidence=(
+                    has_preview and not core_issues and not preview_issues
+                ),
+                administrative_markers=_archive_marker_count(virtual_record),
+            )
+        )
+        source_records.append({
+            **semantic,
+            "id": player_key,
+            "season": record.get("season"),
+        })
+
+    if len(source_records) == len(raw_segments):
+        try:
+            recomputed = merge_archive_entries(source_records)[player_key][0]
+        except (ArchivePlayerParseError, KeyError, TypeError, ValueError) as error:
+            issues.append(f"v2 segment aggregate is invalid: {error}")
+        else:
+            if _archive_fingerprint(recomputed) != _archive_fingerprint(dict(record)):
+                issues.append(
+                    "v2 container does not match recomputed segment ids, order, "
+                    "safe aggregates, flags, or derived fields"
+                )
+    return True, tuple(segments), tuple(issues)
+
+
+def _legacy_record_matches_v2_segment(
+    player_key: str,
+    previous: Mapping[str, Any],
+    candidate: _ArchiveSegmentRecord,
+) -> bool:
+    if (
+        candidate.legacy_signature is None
+        or candidate.legacy_signature
+        != _archive_legacy_signature(player_key, previous)
+    ):
+        return False
+    core = {"id", "season", "league", "rank", "name", "points"}
+    previous_extra = {
+        key: value for key, value in previous.items() if key not in core
+    }
+    candidate_extra = {
+        key: candidate.record[key]
+        for key in previous_extra
+        if key in candidate.record
+    }
+    return (
+        len(candidate_extra) == len(previous_extra)
+        and _archive_fingerprint(previous_extra)
+        == _archive_fingerprint(candidate_extra)
+    )
 
 
 def _archive_rows_fingerprint(rows: Any) -> str | None:
@@ -976,6 +1181,19 @@ def validate_archive_payloads(
             if not isinstance(history, list) or not history:
                 reasons.append(f"{label} archive player history must be a nonempty list")
                 continue
+            v2_seasons = [
+                _parse_archive_season(record.get("season"))
+                for record in history
+                if isinstance(record, dict) and "segments" in record
+            ]
+            valid_v2_seasons = [season for season in v2_seasons if season is not None]
+            if (
+                len(valid_v2_seasons) > 1
+                and valid_v2_seasons != sorted(valid_v2_seasons, reverse=True)
+            ):
+                reasons.append(
+                    f"{label} archive player {player_key} v2 seasons must be newest-first"
+                )
             seen: set[str] = set()
             seen_player_seasons: set[str] = set()
             inspected_records: list[_ArchivePlayerRecord] = []
@@ -986,9 +1204,13 @@ def validate_archive_payloads(
                 if fingerprint is None:
                     reasons.append(f"{label} archive history record is not strict JSON object")
                     continue
+                is_v2, segments, segment_issues = _archive_segments(
+                    record, player_key
+                )
                 core_issues = (
                     _validate_archive_player_core(player_key, record)
                     if label == "Candidate"
+                    or is_v2
                     or bool(ARCHIVE_PREVIEW_FIELDS.intersection(record))
                     else ()
                 )
@@ -997,7 +1219,7 @@ def validate_archive_payloads(
                 )
                 reasons.extend(
                     f"{label} archive player {player_key}: {issue}"
-                    for issue in (*core_issues, *preview_issues)
+                    for issue in (*core_issues, *preview_issues, *segment_issues)
                 )
                 season = record.get("season")
                 league = record.get("league")
@@ -1031,6 +1253,14 @@ def validate_archive_payloads(
                             has_preview_evidence
                             and not core_issues
                             and not preview_issues
+                        ),
+                        is_v2=is_v2,
+                        segments=segments,
+                        identity_ambiguous=(
+                            record.get("identity_ambiguous") is True
+                        ),
+                        round_overlap_ambiguous=(
+                            record.get("round_overlap_ambiguous") is True
                         ),
                     )
                 )
@@ -1111,19 +1341,42 @@ def validate_archive_payloads(
                 unmatched_previous.append(previous_record)
 
         lost_records = 0
+        consumed_v2_segments: set[tuple[int, int]] = set()
         for previous_record in unmatched_previous:
-            if previous_record.has_preview_evidence or previous_record.identity is None:
-                lost_records += 1
+            if previous_record.is_v2:
+                candidate_by_id: dict[str, list[_ArchiveSegmentRecord]] = {}
+                for candidate_record in candidate_records:
+                    if not candidate_record.is_v2:
+                        continue
+                    for segment in candidate_record.segments:
+                        if segment.segment_id is not None:
+                            candidate_by_id.setdefault(segment.segment_id, []).append(
+                                segment
+                            )
+                for previous_segment in previous_record.segments:
+                    segment_id = previous_segment.segment_id
+                    matches = candidate_by_id.get(segment_id or "", [])
+                    if not any(
+                        candidate_segment.fingerprint
+                        == previous_segment.fingerprint
+                        for candidate_segment in matches
+                    ):
+                        reasons.append(
+                            f"Candidate archive player {player_key} lost or rewrote "
+                            f"published segment {segment_id or 'invalid'}"
+                        )
                 continue
+
             expected_identity = (
                 previous_record.identity_with_v_nr
                 if previous_record.has_v_nr
                 else previous_record.identity
             )
-            migration_matches = sorted(
+            flat_matches = sorted(
                 index
                 for index in unmatched_candidates
-                if candidate_records[index].valid_preview_evidence
+                if not candidate_records[index].is_v2
+                and candidate_records[index].valid_preview_evidence
                 and _archive_record_is_preserved(
                     previous_record.record, candidate_records[index].record
                 )
@@ -1134,9 +1387,23 @@ def validate_archive_payloads(
                 )
                 == expected_identity
             )
-            if len(migration_matches) == 1:
-                unmatched_candidates.remove(migration_matches[0])
-            elif len(migration_matches) > 1:
+            v2_matches = sorted(
+                (candidate_index, segment_index)
+                for candidate_index, candidate_record in enumerate(candidate_records)
+                if candidate_record.is_v2
+                for segment_index, segment in enumerate(candidate_record.segments)
+                if (candidate_index, segment_index) not in consumed_v2_segments
+                and _legacy_record_matches_v2_segment(
+                    player_key, previous_record.record, segment
+                )
+            )
+            match_count = len(flat_matches) + len(v2_matches)
+            if match_count == 1:
+                if flat_matches:
+                    unmatched_candidates.remove(flat_matches[0])
+                else:
+                    consumed_v2_segments.add(v2_matches[0])
+            elif match_count > 1:
                 reasons.append(
                     f"Candidate archive player {player_key} has ambiguous legacy enrichment"
                 )
@@ -1265,6 +1532,23 @@ def validate_archive_payloads(
 
     season_result = validate_archives(candidate_seasons, previous_seasons)
     reasons.extend(season_result.reasons)
+    candidate_container_records = [
+        record
+        for player_records in candidate_players.values()
+        for record in player_records
+    ]
+    candidate_segments = [
+        segment
+        for record in candidate_container_records
+        for segment in record.segments
+    ]
+    preview_eligible_segments = sum(
+        1
+        for record in candidate_container_records
+        if not record.identity_ambiguous and not record.round_overlap_ambiguous
+        for segment in record.segments
+        if segment.valid_preview_evidence
+    )
     metrics = {
         "candidate_players": len(candidate_players),
         "previous_players": len(previous_players),
@@ -1274,6 +1558,22 @@ def validate_archive_payloads(
         "previous_tables": len(previous_table_fingerprints),
         "candidate_seasons": len(candidate_seasons),
         "previous_seasons": len(previous_seasons),
+        "seasons": len(candidate_seasons),
+        "containers": len(candidate_container_records),
+        "segments": len(candidate_segments),
+        "preview_eligible_segments": preview_eligible_segments,
+        "totals_only_segments": sum(
+            not segment.has_preview_evidence for segment in candidate_segments
+        ),
+        "administrative_markers": sum(
+            segment.administrative_markers for segment in candidate_segments
+        ),
+        "identity_ambiguities": sum(
+            record.identity_ambiguous for record in candidate_container_records
+        ),
+        "round_overlap_ambiguities": sum(
+            record.round_overlap_ambiguous for record in candidate_container_records
+        ),
     }
     return ValidationResult(
         "archives",
