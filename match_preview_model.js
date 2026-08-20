@@ -1160,7 +1160,9 @@
             if (label) {
                 labels.add(label);
                 entries.push({ label, ids: new Set() });
+                return true;
             }
+            return false;
         }
 
         function mappingClubId(record, inheritedClubId) {
@@ -1223,7 +1225,10 @@
 
         function addMappingRecord(record, requireScope, inheritedClubId, includeGenericIdentity = false) {
             if (typeof record === 'string') {
-                if (inheritedClubId) addLabel(record);
+                if (inheritedClubId && !addLabel(record) && inheritedClubId === teamId) {
+                    explicitAmbiguity = true;
+                    invalidMapping = true;
+                }
                 return;
             }
             const mentionsTargetClub = recordMentionsTargetClub(record, inheritedClubId);
@@ -1809,7 +1814,7 @@
     function exactTeamLabel(value) {
         if (typeof value !== 'string') return null;
         const compatibilityNormalized = value.normalize('NFKC');
-        if (/[\p{Default_Ignorable_Code_Point}\p{Cc}\p{Cf}\p{Cs}]/u.test(compatibilityNormalized)) {
+        if (/[\p{Default_Ignorable_Code_Point}\p{Noncharacter_Code_Point}\p{Cc}\p{Cf}\p{Cs}]/u.test(compatibilityNormalized)) {
             return null;
         }
         const normalized = compatibilityNormalized.replace(/\s+/gu, ' ').trim().normalize('NFC');
@@ -2115,7 +2120,7 @@
     function normalizedTeamIdentityId(value) {
         if (typeof value !== 'string') return null;
         const compatibilityNormalized = value.normalize('NFKC');
-        if (/[\p{Default_Ignorable_Code_Point}\p{Cc}\p{Cf}\p{Cs}]/u.test(compatibilityNormalized)) {
+        if (/[\p{Default_Ignorable_Code_Point}\p{Noncharacter_Code_Point}\p{Cc}\p{Cf}\p{Cs}]/u.test(compatibilityNormalized)) {
             return null;
         }
         const normalized = compatibilityNormalized.replace(/\s+/gu, ' ').trim()

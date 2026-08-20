@@ -1408,6 +1408,69 @@ const objectTeamRosterWithoutSelectedId = Model.buildTeamRoster({
 assert.deepEqual(objectTeamRosterWithoutSelectedId.players, [],
     'a selected label alone cannot resolve one of several ID-publishing object teams');
 
+const unsafeRosterTeamLabels = [
+    'Al\u200Bpha',
+    'Al\u202Epha',
+    'Al\u0000pha',
+    'Al\uD800pha',
+    'Al\uFDD0pha',
+    'Al\uFFFEpha',
+    'Al\uFFFFpha',
+    'Al\u{1FFFF}pha',
+];
+for (const unsafeTeamLabel of unsafeRosterTeamLabels) {
+    for (const mappingOptions of [
+        { clubs: [{ number: '035', name: 'Club Alpha', teams: [unsafeTeamLabel] }] },
+        { teamMappings: { '035': [unsafeTeamLabel] } },
+    ]) {
+        const unsafeStringTeamRoster = Model.buildTeamRoster({
+            teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+            currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+            ...mappingOptions,
+            currentPlayers: [{
+                id: '399', name: 'Unsafe String Mapping', v_nr: '035',
+                league: 'B-Klasse', rounds: { R1: 5 },
+            }],
+        });
+        assert.deepEqual(unsafeStringTeamRoster.players, [],
+            'an invalid string label assigned to the target club cannot degrade to v_nr fallback');
+        assert.equal(unsafeStringTeamRoster.diagnostics.invalidMapping, true);
+    }
+}
+
+for (const [mappingOptions, teamName, playerTeam] of [
+    [{ clubs: [{ number: '035', name: 'Club Alpha', teams: ['Alpha One'] }] }, ' alpha  one ', 'Alpha One'],
+    [{ teamMappings: { '035': ['Älpha'] } }, ' A\u0308LPHA ', 'Älpha'],
+]) {
+    const validStringTeamRoster = Model.buildTeamRoster({
+        teamId: '035', teamName, targetLeague: 'B-Klasse 2026/2027',
+        currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+        ...mappingOptions,
+        currentPlayers: [{
+            id: '400', name: 'Valid String Mapping', v_nr: '035',
+            league: 'B-Klasse', team: playerTeam, rounds: { R1: 5 },
+        }],
+    });
+    assert.deepEqual(validStringTeamRoster.players.map((player) => player.id), ['400']);
+    assert.equal(validStringTeamRoster.diagnostics.invalidMapping, false);
+}
+
+const unrelatedInvalidStringMappingRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    teamMappings: [
+        { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse', season: '2026/2027' },
+        { clubNumber: '999', teamName: 'Al\u200Bpha', league: 'B-Klasse', season: '2026/2027' },
+    ],
+    currentPlayers: [{
+        id: '401', name: 'Isolated Other Mapping', v_nr: '035',
+        league: 'B-Klasse', team: 'Alpha One', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(unrelatedInvalidStringMappingRoster.players.map((player) => player.id), ['401']);
+assert.equal(unrelatedInvalidStringMappingRoster.diagnostics.invalidMapping, false,
+    'an invalid label explicitly scoped to another club does not poison the target mapping');
+
 let currentTeamAliasGetterCalls = 0;
 const accessorTeamAliasPlayer = {
     id: '345', name: 'Alias Accessor', v_nr: '035', league: 'B-Klasse',
@@ -1915,6 +1978,10 @@ for (const unsafeIdentity of [
     'Al\u202Epha',
     'Al\u0000pha',
     'Al\uD800pha',
+    'Al\uFDD0pha',
+    'Al\uFFFEpha',
+    'Al\uFFFFpha',
+    'Al\u{1FFFF}pha',
 ]) {
     const unsafeClubIdentity = Model.buildOutcomeTrainingExamples({
         archiveTables, archiveData: outcomeArchive, clubs: [
