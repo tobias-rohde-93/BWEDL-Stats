@@ -945,7 +945,45 @@
         return inspected.ok ? inspected.values : [];
     }
 
-    function parseCurrentPlayer(source, inheritedSeason) {
+    function collectTeamAliases(source) {
+        const labels = new Set();
+        const ids = new Set();
+        let present = false;
+        let invalid = false;
+        function collect(keys, normalize) {
+            for (const key of keys) {
+                const inspection = inspectOwn(source, key);
+                if (!inspection.ok || (inspection.exists && !inspection.isData)) {
+                    invalid = true;
+                    continue;
+                }
+                if (!inspection.exists) continue;
+                present = true;
+                const normalized = normalize(inspection.descriptor.value);
+                if (normalized === null) invalid = true;
+                else normalized.target.add(normalized.value);
+            }
+        }
+        collect(['team', 'teamName', 'company'], (value) => {
+            const label = exactTeamLabel(value);
+            return label ? { target: labels, value: label } : null;
+        });
+        collect(['team_id', 'teamId'], (value) => {
+            if (typeof value !== 'string') return null;
+            const id = value.normalize('NFKC').replace(/\s+/gu, ' ').trim()
+                .normalize('NFC').toLocaleLowerCase('de-DE');
+            return id ? { target: ids, value: id } : null;
+        });
+        return {
+            labels,
+            ids,
+            present,
+            invalid,
+            ambiguous: labels.size > 1 || ids.size > 1,
+        };
+    }
+
+    function parseCurrentPlayer(source, currentDatasetSeason, targetSeason, invalidDatasetSeason) {
         if (!source || typeof source !== 'object') return null;
         const id = safeIdentifier(ownValue(source, 'id'));
         const name = displayPlayerName(ownValue(source, 'name'));
@@ -957,16 +995,23 @@
         const explicitSeason = seasonInspection.isData
             ? canonicalSeason(seasonInspection.descriptor.value)
             : null;
-        const invalidSeason = (seasonInspection.exists && !explicitSeason)
+        const invalidSeason = invalidDatasetSeason
+            || (seasonInspection.exists && !explicitSeason)
+            || (!seasonInspection.exists && !currentDatasetSeason)
             || (explicitSeason && leagueSeason && explicitSeason !== leagueSeason)
-            || (inheritedSeason && leagueSeason && leagueSeason !== inheritedSeason)
-            || (inheritedSeason && explicitSeason && explicitSeason !== inheritedSeason);
+            || (currentDatasetSeason && leagueSeason && leagueSeason !== currentDatasetSeason)
+            || (currentDatasetSeason && explicitSeason && explicitSeason !== currentDatasetSeason)
+            || (targetSeason && leagueSeason && leagueSeason !== targetSeason)
+            || (targetSeason && explicitSeason && explicitSeason !== targetSeason)
+            || (targetSeason && !explicitSeason && currentDatasetSeason !== targetSeason);
         if (invalidSeason && id) return { id, invalidSeason: true };
-        const season = explicitSeason || leagueSeason || inheritedSeason || null;
-        const teamIdentityValue = firstOwnValue(source, ['team', 'company', 'team_id']);
-        const company = typeof teamIdentityValue === 'string'
-            ? teamIdentityValue.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC')
-            : '';
+        const season = explicitSeason || currentDatasetSeason || null;
+        const teamAliases = collectTeamAliases(source);
+        if ((teamAliases.invalid || teamAliases.ambiguous) && id) {
+            return { id, invalidTeamIdentity: true };
+        }
+        const company = Array.from(teamAliases.labels)[0] || '';
+        const teamIdentityId = Array.from(teamAliases.ids)[0] || '';
         const roundsDescriptor = ownData(source, 'rounds');
         if (!id || !name || !clubId) return null;
         const roundsClone = roundsDescriptor ? cloneOwnData(roundsDescriptor.value) : {};
@@ -988,30 +1033,39 @@
             clubId,
             leagueClass,
             season,
-            teamIdentity: company.toLocaleLowerCase('de-DE'),
+            teamLabels: Array.from(teamAliases.labels).sort(),
+            teamIds: Array.from(teamAliases.ids).sort(),
             rounds: canonicalRounds,
         });
-        return {
+        const result = {
             id,
             name,
             normalizedName: canonicalPlayerName(name),
             clubId,
             leagueClass,
             season,
-            company,
             rounds: canonicalRounds,
             stats: roundStats(canonicalRounds),
             fingerprint,
         };
+        if (company) defineData(result, 'company', company);
+        if (teamIdentityId) defineData(result, 'team_id', teamIdentityId);
+        return result;
     }
 
-    function groupCurrentPlayers(sources, targetSeason) {
+    function groupCurrentPlayers(sources, currentDatasetSeason, targetSeason, invalidDatasetSeason) {
         const groups = new Map();
         const invalidIds = new Set();
         const excludedIds = new Set();
         for (const source of sources) {
             const sourceId = safeIdentifier(ownValue(source, 'id'));
-            const player = parseCurrentPlayer(source, targetSeason);
+            const player = parseCurrentPlayer(
+                source, currentDatasetSeason, targetSeason, invalidDatasetSeason,
+            );
+            if (player && player.invalidTeamIdentity) {
+                invalidIds.add(player.id);
+                continue;
+            }
             if (player && player.invalidSeason) {
                 excludedIds.add(player.id);
                 continue;
@@ -1068,6 +1122,7 @@
 
     function authoritativeRosterMapping(options, teamId, targetClass, targetSeason) {
         const labels = new Set();
+        const entries = [];
         let explicitAmbiguity = false;
         const ambiguousInspection = inspectOwn(options, 'ambiguousClubNumbers');
         if (ambiguousInspection.exists && !ambiguousInspection.isData) explicitAmbiguity = true;
@@ -1082,51 +1137,90 @@
 
         function addLabel(value) {
             const label = exactTeamLabel(value);
-            if (label) labels.add(label);
+            if (label) {
+                labels.add(label);
+                entries.push({ label, ids: new Set() });
+            }
         }
 
-        function addRecords(value, requireScope) {
+        function mappingClubId(record, inheritedClubId) {
+            const ids = new Set();
+            for (const key of ['clubNumber', 'club_number', 'v_nr', 'number', 'clubId']) {
+                const inspection = inspectOwn(record, key);
+                if (!inspection.ok || (inspection.exists && !inspection.isData)) return null;
+                if (!inspection.exists) continue;
+                const id = safeIdentifier(inspection.descriptor.value);
+                if (!id) return null;
+                ids.add(id);
+            }
+            if (ids.size > 1) return null;
+            const explicit = Array.from(ids)[0] || null;
+            if (inheritedClubId && explicit && explicit !== inheritedClubId) return null;
+            return explicit || inheritedClubId || null;
+        }
+
+        function mappingScope(record) {
+            const classes = new Set();
+            const leagueSeasons = new Set();
+            let hasLeague = false;
+            for (const key of ['league', 'leagueClass', 'class']) {
+                const inspection = inspectOwn(record, key);
+                if (!inspection.ok || (inspection.exists && !inspection.isData)) return null;
+                if (!inspection.exists) continue;
+                hasLeague = true;
+                const leagueClass = normalizeLeagueClass(inspection.descriptor.value);
+                if (!leagueClass) return null;
+                classes.add(leagueClass);
+                const season = seasonFromLeague(inspection.descriptor.value);
+                if (season) leagueSeasons.add(season);
+            }
+            if (classes.size > 1 || leagueSeasons.size > 1) return null;
+            const seasonInspection = inspectOwn(record, 'season');
+            if (!seasonInspection.ok || (seasonInspection.exists && !seasonInspection.isData)) return null;
+            const explicitSeason = seasonInspection.exists
+                ? canonicalSeason(seasonInspection.descriptor.value)
+                : null;
+            if (seasonInspection.exists && !explicitSeason) return null;
+            const leagueSeason = Array.from(leagueSeasons)[0] || null;
+            if (explicitSeason && leagueSeason && explicitSeason !== leagueSeason) return null;
+            return {
+                leagueClass: Array.from(classes)[0] || null,
+                season: explicitSeason || leagueSeason,
+                hasLeague,
+            };
+        }
+
+        function addMappingRecord(record, requireScope, inheritedClubId) {
+            if (typeof record === 'string') {
+                if (inheritedClubId) addLabel(record);
+                return;
+            }
+            const safeRecord = cloneOwnData(record);
+            if (safeRecord === INVALID_CLONE || !safeRecord
+                || typeof safeRecord !== 'object' || Array.isArray(safeRecord)) {
+                explicitAmbiguity = true;
+                return;
+            }
+            const clubId = mappingClubId(safeRecord, inheritedClubId);
+            const scope = mappingScope(safeRecord);
+            if (!clubId || !scope || clubId !== teamId) return;
+            if ((requireScope && (!scope.leagueClass || (targetSeason && !scope.season)))
+                || (scope.leagueClass && scope.leagueClass !== targetClass)
+                || (targetSeason && scope.season && scope.season !== targetSeason)) return;
+            const aliases = collectTeamAliases(safeRecord);
+            if (aliases.invalid || aliases.ambiguous || (!aliases.labels.size && !aliases.ids.size)) {
+                explicitAmbiguity = true;
+                return;
+            }
+            const label = Array.from(aliases.labels)[0] || null;
+            if (label) labels.add(label);
+            entries.push({ label, ids: new Set(aliases.ids) });
+        }
+
+        function addRecords(value, requireScope, inheritedClubId) {
             const records = arrayDataValues(value);
             if (!records.ok) return;
-            for (const record of records.values) {
-                if (typeof record === 'string') {
-                    if (!requireScope) addLabel(record);
-                    continue;
-                }
-                const safeRecord = cloneOwnData(record);
-                if (safeRecord === INVALID_CLONE || !safeRecord
-                    || typeof safeRecord !== 'object' || Array.isArray(safeRecord)) {
-                    explicitAmbiguity = true;
-                    continue;
-                }
-                const clubId = safeIdentifier(firstOwnValue(
-                    safeRecord, ['clubNumber', 'club_number', 'v_nr', 'number', 'clubId'],
-                ));
-                if (!clubId) {
-                    explicitAmbiguity = true;
-                    continue;
-                }
-                const teamName = firstOwnValue(safeRecord, ['teamName', 'team', 'name']);
-                const leagueValue = firstOwnValue(safeRecord, ['league', 'leagueClass', 'class']);
-                const leagueClass = normalizeLeagueClass(leagueValue);
-                const seasonInspection = inspectOwn(safeRecord, 'season');
-                const explicitSeasonValue = ownValue(safeRecord, 'season');
-                const season = canonicalSeason(explicitSeasonValue) || seasonFromLeague(leagueValue);
-                if (clubId !== teamId) continue;
-                if (requireScope && (!leagueClass
-                    || (seasonInspection.exists && !canonicalSeason(explicitSeasonValue))
-                    || (targetSeason && !season))) {
-                    explicitAmbiguity = true;
-                    continue;
-                }
-                if (requireScope && (leagueClass !== targetClass
-                    || (targetSeason && season !== targetSeason))) continue;
-                if (!requireScope && ((leagueClass && leagueClass !== targetClass)
-                    || (targetSeason && season && season !== targetSeason))) continue;
-                const label = exactTeamLabel(teamName);
-                if (!label) explicitAmbiguity = true;
-                else labels.add(label);
-            }
+            for (const record of records.values) addMappingRecord(record, requireScope, inheritedClubId);
         }
 
         const teamMappingsInspection = inspectOwn(options, 'teamMappings');
@@ -1136,31 +1230,18 @@
             : undefined;
         const directMappingInspection = inspectOwn(teamMappings, teamId);
         if (directMappingInspection.exists && !directMappingInspection.isData) explicitAmbiguity = true;
-        const mappedTeams = arrayDataValues(
+        addRecords(
             directMappingInspection.isData ? directMappingInspection.descriptor.value : undefined,
+            false,
+            teamId,
         );
-        if (mappedTeams.ok) {
-            for (const team of mappedTeams.values) {
-                if (typeof team === 'string') {
-                    addLabel(team);
-                    continue;
-                }
-                const safeTeam = cloneOwnData(team);
-                if (safeTeam === INVALID_CLONE || !safeTeam || typeof safeTeam !== 'object') {
-                    explicitAmbiguity = true;
-                    continue;
-                }
-                const label = exactTeamLabel(firstOwnValue(safeTeam, ['teamName', 'team', 'name']));
-                if (!label) explicitAmbiguity = true;
-                else labels.add(label);
-            }
-        }
-        addRecords(teamMappings, false);
+        addRecords(teamMappings, true, null);
         const leagueTeamsInspection = inspectOwn(options, 'leagueTeams');
         if (leagueTeamsInspection.exists && !leagueTeamsInspection.isData) explicitAmbiguity = true;
         addRecords(
             leagueTeamsInspection.isData ? leagueTeamsInspection.descriptor.value : undefined,
             true,
+            null,
         );
 
         const clubs = arrayDataValues(ownValue(options, 'clubs'));
@@ -1177,15 +1258,30 @@
         }
         return {
             labels,
+            entries,
             authoritative: labels.size > 0 || explicitAmbiguity,
             ambiguous: explicitAmbiguity || labels.size > 1,
         };
     }
 
     function rosterRecordMatchesSelectedTeam(record, mapping, selectedTeamLabel) {
-        const ownTeam = exactTeamLabel(firstOwnValue(record, ['team', 'company', 'teamName']));
-        if (mapping.ambiguous) return Boolean(ownTeam && selectedTeamLabel && ownTeam === selectedTeamLabel);
-        if (ownTeam && selectedTeamLabel) return ownTeam === selectedTeamLabel;
+        const aliases = collectTeamAliases(record);
+        if (aliases.invalid || aliases.ambiguous) return false;
+        const selectedEntries = selectedTeamLabel
+            ? mapping.entries.filter((entry) => entry.label === selectedTeamLabel)
+            : mapping.entries;
+        const idsAreAuthoritative = mapping.entries.some((entry) => entry.ids.size > 0);
+        let matchesSelectedEntry = selectedEntries.some((entry) => (
+            (!aliases.labels.size || (entry.label && aliases.labels.has(entry.label)))
+            && (!aliases.ids.size || !idsAreAuthoritative
+                || Array.from(aliases.ids).some((id) => entry.ids.has(id)))
+        ));
+        if (!selectedEntries.length && selectedTeamLabel) {
+            matchesSelectedEntry = (!aliases.labels.size || aliases.labels.has(selectedTeamLabel))
+                && (!aliases.ids.size || !idsAreAuthoritative);
+        }
+        if (mapping.ambiguous) return aliases.present && matchesSelectedEntry;
+        if (aliases.present && selectedTeamLabel) return matchesSelectedEntry;
         return !mapping.authoritative || mapping.labels.size === 1;
     }
 
@@ -1203,12 +1299,10 @@
             ? canonicalSeason(datasetSeasonInspection.descriptor.value)
             : null;
         const invalidTargetSeason = (targetSeasonInspection.exists && !explicitTargetSeason)
-            || (datasetSeasonInspection.exists && !currentDatasetSeason)
-            || (leagueSeason && explicitTargetSeason && explicitTargetSeason !== leagueSeason)
-            || (leagueSeason && currentDatasetSeason && currentDatasetSeason !== leagueSeason)
-            || (explicitTargetSeason && currentDatasetSeason
-                && explicitTargetSeason !== currentDatasetSeason);
-        const targetSeason = explicitTargetSeason || currentDatasetSeason || leagueSeason;
+            || (leagueSeason && explicitTargetSeason && explicitTargetSeason !== leagueSeason);
+        const targetSeason = explicitTargetSeason || leagueSeason || currentDatasetSeason;
+        const invalidDatasetSeason = (datasetSeasonInspection.exists && !currentDatasetSeason)
+            || (targetSeason && currentDatasetSeason && currentDatasetSeason !== targetSeason);
         const archiveData = ownValue(options, 'archiveData');
         const archiveIndex = buildArchiveIndex(archiveData && typeof archiveData === 'object' ? archiveData : {});
         const chronologicalIndex = targetSeason
@@ -1238,7 +1332,9 @@
 
         const groupedCurrent = groupCurrentPlayers(
             currentPlayerSources(ownValue(options, 'currentPlayers')),
+            currentDatasetSeason,
             targetSeason,
+            invalidDatasetSeason,
         );
         const parsedCurrent = groupedCurrent.players;
         const affiliations = new Map();
@@ -1661,31 +1757,92 @@
         return result;
     }
 
-    function recordMatchesTeam(record, mapping) {
-        if (record.v_nr !== mapping.clubId) return false;
-        if (!mapping.multiTeam) return true;
-        const recordTeam = firstOwnValue(record, ['team_id', 'team', 'company']);
-        const normalized = exactTeamLabel(recordTeam);
-        return normalized !== null
-            && (normalized === mapping.teamLabel || recordTeam === mapping.teamId);
+    function normalizedTeamIdentityId(value) {
+        if (typeof value !== 'string') return null;
+        const normalized = value.normalize('NFKC').replace(/\s+/gu, ' ').trim()
+            .normalize('NFC').toLocaleLowerCase('de-DE');
+        return normalized || null;
     }
 
-    function roundParticipants(index, season, leagueClass, round, mapping) {
-        const participants = [];
-        for (const playerId of ownNames(index.histories).sort((a, b) => a.localeCompare(b, 'en'))) {
-            const history = ownValue(index.histories, playerId) || [];
-            const record = history.find((candidate) => (
-                candidate.season === season
-                && candidate.leagueClass === leagueClass
-                && candidate.previewEligible
-                && recordMatchesTeam(candidate, mapping)
-            ));
-            if (!record) continue;
-            const rounds = ownValue(record, 'rounds');
-            const value = parseCanonicalInteger(ownValue(rounds, `R${round}`));
-            if (value !== null) participants.push({ playerId, record, value });
+    function teamAliasesMatchMapping(aliases, mapping) {
+        const mappingId = normalizedTeamIdentityId(mapping.teamId);
+        return aliases.present
+            && (!aliases.labels.size || aliases.labels.has(mapping.teamLabel))
+            && (!aliases.ids.size || (mappingId !== null && aliases.ids.has(mappingId)));
+    }
+
+    function participantBucketKey(season, leagueClass, round, mapping) {
+        const identity = mapping.multiTeam
+            ? [mapping.clubId, String(mapping.teamId), mapping.teamLabel]
+            : [mapping.clubId];
+        return JSON.stringify([season, leagueClass, round, identity]);
+    }
+
+    function buildOutcomeParticipantIndex(archiveIndex, mappings, performance) {
+        performance.participantIndexBuilds += 1;
+        const mappingsByClub = {};
+        const seenMappings = new Set();
+        for (const mappingList of mappings.values()) {
+            for (const mapping of mappingList) {
+                const identity = JSON.stringify([
+                    mapping.clubId, String(mapping.teamId), mapping.teamLabel, mapping.multiTeam,
+                ]);
+                if (seenMappings.has(identity)) continue;
+                seenMappings.add(identity);
+                if (!ownValue(mappingsByClub, mapping.clubId)) {
+                    defineData(mappingsByClub, mapping.clubId, []);
+                }
+                mappingsByClub[mapping.clubId].push(mapping);
+            }
         }
-        return participants;
+
+        const buckets = {};
+        function addParticipant(key, participant) {
+            if (!ownValue(buckets, key)) defineData(buckets, key, []);
+            buckets[key].push(participant);
+        }
+
+        for (const playerId of ownNames(archiveIndex.histories).sort((a, b) => a.localeCompare(b, 'en'))) {
+            const history = ownValue(archiveIndex.histories, playerId) || [];
+            for (const record of history) {
+                performance.historyRecordsScanned += 1;
+                if (!record.previewEligible || !record.v_nr) continue;
+                const aliases = collectTeamAliases(record);
+                if (aliases.invalid || aliases.ambiguous) continue;
+                const clubMappings = ownValue(mappingsByClub, record.v_nr) || [];
+                const applicableMappings = clubMappings.filter((mapping) => (
+                    !mapping.multiTeam || teamAliasesMatchMapping(aliases, mapping)
+                ));
+                if (!applicableMappings.length) continue;
+                const rounds = ownValue(record, 'rounds');
+                for (const roundKey of ownNames(rounds).sort((left, right) => left.localeCompare(right, 'en'))) {
+                    const roundDescriptor = ownData(rounds, roundKey);
+                    const match = /^R([1-9][0-9]*)$/u.exec(roundKey);
+                    if (!roundDescriptor || !roundDescriptor.enumerable || !match) continue;
+                    const round = parseCanonicalInteger(match[1]);
+                    const value = parseCanonicalInteger(roundDescriptor.value);
+                    if (round === null || value === null) continue;
+                    for (const mapping of applicableMappings) {
+                        addParticipant(
+                            participantBucketKey(record.season, record.leagueClass, round, mapping),
+                            { playerId, record, value },
+                        );
+                    }
+                }
+            }
+        }
+        for (const key of ownNames(buckets)) {
+            buckets[key].sort((left, right) => left.playerId.localeCompare(right.playerId, 'en'));
+        }
+        return deepFreeze({ buckets });
+    }
+
+    function lookupOutcomeParticipants(participantIndex, season, leagueClass, round, mapping, performance) {
+        performance.participantLookups += 1;
+        return ownValue(
+            participantIndex.buckets,
+            participantBucketKey(season, leagueClass, round, mapping),
+        ) || [];
     }
 
     function finalizeOutcomeExamples(examples) {
@@ -1723,6 +1880,9 @@
                 filteredIndexBuilds: 0,
                 calibrationBuilds: 0,
                 priorCalls: 0,
+                participantIndexBuilds: 0,
+                historyRecordsScanned: 0,
+                participantLookups: 0,
             },
             excluded: {
                 malformed: 0,
@@ -1788,6 +1948,9 @@
                 });
             }
         }
+        const participantIndex = buildOutcomeParticipantIndex(
+            archiveIndex, mappings, diagnostics.performance,
+        );
         const cutoffSnapshots = new Map();
         function snapshotFor(targetSeason) {
             if (cutoffSnapshots.has(targetSeason)) return cutoffSnapshots.get(targetSeason);
@@ -1804,11 +1967,13 @@
             .sort((left, right) => left.identityKey.localeCompare(right.identityKey, 'en'))) {
                 if (group.conflict) continue;
                 const { match, homeMapping, awayMapping, identityKey: key } = group;
-                const homePlayers = roundParticipants(
-                    archiveIndex, match.season, match.leagueClass, match.round, homeMapping,
+                const homePlayers = lookupOutcomeParticipants(
+                    participantIndex, match.season, match.leagueClass, match.round,
+                    homeMapping, diagnostics.performance,
                 );
-                const awayPlayers = roundParticipants(
-                    archiveIndex, match.season, match.leagueClass, match.round, awayMapping,
+                const awayPlayers = lookupOutcomeParticipants(
+                    participantIndex, match.season, match.leagueClass, match.round,
+                    awayMapping, diagnostics.performance,
                 );
                 if (homePlayers.length !== 4 || awayPlayers.length !== 4) {
                     diagnostics.excluded.participants += 1;

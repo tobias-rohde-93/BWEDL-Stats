@@ -881,7 +881,7 @@ assert.equal(historicalTransferRoster.players.some((player) => player.id === '26
     'latest historical club affiliation overrides the preceding-season fallback');
 
 const currentWithoutHistory = Model.buildTeamRoster({
-    teamId: '035', targetLeague: 'B-Klasse', classMean: 5,
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', classMean: 5,
     currentPlayers: [{ id: '80', name: 'New Current', v_nr: '035', league: 'B-Klasse', rounds: { R1: 9, R2: 7 } }],
     archiveData: {},
 });
@@ -890,7 +890,7 @@ assert.equal(currentWithoutHistory.players[0].rating, (16 + 4 * 5) / 6);
 assert.equal(currentWithoutHistory.players[0].evidence, 'current');
 
 const ambiguousRoster = Model.buildTeamRoster({
-    teamId: '035', targetLeague: 'B-Klasse', archiveData: rosterArchive,
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', archiveData: rosterArchive,
     currentPlayers: [
         { id: '90', name: 'Ambiguous', v_nr: '035', company: 'Team One', league: 'B-Klasse', rounds: { R1: 8 } },
         { id: '91', name: 'Other Team', v_nr: '035', company: 'Team Two', league: 'B-Klasse', rounds: { R1: 7 } },
@@ -906,7 +906,7 @@ Object.defineProperty(guardedCurrent[0], 'company', {
     get() { rosterGetterCalls += 1; throw new Error('company getter must not run'); },
 });
 assert.doesNotThrow(() => Model.buildTeamRoster({
-    teamId: '035', targetLeague: 'B-Klasse', currentPlayers: guardedCurrent, archiveData: {},
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', currentPlayers: guardedCurrent, archiveData: {},
 }));
 assert.equal(rosterGetterCalls, 0);
 
@@ -955,7 +955,7 @@ assert.equal(unsafeKnownLineup.every((slot) => (
 )), true, 'known unsafe ratings are replaced by bounded positive neutral slots');
 
 const overflowBlendRoster = Model.buildTeamRoster({
-    teamId: '035', targetLeague: 'B-Klasse', classMean: 5, archiveData: {},
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
     currentPlayers: [{
         id: '319', name: 'Overflow Blend', v_nr: '035', league: 'B-Klasse',
         rounds: { R1: Number.MAX_SAFE_INTEGER },
@@ -976,20 +976,41 @@ vm.runInContext(
     rankingContext,
     { filename: 'archive_data.js' },
 );
+vm.runInContext(
+    `window.DATA_STATUS = ${fs.readFileSync(path.join(__dirname, '..', 'data_status.json'), 'utf8')};`,
+    rankingContext,
+    { filename: 'data_status.json' },
+);
 const committedCurrentPlayers = rankingContext.window.RANKING_DATA.players;
 const committedArchiveData = rankingContext.window.ARCHIVE_DATA;
+const committedRankingSeason = rankingContext.window.DATA_STATUS.domains.rankings.season;
 assert.equal(committedCurrentPlayers.length, 773);
 assert.equal(committedCurrentPlayers.every((player) => (
     !Object.prototype.hasOwnProperty.call(player, 'season')
     && !Object.prototype.hasOwnProperty.call(player, 'company')
     && !/\d{2,4}\s*[\/-]\s*\d{2,4}/u.test(player.league)
 )), true, 'the committed ranking dataset exposes class-only explicitly-current rows');
-const realCurrentRoster = Model.buildTeamRoster({
+const missingDatasetSeasonRoster = Model.buildTeamRoster({
     teamId: '040', targetLeague: 'Bezirksliga 2025/2026',
     currentPlayers: committedCurrentPlayers, archiveData: committedArchiveData,
 });
+assert.equal(missingDatasetSeasonRoster.players.some((player) => player.id === '425'), false,
+    'seasonless rows never inherit targetSeason without explicit currentDatasetSeason');
+const staleCurrentRoster = Model.buildTeamRoster({
+    teamId: '040', targetLeague: 'Bezirksliga 2026/2027',
+    currentDatasetSeason: committedRankingSeason,
+    currentPlayers: committedCurrentPlayers, archiveData: committedArchiveData,
+});
+assert.equal(staleCurrentRoster.players.some((player) => (
+    player.id === '425' || player.evidence === 'current' || player.evidence === 'current+history'
+)), false, 'retained 2025/26 rankings are not current for the 2026/27 target');
+const realCurrentRoster = Model.buildTeamRoster({
+    teamId: '040', targetLeague: 'Bezirksliga 2025/2026',
+    currentDatasetSeason: committedRankingSeason,
+    currentPlayers: committedCurrentPlayers, archiveData: committedArchiveData,
+});
 const realCurrent425 = realCurrentRoster.players.find((player) => player.id === '425');
-assert.ok(realCurrent425, 'real current player 425 inherits the explicit target dataset season');
+assert.ok(realCurrent425, 'real current player 425 binds to the explicit current dataset season');
 assert.equal(realCurrent425.currentPoints, 172);
 assert.equal(realCurrent425.currentAppearances, 18);
 assert.equal(realCurrent425.adjustedRating, 8);
@@ -1027,8 +1048,79 @@ const ambiguousMappedCurrent = [
     { id: '341', name: 'Exact Alpha One', v_nr: '035', team: 'Alpha One', league: 'B-Klasse', rounds: { R1: 5 } },
     { id: '342', name: 'Wrong Alpha Two', v_nr: '035', team: 'Alpha Two', league: 'B-Klasse', rounds: { R1: 6 } },
 ];
+const conflictingTeamAliasRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: authoritativeLeagueTeams,
+    currentPlayers: [{
+        id: '343', name: 'Alias Conflict', v_nr: '035', league: 'B-Klasse',
+        team: 'Alpha One', company: 'Alpha Two', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(conflictingTeamAliasRoster.players, []);
+assert.deepEqual(conflictingTeamAliasRoster.diagnostics.ambiguousPlayerIds, ['343']);
+
+const equivalentTeamAliasRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: authoritativeLeagueTeams,
+    currentPlayers: [{
+        id: '344', name: 'Alias Equivalent', v_nr: '035', league: 'B-Klasse',
+        team: 'Alpha One', teamName: ' alpha  one ', company: 'Alpha One',
+        team_id: 'one', teamId: 'one', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(equivalentTeamAliasRoster.players.map((player) => player.id), ['344']);
+
+const conflictingCrossTypeAliasRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: [
+        { clubNumber: '035', teamName: 'Alpha One', teamId: 'one', league: 'B-Klasse', season: '2026/2027' },
+        { clubNumber: '035', teamName: 'Alpha Two', teamId: 'two', league: 'B-Klasse', season: '2026/2027' },
+    ],
+    currentPlayers: [{
+        id: '346', name: 'Cross Alias Conflict', v_nr: '035', league: 'B-Klasse',
+        team: 'Alpha One', team_id: 'two', rounds: { R1: 5 },
+    }],
+});
+assert.deepEqual(conflictingCrossTypeAliasRoster.players, [],
+    'a selected team label cannot conceal an authoritative different team ID');
+
+let currentTeamAliasGetterCalls = 0;
+const accessorTeamAliasPlayer = {
+    id: '345', name: 'Alias Accessor', v_nr: '035', league: 'B-Klasse',
+    team: 'Alpha One', rounds: { R1: 5 },
+};
+Object.defineProperty(accessorTeamAliasPlayer, 'company', {
+    enumerable: true,
+    get() { currentTeamAliasGetterCalls += 1; throw new Error('team alias getter must not run'); },
+});
+const accessorTeamAliasRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    leagueTeams: authoritativeLeagueTeams, currentPlayers: [accessorTeamAliasPlayer],
+});
+assert.deepEqual(accessorTeamAliasRoster.players, []);
+assert.deepEqual(accessorTeamAliasRoster.diagnostics.ambiguousPlayerIds, ['345']);
+assert.equal(currentTeamAliasGetterCalls, 0);
+
+const keyedMappingRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
+    currentPlayers: [ambiguousMappedCurrent[0]],
+    teamMappings: { '035': [
+        { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse 2026/2027', season: '2026/2027' },
+        { clubNumber: '035', teamName: 'Other Class', league: 'A-Klasse', season: '2026/2027' },
+        { clubNumber: '035', teamName: 'Invalid Season', league: 'B-Klasse', season: 'invalid' },
+        { clubNumber: '036', teamName: 'Conflicting Club', league: 'B-Klasse', season: '2026/2027' },
+    ] },
+});
+assert.deepEqual(keyedMappingRoster.players.map((player) => player.id), ['340'],
+    'keyed mapping objects inherit the key and use the same class/season validation as flat records');
 const ambiguousMappedRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027',
     currentPlayers: ambiguousMappedCurrent, archiveData: {}, classMean: 5,
     leagueTeams: authoritativeLeagueTeams,
 });
@@ -1037,6 +1129,7 @@ assert.deepEqual(ambiguousMappedRoster.players.map((player) => player.id), ['341
 
 const uniqueMappedRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027',
     currentPlayers: [ambiguousMappedCurrent[0]], archiveData: {}, classMean: 5,
     leagueTeams: authoritativeLeagueTeams.filter((mapping) => mapping.teamName !== 'Alpha Two'),
     clubs: [{ number: '035', name: 'Alpha Club', teams: ['Alpha One', 'Alpha A'] }],
@@ -1054,6 +1147,7 @@ Object.defineProperty(unsafeLeagueTeam, 'teamName', {
 });
 const unsafeMappedRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027',
     currentPlayers: [ambiguousMappedCurrent[0]], archiveData: {}, classMean: 5,
     leagueTeams: [authoritativeLeagueTeams[0], unsafeLeagueTeam],
 });
@@ -1062,6 +1156,7 @@ assert.deepEqual(unsafeMappedRoster.players, [],
 assert.equal(mappingGetterCalls, 0);
 const unsafeDirectMappedRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027',
     currentPlayers: [ambiguousMappedCurrent[0]], archiveData: {}, classMean: 5,
     teamMappings: { '035': ['Alpha One', unsafeLeagueTeam] },
 });
@@ -1078,6 +1173,10 @@ const mappedHistoricalArchive = {
         ...record({ id: '352', season: '2025/2026', name: 'Historical Wrong', league: 'B-Klasse', mean: 7, vNr: '035' }),
         team: 'Alpha Two',
     }],
+    353: [{
+        ...record({ id: '353', season: '2025/2026', name: 'Historical Alias Conflict', league: 'B-Klasse', mean: 8, vNr: '035' }),
+        team: 'Alpha One', company: 'Alpha Two',
+    }],
 };
 const mappedHistoricalRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
@@ -1089,6 +1188,7 @@ assert.deepEqual(mappedHistoricalRoster.players.map((player) => player.id), ['35
 
 const explicitAmbiguousClubRoster = Model.buildTeamRoster({
     teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentDatasetSeason: '2026/2027',
     currentPlayers: ambiguousMappedCurrent.slice(0, 2), archiveData: {}, classMean: 5,
     ambiguousClubNumbers: ['035'],
 });
@@ -1121,7 +1221,7 @@ assert.equal(totalsMembershipRoster.players.some((player) => player.id === '362'
     'a third roster season is never pulled into the candidate list');
 
 const confidenceRoster = Model.buildTeamRoster({
-    teamId: '035', targetLeague: 'B-Klasse', classMean: 5, archiveData: {},
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', classMean: 5, archiveData: {},
     currentPlayers: [{
         id: '310', name: 'Only Current', v_nr: '035', league: 'B-Klasse', rounds: rounds(7, 8),
     }],
@@ -1211,6 +1311,35 @@ const exactParticipantTraining = Model.buildOutcomeTrainingExamples({
 });
 assert.equal(exactParticipantTraining.length, 1,
     'every multi-team participant may be assigned only by exact own team identity');
+
+const conflictingParticipantArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    conflictingParticipantArchive[String(200 + index)][1].team = 'Alpha';
+}
+conflictingParticipantArchive['200'][1].company = 'Alpha Two';
+const conflictingParticipantTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows, archiveData: conflictingParticipantArchive, clubs: multiTeamClubs,
+});
+assert.equal(conflictingParticipantTraining.length, 0,
+    'conflicting participant team aliases cannot be hidden by alias priority');
+
+const equivalentParticipantArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    equivalentParticipantArchive[String(200 + index)][1].team = 'Alpha';
+    equivalentParticipantArchive[String(200 + index)][1].company = ' alpha ';
+}
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows, archiveData: equivalentParticipantArchive, clubs: multiTeamClubs,
+}).length, 1, 'equivalent participant aliases coalesce deterministically');
+
+const crossTypeParticipantArchive = makeOutcomeArchive();
+for (let index = 0; index < 4; index += 1) {
+    crossTypeParticipantArchive[String(200 + index)][1].team = 'Alpha';
+}
+crossTypeParticipantArchive['200'][1].team_id = 'Alpha Two';
+assert.equal(Model.buildOutcomeTrainingExamples({
+    archiveTables: multiTeamRows, archiveData: crossTypeParticipantArchive, clubs: multiTeamClubs,
+}).length, 0, 'a participant team label cannot conceal a different exact team ID');
 
 for (const inconsistentScoreRow of [
     { round: 1, home: 'Alpha', away: 'Bravo', result: 'invalid', homeScore: 9, awayScore: 7 },
@@ -1424,6 +1553,9 @@ assert.deepEqual(cachedTraining.diagnostics.performance, {
     filteredIndexBuilds: 1,
     calibrationBuilds: 1,
     priorCalls: 16,
+    participantIndexBuilds: 1,
+    historyRecordsScanned: 16,
+    participantLookups: 4,
 });
 assert.equal(cachedTraining.every((example) => (
     example.cutoffProvenance.targetSeason === '2025/26'
@@ -1431,8 +1563,65 @@ assert.equal(cachedTraining.every((example) => (
 )), true);
 assert.equal(Object.isFrozen(cachedTraining), true);
 
+function makeScaledOutcomeArchive(roundCount) {
+    const archive = {};
+    for (let index = 0; index < 8; index += 1) {
+        const id = String(600 + index);
+        const vNr = index < 4 ? '035' : '036';
+        const perRound = Object.fromEntries(Array.from({ length: roundCount }, (_, roundIndex) => (
+            [`R${roundIndex + 1}`, (roundIndex + index) % 3 === 0 ? 0 : (index < 4 ? 8 : 5)]
+        )));
+        const points = Object.values(perRound).reduce((sum, value) => sum + value, 0);
+        archive[id] = [
+            record({ id, season: '2024/2025', name: `Scale ${id}`, league: 'A-Klasse', mean: 6, vNr }),
+            {
+                id,
+                season: '2025/2026',
+                name: `Scale ${id}`,
+                league: 'A-Klasse',
+                v_nr: vNr,
+                points,
+                rounds: perRound,
+                appearances: roundCount,
+                points_per_appearance: points / roundCount,
+            },
+        ];
+    }
+    return archive;
+}
+
+const scaledOutcomeArchive = deepFreeze(makeScaledOutcomeArchive(500));
+const scaledRows = deepFreeze(Array.from({ length: 500 }, (_, index) => ({
+    round: index + 1,
+    home: 'Alpha',
+    away: 'Bravo',
+    result: index % 3 === 0 ? '8:8' : '9:7',
+})));
+let previousScaledKeys = [];
+for (const matchCount of [100, 250, 500]) {
+    const scaledTraining = Model.buildOutcomeTrainingExamples({
+        archiveTables: [{
+            season: '2025/2026', league: 'A-Klasse', rows: scaledRows.slice(0, matchCount),
+        }],
+        archiveData: scaledOutcomeArchive,
+        clubs: outcomeClubs,
+    });
+    assert.equal(scaledTraining.length, matchCount);
+    assert.equal(scaledTraining.diagnostics.performance.participantIndexBuilds, 1);
+    assert.equal(scaledTraining.diagnostics.performance.historyRecordsScanned, 16,
+        'history scan count is independent of match count');
+    assert.equal(scaledTraining.diagnostics.performance.participantLookups, 2 * matchCount,
+        'each match performs exactly two direct participant lookups');
+    assert.deepEqual(
+        scaledTraining.slice(0, previousScaledKeys.length).map((example) => example.key),
+        previousScaledKeys,
+        'larger deterministic batches preserve the exact smaller-batch prefix',
+    );
+    previousScaledKeys = scaledTraining.map((example) => example.key);
+}
+
 const duplicateCurrentRoster = Model.buildTeamRoster({
-    teamId: '035', targetLeague: 'B-Klasse', archiveData: {},
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027', archiveData: {},
     currentPlayers: [
         { id: '300', name: 'Duplicate Current', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
         { id: '300', name: 'Duplicate Current', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
