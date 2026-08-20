@@ -45,7 +45,7 @@ TEST_ASSETS = {
                 "Ligapokal 2026-2027": {
                     "url": "https://example.invalid/cup",
                     "match_days": {
-                        "Finale": "Fr. 28.08.2026 20:00 Malicious Club - Safe Team ---",
+                        "1. Runde": "Fr. 28.08.2026 20:00 Malicious Club - Safe Team ---",
                     },
                     "table": (
                         "<table><tbody><tr><th>Datum</th><th>Heimmannschaft</th>"
