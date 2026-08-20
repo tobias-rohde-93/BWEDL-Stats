@@ -1736,6 +1736,78 @@ assert.equal(proxyUnreadableOutcomeClub.length, 0);
 assert.equal(proxyUnreadableOutcomeClub.diagnostics.clubMapping.globalInvalid, true);
 assert.equal(proxyUnreadableOutcomeClub.diagnostics.clubMapping.reason, 'unreadableClubIdentity');
 
+for (const invalidName of ['1234', '... ---']) {
+    const nonLetterOutcomeClub = Model.buildOutcomeTrainingExamples({
+        archiveTables, archiveData: outcomeArchive, clubs: [
+            { number: '035', name: invalidName },
+            { number: '036', name: 'Bravo' },
+        ],
+    });
+    assert.equal(nonLetterOutcomeClub.length, 0);
+    assert.deepEqual(nonLetterOutcomeClub.diagnostics.clubMapping.invalidClubIds, ['035'],
+        'numeric and punctuation-only club names fail closed for their readable club number');
+    assert.equal(nonLetterOutcomeClub.diagnostics.clubMapping.reason, 'invalidClubIdentity');
+}
+
+const unicodeOutcomeClub = Model.buildOutcomeTrainingExamples({
+    archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
+        { round: 1, home: 'Älpha', away: 'Bravo', result: '9:7' },
+    ] }],
+    archiveData: outcomeArchive,
+    clubs: [
+        { number: '035', clubNumber: '035', club_number: '035', v_nr: '035', clubId: '035', name: 'Älpha' },
+        { clubNumber: '036', clubId: '036', name: 'Bravo' },
+    ],
+});
+assert.equal(unicodeOutcomeClub.length, 1,
+    'Unicode-letter names and equivalent club ID aliases form valid canonical identities');
+assert.equal(unicodeOutcomeClub.diagnostics.clubMapping.reason, null);
+
+for (const conflictingAlias of [
+    { clubId: '999' },
+    { v_nr: '999' },
+]) {
+    const conflictingOutcomeClubAlias = Model.buildOutcomeTrainingExamples({
+        archiveTables, archiveData: outcomeArchive, clubs: [
+            { number: '035', name: 'Alpha', ...conflictingAlias },
+            { number: '035', name: 'Alpha' },
+            { number: '036', name: 'Bravo' },
+        ],
+    });
+    assert.equal(conflictingOutcomeClubAlias.length, 0,
+        'a conflicting own club ID alias suppresses the club despite a valid duplicate');
+    assert.ok(conflictingOutcomeClubAlias.diagnostics.clubMapping.invalidClubIds.includes('035'));
+}
+
+let outcomeClubIdGetterCalls = 0;
+const accessorOutcomeClubAlias = { number: '035', name: 'Alpha' };
+Object.defineProperty(accessorOutcomeClubAlias, 'clubId', {
+    enumerable: true,
+    get() { outcomeClubIdGetterCalls += 1; throw new Error('outcome club ID getter must not run'); },
+});
+const accessorOutcomeClubAliasTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: [
+        accessorOutcomeClubAlias, { number: '035', name: 'Alpha' },
+        { number: '036', name: 'Bravo' },
+    ],
+});
+assert.equal(accessorOutcomeClubAliasTraining.length, 0);
+assert.ok(accessorOutcomeClubAliasTraining.diagnostics.clubMapping.invalidClubIds.includes('035'));
+assert.equal(outcomeClubIdGetterCalls, 0);
+
+const unrelatedConflictingOutcomeClubAlias = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: [
+        ...outcomeClubs,
+        { number: '099', clubId: '998', name: 'Unrelated Conflict' },
+    ],
+});
+assert.equal(unrelatedConflictingOutcomeClubAlias.length, 1,
+    'a scoped alias conflict on an unrelated club does not suppress valid match clubs');
+assert.deepEqual(
+    unrelatedConflictingOutcomeClubAlias.diagnostics.clubMapping.invalidClubIds,
+    ['099', '998'],
+);
+
 const ambiguousTraining = Model.buildOutcomeTrainingExamples({
     archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
         { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7' },

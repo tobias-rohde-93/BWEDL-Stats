@@ -1856,22 +1856,43 @@
                 globalInvalid = true;
                 continue;
             }
-            const numberInspection = inspectOwn(club, 'number');
-            if (!numberInspection.ok || !numberInspection.exists || !numberInspection.isData) {
+            const clubIds = new Set();
+            let invalidClubIdAlias = false;
+            let unreadableClubIdScope = false;
+            for (const key of ['number', 'clubNumber', 'club_number', 'v_nr', 'clubId']) {
+                const inspection = inspectOwn(club, key);
+                if (!inspection.ok) {
+                    unreadableClubIdScope = true;
+                    continue;
+                }
+                if (!inspection.exists) continue;
+                if (!inspection.isData) {
+                    invalidClubIdAlias = true;
+                    continue;
+                }
+                const id = safeIdentifier(inspection.descriptor.value);
+                if (!id) invalidClubIdAlias = true;
+                else clubIds.add(id);
+            }
+            if (unreadableClubIdScope || !clubIds.size) {
                 globalInvalid = true;
                 continue;
             }
-            const number = safeIdentifier(numberInspection.descriptor.value);
-            if (!number) {
-                globalInvalid = true;
+            if (invalidClubIdAlias || clubIds.size > 1) {
+                for (const id of clubIds) invalidClubIds.add(id);
                 continue;
             }
+            const number = Array.from(clubIds)[0];
             const nameInspection = inspectOwn(club, 'name');
-            if (!nameInspection.ok || !nameInspection.exists || !nameInspection.isData) {
+            if (!nameInspection.ok) {
+                globalInvalid = true;
+                continue;
+            }
+            if (!nameInspection.exists || !nameInspection.isData) {
                 invalidClubIds.add(number);
                 continue;
             }
-            const clubName = normalizedTeamIdentityId(nameInspection.descriptor.value);
+            const clubName = exactTeamLabel(nameInspection.descriptor.value);
             if (!clubName) {
                 invalidClubIds.add(number);
                 continue;
