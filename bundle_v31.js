@@ -7818,14 +7818,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        const classChangeText = (player) => {
-            const prior = player && player.historicalPrior;
-            const seasons = prior && Array.isArray(prior.seasons) ? prior.seasons : [];
-            const changed = seasons.find((season) => season && season.sourceClass && season.targetClass && season.sourceClass !== season.targetClass);
-            return changed ? `Klassenwechsel: ${changed.sourceClass} → ${changed.targetClass}` : '';
+        const classChangeText = (sourceClasses, targetClass) => {
+            if (!targetClass) return '';
+            const changed = sourceClasses.filter((sourceClass) => sourceClass !== targetClass);
+            return changed.length ? `Klassenwechsel: ${changed.join(', ')} → ${targetClass}` : '';
         };
 
-        const renderPlayerList = (players, element, selectedSet, headerText) => {
+        const renderPlayerList = (players, element, selectedSet, headerText, targetClass) => {
             element.textContent = '';
             const header = document.createElement('div');
             header.className = 'match-preview-list-heading';
@@ -7858,18 +7857,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 badges.className = 'match-preview-player__badges';
                 appendText(badges, 'span', EVIDENCE_LABELS[player.evidence] || EVIDENCE_LABELS.neutral, 'match-preview-evidence');
                 appendText(badges, 'span', `Datenqualität: ${CONFIDENCE_LABELS[player.confidence] || CONFIDENCE_LABELS['very-low']}`, 'match-preview-confidence');
-                const changedClass = classChangeText(player);
+                const sourceClasses = Array.isArray(player.sourceClasses)
+                    ? [...new Set(player.sourceClasses.filter((sourceClass) => typeof sourceClass === 'string' && sourceClass))]
+                    : [];
+                const changedClass = classChangeText(sourceClasses, targetClass);
                 if (changedClass) appendText(badges, 'span', changedClass, 'match-preview-source');
                 if (player.rosterUnconfirmed) appendText(badges, 'span', 'Kaderzugehörigkeit unbestätigt', 'match-preview-warning');
                 const sourceSeasons = Array.isArray(player.sourceSeasons) ? player.sourceSeasons : [];
-                const priorSeasons = player.historicalPrior && Array.isArray(player.historicalPrior.seasons)
-                    ? player.historicalPrior.seasons
-                    : [];
-                const formerClasses = [...new Set(priorSeasons.map((season) => season && season.sourceClass).filter(Boolean))];
-                if (sourceSeasons.length || formerClasses.length) {
+                if (sourceSeasons.length || sourceClasses.length) {
                     const parts = [];
                     if (sourceSeasons.length) parts.push(`Saisons: ${sourceSeasons.join(', ')}`);
-                    if (formerClasses.length) parts.push(`Frühere Klasse: ${formerClasses.join(', ')}`);
+                    if (sourceClasses.length) parts.push(`Klassen: ${sourceClasses.join(', ')}`);
+                    if (targetClass) parts.push(`Zielklasse: ${targetClass}`);
                     appendText(badges, 'span', `Quelle: ${parts.join(' · ')}`, 'match-preview-source');
                 }
                 row.appendChild(badges);
@@ -7922,8 +7921,8 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedB = new Set(playersB.slice(0, 4));
             const nameA = selectedTeam(idA)?.name || 'Heim';
             const nameB = selectedTeam(idB)?.name || 'Gast';
-            renderPlayerList(playersA, listAElement, selectedA, nameA);
-            renderPlayerList(playersB, listBElement, selectedB, nameB);
+            renderPlayerList(playersA, listAElement, selectedA, nameA, rosterA.targetClass);
+            renderPlayerList(playersB, listBElement, selectedB, nameB, rosterB.targetClass);
             selectionArea.style.display = 'block';
             resultDiv.textContent = '';
             renderHistory(league, nameA, nameB);

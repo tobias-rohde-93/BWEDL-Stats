@@ -134,7 +134,14 @@ function makeModel(calibrated) {
     const calls = { calibration: 0, training: 0, outcome: 0, roster: 0, rosterOptions: [], complete: [], forecast: 0 };
     const rosters = {
         '035': [
-            player('h1', `<img src=x onerror=alert(1)>${'A'.repeat(500)}`, 'current+history', 'medium', 48, { sourceSeasons: ['2025/26<script>alert(1)</script>'], historicalPrior: { seasons: [{ sourceClass: 'A', targetClass: 'B' }] } }),
+            player('h1', `<img src=x onerror=alert(1)>${'A'.repeat(500)}`, 'current+history', 'medium', 48, {
+                sourceSeasons: ['2025/26'],
+                sourceClasses: ['Bezirksliga', 'A-Klasse'],
+                historicalPrior: {
+                    seasons: [{ sourceClass: 'NICHT AUS ROHDATEN', targetClass: 'NICHT AUS ROHDATEN' }],
+                    segments: [{ league: '<script>raw segment</script>' }],
+                },
+            }),
             player('h2', 'Historische Hanne', 'historical', 'provisional', 46),
             player('h3', 'Ersatz Eva', 'historical-fallback', 'very-low', 44),
             player('h4', 'Aktuelle Anna', 'current', 'high', 42),
@@ -155,7 +162,7 @@ function makeModel(calibrated) {
             calls.roster += 1;
             calls.rosterOptions.push(options);
             assert.equal(options.currentDatasetSeason, '2025/26');
-            return { players: rosters[options.teamId] || [], classMean: 35, classMeanAvailable: true, teamConfidence: 'provisional', diagnostics: {} };
+            return { players: rosters[options.teamId] || [], targetClass: 'B-Klasse', classMean: 35, classMeanAvailable: true, teamConfidence: 'provisional', diagnostics: {} };
         },
         completeLineup(known, options = {}) {
             calls.complete.push({ ids: known.map((item) => item.id), manual: options.manual === true });
@@ -373,7 +380,11 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.deepEqual({ calibration: scenario.model.calls.calibration, training: scenario.model.calls.training, outcome: scenario.model.calls.outcome }, { calibration: 1, training: 1, outcome: 1 });
     assert.equal(scenario.model.calls.rosterOptions.every((options) => options.currentPlayers === scenario.rankingPlayers), true);
     const text = scenario.contentArea.textContent;
-    for (const expected of ['Vorjahreskader', 'Klassenwechsel: A → B', 'Kaderzugehörigkeit unbestätigt', 'Datenqualität: vorläufig']) assert.match(text, new RegExp(expected));
+    for (const expected of ['Vorjahreskader', 'Klassenwechsel: Bezirksliga, A-Klasse → B-Klasse', 'Klassen: Bezirksliga, A-Klasse', 'Zielklasse: B-Klasse', 'Kaderzugehörigkeit unbestätigt', 'Datenqualität: vorläufig']) assert.match(text, new RegExp(expected));
+    assert.doesNotMatch(text, /NICHT AUS ROHDATEN|raw segment/);
+    const firstHomeRow = scenario.document.getElementById('list-a').querySelector('.match-preview-player');
+    assert.equal(firstHomeRow.querySelectorAll('.match-preview-player__name').length, 1, 'a transferred player renders once');
+    assert.equal((firstHomeRow.textContent.match(/2025\/26/g) || []).length, 1, 'one player-season renders once');
     assert.equal(scenario.contentArea.querySelectorAll('INPUT').filter((input) => input.checked).length, 8);
     assert.equal(scenario.document.getElementById('list-a').querySelectorAll('INPUT').filter((input) => input.checked).length, 4);
     assert.equal(scenario.document.getElementById('list-b').querySelectorAll('INPUT').filter((input) => input.checked).length, 4);

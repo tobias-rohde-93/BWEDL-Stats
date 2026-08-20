@@ -144,6 +144,11 @@ test('historical match preview preserves global affiliation evidence and ranking
     assert.match(renderer, /manual:\s*true/);
     assert.match(renderer, /previewModelApi\.completeLineup\(Array\.from\(selectedA\)/);
     assert.match(renderer, /selectedA = new Set\(playersA\.slice\(0, 4\)\)/);
+    assert.match(renderer, /player\.sourceClasses/);
+    assert.match(renderer, /player\.sourceSeasons/);
+    assert.match(renderer, /rosterA\.targetClass/);
+    assert.doesNotMatch(renderer, /historicalPrior\.seasons|historicalPrior\.segments/,
+        'the UI consumes only fixed model-returned provenance arrays');
 });
 
 test('match preview offers current table teams without ranking rows', () => {

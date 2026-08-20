@@ -21,6 +21,14 @@ def test_match_preview_backtest_in_node() -> None:
     if completed.stdout.strip() == MARKER:
         pytest.skip(MARKER)
     assert "historical match preview backtest:" in completed.stdout
+    metrics = json.loads(completed.stdout.split("historical match preview backtest: ", 1)[1])
+    assert {
+        "samples", "classChangers", "hybridMae", "previousMae", "unadjustedMae",
+        "enrichedSegments", "eligibleTargets", "ambiguousSeasonsExcluded",
+        "multiClassSeasons", "transferSeasons", "administrativeMarkers",
+    } == set(metrics)
+    assert metrics["samples"] > 0
+    assert metrics["classChangers"] > 0
 
 
 def run_backtest_with_archive(tmp_path: Path, archive: object) -> subprocess.CompletedProcess[str]:
