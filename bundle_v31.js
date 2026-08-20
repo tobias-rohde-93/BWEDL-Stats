@@ -7504,6 +7504,42 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const previewModel = window.BwedlMatchPreviewModel;
+        const requiredModelMethods = [
+            'buildClassCalibration',
+            'buildOutcomeTrainingExamples',
+            'calibrateOutcomeModel',
+            'buildTeamRoster',
+            'completeLineup',
+            'forecastMatch',
+        ];
+        let previewModelAvailable = false;
+        try {
+            previewModelAvailable = Boolean(previewModel)
+                && (typeof previewModel === 'object' || typeof previewModel === 'function')
+                && requiredModelMethods.every((name) => {
+                    const descriptor = Object.getOwnPropertyDescriptor(previewModel, name);
+                    return Boolean(descriptor)
+                        && Object.prototype.hasOwnProperty.call(descriptor, 'value')
+                        && typeof descriptor.value === 'function';
+                });
+        } catch (_error) {
+            previewModelAvailable = false;
+        }
+        if (!previewModelAvailable) {
+            const errorPanel = document.createElement('section');
+            errorPanel.className = 'match-preview-panel match-preview-error';
+            errorPanel.setAttribute('role', 'alert');
+            errorPanel.setAttribute('aria-live', 'polite');
+            const heading = document.createElement('h2');
+            heading.className = 'match-preview-heading';
+            heading.textContent = 'Match-Preview ist derzeit nicht verfügbar';
+            const explanation = document.createElement('p');
+            explanation.textContent = 'Die Prognose konnte nicht geladen werden. Bitte lade die Seite neu oder versuche es später erneut.';
+            errorPanel.appendChild(heading);
+            errorPanel.appendChild(explanation);
+            contentArea.appendChild(errorPanel);
+            return;
+        }
         const archiveTables = window.ARCHIVE_TABLES || [];
         const clubs = clubData.clubs || [];
         const classCalibration = previewModel.buildClassCalibration(archiveData);

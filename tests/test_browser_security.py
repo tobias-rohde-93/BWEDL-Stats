@@ -329,13 +329,19 @@ def test_published_data_stays_inert_online_and_offline() -> None:
     console_errors: list[str] = []
     page_errors: list[str] = []
     requested_urls: list[str] = []
+    model_response_statuses: list[int] = []
 
     with github_pages_server() as (server, base_url), sync_playwright() as playwright:
         browser = playwright.chromium.launch()
         context = browser.new_context(service_workers="allow", accept_downloads=True)
         page = context.new_page()
-        page.add_init_script(path=str(ROOT / "match_preview_model.js"))
         page.on("request", lambda request: requested_urls.append(request.url))
+        page.on(
+            "response",
+            lambda response: model_response_statuses.append(response.status)
+            if urlsplit(response.url).path == f"{PAGES_PREFIX}match_preview_model.js"
+            else None,
+        )
         page.on("pageerror", lambda error: page_errors.append(str(error)))
         page.on(
             "console",
@@ -344,6 +350,12 @@ def test_published_data_stays_inert_online_and_offline() -> None:
 
         page.goto(base_url, wait_until="domcontentloaded")
         expect(page.locator("#current-league-title")).to_have_text("Dashboard")
+        assert page.evaluate(
+            "typeof window.BwedlMatchPreviewModel?.buildTeamRoster === 'function'"
+        )
+        assert model_response_statuses and all(
+            status == 200 for status in model_response_statuses
+        )
 
         with page.expect_navigation(wait_until="domcontentloaded"):
             page.locator("#update-btn").click()
@@ -599,6 +611,42 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         )
         page.set_viewport_size({"width": 390, "height": 844})
 
+        page.evaluate(
+            """() => {
+                window.__realMatchPreviewModel = window.BwedlMatchPreviewModel;
+                window.BwedlMatchPreviewModel = undefined;
+                location.hash = '#tools';
+            }"""
+        )
+        expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
+        page.evaluate("location.hash = '#matchPreview'")
+        missing_model_alert = page.get_by_role("alert")
+        expect(missing_model_alert).to_contain_text(
+            "Match-Preview ist derzeit nicht verfügbar"
+        )
+        page.evaluate(
+            """() => {
+                window.__partialModelCalls = 0;
+                window.BwedlMatchPreviewModel = {
+                    buildClassCalibration() { window.__partialModelCalls += 1; },
+                };
+                location.hash = '#tools';
+            }"""
+        )
+        expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
+        page.evaluate("location.hash = '#matchPreview'")
+        expect(page.get_by_role("alert")).to_contain_text(
+            "Match-Preview ist derzeit nicht verfügbar"
+        )
+        assert page.evaluate("window.__partialModelCalls") == 0
+        page.evaluate(
+            """() => {
+                window.BwedlMatchPreviewModel = window.__realMatchPreviewModel;
+                location.hash = '#tools';
+            }"""
+        )
+        expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
+
         assert page.locator("[data-bwedl-injected]").count() == 0
         assert page.evaluate("document.body.dataset.xss || null") is None
         assert page.get_by_text("JS Error:", exact=False).count() == 0
@@ -615,6 +663,9 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         context.set_offline(True)
         page.reload(wait_until="domcontentloaded")
         expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
+        assert page.evaluate(
+            "typeof window.BwedlMatchPreviewModel?.buildTeamRoster === 'function'"
+        )
         expect(page.locator("#my-profile-link")).to_contain_text("PLAYER_SENTINEL")
         assert page.locator("[data-bwedl-injected]").count() == 0
         assert page.evaluate("document.body.dataset.xss || null") is None
@@ -645,5 +696,10 @@ def test_published_data_stays_inert_online_and_offline() -> None:
     ]
     assert page_errors == []
     assert application_console_errors == []
+    assert model_response_statuses and all(status == 200 for status in model_response_statuses)
+    assert any(
+        urlsplit(url).path == f"{PAGES_PREFIX}match_preview_model.js"
+        for url in requested_urls
+    )
     assert not any("/api/" in urlsplit(url).path for url in requested_urls)
     assert not any("/api/" in path for path in server.request_paths)

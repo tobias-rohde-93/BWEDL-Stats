@@ -273,6 +273,43 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     };
 }
 
+function renderUnavailableModelScenario(model) {
+    const document = createDocument();
+    const contentArea = document.createElement('main');
+    document.root = contentArea;
+    const topBarTitle = document.createElement('div');
+    const window = model === undefined ? {} : { BwedlMatchPreviewModel: model };
+    const clubData = { clubs: [] };
+    const archiveData = {};
+    const rendererDeclaration = extractFunction('renderMatchPreview');
+    const render = Function(
+        'document', 'contentArea', 'topBarTitle', 'window', 'clubData', 'archiveData',
+        `${rendererDeclaration}; return renderMatchPreview;`,
+    )(document, contentArea, topBarTitle, window, clubData, archiveData);
+
+    assert.doesNotThrow(() => render());
+    return { document, contentArea, topBarTitle };
+}
+
+{
+    const scenario = renderUnavailableModelScenario(undefined);
+    const alert = scenario.contentArea.querySelector('[role="alert"]');
+    assert.ok(alert, 'missing model dependency must render an accessible error');
+    assert.match(alert.textContent, /Match-Preview ist derzeit nicht verfügbar/);
+    assert.equal(alert.attributes['aria-live'], 'polite');
+    assert.equal(scenario.topBarTitle.textContent, 'Match Preview');
+    assert.equal(scenario.contentArea.querySelectorAll('SCRIPT').length, 0);
+}
+
+{
+    let partialMethodCalls = 0;
+    const scenario = renderUnavailableModelScenario({
+        buildClassCalibration() { partialMethodCalls += 1; },
+    });
+    assert.ok(scenario.contentArea.querySelector('[role="alert"]'));
+    assert.equal(partialMethodCalls, 0, 'partial APIs must fail closed before any model method runs');
+}
+
 {
     const scenario = renderScenario(true);
     assert.deepEqual({ calibration: scenario.model.calls.calibration, training: scenario.model.calls.training, outcome: scenario.model.calls.outcome }, { calibration: 1, training: 1, outcome: 1 });
