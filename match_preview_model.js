@@ -253,7 +253,7 @@
         return name ? name.toLocaleLowerCase('de-DE') : '';
     }
 
-    function validateRoundSequence(rounds) {
+    function validateRoundSequence(rounds, strictArchiveNumbers) {
         if (!rounds || typeof rounds !== 'object') return null;
         const arrayInspection = inspectArray(rounds);
         const namesInspection = inspectNames(rounds);
@@ -269,7 +269,9 @@
             const number = Number(match[1]);
             if (!Number.isSafeInteger(number)) return null;
             const value = descriptor.value;
-            const numeric = parseCanonicalInteger(value);
+            const numeric = strictArchiveNumbers
+                ? (isSafeNonnegativeInteger(value) ? (Object.is(value, -0) ? 0 : value) : null)
+                : parseCanonicalInteger(value);
             const marker = typeof value === 'string'
                 ? value.normalize('NFKC').trim().toLocaleLowerCase('de-DE')
                 : null;
@@ -339,7 +341,7 @@
         if (presentPreviewFields !== 0 && presentPreviewFields !== preview.length) return null;
         if (presentPreviewFields === preview.length) {
             if (!clubId) return null;
-            const stats = validateRoundSequence(preview[0].descriptor.value);
+            const stats = validateRoundSequence(preview[0].descriptor.value, !virtual);
             const appearances = Object.is(preview[1].descriptor.value, -0)
                 ? 0 : preview[1].descriptor.value;
             const average = Object.is(preview[2].descriptor.value, -0)
@@ -646,6 +648,10 @@
             for (const sourceRecord of historyValues.values) {
                 const parsed = normalizedRecord(sourceRecord, playerId);
                 if (parsed.identityConflict) {
+                    identityConflict = true;
+                    break;
+                }
+                if (parsed.isV2 === true && !parsed.record) {
                     identityConflict = true;
                     break;
                 }
@@ -1836,6 +1842,7 @@
         }
         if (!candidates.length) return { ambiguous: true, segments: [], clubId: null };
         const greatestRound = Math.max(...candidates.map((candidate) => candidate.latestRound));
+        if (greatestRound < 0) return { ambiguous: true, segments: [], clubId: null };
         const latest = candidates.filter((candidate) => candidate.latestRound === greatestRound);
         const clubs = new Set(latest.map((candidate) => candidate.clubId));
         if (clubs.size !== 1) return { ambiguous: true, segments: [], clubId: null };
@@ -2516,10 +2523,19 @@
         }
 
         const buckets = {};
+        const bucketPlayerIds = new Map();
         function addParticipant(key, participant) {
-            if (!ownValue(buckets, key)) defineData(buckets, key, []);
-            if (buckets[key].some((item) => item.playerId === participant.playerId)) return;
+            performance.participantInsertAttempts += 1;
+            if (!ownValue(buckets, key)) {
+                defineData(buckets, key, []);
+                bucketPlayerIds.set(key, new Set());
+            }
+            performance.participantIdentityChecks += 1;
+            const identities = bucketPlayerIds.get(key);
+            if (identities.has(participant.playerId)) return;
+            identities.add(participant.playerId);
             buckets[key].push(participant);
+            performance.participantUniqueAdds += 1;
         }
 
         for (const playerId of ownNames(archiveIndex.histories).sort((a, b) => a.localeCompare(b, 'en'))) {
@@ -2621,12 +2637,16 @@
                 participantIndexBuilds: 0,
                 historyRecordsScanned: 0,
                 historySegmentsScanned: 0,
+                participantInsertAttempts: 0,
+                participantIdentityChecks: 0,
+                participantUniqueAdds: 0,
                 participantLookups: 0,
             },
             excluded: {
                 malformed: 0,
                 teamMapping: 0,
                 participants: 0,
+                crossSidePlayer: 0,
                 duplicate: 0,
                 conflictingDuplicate: 0,
                 chronology: 0,
@@ -2714,6 +2734,12 @@
                     participantIndex, match.season, match.leagueClass, match.round,
                     awayMapping, diagnostics.performance,
                 );
+                const homePlayerIds = new Set(homePlayers.map((player) => player.playerId));
+                if (awayPlayers.some((player) => homePlayerIds.has(player.playerId))) {
+                    diagnostics.excluded.participants += 1;
+                    diagnostics.excluded.crossSidePlayer += 1;
+                    continue;
+                }
                 if (homePlayers.length !== 4 || awayPlayers.length !== 4) {
                     diagnostics.excluded.participants += 1;
                     continue;
