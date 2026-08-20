@@ -78,6 +78,7 @@ class _ArchivePlayerRecord:
     segments: tuple[_ArchiveSegmentRecord, ...]
     identity_ambiguous: bool
     round_overlap_ambiguous: bool
+    unknown_fields: tuple[str, ...]
 
 
 REQUIRED_RANKING_CATEGORIES = (
@@ -109,6 +110,19 @@ ARCHIVE_PREVIEW_FIELDS = frozenset(
     {"rounds", "appearances", "points_per_appearance"}
 )
 ARCHIVE_ADMIN_ROUND_MARKERS = frozenset({"x", "vw", "d", "kp", "*"})
+ARCHIVE_LEGACY_FIELDS = frozenset({
+    "id", "season", "league", "rank", "name", "points", "v_nr",
+    "rounds", "appearances", "points_per_appearance",
+})
+ARCHIVE_V2_CONTAINER_FIELDS = frozenset({
+    "season", "league", "rank", "name", "points", "primary_segment_id",
+    "segments", "v_nr", "rounds", "appearances", "points_per_appearance",
+    "identity_ambiguous", "round_overlap_ambiguous",
+})
+ARCHIVE_V2_SEGMENT_FIELDS = frozenset({
+    "segment_id", "league", "rank", "name", "points", "v_nr", "rounds",
+    "appearances", "points_per_appearance",
+})
 
 
 def _parse_season(value: Any) -> str | None:
@@ -630,24 +644,21 @@ def _parse_archive_season(value: Any) -> str | None:
     if not isinstance(value, str):
         return None
     normalized = value.strip()
-    short = re.fullmatch(r"([0-9]{2})/([0-9]{2})", normalized)
-    if short is not None:
-        start_short, end_short = (int(part) for part in short.groups())
-        start_year = 2000 + start_short
-        end_year = 2000 + end_short
-        if end_year > start_year:
-            return f"{start_year}/{end_short:02d}"
-        return None
-
-    long = re.fullmatch(
-        r"([0-9]{4})[/-]([0-9]{2}|[0-9]{4})", normalized
+    match = re.fullmatch(
+        r"([0-9]{2}|[0-9]{4})[/-]([0-9]{2}|[0-9]{4})", normalized
     )
-    if long is None:
+    if match is None:
         return None
-    start_year = int(long.group(1))
-    raw_end = long.group(2)
-    end_year = int(raw_end) if len(raw_end) == 4 else start_year // 100 * 100 + int(raw_end)
-    if end_year <= start_year:
+    raw_start, raw_end = match.groups()
+    start_year = int(raw_start)
+    if len(raw_start) == 2:
+        start_year += 1900 if start_year >= 70 else 2000
+    end_year = int(raw_end)
+    if len(raw_end) == 2:
+        end_year += (start_year // 100) * 100
+        if end_year < start_year:
+            end_year += 100
+    if end_year - start_year not in {1, 2}:
         return None
     return f"{start_year}/{end_year % 100:02d}"
 
@@ -957,6 +968,14 @@ def _archive_segments(
         ), ()
 
     issues: list[str] = []
+    unknown_container_fields = sorted(
+        set(record).difference(ARCHIVE_V2_CONTAINER_FIELDS)
+    )
+    if unknown_container_fields:
+        issues.append(
+            "v2 container schema drift: unknown fields "
+            + ", ".join(unknown_container_fields)
+        )
     raw_segments = record.get("segments")
     if not isinstance(raw_segments, list) or not raw_segments:
         return True, (), ("v2 segments must be a nonempty list",)
@@ -986,6 +1005,14 @@ def _archive_segments(
             key: value for key, value in raw_segment.items()
             if key != "segment_id"
         }
+        unknown_segment_fields = sorted(
+            set(raw_segment).difference(ARCHIVE_V2_SEGMENT_FIELDS)
+        )
+        if unknown_segment_fields:
+            issues.append(
+                f"v2 segment {index} schema drift: unknown fields "
+                + ", ".join(unknown_segment_fields)
+            )
         prohibited = {
             "id", "season", "segments", "primary_segment_id",
             "identity_ambiguous", "round_overlap_ambiguous",
@@ -1064,6 +1091,43 @@ def _legacy_record_matches_v2_segment(
         and _archive_fingerprint(previous_extra)
         == _archive_fingerprint(candidate_extra)
     )
+
+
+def _legacy_unknown_fields_are_grandfathered(
+    player_key: str,
+    candidate: _ArchivePlayerRecord,
+    previous_records: list[_ArchivePlayerRecord],
+) -> bool:
+    if candidate.is_v2 or not candidate.unknown_fields:
+        return True
+    candidate_signature = _archive_legacy_signature(
+        player_key, candidate.record
+    )
+    if candidate_signature is None:
+        return False
+    matches = []
+    for previous in previous_records:
+        if (
+            previous.is_v2
+            or _archive_legacy_signature(player_key, previous.record)
+            != candidate_signature
+        ):
+            continue
+        previous_projection = {
+            field: previous.record[field]
+            for field in candidate.unknown_fields
+            if field in previous.record
+        }
+        candidate_projection = {
+            field: candidate.record[field] for field in candidate.unknown_fields
+        }
+        if (
+            len(previous_projection) == len(candidate_projection)
+            and _archive_fingerprint(previous_projection)
+            == _archive_fingerprint(candidate_projection)
+        ):
+            matches.append(previous)
+    return len(matches) == 1
 
 
 def _archive_rows_fingerprint(rows: Any) -> str | None:
@@ -1262,6 +1326,12 @@ def validate_archive_payloads(
                         round_overlap_ambiguous=(
                             record.get("round_overlap_ambiguous") is True
                         ),
+                        unknown_fields=tuple(sorted(
+                            set(record).difference(
+                                ARCHIVE_V2_CONTAINER_FIELDS
+                                if is_v2 else ARCHIVE_LEGACY_FIELDS
+                            )
+                        )),
                     )
                 )
             players[player_key] = inspected_records
@@ -1321,6 +1391,21 @@ def validate_archive_payloads(
     previous_table_fingerprints, previous_table_records = inspect_tables(
         previous_tables, "Previous", previous_seasons
     )
+
+    for player_key, candidate_records in candidate_players.items():
+        previous_records = previous_players.get(player_key, [])
+        for candidate_record in candidate_records:
+            if (
+                candidate_record.unknown_fields
+                and not _legacy_unknown_fields_are_grandfathered(
+                    player_key, candidate_record, previous_records
+                )
+            ):
+                reasons.append(
+                    f"Candidate archive player {player_key} schema drift: "
+                    "unknown legacy fields "
+                    + ", ".join(candidate_record.unknown_fields)
+                )
 
     for player_key, previous_records in previous_players.items():
         if player_key not in candidate_players:

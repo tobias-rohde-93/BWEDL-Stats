@@ -2241,6 +2241,106 @@ def test_archive_payload_requires_v2_season_containers_newest_first() -> None:
     assert "newest-first" in " ".join(result.reasons).lower()
 
 
+@pytest.mark.parametrize("invalid_season", ["2020/2099", "2020/99", "20/99"])
+@pytest.mark.parametrize("schema", ["legacy", "v2", "tables"])
+def test_archive_payload_rejects_season_spans_outside_producer_contract(
+    invalid_season: str, schema: str
+) -> None:
+    data = {"4711": [archive_record("2020/2021")]}
+    tables = [archive_table("2020/2021")]
+    if schema == "legacy":
+        data = {"4711": [archive_record(invalid_season)]}
+    elif schema == "v2":
+        record = segmented_archive_record(season="2020/2021")
+        record["season"] = invalid_season
+        data = {"4711": [record]}
+    else:
+        tables = [archive_table(invalid_season)]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "invalid season" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_uses_producer_century_rollover_for_short_season() -> None:
+    data = {"4711": [archive_record("99/00")]}
+    tables = [archive_table("99/00")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "1999/00"
+
+
+@pytest.mark.parametrize(
+    "extra_value",
+    ["new source", {"nested": 2**53}, {"safe_but_unknown": [1, 2, 3]}],
+)
+def test_archive_payload_blocks_new_unknown_v1_fields(extra_value: Any) -> None:
+    previous = {"4711": [legacy_preview_record()]}
+    candidate_record = enriched_archive_record()
+    candidate_record["source_metadata"] = extra_value
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]}, previous, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert "schema drift" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_allows_byte_identical_grandfathered_v1_extra() -> None:
+    previous_record = {
+        **legacy_preview_record(),
+        "source_metadata": {"published": ["legacy", 2**53]},
+    }
+    candidate_record = {
+        **enriched_archive_record(),
+        "source_metadata": {"published": ["legacy", 2**53]},
+    }
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        {"4711": [candidate_record]},
+        {"4711": [previous_record]},
+        tables,
+        tables,
+    )
+
+    assert result.decision is Decision.PUBLISH
+
+
+def test_archive_payload_blocks_self_consistent_unknown_v2_segment_field() -> None:
+    record = segmented_archive_record(segments=[{
+        "league": "A-Klasse",
+        "rank": 1,
+        "name": "Player",
+        "points": 10,
+        "source_metadata": {"nested_unsafe": 2**53},
+    }])
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "schema drift" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_blocks_unknown_v2_container_field() -> None:
+    record = segmented_archive_record()
+    record["source_metadata"] = {"nested_unsafe": 2**53}
+    data = {"4711": [record]}
+    tables = [archive_table("2024/2025")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert "schema drift" in " ".join(result.reasons).lower()
+
+
 @pytest.mark.parametrize(
     ("candidate", "previous", "expected_metrics"),
     [

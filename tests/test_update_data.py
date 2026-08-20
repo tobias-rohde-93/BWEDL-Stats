@@ -328,6 +328,38 @@ def test_invalid_archive_enrichment_blocks_and_preserves_public_bytes(
     assert reason in " ".join(archives["reasons"]).lower()
 
 
+def test_new_unknown_legacy_archive_field_blocks_without_public_mutation(
+    tmp_path: Path,
+) -> None:
+    root, staging, artifacts = (
+        tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    )
+    seed_root(root)
+    write_js(
+        root / "archive_data.js",
+        "ARCHIVE_DATA",
+        {"4711": [legacy_archive_record()]},
+    )
+    before = (root / "archive_data.js").read_bytes()
+    candidate = enriched_archive_record()
+    candidate["source_metadata"] = {"nested_unsafe": 2**53}
+
+    code = update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_candidate_runner(candidate),
+        clock=lambda: NOW,
+    )
+
+    assert code == 1
+    assert (root / "archive_data.js").read_bytes() == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    archives = next(item for item in report["domains"] if item["domain"] == "archives")
+    assert archives["decision"] == "blocked"
+    assert "schema drift" in " ".join(archives["reasons"]).lower()
+
+
 @pytest.mark.parametrize("change", ["remove", "rewrite"])
 def test_published_v2_segment_loss_or_rewrite_blocks_and_preserves_archive_bytes(
     tmp_path: Path, change: str
