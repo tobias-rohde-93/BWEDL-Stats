@@ -19,6 +19,17 @@
     const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER;
     const INVALID_CLONE = Object.freeze({ invalid: true });
     const ARCHIVE_INDEXES = new WeakSet();
+    const EXCLUDED_COMPETITION_TOKENS = Object.freeze([
+        'mix',
+        'mixed',
+        'pokal',
+        'pokalrunde',
+        'pokalfinale',
+        'cup',
+        'cuprunde',
+        'cupfinale',
+        'ligapokal',
+    ]);
 
     function ownData(object, key) {
         if (!object || (typeof object !== 'object' && typeof object !== 'function')) return null;
@@ -97,16 +108,20 @@
         if (typeof value === 'number') return Number.isFinite(value) ? value : INVALID_CLONE;
         if (typeof value !== 'object') return INVALID_CLONE;
 
+        const arrayInspection = inspectArray(value);
+        const namesInspection = inspectNames(value);
+        if (!arrayInspection.ok || !namesInspection.ok) return INVALID_CLONE;
         const visited = seen || new WeakMap();
         if (visited.has(value)) return INVALID_CLONE;
-        const clone = Array.isArray(value) ? [] : {};
+        const clone = arrayInspection.isArray ? [] : {};
         visited.set(value, clone);
-        for (const key of ownNames(value)) {
-            if (Array.isArray(value) && key === 'length') continue;
-            const descriptor = ownData(value, key);
-            if (!descriptor || !descriptor.enumerable) continue;
-            const child = cloneOwnData(descriptor.value, visited);
-            if (child === INVALID_CLONE) continue;
+        for (const key of namesInspection.names) {
+            if (arrayInspection.isArray && key === 'length') continue;
+            const inspection = inspectOwn(value, key);
+            if (!inspection.ok || !inspection.isData) return INVALID_CLONE;
+            if (!inspection.descriptor.enumerable) continue;
+            const child = cloneOwnData(inspection.descriptor.value, visited);
+            if (child === INVALID_CLONE) return INVALID_CLONE;
             defineData(clone, key, child);
         }
         visited.delete(value);
@@ -141,9 +156,14 @@
         if (typeof value !== 'string') return null;
         const text = value.normalize('NFKC').toLocaleLowerCase('de-DE');
         const token = (word) => new RegExp(`(?<![\\p{L}\\p{N}])${word}(?![\\p{L}\\p{N}])`, 'u');
-        if (['mix', 'pokal', 'cup', 'ligapokal'].some((word) => token(word).test(text))) return null;
+        if (EXCLUDED_COMPETITION_TOKENS.some((word) => token(word).test(text))) return null;
 
         const categories = new Set();
+        const addCategory = (category) => {
+            categories.add(category === 'bezirksliga'
+                ? 'Bezirksliga'
+                : `${category.toUpperCase()}-Klasse`);
+        };
         if (token('bezirksliga').test(text)) categories.add('Bezirksliga');
         for (const match of text.matchAll(
             /(?<![\p{L}\p{N}])([abc])\s*[-\u2010-\u2015 ]?\s*klasse(?![\p{L}\p{N}])/gu,
@@ -151,10 +171,10 @@
             categories.add(`${match[1].toUpperCase()}-Klasse`);
         }
         for (const match of text.matchAll(
-            /(?<![\p{L}\p{N}])([abc])(?:\s*[-\u2010-\u2015]\s*)?\/\s*([abc])(?=\s*(?:[-\u2010-\u2015]\s*)?klasse(?![\p{L}\p{N}])|\s|$)/gu,
+            /(?<![\p{L}\p{N}])(bezirksliga|[abc])(?:\s*[-\u2010-\u2015]?\s*klasse)?\s*(?:[-\u2010-\u2015]\s*)?(?:\/|&|\+|und)\s*(bezirksliga|[abc])(?:\s*[-\u2010-\u2015]?\s*klasse)?(?![\p{L}\p{N}])/gu,
         )) {
-            categories.add(`${match[1].toUpperCase()}-Klasse`);
-            categories.add(`${match[2].toUpperCase()}-Klasse`);
+            addCategory(match[1]);
+            addCategory(match[2]);
         }
         return categories.size === 1 ? categories.values().next().value : null;
     }
@@ -292,7 +312,10 @@
         }
 
         const clone = cloneOwnData(record);
-        const result = clone === INVALID_CLONE || !clone || typeof clone !== 'object' ? {} : clone;
+        if (clone === INVALID_CLONE || !clone || typeof clone !== 'object') {
+            return { identityConflict: true };
+        }
+        const result = clone;
         result.id = playerId;
         result.season = identity.season;
         result.seasonStart = identity.seasonStart;
@@ -310,7 +333,7 @@
         if (clubDescriptor && validClub) result.v_nr = clubDescriptor.value;
 
         const previewDescriptors = ['rounds', 'appearances', 'points_per_appearance']
-            .map((key) => ownData(record, key));
+            .map((key) => ownData(result, key));
         const presentPreviewFields = previewDescriptors.filter(Boolean).length;
         result.completeEvidence = false;
         result.previewEligible = false;
@@ -496,11 +519,52 @@
         const appearances = ownData(record, 'appearances');
         if (!leagueClass || !season || !points || !appearances) return null;
         const meanDescriptor = ownData(classSeasonMeans, `${leagueClass.value}|${season.value}`);
-        if (!meanDescriptor || !meanDescriptor.value || typeof meanDescriptor.value.mean !== 'number'
-            || !Number.isFinite(meanDescriptor.value.mean)) return null;
-        const stable = (points.value + PRIOR_APPEARANCES * meanDescriptor.value.mean)
+        if (!meanDescriptor || !meanDescriptor.value || typeof meanDescriptor.value !== 'object') return null;
+        const mean = ownData(meanDescriptor.value, 'mean');
+        if (!mean || typeof mean.value !== 'number' || !Number.isFinite(mean.value)) return null;
+        const stable = (points.value + PRIOR_APPEARANCES * mean.value)
             / (appearances.value + PRIOR_APPEARANCES);
         return Number.isFinite(stable) ? stable : null;
+    }
+
+    function displayExactWeight(value) {
+        return value <= BigInt(MAX_SAFE_INTEGER) ? Number(value) : value.toString();
+    }
+
+    function prepareRobustWeights(observations) {
+        if (!observations.length) {
+            return {
+                observations: [],
+                rawTotalWeight: 0,
+                weightMedian: 0,
+                weightCap: 0,
+                cappedWeightCount: 0,
+            };
+        }
+        const sortedWeights = observations
+            .map((observation) => observation.rawWeight)
+            .sort((left, right) => left - right);
+        const weightMedian = sortedWeights[Math.floor((sortedWeights.length - 1) / 2)];
+        const weightCap = weightMedian > Math.floor(MAX_SAFE_INTEGER / 2)
+            ? MAX_SAFE_INTEGER
+            : weightMedian * 2;
+        const prepared = observations.map((observation) => ({
+            ...observation,
+            effectiveWeight: Math.min(observation.rawWeight, weightCap),
+        }));
+        const rawTotal = prepared.reduce(
+            (sum, observation) => sum + BigInt(observation.rawWeight),
+            0n,
+        );
+        return {
+            observations: prepared,
+            rawTotalWeight: displayExactWeight(rawTotal),
+            weightMedian,
+            weightCap,
+            cappedWeightCount: prepared.filter(
+                (observation) => observation.effectiveWeight < observation.rawWeight,
+            ).length,
+        };
     }
 
     function weightedMedian(observations) {
@@ -510,15 +574,17 @@
             || left.playerId.localeCompare(right.playerId, 'en')
             || left.olderSeason.localeCompare(right.olderSeason, 'en')
         ));
-        const totalWeight = sorted.reduce((sum, observation) => sum + observation.weight, 0);
-        const halfway = totalWeight / 2;
-        let cumulative = 0;
+        const totalWeight = sorted.reduce(
+            (sum, observation) => sum + BigInt(observation.effectiveWeight),
+            0n,
+        );
+        let cumulative = 0n;
         for (const observation of sorted) {
-            cumulative += observation.weight;
-            if (cumulative >= halfway) {
+            cumulative += BigInt(observation.effectiveWeight);
+            if (cumulative * 2n >= totalWeight) {
                 return {
                     value: Object.is(observation.value, -0) ? 0 : observation.value,
-                    totalWeight,
+                    totalWeight: displayExactWeight(totalWeight),
                     sorted,
                 };
             }
@@ -586,7 +652,7 @@
                     olderSeason: older.season,
                     newerSeason: newer.season,
                     value: lowRaw - highRaw,
-                    weight: Math.min(older.appearances, newer.appearances),
+                    rawWeight: Math.min(older.appearances, newer.appearances),
                 });
             }
         }
@@ -595,12 +661,18 @@
         const edgeDiagnostics = {};
         for (const edge of Object.keys(observationsByEdge)) {
             const observations = observationsByEdge[edge];
-            const median = weightedMedian(observations);
+            const robustWeights = prepareRobustWeights(observations);
+            const median = weightedMedian(robustWeights.observations);
             const values = observations.map((observation) => observation.value).sort((a, b) => a - b);
             const diagnostic = {
                 count: observations.length,
                 published: observations.length >= MIN_TRANSITIONS,
                 totalWeight: median ? median.totalWeight : 0,
+                rawTotalWeight: robustWeights.rawTotalWeight,
+                weightMedian: robustWeights.weightMedian,
+                weightCap: robustWeights.weightCap,
+                cappedWeightCount: robustWeights.cappedWeightCount,
+                weightMedianRule: 'lower-unweighted-raw-weight',
                 medianRule: 'lower-weighted',
                 observationRange: values.length ? [values[0], values[values.length - 1]] : [],
                 observations: (median ? median.sorted : []).map((observation) => ({
@@ -608,7 +680,9 @@
                     olderSeason: observation.olderSeason,
                     newerSeason: observation.newerSeason,
                     value: observation.value,
-                    weight: observation.weight,
+                    rawWeight: observation.rawWeight,
+                    effectiveWeight: observation.effectiveWeight,
+                    capped: observation.effectiveWeight < observation.rawWeight,
                 })),
             };
             defineData(edgeDiagnostics, edge, diagnostic);
@@ -617,6 +691,11 @@
                     count: observations.length,
                     offset: median.value,
                     totalWeight: median.totalWeight,
+                    rawTotalWeight: robustWeights.rawTotalWeight,
+                    weightMedian: robustWeights.weightMedian,
+                    weightCap: robustWeights.weightCap,
+                    cappedWeightCount: robustWeights.cappedWeightCount,
+                    weightMedianRule: 'lower-unweighted-raw-weight',
                     medianRule: 'lower-weighted',
                     observationRange: diagnostic.observationRange.slice(),
                 });

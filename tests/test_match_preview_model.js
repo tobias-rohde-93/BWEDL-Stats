@@ -103,6 +103,15 @@ assert.equal(Model.normalizeLeagueClass('A/B'), null);
 assert.equal(Model.normalizeLeagueClass('A-/B-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('A-Klasse / B-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('Bezirksliga A-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('A / B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('A und B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('A- und B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('A & B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('A + B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('Bezirksliga / A'), null);
+assert.equal(Model.normalizeLeagueClass('Pokalrunde A-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('Cupfinale B-Klasse'), null);
+assert.equal(Model.normalizeLeagueClass('Mixed C-Klasse'), null);
 assert.equal(Model.canonicalSeason('20/22'), '2020/22');
 assert.equal(Model.canonicalSeason('22/23'), '2022/23');
 assert.equal(Model.canonicalSeason('1999/00'), '1999/00');
@@ -210,6 +219,46 @@ assert.deepEqual(Model.buildClassSeasonMeans(spoofedIndex), {});
 assert.deepEqual(Model.buildClassCalibration(spoofedIndex).transitions, {});
 assert.equal(spoofedHistoryTrapCalls, 0, 'only closure-branded indexes bypass raw archive validation');
 
+let recordOwnKeysCalls = 0;
+const trappedRecord = new Proxy(record({
+    id: '7010', season: '2024/2025', name: 'Trapped Record', league: 'A-Klasse', mean: 5,
+}), {
+    ownKeys() {
+        recordOwnKeysCalls += 1;
+        throw new Error('record ownKeys failure');
+    },
+});
+let extraGetterCalls = 0;
+const accessorExtraRecord = record({
+    id: '7011', season: '2024/2025', name: 'Accessor Extra', league: 'A-Klasse', mean: 5,
+});
+Object.defineProperty(accessorExtraRecord, 'extra', {
+    enumerable: true,
+    get() { extraGetterCalls += 1; throw new Error('extra getter must not run'); },
+});
+const trappedExtraValue = new Proxy({}, {
+    ownKeys() { throw new Error('nested ownKeys failure'); },
+});
+const trappedExtraRecord = {
+    ...record({ id: '7012', season: '2024/2025', name: 'Trapped Extra', league: 'A-Klasse', mean: 5 }),
+    extra: trappedExtraValue,
+};
+const revokedRoundsHandle = Proxy.revocable({ R1: 5, R2: 5, R3: 5, R4: 5 }, {});
+const revokedRoundsRecord = record({
+    id: '7013', season: '2024/2025', name: 'Revoked Rounds', league: 'A-Klasse', mean: 5,
+});
+revokedRoundsRecord.rounds = revokedRoundsHandle.proxy;
+revokedRoundsHandle.revoke();
+const unsafeCloneIndex = Model.buildArchiveIndex({
+    7010: [trappedRecord],
+    7011: [accessorExtraRecord],
+    7012: [trappedExtraRecord],
+    7013: [revokedRoundsRecord],
+});
+assert.deepEqual(unsafeCloneIndex.unusablePlayerIds, ['7010', '7011', '7012', '7013']);
+assert.equal(recordOwnKeysCalls > 0, true);
+assert.equal(extraGetterCalls, 0);
+
 const zeroId = '8000';
 const zeroArchive = {
     [zeroId]: [{
@@ -252,6 +301,21 @@ Object.defineProperty(spoofedStableRecord, 'leagueClass', {
 });
 assert.equal(Model.stabilizeSeasonRecord(spoofedStableRecord, shrinkMeans), null);
 assert.equal(stabilizeGetterCalls, 0);
+let nestedMeanGetterCalls = 0;
+const accessorMean = {};
+Object.defineProperty(accessorMean, 'mean', {
+    enumerable: true,
+    get() { nestedMeanGetterCalls += 1; throw new Error('mean getter must not run'); },
+});
+assert.equal(Model.stabilizeSeasonRecord(shrinkIndex.histories['8100'][0], {
+    'A-Klasse|2025/26': accessorMean,
+}), null);
+assert.equal(nestedMeanGetterCalls, 0);
+const revokedMeanHandle = Proxy.revocable({ mean: 7.5 }, {});
+revokedMeanHandle.revoke();
+assert.equal(Model.stabilizeSeasonRecord(shrinkIndex.histories['8100'][0], {
+    'A-Klasse|2025/26': revokedMeanHandle.proxy,
+}), null);
 
 const overflowRecord = (id, value) => ({
     id,
@@ -367,6 +431,50 @@ outlierArchive['1007'][1] = record({
 const outlierCalibration = Model.buildClassCalibration(outlierArchive);
 assert.equal(outlierCalibration.transitions['A-Klasse>B-Klasse'].offset, 1);
 assert.deepEqual(outlierCalibration.diagnostics.edges['A-Klasse>B-Klasse'].observationRange, [1, 101]);
+
+function makeWeightedOutlierArchive({ lowOutlier = false } = {}) {
+    const archive = makeTransitionArchive();
+    archive['1007'] = [
+        record({
+            id: '1007', season: '2024/2025', name: 'Spieler 1007', league: 'A-Klasse',
+            mean: lowOutlier ? 105 : 5, appearances: 99,
+        }),
+        record({
+            id: '1007', season: '2025/2026', name: 'Spieler 1007', league: 'B-Klasse',
+            mean: lowOutlier ? 6 : 106, appearances: 99,
+        }),
+    ];
+    return archive;
+}
+
+for (const weightedOutlierArchive of [
+    makeWeightedOutlierArchive(),
+    makeWeightedOutlierArchive({ lowOutlier: true }),
+]) {
+    const before = JSON.stringify(weightedOutlierArchive);
+    const weightedOutlierCalibration = Model.buildClassCalibration(weightedOutlierArchive);
+    const transition = weightedOutlierCalibration.transitions['A-Klasse>B-Klasse'];
+    const diagnostics = weightedOutlierCalibration.diagnostics.edges['A-Klasse>B-Klasse'];
+    assert.equal(transition.offset, 1);
+    assert.equal(transition.rawTotalWeight, 127);
+    assert.equal(transition.totalWeight, 36);
+    assert.equal(transition.weightMedian, 4);
+    assert.equal(transition.weightCap, 8);
+    assert.equal(transition.cappedWeightCount, 1);
+    assert.equal(transition.weightMedianRule, 'lower-unweighted-raw-weight');
+    assert.equal(diagnostics.observations.filter((item) => item.rawWeight === 99).length, 1);
+    assert.equal(diagnostics.observations.filter((item) => item.effectiveWeight === 8).length, 1);
+    assert.equal(JSON.stringify(weightedOutlierArchive), before);
+
+    const reversedArchive = Object.fromEntries(
+        Object.entries(weightedOutlierArchive).reverse().map(([id, history]) => [id, history.slice().reverse()]),
+    );
+    assert.equal(
+        Model.buildClassCalibration(reversedArchive).transitions['A-Klasse>B-Klasse'].offset,
+        1,
+        'input and history ordering do not affect capped weighted calibration',
+    );
+}
 
 const tieArchive = makeTransitionArchive();
 for (let index = 4; index < 8; index += 1) {
