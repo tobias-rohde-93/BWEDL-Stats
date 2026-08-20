@@ -109,7 +109,11 @@ def seed_root(root: Path) -> None:
     write_json_pair(root, "league_data", "LEAGUE_DATA", leagues())
     write_json_pair(root, "ranking_data", "RANKING_DATA", rankings())
     write_json_pair(root, "club_data", "CLUB_DATA", clubs())
-    write_js(root / "archive_data.js", "ARCHIVE_DATA", {"1": [{"season": "20/22", "league": "A-Klasse"}, {"season": "24/25", "league": "A-Klasse"}]})
+    write_js(
+        root / "archive_data.js",
+        "ARCHIVE_DATA",
+        {"1": [legacy_archive_record("20/22"), legacy_archive_record()]},
+    )
     write_js(root / "archive_tables.js", "ARCHIVE_TABLES", [{"season": "2020/2022", "league": "A-Klasse", "rows": []}, {"season": "2024/25", "league": "A-Klasse", "rows": []}])
     write_json_pair(root, "data_status", "DATA_STATUS", status_payload())
 
@@ -126,7 +130,11 @@ def fake_runner(candidate_rankings: dict[str, Any] | None = None, *, fail_script
         elif script.name == "club_scraper.py":
             write_json_pair(output_dir, "club_data", "CLUB_DATA", clubs())
         elif script.name == "archive_scraper.py":
-            write_js(output_dir / "archive_data.js", "ARCHIVE_DATA", {"1": [{"season": "20/22", "league": "A-Klasse"}, {"season": "24/25", "league": "A-Klasse"}]})
+            write_js(
+                output_dir / "archive_data.js",
+                "ARCHIVE_DATA",
+                {"1": [legacy_archive_record("20/22"), legacy_archive_record()]},
+            )
         elif script.name == "archive_tables_scraper.py":
             write_js(output_dir / "archive_tables.js", "ARCHIVE_TABLES", [{"season": "2020/2022", "league": "A-Klasse", "rows": []}, {"season": "2024/25", "league": "A-Klasse", "rows": []}])
         return 0
@@ -134,9 +142,9 @@ def fake_runner(candidate_rankings: dict[str, Any] | None = None, *, fail_script
     return run
 
 
-def legacy_archive_record() -> dict[str, Any]:
+def legacy_archive_record(season: str = "24/25") -> dict[str, Any]:
     return {
-        "season": "24/25",
+        "season": season,
         "league": "A-Klasse",
         "rank": 1,
         "name": "Player",

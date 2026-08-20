@@ -964,7 +964,7 @@ def archive_table(
 
 
 def test_archive_payload_accepts_current_title_for_legacy_championship() -> None:
-    previous_data = {"p1": [archive_record("25/26")]}
+    previous_data = {"4711": [archive_record("25/26")]}
     candidate_data = deepcopy(previous_data)
     previous_tables = [
         {
@@ -989,7 +989,7 @@ def test_archive_payload_accepts_current_title_for_legacy_championship() -> None
 
 
 def test_archive_payload_reconciles_exact_rows_after_same_season_title_correction() -> None:
-    data = {"p1": [archive_record("20/22")]}
+    data = {"4711": [archive_record("20/22")]}
     rows = [
         ["Runde/Info", "Pl.", "Tabelle", "Sp.", "Punkte"],
         ["", "1", "DC Beispiel", "8", "16"],
@@ -1027,7 +1027,7 @@ def test_archive_payload_reconciles_exact_rows_after_same_season_title_correctio
 def test_archive_payload_does_not_reconcile_unrelated_exact_row_titles(
     previous_league: str, candidate_league: str
 ) -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1058,7 +1058,7 @@ def test_archive_payload_does_not_reconcile_unrelated_exact_row_titles(
 def test_archive_payload_reconciles_exact_rows_with_same_named_family(
     previous_league: str, candidate_league: str
 ) -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1079,7 +1079,7 @@ def test_archive_payload_reconciles_exact_rows_with_same_named_family(
 
 
 def test_archive_payload_reconciles_legacy_unknown_to_meaningful_exact_rows() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1100,7 +1100,7 @@ def test_archive_payload_reconciles_legacy_unknown_to_meaningful_exact_rows() ->
 
 
 def test_archive_payload_does_not_reconcile_unknown_to_structural_title() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1122,7 +1122,7 @@ def test_archive_payload_does_not_reconcile_unknown_to_structural_title() -> Non
 
 
 def test_archive_payload_does_not_reconcile_meaningful_title_to_unknown() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1144,7 +1144,7 @@ def test_archive_payload_does_not_reconcile_meaningful_title_to_unknown() -> Non
 
 
 def test_archive_payload_does_not_treat_generic_title_as_unknown_sentinel() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1166,7 +1166,7 @@ def test_archive_payload_does_not_treat_generic_title_as_unknown_sentinel() -> N
 
 
 def test_archive_payload_does_not_reconcile_unknown_across_seasons() -> None:
-    data = {"p1": [archive_record("24/25")]}
+    data = {"4711": [archive_record("24/25")]}
     rows = archive_table("24/25", row_count=3)["rows"]
     previous_table = {
         "season": "2024/2025",
@@ -1188,7 +1188,7 @@ def test_archive_payload_does_not_reconcile_unknown_across_seasons() -> None:
 
 
 def test_archive_payload_does_not_reconcile_unknown_with_changed_rows() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_table = archive_table(
         "2025/2026", league="Unbekannt", marker=1, row_count=3
     )
@@ -1205,7 +1205,7 @@ def test_archive_payload_does_not_reconcile_unknown_with_changed_rows() -> None:
 
 
 def test_archive_payload_consumes_unknown_exact_row_match_only_once() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_tables = [
         {
@@ -1238,7 +1238,7 @@ def test_archive_payload_consumes_unknown_exact_row_match_only_once() -> None:
 def test_archive_payload_exact_row_matching_is_order_invariant(
     reverse_previous: bool, reverse_candidate: bool
 ) -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_tables = [
         {
@@ -1277,7 +1277,7 @@ def test_archive_payload_exact_row_matching_is_order_invariant(
 
 
 def test_archive_payload_blocks_changed_rows_under_different_title() -> None:
-    data = {"p1": [archive_record("20/22")]}
+    data = {"4711": [archive_record("20/22")]}
     previous_tables = [
         archive_table(
             "2020/2022",
@@ -1304,7 +1304,7 @@ def test_archive_payload_blocks_changed_rows_under_different_title() -> None:
 
 
 def test_archive_payload_does_not_reconcile_identical_rows_across_seasons() -> None:
-    data = {"p1": [archive_record("20/22")]}
+    data = {"4711": [archive_record("20/22")]}
     previous_table = archive_table(
         "2020/2022",
         league="C-Klassen-Meisterschaft, Platz 1-4_2020-2022",
@@ -1326,7 +1326,7 @@ def test_archive_payload_does_not_reconcile_identical_rows_across_seasons() -> N
 
 
 def test_archive_payload_consumes_exact_row_match_only_once() -> None:
-    data = {"p1": [archive_record("20/22")]}
+    data = {"4711": [archive_record("20/22")]}
     rows = archive_table("20/22", marker=1, row_count=5)["rows"]
     previous_tables = [
         {
@@ -1357,7 +1357,7 @@ def test_archive_payload_consumes_exact_row_match_only_once() -> None:
 
 
 def test_archive_payload_keeps_c_class_groups_distinct() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [archive_table("25/26", league="C-Klasse Gruppe 1")]
     candidate_tables = [archive_table("25/26", league="C-Klasse Gruppe 2")]
 
@@ -1370,7 +1370,7 @@ def test_archive_payload_keeps_c_class_groups_distinct() -> None:
 
 
 def test_archive_payload_keeps_cup_rounds_distinct() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [archive_table("25/26", league="Pokal Runde 16-32")]
     candidate_tables = [archive_table("25/26", league="Pokal Runde 32-64")]
 
@@ -1383,7 +1383,7 @@ def test_archive_payload_keeps_cup_rounds_distinct() -> None:
 
 
 def test_archive_payload_keeps_cup_final_variants_distinct() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1421,7 +1421,7 @@ def test_archive_payload_keeps_cup_final_variants_distinct() -> None:
 def test_archive_payload_keeps_compound_cup_stages_distinct(
     previous_league: str, candidate_league: str
 ) -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     rows = archive_table("25/26", row_count=3)["rows"]
     previous_table = {
         "season": "2025/2026",
@@ -1443,7 +1443,7 @@ def test_archive_payload_keeps_compound_cup_stages_distinct(
 
 
 def test_archive_payload_ignores_presentation_date_in_title() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [archive_table("25/26", league="A-Klasse")]
     candidate_tables = [
         archive_table("2025/2026", league="Bwedl e.V. A-Klasse am 13.06.2026")
@@ -1457,7 +1457,7 @@ def test_archive_payload_ignores_presentation_date_in_title() -> None:
 
 
 def test_archive_payload_ignores_underscore_separators_around_title_metadata() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [archive_table("25/26", league="A-Klasse")]
     candidate_tables = [
         archive_table(
@@ -1473,7 +1473,7 @@ def test_archive_payload_ignores_underscore_separators_around_title_metadata() -
 
 
 def test_archive_payload_blocks_same_identity_table_count_loss() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [
         archive_table("25/26", marker=1),
         archive_table("2025/2026", marker=10),
@@ -1489,7 +1489,7 @@ def test_archive_payload_blocks_same_identity_table_count_loss() -> None:
 
 
 def test_archive_payload_blocks_paired_same_identity_row_count_loss() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [
         archive_table("25/26", marker=1, row_count=3),
         archive_table("2025/2026", marker=10, row_count=2),
@@ -1508,7 +1508,7 @@ def test_archive_payload_blocks_paired_same_identity_row_count_loss() -> None:
 
 
 def test_archive_payload_accepts_reordered_same_identity_tables_without_loss() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [
         archive_table("25/26", marker=1, row_count=3),
         archive_table("2025/2026", marker=10, row_count=1),
@@ -1526,7 +1526,7 @@ def test_archive_payload_accepts_reordered_same_identity_tables_without_loss() -
 
 
 def test_archive_payload_blocks_row_loss_after_title_normalization() -> None:
-    data = {"p1": [archive_record("25/26")]}
+    data = {"4711": [archive_record("25/26")]}
     previous_tables = [
         {
             "season": "2025/2026",
@@ -1553,18 +1553,18 @@ def test_archive_payload_blocks_row_loss_after_title_normalization() -> None:
 @pytest.mark.parametrize(
     ("candidate_data", "candidate_tables", "reason"),
     [
-        ({"p1": [archive_record("24/25")]}, [archive_table("24/25")], "record"),
-        ({"p1": [archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25")], "table"),
+        ({"4711": [archive_record("24/25")]}, [archive_table("24/25")], "record"),
+        ({"4711": [archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25")], "table"),
         ({}, [archive_table("24/25"), archive_table("25/26")], "player"),
-        ({"p1": [archive_record("24/25"), archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25"), archive_table("25/26")], "duplicate"),
-        ({"p1": [archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25"), archive_table("24/25"), archive_table("25/26")], "duplicate"),
-        ({"p1": []}, [archive_table("24/25"), archive_table("25/26")], "nonempty"),
+        ({"4711": [archive_record("24/25"), archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25"), archive_table("25/26")], "duplicate"),
+        ({"4711": [archive_record("24/25"), archive_record("25/26")]}, [archive_table("24/25"), archive_table("24/25"), archive_table("25/26")], "duplicate"),
+        ({"4711": []}, [archive_table("24/25"), archive_table("25/26")], "nonempty"),
     ],
 )
 def test_archive_payload_completeness_blocks_loss_or_malformed_data(
     candidate_data: Any, candidate_tables: Any, reason: str
 ) -> None:
-    previous_data = {"p1": [archive_record("24/25"), archive_record("25/26")]}
+    previous_data = {"4711": [archive_record("24/25"), archive_record("25/26")]}
     previous_tables = [archive_table("24/25"), archive_table("25/26")]
 
     result = validation.validate_archive_payloads(
@@ -1576,10 +1576,10 @@ def test_archive_payload_completeness_blocks_loss_or_malformed_data(
 
 
 def test_archive_payload_equal_or_superset_publishes() -> None:
-    previous_data = {"p1": [archive_record("20/22"), archive_record("24/25")]}
+    previous_data = {"4711": [archive_record("20/22"), archive_record("24/25")]}
     previous_tables = [archive_table("2020/2022"), archive_table("24/25")]
     candidate_data = deepcopy(previous_data)
-    candidate_data["p2"] = [archive_record("25/26", league="B-Klasse")]
+    candidate_data["811"] = [archive_record("25/26", league="B-Klasse")]
     candidate_tables = deepcopy(previous_tables) + [archive_table("25/26", league="B-Klasse")]
 
     result = validation.validate_archive_payloads(
@@ -1611,6 +1611,117 @@ def test_archive_payload_keeps_totals_only_legacy_records_valid() -> None:
     result = validation.validate_archive_payloads(data, data, tables, tables)
 
     assert result.decision is Decision.PUBLISH
+
+
+def test_archive_validator_defers_cross_season_name_conflicts_to_player_join() -> None:
+    older = {**archive_record("24/25"), "name": "Published Name"}
+    newer = {**archive_record("25/26"), "name": "Changed Published Name"}
+    data = {"4711": [older, newer]}
+    tables = [archive_table("24/25"), archive_table("25/26")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.PUBLISH
+
+
+@pytest.mark.parametrize(
+    ("player_key", "mutation", "reason"),
+    [
+        ("47A1", lambda record: None, "player id"),
+        ("٤٧١١", lambda record: None, "player id"),
+        ("4711", lambda record: record.update({"id": "9999"}), "player id"),
+        ("4711", lambda record: record.update({"id": "٤٧١١"}), "player id"),
+        ("4711", lambda record: record.update({"season": "٢٠٢٤/٢٥"}), "season"),
+        ("4711", lambda record: record.update({"league": "  "}), "league"),
+        ("4711", lambda record: record.update({"name": "  "}), "name"),
+        ("4711", lambda record: record.update({"rank": True}), "rank"),
+        ("4711", lambda record: record.update({"rank": 1.0}), "rank"),
+        ("4711", lambda record: record.update({"rank": 2**53 + 1}), "safe integer"),
+        ("4711", lambda record: record.update({"points": True}), "points"),
+        ("4711", lambda record: record.update({"points": 12.0}), "points"),
+        ("4711", lambda record: record.update({"points": 2**53}), "safe integer"),
+        ("4711", lambda record: record.update({"points": 10**400}), "safe integer"),
+        ("4711", lambda record: record.update({"v_nr": ""}), "club number"),
+        ("4711", lambda record: record.update({"v_nr": "٠١٨"}), "club number"),
+    ],
+)
+def test_archive_candidate_totals_only_records_require_safe_core_schema(
+    player_key: str, mutation: Any, reason: str
+) -> None:
+    record = legacy_preview_record()
+    mutation(record)
+    data = {player_key: [record]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert reason in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize(
+    ("mutation", "reason"),
+    [
+        (
+            lambda record: record.update(
+                {
+                    "points": 2**53,
+                    "rounds": {"R1": 2**53},
+                    "appearances": 1,
+                    "points_per_appearance": float(2**53),
+                }
+            ),
+            "safe integer",
+        ),
+        (
+            lambda record: record.update(
+                {
+                    "points": 12,
+                    "rounds": {"R1": 12.0},
+                    "appearances": 1,
+                    "points_per_appearance": 12.0,
+                }
+            ),
+            "round value",
+        ),
+        (lambda record: record.update({"appearances": True}), "appearances"),
+        (lambda record: record.update({"appearances": 2**53}), "safe integer"),
+        (lambda record: record.update({"points_per_appearance": True}), "points per appearance"),
+        (lambda record: record.update({"points_per_appearance": 10**400}), "points per appearance"),
+    ],
+)
+def test_archive_preview_numbers_are_javascript_safe_without_exceptions(
+    mutation: Any, reason: str
+) -> None:
+    record = enriched_archive_record()
+    mutation(record)
+    data = {"4711": [record]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is Decision.BLOCKED
+    assert reason in " ".join(result.reasons).lower()
+
+
+@pytest.mark.parametrize(
+    ("average", "expected"),
+    [
+        (4, Decision.PUBLISH),
+        (4.0 + 5e-13, Decision.PUBLISH),
+        (4.0 + 2e-12, Decision.BLOCKED),
+    ],
+)
+def test_archive_preview_average_uses_absolute_plan_tolerance(
+    average: int | float, expected: Decision
+) -> None:
+    record = {**enriched_archive_record(), "points_per_appearance": average}
+    data = {"4711": [record]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(data, data, tables, tables)
+
+    assert result.decision is expected
 
 
 @pytest.mark.parametrize(
@@ -1827,9 +1938,9 @@ def test_archive_payload_does_not_rewrite_published_preview_evidence() -> None:
 
 
 def test_archive_payload_rejects_non_json_nested_types() -> None:
-    previous_data = {"p1": [archive_record("24/25")]}
+    previous_data = {"4711": [archive_record("24/25")]}
     candidate_data = deepcopy(previous_data)
-    candidate_data["p2"] = [{**archive_record("25/26"), "extra": ("tuple",)}]
+    candidate_data["811"] = [{**archive_record("25/26"), "extra": ("tuple",)}]
     tables = [archive_table("24/25")]
 
     result = validation.validate_archive_payloads(
@@ -1900,6 +2011,20 @@ def test_parse_javascript_assignment_rejects_non_json_constants(
         validation.parse_javascript_assignment(
             f'window.DATA = {{"value": {constant}}};', "DATA"
         )
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        '{"value": 1, "value": 2}',
+        '{"nested": {"value": 1, "value": 2}}',
+    ],
+)
+def test_parse_javascript_assignment_rejects_duplicate_object_keys(
+    payload: str,
+) -> None:
+    with pytest.raises(ValueError, match="valid JSON"):
+        validation.parse_javascript_assignment(f"window.DATA = {payload};", "DATA")
 
 
 def test_json_js_pair_accepts_equal_german_data() -> None:

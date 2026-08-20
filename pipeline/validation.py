@@ -88,6 +88,10 @@ OPTIONAL_CLUB_FIELDS = (
     "email",
     "url",
 )
+MAX_JAVASCRIPT_SAFE_INTEGER = 2**53 - 1
+ARCHIVE_PREVIEW_FIELDS = frozenset(
+    {"rounds", "appearances", "points_per_appearance"}
+)
 
 
 def _parse_season(value: Any) -> str | None:
@@ -609,7 +613,7 @@ def _parse_archive_season(value: Any) -> str | None:
     if not isinstance(value, str):
         return None
     normalized = value.strip()
-    short = re.fullmatch(r"(\d{2})/(\d{2})", normalized)
+    short = re.fullmatch(r"([0-9]{2})/([0-9]{2})", normalized)
     if short is not None:
         start_short, end_short = (int(part) for part in short.groups())
         start_year = 2000 + start_short
@@ -618,7 +622,9 @@ def _parse_archive_season(value: Any) -> str | None:
             return f"{start_year}/{end_short:02d}"
         return None
 
-    long = re.fullmatch(r"(\d{4})[/-](\d{2}|\d{4})", normalized)
+    long = re.fullmatch(
+        r"([0-9]{4})[/-]([0-9]{2}|[0-9]{4})", normalized
+    )
     if long is None:
         return None
     start_year = int(long.group(1))
@@ -722,13 +728,20 @@ def _archive_player_identity(
     return _archive_fingerprint(identity)
 
 
-def _is_finite_nonnegative_number(value: Any) -> bool:
+def _is_safe_nonnegative_integer(value: Any) -> bool:
     return (
-        isinstance(value, (int, float))
+        isinstance(value, int)
         and not isinstance(value, bool)
-        and math.isfinite(value)
-        and value >= 0
+        and 0 <= value <= MAX_JAVASCRIPT_SAFE_INTEGER
     )
+
+
+def _is_finite_nonnegative_number(value: Any) -> bool:
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, int):
+        return 0 <= value <= MAX_JAVASCRIPT_SAFE_INTEGER
+    return isinstance(value, float) and math.isfinite(value) and value >= 0
 
 
 def _archive_record_is_preserved(
@@ -740,8 +753,43 @@ def _archive_record_is_preserved(
     return _archive_fingerprint(projection) == _archive_fingerprint(dict(previous))
 
 
-def _canonical_number(value: int | float) -> str:
-    return json.dumps(value, allow_nan=False, separators=(",", ":"))
+def _validate_archive_player_core(
+    player_key: str, record: Mapping[str, Any]
+) -> tuple[str, ...]:
+    issues: list[str] = []
+    if re.fullmatch(r"[0-9]+", player_key) is None:
+        issues.append("archive player id must contain ASCII digits")
+
+    if "id" in record:
+        player_id = record["id"]
+        if (
+            not isinstance(player_id, str)
+            or re.fullmatch(r"[0-9]+", player_id) is None
+            or player_id != player_key
+        ):
+            issues.append("archive player id must contain ASCII digits and match its key")
+
+    if _parse_archive_season(record.get("season")) is None:
+        issues.append("archive season must be canonical and use ASCII digits")
+    for field in ("league", "name"):
+        value = record.get(field)
+        if not isinstance(value, str) or not value.strip():
+            issues.append(f"archive {field} must be nonblank")
+
+    for field in ("rank", "points"):
+        if not _is_safe_nonnegative_integer(record.get(field)):
+            issues.append(
+                f"archive {field} must be a nonnegative JavaScript safe integer"
+            )
+
+    if "v_nr" in record:
+        club_number = record["v_nr"]
+        if (
+            not isinstance(club_number, str)
+            or re.fullmatch(r"[0-9]+", club_number) is None
+        ):
+            issues.append("archive club number must contain ASCII digits")
+    return tuple(issues)
 
 
 def _validate_archive_preview_evidence(
@@ -749,40 +797,18 @@ def _validate_archive_preview_evidence(
 ) -> tuple[bool, tuple[str, ...]]:
     """Validate optional round evidence without making totals-only history unusable."""
 
-    evidence_fields = {"rounds", "appearances", "points_per_appearance"}
-    present_fields = evidence_fields.intersection(record)
+    present_fields = ARCHIVE_PREVIEW_FIELDS.intersection(record)
     if not present_fields:
         return False, ()
-    if present_fields != evidence_fields:
+    if present_fields != ARCHIVE_PREVIEW_FIELDS:
         return False, ("preview evidence fields must be all-or-none",)
 
     issues: list[str] = []
-    player_id = record.get("id", player_key)
-    if not isinstance(player_id, str) or re.fullmatch(r"[0-9]+", player_id) is None:
-        issues.append("preview player id must contain ASCII digits")
-    elif player_id != player_key:
-        issues.append("preview player id must match the archive key")
-
-    for field in ("season", "league", "name"):
-        value = record.get(field)
-        if not isinstance(value, str) or not value.strip():
-            issues.append(f"preview {field} must be nonblank")
-
-    rank = record.get("rank")
-    if not isinstance(rank, int) or isinstance(rank, bool) or rank < 0:
-        issues.append("preview rank must be a nonnegative integer")
-
     points = record.get("points")
-    valid_points = _is_finite_nonnegative_number(points)
-    if not valid_points:
-        issues.append("preview points must be a finite nonnegative number")
+    valid_points = _is_safe_nonnegative_integer(points)
 
-    club_number = record.get("v_nr")
-    if (
-        not isinstance(club_number, str)
-        or re.fullmatch(r"[0-9]+", club_number) is None
-    ):
-        issues.append("preview club number must contain ASCII digits")
+    if "v_nr" not in record:
+        issues.append("preview club number is required")
 
     rounds = record.get("rounds")
     numeric_rounds: list[int | float] = []
@@ -798,23 +824,24 @@ def _validate_archive_preview_evidence(
                 issues.append(f"preview round key is invalid: {key!r}")
             else:
                 round_numbers.append(int(match.group(1)))
-            if _is_finite_nonnegative_number(value):
+            if _is_safe_nonnegative_integer(value):
                 numeric_rounds.append(value)
             elif not isinstance(value, str) or value not in {"", "x"}:
-                issues.append(f"preview round value is invalid for {key!r}")
+                issues.append(
+                    f"preview round value must be a marker or nonnegative "
+                    f"JavaScript safe integer for {key!r}"
+                )
         if round_numbers and sorted(round_numbers) != list(
             range(1, max(round_numbers) + 1)
         ):
             issues.append("preview round keys must be a contiguous sequence from R1")
 
     appearances = record.get("appearances")
-    valid_appearances = (
-        isinstance(appearances, int)
-        and not isinstance(appearances, bool)
-        and appearances >= 0
-    )
+    valid_appearances = _is_safe_nonnegative_integer(appearances)
     if not valid_appearances:
-        issues.append("preview appearances must be a nonnegative integer")
+        issues.append(
+            "preview appearances must be a nonnegative JavaScript safe integer"
+        )
     elif appearances != len(numeric_rounds):
         issues.append("preview appearances do not match numeric round values")
 
@@ -826,7 +853,9 @@ def _validate_archive_preview_evidence(
         issues.append("preview points per appearance must be a finite nonnegative number")
     elif valid_points and valid_appearances:
         expected_average = points / appearances if appearances else 0.0
-        if _canonical_number(average) != _canonical_number(expected_average):
+        if not math.isclose(
+            average, expected_average, rel_tol=0.0, abs_tol=1e-12
+        ):
             issues.append("preview points per appearance does not match points/appearances")
 
     return True, tuple(issues)
@@ -957,12 +986,18 @@ def validate_archive_payloads(
                 if fingerprint is None:
                     reasons.append(f"{label} archive history record is not strict JSON object")
                     continue
+                core_issues = (
+                    _validate_archive_player_core(player_key, record)
+                    if label == "Candidate"
+                    or bool(ARCHIVE_PREVIEW_FIELDS.intersection(record))
+                    else ()
+                )
                 has_preview_evidence, preview_issues = (
                     _validate_archive_preview_evidence(player_key, record)
                 )
                 reasons.extend(
                     f"{label} archive player {player_key}: {issue}"
-                    for issue in preview_issues
+                    for issue in (*core_issues, *preview_issues)
                 )
                 season = record.get("season")
                 league = record.get("league")
@@ -993,7 +1028,9 @@ def validate_archive_payloads(
                         has_v_nr="v_nr" in record,
                         has_preview_evidence=has_preview_evidence,
                         valid_preview_evidence=(
-                            has_preview_evidence and not preview_issues
+                            has_preview_evidence
+                            and not core_issues
+                            and not preview_issues
                         ),
                     )
                 )
@@ -1251,6 +1288,15 @@ def _reject_json_constant(constant: str) -> Any:
     raise ValueError(f"Non-JSON constant: {constant}")
 
 
+def _reject_duplicate_json_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON object key: {key!r}")
+        result[key] = value
+    return result
+
+
 def parse_javascript_assignment(text: str, global_name: str) -> Any:
     if re.fullmatch(r"[A-Za-z_$][A-Za-z0-9_$]*", global_name) is None:
         raise ValueError("Invalid JavaScript global name")
@@ -1265,7 +1311,9 @@ def parse_javascript_assignment(text: str, global_name: str) -> Any:
         raise ValueError(f"Expected assignment to window.{global_name}")
     try:
         return json.loads(
-            assignment.group(1), parse_constant=_reject_json_constant
+            assignment.group(1),
+            parse_constant=_reject_json_constant,
+            object_pairs_hook=_reject_duplicate_json_keys,
         )
     except (json.JSONDecodeError, ValueError) as error:
         raise ValueError("Assignment payload is not valid JSON") from error
