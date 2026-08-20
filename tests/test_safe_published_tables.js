@@ -178,8 +178,17 @@ assert.equal(sandbox.replaceWithSafeCupTables(cupDestination, '<source html>', {
     Finale: 'ignored content',
     Halbfinale: 'ignored content',
 }), 2);
-assert.deepEqual(cupDestination.children.map((node) => node.tagName), ['H3', 'TABLE', 'H3', 'TABLE']);
+assert.deepEqual(cupDestination.children.map((node) => node.tagName), ['H3', 'DIV', 'H3', 'DIV']);
 assert.equal(cupDestination.children[0].textContent, 'Finale');
 assert.equal(cupDestination.children[2].textContent, 'Halbfinale');
+const cupScrollRegions = [cupDestination.children[1], cupDestination.children[3]];
+assert.deepEqual(
+    cupScrollRegions.map((node) => node.className),
+    ['table-container table-scroll', 'table-container table-scroll'],
+);
+assert.deepEqual(
+    cupScrollRegions.map((node) => node.children.map((child) => child.tagName)),
+    [['TABLE'], ['TABLE']],
+);
 
 console.log('safe published table rendering contract: ok');

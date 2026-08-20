@@ -23,6 +23,9 @@ def test_published_table_data_never_reaches_inner_html() -> None:
     assert "function safeTableRowsFromHtml" in source
     assert "function replaceWithSafeTables" in source
     assert "function replaceWithSafeCupTables" in source
+    assert "function createScrollableTableRegion" in source
+    assert "fragment.appendChild(createScrollableTableRegion(table))" in source
+    assert "resultsContainer.appendChild(createScrollableTableRegion(tableElement))" in source
     assert "function renderRankingLegacy" not in source
 
 

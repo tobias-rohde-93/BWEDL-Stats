@@ -41,7 +41,47 @@ TEST_ASSETS = {
                         "<td>1</td><td>2</td></tr>"
                         "</tbody></table>"
                     ),
-                }
+                },
+                "Ligapokal 2026-2027": {
+                    "url": "https://example.invalid/cup",
+                    "match_days": {
+                        "Finale": "Fr. 28.08.2026 20:00 Malicious Club - Safe Team ---",
+                    },
+                    "table": (
+                        "<table><tbody><tr><th>Datum</th><th>Heimmannschaft</th>"
+                        "<th>Ergebnis</th><th>Auswärtsmannschaft</th><th>Spielort</th></tr>"
+                        "<tr><td>28.08.2026</td><td>Malicious Club Team Eins</td><td>---</td>"
+                        "<td>Safe Team mit langem Namen</td><td>Testlokal Teststadt</td></tr>"
+                        "</tbody></table>"
+                    ),
+                },
+            }
+        },
+    ),
+    "ligapokal_archive.js": javascript_assignment(
+        "LIGAPOKAL_ARCHIVE",
+        {
+            "Ligapokal 2025-2026": {
+                "tables": [
+                    {
+                        "rows": [
+                            [
+                                "Datum",
+                                "Heimmannschaft",
+                                "Ergebnis",
+                                "Auswärtsmannschaft",
+                                "Spielort",
+                            ],
+                            [
+                                "28.08.2025",
+                                "Malicious Club Team Eins",
+                                "2:1",
+                                "Safe Team mit langem Namen",
+                                "Testlokal Teststadt",
+                            ],
+                        ]
+                    }
+                ]
             }
         },
     ),
@@ -314,6 +354,35 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert stored_profile["recordKey"] == "A-Klasse|9001"
 
         page.set_viewport_size({"width": 390, "height": 844})
+
+        def assert_ligapokal_table_scroll(route: str, title: str) -> None:
+            page.evaluate("route => { location.hash = route; }", route)
+            expect(page.locator("#current-league-title")).to_contain_text(title)
+            scroll_region = page.locator(
+                "#league-results-container > .table-container.table-scroll"
+            ).first
+            expect(scroll_region).to_be_visible()
+            dimensions = scroll_region.evaluate(
+                "element => ({ scrollWidth: element.scrollWidth, clientWidth: element.clientWidth })"
+            )
+            assert dimensions["scrollWidth"] > dimensions["clientWidth"]
+            scroll_region.evaluate("element => { element.scrollLeft = 80; }")
+            assert scroll_region.evaluate("element => element.scrollLeft") > 0
+            assert page.evaluate(
+                "document.documentElement.scrollWidth <= window.innerWidth"
+            )
+
+        assert_ligapokal_table_scroll(
+            "#league/Ligapokal%202026-2027",
+            "Ligapokal 2026-2027",
+        )
+        assert_ligapokal_table_scroll(
+            "#ligapokalArchive/Ligapokal%202025-2026",
+            "Ligapokal 2025-2026",
+        )
+        page.evaluate("location.hash = '#dashboard'")
+        expect(page.locator("#current-league-title")).to_have_text("Dashboard")
+
         dashboard_calendar = page.locator(".calendar-subscription-card--dashboard")
         expect(dashboard_calendar).to_contain_text("Malicious Club")
         dashboard_action = dashboard_calendar.get_by_role("button", name="Kalender hinzufügen")
