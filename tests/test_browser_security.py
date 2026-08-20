@@ -557,6 +557,11 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(page.locator("#list-a .match-preview-player")).to_have_count(4)
         expect(page.locator("#list-b .match-preview-player")).to_have_count(4)
         expect(page.locator(".match-preview-evidence").first).to_contain_text("Vorjahreskader")
+        long_player_name = "A" * 500
+        page.locator("#list-a .match-preview-player__name").first.evaluate(
+            "(element, name) => { element.textContent = name; element.classList.add('my-player-text'); }",
+            long_player_name,
+        )
         page.locator(".match-preview-calculate").click()
         expect(page.locator(".match-preview-lineup")).to_have_count(2)
         for lineup in page.locator(".match-preview-lineup").all():
@@ -569,9 +574,29 @@ def test_published_data_stays_inert_online_and_offline() -> None:
             "Unbekannter Spieler (Klassenwert)"
         )
         assert page.locator(".match-preview-scores").inner_text() != first_forecast
+        page.set_viewport_size({"width": 480, "height": 844})
+        page.evaluate(
+            """() => {
+                const grid = document.createElement('div');
+                grid.id = 'match-preview-probability-grid-probe';
+                grid.className = 'match-preview-probability-grid';
+                for (let index = 0; index < 3; index += 1) grid.appendChild(document.createElement('strong'));
+                document.body.appendChild(grid);
+            }"""
+        )
+        assert page.locator("#match-preview-probability-grid-probe").evaluate(
+            "element => getComputedStyle(element).gridTemplateColumns.trim().split(/\\s+/).length === 1"
+        )
+        page.locator("#match-preview-probability-grid-probe").evaluate("element => element.remove()")
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.set_viewport_size({"width": 320, "height": 844})
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        assert page.locator("#list-a .match-preview-player").first.evaluate(
+            "element => element.scrollWidth <= element.clientWidth"
+        )
+        assert page.locator("#list-a .match-preview-player__name").first.evaluate(
+            "element => element.scrollWidth <= element.clientWidth"
+        )
         page.set_viewport_size({"width": 390, "height": 844})
 
         assert page.locator("[data-bwedl-injected]").count() == 0

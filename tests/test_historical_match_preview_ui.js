@@ -108,11 +108,12 @@ function createDocument() {
         querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
         closest(selector) { let current = this; while (current) { if (selectorMatches(current, selector)) return current; current = current.parentElement; } return null; }
         contains(target) { return target === this || this.children.some((child) => child.contains(target)); }
-        scrollIntoView() {}
+        scrollIntoView(options) { this.ownerDocument.scrollCalls.push(options || {}); }
     }
     const document = {
         root: null,
         usedUnsafePlayerHtml: false,
+        scrollCalls: [],
         createElement(tagName) { return new Element(tagName, document); },
         getElementById(id) { return document.root && (document.root.id === id ? document.root : document.root.querySelector(`#${id}`)); },
         querySelectorAll(selector) { return document.root ? document.root.querySelectorAll(selector) : []; },
@@ -133,7 +134,7 @@ function makeModel(calibrated) {
     const calls = { calibration: 0, training: 0, outcome: 0, roster: 0, rosterOptions: [], complete: [], forecast: 0 };
     const rosters = {
         '035': [
-            player('h1', '<img src=x onerror=alert(1)>', 'current+history', 'medium', 48, { sourceSeasons: ['2025/26<script>alert(1)</script>'], historicalPrior: { seasons: [{ sourceClass: 'A', targetClass: 'B' }] } }),
+            player('h1', `<img src=x onerror=alert(1)>${'A'.repeat(500)}`, 'current+history', 'medium', 48, { sourceSeasons: ['2025/26<script>alert(1)</script>'], historicalPrior: { seasons: [{ sourceClass: 'A', targetClass: 'B' }] } }),
             player('h2', 'Historische Hanne', 'historical', 'provisional', 46),
             player('h3', 'Ersatz Eva', 'historical-fallback', 'very-low', 44),
             player('h4', 'Aktuelle Anna', 'current', 'high', 42),
@@ -172,27 +173,49 @@ function makeModel(calibrated) {
     };
 }
 
-function renderScenario(calibrated = true, rendererDeclaration = extractFunction('renderMatchPreview')) {
+function renderScenario(calibrated = true, rendererDeclaration = extractFunction('renderMatchPreview'), scenarioOptions = {}) {
     const document = createDocument();
     const contentArea = document.createElement('main');
     document.root = contentArea;
     const topBarTitle = document.createElement('div');
     const model = makeModel(calibrated);
-    const window = { BwedlMatchPreviewModel: model, ARCHIVE_TABLES: [] };
+    const window = {
+        BwedlMatchPreviewModel: model,
+        ARCHIVE_TABLES: [],
+        matchMedia: () => ({ matches: scenarioOptions.reducedMotion === true }),
+    };
     const rankingPlayers = [];
+    const autoFillCalls = [];
+    const formPlayers = [];
+    const detectedMatches = scenarioOptions.detectedMatches
+        || (scenarioOptions.detectedMatch ? [scenarioOptions.detectedMatch] : []);
     const bindings = {
         document, contentArea, topBarTitle, window,
         leagueData: { leagues: { 'B-Klasse 2026-2027': { table: '<table></table>' } } },
         rankingData: { players: rankingPlayers }, archiveData: {},
         clubData: { clubs: [{ number: '035', name: '<svg onload=alert(1)>Alpha' }, { number: '036', name: '<script>alert(1)</script>Bravo' }] },
         dataStatus: { domains: { rankings: { season: '2025/26', state: 'retained' } } },
-        detectNextMatch: () => [], readMatchPreviewGame: () => null,
-        BwedlAppUtils: { ...BwedlAppUtils, mergeMatchPreviewGames: () => [], buildMatchPreviewTeams: () => [{ id: '035', name: '<svg onload=alert(1)>Alpha' }, { id: '036', name: '<script>alert(1)</script>Bravo' }] },
+        detectNextMatch: () => detectedMatches, readMatchPreviewGame: () => null,
+        BwedlAppUtils: { ...BwedlAppUtils, mergeMatchPreviewGames: (_selected, detected) => detected, buildMatchPreviewTeams: () => [{ id: '035', name: '<svg onload=alert(1)>Alpha' }, { id: '036', name: '<script>alert(1)</script>Bravo' }] },
         createSeasonNotice: () => null,
         safeTableRowsFromHtml: () => [['1', 'Alpha', '0'], ['2', 'Bravo', '0']],
         findHistoricalResults: () => ({ matches: [] }),
-        isMyPlayerRecord: () => false, calculateOptimalLineup: () => ({ players: [], avg: 0 }),
-        getPlayerFormTrend: () => ({ trend: 'flat', values: [], lastNAvg: 0 }), renderMatchSparkline: () => '',
+        isMyPlayerRecord: (candidate) => candidate.id === 'h1', calculateOptimalLineup: () => ({ players: [], avg: 0 }),
+        getPlayerFormTrend: (formPlayer) => {
+            formPlayers.push(formPlayer);
+            return { trend: 'flat', values: Object.values(formPlayer.rounds || {}).map(Number), lastNAvg: 42 };
+        },
+        applyMatchSelectorAutoFill: (isAuto, match, controls) => {
+            autoFillCalls.push({ isAuto, match });
+            controls.leagueSelect.value = match.league;
+            controls.leagueSelect.dispatchEvent({ type: 'change' });
+            controls.teamASelect.value = '035';
+            controls.teamBSelect.value = '036';
+            controls.updateExclusions();
+            controls.loadSelection();
+            controls.banner.style.borderColor = '#22c55e';
+            controls.banner.querySelector('.load-btn').textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
+        },
         escapeHtmlText: BwedlAppUtils.escapeHtmlText,
         setTimeout: (callback) => callback(), setAppStatus() {}, Event: class Event { constructor(type) { this.type = type; } },
     };
@@ -200,12 +223,14 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     render();
     const selects = contentArea.querySelectorAll('SELECT');
     assert.equal(selects.length, 3);
-    selects[0].value = 'B-Klasse 2026-2027';
-    selects[0].dispatchEvent({ type: 'change' });
-    selects[1].value = '035'; selects[2].value = '036';
-    selects[1].dispatchEvent({ type: 'change' });
-    selects[2].dispatchEvent({ type: 'change' });
-    return { document, contentArea, model, render, selects, rankingPlayers };
+    if (!scenarioOptions.skipManualSelection) {
+        selects[0].value = 'B-Klasse 2026-2027';
+        selects[0].dispatchEvent({ type: 'change' });
+        selects[1].value = '035'; selects[2].value = '036';
+        selects[1].dispatchEvent({ type: 'change' });
+        selects[2].dispatchEvent({ type: 'change' });
+    }
+    return { document, contentArea, model, render, selects, rankingPlayers, autoFillCalls, formPlayers };
 }
 
 {
@@ -222,6 +247,19 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0, 'team names must stay inert text');
     assert.equal(scenario.contentArea.querySelectorAll('SCRIPT').length, 0, 'source seasons must stay inert text');
     assert.equal(scenario.document.usedUnsafePlayerHtml, false, 'hostile external values must never reach innerHTML');
+    const ownPlayerName = scenario.document.getElementById('list-a').querySelector('.match-preview-player__name');
+    assert.ok(ownPlayerName.classList.contains('my-player-text'));
+    assert.equal(ownPlayerName.textContent.length > 500, true);
+    scenario.contentArea.querySelector('.match-preview-calculate').dispatchEvent({ type: 'click' });
+    assert.equal(scenario.contentArea.querySelectorAll('.match-preview-sparkline').length, 8);
+    const firstSparklinePoints = scenario.contentArea.querySelector('.match-preview-sparkline').querySelectorAll('.match-preview-sparkline__point');
+    assert.equal(firstSparklinePoints.length, 2);
+    assert.notEqual(firstSparklinePoints[0].style.height, firstSparklinePoints[1].style.height);
+    assert.equal(scenario.contentArea.querySelectorAll('.match-preview-pairing').length, 16);
+    assert.ok(scenario.formPlayers.some((formPlayer) => formPlayer.id === 'h1' && formPlayer.evidence === 'current+history'));
+    assert.ok(scenario.formPlayers.some((formPlayer) => formPlayer.id === 'h2' && formPlayer.evidence === 'historical'));
+    assert.equal(scenario.formPlayers.some((formPlayer) => formPlayer.evidence === 'neutral'), false);
+    assert.equal(scenario.document.scrollCalls.at(-1).behavior, 'smooth');
     const homeChecks = scenario.document.getElementById('list-a').querySelectorAll('INPUT');
     homeChecks[0].checked = false;
     homeChecks[0].dispatchEvent({ type: 'change', target: homeChecks[0], preventDefault() {} });
@@ -235,8 +273,43 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     assert.match(result, /Plausibler Bereich/);
     assert.match(result, /Aktuelle Form/);
     assert.match(result, /Historische Form/);
+    assert.match(result, /Keine Formdaten/);
     scenario.render();
     assert.equal(scenario.contentArea.querySelectorAll('.match-preview-shell').length, 1, 'rerender must replace rather than duplicate preview DOM');
+}
+
+{
+    const detectedMatch = {
+        league: 'B-Klasse 2026-2027',
+        home: '<svg onload=alert(1)>Alpha',
+        away: '<script>alert(1)</script>Bravo',
+    };
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch,
+        skipManualSelection: true,
+    });
+    assert.equal(scenario.autoFillCalls.length, 1);
+    assert.equal(scenario.autoFillCalls[0].isAuto, true);
+    assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '035', '036']);
+    assert.equal(scenario.document.getElementById('player-selection-area').style.display, 'block');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatches: [
+            { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+            { league: 'B-Klasse 2026-2027', home: 'Bravo', away: 'Alpha' },
+        ],
+        skipManualSelection: true,
+    });
+    const cards = scenario.contentArea.querySelectorAll('.match-preview-card');
+    assert.equal(cards.length, 2);
+    cards[0].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    cards[1].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    assert.notEqual(cards[0].style.borderColor, '#22c55e');
+    assert.equal(cards[0].querySelector('.load-btn').textContent, 'Partie auswählen');
+    assert.equal(cards[1].style.borderColor, '#22c55e');
+    assert.equal(cards[1].querySelector('.load-btn').textContent, '✓ Ausgewählt');
 }
 
 {
@@ -257,13 +330,21 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     scenario.contentArea.querySelector('.match-preview-calculate').dispatchEvent({ type: 'click' });
     const result = scenario.document.getElementById('preview-results').textContent;
     assert.match(result, /Relative Aufstellungsstärke/);
+    assert.match(result, /Datenqualität der Teams: sehr unsicher/);
     assert.doesNotMatch(result, /% Siegchance|Heimsieg \d+%|Auswärtssieg \d+%/);
+}
+
+{
+    const scenario = renderScenario(false, extractFunction('renderMatchPreview'), { reducedMotion: true });
+    scenario.contentArea.querySelector('.match-preview-calculate').dispatchEvent({ type: 'click' });
+    assert.equal(scenario.document.scrollCalls.at(-1).behavior, 'auto');
 }
 
 for (const selector of ['.match-preview-shell', '.match-preview-team-grid', '.match-preview-player', '.match-preview-evidence', '.match-preview-lineup-grid', '.match-preview-probability-grid']) {
     assert.match(styles, new RegExp(selector.replace('.', '\\.') + '\\s*\\{'));
 }
 assert.match(styles, /@media\s*\(max-width:\s*390px\)/);
+assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-probability-grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)/);
 assert.match(styles, /min-height:\s*44px/);
 assert.match(styles, /prefers-reduced-motion:\s*reduce/);
 assert.doesNotMatch(source.slice(source.indexOf('function renderMatchPreview('), source.indexOf('window.triggerUpdate')), /\/api\//);

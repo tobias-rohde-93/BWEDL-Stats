@@ -7494,7 +7494,7 @@ document.addEventListener('DOMContentLoaded', () => {
             high: 'hoch',
             medium: 'mittel',
             provisional: 'vorläufig',
-            'very-low': 'sehr gering',
+            'very-low': 'sehr unsicher',
         });
 
         const appendText = (parent, tag, text, className) => {
@@ -7608,6 +7608,8 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(resultDiv);
         contentArea.appendChild(container);
 
+        let initialMatchAutoFill = null;
+
         // Preserve the existing detected-match action, but keep all feed data inert.
         try {
             const selectedGame = typeof readMatchPreviewGame === 'function' ? readMatchPreviewGame() : null;
@@ -7622,6 +7624,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const scroller = document.createElement('section');
                 scroller.className = 'match-preview-next-games';
                 appendText(scroller, 'h2', matches.length > 1 ? `Nächste Spiele (${matches.length})` : 'Nächstes Spiel erkannt');
+                const resetMatchCardStatus = () => {
+                    scroller.querySelectorAll('.match-preview-card').forEach((card) => {
+                        card.style.borderColor = '';
+                        card.style.boxShadow = '';
+                        const button = card.querySelector('.load-btn');
+                        if (button) {
+                            button.textContent = 'Partie auswählen';
+                            button.style.background = '';
+                        }
+                    });
+                };
                 matches.forEach((match) => {
                     const matchCard = document.createElement('article');
                     matchCard.className = 'match-preview-card';
@@ -7634,12 +7647,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadButton.type = 'button';
                     loadButton.className = 'load-btn';
                     loadButton.textContent = 'Partie auswählen';
-                    loadButton.addEventListener('click', () => applyMatchSelectorAutoFill(false, match, {
-                        leagueSelect, teamASelect, teamBSelect, banner: matchCard,
-                        updateExclusions, loadSelection,
-                    }));
+                    loadButton.addEventListener('click', () => {
+                        resetMatchCardStatus();
+                        applyMatchSelectorAutoFill(false, match, {
+                            leagueSelect, teamASelect, teamBSelect, banner: matchCard,
+                            updateExclusions, loadSelection,
+                        });
+                    });
                     matchCard.appendChild(loadButton);
                     scroller.appendChild(matchCard);
+                    if (!initialMatchAutoFill
+                        && match && typeof match.league === 'string' && match.league.trim()
+                        && typeof match.home === 'string' && match.home.trim()
+                        && typeof match.away === 'string' && match.away.trim()) {
+                        initialMatchAutoFill = { match, banner: matchCard };
+                    }
                 });
                 container.insertBefore(scroller, selectorCard);
             }
@@ -7734,7 +7756,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.setAttribute('type', 'checkbox');
                 input.setAttribute('aria-label', `${player.name} auswählen`);
                 label.appendChild(input);
-                appendText(label, 'span', player.name, isMyPlayerRecord(player) ? 'my-player-text' : 'match-preview-player__name');
+                appendText(label, 'span', player.name, `match-preview-player__name${isMyPlayerRecord(player) ? ' my-player-text' : ''}`);
                 row.appendChild(label);
                 const ratingBlock = document.createElement('div');
                 ratingBlock.className = 'match-preview-player__rating';
@@ -7822,6 +7844,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         teamASelect.addEventListener('change', () => { updateExclusions(); loadSelection(); });
         teamBSelect.addEventListener('change', () => { updateExclusions(); loadSelection(); });
+        if (initialMatchAutoFill) {
+            setTimeout(() => applyMatchSelectorAutoFill(true, initialMatchAutoFill.match, {
+                leagueSelect, teamASelect, teamBSelect, banner: initialMatchAutoFill.banner,
+                updateExclusions, loadSelection,
+            }), 100);
+        }
 
         const renderLineup = (parent, titleText, lineup) => {
             const section = document.createElement('section');
@@ -7846,18 +7874,58 @@ document.addEventListener('DOMContentLoaded', () => {
             [[nameA, lineupA], [nameB, lineupB]].forEach(([teamName, lineup]) => {
                 appendText(form, 'h3', teamName);
                 lineup.forEach((player) => {
-                    const kind = Number(player.currentAppearances) > 0 ? 'Aktuelle Form' : 'Historische Form';
-                    appendText(form, 'p', `${player.name} · ${kind}`);
+                    const row = document.createElement('div');
+                    row.className = 'match-preview-form-row';
+                    appendText(row, 'strong', player.name);
+                    if (player.evidence === 'neutral') {
+                        appendText(row, 'span', 'Keine Formdaten', 'match-preview-form-label');
+                        form.appendChild(row);
+                        return;
+                    }
+                    const formLabel = player.evidence === 'current' || player.evidence === 'current+history'
+                        ? 'Aktuelle Form'
+                        : 'Historische Form';
+                    appendText(row, 'span', formLabel, 'match-preview-form-label');
+                    let values = [];
+                    try {
+                        const trend = getPlayerFormTrend(player);
+                        values = trend && Array.isArray(trend.values)
+                            ? trend.values.map(Number).filter(Number.isFinite).slice(-5)
+                            : [];
+                    } catch (_error) {
+                        values = [];
+                    }
+                    if (values.length) {
+                        const sparkline = document.createElement('span');
+                        sparkline.className = 'match-preview-sparkline';
+                        sparkline.setAttribute('role', 'img');
+                        sparkline.setAttribute('aria-label', `${formLabel}: ${values.map((value) => value.toFixed(1)).join(', ')}`);
+                        const minimum = Math.min(...values);
+                        const maximum = Math.max(...values);
+                        values.forEach((value) => {
+                            const point = document.createElement('span');
+                            point.className = 'match-preview-sparkline__point';
+                            const relativeHeight = maximum === minimum
+                                ? 65
+                                : 25 + ((value - minimum) / (maximum - minimum)) * 75;
+                            point.style.height = `${relativeHeight.toFixed(1)}%`;
+                            point.setAttribute('title', value.toFixed(1));
+                            sparkline.appendChild(point);
+                        });
+                        row.appendChild(sparkline);
+                    } else {
+                        appendText(row, 'span', 'Keine Formdaten', 'match-preview-form-empty');
+                    }
+                    form.appendChild(row);
                 });
             });
             parent.appendChild(form);
             const pairings = document.createElement('section');
             pairings.className = 'match-preview-panel match-preview-pairings';
             appendText(pairings, 'h2', '1v1 Paarungen');
-            lineupA.forEach((homePlayer, index) => {
-                const awayPlayer = lineupB[index];
-                appendText(pairings, 'p', `${homePlayer.name} ${rating(homePlayer).toFixed(1)} · ${awayPlayer.name} ${rating(awayPlayer).toFixed(1)}`);
-            });
+            lineupA.forEach((homePlayer) => lineupB.forEach((awayPlayer) => {
+                appendText(pairings, 'p', `${homePlayer.name} ${rating(homePlayer).toFixed(1)} · ${awayPlayer.name} ${rating(awayPlayer).toFixed(1)}`, 'match-preview-pairing');
+            }));
             parent.appendChild(pairings);
             if (playersA.length > 4 || playersB.length > 4) {
                 const optimal = document.createElement('section');
@@ -7906,7 +7974,14 @@ document.addEventListener('DOMContentLoaded', () => {
             renderLineup(lineups, nameB, lineupB);
             resultDiv.appendChild(lineups);
             renderFormAndPairings(resultDiv, nameA, nameB, lineupA, lineupB);
-            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            let reducedMotion = false;
+            try {
+                reducedMotion = typeof window.matchMedia === 'function'
+                    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            } catch (_error) {
+                reducedMotion = false;
+            }
+            resultDiv.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
         });
     }
 

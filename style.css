@@ -1725,13 +1725,49 @@ a.club-contact-field__value {
     grid-column: 1 / 2;
 }
 
-.match-preview-form p,
+.match-preview-form-row,
 .match-preview-pairings p,
 .match-preview-optimal p {
     padding: 0.45rem 0;
     color: #cbd5e1;
     border-bottom: 1px solid rgba(51, 65, 85, 0.55);
     overflow-wrap: anywhere;
+}
+
+.match-preview-form-row {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 0.75rem;
+    align-items: center;
+}
+
+.match-preview-form-row strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.match-preview-form-label,
+.match-preview-form-empty {
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.match-preview-sparkline {
+    display: flex;
+    grid-column: 1 / -1;
+    gap: 0.3rem;
+    align-items: flex-end;
+    min-width: 0;
+    height: 2.25rem;
+}
+
+.match-preview-sparkline__point {
+    width: 0.45rem;
+    min-height: 0.25rem;
+    flex: 0 0 0.45rem;
+    background: #60a5fa;
+    border-radius: 999px 999px 0 0;
 }
 
 @media (max-width: 640px) {
@@ -1747,16 +1783,16 @@ a.club-contact-field__value {
     .match-preview-lineup-grid {
         grid-template-columns: minmax(0, 1fr);
     }
+
+    .match-preview-probability-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
 
 @media (max-width: 390px) {
     .match-preview-shell {
         width: 100%;
         padding: 0.5rem;
-    }
-
-    .match-preview-probability-grid {
-        grid-template-columns: minmax(0, 1fr);
     }
 
     .match-preview-player {
