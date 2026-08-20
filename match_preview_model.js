@@ -813,37 +813,17 @@
             const season = parseSeason(key.slice(separator + 1));
             const entry = ownValue(means, key);
             const mean = ownValue(entry, 'mean');
-            if (!season || (parsedBefore && season.endYear > parsedBefore.startYear)) continue;
+            if (keyClass !== normalizedClass || !season
+                || (parsedBefore && season.endYear > parsedBefore.startYear)) continue;
             const numeric = safePositiveModelRating(mean);
-            const appearancesValue = ownValue(entry, 'appearances');
-            const appearances = typeof appearancesValue === 'number'
-                && Number.isSafeInteger(appearancesValue) && appearancesValue > 0
-                ? appearancesValue
-                : 1;
             if (numeric !== null) candidates.push({
                 seasonEnd: season.endYear,
                 mean: numeric,
-                appearances,
-                target: keyClass === normalizedClass,
             });
         }
-        const targetCandidates = candidates.filter((candidate) => candidate.target)
-            .sort((left, right) => right.seasonEnd - left.seasonEnd || right.mean - left.mean);
-        if (targetCandidates.length) {
-            return { mean: targetCandidates[0].mean, available: true, source: 'target-class' };
-        }
+        candidates.sort((left, right) => right.seasonEnd - left.seasonEnd || right.mean - left.mean);
         if (candidates.length) {
-            const newestEnd = Math.max(...candidates.map((candidate) => candidate.seasonEnd));
-            const newest = candidates.filter((candidate) => candidate.seasonEnd === newestEnd);
-            const appearances = newest.reduce((sum, candidate) => sum + candidate.appearances, 0);
-            const weighted = newest.reduce(
-                (sum, candidate) => sum + candidate.mean * candidate.appearances,
-                0,
-            ) / appearances;
-            const safeWeighted = safePositiveModelRating(weighted);
-            if (safeWeighted !== null) {
-                return { mean: safeWeighted, available: true, source: 'global-class' };
-            }
+            return { mean: candidates[0].mean, available: true, source: 'target-class' };
         }
         return { mean: NEUTRAL_FALLBACK_RATING, available: false, source: 'fallback' };
     }
@@ -965,15 +945,24 @@
         return inspected.ok ? inspected.values : [];
     }
 
-    function parseCurrentPlayer(source) {
+    function parseCurrentPlayer(source, inheritedSeason) {
         if (!source || typeof source !== 'object') return null;
         const id = safeIdentifier(ownValue(source, 'id'));
         const name = displayPlayerName(ownValue(source, 'name'));
         const clubId = safeIdentifier(ownValue(source, 'v_nr'));
         const league = ownValue(source, 'league');
         const leagueClass = normalizeLeagueClass(league);
-        const seasonValue = ownValue(source, 'season');
-        const season = canonicalSeason(seasonValue) || seasonFromLeague(league);
+        const leagueSeason = seasonFromLeague(league);
+        const seasonInspection = inspectOwn(source, 'season');
+        const explicitSeason = seasonInspection.isData
+            ? canonicalSeason(seasonInspection.descriptor.value)
+            : null;
+        const invalidSeason = (seasonInspection.exists && !explicitSeason)
+            || (explicitSeason && leagueSeason && explicitSeason !== leagueSeason)
+            || (inheritedSeason && leagueSeason && leagueSeason !== inheritedSeason)
+            || (inheritedSeason && explicitSeason && explicitSeason !== inheritedSeason);
+        if (invalidSeason && id) return { id, invalidSeason: true };
+        const season = explicitSeason || leagueSeason || inheritedSeason || null;
         const teamIdentityValue = firstOwnValue(source, ['team', 'company', 'team_id']);
         const company = typeof teamIdentityValue === 'string'
             ? teamIdentityValue.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC')
@@ -1019,9 +1008,14 @@
     function groupCurrentPlayers(sources, targetSeason) {
         const groups = new Map();
         const invalidIds = new Set();
+        const excludedIds = new Set();
         for (const source of sources) {
             const sourceId = safeIdentifier(ownValue(source, 'id'));
-            const player = parseCurrentPlayer(source);
+            const player = parseCurrentPlayer(source, targetSeason);
+            if (player && player.invalidSeason) {
+                excludedIds.add(player.id);
+                continue;
+            }
             if (!player) {
                 if (sourceId) invalidIds.add(sourceId);
                 continue;
@@ -1031,8 +1025,14 @@
         }
         const players = [];
         const ambiguousIds = new Set(invalidIds);
-        const excludedIds = new Set();
+        for (const id of Array.from(excludedIds)) {
+            if (groups.has(id)) {
+                ambiguousIds.add(id);
+                excludedIds.delete(id);
+            }
+        }
         for (const id of Array.from(groups.keys()).sort((left, right) => left.localeCompare(right, 'en'))) {
+            if (excludedIds.has(id) || ambiguousIds.has(id)) continue;
             const group = groups.get(id);
             const fingerprints = new Set(group.map((player) => player.fingerprint));
             if (fingerprints.size !== 1) {
@@ -1066,16 +1066,127 @@
             || left.id.localeCompare(right.id, 'en');
     }
 
-    function explicitTeamMappingIsAmbiguous(options, teamId) {
-        const teamMappings = ownValue(options, 'teamMappings');
-        const mappedTeams = arrayDataValues(ownValue(teamMappings, teamId));
-        if (mappedTeams.ok && mappedTeams.values.length > 1) return true;
+    function authoritativeRosterMapping(options, teamId, targetClass, targetSeason) {
+        const labels = new Set();
+        let explicitAmbiguity = false;
+        const ambiguousInspection = inspectOwn(options, 'ambiguousClubNumbers');
+        if (ambiguousInspection.exists && !ambiguousInspection.isData) explicitAmbiguity = true;
+        const ambiguousNumbers = arrayDataValues(
+            ambiguousInspection.isData ? ambiguousInspection.descriptor.value : undefined,
+        );
+        if (ambiguousNumbers.ok) {
+            explicitAmbiguity = ambiguousNumbers.values.some(
+                (number) => safeIdentifier(number) === teamId,
+            );
+        }
+
+        function addLabel(value) {
+            const label = exactTeamLabel(value);
+            if (label) labels.add(label);
+        }
+
+        function addRecords(value, requireScope) {
+            const records = arrayDataValues(value);
+            if (!records.ok) return;
+            for (const record of records.values) {
+                if (typeof record === 'string') {
+                    if (!requireScope) addLabel(record);
+                    continue;
+                }
+                const safeRecord = cloneOwnData(record);
+                if (safeRecord === INVALID_CLONE || !safeRecord
+                    || typeof safeRecord !== 'object' || Array.isArray(safeRecord)) {
+                    explicitAmbiguity = true;
+                    continue;
+                }
+                const clubId = safeIdentifier(firstOwnValue(
+                    safeRecord, ['clubNumber', 'club_number', 'v_nr', 'number', 'clubId'],
+                ));
+                if (!clubId) {
+                    explicitAmbiguity = true;
+                    continue;
+                }
+                const teamName = firstOwnValue(safeRecord, ['teamName', 'team', 'name']);
+                const leagueValue = firstOwnValue(safeRecord, ['league', 'leagueClass', 'class']);
+                const leagueClass = normalizeLeagueClass(leagueValue);
+                const seasonInspection = inspectOwn(safeRecord, 'season');
+                const explicitSeasonValue = ownValue(safeRecord, 'season');
+                const season = canonicalSeason(explicitSeasonValue) || seasonFromLeague(leagueValue);
+                if (clubId !== teamId) continue;
+                if (requireScope && (!leagueClass
+                    || (seasonInspection.exists && !canonicalSeason(explicitSeasonValue))
+                    || (targetSeason && !season))) {
+                    explicitAmbiguity = true;
+                    continue;
+                }
+                if (requireScope && (leagueClass !== targetClass
+                    || (targetSeason && season !== targetSeason))) continue;
+                if (!requireScope && ((leagueClass && leagueClass !== targetClass)
+                    || (targetSeason && season && season !== targetSeason))) continue;
+                const label = exactTeamLabel(teamName);
+                if (!label) explicitAmbiguity = true;
+                else labels.add(label);
+            }
+        }
+
+        const teamMappingsInspection = inspectOwn(options, 'teamMappings');
+        if (teamMappingsInspection.exists && !teamMappingsInspection.isData) explicitAmbiguity = true;
+        const teamMappings = teamMappingsInspection.isData
+            ? teamMappingsInspection.descriptor.value
+            : undefined;
+        const directMappingInspection = inspectOwn(teamMappings, teamId);
+        if (directMappingInspection.exists && !directMappingInspection.isData) explicitAmbiguity = true;
+        const mappedTeams = arrayDataValues(
+            directMappingInspection.isData ? directMappingInspection.descriptor.value : undefined,
+        );
+        if (mappedTeams.ok) {
+            for (const team of mappedTeams.values) {
+                if (typeof team === 'string') {
+                    addLabel(team);
+                    continue;
+                }
+                const safeTeam = cloneOwnData(team);
+                if (safeTeam === INVALID_CLONE || !safeTeam || typeof safeTeam !== 'object') {
+                    explicitAmbiguity = true;
+                    continue;
+                }
+                const label = exactTeamLabel(firstOwnValue(safeTeam, ['teamName', 'team', 'name']));
+                if (!label) explicitAmbiguity = true;
+                else labels.add(label);
+            }
+        }
+        addRecords(teamMappings, false);
+        const leagueTeamsInspection = inspectOwn(options, 'leagueTeams');
+        if (leagueTeamsInspection.exists && !leagueTeamsInspection.isData) explicitAmbiguity = true;
+        addRecords(
+            leagueTeamsInspection.isData ? leagueTeamsInspection.descriptor.value : undefined,
+            true,
+        );
+
         const clubs = arrayDataValues(ownValue(options, 'clubs'));
-        if (!clubs.ok) return false;
-        const matchingClubs = clubs.values.filter((club) => ownValue(club, 'number') === teamId);
-        if (matchingClubs.length !== 1) return matchingClubs.length > 1;
-        const teams = arrayDataValues(ownValue(matchingClubs[0], 'teams'));
-        return teams.ok && teams.values.length > 1;
+        if (!teamMappingsInspection.exists && !leagueTeamsInspection.exists && clubs.ok) {
+            const matchingClubs = clubs.values.filter((club) => ownValue(club, 'number') === teamId);
+            if (matchingClubs.length > 1) explicitAmbiguity = true;
+            for (const club of matchingClubs) {
+                const teams = arrayDataValues(ownValue(club, 'teams'));
+                if (!teams.ok) continue;
+                for (const team of teams.values) {
+                    addLabel(typeof team === 'string' ? team : firstOwnValue(team, ['name', 'teamName']));
+                }
+            }
+        }
+        return {
+            labels,
+            authoritative: labels.size > 0 || explicitAmbiguity,
+            ambiguous: explicitAmbiguity || labels.size > 1,
+        };
+    }
+
+    function rosterRecordMatchesSelectedTeam(record, mapping, selectedTeamLabel) {
+        const ownTeam = exactTeamLabel(firstOwnValue(record, ['team', 'company', 'teamName']));
+        if (mapping.ambiguous) return Boolean(ownTeam && selectedTeamLabel && ownTeam === selectedTeamLabel);
+        if (ownTeam && selectedTeamLabel) return ownTeam === selectedTeamLabel;
+        return !mapping.authoritative || mapping.labels.size === 1;
     }
 
     function buildTeamRoster(options) {
@@ -1087,9 +1198,17 @@
         const explicitTargetSeason = targetSeasonInspection.isData
             ? canonicalSeason(targetSeasonInspection.descriptor.value)
             : null;
-        const invalidTargetSeason = targetSeasonInspection.exists
-            && (!explicitTargetSeason || (leagueSeason && explicitTargetSeason !== leagueSeason));
-        const targetSeason = explicitTargetSeason || leagueSeason;
+        const datasetSeasonInspection = inspectOwn(options, 'currentDatasetSeason');
+        const currentDatasetSeason = datasetSeasonInspection.isData
+            ? canonicalSeason(datasetSeasonInspection.descriptor.value)
+            : null;
+        const invalidTargetSeason = (targetSeasonInspection.exists && !explicitTargetSeason)
+            || (datasetSeasonInspection.exists && !currentDatasetSeason)
+            || (leagueSeason && explicitTargetSeason && explicitTargetSeason !== leagueSeason)
+            || (leagueSeason && currentDatasetSeason && currentDatasetSeason !== leagueSeason)
+            || (explicitTargetSeason && currentDatasetSeason
+                && explicitTargetSeason !== currentDatasetSeason);
+        const targetSeason = explicitTargetSeason || currentDatasetSeason || leagueSeason;
         const archiveData = ownValue(options, 'archiveData');
         const archiveIndex = buildArchiveIndex(archiveData && typeof archiveData === 'object' ? archiveData : {});
         const chronologicalIndex = targetSeason
@@ -1113,8 +1232,9 @@
         if (!teamId || !targetClass || invalidTargetSeason) {
             return deepFreeze({ players: [], targetClass, classMean, teamConfidence: 'very-low', diagnostics });
         }
-        const explicitMappingAmbiguous = explicitTeamMappingIsAmbiguous(options, teamId);
-        if (explicitMappingAmbiguous) diagnostics.ambiguousTeam = true;
+        const rosterMapping = authoritativeRosterMapping(
+            options, teamId, targetClass, targetSeason,
+        );
 
         const groupedCurrent = groupCurrentPlayers(
             currentPlayerSources(ownValue(options, 'currentPlayers')),
@@ -1144,17 +1264,22 @@
         const teamName = typeof teamNameValue === 'string'
             ? teamNameValue.normalize('NFKC').replace(/\s+/gu, ' ').trim().normalize('NFC')
             : '';
-        const companies = new Set(targetCurrent.map((player) => player.company).filter(Boolean));
-        if ((teamName && companies.size && !companies.has(teamName))
-            || (!teamName && companies.size > 1)) {
+        const selectedTeamLabel = exactTeamLabel(teamName);
+        const companies = new Set(targetCurrent.map((player) => exactTeamLabel(player.company)).filter(Boolean));
+        if ((rosterMapping.ambiguous && !selectedTeamLabel)
+            || (rosterMapping.labels.size && selectedTeamLabel
+                && !rosterMapping.labels.has(selectedTeamLabel))
+            || (!rosterMapping.authoritative && teamName && companies.size
+                && !companies.has(selectedTeamLabel))
+            || (!rosterMapping.authoritative && !teamName && companies.size > 1)) {
             diagnostics.ambiguousTeam = true;
             return deepFreeze({ players: [], targetClass, classMean, teamConfidence: 'very-low', diagnostics });
         }
-        const selectedCurrent = teamName
-            ? targetCurrent.filter((player) => (
-                player.company === teamName || (!explicitMappingAmbiguous && !player.company)
-            ))
-            : (explicitMappingAmbiguous ? [] : targetCurrent);
+        const selectedCurrent = targetCurrent.filter((player) => (
+            rosterRecordMatchesSelectedTeam(player, rosterMapping, selectedTeamLabel)
+            && (!selectedTeamLabel || !player.company
+                || exactTeamLabel(player.company) === selectedTeamLabel)
+        ));
 
         const players = [];
         const addedIds = new Set();
@@ -1210,7 +1335,7 @@
         for (const playerId of ownNames(chronologicalIndex.histories)) {
             const history = ownValue(chronologicalIndex.histories, playerId) || [];
             for (const record of history) {
-                if (!record.previewEligible) continue;
+                if (!record.v_nr) continue;
                 seasonSet.set(record.season, record.seasonEnd);
             }
         }
@@ -1232,7 +1357,8 @@
                     continue;
                 }
                 const sourceRecord = history.find((record) => (
-                    record.season === season && record.previewEligible && record.v_nr === teamId
+                    record.season === season && record.v_nr === teamId
+                    && rosterRecordMatchesSelectedTeam(record, rosterMapping, selectedTeamLabel)
                 ));
                 if (!sourceRecord) continue;
                 const historicalPrior = buildHistoricalPrior({
@@ -1427,46 +1553,50 @@
     }
 
     function parseMatchScore(row) {
-        function field(keys) {
+        function fields(keys) {
+            const values = [];
             for (const key of keys) {
                 const inspection = inspectOwn(row, key);
-                if (!inspection.ok) return { present: true, valid: false, value: undefined };
-                if (inspection.exists) return {
-                    present: true,
-                    valid: inspection.isData,
-                    value: inspection.isData ? inspection.descriptor.value : undefined,
-                };
+                if (!inspection.ok || (inspection.exists && !inspection.isData)) {
+                    return { valid: false, values: [] };
+                }
+                if (inspection.exists) values.push(inspection.descriptor.value);
             }
-            return { present: false, valid: true, value: undefined };
+            return { valid: true, values };
         }
-        const resultField = field(['result', 'score', 'ergebnis']);
-        const homeField = field(['homeScore', 'home_score']);
-        const awayField = field(['awayScore', 'away_score']);
-        if (!resultField.valid || !homeField.valid || !awayField.valid) return null;
-        let resultScore = null;
-        if (resultField.present && typeof resultField.value === 'string') {
-            const result = resultField.value;
+        function sameScore(scores) {
+            return scores.length > 0 && scores.every((score) => (
+                score.homeScore === scores[0].homeScore && score.awayScore === scores[0].awayScore
+            ));
+        }
+        const resultFields = fields(['result', 'score', 'ergebnis']);
+        const homeFields = fields(['homeScore', 'home_score']);
+        const awayFields = fields(['awayScore', 'away_score']);
+        if (!resultFields.valid || !homeFields.valid || !awayFields.valid) return null;
+        const scores = [];
+        for (const result of resultFields.values) {
+            if (typeof result !== 'string') return null;
             const match = /^\s*(0|[1-9][0-9]*)\s*:\s*(0|[1-9][0-9]*)\s*$/u.exec(result);
-            if (match) {
-                const homeScore = parseCanonicalInteger(match[1]);
-                const awayScore = parseCanonicalInteger(match[2]);
-                if (homeScore !== null && awayScore !== null) resultScore = { homeScore, awayScore };
+            if (!match) return null;
+            const homeScore = parseCanonicalInteger(match[1]);
+            const awayScore = parseCanonicalInteger(match[2]);
+            if (homeScore === null || awayScore === null) return null;
+            scores.push({ homeScore, awayScore });
+        }
+        const numericFieldsPresent = homeFields.values.length > 0 || awayFields.values.length > 0;
+        if (numericFieldsPresent && (!homeFields.values.length || !awayFields.values.length)) return null;
+        if (numericFieldsPresent) {
+            for (const homeValue of homeFields.values) {
+                const homeScore = parseCanonicalInteger(homeValue);
+                if (homeScore === null) return null;
+                for (const awayValue of awayFields.values) {
+                    const awayScore = parseCanonicalInteger(awayValue);
+                    if (awayScore === null) return null;
+                    scores.push({ homeScore, awayScore });
+                }
             }
         }
-        if (resultField.present && !resultScore) return null;
-        const numericFieldsPresent = homeField.present || awayField.present;
-        if (numericFieldsPresent && (!homeField.present || !awayField.present)) return null;
-        let numericScore = null;
-        if (numericFieldsPresent) {
-            const homeScore = parseCanonicalInteger(homeField.value);
-            const awayScore = parseCanonicalInteger(awayField.value);
-            if (homeScore === null || awayScore === null) return null;
-            numericScore = { homeScore, awayScore };
-        }
-        if (resultScore && numericScore
-            && (resultScore.homeScore !== numericScore.homeScore
-                || resultScore.awayScore !== numericScore.awayScore)) return null;
-        return resultScore || numericScore;
+        return sameScore(scores) ? scores[0] : null;
     }
 
     function normalizeObjectMatchRow(row, tableSeason, tableLeague) {
@@ -1865,7 +1995,13 @@
     function lineupSummary(lineup) {
         const inspected = arrayDataValues(lineup);
         if (!inspected.ok || inspected.values.length !== 4) {
-            return { valid: false, score: 0, confidence: 'very-low', uncertainty: 0.5, provenance: [] };
+            return {
+                valid: false,
+                score: NEUTRAL_FALLBACK_RATING,
+                confidence: 'very-low',
+                uncertainty: 0.5,
+                provenance: [],
+            };
         }
         const ratings = [];
         const confidences = [];
@@ -1873,8 +2009,10 @@
         let uncertainty = 0;
         const uncertaintyByConfidence = { high: 0.04, medium: 0.1, provisional: 0.2, 'very-low': 0.32 };
         for (const slot of inspected.values) {
-            const adjusted = safeRating(ownValue(slot, 'adjustedRating'));
-            const rating = adjusted === null ? safeRating(ownValue(slot, 'rating')) : adjusted;
+            const adjusted = safePositiveModelRating(ownValue(slot, 'adjustedRating'));
+            const rating = adjusted === null
+                ? safePositiveModelRating(ownValue(slot, 'rating'))
+                : adjusted;
             const confidenceValue = ownValue(slot, 'confidence');
             const confidence = CONFIDENCE_ORDER.includes(confidenceValue) ? confidenceValue : 'very-low';
             const evidenceValue = ownValue(slot, 'evidence');
@@ -1882,7 +2020,13 @@
                 ? evidenceValue
                 : 'neutral';
             if (rating === null) {
-                return { valid: false, score: 0, confidence: 'very-low', uncertainty: 0.5, provenance: [] };
+                return {
+                    valid: false,
+                    score: NEUTRAL_FALLBACK_RATING,
+                    confidence: 'very-low',
+                    uncertainty: 0.5,
+                    provenance: [],
+                };
             }
             ratings.push(rating);
             confidences.push(confidence);

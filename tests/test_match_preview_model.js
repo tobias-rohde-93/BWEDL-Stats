@@ -784,9 +784,11 @@ const globalNeutralPrior = Model.buildHistoricalPrior({
     playerId: '999', targetClass: 'B-Klasse', archiveIndex: globalMeanIndex,
     calibration: Model.buildClassCalibration(globalMeanIndex), beforeSeason: '2025/2026',
 });
-assert.equal(globalNeutralPrior.rating, 6);
-assert.equal(globalNeutralPrior.classMeanSource, 'global-class');
-assert.equal(globalNeutralPrior.classMeanAvailable, true);
+assert.equal(globalNeutralPrior.rating, Model.NEUTRAL_FALLBACK_RATING);
+assert.equal(globalNeutralPrior.classMeanSource, 'fallback');
+assert.equal(globalNeutralPrior.classMeanAvailable, false,
+    'another class cannot invent a target-class neutral mean');
+assert.equal(globalNeutralPrior.confidence, 'very-low');
 
 const missingMeanPrior = Model.buildHistoricalPrior({
     playerId: '999', targetClass: 'B-Klasse', archiveIndex: Model.buildArchiveIndex({}),
@@ -963,6 +965,161 @@ assert.equal(overflowBlendRoster.players[0].adjustedRating, 5,
     'unsafe current blending fails closed to the positive class mean');
 assert.equal(overflowBlendRoster.players[0].confidence, 'very-low');
 
+const rankingContext = vm.createContext({ window: {} });
+vm.runInContext(
+    fs.readFileSync(path.join(__dirname, '..', 'ranking_data.js'), 'utf8'),
+    rankingContext,
+    { filename: 'ranking_data.js' },
+);
+vm.runInContext(
+    fs.readFileSync(path.join(__dirname, '..', 'archive_data.js'), 'utf8'),
+    rankingContext,
+    { filename: 'archive_data.js' },
+);
+const committedCurrentPlayers = rankingContext.window.RANKING_DATA.players;
+const committedArchiveData = rankingContext.window.ARCHIVE_DATA;
+assert.equal(committedCurrentPlayers.length, 773);
+assert.equal(committedCurrentPlayers.every((player) => (
+    !Object.prototype.hasOwnProperty.call(player, 'season')
+    && !Object.prototype.hasOwnProperty.call(player, 'company')
+    && !/\d{2,4}\s*[\/-]\s*\d{2,4}/u.test(player.league)
+)), true, 'the committed ranking dataset exposes class-only explicitly-current rows');
+const realCurrentRoster = Model.buildTeamRoster({
+    teamId: '040', targetLeague: 'Bezirksliga 2025/2026',
+    currentPlayers: committedCurrentPlayers, archiveData: committedArchiveData,
+});
+const realCurrent425 = realCurrentRoster.players.find((player) => player.id === '425');
+assert.ok(realCurrent425, 'real current player 425 inherits the explicit target dataset season');
+assert.equal(realCurrent425.currentPoints, 172);
+assert.equal(realCurrent425.currentAppearances, 18);
+assert.equal(realCurrent425.adjustedRating, 8);
+assert.equal(realCurrent425.currentWeight, 18 / 22);
+
+for (const invalidSeasonPlayer of [
+    { id: '330', name: 'Invalid Explicit', v_nr: '035', league: 'B-Klasse', season: 'invalid', rounds: { R1: 4 } },
+    { id: '331', name: 'Wrong Explicit', v_nr: '035', league: 'B-Klasse', season: '2025/2026', rounds: { R1: 4 } },
+    { id: '332', name: 'Wrong League', v_nr: '035', league: 'B-Klasse 2025/2026', rounds: { R1: 4 } },
+    { id: '333', name: 'Internal Conflict', v_nr: '035', league: 'B-Klasse 2026/2027', season: '2025/2026', rounds: { R1: 4 } },
+]) {
+    const invalidSeasonRoster = Model.buildTeamRoster({
+        teamId: '035', targetLeague: 'B-Klasse 2026/2027',
+        currentPlayers: [invalidSeasonPlayer], archiveData: {}, classMean: 5,
+    });
+    assert.deepEqual(invalidSeasonRoster.players, []);
+    assert.deepEqual(invalidSeasonRoster.diagnostics.excludedCurrentIds, [invalidSeasonPlayer.id]);
+}
+
+const explicitDatasetSeasonRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', currentDatasetSeason: '2026/2027',
+    currentPlayers: [{ id: '334', name: 'Explicit Dataset', v_nr: '035', league: 'B-Klasse', rounds: { R1: 4 } }],
+    archiveData: {}, classMean: 5,
+});
+assert.equal(explicitDatasetSeasonRoster.players[0].id, '334');
+
+const authoritativeLeagueTeams = [
+    { clubNumber: '035', teamName: 'Alpha One', league: 'B-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamName: 'Alpha Two', league: 'B-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamName: 'Alpha A', league: 'A-Klasse', season: '2026/2027' },
+    { clubNumber: '035', teamName: 'Alpha Old', league: 'B-Klasse', season: '2025/2026' },
+];
+const ambiguousMappedCurrent = [
+    { id: '340', name: 'No Team Identity', v_nr: '035', league: 'B-Klasse', rounds: { R1: 4 } },
+    { id: '341', name: 'Exact Alpha One', v_nr: '035', team: 'Alpha One', league: 'B-Klasse', rounds: { R1: 5 } },
+    { id: '342', name: 'Wrong Alpha Two', v_nr: '035', team: 'Alpha Two', league: 'B-Klasse', rounds: { R1: 6 } },
+];
+const ambiguousMappedRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: ambiguousMappedCurrent, archiveData: {}, classMean: 5,
+    leagueTeams: authoritativeLeagueTeams,
+});
+assert.deepEqual(ambiguousMappedRoster.players.map((player) => player.id), ['341'],
+    'an ambiguous target-league club requires exact own team identity');
+
+const uniqueMappedRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: [ambiguousMappedCurrent[0]], archiveData: {}, classMean: 5,
+    leagueTeams: authoritativeLeagueTeams.filter((mapping) => mapping.teamName !== 'Alpha Two'),
+    clubs: [{ number: '035', name: 'Alpha Club', teams: ['Alpha One', 'Alpha A'] }],
+});
+assert.deepEqual(uniqueMappedRoster.players.map((player) => player.id), ['340'],
+    'a team in another class or season does not make the target league-season ambiguous');
+
+let mappingGetterCalls = 0;
+const unsafeLeagueTeam = {
+    clubNumber: '035', league: 'B-Klasse', season: '2026/2027',
+};
+Object.defineProperty(unsafeLeagueTeam, 'teamName', {
+    enumerable: true,
+    get() { mappingGetterCalls += 1; throw new Error('mapping getter must not run'); },
+});
+const unsafeMappedRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: [ambiguousMappedCurrent[0]], archiveData: {}, classMean: 5,
+    leagueTeams: [authoritativeLeagueTeams[0], unsafeLeagueTeam],
+});
+assert.deepEqual(unsafeMappedRoster.players, [],
+    'unsafe authoritative mappings cannot conceal a second target team');
+assert.equal(mappingGetterCalls, 0);
+const unsafeDirectMappedRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: [ambiguousMappedCurrent[0]], archiveData: {}, classMean: 5,
+    teamMappings: { '035': ['Alpha One', unsafeLeagueTeam] },
+});
+assert.deepEqual(unsafeDirectMappedRoster.players, []);
+assert.equal(mappingGetterCalls, 0);
+
+const mappedHistoricalArchive = {
+    350: [record({ id: '350', season: '2025/2026', name: 'Historical No Team', league: 'B-Klasse', mean: 5, vNr: '035' })],
+    351: [{
+        ...record({ id: '351', season: '2025/2026', name: 'Historical Exact', league: 'B-Klasse', mean: 6, vNr: '035' }),
+        team: 'Alpha One',
+    }],
+    352: [{
+        ...record({ id: '352', season: '2025/2026', name: 'Historical Wrong', league: 'B-Klasse', mean: 7, vNr: '035' }),
+        team: 'Alpha Two',
+    }],
+};
+const mappedHistoricalRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: [], archiveData: mappedHistoricalArchive,
+    leagueTeams: authoritativeLeagueTeams,
+});
+assert.deepEqual(mappedHistoricalRoster.players.map((player) => player.id), ['351'],
+    'the same authoritative ambiguity rule applies to historical roster membership');
+
+const explicitAmbiguousClubRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Alpha One', targetLeague: 'B-Klasse 2026/2027',
+    currentPlayers: ambiguousMappedCurrent.slice(0, 2), archiveData: {}, classMean: 5,
+    ambiguousClubNumbers: ['035'],
+});
+assert.deepEqual(explicitAmbiguousClubRoster.players.map((player) => player.id), ['341']);
+
+const totalsMembershipArchive = {
+    360: [
+        record({ id: '360', season: '2025/2026', name: 'Totals Member', league: 'B-Klasse', mean: 0, appearances: 0, vNr: '035', totalsOnly: true }),
+        record({ id: '360', season: '2024/2025', name: 'Totals Member', league: 'B-Klasse', mean: 6, vNr: '035' }),
+        record({ id: '360', season: '2023/2024', name: 'Totals Member', league: 'B-Klasse', mean: 9, vNr: '035' }),
+    ],
+    361: [
+        record({ id: '361', season: '2025/2026', name: 'Moved Member', league: 'B-Klasse', mean: 0, appearances: 0, vNr: '999', totalsOnly: true }),
+        record({ id: '361', season: '2024/2025', name: 'Moved Member', league: 'B-Klasse', mean: 7, vNr: '035' }),
+    ],
+    362: [record({ id: '362', season: '2023/2024', name: 'Third Season', league: 'B-Klasse', mean: 8, vNr: '035' })],
+};
+const totalsMembershipRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse 2026/2027', currentPlayers: [],
+    archiveData: totalsMembershipArchive,
+});
+const totalsMember = totalsMembershipRoster.players.find((player) => player.id === '360');
+assert.ok(totalsMember, 'totals-only latest membership can select a historical roster candidate');
+assert.deepEqual(totalsMember.sourceSeasons, ['2024/25']);
+assert.equal(totalsMember.historicalPrior.seasons[0].weight, 1);
+assert.equal(totalsMember.confidence, 'provisional');
+assert.equal(totalsMembershipRoster.players.some((player) => player.id === '361'), false,
+    'latest totals-only transfer excludes the old historical club');
+assert.equal(totalsMembershipRoster.players.some((player) => player.id === '362'), false,
+    'a third roster season is never pulled into the candidate list');
+
 const confidenceRoster = Model.buildTeamRoster({
     teamId: '035', targetLeague: 'B-Klasse', classMean: 5, archiveData: {},
     currentPlayers: [{
@@ -1058,6 +1215,8 @@ assert.equal(exactParticipantTraining.length, 1,
 for (const inconsistentScoreRow of [
     { round: 1, home: 'Alpha', away: 'Bravo', result: 'invalid', homeScore: 9, awayScore: 7 },
     { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7', homeScore: 9, awayScore: 8 },
+    { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7', score: '7:9' },
+    { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7', homeScore: 9, home_score: 8, awayScore: 7 },
 ]) {
     const inconsistentScore = Model.buildOutcomeTrainingExamples({
         archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [inconsistentScoreRow] }],
@@ -1066,6 +1225,20 @@ for (const inconsistentScoreRow of [
     assert.equal(inconsistentScore.length, 0);
     assert.equal(inconsistentScore.diagnostics.excluded.malformed, 1);
 }
+
+let scoreAliasGetterCalls = 0;
+const accessorScoreAlias = { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7' };
+Object.defineProperty(accessorScoreAlias, 'score', {
+    enumerable: true,
+    get() { scoreAliasGetterCalls += 1; throw new Error('score alias getter must not run'); },
+});
+const accessorScoreTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [accessorScoreAlias] }],
+    archiveData: outcomeArchive, clubs: outcomeClubs,
+});
+assert.equal(accessorScoreTraining.length, 0);
+assert.equal(accessorScoreTraining.diagnostics.excluded.malformed, 1);
+assert.equal(scoreAliasGetterCalls, 0);
 
 const conflictingDuplicateTraining = Model.buildOutcomeTrainingExamples({
     archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
@@ -1136,6 +1309,24 @@ assert.equal('home' in fallback, false);
 assert.equal('draw' in fallback, false);
 assert.equal('away' in fallback, false);
 assert.equal(typeof fallback.uncertaintyText, 'string');
+
+for (const unsafeDirectRating of [0, -1, Model.MAX_MODEL_RATING + 1, Number.MAX_SAFE_INTEGER, Infinity, NaN]) {
+    const unsafeDirectLineup = Array.from({ length: 4 }, (_, index) => ({
+        id: `unsafe-direct-${index}`,
+        name: `Unsafe Direct ${index}`,
+        adjustedRating: index === 0 ? unsafeDirectRating : 8,
+        rating: index === 0 ? unsafeDirectRating : 8,
+        evidence: 'current', confidence: 'high',
+    }));
+    const unsafeDirectForecast = Model.forecastMatch(
+        unsafeDirectLineup, awayLineup, { outcomeModel },
+    );
+    assert.equal(unsafeDirectForecast.mode, 'relative');
+    assert.equal(unsafeDirectForecast.homeScore, Model.NEUTRAL_FALLBACK_RATING);
+    assert.equal(unsafeDirectForecast.homeConfidence, 'very-low');
+    assert.equal('home' in unsafeDirectForecast, false);
+    assert.equal(Number.isFinite(unsafeDirectForecast.relative.homeShare), true);
+}
 
 const placeholderLineup = Model.completeLineup(homeLineup.slice(0, 2), {
     classMean: 5, manual: true,
@@ -1303,7 +1494,6 @@ for (const conflictRows of [
 }
 
 for (const badSeasonRow of [
-    { id: '326', name: 'Missing Season', v_nr: '035', league: 'B-Klasse', rounds: { R1: 4 } },
     { id: '327', name: 'Past Season', v_nr: '035', league: 'B-Klasse', season: '2025/2026', rounds: { R1: 4 } },
     { id: '328', name: 'Future Season', v_nr: '035', league: 'B-Klasse', season: '2027/2028', rounds: { R1: 4 } },
 ]) {
