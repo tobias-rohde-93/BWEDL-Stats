@@ -6,7 +6,7 @@ Die Web-Version ist hier verfügbar: **[BWEDL Stats öffnen](https://tobias-rohd
 ## Funktionen
 - **Aktuelle Tabellen & Ergebnisse** aller Ligen
 - **Persönliche Statistiken**: Suche nach deinem Namen, um Durchschnitt, Trend und Saisonverlauf zu sehen.
-- **Match-Preview**: Plane dein nächstes Spiel mit Team-Aufstellungen.
+- **Match-Preview**: Liefert bereits vor dem ersten Spieltag eine Vierer-Prognose und kennzeichnet historische sowie neutrale Schätzwerte transparent.
 - **Teamkalender-Abo**: Abonniere den regulären Saisonspielplan deines Profilteams.
 - **Vereinsfavoriten**: Gespeicherte Vereine stehen im globalen Bereich **FAVORITEN** und unter **VEREINE → Favoriten**.
 - **Offline-Modus**: Installierbar als App (PWA) auf Android und iOS.

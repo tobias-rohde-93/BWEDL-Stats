@@ -9,7 +9,7 @@ const styles = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
 const worker = fs.readFileSync(path.join(root, 'sw_v31.js'), 'utf8');
 
 function versionedShellUrls(markup) {
-    return [...markup.matchAll(/(?:href|src)="((?:style\.css|app_utils\.js|bundle_v31\.js)\?v=[^"]+)"/g)]
+    return [...markup.matchAll(/(?:href|src)="((?:style\.css|archive_data\.js|app_utils\.js|match_preview_model\.js|bundle_v31\.js)\?v=[^"]+)"/g)]
         .map((match) => `./${match[1]}`);
 }
 
@@ -315,19 +315,21 @@ const requestedShellUrls = versionedShellUrls(html);
 const requestedLocalAssets = localAssetUrls(html);
 const cachedAssets = serviceWorkerAssets(worker);
 assert.deepEqual(requestedShellUrls, [
-    './style.css?v=7',
+    './style.css?v=8',
+    './archive_data.js?v=9',
     './app_utils.js?v=4',
-    './bundle_v31.js?v=3.8',
+    './match_preview_model.js?v=1',
+    './bundle_v31.js?v=3.9',
 ]);
 assert.deepEqual(
-    cachedAssets.filter((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)/.test(asset)),
+    cachedAssets.filter((asset) => /(?:style\.css|archive_data\.js|app_utils\.js|match_preview_model\.js|bundle_v31\.js)/.test(asset)),
     requestedShellUrls,
 );
 for (const asset of requestedShellUrls) assert.ok(cachedAssets.includes(asset));
 for (const asset of requestedLocalAssets) {
     assert.ok(cachedAssets.includes(asset), `service worker pre-caches the exact index request ${asset}`);
 }
-assert.equal(cachedAssets.some((asset) => /(?:style\.css|app_utils\.js|bundle_v31\.js)$/.test(asset)), false);
+assert.equal(cachedAssets.some((asset) => /(?:style\.css|archive_data\.js|app_utils\.js|match_preview_model\.js|bundle_v31\.js)$/.test(asset)), false);
 assert.equal(cachedAssets.some((asset) => /(?:style\.css\?v=2|bundle_v31\.js\?v=3\.1)$/.test(asset)), false);
 assert.doesNotMatch(html, /getRegistrations\(|registration\.unregister\(|caches\.delete\(/);
 assert.equal((worker.match(/const CACHE_NAME\s*=\s*['"][^'"]+['"]/g) || []).length, 1);

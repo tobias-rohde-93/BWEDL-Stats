@@ -122,12 +122,29 @@ Bei passenden Begegnungen stehen direkte Aktionen bereit: **Teilen** nutzt – s
 ---
 
 ## ⚔️ Match Preview Tool
-Das Werkzeug für den Spieltag!
+Das Werkzeug liefert auch vor dem ersten Spieltag eine Vierer-Prognose. Wähle deine Liga, das Heim-Team und das Gast-Team. Die automatisch angenommene Aufstellung lässt sich vor jeder Berechnung manuell korrigieren; fehlen bekannte Spieler, erscheinen sichtbare neutrale Plätze statt einer Nullwertung.
 
-### Begegnung & Aufstellung
-Wähle deine Liga, dein Heim-Team und das Gast-Team aus.
-- **Kader-Liste**: Das Tool lädt automatisch die aktuellen Kader beider Teams inklusive Rang und Schnitt.
-- **Prognose berechnen**: Erstellt eine Vorhersage für den Spielausgang.
+### Evidenz in der Kader-Liste
+
+- **Aktuell**: Der Spieler ist dem gewählten Team in den veröffentlichten Daten der laufenden Saison zugeordnet und die Bewertung beruht auf aktuellen Einsätzen.
+- **Aktuell + Historie**: Aktuelle Einsätze werden mit der historischen Bewertung stabilisiert, solange die laufende Saison noch wenig Evidenz liefert.
+- **Vorjahreskader**: Der Spieler ist nur über den letzten abgeschlossenen Saisonkader belegt. Deshalb steht zusätzlich **Kaderzugehörigkeit unbestätigt** dabei.
+- **Historischer Ersatzkader**: Der Spieler stammt ausschließlich aus der davorliegenden Saison und wird nur verwendet, wenn der jüngere historische Kader nicht vier identifizierbare Spieler liefert.
+- **Neutraler Klassenwert**: Für diesen der vier Plätze ist kein Spieler sicher zuordenbar. Der Platz verwendet einen positiven Schätzwert der gewählten Klasse und bleibt als unsichere Annahme sichtbar.
+
+Die Spielerleistung wird als Quotient aus Punkten und **tatsächlichen Einsätzen** berechnet. Leere Runden und `x` zählen nicht als Einsatz; eine historische Gesamtsumme ohne belegte Einsätze wird nicht als Leistungsdurchschnitt verwendet. Kleine Stichproben werden zusätzlich mit vier klassenüblichen Einsätzen stabilisiert.
+
+Für den historischen Ausgangswert zählen die zwei neuesten abgeschlossenen Saisons: die jüngere mit **70 %**, die vorherige mit **30 %**. Ist nur eine davon nutzbar, erhält sie 100 %. Aktuelle Ergebnisse ersetzen diese Historie anschließend schrittweise, statt sie nach dem ersten Einsatz abrupt zu verdrängen.
+
+Leistungen aus **Bezirksliga**, **A-Klasse**, **B-Klasse** und **C-Klasse** sind nicht automatisch gleichwertig. Ein Klassenwechsel wird nur anhand ausreichend vieler tatsächlich beobachteter Wechsel auf die Klasse der gewählten Partie angepasst. Fehlt dafür eine belastbare Kalibrierung, erfindet das Modell keinen Faktor und kennzeichnet die Prognose als sehr unsicher.
+
+### Aufstellung, Ergebnis und Unsicherheit
+
+Die vier vorausgewählten Spieler können über die Kontrollkästchen manuell entfernt oder ersetzt werden. **Prognose berechnen** verwendet immer genau vier Plätze und zeigt die dabei verwendete aktuelle, historische oder neutrale Evidenz. Formdaten aus abgeschlossenen Saisons heißen ausdrücklich **Historische Form** und werden nicht als aktuelle Form ausgegeben.
+
+Nur bei ausreichender historischer Ergebnisbasis erscheinen getrennte Werte für Heim, Unentschieden und Auswärts. Ein **Plausibler Bereich** zeigt, wie stark unsichere Spieler-, Klassen- und Kaderannahmen das Ergebnis verändern können. Reicht die Kalibrierung nicht aus, zeigt das Werkzeug stattdessen eine relative Aufstellungsstärke und keine behauptete Sieg-Wahrscheinlichkeit. Historische Kader sind keine offizielle aktuelle Meldeliste; Hinweise wie **Kaderzugehörigkeit unbestätigt** und die Datenqualität gehören daher zur Aussage der Prognose.
+
+Alle Aktualisierungen kommen ausschließlich aus den veröffentlichten statischen Artefakten auf **GitHub Pages**. Das Werkzeug ruft keine eigene API und keinen lokalen Server auf.
 
 ---
 

@@ -7,10 +7,10 @@ const worker = fs.readFileSync(path.resolve(__dirname, '..', 'sw_v31.js'), 'utf8
 const cacheNameMatch = worker.match(/^const CACHE_NAME = '([^']+)';$/m);
 assert.ok(cacheNameMatch, 'service worker declares one active cache name');
 const currentCacheName = cacheNameMatch[1];
-const previousCacheName = 'bwedl-dashboard-v40';
-assert.equal(currentCacheName, 'bwedl-dashboard-v41');
+const previousCacheName = 'bwedl-dashboard-v41';
+assert.equal(currentCacheName, 'bwedl-dashboard-v42');
 assert.notEqual(currentCacheName, previousCacheName);
-assert.doesNotMatch(worker, /bwedl-dashboard-v39/);
+assert.doesNotMatch(worker, /bwedl-dashboard-v40/);
 
 const listeners = {};
 const calls = [];
@@ -55,10 +55,12 @@ vm.runInContext(worker, sandbox);
     let installPromise;
     listeners.install({ waitUntil(promise) { installPromise = promise; } });
     await installPromise;
-    assert.ok(installedAssets.includes('./style.css?v=7'));
+    assert.ok(installedAssets.includes('./style.css?v=8'));
+    assert.ok(installedAssets.includes('./archive_data.js?v=9'));
     assert.ok(installedAssets.includes('./app_utils.js?v=4'));
+    assert.ok(installedAssets.includes('./match_preview_model.js?v=1'));
     assert.ok(installedAssets.includes('./calendar_index.js?v=1'));
-    assert.ok(installedAssets.includes('./bundle_v31.js?v=3.8'));
+    assert.ok(installedAssets.includes('./bundle_v31.js?v=3.9'));
 
     let activatePromise;
     listeners.activate({ waitUntil(promise) { activatePromise = promise; } });
@@ -115,6 +117,7 @@ vm.runInContext(worker, sandbox);
     assert.deepEqual(Object.keys(calls[1].options), ['ignoreSearch']);
 
     for (const url of [
+        'https://example.test/archive_data.js?v=9',
         'https://example.test/calendar_index.js?v=1',
         'https://example.test/calendar_index.json?v=1',
     ]) {

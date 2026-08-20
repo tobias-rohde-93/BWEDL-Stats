@@ -148,10 +148,46 @@ def test_calendar_index_shell_order_and_pages_subpath_contract() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     data_status = '<script src="data_status.js?v=1"></script>'
     calendar_index = '<script src="calendar_index.js?v=1"></script>'
+    archive_data = '<script src="archive_data.js?v=9"></script>'
     app_utils = '<script src="app_utils.js?v=4"></script>'
+    match_model = '<script src="match_preview_model.js?v=1"></script>'
+    bundle = '<script src="bundle_v31.js?v=3.9"></script>'
 
     assert html.count(calendar_index) == 1
     assert html.index(data_status) < html.index(calendar_index) < html.index(app_utils)
+    for script in (archive_data, app_utils, match_model, bundle):
+        assert html.count(script) == 1
+    assert html.index(archive_data) < html.index(app_utils) < html.index(match_model) < html.index(bundle)
+    assert all('src="./' not in script and 'src="/' not in script for script in (
+        archive_data, app_utils, match_model, bundle,
+    ))
+
+
+def test_user_documentation_explains_historical_match_preview_evidence() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    guide = (ROOT / "USER_GUIDE.md").read_text(encoding="utf-8")
+
+    for phrase in ("vor dem ersten Spieltag", "historische", "neutrale"):
+        assert phrase in readme
+    for phrase in (
+        "Aktuell",
+        "Aktuell + Historie",
+        "Vorjahreskader",
+        "Neutraler Klassenwert",
+        "tatsächlichen Einsätzen",
+        "70 %",
+        "30 %",
+        "Bezirksliga",
+        "A-Klasse",
+        "B-Klasse",
+        "C-Klasse",
+        "manuell",
+        "Kaderzugehörigkeit unbestätigt",
+        "Plausibler Bereich",
+        "GitHub Pages",
+        "statischen Artefakten",
+    ):
+        assert phrase in guide
 
 
 def test_public_refresh_contract_in_node() -> None:
