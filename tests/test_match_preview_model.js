@@ -1322,6 +1322,58 @@ assert.equal(unresolvedAffiliationRoster.players.some((player) => player.id === 
 assert.equal(unresolvedAffiliationRoster.players.some((player) => player.id === '747'), true,
     'numeric historical affiliation remains eligible beside marker-only performance');
 
+const chronologicalAffiliationRoster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Club Alpha', targetLeague: 'Bezirksliga 2022/2023',
+    targetSeason: '2022/2023', currentDatasetSeason: '2022/2023', currentPlayers: [],
+    clubs: [{ number: '035', name: 'Club Alpha' }], classMean: 4,
+    archiveData: {
+        748: [v2Record({
+            season: '2020/2022',
+            segments: [
+                segment({
+                    league: 'Bezirksliga', name: 'Later Marker', values: [4], vNr: '035',
+                }),
+                segment({
+                    league: 'Bezirksliga', name: 'Later Marker', values: [],
+                    markers: { R1: '', R2: 5 }, vNr: null, affiliationMarker: 'Vw',
+                }),
+            ],
+        })],
+        749: [v2Record({
+            season: '2020/2022',
+            segments: [
+                segment({
+                    league: 'Bezirksliga', name: 'Same Round Marker', values: [],
+                    markers: { R1: '', R2: 4 }, vNr: '035',
+                }),
+                segment({
+                    league: 'Bezirksliga', name: 'Same Round Marker', values: [],
+                    markers: { R1: '', R2: 5 }, vNr: null, affiliationMarker: 'Vw',
+                }),
+            ],
+        })],
+        750: [v2Record({
+            season: '2020/2022',
+            segments: [
+                segment({
+                    league: 'Bezirksliga', name: 'Earlier Marker', values: [],
+                    markers: { R1: '', R2: 5 }, vNr: '035',
+                }),
+                segment({
+                    league: 'Bezirksliga', name: 'Earlier Marker', values: [4],
+                    vNr: null, affiliationMarker: 'Vw',
+                }),
+            ],
+        })],
+    },
+});
+assert.equal(chronologicalAffiliationRoster.players.some((player) => player.id === '748'), false,
+    'a later played marker segment vetoes an older numeric club affiliation');
+assert.equal(chronologicalAffiliationRoster.players.some((player) => player.id === '749'), false,
+    'a marker tied at the greatest played round makes affiliation ambiguous');
+assert.equal(chronologicalAffiliationRoster.players.some((player) => player.id === '750'), true,
+    'an earlier marker does not veto a uniquely later numeric club affiliation');
+
 const fallbackRoster = Model.buildTeamRoster({
     teamId: '035', targetLeague: 'B-Klasse', currentPlayers: [],
     archiveData: {

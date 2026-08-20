@@ -1852,7 +1852,6 @@
         const candidates = [];
         for (const segment of inspected.values) {
             const clubId = safeIdentifier(ownValue(segment, 'v_nr'));
-            if (!clubId) continue;
             let latestRound = -1;
             const rounds = ownValue(segment, 'rounds');
             for (const key of ownNames(rounds)) {
@@ -1867,6 +1866,9 @@
         const greatestRound = Math.max(...candidates.map((candidate) => candidate.latestRound));
         if (greatestRound < 0) return { ambiguous: true, segments: [], clubId: null };
         const latest = candidates.filter((candidate) => candidate.latestRound === greatestRound);
+        if (latest.some((candidate) => !candidate.clubId)) {
+            return { ambiguous: true, segments: [], clubId: null };
+        }
         const clubs = new Set(latest.map((candidate) => candidate.clubId));
         if (clubs.size !== 1) return { ambiguous: true, segments: [], clubId: null };
         latest.sort((left, right) => (
