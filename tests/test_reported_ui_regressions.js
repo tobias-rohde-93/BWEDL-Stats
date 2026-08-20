@@ -261,6 +261,52 @@ test('match preview creates team options with safe DOM text APIs', () => {
     assert.match(populateSource, /option\.textContent\s*=\s*team\.name/);
 });
 
+test('match preview auto-fill abandons delayed work after its generation is invalidated', () => {
+    const pendingTimers = [];
+    const button = { textContent: 'Partie auswählen', style: {} };
+    const banner = { style: {}, querySelector: () => button };
+    const select = (options = []) => ({ value: '', options, dispatchEvent() {} });
+    let valid = true;
+    let loadCalls = 0;
+    const applyMatchSelectorAutoFill = compileFunction('applyMatchSelectorAutoFill', {
+        findTeamOptionMatchPreview: () => '42',
+        setTimeout: (callback) => pendingTimers.push(callback),
+        Event: class Event {},
+        setAppStatus() {},
+    });
+    applyMatchSelectorAutoFill(true, {
+        league: 'B-Klasse Gruppe 2 2026-2027',
+        home: 'DC Texas Team',
+        away: 'DC Texas Team 2',
+    }, {
+        leagueSelect: select(),
+        teamASelect: select([{ value: '42', textContent: 'DC Texas Team' }]),
+        teamBSelect: select([{ value: '43', textContent: 'DC Texas Team 2' }]),
+        banner,
+        canApply: () => valid,
+        updateExclusions() {},
+        loadSelection() { loadCalls += 1; },
+    });
+    assert.equal(pendingTimers.length, 1);
+    valid = false;
+    pendingTimers[0]();
+    assert.equal(loadCalls, 0);
+    assert.notEqual(banner.style.borderColor, '#22c55e');
+    assert.equal(button.textContent, 'Partie auswählen');
+});
+
+test('match preview form keeps numeric zero rounds for current and historical evidence', () => {
+    const getPlayerFormTrend = compileFunction('getPlayerFormTrend');
+    assert.deepEqual(getPlayerFormTrend({
+        evidence: 'current',
+        rounds: { R1: 0, R2: 44 },
+    }).values, [0, 44]);
+    assert.deepEqual(getPlayerFormTrend({
+        evidence: 'historical',
+        rounds: { R1: 0, R2: 39 },
+    }).values, [0, 39]);
+});
+
 test('Vereine disclosure groups indicator and peer-sized label on the left', () => {
     assert.match(styles, /\.club-sidebar-disclosure\s*\{[^}]*justify-content:\s*flex-start;/s);
     assert.match(styles, /\.club-sidebar-disclosure\s*\{[^}]*gap:\s*0\.4rem;/s);

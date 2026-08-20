@@ -186,7 +186,17 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     };
     const rankingPlayers = [];
     const autoFillCalls = [];
+    const autoFillCompletions = [];
     const formPlayers = [];
+    const pendingTimers = [];
+    const scheduleTimer = (callback, delay = 0) => {
+        if (scenarioOptions.deferTimers) {
+            pendingTimers.push({ callback, delay });
+            return pendingTimers.length;
+        }
+        callback();
+        return 0;
+    };
     const detectedMatches = scenarioOptions.detectedMatches
         || (scenarioOptions.detectedMatch ? [scenarioOptions.detectedMatch] : []);
     const bindings = {
@@ -206,18 +216,27 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
             return { trend: 'flat', values: Object.values(formPlayer.rounds || {}).map(Number), lastNAvg: 42 };
         },
         applyMatchSelectorAutoFill: (isAuto, match, controls) => {
+            if (typeof controls.canApply === 'function' && !controls.canApply()) return;
             autoFillCalls.push({ isAuto, match });
             controls.leagueSelect.value = match.league;
-            controls.leagueSelect.dispatchEvent({ type: 'change' });
-            controls.teamASelect.value = '035';
-            controls.teamBSelect.value = '036';
-            controls.updateExclusions();
-            controls.loadSelection();
-            controls.banner.style.borderColor = '#22c55e';
-            controls.banner.querySelector('.load-btn').textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
+            controls.leagueSelect.dispatchEvent({ type: 'change', isTrusted: false });
+            const complete = () => {
+                if (typeof controls.canApply === 'function' && !controls.canApply()) return;
+                const reversed = match.home === 'Bravo';
+                controls.teamASelect.value = reversed ? '036' : '035';
+                controls.teamBSelect.value = reversed ? '035' : '036';
+                controls.updateExclusions();
+                controls.loadSelection();
+                controls.banner.style.borderColor = '#22c55e';
+                controls.banner.querySelector('.load-btn').textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
+                autoFillCompletions.push({ isAuto, match });
+            };
+            if (scenarioOptions.deferAutoFillWork) scheduleTimer(complete, 200);
+            else complete();
         },
         escapeHtmlText: BwedlAppUtils.escapeHtmlText,
-        setTimeout: (callback) => callback(), setAppStatus() {}, Event: class Event { constructor(type) { this.type = type; } },
+        setTimeout: scheduleTimer,
+        setAppStatus() {}, Event: class Event { constructor(type) { this.type = type; this.isTrusted = false; } },
     };
     const render = Function(...Object.keys(bindings), `${rendererDeclaration}; return renderMatchPreview;`)(...Object.values(bindings));
     render();
@@ -230,7 +249,21 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
         selects[1].dispatchEvent({ type: 'change' });
         selects[2].dispatchEvent({ type: 'change' });
     }
-    return { document, contentArea, model, render, selects, rankingPlayers, autoFillCalls, formPlayers };
+    return {
+        document, contentArea, model, render, selects, rankingPlayers, autoFillCalls, autoFillCompletions, formPlayers,
+        flushNextTimer: () => {
+            const timer = pendingTimers.shift();
+            assert.ok(timer, 'Expected a pending timer');
+            timer.callback();
+        },
+        flushTimer: (delay) => {
+            const index = pendingTimers.findIndex((timer) => timer.delay === delay);
+            assert.notEqual(index, -1, `Expected a pending ${delay}ms timer`);
+            const [timer] = pendingTimers.splice(index, 1);
+            timer.callback();
+        },
+        pendingTimerCount: () => pendingTimers.length,
+    };
 }
 
 {
@@ -310,6 +343,119 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     assert.equal(cards[0].querySelector('.load-btn').textContent, 'Partie auswählen');
     assert.equal(cards[1].style.borderColor, '#22c55e');
     assert.equal(cards[1].querySelector('.load-btn').textContent, '✓ Ausgewählt');
+}
+
+{
+    const matches = [
+        { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        { league: 'B-Klasse 2026-2027', home: 'Bravo', away: 'Alpha' },
+    ];
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatches: matches,
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    const cards = scenario.contentArea.querySelectorAll('.match-preview-card');
+    cards[1].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    scenario.flushTimer(100);
+    scenario.flushTimer(200);
+    assert.deepEqual(scenario.autoFillCalls.map((call) => [call.isAuto, call.match.home]), [[false, 'Bravo']]);
+    assert.deepEqual(scenario.autoFillCompletions.map((call) => [call.isAuto, call.match.home]), [[false, 'Bravo']]);
+    assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '036', '035']);
+    assert.notEqual(cards[0].style.borderColor, '#22c55e');
+    assert.equal(cards[1].style.borderColor, '#22c55e');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatches: [
+            { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+            { league: 'B-Klasse 2026-2027', home: 'Bravo', away: 'Alpha' },
+        ],
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    const cards = scenario.contentArea.querySelectorAll('.match-preview-card');
+    cards[0].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    cards[1].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    scenario.flushTimer(200);
+    scenario.flushTimer(200);
+    scenario.flushTimer(100);
+    assert.deepEqual(scenario.autoFillCompletions.map((call) => call.match.home), ['Bravo']);
+    assert.notEqual(cards[0].style.borderColor, '#22c55e');
+    assert.equal(cards[1].style.borderColor, '#22c55e');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    assert.equal(scenario.pendingTimerCount(), 1);
+    scenario.render();
+    assert.equal(scenario.pendingTimerCount(), 2);
+    scenario.flushTimer(100);
+    assert.equal(scenario.autoFillCalls.length, 0, 'a timer from an obsolete render must be inert');
+    const currentSelects = scenario.contentArea.querySelectorAll('SELECT');
+    assert.deepEqual(currentSelects.map((select) => select.value), ['', '', '']);
+    scenario.flushTimer(100);
+    scenario.flushTimer(200);
+    assert.equal(scenario.autoFillCalls.length, 1);
+    assert.equal(scenario.autoFillCalls[0].isAuto, true);
+    assert.deepEqual(currentSelects.map((select) => select.value), ['B-Klasse 2026-2027', '035', '036']);
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    assert.equal(scenario.autoFillCalls.length, 0);
+    scenario.flushTimer(100);
+    scenario.flushTimer(200);
+    assert.deepEqual(scenario.autoFillCalls.map((call) => call.isAuto), [true]);
+    assert.deepEqual(scenario.autoFillCompletions.map((call) => call.isAuto), [true]);
+    assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '035', '036']);
+    const card = scenario.contentArea.querySelector('.match-preview-card');
+    assert.equal(card.style.borderColor, '#22c55e');
+    scenario.selects[1].dispatchEvent({ type: 'change', isTrusted: true });
+    assert.notEqual(card.style.borderColor, '#22c55e');
+    assert.equal(card.querySelector('.load-btn').textContent, 'Partie auswählen');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    scenario.selects[0].value = 'B-Klasse 2026-2027';
+    scenario.selects[0].dispatchEvent({ type: 'change', isTrusted: true });
+    scenario.flushTimer(100);
+    assert.equal(scenario.autoFillCalls.length, 0, 'a trusted selector interaction must cancel initial auto-fill');
+    assert.equal(scenario.selects[0].value, 'B-Klasse 2026-2027');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    scenario.flushTimer(100);
+    scenario.selects[1].value = '035';
+    scenario.selects[1].dispatchEvent({ type: 'change', isTrusted: true });
+    scenario.flushTimer(200);
+    assert.equal(scenario.autoFillCompletions.length, 0, 'selector interaction must invalidate delayed auto-fill work');
+    assert.notEqual(scenario.contentArea.querySelector('.match-preview-card').style.borderColor, '#22c55e');
 }
 
 {

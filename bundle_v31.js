@@ -7171,9 +7171,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 1; i <= 18; i++) {
             const val = player.rounds[`R${i}`];
-            if (val && val !== '&nbsp;' && val !== 'x' && !isNaN(parseInt(val))) {
-                allValues.push(parseInt(val));
+            if (val === null || val === undefined) continue;
+            if (typeof val === 'string' && (!val.trim() || val === '&nbsp;' || val === 'x')) continue;
+            let numericValue;
+            try {
+                numericValue = Number(val);
+            } catch (_error) {
+                continue;
             }
+            if (Number.isFinite(numericValue)) allValues.push(numericValue);
         }
 
         if (allValues.length === 0) {
@@ -7414,6 +7420,8 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function applyMatchSelectorAutoFill(isAuto, nextMatch, elements) {
         const { leagueSelect, teamASelect, teamBSelect, banner, updateExclusions, loadSelection } = elements;
+        const canApply = typeof elements.canApply === 'function' ? elements.canApply : () => true;
+        if (!canApply()) return;
         
         // Step 1: Set league and trigger change to populate teams
         leagueSelect.value = nextMatch.league;
@@ -7421,6 +7429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Step 2: Set teams after a delay to allow the dropdowns to populate
         setTimeout(() => {
+            if (!canApply()) return;
             const homeVal = findTeamOptionMatchPreview(teamASelect, nextMatch.home);
             const awayVal = findTeamOptionMatchPreview(teamBSelect, nextMatch.away);
 
@@ -7465,6 +7474,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMatchPreview() {
         topBarTitle.textContent = 'Match Preview';
         contentArea.textContent = '';
+
+        const previousGeneration = Number.isSafeInteger(renderMatchPreview._generation)
+            ? renderMatchPreview._generation
+            : 0;
+        const renderGeneration = previousGeneration + 1;
+        renderMatchPreview._generation = renderGeneration;
+        let manualInteractionGeneration = 0;
+        let resetMatchCardStatus = () => {};
+        const markManualInteraction = () => {
+            manualInteractionGeneration += 1;
+            resetMatchCardStatus();
+        };
 
         const previewModel = window.BwedlMatchPreviewModel;
         const archiveTables = window.ARCHIVE_TABLES || [];
@@ -7624,7 +7645,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const scroller = document.createElement('section');
                 scroller.className = 'match-preview-next-games';
                 appendText(scroller, 'h2', matches.length > 1 ? `Nächste Spiele (${matches.length})` : 'Nächstes Spiel erkannt');
-                const resetMatchCardStatus = () => {
+                resetMatchCardStatus = () => {
                     scroller.querySelectorAll('.match-preview-card').forEach((card) => {
                         card.style.borderColor = '';
                         card.style.boxShadow = '';
@@ -7648,10 +7669,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadButton.className = 'load-btn';
                     loadButton.textContent = 'Partie auswählen';
                     loadButton.addEventListener('click', () => {
-                        resetMatchCardStatus();
+                        markManualInteraction();
+                        const cardInteractionGeneration = manualInteractionGeneration;
+                        const canApplyCardSelection = () => (
+                            renderMatchPreview._generation === renderGeneration
+                            && manualInteractionGeneration === cardInteractionGeneration
+                        );
                         applyMatchSelectorAutoFill(false, match, {
                             leagueSelect, teamASelect, teamBSelect, banner: matchCard,
-                            updateExclusions, loadSelection,
+                            updateExclusions, loadSelection, canApply: canApplyCardSelection,
                         });
                     });
                     matchCard.appendChild(loadButton);
@@ -7692,7 +7718,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        leagueSelect.addEventListener('change', () => {
+        leagueSelect.addEventListener('change', (event) => {
+            if (!event || event.isTrusted !== false) markManualInteraction();
             const league = leagueSelect.value;
             teamSelection.style.display = league ? 'block' : 'none';
             selectionArea.style.display = 'none';
@@ -7842,13 +7869,30 @@ document.addEventListener('DOMContentLoaded', () => {
             Array.from(teamASelect.options).forEach((option) => { if (option.value) option.disabled = option.value === teamBSelect.value; });
             Array.from(teamBSelect.options).forEach((option) => { if (option.value) option.disabled = option.value === teamASelect.value; });
         };
-        teamASelect.addEventListener('change', () => { updateExclusions(); loadSelection(); });
-        teamBSelect.addEventListener('change', () => { updateExclusions(); loadSelection(); });
+        teamASelect.addEventListener('change', (event) => {
+            if (!event || event.isTrusted !== false) markManualInteraction();
+            updateExclusions();
+            loadSelection();
+        });
+        teamBSelect.addEventListener('change', (event) => {
+            if (!event || event.isTrusted !== false) markManualInteraction();
+            updateExclusions();
+            loadSelection();
+        });
         if (initialMatchAutoFill) {
-            setTimeout(() => applyMatchSelectorAutoFill(true, initialMatchAutoFill.match, {
-                leagueSelect, teamASelect, teamBSelect, banner: initialMatchAutoFill.banner,
-                updateExclusions, loadSelection,
-            }), 100);
+            const scheduledInteractionGeneration = manualInteractionGeneration;
+            const canApplyInitialAutoFill = () => (
+                renderMatchPreview._generation === renderGeneration
+                && manualInteractionGeneration === scheduledInteractionGeneration
+            );
+            setTimeout(() => {
+                if (!canApplyInitialAutoFill()) return;
+                resetMatchCardStatus();
+                applyMatchSelectorAutoFill(true, initialMatchAutoFill.match, {
+                    leagueSelect, teamASelect, teamBSelect, banner: initialMatchAutoFill.banner,
+                    updateExclusions, loadSelection, canApply: canApplyInitialAutoFill,
+                });
+            }, 100);
         }
 
         const renderLineup = (parent, titleText, lineup) => {
