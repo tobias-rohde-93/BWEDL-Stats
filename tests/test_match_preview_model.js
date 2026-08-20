@@ -677,4 +677,408 @@ assert.equal(excludedPairCalibration.transitions['A-Klasse>B-Klasse'], undefined
 assert.equal(excludedPairCalibration.diagnostics.excluded.sameClass, 1);
 assert.equal(excludedPairCalibration.diagnostics.excluded.insufficientAppearances, 1);
 
+// Task 4: historical priors use only the two newest eligible completed seasons.
+const priorArchive = mergeArchives(makeTransitionArchive(), {
+    7: [
+        record({ id: '7', season: '2023/2024', name: 'Prior Seven', league: 'A-Klasse', mean: 2, appearances: 8, vNr: '035' }),
+        record({ id: '7', season: '2024/2025', name: 'Prior Seven', league: 'A-Klasse', mean: 4, appearances: 8, vNr: '035' }),
+        record({ id: '7', season: '2025/2026', name: 'Prior Seven', league: 'B-Klasse', mean: 7, appearances: 8, vNr: '035' }),
+    ],
+});
+const priorIndex = Model.buildArchiveIndex(priorArchive);
+const priorCalibration = Model.buildClassCalibration(priorArchive);
+const prior = Model.buildHistoricalPrior({
+    playerId: '7',
+    targetClass: 'B-Klasse',
+    archiveIndex: priorIndex,
+    calibration: priorCalibration,
+});
+assert.deepEqual(prior.seasons.map((item) => item.season), ['2025/26', '2024/25']);
+assert.deepEqual(prior.seasons.map((item) => item.weight), [0.7, 0.3]);
+assert.equal(prior.seasons[0].raw, 7);
+assert.equal(prior.seasons[0].classCalibrated, true);
+assert.deepEqual(prior.sourceSeasons, ['2025/26', '2024/25']);
+assert.equal(prior.provenance, 'historical-two-season');
+assert.equal(Object.isFrozen(prior), true);
+assert.equal(Object.isFrozen(prior.seasons), true);
+assert.notEqual(prior.seasons[0], priorIndex.histories['7'][0]);
+
+const oneSeasonPrior = Model.buildHistoricalPrior({
+    playerId: '7', targetClass: 'B-Klasse', archiveIndex: priorIndex,
+    calibration: priorCalibration, beforeSeason: '2025/26',
+});
+assert.deepEqual(oneSeasonPrior.sourceSeasons, ['2024/25', '2023/24']);
+assert.deepEqual(oneSeasonPrior.seasons.map((item) => item.weight), [0.7, 0.3]);
+assert.equal(oneSeasonPrior.sourceSeasons.includes('2025/26'), false, 'target season never leaks');
+
+const singleArchive = {
+    70: [record({ id: '70', season: '2024/2025', name: 'Single', league: 'B-Klasse', mean: 4, vNr: '035' })],
+};
+const singleIndex = Model.buildArchiveIndex(singleArchive);
+const singleCalibration = Model.buildClassCalibration(singleArchive);
+const singlePrior = Model.buildHistoricalPrior({
+    playerId: '70', targetClass: 'B-Klasse', archiveIndex: singleIndex,
+    calibration: singleCalibration,
+});
+assert.equal(singlePrior.seasons.length, 1);
+assert.equal(singlePrior.seasons[0].weight, 1);
+assert.equal(singlePrior.confidence, 'provisional');
+
+const neutralPrior = Model.buildHistoricalPrior({
+    playerId: '999', targetClass: 'B-Klasse', archiveIndex: singleIndex,
+    calibration: singleCalibration, classMean: 5.25,
+});
+assert.equal(neutralPrior.rating, 5.25);
+assert.equal(neutralPrior.neutralMean, 5.25);
+assert.equal(neutralPrior.provenance, 'neutral-target-class-mean');
+assert.equal(neutralPrior.confidence, 'very-low');
+assert.deepEqual(neutralPrior.seasons, []);
+
+const uncalibratedArchive = {
+    71: [record({ id: '71', season: '2024/2025', name: 'Uncalibrated', league: 'A-Klasse', mean: 4, vNr: '035' })],
+    72: [record({ id: '72', season: '2024/2025', name: 'Class Peer', league: 'A-Klasse', mean: 8, vNr: '036' })],
+};
+const uncalibratedIndex = Model.buildArchiveIndex(uncalibratedArchive);
+const uncalibratedCalibration = Model.buildClassCalibration(uncalibratedArchive);
+const uncalibratedPrior = Model.buildHistoricalPrior({
+    playerId: '71', targetClass: 'B-Klasse', archiveIndex: uncalibratedIndex,
+    calibration: uncalibratedCalibration, classMean: 5,
+});
+assert.equal(uncalibratedPrior.seasons[0].stable, 5);
+assert.equal(uncalibratedPrior.seasons[0].converted, 5,
+    'missing calibration never invents a factor');
+assert.equal(uncalibratedPrior.classCalibrated, false);
+assert.equal(uncalibratedPrior.confidence, 'very-low');
+
+let priorOptionGetterCalls = 0;
+const unsafePriorOptions = { targetClass: 'B-Klasse', archiveIndex: priorIndex };
+Object.defineProperty(unsafePriorOptions, 'playerId', {
+    enumerable: true,
+    get() { priorOptionGetterCalls += 1; throw new Error('prior getter must not run'); },
+});
+assert.equal(Model.buildHistoricalPrior(unsafePriorOptions).provenance, 'neutral-target-class-mean');
+assert.equal(priorOptionGetterCalls, 0);
+
+// Current affiliation is globally authoritative, then exact historical club seasons fill gaps.
+const rosterArchive = mergeArchives(priorArchive, {
+    8: [record({ id: '8', season: '2025/2026', name: 'Eight Current', league: 'B-Klasse', mean: 6, appearances: 8, vNr: '035' })],
+    9: [record({ id: '9', season: '2025/2026', name: 'Moved Player', league: 'B-Klasse', mean: 9, vNr: '035' })],
+    11: [
+        record({ id: '11', season: '2024/2025', name: 'Historic Latest', league: 'A-Klasse', mean: 5, appearances: 8, vNr: '035' }),
+        record({ id: '11', season: '2025/2026', name: 'Historic Latest', league: 'B-Klasse', mean: 6, appearances: 8, vNr: '035' }),
+    ],
+    12: [record({ id: '12', season: '2025/2026', name: 'Same Name', league: 'B-Klasse', mean: 5, vNr: '035' })],
+    13: [record({ id: '13', season: '2024/2025', name: 'Historic Fallback', league: 'B-Klasse', mean: 4, vNr: '035' })],
+    14: [record({ id: '14', season: '2025/2026', name: 'Same Name', league: 'B-Klasse', mean: 4, vNr: '035' })],
+});
+const rosterCalibration = Model.buildClassCalibration(rosterArchive);
+const currentPlayers = deepFreeze([
+    { id: '7', name: 'Prior Seven', v_nr: '035', company: 'Team Exact', league: 'B-Klasse Gruppe 2 2026-2027', rounds: { R1: 8, R2: 6 } },
+    { id: '8', name: 'Eight Current', v_nr: '035', company: 'Team Exact', league: 'B-Klasse Gruppe 2 2026-2027', rounds: rounds(7, 8) },
+    { id: '9', name: 'Moved Player', v_nr: '999', company: 'Other Team', league: 'B-Klasse Gruppe 2 2026-2027', rounds: { R1: 10 } },
+    { id: '', name: 'No Stable ID', v_nr: '035', company: 'Team Exact', league: 'B-Klasse Gruppe 2 2026-2027', rounds: { R1: 12 } },
+]);
+const currentBefore = JSON.stringify(currentPlayers);
+const rosterBefore = JSON.stringify(rosterArchive);
+const roster = Model.buildTeamRoster({
+    teamId: '035', teamName: 'Team Exact',
+    targetLeague: 'B-Klasse Gruppe 2 2026-2027',
+    currentPlayers, archiveData: rosterArchive, calibration: rosterCalibration,
+});
+assert.equal(roster.players.find((player) => player.id === '9'), undefined);
+assert.equal(roster.players.find((player) => player.id === '7').evidence, 'current+history');
+assert.equal(roster.players.find((player) => player.id === '11').rosterUnconfirmed, true);
+assert.equal(roster.players.find((player) => player.id === '12').name, 'Same Name');
+assert.equal(roster.players.find((player) => player.id === '14').name, 'Same Name',
+    'same names with different stable IDs stay separate');
+assert.equal(roster.players.some((player) => player.id === ''), false);
+const blended = roster.players.find((player) => player.id === '8');
+assert.equal(blended.currentAppearances, 8);
+assert.equal(blended.currentWeight, 8 / 12);
+assert.equal(blended.rating, (56 + 4 * blended.historicalPrior.rating) / 12);
+assert.equal(blended.confidence, 'high');
+assert.equal(JSON.stringify(currentPlayers), currentBefore);
+assert.equal(JSON.stringify(rosterArchive), rosterBefore);
+assert.equal(roster.players.find((player) => player.id === '13'), undefined,
+    'preceding-season candidates are unnecessary once four identifiable candidates exist');
+
+const fallbackRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', currentPlayers: [],
+    archiveData: {
+        21: [record({ id: '21', season: '2025/2026', name: 'Latest One', league: 'B-Klasse', mean: 7, vNr: '035' })],
+        22: [record({ id: '22', season: '2024/2025', name: 'Second One', league: 'B-Klasse', mean: 6, vNr: '035' })],
+        23: [record({ id: '23', season: '2024/2025', name: 'Second Two', league: 'B-Klasse', mean: 5, vNr: '035' })],
+        24: [record({ id: '24', season: '2024/2025', name: 'Second Three', league: 'B-Klasse', mean: 4, vNr: '035' })],
+        25: [record({ id: '25', season: '2024/2025', name: 'Second Four', league: 'B-Klasse', mean: 3, vNr: '035' })],
+    },
+});
+assert.deepEqual(fallbackRoster.players.map((player) => player.id), ['21', '22', '23', '24']);
+assert.equal(fallbackRoster.players[0].evidence, 'historical');
+assert.equal(fallbackRoster.players.slice(1).every((player) => (
+    player.evidence === 'historical-fallback' && player.confidence === 'very-low'
+)), true);
+
+const historicalTransferRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', currentPlayers: [],
+    archiveData: {
+        26: [
+            record({ id: '26', season: '2024/2025', name: 'Historical Transfer', league: 'B-Klasse', mean: 7, vNr: '035' }),
+            record({ id: '26', season: '2025/2026', name: 'Historical Transfer', league: 'B-Klasse', mean: 7, vNr: '036' }),
+        ],
+        27: [record({ id: '27', season: '2025/2026', name: 'Latest Home', league: 'B-Klasse', mean: 6, vNr: '035' })],
+    },
+});
+assert.equal(historicalTransferRoster.players.some((player) => player.id === '26'), false,
+    'latest historical club affiliation overrides the preceding-season fallback');
+
+const currentWithoutHistory = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', classMean: 5,
+    currentPlayers: [{ id: '80', name: 'New Current', v_nr: '035', league: 'B-Klasse', rounds: { R1: 9, R2: 7 } }],
+    archiveData: {},
+});
+assert.equal(currentWithoutHistory.players[0].historicalPrior.rating, 5);
+assert.equal(currentWithoutHistory.players[0].rating, (16 + 4 * 5) / 6);
+assert.equal(currentWithoutHistory.players[0].evidence, 'current');
+
+const ambiguousRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', archiveData: rosterArchive,
+    currentPlayers: [
+        { id: '90', name: 'Ambiguous', v_nr: '035', company: 'Team One', league: 'B-Klasse', rounds: { R1: 8 } },
+        { id: '91', name: 'Other Team', v_nr: '035', company: 'Team Two', league: 'B-Klasse', rounds: { R1: 7 } },
+    ],
+});
+assert.deepEqual(ambiguousRoster.players, []);
+assert.equal(ambiguousRoster.diagnostics.ambiguousTeam, true);
+
+let rosterGetterCalls = 0;
+const guardedCurrent = [{ id: '100', name: 'Guarded', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } }];
+Object.defineProperty(guardedCurrent[0], 'company', {
+    enumerable: true,
+    get() { rosterGetterCalls += 1; throw new Error('company getter must not run'); },
+});
+assert.doesNotThrow(() => Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', currentPlayers: guardedCurrent, archiveData: {},
+}));
+assert.equal(rosterGetterCalls, 0);
+
+// Every forecast lineup has exactly four cloned, evidence-first slots.
+const autoKnown = [
+    { id: 'a', name: 'Rating First', adjustedRating: 9, rating: 9, evidence: 'historical', confidence: 'provisional' },
+    { id: 'b', name: 'Evidence First', adjustedRating: 5, rating: 5, evidence: 'current', confidence: 'medium' },
+];
+const lineup = Model.completeLineup(autoKnown, { targetClass: 'B-Klasse', classMean: 5.25, size: 4 });
+assert.equal(lineup.length, 4);
+assert.equal(lineup[0].id, 'b');
+assert.equal(lineup.filter((slot) => slot.evidence === 'neutral').length, 2);
+assert.equal(lineup.every((slot) => slot.adjustedRating > 0), true);
+assert.equal(lineup[2].name, 'Unbekannter Spieler (Klassenwert)');
+assert.equal(lineup.teamConfidence, 'very-low');
+assert.notEqual(lineup[0], autoKnown[1]);
+const manualLineup = Model.completeLineup(autoKnown, {
+    targetClass: 'B-Klasse', classMean: 5.25, size: 4, manual: true,
+});
+assert.deepEqual(manualLineup.slice(0, 2).map((slot) => slot.id), ['a', 'b']);
+const trimmedLineup = Model.completeLineup([...autoKnown, ...autoKnown, ...autoKnown], {
+    targetClass: 'B-Klasse', classMean: 5.25, size: 4, manual: true,
+});
+assert.equal(trimmedLineup.length, 4);
+
+// Outcome reconstruction is exact, chronological, and deterministic.
+function makeOutcomeArchive() {
+    const archive = {};
+    for (let index = 0; index < 8; index += 1) {
+        const id = String(200 + index);
+        const vNr = index < 4 ? '035' : '036';
+        archive[id] = [
+            record({ id, season: '2024/2025', name: `Outcome ${id}`, league: 'A-Klasse', mean: index < 4 ? 7 : 5, vNr }),
+            record({ id, season: '2025/2026', name: `Outcome ${id}`, league: 'A-Klasse', mean: index < 4 ? 8 : 4, vNr }),
+        ];
+    }
+    return archive;
+}
+const outcomeArchive = deepFreeze(makeOutcomeArchive());
+const archiveTables = deepFreeze([{
+    season: '2025/2026', league: 'A-Klasse', rows: [
+        { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7', matchId: 'm1' },
+        { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7', matchId: 'm1-duplicate' },
+        { round: 2, home: 'Alpha', away: 'Unknown', homeScore: 8, awayScore: 8 },
+        { round: 3, home: 'Alpha', away: 'Bravo', result: 'not-a-score' },
+    ],
+}]);
+const outcomeClubs = deepFreeze([
+    { number: '035', name: 'Alpha' },
+    { number: '036', name: 'Bravo' },
+]);
+const training = Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: outcomeClubs,
+});
+assert.equal(training.length, 1);
+assert.equal(training[0].outcome, 'home');
+assert.equal(training[0].sourceSeasons.every((season) => season < '2025/26'), true);
+assert.equal(training.diagnostics.accepted, 1);
+assert.equal(training.diagnostics.excluded.duplicate, 1);
+assert.equal(training.diagnostics.excluded.teamMapping, 1);
+assert.equal(training.diagnostics.excluded.malformed, 1);
+assert.equal(JSON.stringify(outcomeArchive), JSON.stringify(makeOutcomeArchive()));
+assert.equal(JSON.stringify(training), JSON.stringify(Model.buildOutcomeTrainingExamples({
+    archiveTables, archiveData: outcomeArchive, clubs: outcomeClubs,
+})));
+
+const ambiguousTraining = Model.buildOutcomeTrainingExamples({
+    archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [
+        { round: 1, home: 'Alpha', away: 'Bravo', result: '9:7' },
+    ] }],
+    archiveData: outcomeArchive,
+    clubs: [...outcomeClubs, { number: '099', name: 'Alpha' }],
+});
+assert.equal(ambiguousTraining.length, 0);
+assert.equal(ambiguousTraining.diagnostics.excluded.teamMapping, 1);
+
+function makeOutcomeExamples({ wins = 20, draws = 10, losses = 20 } = {}) {
+    const examples = [];
+    for (let index = 0; index < wins; index += 1) {
+        examples.push({ key: `h-${index}`, season: `20${10 + Math.floor(index / 10)}/11`, homeRating: 8, awayRating: 4, outcome: 'home' });
+    }
+    for (let index = 0; index < draws; index += 1) {
+        examples.push({ key: `d-${index}`, season: `20${10 + Math.floor(index / 10)}/11`, homeRating: 6, awayRating: 6, outcome: 'draw' });
+    }
+    for (let index = 0; index < losses; index += 1) {
+        examples.push({ key: `a-${index}`, season: `20${10 + Math.floor(index / 10)}/11`, homeRating: 4, awayRating: 8, outcome: 'away' });
+    }
+    return examples;
+}
+
+const outcomeExamples = deepFreeze(makeOutcomeExamples());
+const outcomeExamplesBefore = JSON.stringify(outcomeExamples);
+const outcomeModel = Model.calibrateOutcomeModel(outcomeExamples);
+assert.equal(outcomeModel.calibrated, true);
+assert.equal(Object.isFrozen(outcomeModel), true);
+assert.equal(JSON.stringify(outcomeExamples), outcomeExamplesBefore);
+assert.deepEqual(Model.calibrateOutcomeModel(outcomeExamples).params, outcomeModel.params,
+    'grid-search tie resolution is deterministic');
+assert.deepEqual(outcomeModel.parameterGrid, {
+    scale: [0.5, 1, 2, 4],
+    homeAdvantage: [0, 0.25, 0.5],
+    drawPeak: [0.25, 0.5, 1],
+    drawDecay: [0.25, 0.5, 1],
+});
+
+const homeLineup = Model.completeLineup(Array.from({ length: 4 }, (_, index) => ({
+    id: `home-${index}`, name: `Home ${index}`, adjustedRating: 8, rating: 8,
+    evidence: 'current', confidence: 'high',
+})), { classMean: 5, manual: true });
+const awayLineup = Model.completeLineup(Array.from({ length: 4 }, (_, index) => ({
+    id: `away-${index}`, name: `Away ${index}`, adjustedRating: 4, rating: 4,
+    evidence: 'current', confidence: 'high',
+})), { classMean: 5, manual: true });
+const forecast = Model.forecastMatch(homeLineup, awayLineup, { outcomeModel, home: true });
+assert.equal(forecast.mode, 'probability');
+assert.ok(Math.abs(forecast.home + forecast.draw + forecast.away - 1) < 1e-12);
+for (const outcome of ['home', 'draw', 'away']) {
+    assert.ok(forecast.low[outcome] <= forecast[outcome] && forecast[outcome] <= forecast.high[outcome]);
+}
+assert.equal(forecast.homeScore, 8);
+assert.equal(forecast.awayScore, 4);
+
+const fallback = Model.forecastMatch(homeLineup, awayLineup, {
+    outcomeModel: Model.calibrateOutcomeModel(outcomeExamples.slice(0, 12)), home: true,
+});
+assert.equal(fallback.mode, 'relative');
+assert.equal('home' in fallback, false);
+assert.equal('draw' in fallback, false);
+assert.equal('away' in fallback, false);
+assert.equal(typeof fallback.uncertaintyText, 'string');
+
+const placeholderLineup = Model.completeLineup(homeLineup.slice(0, 2), {
+    classMean: 5, manual: true,
+});
+const placeholderForecast = Model.forecastMatch(placeholderLineup, awayLineup, { outcomeModel });
+assert.ok(
+    placeholderForecast.high.home - placeholderForecast.low.home
+    > forecast.high.home - forecast.low.home,
+    'neutral slots widen plausible probability ranges',
+);
+
+const symmetricExamples = deepFreeze(makeOutcomeExamples({ wins: 20, draws: 10, losses: 20 }));
+const symmetricModel = Model.calibrateOutcomeModel(symmetricExamples);
+assert.equal(symmetricModel.params.homeAdvantage, 0);
+const forward = Model.forecastMatch(homeLineup, awayLineup, { outcomeModel: symmetricModel });
+const reversed = Model.forecastMatch(awayLineup, homeLineup, { outcomeModel: symmetricModel });
+assert.ok(Math.abs(forward.home - reversed.away) < 1e-12);
+assert.ok(Math.abs(forward.away - reversed.home) < 1e-12);
+assert.ok(Math.abs(forward.draw - reversed.draw) < 1e-12);
+
+const duplicateExamples = [...makeOutcomeExamples(), makeOutcomeExamples()[0]];
+assert.equal(Model.calibrateOutcomeModel(duplicateExamples).diagnostics.excludedDuplicate, 1,
+    'exact match keys cannot be hidden in training twice');
+
+let unsafeExampleGetterCalls = 0;
+const unsafeExample = { key: 'unsafe' };
+Object.defineProperty(unsafeExample, 'homeRating', {
+    enumerable: true,
+    get() { unsafeExampleGetterCalls += 1; throw new Error('example getter must not run'); },
+});
+const guardedModel = Model.calibrateOutcomeModel([...makeOutcomeExamples(), unsafeExample]);
+assert.equal(guardedModel.calibrated, true);
+assert.equal(guardedModel.diagnostics.excludedUnsafe, 1);
+assert.equal(unsafeExampleGetterCalls, 0);
+const extremeNumericModel = Model.calibrateOutcomeModel([
+    ...makeOutcomeExamples(),
+    { key: 'extreme', homeRating: Number.MAX_VALUE, awayRating: 1, outcome: 'home' },
+]);
+assert.equal(extremeNumericModel.diagnostics.excludedUnsafe, 1,
+    'ratings beyond safe model arithmetic are excluded');
+
+const keylessSyntheticExamples = makeOutcomeExamples().map(({ key: _key, ...example }) => example);
+assert.equal(Model.calibrateOutcomeModel(keylessSyntheticExamples).calibrated, true,
+    'independent synthetic examples do not need archive match keys');
+
+const duplicateCurrentRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', archiveData: {},
+    currentPlayers: [
+        { id: '300', name: 'Duplicate Current', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+        { id: '300', name: 'Duplicate Current', v_nr: '035', league: 'B-Klasse', rounds: { R1: 5 } },
+    ],
+});
+assert.equal(duplicateCurrentRoster.players.length, 1,
+    'duplicate current rows never duplicate a stable player identity');
+
+const explicitAmbiguousRoster = Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', currentPlayers: [],
+    archiveData: { 301: [record({ id: '301', season: '2025/2026', name: 'Guessed', league: 'B-Klasse', mean: 6, vNr: '035' })] },
+    teamMappings: { '035': ['Team One', 'Team Two'] },
+});
+assert.deepEqual(explicitAmbiguousRoster.players, []);
+assert.equal(explicitAmbiguousRoster.diagnostics.ambiguousTeam, true);
+
+const revokedCurrentPlayers = Proxy.revocable([], {});
+revokedCurrentPlayers.revoke();
+assert.doesNotThrow(() => Model.buildTeamRoster({
+    teamId: '035', targetLeague: 'B-Klasse', currentPlayers: revokedCurrentPlayers.proxy,
+    archiveData: {},
+}));
+
+const revokedOutcomeRow = Proxy.revocable({}, {});
+revokedOutcomeRow.revoke();
+assert.doesNotThrow(() => Model.buildOutcomeTrainingExamples({
+    archiveTables: [{ season: '2025/2026', league: 'A-Klasse', rows: [revokedOutcomeRow.proxy] }],
+    archiveData: {}, clubs: outcomeClubs,
+}));
+
+let spoofGetterCalls = 0;
+const spoofedOutcomeModel = { calibrated: true };
+Object.defineProperty(spoofedOutcomeModel, 'params', {
+    enumerable: true,
+    get() { spoofGetterCalls += 1; throw new Error('spoof getter must not run'); },
+});
+assert.equal(Model.forecastMatch(homeLineup, awayLineup, {
+    outcomeModel: spoofedOutcomeModel,
+}).mode, 'relative');
+assert.equal(spoofGetterCalls, 0);
+const revokedLineupHandle = Proxy.revocable([], {});
+revokedLineupHandle.revoke();
+assert.doesNotThrow(() => Model.forecastMatch(revokedLineupHandle.proxy, awayLineup, {
+    outcomeModel,
+}));
+
 console.log('historical match preview model: ok');
