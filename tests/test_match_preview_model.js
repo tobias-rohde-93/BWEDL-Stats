@@ -97,6 +97,12 @@ assert.equal(Model.normalizeLeagueClass('B\u2011Klasse Gruppe B 2026/27'), 'B-Kl
 assert.equal(Model.normalizeLeagueClass('C-Klasse Gruppe A2 26/27'), 'C-Klasse');
 assert.equal(Model.normalizeLeagueClass('A-Klasse Gruppe Mixdorf'), 'A-Klasse');
 assert.equal(Model.normalizeLeagueClass('B-Klasse Gruppe Cupertino'), 'B-Klasse');
+assert.equal(Model.normalizeLeagueClass('A-Klasse Gruppe 2'), 'A-Klasse');
+assert.equal(Model.normalizeLeagueClass('C-Klasse Gruppe C'), 'C-Klasse');
+assert.equal(Model.normalizeLeagueClass('C-Klasse 20/22'), 'C-Klasse');
+assert.equal(Model.normalizeLeagueClass('Bezirksliga 1999-00'), 'Bezirksliga');
+assert.equal(Model.normalizeLeagueClass('A-Klasse 20/23'), null);
+assert.equal(Model.normalizeLeagueClass('A-Klasse 20/19'), null);
 assert.equal(Model.normalizeLeagueClass('Mix-Klasse Gruppe B'), null);
 assert.equal(Model.normalizeLeagueClass('Ligapokal A-Klasse'), null);
 assert.equal(Model.normalizeLeagueClass('ÄBezirksliga'), null, 'Unicode letters form a real boundary');
@@ -140,11 +146,29 @@ for (const label of [
     'A-Klasse Pokalspiel',
     'Ligapokalspiel A-Klasse',
     'Freundschaft A-Klasse',
-    'A-Klasse 2025/2027',
     'A-Klasse Gruppe Süd',
 ]) {
     assert.equal(Model.normalizeLeagueClass(label), null, `${label} is not one regular class`);
 }
+assert.equal(Model.normalizeLeagueClass('A-Klasse 2025/2027'), 'A-Klasse');
+
+const reservedCompetitionGroups = [
+    'mix', 'mixed', 'mixklasse', 'mixgruppe', 'mixedklasse', 'mixedgruppe',
+    'cup', 'cuprunde', 'cupfinale', 'cuphalbfinale', 'cupspiel',
+    'pokal', 'pokalrunde', 'pokalfinale', 'pokalhalbfinale', 'pokalspiel',
+    'ligapokal', 'ligapokalrunde', 'ligapokalfinale', 'ligapokalhalbfinale', 'ligapokalspiel',
+    'ligacup', 'ligacuprunde', 'ligacupfinale', 'ligacuphalbfinale', 'ligacupspiel',
+    'supercup', 'supercuprunde', 'supercupfinale', 'supercuphalbfinale', 'supercupspiel',
+    'worldcup', 'worldcuprunde', 'worldcupfinale', 'worldcuphalbfinale', 'worldcupspiel',
+    'eurocup', 'eurocuprunde', 'eurocupfinale', 'eurocuphalbfinale', 'eurocupspiel',
+    'freundschaft',
+];
+for (const group of reservedCompetitionGroups) {
+    assert.equal(Model.normalizeLeagueClass(`A-Klasse Gruppe ${group}`), null);
+    assert.equal(Model.normalizeLeagueClass(`B-Klasse Gruppe ${group.toUpperCase()} 2026/27`), null);
+}
+assert.equal(Model.normalizeLeagueClass('C-Klasse Gruppe ＭＩＸ 2026-2027'), null,
+    'reserved group names are rejected after NFKC normalization');
 
 for (const label of Object.keys(committedLeagueData.leagues)) {
     let expectedClass = null;

@@ -19,7 +19,8 @@
     const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER;
     const INVALID_CLONE = Object.freeze({ invalid: true });
     const ARCHIVE_INDEXES = new WeakSet();
-    const LEAGUE_CLASS_GRAMMAR = /^(bezirksliga|([abc])\s*(?:[-\u2010-\u2015]\s*)?klasse)(?:\s+gruppe\s+[a-z0-9]+)?(?:\s+(?:(?:\/\s+)?saison\s+)?((?:\d{4}\s*[/\-]\s*\d{4})|(?:\d{4}\s*[/\-]\s*\d{2})|(?:\d{2}\s*[/\-]\s*\d{2})))?$/u;
+    const LEAGUE_CLASS_GRAMMAR = /^(bezirksliga|([abc])\s*(?:[-\u2010-\u2015]\s*)?klasse)(?:\s+gruppe\s+([a-z0-9]+))?(?:\s+(?:(?:\/\s+)?saison\s+)?((?:\d{4}\s*[/\-]\s*\d{4})|(?:\d{4}\s*[/\-]\s*\d{2})|(?:\d{2}\s*[/\-]\s*\d{2})))?$/u;
+    const RESERVED_GROUP_TOKEN = /^(?:mix(?:ed)?(?:klasse|gruppe)?|(?:liga|super|world|euro)?cup(?:runde|finale|halbfinale|spiel)?|(?:liga)?pokal(?:runde|finale|halbfinale|spiel)?|freundschaft)$/u;
 
     function ownData(object, key) {
         if (!object || (typeof object !== 'object' && typeof object !== 'function')) return null;
@@ -148,10 +149,8 @@
             .toLocaleLowerCase('de-DE');
         const match = LEAGUE_CLASS_GRAMMAR.exec(text);
         if (!match) return null;
-        if (match[3]) {
-            const season = parseSeason(match[3]);
-            if (!season || season.endYear !== season.startYear + 1) return null;
-        }
+        if (match[3] && RESERVED_GROUP_TOKEN.test(match[3])) return null;
+        if (match[4] && canonicalSeason(match[4]) === null) return null;
         return match[1] === 'bezirksliga'
             ? 'Bezirksliga'
             : `${match[2].toUpperCase()}-Klasse`;
