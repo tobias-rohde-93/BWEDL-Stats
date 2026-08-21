@@ -10,6 +10,7 @@ node_modules/
 venv/
 .worktrees/
 .staging/
+.superpowers/
 artifacts/
 debug_*
 output.txt
