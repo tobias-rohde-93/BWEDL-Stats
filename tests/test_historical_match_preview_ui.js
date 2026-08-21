@@ -141,8 +141,8 @@ function player(id, name, evidence, confidence, rating, extra = {}) {
     };
 }
 
-function makeModel(calibrated) {
-    const calls = { calibration: 0, training: 0, outcome: 0, roster: 0, rosterOptions: [], complete: [], forecast: 0 };
+function makeModel(calibrated, comparisonPercents = []) {
+    const calls = { calibration: 0, training: 0, outcome: 0, roster: 0, rosterOptions: [], complete: [], forecast: 0, pairStrength: 0 };
     const rosters = {
         '035': [
             player('h1', `<img src=x onerror=alert(1)>${'A'.repeat(500)}`, 'current+history', 'medium', 48, {
@@ -189,6 +189,16 @@ function makeModel(calibrated) {
             return { mode: 'probability', home: 0.456, draw: 0.211, away: 0.333, low: { home: 0.35, draw: 0.12, away: 0.23 }, high: { home: 0.56, draw: 0.31, away: 0.44 }, homeScore: 44, awayScore: 40, teamConfidence: 'provisional' };
         },
         comparePairStrength(homeSlot, awaySlot) {
+            const configuredPercent = comparisonPercents[calls.pairStrength++];
+            if (Number.isInteger(configuredPercent)) {
+                return {
+                    homeShare: configuredPercent / 100,
+                    awayShare: (100 - configuredPercent) / 100,
+                    homePercent: configuredPercent,
+                    awayPercent: 100 - configuredPercent,
+                    uncertain: false,
+                };
+            }
             const homeRating = Number(homeSlot && homeSlot.adjustedRating);
             const awayRating = Number(awaySlot && awaySlot.adjustedRating);
             const total = homeRating + awayRating;
@@ -294,7 +304,7 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     const contentArea = document.createElement('main');
     document.root = contentArea;
     const topBarTitle = document.createElement('div');
-    const model = makeModel(calibrated);
+    const model = makeModel(calibrated, scenarioOptions.comparisonPercents);
     const exposedModel = typeof scenarioOptions.wrapModel === 'function'
         ? scenarioOptions.wrapModel(model)
         : model;
@@ -517,7 +527,46 @@ function renderUnavailableModelScenario(model, configureWindow) {
     const firstSparklinePoints = scenario.contentArea.querySelector('.match-preview-sparkline').querySelectorAll('.match-preview-sparkline__point');
     assert.equal(firstSparklinePoints.length, 2);
     assert.notEqual(firstSparklinePoints[0].style.height, firstSparklinePoints[1].style.height);
-    assert.equal(scenario.contentArea.querySelectorAll('.match-preview-pairing').length, 16);
+    const formPanel = scenario.contentArea.querySelector('.match-preview-form');
+    const matrixPanel = scenario.contentArea.querySelector('.match-preview-pairings');
+    const matrixScroll = scenario.contentArea.querySelector('.match-preview-matrix-scroll');
+    const matrix = scenario.contentArea.querySelector('.match-preview-matrix');
+    assert.ok(matrixPanel);
+    assert.equal(matrixPanel.children[0].tagName, 'H2');
+    assert.equal(matrixPanel.children[0].textContent, '1v1-Analyse');
+    assert.match(matrixPanel.textContent, /Stärkevergleich|Einschätzung/);
+    assert.match(matrixPanel.textContent, /keine Einzelspiel-Siegwahrscheinlichkeit/i);
+    assert.doesNotMatch(matrixPanel.textContent, /Siegchance|Gewinnwahrscheinlichkeit/i);
+    assert.ok(matrixScroll);
+    assert.equal(matrixScroll.tabIndex, 0);
+    assert.match(matrixScroll.attributes['aria-label'], /horizontal.*scrollbar|horizontal scrollable/i);
+    assert.ok(matrix);
+    assert.equal(matrix.tagName, 'TABLE');
+    assert.equal(matrix.parentElement, matrixScroll);
+    assert.equal(matrix.querySelectorAll('THEAD').length, 1);
+    assert.equal(matrix.querySelectorAll('TBODY').length, 1);
+    assert.equal(matrix.querySelectorAll('TH[scope="col"]').length, 4);
+    assert.equal(matrix.querySelectorAll('TH[scope="row"]').length, 4);
+    assert.equal(matrix.querySelectorAll('.match-preview-matrix__cell').length, 16);
+    const values = matrix.querySelectorAll('.match-preview-matrix__value');
+    assert.equal(values.length, 16);
+    values.forEach((value) => assert.match(value.textContent, /^(?:0|[1-9]\d?|100) %$/));
+    matrix.querySelectorAll('.match-preview-matrix__cell').forEach((cell) => {
+        assert.match(cell.attributes['aria-label'], /: \d+% Heim, \d+% Gast, (?:Vorteil Heim|ausgeglichen|Vorteil Gast)/);
+        const percentages = [...cell.attributes['aria-label'].matchAll(/(\d+)% (?:Heim|Gast)/g)].map((match) => Number(match[1]));
+        assert.equal(percentages.length, 2);
+        assert.equal(percentages[0] + percentages[1], 100);
+    });
+    assert.equal(matrix.querySelectorAll('.match-preview-matrix__uncertain').length > 0, true);
+    const uncertaintyMarker = matrix.querySelector('.match-preview-matrix__uncertain');
+    assert.equal(uncertaintyMarker.textContent, '?');
+    assert.equal(uncertaintyMarker.attributes['aria-hidden'], 'true');
+    assert.match(uncertaintyMarker.parentElement.attributes['aria-label'], /unsichere Datenbasis/);
+    assert.match(matrix.querySelector('TH[scope="row"]').textContent, /<img src=x onerror=alert\(1\)>/);
+    assert.match(matrix.querySelector('.match-preview-matrix__cell').attributes['aria-label'], /<img src=x onerror=alert\(1\)>/);
+    assert.equal(scenario.contentArea.querySelectorAll('.match-preview-pairing').length, 0);
+    assert.ok(matrixPanel.parentElement.children.indexOf(formPanel) < matrixPanel.parentElement.children.indexOf(matrixPanel), 'form curves stay before the matrix');
+    for (const legendText of ['55–100', '46–54', '0–45']) assert.match(matrixPanel.textContent, new RegExp(legendText));
     assert.ok(scenario.formPlayers.some((formPlayer) => formPlayer.id === 'h1' && formPlayer.evidence === 'current+history'));
     assert.ok(scenario.formPlayers.some((formPlayer) => formPlayer.id === 'h2' && formPlayer.evidence === 'historical'));
     assert.equal(scenario.formPlayers.some((formPlayer) => formPlayer.evidence === 'neutral'), false);
@@ -538,6 +587,21 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.match(result, /Keine Formdaten/);
     scenario.render();
     assert.equal(scenario.contentArea.querySelectorAll('.match-preview-shell').length, 1, 'rerender must replace rather than duplicate preview DOM');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        comparisonPercents: [55, 54, 46, 45],
+    });
+    scenario.contentArea.querySelector('.match-preview-calculate').dispatchEvent({ type: 'click' });
+    const cells = scenario.contentArea.querySelectorAll('.match-preview-matrix__cell');
+    assert.equal(scenario.model.calls.pairStrength, 16, 'the renderer asks the approved helper for every pairing');
+    assert.deepEqual(cells.slice(0, 4).map((cell) => cell.querySelector('.match-preview-matrix__value').textContent), ['55 %', '54 %', '46 %', '45 %']);
+    assert.equal(cells[0].classList.contains('match-preview-matrix__cell--home'), true);
+    assert.equal(cells[1].classList.contains('match-preview-matrix__cell--balanced'), true);
+    assert.equal(cells[2].classList.contains('match-preview-matrix__cell--balanced'), true);
+    assert.equal(cells[3].classList.contains('match-preview-matrix__cell--away'), true);
+    assert.deepEqual(cells.slice(0, 4).map((cell) => cell.attributes['aria-label'].match(/\d+% Gast/)[0]), ['45% Gast', '46% Gast', '54% Gast', '55% Gast']);
 }
 
 {

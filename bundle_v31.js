@@ -8179,10 +8179,85 @@ document.addEventListener('DOMContentLoaded', () => {
             parent.appendChild(form);
             const pairings = document.createElement('section');
             pairings.className = 'match-preview-panel match-preview-pairings';
-            appendText(pairings, 'h2', '1v1 Paarungen');
-            lineupA.forEach((homePlayer) => lineupB.forEach((awayPlayer) => {
-                appendText(pairings, 'p', `${homePlayer.name} ${rating(homePlayer).toFixed(1)} · ${awayPlayer.name} ${rating(awayPlayer).toFixed(1)}`, 'match-preview-pairing');
-            }));
+            appendText(pairings, 'h2', '1v1-Analyse');
+            appendText(
+                pairings,
+                'p',
+                'Der Stärkevergleich beschreibt die relative Einschätzung zugunsten des Heimspielers, keine Einzelspiel-Siegwahrscheinlichkeit.',
+                'match-preview-matrix__description',
+            );
+            const legend = document.createElement('ul');
+            legend.className = 'match-preview-matrix__legend';
+            appendText(legend, 'li', '55–100 %: Vorteil Heim');
+            appendText(legend, 'li', '46–54 %: ausgeglichen');
+            appendText(legend, 'li', '0–45 %: Vorteil Gast');
+            pairings.appendChild(legend);
+            const matrixScroll = document.createElement('div');
+            matrixScroll.className = 'match-preview-matrix-scroll';
+            matrixScroll.tabIndex = 0;
+            matrixScroll.setAttribute('aria-label', 'Tabelle horizontal scrollbar');
+            const matrix = document.createElement('table');
+            matrix.className = 'match-preview-matrix';
+            const caption = document.createElement('caption');
+            caption.className = 'visually-hidden';
+            caption.textContent = `Stärkevergleich ${nameA} gegen ${nameB}; Werte sind keine Einzelspiel-Siegwahrscheinlichkeiten.`;
+            matrix.appendChild(caption);
+            const head = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            const corner = document.createElement('th');
+            corner.textContent = `${nameA} gegen ${nameB}`;
+            headerRow.appendChild(corner);
+            lineupB.forEach((awayPlayer) => {
+                const header = document.createElement('th');
+                header.setAttribute('scope', 'col');
+                header.textContent = awayPlayer.name;
+                headerRow.appendChild(header);
+            });
+            head.appendChild(headerRow);
+            matrix.appendChild(head);
+            const body = document.createElement('tbody');
+            lineupA.forEach((homePlayer) => {
+                const row = document.createElement('tr');
+                const rowHeader = document.createElement('th');
+                rowHeader.setAttribute('scope', 'row');
+                rowHeader.textContent = homePlayer.name;
+                row.appendChild(rowHeader);
+                lineupB.forEach((awayPlayer) => {
+                    let comparison;
+                    try {
+                        comparison = previewModelApi.comparePairStrength(homePlayer, awayPlayer);
+                    } catch (_error) {
+                        comparison = { uncertain: true };
+                    }
+                    const candidateHomePercent = Number(comparison && comparison.homePercent);
+                    const validHomePercent = Number.isInteger(candidateHomePercent)
+                        && candidateHomePercent >= 0
+                        && candidateHomePercent <= 100;
+                    const homePercent = validHomePercent
+                        ? candidateHomePercent
+                        : 50;
+                    const awayPercent = 100 - homePercent;
+                    const uncertain = Boolean(comparison && comparison.uncertain) || !validHomePercent;
+                    const band = homePercent >= 55 ? 'home' : homePercent <= 45 ? 'away' : 'balanced';
+                    const state = band === 'home' ? 'Vorteil Heim' : band === 'away' ? 'Vorteil Gast' : 'ausgeglichen';
+                    const cell = document.createElement('td');
+                    cell.className = `match-preview-matrix__cell match-preview-matrix__cell--${band}`;
+                    cell.setAttribute(
+                        'aria-label',
+                        `${homePlayer.name} gegen ${awayPlayer.name}: ${homePercent}% Heim, ${awayPercent}% Gast, ${state}${uncertain ? ', unsichere Datenbasis' : ''}`,
+                    );
+                    appendText(cell, 'span', `${homePercent} %`, 'match-preview-matrix__value');
+                    if (uncertain) {
+                        const marker = appendText(cell, 'span', '?', 'match-preview-matrix__uncertain');
+                        marker.setAttribute('aria-hidden', 'true');
+                    }
+                    row.appendChild(cell);
+                });
+                body.appendChild(row);
+            });
+            matrix.appendChild(body);
+            matrixScroll.appendChild(matrix);
+            pairings.appendChild(matrixScroll);
             parent.appendChild(pairings);
             if (playersA.length > 4 || playersB.length > 4) {
                 const optimal = document.createElement('section');
