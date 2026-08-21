@@ -186,8 +186,105 @@ function makeModel(calibrated) {
             if (!calibrated) return { mode: 'relative', homeScore: 44, awayScore: 40, relative: { homeShare: 0.524, awayShare: 0.476 }, teamConfidence: 'very-low', uncertaintyText: 'Relative Aufstellungsstärke mit unsicherer Datenbasis' };
             return { mode: 'probability', home: 0.456, draw: 0.211, away: 0.333, low: { home: 0.35, draw: 0.12, away: 0.23 }, high: { home: 0.56, draw: 0.31, away: 0.44 }, homeScore: 44, awayScore: 40, teamConfidence: 'provisional' };
         },
-        comparePairStrength() { return { mode: 'relative', delta: 0, confidence: 'very-low' }; },
+        comparePairStrength(homeSlot, awaySlot) {
+            const homeRating = Number(homeSlot && homeSlot.adjustedRating);
+            const awayRating = Number(awaySlot && awaySlot.adjustedRating);
+            const total = homeRating + awayRating;
+            if (!Number.isFinite(homeRating) || homeRating <= 0 || !Number.isFinite(awayRating) || awayRating <= 0 || !Number.isFinite(total) || total <= 0) {
+                return { homeShare: 0.5, awayShare: 0.5, homePercent: 50, awayPercent: 50, uncertain: true };
+            }
+            const homeShare = homeRating / total;
+            const uncertain = [homeSlot, awaySlot].some((slot) => slot
+                && (slot.confidence === 'very-low'
+                    || slot.evidence === 'neutral'
+                    || slot.evidence === 'historical-fallback'
+                    || slot.rosterUnconfirmed === true));
+            const homePercent = Math.round(homeShare * 100);
+            return { homeShare, awayShare: 1 - homeShare, homePercent, awayPercent: 100 - homePercent, uncertain };
+        },
     };
+}
+
+{
+    const model = makeModel(true);
+    assert.deepEqual(model.comparePairStrength(
+        { adjustedRating: 60, confidence: 'high', evidence: 'current' },
+        { adjustedRating: 40, confidence: 'medium', evidence: 'current+history' },
+    ), { homeShare: 0.6, awayShare: 0.4, homePercent: 60, awayPercent: 40, uncertain: false });
+    assert.equal(model.comparePairStrength(
+        { adjustedRating: 60, confidence: 'very-low', evidence: 'current' },
+        { adjustedRating: 40, confidence: 'high', evidence: 'current' },
+    ).uncertain, true);
+}
+
+function createCarouselLikeBanner(document) {
+    const banner = document.createElement('article');
+    banner.className = 'match-preview-card';
+    const select = document.createElement('button');
+    select.type = 'button';
+    select.className = 'load-btn match-preview-card__select';
+    const league = document.createElement('span');
+    league.className = 'match-preview-card__league';
+    league.textContent = 'B-Klasse 2026-2027';
+    const teams = document.createElement('div');
+    teams.className = 'match-preview-card__teams';
+    teams.textContent = 'Alpha VS Bravo';
+    const date = document.createElement('span');
+    date.className = 'match-preview-card__date';
+    date.textContent = '01.09.2026';
+    const status = document.createElement('span');
+    status.className = 'match-preview-card__status';
+    status.textContent = 'Partie auswählen';
+    select.append(league, teams, date, status);
+    banner.appendChild(select);
+    return { banner, select, league, teams, date, status };
+}
+
+function runRealAutoFill(document, nextMatch, banner) {
+    const finder = Function(`${extractFunction('normMatchPreview')}; ${extractFunction('findTeamOptionMatchPreview')}; return findTeamOptionMatchPreview;`)();
+    const apply = Function('findTeamOptionMatchPreview', 'setTimeout', 'Event', 'setAppStatus', `${extractFunction('applyMatchSelectorAutoFill')}; return applyMatchSelectorAutoFill;`)(
+        finder,
+        (callback) => { callback(); return 0; },
+        class Event { constructor(type) { this.type = type; } },
+        () => {},
+    );
+    const leagueSelect = document.createElement('select');
+    leagueSelect.value = '';
+    const teamASelect = document.createElement('select');
+    const teamBSelect = document.createElement('select');
+    [['035', 'Alpha'], ['036', 'Bravo']].forEach(([value, text]) => {
+        const homeOption = document.createElement('option');
+        homeOption.value = value;
+        homeOption.textContent = text;
+        teamASelect.appendChild(homeOption);
+        const awayOption = document.createElement('option');
+        awayOption.value = value;
+        awayOption.textContent = text;
+        teamBSelect.appendChild(awayOption);
+    });
+    apply(false, nextMatch, {
+        leagueSelect, teamASelect, teamBSelect, banner,
+        updateExclusions() {}, loadSelection() {},
+    });
+}
+
+{
+    const document = createDocument();
+    const { banner, select, league, teams, date, status } = createCarouselLikeBanner(document);
+    runRealAutoFill(document, { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' }, banner);
+    assert.equal(status.textContent, 'Ausgewählt');
+    assert.equal(banner.dataset.state, 'selected');
+    assert.equal(select.attributes['aria-pressed'], 'true');
+    assert.equal(select.children.length, 4, 'callback-absent success must not replace carousel button children');
+    assert.equal(league.textContent, 'B-Klasse 2026-2027');
+    assert.equal(teams.textContent, 'Alpha VS Bravo');
+    assert.equal(date.textContent, '01.09.2026');
+    runRealAutoFill(document, { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Alpha' }, banner);
+    assert.equal(status.textContent, 'Auswahl unvollständig');
+    assert.equal(banner.dataset.state, 'incomplete');
+    assert.equal(select.attributes['aria-pressed'], 'false');
+    assert.equal(select.children.length, 4, 'callback-absent incomplete feedback must keep carousel button children');
+    assert.equal(date.textContent, '01.09.2026');
 }
 
 function renderScenario(calibrated = true, rendererDeclaration = extractFunction('renderMatchPreview'), scenarioOptions = {}) {
@@ -539,6 +636,30 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(carousel.querySelectorAll('.match-preview-card').length, 1);
     assert.equal(carousel.querySelectorAll('.match-preview-carousel__arrow').length, 0);
     assert.equal(carousel.querySelectorAll('.match-preview-carousel__dot').length, 0);
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        reducedMotion: true,
+        skipManualSelection: true,
+    });
+    const card = scenario.contentArea.querySelector('.match-preview-card');
+    card.querySelector('.match-preview-card__select').dispatchEvent({ type: 'click' });
+    assert.equal(card.scrollIntoViewCalls.at(-1).behavior, 'auto', 'card selection honors reduced-motion preferences');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: '<svg onload=alert(1)>Alpha', away: '' },
+        deferTimers: true,
+        skipManualSelection: true,
+    });
+    const card = scenario.contentArea.querySelector('.match-preview-card');
+    const select = card.querySelector('.match-preview-card__select');
+    assert.match(card.querySelector('.match-preview-card__teams').textContent, /<svg onload=alert\(1\)>AlphaVSGast/);
+    assert.equal(select.attributes['aria-label'], '<svg onload=alert(1)>Alpha gegen Gast auswählen');
+    assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0, 'hostile incomplete names stay inert');
 }
 
 {

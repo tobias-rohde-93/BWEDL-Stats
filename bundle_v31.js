@@ -7424,6 +7424,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const runInternalChange = typeof elements.runInternalChange === 'function'
             ? elements.runInternalChange
             : (callback) => callback();
+        const setLegacyBannerState = (state) => {
+            if (!banner) return;
+            const cardStatus = banner.querySelector('.match-preview-card__status');
+            if (cardStatus && banner.dataset && typeof banner.dataset === 'object') {
+                banner.dataset.state = state;
+                const cardSelect = banner.querySelector('.match-preview-card__select');
+                if (cardSelect) cardSelect.setAttribute('aria-pressed', state === 'selected' ? 'true' : 'false');
+                cardStatus.textContent = state === 'selected' ? 'Ausgewählt' : 'Auswahl unvollständig';
+                return;
+            }
+            if (state === 'incomplete') {
+                banner.style.borderColor = '#f59e0b';
+                banner.style.boxShadow = 'none';
+                const statusBtn = banner.querySelector('.load-btn');
+                if (statusBtn) {
+                    statusBtn.textContent = 'Auswahl unvollständig';
+                    statusBtn.style.background = '#b45309';
+                }
+                return;
+            }
+            banner.style.borderColor = '#22c55e';
+            banner.style.boxShadow = '0 0 10px rgba(34, 197, 94, 0.2)';
+            const statusBtn = banner.querySelector('.load-btn');
+            if (statusBtn) {
+                statusBtn.textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
+                statusBtn.style.background = '#22c55e';
+            }
+        };
         if (!canApply()) return;
         
         // Step 1: Set league and trigger change to populate teams
@@ -7449,15 +7477,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!selectionComplete) {
                 if (typeof setBannerState === 'function') {
                     setBannerState('incomplete');
-                } else if (banner) {
-                    banner.style.borderColor = '#f59e0b';
-                    banner.style.boxShadow = 'none';
-                    const statusBtn = banner.querySelector('.load-btn');
-                    if (statusBtn) {
-                        statusBtn.textContent = 'Auswahl unvollständig';
-                        statusBtn.style.background = '#b45309';
-                    }
-                }
+                } else setLegacyBannerState('incomplete');
                 setAppStatus('Die Partie konnte nicht vollständig ausgewählt werden. Bitte Teams manuell wählen.');
                 return;
             }
@@ -7470,15 +7490,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update UI feedback on the banner
             if (typeof setBannerState === 'function') {
                 setBannerState('selected');
-            } else if (banner) {
-                banner.style.borderColor = '#22c55e';
-                banner.style.boxShadow = '0 0 10px rgba(34, 197, 94, 0.2)';
-                const statusBtn = banner.querySelector('.load-btn');
-                if (statusBtn) {
-                    statusBtn.textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
-                    statusBtn.style.background = '#22c55e';
-                }
-            }
+            } else setLegacyBannerState('selected');
         }, 200);
     }
 
@@ -7746,20 +7758,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 matches.forEach((match) => {
                     const matchCard = document.createElement('article');
                     matchCard.className = 'match-preview-card';
+                    const homeName = typeof match.home === 'string' && match.home.trim() ? match.home : 'Heim';
+                    const awayName = typeof match.away === 'string' && match.away.trim() ? match.away : 'Gast';
                     const loadButton = document.createElement('button');
                     loadButton.type = 'button';
                     loadButton.className = 'load-btn';
                     loadButton.classList.add('match-preview-card__select');
                     loadButton.textContent = 'Partie auswählen';
                     loadButton.textContent = '';
-                    loadButton.setAttribute('aria-label', `${match.home || ''} gegen ${match.away || ''} auswählen`);
+                    loadButton.setAttribute('aria-label', `${homeName} gegen ${awayName} auswählen`);
                     loadButton.setAttribute('aria-pressed', 'false');
                     appendText(loadButton, 'span', match.league || '', 'match-preview-card__league');
                     const teams = document.createElement('div');
                     teams.className = 'match-preview-card__teams';
-                    appendText(teams, 'strong', match.home || '');
+                    appendText(teams, 'strong', homeName);
                     appendText(teams, 'span', 'VS');
-                    appendText(teams, 'strong', match.away || '');
+                    appendText(teams, 'strong', awayName);
                     loadButton.appendChild(teams);
                     appendText(loadButton, 'span', match.dateStr || 'Termin offen', 'match-preview-card__date');
                     appendText(loadButton, 'span', 'Partie auswählen', 'match-preview-card__status');
