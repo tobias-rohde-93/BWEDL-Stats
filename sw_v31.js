@@ -1,5 +1,5 @@
 // Increment this cache name whenever the static asset list or cache keys change.
-const CACHE_NAME = 'bwedl-dashboard-v45';
+const CACHE_NAME = 'bwedl-dashboard-v46';
 const urlsToCache = [
     './',
     './index.html',
@@ -17,7 +17,7 @@ const urlsToCache = [
     './calendar_index.js?v=1',
     './app_utils.js?v=4',
     './match_preview_model.js?v=2',
-    './bundle_v31.js?v=4.2',
+    './bundle_v31.js?v=4.3',
     './pwa-icon-192.png',
     './pwa-icon-512.png'
 ];

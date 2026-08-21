@@ -318,8 +318,9 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
         ARCHIVE_TABLES: [],
         matchMedia: () => ({ matches: scenarioOptions.reducedMotion === true }),
         resizeObservers: [],
-        addEventListener() {},
-        removeEventListener() {},
+        resizeListeners: new Set(),
+        addEventListener(type, listener) { if (type === 'resize') window.resizeListeners.add(listener); },
+        removeEventListener(type, listener) { if (type === 'resize') window.resizeListeners.delete(listener); },
     };
     window.ResizeObserver = class {
         constructor(callback) { this.callback = callback; window.resizeObservers.push(this); }
@@ -598,7 +599,10 @@ function renderUnavailableModelScenario(model, configureWindow) {
     const homeChecks = scenario.document.getElementById('list-a').querySelectorAll('INPUT');
     homeChecks[0].checked = false;
     homeChecks[0].dispatchEvent({ type: 'change', target: homeChecks[0], preventDefault() {} });
+    const previousMatrixObserver = scenario.window.resizeObservers.at(-1);
     scenario.contentArea.querySelector('.match-preview-calculate').dispatchEvent({ type: 'click' });
+    assert.equal(previousMatrixObserver.disconnected, true, 'recalculating must disconnect the previous matrix observer');
+    assert.equal(scenario.window.resizeListeners.size, 1, 'recalculating must keep one active resize listener');
     assert.match(scenario.document.getElementById('preview-results').textContent, /Unbekannter Spieler \(Klassenwert\)/);
     assert.equal(scenario.model.calls.complete.at(-2).manual, true);
     assert.deepEqual(scenario.model.calls.complete.at(-2).ids, ['h2', 'h3', 'h4']);
@@ -609,7 +613,9 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.match(result, /Aktuelle Form/);
     assert.match(result, /Historische Form/);
     assert.match(result, /Keine Formdaten/);
+    const observerBeforeRerender = scenario.window.resizeObservers.at(-1);
     scenario.render();
+    assert.equal(observerBeforeRerender.disconnected, true, 'rerender must disconnect the previous matrix observer');
     assert.equal(scenario.contentArea.querySelectorAll('.match-preview-shell').length, 1, 'rerender must replace rather than duplicate preview DOM');
 }
 

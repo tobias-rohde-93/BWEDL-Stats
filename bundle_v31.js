@@ -8183,6 +8183,10 @@ document.addEventListener('DOMContentLoaded', () => {
             parent.appendChild(form);
             const pairings = document.createElement('section');
             pairings.className = 'match-preview-panel match-preview-pairings';
+            if (typeof renderMatchPreview._matrixScrollCleanup === 'function') {
+                renderMatchPreview._matrixScrollCleanup();
+                renderMatchPreview._matrixScrollCleanup = null;
+            }
             appendText(pairings, 'h2', '1v1-Analyse');
             appendText(
                 pairings,

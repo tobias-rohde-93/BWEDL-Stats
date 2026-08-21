@@ -319,7 +319,7 @@ assert.deepEqual(requestedShellUrls, [
     './archive_data.js?v=9',
     './app_utils.js?v=4',
     './match_preview_model.js?v=2',
-    './bundle_v31.js?v=4.2',
+    './bundle_v31.js?v=4.3',
 ]);
 assert.deepEqual(
     cachedAssets.filter((asset) => /(?:style\.css|archive_data\.js|app_utils\.js|match_preview_model\.js|bundle_v31\.js)/.test(asset)),

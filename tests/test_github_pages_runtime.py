@@ -151,7 +151,7 @@ def test_calendar_index_shell_order_and_pages_subpath_contract() -> None:
     archive_data = '<script src="archive_data.js?v=9"></script>'
     app_utils = '<script src="app_utils.js?v=4"></script>'
     match_model = '<script src="match_preview_model.js?v=2"></script>'
-    bundle = '<script src="bundle_v31.js?v=4.2"></script>'
+    bundle = '<script src="bundle_v31.js?v=4.3"></script>'
 
     assert html.count(calendar_index) == 1
     assert html.index(data_status) < html.index(calendar_index) < html.index(app_utils)
