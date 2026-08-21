@@ -305,6 +305,11 @@ Create `.match-preview-segments-staging` and `.match-preview-segments-artifacts`
 
 Use `parse_javascript_assignment` and `validate_archive_payloads` against the committed artifact and archive tables. Require `PUBLISH`, every previous player-season retained, all discovered seasons present, nonzero segment/admin/preview metrics, and nonzero enriched records in the latest two completed seasons.
 
+The reviewed legacy cleanup permits exactly the two complete canonical
+fingerprints documented in the segment design to be removed. Require
+`approved_legacy_removals == 2`; ID-only or partial matching and every other
+loss still block before public-root mutation.
+
 - [ ] **Step 3: Run the real backtest before public-root mutation**
 
 Point the real backtest at the staged candidate. It must run rather than skip, report nonzero overall and class-change samples, zero leakage, and pass unchanged hybrid-versus-baseline MAE gates. A failure leaves the committed artifact untouched.

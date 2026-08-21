@@ -124,6 +124,18 @@ ARCHIVE_V2_SEGMENT_FIELDS = frozenset({
     "segment_id", "league", "rank", "name", "points", "v_nr",
     "affiliation_marker", "rounds", "appearances", "points_per_appearance",
 })
+APPROVED_ARCHIVE_LEGACY_REMOVALS = frozenset({
+    (
+        "10",
+        '{"league":"C-Klasse","name":"Matteo P.","points":216,'
+        '"rank":1,"season":"24/25"}',
+    ),
+    (
+        "14",
+        '{"league":"C-Klasse","name":"x","points":127,'
+        '"rank":7,"season":"24/25"}',
+    ),
+})
 
 
 def _parse_season(value: Any) -> str | None:
@@ -1433,9 +1445,21 @@ def validate_archive_payloads(
                     + ", ".join(candidate_record.unknown_fields)
                 )
 
+    approved_legacy_removals: set[tuple[str, str]] = set()
     for player_key, previous_records in previous_players.items():
         if player_key not in candidate_players:
-            reasons.append(f"Candidate archive is missing previous player: {player_key}")
+            approved_for_player = {
+                (player_key, record.fingerprint)
+                for record in previous_records
+                if not record.is_v2
+                and (player_key, record.fingerprint)
+                in APPROVED_ARCHIVE_LEGACY_REMOVALS
+            }
+            approved_legacy_removals.update(approved_for_player)
+            if len(approved_for_player) != len(previous_records):
+                reasons.append(
+                    f"Candidate archive is missing previous player: {player_key}"
+                )
             continue
         candidate_records = candidate_players[player_key]
         unmatched_candidates = set(range(len(candidate_records)))
@@ -1517,6 +1541,12 @@ def validate_archive_payloads(
             elif match_count > 1:
                 reasons.append(
                     f"Candidate archive player {player_key} has ambiguous legacy enrichment"
+                )
+            elif (
+                player_key, previous_record.fingerprint
+            ) in APPROVED_ARCHIVE_LEGACY_REMOVALS:
+                approved_legacy_removals.add(
+                    (player_key, previous_record.fingerprint)
                 )
             else:
                 lost_records += 1
@@ -1685,6 +1715,7 @@ def validate_archive_payloads(
         "round_overlap_ambiguities": sum(
             record.round_overlap_ambiguous for record in candidate_container_records
         ),
+        "approved_legacy_removals": len(approved_legacy_removals),
     }
     return ValidationResult(
         "archives",

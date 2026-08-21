@@ -154,6 +154,25 @@ def legacy_archive_record(season: str = "24/25") -> dict[str, Any]:
     }
 
 
+def approved_legacy_cleanup_records() -> dict[str, list[dict[str, Any]]]:
+    return {
+        "10": [{
+            "season": "24/25",
+            "rank": 1,
+            "points": 216,
+            "league": "C-Klasse",
+            "name": "Matteo P.",
+        }],
+        "14": [{
+            "season": "24/25",
+            "rank": 7,
+            "points": 127,
+            "league": "C-Klasse",
+            "name": "x",
+        }],
+    }
+
+
 def enriched_archive_record() -> dict[str, Any]:
     return {
         **legacy_archive_record(),
@@ -293,6 +312,64 @@ def test_lossless_legacy_archive_enrichment_is_published(tmp_path: Path) -> None
         (root / "archive_data.js").read_text(encoding="utf-8"), "ARCHIVE_DATA"
     )
     assert published == {"4711": [candidate]}
+
+
+def test_exact_approved_legacy_cleanup_is_published_with_metric(tmp_path: Path) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    retained = legacy_archive_record()
+    write_js(
+        root / "archive_data.js",
+        "ARCHIVE_DATA",
+        {**approved_legacy_cleanup_records(), "4711": [retained]},
+    )
+    candidate = {"4711": [retained]}
+
+    assert update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_payload_runner(candidate),
+        clock=lambda: NOW,
+    ) == 0
+
+    published = parse_javascript_assignment(
+        (root / "archive_data.js").read_text(encoding="utf-8"), "ARCHIVE_DATA"
+    )
+    assert published == candidate
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    archives = next(item for item in report["domains"] if item["domain"] == "archives")
+    assert archives["decision"] == "publish"
+    assert archives["metrics"]["approved_legacy_removals"] == 2
+
+
+def test_nonapproved_loss_beside_cleanup_preserves_archive_bytes(tmp_path: Path) -> None:
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    retained = legacy_archive_record()
+    previous = {
+        **approved_legacy_cleanup_records(),
+        "4711": [retained],
+        "999": [{**legacy_archive_record(), "rank": 9}],
+    }
+    write_js(root / "archive_data.js", "ARCHIVE_DATA", previous)
+    before = (root / "archive_data.js").read_bytes()
+
+    code = update_data.run_update(
+        root,
+        staging,
+        artifacts,
+        scraper_runner=archive_payload_runner({"4711": [retained]}),
+        clock=lambda: NOW,
+    )
+
+    assert code == 1
+    assert (root / "archive_data.js").read_bytes() == before
+    report = json.loads((root / "update_report.json").read_text(encoding="utf-8"))
+    archives = next(item for item in report["domains"] if item["domain"] == "archives")
+    assert archives["decision"] == "blocked"
+    assert archives["metrics"]["approved_legacy_removals"] == 2
+    assert "missing previous player: 999" in " ".join(archives["reasons"]).lower()
 
 
 @pytest.mark.parametrize(

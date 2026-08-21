@@ -1910,6 +1910,91 @@ def test_archive_payload_blocks_lossy_core_change_during_enrichment(
     assert "lost 1 record" in " ".join(result.reasons).lower()
 
 
+def approved_legacy_cleanup_records() -> dict[str, list[dict[str, Any]]]:
+    return {
+        "10": [{
+            "season": "24/25",
+            "rank": 1,
+            "points": 216,
+            "league": "C-Klasse",
+            "name": "Matteo P.",
+        }],
+        "14": [{
+            "season": "24/25",
+            "rank": 7,
+            "points": 127,
+            "league": "C-Klasse",
+            "name": "x",
+        }],
+    }
+
+
+def test_archive_payload_allows_only_two_exact_approved_legacy_removals() -> None:
+    previous = {
+        **approved_legacy_cleanup_records(),
+        "4711": [archive_record("24/25")],
+    }
+    candidate = {"4711": [archive_record("24/25")]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        candidate, previous, tables, tables
+    )
+
+    assert result.decision is Decision.PUBLISH
+    assert result.reasons == ()
+    assert result.metrics["approved_legacy_removals"] == 2
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("season", "23/24"),
+        ("rank", 2),
+        ("points", 215),
+        ("league", "B-Klasse"),
+        ("name", "Matteo P"),
+        ("source", "legacy"),
+    ],
+)
+def test_archive_payload_does_not_partially_match_approved_legacy_removal(
+    field: str, value: Any
+) -> None:
+    previous = {
+        **approved_legacy_cleanup_records(),
+        "4711": [archive_record("24/25")],
+    }
+    previous["10"][0][field] = value
+    candidate = {"4711": [archive_record("24/25")]}
+    tables = [archive_table("24/25"), archive_table("23/24")]
+
+    result = validation.validate_archive_payloads(
+        candidate, previous, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["approved_legacy_removals"] == 1
+    assert "missing previous player: 10" in " ".join(result.reasons).lower()
+
+
+def test_archive_payload_blocks_additional_loss_beside_approved_removals() -> None:
+    previous = {
+        **approved_legacy_cleanup_records(),
+        "4711": [archive_record("24/25")],
+        "999": [archive_record("24/25", rank=9)],
+    }
+    candidate = {"4711": [archive_record("24/25")]}
+    tables = [archive_table("24/25")]
+
+    result = validation.validate_archive_payloads(
+        candidate, previous, tables, tables
+    )
+
+    assert result.decision is Decision.BLOCKED
+    assert result.metrics["approved_legacy_removals"] == 2
+    assert "missing previous player: 999" in " ".join(result.reasons).lower()
+
+
 def test_archive_payload_blocks_ambiguous_legacy_enrichment_deterministically() -> None:
     previous = {"4711": [legacy_preview_record()]}
     first = enriched_archive_record()

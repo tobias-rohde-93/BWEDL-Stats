@@ -120,6 +120,13 @@ The ready gate supports one controlled v1-to-v2 migration:
 - all previous seasons and tables remain a subset of the new candidate;
 - source corrections that would rewrite or remove published segment evidence block publication for explicit review.
 
+One reviewed source correction is approved as a bounded one-time migration: the
+two legacy totals-only records `(10, 24/25, C-Klasse, 1, 216, Matteo P.)` and
+`(14, 24/25, C-Klasse, 7, 127, x)` may be absent only when their complete
+canonical record fingerprints match exactly. The validator reports the count as
+`approved_legacy_removals`; any field change, extra field, partial match, or
+additional loss remains blocking.
+
 Metrics report discovered seasons, player-season containers, segments, administrative markers, totals-only segments, identity ambiguities, round overlaps, and preview-eligible segments.
 
 ## Failure behavior
