@@ -407,6 +407,10 @@ function runRenderer(name, context, status) {
                 teamConfidence: 'very-low', diagnostics: {},
             }),
             completeLineup: neutralLineup,
+            comparePairStrength: () => ({
+                homeShare: 0.5, awayShare: 0.5,
+                homePercent: 50, awayPercent: 50, uncertain: true,
+            }),
             forecastMatch: () => ({
                 mode: 'relative', homeScore: 35, awayScore: 35,
                 relative: { homeShare: 0.5, awayShare: 0.5 },
