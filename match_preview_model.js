@@ -2955,7 +2955,8 @@
         const confidenceValue = ownValue(slot, 'confidence');
         const confidence = CONFIDENCE_ORDER.includes(confidenceValue) ? confidenceValue : 'very-low';
         const evidenceValue = ownValue(slot, 'evidence');
-        const evidence = Object.prototype.hasOwnProperty.call(EVIDENCE_ORDER, evidenceValue)
+        const evidence = typeof evidenceValue === 'string'
+            && Object.prototype.hasOwnProperty.call(EVIDENCE_ORDER, evidenceValue)
             ? evidenceValue
             : 'neutral';
         return {

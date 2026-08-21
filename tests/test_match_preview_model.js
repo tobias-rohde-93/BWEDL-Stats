@@ -1495,11 +1495,34 @@ for (const condition of [
     assert.equal(result.uncertain, true);
     assert.equal(result.homePercent + result.awayPercent, 100);
 }
-for (const invalid of [null, {}, 0, Infinity, Number.MAX_SAFE_INTEGER]) {
+for (const evidence of [['current'], {
+    [Symbol.toPrimitive]() { throw new Error('evidence coercion must not run'); },
+}]) {
+    assert.doesNotThrow(() => {
+        const result = Model.comparePairStrength(
+            { adjustedRating: 9, confidence: 'high', evidence },
+            { adjustedRating: 6, confidence: 'high', evidence: 'current' },
+        );
+        assert.equal(result.uncertain, true);
+    });
+}
+for (const evidence of ['historical', 'current+history']) {
+    assert.equal(Model.comparePairStrength(
+        { adjustedRating: 9, confidence: 'high', evidence },
+        { adjustedRating: 6, confidence: 'high', evidence: 'current' },
+    ).uncertain, false);
+}
+for (const invalid of [null, {}, { adjustedRating: 0, rating: 0 },
+    { adjustedRating: Infinity, rating: Infinity },
+    { adjustedRating: Number.MAX_SAFE_INTEGER, rating: Number.MAX_SAFE_INTEGER }]) {
     assert.deepEqual(Model.comparePairStrength(invalid, { adjustedRating: 6 }), {
         homeShare: 0.5, awayShare: 0.5, homePercent: 50, awayPercent: 50, uncertain: true,
     });
 }
+assert.equal(Model.comparePairStrength(
+    { adjustedRating: 9, confidence: 'high', evidence: 'current' },
+    { adjustedRating: 0, rating: 0 },
+).uncertain, true);
 const frozenPairStrength = Model.comparePairStrength(
     { adjustedRating: 9, confidence: 'high', evidence: 'current' },
     { adjustedRating: 6, confidence: 'high', evidence: 'current' },
