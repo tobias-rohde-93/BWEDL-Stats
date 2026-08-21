@@ -348,9 +348,9 @@ test('Vereine disclosure groups indicator and peer-sized label on the left', () 
 });
 
 test('changed static assets use coherent cache keys', () => {
-    for (const asset of ['style.css?v=10', 'archive_data.js?v=9', 'app_utils.js?v=4', 'match_preview_model.js?v=2', 'bundle_v31.js?v=4.1']) {
+    for (const asset of ['style.css?v=11', 'archive_data.js?v=9', 'app_utils.js?v=4', 'match_preview_model.js?v=2', 'bundle_v31.js?v=4.2']) {
         assert.ok(index.includes(asset), `index must load ${asset}`);
         assert.ok(worker.includes(`'./${asset}'`), `service worker must cache ${asset}`);
     }
-    assert.match(worker, /bwedl-dashboard-v44/);
+    assert.match(worker, /bwedl-dashboard-v45/);
 });

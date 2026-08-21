@@ -7495,6 +7495,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderMatchPreview() {
+        if (typeof renderMatchPreview._matrixScrollCleanup === 'function') {
+            renderMatchPreview._matrixScrollCleanup();
+        }
+        renderMatchPreview._matrixScrollCleanup = null;
         topBarTitle.textContent = 'Match Preview';
         contentArea.textContent = '';
 
@@ -8273,7 +8277,32 @@ document.addEventListener('DOMContentLoaded', () => {
             matrix.appendChild(body);
             matrixScroll.appendChild(matrix);
             pairings.appendChild(matrixScroll);
+            const matrixScrollHint = pairings.querySelector('.match-preview-matrix__scroll-hint');
+            const syncMatrixScrollHint = () => {
+                if (!matrixScrollHint) return;
+                const scrollWidth = Number(matrixScroll.scrollWidth);
+                const clientWidth = Number(matrixScroll.clientWidth);
+                matrixScrollHint.hidden = !(Number.isFinite(scrollWidth)
+                    && Number.isFinite(clientWidth)
+                    && scrollWidth > clientWidth);
+            };
+            syncMatrixScrollHint();
+            let matrixResizeObserver = null;
+            if (typeof window.ResizeObserver === 'function') {
+                matrixResizeObserver = new window.ResizeObserver(syncMatrixScrollHint);
+                matrixResizeObserver.observe(matrixScroll);
+            }
+            if (typeof window.addEventListener === 'function') {
+                window.addEventListener('resize', syncMatrixScrollHint);
+            }
+            renderMatchPreview._matrixScrollCleanup = () => {
+                if (matrixResizeObserver) matrixResizeObserver.disconnect();
+                if (typeof window.removeEventListener === 'function') {
+                    window.removeEventListener('resize', syncMatrixScrollHint);
+                }
+            };
             parent.appendChild(pairings);
+            syncMatrixScrollHint();
             if (playersA.length > 4 || playersB.length > 4) {
                 const optimal = document.createElement('section');
                 optimal.className = 'match-preview-panel match-preview-optimal';

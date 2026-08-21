@@ -317,6 +317,14 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
         BwedlMatchPreviewModel: exposedModel,
         ARCHIVE_TABLES: [],
         matchMedia: () => ({ matches: scenarioOptions.reducedMotion === true }),
+        resizeObservers: [],
+        addEventListener() {},
+        removeEventListener() {},
+    };
+    window.ResizeObserver = class {
+        constructor(callback) { this.callback = callback; window.resizeObservers.push(this); }
+        observe() {}
+        disconnect() { this.disconnected = true; }
     };
     const rankingPlayers = [];
     const autoFillCalls = [];
@@ -398,7 +406,7 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
         selects[2].dispatchEvent({ type: 'change' });
     }
     return {
-        document, contentArea, model, render, selects, rankingPlayers, autoFillCalls, autoFillCompletions, formPlayers,
+        document, contentArea, model, render, window, selects, rankingPlayers, autoFillCalls, autoFillCompletions, formPlayers,
         flushNextTimer: () => {
             const timer = pendingTimers.shift();
             assert.ok(timer, 'Expected a pending timer');
@@ -411,6 +419,7 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
             timer.callback();
         },
         pendingTimerCount: () => pendingTimers.length,
+        triggerResize: () => window.resizeObservers.forEach((observer) => observer.callback()),
     };
 }
 
@@ -547,6 +556,14 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.ok(matrixScroll);
     assert.equal(matrixScroll.tabIndex, 0);
     assert.match(matrixScroll.attributes['aria-label'], /horizontal.*scrollbar|horizontal scrollable/i);
+    const scrollHint = matrixPanel.querySelector('.match-preview-matrix__scroll-hint');
+    matrixScroll.clientWidth = 700;
+    matrixScroll.scrollWidth = 1_000;
+    scenario.triggerResize();
+    assert.equal(scrollHint.hidden, false, 'overflow shows the hint even at a 641-768px viewport width');
+    matrixScroll.scrollWidth = 700;
+    scenario.triggerResize();
+    assert.equal(scrollHint.hidden, true, 'no overflow hides the hint');
     assert.ok(matrix);
     assert.equal(matrix.tagName, 'TABLE');
     assert.equal(matrix.parentElement, matrixScroll);
@@ -1010,8 +1027,8 @@ assert.match(styles, /\.match-preview-matrix__cell--home\s*\{/);
 assert.match(styles, /\.match-preview-matrix__cell--balanced\s*\{/);
 assert.match(styles, /\.match-preview-matrix__cell--away\s*\{/);
 assert.match(styles, /\.match-preview-matrix__uncertain\s*\{/);
-assert.match(styles, /\.match-preview-matrix__scroll-hint\s*\{[\s\S]*?display:\s*none/);
-assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-matrix__scroll-hint\s*\{[\s\S]*?display:\s*block/);
+assert.match(styles, /\.match-preview-matrix__scroll-hint\s*\{[\s\S]*?display:\s*block/);
+assert.match(styles, /\.match-preview-matrix__scroll-hint\[hidden\]\s*\{[\s\S]*?display:\s*none/);
 assert.match(styles, /\.match-preview-carousel__track:focus-visible[\s\S]*?\.match-preview-matrix-scroll:focus-visible/);
 assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-card\s*\{[\s\S]*?flex-basis:/);
 const rendererSource = source.slice(source.indexOf('function renderMatchPreview('), source.indexOf('window.triggerUpdate'));

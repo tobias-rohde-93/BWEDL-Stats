@@ -2052,6 +2052,10 @@ a.club-contact-field__value {
 }
 
 .match-preview-matrix__scroll-hint {
+    display: block;
+}
+
+.match-preview-matrix__scroll-hint[hidden] {
     display: none;
 }
 
@@ -2176,10 +2180,6 @@ a.club-contact-field__value {
 
     .match-preview-matrix {
         min-width: 38rem;
-    }
-
-    .match-preview-matrix__scroll-hint {
-        display: block;
     }
 
     .match-preview-matrix th,
