@@ -1517,7 +1517,15 @@ const missingDatasetSeasonRoster = Model.buildTeamRoster({
     teamId: '040', targetLeague: 'Bezirksliga 2025/2026',
     currentPlayers: committedCurrentPlayers, archiveData: committedArchiveData,
 });
-assert.equal(missingDatasetSeasonRoster.players.some((player) => player.id === '425'), false,
+const missingDatasetSeason425 = missingDatasetSeasonRoster.players.find((player) => player.id === '425');
+assert.ok(missingDatasetSeason425,
+    'real archive history may independently identify player 425 without current dataset evidence');
+assert.equal(missingDatasetSeason425.evidence, 'historical');
+assert.equal(missingDatasetSeason425.confidence, 'provisional');
+assert.equal(missingDatasetSeason425.currentPoints, 0);
+assert.equal(missingDatasetSeason425.currentAppearances, 0);
+assert.equal(missingDatasetSeason425.currentWeight, 0);
+assert.equal(['current', 'current+history'].includes(missingDatasetSeason425.evidence), false,
     'seasonless rows never inherit targetSeason without explicit currentDatasetSeason');
 const staleCurrentRoster = Model.buildTeamRoster({
     teamId: '040', targetLeague: 'Bezirksliga 2026/2027',
@@ -1525,8 +1533,17 @@ const staleCurrentRoster = Model.buildTeamRoster({
     currentPlayers: committedCurrentPlayers, archiveData: committedArchiveData,
 });
 assert.equal(staleCurrentRoster.players.some((player) => (
-    player.id === '425' || player.evidence === 'current' || player.evidence === 'current+history'
+    player.evidence === 'current' || player.evidence === 'current+history'
 )), false, 'retained 2025/26 rankings are not current for the 2026/27 target');
+const staleCurrent425 = staleCurrentRoster.players.find((player) => player.id === '425');
+assert.ok(staleCurrent425,
+    'completed 2025/26 archive evidence remains historical for a 2026/27 target');
+assert.equal(staleCurrent425.evidence, 'historical');
+assert.equal(staleCurrent425.confidence, 'provisional');
+assert.equal(staleCurrent425.currentPoints, 0);
+assert.equal(staleCurrent425.currentAppearances, 0);
+assert.equal(staleCurrent425.currentWeight, 0,
+    'a mismatched currentDatasetSeason never leaks retained rankings into current weight');
 const realCurrentRoster = Model.buildTeamRoster({
     teamId: '040', targetLeague: 'Bezirksliga 2025/2026',
     currentDatasetSeason: committedRankingSeason,
@@ -1536,7 +1553,10 @@ const realCurrent425 = realCurrentRoster.players.find((player) => player.id === 
 assert.ok(realCurrent425, 'real current player 425 binds to the explicit current dataset season');
 assert.equal(realCurrent425.currentPoints, 172);
 assert.equal(realCurrent425.currentAppearances, 18);
-assert.equal(realCurrent425.adjustedRating, 8);
+assert.equal(realCurrent425.evidence, 'current+history');
+assert.equal(realCurrent425.adjustedRating,
+    (172 + (4 * realCurrent425.historicalPrior.rating)) / 22,
+    'real current evidence uses the documented four-appearance historical blend');
 assert.equal(realCurrent425.currentWeight, 18 / 22);
 
 for (const [id, league] of [
