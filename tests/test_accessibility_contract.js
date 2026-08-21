@@ -315,11 +315,11 @@ const requestedShellUrls = versionedShellUrls(html);
 const requestedLocalAssets = localAssetUrls(html);
 const cachedAssets = serviceWorkerAssets(worker);
 assert.deepEqual(requestedShellUrls, [
-    './style.css?v=8',
+    './style.css?v=9',
     './archive_data.js?v=9',
     './app_utils.js?v=4',
-    './match_preview_model.js?v=1',
-    './bundle_v31.js?v=3.9',
+    './match_preview_model.js?v=2',
+    './bundle_v31.js?v=4.0',
 ]);
 assert.deepEqual(
     cachedAssets.filter((asset) => /(?:style\.css|archive_data\.js|app_utils\.js|match_preview_model\.js|bundle_v31\.js)/.test(asset)),

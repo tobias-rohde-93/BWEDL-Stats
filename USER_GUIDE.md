@@ -149,6 +149,12 @@ Die vier vorausgewählten Spieler können über die Kontrollkästchen manuell en
 
 Nur bei ausreichender historischer Ergebnisbasis erscheinen getrennte Werte für Heim, Unentschieden und Auswärts. Ein **Plausibler Bereich** zeigt, wie stark unsichere Spieler-, Klassen- und Kaderannahmen das Ergebnis verändern können. Reicht die Kalibrierung nicht aus, zeigt das Werkzeug stattdessen eine relative Aufstellungsstärke und keine behauptete Sieg-Wahrscheinlichkeit. Historische Kader sind keine offizielle aktuelle Meldeliste; Hinweise wie **Kaderzugehörigkeit unbestätigt** und die Datenqualität gehören daher zur Aussage der Prognose.
 
+### Spielauswahl und 1v1-Stärkevergleich
+
+Erkannte Spiele erscheinen in einem **horizontalen Karussell**. Wische seitlich oder nutze die Pfeile und wähle die vollständige Spielkarte aus. Dadurch werden Liga, Heim- und Gast-Team übernommen; die Aufstellung bleibt anschließend bearbeitbar.
+
+Die 4x4-Matrix vergleicht jeden Heimspieler mit jedem Gastspieler. Der Prozentwert ist der relative, klassenbereinigte Anteil der aktuellen und historischen Stärke des Heimspielers – **keine einzelne Sieg-Wahrscheinlichkeit**. Grün zeigt Heimvorteil, Amber einen ausgeglichenen Vergleich und Rot einen Gastvorteil. Ein `?` kennzeichnet eine **unsichere Datenbasis**, etwa bei neutralen, unbestätigten oder nicht eindeutig zugeordneten Daten.
+
 Alle Aktualisierungen kommen ausschließlich aus den veröffentlichten statischen Artefakten auf **GitHub Pages**. Das Werkzeug ruft keine eigene API und keinen lokalen Server auf.
 
 ---
