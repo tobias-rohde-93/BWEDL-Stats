@@ -11,6 +11,12 @@ Die Web-Version ist hier verfügbar: **[BWEDL Stats öffnen](https://tobias-rohd
 - **Vereinsfavoriten**: Gespeicherte Vereine stehen im globalen Bereich **FAVORITEN** und unter **VEREINE → Favoriten**.
 - **Offline-Modus**: Installierbar als App (PWA) auf Android und iOS.
 
+Das veröffentlichte Spielerarchiv speichert jede über die BWEDL-Archivnavigation
+entdeckte Saison und bewahrt getrennte Klassen- oder Vereinsabschnitte einer
+Spieler-Saison. Karriereansichten können diese vollständige Historie verwenden;
+eine Match-Preview verwendet für ihren historischen Ausgangswert dagegen
+ausschließlich die zwei neuesten abgeschlossenen Saisons.
+
 ---
 
 ## Teamkalender und Favoriten
@@ -71,7 +77,7 @@ Das Staging-Verzeichnis muss neu oder leer sein. `update_report.json` enthält E
 
 - Ranglisten werden erst für die neue Saison aktiviert, wenn Bezirksliga, A-Klasse, B-Klasse und C-Klasse jeweils mindestens einen gültigen Spieler enthalten. Bis dahin zeigt die UI für den behaltenen Stand exakt `Vorjahresstand 2025/26`.
 - Ligadaten brauchen mindestens 13 reguläre Ligen und je Liga alle 18 Spieltage in plausibler Reihenfolge.
-- Vereinsdaten dürfen nicht leer, strukturell ungültig oder gegenüber dem letzten Stand stark geschrumpft sein. Archive dürfen keine vorhandene Saison oder zugehörige Datensätze verlieren.
+- Vereinsdaten dürfen nicht leer, strukturell ungültig oder gegenüber dem letzten Stand stark geschrumpft sein. Archive bewahren alle von der Quelle entdeckten Saisons; nicht ausdrücklich geprüfte Verluste vorhandener Saison-, Spieler- oder Segmentdaten blockieren die Veröffentlichung.
 - Die JSON-/JS-Paare für Ligen, Ranglisten und Vereine sowie `data_status` müssen inhaltlich exakt gleich sein.
 
 ### Automatisierung auf GitHub

@@ -70,6 +70,11 @@ Direkt auf dem Dashboard siehst du eine Liste der **Top 20 Spieler** des aktuell
 ### 3. Karriere-Statistiken (Legacy)
 Direkt unter dem Profil findest du deine historischen Leistungen (Daten aus dem Archiv).
 
+Das Archiv speichert alle Saisons, die über die Archivnavigation der Quelle
+gefunden wurden. Gehört eine Spieler-Saison zu mehreren Klassen oder Vereinen,
+bleiben diese Abschnitte getrennt erhalten; die Karriereansicht zählt die
+Spieler-Saison trotzdem nur einmal.
+
 - **🏆 Ewige Punkte**: Die Summe aller Punkte, die du jemals in erfassten Saisons erzielt hast.
 - **🥇 Titel**: Wie oft du eine Saison auf **Platz 1** beendet hast.
 - **📈 Best-Wert**: Deine höchste Punktzahl, die du je in einer einzelnen Saison erreicht hast.
@@ -134,7 +139,7 @@ Das Werkzeug liefert auch vor dem ersten Spieltag eine Vierer-Prognose. Wähle d
 
 Die Spielerleistung wird als Quotient aus Punkten und **tatsächlichen Einsätzen** berechnet. Leere Runden und `x` zählen nicht als Einsatz; eine historische Gesamtsumme ohne belegte Einsätze wird nicht als Leistungsdurchschnitt verwendet. Kleine Stichproben werden zusätzlich mit vier klassenüblichen Einsätzen stabilisiert.
 
-Für den historischen Ausgangswert zählen die zwei neuesten abgeschlossenen Saisons: die jüngere mit **70 %**, die vorherige mit **30 %**. Ist nur eine davon nutzbar, erhält sie 100 %. Aktuelle Ergebnisse ersetzen diese Historie anschließend schrittweise, statt sie nach dem ersten Einsatz abrupt zu verdrängen.
+Obwohl das Archiv alle von der Quelle entdeckten Saisons speichert, zählen für den historischen Ausgangswert der Prognose nur die **zwei neuesten abgeschlossenen Saisons**: die jüngere mit **70 %**, die vorherige mit **30 %**. Ist nur eine davon nutzbar, erhält sie 100 %. Aktuelle Ergebnisse ersetzen diese Historie anschließend schrittweise, statt sie nach dem ersten Einsatz abrupt zu verdrängen.
 
 Leistungen aus **Bezirksliga**, **A-Klasse**, **B-Klasse** und **C-Klasse** sind nicht automatisch gleichwertig. Ein Klassenwechsel wird nur anhand ausreichend vieler tatsächlich beobachteter Wechsel auf die Klasse der gewählten Partie angepasst. Fehlt dafür eine belastbare Kalibrierung, erfindet das Modell keinen Faktor und kennzeichnet die Prognose als sehr unsicher.
 
