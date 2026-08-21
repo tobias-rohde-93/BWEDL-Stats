@@ -8,7 +8,7 @@ const cacheNameMatch = worker.match(/^const CACHE_NAME = '([^']+)';$/m);
 assert.ok(cacheNameMatch, 'service worker declares one active cache name');
 const currentCacheName = cacheNameMatch[1];
 const previousCacheName = 'bwedl-dashboard-v41';
-assert.equal(currentCacheName, 'bwedl-dashboard-v46');
+assert.equal(currentCacheName, 'bwedl-dashboard-v47');
 assert.notEqual(currentCacheName, previousCacheName);
 assert.doesNotMatch(worker, /bwedl-dashboard-v40/);
 
@@ -55,12 +55,12 @@ vm.runInContext(worker, sandbox);
     let installPromise;
     listeners.install({ waitUntil(promise) { installPromise = promise; } });
     await installPromise;
-    assert.ok(installedAssets.includes('./style.css?v=11'));
+    assert.ok(installedAssets.includes('./style.css?v=12'));
     assert.ok(installedAssets.includes('./archive_data.js?v=9'));
     assert.ok(installedAssets.includes('./app_utils.js?v=4'));
     assert.ok(installedAssets.includes('./match_preview_model.js?v=2'));
     assert.ok(installedAssets.includes('./calendar_index.js?v=1'));
-    assert.ok(installedAssets.includes('./bundle_v31.js?v=4.3'));
+    assert.ok(installedAssets.includes('./bundle_v31.js?v=4.4'));
 
     let activatePromise;
     listeners.activate({ waitUntil(promise) { activatePromise = promise; } });

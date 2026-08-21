@@ -11,7 +11,7 @@ def test_status_script_loads_synchronously_before_application_bundle() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
 
     status_script = '<script src="data_status.js?v=1"></script>'
-    bundle_script = '<script src="bundle_v31.js?v=4.3"></script>'
+    bundle_script = '<script src="bundle_v31.js?v=4.4"></script>'
     assert status_script in html
     assert html.index(status_script) < html.index(bundle_script)
     assert "async" not in status_script
@@ -43,7 +43,7 @@ def test_bundle_uses_safe_status_fallback_without_status_inner_html() -> None:
 def test_service_worker_treats_both_status_files_as_network_first_data() -> None:
     worker = (ROOT / "sw_v31.js").read_text(encoding="utf-8")
 
-    assert re.search(r"^const CACHE_NAME = 'bwedl-dashboard-v46';$", worker, re.MULTILINE)
+    assert re.search(r"^const CACHE_NAME = 'bwedl-dashboard-v47';$", worker, re.MULTILINE)
     assert "bwedl-dashboard-v41" not in worker
     assert "'./data_status.json'" in worker
     assert "'./data_status.js?v=1'" in worker
