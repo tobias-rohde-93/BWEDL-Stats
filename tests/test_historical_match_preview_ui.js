@@ -70,6 +70,7 @@ function createDocument() {
             this.attributes = {};
             this.listeners = {};
             this.style = {};
+            this._rect = { left: 0, width: 0 };
             this.scrollIntoViewCalls = [];
             this.focusCalls = 0;
             this._text = '';
@@ -117,6 +118,7 @@ function createDocument() {
             this.ownerDocument.scrollCalls.push(call);
         }
         focus() { this.focusCalls += 1; this.ownerDocument.focusedElement = this; }
+        getBoundingClientRect() { return this._rect; }
     }
     const document = {
         root: null,
@@ -595,7 +597,7 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(cards[1].scrollIntoViewCalls.at(-1).behavior, 'smooth');
 
     const arrows = carousel.querySelectorAll('.match-preview-carousel__arrow');
-    assert.equal(arrows[0].disabled, true);
+    assert.equal(arrows[0].disabled, false);
     arrows[1].dispatchEvent({ type: 'click' });
     assert.equal(arrows[0].disabled, false);
     assert.equal(arrows[1].disabled, true);
@@ -623,6 +625,54 @@ function renderUnavailableModelScenario(model, configureWindow) {
     const scenario = renderScenario(true, extractFunction('renderMatchPreview'), { skipManualSelection: true });
     assert.equal(scenario.contentArea.querySelector('.match-preview-carousel'), null);
     assert.ok(scenario.contentArea.querySelector('#match-preview-league'), 'manual selector remains available without detected games');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatches: [
+            { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo', spieltag: '1. Spieltag', dateStr: '01.09.2026' },
+            { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo', spieltag: '2. Spieltag', dateStr: '08.09.2026' },
+            { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo', spieltag: '3. Spieltag', dateStr: '15.09.2026' },
+        ],
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    const carousel = scenario.contentArea.querySelector('.match-preview-carousel');
+    const track = carousel.querySelector('.match-preview-carousel__track');
+    const cards = carousel.querySelectorAll('.match-preview-card');
+    const selects = cards.map((card) => card.querySelector('.match-preview-card__select'));
+    const dots = carousel.querySelectorAll('.match-preview-carousel__dot');
+    const arrows = carousel.querySelectorAll('.match-preview-carousel__arrow');
+    assert.equal(cards[0].querySelector('.match-preview-card__matchday').textContent, '1. Spieltag');
+    assert.equal(cards[1].querySelector('.match-preview-card__matchday').textContent, '2. Spieltag');
+    assert.notEqual(selects[0].attributes['aria-label'], selects[1].attributes['aria-label'], 'duplicate-team fixtures require distinct accessible names');
+    assert.equal(selects[1].attributes['aria-label'], 'Alpha gegen Bravo, B-Klasse 2026-2027, 2. Spieltag, 08.09.2026 auswählen');
+    assert.deepEqual(dots.map((dot) => dot.attributes['aria-label']), [
+        'Partie 1 von 3 anzeigen',
+        'Partie 2 von 3 anzeigen',
+        'Partie 3 von 3 anzeigen',
+    ]);
+
+    selects[1].dispatchEvent({ type: 'click' });
+    scenario.flushTimer(200);
+    assert.equal(dots[1].attributes['aria-current'], 'true', 'selection synchronizes browse state to the selected card');
+    assert.equal(arrows[0].disabled, false);
+    assert.equal(arrows[1].disabled, false);
+    arrows[1].dispatchEvent({ type: 'click' });
+    assert.equal(dots[2].attributes['aria-current'], 'true', 'next proceeds from the selected card to card three');
+
+    track._rect = { left: 100, width: 100 };
+    cards[0]._rect = { left: -50, width: 20 };
+    cards[1]._rect = { left: 40, width: 20 };
+    cards[2]._rect = { left: 130, width: 20 };
+    track.dispatchEvent({ type: 'scroll' });
+    scenario.flushTimer(120);
+    assert.equal(dots[2].attributes['aria-current'], 'true', 'settled native scrolling synchronizes the nearest card');
+    assert.equal(arrows[0].disabled, false);
+    assert.equal(arrows[1].disabled, true);
+    assert.equal(selects[1].attributes['aria-pressed'], 'true', 'native browsing remains independent from selected state');
+    assert.equal(selects[2].attributes['aria-pressed'], 'false');
 }
 
 {
@@ -658,7 +708,7 @@ function renderUnavailableModelScenario(model, configureWindow) {
     const card = scenario.contentArea.querySelector('.match-preview-card');
     const select = card.querySelector('.match-preview-card__select');
     assert.match(card.querySelector('.match-preview-card__teams').textContent, /<svg onload=alert\(1\)>AlphaVSGast/);
-    assert.equal(select.attributes['aria-label'], '<svg onload=alert(1)>Alpha gegen Gast auswählen');
+    assert.equal(select.attributes['aria-label'], '<svg onload=alert(1)>Alpha gegen Gast, B-Klasse 2026-2027, Termin offen auswählen');
     assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0, 'hostile incomplete names stay inert');
 }
 

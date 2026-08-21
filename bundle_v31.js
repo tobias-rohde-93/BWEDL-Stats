@@ -7733,6 +7733,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.appendChild(container);
 
         let initialMatchAutoFill = null;
+        let synchronizeMatchBrowse = (card, options = {}) => {
+            if (options.center) centerMatchCard(card);
+        };
 
         // Preserve the existing detected-match action, but keep all feed data inert.
         try {
@@ -7760,22 +7763,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     matchCard.className = 'match-preview-card';
                     const homeName = typeof match.home === 'string' && match.home.trim() ? match.home : 'Heim';
                     const awayName = typeof match.away === 'string' && match.away.trim() ? match.away : 'Gast';
+                    const competitionName = typeof match.league === 'string' && match.league.trim() ? match.league : 'Wettbewerb offen';
+                    const matchday = typeof match.spieltag === 'string' && match.spieltag.trim() ? match.spieltag : '';
+                    const dateText = typeof match.dateStr === 'string' && match.dateStr.trim() ? match.dateStr : 'Termin offen';
                     const loadButton = document.createElement('button');
                     loadButton.type = 'button';
                     loadButton.className = 'load-btn';
                     loadButton.classList.add('match-preview-card__select');
-                    loadButton.textContent = 'Partie auswählen';
-                    loadButton.textContent = '';
-                    loadButton.setAttribute('aria-label', `${homeName} gegen ${awayName} auswählen`);
+                    // Status is represented by the dedicated child below (formerly: loadButton.textContent = 'Partie auswählen').
+                    loadButton.setAttribute('aria-label', `${homeName} gegen ${awayName}, ${competitionName}${matchday ? `, ${matchday}` : ''}, ${dateText} auswählen`);
                     loadButton.setAttribute('aria-pressed', 'false');
-                    appendText(loadButton, 'span', match.league || '', 'match-preview-card__league');
+                    appendText(loadButton, 'span', competitionName, 'match-preview-card__league');
                     const teams = document.createElement('div');
                     teams.className = 'match-preview-card__teams';
                     appendText(teams, 'strong', homeName);
                     appendText(teams, 'span', 'VS');
                     appendText(teams, 'strong', awayName);
                     loadButton.appendChild(teams);
-                    appendText(loadButton, 'span', match.dateStr || 'Termin offen', 'match-preview-card__date');
+                    if (matchday) appendText(loadButton, 'span', matchday, 'match-preview-card__matchday');
+                    appendText(loadButton, 'span', dateText, 'match-preview-card__date');
                     appendText(loadButton, 'span', 'Partie auswählen', 'match-preview-card__status');
                     loadButton.addEventListener('click', () => {
                         markManualInteraction();
@@ -7789,7 +7795,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             updateExclusions, loadSelection, canApply: canApplyCardSelection,
                             runInternalChange, setBannerState: (state) => {
                                 setMatchCardState(matchCard, state);
-                                if (state === 'selected') centerMatchCard(matchCard);
+                                if (state === 'selected') synchronizeMatchBrowse(matchCard, { center: true });
                             },
                         });
                     });
@@ -7822,7 +7828,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const dot = document.createElement('button');
                         dot.type = 'button';
                         dot.className = 'match-preview-carousel__dot';
-                        dot.setAttribute('aria-label', `Partie ${index + 1} anzeigen`);
+                        dot.setAttribute('aria-label', `Partie ${index + 1} von ${matchCards.length} anzeigen`);
                         controls.appendChild(dot);
                         return dot;
                     });
@@ -7834,25 +7840,60 @@ document.addEventListener('DOMContentLoaded', () => {
                             else dot.removeAttribute('aria-current');
                         });
                     };
-                    const browseTo = (index) => {
+                    const setBrowseIndex = (index, options = {}) => {
                         browsedIndex = Math.max(0, Math.min(matchCards.length - 1, index));
                         updateNavigation();
                         const card = matchCards[browsedIndex];
                         const select = card.querySelector('.match-preview-card__select');
-                        if (select) select.focus();
-                        centerMatchCard(card);
+                        if (options.focus && select) select.focus();
+                        if (options.center) centerMatchCard(card);
                     };
-                    previousButton.addEventListener('click', () => browseTo(browsedIndex - 1));
-                    nextButton.addEventListener('click', () => browseTo(browsedIndex + 1));
-                    dots.forEach((dot, index) => dot.addEventListener('click', () => browseTo(index)));
+                    synchronizeMatchBrowse = (card, options = {}) => {
+                        const index = matchCards.indexOf(card);
+                        if (index !== -1) setBrowseIndex(index, options);
+                    };
+                    const synchronizeNearestTrackCard = () => {
+                        if (renderMatchPreview._generation !== renderGeneration) return;
+                        const trackRect = track.getBoundingClientRect();
+                        const trackCenter = Number(trackRect && trackRect.left) + Number(trackRect && trackRect.width) / 2;
+                        if (!Number.isFinite(trackCenter)) return;
+                        let nearestIndex = 0;
+                        let nearestDistance = Infinity;
+                        matchCards.forEach((card, index) => {
+                            const cardRect = card.getBoundingClientRect();
+                            const cardCenter = Number(cardRect && cardRect.left) + Number(cardRect && cardRect.width) / 2;
+                            const distance = Math.abs(cardCenter - trackCenter);
+                            if (Number.isFinite(distance) && distance < nearestDistance) {
+                                nearestIndex = index;
+                                nearestDistance = distance;
+                            }
+                        });
+                        if (nearestDistance !== Infinity) setBrowseIndex(nearestIndex);
+                    };
+                    let scrollSettleGeneration = 0;
+                    const scheduleTrackSynchronization = () => {
+                        const scheduledGeneration = ++scrollSettleGeneration;
+                        setTimeout(() => {
+                            if (scheduledGeneration !== scrollSettleGeneration) return;
+                            synchronizeNearestTrackCard();
+                        }, 120);
+                    };
+                    previousButton.addEventListener('click', () => setBrowseIndex(browsedIndex - 1, { focus: true, center: true }));
+                    nextButton.addEventListener('click', () => setBrowseIndex(browsedIndex + 1, { focus: true, center: true }));
+                    dots.forEach((dot, index) => dot.addEventListener('click', () => setBrowseIndex(index, { focus: true, center: true })));
                     scroller.addEventListener('keydown', (event) => {
                         if (event.key === 'ArrowLeft') {
                             event.preventDefault();
-                            browseTo(browsedIndex - 1);
+                            setBrowseIndex(browsedIndex - 1, { focus: true, center: true });
                         } else if (event.key === 'ArrowRight') {
                             event.preventDefault();
-                            browseTo(browsedIndex + 1);
+                            setBrowseIndex(browsedIndex + 1, { focus: true, center: true });
                         }
+                    });
+                    track.addEventListener('scroll', scheduleTrackSynchronization);
+                    track.addEventListener('scrollend', () => {
+                        scrollSettleGeneration += 1;
+                        synchronizeNearestTrackCard();
                     });
                     controls.insertBefore(previousButton, controls.firstChild);
                     controls.appendChild(nextButton);
@@ -8062,7 +8103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateExclusions, loadSelection, canApply: canApplyInitialAutoFill,
                     runInternalChange, setBannerState: (state) => {
                         setMatchCardState(initialMatchAutoFill.card, state);
-                        if (state === 'selected') centerMatchCard(initialMatchAutoFill.card);
+                        if (state === 'selected') synchronizeMatchBrowse(initialMatchAutoFill.card, { center: true });
                     },
                 });
             }, 100);
