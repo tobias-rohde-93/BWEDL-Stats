@@ -995,6 +995,7 @@ assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-pro
 assert.match(styles, /min-height:\s*44px/);
 assert.match(styles, /prefers-reduced-motion:\s*reduce/);
 assert.match(styles, /\.visually-hidden\s*\{/);
+assert.match(styles, /\.match-preview-next-games\s*\{[\s\S]*?overflow:\s*visible/);
 assert.match(styles, /\.match-preview-carousel__track\s*\{[\s\S]*?overflow-x:\s*auto[\s\S]*?scroll-snap-type:\s*x\s+mandatory/);
 assert.match(styles, /\.match-preview-card\s*\{[\s\S]*?scroll-snap-align:\s*start/);
 assert.match(styles, /\.match-preview-card__select\s*\{[\s\S]*?min-height:\s*max\(44px,\s*10\.75rem\)/);

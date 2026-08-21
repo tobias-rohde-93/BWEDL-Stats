@@ -31,7 +31,9 @@ TEST_ASSETS = {
                 "A-Klasse 2026-2027": {
                     "url": "https://example.invalid/league",
                     "match_days": {
-                        "1. Spieltag": "Mo. 24.08.2026 20:00 Malicious Club - Safe Team ---",
+                        "1. Spieltag": "Mo. 24.08.2099 20:00 Malicious Club - Safe Team ---",
+                        "2. Spieltag": "Mo. 31.08.2099 20:00 Safe Team - Malicious Club ---",
+                        "3. Spieltag": "Mo. 07.09.2099 20:00 Malicious Club - Safe Team ---",
                     },
                     "table": (
                         "<table><tbody>"
@@ -561,8 +563,70 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(page.get_by_text("Match Setup", exact=True)).to_be_visible()
         expect(page.locator("#player-list")).to_contain_text("PLAYER_SENTINEL")
 
+        page.evaluate(
+            """() => sessionStorage.setItem('bwedl_match_preview_game', JSON.stringify({
+                league: 'A-Klasse 2026-2027',
+                home: 'Malicious Club',
+                away: 'Safe Team',
+                dateStr: '24.08.2099 20:00',
+                spieltag: '1. Spieltag',
+            }))"""
+        )
         page.evaluate("location.hash = '#matchPreview'")
         expect(page.locator("#current-league-title")).to_have_text("Match Preview")
+        carousel = page.locator(".match-preview-carousel")
+        carousel_track = carousel.locator(".match-preview-carousel__track")
+        carousel_cards = carousel.locator(".match-preview-card")
+        carousel_selects = carousel_cards.locator(".match-preview-card__select")
+        page.set_viewport_size({"width": 1280, "height": 844})
+        expect(carousel).to_be_visible()
+        expect(carousel_track).to_be_visible()
+        expect(carousel_cards.first).to_be_visible()
+        assert carousel_cards.count() >= 3
+        expect(carousel.locator(".match-preview-carousel__arrow")).to_have_count(2)
+        assert carousel.locator(".match-preview-carousel__dot").count() == carousel_cards.count()
+        page.wait_for_timeout(350)
+        expect(carousel.locator(".match-preview-card__select[aria-pressed='true']")).to_have_count(1)
+        expect(carousel.locator(".match-preview-card[data-state='selected']")).to_have_count(1)
+        carousel.locator(".match-preview-carousel__arrow").nth(1).click()
+        expect(carousel.locator(".match-preview-carousel__dot").nth(1)).to_have_attribute(
+            "aria-current", "true"
+        )
+        assert carousel_track.evaluate(
+            "element => element.scrollWidth > element.clientWidth"
+        )
+        carousel_selects.first.focus()
+        expect(carousel_selects.first).to_be_focused()
+        carousel_selects.last.scroll_into_view_if_needed()
+        carousel_selects.last.focus()
+        expect(carousel_selects.last).to_be_focused()
+        track_box = carousel_track.bounding_box()
+        last_card_box = carousel_cards.last.bounding_box()
+        assert track_box is not None and last_card_box is not None
+        assert last_card_box["x"] >= track_box["x"] + 3
+        assert last_card_box["x"] + last_card_box["width"] <= track_box["x"] + track_box["width"] - 3
+        carousel_track.evaluate(
+            "element => { element.style.scrollBehavior = 'auto'; element.scrollLeft = 240; }"
+        )
+        assert carousel_track.evaluate("element => element.scrollLeft") > 0
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.set_viewport_size({"width": 390, "height": 844})
+        assert carousel_cards.count() >= 3
+        assert carousel_track.evaluate(
+            "element => element.scrollWidth > element.clientWidth"
+        )
+        carousel_selects.last.focus()
+        expect(carousel_selects.last).to_be_focused()
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.set_viewport_size({"width": 320, "height": 844})
+        assert carousel_track.evaluate(
+            "element => element.scrollWidth > element.clientWidth"
+        )
+        carousel_track.evaluate(
+            "element => { element.style.scrollBehavior = 'auto'; element.scrollLeft = 240; }"
+        )
+        assert carousel_track.evaluate("element => element.scrollLeft") > 0
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.locator("#match-preview-league").select_option("A-Klasse 2026-2027")
         page.locator("#match-preview-home").select_option("999")
         page.locator("#match-preview-away").select_option("996")
@@ -625,45 +689,6 @@ def test_published_data_stays_inert_online_and_offline() -> None:
             "element => element.scrollWidth <= element.clientWidth"
         )
         page.set_viewport_size({"width": 390, "height": 844})
-        page.evaluate(
-            """() => {
-                const carousel = document.createElement('section');
-                carousel.id = 'match-preview-carousel-probe';
-                carousel.className = 'match-preview-carousel';
-                carousel.tabIndex = 0;
-                const track = document.createElement('div');
-                track.className = 'match-preview-carousel__track';
-                for (let index = 0; index < 3; index += 1) {
-                    const card = document.createElement('article');
-                    card.className = 'match-preview-card';
-                    const button = document.createElement('button');
-                    button.type = 'button';
-                    button.className = 'match-preview-card__select';
-                    button.textContent = `Probe ${index + 1}`;
-                    card.appendChild(button);
-                    track.appendChild(card);
-                }
-                carousel.appendChild(track);
-                document.body.appendChild(carousel);
-            }"""
-        )
-        carousel_track = page.locator(
-            "#match-preview-carousel-probe .match-preview-carousel__track"
-        )
-        carousel_dimensions = carousel_track.evaluate(
-            "element => ({ scrollWidth: element.scrollWidth, clientWidth: element.clientWidth })"
-        )
-        assert carousel_dimensions["scrollWidth"] > carousel_dimensions["clientWidth"]
-        carousel_track.evaluate(
-            "element => { element.style.scrollBehavior = 'auto'; element.scrollLeft = 240; }"
-        )
-        assert carousel_track.evaluate("element => element.scrollLeft") > 0
-        page.locator("#match-preview-carousel-probe .match-preview-card__select").first.focus()
-        expect(
-            page.locator("#match-preview-carousel-probe .match-preview-card__select").first
-        ).to_be_focused()
-        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
-        page.locator("#match-preview-carousel-probe").evaluate("element => element.remove()")
 
         page.evaluate(
             """() => {
