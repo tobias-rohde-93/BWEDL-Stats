@@ -2044,6 +2044,17 @@ a.club-contact-field__value {
     color: #cbd5e1;
 }
 
+.match-preview-matrix__uncertainty-help,
+.match-preview-matrix__scroll-hint {
+    margin: 0.35rem 0;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+}
+
+.match-preview-matrix__scroll-hint {
+    display: none;
+}
+
 .match-preview-matrix__legend {
     display: flex;
     flex-wrap: wrap;
@@ -2165,6 +2176,10 @@ a.club-contact-field__value {
 
     .match-preview-matrix {
         min-width: 38rem;
+    }
+
+    .match-preview-matrix__scroll-hint {
+        display: block;
     }
 
     .match-preview-matrix th,

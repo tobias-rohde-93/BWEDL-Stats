@@ -541,6 +541,8 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(matrixPanel.children[0].textContent, '1v1-Analyse');
     assert.match(matrixPanel.textContent, /Stärkevergleich|Einschätzung/);
     assert.match(matrixPanel.textContent, /keine Einzelspiel-Siegwahrscheinlichkeit/i);
+    assert.match(matrixPanel.textContent, /\?\s*=\s*unsichere Datenbasis/i);
+    assert.ok(matrixPanel.querySelector('.match-preview-matrix__scroll-hint'));
     assert.doesNotMatch(matrixPanel.textContent, /Siegchance|Gewinnwahrscheinlichkeit/i);
     assert.ok(matrixScroll);
     assert.equal(matrixScroll.tabIndex, 0);
@@ -1008,6 +1010,8 @@ assert.match(styles, /\.match-preview-matrix__cell--home\s*\{/);
 assert.match(styles, /\.match-preview-matrix__cell--balanced\s*\{/);
 assert.match(styles, /\.match-preview-matrix__cell--away\s*\{/);
 assert.match(styles, /\.match-preview-matrix__uncertain\s*\{/);
+assert.match(styles, /\.match-preview-matrix__scroll-hint\s*\{[\s\S]*?display:\s*none/);
+assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-matrix__scroll-hint\s*\{[\s\S]*?display:\s*block/);
 assert.match(styles, /\.match-preview-carousel__track:focus-visible[\s\S]*?\.match-preview-matrix-scroll:focus-visible/);
 assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-card\s*\{[\s\S]*?flex-basis:/);
 const rendererSource = source.slice(source.indexOf('function renderMatchPreview('), source.indexOf('window.triggerUpdate'));

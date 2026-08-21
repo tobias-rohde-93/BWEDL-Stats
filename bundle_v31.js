@@ -8186,6 +8186,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Der Stärkevergleich beschreibt die relative Einschätzung zugunsten des Heimspielers, keine Einzelspiel-Siegwahrscheinlichkeit.',
                 'match-preview-matrix__description',
             );
+            appendText(pairings, 'p', '? = unsichere Datenbasis (neutral, unbestätigt oder nicht eindeutig zugeordnet).', 'match-preview-matrix__uncertainty-help');
+            appendText(pairings, 'p', 'Seitlich wischen, um alle Vergleiche zu sehen.', 'match-preview-matrix__scroll-hint');
             const legend = document.createElement('ul');
             legend.className = 'match-preview-matrix__legend';
             appendText(legend, 'li', '55–100 %: Vorteil Heim');
