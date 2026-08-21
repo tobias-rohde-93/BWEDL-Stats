@@ -7770,7 +7770,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadButton.type = 'button';
                     loadButton.className = 'load-btn';
                     loadButton.classList.add('match-preview-card__select');
-                    // Status is represented by the dedicated child below (formerly: loadButton.textContent = 'Partie auswählen').
                     loadButton.setAttribute('aria-label', `${homeName} gegen ${awayName}, ${competitionName}${matchday ? `, ${matchday}` : ''}, ${dateText} auswählen`);
                     loadButton.setAttribute('aria-pressed', 'false');
                     appendText(loadButton, 'span', competitionName, 'match-preview-card__league');

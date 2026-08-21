@@ -126,7 +126,9 @@ test('match preview cards expose a dedicated native selection button', () => {
     assert.match(previewSource, /const loadButton = document\.createElement\('button'\)/);
     assert.match(previewSource, /loadButton\.type = 'button'/);
     assert.match(previewSource, /loadButton\.className = 'load-btn'/);
-    assert.match(previewSource, /loadButton\.textContent = 'Partie ausw\u00e4hlen'/);
+    assert.match(previewSource, /loadButton\.classList\.add\('match-preview-card__select'\)/);
+    assert.match(previewSource, /appendText\(loadButton, 'span', 'Partie ausw\u00e4hlen', 'match-preview-card__status'\)/);
+    assert.doesNotMatch(previewSource, /loadButton\.textContent\s*=/);
     assert.match(previewSource, /loadButton\.addEventListener\('click'/);
     assert.doesNotMatch(previewSource, /cardWrap\.onclick\s*=/);
     assert.match(previewSource, /mergeMatchPreviewGames\(selectedMatch, detectedMatches\)/);

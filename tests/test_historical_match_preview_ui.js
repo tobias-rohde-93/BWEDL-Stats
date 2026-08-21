@@ -662,17 +662,26 @@ function renderUnavailableModelScenario(model, configureWindow) {
     arrows[1].dispatchEvent({ type: 'click' });
     assert.equal(dots[2].attributes['aria-current'], 'true', 'next proceeds from the selected card to card three');
 
-    track._rect = { left: 100, width: 100 };
+    track._rect = { left: -80, width: 100 };
     cards[0]._rect = { left: -50, width: 20 };
     cards[1]._rect = { left: 40, width: 20 };
     cards[2]._rect = { left: 130, width: 20 };
     track.dispatchEvent({ type: 'scroll' });
     scenario.flushTimer(120);
-    assert.equal(dots[2].attributes['aria-current'], 'true', 'settled native scrolling synchronizes the nearest card');
-    assert.equal(arrows[0].disabled, false);
-    assert.equal(arrows[1].disabled, true);
+    assert.equal(dots[0].attributes['aria-current'], 'true', 'settled native scrolling synchronizes the nearest card');
+    assert.equal(arrows[0].disabled, true);
+    assert.equal(arrows[1].disabled, false);
     assert.equal(selects[1].attributes['aria-pressed'], 'true', 'native browsing remains independent from selected state');
+    assert.equal(selects[0].attributes['aria-pressed'], 'false');
     assert.equal(selects[2].attributes['aria-pressed'], 'false');
+
+    track._rect = { left: 100, width: 100 };
+    track.dispatchEvent({ type: 'scroll' });
+    scenario.render();
+    scenario.flushTimer(120);
+    assert.equal(dots[0].attributes['aria-current'], 'true', 'a pending native-scroll settle callback from an obsolete render stays inert');
+    const rerenderedDots = scenario.contentArea.querySelectorAll('.match-preview-carousel__dot');
+    assert.equal(rerenderedDots[0].attributes['aria-current'], 'true');
 }
 
 {
