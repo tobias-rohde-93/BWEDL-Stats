@@ -7208,8 +7208,9 @@ document.addEventListener('DOMContentLoaded', () => {
      * Returns { players: [...], avg: number }
      */
     function calculateOptimalLineup(allPlayers, n = 4) {
-        // Filter players with at least 1 game
-        const eligible = allPlayers.filter(p => p._cnt >= 1);
+        // Historical fallback players can have no current-season appearances,
+        // but their adjusted rating is still valid evidence for this preview.
+        const eligible = allPlayers.filter((player) => Number.isFinite(player._avg) && player._avg > 0);
         if (eligible.length <= n) {
             const avg = eligible.length > 0
                 ? eligible.reduce((s, p) => s + p._avg, 0) / n
@@ -7663,6 +7664,41 @@ document.addEventListener('DOMContentLoaded', () => {
         selectorCard.className = 'match-preview-panel match-preview-selector';
         appendText(selectorCard, 'h2', 'Begegnung & Aufstellung', 'match-preview-heading');
 
+        const matchHero = document.createElement('section');
+        matchHero.className = 'match-preview-hero';
+        matchHero.hidden = true;
+        matchHero.setAttribute('aria-label', 'Ausgewählte Begegnung');
+        const createHeroTeam = (side, label) => {
+            const team = document.createElement('div');
+            team.className = `match-preview-hero__team match-preview-hero__team--${side}`;
+            const crest = appendText(team, 'span', side === 'home' ? 'H' : 'G', 'match-preview-hero__crest');
+            crest.setAttribute('aria-hidden', 'true');
+            const copy = document.createElement('div');
+            appendText(copy, 'span', label, 'match-preview-hero__side');
+            const name = appendText(copy, 'strong', side === 'home' ? 'Heim' : 'Gast', 'match-preview-hero__name');
+            team.appendChild(copy);
+            matchHero.appendChild(team);
+            return { crest, name };
+        };
+        const homeHero = createHeroTeam('home', 'Heim');
+        appendText(matchHero, 'span', 'VS', 'match-preview-hero__versus');
+        const awayHero = createHeroTeam('away', 'Gast');
+        const teamMonogram = (name, fallback) => {
+            const letters = String(name || '').trim().split(/\s+/).filter(Boolean)
+                .map((part) => part[0]).join('').slice(0, 3).toUpperCase();
+            return letters || fallback;
+        };
+        const updateMatchHero = (homeName, awayName) => {
+            const hasMatch = Boolean(homeName && awayName);
+            matchHero.hidden = !hasMatch;
+            if (!hasMatch) return;
+            homeHero.name.textContent = homeName;
+            homeHero.crest.textContent = teamMonogram(homeName, 'H');
+            awayHero.name.textContent = awayName;
+            awayHero.crest.textContent = teamMonogram(awayName, 'G');
+        };
+        selectorCard.appendChild(matchHero);
+
         const leagueGroup = document.createElement('div');
         leagueGroup.className = 'match-preview-field';
         const leagueLabel = appendText(leagueGroup, 'label', 'Liga:', 'match-preview-label');
@@ -7827,21 +7863,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     nextButton.className = 'match-preview-carousel__arrow';
                     nextButton.setAttribute('aria-label', 'Nächste Partie');
                     nextButton.textContent = '→';
-                    const dots = matchCards.map((_card, index) => {
-                        const dot = document.createElement('button');
-                        dot.type = 'button';
-                        dot.className = 'match-preview-carousel__dot';
-                        dot.setAttribute('aria-label', `Partie ${index + 1} von ${matchCards.length} anzeigen`);
-                        controls.appendChild(dot);
-                        return dot;
-                    });
+                    const indicator = document.createElement('div');
+                    indicator.className = 'match-preview-carousel__indicator';
+                    const position = appendText(indicator, 'span', '', 'match-preview-carousel__position');
+                    position.setAttribute('aria-live', 'polite');
+                    position.setAttribute('aria-atomic', 'true');
+                    const dotRail = document.createElement('span');
+                    dotRail.className = 'match-preview-carousel__dots';
+                    dotRail.setAttribute('aria-hidden', 'true');
+                    indicator.appendChild(dotRail);
+                    const updateIndicator = () => {
+                        position.textContent = `Partie ${browsedIndex + 1} / ${matchCards.length}`;
+                        dotRail.textContent = '';
+                        const visibleDotCount = Math.min(5, matchCards.length);
+                        const maximumStart = Math.max(0, matchCards.length - visibleDotCount);
+                        const start = Math.max(0, Math.min(browsedIndex - Math.floor(visibleDotCount / 2), maximumStart));
+                        for (let offset = 0; offset < visibleDotCount; offset += 1) {
+                            const index = start + offset;
+                            const dot = document.createElement('span');
+                            dot.className = `match-preview-carousel__dot${index === browsedIndex ? ' match-preview-carousel__dot--current' : ''}`;
+                            dotRail.appendChild(dot);
+                        }
+                    };
                     const updateNavigation = () => {
                         previousButton.disabled = browsedIndex === 0;
                         nextButton.disabled = browsedIndex === matchCards.length - 1;
-                        dots.forEach((dot, index) => {
-                            if (index === browsedIndex) dot.setAttribute('aria-current', 'true');
-                            else dot.removeAttribute('aria-current');
-                        });
+                        updateIndicator();
                     };
                     const setBrowseIndex = (index, options = {}) => {
                         browsedIndex = Math.max(0, Math.min(matchCards.length - 1, index));
@@ -7883,7 +7930,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     previousButton.addEventListener('click', () => setBrowseIndex(browsedIndex - 1, { focus: true, center: true }));
                     nextButton.addEventListener('click', () => setBrowseIndex(browsedIndex + 1, { focus: true, center: true }));
-                    dots.forEach((dot, index) => dot.addEventListener('click', () => setBrowseIndex(index, { focus: true, center: true })));
                     scroller.addEventListener('keydown', (event) => {
                         if (event.key === 'ArrowLeft') {
                             event.preventDefault();
@@ -7898,7 +7944,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         scrollSettleGeneration += 1;
                         synchronizeNearestTrackCard();
                     });
-                    controls.insertBefore(previousButton, controls.firstChild);
+                    controls.appendChild(previousButton);
+                    controls.appendChild(indicator);
                     controls.appendChild(nextButton);
                     scroller.appendChild(controls);
                     updateNavigation();
@@ -7939,6 +7986,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectionArea.style.display = 'none';
             resultDiv.textContent = '';
             historyDiv.textContent = '';
+            updateMatchHero();
             if (!league) return;
             const tableTeams = [];
             const leagueRecord = leagueData.leagues && leagueData.leagues[league];
@@ -8061,6 +8109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const idB = teamBSelect.value;
             if (!league || !idA || !idB || idA === idB) {
                 selectionArea.style.display = 'none';
+                updateMatchHero();
                 return;
             }
             rosterA = buildRoster(idA, league);
@@ -8071,6 +8120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedB = new Set(playersB.slice(0, 4));
             const nameA = selectedTeam(idA)?.name || 'Heim';
             const nameB = selectedTeam(idB)?.name || 'Gast';
+            updateMatchHero(nameA, nameB);
             renderPlayerList(playersA, listAElement, selectedA, nameA, rosterA.targetClass);
             renderPlayerList(playersB, listBElement, selectedB, nameB, rosterB.targetClass);
             selectionArea.style.display = 'block';
@@ -8215,7 +8265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const head = document.createElement('thead');
             const headerRow = document.createElement('tr');
             const corner = document.createElement('th');
-            corner.textContent = `${nameA} gegen ${nameB}`;
+            corner.textContent = 'Heim ↓ · Gast →';
             headerRow.appendChild(corner);
             lineupB.forEach((awayPlayer) => {
                 const header = document.createElement('th');
@@ -8270,6 +8320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         `${homePlayer.name} gegen ${awayPlayer.name}: ${homePercent}% Heim, ${awayPercent}% Gast, ${state}${uncertain ? ', unsichere Datenbasis' : ''}`,
                     );
                     appendText(cell, 'span', `${homePercent} %`, 'match-preview-matrix__value');
+                    appendText(cell, 'span', `${awayPercent} % Gast`, 'match-preview-matrix__complement');
                     if (uncertain) {
                         const marker = appendText(cell, 'span', '?', 'match-preview-matrix__uncertain');
                         marker.setAttribute('aria-hidden', 'true');

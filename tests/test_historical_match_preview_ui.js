@@ -424,6 +424,22 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     };
 }
 
+{
+    const calculateOptimalLineup = Function(`${extractFunction('calculateOptimalLineup')}; return calculateOptimalLineup;`)();
+    const result = calculateOptimalLineup([
+        { name: 'Historisch 1', _avg: 7.4, _cnt: 0 },
+        { name: 'Historisch 2', _avg: 6.8, _cnt: 0 },
+        { name: 'Historisch 3', _avg: 6.2, _cnt: 0 },
+        { name: 'Historisch 4', _avg: 5.9, _cnt: 0 },
+        { name: 'Historisch 5', _avg: 4.1, _cnt: 0 },
+    ], 4);
+    assert.deepEqual(
+        result.players.map((player) => player.name),
+        ['Historisch 1', 'Historisch 2', 'Historisch 3', 'Historisch 4'],
+        'historical ratings must remain eligible for the optimal lineup before the new season starts',
+    );
+}
+
 function renderUnavailableModelScenario(model, configureWindow) {
     const document = createDocument();
     const contentArea = document.createElement('main');
@@ -534,6 +550,11 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0, 'team names must stay inert text');
     assert.equal(scenario.contentArea.querySelectorAll('SCRIPT').length, 0, 'source seasons must stay inert text');
     assert.equal(scenario.document.usedUnsafePlayerHtml, false, 'hostile external values must never reach innerHTML');
+    const hero = scenario.contentArea.querySelector('.match-preview-hero');
+    assert.ok(hero, 'the selected matchup is summarized between carousel and lineup editor');
+    assert.match(hero.textContent, /Heim/);
+    assert.match(hero.textContent, /VS/);
+    assert.match(hero.textContent, /Gast/);
     const ownPlayerName = scenario.document.getElementById('list-a').querySelector('.match-preview-player__name');
     assert.ok(ownPlayerName.classList.contains('my-player-text'));
     assert.equal(ownPlayerName.textContent.length > 500, true);
@@ -573,9 +594,13 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(matrix.querySelectorAll('TH[scope="col"]').length, 4);
     assert.equal(matrix.querySelectorAll('TH[scope="row"]').length, 4);
     assert.equal(matrix.querySelectorAll('.match-preview-matrix__cell').length, 16);
+    assert.equal(matrix.querySelector('THEAD').querySelector('TH').textContent, 'Heim ↓ · Gast →');
     const values = matrix.querySelectorAll('.match-preview-matrix__value');
     assert.equal(values.length, 16);
     values.forEach((value) => assert.match(value.textContent, /^(?:0|[1-9]\d?|100) %$/));
+    const complements = matrix.querySelectorAll('.match-preview-matrix__complement');
+    assert.equal(complements.length, 16);
+    complements.forEach((value) => assert.match(value.textContent, /^(?:0|[1-9]\d?|100) % Gast$/));
     matrix.querySelectorAll('.match-preview-matrix__cell').forEach((cell) => {
         assert.match(cell.attributes['aria-label'], /: \d+% Heim, \d+% Gast, (?:Vorteil Heim|ausgeglichen|Vorteil Gast)/);
         const percentages = [...cell.attributes['aria-label'].matchAll(/(\d+)% (?:Heim|Gast)/g)].map((match) => Number(match[1]));
@@ -719,8 +744,12 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(carousel.querySelectorAll('.match-preview-carousel__arrow').length, 2);
     const dots = carousel.querySelectorAll('.match-preview-carousel__dot');
     assert.equal(dots.length, 2);
-    assert.equal(dots[0].attributes['aria-current'], 'true');
-    assert.equal(dots[1].attributes['aria-current'], undefined);
+    dots.forEach((dot) => assert.equal(dot.tagName, 'SPAN'));
+    assert.equal(carousel.querySelector('.match-preview-carousel__dots').attributes['aria-hidden'], 'true');
+    assert.equal(dots[0].classList.contains('match-preview-carousel__dot--current'), true);
+    assert.equal(dots[1].classList.contains('match-preview-carousel__dot--current'), false);
+    const position = carousel.querySelector('.match-preview-carousel__position');
+    assert.equal(position.textContent, 'Partie 1 / 2');
 
     selects[1].dispatchEvent({ type: 'click' });
     scenario.flushTimer(200);
@@ -736,24 +765,24 @@ function renderUnavailableModelScenario(model, configureWindow) {
     arrows[1].dispatchEvent({ type: 'click' });
     assert.equal(arrows[0].disabled, false);
     assert.equal(arrows[1].disabled, true);
-    assert.equal(dots[0].attributes['aria-current'], undefined);
-    assert.equal(dots[1].attributes['aria-current'], 'true');
+    assert.equal(position.textContent, 'Partie 2 / 2');
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__dot--current').length, 1);
     assert.equal(scenario.document.focusedElement, selects[1]);
     assert.ok(selects[1].focusCalls > 0);
     assert.ok(cards[1].scrollIntoViewCalls.length > 1);
     arrows[1].dispatchEvent({ type: 'click' });
-    assert.equal(dots[1].attributes['aria-current'], 'true', 'next navigation clamps at the last card');
+    assert.equal(position.textContent, 'Partie 2 / 2', 'next navigation clamps at the last card');
     let leftPrevented = false;
     carousel.dispatchEvent({ type: 'keydown', key: 'ArrowLeft', preventDefault() { leftPrevented = true; } });
     assert.equal(leftPrevented, true);
-    assert.equal(dots[0].attributes['aria-current'], 'true');
+    assert.equal(position.textContent, 'Partie 1 / 2');
     let tabPrevented = false;
     carousel.dispatchEvent({ type: 'keydown', key: 'Tab', preventDefault() { tabPrevented = true; } });
     assert.equal(tabPrevented, false, 'Tab must retain normal browser behavior');
     let rightPrevented = false;
     carousel.dispatchEvent({ type: 'keydown', key: 'ArrowRight', preventDefault() { rightPrevented = true; } });
     assert.equal(rightPrevented, true);
-    assert.equal(dots[1].attributes['aria-current'], 'true');
+    assert.equal(position.textContent, 'Partie 2 / 2');
 }
 
 {
@@ -777,25 +806,22 @@ function renderUnavailableModelScenario(model, configureWindow) {
     const track = carousel.querySelector('.match-preview-carousel__track');
     const cards = carousel.querySelectorAll('.match-preview-card');
     const selects = cards.map((card) => card.querySelector('.match-preview-card__select'));
-    const dots = carousel.querySelectorAll('.match-preview-carousel__dot');
+    const position = carousel.querySelector('.match-preview-carousel__position');
     const arrows = carousel.querySelectorAll('.match-preview-carousel__arrow');
     assert.equal(cards[0].querySelector('.match-preview-card__matchday').textContent, '1. Spieltag');
     assert.equal(cards[1].querySelector('.match-preview-card__matchday').textContent, '2. Spieltag');
     assert.notEqual(selects[0].attributes['aria-label'], selects[1].attributes['aria-label'], 'duplicate-team fixtures require distinct accessible names');
     assert.equal(selects[1].attributes['aria-label'], 'Alpha gegen Bravo, B-Klasse 2026-2027, 2. Spieltag, 08.09.2026 auswählen');
-    assert.deepEqual(dots.map((dot) => dot.attributes['aria-label']), [
-        'Partie 1 von 3 anzeigen',
-        'Partie 2 von 3 anzeigen',
-        'Partie 3 von 3 anzeigen',
-    ]);
+    assert.equal(position.textContent, 'Partie 1 / 3');
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__dot').length, 3);
 
     selects[1].dispatchEvent({ type: 'click' });
     scenario.flushTimer(200);
-    assert.equal(dots[1].attributes['aria-current'], 'true', 'selection synchronizes browse state to the selected card');
+    assert.equal(position.textContent, 'Partie 2 / 3', 'selection synchronizes browse state to the selected card');
     assert.equal(arrows[0].disabled, false);
     assert.equal(arrows[1].disabled, false);
     arrows[1].dispatchEvent({ type: 'click' });
-    assert.equal(dots[2].attributes['aria-current'], 'true', 'next proceeds from the selected card to card three');
+    assert.equal(position.textContent, 'Partie 3 / 3', 'next proceeds from the selected card to card three');
 
     track._rect = { left: -80, width: 100 };
     cards[0]._rect = { left: -50, width: 20 };
@@ -803,7 +829,7 @@ function renderUnavailableModelScenario(model, configureWindow) {
     cards[2]._rect = { left: 130, width: 20 };
     track.dispatchEvent({ type: 'scroll' });
     scenario.flushTimer(120);
-    assert.equal(dots[0].attributes['aria-current'], 'true', 'settled native scrolling synchronizes the nearest card');
+    assert.equal(position.textContent, 'Partie 1 / 3', 'settled native scrolling synchronizes the nearest card');
     assert.equal(arrows[0].disabled, true);
     assert.equal(arrows[1].disabled, false);
     assert.equal(selects[1].attributes['aria-pressed'], 'true', 'native browsing remains independent from selected state');
@@ -814,9 +840,28 @@ function renderUnavailableModelScenario(model, configureWindow) {
     track.dispatchEvent({ type: 'scroll' });
     scenario.render();
     scenario.flushTimer(120);
-    assert.equal(dots[0].attributes['aria-current'], 'true', 'a pending native-scroll settle callback from an obsolete render stays inert');
-    const rerenderedDots = scenario.contentArea.querySelectorAll('.match-preview-carousel__dot');
-    assert.equal(rerenderedDots[0].attributes['aria-current'], 'true');
+    assert.equal(position.textContent, 'Partie 1 / 3', 'a pending native-scroll settle callback from an obsolete render stays inert');
+    assert.equal(scenario.contentArea.querySelector('.match-preview-carousel__position').textContent, 'Partie 1 / 3');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatches: Array.from({ length: 7 }, (_value, index) => ({
+            league: 'B-Klasse 2026-2027',
+            home: `Heim ${index + 1}`,
+            away: `Gast ${index + 1}`,
+            spieltag: `${index + 1}. Spieltag`,
+            dateStr: `${String(index + 1).padStart(2, '0')}.09.2026`,
+        })),
+        deferTimers: true,
+        deferAutoFillWork: true,
+        skipManualSelection: true,
+    });
+    const carousel = scenario.contentArea.querySelector('.match-preview-carousel');
+    assert.equal(carousel.querySelectorAll('.match-preview-card').length, 7);
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__dot').length, 5, 'large schedules keep one compact dot window');
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__dot--current').length, 1);
+    assert.equal(carousel.querySelector('.match-preview-carousel__position').textContent, 'Partie 1 / 7');
 }
 
 {
@@ -1023,11 +1068,13 @@ assert.match(styles, /\.visually-hidden\s*\{/);
 assert.match(styles, /\.match-preview-next-games\s*\{[\s\S]*?overflow:\s*visible/);
 assert.match(styles, /\.match-preview-carousel__track\s*\{[\s\S]*?overflow-x:\s*auto[\s\S]*?scroll-snap-type:\s*x\s+mandatory/);
 assert.match(styles, /\.match-preview-card\s*\{[\s\S]*?scroll-snap-align:\s*start/);
-assert.match(styles, /\.match-preview-card__select\s*\{[\s\S]*?min-height:\s*max\(44px,\s*10\.75rem\)/);
+assert.match(styles, /\.match-preview-card__select\s*\{[\s\S]*?min-height:\s*max\(44px,\s*8\.5rem\)/);
 assert.match(styles, /\.match-preview-card\[data-state="selected"\]\s+\.match-preview-card__select\s*\{/);
 assert.match(styles, /\.match-preview-card\[data-state="incomplete"\]\s+\.match-preview-card__select\s*\{/);
 assert.match(styles, /\.match-preview-matrix-scroll\s*\{[\s\S]*?overflow-x:\s*auto/);
-assert.match(styles, /\.match-preview-matrix\s*\{[\s\S]*?min-width:/);
+assert.match(styles, /\.match-preview-matrix\s*\{[\s\S]*?table-layout:\s*fixed[\s\S]*?min-width:/);
+assert.match(styles, /\.match-preview-matrix__complement\s*\{/);
+assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-matrix__complement\s*\{[\s\S]*?display:\s*none/);
 assert.match(styles, /\.match-preview-matrix\s+th\[scope="row"\]\s*\{[\s\S]*?position:\s*sticky/);
 assert.match(styles, /\.match-preview-matrix__cell--home\s*\{/);
 assert.match(styles, /\.match-preview-matrix__cell--balanced\s*\{/);
@@ -1036,7 +1083,8 @@ assert.match(styles, /\.match-preview-matrix__uncertain\s*\{/);
 assert.match(styles, /\.match-preview-matrix__scroll-hint\s*\{[\s\S]*?display:\s*block/);
 assert.match(styles, /\.match-preview-matrix__scroll-hint\[hidden\]\s*\{[\s\S]*?display:\s*none/);
 assert.match(styles, /\.match-preview-carousel__track:focus-visible[\s\S]*?\.match-preview-matrix-scroll:focus-visible/);
-assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-card\s*\{[\s\S]*?flex-basis:/);
+assert.match(styles, /@media\s*\(max-width:\s*640px\)[\s\S]*?\.match-preview-card\s*\{[\s\S]*?flex-basis:\s*82%/);
+assert.match(styles, /\.match-preview-carousel__controls\s*\{[\s\S]*?flex-wrap:\s*nowrap/);
 const rendererSource = source.slice(source.indexOf('function renderMatchPreview('), source.indexOf('window.triggerUpdate'));
 assert.doesNotMatch(rendererSource, /\/api\//);
 assert.doesNotMatch(rendererSource, /\.isTrusted\b/);

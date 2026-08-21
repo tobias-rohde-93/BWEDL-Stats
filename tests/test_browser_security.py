@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import mimetypes
 import os
+import re
 import threading
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -584,13 +585,18 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(carousel_cards.first).to_be_visible()
         assert carousel_cards.count() >= 3
         expect(carousel.locator(".match-preview-carousel__arrow")).to_have_count(2)
-        assert carousel.locator(".match-preview-carousel__dot").count() == carousel_cards.count()
         page.wait_for_timeout(350)
+        position_text = carousel.locator(".match-preview-carousel__position").inner_text()
+        position_match = re.fullmatch(r"Partie (\d+) / (\d+)", position_text)
+        assert position_match is not None
+        browsed_position = int(position_match.group(1))
+        assert int(position_match.group(2)) == carousel_cards.count()
+        assert carousel.locator(".match-preview-carousel__dot").count() <= 5
         expect(carousel.locator(".match-preview-card__select[aria-pressed='true']")).to_have_count(1)
         expect(carousel.locator(".match-preview-card[data-state='selected']")).to_have_count(1)
         carousel.locator(".match-preview-carousel__arrow").nth(1).click()
-        expect(carousel.locator(".match-preview-carousel__dot").nth(1)).to_have_attribute(
-            "aria-current", "true"
+        expect(carousel.locator(".match-preview-carousel__position")).to_have_text(
+            f"Partie {min(browsed_position + 1, carousel_cards.count())} / {carousel_cards.count()}"
         )
         assert carousel_track.evaluate(
             "element => element.scrollWidth > element.clientWidth"
@@ -612,6 +618,19 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.set_viewport_size({"width": 390, "height": 844})
         assert carousel_cards.count() >= 3
+        carousel_track.evaluate(
+            "element => { element.style.scrollBehavior = 'auto'; element.scrollLeft = 0; }"
+        )
+        page.wait_for_timeout(100)
+        track_box = carousel_track.bounding_box()
+        first_card_box = carousel_cards.first.bounding_box()
+        second_card_box = carousel_cards.nth(1).bounding_box()
+        controls_box = carousel.locator(".match-preview-carousel__controls").bounding_box()
+        assert track_box is not None and first_card_box is not None and second_card_box is not None
+        assert controls_box is not None
+        assert first_card_box["width"] < track_box["width"] * 0.9
+        assert second_card_box["x"] < track_box["x"] + track_box["width"]
+        assert controls_box["height"] <= 52
         assert carousel_track.evaluate(
             "element => element.scrollWidth > element.clientWidth"
         )
@@ -682,6 +701,10 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert matrix_dimensions["scrollWidth"] > matrix_dimensions["clientWidth"]
         matrix_scroll.evaluate("element => { element.scrollLeft = 80; }")
         assert matrix_scroll.evaluate("element => element.scrollLeft") > 0
+        matrix_corner = matrix.locator("thead th").first
+        assert matrix_corner.text_content() == "Heim ↓ · Gast →"
+        assert matrix_corner.evaluate("element => element.scrollWidth <= element.clientWidth")
+        expect(matrix.locator(".match-preview-matrix__complement")).to_have_count(16)
         assert page.locator("#list-a .match-preview-player").first.evaluate(
             "element => element.scrollWidth <= element.clientWidth"
         )
