@@ -2947,6 +2947,58 @@
         });
     }
 
+    function pairSlotSummary(slot) {
+        const adjusted = safePositiveModelRating(ownValue(slot, 'adjustedRating'));
+        const rating = adjusted === null
+            ? safePositiveModelRating(ownValue(slot, 'rating'))
+            : adjusted;
+        const confidenceValue = ownValue(slot, 'confidence');
+        const confidence = CONFIDENCE_ORDER.includes(confidenceValue) ? confidenceValue : 'very-low';
+        const evidenceValue = ownValue(slot, 'evidence');
+        const evidence = Object.prototype.hasOwnProperty.call(EVIDENCE_ORDER, evidenceValue)
+            ? evidenceValue
+            : 'neutral';
+        return {
+            rating,
+            confidence,
+            evidence,
+            rosterUnconfirmed: ownValue(slot, 'rosterUnconfirmed') === true,
+        };
+    }
+
+    function comparePairStrength(homeSlot, awaySlot) {
+        const home = pairSlotSummary(homeSlot);
+        const away = pairSlotSummary(awaySlot);
+        const total = home.rating === null || away.rating === null
+            ? null
+            : home.rating + away.rating;
+        if (total === null || !Number.isFinite(total) || total <= 0) {
+            return deepFreeze({
+                homeShare: 0.5,
+                awayShare: 0.5,
+                homePercent: 50,
+                awayPercent: 50,
+                uncertain: true,
+            });
+        }
+        const homeShare = home.rating / total;
+        const homePercent = Math.round(homeShare * 100);
+        return deepFreeze({
+            homeShare,
+            awayShare: 1 - homeShare,
+            homePercent,
+            awayPercent: 100 - homePercent,
+            uncertain: home.confidence === 'very-low'
+                || away.confidence === 'very-low'
+                || home.evidence === 'neutral'
+                || away.evidence === 'neutral'
+                || home.evidence === 'historical-fallback'
+                || away.evidence === 'historical-fallback'
+                || home.rosterUnconfirmed
+                || away.rosterUnconfirmed,
+        });
+    }
+
     function lineupSummary(lineup) {
         const inspected = arrayDataValues(lineup);
         if (!inspected.ok || inspected.values.length !== 4) {
@@ -3078,6 +3130,7 @@
         completeLineup,
         buildOutcomeTrainingExamples,
         calibrateOutcomeModel,
+        comparePairStrength,
         forecastMatch,
     };
 });

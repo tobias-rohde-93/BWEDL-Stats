@@ -1468,6 +1468,45 @@ for (const unsafeMean of [0, -1, Number.MAX_VALUE, Infinity, NaN, undefined]) {
     )), true);
     assert.equal(safeLineup.classMeanAvailable, false);
 }
+
+const pairStrength = Model.comparePairStrength(
+    { adjustedRating: 9, rating: 100, confidence: 'high', evidence: 'current' },
+    { adjustedRating: 6, rating: 1, confidence: 'high', evidence: 'current' },
+);
+assert.deepEqual(pairStrength, {
+    homeShare: 0.6, awayShare: 0.4, homePercent: 60, awayPercent: 40, uncertain: false,
+});
+assert.deepEqual(Model.comparePairStrength(
+    { adjustedRating: 5, rating: 9, confidence: 'high', evidence: 'current' },
+    { adjustedRating: 5, rating: 1, confidence: 'high', evidence: 'current' },
+), {
+    homeShare: 0.5, awayShare: 0.5, homePercent: 50, awayPercent: 50, uncertain: false,
+});
+for (const condition of [
+    { confidence: 'very-low' },
+    { evidence: 'neutral' },
+    { evidence: 'historical-fallback' },
+    { rosterUnconfirmed: true },
+]) {
+    const result = Model.comparePairStrength(
+        { adjustedRating: 9, confidence: 'high', evidence: 'current', ...condition },
+        { adjustedRating: 6, confidence: 'high', evidence: 'current' },
+    );
+    assert.equal(result.uncertain, true);
+    assert.equal(result.homePercent + result.awayPercent, 100);
+}
+for (const invalid of [null, {}, 0, Infinity, Number.MAX_SAFE_INTEGER]) {
+    assert.deepEqual(Model.comparePairStrength(invalid, { adjustedRating: 6 }), {
+        homeShare: 0.5, awayShare: 0.5, homePercent: 50, awayPercent: 50, uncertain: true,
+    });
+}
+const frozenPairStrength = Model.comparePairStrength(
+    { adjustedRating: 9, confidence: 'high', evidence: 'current' },
+    { adjustedRating: 6, confidence: 'high', evidence: 'current' },
+);
+assert.equal(Object.isFrozen(frozenPairStrength), true);
+assert.throws(() => { frozenPairStrength.homePercent = 99; }, TypeError);
+assert.equal(frozenPairStrength.homePercent, 60);
 const unsafeKnownLineup = Model.completeLineup([
     { id: 'unsafe-zero', name: 'Unsafe Zero', rating: 0, adjustedRating: 0, evidence: 'current', confidence: 'high' },
     { id: 'unsafe-huge', name: 'Unsafe Huge', rating: Number.MAX_SAFE_INTEGER, adjustedRating: Number.MAX_SAFE_INTEGER, evidence: 'current', confidence: 'high' },
