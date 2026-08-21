@@ -141,7 +141,7 @@ function player(id, name, evidence, confidence, rating, extra = {}) {
     };
 }
 
-function makeModel(calibrated, comparisonPercents = []) {
+function makeModel(calibrated, comparisonPercents = [], comparisonOutputs = []) {
     const calls = { calibration: 0, training: 0, outcome: 0, roster: 0, rosterOptions: [], complete: [], forecast: 0, pairStrength: 0 };
     const rosters = {
         '035': [
@@ -189,7 +189,12 @@ function makeModel(calibrated, comparisonPercents = []) {
             return { mode: 'probability', home: 0.456, draw: 0.211, away: 0.333, low: { home: 0.35, draw: 0.12, away: 0.23 }, high: { home: 0.56, draw: 0.31, away: 0.44 }, homeScore: 44, awayScore: 40, teamConfidence: 'provisional' };
         },
         comparePairStrength(homeSlot, awaySlot) {
-            const configuredPercent = comparisonPercents[calls.pairStrength++];
+            const comparisonIndex = calls.pairStrength++;
+            if (Object.hasOwn(comparisonOutputs, comparisonIndex)) {
+                const configuredOutput = comparisonOutputs[comparisonIndex];
+                return typeof configuredOutput === 'function' ? configuredOutput() : configuredOutput;
+            }
+            const configuredPercent = comparisonPercents[comparisonIndex];
             if (Number.isInteger(configuredPercent)) {
                 return {
                     homeShare: configuredPercent / 100,
@@ -304,7 +309,7 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
     const contentArea = document.createElement('main');
     document.root = contentArea;
     const topBarTitle = document.createElement('div');
-    const model = makeModel(calibrated, scenarioOptions.comparisonPercents);
+    const model = makeModel(calibrated, scenarioOptions.comparisonPercents, scenarioOptions.comparisonOutputs);
     const exposedModel = typeof scenarioOptions.wrapModel === 'function'
         ? scenarioOptions.wrapModel(model)
         : model;
@@ -602,6 +607,47 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.equal(cells[2].classList.contains('match-preview-matrix__cell--balanced'), true);
     assert.equal(cells[3].classList.contains('match-preview-matrix__cell--away'), true);
     assert.deepEqual(cells.slice(0, 4).map((cell) => cell.attributes['aria-label'].match(/\d+% Gast/)[0]), ['45% Gast', '46% Gast', '54% Gast', '55% Gast']);
+}
+
+{
+    const throwingGetter = {};
+    Object.defineProperty(throwingGetter, 'homePercent', {
+        get() { throw new Error('homePercent getter must not run'); },
+    });
+    const throwingCoercion = {
+        [Symbol.toPrimitive]() { throw new Error('homePercent coercion must not run'); },
+    };
+    const descriptorProxy = new Proxy({ homePercent: 55 }, {
+        getOwnPropertyDescriptor() { throw new Error('comparison proxy descriptor must not run unchecked'); },
+    });
+    const comparisonOutputs = [
+        null,
+        false,
+        '',
+        '55',
+        54.5,
+        -1,
+        101,
+        throwingGetter,
+        { homePercent: throwingCoercion },
+        () => { throw new Error('comparison helper failure'); },
+        descriptorProxy,
+    ];
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), { comparisonOutputs });
+    assert.doesNotThrow(() => scenario.contentArea.querySelector('.match-preview-calculate').dispatchEvent({ type: 'click' }));
+    const malformedCells = scenario.contentArea.querySelectorAll('.match-preview-matrix__cell').slice(0, comparisonOutputs.length);
+    assert.equal(malformedCells.length, comparisonOutputs.length);
+    malformedCells.forEach((cell) => {
+        assert.equal(cell.querySelector('.match-preview-matrix__value').textContent, '50 %');
+        assert.equal(cell.classList.contains('match-preview-matrix__cell--balanced'), true);
+        assert.equal(cell.querySelectorAll('.match-preview-matrix__uncertain').length, 1);
+        assert.equal(cell.querySelector('.match-preview-matrix__uncertain').textContent, '?');
+        assert.match(cell.attributes['aria-label'], /50% Heim, 50% Gast, ausgeglichen, unsichere Datenbasis/);
+    });
+    assert.equal(scenario.contentArea.querySelectorAll('IMG').length, 0);
+    assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0);
+    assert.equal(scenario.contentArea.querySelectorAll('SCRIPT').length, 0);
+    assert.equal(scenario.document.usedUnsafePlayerHtml, false);
 }
 
 {

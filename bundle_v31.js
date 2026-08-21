@@ -8227,17 +8227,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     try {
                         comparison = previewModelApi.comparePairStrength(homePlayer, awayPlayer);
                     } catch (_error) {
-                        comparison = { uncertain: true };
+                        comparison = null;
                     }
-                    const candidateHomePercent = Number(comparison && comparison.homePercent);
-                    const validHomePercent = Number.isInteger(candidateHomePercent)
-                        && candidateHomePercent >= 0
-                        && candidateHomePercent <= 100;
-                    const homePercent = validHomePercent
-                        ? candidateHomePercent
-                        : 50;
+                    let homePercent = 50;
+                    let uncertain = true;
+                    try {
+                        if (comparison === null || typeof comparison !== 'object') throw new TypeError('Invalid pair comparison');
+                        const homePercentDescriptor = Object.getOwnPropertyDescriptor(comparison, 'homePercent');
+                        if (!homePercentDescriptor
+                            || !Object.prototype.hasOwnProperty.call(homePercentDescriptor, 'value')
+                            || !Number.isInteger(homePercentDescriptor.value)
+                            || homePercentDescriptor.value < 0
+                            || homePercentDescriptor.value > 100) {
+                            throw new TypeError('Invalid pair comparison percentage');
+                        }
+                        const uncertainDescriptor = Object.getOwnPropertyDescriptor(comparison, 'uncertain');
+                        homePercent = homePercentDescriptor.value;
+                        uncertain = Boolean(uncertainDescriptor
+                            && Object.prototype.hasOwnProperty.call(uncertainDescriptor, 'value')
+                            && uncertainDescriptor.value === true);
+                    } catch (_error) {
+                        homePercent = 50;
+                        uncertain = true;
+                    }
                     const awayPercent = 100 - homePercent;
-                    const uncertain = Boolean(comparison && comparison.uncertain) || !validHomePercent;
                     const band = homePercent >= 55 ? 'home' : homePercent <= 45 ? 'away' : 'balanced';
                     const state = band === 'home' ? 'Vorteil Heim' : band === 'away' ? 'Vorteil Gast' : 'ausgeglichen';
                     const cell = document.createElement('td');
