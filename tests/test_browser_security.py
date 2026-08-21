@@ -586,6 +586,15 @@ def test_published_data_stays_inert_online_and_offline() -> None:
             "Unbekannter Spieler (Klassenwert)"
         )
         assert page.locator(".match-preview-scores").inner_text() != first_forecast
+        matrix_scroll = page.locator(".match-preview-matrix-scroll")
+        matrix = page.locator(".match-preview-matrix")
+        expect(matrix_scroll).to_be_visible()
+        expect(matrix).to_be_visible()
+        expect(matrix.locator("tbody td")).to_have_count(16)
+        assert all(
+            "%" in value
+            for value in matrix.locator("tbody td .match-preview-matrix__value").all_inner_texts()
+        )
         page.set_viewport_size({"width": 480, "height": 844})
         page.evaluate(
             """() => {
@@ -603,6 +612,12 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         page.set_viewport_size({"width": 320, "height": 844})
         assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        matrix_dimensions = matrix_scroll.evaluate(
+            "element => ({ scrollWidth: element.scrollWidth, clientWidth: element.clientWidth })"
+        )
+        assert matrix_dimensions["scrollWidth"] > matrix_dimensions["clientWidth"]
+        matrix_scroll.evaluate("element => { element.scrollLeft = 80; }")
+        assert matrix_scroll.evaluate("element => element.scrollLeft") > 0
         assert page.locator("#list-a .match-preview-player").first.evaluate(
             "element => element.scrollWidth <= element.clientWidth"
         )
@@ -610,6 +625,45 @@ def test_published_data_stays_inert_online_and_offline() -> None:
             "element => element.scrollWidth <= element.clientWidth"
         )
         page.set_viewport_size({"width": 390, "height": 844})
+        page.evaluate(
+            """() => {
+                const carousel = document.createElement('section');
+                carousel.id = 'match-preview-carousel-probe';
+                carousel.className = 'match-preview-carousel';
+                carousel.tabIndex = 0;
+                const track = document.createElement('div');
+                track.className = 'match-preview-carousel__track';
+                for (let index = 0; index < 3; index += 1) {
+                    const card = document.createElement('article');
+                    card.className = 'match-preview-card';
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'match-preview-card__select';
+                    button.textContent = `Probe ${index + 1}`;
+                    card.appendChild(button);
+                    track.appendChild(card);
+                }
+                carousel.appendChild(track);
+                document.body.appendChild(carousel);
+            }"""
+        )
+        carousel_track = page.locator(
+            "#match-preview-carousel-probe .match-preview-carousel__track"
+        )
+        carousel_dimensions = carousel_track.evaluate(
+            "element => ({ scrollWidth: element.scrollWidth, clientWidth: element.clientWidth })"
+        )
+        assert carousel_dimensions["scrollWidth"] > carousel_dimensions["clientWidth"]
+        carousel_track.evaluate(
+            "element => { element.style.scrollBehavior = 'auto'; element.scrollLeft = 240; }"
+        )
+        assert carousel_track.evaluate("element => element.scrollLeft") > 0
+        page.locator("#match-preview-carousel-probe .match-preview-card__select").first.focus()
+        expect(
+            page.locator("#match-preview-carousel-probe .match-preview-card__select").first
+        ).to_be_focused()
+        assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+        page.locator("#match-preview-carousel-probe").evaluate("element => element.remove()")
 
         page.evaluate(
             """() => {
