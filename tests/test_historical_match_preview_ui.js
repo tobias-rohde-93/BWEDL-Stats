@@ -70,6 +70,8 @@ function createDocument() {
             this.attributes = {};
             this.listeners = {};
             this.style = {};
+            this.scrollIntoViewCalls = [];
+            this.focusCalls = 0;
             this._text = '';
             this.classList = {
                 add: (...names) => { this.className = [...new Set([...this.className.split(/\s+/).filter(Boolean), ...names])].join(' '); },
@@ -102,18 +104,25 @@ function createDocument() {
         }
         remove() { if (this.parentElement) this.parentElement.children = this.parentElement.children.filter((child) => child !== this); }
         setAttribute(name, value) { this.attributes[name] = String(value); if (name === 'id') this.id = String(value); if (name === 'type') this.type = String(value); }
+        removeAttribute(name) { delete this.attributes[name]; }
         addEventListener(name, handler) { (this.listeners[name] ||= []).push(handler); }
         dispatchEvent(event) { event.target ||= this; for (const handler of this.listeners[event.type] || []) handler(event); return true; }
         querySelectorAll(selector) { return this.children.flatMap((child) => [...(selectorMatches(child, selector) ? [child] : []), ...child.querySelectorAll(selector)]); }
         querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
         closest(selector) { let current = this; while (current) { if (selectorMatches(current, selector)) return current; current = current.parentElement; } return null; }
         contains(target) { return target === this || this.children.some((child) => child.contains(target)); }
-        scrollIntoView(options) { this.ownerDocument.scrollCalls.push(options || {}); }
+        scrollIntoView(options) {
+            const call = options || {};
+            this.scrollIntoViewCalls.push(call);
+            this.ownerDocument.scrollCalls.push(call);
+        }
+        focus() { this.focusCalls += 1; this.ownerDocument.focusedElement = this; }
     }
     const document = {
         root: null,
         usedUnsafePlayerHtml: false,
         scrollCalls: [],
+        focusedElement: null,
         createElement(tagName) { return new Element(tagName, document); },
         getElementById(id) { return document.root && (document.root.id === id ? document.root : document.root.querySelector(`#${id}`)); },
         querySelectorAll(selector) { return document.root ? document.root.querySelectorAll(selector) : []; },
@@ -177,6 +186,7 @@ function makeModel(calibrated) {
             if (!calibrated) return { mode: 'relative', homeScore: 44, awayScore: 40, relative: { homeShare: 0.524, awayShare: 0.476 }, teamConfidence: 'very-low', uncertaintyText: 'Relative Aufstellungsstärke mit unsicherer Datenbasis' };
             return { mode: 'probability', home: 0.456, draw: 0.211, away: 0.333, low: { home: 0.35, draw: 0.12, away: 0.23 }, high: { home: 0.56, draw: 0.31, away: 0.44 }, homeScore: 44, awayScore: 40, teamConfidence: 'provisional' };
         },
+        comparePairStrength() { return { mode: 'relative', delta: 0, confidence: 'very-low' }; },
     };
 }
 
@@ -231,6 +241,10 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
             const runInternalChange = typeof controls.runInternalChange === 'function'
                 ? controls.runInternalChange
                 : (callback) => callback();
+            if (scenarioOptions.incompleteAutoFill) {
+                if (typeof controls.setBannerState === 'function') controls.setBannerState('incomplete');
+                return;
+            }
             runInternalChange(() => {
                 controls.leagueSelect.value = match.league;
                 controls.leagueSelect.dispatchEvent({ type: 'change', isTrusted: false });
@@ -244,8 +258,11 @@ function renderScenario(calibrated = true, rendererDeclaration = extractFunction
                 });
                 controls.updateExclusions();
                 controls.loadSelection();
-                controls.banner.style.borderColor = '#22c55e';
-                controls.banner.querySelector('.load-btn').textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
+                if (typeof controls.setBannerState === 'function') controls.setBannerState('selected');
+                else {
+                    controls.banner.style.borderColor = '#22c55e';
+                    controls.banner.querySelector('.load-btn').textContent = isAuto ? '✓ Vorausgewählt' : '✓ Ausgewählt';
+                }
                 autoFillCompletions.push({ isAuto, match });
             };
             if (scenarioOptions.deferAutoFillWork) scheduleTimer(complete, 200);
@@ -360,7 +377,7 @@ function renderUnavailableModelScenario(model, configureWindow) {
     const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
         wrapModel: (model) => {
             thisAwareModel = {};
-            for (const name of ['buildClassCalibration', 'buildOutcomeTrainingExamples', 'calibrateOutcomeModel', 'buildTeamRoster', 'completeLineup', 'forecastMatch']) {
+            for (const name of ['buildClassCalibration', 'buildOutcomeTrainingExamples', 'calibrateOutcomeModel', 'buildTeamRoster', 'completeLineup', 'comparePairStrength', 'forecastMatch']) {
                 Object.defineProperty(thisAwareModel, name, {
                     enumerable: true,
                     value: function (...args) {
@@ -443,19 +460,98 @@ function renderUnavailableModelScenario(model, configureWindow) {
 {
     const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
         detectedMatches: [
-            { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
-            { league: 'B-Klasse 2026-2027', home: 'Bravo', away: 'Alpha' },
+            { league: 'B-Klasse 2026-2027', home: '<svg onload=alert(1)>Alpha', away: '<script>alert(1)</script>Bravo', dateStr: '01.09.2026' },
+            { league: 'B-Klasse 2026-2027', home: 'Bravo', away: 'Alpha', dateStr: '08.09.2026' },
         ],
+        deferTimers: true,
+        deferAutoFillWork: true,
         skipManualSelection: true,
     });
+    const carousel = scenario.contentArea.querySelector('.match-preview-carousel');
+    assert.ok(carousel);
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__track').length, 1);
     const cards = scenario.contentArea.querySelectorAll('.match-preview-card');
     assert.equal(cards.length, 2);
-    cards[0].querySelector('.load-btn').dispatchEvent({ type: 'click' });
-    cards[1].querySelector('.load-btn').dispatchEvent({ type: 'click' });
-    assert.notEqual(cards[0].style.borderColor, '#22c55e');
-    assert.equal(cards[0].querySelector('.load-btn').textContent, 'Partie auswählen');
-    assert.equal(cards[1].style.borderColor, '#22c55e');
-    assert.equal(cards[1].querySelector('.load-btn').textContent, '✓ Ausgewählt');
+    const selects = cards.map((card) => card.querySelector('.match-preview-card__select'));
+    assert.equal(selects.filter(Boolean).length, 2);
+    selects.forEach((select) => {
+        assert.equal(select.tagName, 'BUTTON');
+        assert.equal(select.type, 'button');
+        assert.equal(select.attributes['aria-pressed'], 'false');
+        assert.match(select.attributes['aria-label'], /auswählen$/);
+    });
+    assert.equal(scenario.contentArea.querySelectorAll('SVG').length, 0, 'hostile match names must stay inert text');
+    assert.equal(scenario.contentArea.querySelectorAll('SCRIPT').length, 0, 'hostile match names must stay inert text');
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__arrow').length, 2);
+    const dots = carousel.querySelectorAll('.match-preview-carousel__dot');
+    assert.equal(dots.length, 2);
+    assert.equal(dots[0].attributes['aria-current'], 'true');
+    assert.equal(dots[1].attributes['aria-current'], undefined);
+
+    selects[1].dispatchEvent({ type: 'click' });
+    scenario.flushTimer(200);
+    assert.deepEqual(scenario.autoFillCalls.map((call) => [call.isAuto, call.match.home]), [[false, 'Bravo']]);
+    assert.equal(selects[0].attributes['aria-pressed'], 'false');
+    assert.equal(selects[1].attributes['aria-pressed'], 'true');
+    assert.equal(cards[0].querySelector('.match-preview-card__status').textContent, 'Partie auswählen');
+    assert.equal(cards[1].querySelector('.match-preview-card__status').textContent, 'Ausgewählt');
+    assert.equal(cards[1].scrollIntoViewCalls.at(-1).behavior, 'smooth');
+
+    const arrows = carousel.querySelectorAll('.match-preview-carousel__arrow');
+    assert.equal(arrows[0].disabled, true);
+    arrows[1].dispatchEvent({ type: 'click' });
+    assert.equal(arrows[0].disabled, false);
+    assert.equal(arrows[1].disabled, true);
+    assert.equal(dots[0].attributes['aria-current'], undefined);
+    assert.equal(dots[1].attributes['aria-current'], 'true');
+    assert.equal(scenario.document.focusedElement, selects[1]);
+    assert.ok(selects[1].focusCalls > 0);
+    assert.ok(cards[1].scrollIntoViewCalls.length > 1);
+    arrows[1].dispatchEvent({ type: 'click' });
+    assert.equal(dots[1].attributes['aria-current'], 'true', 'next navigation clamps at the last card');
+    let leftPrevented = false;
+    carousel.dispatchEvent({ type: 'keydown', key: 'ArrowLeft', preventDefault() { leftPrevented = true; } });
+    assert.equal(leftPrevented, true);
+    assert.equal(dots[0].attributes['aria-current'], 'true');
+    let tabPrevented = false;
+    carousel.dispatchEvent({ type: 'keydown', key: 'Tab', preventDefault() { tabPrevented = true; } });
+    assert.equal(tabPrevented, false, 'Tab must retain normal browser behavior');
+    let rightPrevented = false;
+    carousel.dispatchEvent({ type: 'keydown', key: 'ArrowRight', preventDefault() { rightPrevented = true; } });
+    assert.equal(rightPrevented, true);
+    assert.equal(dots[1].attributes['aria-current'], 'true');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), { skipManualSelection: true });
+    assert.equal(scenario.contentArea.querySelector('.match-preview-carousel'), null);
+    assert.ok(scenario.contentArea.querySelector('#match-preview-league'), 'manual selector remains available without detected games');
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        deferTimers: true,
+        skipManualSelection: true,
+    });
+    const carousel = scenario.contentArea.querySelector('.match-preview-carousel');
+    assert.ok(carousel);
+    assert.equal(carousel.querySelectorAll('.match-preview-card').length, 1);
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__arrow').length, 0);
+    assert.equal(carousel.querySelectorAll('.match-preview-carousel__dot').length, 0);
+}
+
+{
+    const scenario = renderScenario(true, extractFunction('renderMatchPreview'), {
+        detectedMatch: { league: 'B-Klasse 2026-2027', home: 'Alpha', away: 'Bravo' },
+        incompleteAutoFill: true,
+        deferTimers: true,
+        skipManualSelection: true,
+    });
+    const card = scenario.contentArea.querySelector('.match-preview-card');
+    card.querySelector('.match-preview-card__select').dispatchEvent({ type: 'click' });
+    assert.equal(card.querySelector('.match-preview-card__status').textContent, 'Auswahl unvollständig');
+    assert.equal(card.querySelector('.match-preview-card__select').attributes['aria-pressed'], 'false');
 }
 
 {
@@ -470,14 +566,14 @@ function renderUnavailableModelScenario(model, configureWindow) {
         skipManualSelection: true,
     });
     const cards = scenario.contentArea.querySelectorAll('.match-preview-card');
-    cards[1].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    cards[1].querySelector('.match-preview-card__select').dispatchEvent({ type: 'click' });
     scenario.flushTimer(100);
     scenario.flushTimer(200);
     assert.deepEqual(scenario.autoFillCalls.map((call) => [call.isAuto, call.match.home]), [[false, 'Bravo']]);
     assert.deepEqual(scenario.autoFillCompletions.map((call) => [call.isAuto, call.match.home]), [[false, 'Bravo']]);
     assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '036', '035']);
-    assert.notEqual(cards[0].style.borderColor, '#22c55e');
-    assert.equal(cards[1].style.borderColor, '#22c55e');
+    assert.equal(cards[0].querySelector('.match-preview-card__status').textContent, 'Partie auswählen');
+    assert.equal(cards[1].querySelector('.match-preview-card__status').textContent, 'Ausgewählt');
 }
 
 {
@@ -491,14 +587,14 @@ function renderUnavailableModelScenario(model, configureWindow) {
         skipManualSelection: true,
     });
     const cards = scenario.contentArea.querySelectorAll('.match-preview-card');
-    cards[0].querySelector('.load-btn').dispatchEvent({ type: 'click' });
-    cards[1].querySelector('.load-btn').dispatchEvent({ type: 'click' });
+    cards[0].querySelector('.match-preview-card__select').dispatchEvent({ type: 'click' });
+    cards[1].querySelector('.match-preview-card__select').dispatchEvent({ type: 'click' });
     scenario.flushTimer(200);
     scenario.flushTimer(200);
     scenario.flushTimer(100);
     assert.deepEqual(scenario.autoFillCompletions.map((call) => call.match.home), ['Bravo']);
-    assert.notEqual(cards[0].style.borderColor, '#22c55e');
-    assert.equal(cards[1].style.borderColor, '#22c55e');
+    assert.equal(cards[0].querySelector('.match-preview-card__status').textContent, 'Partie auswählen');
+    assert.equal(cards[1].querySelector('.match-preview-card__status').textContent, 'Ausgewählt');
 }
 
 {
@@ -536,10 +632,9 @@ function renderUnavailableModelScenario(model, configureWindow) {
     assert.deepEqual(scenario.autoFillCompletions.map((call) => call.isAuto), [true]);
     assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '035', '036']);
     const card = scenario.contentArea.querySelector('.match-preview-card');
-    assert.equal(card.style.borderColor, '#22c55e');
+    assert.equal(card.querySelector('.match-preview-card__status').textContent, 'Ausgewählt');
     scenario.selects[1].dispatchEvent({ type: 'change', isTrusted: true });
-    assert.notEqual(card.style.borderColor, '#22c55e');
-    assert.equal(card.querySelector('.load-btn').textContent, 'Partie auswählen');
+    assert.equal(card.querySelector('.match-preview-card__status').textContent, 'Partie auswählen');
 }
 
 {
@@ -571,7 +666,7 @@ function renderUnavailableModelScenario(model, configureWindow) {
     scenario.flushTimer(200);
     assert.equal(scenario.autoFillCompletions.length, 0, 'selector interaction must invalidate delayed auto-fill work');
     assert.deepEqual(scenario.selects.map((select) => select.value), ['B-Klasse 2026-2027', '999', '996']);
-    assert.notEqual(scenario.contentArea.querySelector('.match-preview-card').style.borderColor, '#22c55e');
+    assert.notEqual(scenario.contentArea.querySelector('.match-preview-card').querySelector('.match-preview-card__status').textContent, 'Ausgewählt');
 }
 
 {

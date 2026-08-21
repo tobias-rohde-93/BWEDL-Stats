@@ -7419,7 +7419,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Extracts values from nextMatch and selects them in the UI.
      */
     function applyMatchSelectorAutoFill(isAuto, nextMatch, elements) {
-        const { leagueSelect, teamASelect, teamBSelect, banner, updateExclusions, loadSelection } = elements;
+        const { leagueSelect, teamASelect, teamBSelect, banner, updateExclusions, loadSelection, setBannerState } = elements;
         const canApply = typeof elements.canApply === 'function' ? elements.canApply : () => true;
         const runInternalChange = typeof elements.runInternalChange === 'function'
             ? elements.runInternalChange
@@ -7447,7 +7447,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 leagueSelect.value && homeVal && awayVal && homeVal !== awayVal
             );
             if (!selectionComplete) {
-                if (banner) {
+                if (typeof setBannerState === 'function') {
+                    setBannerState('incomplete');
+                } else if (banner) {
                     banner.style.borderColor = '#f59e0b';
                     banner.style.boxShadow = 'none';
                     const statusBtn = banner.querySelector('.load-btn');
@@ -7466,7 +7468,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setAppStatus(`${nextMatch.home} gegen ${nextMatch.away} wurde ausgewählt.`);
 
             // Update UI feedback on the banner
-            if (banner) {
+            if (typeof setBannerState === 'function') {
+                setBannerState('selected');
+            } else if (banner) {
                 banner.style.borderColor = '#22c55e';
                 banner.style.boxShadow = '0 0 10px rgba(34, 197, 94, 0.2)';
                 const statusBtn = banner.querySelector('.load-btn');
@@ -7509,6 +7513,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'calibrateOutcomeModel',
             'buildTeamRoster',
             'completeLineup',
+            'comparePairStrength',
             'forecastMatch',
         ];
         let previewModel;
@@ -7587,6 +7592,29 @@ document.addEventListener('DOMContentLoaded', () => {
             element.textContent = text;
             parent.appendChild(element);
             return element;
+        };
+        const setMatchCardState = (card, state) => {
+            if (!card) return;
+            const cardState = state === 'selected' || state === 'incomplete' ? state : 'idle';
+            card.dataset.state = cardState;
+            const select = card.querySelector('.match-preview-card__select');
+            if (select) select.setAttribute('aria-pressed', cardState === 'selected' ? 'true' : 'false');
+            const status = card.querySelector('.match-preview-card__status');
+            if (status) status.textContent = cardState === 'selected'
+                ? 'Ausgewählt'
+                : cardState === 'incomplete'
+                    ? 'Auswahl unvollständig'
+                    : 'Partie auswählen';
+        };
+        const centerMatchCard = (card) => {
+            if (!card) return;
+            let reducedMotion = false;
+            try {
+                reducedMotion = Boolean(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+            } catch (_error) {
+                reducedMotion = false;
+            }
+            card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
         };
         const selectedTeam = (teamId) => availableTeams.find((team) => team.id === teamId) || null;
         const rating = (player) => {
@@ -7706,31 +7734,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const matches = BwedlAppUtils.mergeMatchPreviewGames(selectedMatch, detectedMatches);
             if (matches.length) {
                 const scroller = document.createElement('section');
-                scroller.className = 'match-preview-next-games';
+                scroller.className = 'match-preview-next-games match-preview-carousel';
                 appendText(scroller, 'h2', matches.length > 1 ? `Nächste Spiele (${matches.length})` : 'Nächstes Spiel erkannt');
+                const track = document.createElement('div');
+                track.className = 'match-preview-carousel__track';
+                scroller.appendChild(track);
+                const matchCards = [];
                 resetMatchCardStatus = () => {
-                    scroller.querySelectorAll('.match-preview-card').forEach((card) => {
-                        card.style.borderColor = '';
-                        card.style.boxShadow = '';
-                        const button = card.querySelector('.load-btn');
-                        if (button) {
-                            button.textContent = 'Partie auswählen';
-                            button.style.background = '';
-                        }
-                    });
+                    matchCards.forEach((card) => setMatchCardState(card, 'idle'));
                 };
                 matches.forEach((match) => {
                     const matchCard = document.createElement('article');
                     matchCard.className = 'match-preview-card';
-                    appendText(matchCard, 'span', match.league || '', 'match-preview-card__league');
-                    appendText(matchCard, 'strong', match.home || '');
-                    appendText(matchCard, 'span', 'gegen');
-                    appendText(matchCard, 'strong', match.away || '');
-                    appendText(matchCard, 'span', match.dateStr || 'Termin offen');
                     const loadButton = document.createElement('button');
                     loadButton.type = 'button';
                     loadButton.className = 'load-btn';
+                    loadButton.classList.add('match-preview-card__select');
                     loadButton.textContent = 'Partie auswählen';
+                    loadButton.textContent = '';
+                    loadButton.setAttribute('aria-label', `${match.home || ''} gegen ${match.away || ''} auswählen`);
+                    loadButton.setAttribute('aria-pressed', 'false');
+                    appendText(loadButton, 'span', match.league || '', 'match-preview-card__league');
+                    const teams = document.createElement('div');
+                    teams.className = 'match-preview-card__teams';
+                    appendText(teams, 'strong', match.home || '');
+                    appendText(teams, 'span', 'VS');
+                    appendText(teams, 'strong', match.away || '');
+                    loadButton.appendChild(teams);
+                    appendText(loadButton, 'span', match.dateStr || 'Termin offen', 'match-preview-card__date');
+                    appendText(loadButton, 'span', 'Partie auswählen', 'match-preview-card__status');
                     loadButton.addEventListener('click', () => {
                         markManualInteraction();
                         const cardInteractionGeneration = manualInteractionGeneration;
@@ -7741,18 +7773,78 @@ document.addEventListener('DOMContentLoaded', () => {
                         applyMatchSelectorAutoFill(false, match, {
                             leagueSelect, teamASelect, teamBSelect, banner: matchCard,
                             updateExclusions, loadSelection, canApply: canApplyCardSelection,
-                            runInternalChange,
+                            runInternalChange, setBannerState: (state) => {
+                                setMatchCardState(matchCard, state);
+                                if (state === 'selected') centerMatchCard(matchCard);
+                            },
                         });
                     });
                     matchCard.appendChild(loadButton);
-                    scroller.appendChild(matchCard);
+                    track.appendChild(matchCard);
+                    matchCards.push(matchCard);
+                    setMatchCardState(matchCard, 'idle');
                     if (!initialMatchAutoFill
                         && match && typeof match.league === 'string' && match.league.trim()
                         && typeof match.home === 'string' && match.home.trim()
                         && typeof match.away === 'string' && match.away.trim()) {
-                        initialMatchAutoFill = { match, banner: matchCard };
+                        initialMatchAutoFill = { match, card: matchCard };
                     }
                 });
+                if (matchCards.length > 1) {
+                    let browsedIndex = 0;
+                    const controls = document.createElement('div');
+                    controls.className = 'match-preview-carousel__controls';
+                    const previousButton = document.createElement('button');
+                    previousButton.type = 'button';
+                    previousButton.className = 'match-preview-carousel__arrow';
+                    previousButton.setAttribute('aria-label', 'Vorherige Partie');
+                    previousButton.textContent = '←';
+                    const nextButton = document.createElement('button');
+                    nextButton.type = 'button';
+                    nextButton.className = 'match-preview-carousel__arrow';
+                    nextButton.setAttribute('aria-label', 'Nächste Partie');
+                    nextButton.textContent = '→';
+                    const dots = matchCards.map((_card, index) => {
+                        const dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.className = 'match-preview-carousel__dot';
+                        dot.setAttribute('aria-label', `Partie ${index + 1} anzeigen`);
+                        controls.appendChild(dot);
+                        return dot;
+                    });
+                    const updateNavigation = () => {
+                        previousButton.disabled = browsedIndex === 0;
+                        nextButton.disabled = browsedIndex === matchCards.length - 1;
+                        dots.forEach((dot, index) => {
+                            if (index === browsedIndex) dot.setAttribute('aria-current', 'true');
+                            else dot.removeAttribute('aria-current');
+                        });
+                    };
+                    const browseTo = (index) => {
+                        browsedIndex = Math.max(0, Math.min(matchCards.length - 1, index));
+                        updateNavigation();
+                        const card = matchCards[browsedIndex];
+                        const select = card.querySelector('.match-preview-card__select');
+                        if (select) select.focus();
+                        centerMatchCard(card);
+                    };
+                    previousButton.addEventListener('click', () => browseTo(browsedIndex - 1));
+                    nextButton.addEventListener('click', () => browseTo(browsedIndex + 1));
+                    dots.forEach((dot, index) => dot.addEventListener('click', () => browseTo(index)));
+                    scroller.addEventListener('keydown', (event) => {
+                        if (event.key === 'ArrowLeft') {
+                            event.preventDefault();
+                            browseTo(browsedIndex - 1);
+                        } else if (event.key === 'ArrowRight') {
+                            event.preventDefault();
+                            browseTo(browsedIndex + 1);
+                        }
+                    });
+                    controls.insertBefore(previousButton, controls.firstChild);
+                    controls.appendChild(nextButton);
+                    scroller.appendChild(controls);
+                    updateNavigation();
+                }
                 container.insertBefore(scroller, selectorCard);
             }
         } catch (error) {
@@ -7952,9 +8044,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!canApplyInitialAutoFill()) return;
                 resetMatchCardStatus();
                 applyMatchSelectorAutoFill(true, initialMatchAutoFill.match, {
-                    leagueSelect, teamASelect, teamBSelect, banner: initialMatchAutoFill.banner,
+                    leagueSelect, teamASelect, teamBSelect, banner: initialMatchAutoFill.card,
                     updateExclusions, loadSelection, canApply: canApplyInitialAutoFill,
-                    runInternalChange,
+                    runInternalChange, setBannerState: (state) => {
+                        setMatchCardState(initialMatchAutoFill.card, state);
+                        if (state === 'selected') centerMatchCard(initialMatchAutoFill.card);
+                    },
                 });
             }, 100);
         }
