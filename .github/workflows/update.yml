@@ -32,11 +32,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run offline tests
-        run: python -m pytest
-
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
+
+      - name: Run test suite
+        run: python -m pytest
 
       - name: Run browser security smoke
         env:

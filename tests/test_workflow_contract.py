@@ -38,13 +38,13 @@ def test_workflow_has_hardened_triggers_concurrency_and_update_timeout():
     assert job_timeout >= 45
 
 
-def test_offline_tests_run_before_browser_install_and_live_update():
+def test_full_suite_runs_after_browser_install_and_before_live_update():
     text = workflow_text()
     test_index = text.index("python -m pytest")
     browser_index = text.index("python -m playwright install --with-deps chromium")
     update_index = text.index("python update_data.py")
 
-    assert test_index < browser_index < update_index
+    assert browser_index < test_index < update_index
     assert "python-version: '3.13'" in text
     assert "cache: 'pip'" in text
 

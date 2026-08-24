@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 
+import pipeline.calendar_feeds as calendar_feeds
 from pipeline.calendar_feeds import (
     CalendarSourceError,
     CalendarPublication,
@@ -686,6 +687,25 @@ def test_writer_rejects_a_calendar_directory_symlink_without_writing_outside() -
         with pytest.raises(CalendarSourceError, match="Symlink"):
             write_calendar_publication(publication, output)
         assert list(outside.iterdir()) == []
+
+
+def test_writer_identifies_a_calendar_directory_reparse_point_as_a_symlink(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    publication = _publication(_one_fixture())
+    output = tmp_path / "output"
+    calendars = output / "calendars"
+    calendars.mkdir(parents=True)
+    is_reparse_point = calendar_feeds._is_reparse_point
+
+    monkeypatch.setattr(
+        calendar_feeds,
+        "_is_reparse_point",
+        lambda path: path == calendars or is_reparse_point(path),
+    )
+
+    with pytest.raises(CalendarSourceError, match="Symlink"):
+        write_calendar_publication(publication, output)
 
 
 def test_writer_removes_a_stale_unresolved_hash_feed_without_touching_expected_feeds() -> None:

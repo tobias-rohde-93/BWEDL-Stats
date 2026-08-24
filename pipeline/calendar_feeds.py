@@ -1327,7 +1327,11 @@ def _preflight_existing_output(
         return []
     _ensure_within(root, root)
     if calendars_dir.exists():
-        if _is_reparse_point(calendars_dir) or not calendars_dir.is_dir():
+        if _is_reparse_point(calendars_dir):
+            raise CalendarSourceError(
+                "Kalender-Verzeichnis darf kein Symlink oder Reparse-Point sein"
+            )
+        if not calendars_dir.is_dir():
             raise CalendarSourceError("Kalender-Verzeichnis muss ein sicheres Verzeichnis sein")
         try:
             resolved_calendars_dir = calendars_dir.resolve(strict=True)
