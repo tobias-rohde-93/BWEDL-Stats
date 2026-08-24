@@ -810,6 +810,10 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         assert page.evaluate("document.body.dataset.xss || null") is None
         page.evaluate(
             """() => {
+                Object.defineProperty(navigator, 'onLine', {
+                    configurable: true,
+                    value: false,
+                });
                 Object.defineProperty(document, 'baseURI', {
                     configurable: true,
                     value: 'https://stats.example.test/BWEDL-Stats/',
@@ -817,6 +821,7 @@ def test_published_data_stays_inert_online_and_offline() -> None:
                 location.hash = '#dashboard';
             }"""
         )
+        assert page.evaluate("navigator.onLine") is False
         offline_calendar_action = page.locator(
             ".calendar-subscription-card--dashboard"
         ).get_by_role("button", name="Kalender hinzufügen")
