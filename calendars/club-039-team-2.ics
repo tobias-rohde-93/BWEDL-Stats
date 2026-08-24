@@ -89,17 +89,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:7ef68848370faaf7facc20e4f86db97a09f05f7980ed03a14b7e48fc96247327@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260907T180000Z
-DTEND:20260907T210000Z
+DTSTAMP:20260824T150701Z
+DTSTART:20260901T180000Z
+DTEND:20260901T210000Z
 SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - Dartfreunde Eichenherz\nHeims
- piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 07
+ piel\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 2. Spieltag\nTermin: 01
  .09.2026 18:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weber
  str. 60\, Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260824T150701Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
