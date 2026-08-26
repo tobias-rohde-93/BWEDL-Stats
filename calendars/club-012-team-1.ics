@@ -102,17 +102,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2bf15f43b33c7df2203699897c764b936856d5d5f8eb65efcdd61f72b5aad018@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260918T173000Z
-DTEND:20260918T203000Z
-SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
-DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Shamrock\nAuswärtsspiel\nLi
- ga: Mix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 17:3
- 0 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunba
- ch
-LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+DTSTAMP:20260826T010911Z
+DTSTART:20260918T180000Z
+DTEND:20260918T210000Z
+SUMMARY:Heimspiel gegen TSV Grunbach Darts
+DESCRIPTION:Begegnung: DC Shamrock - TSV Grunbach Darts\nHeimspiel\nLiga: M
+ ix C-Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 18:00 UTC
+ \nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
+SEQUENCE:1
+LAST-MODIFIED:20260826T010911Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -476,16 +475,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e154774e0ff76e9c46182a5b0712190bbf5409803a7ca2c3329d0c2f30369ed8@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260826T010911Z
 DTSTART:20270219T190000Z
 DTEND:20270219T220000Z
-SUMMARY:Heimspiel gegen TSV Grunbach Darts
-DESCRIPTION:Begegnung: DC Shamrock - TSV Grunbach Darts\nHeimspiel\nLiga: M
- ix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 19:00 UT
- C\nAustragungsort: The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
-LOCATION:The Dubliner Irish Pub\, Hauptstr. 105\, Straubenhardt
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei TSV Grunbach Darts
+DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Shamrock\nAuswärtsspiel\nLi
+ ga: Mix C-Klasse 2026-2027\nSpieltag: 12. Spieltag\nTermin: 19.02.2027 19:
+ 00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunb
+ ach
+LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
+SEQUENCE:1
+LAST-MODIFIED:20260826T010911Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
