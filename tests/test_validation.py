@@ -664,6 +664,24 @@ def test_league_table_rejects_data_row_with_inconsistent_columns() -> None:
     assert "columns" in " ".join(result.reasons).lower()
 
 
+def test_league_table_accepts_withdrawn_team_row_with_colspan() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["C-Klasse Gruppe 1 2026-2027"]["table"] = (
+        "<table><tbody>"
+        "<tr><td>Pl.</td><td>Tabelle</td><td>Sp</td><td>S</td><td>U</td>"
+        "<td>N</td><td>Spiele</td><td>±</td><td>Pkt</td></tr>"
+        "<tr><td>1.</td><td>DC Höfle</td><td>0</td><td>0</td><td>0</td>"
+        "<td>0</td><td>0:0</td><td>±0</td><td>0</td></tr>"
+        "<tr><td>10.</td><td>DC Oststadt 2</td>"
+        "<td colspan='7'>zurückgezogen</td></tr>"
+        "</tbody></table>"
+    )
+
+    result = validation.validate_leagues(candidate, {})
+
+    assert result.decision is Decision.PUBLISH
+
+
 def test_matchday_keys_must_cover_exact_sequence_one_through_eighteen() -> None:
     candidate = league_candidate()
     candidate["leagues"]["Bezirksliga 2026-2027"]["match_days"] = {

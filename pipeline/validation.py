@@ -397,7 +397,9 @@ def _league_table_issue(table: Any) -> str | None:
     if not rows:
         return "table has no header"
     header_cells = rows[0].find_all(["td", "th"])
-    column_count = len(header_cells)
+    column_count = sum(
+        int(cell.get("colspan", "1")) for cell in header_cells
+    )
     if column_count < MIN_STANDINGS_COLUMNS:
         return f"table has fewer than {MIN_STANDINGS_COLUMNS} columns"
 
@@ -405,7 +407,10 @@ def _league_table_issue(table: Any) -> str | None:
     found_team = False
     for row in rows[1:]:
         cells = row.find_all(["td", "th"])
-        if len(cells) != column_count:
+        row_column_count = sum(
+            int(cell.get("colspan", "1")) for cell in cells
+        )
+        if row_column_count != column_count:
             return "table row has inconsistent columns"
         team = _normalized_text(cells[1].get_text(" ", strip=True))
         if not team:
