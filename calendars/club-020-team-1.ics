@@ -192,17 +192,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cc31bac2de33e30a1b50106b9ea27b5ae9853fd3aa35655c7352c5db96294a3a@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261212T190000Z
-DTEND:20261212T220000Z
+DTSTAMP:20260827T080400Z
+DTSTART:20261211T190000Z
+DTEND:20261211T220000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
 DESCRIPTION:Begegnung: DC Ungültig - DC Triple X\nAuswärtsspiel\nLiga: A-
- Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 12.12.2026 19:00
+ Klasse Gruppe 2 2026-2027\nSpieltag: 9. Spieltag\nTermin: 11.12.2026 19:00
   UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömberg
  /Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260827T080400Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
