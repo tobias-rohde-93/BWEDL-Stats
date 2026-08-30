@@ -103,17 +103,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:24b4a4b73cb4e1106b8bfe8b9eaafb19ab172158509a60a22f9ded81f32f99e8@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260828T170000Z
-DTEND:20260828T200000Z
+DTSTAMP:20260830T111520Z
+DTSTART:20260917T173000Z
+DTEND:20260917T203000Z
 SUMMARY:Auswärtsspiel bei Phantom Arrows
 DESCRIPTION:Begegnung: Phantom Arrows - DC Reloaded 2\nAuswärtsspiel\nLiga
- : B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 28.08.2026 1
- 7:00 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ : B-Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 17.09.2026 1
+ 7:30 UTC\nAustragungsort: Euribar Eventhaus\, Pflügerstraße 37\, Pforzhe
  im
 LOCATION:Euribar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260830T111520Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

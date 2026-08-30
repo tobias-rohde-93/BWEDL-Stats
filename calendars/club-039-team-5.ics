@@ -57,17 +57,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:33f96b7b7d8e65a9c5ec8b5e7ba2dbc0ebd0e71b122b26361b4246995fe8ce1f@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260830T111520Z
 DTSTART:20270130T190000Z
 DTEND:20270130T220000Z
-SUMMARY:Heimspiel gegen DC Ungültig 3
-DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Ungültig 3\nHeimspiel\nLi
- ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.202
- 7 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60
- \, Eisingen
-LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei DC Ungültig 3
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Destroyers e.V. 5\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.0
+ 1.2027 19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\
+ , Schömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:1
+LAST-MODIFIED:20260830T111520Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -153,17 +153,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:b23b7b0d680e2b5a61289d2f092b8b233cfd8b55512fb4c1bd42547b651f33d7@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260830T111520Z
 DTSTART:20260909T173000Z
 DTEND:20260909T203000Z
-SUMMARY:Auswärtsspiel bei DC Ungültig 3
-DESCRIPTION:Begegnung: DC Ungültig 3 - DC Destroyers e.V. 5\nAuswärtsspie
- l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.09
- .2026 17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\,
-  Schömberg/Schwarzenberg
-LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Heimspiel gegen DC Ungültig 3
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Ungültig 3\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.09.2026
+  17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\
+ , Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:1
+LAST-MODIFIED:20260830T111520Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

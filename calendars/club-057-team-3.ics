@@ -153,17 +153,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:a16dceb39243e5cb4d5c5a1830d1e77b3ac016da8af2917755ad0d55c444027b@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260830T111520Z
 DTSTART:20260909T173000Z
 DTEND:20260909T203000Z
-SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
-DESCRIPTION:Begegnung: DC Ungültig 3 - DC Destroyers e.V. 5\nHeimspiel\nLi
- ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.09.2026
-  17:30 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
- ömberg/Schwarzenberg
-LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Ungültig 3\nAuswärtsspie
+ l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.09
+ .2026 17:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr
+ . 60\, Eisingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:1
+LAST-MODIFIED:20260830T111520Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -233,17 +233,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:eb3496cfe8ac40cd68a81be03fbbe976d7eab4ce6e75b634c709ef04580edc0c@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260830T111520Z
 DTSTART:20270130T190000Z
 DTEND:20270130T220000Z
-SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 5
-DESCRIPTION:Begegnung: DC Destroyers e.V. 5 - DC Ungültig 3\nAuswärtsspie
- l\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.0
- 1.2027 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberst
- r. 60\, Eisingen
-LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
+DESCRIPTION:Begegnung: DC Ungültig 3 - DC Destroyers e.V. 5\nHeimspiel\nLi
+ ga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.202
+ 7 19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
+ ömberg/Schwarzenberg
+LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
+SEQUENCE:1
+LAST-MODIFIED:20260830T111520Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
