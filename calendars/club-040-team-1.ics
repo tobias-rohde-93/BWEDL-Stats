@@ -514,17 +514,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f72a8babba3864330e0066538dd5b9c2b1a06084f3e32f49a1ff152af382be0e@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260824T180000Z
-DTEND:20260824T210000Z
+DTSTAMP:20260831T123909Z
+DTSTART:20260921T180000Z
+DTEND:20260921T210000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 2
 DESCRIPTION:Begegnung: the Metal Darts 2 - the Metal Darts\nAuswärtsspiel\
- nLiga: Bezirksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 24.08.2026 18
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 1. Spieltag\nTermin: 21.09.2026 18
  :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
  m
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260831T123909Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR
