@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 import mimetypes
 import os
-import re
 import threading
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -584,23 +583,33 @@ def test_published_data_stays_inert_online_and_offline() -> None:
         expect(carousel_track).to_be_visible()
         expect(carousel_cards.first).to_be_visible()
         assert carousel_cards.count() >= 3
-        expect(carousel.locator(".match-preview-carousel__arrow")).to_have_count(2)
+        carousel_arrows = carousel.locator(".match-preview-carousel__arrow")
+        carousel_position = carousel.locator(".match-preview-carousel__position")
+        expect(carousel_arrows).to_have_count(2)
         page.wait_for_timeout(350)
-        position_text = carousel.locator(".match-preview-carousel__position").inner_text()
-        position_match = re.fullmatch(r"Partie (\d+) / (\d+)", position_text)
-        assert position_match is not None
-        browsed_position = int(position_match.group(1))
-        assert int(position_match.group(2)) == carousel_cards.count()
         assert carousel.locator(".match-preview-carousel__dot").count() <= 5
         expect(carousel.locator(".match-preview-card__select[aria-pressed='true']")).to_have_count(1)
         expect(carousel.locator(".match-preview-card[data-state='selected']")).to_have_count(1)
-        carousel.locator(".match-preview-carousel__arrow").nth(1).click()
-        expect(carousel.locator(".match-preview-carousel__position")).to_have_text(
-            f"Partie {min(browsed_position + 1, carousel_cards.count())} / {carousel_cards.count()}"
-        )
         assert carousel_track.evaluate(
             "element => element.scrollWidth > element.clientWidth"
         )
+        card_count = carousel_cards.count()
+        carousel_track.evaluate(
+            """element => {
+                element.style.scrollBehavior = 'auto';
+                element.scrollLeft = element.scrollWidth;
+                element.dispatchEvent(new Event('scroll'));
+            }"""
+        )
+        page.wait_for_timeout(350)
+        expect(carousel_position).to_have_text(f"Partie {card_count} / {card_count}")
+        expect(carousel_arrows.nth(1)).to_be_disabled()
+        carousel_arrows.nth(0).click()
+        page.wait_for_timeout(350)
+        expect(carousel_position).to_have_text(f"Partie {card_count - 1} / {card_count}")
+        carousel_arrows.nth(1).click()
+        page.wait_for_timeout(350)
+        expect(carousel_position).to_have_text(f"Partie {card_count} / {card_count}")
         carousel_selects.first.focus()
         expect(carousel_selects.first).to_be_focused()
         carousel_selects.last.scroll_into_view_if_needed()

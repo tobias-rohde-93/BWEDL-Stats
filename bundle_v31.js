@@ -7904,6 +7904,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     const synchronizeNearestTrackCard = () => {
                         if (renderMatchPreview._generation !== renderGeneration) return;
+                        const maximumScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+                        const scrollLeft = Math.max(0, Number(track.scrollLeft) || 0);
+                        const boundaryTolerance = 1;
+                        if (scrollLeft <= boundaryTolerance) {
+                            setBrowseIndex(0);
+                            return;
+                        }
+                        if (maximumScrollLeft - scrollLeft <= boundaryTolerance) {
+                            setBrowseIndex(matchCards.length - 1);
+                            return;
+                        }
                         const trackRect = track.getBoundingClientRect();
                         const trackCenter = Number(trackRect && trackRect.left) + Number(trackRect && trackRect.width) / 2;
                         if (!Number.isFinite(trackCenter)) return;
