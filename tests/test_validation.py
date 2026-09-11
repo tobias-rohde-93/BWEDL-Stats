@@ -2657,3 +2657,31 @@ def test_json_js_pair_reports_non_json_constants_deterministically(
         False,
         "Invalid JavaScript assignment: Assignment payload is not valid JSON",
     )
+
+
+def test_source_declared_missing_class_publishes_available_current_rankings(prior_rankings):
+    candidate = candidate_for(("Bezirksliga", "B-Klasse", "C-Klasse"))
+    candidate["unavailable_categories"] = ["A-Klasse"]
+    result = validate_rankings(candidate, prior_rankings)
+    assert result.decision is Decision.PUBLISH
+    assert result.effective_season == "2026/27"
+    assert result.metrics["A-Klasse"] == 0
+
+
+def test_declared_missing_class_cannot_hide_incomplete_scrape(prior_rankings):
+    candidate = candidate_for(("Bezirksliga", "B-Klasse"))
+    candidate["unavailable_categories"] = ["A-Klasse"]
+    assert validate_rankings(candidate, prior_rankings).decision is not Decision.PUBLISH
+
+
+def test_declared_missing_classes_do_not_publish_empty_season(prior_rankings):
+    candidate = candidate_for(())
+    candidate["unavailable_categories"] = list(REQUIRED_CATEGORIES)
+    assert validate_rankings(candidate, prior_rankings).decision is not Decision.PUBLISH
+
+
+@pytest.mark.parametrize("unavailable", ["A-Klasse", None, ["Unknown"], ["A-Klasse", "A-Klasse"], ["Bezirksliga"]])
+def test_invalid_unavailable_metadata_blocks_publication(prior_rankings, unavailable):
+    candidate = candidate_for(REQUIRED_CATEGORIES)
+    candidate["unavailable_categories"] = unavailable
+    assert validate_rankings(candidate, prior_rankings).decision is Decision.BLOCKED

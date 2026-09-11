@@ -75,7 +75,7 @@ Das Staging-Verzeichnis muss neu oder leer sein. `update_report.json` enthält E
 
 ### Validierungsgrenzen
 
-- Ranglisten werden erst für die neue Saison aktiviert, wenn Bezirksliga, A-Klasse, B-Klasse und C-Klasse jeweils mindestens einen gültigen Spieler enthalten. Bis dahin zeigt die UI für den behaltenen Stand exakt `Vorjahresstand 2025/26`.
+- Bereits veröffentlichte aktuelle Ranglisten werden auch dann aktiviert, wenn einzelne Klassen auf der BWEDL-Ranglistenübersicht noch fehlen. Der Scraper erfasst diese fehlenden Kategorien ausdrücklich; die UI nennt sie und mischt keine Vorjahresspieler in den aktuellen Stand. Gefundene, aber unvollständig gelesene Seiten sowie komplett leere Ranglisten bleiben durch die Validierung geschützt. Saisonbezeichnungen stammen aus `data_status`, nicht aus dem Abrufdatum.
 - Ligadaten brauchen mindestens 13 reguläre Ligen und je Liga alle 18 Spieltage in plausibler Reihenfolge.
 - Vereinsdaten dürfen nicht leer, strukturell ungültig oder gegenüber dem letzten Stand stark geschrumpft sein. Archive bewahren alle von der Quelle entdeckten Saisons; nicht ausdrücklich geprüfte Verluste vorhandener Saison-, Spieler- oder Segmentdaten blockieren die Veröffentlichung.
 - Die JSON-/JS-Paare für Ligen, Ranglisten und Vereine sowie `data_status` müssen inhaltlich exakt gleich sein.

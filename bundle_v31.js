@@ -628,9 +628,10 @@ function persistLocalValue(storage, key, value) {
 function createSeasonNotice(context) {
     const rankingStatus = dataStatus.domains && dataStatus.domains.rankings;
     const noticeModel = typeof BwedlAppUtils !== 'undefined'
-        ? BwedlAppUtils.buildSeasonNotice(rankingStatus)
+        ? BwedlAppUtils.buildSeasonNotice(rankingStatus,
+            typeof RANKING_DATA !== 'undefined' ? RANKING_DATA.unavailable_categories || [] : [])
         : null;
-    if (!noticeModel || noticeModel.state !== 'retained') return null;
+    if (!noticeModel || !['retained', 'partial'].includes(noticeModel.state)) return null;
 
     const safeContext = typeof context === 'string'
         ? context.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-|-$/g, '')
@@ -651,7 +652,9 @@ function createSeasonNotice(context) {
     message.className = 'season-notice__message';
     message.textContent = noticeModel.message;
     detail.className = 'season-notice__detail';
-    detail.textContent = 'Andere aktuelle Daten wie Spielpläne und Ergebnisse können weiterhin aktuell sein.';
+    detail.textContent = noticeModel.state === 'partial'
+        ? 'Für fehlende Klassen werden keine Vorjahreswerte als aktuelle Saisonwerte angezeigt.'
+        : 'Andere aktuelle Daten wie Spielpläne und Ergebnisse können weiterhin aktuell sein.';
 
     notice.appendChild(heading);
     notice.appendChild(message);
@@ -3180,7 +3183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Add Current Season
                     careerStats.totalPoints += currentPoints;
                     if (currentPoints > careerStats.bestSeason.points) {
-                        careerStats.bestSeason = { points: currentPoints, season: '24/25' };
+                        careerStats.bestSeason = { points: currentPoints, season: BwedlAppUtils.rankingSeasonLabel(dataStatus) };
                     }
 
                     // Highest League
@@ -4275,19 +4278,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // --- Merge current season from rankingData ---
-        // Determine current season label from ranking last_updated
-        let currentSeasonLabel = 'Aktuell';
-        if (rankingData && rankingData.last_updated) {
-            const m = rankingData.last_updated.match(/(\d{2})\.(\d{2})\.(\d{4})/);
-            if (m) {
-                const month = parseInt(m[2]);
-                const year = parseInt(m[3]);
-                // Season runs Aug-Jul: if month >= 8, season is year/(year+1), else (year-1)/year
-                const startYear = month >= 8 ? year : year - 1;
-                const endYear = startYear + 1;
-                currentSeasonLabel = (startYear % 100).toString().padStart(2, '0') + '/' + (endYear % 100).toString().padStart(2, '0');
-            }
-        }
+        // The dataset season is authoritative, including retained datasets.
+        const currentSeasonLabel = BwedlAppUtils.rankingSeasonLabel(dataStatus);
 
         if (rankingData && rankingData.players && rankingData.players.length > 0) {
             allSeasons.add(currentSeasonLabel);

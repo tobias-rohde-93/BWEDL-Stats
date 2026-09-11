@@ -1197,3 +1197,19 @@ def test_calendar_generated_at_rejects_missing_or_invalid_league_status_timestam
 
     with pytest.raises(ValueError, match="calendar leagues updated_at|calendar league status timestamp"):
         update_data._calendar_generated_at(status)
+
+
+def test_source_gap_publishes_current_rankings_without_prior_class_players(tmp_path):
+    root, staging, artifacts = tmp_path / "root", tmp_path / "staging", tmp_path / "artifacts"
+    seed_root(root)
+    candidate = rankings()
+    candidate["rankings"].pop("A-Klasse")
+    candidate["players"] = [p for p in candidate["players"] if p["league"] != "A-Klasse"]
+    candidate["unavailable_categories"] = ["A-Klasse"]
+    assert update_data.run_update(root, staging, artifacts, scraper_runner=fake_runner(candidate), clock=lambda: NOW) == 0
+    published = json.loads((root / "ranking_data.json").read_text())
+    assert published["unavailable_categories"] == ["A-Klasse"]
+    assert all(p["league"] != "A-Klasse" for p in published["players"])
+    status = json.loads((root / "data_status.json").read_text())
+    assert status["domains"]["rankings"]["season"] == "2026/27"
+    assert status["domains"]["rankings"]["state"] == "current"

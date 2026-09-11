@@ -9,6 +9,7 @@ from pipeline.files import write_json_pair
 from pipeline.diagnostics import SyncDiagnosticSession, scraper_status
 from pipeline.html_sanitizer import sanitize_table_fragment
 from pipeline.urls import normalize_bwedl_url
+from pipeline.validation import REQUIRED_RANKING_CATEGORIES
 
 DATA_FILE_JSON = "ranking_data.json"
 DATA_FILE_JS = "ranking_data.js"
@@ -167,6 +168,13 @@ def run_scrape(output_dir=Path("."), artifacts_dir=Path("artifacts")):
                 f"ranking scrape incomplete ({len(failures)} item failures)"
             ) from failures[0]
 
+        # Only absent source links are a known publication gap. A discovered
+        # page without parsed players still fails the readiness validation.
+        discovered = {rank["name"] for rank in ranking_links}
+        data["unavailable_categories"] = [
+            category for category in REQUIRED_RANKING_CATEGORIES
+            if category not in discovered
+        ]
         save_data(data, output_dir)
 
     if diagnostics.error is not None:

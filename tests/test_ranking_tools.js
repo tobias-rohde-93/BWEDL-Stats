@@ -5,7 +5,7 @@ const path = require('node:path');
 const source = fs.readFileSync(path.join(__dirname, '..', 'bundle_v31.js'), 'utf8');
 const styles = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
 const BwedlAppUtils = require('../app_utils.js');
-const currentRankingData = require('../ranking_data.json');
+const currentRankingData = require('./fixtures/rankings-2025-26-players.json');
 const currentClubData = require('../club_data.json');
 
 const players = [

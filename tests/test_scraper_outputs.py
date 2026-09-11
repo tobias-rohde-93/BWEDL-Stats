@@ -718,7 +718,7 @@ def test_empty_ranking_overview_is_valid_candidate_for_validator_retain(
     monkeypatch.setattr(ranking_scraper, "save_data", lambda data, output: saved.append(data))
 
     assert ranking_scraper.main(["--artifacts-dir", str(tmp_path)]) == 0
-    assert saved == [{"last_updated": "", "rankings": {}, "players": []}]
+    assert saved == [{"last_updated": "", "rankings": {}, "players": [], "unavailable_categories": ["Bezirksliga", "A-Klasse", "B-Klasse", "C-Klasse"]}]
     assert not list(tmp_path.iterdir())
 
 
@@ -783,6 +783,7 @@ def test_ranking_categories_without_tables_save_empty_candidate(
                     "C-Klasse": "",
                 },
                 "players": [],
+                "unavailable_categories": [],
             },
             output_dir,
         )

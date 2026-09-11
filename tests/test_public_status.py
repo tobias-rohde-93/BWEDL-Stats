@@ -11,7 +11,7 @@ def test_status_script_loads_synchronously_before_application_bundle() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
 
     status_script = '<script src="data_status.js?v=1"></script>'
-    bundle_script = '<script src="bundle_v31.js?v=4.4"></script>'
+    bundle_script = '<script src="bundle_v31.js?v=4.5"></script>'
     assert status_script in html
     assert html.index(status_script) < html.index(bundle_script)
     assert "async" not in status_script
@@ -43,7 +43,7 @@ def test_bundle_uses_safe_status_fallback_without_status_inner_html() -> None:
 def test_service_worker_treats_both_status_files_as_network_first_data() -> None:
     worker = (ROOT / "sw_v31.js").read_text(encoding="utf-8")
 
-    assert re.search(r"^const CACHE_NAME = 'bwedl-dashboard-v47';$", worker, re.MULTILINE)
+    assert re.search(r"^const CACHE_NAME = 'bwedl-dashboard-v48';$", worker, re.MULTILINE)
     assert "bwedl-dashboard-v41" not in worker
     assert "'./data_status.json'" in worker
     assert "'./data_status.js?v=1'" in worker
@@ -55,7 +55,7 @@ def test_service_worker_treats_both_status_files_as_network_first_data() -> None
     )
 
 
-def test_published_status_json_and_javascript_match_retained_source_data() -> None:
+def test_published_status_json_and_javascript_match_current_source_data() -> None:
     payload = json.loads((ROOT / "data_status.json").read_text(encoding="utf-8"))
     javascript = (ROOT / "data_status.js").read_text(encoding="utf-8").strip()
     prefix = "window.DATA_STATUS = "
@@ -63,11 +63,9 @@ def test_published_status_json_and_javascript_match_retained_source_data() -> No
     assert javascript.startswith(prefix)
     assert javascript.endswith(";")
     assert json.loads(javascript[len(prefix) : -1]) == payload
-    assert payload["domains"]["rankings"] == {
-        "season": "2025/26",
-        "state": "retained",
-        "updated_at": "2026-06-10T03:04:09Z",
-    }
+    assert payload["domains"]["rankings"]["season"] == payload["domains"]["leagues"]["season"]
+    assert payload["domains"]["rankings"]["state"] == "current"
+    assert payload["domains"]["rankings"]["updated_at"]
 
 
 def test_status_formatter_contract_in_node() -> None:

@@ -1552,7 +1552,7 @@ assert.equal(overflowBlendRoster.players[0].confidence, 'very-low');
 
 const rankingContext = vm.createContext({ window: {} });
 vm.runInContext(
-    fs.readFileSync(path.join(__dirname, '..', 'ranking_data.js'), 'utf8'),
+    `window.RANKING_DATA = ${fs.readFileSync(path.join(__dirname, 'fixtures', 'rankings-2025-26-players.json'), 'utf8')};`,
     rankingContext,
     { filename: 'ranking_data.js' },
 );
@@ -1568,7 +1568,8 @@ vm.runInContext(
 );
 const committedCurrentPlayers = rankingContext.window.RANKING_DATA.players;
 const committedArchiveData = rankingContext.window.ARCHIVE_DATA;
-const committedRankingSeason = rankingContext.window.DATA_STATUS.domains.rankings.season;
+// Keep the retained-season regression independent of live season rollover.
+const committedRankingSeason = '2025/26';
 assert.equal(committedCurrentPlayers.length, 773);
 assert.equal(committedCurrentPlayers.every((player) => (
     !Object.prototype.hasOwnProperty.call(player, 'season')

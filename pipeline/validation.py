@@ -346,7 +346,24 @@ def validate_rankings(
         for category in REQUIRED_RANKING_CATEGORIES
         if metrics[category] == 0 or category not in ranking_categories
     ]
-    if missing_categories:
+    unavailable = candidate.get("unavailable_categories", [])
+    if (
+        not isinstance(unavailable, list)
+        or any(not isinstance(category, str) for category in unavailable)
+        or len(set(unavailable)) != len(unavailable)
+        or any(category not in REQUIRED_RANKING_CATEGORIES for category in unavailable)
+        or any(category in seen_ranking_categories or metrics[category] for category in unavailable)
+    ):
+        return ValidationResult(
+            "rankings", Decision.BLOCKED, effective_previous_season,
+            ("Invalid or contradictory unavailable ranking categories",), metrics,
+        )
+    declared_partial = (
+        set(unavailable) == set(missing_categories)
+        and 0 < len(missing_categories) < len(REQUIRED_RANKING_CATEGORIES)
+        and all(metrics[category] == 0 for category in missing_categories)
+    )
+    if missing_categories and not declared_partial:
         reasons.extend(
             f"Missing ready category: {category}" for category in missing_categories
         )

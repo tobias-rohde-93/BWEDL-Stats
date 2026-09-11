@@ -621,7 +621,14 @@
             .sort((left, right) => left.name.localeCompare(right.name, 'de-DE'));
     }
 
-    function buildSeasonNotice(status) {
+    function rankingSeasonLabel(dataStatus) {
+        const season = dataStatus && dataStatus.domains && dataStatus.domains.rankings
+            ? dataStatus.domains.rankings.season : '';
+        const match = typeof season === 'string' && season.match(/^(20\d{2})\/(\d{2})$/);
+        return match ? `${match[1].slice(-2)}/${match[2]}` : 'Aktuell';
+    }
+
+    function buildSeasonNotice(status, unavailableCategories = []) {
         if (!status || typeof status !== 'object') return null;
         const season = typeof status.season === 'string' ? status.season.trim() : '';
         if (!season) return null;
@@ -632,6 +639,12 @@
                 season,
                 title: `Vorjahresstand ${season}`,
                 message: `Vorjahresstand ${season} – die neue Rangliste wird erst nach vollständigem Saisonstart aktiviert.`,
+            };
+        }
+        if ((status.state === 'published' || status.state === 'current') && unavailableCategories.length) {
+            return {
+                state: 'partial', season, title: `Saison ${season}`,
+                message: `Aktuelle Ranglisten werden verwendet. Noch nicht veröffentlicht: ${unavailableCategories.join(', ')}.`,
             };
         }
         if (status.state === 'published' || status.state === 'current') {
@@ -1475,6 +1488,7 @@
         buildLigapokalArchiveEntries,
         buildMatchPreviewTeams,
         buildSeasonNotice,
+        rankingSeasonLabel,
         enrichRankingPlayersWithClubs,
         canonicalRankingPlayerName,
         canonicalRankingCategory,

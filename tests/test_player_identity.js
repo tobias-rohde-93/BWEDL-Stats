@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 const BwedlAppUtils = require('../app_utils.js');
-const rankingData = require('../ranking_data.json');
+const rankingData = require('./fixtures/rankings-2025-26-players.json');
 
 const {
     PLAYER_PROFILE_VERSION,

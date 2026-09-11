@@ -856,3 +856,39 @@ def test_published_data_stays_inert_online_and_offline() -> None:
     )
     assert not any("/api/" in urlsplit(url).path for url in requested_urls)
     assert not any("/api/" in path for path in server.request_paths)
+
+
+@pytest.mark.skipif(
+    os.environ.get("BWEDL_BROWSER_TESTS") != "1",
+    reason="set BWEDL_BROWSER_TESTS=1 for the current-season smoke",
+)
+def test_current_season_rankings_across_app_views(monkeypatch):
+    from playwright.sync_api import expect, sync_playwright
+
+    # Exercise the actual publication files instead of the security fixtures.
+    monkeypatch.setattr(__import__(__name__, fromlist=["TEST_ASSETS"]), "TEST_ASSETS", {})
+    rankings = json.loads((ROOT / "ranking_data.json").read_text(encoding="utf-8"))
+    unavailable = rankings.get("unavailable_categories", [])
+    status = json.loads((ROOT / "data_status.json").read_text(encoding="utf-8"))
+    errors = []
+    with github_pages_server() as (_, base_url), sync_playwright() as playwright:
+        browser = playwright.chromium.launch()
+        page = browser.new_page(viewport={"width": 390, "height": 844})
+        page.on("pageerror", lambda error: errors.append(str(error)))
+        page.goto(base_url)
+        expect(page.locator("#current-league-title")).to_have_text("Dashboard")
+        for category in unavailable:
+            expect(page.locator("[data-season-context='top-20']")).to_contain_text(category)
+        expect(page.locator("#data-status-list")).to_contain_text(status["domains"]["rankings"]["season"])
+        for category in rankings["rankings"]:
+            count = sum(player["league"] == category for player in rankings["players"])
+            page.evaluate("category => { location.hash = '#ranking/' + encodeURIComponent(category); }", category)
+            expect(page.locator(".ranking-table tbody tr")).to_have_count(count)
+            for missing in unavailable:
+                expect(page.locator("[data-season-context='ranking']")).to_contain_text(missing)
+        for route in ["comparison", "matchPreview", "alltime", "profile", "clubList"]:
+            page.evaluate("route => { location.hash = '#' + route; }", route)
+            page.wait_for_timeout(200)
+            assert page.locator("#content-area").inner_text().strip()
+        assert errors == []
+        browser.close()

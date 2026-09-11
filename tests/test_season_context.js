@@ -475,3 +475,10 @@ for (const selector of [
 }
 
 console.log('season context and onboarding contract: ok');
+
+assert.equal(BwedlAppUtils.rankingSeasonLabel({domains: {rankings: {season: '2026/27'}}}), '26/27');
+assert.equal(BwedlAppUtils.rankingSeasonLabel({domains: {rankings: {season: '2025/26', state: 'retained'}}}), '25/26');
+assert.equal(BwedlAppUtils.rankingSeasonLabel({}), 'Aktuell');
+const partialNotice = BwedlAppUtils.buildSeasonNotice({season: '2026/27', state: 'current'}, ['A-Klasse']);
+assert.equal(partialNotice.state, 'partial');
+assert.match(partialNotice.message, /A-Klasse/);

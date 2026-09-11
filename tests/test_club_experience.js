@@ -183,7 +183,7 @@ currentCupRows.forEach(({ headers, row }) => {
 
 const statusContext = { window: {} };
 vm.createContext(statusContext);
-vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'data_status.js'), 'utf8'), statusContext);
+vm.runInContext("window.DATA_STATUS = {domains: {rankings: {season: '2025/26', state: 'retained'}}};", statusContext);
 const rankingStatus = statusContext.window.DATA_STATUS.domains.rankings;
 const clubRankingSeasonLabel = compileFunction('clubRankingSeasonLabel');
 assert.equal(
