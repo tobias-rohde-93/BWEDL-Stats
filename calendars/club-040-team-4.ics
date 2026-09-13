@@ -232,17 +232,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:d3d22878cff155eb5fc1ada4033dc6d73168ae34208d4c7dacd71fb898dfbd17@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260910T180000Z
-DTEND:20260910T210000Z
+DTSTAMP:20260913T202101Z
+DTSTART:20260914T180000Z
+DTEND:20260914T210000Z
 SUMMARY:Heimspiel gegen The Walking Darts
 DESCRIPTION:Begegnung: the Metal Darts 4 - The Walking Darts\nHeimspiel\nLi
- ga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026
+ ga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 14.09.2026
   18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
  heim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T202101Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

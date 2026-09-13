@@ -153,17 +153,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:9ffa2f2de9221ef02f4e23ce92a485f00c64bffedd9e97d8fc323a4b58946f7c@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260911T180000Z
-DTEND:20260911T210000Z
+DTSTAMP:20260913T202101Z
+DTSTART:20260919T180000Z
+DTEND:20260919T210000Z
 SUMMARY:Auswärtsspiel bei DC Crazy Flights 3
 DESCRIPTION:Begegnung: DC Crazy Flights 3 - DC Destroyers e.V.\nAuswärtssp
- iel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.
+ iel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 19.
  09.2026 18:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simo
  nswiesen 2\, Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T202101Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

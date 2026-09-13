@@ -152,17 +152,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:99bb7195f740dabd87c69c9aadbb9fdc16d671ddc5c109ba061fef9cd94bbe50@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260910T180000Z
-DTEND:20260910T210000Z
+DTSTAMP:20260913T202101Z
+DTSTART:20260914T180000Z
+DTEND:20260914T210000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 4
 DESCRIPTION:Begegnung: the Metal Darts 4 - The Walking Darts\nAuswärtsspie
- l\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09
+ l\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 14.09
  .2026 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
   Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T202101Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

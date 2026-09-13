@@ -240,17 +240,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e4d24e85f5e9af707aa682dc556cfe7d69189184cc944783b2bb3f8af8e829c3@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260926T140000Z
-DTEND:20260926T170000Z
+DTSTAMP:20260913T202101Z
+DTSTART:20260926T180000Z
+DTEND:20260926T210000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Crows\nAuswärtsspiel\nL
  iga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 3. Spieltag\nTermin: 26.09.202
- 6 14:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
+ 6 18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfo
  rzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T202101Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

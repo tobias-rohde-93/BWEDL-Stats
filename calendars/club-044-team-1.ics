@@ -73,17 +73,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:30290054723dc067fcef11e263baf87000002312e823d1736477dcecbe34d682@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260912T163000Z
-DTEND:20260912T193000Z
+DTSTAMP:20260913T202101Z
+DTSTART:20260912T150000Z
+DTEND:20260912T180000Z
 SUMMARY:Heimspiel gegen Glabbicher Bulls
 DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - Glabbicher Bulls\nHeimspiel\
  nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 2. Spieltag\nTermin: 12.09.2
- 026 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbü
+ 026 15:00 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbü
  rg - Arnbach
 LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T202101Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
