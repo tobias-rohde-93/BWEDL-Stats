@@ -72,17 +72,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:359db85991ba4e22e24809f50c243e0b26c7fcace8cc259abd57231370a12f6e@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260909T173000Z
-DTEND:20260909T203000Z
+DTSTAMP:20260913T110852Z
+DTSTART:20260914T173000Z
+DTEND:20260914T203000Z
 SUMMARY:Heimspiel gegen DC Duselbrüder
 DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Duselbrüder\nHeimspi
- el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 09.0
+ el\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin: 14.0
  9.2026 17:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Weiherst
  raße 30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T110852Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

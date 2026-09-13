@@ -87,17 +87,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:4759a17853ae0375bbe1d0fd7cdbccc559c0ed21473bdc30c8c8b95934b15dee@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260909T173000Z
-DTEND:20260909T203000Z
+DTSTAMP:20260913T110852Z
+DTSTART:20260914T173000Z
+DTEND:20260914T203000Z
 SUMMARY:Auswärtsspiel bei DC Underground Fool's e.V
 DESCRIPTION:Begegnung: DC Underground Fool's e.V - DC Duselbrüder\nAuswär
  tsspiel\nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 2. Spieltag\nTermin:
-  09.09.2026 17:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
+  14.09.2026 17:30 UTC\nAustragungsort: VH DC Underground Fool's e.V.\, Wei
  herstraße 30\, Pforzheim
 LOCATION:VH DC Underground Fool's e.V.\, Weiherstraße 30\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260913T110852Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
