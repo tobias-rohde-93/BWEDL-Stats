@@ -89,17 +89,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:26b6b321e4e8fb0aee6a65380e08f5abd8bc7544b80ee89875c1554c6d25e932@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261030T190000Z
-DTEND:20261030T220000Z
+DTSTAMP:20260914T173911Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
 DESCRIPTION:Begegnung: DC Ungültig - TSV Grunbach Darts\nAuswärtsspiel\nL
- iga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.202
+ iga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.202
  6 19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
  ömberg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260914T173911Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

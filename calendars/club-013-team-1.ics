@@ -241,17 +241,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e42f4a59fe13c6ff2592e648d983458bb706ebceab0bec64a88c3e8437713857@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261009T180000Z
-DTEND:20261009T210000Z
+DTSTAMP:20260914T173911Z
+DTSTART:20261008T180000Z
+DTEND:20261008T210000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
 DESCRIPTION:Begegnung: DC Ungültig - DC HighFlights\nAuswärtsspiel\nLiga:
-  A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.2026 18
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2026 18
  :00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömb
  erg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260914T173911Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

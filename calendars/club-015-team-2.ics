@@ -119,17 +119,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:4fb0137ba8c17ecf994f0a2ec131e26e44e9495a0e05182be2a9460a78204c6b@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20270319T190000Z
-DTEND:20270319T220000Z
+DTSTAMP:20260914T173911Z
+DTSTART:20270318T190000Z
+DTEND:20270318T220000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
 DESCRIPTION:Begegnung: DC Ungültig - DC Texas Team 2\nAuswärtsspiel\nLiga
- : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 19.03.2027
+ : A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027
   19:00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Sch
  ömberg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260914T173911Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

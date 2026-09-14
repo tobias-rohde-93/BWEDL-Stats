@@ -24,17 +24,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2733690d609448b5ef1716468f029c4d1eef125abbb5c7b2e9fc16fc5dfa0aed@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261113T190000Z
-DTEND:20261113T220000Z
+DTSTAMP:20260914T173911Z
+DTSTART:20261112T190000Z
+DTEND:20261112T220000Z
 SUMMARY:Auswärtsspiel bei DC Ungültig
 DESCRIPTION:Begegnung: DC Ungültig - Alla Häeeehr\nAuswärtsspiel\nLiga:
-  A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
+  A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 19
  :00 UTC\nAustragungsort: Sportheim Mile\, Pforzheimer Straße 60\, Schömb
  erg/Schwarzenberg
 LOCATION:Sportheim Mile\, Pforzheimer Straße 60\, Schömberg/Schwarzenberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260914T173911Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
