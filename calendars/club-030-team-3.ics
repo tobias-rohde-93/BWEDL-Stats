@@ -217,17 +217,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:c7e611cda088300a2dd0032e1b9eb97e6ed275c9bb3d8b255fdf0a2cf0487f98@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261006T173000Z
-DTEND:20261006T203000Z
+DTSTAMP:20260916T105300Z
+DTSTART:20261013T173000Z
+DTEND:20261013T203000Z
 SUMMARY:Auswärtsspiel bei Odins Knechte
 DESCRIPTION:Begegnung: Odins Knechte - DC Black Scorpions 3\nAuswärtsspiel
- \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.
+ \nLiga: A-Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 13.10.
  2026 17:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/
  Wilferdingen
 LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260916T105300Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
