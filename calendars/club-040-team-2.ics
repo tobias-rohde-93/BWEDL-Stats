@@ -85,17 +85,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:77e6eae6594f3e372cfef085d0f402f85efaa0d0da7e3a810e0a225f8c4e3922@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260911T183000Z
-DTEND:20260911T213000Z
+DTSTAMP:20260927T205443Z
+DTSTART:20260924T183000Z
+DTEND:20260924T213000Z
 SUMMARY:Auswärtsspiel bei DC Green Scorpion's
 DESCRIPTION:Begegnung: DC Green Scorpion's - the Metal Darts 2\nAuswärtssp
- iel\nLiga: Bezirksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 11.09.202
+ iel\nLiga: Bezirksliga 2026-2027\nSpieltag: 2. Spieltag\nTermin: 24.09.202
  6 18:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60
  \, Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T205443Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
