@@ -41,17 +41,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:1ef85644eabec527b307a8e961f06b2984c415115bcb549ec69a85bac3eb9fc9@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261010T173000Z
-DTEND:20261010T203000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261017T173000Z
+DTEND:20261017T203000Z
 SUMMARY:Heimspiel gegen DC Destroyers e.V. 5
 DESCRIPTION:Begegnung: DC Kolibrispitz - DC Destroyers e.V. 5\nHeimspiel\nL
- iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.202
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 17.10.202
  6 17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
   15\, Pforzheim
 LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

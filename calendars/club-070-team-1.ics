@@ -527,16 +527,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e93b0eb36041e8e509ef9d7dc415f9988da8f26317aabe4c16e73ba32cf0efc4@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20260918T170000Z
 DTEND:20260918T200000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - ESV DC 25\nAuswärtsspiel\nLiga: Mix C
  -Klasse 2026-2027\nSpieltag: 3. Spieltag\nTermin: 18.09.2026 17:00 UTC\nAu
- stragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ stragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

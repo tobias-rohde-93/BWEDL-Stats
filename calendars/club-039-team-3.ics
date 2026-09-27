@@ -9,17 +9,17 @@ X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:0aa4aa708245f35f9555bdc0dcee4784bcfc7137440ec90b1d2fc7958f8fb462@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261010T173000Z
-DTEND:20261010T203000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261003T173000Z
+DTEND:20261003T203000Z
 SUMMARY:Auswärtsspiel bei DC Knickebocker
 DESCRIPTION:Begegnung: DC Knickebocker - DC Destroyers e.V. 3\nAuswärtsspi
- el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.1
+ el\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 4. Spieltag\nTermin: 03.1
  0.2026 17:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Frie
  drich-Str.378\, Pforzheim
 LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

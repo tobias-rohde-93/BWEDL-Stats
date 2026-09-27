@@ -295,16 +295,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:76c57de3ab67f11504a8110c7e0874705dfaff2ea7cd8eaa22add8146634c5af@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270122T180000Z
 DTEND:20270122T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - TSV Grunbach Darts\nAuswärtsspiel\nLi
  ga: Mix C-Klasse 2026-2027\nSpieltag: 10. Spieltag\nTermin: 22.01.2027 18:
- 00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

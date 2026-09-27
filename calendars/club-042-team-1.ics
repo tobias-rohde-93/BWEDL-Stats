@@ -224,16 +224,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:daed8e64fa82de4812c8a77a283512b134c9bcb6b0b9dda363882935651f0b16@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20260925T180000Z
-DTEND:20260925T210000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20260921T180000Z
+DTEND:20260921T210000Z
 SUMMARY:Heimspiel gegen DC Black Scorpions 4
 DESCRIPTION:Begegnung: DC Bull Hunters - DC Black Scorpions 4\nHeimspiel\nL
- iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 25.09.202
+ iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 3. Spieltag\nTermin: 21.09.202
  6 18:00 UTC\nAustragungsort: Wunderbar\, Kirchstr. 41\, Remchingen
 LOCATION:Wunderbar\, Kirchstr. 41\, Remchingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -255,16 +255,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:eb281798d911e51d34d90228ac1b6b957919be7c2ad714ad56e269ab773d4734@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261029T180000Z
 DTEND:20261029T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Bull Hunters\nAuswärtsspiel\nLig
  a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026
-  18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

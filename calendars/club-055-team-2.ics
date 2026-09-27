@@ -73,16 +73,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:137459a54c6a766b598ed9c6cabde1920e8ea1b052b28e16d5936696e009e080@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270413T170000Z
 DTEND:20270413T200000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - DC Enztaler Buben 2\nAuswärtsspiel\nL
  iga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 16. Spieltag\nTermin: 13.04.20
- 27 17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 27 17:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

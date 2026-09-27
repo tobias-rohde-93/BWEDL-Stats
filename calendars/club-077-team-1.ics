@@ -152,16 +152,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:a0665abf4995be7bbb9e1b7a9bfaadd83afaf9e1c3c8e9ba5d038f599f3553f7@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261006T170000Z
 DTEND:20261006T200000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - United Ikaros\nAuswärtsspiel\nLiga: C
  -Klasse Gruppe 1 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.2026 17:0
- 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

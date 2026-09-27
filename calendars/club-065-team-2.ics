@@ -41,91 +41,95 @@ END:VEVENT
 BEGIN:VEVENT
 UID:1e716a5b026d69105ce6615122f987780b445ea5d639d856ebdf725e8727ff19@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270114T180000Z
 DTEND:20270114T210000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V. 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC 180 Stein e.V. 2\nHeimspiel\nLiga
  : C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.2027
-  18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:25c37411be2713c2a6995d6cbf8497537a042a214af1d3ab1d278f832becc075@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20260910T170000Z
 DTEND:20260910T200000Z
 SUMMARY:Heimspiel gegen DC X-Brötzingen 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC X-Brötzingen 2\nHeimspiel\nLiga:
   C-Klasse Gruppe 5 2026-2027\nSpieltag: 2. Spieltag\nTermin: 10.09.2026 17
- :00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ :00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhei
+ m
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:262a92200c5c7e6fd6c6d0c28fd708ff5b161fd5783e94f809f625600a752dc1@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261008T170000Z
 DTEND:20261008T200000Z
 SUMMARY:Heimspiel gegen Dartfreunde Eichenherz 2
 DESCRIPTION:Begegnung: Los Muertos 2 - Dartfreunde Eichenherz 2\nHeimspiel\
  nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 4. Spieltag\nTermin: 08.10.2
- 026 17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 026 17:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pf
+ orzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:34d6ef831235e62c8bc81256bbdd23aaee5bfaad096d74631dcc6fb9787dc05f@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261029T180000Z
 DTEND:20261029T210000Z
 SUMMARY:Heimspiel gegen DC Bull Hunters
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Bull Hunters\nHeimspiel\nLiga: C-
  Klasse Gruppe 5 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.2026 18:00
-  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:450080f6486411cbc71ba2b1bb51f858766209c2bfbdbc658ade4154efb03ee7@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270211T180000Z
 DTEND:20270211T210000Z
 SUMMARY:Heimspiel gegen DC Dart Vaders
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Dart Vaders\nHeimspiel\nLiga: C-K
  lasse Gruppe 5 2026-2027\nSpieltag: 12. Spieltag\nTermin: 11.02.2027 18:00
-  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:4c407e514044ba0cde6699eaf9c94afa18536475f07f6d42fbdf9e857ce6fe11@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270513T170000Z
 DTEND:20270513T200000Z
 SUMMARY:Heimspiel gegen DC Broken Darts 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Broken Darts 2\nHeimspiel\nLiga:
   C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.2027 1
- 7:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 7:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzhe
+ im
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -177,31 +181,31 @@ END:VEVENT
 BEGIN:VEVENT
 UID:9b27dc252b554c520d77413ca432eb9765b91b9d0822b334f7a4e0b66b292536@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270318T180000Z
 DTEND:20270318T210000Z
 SUMMARY:Heimspiel gegen DC Williams
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Williams\nHeimspiel\nLiga: C-Klas
  se Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 18:00 UT
- C\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ C\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:a2a67718f4f7ea1268c542c7a04d465b4449807984bb9c6720a08a5be484336a@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261126T180000Z
 DTEND:20261126T210000Z
 SUMMARY:Heimspiel gegen DC Triple 7
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Triple 7\nHeimspiel\nLiga: C-Klas
  se Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 18:00 UTC
- \nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ \nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -223,16 +227,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cd56f9879a174203b3c951ec69a9852a064312ee095b140449286c0793400002@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270415T170000Z
 DTEND:20270415T200000Z
 SUMMARY:Heimspiel gegen DC Black Scorpions 4
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Black Scorpions 4\nHeimspiel\nLig
  a: C-Klasse Gruppe 5 2026-2027\nSpieltag: 16. Spieltag\nTermin: 15.04.2027
-  17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  17:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforz
+ heim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

@@ -243,16 +243,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f1fc6bd475b74111f2e08de71979f5e2dc7fd87fecbc612311144f4be6e11786@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270513T170000Z
 DTEND:20270513T200000Z
 SUMMARY:Auswärtsspiel bei Los Muertos 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Broken Darts 2\nAuswärtsspiel\nL
  iga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 18. Spieltag\nTermin: 13.05.20
- 27 17:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 27 17:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
+ rzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

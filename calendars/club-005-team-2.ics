@@ -247,16 +247,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ebe1821b4e1b2f995b71b142cc4efaf4c5f32e79fdbd313d1dd8414f47f31cdc@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270114T180000Z
 DTEND:20270114T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC 180 Stein e.V. 2\nAuswärtsspiel\
  nLiga: C-Klasse Gruppe 5 2026-2027\nSpieltag: 10. Spieltag\nTermin: 14.01.
- 2027 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 2027 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, P
+ forzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

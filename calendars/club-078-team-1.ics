@@ -70,16 +70,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:3ff9830ed109d8d704ed00f385bcc1ac1535d80870b6b4c1b902231ad3434f76@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270318T180000Z
 DTEND:20270318T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Williams\nAuswärtsspiel\nLiga: C
  -Klasse Gruppe 5 2026-2027\nSpieltag: 14. Spieltag\nTermin: 18.03.2027 18:
- 00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

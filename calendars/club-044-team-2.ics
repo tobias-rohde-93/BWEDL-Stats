@@ -264,17 +264,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e4c1e65d5912e33f2a620bef06e08f6877e9a4fc0dec74e2116b4459f1e747d6@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270209T180000Z
 DTEND:20270209T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - DC Bull's Eye Arnbach 2\nAuswärtsspie
  l\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 12. Spieltag\nTermin: 09.0
- 2.2027 18:00 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzhei
- m
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 2.2027 18:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\,
+  Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

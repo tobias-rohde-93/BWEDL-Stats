@@ -148,16 +148,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:8bda5ca342298043a632c241b7472d5f9f1fb0c5fee46284ece829befb2ea9b3@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261126T180000Z
 DTEND:20261126T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos 2
 DESCRIPTION:Begegnung: Los Muertos 2 - DC Triple 7\nAuswärtsspiel\nLiga: C
  -Klasse Gruppe 5 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.2026 18:0
- 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

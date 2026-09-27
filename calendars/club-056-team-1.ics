@@ -264,17 +264,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:9c27e857f57bfde3e2beae12090dcbfd54ee45fc9ca21bf9813b71f7842e9b04@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261009T180000Z
-DTEND:20261009T210000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261006T180000Z
+DTEND:20261006T210000Z
 SUMMARY:Heimspiel gegen DC 180 Stein e.V. 3
 DESCRIPTION:Begegnung: DC X-Brötzingen - DC 180 Stein e.V. 3\nHeimspiel\nL
- iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.202
+ iga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 06.10.202
  6 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
   259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -296,16 +296,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:b2444c8be928ebfc16cf5bcbe4b44cfa3d941f32e808aa2efa95a81166edd8be@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20270326T180000Z
 DTEND:20270326T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - DC X-Brötzingen\nAuswärtsspiel\nLiga
  : Mix C-Klasse 2026-2027\nSpieltag: 15. Spieltag\nTermin: 26.03.2027 18:00
-  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -407,17 +407,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:c209fe9a7d78771e1e519e1a60be1bf53e33c85c8bc59e5b01def90aa2f57591@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261030T190000Z
-DTEND:20261030T220000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261017T180000Z
+DTEND:20261017T210000Z
 SUMMARY:Heimspiel gegen the flying Rocks 2
 DESCRIPTION:Begegnung: DC X-Brötzingen - the flying Rocks 2\nHeimspiel\nLi
- ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.2026
-  19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
+ ga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 17.10.2026
+  18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-Str.
   259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

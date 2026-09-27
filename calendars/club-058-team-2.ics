@@ -41,17 +41,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:0e8b2c0b8f40bafc2275a4cf11e2782bdd52caa0470f2da2626afee9d19e8c1f@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261010T170000Z
-DTEND:20261010T200000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261009T170000Z
+DTEND:20261009T200000Z
 SUMMARY:Auswärtsspiel bei TDF Enzberg 3
 DESCRIPTION:Begegnung: TDF Enzberg 3 - the flying Rocks 2\nAuswärtsspiel\n
- Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 10.10.20
+ Liga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin: 09.10.20
  26 17:00 UTC\nAustragungsort: Tasos Bistro\, Rathausplatz 1\, Mühlacker-E
  nzberg
 LOCATION:Tasos Bistro\, Rathausplatz 1\, Mühlacker-Enzberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -105,17 +105,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:6dd0bfc1ca1e1a85775eff4b363e491b51a1462fc15f6ca278655c7974a1fa61@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261030T190000Z
-DTEND:20261030T220000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261017T180000Z
+DTEND:20261017T210000Z
 SUMMARY:Auswärtsspiel bei DC X-Brötzingen
 DESCRIPTION:Begegnung: DC X-Brötzingen - the flying Rocks 2\nAuswärtsspie
- l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10
- .2026 19:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-
+ l\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 6. Spieltag\nTermin: 17.10
+ .2026 18:00 UTC\nAustragungsort: X Cafe Bistro\, Westliche-Karl-Friedrich-
  Str. 259\, Pforzheim
 LOCATION:X Cafe Bistro\, Westliche-Karl-Friedrich-Str. 259\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -201,17 +201,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:b7253298bd23edb76438cc65b4a0255911d20c1c6b273ece021a23d84bb4dc7c@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261124T183000Z
-DTEND:20261124T213000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261201T183000Z
+DTEND:20261201T213000Z
 SUMMARY:Auswärtsspiel bei DC Texas Team 4
 DESCRIPTION:Begegnung: DC Texas Team 4 - the flying Rocks 2\nAuswärtsspiel
- \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.
+ \nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 01.12.
  2026 18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\,
   Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

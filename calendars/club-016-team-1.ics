@@ -105,16 +105,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:3f3a1570984166a8cb16c66952a0db1ecc60142ba9d599278250a6d3d849cd97@calend
  ar.bwedl.invalid
-DTSTAMP:20260824T150701Z
+DTSTAMP:20260927T112456Z
 DTSTART:20260902T170000Z
 DTEND:20260902T200000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - the Enz Coast\nAuswärtsspiel\nLiga: C
  -Klasse Gruppe 1 2026-2027\nSpieltag: 1. Spieltag\nTermin: 02.09.2026 17:0
- 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:1
-LAST-MODIFIED:20260824T150701Z
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:2
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

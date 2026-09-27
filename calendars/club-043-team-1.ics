@@ -25,16 +25,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:11e4a29c93b1d198ff8a9d09befa9e72cac17ba6fcc76e5b8afd426b15c8db1a@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261120T180000Z
 DTEND:20261120T210000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - DC Irish 26 e.V.\nAuswärtsspiel\nLiga
  : Mix C-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.11.2026 18:00
-  UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

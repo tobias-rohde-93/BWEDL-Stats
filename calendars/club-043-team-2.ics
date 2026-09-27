@@ -233,16 +233,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:548114c358f5cff4e059e99b3c9352ce37d131e6d9ec5ce33ca56dfef1e9e8a6@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20260927T112456Z
 DTSTART:20261016T170000Z
 DTEND:20261016T200000Z
 SUMMARY:Auswärtsspiel bei Los Muertos
 DESCRIPTION:Begegnung: Los Muertos - DC Irish 26 e.V. 2\nAuswärtsspiel\nLi
  ga: Mix C-Klasse 2026-2027\nSpieltag: 5. Spieltag\nTermin: 16.10.2026 17:0
- 0 UTC\nAustragungsort: Baradox\, Durlacherstraße 63\, Pforzheim
-LOCATION:Baradox\, Durlacherstraße 63\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 0 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

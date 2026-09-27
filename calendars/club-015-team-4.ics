@@ -247,17 +247,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f1640eacdab07307ce62a9985f1b95cd1617aec3936aa91db2b3aa2ec0b6be09@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261124T183000Z
-DTEND:20261124T213000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261201T183000Z
+DTEND:20261201T213000Z
 SUMMARY:Heimspiel gegen the flying Rocks 2
 DESCRIPTION:Begegnung: DC Texas Team 4 - the flying Rocks 2\nHeimspiel\nLig
- a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.11.2026
+ a: C-Klasse Gruppe 4 2026-2027\nSpieltag: 8. Spieltag\nTermin: 01.12.2026
   18:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
  zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

@@ -151,17 +151,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:8bba7fd60228b44e8dc0f7fb042101de2e8bf132dcb241ea6dbbd7a9ac643521@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261031T190000Z
-DTEND:20261031T220000Z
+DTSTAMP:20260927T112456Z
+DTSTART:20261024T180000Z
+DTEND:20261024T210000Z
 SUMMARY:Auswärtsspiel bei DC Enztaler Buben 3
 DESCRIPTION:Begegnung: DC Enztaler Buben 3 - Phantom Arrows 2\nAuswärtsspi
- el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.1
- 0.2026 19:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wild
+ el\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 24.1
+ 0.2026 18:00 UTC\nAustragungsort: Bar U-Boot\, Langwiesenweg 51\, Bad Wild
  bad
 LOCATION:Bar U-Boot\, Langwiesenweg 51\, Bad Wildbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20260927T112456Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
