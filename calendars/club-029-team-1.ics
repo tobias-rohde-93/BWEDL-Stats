@@ -177,17 +177,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:6bc1f30fad8ee4e0100951e2f9529c658100a9a721526d8d141eb1487cf47431@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261002T180000Z
-DTEND:20261002T210000Z
+DTSTAMP:20261006T043839Z
+DTSTART:20261001T180000Z
+DTEND:20261001T210000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Reloaded\nAuswärtsspiel
- \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 02.10.2026
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 4. Spieltag\nTermin: 01.10.2026
   18:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
  zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261006T043839Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
