@@ -9,16 +9,16 @@ X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:249cfeebf14b48872e60a2b6c7701963914d979866cdac8e21fae092ed171d29@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20260829T180000Z
 DTEND:20260829T210000Z
 SUMMARY:Auswärtsspiel bei DC Triple X
 DESCRIPTION:Begegnung: DC Triple X - Alla Häeeehr\nAuswärtsspiel\nLiga: A
  -Klasse Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:0
- 0 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 0 UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

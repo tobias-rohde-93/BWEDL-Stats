@@ -40,46 +40,46 @@ END:VEVENT
 BEGIN:VEVENT
 UID:38e86bd29c1301c68c8f27d14566f27cfbf871fcdfd7708e21d9e8757841884c@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20261128T190000Z
 DTEND:20261128T220000Z
 SUMMARY:Heimspiel gegen DC Texas Team 2
 DESCRIPTION:Begegnung: DC Triple X - DC Texas Team 2\nHeimspiel\nLiga: A-Kl
  asse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11.2026 19:00 U
- TC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ TC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:4dde7a97070b2ec35b4634162b5af0fe5ef414f5c9755e7300688af07633786b@calend
  ar.bwedl.invalid
-DTSTAMP:20261004T115202Z
+DTSTAMP:20261009T123748Z
 DTSTART:20261015T180000Z
 DTEND:20261015T210000Z
 SUMMARY:Heimspiel gegen DC Black Scorpions 2
 DESCRIPTION:Begegnung: DC Triple X - DC Black Scorpions 2\nHeimspiel\nLiga:
   A-Klasse Gruppe 2 2026-2027\nSpieltag: 4. Spieltag\nTermin: 15.10.2026 18
- :00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:1
-LAST-MODIFIED:20261004T115202Z
+ :00 UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:2
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:4e86f255ed1f24f82bfeaa531a3848dc19b7892db2e9f85dcb0a9c0e2c62d259@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20261031T190000Z
 DTEND:20261031T220000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Triple X - DC Irish 26 e.V.\nHeimspiel\nLiga: A-K
  lasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026 19:00
-  UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+  UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -101,31 +101,31 @@ END:VEVENT
 BEGIN:VEVENT
 UID:5f90d55262f22f37e1b17b83c7ce5776eddfdfbe0415477a76f85425b03699d2@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270417T180000Z
 DTEND:20270417T210000Z
 SUMMARY:Heimspiel gegen DC HighFlights
 DESCRIPTION:Begegnung: DC Triple X - DC HighFlights\nHeimspiel\nLiga: A-Kla
  sse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 18:00 U
- TC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ TC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:6d35082b1a1218d21bd8e23143802828d709ceb24831ae318874533ea570278b@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270213T190000Z
 DTEND:20270213T220000Z
 SUMMARY:Heimspiel gegen TSV Grunbach Darts
 DESCRIPTION:Begegnung: DC Triple X - TSV Grunbach Darts\nHeimspiel\nLiga: A
  -Klasse Gruppe 2 2026-2027\nSpieltag: 12. Spieltag\nTermin: 13.02.2027 19:
- 00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 00 UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -146,16 +146,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:7b458fb8e1038b334915312206c2f794aa65b774c42bf88a89bba62e751f0559@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270130T190000Z
 DTEND:20270130T220000Z
 SUMMARY:Heimspiel gegen DC DARTanions
 DESCRIPTION:Begegnung: DC Triple X - DC DARTanions\nHeimspiel\nLiga: A-Klas
  se Gruppe 2 2026-2027\nSpieltag: 11. Spieltag\nTermin: 30.01.2027 19:00 UT
- C\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ C\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -177,16 +177,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:babe06584e7b976588ccb7a34551686dd8dea1957493496aceafa0ee1a2a9c37@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270515T180000Z
 DTEND:20270515T210000Z
 SUMMARY:Heimspiel gegen DC Ungültig
 DESCRIPTION:Begegnung: DC Triple X - DC Ungültig\nHeimspiel\nLiga: A-Klass
  e Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:00 UTC
- \nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ \nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -256,32 +256,31 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f93ae9aace9e99a0aa49ddca4426a9712abdf0243dd8c8d405ab8b053fd6342e@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20260829T180000Z
 DTEND:20260829T210000Z
 SUMMARY:Heimspiel gegen Alla Häeeehr
 DESCRIPTION:Begegnung: DC Triple X - Alla Häeeehr\nHeimspiel\nLiga: A-Klas
  se Gruppe 2 2026-2027\nSpieltag: 1. Spieltag\nTermin: 29.08.2026 18:00 UTC
- \nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ \nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:fe931c04e6d463cbb3a48360fac3c8d38c08a0ba03e3158fca6ad75f7bc48ba5@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270320T190000Z
 DTEND:20270320T220000Z
 SUMMARY:Heimspiel gegen DC Underground Fool's 2
 DESCRIPTION:Begegnung: DC Triple X - DC Underground Fool's 2\nHeimspiel\nLi
  ga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 14. Spieltag\nTermin: 20.03.202
- 7 19:00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karls
- bad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 7 19:00 UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

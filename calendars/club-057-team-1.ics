@@ -41,16 +41,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:0ed40406ed0061130885ab64752b851f36c17f600c67e4a16383fe204a23c869@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270515T180000Z
 DTEND:20270515T210000Z
 SUMMARY:Auswärtsspiel bei DC Triple X
 DESCRIPTION:Begegnung: DC Triple X - DC Ungültig\nAuswärtsspiel\nLiga: A-
  Klasse Gruppe 2 2026-2027\nSpieltag: 18. Spieltag\nTermin: 15.05.2027 18:0
- 0 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 0 UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

@@ -149,16 +149,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:6a68ffea8847620801a753450c1924a90cbf6c6000c0f3c0baf0ef8b39fb5811@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261009T123748Z
 DTSTART:20270417T180000Z
 DTEND:20270417T210000Z
 SUMMARY:Auswärtsspiel bei DC Triple X
 DESCRIPTION:Begegnung: DC Triple X - DC HighFlights\nAuswärtsspiel\nLiga:
   A-Klasse Gruppe 2 2026-2027\nSpieltag: 16. Spieltag\nTermin: 17.04.2027 1
- 8:00 UTC\nAustragungsort: Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-LOCATION:Sports Bar Karlsbad\, Hauptstraße 40\, Karlsbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+ 8:00 UTC\nAustragungsort: TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+LOCATION:TSV Etzenrot\, Jahnstr. 32\, Waldbronn
+SEQUENCE:1
+LAST-MODIFIED:20261009T123748Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
