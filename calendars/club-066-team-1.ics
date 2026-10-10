@@ -215,17 +215,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:bbbcc6e197898c8693434380b64aee20da44c79c27820ce1b7183424086aa3fa@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261031T183000Z
-DTEND:20261031T213000Z
+DTSTAMP:20261010T115705Z
+DTSTART:20261028T190000Z
+DTEND:20261028T220000Z
 SUMMARY:Auswärtsspiel bei DC Knickebocker
 DESCRIPTION:Begegnung: DC Knickebocker - Glabbicher Bulls\nAuswärtsspiel\n
- Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.20
- 26 18:30 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedric
+ Liga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.20
+ 26 19:00 UTC\nAustragungsort: Brötzingerstüble\, Westliche-Karl-Friedric
  h-Str.378\, Pforzheim
 LOCATION:Brötzingerstüble\, Westliche-Karl-Friedrich-Str.378\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261010T115705Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

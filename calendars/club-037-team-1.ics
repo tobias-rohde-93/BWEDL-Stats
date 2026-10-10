@@ -41,17 +41,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:127c06ebc98bf1f454fbebc5c41055a02198ef49e507e1dc8c1605877bb6c701@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261030T190000Z
-DTEND:20261030T220000Z
+DTSTAMP:20261010T115705Z
+DTSTART:20261029T190000Z
+DTEND:20261029T220000Z
 SUMMARY:Heimspiel gegen Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: DC Crazy Flights - Dartfreunde Eichenherz\nHeimspiel
- \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.
+ \nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 29.10.
  2026 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simonsw
  iesen 2\, Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261010T115705Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
