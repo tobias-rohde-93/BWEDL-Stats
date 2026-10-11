@@ -9,17 +9,17 @@ X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:0d4bac17f6cf13b4ed71b7ecceda896f9be3d5a4352318e41e19a587f4063ab1@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261128T180000Z
-DTEND:20261128T210000Z
+DTSTAMP:20261011T120905Z
+DTSTART:20261115T180000Z
+DTEND:20261115T210000Z
 SUMMARY:Auswärtsspiel bei DC Drei Daneben
 DESCRIPTION:Begegnung: DC Drei Daneben - DC Enztaler Buben 3\nAuswärtsspie
- l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.11
+ l\nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 15.11
  .2026 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, P
  forzheim
 LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261011T120905Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

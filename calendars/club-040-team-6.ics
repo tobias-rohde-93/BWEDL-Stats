@@ -136,17 +136,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ad828757519dc2c834f6fa8a7cddc8fea99aa58f1d8aadbcbbc42ce20e035cce@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261031T190000Z
-DTEND:20261031T220000Z
+DTSTAMP:20261011T120905Z
+DTSTART:20261030T190000Z
+DTEND:20261030T220000Z
 SUMMARY:Auswärtsspiel bei DC Oststadt 3
 DESCRIPTION:Begegnung: DC Oststadt 3 - the Metal Darts 6\nAuswärtsspiel\nL
- iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.202
+ iga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30.10.202
  6 19:00 UTC\nAustragungsort: VH Underground Fools e.V.\, Weiherstrasse 30\
  , Pforzheim
 LOCATION:VH Underground Fools e.V.\, Weiherstrasse 30\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261011T120905Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

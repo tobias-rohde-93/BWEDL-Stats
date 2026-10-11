@@ -249,17 +249,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f99501277a1dfa0a3f5297c7bd48db42419688b61bd216959c76061985b89354@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261031T183000Z
-DTEND:20261031T213000Z
+DTSTAMP:20261011T120905Z
+DTSTART:20261031T173000Z
+DTEND:20261031T203000Z
 SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
 DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nHeimspiel\nLig
  a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
-  18:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
+  17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
   15\, Pforzheim
 LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261011T120905Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

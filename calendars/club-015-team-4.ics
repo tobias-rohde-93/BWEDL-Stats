@@ -168,17 +168,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:be197aec303fd254dd7552f7345f1b84c41af1606b36ee1c39d7ddee72df2dac@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261022T180000Z
-DTEND:20261022T210000Z
+DTSTAMP:20261011T120905Z
+DTSTART:20261020T180000Z
+DTEND:20261020T210000Z
 SUMMARY:Auswärtsspiel bei TSV Grunbach Darts 3
 DESCRIPTION:Begegnung: TSV Grunbach Darts 3 - DC Texas Team 4\nAuswärtsspi
- el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 22.1
+ el\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.1
  0.2026 18:00 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engelsb
  rand-Grunbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261011T120905Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

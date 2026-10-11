@@ -185,17 +185,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cb14435da5d5ba9e34c64a9b58f7536a5dc05e7460728541f0aa80121d68e82f@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261009T173000Z
-DTEND:20261009T203000Z
+DTSTAMP:20261011T120905Z
+DTSTART:20260929T173000Z
+DTEND:20260929T203000Z
 SUMMARY:Auswärtsspiel bei DC Ligthning Arrows
 DESCRIPTION:Begegnung: DC Ligthning Arrows - DC Destroyers e.V. 4\nAuswärt
  sspiel\nLiga: C-Klasse Gruppe 4 2026-2027\nSpieltag: 4. Spieltag\nTermin:
-  09.10.2026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße
+  29.09.2026 17:30 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße
   37\, Pforzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261011T120905Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
