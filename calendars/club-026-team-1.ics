@@ -195,17 +195,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:c8d1745dc1d73194177f89d020d555fdc23f77a1ab62de208cf6fd01f5dbc2a6@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261027T183000Z
-DTEND:20261027T213000Z
+DTSTAMP:20261020T105942Z
+DTSTART:20261103T183000Z
+DTEND:20261103T213000Z
 SUMMARY:Auswärtsspiel bei Odins Knechte
 DESCRIPTION:Begegnung: Odins Knechte - DC Broken Darts\nAuswärtsspiel\nLig
- a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 27.10.2026
+ a: A-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 03.11.2026
   18:30 UTC\nAustragungsort: Kost & Bar\, Hauptstraße 95\, Remchingen/Wilf
  erdingen
 LOCATION:Kost & Bar\, Hauptstraße 95\, Remchingen/Wilferdingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261020T105942Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
