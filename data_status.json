@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-21T21:18:21.261004Z",
+  "generated_at": "2026-10-22T03:08:01.599769Z",
   "domains": {
     "leagues": {
       "season": "2026/27",
       "state": "current",
-      "updated_at": "2026-10-21T21:18:21.261004Z"
+      "updated_at": "2026-10-22T03:08:01.599769Z"
     },
     "rankings": {
       "season": "2026/27",
       "state": "current",
-      "updated_at": "2026-10-21T21:18:21.261004Z"
+      "updated_at": "2026-10-22T03:08:01.599769Z"
     },
     "clubs": {
       "season": "current",
       "state": "current",
-      "updated_at": "2026-10-21T21:18:21.261004Z"
+      "updated_at": "2026-10-22T03:08:01.599769Z"
     },
     "archives": {
       "season": "historical",
