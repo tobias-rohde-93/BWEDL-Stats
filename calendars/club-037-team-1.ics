@@ -453,17 +453,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:d1de746dde9d2dc449b4740baadd85a6232b514c871dc63c5cdac537fb5b9c51@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261114T190000Z
-DTEND:20261114T220000Z
+DTSTAMP:20261024T101807Z
+DTSTART:20261113T190000Z
+DTEND:20261113T220000Z
 SUMMARY:Auswärtsspiel bei DC SchömbergerEck
 DESCRIPTION:Begegnung: DC SchömbergerEck - DC Crazy Flights\nAuswärtsspie
- l\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 14.11
+ l\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11
  .2026 19:00 UTC\nAustragungsort: Scharfes Eck\, Hugo-Römpler-Straße 31\,
   Schömberg
 LOCATION:Scharfes Eck\, Hugo-Römpler-Straße 31\, Schömberg
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261024T101807Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

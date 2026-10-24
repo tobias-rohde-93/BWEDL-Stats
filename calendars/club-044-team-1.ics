@@ -201,17 +201,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:989b45d5502febcbe18f5ebfdefe1f5174a28962439e99a603cff6ae24da3e8a@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261024T163000Z
-DTEND:20261024T193000Z
+DTSTAMP:20261024T101807Z
+DTSTART:20261019T163000Z
+DTEND:20261019T193000Z
 SUMMARY:Heimspiel gegen the Metal Darts 4
 DESCRIPTION:Begegnung: DC Bull's Eye Arnbach - the Metal Darts 4\nHeimspiel
- \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 24.10.
+ \nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 5. Spieltag\nTermin: 19.10.
  2026 16:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenb
  ürg - Arnbach
 LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261024T101807Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

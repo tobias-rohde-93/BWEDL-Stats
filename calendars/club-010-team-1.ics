@@ -71,17 +71,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:3fbada816bacf2235f399a1c0ef4883dc415ebfdb125521c2a33523185ba6855@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261026T190000Z
-DTEND:20261026T220000Z
+DTSTAMP:20261024T101807Z
+DTSTART:20261102T190000Z
+DTEND:20261102T220000Z
 SUMMARY:Auswärtsspiel bei DC Destroyers e.V. 2
 DESCRIPTION:Begegnung: DC Destroyers e.V. 2 - TDF Enzberg\nAuswärtsspiel\n
- Liga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 26.10.20
+ Liga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 02.11.20
  26 19:00 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 6
  0\, Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261024T101807Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
