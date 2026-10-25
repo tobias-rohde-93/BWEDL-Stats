@@ -25,17 +25,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:0ac160e7b97d379a66f45e5094af101f87e3b487acf2e3f445d34271dc9046ee@calend
  ar.bwedl.invalid
-DTSTAMP:20261011T120905Z
+DTSTAMP:20261025T153636Z
 DTSTART:20261031T173000Z
 DTEND:20261031T203000Z
-SUMMARY:Auswärtsspiel bei DC Kolibrispitz
-DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nAuswärtsspiel
- \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.
- 2026 17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffens
- tr. 15\, Pforzheim
-LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
-SEQUENCE:1
-LAST-MODIFIED:20261011T120905Z
+SUMMARY:Heimspiel gegen DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Kolibrispitz\nHeimspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
+  17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ , Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:2
+LAST-MODIFIED:20261025T153636Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -137,17 +137,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:77a043dfab15b5d443d857da6f472ede79b17c23dc364abe18295bd21ce9d1c9@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261025T153636Z
 DTSTART:20270330T173000Z
 DTEND:20270330T203000Z
-SUMMARY:Heimspiel gegen DC Kolibrispitz
-DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Kolibrispitz\nHeimspiel\nLig
- a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.2027
-  17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
- , Königsbach
-LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei DC Kolibrispitz
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03
+ .2027 17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffen
+ str. 15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20261025T153636Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

@@ -201,17 +201,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:c63a19aa9cc508412c19b311e47f92d40683b0f46094ae7ec5a53100e954b732@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261025T153636Z
 DTSTART:20270330T173000Z
 DTEND:20270330T203000Z
-SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
-DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Kolibrispitz\nAuswärtsspiel
- \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03
- .2027 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäcker
- le 1\, Königsbach
-LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nHeimspiel\nLig
+ a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 15. Spieltag\nTermin: 30.03.2027
+  17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
+  15\, Pforzheim
+LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20261025T153636Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -249,17 +249,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:f99501277a1dfa0a3f5297c7bd48db42419688b61bd216959c76061985b89354@calend
  ar.bwedl.invalid
-DTSTAMP:20261011T120905Z
+DTSTAMP:20261025T153636Z
 DTSTART:20261031T173000Z
 DTEND:20261031T203000Z
-SUMMARY:Heimspiel gegen DC Irish 26 e.V. 5
-DESCRIPTION:Begegnung: DC Kolibrispitz - DC Irish 26 e.V. 5\nHeimspiel\nLig
- a: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2026
-  17:30 UTC\nAustragungsort: Hörgeschädigten Zentrum\, Hohenstauffenstr.
-  15\, Pforzheim
-LOCATION:Hörgeschädigten Zentrum\, Hohenstauffenstr. 15\, Pforzheim
-SEQUENCE:1
-LAST-MODIFIED:20261011T120905Z
+SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
+DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Kolibrispitz\nAuswärtsspiel
+ \nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.
+ 2026 17:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerl
+ e 1\, Königsbach
+LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
+SEQUENCE:2
+LAST-MODIFIED:20261025T153636Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR
