@@ -9,16 +9,17 @@ X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:18f84bd3da8ef10c9f72d5ebcd8cc898fe6f9073c91584729b83ca2df66f460f@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261025T104409Z
 DTSTART:20261028T183000Z
 DTEND:20261028T213000Z
-SUMMARY:Auswärtsspiel bei DC HighFlights 2
-DESCRIPTION:Begegnung: DC HighFlights 2 - DC Conweiler\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026
-  18:30 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
-LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Heimspiel gegen DC HighFlights 2
+DESCRIPTION:Begegnung: DC Conweiler - DC HighFlights 2\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 18:30
+  UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Strau
+ benhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:1
+LAST-MODIFIED:20261025T104409Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -199,17 +200,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:d48c1f91da8ba2227ea899c48f68102ddb18bf53668fddd441cb2fc939f69fae@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20270402T180000Z
-DTEND:20270402T210000Z
-SUMMARY:Heimspiel gegen DC HighFlights 2
-DESCRIPTION:Begegnung: DC Conweiler - DC HighFlights 2\nHeimspiel\nLiga: C-
- Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027 18:0
- 0 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Stra
- ubenhardt
-LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+DTSTAMP:20261025T104409Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Auswärtsspiel bei DC HighFlights 2
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Conweiler\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027
+  18:00 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:1
+LAST-MODIFIED:20261025T104409Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

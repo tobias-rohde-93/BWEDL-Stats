@@ -39,16 +39,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:1834e81fa09c64047657e34ab3731b6cbe139ec71aebf0363d4e62256874da30@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261025T104409Z
 DTSTART:20261028T183000Z
 DTEND:20261028T213000Z
-SUMMARY:Heimspiel gegen DC Conweiler
-DESCRIPTION:Begegnung: DC HighFlights 2 - DC Conweiler\nHeimspiel\nLiga: C-
- Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026 18:30
-  UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
-LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei DC Conweiler
+DESCRIPTION:Begegnung: DC Conweiler - DC HighFlights 2\nAuswärtsspiel\nLig
+ a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 28.10.2026
+  18:30 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\,
+  Straubenhardt
+LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
+SEQUENCE:1
+LAST-MODIFIED:20261025T104409Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -209,17 +210,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:af01b1ee9801c810b1a8ddbe418f55b8b208ca9879dd227a69f5f6687a52b382@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20270402T180000Z
-DTEND:20270402T210000Z
-SUMMARY:Auswärtsspiel bei DC Conweiler
-DESCRIPTION:Begegnung: DC Conweiler - DC HighFlights 2\nAuswärtsspiel\nLig
- a: C-Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 02.04.2027
-  18:00 UTC\nAustragungsort: SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\,
-  Straubenhardt
-LOCATION:SpVgg Conweiler-Schwann e.V.\, Am Sportplatz\, Straubenhardt
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+DTSTAMP:20261025T104409Z
+DTSTART:20270331T180000Z
+DTEND:20270331T210000Z
+SUMMARY:Heimspiel gegen DC Conweiler
+DESCRIPTION:Begegnung: DC HighFlights 2 - DC Conweiler\nHeimspiel\nLiga: C-
+ Klasse Gruppe 2 2026-2027\nSpieltag: 15. Spieltag\nTermin: 31.03.2027 18:0
+ 0 UTC\nAustragungsort: Tequila-Bar\, Marktplatz 2\, Birkenfeld
+LOCATION:Tequila-Bar\, Marktplatz 2\, Birkenfeld
+SEQUENCE:1
+LAST-MODIFIED:20261025T104409Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

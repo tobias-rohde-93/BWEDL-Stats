@@ -232,17 +232,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:dd29b3355e65ca2b9ffb560adfc7206c0d8d72683bdc7a44137c0967e57684e0@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261020T183000Z
-DTEND:20261020T213000Z
+DTSTAMP:20261025T104409Z
+DTSTART:20261021T183000Z
+DTEND:20261021T213000Z
 SUMMARY:Heimspiel gegen United Ikaros
 DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - United Ikaros\nHeimspiel\n
- Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 20.10.20
+ Liga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 5. Spieltag\nTermin: 21.10.20
  26 18:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbür
  g - Arnbach
 LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261025T104409Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
