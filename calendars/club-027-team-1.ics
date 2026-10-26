@@ -357,17 +357,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:9decdb51de8459be3553e71bd03f0d70a174e06193c7961c83eb773412e4ef6b@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261023T180000Z
-DTEND:20261023T210000Z
+DTSTAMP:20261026T222152Z
+DTSTART:20261105T190000Z
+DTEND:20261105T220000Z
 SUMMARY:Auswärtsspiel bei DC Strikers
 DESCRIPTION:Begegnung: DC Strikers - DC Green Scorpion's\nAuswärtsspiel\nL
- iga: Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 23.10.2026 18:0
+ iga: Bezirksliga 2026-2027\nSpieltag: 5. Spieltag\nTermin: 05.11.2026 19:0
  0 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstraße 60\,
   Eisingen
 LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstraße 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261026T222152Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -420,17 +420,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cb2de53dda9df12448e15bd6bf777259d8c4b14bbae213f99b852692249ddfc3@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261113T191500Z
-DTEND:20261113T221500Z
+DTSTAMP:20261026T222152Z
+DTSTART:20261112T191500Z
+DTEND:20261112T221500Z
 SUMMARY:Auswärtsspiel bei DC Texas Team
 DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nAuswärtsspiel\
- nLiga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 13.11.2026 19
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 19
  :15 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
  im
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261026T222152Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
