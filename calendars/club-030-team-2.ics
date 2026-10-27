@@ -104,17 +104,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:736efb1be013c29e4bf03544dea262cbc94e54cc55edd2fb755514a9d6cc74cb@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261111T190000Z
-DTEND:20261111T220000Z
+DTSTAMP:20261027T113808Z
+DTSTART:20261120T190000Z
+DTEND:20261120T220000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Irish 26 e.V. - DC Black Scorpions 2\nAuswärtssp
- iel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.
+ iel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 20.
  11.2026 19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäck
  erle 1\, Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261027T113808Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
