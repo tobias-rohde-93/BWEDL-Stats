@@ -184,17 +184,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:3b3720546d520e2f4cc06d1ee4d6e2c33f116b9790fcafd257a65652571f60ba@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261111T183000Z
-DTEND:20261111T213000Z
+DTSTAMP:20261029T121923Z
+DTSTART:20261116T183000Z
+DTEND:20261116T213000Z
 SUMMARY:Heimspiel gegen DC Underground Fool's 2
 DESCRIPTION:Begegnung: TSV Grunbach Darts - DC Underground Fool's 2\nHeimsp
- iel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 11.
+ iel\nLiga: A-Klasse Gruppe 2 2026-2027\nSpieltag: 7. Spieltag\nTermin: 16.
  11.2026 18:30 UTC\nAustragungsort: TSV Grunbach\, Eichbergstr. 75\, Engels
  brand-Grunbach
 LOCATION:TSV Grunbach\, Eichbergstr. 75\, Engelsbrand-Grunbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261029T121923Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
