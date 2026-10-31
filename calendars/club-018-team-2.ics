@@ -57,17 +57,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2a1e6d42f498301ca83d26eebce884a1ee5fb854ba334f40ccd0451b36b4ec08@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261031T180000Z
-DTEND:20261031T210000Z
+DTSTAMP:20261031T114443Z
+DTSTART:20261107T180000Z
+DTEND:20261107T210000Z
 SUMMARY:Auswärtsspiel bei DC Drei Daneben
 DESCRIPTION:Begegnung: DC Drei Daneben - DC Knickebocker 2\nAuswärtsspiel\
- nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10.2
+ nLiga: C-Klasse Gruppe 2 2026-2027\nSpieltag: 6. Spieltag\nTermin: 07.11.2
  026 18:00 UTC\nAustragungsort: Bistro Dallas\, Am Waisenhausplatz 26\, Pfo
  rzheim
 LOCATION:Bistro Dallas\, Am Waisenhausplatz 26\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261031T114443Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
