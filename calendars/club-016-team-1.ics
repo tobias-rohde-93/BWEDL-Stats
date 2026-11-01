@@ -41,17 +41,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:23c34e4c964b36afabb30f8ac43c3d20e08a72c5767d408a86d100070da30f90@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261124T193000Z
-DTEND:20261124T223000Z
+DTSTAMP:20261101T124222Z
+DTSTART:20261123T193000Z
+DTEND:20261123T223000Z
 SUMMARY:Auswärtsspiel bei DC Bull's Eye Arnbach 2
 DESCRIPTION:Begegnung: DC Bull's Eye Arnbach 2 - the Enz Coast\nAuswärtssp
- iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.
+ iel\nLiga: C-Klasse Gruppe 1 2026-2027\nSpieltag: 8. Spieltag\nTermin: 23.
  11.2026 19:30 UTC\nAustragungsort: Hotel Ochsen\, Schwarzwaldstr. 7\, Neue
  nbürg - Arnbach
 LOCATION:Hotel Ochsen\, Schwarzwaldstr. 7\, Neuenbürg - Arnbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261101T124222Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

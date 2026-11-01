@@ -185,17 +185,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:8d72068fd4f9666d7159f7208142c8a82a1f9f737ab35c9afca5f27a99977802@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261030T190000Z
-DTEND:20261030T220000Z
+DTSTAMP:20261101T124222Z
+DTSTART:20261106T190000Z
+DTEND:20261106T220000Z
 SUMMARY:Auswärtsspiel bei DC 180 Stein e.V.
 DESCRIPTION:Begegnung: DC 180 Stein e.V. - TSV Grunbach Darts 2\nAuswärtss
- piel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 30
- .10.2026 19:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\,
+ piel\nLiga: B-Klasse Gruppe 1 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06
+ .11.2026 19:00 UTC\nAustragungsort: Bistro Colours\, Königsbacherstr. 6\,
   Königsbach - Stein
 LOCATION:Bistro Colours\, Königsbacherstr. 6\, Königsbach - Stein
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261101T124222Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

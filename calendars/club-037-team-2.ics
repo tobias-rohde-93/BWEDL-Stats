@@ -105,17 +105,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:96296b886fd24ed4e5b21502ac1d4e497117438fe655b7a6d9a888e51b7880ed@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261031T190000Z
-DTEND:20261031T220000Z
+DTSTAMP:20261101T124222Z
+DTSTART:20261107T170000Z
+DTEND:20261107T200000Z
 SUMMARY:Heimspiel gegen DC Bull's Eye Arnbach
 DESCRIPTION:Begegnung: DC Crazy Flights 2 - DC Bull's Eye Arnbach\nHeimspie
- l\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 31.10
- .2026 19:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simons
+ l\nLiga: B-Klasse Gruppe 3 2026-2027\nSpieltag: 6. Spieltag\nTermin: 07.11
+ .2026 17:00 UTC\nAustragungsort: VH DC Crazy Flights (VFL Höfen)\, Simons
  wiesen 2\, Höfen
 LOCATION:VH DC Crazy Flights (VFL Höfen)\, Simonswiesen 2\, Höfen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261101T124222Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
