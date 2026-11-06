@@ -89,17 +89,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:728f33be4e9c736567d837bfa297f2bd6a0f41e30ab2a9746e57e887e184c6bf@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261110T183000Z
-DTEND:20261110T213000Z
+DTSTAMP:20261106T224942Z
+DTSTART:20261109T183000Z
+DTEND:20261109T213000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V. 5
 DESCRIPTION:Begegnung: DC Irish 26 e.V. 5 - DC Destroyers e.V. 5\nAuswärts
- spiel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 1
- 0.11.2026 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendä
+ spiel\nLiga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 7. Spieltag\nTermin: 0
+ 9.11.2026 18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendä
  ckerle 1\, Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261106T224942Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
