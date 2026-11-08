@@ -164,17 +164,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:52d9c6e09e6b01d43638eb4425aff1b5662b7232ba3bb367f5c52e6dcc4ce3cc@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261106T190000Z
-DTEND:20261106T220000Z
+DTSTAMP:20261108T214524Z
+DTSTART:20261103T190000Z
+DTEND:20261103T220000Z
 SUMMARY:Auswärtsspiel bei Dartfreunde Eichenherz
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC Strikers\nAuswärtsspiel
- \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 06.11.2026
+ \nLiga: Mix B-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 03.11.2026
   19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pfor
  zheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261108T214524Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

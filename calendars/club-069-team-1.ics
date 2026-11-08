@@ -216,17 +216,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:52e22eb466c80fb45d62d20cdf31c309332a54ee920f56d8dc105aa122e4a880@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261107T190000Z
-DTEND:20261107T220000Z
+DTSTAMP:20261108T214524Z
+DTSTART:20261111T183000Z
+DTEND:20261111T213000Z
 SUMMARY:Auswärtsspiel bei DC Irish 26 e.V.
 DESCRIPTION:Begegnung: DC Irish 26 e.V. - TSV Grunbach Darts\nAuswärtsspie
- l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 07.11.2026
-  19:00 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
+ l\nLiga: Mix C-Klasse 2026-2027\nSpieltag: 6. Spieltag\nTermin: 11.11.2026
+  18:30 UTC\nAustragungsort: Schützenhaus Königsbach\, Allmendäckerle 1\
  , Königsbach
 LOCATION:Schützenhaus Königsbach\, Allmendäckerle 1\, Königsbach
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261108T214524Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

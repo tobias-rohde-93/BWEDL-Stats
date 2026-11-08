@@ -101,16 +101,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:4c725925b263c905ee7ced3b843d8fbc920ae70c32a9c2a8c2230cdfc8e32f84@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261108T214524Z
 DTSTART:20261119T190000Z
 DTEND:20261119T220000Z
-SUMMARY:Auswärtsspiel bei DC Lachs 14
-DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts\nAuswärtsspiel\nLiga:
-  Mix B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 19.11.2026 19:00 U
- TC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
-LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Heimspiel gegen DC Lachs 14
+DESCRIPTION:Begegnung: the Metal Darts - DC Lachs 14\nHeimspiel\nLiga: Mix
+  B-Klasse 2026-2027\nSpieltag: 7. Spieltag\nTermin: 19.11.2026 19:00 UTC\n
+ Austragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20261108T214524Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -224,16 +224,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:8ff3a95bf0bc14938f66a3892c601306e7b2cce1426635e93ae664b60750093e@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261108T214524Z
 DTSTART:20270408T180000Z
 DTEND:20270408T210000Z
-SUMMARY:Heimspiel gegen DC Lachs 14
-DESCRIPTION:Begegnung: the Metal Darts - DC Lachs 14\nHeimspiel\nLiga: Mix
-  B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 08.04.2027 18:00 UTC\
- nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei DC Lachs 14
+DESCRIPTION:Begegnung: DC Lachs 14 - the Metal Darts\nAuswärtsspiel\nLiga:
+  Mix B-Klasse 2026-2027\nSpieltag: 16. Spieltag\nTermin: 08.04.2027 18:00
+  UTC\nAustragungsort: Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+LOCATION:Bistro U-Boot\, Langwiesenweg 51\, Bad Wildbad
+SEQUENCE:1
+LAST-MODIFIED:20261108T214524Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
