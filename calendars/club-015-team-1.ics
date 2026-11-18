@@ -56,16 +56,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:24b5c09ae41af01420d902b42a023e1f8792d8a97f5f4926ec353b9baeaa5c33@calend
  ar.bwedl.invalid
-DTSTAMP:20261026T222152Z
+DTSTAMP:20261118T083822Z
 DTSTART:20261112T191500Z
 DTEND:20261112T221500Z
-SUMMARY:Heimspiel gegen DC Green Scorpion's
-DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nHeimspiel\nLiga
- : Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 19:15 U
- TC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:1
-LAST-MODIFIED:20261026T222152Z
+SUMMARY:Auswärtsspiel bei DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Texas Team\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 19
+ :15 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, E
+ isingen
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:2
+LAST-MODIFIED:20261118T083822Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -435,17 +436,16 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e570a5155f4ad21b48411d69e87267e2b955d9cd834e71476eadfdc37f7d4aae@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261118T083822Z
 DTSTART:20270416T183000Z
 DTEND:20270416T213000Z
-SUMMARY:Auswärtsspiel bei DC Green Scorpion's
-DESCRIPTION:Begegnung: DC Green Scorpion's - DC Texas Team\nAuswärtsspiel\
- nLiga: Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 1
- 8:30 UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\,
-  Eisingen
-LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Heimspiel gegen DC Green Scorpion's
+DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 18:30
+  UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20261118T083822Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

@@ -249,17 +249,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ed640ae6a8d495f7ec0802d7cbf49876015ab7b99c3cde2b7d3365a6f776a4f3@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261127T190000Z
-DTEND:20261127T220000Z
+DTSTAMP:20261118T083822Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
 SUMMARY:Auswärtsspiel bei the Metal Darts 6
 DESCRIPTION:Begegnung: the Metal Darts 6 - DC Ungültig 3\nAuswärtsspiel\n
- Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 27.11.20
+ Liga: C-Klasse Gruppe 3 2026-2027\nSpieltag: 8. Spieltag\nTermin: 26.11.20
  26 19:00 UTC\nAustragungsort: Eurobar Eventhaus\, Pflügerstraße 37\, Pfo
  rzheim
 LOCATION:Eurobar Eventhaus\, Pflügerstraße 37\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261118T083822Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

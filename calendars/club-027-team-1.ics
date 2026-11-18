@@ -309,17 +309,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:8b1931fad462953be39fc86c0e777bd0a3b788da3249d5553eed679e83b1d1d0@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
+DTSTAMP:20261118T083822Z
 DTSTART:20270416T183000Z
 DTEND:20270416T213000Z
-SUMMARY:Heimspiel gegen DC Texas Team
-DESCRIPTION:Begegnung: DC Green Scorpion's - DC Texas Team\nHeimspiel\nLiga
- : Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 18:30
-  UTC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisi
- ngen
-LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SUMMARY:Auswärtsspiel bei DC Texas Team
+DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nAuswärtsspiel\
+ nLiga: Bezirksliga 2026-2027\nSpieltag: 16. Spieltag\nTermin: 16.04.2027 1
+ 8:30 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzh
+ eim
+LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
+SEQUENCE:1
+LAST-MODIFIED:20261118T083822Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
@@ -420,17 +420,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cb2de53dda9df12448e15bd6bf777259d8c4b14bbae213f99b852692249ddfc3@calend
  ar.bwedl.invalid
-DTSTAMP:20261026T222152Z
+DTSTAMP:20261118T083822Z
 DTSTART:20261112T191500Z
 DTEND:20261112T221500Z
-SUMMARY:Auswärtsspiel bei DC Texas Team
-DESCRIPTION:Begegnung: DC Texas Team - DC Green Scorpion's\nAuswärtsspiel\
- nLiga: Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 19
- :15 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzhe
- im
-LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:1
-LAST-MODIFIED:20261026T222152Z
+SUMMARY:Heimspiel gegen DC Texas Team
+DESCRIPTION:Begegnung: DC Green Scorpion's - DC Texas Team\nHeimspiel\nLiga
+ : Bezirksliga 2026-2027\nSpieltag: 7. Spieltag\nTermin: 12.11.2026 19:15 U
+ TC\nAustragungsort: Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eising
+ en
+LOCATION:Schützenhaus SV Eisingen e.V.\, Weberstr. 60\, Eisingen
+SEQUENCE:2
+LAST-MODIFIED:20261118T083822Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT

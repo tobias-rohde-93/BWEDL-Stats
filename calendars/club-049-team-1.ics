@@ -484,17 +484,17 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ccf7633dbea14f227250ed83e53baf0e8f79eaedb8ad76a7dea34594d0fdae86@calend
  ar.bwedl.invalid
-DTSTAMP:20260819T010538Z
-DTSTART:20261128T150000Z
-DTEND:20261128T180000Z
+DTSTAMP:20261118T083822Z
+DTSTART:20261124T190000Z
+DTEND:20261124T220000Z
 SUMMARY:Heimspiel gegen DC SchömbergerEck
 DESCRIPTION:Begegnung: Dartfreunde Eichenherz - DC SchömbergerEck\nHeimspi
- el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 28.1
- 1.2026 15:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
+ el\nLiga: B-Klasse Gruppe 2 2026-2027\nSpieltag: 8. Spieltag\nTermin: 24.1
+ 1.2026 19:00 UTC\nAustragungsort: Blumenheckstüble\, Hohenstaufenstr. 42\
  , Pforzheim
 LOCATION:Blumenheckstüble\, Hohenstaufenstr. 42\, Pforzheim
-SEQUENCE:0
-LAST-MODIFIED:20260819T010538Z
+SEQUENCE:1
+LAST-MODIFIED:20261118T083822Z
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
