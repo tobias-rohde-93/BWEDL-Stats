@@ -92,6 +92,9 @@ MIN_REGULAR_LEAGUES = 13
 EXPECTED_MATCHDAYS = 18
 MIN_CLUB_RATIO = 0.80
 MIN_STANDINGS_COLUMNS = 9
+_UNKNOWN_MATCHDAY_DATE_RE = re.compile(
+    r"^\s*\?\?\.\s+\?\?\.\s*(?:0?[1-9]|1[0-2])\.\s*\d{4}\b"
+)
 OPTIONAL_CLUB_FIELDS = (
     "venue",
     "street",
@@ -466,9 +469,11 @@ def _matchday_issue(match_days: Any) -> str | None:
         if value == "---":
             continue
         for line in value.splitlines():
-            if line.strip() and re.search(
+            has_complete_date = re.search(
                 r"\d{1,2}\.\s*\d{1,2}\.\s*\d{4}", line
-            ) is None:
+            )
+            has_unknown_day = _UNKNOWN_MATCHDAY_DATE_RE.search(line)
+            if line.strip() and has_complete_date is None and has_unknown_day is None:
                 return "matchday line has no supported date"
     if matchday_numbers != set(range(1, EXPECTED_MATCHDAYS + 1)):
         return f"matchday sequence must cover 1 through {EXPECTED_MATCHDAYS}"

@@ -32,6 +32,11 @@ _DATE_PREFIX_RE = re.compile(
     r"(?P<year>\d{2,4})(?:\s+(?P<hour>\d{1,2}):(?P<minute>\d{2}))?\s+"
     r"(?P<teams>.+?)\s*$"
 )
+_UNKNOWN_DAY_PREFIX_RE = re.compile(
+    r"^\?\?\.\s+\?\?\.\s*(?P<month>0?[1-9]|1[0-2])\."
+    r"(?P<year>\d{4})(?:\s+(?P<hour>\d{1,2}):(?P<minute>\d{2}))?\s+"
+    r"(?P<teams>.+?)\s*$"
+)
 _SCORE_SUFFIX_RE = re.compile(r"\s+(?:---|\d+\s*:\s*\d+|:)\s*$")
 _TEAM_SEPARATOR_RE = re.compile(r"^(?P<home>.+?)\s+-\s+(?P<away>.+?)\s*$")
 _SAFE_TEAM_ID_RE = re.compile(r"club-([0-9]+)-team-([0-9]+)\Z")
@@ -342,6 +347,10 @@ def _classify_fixture_line(
     league: str, season: str, round_name: str, line: str
 ) -> FixtureSourceLine:
     match = _DATE_PREFIX_RE.match(line.strip())
+    unknown_date = False
+    if not match:
+        match = _UNKNOWN_DAY_PREFIX_RE.match(line.strip())
+        unknown_date = match is not None
     if not match:
         raise CalendarSourceError(
             f"Liga {league}, {round_name}: nicht klassifizierbare Spielplanzeile {line!r}"
@@ -368,6 +377,8 @@ def _classify_fixture_line(
     }
     if _is_bye(home_name) or _is_bye(away_name):
         return FixtureSourceLine(classification="bye", **common)
+    if unknown_date:
+        return FixtureSourceLine(classification="unknown_date", **common)
     if match.group("hour") is None:
         return FixtureSourceLine(classification="missing_time", **common)
     year = int(match.group("year"))

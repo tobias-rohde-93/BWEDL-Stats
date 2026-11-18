@@ -703,6 +703,15 @@ def test_matchday_keys_allow_whitespace_and_placeholder_value() -> None:
     assert validation.validate_leagues(candidate, {}).decision is Decision.PUBLISH
 
 
+def test_matchday_values_allow_bwedl_unknown_day_placeholder() -> None:
+    candidate = league_candidate()
+    candidate["leagues"]["Bezirksliga 2026-2027"]["match_days"][
+        "1. Spieltag"
+    ] = "??. ??.11.2026 20:00 DC Reloaded - the Metal Darts ---"
+
+    assert validation.validate_leagues(candidate, {}).decision is Decision.PUBLISH
+
+
 @pytest.mark.parametrize("value", [17, ["Mo. 24. 8.2026"], "no date here"])
 def test_matchday_values_require_strings_with_supported_dates(value: Any) -> None:
     candidate = league_candidate()

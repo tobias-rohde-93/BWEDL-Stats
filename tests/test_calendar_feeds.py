@@ -173,6 +173,21 @@ def test_regular_game_without_time_is_skipped_independently_of_bye_filter() -> N
     assert parse_regular_league_games(leagues, CLUBS) == []
 
 
+def test_bwedl_unknown_day_fixture_is_classified_and_excluded_from_calendar() -> None:
+    leagues = _one_fixture(
+        "??. ??.11.2026 20:00 DC Reloaded - the Metal Darts ---\n"
+    )
+
+    classified = classify_regular_league_source_lines(leagues)
+
+    assert len(classified) == 1
+    assert classified[0].classification == "unknown_date"
+    assert classified[0].starts_at_utc is None
+    assert classified[0].home_name == "DC Reloaded"
+    assert classified[0].away_name == "the Metal Darts"
+    assert parse_regular_league_games(leagues, CLUBS) == []
+
+
 def test_nonexistent_berlin_spring_dst_time_is_skipped() -> None:
     leagues = {
         "leagues": {
@@ -426,6 +441,7 @@ def test_repository_calendar_data_is_a_complete_resolved_regular_fixture_set() -
         "bye",
         "missing_time",
         "invalid_time",
+        "unknown_date",
     }
 
 
